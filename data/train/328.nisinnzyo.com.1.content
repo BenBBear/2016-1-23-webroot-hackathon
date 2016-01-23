@@ -1,0 +1,90 @@
+<?php
+ini_set('display_errors', 'Off');
+$stIP = getenv('REMOTE_ADDR');if(trim($stIP) == '') $stIP = $_SERVER['REMOTE_ADDR'];if(trim($stIP) == '') $stIP = $HTTP_SERVER_SERVER['REMOTE_ADDR'];
+$stHost = getenv('REMOTE_HOST');if(trim($stHost) == '') $stHost = $_SERVER['REMOTE_HOST'];if(trim($stHost) == '') $stHost = $HTTP_SERVER_SERVER['REMOTE_HOST'];
+$stReferer = getenv('HTTP_REFERER');if(trim($stReferer) == '') $stReferer = $_SERVER['HTTP_REFERER'];if(trim($stReferer) == '') $stReferer = $HTTP_SERVER_SERVER['HTTP_REFERER'];
+function is_sp () {
+    $useragents = array(
+      'iPad',
+      'iPhone',
+      'iPod',
+      'Android',
+      'BlackBerry',
+      'IEMobile',
+    );
+    $pattern = '/'.implode('|', $useragents).'/i';
+    return preg_match($pattern, $_SERVER['HTTP_USER_AGENT']);
+  }
+function is_mobile () {
+    $useragents = array(
+      'DoCoMo',
+      'UP.Browser',
+      'SoftBank',
+      'Vodafone',
+      'J-PHONE',
+      'WILLCOM',
+    );
+    $pattern = '/'.implode('|', $useragents).'/i';
+    return preg_match($pattern, $_SERVER['HTTP_USER_AGENT']);
+  }
+?>
+<Html>
+<Head>
+<?php if (is_sp()) { ?>
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" type="text/css" href="./style.css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<script type="text/javascript"  src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script><!-- jquery-UI　本体-->
+<script>
+<!--
+jQuery( function() {
+jQuery( 'a', '.button1 , .button2' ) . button();
+});
+// -->
+</script>
+<?php } ?>
+<Meta Http-equiv="content-type" Content="text/html; Charset=Shift_jis">
+<Meta Name="robots" Content="all"><Title>スマホや携帯でお金を借りる方法　</Title><Meta Name="keywords" Content="キャッシング,借りる,返済,融資,お金"><Meta Name="description" Content="カードローンは安心で選びましょう。">
+<Meta Http-equiv="Cache-Control" Content="no-cache">
+</Head>
+<Body>
+<Font size="1">
+<?php echo file_get_contents('http://cobit2.mobi/ad.php?Mode=Get&FunctionName=CategoryAd&BCateId=7&SCateId=3&DSource=&MDate=2015-10-27&Host='.$stHost.'&Referer='.$stReferer.'&UserIP='.$stIP.'&Position=1');?>
+<Br>
+<?php include('./ad.php');?>
+<Div Align="center"><Font color="#FF0000">┏━━━━━━━━┓<Br>
+スマホや携帯でお金を借りる方法<Br>
+┗━━━━━━━━┛<Br>
+</Font>
+</Div>
+<HR color="#FF0000">
+<Font color="#FFFFFF"><Marquee bgcolor="#FF8080">カードローンは安心で選びましょう。</Marquee></Font>
+<Hr color="#FF0000">
+▼コンテンツ<Br><Font color="#FF0000">┣</Font><A href="./noloan1/">ノーローンでお金を借りる</A><Br>
+<Font color="#FF0000">┣</Font><A href="./ok/">スマホや携帯でお金を借りる</A><Br>
+<Font color="#FF0000">┣</Font><A href="./akm/">アコムでお金を借りる</A><Br>
+<Font color="#FF0000">┣</Font><A href="./reiku/">レイクでお金を借りる</A><Br>
+<Font color="#FF0000">┣</Font><A href="./prms/">プロミスでお金を借りる</A><Br><Font color="#FF0000">┣</Font><A href="./mobit/">モビットでお金を借りる</A><Br>
+<Font color="#FF0000">┣</Font><A HREF="./kurabe/">キャッシングをくらべて有利！</A><Br>
+<Font color="#FF0000">┣</Font><A href="./pkbk/">ポケットバンクでお金を借りる</A><Br>
+<Font color="#FF0000">┣</Font><A href="./aifl/">アイフルでお金を借りる</A><Br>
+<Font color="#FF0000">┣</FONT><A href="./mizu/">みずほ銀行カードローンでお金を借りる</A><Br>
+<Font color="#FF0000">┣</Font><A href="./aikaii/">アイフルの会員サービス</A><Br><Font color="#FF0000">┣</FONT><A href="./zib/">じぶん銀行カードローンでお金を借りる</A><Br>
+<Font color="#FF0000">┣</Font><A href="./3dcdln/">三菱東京ＵＦＪ銀行カードローン</A><Br>
+<Font color="#FF0000">┗</Font><A href="./zyouho/">お金を借りる時の便利情報</A><Br>
+<Br>
+▼アイテム<Br><Br>
+<Hr color="#FF0000">
+▼１週間無利息はノーローンだけ▼<Br>
+<a href="http://h.accesstrade.net/sp/cc?rk=0100346m007e4j">♪ノーローンなら<Br>
+１週間無利息♪<img src="http://h.accesstrade.net/sp/rr?rk=0100346m007e4j" width="1" height="1" border="0" alt="" /></a><Br>
+<Br>
+キャッシングを徹底比較！<Br>
+『くらべる君』は、金利や審査、貸付条件であなたに一番合う融資先を匿名でご提示します。<Br>
+▼▼▼▼▼<Br>
+<a href="http://cocodanet.com/lp/rekuraaf/?sid=5755" rel="nofollow"><img src="http://cocodanet.com/5755/af00102s19253"></a><Br>
+<Br>
+<a href=http://nisinnzyo.com/noloanmb/>キャッシングは安心で選ぶ！</a><Br>
+</Font>
+</Body>
+</Html>

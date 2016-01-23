@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>Jector - クリエイターのためのクラウドストレージ</title>
+<meta content='Jectorはクリエイターのためのファイル共有サービス/クラウドストレージサービスです。プロジェクトフォルダにメンバーを招待してアセット管理を一元化できます。あらゆるファイルのプレビュー・ストリーミング再生を可能にします。' name='description'>
+<meta content='jector,ジェクター,ファイル共有,オンラインストレージ,クラウドストレージ,ワークフロー,サーバー,データ共有,大容量,mac,server,アプリ,プロジェクト,管理,データ保管,バックアップ,ファイル転送,ファイル送信,安全' name='keywords'>
+<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0' name='viewport'>
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="u7U2pH1y5BKuDD67TLNsEs0TRlwJ0SM6ue/Jei4cD8BhlGUQmD39lP36Gg0FupNdm4isuYmW6tKbLuyzBEY4Kw==" />
+<link rel="shortcut icon" type="image/x-icon" href="/assets/favicon-196616477c9c5d190c43e8ad63456e12.ico" />
+<link rel="stylesheet" media="all" href="/assets/top-d7a1694bab6e8736d426e75ba34b9a7c.css" />
+<link rel="stylesheet" media="screen" href="//cloud.typography.com/6170672/795306/css/fonts.css" />
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+</script>
+<script>
+  ga('create', 'UA-55322548-2', 'auto');
+  ga('require', 'linkid', 'linkid.js');
+  ga('send', 'pageview');
+</script>
+
+</head>
+<body>
+<div class='navbar navbar-static-top navbar-fixed-top' id='nav-global'>
+<div class='container-fluid'>
+<div class='navbar-header'>
+<button class='navbar-toggle collapsed' data-target='#jector-navbar-collapse' data-toggle='collapse' type='button'>
+<span class='sr-only'>Toggle navigation</span>
+<span class='icon-bar'></span>
+<span class='icon-bar'></span>
+<span class='icon-bar'></span>
+</button>
+<a class='navbar-brand' href='/'>
+<svg enable-background='new 0 0 465.6 157.5' height='58px' id='jector-logo' version='1.1' viewbox='0 0 465.6 157.5' width='147px' x='0px' xml:space='preserve' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg' y='0px'>
+<g>
+<path d='M125.3,98.4l3.8-2.4c3.8,6.4,7.9,9.8,15.2,9.8c7.6,0,13.4-5.7,13.4-16.5v-42h4.6V89c0,7.1-2.2,12.6-5.6,16&#x000A;		c-3.3,3.3-7.7,4.9-12.6,4.9C134.8,109.9,129.1,105.2,125.3,98.4z' fill='#ffffff'></path>
+<path d='M180,86.7v-0.2c0-13,9.2-23.4,21.3-23.4c12.6,0,20.6,10.2,20.6,23.5c0,0.8,0,1.1-0.1,1.8h-37.3&#x000A;		c0.8,11.2,8.8,17.7,17.6,17.7c7,0,11.7-3.1,15.4-7.1l3,2.6c-4.6,4.9-10,8.5-18.6,8.5C190.2,110.1,180,100.7,180,86.7z M217.3,84.5&#x000A;		c-0.6-9.1-5.8-17.5-16.1-17.5c-8.9,0-15.8,7.5-16.6,17.5H217.3z' fill='#ffffff'></path>
+<path d='M235.9,86.8v-0.2c0-12.6,10-23.5,22.9-23.5c8.5,0,13.8,3.9,18,8.3l-3.1,3.2c-3.9-4-8.3-7.4-15-7.4&#x000A;		c-10.2,0-18.2,8.6-18.2,19.3v0.2c0,10.8,8.2,19.5,18.5,19.5c6.3,0,11.3-3.3,15.1-7.5l3,2.6c-4.6,5.2-10,8.9-18.3,8.9&#x000A;		C245.8,110.1,235.9,99.4,235.9,86.8z' fill='#ffffff'></path>
+<path d='M296.1,97.5V68.1h-6.5v-4h6.5V49.7h4.3v14.4h15.8v4h-15.8v29c0,6.4,3.8,8.7,9,8.7c2.2,0,4.1-0.4,6.6-1.6&#x000A;		v4.1c-2.3,1.1-4.5,1.6-7.3,1.6C301.7,109.9,296.1,106.1,296.1,97.5z' fill='#ffffff'></path>
+<path d='M330.3,86.8v-0.2c0-12.6,9.8-23.5,23.2-23.5c13.3,0,23,10.8,23,23.4v0.2c0,12.6-9.8,23.5-23.2,23.5&#x000A;		C340,110.1,330.3,99.4,330.3,86.8z M371.8,86.8v-0.2c0-10.8-8.1-19.5-18.5-19.5c-10.7,0-18.3,8.7-18.3,19.3v0.2&#x000A;		c0,10.8,8.1,19.5,18.5,19.5C364.1,106.1,371.8,97.3,371.8,86.8z' fill='#ffffff'></path>
+<path d='M394.2,64.1h4.3v12.8c3.5-8,11-13.8,19.9-13.5v4.8H418c-10.4,0-19.5,7.8-19.5,22.5v18.4h-4.3V64.1z' fill='#ffffff'></path>
+</g>
+<g>
+<path clip-rule='evenodd' d='M52.3,54.3h49.2c1.1,0,2.1,0.9,2.1,2.1v20.3h-5.6V69&#x000A;		c-7,0-21.6,0-25.5,0c0,3.4,0,15.6,0,18.6h-6.5c-0.8,0-1.4-0.3-1.6-1c-0.7-2.2-1.6-5.9-2.3-8.4c-0.3-1.1-1.3-1.6-2.4-1.6h-9.4&#x000A;		l0-20.3C50.2,55.3,51,54.3,52.3,54.3z' fill-rule='evenodd' fill='#ffffff'></path>
+<path d='M103.6,110.1H50.2c-1.1,0-2.1-1-2.1-2.1L48,80.1c2,0,2.1,0,3.2,0h6.3c0.9,0,1.8,0.3,2,1.2l2.4,8.4&#x000A;		c0.2,0.9,1.1,1.4,2,1.4h26.3c0.9,0,1.8-0.6,2-1.5l2.4-8.3c0.2-0.9,1.1-1.2,2-1.2h7.3c1.1,0,1,0,2,0v27.8&#x000A;		C105.8,109.1,104.8,110.1,103.6,110.1z' fill='#ffffff'></path>
+</g>
+</svg>
+</a>
+</div>
+<div class='collapse navbar-collapse' id='jector-navbar-collapse'>
+<ul class='nav navbar-nav navbar-right' id='top-nav'>
+<li class='dropdown'>
+<a aria-expanded='false' aria-haspopup='true' class='dropdown-toggle' data-toggle='dropdown' href='#' role='button'>
+機能
+<span class='caret'></span>
+</a>
+<ul class='dropdown-menu'>
+<li>
+<a href='project'>プロジェクトフォルダ</a>
+</li>
+<li>
+<a href='itemmails'>ファイル便・リクエスト便</a>
+</li>
+<li>
+<a href='/app'>アプリ</a>
+</li>
+<li>
+<a href='/secure'>セキュリティ</a>
+</li>
+<li>
+<a href='/management'>管理機能</a>
+</li>
+</ul>
+</li>
+<li>
+<a href='/movie'>映像制作</a>
+</li>
+<li>
+<a href='/domestic'>国内開発</a>
+</li>
+<li>
+<a href='/price'>料金</a>
+</li>
+<li>
+<a href='/users/sign_in'>ログイン</a>
+</li>
+<li class='create-team'>
+<a href='/users/sign_up' onClick="ga('send', 'event',  'SignUp', 'click', 'Header SignUp');">無料お試し</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class='wrap'>
+<div class='top-wrap'>
+<a href='//support.jector.jp/hc/ja/requests/new' id='animation_btn' target='_blank'>
+<button class='btn-contact btn-info btn btn-block' data-placement='top' data-toggle='tooltip' rel='tooltip' title='お問い合わせ' type='button'>
+<span class='icon-thin-contact'></span>
+</button>
+</a>
+<div class='keyvisual'>
+<div class='keyvisual-caption'>
+<div class='title-wrap'>
+<div class='container text-wrap'>
+<p class='keyvisual-subtext'>映像制作チームのためのクラウドストレージ</p>
+<div class='col-sm-8 col-md-8'>
+<video autoplay loop poster='/assets/poster_top.png' src='/assets/comment.mp4' type='video/mp4'></video>
+</div>
+<div class='col-sm-4 col-md-4'>
+<a href='/users/sign_up' onClick="ga('send', 'event', 'SignUp', 'click', 'Top SignUp');">
+<div class='btn btn-keyvisual'>
+今すぐチーム作成
+<br>
+30 日間無料お試し
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='features tour'>
+<div class='container'>
+<h2>導入実績</h2>
+<div class='row'>
+<div class='col-sm-12 col-md-12' id='loved-by'>
+<img src='/assets/image_logo.png'>
+</div>
+</div>
+<h2 id='tour' name='tour'>Jector とは</h2>
+<div class='row'>
+<div class='col-sm-6 col-md-6'>
+<img class='tour-left-img tour-img' src='assets/image_about_jector.png'>
+</div>
+<div class='col-sm-6 col-md-6'>
+<p>
+Jector（ジェクター）は、映像コンテンツ管理を革新する映像制作業界、放送業界のための
+<a href='/domestic'>国産</a>
+ファイル共有・クラウドストレージサービスです。
+</p>
+</div>
+</div>
+<h2>特徴</h2>
+<div class='row'>
+<div class='col-sm-6 col-md-6'>
+<img class='tour-right-img tour-img' src='assets/top_project.png'>
+</div>
+<div class='col-sm-6 col-md-6'>
+<h3>プロジェクトで一元管理</h3>
+<p>プロジェクトフォルダにメンバーを招待し、ファイル管理を一元化します。メンバーごとにダウンロードなどを制限できるので、安全なファイル共有が行えます。ファイルごとにコメントをつけることができるので、コミュニケーションは Jector だけで完結します。また、ファイルの変更はすぐに通知されるので、わざわざファイルのアップロードをメールやチャットでメンバーに連絡する必要はありません。</p>
+</div>
+</div>
+<div class='row'>
+<div class='col-sm-6 col-md-6'>
+<img class='tour-right-img tour-img' src='assets/top_preview.png'>
+</div>
+<div class='col-sm-6 col-md-6'>
+<h3>プレビューとストリーミング</h3>
+<p>クラウド上のあらゆるファイルを、プレビュー・ストリーミング再生できます。確認作業のために、大容量のデータをダウンロードする必要はありません。Photoshop や Illustrator、InDesign などのプロ向け画像データや、MP4 や MOV 、MXF などの映像データ、MP3  などの音声ファイルなど、幅広いデータに対応しています。PDF、Word、PowerPoint などは、全ページを確認することができます。</p>
+</div>
+</div>
+<div class='row'>
+<div class='col-sm-6 col-md-6'>
+<img class='tour-right-img tour-img' src='assets/image_secure.png'>
+</div>
+<div class='col-sm-6 col-md-6'>
+<h3>強固なセキュリティ</h3>
+<p>Jector はお客様の大事なコンテンツを守るため、様々なセキュリティ機能を搭載しています。すべてのファイルはウィルスチェックされ、転送はすべて暗号化されます。なりすましを防ぐための 2 段階認証や、誰がいつ何をしたのかを記録する監視ログ、ファイル便リクエスト便のパスワード必須設定、一定時間操作をしないと自動でログアウトする機能などで、あらゆる情報漏洩リスクからデータを守ります。</p>
+</div>
+</div>
+<div class='row'>
+<div class='col-sm-6 col-md-6'>
+<img class='tour-right-img tour-img' src='assets/top_app.png'>
+</div>
+<div class='col-sm-6 col-md-6'>
+<h3>専用アプリで快適に</h3>
+<p>Mac の Finder、Windows の Explorer からダイレクトに接続。いままでの社内ファイルサーバや NAS と同じ使い勝手のまま、どこからでもアクセスできます。iPhone や iPad の専用アプリで、モバイル環境でもクラウド上のファイルをプレビュー・ストリーミング再生でチェック可能。アプリからでも、ファイル便やコメントなど、いつもの Jector の機能を使用できます。</p>
+</div>
+</div>
+<h2>制作チームの業務効率を改善</h2>
+<div class='row sample-people row-bottom'>
+<div class='col-sm-4 col-md-4 col-lg-4'>
+<div class='panel'>
+<div class='panel-heading panel-heading-creator'>
+<p>クリエイター</p>
+<span class='icon-thin-creator'></span>
+</div>
+<div class='panel-body panel-head-sub'>
+データの保管と共有が便利に
+</div>
+<div class='panel-body'>
+ファイル便
+</div>
+<div class='panel-body'>
+アドレス帳
+</div>
+<div class='panel-body'>
+更新通知
+</div>
+<div class='panel-body panel-body-bottom'>
+マルチプラットフォーム
+</div>
+</div>
+</div>
+<div class='col-sm-4 col-md-4 col-lg-4'>
+<div class='panel'>
+<div class='panel-heading panel-heading-director'>
+<p>ディレクター</p>
+<span class='icon-thin-colaborate'></span>
+</div>
+<div class='panel-body panel-head-sub'>
+進行管理と指示が簡単に
+</div>
+<div class='panel-body'>
+タイムラインコメント
+</div>
+<div class='panel-body'>
+リクエスト便
+</div>
+<div class='panel-body'>
+MXF プレビュー
+</div>
+<div class='panel-body panel-body-bottom'>
+Office ファイルプレビュー
+</div>
+</div>
+</div>
+<div class='col-sm-4 col-md-4 col-lg-4'>
+<div class='panel'>
+<div class='panel-heading panel-heading-system'>
+<p>システム管理者</p>
+<span class='icon-thin-api'></span>
+</div>
+<div class='panel-body panel-head-sub'>
+情報漏洩対策も万全
+</div>
+<div class='panel-body'>
+全ユーザの詳細なログ
+</div>
+<div class='panel-body'>
+ 強制パスワード設定
+</div>
+<div class='panel-body'>
+強制パスワード設定 2 段階認証
+</div>
+<div class='panel-body panel-body-bottom'>
+24 時間サポート
+</div>
+</div>
+</div>
+</div>
+<div class='btn-section margin-bottom-40'>
+<div class='contact-wrap'>
+<div class='col-md-6 col-sm-6 col-xs-12 col-md-offset-3 col-sm-offset-3 col-xs-offset-0'>
+<a class='btn-section-signup' href='/users/sign_up' onClick="ga('send', 'event',  'SignUp', 'click', 'Top Bottom SignUp');">
+無料で試してみる
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id='footer'>
+<div class='col-sm-2 col-md-2 col-md-extension col-lg-2'>
+<ul class='list-unstyled'>
+<li>
+<a href='/'>トップページ</a>
+</li>
+<li>
+<a href='/users/sign_in'>ログイン</a>
+</li>
+<li>
+<a href='/users/sign_up'>無料お試し</a>
+</li>
+<li>
+<a href='/users/password/new'>パスワードのリセット</a>
+</li>
+</ul>
+</div>
+<div class='col-sm-2 col-md-2 col-lg-2'>
+<ul class='list-unstyled'>
+<li>
+<a href='//support.jector.jp/hc/ja/articles/201671139' target='_blank'></a>
+</li>
+<li>
+<a href='//support.jector.jp/hc/ja/articles/201671139' target='_blank'>iOS アプリ</a>
+</li>
+<li>
+<a href='//support.jector.jp/hc/ja/articles/201671139' target='_blank'>Mac アプリ</a>
+</li>
+<li>
+<a href='//support.jector.jp/hc/ja/articles/201671139' target='_blank'>Windows アプリ</a>
+</li>
+</ul>
+</div>
+<div class='col-sm-2 col-md-2 col-lg-2'>
+<ul class='list-unstyled'>
+<li>
+<a href='/price'>料金</a>
+</li>
+<li>
+<a href='/brand'>ブランド</a>
+</li>
+<li>
+<a href='/release'>更新情報</a>
+</li>
+<li>
+<a href='//support.jector.jp/hc/ja' target='_blank'>ヘルプ・サポート</a>
+</li>
+<li>
+<a href='//blog.jector.jp/' target='_blank'>ブログ</a>
+</li>
+</ul>
+</div>
+<div class='col-sm-2 col-md-2 col-lg-2'>
+<ul class='list-unstyled'>
+<li>
+<a href='/regulation'>利用規約</a>
+</li>
+<li>
+<a href='//www.nekojarashi.com/security/'>情報セキュリティ基本方針</a>
+</li>
+<li>
+<a href='//www.nekojarashi.com/tokushou/'>特定商取引法に関する表示</a>
+</li>
+<li>
+<a href='//www.nekojarashi.com/'>運営会社</a>
+</li>
+<li>
+<a href='//www.nekojarashi.com/privacy/'>プライバシーポリシー</a>
+</li>
+</ul>
+</div>
+<div class='col-sm-3 col-md-3 col-lg-3 col-lg-offset-1'>
+<div class='sns_buttons'>
+<a href='//www.facebook.com/jector.jp' target='_blank'>
+<img alt='Facebook' height='37' src='/assets/footer_facebook.png' width='37'>
+</a>
+<a href='//twitter.com/Jector_jp' target='_blank'>
+<img alt='twitter' height='37' src='/assets/footer_twitter.png' width='37'>
+</a>
+<a href='//www.linkedin.com/company/%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE%E3%81%AD%E3%81%93%E3%81%98%E3%82%83%E3%82%89%E3%81%97/' target='_blank'>
+<img alt='LinkedIn' height='37' src='/assets/footer_linkedin.png' width='37'>
+</a>
+</div>
+<p>Pマーク ISO27001 認証取得</p>
+</div>
+<div class='footer-bottom'>
+<address class='col-md-12 col-lg-12' id='jector-address'>Copyright © Nekojarashi Inc. All Rights Reserved.</address>
+</div>
+</div>
+
+</div>
+<script src='//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
+<!-- %script(src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js") -->
+<script src='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
+<script>
+  var userAgent = window.navigator.userAgent.toLowerCase();
+  if( userAgent.match(/(msie|MSIE)/) || userAgent.match(/(T|t)rident/) ) {
+      var isIE = true;
+      var ieVersion = userAgent.match(/((msie|MSIE)\s|rv:)([\d\.]+)/)[3];
+      ieVersion = parseInt(ieVersion);
+  } else {
+      var isIE = false;
+  }
+  
+  if (isIE == true) {
+    $('.flip-container').addClass('ie');
+  } else {
+    $('.flip-container').addClass('not-ie');
+    $('.flip-container').hover(
+      function () {
+        $('.flip-container:hover>.flipper>.front').stop().children().fadeOut('fast');
+      },
+      function() {
+        $('.flip-container>.flipper>.front').stop().children().fadeIn();
+      }
+    );
+  }
+</script>
+<script>
+  $('.feature-wrap').hover(
+    function() {
+      $('.feature-wrap:hover>.feature-description>p').stop().fadeIn('100');
+      $('.feature-wrap:hover>.feature-icon>span').stop().animate({ fontSize: "2px",opacity: "0" }, 380 );
+    },
+    function() {
+      $('.feature-wrap>.feature-description>p').stop().fadeOut('100');
+      $('.feature-wrap>.feature-icon>span').stop().animate({ fontSize: "86" ,opacity: "1"}, 300 );
+    }
+    );
+</script>
+<script>
+  jQuery(function($){
+    $('button[rel=tooltip]').tooltip();
+  });
+</script>
+<script src='/assets/retina.min.js'></script>
+<script src='/assets/isotope.pkgd.min.js'></script>
+<script src='/assets/jquery-peekaboo.js'></script>
+<script src='/assets/smoothscroll.js'></script>
+<!-- %script(src="/assets/jquery.inview.min.js") -->
+<!-- %script(src="/assets/jquery.inview.js") -->
+<script>
+  $( function() {
+  
+  var $container = $('#container');
+  
+  $container.isotope({
+    itemSelector: '.element',
+    layoutMode : 'fitRows',
+    resizable: true, // disable normal resizing
+        // set columnWidth to a percentage of container width
+    masonry: {
+      columnWidth: 220
+    },
+    masonryHorizontal: {
+      rowHeight: 220
+    }
+  });
+  // filter items when document loaded
+  $(function(){
+    var defaultselected = $('#filters #default').attr('data-filter');
+    $container.isotope({ filter: defaultselected });
+  });
+  // filter items when filter link is clicked
+  $('#filters a').click(function(){
+    var selector = $(this).attr('data-filter');
+    $container.isotope({ filter: selector });
+  
+    return false;
+  });
+  });
+  $('#filters li a ').click(function(){
+  $('#filters li a').removeClass('active');
+  $(this).addClass('active');
+  });
+</script>
+<script>
+  $(function() {
+    $('.btn-contact').hide();
+    $(window).scroll(function () {
+    if ($(this).scrollTop() > 50) {
+      $('.btn-contact').fadeIn();
+      } else {
+        $('.btn-contact').fadeOut();
+      }
+    });
+  });
+  $(function() {
+    function adjust() {
+      var footerHeight = $('#footer').outerHeight(true);
+      $('#footer').peekaboo().data('pkb-offset', 0).on('appear', function(e) {
+        $('.btn-contact').stop().animate({'bottom': footerHeight-57 + 'px'},600);
+        });
+      $('#footer').peekaboo().data('pkb-offset', footerHeight-1).on('disappear', function(e) {
+        $('.btn-contact').stop().animate({'bottom': footerHeight*0},600);
+        });
+      };
+    adjust();
+    $(window).on('resize', function(){
+       adjust();
+    });
+  });
+</script>
+<script src="/assets/sibulla_tracking-3b3fe963c698635f72605eacbb4b0f73.js"></script>
+</body>
+</html>

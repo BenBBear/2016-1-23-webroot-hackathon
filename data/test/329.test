@@ -1,0 +1,429 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="25 yılın tecrübesini birleştirerek cağdaş dünyanın hızla değişen beklentilerine en doğru çözümlerle yanıt vermeyi hedefleyerek kurmuş olduğumuz firmamız, gelişimde, başarıda, rekabette, en iyi hizmette aklınıza gelen ilk isim olmayı amaçlamaktadır.">
+<meta name="keywords" content="Maver İnşaat,Konya Maver,Konya İnşaat Firması,Konya Maver İnşaat">
+<title>Maver İnşaat</title>
+<script src="jquery.js" type="text/javascript"></script>
+<script  type="text/javascript">
+$(document).ready(function(){ 
+var Slider = 0; 
+$.Slider = function(toplam){ 
+$('#st_slider ul#static_genel li').hide();
+	if(Slider < toplam-1){ 
+		Slider ++; 
+		$('#static_genel li').hide();
+		$('#static_genel li:eq('+Slider+')').fadeIn('slow'); 
+		}else{ 
+		$('#static_genel li:eq('+Slider+')').fadeIn('slow');
+		Slider = -1;
+		}
+}
+var ToplamLi = $('#st_slide #static_genel li').length; 
+setInterval('$.Slider('+ToplamLi+')',5000);
+$("#HaberRes img").attr({src:"HaberRes/"+$(".haberdegis").attr("resim")});
+$(".haberdegis").css({"background":"url(img/HaberYaziResP.png)","background-repeat":"repeat-x","width":"460px","position":"relative"})
+$(".haberdegis").first().css({"background":"url(img/HaberYaziResA.png)","background-repeat":"no-repeat","width":"475px","position":"relative"});
+$(".haberdegis").mousemove(function(){ 
+$("#HaberRes img").attr({src:"HaberRes/"+$(this).attr("resim")});
+$(".haberdegis").css({"background":"url(img/HaberYaziResP.png)","background-repeat":"repeat-x","width":"460px","position":"relative"})
+$(this).css({"background":"url(img/HaberYaziResA.png)","background-repeat":"no-repeat","width":"475px","position":"relative"});
+});
+//////////////////////////Slider//////////////////////////////////////////
+$(".bas").click(
+function()
+{
+	$(".bas").css({background:"url(img/sliderdugmep.png)","background-repeat":"no-repeat","padding":"5px 10px"});
+	$(this).css({background:"url(img/sliderdugmea.png)","background-repeat":"no-repeat"});
+	$("#solok").attr({numara:parseInt($(this).text())-1});
+	$("#sagok").attr({numara:parseInt($(this).text())+1});
+	 var kacinci=parseInt($(this).text()-1);
+			$("#slideres img").animate({"opacity":"0.5"}).promise().done(function(){
+			$("#slideres img").attr({src:'SlideRes/'+$("#gelen div[mevzu=ResYol]:eq("+kacinci+")").html()}).load(function(){
+			$("#slideracikbaslik").html($("#gelen div[mevzu=Baslik]:eq("+kacinci+")").html());
+			$("#slideracikozellik").html($("#gelen div[mevzu=Ozellik]:eq("+kacinci+")").html());
+			$("#slideres img").animate({"opacity":"1"});		
+			if(!$("#gelen div[mevzu=Ozellik]:eq("+kacinci+") li").text()==""){ $("#slideracikozellik li").css({"list-style-image":" url(img/slidertik.png)"})  }
+			else{$("#slideracikozellik li").css({"list-style":"none"});$("#slideracikozellik li").html("Gösterilecek Birşey Yok!");    }
+			});	
+});});
+$(".bas")[0].click();
+	  $(".ok").click(function(){ 
+		   if(parseInt($(this).attr("numara"))>$(".bas").length)
+		   {$(".bas")[0].click();}
+		   
+		   else {
+			   if(parseInt($(this).attr("numara"))<=0)
+		   	   {$(".bas")[parseInt($(".bas").length)-1].click();}
+     		   else
+			   {$(".bas")[parseInt($(this).attr("numara"))-1].click();}
+
+		   }
+
+	     });
+		 $(document).keyup(function(key) {
+		 keycode = key.keyCode;
+		 if(keycode==37){ $("#solok").click();   } 
+		 if(keycode==39){ $("#sagok").click();   }  
+		 });
+    var oksag = parseInt($("#sagok").css("margin-left"));
+	var oksol = parseInt($("#solok").css("margin-left"));
+$("#slider").hover(
+function(){
+	$("#sagok").stop().animate({"margin-left":oksag-50+"px","opacity":"1"},500); }).mouseleave(function(){ $("#sagok").stop().animate({"margin-left":oksag+10+"px","opacity":"0.0"}),500}).hover(function(){$("#solok").stop().animate({"margin-left":oksol+50+"px","opacity":"1"},500); }).mouseleave(function(){
+ 		 $("#solok").stop().animate({"margin-left":oksol-10+"px","opacity":"0.0"}),500});
+ 
+ $("#sliderdugmediv",".ok").hover(
+	function()
+	{
+		clearTimeout(timer);
+	}
+).mouseleave(function(){timer=setTimeout('$("#sagok").click()',3000);});
+
+ 
+ 
+ });
+var timer=setTimeout('$("#sagok").click()',3000);
+</script>
+
+<link rel="stylesheet" href="maverstil.css" />
+</head>
+<body>
+<div id="genel">
+	<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+$(document).ready( function(){
+$(".menu").hover(
+	 function (){
+		$("#lamba").stop();
+	    $("#lamba").animate({left:parseInt($(this).css("margin-left"))-10},200);
+	   	$("#lamba img").stop().animate({width:parseInt($(this).css("width"))+15},100);	
+	 				})
+		/////////////////////Tıklanınca			
+					.click(
+	 	function(){
+			$(".menu").removeAttr("lamba");
+			$(this).attr({lamba:"evet"});
+			
+					}
+	 )
+	 //////////////////////////Çekilince
+	 $("#menu").mouseleave(
+	 function(){
+		$("#lamba").animate({left:parseInt($(".menu[lamba=evet]").css("margin-left"))-10},50);
+		$("#lamba img").animate({width:parseInt($(".menu[lamba=evet]").css("width"))+15}).stop();;
+		 });
+		 
+} );
+</script>
+
+<style type="text/css" >
+#genel {
+    background-color: whitesmoke;
+    margin: -8px auto;
+    min-height: 500px;
+    position: relative;
+    width: 1200px;
+	box-shadow: 0 0 60px lightslategrey;
+}
+a{text-decoration:none; }
+#logo {
+  height: 130px;
+    margin: 15px;
+    width: 185px;
+}
+#slogan {
+    height: 20px;
+margin: 115px 200px;
+    width: 375px;
+}
+#menu {
+  background-image: url("img/menu.png");
+    background-repeat: no-repeat;
+    height: 64px;
+    margin: 15px 490px;
+    width: 714px;
+}
+.menu {
+  color: #FFFFFF;
+    float: left;
+    font-family: Microsoft Sans Serif;
+    font-size: 14px;
+    height: 20px;
+    position: absolute;
+    text-decoration: none;
+}
+#anasayfa {
+    margin: 13px 12px;
+}
+#projeler {
+    margin: 13px 350px;
+}
+#hakkimizda {
+    margin: 13px 165px;
+}
+#blog {
+    margin: 13px 494px;
+}
+#iletisim {
+    margin: 13px 615px;
+}
+#menu a:hover {
+    background-position: 0 0;
+    background-repeat: no-repeat;
+}
+#lamba {
+   margin-top:5px;
+    opacity: 0.5;
+    position: absolute;
+    width: 250px;
+}
+#ust div {
+    float: left;
+    position: absolute;
+}
+#ust {
+    background-image: url("img/bg_ust.jpg");
+    height: 190px;
+}
+#arabut{
+      background-color: white;
+    color: appworkspace;
+    height: 30px;
+    margin: 0 -40px;
+    width: 40px;}
+	#aratxt{ border: 2px solid lavender;
+    height: 25px;}
+#ara{ margin: 120px 1000px; }
+
+
+</style>
+<div id="ust">
+        	<a href="./"><div id="logo"><img width="100%" height="100%" src="img/logo.png" /></div></a>
+            <div id="slogan"><!--<img width="100%" height="100%" src="img/slogan.png" />--></div>
+          
+        <div id="menu">
+        <div id="lamba"><img height="35px" width="100px" src="img/menuicak.png" /></div>
+            <a id="anasayfa" class="menu" lamba="evet" href="index.php" >ANASAYFA</a>
+             <a id="hakkimizda" class="menu" href="hakkimizda.php" >HAKKIMIZDA</a>
+             <a id="projeler" class="menu" href="projeler.php" >PROJELER</a>
+             <a id="blog" class="menu" href="blog.php" >SORU-CEVAP</a>
+             <a id="iletisim" class="menu" href="iletisim.php" >İLETİŞİM</a>
+        </div>
+        <div id="ara">
+       <html>
+<head>
+
+<style>
+#tw-form-outer {
+
+}
+#tw-form{
+font-family: Tahoma, Geneva, sans-serif;
+-moz-border-radius: 4px;
+-webkit-border-radius: 4px;
+border: #aaa 1px solid;
+background: #DDDDDD;
+background: -moz-linear-gradient(top, #C4C4C4 0%, #EAEAEA 0%, #D3D3D3 100%); /* firefox */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#C4C4C4), color-stop(0%,#EAEAEA), color-stop(100%,#D3D3D3)); /* webkit */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#C4C4C4', endColorstr='#D3D3D3',GradientType=0 ); /* ie */
+width: 175px;
+float: left;
+padding: 0 4px;
+border-top-left-radius: 4px 4px;
+border-top-right-radius: 4px 4px;
+border-bottom-right-radius: 4px 4px;
+border-bottom-left-radius: 4px 4px;
+}
+#tw-form #tw-input-text{
+width: 145px;
+float: left;
+border: 0;
+background: #DDDDDD;
+background: -moz-linear-gradient(top, #C4C4C4 0%, #EAEAEA 0%, #D3D3D3 100%); /* firefox */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#C4C4C4), color-stop(0%,#EAEAEA), color-stop(100%,#D3D3D3)); /* webkit */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#C4C4C4', endColorstr='#D3D3D3',GradientType=0 ); /* ie */
+color: #777;
+line-height: 100%;
+font-size: 12px;
+font-family: Tahoma, Geneva, sans-serif;
+margin-top:3px;margin-bottom:3px;
+height:20px;
+}
+#tw-form #tw-input-text:focus{
+outline:none;
+color:#333;
+}
+#tw-form #tw-input-submit{
+background: url(search-zoom-icon.png) no-repeat 8px 5px;
+border: 0;
+float: left;
+width: 22px;
+z-index: 100;
+cursor: pointer;
+}
+</style>
+</head>
+<body>
+<div id="tw-form-outer">
+<form action="projeler.php" method="get" id="tw-form">    
+	<input type="text" id="tw-input-text" name="aratxt" value='ARA' onFocus="if(this.value=='ARA'){this.value='';}" onBlur="if(this.value==''){this.value='ARA';}" /> 
+    <input type="submit" name="aragonder" id="tw-input-submit" value="" /> 
+</form>
+</div>
+</body>
+</html>        </div>
+        </div>
+    <br />
+<br />
+        <div id="slider">
+        	<div id="solok" class="ok"><img src="img/solok.png" /></div>
+            <div id="slideres" style="background:url(img/loading.gif) no-repeat center">
+                <img id="sres" width="830px" height="370px"/>
+         	</div>
+            <div id="slideracik"><img width="370px" height="400px" src="img/slideracikbg.png" />
+            	<div id="slideracikbaslik"></div>
+                <div id="slideracikozellik"></div>
+            </div>
+            <div id="sagok"  class="ok" yon=+"><img src="img/sagok.png" /></div>
+            <div id="gelen" style="visibility:hidden; width:0px; height:0px;">
+			
+<div mevzu='Baslik'>MAVER GÜL SİTESİ</div>
+<div mevzu='ResYol'>15_resim.JPG</div>
+<div mevzu='Ozellik'><ul><li>3+1 </li><li>4 katlı + 16 Daire</li><li>Asansörlü</li><li>Doğalgazlı ( Bireysel )</li><li>Daire Başı ( depo  )</li></ul></div>
+<div mevzu='Baslik'>AKASYA SİTESİ</div>
+<div mevzu='ResYol'>16_resim.jpg</div>
+<div mevzu='Ozellik'><ul><li>3+1 </li><li>4 katlı  8 Daire</li><li>Asansörlü</li><li>doğalgazlı ( Bireysel )</li><li>Daire Başı ( Depo  )</li></ul></div>
+<div mevzu='Baslik'>AYDIN  APARTMANI</div>
+<div mevzu='ResYol'>18_resim.JPG</div>
+<div mevzu='Ozellik'><ul><li>  2+1 </li><li>4 Katlı  8 Daire</li><li>Doğalgazlı ( Bireysel )</li><li>Asansörlü</li><li>Daire Başı ( Depo )</li></ul></div>
+<div mevzu='Baslik'>İLKAY SİTESİ</div>
+<div mevzu='ResYol'>19_resim.JPG</div>
+<div mevzu='Ozellik'><ul><li>3+1</li></ul></div>
+<div mevzu='Baslik'>B.KENDİRCİ  SİTESİ</div>
+<div mevzu='ResYol'>20_resim.JPG</div>
+<div mevzu='Ozellik'><ul><li>3+1</li></ul></div>
+<div mevzu='Baslik'>HUZUR  SİTESİ</div>
+<div mevzu='ResYol'>21_resim.JPG</div>
+<div mevzu='Ozellik'><ul><li>3+1</li></ul></div>
+<div mevzu='Baslik'>OKYANUS SİTESİ</div>
+<div mevzu='ResYol'>22_resim.JPG</div>
+<div mevzu='Ozellik'><ul><li>3+1</li></ul></div>
+<div mevzu='Baslik'>MAVER GOLD SİTESİ</div>
+<div mevzu='ResYol'>23_resim.jpg</div>
+<div mevzu='Ozellik'><ul><li></li></ul></div>            </div>
+        </div>
+        <div id="slideralt">
+        	<div id="sliderdugmediv" >
+        		               <div class="bas" title="15" >1</div>
+                              <div class="bas" title="16" >2</div>
+                              <div class="bas" title="18" >3</div>
+                              <div class="bas" title="19" >4</div>
+                              <div class="bas" title="20" >5</div>
+                              <div class="bas" title="21" >6</div>
+                              <div class="bas" title="22" >7</div>
+                              <div class="bas" title="23" >8</div>
+                           </div>
+        </div>
+        <div style="  background-color: cadetblue;float: left;height: 265px; width: 410px; overflow:hidden;" id="st_slide">
+        <ul id="static_genel">
+            <li>
+                <img style="padding:15px 18px;" src="img/static1.jpg" width="375px" height="225px" />
+                <div class="ozgun">ÖZGÜN TASARIM</div>
+            </li>
+            
+            <li>
+                <img style="padding:15px 18px;" src="img/static3.jpg" width="375px" height="225px" />
+                <div class="ozgun">BEKLEDİĞİNİZ İLGİ</div>
+            </li>
+            
+            <li>
+                <img style="padding:15px 18px;" src="img/static5.jpg" width="375px" height="225px" />
+                <div class="ozgun">UZMAN ÇÖZÜMLER</div>
+            </li>
+        </ul>
+        </div>
+       
+        <div  id="haberler"  >
+            <div id="HaberRes"><img  width="300px" height="225px" /></div>
+          
+            <a href="haberdetay.php?h_id=5"><div class="haberdegis" resim="5_resim.JPG" style="font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:14px; font-style:oblique;color:#FFF;" >Maver Gül Sitesi Satışı Sona Erdi</div></a>
+                <a href="haberdetay.php?h_id=6"><div class="haberdegis" resim="6_resim.jpg" style="font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:14px; font-style:oblique;color:#FFF;" >Web Sitemiz Yayında</div></a>
+                <a href="haberdetay.php?h_id=7"><div class="haberdegis" resim="7_resim.JPG" style="font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:14px; font-style:oblique;color:#FFF;" >Aydın Apt. Satışı Sona Erdi</div></a>
+                <a href="haberdetay.php?h_id=8"><div class="haberdegis" resim="8_resim.JPG" style="font-family:'Trebuchet MS', Arial, Helvetica, sans-serif; font-size:14px; font-style:oblique;color:#FFF;" >Akasya Sitesi Satışı Sona Erdi</div></a>
+                           
+        </div>
+        <br /><br />        
+       <style type="text/css">
+#taban_ust:after {visibility: hidden;display: block; font-size: 0; content: " "; clear: both; height: 0; }
+* html #taban_ust { zoom: 1;} 
+*:first-child+html #taban_ust { zoom: 1; } 
+#taban_ust{     background-color: #666666;
+    box-shadow: 0 0 18px black;
+    padding: 15px 0;  }
+#taban_ust ul{ list-style:none; margin: 0 50px; float:left;}
+#taban_ust ul li{  padding:5px 5px; color:whitesmoke; font-size:15px; font-family:Arial, Helvetica, sans-serif; }
+#taban_ust ul li a{color:whitesmoke; font-size:15px; font-family:Arial, Helvetica, sans-serif;}
+hr{ width:200px; }
+</style>
+<div id="taban_ust">
+      <ul>
+      <div style="font-family:Arial, Helvetica, sans-serif;font-size:19px;color:#FFF;padding:5px 0; ">Linkler</div>
+      <div style="border:1px dotted white; width:250px;"></div>
+          <li style="list-style-image:url(img/home.png);"><a href="index.php">Anasayfa</a></li>
+          <li style="list-style-image:url(img/hakkimizda.png);"> <a href="hakkimizda.php">Hakkımızda</a></li>
+          <li style="list-style-image:url(img/proje.png)"><a href="projeler.php">Projeler</a></li>
+          <li style="list-style-image:url(img/folder-icon.png)" ><a href="blog.php">Blog</a></li>
+          <li style="list-style-image:url(img/ileti.png)"><a href="iletisim.php">İletişim</a></li>
+      </ul>
+       <ul>
+      <div style="font-family:Arial, Helvetica, sans-serif;font-size:19px;color:#FFF;padding:5px 0; ">Sosyal Ağlar</div>
+      <div style="border:1px dotted white; width:250px;"></div>
+          <li style="list-style-image:url(img/facebook.png);"><a href="https://www.facebook.com/pages/Maver-in%C5%9Faat/283199528462087">Bizi Facebook'ta Beğenin</a></li>
+          <li style="list-style-image:url(img/twitter.png);"><a href="#">Bizi Twitter'da Beğenin</a></li>
+          <li style="list-style-image:url(img/google.png);"><a href="#">Bizi Google Plus'da Beğenin</a></li>
+      </ul>
+        <ul>
+      <div style="font-family:Arial, Helvetica, sans-serif;font-size:19px;color:#FFF;padding:5px 0; ">İletişim</div>
+      <div style="border:1px dotted white; width:250px;"></div>
+          <li>Gazanfer mah.Taşcamii Uzunharmanlar</li>
+          <li>cad.no:233/A.</li>
+          <li>MERAM /KONYA</li>
+          <li>harun@maverinsaat.com</li>
+          <li>TEL : 0332 357 14 42 </li>
+         <li> Fax : 0332 357 14 43</li>
+      </ul>
+      </div>      </div>
+
+ <script type="text/javascript" src="jquery-ui-1.10.3.custom.js">
+</script>
+<link rel="stylesheet" href="ui-lightness/jquery-ui-1.10.3.custom.css" />
+<script>
+$(function(){
+	$("#developers").css("color","white","text-decoration","none").click(function(){
+			$("#devArea").dialog({draggable:false,title:"Web Tasarım ve Programlama",modal:true,width:"500px",show:{effect:"bounce"}});
+			return false;
+		});
+});
+</script>
+<style type="text/css">
+#taban {
+    background-image: url("img/taban.png");
+    background-repeat: repeat-x;
+    color: #FFFFFF;
+    height: 44px;
+    margin: inherit;
+    padding: 10px;
+    text-align: center;
+}
+</style>
+     <div id="taban">
+       Tüm Hakları Saklıdır. Copyright © <a href="#" id="developers" title="Web-Tasarım">MTA-MRK</a>
+     <div id="devArea" style="display:none">
+     <br />
+     <center><b>mta</b>:<a href="mailto:mustafatalhaavcu@gmail.com?subject=MaverInsaat" title="Mail Gönderin">mustafatalhaavcu@gmail.com</a>(tel:05069627415)<br /><br />
+     <b>mrk</b>:<a href="mailto:m.riza95@gmail.com?subject=MaverInsaat" title="Mail Gönderin">m.riza95@gmail.com</a>(tel:05373241141)
+     </center>
+     </div>
+        </div> </body>
+</html>

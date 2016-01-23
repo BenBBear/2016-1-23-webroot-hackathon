@@ -1,0 +1,675 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="株価指数先物情報から新興市場・IPOに関するマーケット情報サービスを展開。あなたの投資をより豊かにする「マーケット情報サービス」を目指していきます。" />
+<meta name="keywords" content="カブ知恵,kabutie,かぶちえ,カブチエ,IPO,新興市場,株価指数先物,225先物,藤井英敏,株式情報,投資情報,先物手口,初値予想,TOPIX先物,大口手口,経済カレンダー,デイトレ,デイトレーダー,トレーディング,マザーズ,へラクレス,ジャスダック,日本株,個人投資家,短期トレード,長期投資,環境株,エコ株,裁定取引,SQ,残高,市況,概況,個別銘柄,ＮＴ,ランキング,寄り前" />
+<meta name="ROBOTS" content="ALL" />
+<meta name="ROBOTS" content="INDEX, FOLLOW" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta http-equiv="Expires" content="Mon, 04 Dec 1999 21:29:02 GMT" />
+<title>IPO・株価指数先物情報のカブ知恵</title>
+<link rel="alternate" media="handheld" type="application/xhtml+xml" href="http://kabutie.jp/" />
+<link rel="stylesheet" href="css/import.css" type="text/css" title="カブ知恵" />
+<link href="css/import.css" rel="stylesheet" type="text/css" />
+<link rel="SHORTCUT ICON" href="http://http://kabutie.jp/favicon.ico" />
+
+
+<!--アナリティクスコード-->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-5535524-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</head>
+<!--<body onload=setTimeout("location.href='http://kabutie.jp'",1000*180) >-->
+<body>
+<div id="all">
+	<table width="98%" border="0" align="center" cellpadding="3" cellspacing="0">
+	<tr>
+	<td colspan="3" align="left" valign="top">
+		<!-- header -->
+		<div id="header">
+	<div style="float:left; width:100%; text-align:right; font-size:12px; margin:3px 0px;">
+	カブ知恵は、ウェブや雑誌など多くのメディアにて個人投資家に向けてプロフェッショナルな投資情報を提供しています
+	</div>
+	<div style=" float:left; clear:both; width:160px;">
+	<a href="http://kabutie.jp"><img src="images/all/kabutie_logo.gif" alt="新興市場・IPO投資情報のカブ知恵" width="158" height="27" border="0" /></a>
+	</div>
+	<div style=" float:left; font-size:12px; width:830px; text-align:right;">	
+	<form action="?id=80" method="post" style="float:right;">
+			ユーザーID<input name="admin_id" value="" size="18" maxlength="255" type="text" style="ime-mode: disabled" />パスワード<input name="admin_pass" value="" size="18" maxlength="255" type="password" style="ime-mode: disabled" /><input name="chk" type="checkbox" id="chk" value="1" />ID・PASSを保存する<!--<input type="submit" name="" value="ログイン" style=" border:solid 1px #67400F; background:#FEA743; color:#333333; padding:1px;" />-->
+			<input type="image" src="images/all/login.gif" name="login" value="ログイン" onclick="submit();" />
+		</form>
+		<div style="float:left; width:100%; text-align:right; font-size:12px; margin:3px 0px;">
+		<!--<a href="?id=82">パスワードを忘れた場合</a>&nbsp;|&nbsp;-->
+		<a href="https://b.bme.jp/bm/p/f/tf.php?id=kabutie">無料メルマガ登録</a>
+		</div>	
+	
+		
+	</div>		
+	<br class="clr" />
+</div>
+
+<div style="border-top: #999999 solid 1px; border-bottom:#999999 solid 1px; width:100%; height:auto; margin:0px;padding:0px;background-color:#F5F5F5;">
+<!-- guide_bar -->
+<div id="guide_menu">
+	<ul class="menu_tab">
+		<li class="on"><span><a href="http://kabutie.jp">トップ</a></span></li>
+				<li><span><a href="http://kabutie.jp?id=1&no=3">相場概況</a></span></li>
+		<!--<li><span><a href="http://kabutie.jp?id=2">手口・残高/指数</a></span></li>-->
+		<!--<li><span><a href="http://kabutie.jp?id=3">テクニカル/需給情報</a></span></li>-->
+		<li><span><a href="http://kabutie.jp?id=4&no=1">ＩＰＯ情報</a></span></li>
+		<li><span><a href="http://kabutie.jp?id=5">ランキング</a></span></li><br class="clr" />
+	</ul>
+
+
+<div class="sub_cnt">
+
+</div>
+</div>
+<div style=" height:30px; text-align:left; padding:5px; font-size:12px;">
+	<div style="float:left;">
+	<form action="index.php?id=10" method="post" name="src" id="src">
+	銘柄名・証券コード
+	<input name="txtbnd" type="text" id="txtbnd" value="" size="10" maxlength="255" style="padding:3px;" />
+	<input name="btnsub" type="submit" id="銘柄検索" value="銘柄検索" style="padding:5px;" />	
+	</form>
+	</div>
+	<div style="float:right; width:552px;height:30px; background: #666666; border:#333333 solid 1px; margin:0px; padding:1px;">
+		</div>
+</div>
+</div>	</td>
+	</tr>
+	<tr>
+	<td width="200" align="left" valign="top">
+		<!-- left_contents -->
+		<div id="left">
+<!--無料レポート-->
+<!--ADSー-->
+<!--<a href="http://www.sanko-sec.co.jp/entry/inquiry.php" target="_blank"><img src="bnr/sankou_02.gif" alt="三晃証券株式会社" width="200" height="200" border="0" /></a>-->
+<!--<a href="http://www.sanko-sec.co.jp/" target="_blank"><img src="bnr/sankou_01.gif" alt="三晃証券株式会社" width="200" height="60" border="0" /></a>-->
+<!--<div style=" font-weight:bold ; line-height:2em; color:#FF0000;">『(株)インベストでは、日経225先物・ＯＰの口座開設後もご希望であれば、
+無料でアドバイスやサポートを受けられます。』</div>
+<div style="text-align:center">
+<a href="?id=50&no=1" style="text-align:center;">
+↓今すぐClick！↓
+</a>
+</div>
+<a href="?id=50&no=1" style="text-align:center;"><img src="adimg/inbest.gif" alt="トレーダーズ証券" width="200" height="60" border="0" /></a>-->
+
+<!--<div id="contents_area">
+<script type="text/javascript"><!--
+google_ad_client = "pub-3064836737874745";
+/* 200x200, 作成済み 10/07/10 */
+google_ad_slot = "8429570841";
+google_ad_width = 200;
+google_ad_height = 200;
+//- ->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>-->
+
+<div id="contents_area">
+<h4>スポンサーリンク</h4>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- カブ知恵左メニュー -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:160px;height:600px"
+     data-ad-client="ca-pub-9384472516192503"
+     data-ad-slot="7330636601"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div><!--ブログランキングー-->
+<div id="contents_area">
+
+<!-- �u���O�����L���O -->
+<a href="http://stock.blogmura.com/stockinfo/ranking.html" target="_blank"><img src="http://stock.blogmura.com/stockinfo/img/stockinfo88_31.gif" width="88" height="31" border="0" alt="�ɂق�u���O�� ���u���O ������������" /></a><br /><br />
+<a href="http://blog.with2.net/link.php?1785008:1531" title="���� �u���O�����L���O��" target="_blank"><img src="http://blog.with2.net/img/banner/c/banner_1/br_c_1531_1.gif" width="110" height="31" border="0" /></a>
+<!--<script type="text/javascript" src="http://www.infotop.jp/click.js"></script>
+<a href="http://koisca-fx-dx.com/" onClick="return clickCount(205337, 44754);"><img src="http://www.infotop.jp/img/banner2_44754.gif" border="0" /></a>
+<br />&nbsp;<br />
+<script type="text/javascript" src="http://www.infotop.jp/click.js"></script>
+<a href="http://www.w-crew.com/mfx/" onClick="return clickCount(205337, 41054);"><img src="http://www.infotop.jp/img/banner1_41054.gif" border="0" /></a>
+<br />&nbsp;<br />
+<script type="text/javascript" src="http://www.infotop.jp/click.js"></script>
+<a href="http://kuma-hige.com/trade/fxbackdraft-t.html " onClick="return 
+clickCount(205337, 45496);"><img src="http://www.infotop.jp/img/banner3_45496.gif" border="0" /></a>
+<br />&nbsp;<br />
+<script type="text/javascript" src="http://www.infotop.jp/click.js"></script>
+<a href="http://yukikov.jp/fxikusei/" onClick="return clickCount(205337, 39891);"><img src="http://www.infotop.jp/img/banner4_39891.PNG" width="195" height="192" border="0" /></a>
+<a href="http://kobayashi034649.info/url/indexg.htm" target="_blank"><img src="images/bnr/kobayashi200_200gifanime.gif" width="200" height="200" border="0"></a>-->
+</div>
+<!--カレンダー-->
+<!--新規公開-->
+<div id="contents_area">
+<h4>新規公開予定銘柄</h4>
+<ul>
+<li class="dod_us yaji1">&nbsp;&nbsp;12/24&nbsp;<a href="?id=4&no=1&stk=6090">ヒューマン・メタボロー</a></li><li class="dod_us yaji1">&nbsp;&nbsp;12/19&nbsp;<a href="?id=4&no=1&stk=6089">ウィルグループ</a></li><li class="dod_us yaji1">&nbsp;&nbsp;12/19&nbsp;<a href="?id=4&no=1&stk=4245">ダイキアシクス</a></li></ul>
+<div style="text-align:right; font-size:12px; font-weight:bold; margin:0px; padding:5px;">
+<a href="?id=4&no=1"><img src="images/all/itiran.gif" border="0" style="margin:2px 0px;" /></a>
+</div>
+</div><!--公開済み-->
+<div id="contents_area">
+<h4>直近公開済み銘柄</h4>
+<ul>
+<li class="dod_us yaji1">&nbsp;&nbsp;12/6&nbsp;<a href="?id=4&no=2&stk=4588">オンコリスバイオファー</a></li><li class="dod_us yaji1">&nbsp;&nbsp;12/3&nbsp;<a href="?id=4&no=2&stk=6082">ライドオン・エクスプレ</a></li><li class="dod_us yaji1">&nbsp;&nbsp;11/29&nbsp;<a href="?id=4&no=2&stk=6081">アライドアーキテ</a></li></ul>
+<div style="text-align:right; font-size:12px; font-weight:bold; margin:0px; padding:5px;">
+<a href="?id=4&no=2"><img src="images/all/itiran.gif" border="0" style="margin:2px 0px;" /></a>
+</div>
+</div><!--keizaiカレンダー-->
+<!--２２５大口手口-->
+<!--手口・残高-->
+<!--ADSー-->
+</div>	</td>
+	<td align="center" valign="top">
+		<div id="center">
+		<!--<div class="wt99">
+	<div id="contents_area">		
+
+	</div>
+</div>-->
+<!--<div class="wt99 red">
+<b>[重要]
+お客様及びご関係者様各位</b><br /><br />
+システムメンテナンスの為、本日の更新はありません。<br />
+ご理解ご協力のほど、よろしくお願い致します。<br />
+</div>-->
+<!--<div class="wt99">
+<a href="http://kabutie.jp/?id=6" title="寄り前3本勝負"><img src="images/all/kabutie_top.gif" alt="寄り前3本勝負" width="565" height="200" border="0" title="寄り前3本勝負" /></a></div>-->
+<div class="wt99">
+<style type="text/css">
+<!--
+.merumaga_catch {font-weight:bold; font-size:18px; line-height:1.5em; text-align:left; width:550px; margin:10px auto; text-align:center;}
+
+.merumaga_catch ul{
+	font-size:24px;}
+
+-->
+</style>
+
+<div id="contents_area">
+<h3>カブ知恵無料メルマガ会員</h3>
+<div class="merumaga_catch">
+メルマガ登録者限定！下記を無料配信中！<br />
+<ul>
+<li><font color="#FF0000">『寄り前３本勝負！！』</font>厳選３銘柄を毎朝配信</li>
+<li><font color="#FF0000">『緊急入手特選情報』</font>をいち早く配信</li>
+<li><font color="#FF0000">『レーティング情報』</font>を先行配信予定</li>
+</ul>
+無料で使える有力情報満載！カブ知恵メルマガ登録はコチラ<br />
+↓　↓　↓　↓　↓
+</div>
+
+<p align="center"><a href="https://b.bme.jp/bm/p/f/tf.php?id=kabutie"><img src="images/top_img/merumaga_btn.png" width="354" height="60" border="0" /></a></p>
+
+    <div style=" font-size:11px; text-align:left; color:#FF0000; padding:5px;">メルマガ登録は完全無料となります。月額費用や登録費要、その他一切の費用を請求することはございません。お気軽にご利用ください。<br />
+</div>
+</div><div id="contents_area">
+<h3>市況・概況／見通し</h3>
+<div style=" text-align:left; margin:5px; padding:0px; line-height:1.5em;">
+<h4>相場概況（主力株）<b>[&nbsp;22日&nbsp;15:48&nbsp;]</b></h4><font style='font-size:18px; font-weight:bold;line-height:1.5em;'><a href="?id=1&no=3&comno=153414" title="相場概況（主力株）/22日の日経平均は前日比941.27円高の16,958.53円">22日の日経平均は前日比941.27円高の16,958.53円<br /></a></font>
+22日の日経平均は前日比941.27円高の16,958.53円、高値は16,993.96円、安値は16,332.45円。東証１部の出来高は26億431万株、売買代金は2兆8194億円、値上がり銘柄数は1920銘柄、値下がり銘柄数は8銘柄、変わらずは7銘柄。日経平均は大幅反発。<br />前場の日経平均は大幅反発。前日の欧米市場、ドラギ欧州中央銀行（ECB）総裁が21日の会見で、3月の定例理事会での追加緩和を示唆したことを好感され欧州主要市場の株価が一斉に上昇したほか、米市場も上昇して日経平均株価も朝方から買い優勢の...&nbsp;&nbsp;&raquo;&nbsp;<a href="?id=1&no=3&comno=153414" title="相場概況（主力株）/22日の日経平均は前日比941.27円高の16,958.53円">続きを見る</a>&nbsp;
+</div>
+<ul>
+<li class="dod yaji2">&nbsp;&nbsp;
+<a href="?id=1&no=3&comno=153414" title="相場概況（主力株）/22日の日経平均は前日比941.27円高の16,958.53円">相場概況（主力株）/22日の日経平均は前</a>...(01/22&nbsp;15:48)</li>
+<li class="dod yaji2">&nbsp;&nbsp;
+<a href="?id=1&no=3&comno=153413" title="前場概況（主力株）/22日の日経平均は前日比575.58円高の16,682.11円">前場概況（主力株）/22日の日経平均は前</a>...(01/22&nbsp;11:47)</li>
+<li class="dod yaji2">&nbsp;&nbsp;
+<a href="?id=1&no=3&comno=153412" title="相場概況（主力株）/21日の日経平均は前日比398.93円安の16,017.26円">相場概況（主力株）/21日の日経平均は前</a>...(01/21&nbsp;15:47)</li>
+<li class="dod yaji2">&nbsp;&nbsp;
+<a href="?id=1&no=3&comno=153411" title="前場概況（主力株）/21日の日経平均は前日比265.92円高の16,682.11円">前場概況（主力株）/21日の日経平均は前</a>...(01/21&nbsp;11:46)</li>
+<li class="dod yaji2">&nbsp;&nbsp;
+<a href="?id=1&no=3&comno=153410" title="相場概況（主力株）/20日の日経平均は前日比632.18円高の16,416.19円">相場概況（主力株）/20日の日経平均は前</a>...(01/20&nbsp;15:47)</li>
+<li class="dod yaji2">&nbsp;&nbsp;
+<a href="?id=1&no=3&comno=153409" title="前場概況（主力株）/20日の日経平均は前日比367.04円安の16,681.33円">前場概況（主力株）/20日の日経平均は前</a>...(01/20&nbsp;11:48)</li>
+</ul>
+<div style="text-align:right; font-size:12px; font-weight:bold; margin:0px; padding:5px;">
+&raquo;&nbsp;<a href="?id=1&no=3">市況・概況／見通し一覧</a>
+</div>
+</div></div>
+<div class="wt99">
+<div id="contents_area">
+<!--投資顧問紹介-->
+<style type="text/css">
+<!--
+.precome_catch2 {font-weight:bold; font-size:24px; line-height:1.5em; text-align:left; width:550px; margin:10px auto; text-align:center; color:#F00;}
+.precom_main{width:550px; height:100%; margin:10px auto;display:block; overflow:hidden;}
+.precom_main .subtitle{width:350px; color: #FFCC00; font-size:14px; text-align:left; font-weight:bold; line-height:1.7em; padding:5px 5px 5px 195px; float:right; overflow:hidden;}
+
+.precom_main .pre_list{font-size:14px; width:96%; text-align:center; margin:5px auto; height:100%; overflow:hidden;}
+.precom_main .pre_list .list_img{
+	margin:0px auto;
+	padding:0px;
+	list-style:none;
+	width:560px;
+	height:100%;
+	overflow: hidden;
+	text-align:center;
+}
+
+
+
+ul.advisory li {
+	float: left;
+	margin:0px 10px;
+}
+
+.precom_main .pre_list .list_img li img{
+border:#666666 solid 1px;
+}
+-->
+</style>
+<h3>カブ知恵が勧める”当たる”厳選投資顧問</h3>
+<div class="precome_catch2">
+的確な個別銘柄推奨、安心の売買指示で好評<br />
+カブ知恵厳選の投資顧問はコチラ！<br />
+</div>
+<div class="precom_main">
+    <br clear="all" />
+	<div class="pre_list">
+    <ul class="advisory">
+    <li><a href="http://triple-a-invest.jp/page/lp01/?m=ux01" target="_blank"><img src="images/top_img/aaa.jpg" width="250" height="250" border="0" /></a><br /><a href="http://triple-a-invest.jp/page/lp01/?m=ux01" target="_blank">トリプルエー投資顧問</a></li>
+    <li><a href="http://jst-trade.jp/show_page.html/view/lp02/mediaCode/chie001" target="_blank"><img src="images/top_img/jst.jpg" width="250" height="250" border="0" /></a><br /><a href="http://jst-trade.jp/show_page.html/view/lp02/mediaCode/chie001" target="_blank">ジャパンストックトレード</a></li>
+    
+    <li><Div Align="center"><a href="https://shinseijapan.com/page/lp01/?m=lp1ka01" target="_blank"><img src="images/top_img/shi.png" width="250" height="250" border="0" /></a><br /><a href="https://shinseijapan.com/page/lp01/?m=lp1ka01" target="_blank">新生ジャパン投資（前池英樹）</a></Div></li>
+    </ul>
+	</div>
+    <div style="float:right; text-align:left; font-size:12px; margin:10px auto; overflow: hidden;">
+        </div>
+</div>
+<!--マーケット-->
+<h3>マーケット</h3>
+<div style="font-weight:bold; font-size:25px; line-height:1.5em; text-align:left; width:500px; margin:10px auto;">
+他では入手できない個別銘柄のリアルタイム<br />
+情報を抑え、優位性を築く<br />
+</div>
+<div style=" width:550px; height:100%; margin:10px auto; display:block;">
+    <div style=" float:left; width:150px;">
+    <img src="images/top_img/comment_01.png" width="100" height="100" border="0" /></div>
+    <div style="float:right; width:400px;">
+      <div style=" color: #FFCC00; font-size:14px; text-align:left; font-weight:bold; line-height:1.7em; padding:5px;">
+        個別銘柄の材料、影響のある同業種、リアルタイムに流れる<br />
+        情報で需給を予測できる！<br />
+        <br />
+        リアルタイムに、<span class="red">マーケットの最新情報をお届けします！</span>
+      </div>
+<p align="center"><a href="https://b.bme.jp/bm/p/f/tf.php?id=kabutie"><img src="images/top_img/merumaga_btn.png" width="354" height="60" border="0" /></a></p>
+
+    <div style=" font-size:11px; text-align:left; color:#FF0000; padding:5px;">メルマガ登録は完全無料となります。月額費用や登録費要、その他一切の費用を請求することはございません。お気軽にご利用ください。<br />
+    </div>
+</div>
+
+
+</div></div>
+
+<div class="wt99">
+	<div id="contents_area">
+			<div style="width:99%; float:left;" class="fs12">
+            <h4>銘柄ランキング</h4>
+<ul>
+<li class="dod yaji2">&nbsp;&nbsp;
+<a href="?id=72">売買代金急増銘柄ランキング / 1位はテクノ</a>...
+</li>
+<li class="dod yaji2">&nbsp;&nbsp;
+<a href="?id=72">５日移動平均線上抜き銘柄ランキング / 1位</a>...
+</li>
+<li class="dod yaji2">&nbsp;&nbsp;
+<a href="?id=72">５日移動平均線下抜き銘柄ランキング / 1位</a>...
+</li>
+</ul>
+<div style="text-align:right; width:97%; font-size:12px; font-weight:bold; margin:0px; padding:5px;">
+&raquo;&nbsp;<a href="?id=72">続きはこちら</a>
+</div            </div>
+<!--            <div style="width:49%; float:left;" class="fs12">
+						</div>
+			<div style="width:49%; float: right;" class="fs12">
+						</div>-->
+	</div>
+</div>
+<!--<br clear="all" />
+<div class="wt99">
+</div>
+<div class="wt99">
+</div>-->
+<div class="wt99">
+	<!--<div style="width:49%; float:left;">
+		</div>-->
+	<div style="width:100%; float: right;">
+	<div id="contents_area">
+<h3>カブ知恵出張所</h3>
+<div style="font-size:13px;">
+<ul>
+<li class="dod_u"><a href="http://finance.toremaga.com/inspecial/kabuchie/" title="カブ知恵速報 - とれまがファイナンス" target="_blank">カブ知恵速報 - とれまがファイナンス</a><br />
+&nbsp;&nbsp;&middot;&nbsp;<a href="http://finance.toremaga.com/inspecial/kabuchie/22099.html" title="相場概況（主力株）/22日の日経平均は前日比941.27円高の16,958.53円" target="_blank">
+相場概況（主力株）/22日の日経平均は前日比941.27円高の16,958.53円</a>
+</li>
+<li class="dod_u"><a href="http://zai.diamond.jp/category/fujii" title="ザイ・オンライン　藤井英敏の株式市場サバイバル！" target="_blank">ザイ・オンライン　藤井英敏の株式市場サバイバル！</a><br />
+&nbsp;&nbsp;&middot;&nbsp;<a href="http://zai.diamond.jp/articles/-/128654" title="日経平均の現在の調整は中長期的なボトムの可能性が高い" target="_blank">
+日経平均の現在の調整は中長期的なボトムの可能性が高い</a>
+</li>
+</ul>
+</div>
+<div style=" text-align:right; font-size:12px; margin:0px; padding:5px; line-height:1.5em;">
+Powered by <a href="http://finance.toremaga.com/" target="_blank">とれまが</a>、
+<a href="http://diamond.jp/zai" target="_blank">ZAi ONLINE</a>
+</div>
+</div>	</div>
+</div>
+<br clear="all" />
+<!--<div class="wt99">
+</div>-->		</div>
+	</td>
+	<td width="234" align="left" valign="top"><div id="right">
+		<style type="text/css">
+<!--
+.personal_box{ list-style:none; width:224px;margin:0px; padding:10px;height:100px;}
+.personal_box .left{width:110px; font-size:12px; line-height:1.2em; float:left; padding-right:4px;}
+.personal_box .right{ width:110px; float:right;}
+-->
+</style>
+
+<div style=" text-align:center; width:234px;">
+<img src="images/personal/thm_fujii.jpg" alt="株式会社　カブ知恵　藤井英敏" width="200" height="211" border="0" />
+<p style="line-height:1.5em; text-align:center; font-size:14px;">
+<a href="?id=98">＞＞代表藤井から個人<br>
+投資家のみなさまへ
+</a></p>
+<img src="images/all/recommend.gif" alt="私はカブ知恵を推薦します" width="234" height="50" border="0">
+</div>
+<ul class="personal_box">
+<li class="left">
+<a href="?id=98&no=2">カブドットコム証券の日本を代表するトップストラテジスト<br /><br />
+河合　達憲 様
+</a>
+</li>
+<li class="right"><img src="images/personal/thm_kawai.jpg" width="100" height="83" border="0" style="float:right;" /></li>
+</ul>
+<ul class="personal_box">
+<li class="left">
+<a href="?id=98&no=3">「窓・壁・軸理論」を提唱し、多数の株取引に関するコラム・記事を執筆する株価アナリスト<br />
+黒岩　泰 様
+</a>
+</li>
+<li class="right"><img src="images/personal/thm_kuroiwa.jpg" width="100" height="83" border="0" style="float:right;" /></li>
+</ul>
+<ul class="personal_box">
+<li class="left">
+<a href="?id=98&no=4">ＴＯＫＹＯ ＭＸの人気番組「５時に夢中！」月曜レギュラーも務める「元祖カブドル」<br />
+若林　史江 様
+</a>
+</li>
+<li class="right"><img src="images/personal/thm_wakabayashi.jpg" width="100" height="83" border="0" style="float:right;" /></li>
+</ul>
+<ul class="personal_box">
+<li class="left">
+<a href="?id=98&no=5">QUICK社を通じて証券会社にIPOの独自分析レポートを提供。テレビ・ラジオなど多岐にわたって活躍中！<br />
+鮎川　良 様
+</a>
+</li>
+<li class="right"><img src="images/personal/thm_ayukawa.jpg" width="100" height="83" border="0" style="float:right;" /></li>
+</ul>        <!--PRarea-->
+				<!--<a href="?id=87"><img src="images/all/top_free.gif" border="0" /></a>-->
+		<!--<a href="?id=61"><img src="images/all/top_pre.gif" border="0" style="margin:2px 0px;" /></a>-->
+		<!--<a href="?id=63"><img src="images/all/top_yori.gif" border="0" style="margin:2px 0px;" /></a>-->
+		<!--<a href="?id=89"><img src="images/all/top_cnt.gif" border="0" style="margin:2px 0px;" /></a>-->
+        <a href="https://b.bme.jp/bm/p/f/tf.php?id=kabutie"><img src="images/all/top_meruma.gif" border="0" style="margin:2px 0px;" /></a>
+				<!--寄り前３本勝負！！-->
+		<!--プレディクション-->
+		<div id="contents_area">
+<h4>寄り前３本勝負！！</h4>
+	<table border="0" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
+	<tr>
+	<th align="center" valign="middle" bgcolor="#EFEFEF">１本目</th>
+	<th align="center" valign="middle" bgcolor="#EFEFEF">２本目</th>
+	<th align="center" valign="middle" bgcolor="#EFEFEF">３本目</th>
+	</tr>
+	<tr>
+			<td align="center" valign="middle" bgcolor="#FFFFFF"><a href="?id=6&no=0">
+		4***</a>		</td>
+				<td align="center" valign="middle" bgcolor="#FFFFFF"><a href="?id=6&no=1">
+		6***</a>		</td>
+				<td align="center" valign="middle" bgcolor="#FFFFFF"><a href="?id=6&no=2">
+		3***</a>		</td>
+			</tr>
+</table>
+	<div style="width:99%;font-size:12px;margin:0px; height:100%; overflow:hidden;">
+	<div style="text-align:left;width:45%; float:left;padding:5px;">更新日：2016/01/21	</div>
+	<div style="text-align:right;width:45%; float:right;padding:5px;">
+	<a href="https://b.bme.jp/bm/p/f/tf.php?id=kabutie"><img src="images/all/3hon_btn.png" border="0" style="margin:2px 0px;" /></a>
+	</div>
+	</div>
+	</div>		<!--銘柄ランキング-->
+		
+<div id="contents_area">
+<h4>銘柄ランキング</h4>
+<table width="100%" border="0" cellpadding="1" cellspacing="1">
+<tr>
+<td align="right" valign="middle">
+更新日:2016/01/22<br />
+</td>
+</tr>
+<tr>
+<td>
+	<table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
+	<tr>
+	<th colspan="3" bgcolor="#EFEFEF"><a href="?id=5&no=1">売買代金急増</a></th>
+	</tr>
+	<tr>
+	<td align="center" valign="middle" bgcolor="#FFFFFF">1位</td>
+	<td align="left" valign="middle" bgcolor="#FFFFFF"><a href="http://kabutie.jp/?id=5&no=1&stk=6629" title="テクノHR">テクノHR</a></td>
+	<td align="center" valign="middle" bgcolor="#FFFFFF">&nbsp;<font color="#FF0000"><b>↑</b></font>
+</td>
+	</tr>
+		<tr>
+	<td align="center" valign="middle" bgcolor="#FFFFFF">2位</td>
+	<td align="left" valign="middle" bgcolor="#FFFFFF"><a href="http://kabutie.jp/?id=5&no=1&stk=1615" title="銀行">銀行</a></td>
+	<td align="center" valign="middle" bgcolor="#FFFFFF">&nbsp;<font color="#FF0000"><b>↑</b></font>
+</td>
+	</tr>
+		<tr>
+	<td align="center" valign="middle" bgcolor="#FFFFFF">3位</td>
+	<td align="left" valign="middle" bgcolor="#FFFFFF"><a href="http://kabutie.jp/?id=5&no=1&stk=7740" title="タムロン">タムロン</a></td>
+	<td align="center" valign="middle" bgcolor="#FFFFFF">&nbsp;<font color="#006600"><b>↓</b></font>
+</td>
+	</tr>
+		</table>
+</td>
+</tr>
+<tr>
+<td>
+	<table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
+	<tr>
+	<th colspan="2" bgcolor="#EFEFEF">５日移動平均線</th>
+	</tr>
+	<tr>
+	<th bgcolor="#EBEBEB"><a href="?id=5&no=2">上抜け銘柄</a></th>
+	<th bgcolor="#EBEBEB"><a href="?id=5&no=3">下抜け銘柄</a></th>
+	</tr>
+
+	<tr>
+		<td align="left" valign="middle" bgcolor="#FFFFFF">1位&nbsp;<a href="http://kabutie.jp/?id=5&no=2&stk=6629" title="テクノHR">テクノHR</a>
+</td>
+		<td align="left" valign="middle" bgcolor="#FFFFFF">1位&nbsp;<a href="http://kabutie.jp/?id=5&no=3&stk=2039" title="NEXT NOTES 日経・TOCOM 原油 ベア">NEXT NOTES 日経・TOCOM 原油 ベア</a>
+</td>
+		</tr>
+	<tr>
+		<td align="left" valign="middle" bgcolor="#FFFFFF">2位&nbsp;<a href="http://kabutie.jp/?id=5&no=2&stk=6619" title="WSCOPE">WSCOPE</a>
+</td>
+		<td align="left" valign="middle" bgcolor="#FFFFFF">2位&nbsp;<a href="http://kabutie.jp/?id=5&no=3&stk=1459" title="楽天ETF-日経ダブルインバース指数">楽天ETF-日経ダブルインバース指数</a>
+</td>
+		</tr>
+	<tr>
+		<td align="left" valign="middle" bgcolor="#FFFFFF">3位&nbsp;<a href="http://kabutie.jp/?id=5&no=2&stk=3331" title="雑貨屋BL">雑貨屋BL</a>
+</td>
+		<td align="left" valign="middle" bgcolor="#FFFFFF">3位&nbsp;<a href="http://kabutie.jp/?id=5&no=3&stk=1366" title="ダイワ上場投信-日経平均ダブルイ">ダイワ上場投信-日経平均ダブルイ</a>
+</td>
+		</tr>
+	</table>
+</td>
+</tr>
+<tr>
+<td>
+	<table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
+	<tr>
+	<th colspan="2" bgcolor="#EFEFEF">過去20日間ブレイク</th>
+	</tr>
+	<tr>
+	<td bgcolor="#FFFFFF"><a href="?id=5&no=4">高値ブレイク銘柄</a></td>
+	<td bgcolor="#FFFFFF"><a href="?id=5&no=5">安値ブレイク銘柄</a></td>
+	</tr>
+	</table>
+</td>
+</tr>
+<!--<tr>
+<td>
+	<table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
+	<tr>
+	<th colspan="2" bgcolor="#EFEFEF">ＨＶ(ヒストリカルボラティリティ)</th>
+	</tr>
+	<tr>
+	<td bgcolor="#FFFFFF"><a href="?id=5&no=6">急上昇銘柄</a></td>
+	<td bgcolor="#FFFFFF"><a href="?id=5&no=7">急低下銘柄</a></td>
+	</tr>
+	</table>
+</td>
+</tr>-->
+<tr>
+<td>
+	<table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
+	<tr>
+	<th colspan="2" bgcolor="#EFEFEF">ＲＳＩ</th>
+	</tr>
+	<tr>
+	<td bgcolor="#FFFFFF"><a href="?id=5&no=8">急上昇銘柄</a></td>
+	<td bgcolor="#FFFFFF"><a href="?id=5&no=9">急低下銘柄</a></td>
+	</tr>
+	</table>
+</td>
+</tr>
+<tr>
+<td>
+	<table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
+	<tr>
+	<th colspan="2" bgcolor="#EFEFEF">2営業連続5日移動平均線</th>
+	</tr>
+	<tr>
+	<td bgcolor="#FFFFFF"><a href="?id=5&no=10">上抜銘柄</a></td>
+	<td bgcolor="#FFFFFF"><a href="?id=5&no=11">下抜銘柄</a></td>
+	</tr>
+  </table>
+</td>
+</tr>
+<tr>
+<td>
+	<table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
+	<tr>
+	<th colspan="2" bgcolor="#EFEFEF">移動平均乖離(5MA/25MA)</th>
+	</tr>
+	<tr>
+	<td bgcolor="#FFFFFF"><a href="?id=5&no=12">上位銘柄</a></td>
+	<td bgcolor="#FFFFFF"><a href="?id=5&no=13">下位銘柄</a></td>
+	</tr>
+  </table>
+</td>
+</tr>
+<tr>
+<td>
+<span style="color:#FF0000;">※表示がない場合は更新中です。<br />
+更新は開催日の17時頃です。</span></td>
+</tr>
+</table>
+<div style="text-align:right;font-size:12px; font-weight:bold; margin:0px; padding:5px;">
+<a href="?id=5"><img src="images/all/itiran.gif" border="0" style="margin:2px 0px;" /></a>
+</div>
+</div>		<!--バナー-->
+			<!--
+	<div class="top_news2">
+	<h3>スポンサードリンク</h3>
+		<script type="text/javascript">
+		<!--
+		google_ad_client = "pub-3064836737874745";
+		/* 160x600, 作成済み 08/08/03 */
+		google_ad_slot = "6008213411";
+		google_ad_width = 160;
+		google_ad_height = 600;
+		//- ->
+		</script>
+		<script type="text/javascript"
+		src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+		</script>
+		<!-- 今は外す
+		<script type="text/javascript"><!--
+		google_ad_client = "pub-9384472516192503";
+		/* 160x600, 作成済み 08/08/13 */
+		google_ad_slot = "4048413143";
+		google_ad_width = 160;
+		google_ad_height = 600;
+		//- ->
+		</script>
+		<script type="text/javascript"
+		src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+		</script> - ->
+	</div>
+	-->
+</div></td>
+	</tr>
+	<tr>
+	<td colspan="3" align="left" valign="bottom">
+		<!-- footer -->
+		<div id="footer">
+<p class="ftcom">
+<a href="http://kabutie.jp">トップ</a>｜
+<a href="?id=99&no=0">会社概要</a>｜
+<!--<a href="?id=99&no=10">料金体系</a>｜-->
+<a href="?id=99&no=1">個人情報保護方針</a>｜
+<a href="?id=99&no=2">特定商品販売の表示</a>｜
+<a href="?id=99&no=3">著作権</a>｜
+<a href="?id=99&no=4">リンク</a>｜
+<!--<a href="?id=99&no=5">掲載情報</a>｜-->
+<!--<a href="?id=99&no=6">セキュリティ</a>｜-->
+<a href="?id=99&no=7">推奨ブラウザ</a>｜
+<a href="?id=99&no=8">サイトマップ</a>｜
+<!--<a href="?id=99&no=9">ヘルプ</a>｜-->
+<a href="?id=99&no=11">お問い合わせ</a>
+</p>
+<p class="pc">
+Powered by&nbsp;<a href="http://kabutie.jp/">株式会社カブ知恵</a>&nbsp;&nbsp;
+有限会社ＳＷＥＮ&nbsp;&nbsp;
+Copyright (C) 2008-2016 Kabutie INC. All Rights Reserved.
+</p>
+</div>	</td>
+	</tr>
+  </table>
+</div>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5157992-1']);
+  _gaq.push(['_setDomainName', '.kabutie.jp']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>

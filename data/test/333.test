@@ -1,0 +1,888 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-jp" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<title>姫路市の不動産情報サイト モリシタハウスグループ</title>
+<meta name="Keywords" content="姫路市,不動産,中古住宅,マンション" />
+<meta name="Description" content="姫路市で土地・戸建・マンションなど不動産をお探しの方はモリシタハウスグループにお任せください。土地探し・家探しからリフォームまで、私たちが精一杯サポートさせていただきます。" />
+<link rel="stylesheet" type="text/css" href="./css/global.css" />
+<link rel="alternate stylesheet" type="text/css" href="./css/small.css" title="Small" />
+<link rel="alternate stylesheet" type="text/css" href="./css/large.css" title="Large" />
+<link rel="canonical" href="http://www.m-house-fudousan.com" />
+<script type="text/javascript" src="./EstateLib.js" charset="euc-jp"></script>
+<script type="text/javascript" src="./External.js" charset="euc-jp"></script>
+<script type="text/javascript" src="./jquery.js"></script>
+<script type="text/javascript" src="./common/roll.js"></script>
+<script type="text/javascript" src="./js/styleswitcher.js"></script>
+<script type="text/javascript" src="./js/unitpngfix.js"></script>
+<script type="text/javascript" src="./js/totop.js"></script>
+<script type="text/javascript" src="./js/map.js"></script>
+<script type="text/javascript" src="./js/maptag.js"></script>
+<script type="text/javascript" src="./js/jquery.nivo.slider.pack.js"></script>
+<script type="text/javascript" src="../js/sl.js"></script>
+<!-- Analytics fs-19 m-house-fudousan.com 20120402 -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30522611-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- /Analytics fs-19 m-house-fudousan.com 20120402 -->
+
+<!-- U0019 all -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-30522611-3', 'm-house-fudousan.com');
+  ga('send', 'pageview');
+
+</script>
+<!-- /U0019 all  -->
+</head>
+
+<body onload="Init();">
+
+<!--ヘッダー-->
+<div id="Allheader-wrap">
+	<div id="Nheader">
+		<h2><a href="./" title="姫路市の不動産サイト　モリシタハウスグループ"><img src="./images/header/logo.gif" alt="姫路市の不動産サイト　モリシタハウスグループ" width="332" height="29" /></a></h2>
+		<p class="h-tx01">姫路市の不動産サイト モリシタハウスグループ</p>
+		<h3 class="h-tel">お気軽にご相談・お問い合わせください。営業時間8:00〜20：00</h3>
+		
+		<!--文字サイズ変更ボタン-->
+		<div id="swbtn2">
+			<div id="fchange" class="clearfix">
+				<div class="fsize-tit"><img src="./images/header/fchange/fsize-l.gif" width="50" height="10" alt="文字サイズ変更" /></div>
+				<div class="fsize" id="fmiddle"><a onclick="setActiveStyleSheet('Default'); return false;" onkeypress=""><span class="ftxt">標準</span></a></div>
+				<div class="fsize2" id="flarge"><a onclick="setActiveStyleSheet('Large'); return false;" onkeypress=""><span class="ftxt">大</span></a></div>
+			</div>
+		</div>
+		<!--/文字サイズ変更ボタン-->
+		
+		<!--ログイン情報表示-->
+		<div id="headInfowrap">
+		<div id="headInfo"></div>
+		<script language="JavaScript">
+		<!--
+		getHeadInfo('./');
+		// -->
+		</script>
+		<!--ログイン情報表示-->
+		</div>
+	</div>
+</div>
+<!--/ヘッダー-->
+
+<!--メニュー-->
+			<div id="menu-wrap">
+				<div id="menu">
+					<ul>
+						<li><a href="./" id="menu01" name="menu01">モリシタハウスグループHOME</a></li>
+						<li><a href="./estate/" id="menu02" name="menu02">物件検索</a></li>
+						<li><a href="./company/" id="menu03" name="menu03">会社紹介</a></li>
+						<li><a href="./buy/" id="menu04" name="menu04">買いたい</a></li>
+						<li><a href="./sell/" id="menu05" name="menu05">売りたい</a></li>
+						<li><a href="./reform/" id="menu06" name="menu06">中古住宅リフォーム</a></li>
+						<li><a href="./toi/" id="menu07" name="menu07">お問い合わせ</a></li>
+						<li><a href="./first/" id="menu08" name="menu08">会員登録</a></li>
+					</ul>
+				</div>
+			</div>
+<!--/メニュー-->
+
+<!--メインイメージ・カウンター-->
+<div id="main-imagewrap">
+<div id="main-image">
+	<!--スライドショー-->
+	<div id="eyecatch">
+		<div id="slider" class="nivoSlider">
+		<img src="./images/eyecatch/slide01.jpg" width="655" height="235" alt="姫路市の不動産情報サイト" />
+		<img src="./images/eyecatch/slide02.jpg" width="655" height="235" alt="姫路市の不動産情報サイト" />
+		<img src="./images/eyecatch/slide03.jpg" width="655" height="235" alt="姫路市の不動産情報サイト" />
+		</div>
+	</div>
+	<!--/スライドショー-->
+
+	<!--カウンター-->
+	<div id="counter">
+		<p class="number-img">
+		<img src=common/5.gif alt=5 width=23 height=36 border=0 /><img src=common/1.gif alt=1 width=23 height=36 border=0 /><img src=common/8.gif alt=8 width=23 height=36 border=0 />		</p>
+	</div>
+	<!--/カウンター-->
+
+	<!--メッセージ-->
+	<div id="msg">
+		<h2>新着メッセージ</h2>
+		<p class="msg_txt">
+		<MARQUEE loop="0" behavior="scroll" scrollamount="3" direction="left">
+		 1/9、1/10　現場見学会を開催します。会場で土地購入のご相談を受け付けております！！  		</MARQUEE>
+		</p>
+	</div>
+	<!--/メッセージ-->
+
+	<!-- 登録物件数表示 -->
+	<div id="bukkensu_n">
+		<h2>現在の登録物件数</h2>
+		<p id="GeneralCnt01"></p>
+		<script language="JavaScript">
+	    <!--
+	    EstateCnt('Status=1:!DataKind=1!DispMode=text!ImgPath=!ImgSize=:!ImgFile=::::::::::!Place=GeneralCnt01!');
+		// -->
+		</script>
+		<p id="MemberCnt01"></p>
+		<script language="JavaScript">
+	    <!--
+		EstateCnt('Status=1:!DataKind=2!DispMode=text!ImgPath=!ImgSize=:!ImgFile=::::::::::!Place=MemberCnt01!');
+		// -->
+		</script>
+		<p id="MemberCnt2"></p>
+		<script language="JavaScript">
+		<!--
+		EstateList('Status=1:!DataKind=9!type=01:02:03:10:!newflg=9!Area=!Condition=0!DLimit=!DispCnt=1!PdRate=!Sort=2!TH=!T01=koushin2.html!T02_1=koushin2.html!T02_2=koushin2.html!T03_1=koushin2.html!T03_2=koushin2.html!T10=koushin2.html!DTfmt=Y/m/d!!Place=MemberCnt2!');
+		// -->
+		</script>
+	</div>
+	<!-- /登録物件数表示 -->
+
+</div>
+</div>
+<!--/メインイメージ・カウンター-->
+
+<!--コンテンツ-->
+<div id="contents-wrap02">
+	<!--メインコンテンツ-->
+	<div id="main">
+	
+	
+	
+<!--<div id="oshirase">
+<strong>◆◇◆◇　ゴールデンウィーク休業のご案内　◆◇◆◇</strong><br />
+誠に勝手ながら、2015年5月3日（日）〜 2015年5月6日（水）は休業させていただきます。<br />
+通常営業は、5月7日（木）からとなります。<br />
+休業中にいただいたお問い合わせについては、通常営業日より順次対応させていただきますので、ご了承ください。<br />
+今後も変わらぬご愛顧をどうぞよろしくお願いいたします。
+</div>-->
+		
+		<!-- マップ表示 -->
+		<div id="map">
+			<div id="maptag">
+				<h2 class="map-title mr-10"><img id="imgTab1" name="imgTab1" src="./images/main/map/map_tb01a_on.gif" alt="地図から検索" width="164" height="42" onclick="tabSel(1);" style="cursor:pointer" onkeypress="" /></h2>
+				<h3 class="map-title mr-10"><img id="imgTab2" name="imgTab2" src="./images/main/map/map_tb04a.gif" alt="駅から検索" width="164" height="42" onclick="tabSel(2);" style="cursor:pointer" onkeypress="" /></h3>
+				<h3 class="map-title mr-10"><img id="imgTab3" name="imgTab3" src="./images/main/map/map_tb05a.gif" alt="小中学校区から検索" width="164" height="42" onclick="tabSel(3);" style="cursor:pointer" onkeypress="" /></h3>
+				<h3 class="map-title"><img id="imgTab4" name="imgTab4" src="./images/main/map/map_tb03a.gif" alt="詳細検索" width="164" height="42" onclick="tabSel(4);" style="cursor:pointer" onkeypress="" /></h3>
+			</div>
+
+			<!-- 地図から検索 -->
+			<div class="map-con" id="tab1">
+				<!-- 地図 件数表示 -->
+				<div class="selecter">
+					<p><img id="imgType09" name="imgType09" src="./images/main/map/map_all_on01.gif" alt="全ての種別から検索" class="map-con02btn" onclick="Func1();" style="cursor:pointer" onkeypress="" /></p>
+					<p><img id="imgType01" name="imgType01" src="./images/main/map/map_tochi01.gif" alt="土地から検索" class="map-con02btn" onclick="Func2();" style="cursor:pointer" onkeypress="" /></p>
+					<p><img id="imgType02" name="imgType02" src="./images/main/map/map_todate01.gif" alt="戸建から検索" class="map-con02btn" onclick="Func3();" style="cursor:pointer" onkeypress="" /></p>
+					<p><img id="imgType03" name="imgType03" src="./images/main/map/map_man01.gif" alt="マンションから検索" class="map-con02btn" onclick="Func4();" style="cursor:pointer"  onkeypress="" /></p>
+				</div>
+				<!-- /地図 件数表示 -->
+				<div class="map-btnwrap">
+                <p class="map-btn01"><a href="./first/"><img src="./images/main/map/map_btn01.gif" width="119" height="32" alt="会員登録はこちら" onmouseover="this.src='./images/main/map/map_btn01on.gif'" onmouseout="this.src='./images/main/map/map_btn01.gif'" /></a></p>
+                <p class="map-btn02"><a href="./estate/login.html"><img src="./images/main/map/map_btn02.gif" width="109" height="32" alt="ログインはこちら" onmouseover="this.src='./images/main/map/map_btn02on.gif'" onmouseout="this.src='./images/main/map/map_btn02.gif'" /></a></p>
+                </div>
+
+				<div id="maplist">
+				<input type="hidden" id="selType" />
+	                    <input type="hidden" id="selType" />
+	                    <!--西南部-->
+	                    <a href="#" onclick="goResultlArea('1:5');" onkeypress="">
+						<div class="map01">
+							<p class="map-num02-1" id="Area01-1"></p>
+							<p class="map-num02-2" id="Area01-2"></p>
+						</div>
+						</a>
+	                    <!--中南部-->
+	                    <a href="#" onclick="goResultlArea('1:6');" onkeypress="">
+						<div class="map02">
+							<p class="map-num02-1" id="Area02-1"></p>
+							<p class="map-num02-2" id="Area02-2"></p>
+						</div>
+						</a>
+	                    <!--西北部-->
+	                    <a href="#" onclick="goResultlArea('1:2');" onkeypress="">
+						<div class="map03">
+							<p class="map-num02-1" id="Area03-1"></p>
+							<p class="map-num02-2" id="Area03-2"></p>
+						</div>
+						</a>
+	                    <!--北部-->
+	                    <a href="#" onclick="goResultlArea('1:1');" onkeypress="">
+						<div class="map04">
+							<p class="map-num02-1" id="Area04-1"></p>
+							<p class="map-num02-2" id="Area04-2"></p>
+						</div>
+						</a>
+	                    <!--中北部-->
+	                    <a href="#" onclick="goResultlArea('1:3');" onkeypress="">
+						<div class="map05">
+							<p class="map-num02-1" id="Area05-1"></p>
+							<p class="map-num02-2" id="Area05-2"></p>
+						</div>
+						</a>
+	                    <!--東北部-->
+	                    <a href="#" onclick="goResultlArea('1:4');" onkeypress="">
+						<div class="map06">
+							<p class="map-num02-1" id="Area06-1"></p>
+							<p class="map-num02-2" id="Area06-2"></p>
+						</div>
+						</a>
+	                    <!--東南部-->
+	                    <a href="#" onclick="goResultlArea('1:7');" onkeypress="">
+						<div class="map07">
+							<p class="map-num02-1" id="Area07-1"></p>
+							<p class="map-num02-2" id="Area07-2"></p>
+						</div>
+						</a>
+			<!--安室中学校区-->
+			<a href="#" onclick="goResultOneTku('1:4');" onkeypress="">
+					<div class="map08">
+						<p class="map-num02-1" id="Area08-1"></p>
+						<p class="map-num02-2" id="Area08-2"></p>
+					</div>
+					</a>
+			<!--城乾中学校区-->
+			<a href="#" onclick="goResultOneTku('1:2');" onkeypress="">
+					<div class="map09">
+						<p class="map-num02-1" id="Area09-1"></p>
+						<p class="map-num02-2" id="Area09-2"></p>
+					</div>
+					</a>
+			<!--広嶺中学校区-->
+			<a href="#" onclick="goResultOneTku('1:5');" onkeypress="">
+					<div class="map10">
+						<p class="map-num02-1" id="Area10-1"></p>
+						<p class="map-num02-2" id="Area10-2"></p>
+					</div>
+					</a>
+			<!--琴陵中学校区-->
+			<a href="#" onclick="goResultOneTku('1:10');" onkeypress="">
+					<div class="map11">
+						<p class="map-num02-1" id="Area11-1"></p>
+						<p class="map-num02-2" id="Area11-2"></p>
+					</div>
+					</a>
+
+
+
+				</div>
+				<!--/maplist-->
+			</div>
+			<!--/地図から検索-->
+
+			<!-- 駅から検索 -->
+			<div class="map-con3" id="tab2" style="display:none">
+				<!--赤-->
+				<ul id="map-con3-list01">
+					<li class="list01-001"><a href="#" alt="溝口駅" onclick="goResultClosestStation('溝口');" />溝口</a></li>
+					<li class="list01-002"><a href="#" alt="香呂駅" onclick="goResultClosestStation('香呂');" />香呂</a></li>
+					<li class="list01-003"><a href="#" alt="仁豊野駅" onclick="goResultClosestStation('仁豊野');" />仁豊野</a></li>
+					<li class="list01-004"><a href="#" alt="砥堀駅" onclick="goResultClosestStation('砥堀');" />砥堀</a></li>
+					<li class="list01-005"><a href="#" alt="野里駅" onclick="goResultClosestStation('野里');" />野里</a></li>
+					<li class="list01-006"><a href="#" alt="京口駅" onclick="goResultClosestStation('京口');" />京口</a></li>
+				</ul>
+
+				<!--青-->
+				<ul id="map-con3-list02">
+					<li class="list02-001"><a href="#" alt="御着駅" onclick="goResultClosestStation('御着');" />御着</a></li>
+					<li class="list02-002"><a href="#" alt="ひめじ別所駅" onclick="goResultClosestStation('ひめじ別所');" />ひめじ別所</a></li>
+					<li class="list02-003"><a href="#" alt="網干駅" onclick="goResultClosestStation('網干');" />網干</a></li>
+					<li class="list02-004"><a href="#" alt="はりま勝原駅" onclick="goResultClosestStation('はりま勝原');" />はりま<br />勝原</a></li>
+					<li class="list02-005"><a href="#" alt="英賀穂駅" onclick="goResultClosestStation('英賀穂');" />英賀穂</a></li>
+				</ul>
+
+				<!--オレンジ-->
+				<ul id="map-con3-list03">
+					<li class="list03-001"><a href="#" alt="大市駅" onclick="goResultClosestStation('大市');" />大市</a></li>
+					<li class="list03-002"><a href="#" alt="余部駅" onclick="goResultClosestStation('余部');" />余部</a></li>
+					<li class="list03-003"><a href="#" alt="播磨高岡駅" onclick="goResultClosestStation('播磨高岡');" />播磨<br />高岡</a></li>
+				</ul>
+
+				<!--紫-->
+				<ul id="map-con3-list04">
+					<li class="list04-001"><a href="#" alt="山陽網干駅" onclick="goResultClosestStation('山陽網干');" />山陽網干</a></li>
+					<li class="list04-002"><a href="#" alt="平松駅" onclick="goResultClosestStation('平松');" />平松</a></li>
+					<li class="list04-003"><a href="#" alt="山陽天満駅" onclick="goResultClosestStation('山陽天満');" />山陽<br />天満</a></li>
+					<li class="list04-004"><a href="#" alt="広畑駅" onclick="goResultClosestStation('広畑');" />広畑</a></li>
+					<li class="list04-005"><a href="#" alt="夢前川駅" onclick="goResultClosestStation('夢前川');" />夢前川</a></li>
+					<li class="list04-006"><a href="#" alt="西飾磨駅" onclick="goResultClosestStation('西飾磨');" />西飾磨</a></li>
+				</ul>
+
+				<!--緑-->
+				<ul id="map-con3-list05">
+					<li class="list05-001"><a href="#" alt="手柄駅" onclick="goResultClosestStation('手柄');" />手柄</a></li>
+					<li class="list05-002"><a href="#" alt="亀山駅" onclick="goResultClosestStation('亀山');" />亀山</a></li>
+					<li class="list05-003"><a href="#" alt="飾磨駅" onclick="goResultClosestStation('飾磨');" />飾磨</a></li>
+					<li class="list05-004"><a href="#" alt="妻鹿駅" onclick="goResultClosestStation('妻鹿');" />妻鹿</a></li>
+					<li class="list05-005"><a href="#" alt="白浜の宮駅" onclick="goResultClosestStation('白浜の宮');" />白浜<br />の宮</a></li>
+					<li class="list05-006"><a href="#" alt="八屋駅" onclick="goResultClosestStation('八屋');" />八屋</a></li>
+					<li class="list05-007"><a href="#" alt="的形駅" onclick="goResultClosestStation('的形');" />的形</a></li>
+					<li class="list05-008"><a href="#" alt="大塩駅" onclick="goResultClosestStation('大塩');" />大塩</a></li>
+				</ul>
+
+				<!--茶-->
+				<ul id="map-con3-list06">
+					<li class="list06-001"><a href="#" alt="姫路・山陽姫路駅" onclick="goResultClosestStation('姫路・山陽姫路');" />姫路・<br />山陽姫路</a></li>
+				</ul>
+
+				<div class="map-btnwrap">
+                	<p class="map-btn01"><a href="./first/"><img src="./images/main/map/map_btn01.gif" width="119" height="32" alt="会員登録はこちら" onmouseover="this.src='./images/main/map/map_btn01on.gif'" onmouseout="this.src='./images/main/map/map_btn01.gif'" /></a></p>
+                	<p class="map-btn02"><a href="./estate/login.html"><img src="./images/main/map/map_btn02.gif" width="109" height="32" alt="ログインはこちら" onmouseover="this.src='./images/main/map/map_btn02on.gif'" onmouseout="this.src='./images/main/map/map_btn02.gif'" /></a></p>
+                </div>
+			</div>
+			<!--/駅から検索-->
+
+			<!--小･中学校から検索-->
+			<div class="map-con02" id="tab3" style="display:none">
+                <div class="gakku02">
+	            	<h3 class="mb-20"><img src="./images/main/map/m03tit01.gif" width="664" height="60" alt="小学校区から検索" /></h3>
+                    <p class="selecter2"><img id="imgType09SkuArea" name="imgType09SkuArea" src="./images/main/map/map_all_on01.gif" alt="全ての種別から検索" style="margin-top:-5px!important;" onclick="typeSelSkuArea('09');SchoolAreaCntList('Status=1:!DataKind=9!Template=SchoolAreaCntList01.html!Place=SchoolSku');" style="cursor:pointer" onkeypress="" /><img id="imgType01SkuArea"  name="imgType01SkuArea" src="./images/main/map/map_tochi01.gif" alt="土地から検索" onclick="typeSelSkuArea('01');SchoolAreaCntList('Status=1:!type=01:!DataKind=9!Template=SchoolAreaCntList01.html!Place=SchoolSku');" style="cursor:pointer" onkeypress="" /><img id="imgType02SkuArea" name="imgType02SkuArea" src="./images/main/map/map_todate01.gif" alt="戸建から検索" onclick="typeSelSkuArea('02');SchoolAreaCntList('Status=1:!type=02:!DataKind=9!Template=SchoolAreaCntList01.html!Place=SchoolSku');" style="cursor:pointer" onkeypress="" /><img id="imgType03SkuArea" name="imgType03SkuArea" src="./images/main/map/map_man01.gif" alt="マンションから検索" onclick="typeSelSkuArea('03');SchoolAreaCntList('Status=1:!type=03:!DataKind=9!Template=SchoolAreaCntList01.html!Place=SchoolSku');" style="cursor:pointer" onkeypress="" /></p>
+					<div id="SchoolSku">
+						<form name=formShoolSku method=get action=estate/result.html><div id=gakku-con2 class=mt-10 gakku-con-s01><br /><h5>姫路市の小学校</h5><p class=w114><input type=checkbox name=checkbox value=18 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:21'>青山 小学校<span class=cgb>（18）</span></p><p class=w114><input type=checkbox name=checkbox value=17 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:34'>英賀保 小学校<span class=cgb>（17）</span></p><p class=w114><input type=checkbox name=checkbox value=10 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:46'>旭陽 小学校<span class=cgb>（10）</span></p><p class=w114><input type=checkbox name=checkbox value=11 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:40'>大津 小学校<span class=cgb>（11）</span></p><p class=w114><input type=checkbox name=checkbox value=12 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:43'>網干 小学校<span class=cgb>（12）</span></p><p class=w114><input type=checkbox name=checkbox value=9 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:44'>網干西 小学校<span class=cgb>（9）</span></p><p class=w114><input type=checkbox name=checkbox value=24 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:26'>荒川 小学校<span class=cgb>（24）</span></p><p class=w114><input type=checkbox name=checkbox value=0 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:57'>家島 小学校<span class=cgb>（0）</span></p><p class=w114><input type=checkbox name=checkbox value=0 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:23'>伊勢 小学校<span class=cgb>（0）</span></p><p class=w114><input type=checkbox name=checkbox value=18 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:28'>糸引 小学校<span class=cgb>（18）</span></p><p class=w114><input type=checkbox name=checkbox value=2 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:20'>太市 小学校<span class=cgb>（2）</span></p><p class=w114><input type=checkbox name=checkbox value=1 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:36'>大塩 小学校<span class=cgb>（1）</span></p><p class=w114><input type=checkbox name=checkbox value=11 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:40'>大津 小学校<span class=cgb>（11）</span></p><p class=w114><input type=checkbox name=checkbox value=10 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:42'>大津茂 小学校<span class=cgb>（10）</span></p><p class=w114><input type=checkbox name=checkbox value=0 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:59'>置塩 小学校<span class=cgb>（0）</span></p><p class=w114><input type=checkbox name=checkbox value=13 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:45'>勝原 小学校<span class=cgb>（13）</span></p><p class=w114><input type=checkbox name=checkbox value=0 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:60'>上菅 小学校<span class=cgb>（0）</span></p><p class=w114><input type=checkbox name=checkbox value=0 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:65'>香呂 小学校<span class=cgb>（0）</span></p><p class=w114><input type=checkbox name=checkbox value=4 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:66'>香呂南 小学校<span class=cgb>（4）</span></p><p class=w114><input type=checkbox name=checkbox value=0 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:63'>古知 小学校<span class=cgb>（0）</span></p><p class=w114><input type=checkbox name=checkbox value=5 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:32'>飾磨 小学校<span class=cgb>（5）</span></p><p class=w114><input type=checkbox name=checkbox value=4 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:55'>四郷 小学校<span class=cgb>（4）</span></p><p class=w114><input type=checkbox name=checkbox value=7 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:3'>城乾 小学校<span class=cgb>（7）</span></p><p class=w114><input type=checkbox name=checkbox value=12 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:7'>城西 小学校<span class=cgb>（12）</span></p><p class=w114><input type=checkbox name=checkbox value=3 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:4'>城東 小学校<span class=cgb>（3）</span></p><p class=w114><input type=checkbox name=checkbox value=9 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:12'>城北 小学校<span class=cgb>（9）</span></p><p class=w114><input type=checkbox name=checkbox value=7 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:24'>城陽 小学校<span class=cgb>（7）</span></p><p class=w114><input type=checkbox name=checkbox value=15 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:29'>白浜 小学校<span class=cgb>（15）</span></p><p class=w114><input type=checkbox name=checkbox value=0 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:61'>菅生 小学校<span class=cgb>（0）</span></p><p class=w114><input type=checkbox name=checkbox value=3 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:6'>船場 小学校<span class=cgb>（3）</span></p><p class=w114><input type=checkbox name=checkbox value=12 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:17'>曽左 小学校<span class=cgb>（12）</span></p><p class=w114><input type=checkbox name=checkbox value=7 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:15'>高岡 小学校<span class=cgb>（7）</span></p><p class=w114><input type=checkbox name=checkbox value=6 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:16'>高岡西 小学校<span class=cgb>（6）</span></p><p class=w114><input type=checkbox name=checkbox value=12 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:31'>高浜 小学校<span class=cgb>（12）</span></p><p class=w114><input type=checkbox name=checkbox value=0 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:51'>谷内 小学校<span class=cgb>（0）</span></p><p class=w114><input type=checkbox name=checkbox value=5 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:52'>谷外 小学校<span class=cgb>（5）</span></p><p class=w114><input type=checkbox name=checkbox value=10 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:33'>津田 小学校<span class=cgb>（10）</span></p><p class=w114><input type=checkbox name=checkbox value=4 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:25'>手柄小学校<span class=cgb>（4）</span></p><p class=w114><input type=checkbox name=checkbox value=13 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:8'>砥堀 小学校<span class=cgb>（13）</span></p><p class=w114><input type=checkbox name=checkbox value=0 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:50'>豊富 小学校<span class=cgb>（0）</span></p><p class=w114><input type=checkbox name=checkbox value=5 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:67'>中寺 小学校<span class=cgb>（5）</span></p><p class=w114><input type=checkbox name=checkbox value=6 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:2'>野里 小学校<span class=cgb>（6）</span></p><p class=w114><input type=checkbox name=checkbox value=6 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:19'>白鳥 小学校<span class=cgb>（6）</span></p><p class=w114><input type=checkbox name=checkbox value=0 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:1'>白鷺 小学校<span class=cgb>（0）</span></p><p class=w114><input type=checkbox name=checkbox value=7 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:53'>花田 小学校<span class=cgb>（7）</span></p><p class=w114><input type=checkbox name=checkbox value=1 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:22'>林田 小学校<span class=cgb>（1）</span></p><p class=w114><input type=checkbox name=checkbox value=2 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:5'>東 小学校<span class=cgb>（2）</span></p><p class=w114><input type=checkbox name=checkbox value=9 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:38'>広畑 小学校<span class=cgb>（9）</span></p><p class=w114><input type=checkbox name=checkbox value=12 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:39'>広畑第二 小学校<span class=cgb>（12）</span></p><p class=w114><input type=checkbox name=checkbox value=12 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:11'>広峰 小学校<span class=cgb>（12）</span></p><p class=w114><input type=checkbox name=checkbox value=0 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:48'>船津 小学校<span class=cgb>（0）</span></p><p class=w114><input type=checkbox name=checkbox value=14 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:56'>別所 小学校<span class=cgb>（14）</span></p><p class=w114><input type=checkbox name=checkbox value=0 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:58'>坊勢 小学校<span class=cgb>（0）</span></p><p class=w114><input type=checkbox name=checkbox value=3 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:62'>前之庄 小学校<span class=cgb>（3）</span></p><p class=w114><input type=checkbox name=checkbox value=3 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:10'>増位 小学校<span class=cgb>（3）</span></p><p class=w114><input type=checkbox name=checkbox value=1 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:35'>的形 小学校<span class=cgb>（1）</span></p><p class=w114><input type=checkbox name=checkbox value=9 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:54'>御国野 小学校<span class=cgb>（9）</span></p><p class=w114><input type=checkbox name=checkbox value=5 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:9'>水上 小学校<span class=cgb>（5）</span></p><p class=w114><input type=checkbox name=checkbox value=2 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:41'>南大津 小学校<span class=cgb>（2）</span></p><p class=w114><input type=checkbox name=checkbox value=4 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:18'>峰相 小学校<span class=cgb>（4）</span></p><p class=w114><input type=checkbox name=checkbox value=3 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:30'>妻鹿 小学校<span class=cgb>（3）</span></p><p class=w114><input type=checkbox name=checkbox value=4 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:27'>八木 小学校<span class=cgb>（4）</span></p><p class=w114><input type=checkbox name=checkbox value=0 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:69'>安富北 小学校<span class=cgb>（0）</span></p><p class=w114><input type=checkbox name=checkbox value=1 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:68'>安富南 小学校<span class=cgb>（1）</span></p><p class=w114><input type=checkbox name=checkbox value=17 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:14'>安室 小学校<span class=cgb>（17）</span></p><p class=w114><input type=checkbox name=checkbox value=29 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:13'>安室東 小学校<span class=cgb>（29）</span></p><p class=w114><input type=checkbox name=checkbox value=19 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:37'>八幡 小学校<span class=cgb>（19）</span></p><p class=w114><input type=checkbox name=checkbox value=0 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:49'>山田 小学校<span class=cgb>（0）</span></p><p class=w114><input type=checkbox name=checkbox value=5 class=pr-5 onclick=setSumSku();><input type=hidden name=txtShool value='S:1:47'>余部 小学校<span class=cgb>（5）</span></p><div class=f-c></div><div class=gakku-kbt>	<span id=sum></span>	<img src=./images/main/map/h-kensaku.gif width=114 height=45 value=button class=va-m btn_h onClick=goResultSku(); style=cursor:pointer /></div></div><div class=f-c></div><input type=hidden name=txtShoolData><input type=hidden name=syubetsu1><input type=hidden name=syubetsu2><input type=hidden name=syubetsu3></form><script type=text/javascript>function goResultSku(){	var objForm=document.formShoolSku;	objForm.syubetsu1.value='';	objForm.syubetsu2.value='';	objForm.syubetsu3.value='';	switch(document.getElementById('selType').value){		case '01': objForm.syubetsu1.value='01'; break;		case '02': objForm.syubetsu2.value='02'; break;		case '03': objForm.syubetsu3.value='03'; break;	}	objForm.submit();}function setSumSku(){	var objForm=document.formShoolSku;	var sumValue=0;	var selData='';	for(i=0; i<objForm.checkbox.length; i++){		if(objForm.checkbox[i].checked==true){			sumValue+=parseInt(objForm.checkbox[i].value);			selData+=objForm.txtShool[i].value+'/';		}	}	objForm.txtShoolData.value=selData;}</script>					</div>
+	                <h3 class="mb-20 mt-20"><img src="./images/main/map/m03tit02.gif" width="664" height="60" alt="中学校区から検索" /></h3>
+                    <p class="selecter2"><img id="imgType09TkuArea" name="imgType09TkuArea" src="./images/main/map/map_all_on01.gif" alt="全ての種別から検索" style="margin-top:-5px!important;" onclick="typeSelTkuArea('09');SchoolAreaCntList('Status=1:!DataKind=9!Template=SchoolAreaCntList02.html!Place=SchoolTku');" style="cursor:pointer" onkeypress="" /><img id="imgType01TkuArea"  name="imgType01TkuArea" src="./images/main/map/map_tochi01.gif" alt="土地から検索" onclick="typeSelTkuArea('01');SchoolAreaCntList('Status=1:!type=01:!DataKind=9!Template=SchoolAreaCntList02.html!Place=SchoolTku');" style="cursor:pointer" onkeypress="" /><img id="imgType02TkuArea" name="imgType02TkuArea" src="./images/main/map/map_todate01.gif" alt="戸建から検索" onclick="typeSelTkuArea('02');SchoolAreaCntList('Status=1:!type=02:!DataKind=9!Template=SchoolAreaCntList02.html!Place=SchoolTku');" style="cursor:pointer" onkeypress="" /><img id="imgType03TkuArea" name="imgType03TkuArea" src="./images/main/map/map_man01.gif" alt="マンションから検索" onclick="typeSelTkuArea('03');SchoolAreaCntList('Status=1:!type=03:!DataKind=9!Template=SchoolAreaCntList02.html!Place=SchoolTku');" style="cursor:pointer" onkeypress="" /></p>
+					<div id="SchoolTku">
+						<form name=formShoolTku method=get action=estate/result.html><div id=gakku-con2 class=mt-10 gakku-con-s01><br /><h5>姫路市の中学校学校</h5><p class=w114><input type=checkbox name=checkbox value=36 class=pr-5 onclick=setSumTku();><input type=hidden name=txtShool value='T:1:20'>朝日 中学校<span class=cgb>（36）</span></p><p class=w114><input type=checkbox name=checkbox value=21 class=pr-5 onclick=setSumTku();><input type=hidden name=txtShool value='T:1:19'>網干 中学校学校<span class=cgb>（21）</span></p><p class=w114><input type=checkbox name=checkbox value=0 class=pr-5 onclick=setSumTku();><input type=hidden name=txtShool value='T:1:29'>家島 中学校<span class=cgb>（0）</span></p><p class=w114><input type=checkbox name=checkbox value=15 class=pr-5 onclick=setSumTku();><input type=hidden name=txtShool value='T:1:18'>大津 中学校<span class=cgb>（15）</span></p><p class=w114><input type=checkbox name=checkbox value=2 class=pr-5 onclick=setSumTku();><input type=hidden name=txtShool value='T:1:28'>大的 中学校<span class=cgb>（2）</span></p><p class=w114><input type=checkbox name=checkbox value=0 class=pr-5 onclick=setSumTku();><input type=hidden name=txtShool value='T:1:33'>置塩 中学校<span class=cgb>（0）</span></p><p class=w114><input type=checkbox name=checkbox value=15 class=pr-5 onclick=setSumTku();><input type=hidden name=txtShool value='T:1:10'>琴陵 中学校<span class=cgb>（15）</span></p><p class=w114><input type=checkbox name=checkbox value=9 class=pr-5 onclick=setSumTku();><input type=hidden name=txtShool value='T:1:34'>香寺 中学校<span class=cgb>（9）</span></p><p class=w114><input type=checkbox name=checkbox value=21 class=pr-5 onclick=setSumTku();><input type=hidden name=txtShool value='T:1:5'>広嶺 中学校<span class=cgb>（21）</span></p><p class=w114><input type=checkbox name=checkbox value=35 class=pr-5 onclick=setSumTku();><input type=hidden name=txtShool value='T:1:6'>山陽 中学校<span class=cgb>（35）</span></p><p class=w114><input type=checkbox name=checkbox value=3 class=pr-5 onclick=setSumTku();><input type=hidden name=txtShool value='T:1:14'>飾磨中部 中学校<span class=cgb>（3）</span></p><p class=w114><input type=checkbox name=checkbox value=27 class=pr-5 onclick=setSumTku();><input type=hidden name=txtShool value='T:1:15'>飾磨西 中学校<span class=cgb>（27）</span></p><p class=w114><input type=checkbox name=checkbox value=14 class=pr-5 onclick=setSumTku();><input type=hidden name=txtShool value='T:1:13'>飾磨東 中学校<span class=cgb>（14）</span></p><p class=w114><input type=checkbox name=checkbox value=4 class=pr-5 onclick=setSumTku();><input type=hidden name=txtShool value='T:1:25'>四郷 中学校<span class=cgb>（4）</span></p><p class=w114><input type=checkbox name=checkbox value=13 class=pr-5 onclick=setSumTku();><input type=hidden name=txtShool value='T:1:2'>城乾 中学校<span class=cgb>（13）</span></p><p class=w114><input type=checkbox name=checkbox value=16 class=pr-5 onclick=setSumTku();><input type=hidden name=txtShool value='T:1:8'>書写 中学校<span class=cgb>（16）</span></p><p class=w114><input type=checkbox name=checkbox value=5 class=pr-5 onclick=setSumTku();><input type=hidden name=txtShool value='T:1:23'>城山 中学校<span class=cgb>（5）</span></p><p class=w114><input type=checkbox name=checkbox value=0 class=pr-5 onclick=setSumTku();><input type=hidden name=txtShool value='T:1:21'>神南 中学校<span class=cgb>（0）</span></p><p class=w114><input type=checkbox name=checkbox value=0 class=pr-5 onclick=setSumTku();><input type=hidden name=txtShool value='T:1:31'>菅野 中学校<span class=cgb>（0）</span></p><p class=w114><input type=checkbox name=checkbox value=26 class=pr-5 onclick=setSumTku();><input type=hidden name=txtShool value='T:1:9'>大白書 中学校<span class=cgb>（26）</span></p><p class=w114><input type=checkbox name=checkbox value=13 class=pr-5 onclick=setSumTku();><input type=hidden name=txtShool value='T:1:7'>高丘 中学校<span class=cgb>（13）</span></p><p class=w114><input type=checkbox name=checkbox value=5 class=pr-5 onclick=setSumTku();><input type=hidden name=txtShool value='T:1:3'>東光 中学校<span class=cgb>（5）</span></p><p class=w114><input type=checkbox name=checkbox value=0 class=pr-5 onclick=setSumTku();><input type=hidden name=txtShool value='T:1:22'>豊富 中学校<span class=cgb>（0）</span></p><p class=w114><input type=checkbox name=checkbox value=40 class=pr-5 onclick=setSumTku();><input type=hidden name=txtShool value='T:1:12'>灘 中学校<span class=cgb>（40）</span></p><p class=w114><input type=checkbox name=checkbox value=0 class=pr-5 onclick=setSumTku();><input type=hidden name=txtShool value='T:1:1'>白鷺 中学校<span class=cgb>（0）</span></p><p class=w114><input type=checkbox name=checkbox value=7 class=pr-5 onclick=setSumTku();><input type=hidden name=txtShool value='T:1:24'>花田 中学校<span class=cgb>（7）</span></p><p class=w114><input type=checkbox name=checkbox value=1 class=pr-5 onclick=setSumTku();><input type=hidden name=txtShool value='T:1:26'>林田 中学校<span class=cgb>（1）</span></p><p class=w114><input type=checkbox name=checkbox value=23 class=pr-5 onclick=setSumTku();><input type=hidden name=txtShool value='T:1:27'>東 中学校<span class=cgb>（23）</span></p><p class=w114><input type=checkbox name=checkbox value=21 class=pr-5 onclick=setSumTku();><input type=hidden name=txtShool value='T:1:17'>広畑 中学校<span class=cgb>（21）</span></p><p class=w114><input type=checkbox name=checkbox value=0 class=pr-5 onclick=setSumTku();><input type=hidden name=txtShool value='T:1:30'>坊勢 中学校<span class=cgb>（0）</span></p><p class=w114><input type=checkbox name=checkbox value=21 class=pr-5 onclick=setSumTku();><input type=hidden name=txtShool value='T:1:11'>増位 中学校<span class=cgb>（21）</span></p><p class=w114><input type=checkbox name=checkbox value=1 class=pr-5 onclick=setSumTku();><input type=hidden name=txtShool value='T:1:35'>安富 中学校<span class=cgb>（1）</span></p><p class=w114><input type=checkbox name=checkbox value=46 class=pr-5 onclick=setSumTku();><input type=hidden name=txtShool value='T:1:4'>安室 中学校<span class=cgb>（46）</span></p><p class=w114><input type=checkbox name=checkbox value=0 class=pr-5 onclick=setSumTku();><input type=hidden name=txtShool value='T:1:36'>山崎東中学校<span class=cgb>（0）</span></p><p class=w114><input type=checkbox name=checkbox value=19 class=pr-5 onclick=setSumTku();><input type=hidden name=txtShool value='T:1:16'>夢前 中学校<span class=cgb>（19）</span></p><p class=w114><input type=checkbox name=checkbox value=3 class=pr-5 onclick=setSumTku();><input type=hidden name=txtShool value='T:1:32'>鹿谷 中学校<span class=cgb>（3）</span></p><div class=f-c></div><div class=gakku-kbt>	<span id=sum></span>	<img src=./images/main/map/h-kensaku.gif width=114 height=45 value=button class=va-m btn_h onClick=goResultTku(); style=cursor:pointer /></div></div><div class=f-c></div><input type=hidden name=txtShoolData><input type=hidden name=syubetsu1><input type=hidden name=syubetsu2><input type=hidden name=syubetsu3></form><script type=text/javascript>function goResultTku(){	var objForm=document.formShoolTku;	objForm.syubetsu1.value='';	objForm.syubetsu2.value='';	objForm.syubetsu3.value='';	switch(document.getElementById('selType').value){		case '01': objForm.syubetsu1.value='01'; break;		case '02': objForm.syubetsu2.value='02'; break;		case '03': objForm.syubetsu3.value='03'; break;	}	objForm.submit();}function setSumTku(){	var objForm=document.formShoolTku;	var sumValue=0;	var selData='';	for(i=0; i<objForm.checkbox.length; i++){		if(objForm.checkbox[i].checked==true){			sumValue+=parseInt(objForm.checkbox[i].value);			selData+=objForm.txtShool[i].value+'/';		}	}	objForm.txtShoolData.value=selData;}</script>					</div>
+				</div>
+				<div class="map-btnwrap">
+                	<p class="map-btn01"><a href="./first/"><img src="./images/main/map/map_btn01.gif" width="119" height="32" alt="会員登録はこちら" onmouseover="this.src='./images/main/map/map_btn01on.gif'" onmouseout="this.src='./images/main/map/map_btn01.gif'" /></a></p>
+                	<p class="map-btn02"><a href="./estate/login.html"><img src="./images/main/map/map_btn02.gif" width="109" height="32" alt="ログインはこちら" onmouseover="this.src='./images/main/map/map_btn02on.gif'" onmouseout="this.src='./images/main/map/map_btn02.gif'" /></a></p>
+                </div>
+			</div>
+			<!--/小･中学校から検索-->
+
+			<!--詳細検索-->
+			<div class="map-con04" id="tab4" style="display:none">
+				<div class="gakku02">
+					<form name="form1" id="form1" method="get" action="estate/result.html">
+					<table width="650" border="0" cellpadding="5" cellspacing="1" bgcolor="#CCCCCC" class="estatetable" style="margin:10px 0 0 6px;padding:0;" summary="詳細検索選択">
+						<tr>
+							<th class="estatetabletit02">種別</th>
+							<td class="estatetableright">
+								<label for="syubetsu1"><input name="syubetsu1" type="checkbox" id="syubetsu1" value="01" onclick=getDropAreaCnt(); />土地</label>
+								<label for="syubetsu2"><input name="syubetsu2" type="checkbox" id="syubetsu2" value="02" onclick=getDropAreaCnt(); />戸建</label>
+								<label for="syubetsu3"><input name="syubetsu3" type="checkbox" id="syubetsu3" value="03" onclick=getDropAreaCnt(); />マンション</label>
+								<label for="syubetsu4"><input name="syubetsu4" type="checkbox" id="syubetsu4" value="10" onclick=getDropAreaCnt(); />収益/事業用物件</label>
+							</td>
+						</tr>
+						<tr>
+							<th class="estatetabletit02">土地 建築条件</td>
+							<td class="estatetableright">
+								<label for="tochijo1"><input name="tochikenchikujoken" type="radio" id="shinchu1" checked="checked" value="" />指定なし</label>
+								<label for="tochijo2"><input name="tochikenchikujoken" type="radio" id="shinchu2" value="1" />有り</label>
+								<label for="tochijo3"><input name="tochikenchikujoken" type="radio" id="shinchu3" value="0" />無し</label>
+							</td>
+						</tr>
+						<tr>
+							<th class="estatetabletit02">市町村</td>
+							<td class="estatetableright">
+								<div id="drpArea"></div>
+							  <script language="JavaScript">
+								<!--
+								getDropAreaCnt('PlaceArea=drpArea!AreaID=town!PlaceTiku=drpTiku!TikuID=tiiki!PlaceSku=drpSku!SkuID=es!PlaceTku=drpTku!TkuID=jh');
+								// -->
+								</script>
+							</td>
+						</tr>
+						<tr>
+							<th class="estatetabletit02">所在地</td>
+							<td class="estatetableright">
+							<div id="drpTiku">
+								<select name="tiiki">
+								<option value="町を選択してください" selected="selected">町を選択してください</option>
+								</select>
+							</div>
+		                    </td>
+						</tr>
+						<tr>
+                            <th class="estatetabletit02">路線</td>
+                            <td class="estatetableright">
+								<div id="drpRosen"></div>
+									<script language="JavaScript">
+									<!--
+										getDropRosen('Place=drpRosen');
+									// -->
+									</script>
+                            </td>
+						</tr>
+						<tr>
+							<th class="estatetabletit02">小学校区</td>
+							<td class="estatetableright">
+								<div id="drpSku">
+									<select name="es">
+									<option value="小学校区を選択してください" selected="selected">小学校区を選択してください</option>
+									</select>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th class="estatetabletit02">中学校区</td>
+							<td class="estatetableright">
+								<div id="drpTku">
+									<select name="jh">
+									<option value="中学校区を選択してください" selected="selected">中学校区を選択してください</option>
+									</select>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th class="estatetabletit02">価格</td>
+							<td class="estatetableright">
+								<select name="money1" id="money1">
+								<option value="" selected="selected">下限なし</option>
+								<option value="500">500万円以上</option>
+								<option value="1000">1000万円以上</option>
+								<option value="1500">1500万円以上</option>
+								<option value="2000">2000万円以上</option>
+								<option value="2500">2500万円以上</option>
+								<option value="3000">3000万円以上</option>
+								<option value="3500">3500万円以上</option>
+								<option value="4000">4000万円以上</option>
+								<option value="4500">4500万円以上</option>
+								<option value="5000">5000万円以上</option>
+								<option value="6000">6000万円以上</option>
+								<option value="7000">7000万円以上</option>
+								<option value="8000">8000万円以上</option>
+								<option value="9000">9000万円以上</option>
+								<option value="10000">一億円以上</option>
+								</select>
+								〜
+								<select name="money2" id="money2">
+								<option value="500">500万円未満</option>
+								<option value="1000">1000万円未満</option>
+								<option value="1500">1500万円未満</option>
+								<option value="2000">2000万円未満</option>
+								<option value="2500">2500万円未満</option>
+								<option value="3000">3000万円未満</option>
+								<option value="3500">3500万円未満</option>
+								<option value="4000">4000万円未満</option>
+								<option value="4500">4500万円未満</option>
+								<option value="5000">5000万円未満</option>
+								<option value="6000">6000万円未満</option>
+								<option value="7000">7000万円未満</option>
+								<option value="8000">8000万円未満</option>
+								<option value="9000">9000万円未満</option>
+								<option value="10000">一億円未満</option>
+								<option selected="selected" value="">上限なし</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<th class="estatetabletit02">建物・専有面積(m2)</td>
+							<td class="estatetableright">
+								<select name="tate_menseki1" id="tate_menseki1">
+									<option value="" selected="selected">下限なし</option>
+									<option value="20">20m2以上</option>
+									<option value="30">30m2以上</option>
+									<option value="40">40m2以上</option>
+									<option value="50">50m2以上</option>
+									<option value="60">60m2以上</option>
+									<option value="70">70m2以上</option>
+									<option value="80">80m2以上</option>
+									<option value="90">90m2以上</option>
+									<option value="100">100m2以上</option>
+									<option value="110">110m2以上</option>
+									<option value="120">120m2以上</option>
+									<option value="130">130m2以上</option>
+									<option value="140">140m2以上</option>
+									<option value="150">150m2以上</option>
+								</select>
+								〜
+								<select name="tate_menseki2" id="tate_menseki2">
+									<option value="20">20m2未満</option>
+									<option value="30">30m2未満</option>
+									<option value="40">40m2未満</option>
+									<option value="50">50m2未満</option>
+									<option value="60">60m2未満</option>
+									<option value="70">70m2未満</option>
+									<option value="80">80m2未満</option>
+									<option value="90">90m2未満</option>
+									<option value="100">100m2未満</option>
+									<option value="110">110m2未満</option>
+									<option value="120">120m2未満</option>
+									<option value="130">130m2未満</option>
+									<option value="140">140m2未満</option>
+									<option value="150">150m2未満</option>
+									<option selected="selected" value="">上限なし</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<th class="estatetabletit02">土地面積(m2)</td>
+					  		<td class="estatetableright">
+								<select name="toti_menseki1" id="toti_menseki1">
+									<option value="" selected="selected">下限なし</option>
+									<option value="40">40m2以上</option>
+									<option value="50">50m2以上</option>
+									<option value="60">60m2以上</option>
+									<option value="70">70m2以上</option>
+									<option value="80">80m2以上</option>
+									<option value="90">90m2以上</option>
+									<option value="100">100m2以上</option>
+									<option value="110">110m2以上</option>
+									<option value="120">120m2以上</option>
+									<option value="130">130m2以上</option>
+									<option value="140">140m2以上</option>
+									<option value="150">150m2以上</option>
+								</select>
+								〜
+								<select name="toti_menseki2" id="toti_menseki2">
+									<option value="40">40m2未満</option>
+									<option value="50">50m2未満</option>
+									<option value="60">60m2未満</option>
+									<option value="70">70m2未満</option>
+									<option value="80">80m2未満</option>
+									<option value="90">90m2未満</option>
+									<option value="100">100m2未満</option>
+									<option value="110">110m2未満</option>
+									<option value="120">120m2未満</option>
+									<option value="130">130m2未満</option>
+									<option value="140">140m2未満</option>
+									<option value="150">150m2未満</option>
+									<option selected="selected" value="">上限なし</option>
+								</select>
+						  	</td>
+						</tr>
+				        <tr>
+					        <th class="estatetabletit02">建物(間取り)</td>
+					        <td class="estatetableright">
+					        <p>
+					        <label for="tatemono01_1"><input name="Room1" type="checkbox" id="tatemono01_1" value="1_01" />1R</label>
+
+					        <label for="tatemono01_2"><input name="Room2" type="checkbox" id="tatemono01_2" value="1_02" />1K</label>
+					        <label for="tatemono01_3"><input name="Room3" type="checkbox" id="tatemono01_3" value="1_03" />1DK</label>
+					        <label for="tatemono01_4"><input name="Room4" type="checkbox" id="tatemono01_4" value="1_04" />1LK</label>
+					        <label for="tatemono01_5"><input name="Room5" type="checkbox" id="tatemono01_5" value="1_05" />1LDK</label>
+					        　
+					        <label for="tatemono02_2"><input name="Room6" type="checkbox" id="tatemono02_2" value="2_02" />2K</label>
+					        <label for="tatemono02_3"><input name="Room7" type="checkbox" id="tatemono02_3" value="2_03" />2DK</label>
+					        <label for="tatemono02_4"><input name="Room8" type="checkbox" id="tatemono02_4" value="2_04" />2LK</label>
+					        <label for="tatemono02_5"><input name="Room9" type="checkbox" id="tatemono02_5" value="2_05" />2LDK</label>
+					        </p>
+					        <p>
+					        <label for="tatemono03_2"><input name="Room10" type="checkbox" id="tatemono03_2" value="3_02" />3K</label>
+					        <label for="tatemono03_3"><input name="Room11" type="checkbox" id="tatemono03_3" value="3_03" />3DK</label>
+					        <label for="tatemono03_4"><input name="Room12" type="checkbox" id="tatemono03_4" value="3_04" />3LK</label>
+					        <label for="tatemono03_5"><input name="Room13" type="checkbox" id="tatemono03_5" value="3_05" />3LDK</label>
+					        　
+					        <label for="tatemono04_2"><input name="Room14" type="checkbox" id="tatemono04_2" value="4_02" />4K</label>
+					        <label for="tatemono04_3"><input name="Room15" type="checkbox" id="tatemono04_3" value="4_03" />4DK</label>
+					        <label for="tatemono04_4"><input name="Room16" type="checkbox" id="tatemono04_4" value="4_04" />4LK</label>
+					        <label for="tatemono04_5"><input name="Room17" type="checkbox" id="tatemono04_5" value="4_05" />4LDK</label>
+					        </p>
+					        <p>
+					        <label for="tatemono05_2"><input name="Room18" type="checkbox" id="tatemono05_2" value="5_02" />5K</label>
+					        <label for="tatemono05_3"><input name="Room19" type="checkbox" id="tatemono05_3" value="5_03" />5DK</label>
+					        <label for="tatemono05_4"><input name="Room20" type="checkbox" id="tatemono05_4" value="5_04" />5LK</label>
+					        <label for="tatemono05_5"><input name="Room21" type="checkbox" id="tatemono05_5" value="5_05" />5LDK</label>
+					        <label for="tatemono09"><input name="Room22" type="checkbox" id="tatemono09" value="99" />その他</label>
+					        </p>
+					        </td>
+				        </tr>
+						<tr>
+							<th class="estatetabletit02">築年数</td>
+							<td class="estatetableright">
+								<label for="tikunen1"><input name="tikunen" type="radio" id="tikunen1" value="1" />新築</label>
+								<label for="tikunen2"><input name="tikunen" type="radio" id="tikunen2" value="5" />5年以内</label>
+								<label for="tikunen3"><input name="tikunen" type="radio" id="tikunen3" value="10" />10年以内</label>
+								<label for="tikunen4"><input name="tikunen" type="radio" id="tikunen4" value="15" />15年以内</label>
+								<label for="tikunen5"><input name="tikunen" type="radio" id="tikunen5" value="20" />20年以内</label>
+								<label for="tikunen6"><input name="tikunen" type="radio" id="tikunen6" value="21" />21年以上</label>
+								<label for="tikunen7"><input name="tikunen" type="radio" id="tikunen7" checked="checked" value="" />選択なし</label>
+
+							</td>
+						</tr>
+					</table>
+					<p class="gakku-kbt">
+						<input name="imageField" type="image" src="./images/main/map/h-kensaku.gif" width="114" height="45" class="va-m btn_h" value="submit" />
+					</p>
+					</form>
+					</div>
+					<div class="map-btnwrap">
+	                	<p class="map-btn01"><a href="./first/"><img src="./images/main/map/map_btn01.gif" width="119" height="32" alt="会員登録はこちら" onmouseover="this.src='./images/main/map/map_btn01on.gif'" onmouseout="this.src='./images/main/map/map_btn01.gif'" /></a></p>
+	                	<p class="map-btn02"><a href="./estate/login.html"><img src="./images/main/map/map_btn02.gif" width="109" height="32" alt="ログインはこちら" onmouseover="this.src='./images/main/map/map_btn02on.gif'" onmouseout="this.src='./images/main/map/map_btn02.gif'" /></a></p>
+	                </div>
+				</div>
+				<!-- /詳細検索 -->
+			</div>
+			<!-- /マップ -->
+
+			<!--オススメ物件表示 -->
+			<div id="osusume">
+				<div id="Osu-title">
+					<h3 class="Osu-tab" style="margin-left:4px;"><img id="picType1" name="picType1" src="common/Osutochi_tab_on.gif" style="cursor:pointer" onclick="osusumeSelType('01');EstateList('Status=1:!DataKind=1!type=01:!newflg=9!Area=!Condition=1!DLimit=!DispCnt=100!PdRate=!Sort=3!TH=!T01=N-GeneralListOsusume01.html!T02_1=!T02_2=!T03_1=!T03_2=!T10=!Link1=./common/shosai.gif::./estate/detail.html:!ImgDetail=./common/shosai.gif::!HrefDetail=./estate/detail.html::!WLImgSize=137:100!HLImgSize=75:100!NoImg=./images/now_img.gif:137:100!ShouImg=./common/icon02.gif:86:85!SeiImg=./common/icon01.gif:86:85!NesageImg=./common/nesage.gif:52:16:7!NewImg=./common/new.gif:36:16:5!DTfmt=!GURLTmp=!MemberImg=:::!TikuImg=!AddImg=!PriceImg=!PriceDownImg=!Tokutyo=01-./images/ime04.gif:02-./images/ime05.gif:03-./images/ime03.gif:04-./images/ime02.gif:05-./images/ime01.gif:!Place=EstatecontentOsusume!');" alt="土地" onkeypress="" /></h3>
+					<h3 class="Osu-tab"><img id="picType2" name="picType2" src="common/Osukodate_tab_off.gif" style="cursor:pointer" onclick="osusumeSelType('02');EstateList('Status=1:!DataKind=1!type=02:!newflg=9!Area=!Condition=1!DLimit=!DispCnt=100!PdRate=!Sort=3!TH=!T01=!T02_1=N-GeneralListOsusume01.html!T02_2=N-GeneralListOsusume01.html!T03_1=!T03_2=!T10=!Link1=./common/shosai.gif::./estate/detail.html:!ImgDetail=./common/shosai.gif::!HrefDetail=./estate/detail.html::!WLImgSize=137:100!HLImgSize=75:100!NoImg=./images/now_img.gif:137:100!ShouImg=./common/icon02.gif:86:85!SeiImg=./common/icon01.gif:86:85!NesageImg=./common/nesage.gif:52:16:7!NewImg=./common/new.gif:36:16:5!DTfmt=!GURLTmp=!MemberImg=:::!TikuImg=!AddImg=!PriceImg=!PriceDownImg=!Tokutyo=01-./images/ime04.gif:02-./images/ime05.gif:03-./images/ime03.gif:04-./images/ime02.gif:05-./images/ime01.gif:!Place=EstatecontentOsusume!');" alt="戸建" onkeypress="" /></h3>
+<!--					<h3 class="Osu-tab"><img id="picType3" name="picType3" src="common/Osuoldkodate_tab_off.gif" style="cursor:pointer" onclick="osusumeSelType('03');EstateList('Status=1:!DataKind=1!type=02:!newflg=0!Area=!Condition=1!DLimit=!DispCnt=100!PdRate=!Sort=2!TH=!T01=!T02_1=N-GeneralListOsusume01.html!T02_2=N-GeneralListOsusume01.html!T03_1=N-GeneralListOsusume01.html!T03_2=N-GeneralListOsusume01.html!T10=!Link1=./common/shosai.gif::./estate/detail.html:!ImgDetail=./common/shosai.gif::!HrefDetail=./estate/detail.html::!WLImgSize=137:100!HLImgSize=75:100!NoImg=./images/now_img.gif:137:100!ShouImg=./common/icon02.gif:86:85!SeiImg=./common/icon01.gif:86:85!NesageImg=./common/nesage.gif:52:16:7!NewImg=./common/new.gif:36:16:5!DTfmt=!GURLTmp=!MemberImg=:::!TikuImg=!AddImg=!PriceImg=!PriceDownImg=!Tokutyo=01-./images/ime04.gif:02-./images/ime05.gif:03-./images/ime03.gif:04-./images/ime02.gif:05-./images/ime01.gif:!Place=EstatecontentOsusume!');" alt="中古戸建" onkeypress="" /></h3>
+-->
+					<h3 class="f-l"><img id="picType5" name="picType5" src="common/Osuman_tab_off.gif" style="cursor:pointer" onclick="osusumeSelType('05');EstateList('Status=1:!DataKind=1!type=03:!newflg=9!Area=!Condition=1!DLimit=!DispCnt=100!PdRate=!Sort=3!TH=!T01=!T02_1=!T02_2=!T03_1=N-GeneralListOsusume01.html!T03_2=N-GeneralListOsusume01.html!T10=N-GeneralListOsusume01.html!Link1=./common/shosai.gif::./estate/detail.html:!ImgDetail=./common/shosai.gif::!HrefDetail=./estate/detail.html::!WLImgSize=137:100!HLImgSize=75:100!NoImg=./images/now_img.gif:137:100!ShouImg=./common/icon02.gif:86:85!SeiImg=./common/icon01.gif:86:85!NesageImg=./common/nesage.gif:52:16:7!NewImg=./common/new.gif:36:16:5!DTfmt=!GURLTmp=!MemberImg=:::!TikuImg=!AddImg=!PriceImg=!PriceDownImg=!Tokutyo=01-./images/ime04.gif:02-./images/ime05.gif:03-./images/ime03.gif:04-./images/ime02.gif:05-./images/ime01.gif:!Place=EstatecontentOsusume!');" alt="マンション" onkeypress="" /></h3>
+				</div>
+
+				<div id="Osu-waku">
+					<div class="osusumeList">
+						<div class="osusumeBox">
+							<div class="osusumeBoxwrap">
+							<div class="scroll">
+								<div id="EstatecontentOsusume"></div>
+							</div>
+						</div>
+						</div>
+					</div>
+				</div>
+				<p><img src="./common/Osu-waku_bg.gif" width="710" height="7" alt="" /></p>
+			</div>
+			<!--/オススメ物件表示 -->
+
+			<!--会員登録のメリット -->
+			<div id="merit">
+				<h2>会員登録のメリット　モリシタハウスグループに登録するとメリットがいっぱい！</h2>
+				<dl id="merit-con">
+					<dt>メリット1　未公開物件情報が見られる</dt>
+					<dd>一般の方へは公開できない、未公開物件情報が検索できます。また、ホームページで公開していない物件の情報もお届けします！</dd>
+					<dt>メリット2　新着物件情報メールを配信</dt>
+					<dd>ご希望条件にあった新着物件情報をメールで自動的にお届けします。これでご希望の不動産を見逃すことはありません。</dd>
+					<dt>メリット3　物件情報一覧を毎月お届け！</dt>
+					<dd>物件情報の一覧や不動産選びのポイントなどを、メール便にてお届けします。不動産を購入する為の準備や、エリアの相場感など、知っておいて損はない情報が満載です。</dd>
+					<dt>メリット4　会員限定セミナー情報をお知らせ</dt>
+					<dd>安心して不動産選びをしていただくために、各種セミナーを開催しています。<br />お気軽にご来店ください。</dd>
+				</dl>
+                	<p class="meritbtn2"><a href="./first/"><img src="./images/main/merit/merit-btn.gif" alt="会員登録をして未公開物件を見る" width="670" height="76" class="btn_h" /></a></p>
+                </div>
+			<div class="f-c"></div>
+			<!--/会員登録のメリット -->
+
+			<!--不動産選びで失敗したくない方へ-->
+			<h2 class="ouen">不動産選びで失敗したくない方へ</h2>
+			<div id="ouen">
+				<p>
+				不動産を購入しようと思われているお客様の中で、一番多いご相談が<br />
+				「不動産を購入するには何から始めたらいいの？」という質問です。</p>
+				<p class="mt-15">
+				いきなり不動産会社には行きにくかったり、広告やホームページを見てもなかなか希望の物件が、見つからなかったり。<br />
+				不動産ってわからないな･･･と不安になってしまうのではないでしょうか？
+				</p>
+				<p class="mt-15">
+				そこで、モリシタハウスグループではお客様に不動産の探し方・選び方をよく知っていただき、また、お客様の状況やご希望をしっかりお聞きして、安心して購入ができるよう精一杯サポートさせていただきます！！<br />
+				姫路市周辺の物件を、すべてご案内できるように日々情報収集しています。
+				</p>
+				<p class="mt-15">
+				不動産探しでお困りの方、姫路市周辺で気になる物件を見つけられた方は<br />
+				是非お気軽にお問合せください。
+				</p>
+				<div class="ouentoi"><a href="./toi/"><img src="./images/main/ouen/toi-btn02.gif" width="670" height="50" alt="お問い合わせはこちら" class="btn_h"></a></div>
+			</div>
+			<div class="f-c"></div>
+			<!--/不動産選びで失敗したくない方へ-->
+
+			<!-- 新着情報 -->
+			<h2 class="mb0 mt10"><img src="./images/main/news/news-tit.jpg" width="710" height="78" alt="アドバイザー常陰の月イチ便り" /></h2>
+			<div id="news">
+			<div id="newscon">
+			<table id="newscon-t">
+	            	<tr><td>2015/12/01<br /><a href=https://bukken1.com/admin/USTD/uploadpic/U0019/U0019_E54.jpg target=_parent><img src=./images/arrow001.gif width=6 height=12 class=mr-10 />月イチ便り　１２月号</a></td></tr><tr><td>2015/11/09<br /><a href=https://bukken1.com/admin/USTD/uploadpic/U0019/U0019_E53.jpg target=_parent><img src=./images/arrow001.gif width=6 height=12 class=mr-10 />月イチ便り　１１月号</a></td></tr><tr><td>2015/10/01<br /><a href=http://www.m-house-fudousan.com/event/detail.html?eCode=51 target=_parent><img src=./images/arrow001.gif width=6 height=12 class=mr-10 />月イチ便り　１０月号</a></td></tr><tr><td>2015/08/01<br /><a href=http://www.m-house-fudousan.com/event/detail.html?eCode=50 target=_parent><img src=./images/arrow001.gif width=6 height=12 class=mr-10 />月イチ便り　８月号</a></td></tr><tr><td>2015/07/01<br /><a href=http://www.m-house-fudousan.com/event/detail.html?eCode=47 target=_parent><img src=./images/arrow001.gif width=6 height=12 class=mr-10 />月イチ便り　７月号</a></td></tr><tr><td>2015/05/01<br /><a href=http://www.m-house-fudousan.com/event/detail.html?eCode=45 target=_parent><img src=./images/arrow001.gif width=6 height=12 class=mr-10 />月イチ便り　5月号</a></td></tr><tr><td>2015/04/01<br /><a href=http://www.m-house-fudousan.com/event/detail.html?eCode=44 target=_parent><img src=./images/arrow001.gif width=6 height=12 class=mr-10 />月イチ便り　4月号</a></td></tr><tr><td>2015/03/01<br /><a href=http://www.m-house-fudousan.com/event/detail.html?eCode=41 target=_parent><img src=./images/arrow001.gif width=6 height=12 class=mr-10 />月イチ便り　3月号</a></td></tr><tr><td>2015/02/01<br /><a href=http://www.m-house-fudousan.com/event/detail.html?eCode=40 target=_parent><img src=./images/arrow001.gif width=6 height=12 class=mr-10 />月イチ便り　2月号</a></td></tr><tr><td>2015/01/01<br /><a href=http://www.m-house-fudousan.com/event/detail.html?eCode=39 target=_parent><img src=./images/arrow001.gif width=6 height=12 class=mr-10 />月イチ便り　1月号</a></td></tr>	            	</table>
+	            	</div>
+			</div>
+			<!-- /新着情報 -->
+			<!--  毎月イベント開催中 -->
+			<div class="bnr_event"><a href="./event/"><img src="images/bnr_event.jpg" alt="毎月不動産イベント開催中！不動産のご相談なんでもOK！" class="btn_h" /></a></div>
+			<!--  毎月イベント開催中 -->
+
+			<!--中古住宅にはリフォームが必要かも-->
+			<div id="topreform">
+				<h2>中古住宅にはリフォームが必要かも！？</h2>
+				<p class="toprefotxt">
+				新築住宅と中古住宅の価格を比較した場合、同様の立地や広さならば、一般的には中古住宅の方が低価格になります。<br />
+				さらにその中古住宅に手を加えることにより、新築では実現できなかった低価格で理想の住まいを手に入れることができます。<br />
+				モリシタハウスグループでは、中古住宅購入前に最適なリフォームについてのご提案もさせていただいています。
+				また、中古住宅購入費用とリフォームの費用も1本にまとめてご融資できるプランもご案内しています。
+				</p>
+				<p class="toprefotoi"><a href="./reform/"><img src="./images/main/reform/chuko-btn.gif" width="573" height="43" alt="中古住宅リフォームについてはこちら" class="btn_h" /></a></p>
+			</div>
+			<div class="f-c"></div>
+			<!--/中古住宅にはリフォームが必要かも-->
+			
+	            	<!-- リフォーム事例バナー -->
+			<p class="mt-20"><a href="http://re.m-house.co.jp/results/" target="_blank"><img  alt="リフォーム事例はこちら" width="710" height="88" src="./images/main/reform/reform-btn01.jpg" class="btn_h" /></a></p>
+			<!-- /リフォーム事例バナー -->
+
+
+			<!-- お客様の声 -->
+            <!--
+			<div id="voice">
+				<h2><img src="./images/main/voice/tit.gif" alt="お客様にインタビュー" width="710" height="39" /></h2>
+				<div class="voice-con">
+					<div class="voiceBox">
+						<h3><a href="#">安心して購入できました。</a></h3>
+						<p class="mb-10"><img src="./images/main/voice/sample.jpg" width="210"  height="158" alt="安心して購入できました。" /></p>
+						<p class="v-more">> <a href="#">もっと見る</a></p>
+					</div>
+					<div class="voiceBox">
+						<h3><a href="#">安心して購入できました。</a></h3>
+						<p class="mb-10"><img src="./images/main/voice/sample.jpg" width="210"  height="158" alt="安心して購入できました。" /></p>
+						<p class="v-more">> <a href="#">もっと見る</a></p>
+					</div>
+					<div class="voiceBox">
+						<h3><a href="#">安心して購入できました。</a></h3>
+						<p class="mb-10"><img src="./images/main/voice/sample.jpg" width="210"  height="158" alt="安心して購入できました。" /></p>
+						<p class="v-more">> <a href="#">もっと見る</a></p>
+					</div>
+				</div>
+				<p><img src="./common/Osu-waku_bg.gif" width="710" height="7" alt="" /></p>
+		  	</div>
+            -->
+<!-- /お客様の声 -->
+
+
+			<!--カンパニーインフォ-->
+			<p class="f-l mr-10 mt-30"><a href="http://www.m-athome.co.jp/" target="_blank"><img alt="土地を探して、新築をお考えの方へ" width="350" height="95" src="./images/at-home-bnr.jpg" onmouseover="this.src='./images/at-home-bnron.jpg'" onmouseout="this.src='./images/at-home-bnr.jpg'"></a></p>
+<p class="f-l mt-30"><a href="http://www.m-atreform.co.jp/" target="_blank"><img alt="中古一戸建て・マンションを買って、リフォームしたい方へ" width="350" height="95" src="./images/at-refo-bnr.jpg" onmouseover="this.src='./images/at-refo-bnr-on.jpg'" onmouseout="this.src='./images/at-refo-bnr.jpg'"></a></p>
+<br class="f-c" />
+
+<div id="comBox">
+<h2>モリシタハウスグループ<br />株式会社モリシタハウス</h2>
+<p class="com-ad">〒670-0085　姫路市山吹2丁目12番30号</p>
+<p class="com-tel"><img src="./images/main/cominfo/tel.gif" width="327" height="36" alt="ご連絡はこちらまで" /></p>
+<p class="cominfo03"><a href="./company/"><img src="./images/main/cominfo/companybtn.gif" alt="会社概要" width="105" height="32" class="btn_h" /></a></p>
+<p class="cominfo04"><a href="./company/index_2.html"><img src="./images/main/cominfo/staffbtn.gif" alt="スタッフ紹介" width="105" height="32" class="btn_h" /></a></p>
+<p class="cominfo05"><a href="./toi/"><img src="./images/main/cominfo/toibtn.gif" alt="お問い合わせ" width="105" height="32" class="btn_h" /></a></p>
+<p class="cominfo06"><img src="./images/main/cominfo/point.gif" alt="ご来店マップはこちら" width="98" height="37" /></p>
+
+</div>
+			<!--/カンパニーインフォ-->
+			</div>
+			<!--/メインコンテンツ-->
+
+			<!--サイドコンテンツ-->
+			<div id="side">
+
+			<!--登録物件数表示・ログインbox-->
+	        <!-- 会員登録　-->
+<div class="clear"></div>
+<p class="bukkensu-btn"><a href="http://m-house-fudousan.com/first"><img src="./images/side/touroku-btn.gif" width="220" height="55" alt="無料会員登録はこちらから" class="btn_h" /></a></p>
+<!-- 会員登録 -->
+<!-- ログインBOX -->
+<div id="loginInfo"></div>
+    <script language="JavaScript">
+    <!--
+    getLoginInfo('./');
+    // -->
+    </script>
+<div id="result"></div>
+<form id="fApproval" method="post" action="./estate/shounin.html"></form>
+<!-- ログインBOX -->
+			<!--/登録物件数表示・ログインbox-->
+
+			<!--値下げ物件表示・新着物件情報-->
+	        <h2 class="bukkenjoho-tit">物件情報</h2><!-- 京 -->
+<div id="bukkenjoho">
+	<div id="nesage-con"></div>
+	<script language="JavaScript">
+	<!--
+	EstateList('Status=1:!DataKind=9!type=01:02:03:!newflg=9!Area=!Condition=2!DLimit=7!DispCnt=3!PdRate=5!Sort=1!TH=NPriceDownListHeader.html!T01=NPriceDownListDetail01.html!T02_1=NPriceDownListDetail02_1.html!T02_2=NPriceDownListDetail02_2.html!T03_1=NPriceDownListDetail03_1.html!T03_2=NPriceDownListDetail03_2.html!T10=NPriceDownListDetail10.html!Link1=./images/nesage-shosai.gif:./images/nesage-kaiin.gif:./estate/detail.html:!ImgDetail=./images/nesage-shosai.gif:./images/nesage-kaiin.gif:!HrefDetail=./estate/detail.html:./estate/login3.html:!WLImgSize=95:69!HLImgSize=40:90!NoImg=./images/nophoto.gif::!ShouImg=::!SeiImg=::!NesageImg=:::!NewImg=:::!DTfmt=n/j!GURLTmp=!MemberImg=./images/gentei.gif:95:69:./estate/login3.html!TikuImg=!AddImg=./images/kaiin02.gif!PriceImg=!PriceDownImg=./images/kaiin02.gif!Place=nesage-con!');
+    // -->
+    </script>
+	<div id="shinchaku-con"></div>
+	<script language="JavaScript">
+        <!--
+        EstateList('Status=1:!DataKind=9!type=01:02:03:!newflg=9!Area=!Condition=3!DLimit=7!DispCnt=3!PdRate=!Sort=2!TH=NShinchakuListHeader.html!T01=NShinchakuListDetail01.html!T02_1=NShinchakuListDetail02_1.html!T02_2=NShinchakuListDetail02_2.html!T03_1=NShinchakuListDetail03_1.html!T03_2=NShinchakuListDetail03_2.html!T10=NShinchakuListDetail10.html!Link1=./images/nesage-shosai.gif:./images/nesage-kaiin.gif:./estate/detail.html:!ImgDetail=./images/nesage-shosai.gif:./images/nesage-kaiin.gif:!HrefDetail=./estate/detail.html:./estate/login3.html:!WLImgSize=95:69!HLImgSize=40:90!NoImg=./images/nophoto.gif::!ShouImg=::!SeiImg=::!NesageImg=:::!NewImg=:::!DTfmt=n/j!GURLTmp=!MemberImg=./images/gentei.gif:95:69:./estate/login3.html!TikuImg=!AddImg=./images/kaiin02.gif!PriceImg=./images/kaiin02.gif!PriceDownImg=!Place=shinchaku-con!');
+    // -->
+    </script>
+</div>
+<p><img src="./images/side/pd-arv/bottombg.gif" width="220" height="6" alt="" /></p>
+			<!--/値下げ物件表示・新着物件情報-->
+
+
+			<!-- 注目物件情報 -->
+			<h3 class=BList-title>注目の物件</h3><div id=BList><p class=BList-txt><a href=./estate/login3.html?bCode=2817>姫路市国府寺町<img src=./images/kaiin02.gif></a></p><p class=BList-txt><a href=./estate/login3.html?bCode=2816>姫路市広畑区西夢前台<img src=./images/kaiin02.gif></a></p><p class=BList-txt><a href=./estate/login3.html?bCode=2815>姫路市広畑区西蒲田<img src=./images/kaiin02.gif></a></p><p class=BList-txt><a href=./estate/login3.html?bCode=2814>姫路市田寺東<img src=./images/kaiin02.gif></a></p><p class=BList-txt><a href=./estate/login3.html?bCode=2813>姫路市辻井<img src=./images/kaiin02.gif></a></p><p class=BList-txt><a href=./estate/login3.html?bCode=2812>姫路市田寺東<img src=./images/kaiin02.gif></a></p><p class=BList-txt><a href=./estate/login3.html?bCode=2811>姫路市広畑区高浜町<img src=./images/kaiin02.gif></a></p><p class=BList-txt><a href=./estate/login3.html?bCode=2810>姫路市飾磨区野田町<img src=./images/kaiin02.gif></a></p><p class=BList-txt><a href=./estate/login3.html?bCode=2809>姫路市栗山町<img src=./images/kaiin02.gif></a></p><p class=BList-txt><a href=./estate/login3.html?bCode=2808>姫路市広畑区蒲田<img src=./images/kaiin02.gif></a></p><p class=BList-txt><a href=./estate/login3.html?bCode=2807>姫路市田寺<img src=./images/kaiin02.gif></a></p><p class=BList-txt><a href=./estate/login3.html?bCode=2806>姫路市余部区上川原<img src=./images/kaiin02.gif></a></p><p class=BList-txt><a href=./estate/login3.html?bCode=2804>姫路市飾磨区今在家<img src=./images/kaiin02.gif></a></p><p class=BList-txt><a href=./estate/login3.html?bCode=2803>姫路市白浜町<img src=./images/kaiin02.gif></a></p><p class=BList-txt><a href=./estate/login3.html?bCode=2802>姫路市大津区恵美酒町<img src=./images/kaiin02.gif></a></p></div>			<!-- /注目物件情報 -->
+
+			<!-- イベント情報 -->
+			<div id=event><h2>イベント情報</h2><div id=eventcon><p class=ephoto><a href=./event/detail.html?eCode=55><img src=https://bukken1.com/admin/USTD/uploadpic/U0019/U0019_E55.jpg alt=イベント情報 width=120 height=90 /></a></p>
+<p class="etxt01">【完成現場見学会　開催】　１月９日（土）・１０日（日）　２日間限り！！</p>
+<p class="etxt02"><a href="./event/detail.html?eCode=55">１月見学会情報　更新しました！</a></p>
+</div><p class=f-l><a href=./event/><img src=./images/main/event/btn.gif alt=全てのイベントを見る width=220 height=36 /></a></p><div class=f-c></div></div><div class=f-c></div>			<!-- イベント情報 -->
+
+			<!--バナー-->
+			<div id="bunner">
+				<script type="text/javascript" src='./js/link1.js'></script>
+			</div>
+			<!--/バナー-->
+
+			</div>
+			<!--/サイドコンテンツ-->
+
+</div>
+<!--/コンテンツ-->
+<div class="f-c"></div>
+
+<!--フッター-->
+<div id="footer-wrap01">
+	<div id="footer-wrap02">
+		<div id="footer">
+			<h2>姫路市の不動産情報サイト　モリシタハウスグループ</h2>
+			<div id="footer-link">
+				<dl class="mr-20">
+					<dt><a href="./">HOME</a></dt>
+					<dt><a href="./estate/">物件検索</a></dt>
+					<dt><a href="./first/">会員登録</a></dt>
+					<dt><a href="./estate/login.html">ログイン</a></dt>
+				</dl>
+				<dl class="mr-20">
+					<dt><a href="./buy/">買いたい方</a></dt>
+					<dd><a href="./buy/">購入の流れ</a></dd>
+					<dd><a href="./buy/index.html#annai">現地へのご案内</a></dd>
+				</dl>
+				<dl class="mr-20">
+					<dt><a href="./sell/">売りたい方</a></dt>
+					<dd><a href="./sell/">売却の流れ</a></dd>
+					<dd><a href="./sell/index_4.html">売却依頼をするメリット</a></dd>
+				</dl>
+				<dl class="mr-20">
+					<dt><a href="./reform/">中古住宅リフォーム</a></dt>
+					<dd><a href="./reform/">中古住宅購入＋リフォームのメリット</a></dd>
+				</dl>
+				<dl class="mr-20">
+					<dt><a href="./company/">会社案内</a></dt>
+					<dd><a href="./company/">会社概要</a></dd>
+					<dd><a href="./company/index_3.html">代表挨拶</a></dd>
+					<dd><a href="./company/index_2.html">スタッフ紹介</a></dd>
+				</dl>
+				<dl class="mr-20">
+					<dt><a href="./other/">その他</a></dt>
+					<dd><a href="./other/index_2.html">プライバシーポリシー</a></dd>
+					<dd><a href="./other/index_1.html">サイトマップ</a></dd>
+					<dd><a href="./other/index_3.html">リンク集</a></dd>
+				</dl>
+				<dl>
+					<dt><a href="./toi/">お問い合わせ</a></dt>
+					<dt><a href="./event/">イベント情報</a></dt>
+				</dl>
+			</div>
+
+			<div id="copyright">
+				<h2>モリシタハウスグループ</h2>
+				<p>Copyright&nbsp;&copy;&nbsp;モリシタハウスグループ.&nbsp;All&nbsp;Rights&nbsp;Reserved.</p>
+			</div>
+			<p id="footer-tab"><a href="#" target="self" onclick="softScrollBack();return false;"><img src="./images/footer/footer-tab.gif" width="125" height="25" alt="このページ先頭へ" /></a></p>
+		</div>
+	</div>
+</div>
+<!--/フッター-->
+<!--スマホ表示用-->
+<!--/スマホ表示用-->
+
+</body>
+</html>

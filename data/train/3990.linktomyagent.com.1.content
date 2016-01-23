@@ -1,0 +1,403 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <meta name="description" content="Link To My Agent Powered by Xanatek, Inc." />
+
+  <meta name="keywords" content="insurance, quote, agent, xanatek, agency, auto, home" />
+
+  <title>Link To My Agent Powered by Xanatek, Inc.</title>
+
+  <link rel="stylesheet" type="text/css" href="style.css"/>
+
+
+
+  <SCRIPT SRC="js/lib/qforms.js"></SCRIPT>
+
+  <SCRIPT LANGUAGE="JavaScript">
+
+  <!--//
+
+  // set the path to the qForms directory
+
+  qFormAPI.setLibraryPath("js/lib/");
+
+  // this loads all the default libraries
+
+  qFormAPI.include("*");
+
+  //-->
+
+  </SCRIPT>  
+
+
+
+<script type="text/javascript" src="scripts/jquery-1.2.3.min.js"></script>
+
+<script type="text/javascript" src="scripts/hoverIntent.js"></script>
+
+<script type="text/javascript" src="scripts/superfish.js"></script>
+
+
+
+<script type="text/javascript">
+
+	$(document).ready(function(){
+
+		$(".nav").superfish({
+
+			animation : { opacity:"show", height:"show" }
+
+		});
+
+	});
+
+</script>
+
+
+
+<script type="text/javascript">
+
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+
+</script>
+
+
+
+<script type="text/javascript">
+
+var pageTracker = _gat._getTracker("UA-4242476-1");
+
+pageTracker._initData();
+
+pageTracker._trackPageview();
+
+</script>
+
+
+
+<script type="text/javascript">
+
+<!--
+
+  function processForm(form_name)
+
+  {
+
+    $('submit').disabled = true;
+
+    $('submit').value = "Processing.  Please Wait...";
+
+
+
+    $(form_name).request({
+
+      onSuccess: function(transport)
+
+      {
+
+        if(transport.responseText.match(/^OK/) != null) {
+
+          alert('Your message has been sent!');
+
+          $(form_name).reset();
+
+        } else {
+
+          alert(transport.responseText);
+
+        }
+
+
+
+        $('submit').value = 'Send Message';
+
+        $('submit').disabled = false;
+
+      }
+
+    });
+
+
+
+    return false;
+
+  }
+
+
+
+-->
+
+</script>
+
+</head>
+
+
+
+<body>
+
+
+
+<div id="primaryNav">
+
+  <ul>
+
+    <li class="first"><a href="index.php">Home</a></li>
+
+    <li><a href="aboutus.php">About Us</a></li>
+
+    <li><a href="contactus.php">Contact Us</a></li>    
+
+  </ul>
+
+</div>
+
+
+
+<div id="header">
+
+  <img style="float: right; margin: 0; padding: 0;" src="images/rotate/rotate.php" alt="Business Person"/>
+
+  <br>
+
+     <font size="5" face="Tahoma" color="#000000">NEED AN INSURANCE QUOTE?</font><br>
+
+  	 Our member&acute;s agencies offer some of the most affordable rates.<p>
+
+  	 Trust your independent insurance agent for quality service and knowledge.
+
+</div>
+
+
+
+  <div id="secondaryNav">
+
+  </div>
+
+
+
+<div id="container">
+
+
+
+
+<div id="myagent">
+
+<FORM NAME="frmExample" method="post" action="index_proc.php" >
+<fieldset><legend>Locate An Agent Near You</legend>
+
+<table border="0" cellpadding="5" cellspacing="5" width="600">
+  <tr>
+     <td>
+	  State<br>
+      <select name="state" size="5" style="width:140px;">
+        <option value="IN">Indiana</option>
+		<option value="FL">Florida</option>
+		<option value="MD">Maryland</option>
+	<!--	<option value="NY">New York</option> -->
+		<option value="OH">Ohio</option>
+        	<option value="PA">Pennsylvania</option>
+ 		<option value="NC">North Carolina</option> 
+        	<option value="VA">Virginia</option>
+<!-- 		<OPTION>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</OPTION> -->
+      </select>	 
+	 </td>
+     <td>
+	  City<br>
+      <select name="city" size="5" style="width:140px;">
+<!--         <OPTION>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</OPTION> -->
+      </select>	 
+	 </td>
+     <td>
+	  Agency<br> 
+      <select name="agent" size="5" style="width:220px;">
+<!--         <OPTION>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</OPTION> -->
+	  </select>	  
+	 </td>
+  </tr>
+  <tr>
+     <td colspan="2">&nbsp;</td> 
+     <td><input type="Submit" value="Goto Agent"></td>
+  </tr>
+</table>
+
+</fieldset>
+</form>
+</div>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--//
+// initialize the qForm object
+objForm = new qForm("frmExample");
+
+<!-- ----------- State List ----------- -->
+objForm.state.addEvent("onclick", "selectState();", false);
+
+function selectState(){
+	var value = objForm.state.getValue();
+	
+	objForm.city.populate(stcState[value]);
+}
+
+stcState = new Object();
+
+stcState.IN = new Object();
+<!-- stcState.IN["granger"] = "Granger"; -->
+<!-- stcState.IN["southbend"] = "South Bend"; -->
+stcState.IN["muncie"] = "Muncie";
+stcState.IN["pendleton"] = "Pendleton";
+stcState.IN["demo"] = "Demo"; 
+
+stcState.FL = new Object();
+stcState.FL["fortmyers"] = "Fort Myers";
+
+stcState.MD = new Object();
+stcState.MD["annapolis"] = "Annapolis";
+<!-- stcState.MD["huntvalley"] = "Hunt Valley"; -->
+
+<!-- stcState.NY = new Object(); -->
+<!-- stcState.NY["apalachin"] = "Apalachin"; -->
+
+stcState.OH = new Object();
+stcState.OH["columbus"] = "Columbus";
+
+stcState.PA = new Object();
+stcState.PA["brookville"] = "Brookville";
+stcState.PA["dubois"] = "DuBois";
+stcState.PA["lancaster"] = "Lancaster";
+stcState.PA["newholland"] = "New Holland";
+stcState.PA["philadelphia"] = "Philadelphia";
+
+stcState.NC = new Object(); 
+stcState.NC["cary"] = "Cary";
+<!-- stcState.NC["kernersville"] = "Kernersville"; -->
+stcState.NC["sanford"] = "Sanford";
+
+stcState.VA = new Object();
+<!-- stcState.VA["boones_mill"] = "Boones Mill"; -->
+<!-- stcState.VA["charlottesville"] = "Charlottesville"; --!>
+stcState.VA["christiansburg"] = "Christiansburg";
+stcState.VA["midlothian"] = "Midlothian";
+stcState.VA["shawsville"] = "Shawsville";
+stcState.VA["wytheville"] = "Wytheville";
+
+<!-- -------- End of State List -------- -->
+
+
+<!-- ------------ City List ------------ -->
+objForm.city.addEvent("onclick", "selectCity();", false);
+
+function selectCity(){
+	var value = objForm.city.getValue();
+	
+	objForm.agent.populate(stcCity[value]);
+}
+
+stcCity = new Object();
+
+<!-- State IN -->
+<!-- stcCity.southbend = new Object(); -->
+<!-- stcCity.southbend["43427"] = "Dan Berry Insurance"; -->
+
+<!-- stcCity.granger = new Object(); -->
+<!-- stcCity.granger["39956"] = "Hoffman Insurance Group"; --> 
+
+stcCity.muncie = new Object();
+stcCity.muncie["39619"] = "Martin Insurance Group";
+
+stcCity.pendleton = new Object();
+stcCity.pendleton["39619"] = "Martin Insurance Group";
+
+stcCity.demo = new Object();
+stcCity.demo["demo"] = "South Bend Demo";
+
+<!-- State FL -->
+stcCity.fortmyers = new Object();
+stcCity.fortmyers["44293"] = "Omni Resource Group";
+
+<!-- State MD -->
+stcCity.annapolis = new Object();
+stcCity.annapolis["471"] = "CNR Insurance, Inc.";
+
+<!-- stcCity.huntvalley = new Object(); -->
+<!-- stcCity.huntvalley["41085"] = "Online Insurance Solutions"; -->
+
+<!-- State NY -->
+stcCity.apalachin = new Object();
+stcCity.apalachin["17113"] = "Empire Agency";
+
+<!-- State OH -->
+stcCity.columbus = new Object();
+stcCity.columbus["30557"] = "Sterling Insurance Group";
+
+<!-- State PA -->
+stcCity.brookville = new Object();
+stcCity.brookville["16133"] = "Sarvey Insurance";
+
+stcCity.dubois = new Object();
+stcCity.dubois["16133"] = "Sarvey Insurance";
+
+stcCity.lancaster = new Object();
+stcCity.lancaster["1010"] = "Community Insurance";
+
+stcCity.newholland = new Object();
+stcCity.newholland["1010"] = "Community Insurance";
+
+stcCity.punxsutawney = new Object();
+stcCity.punxsutawney["16133"] = "Sarvey Insurance";
+
+stcCity.philadelphia = new Object();
+stcCity.philadelphia["20074"] = "Goebel Insurance Agency";
+
+<!-- stcCity.susquehanna = new Object(); -->
+<!-- stcCity.susquehanna["17113"] = "Empire Agency"; -->
+
+<!-- State NC -->
+<!-- stcCity.kernersville = new Object(); -->
+<!-- stcCity.kernersville["41909"] = "Insurance 4 Pilots"; -->
+
+stcCity.cary = new Object(); 
+stcCity.cary["1000"] = "Bowen Insurance Agency";
+
+stcCity.sanford = new Object(); 
+stcCity.sanford["1000"] = "Bowen Insurance Agency";
+
+<!-- State VA -->
+<!-- stcCity.boones_mill = new Object(); -->
+<!-- stcCity.boones_mill["17271"] = "Holley Insurance Agency"; -->
+
+stcCity.christiansburg = new Object();
+stcCity.christiansburg["6143"] = "Childress Insurance";
+
+stcCity.shawsville = new Object();
+stcCity.shawsville["6143"] = "Childress Insurance";
+
+<!-- stcCity.charlottesville = new Object(); --!>
+<!-- stcCity.charlottesville["31481"] = "Specialized Insurance"; --!>
+
+stcCity.wytheville = new Object();
+stcCity.wytheville["6898"] = "Wyatt Insurance Agency";
+
+stcCity.midlothian = new Object();
+stcCity.midlothian["44548"] = "Virginia Insurance Services";
+
+<!-- Blank -->
+stcCity.blank = new Object();
+stcCity.blank["blank"] = "                       ";
+
+<!-- --------- End of City List --------- -->
+
+//-->
+</SCRIPT>
+
+
+</div>
+<div id="footer">Sales 800-875-6033&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;Tech Support 800-820-1665</div>
+</body>
+</html>

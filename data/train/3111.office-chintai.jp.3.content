@@ -1,0 +1,956 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>貸事務所・賃貸オフィスは大阪オフィスサーチ</title>
+<meta name="keywords" content="貸事務所 大阪,アズ･ビルマネジメント,貸事務所,大阪,賃貸オフィス,賃貸事務所,大阪ミナミ,大阪キタ,不動産,物件,検索,オフィス移転" />
+<meta name="description" content="貸事務所や賃貸オフィスは大阪オフィスサーチ！大阪、神戸、京都に物件を取り揃え、ご希望の物件がきっと見つかります。大阪市北区、西区、中央区、淀川区、浪速区はさらに賃貸事務所、賃貸オフィスを多数ご用意しております。" />
+<link rel="stylesheet" href="http://www.office-chintai.jp/styles-site.css" type="text/css" />
+</head>
+<body id="index">
+<div id="container">
+<div id="header">
+<h1>貸事務所・賃貸オフィスは大阪オフィスサーチ</h1>
+<p>大阪オフィスサーチでは、貸事務所・賃貸オフィスの最新情報を常時更新しています。オフィス移転やオフィスの新規開設をご検討中の方はどうぞご利用ください。</p>
+<h2><a href="http://www.office-chintai.jp/" accesskey="1">大阪・神戸・京都の賃貸事務所・賃貸オフィス・貸事務所の物件検索サイト</a></h2>
+<a href="http://www.office-chintai.jp/" accesskey="1"><img src="http://www.office-chintai.jp/header_logo.gif" alt="株式会社アズビルマネジメント" width="430" height="65" /></a>
+</div>
+<div id="center">
+<div class="content">
+<div class="search-box">
+<div id="content-train">
+<h3>沿線・駅で賃貸事務所を探す</h3>
+<form action="/nfmtb/index.html" method="post" name="line_search" id="line_search" class="osaka">
+<input type="hidden" name="module" value="Front" />
+<input type="hidden" name="action" value="CondRedirect" />
+<input type="hidden" name="p_mode" value="line" />
+
+<input type="hidden" name="p_line" value="" id="p_line" />
+<input type="hidden" name="p_station" value="" id="p_station" />
+
+<input type="hidden" name="az_new_house" id="line_search_az_new_house" value="0" />
+<input type="hidden" name="az_soho" id="line_search_az_soho" value="0" />
+<input type="hidden" name="az_designer" id="line_search_az_designer" value="0" />
+<input type="hidden" name="az_large_street" id="line_search_az_large_street" value="0" />
+<input type="hidden" name="az_one_floor" id="line_search_az_one_floor" value="0" />
+<input type="hidden" name="az_rent_all" id="line_search_az_rent_all" value="0" />
+<input type="hidden" name="az_cafe" id="line_search_az_cafe" value="0" />
+<input type="hidden" name="az_room_height" id="line_search_az_room_height" value="0" />
+<input type="hidden" name="az_near_office" id="line_search_az_near_office" value="0" />
+<input type="hidden" name="az_no_guaranty" id="line_search_az_no_guaranty" value="0" />
+<input type="hidden" name="az_convinience" id="line_search_az_convinience" value="0" />
+<input type="hidden" name="az_restrant" id="line_search_az_restrant" value="0" />
+<input type="hidden" name="az_clinic" id="line_search_az_clinic" value="0" />
+<input type="hidden" name="az_postaloffice" id="line_search_az_postaloffice" value="0" />
+<input type="hidden" name="az_station_direct" id="line_search_az_station_direct" value="0" />
+<input type="hidden" name="az_corner" id="line_search_az_corner" value="0" />
+<input type="hidden" name="az_retro" id="line_search_az_retro" value="0" />
+<input type="hidden" name="az_multi_lines" id="line_search_az_multi_lines" value="0" />
+<input type="hidden" name="az_symbolic" id="line_search_az_symbolic" value="0" />
+<input type="hidden" name="az_tsuboGE" value="0" />
+<input type="hidden" name="az_tsuboLE" value="0" />
+
+<script type="text/javascript">
+//<![CDATA[
+function line_search_submit () {
+  var elem_form = document.line_search;
+  var elem_select = elem_form.train_tsubo;
+  var elem_select2 = elem_form.train_etc;
+  var tsubo_value = elem_select.options[elem_select.selectedIndex].value;
+  var etc_value = elem_select2.options[elem_select2.selectedIndex].value;
+
+  var elem_etc;
+  if (etc_value != '') {
+    elem_etc = document.getElementById("line_search_" + etc_value);
+  }
+  if (elem_etc) {
+     elem_etc.value = 1;
+  }
+
+  if (tsubo_value == 0) {
+    elem_form.az_tsuboGE.value = 0;
+    elem_form.az_tsuboLE.value = 0;
+  } else if (tsubo_value == 6) {
+    elem_form.az_tsuboGE.value =  (tsubo_value - 1) * 20;
+    elem_form.az_tsuboLE.value =  0;
+  } else {
+    elem_form.az_tsuboGE.value =  (tsubo_value - 1) * 20;
+    elem_form.az_tsuboLE.value =  tsubo_value * 20;
+  }
+
+  var elem_select_line = document.getElementById("ensen");
+  var elem_select_station = document.getElementById("station");
+
+  document.getElementById("p_line").value 
+   = elem_select_line.options[elem_select_line.selectedIndex].value;
+  document.getElementById("p_station").value 
+   = elem_select_station.options[elem_select_station.selectedIndex].value;
+
+  elem_form.submit();
+
+  if (elem_etc) {
+     elem_etc.value = 0;
+  }
+}
+//]]>
+</script>
+
+<ul class="train-select">
+<li>
+<label for="ensen" id="label_ensen">
+<select name="ensen-select" id="ensen">
+<option selected="selected">Loading...</option>
+</select>
+</label>
+</li>
+<li>
+<label for="station" id="label_stations">
+<select name="station-select" id="station">
+<option selected="selected">▼最寄駅を選択してください</option>
+</select>
+</label>
+</li>
+</ul>
+<dl class="search_menu">
+<dt>広さ選択</dt>
+<dd>
+<select name="train_tsubo" id="train_tsubo">
+<option selected="selected" value="0">▼坪数を選択</option>
+<option value="1">00-20坪</option>
+<option value="2">20-40坪</option>
+<option value="3">40-60坪</option>
+<option value="4">60-80坪</option>
+<option value="5">80-100坪</option>
+<option value="6">100坪以上</option>
+</select>
+</dd>
+<dt>その他条件</dt>
+<dd>
+<select name="train_etc" id="train_etc">
+<option selected="selected" value="">▼こだわり条件を選択</option>
+<option value="az_new_house">新築物件</option>
+<option value="az_soho">SOHOタイプ</option>
+<option value="az_designer">デザイナーズ物件</option>
+<option value="az_large_street">大通り沿い</option>
+<option value="az_one_floor">ワンフロアタイプ</option>
+<option value="az_rent_all">ビル一棟貸</option>
+<option value="az_cafe">1Fカフェ入居中</option>
+<option value="az_room_height">天高2.6ｍ以上</option>
+<option value="az_near_office">官庁・役所近い</option>
+<option value="az_no_guaranty">礼金のみ物件</option>
+<option value="az_convinience">1Fコンビニ入居中</option>
+<option value="az_restrant">社員食堂有</option>
+<option value="az_clinic">クリニック有</option>
+<option value="az_postaloffice">1F銀行・郵便局</option>
+<option value="az_station_direct">駅直結</option>
+<option value="az_corner">角ビル</option>
+<option value="az_retro">レトロ物件</option>
+<option value="az_multi_lines">2路線以上</option>
+<option value="az_symbolic">シンボリックビル</option>
+</select>
+</dd>
+</dl>
+<a href="/" class="submit_button" onclick="javascript:line_search_submit(); return false;" onkeypress="javascript:line_search_submit(); return false;">検索開始</a>
+<ul class="check-y"><li><a href="/nfmtb/linemap/osaka/">沿線地図から検索</a></li></ul>
+</form>
+</div>
+<script language="javascript" type="text/javascript">
+<!--
+function loadLines () {
+
+  xmlReq = new XMLHttpRequest();
+
+  xmlReq.onreadystatechange = function() {
+     var elem = document.getElementById ('label_ensen');
+     if (xmlReq.readyState == 4) {
+      if (xmlReq.status == 200) {
+        elem.innerHTML = xmlReq.responseText;
+        changeStations(document.line_search.line_id.value);
+      } else {
+        // elem.innerHTML = "Loading...";
+      }
+    } else {
+      // elem.innerHTML = "Loading...";
+    }
+  }
+
+  xmlReq.open("GET", "/cgi/mt/mt-fmtb-linelist.cgi?pref_cd=27" ,true);
+  xmlReq.send(null);
+}
+
+function changeStations (line_id) {
+
+  xmlReq = new XMLHttpRequest();
+
+  document.getElementById ('label_stations').innerHTML = 
+          '<select name="station-select" id="station"><option>Loading...</option></select>';
+
+  xmlReq.onreadystatechange = function() {
+     var elem = document.getElementById ('label_stations');
+     if (xmlReq.readyState == 4) {
+      if (xmlReq.status == 200) {
+        elem.innerHTML = xmlReq.responseText;
+      } else {
+        // elem.innerHTML = "Loading...";
+      }
+    } else {
+      // elem.innerHTML = "Loading...";
+    }
+  }
+
+  xmlReq.open("GET", "/cgi/mt/mt-fmtb-stationlist.cgi?pref_cd=27&line_id=" + line_id ,true);
+  xmlReq.send(null);
+
+}
+
+loadLines();
+
+// -->
+</script>
+<div class="banner_area">
+<ul>
+<li class="fl"><a href="/nfmtb/number/osaka/"><img src="/images/common/banner_search01.png" alt="社員数・人数から最適なオフィスを検索" /></a></li>
+<li class="fr"><a href="/nfmtb/arealist/osaka/"><img src="/images/common/banner_search02.png" alt="場所・坪数から最適なオフィスを検索" /></a></li>
+</ul>
+</div>
+<div id="content-area">
+<h3>エリアで貸事務所を探す</h3>
+<form action="/nfmtb/index.html" method="post" name="area_search" id="area_search">
+
+<input type="hidden" name="module" value="Front" />
+<input type="hidden" name="action" value="CondRedirect" />
+<input type="hidden" name="p_mode" value="area" />
+<input type="hidden" name="p_pref" value="27" />
+
+<input type="hidden" name="az_tsuboGE" value="0" />
+<input type="hidden" name="az_tsuboLE" value="0" />
+
+<input type="hidden" name="az_new_house" id="area_search_az_new_house" value="0" />
+<input type="hidden" name="az_soho" id="area_search_az_soho" value="0" />
+<input type="hidden" name="az_designer" id="area_search_az_designer" value="0" />
+<input type="hidden" name="az_large_street" id="area_search_az_large_street" value="0" />
+<input type="hidden" name="az_one_floor" id="area_search_az_one_floor" value="0" />
+<input type="hidden" name="az_rent_all" id="area_search_az_rent_all" value="0" />
+<input type="hidden" name="az_cafe" id="area_search_az_cafe" value="0" />
+<input type="hidden" name="az_room_height" id="area_search_az_room_height" value="0" />
+<input type="hidden" name="az_near_office" id="area_search_az_near_office" value="0" />
+<input type="hidden" name="az_no_guaranty" id="area_search_az_no_guaranty" value="0" />
+<input type="hidden" name="az_convinience" id="area_search_az_convinience" value="0" />
+<input type="hidden" name="az_restrant" id="area_search_az_restrant" value="0" />
+<input type="hidden" name="az_clinic" id="area_search_az_clinic" value="0" />
+<input type="hidden" name="az_postaloffice" id="area_search_az_postaloffice" value="0" />
+<input type="hidden" name="az_station_direct" id="area_search_az_station_direct" value="0" />
+<input type="hidden" name="az_corner" id="area_search_az_corner" value="0" />
+<input type="hidden" name="az_retro" id="area_search_az_retro" value="0" />
+<input type="hidden" name="az_multi_lines" id="area_search_az_multi_lines" value="0" />
+<input type="hidden" name="az_symbolic" id="area_search_az_symbolic" value="0" />
+<p>ご希望のエリアにチェックを入れて検索開始をクリック！</p>
+<ul class="area-select  osaka">
+<li>
+  <p>江波</p>
+  <dl>
+    <dt class="area01"><input name="p_area[]" type="checkbox" value="5" id="area01" /></dt>
+    <dd class="area01">江坂</dd>
+  </dl>
+</li>
+<li>
+  <p>淀川区</p>
+  <dl>
+    <dt class="area02"><input name="p_area[]" type="checkbox" value="11" id="area02" /></dt>
+    <dd class="area02">新大阪・西中島・東三国</dd>
+  </dl>
+</li>
+<li>
+  <p>北区</p>
+  <dl>
+    <dt class="area03"><input name="p_area[]" type="checkbox" value="19" id="area03" /></dt>
+    <dd class="area03">南森町・天満・扇町・天神橋六丁目</dd>
+    <dt class="area04"><input name="p_area[]" type="checkbox" value="15" id="area04" /></dt>
+    <dd class="area04">中津・梅田・茶屋町</dd>
+    <dt class="area05"><input name="p_area[]" type="checkbox" value="18" id="area05" /></dt>
+    <dd class="area05">東梅田</dd>
+    <dt class="area06"><input name="p_area[]" type="checkbox" value="13" id="area06" /></dt>
+    <dd class="area06">福島・西梅田・中之島</dd>
+  </dl>
+</li>
+<li>
+  <p>中央区</p>
+  <dl>
+    <dt class="area07"><input name="p_area[]" type="checkbox" value="3" id="area07" /></dt>
+    <dd class="area07">京橋・OBP・森ノ宮</dd>
+    <dt class="area08"><input name="p_area[]" type="checkbox" value="17" id="area08" /></dt>
+    <dd class="area08">天満橋・谷町四丁目・谷町六丁目・谷町九丁目・上本町</dd>
+    <dt class="area09"><input name="p_area[]" type="checkbox" value="23" id="area09" /></dt>
+    <dd class="area09">淀屋橋・北浜</dd>
+    <dt class="area10"><input name="p_area[]" type="checkbox" value="22" id="area10" /></dt>
+    <dd class="area10">本町・堺筋本町</dd>
+    <dt class="area11"><input name="p_area[]" type="checkbox" value="10" id="area11" /></dt>
+    <dd class="area11">心斎橋・長堀橋</dd>
+    <dt class="area12"><input name="p_area[]" type="checkbox" value="1" id="area12" /></dt>
+    <dd class="area12">なんば・日本橋</dd>
+  </dl>
+</li>
+<li>
+  <p>西区</p>
+  <dl>
+    <dt class="area13"><input name="p_area[]" type="checkbox" value="20" id="area13" /></dt>
+    <dd class="area13">肥後橋・西本町</dd>
+    <dt class="area14"><input name="p_area[]" type="checkbox" value="7" id="area14" /></dt>
+    <dd class="area14">四ツ橋・堀江</dd>
+  </dl>
+</li>
+<li>
+  <p>天王寺</p>
+  <dl>
+    <dt class="area15"><input name="p_area[]" type="checkbox" value="16,2" id="area15" /></dt>
+    <dd class="area15">天王寺・阿部野橋南</dd>
+  </dl>
+</li>
+<!--<li>
+  <p>京都</p>
+  <dl>
+    <dt class="area16"><input name="p_area[]" type="checkbox" value="4" id="area16" /></dt>
+    <dd class="area16">京都</dd>
+  </dl>
+</li>
+<li>
+  <p>神戸</p>
+  <dl>
+    <dt class="area17"><input name="p_area[]" type="checkbox" value="12" id="area17" /></dt>
+    <dd class="area17">神戸</dd>
+  </dl>
+</li>-->
+<li>
+  <p>他地域</p>
+  <dl>
+    <dt class="area18"><input name="p_area[]" type="checkbox" value="6,8,9,14,51,101" id="area18" /></dt>
+    <dd class="area18">福島・野田エリア、十三エリア、桜川・大囲町エリア、阿部野橋南エリア、千里中央・豊中エリア、住之江区・大正区・城東区・東成区エリア、堺・茨木・高槻・東大阪・枚方・寝屋川エリア</dd>
+  </dl>
+</li>
+</ul>
+<dl class="search_menu">
+<dt>広さ選択</dt>
+<dd>
+<select name="area_tsubo" id="area_tsubo">
+<option selected="selected" value="">▼坪数を選択</option>
+<option value="1">00-20坪</option>
+<option value="2">20-40坪</option>
+<option value="3">40-60坪</option>
+<option value="4">60-80坪</option>
+<option value="5">80-100坪</option>
+<option value="6">100坪以上</option>
+</select>
+</dd>
+<dt>その他条件</dt>
+<dd>
+<select name="train_etc" id="area_etc">
+<option selected="selected" value="">▼こだわり条件を選択</option>
+<option value="az_new_house">新築物件</option>
+<option value="az_soho">SOHOタイプ</option>
+<option value="az_designer">デザイナーズ物件</option>
+<option value="az_large_street">大通り沿い</option>
+<option value="az_one_floor">ワンフロアタイプ</option>
+<option value="az_rent_all">ビル一棟貸</option>
+<option value="az_cafe">1Fカフェ入居中</option>
+<option value="az_room_height">天高2.6ｍ以上</option>
+<option value="az_near_office">官庁・役所近い</option>
+<option value="az_no_guaranty">礼金のみ物件</option>
+<option value="az_convinience">1Fコンビニ入居中</option>
+<option value="az_restrant">社員食堂有</option>
+<option value="az_clinic">クリニック有</option>
+<option value="az_postaloffice">1F銀行・郵便局</option>
+<option value="az_station_direct">駅直結</option>
+<option value="az_corner">角ビル</option>
+<option value="az_retro">レトロ物件</option>
+<option value="az_multi_lines">2路線以上</option>
+<option value="az_symbolic">シンボリックビル</option>
+</select>
+</dd>
+</dl>
+<script type="text/javascript">
+//<![CDATA[
+var map;
+var geocoder;
+var gxmlhttp;
+
+var currentMarkers = new Array();
+
+function area_search_submit () {
+  var elem_form = document.area_search;
+  var elem_select = elem_form.area_tsubo;
+  var elem_select2 = elem_form.area_etc;
+  var tsubo_value = elem_select.options[elem_select.selectedIndex].value;
+
+  var etc_value = elem_select2.options[elem_select2.selectedIndex].value;
+  var elem_etc;
+  if (etc_value != '') {
+    elem_etc = document.getElementById("area_search_" + etc_value);
+  }
+  if (elem_etc) {
+     elem_etc.value = 1;
+  }
+
+  if (tsubo_value == 0) {
+    elem_form.az_tsuboGE.value = 0;
+    elem_form.az_tsuboLE.value = 0;
+  } else if (tsubo_value == 6) {
+    elem_form.az_tsuboGE.value =  (tsubo_value - 1) * 20;
+    elem_form.az_tsuboLE.value =  0;
+  } else {
+    elem_form.az_tsuboGE.value =  (tsubo_value - 1) * 20;
+    elem_form.az_tsuboLE.value =  tsubo_value * 20;
+  }
+
+  elem_form.submit();
+  if (elem_etc) {
+     elem_etc.value = 0;
+  }
+}
+//]]>
+</script>
+<a href="/" class="submit_button" onclick="javascript:area_search_submit(); return false;" onkeypress="javascript:area_search_submit(); return false;">検索開始</a>
+<ul class="check-y"><li><a href="/nfmtb/streetlist/osaka/">町名を選んで検索</a></li></ul>
+</form>
+</div>
+<br />
+<a href="/nfmtb/mapsearch/osaka/"><img src="images/common/banner_googlemap.png" alt="Googleマップから最適なオフィスを検索" /></a>
+<div id="content-picup">
+<h3>こだわりで賃貸事務所を探す</h3>
+<ul>
+<li>
+<img src="images/common/picup_img01.png" alt="身障者対応" width="54" height="53" />
+<dl><dt><a href="/nfmtb/search/area/p27/az_barrierfreeICON/">身障者対応</a></dt><dd><p>身障者対応トイレがある物件</p><a href="/nfmtb/search/area/p27/az_barrierfreeICON/">詳細はこちら</a></dd></dl>
+</li>
+<li>
+<img src="images/common/picup_img02.png" alt="室内トイレ・キッチン" width="54" height="53" />
+<dl><dt><a href="/nfmtb/search/area/p27/az_mini_kitchenICON/az_toiletICON/">室内トイレ・キッチン</a></dt><dd><p>室内に水周りがある物件</p><a href="/nfmtb/search/area/p27/az_mini_kitchenICON/az_toiletICON/">詳細はこちら</a></dd></dl>
+</li>
+<li>
+<img src="images/common/picup_img03.png" alt="角ビル" width="54" height="53" />
+<dl><dt><a href="/nfmtb/search/area/p27/az_cornerICON/">角ビル</a></dt><dd><p>採光良好&nbsp;角ビル物件</p><a href="/nfmtb/search/area/p27/az_cornerICON/">詳細はこちら</a></dd></dl>
+</li>
+<li>
+<img src="images/common/picup_img04.png" alt="SOHOタイプ" width="54" height="53" />
+<dl><dt><a href="/nfmtb/search/area/p27/az_sohoICON/">SOHOタイプ</a></dt><dd><p>SOHO・マンションタイプ物件</p><a href="/nfmtb/search/area/p27/az_sohoICON/">詳細はこちら</a></dd></dl>
+</li>
+<li>
+<img src="images/common/picup_img05.png" alt="官庁・役所近い" width="54" height="53" />
+<dl><dt><a href="/nfmtb/search/area/p27/az_near_officeICON/">官庁・役所近い</a></dt><dd><p>近くが便利、官庁・役所周辺物件</p><a href="/nfmtb/search/area/p27/az_near_officeICON/">詳細はこちら</a></dd></dl>
+</li>
+<li>
+<img src="images/common/picup_img06.png" alt="駅直結" width="54" height="53" />
+<dl><dt><a href="/nfmtb/search/area/p27/az_station_directICON/">駅直結</a></dt><dd><p>雨に濡れない&nbsp;駅直結物件</p><a href="/nfmtb/search/area/p27/az_station_directICON/">詳細はこちら</a></dd></dl>
+</li>
+<li>
+<img src="images/common/picup_img07.png" alt="レトロ物件" width="54" height="53" />
+<dl><dt><a href="/nfmtb/search/area/p27/az_retroICON/">レトロ物件</a></dt><dd><p>お洒落なレトロ物件</p><a href="/nfmtb/search/area/p27/az_retroICON/">詳細はこちら</a></dd></dl>
+</li>
+<li>
+<img src="images/common/picup_img08.png" alt="デザイナーズ物件" width="54" height="53" />
+<dl><dt><a href="/nfmtb/search/area/p27/az_designerICON/">デザイナーズ物件</a></dt><dd><p>最新のデザイナーズ物件</p><a href="/nfmtb/search/area/p27/az_designerICON/">詳細はこちら</a></dd></dl>
+</li>
+<li>
+<img src="images/common/picup_img09.png" alt="1階コンビニ入居中" width="54" height="53" />
+<dl><dt><a href="/nfmtb/search/area/p27/az_convinienceICON/">1階コンビニ入居中</a></dt><dd><p>ちょっとした買い物に1階コンビニ物件</p><a href="/nfmtb/search/area/p27/az_convinienceICON/">詳細はこちら</a></dd></dl>
+</li>
+<li>
+<img src="images/common/picup_img10.png" alt="2路線以上" width="54" height="53" />
+<dl><dt><a href="/nfmtb/search/area/p27/az_multi_linesICON/">2路線以上</a></dt><dd><p>電車移動に便利、2路線利用可能物件</p><a href="/nfmtb/search/area/p27/az_multi_linesICON/">詳細はこちら</a></dd></dl>
+</li>
+<li>
+<img src="images/common/picup_img11.png" alt="貸会議室" width="54" height="53" />
+<dl><dt><a href="/nfmtb/search/area/p27/az_meeting_roomICON/">貸会議室</a></dt><dd><p>貸会議室がある物件</p><a href="/nfmtb/search/area/p27/az_meeting_roomICON/">詳細はこちら</a></dd></dl>
+</li>
+<li>
+<img src="images/common/picup_img12.png" alt="天高2.6m以上" width="54" height="53" />
+<dl><dt><a href="/nfmtb/search/area/p27/az_room_heightICON/">天高2.6m以上</a></dt><dd><p>開放感有り、天高2.6m以上物件</p><a href="/nfmtb/search/area/p27/az_room_heightICON/">詳細はこちら</a></dd></dl>
+</li>
+<li>
+<img src="images/common/picup_img13.png" alt="シンボリックビル" width="54" height="53" />
+<dl><dt><a href="/nfmtb/search/area/p27/az_symbolicICON/">シンボリックビル</a></dt><dd><p>誰でも知ってるシンボリックビル物件</p><a href="/nfmtb/search/area/p27/az_symbolicICON/">詳細はこちら</a></dd></dl>
+</li>
+<li>
+<img src="images/common/picup_img14.png" alt="大通り沿い" width="54" height="53" />
+<dl><dt><a href="/nfmtb/search/area/p27/az_large_streetICON/">大通り沿い</a></dt><dd><p>企業イメージアップ&nbsp;大通り沿い物件</p><a href="/nfmtb/search/area/p27/az_large_streetICON/">詳細はこちら</a></dd></dl>
+</li>
+<li>
+<img src="images/common/picup_img15.png" alt="社員食堂有" width="54" height="53" />
+<dl><dt><a href="/nfmtb/search/area/p27/az_restrantICON/">社員食堂有</a></dt><dd><p>お昼に便利、社員食堂有り物件</p><a href="/nfmtb/search/area/p27/az_restrantICON/">詳細はこちら</a></dd></dl>
+</li>
+<li>
+<img src="images/common/picup_img16.png" alt="耐震補強済" width="54" height="53" />
+<dl><dt><a href="/nfmtb/search/area/p27/az_regist_eathquakeICON/">耐震補強済</a></dt><dd><p>古いビルも安心&nbsp;耐震補強済物件</p><a href="/nfmtb/search/area/p27/az_regist_eathquakeICON/">詳細はこちら</a></dd></dl>
+</li>
+<li>
+<img src="images/common/picup_img17.png" alt="新耐震・免震" width="54" height="53" />
+<dl><dt><a href="/nfmtb/search/area/p27/az_new_regist_eathquakeICON/">新耐震・免震</a></dt><dd><p>地震に強いビル</p><a href="/nfmtb/search/area/p27/az_new_regist_eathquakeICON/">詳細はこちら</a></dd></dl>
+</li>
+<li>
+<img src="images/common/picup_img18.png" alt="ビル一棟貸" width="54" height="53" />
+<dl><dt><a href="/nfmtb/search/area/p27/az_rent_allICON/">ビル一棟貸</a></dt><dd><p>自社ビル使用が出来る一棟貸物件</p><a href="/nfmtb/search/area/p27/az_rent_allICON/">詳細はこちら</a></dd></dl>
+</li>
+<li>
+<img src="images/common/picup_img19.png" alt="クリニックフロア有" width="54" height="53" />
+<dl><dt><a href="/nfmtb/search/area/p27/az_clinicICON/">クリニックフロア有</a></dt><dd><p>あると便利、クリニックフロアがある物件</p><a href="/nfmtb/search/area/p27/az_clinicICON/">詳細はこちら</a></dd></dl>
+</li>
+<li>
+<img src="images/common/picup_img20.png" alt="リフレッシュR" width="54" height="53" />
+<dl><dt><a href="/nfmtb/search/area/p27/az_refresh_roomICON/">リフレッシュR</a></dt><dd><p>分煙の為のリフレッシュコーナー有り物件</p><a href="/nfmtb/search/area/p27/az_refresh_roomICON/">詳細はこちら</a></dd></dl>
+</li>
+<li>
+<img src="images/common/picup_img21.png" alt="礼金のみ物件" width="54" height="53" />
+<dl><dt><a href="/nfmtb/search/area/p27/az_no_guarantyICON/">礼金のみ物件</a></dt><dd><p>初期費用をおさえる、礼金のみの物件</p><a href="/nfmtb/search/area/p27/az_no_guarantyICON/">詳細はこちら</a></dd></dl>
+</li>
+<li>
+<img src="images/common/picup_img22.png" alt="ワンフロアタイプ" width="54" height="53" />
+<dl><dt><a href="/nfmtb/search/area/p27/az_one_floorICON/">ワンフロアタイプ</a></dt><dd><p>気にせず使える、ワンフロアータイプ物件</p><a href="/nfmtb/search/area/p27/az_one_floorICON/">詳細はこちら</a></dd></dl>
+</li>
+<li>
+<img src="images/common/picup_img23.png" alt="1階銀行・郵便局" width="54" height="53" />
+<dl><dt><a href="/nfmtb/search/area/p27/az_postalofficeICON/">1階銀行・郵便局</a></dt><dd><p>利便性とステータス、1階銀行・郵便局物件</p><a href="/nfmtb/search/area/p27/az_postalofficeICON/">詳細はこちら</a></dd></dl>
+</li>
+<li>
+<img src="images/common/picup_img24.png" alt="屋上庭園" width="54" height="53" />
+<dl><dt><a href="/nfmtb/search/area/p27/az_top_gardenICON/">屋上庭園</a></dt><dd><p>休憩のひと時に、屋上庭園有り物件</p><a href="/nfmtb/search/area/p27/az_top_gardenICON/">詳細はこちら</a></dd></dl>
+</li>
+<li>
+<img src="images/common/picup_img25.png" alt="1階カフェ入居" width="54" height="53" />
+<dl><dt><a href="/nfmtb/search/area/p27/az_cafeICON/">1階カフェ入居</a></dt><dd><p>商談や休憩に、1階カフェ入居中物件</p><a href="/nfmtb/search/area/p27/az_cafeICON/">詳細はこちら</a></dd></dl>
+</li>
+<li>
+<img src="images/common/picup_img26.png" alt="駐輪場" width="54" height="53" />
+<dl><dt><a href="/nfmtb/search/area/p27/az_cycle_parkingICON/">駐輪場</a></dt><dd><p>自転車置き場有り物件</p><a href="/nfmtb/search/area/p27/az_cycle_parkingICON/">詳細はこちら</a></dd></dl>
+</li>
+<li>
+<img src="images/common/picup_img27.png" alt="荷物用EV" width="54" height="53" />
+<dl><dt><a href="/nfmtb/search/area/p27/az_ev_baggageICON/">荷物用EV</a></dt><dd><p>搬入の多い業種に最適、荷物用EV有り物件</p><a href="/nfmtb/search/area/p27/az_ev_baggageICON/">詳細はこちら</a></dd></dl>
+</li>
+</ul>
+<div class="clear">&nbsp;</div>
+</div>
+
+<div id="content-push">
+<h3>営業マンが一押しする賃貸事務所</h3>
+<ul>
+    <li>
+      <img src="/prop_image/as/812276-475.jpg" height="130" alt="画像" class="photo" />
+   
+   
+<div>
+<h4>土佐堀、谷町筋面す角ﾋﾞﾙ　駅直結ビル　貸し会議室、ホール有り</h4>
+<dl class="no"><dt>番号</dt><dd>812276</dd></dl>
+<dl class="ad"><dt>住所</dt><dd> 大阪市中央区大手前1-7-31<br />
+天満橋<br />
+
+</dd></dl>
+<p><a href="/nfmtb/detail/812276.html">812276をもっと詳しくみる</a></p>
+</div>
+</li>
+    <li>
+      <img src="/prop_image/as/818481-554.jpg" height="130" alt="画像" class="photo" />
+   
+   
+<div>
+<h4>近隣に公園あり</h4>
+<dl class="no"><dt>番号</dt><dd>818481</dd></dl>
+<dl class="ad"><dt>住所</dt><dd> 大阪市西区京町堀3-6-18<br />
+阿波座(徒歩4分分)<br />
+
+</dd></dl>
+<p><a href="/nfmtb/detail/818481.html">818481をもっと詳しくみる</a></p>
+</div>
+</li>
+    <li>
+      <img src="/prop_image/as/820522-367.jpg" height="130" alt="画像" class="photo" />
+   
+   
+<div>
+<h4>貸会議室あり</h4>
+<dl class="no"><dt>番号</dt><dd>820522</dd></dl>
+<dl class="ad"><dt>住所</dt><dd> 大阪市中央区日本橋1-17-17<br />
+日本橋・近鉄日本橋(徒歩1分分)<br />
+(徒歩1分分)
+</dd></dl>
+<p><a href="/nfmtb/detail/820522.html">820522をもっと詳しくみる</a></p>
+</div>
+</li>
+    <li>
+      <img src="/prop_image/as/815628-475.jpg" height="130" alt="画像" class="photo" />
+   
+   
+<div>
+<h4>自然採光の良い明るい室内です。</h4>
+<dl class="no"><dt>番号</dt><dd>815628</dd></dl>
+<dl class="ad"><dt>住所</dt><dd> 大阪市中央区淡路町4-4-13<br />
+淀屋橋<br />
+
+</dd></dl>
+<p><a href="/nfmtb/detail/815628.html">815628をもっと詳しくみる</a></p>
+</div>
+</li>
+    <li>
+      <img src="/prop_image/as/809417-890.jpg" height="130" alt="画像" class="photo" />
+   
+   
+<div>
+<h4>堺筋面す　5階フロア、フルリニューアル</h4>
+<dl class="no"><dt>番号</dt><dd>809417</dd></dl>
+<dl class="ad"><dt>住所</dt><dd> 大阪市中央区南船場2-3-6<br />
+長堀橋(徒歩1分分)<br />
+
+</dd></dl>
+<p><a href="/nfmtb/detail/809417.html">809417をもっと詳しくみる</a></p>
+</div>
+</li>
+    <li>
+      <img src="/prop_image/as/793466-330.jpg" height="130" alt="画像" class="photo" />
+   
+   
+<div>
+<h4>天井高2.7m</h4>
+<dl class="no"><dt>番号</dt><dd>793466</dd></dl>
+<dl class="ad"><dt>住所</dt><dd> 大阪市西区南堀江1-1-14<br />
+四ツ橋<br />
+
+</dd></dl>
+<p><a href="/nfmtb/detail/793466.html">793466をもっと詳しくみる</a></p>
+</div>
+</li>
+    
+</ul>
+<div class="clear">&nbsp;</div>
+</div>
+
+</div>
+<div class="whats">
+<h5>最新ニュース＆トピックス</h5>
+
+<p><font color="red" >初期費用0円</font>の『オフィス開業・移転パック』を始めました！
+詳しくは<A HREF="http://www.office-chintai.jp/office-pack.html">コチラ</A></p>
+<p><font color="red" >『新築物件特集』</font>に<A HREF="http://www.office-chintai.jp/13bukken/20119.html">新大阪丸ビル別館</A>と<A HREF="http://www.office-chintai.jp/13bukken/201111.html">コフレ梅田</A> を追加しました！</p>
+
+<p><span>2014.8.21</span> 公開オフィス情報を更新致しました </p>
+<p><span>2014.8.7</span> 公開オフィス情報を更新致しました </p>
+<p><span>2014.7.31</span> 公開オフィス情報を更新致しました </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+</div>
+<div id="side">
+<div id="kensu">
+<h4>本日の公開オフィス情報</h4>
+<dl><dt>最終更新日</dt><dd><span class="c-red">2014</span>年<span class="c-red">8</span>月<span class="c-red">21</span>日</dd></dl>
+<dl><dt>掲載物件総数</dt><dd><span class="c-green">8226</span>件</dd></dl>
+</div>
+<a href="http://www.office-chintai.jp/kobe/"><img src="/images/common/kobe_banner.png" alt="神戸オフィスサーチ" /></a>
+<a href="http://www.office-chintai.jp/kyoto/"><img src="/images/common/kyoto_banner.png" alt="京都オフィスサーチ" /></a>
+<a href="/malemaga.html"><img src="http://www.office-chintai.jp/bn_malemaga03.png" alt="メルマガ会員募集中" /></a>
+<a href="/office-pack.html"><img src="http://www.office-chintai.jp/test2.jpg" alt="初期費用0円" /></a>
+<a href="/cgi/mt/mt-fmtb-search.cgi?BlogID=1&amp;EntryID=180&amp;favarites=1" class="side-btn-listcheck">お気に入りに入れた物件リスト今すぐ確認</a>
+<div id="side-contents">
+<h4>おすすめコンテンツ</h4>
+<ul>
+<li>
+<img src="/images/common/side_contents_img8.png" alt="営業マン日記" width="79" height="76" />
+<dl>
+<dt class="sc8">営業マン日記</dt>
+<dd>スタッフのオフィス見学会</dd>
+</dl>
+<p><a href="/14diary/">詳細はこちら</a></p>
+</li>
+<li><img src="/images/common/side_contents_img2.png" alt="耐震基準物件" width="79" height="76" />
+<dl>
+<dt class="sc2">耐震基準物件</dt>
+<dd>あなたのオフィスは地震に耐えれますか？
+地震被害がオフィスを直撃します！</dd>
+</dl>
+<p><a href="/earthqu.html">詳細はこちら</a></p>
+</li>
+<li><img src="/images/common/side_contents_img3.png" alt="お客様の声" width="79" height="76" />
+<dl>
+<dt class="sc3">お客様の声</dt>
+<dd>移転成功事例！
+移転に大満足のお客様の声</dd>
+</dl>
+<p><a href="/30customer/">詳細はこちら</a></p>
+</li>
+<li><img src="/images/common/side_contents_img4.png" alt="新築ビル" width="79" height="76" />
+<dl>
+<dt class="sc4">新築ビル</dt>
+<dd>最近のビルは凄いんです！
+売り上げアップは新築ビルから！</dd>
+</dl>
+<p><a href="/13bukken/">詳細はこちら</a></p>
+</li>
+<li><img src="/images/common/side_contents_img5.png" alt="移転にかかるマネー" width="79" height="76" />
+<dl>
+<dt class="sc5">移転にかかるマネー</dt>
+<dd>いくら必要？？
+移転にかかるマネーの大研究</dd>
+</dl>
+<p><a href="http://www.office-chintai.jp/post_9.html">詳細はこちら</a></p>
+</li>
+<li><img src="/images/common/side_contents_img6.png" alt="選びのポイント" width="79" height="76" />
+<dl>
+<dt class="sc6">選びのポイント</dt>
+<dd>必見！
+初めてのオフィス選びのポイント！</dd>
+</dl>
+<p><a href="http://www.office-chintai.jp/post_7.html">詳細はこちら</a></p>
+</li>
+<li><img src="/images/common/side_contents_img7.png" alt="不動産業者選びのコツ" width="79" height="76" />
+<dl>
+<dt class="sc7">不動産業者選びのコツ</dt>
+<dd>失敗しない不動産業者選びのコツ
+大公開！</dd>
+</dl>
+<p><a href="/post_6.html">詳細はこちら</a></p><div class="clear"><br /></div>
+</li>
+<li><img src="/images/common/side_contents_img9.png" alt="レンタルオフィス物件" width="79" height="76" />
+<dl>
+<dt class="sc9">レンタルオフィス物件</dt>
+<dd>賃貸オフィスとどう違うの？
+レンタルオフィスの長所と短所</dd>
+</dl>
+<p><a href="/16rental/">詳細はこちら</a></p><div class="clear"><br /></div>
+</li>
+<li><img src="/images/common/side_contents_img10.png" alt="ご契約実績" width="79" height="76" />
+<dl>
+<dt class="sc10">ご契約実績</dt>
+<dd>これまでご契約頂いた会社様を一部ご紹介いたします。</dd>
+</dl>
+<p><a href="/17client/">詳細はこちら</a></p><div class="clear"><br /></div>
+</li>
+<li><img src="/images/common/side_contents_img11.png" alt="オフィス仲介実績" width="79" height="76" />
+<dl>
+<dt class="sc11">オフィス仲介実績</dt>
+<dd>これまで仲介させて頂いたビルを一部ご紹介します。</dd>
+</dl>
+<p><a href="/18jisseki/">詳細はこちら</a></p><div class="clear"><br /></div>
+</li>
+<li><img src="/images/common/side_contents_img12.png" alt="お取引先" width="79" height="76" />
+<dl>
+<dt class="sc12">お取引先</dt>
+<dd>弊社のお取引先を一部ご紹介します。</dd>
+</dl>
+<p><a href="/19business/">詳細はこちら</a></p><div class="clear"><br /></div>
+</li>
+</ul>
+</div>
+<div id="side-about">
+<h4>オフィスサーチについて</h4>
+<ul>
+<li class="sa4"><a href="/35company/">運営会社</a></li>
+</ul>
+</div>
+<div id="side-info">
+<h4>オフィスお役立ち情報</h4>
+<ul>
+<li><a href="/pdf/step01.pdf" target="new" rel="nofollow">移転計画(PDF)</a></li>
+<li><a href="/pdf/step02.pdf" target="new" rel="nofollow">貸事務所選定(PDF)</a></li>
+<li><a href="/pdf/step03.pdf" target="new" rel="nofollow">契約準備・契約(PDF)</a></li>
+<li><a href="/pdf/step04.pdf" target="new" rel="nofollow">関係各省庁への届出(PDF)</a></li>
+<li><a href="/pdf/step05.pdf" target="new" rel="nofollow">移転準備・移転手続き(PDF)</a></li>
+</ul>
+</div>
+<img src="/omimai4.jpg" alt="image" />
+</div>
+<br class="clear" />
+<div class="sidemenu">
+<ul>
+<li class="sm-01"><a href="http://www.office-chintai.jp/">HOME</a></li>
+<li class="sm-02"><a href="http://www.office-chintai.jp/13bukken/">新築物件特集</a></li>
+<li class="sm-03"><a href="http://www.office-chintai.jp/15faq/">よくある質問</a></li>
+<li class="sm-04"><a href="http://www.office-chintai.jp/20order-step/">ご契約までの流れ</a></li>
+<li class="sm-05"><a href="http://www.office-chintai.jp/30customer/">お客様の声</a></li>
+<li class="sm-06"><a href="http://www.office-chintai.jp/35company/">会社案内</a></li>
+<li class="sm-07"><a href="http://www.office-chintai.jp/10contact/">お問い合せ</a></li>
+</ul>
+</div>
+<div class="topnav topareabtn"><ul><li class="area_kobe"><a href="/kobe/">神戸オフィスサーチ</a></li><li class="area_kyoto"><a href="/kyoto/">京都オフィスサーチ</a></li><li class="area_osaka"><a href="/">大阪オフィスサーチ</a></li></ul></div>
+<div class="btn_check"><a href="/cgi/mt/mt-fmtb-search.cgi?BlogID=1&amp;EntryID=180&amp;favarites=1">お気に入りにいれた物件情報</a></div>
+<address id="email"><a href="http://www.office-chintai.jp/10contact/">お問い合せメールフォームへ</a></address>
+<div id="footer-navi">
+<dl><dt>地域別&nbsp;貸事務所クリックリンク&nbsp;⇒</dt>
+<dd><a href="/nfmtb/search/area/p27/y23/">淀屋橋・北浜</a></dd>
+<dd><a href="/nfmtb/search/area/p27/y22/">本町・堺筋本町</a></dd>
+<dd><a href="/nfmtb/search/area/p27/y10/">心斎橋・長堀橋</a></dd>
+<dd><a href="/nfmtb/search/area/p27/y1/">なんば・日本橋</a></dd>
+<dd><a href="/nfmtb/search/area/p27/y17/">天満橋・谷町・上本町</a></dd>
+<dd><a href="/nfmtb/search/area/p27/y16/">天王寺</a></dd>
+<dd><a href="/nfmtb/search/area/p27/y3/">京橋・ＯＢＰ・森ノ宮</a></dd>
+<dd><a href="/nfmtb/search/area/p27/y15/">中津・梅田・茶屋町</a></dd>
+<dd><a href="/nfmtb/search/area/p27/y18/">東梅田</a></dd>
+<dd><a href="/nfmtb/search/area/p27/y13/">西梅田・中之島</a></dd>
+<dd><a href="/nfmtb/search/area/p27/y19/">南森町・天満・扇町・天六</a></dd>
+<dd><a href="/nfmtb/search/area/p27/y20/">肥後橋・西本町</a></dd>
+<dd><a href="/nfmtb/search/area/p27/y7/">四ツ橋・堀江</a></dd>
+<dd><a href="/nfmtb/search/area/p27/y11/">新大阪・西中島・東三国</a></dd>
+<dd><a href="/nfmtb/search/area/p27/y5/">江坂</a></dd>
+<dd><a href="/nfmtb/search/area/p28/">神戸</a></dd>
+<dd><a href="/nfmtb/search/area/p26/">京都</a></dd>
+<dd><a href="/nfmtb/search/area/p27/y21/">福島・野田</a></dd>
+<dd><a href="/nfmtb/search/area/p27/y9/">十三</a></dd>
+<dd><a href="/nfmtb/search/area/p27/y6/">桜川・大国町</a></dd>
+<dd><a href="/nfmtb/search/area/p27/y2/">阿部野橋南</a></dd>
+<dd><a href="/nfmtb/search/area/p27/y14/">千里中央・豊中</a></dd>
+<dd><a href="/nfmtb/search/area/p27/y8/">住之江区・大正区・城東区・東成区</a></dd>
+<dd><a href="/nfmtb/search/area/p27/y51/">堺・茨木・高槻・東大阪・枚方・寝屋川</a></dd>
+</dl>
+<dl><dt>最寄駅別&nbsp;貸事務所クリックリンク&nbsp;⇒</dt>
+<dd><a href="/nfmtb/search/line/l99618/s1160213/">新大阪</a></dd>
+<dd><a href="/nfmtb/search/line/l99620/s1160214/">北新地・大阪・東梅田・梅田・西梅田</a></dd>
+<dd><a href="/nfmtb/search/line/l99648/s1160313/">三ノ宮・三宮・三宮・花時計前</a></dd>
+<dd><a href="/nfmtb/search/line/l99630/s1160314/">元町</a></dd>
+<dd><a href="/nfmtb/search/line/l99647/s1160315/">ハーバーランド・神戸</a></dd>
+<dd><a href="/nfmtb/search/line/l99628/s1160719/">大阪阿部野橋・天王寺・天王寺駅前</a></dd>
+<dd><a href="/nfmtb/search/line/l32007/s1160722/">難波・ＪＲ難波</a></dd>
+<dd><a href="/nfmtb/search/line/l99624/s1161724/">京橋</a></dd>
+<dd><a href="/nfmtb/search/line/l99622/s1162308/">玉川・野田</a></dd>
+<dd><a href="/nfmtb/search/line/l35001/s1162309/">新福島・福島</a></dd>
+<dd><a href="/nfmtb/search/line/l99623/s1162311/">天満・扇町</a></dd>
+<dd><a href="/nfmtb/search/line/l11623/s1162312/">桜ノ宮</a></dd>
+<dd><a href="/nfmtb/search/line/l11623/s1162314/">大阪城公園</a></dd>
+<dd><a href="/nfmtb/search/line/l99624/s1162315/">森ノ宮</a></dd>
+<dd><a href="/nfmtb/search/line/l99624/s1162316/">玉造</a></dd>
+<dd><a href="/nfmtb/search/line/l11625/s1162502/">大阪城北詰</a></dd>
+<dd><a href="/nfmtb/search/line/l99623/s1162503/">南森町・大阪天満宮</a></dd>
+<dd><a href="/nfmtb/search/line/l11625/s1162506/">海老江</a></dd>
+<dd><a href="/nfmtb/search/line/l11626/s1162609/">堺市</a></dd>
+<dd><a href="/nfmtb/search/line/l99622/s3100101/">なんば・近鉄難波</a></dd>
+<dd><a href="/nfmtb/search/line/l99623/s3100102/">日本橋・近鉄日本橋</a></dd>
+<dd><a href="/nfmtb/search/line/l31005/s3100103/">上本町</a></dd>
+<dd><a href="/nfmtb/search/line/l99611/s3300101/">三条・三条京阪</a></dd>
+<dd><a href="/nfmtb/search/line/l34003/s3300102/">四条・河原町</a></dd>
+<dd><a href="/nfmtb/search/line/l33001/s3300103/">五条</a></dd>
+<dd><a href="/nfmtb/search/line/l33001/s3300104/">七条</a></dd>
+<dd><a href="/nfmtb/search/line/l99623/s3300139/">北浜</a></dd>
+<dd><a href="/nfmtb/search/line/l99618/s3300140/">淀屋橋</a></dd>
+<dd><a href="/nfmtb/search/line/l33008/s3300141/">なにわ橋</a></dd>
+<dd><a href="/nfmtb/search/line/l33008/s3300142/">大江橋</a></dd>
+<dd><a href="/nfmtb/search/line/l33008/s3300143/">渡辺橋</a></dd>
+<dd><a href="/nfmtb/search/line/l33008/s3300144/">中之島</a></dd>
+<dd><a href="/nfmtb/search/line/l34002/s3400102/">中津</a></dd>
+<dd><a href="/nfmtb/search/line/l99610/s3400302/">四条・烏丸</a></dd>
+<dd><a href="/nfmtb/search/line/l99618/s3400324/">南方・西中島南方</a></dd>
+<dd><a href="/nfmtb/search/line/l99623/s3400811/">天神橋筋六丁目</a></dd>
+<dd><a href="/nfmtb/search/line/l99622/s3500103/">野田・野田阪神</a></dd>
+<dd><a href="/nfmtb/search/line/l11629/s1160303/">尼崎</a></dd>
+<dd><a href="/nfmtb/search/line/l99611/s9961008/">烏丸御池</a></dd>
+<dd><a href="/nfmtb/search/line/l99618/s9961404/">江坂</a></dd>
+<dd><a href="/nfmtb/search/line/l99618/s9961802/">東三国</a></dd>
+<dd><a href="/nfmtb/search/line/l34002/s3400102/">中津</a></dd>
+<dd><a href="/nfmtb/search/line/l99621/s9961808/">本町</a></dd>
+<dd><a href="/nfmtb/search/line/l99624/s9961809/">心斎橋</a></dd>
+<dd><a href="/nfmtb/search/line/l99620/s9961811/">大国町</a></dd>
+<dd><a href="/nfmtb/search/line/l99619/s9961907/">都島</a></dd>
+<dd><a href="/nfmtb/search/line/l99619/s9961909/">中崎町</a></dd>
+<dd><a href="/nfmtb/search/line/l99621/s9961913/">谷町四丁目</a></dd>
+<dd><a href="/nfmtb/search/line/l99624/s9961914/">谷町六丁目</a></dd>
+<dd><a href="/nfmtb/search/line/l99622/s9961915/">谷町九丁目</a></dd>
+<dd><a href="/nfmtb/search/line/l99628/s9961918/">阿倍野</a></dd>
+<dd><a href="/nfmtb/search/line/l99620/s9962002/">肥後橋</a></dd>
+<dd><a href="/nfmtb/search/line/l99620/s9962004/">四ツ橋</a></dd>
+<dd><a href="/nfmtb/search/line/l99622/s9962106/">阿波座</a></dd>
+<dd><a href="/nfmtb/search/line/l99623/s9962108/">堺筋本町</a></dd>
+<dd><a href="/nfmtb/search/line/l99624/s9962204/">西長堀</a></dd>
+<dd><a href="/nfmtb/search/line/l99622/s9962205/">桜川</a></dd>
+<dd><a href="/nfmtb/search/line/l99624/s9962306/">長堀橋</a></dd>
+<dd><a href="/nfmtb/search/line/l99624/s9962404/">西大橋</a></dd>
+<dd><a href="/nfmtb/search/line/l99624/s9962407/">松屋町</a></dd>
+<dd><a href="/nfmtb/search/line/l99624/s9962411/">大阪ビジネスパーク</a></dd>
+<dd><a href="http://azbeauty123.com/"  target="_blank">AZビューティー official shop</a></dd>
+</dl>
+<div class="clear">&nbsp;</div>
+</div>
+
+</div>
+<div id="footer">
+<div id="footer-box"><a href="http://www.office-chintai.jp/"><img src="http://www.office-chintai.jp/footer_banner.gif" alt="ご要望の貸事務所・賃貸オフィスは大阪オフィスサーチ" width="170" height="27" /></a>
+<h3>&copy; 2007-2012 <a href="http://www.office-chintai.jp/">賃貸事務所 大阪</a>・<a href="http://www.office-chintai.jp/">賃貸オフィス 大阪</a>・<a href="http://www.office-chintai.jp/">貸事務所 大阪</a>は大阪オフィスサーチ</h3>
+<p><a href="http://www.az-buil.com/" target="new">貸事務所（大阪）ならアズビルマネジメント</a>｜ビジネスブログのMovableType（MT）テンプレートでサイト制作するなら株式会社グリーンツリーです。</p></div>
+
+
+</div>
+<script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="xmlhttprequest.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-3260504-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+
+<!-- Google Code for Top&#35370;&#21839; Remarketing List -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 983616051;
+var google_conversion_language = "en";
+var google_conversion_format = "3";
+var google_conversion_color = "666666";
+var google_conversion_label = "KFa7CK20pgMQs5SD1QM";
+var google_conversion_value = 0;
+/* ]]> */
+</script>
+<script type="text/javascript" src="http://www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="http://www.googleadservices.com/pagead/conversion/983616051/?label=KFa7CK20pgMQs5SD1QM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+
+</body>
+</html>

@@ -1,0 +1,1906 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- <meta http-equiv="X-UA-Compatible" content="IE=10">  -->
+        <meta http-equiv="content-language" content="ja">
+
+        <title>攻殻機動隊 REALIZE PROJECT</title>
+
+        <meta name="description" CONTENT="攻殻機動隊 REALIZE PROJECT 公式サイト。日本の「夢」と「英知」を結集した、かつてないスケールのプロジェクトが始まります。">
+        <meta name="keywords" CONTENT="攻殻機動隊,REALIZE PROJECT,ARISE,GHOST IN THE SHELL,士郎正宗,リアライズプロジェクト">
+
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+
+        <link rel="apple-touch-icon" sizes="57x57" href="/img/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/img/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/img/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/img/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/img/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/img/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="/img/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="/img/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+        <link rel="manifest" href="/img/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="/img/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+
+
+        <!-- for facebook -->
+        <meta property="og:title" content="攻殻機動隊 REALIZE PROJECT" />
+        <meta property="og:type" content="article" />
+        <meta property="og:description" content="攻殻機動隊 REALIZE PROJECT 公式サイト。日本の「夢」と「英知」を結集した、かつてないスケールのプロジェクト。" />
+        <meta property="og:url" content="http://www.realize-project.jp/" />
+        <meta property="og:image" content="http://www.realize-project.jp/img/ogp.png" />
+        <meta property="og:site_name" content="攻殻機動隊 REALIZE PROJECT" />
+        <meta property="og:locale" content="ja_JP">
+
+        <!-- twitter -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="攻殻機動隊 REALIZE PROJECT">
+        <meta name="twitter:description" content="攻殻機動隊 REALIZE PROJECT 公式サイト。日本の「夢」と「英知」を結集した、かつてないスケールのプロジェクト。">
+        <meta name="twitter:image" content="http://www.realize-project.jp/img/ogp.png">
+
+        <link rel="stylesheet" href="http://www.realize-project.jp/wp-content/themes/1.0/css/normalize.css">
+        <link rel="stylesheet" href="http://www.realize-project.jp/wp-content/themes/1.0/css/main.css">
+        <link rel="stylesheet" href="http://www.realize-project.jp/wp-content/themes/1.0/css/style.css">
+        <link rel="stylesheet" href="http://www.realize-project.jp/wp-content/themes/1.0/css/menu_bar.css">
+        <link rel="stylesheet" href="http://www.realize-project.jp/wp-content/themes/1.0/css/jquery.bxslider.css">
+
+        <link rel="stylesheet" href="http://www.realize-project.jp/wp-content/themes/1.0/js/photoswipe/photoswipe.css"/>
+        <link rel="stylesheet" href="http://www.realize-project.jp/wp-content/themes/1.0/js/photoswipe/default-skin/default-skin.css"/>
+
+        <script src="http://www.realize-project.jp/wp-content/themes/1.0/js/vendor/modernizr-2.8.3.min.js"></script>
+        <link href='http://fonts.googleapis.com/css?family=Exo+2:200,400,500' rel='stylesheet' type='text/css'>
+
+         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+         <script src="http://www.realize-project.jp/wp-content/themes/1.0/js/jquery.lazyload.min.js"></script>
+
+
+
+         <script type="x-shader/x-vertex" id="p_vertexshader">
+
+                uniform float amplitude;
+                attribute float size;
+                attribute vec3 customColor;
+
+                varying vec3 vColor;
+
+                void main() {
+
+                vColor = customColor;
+
+                vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+
+                //gl_PointSize = size;
+                gl_PointSize = size * ( 300.0 / length( mvPosition.xyz ) );
+
+                gl_Position = projectionMatrix * mvPosition;
+
+                }
+
+            </script>
+
+            <script type="x-shader/x-fragment" id="p_fragmentshader">
+
+                uniform vec3 color;
+                uniform sampler2D texture;
+
+                varying vec3 vColor;
+
+                void main() {
+
+                gl_FragColor = vec4( color * vColor, 1.0 );
+                gl_FragColor = gl_FragColor * texture2D( texture, gl_PointCoord );
+
+                }
+
+            </script>
+
+            <script type="x-shader/x-vertex" id="sky_vertexShader">
+
+                varying vec3 vWorldPosition;
+
+                void main() {
+
+                vec4 worldPosition = modelMatrix * vec4( position, 1.0 );
+                vWorldPosition = worldPosition.xyz;
+
+                gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+
+                }
+
+            </script>
+            <script type="x-shader/x-fragment" id="sky_fragmentShader">
+
+                uniform vec3 topColor;
+                uniform vec3 bottomColor;
+                uniform float offset;
+                uniform float exponent;
+
+                varying vec3 vWorldPosition;
+
+                void main() {
+
+                float h = normalize( vWorldPosition + offset ).y;
+                gl_FragColor = vec4( mix( bottomColor, topColor, max( pow( h, exponent ), 0.0 ) ), 1.0 );
+
+                }
+            </script>
+
+        <script type="text/javascript">var templatePath = "http://www.realize-project.jp/wp-content/themes/1.0";</script>
+    </head>
+    <body class="body">
+
+        <script>
+          window.fbAsyncInit = function() {
+            FB.init({
+              appId      : '793462330771229',
+              xfbml      : true,
+              version    : 'v2.3'
+            });
+          };
+
+          (function(d, s, id){
+             var js, fjs = d.getElementsByTagName(s)[0];
+             if (d.getElementById(id)) {return;}
+             js = d.createElement(s); js.id = id;
+             // js.src = "//connect.facebook.net/en_US/sdk.js";
+             js.src = "//connect.facebook.net/ja_JP/sdk.js";
+
+             fjs.parentNode.insertBefore(js, fjs);
+           }(document, 'script', 'facebook-jssdk'));
+        </script>
+
+        <div id="loader_set">
+            <div class="loader loader-set"></div>
+            <div class="loader2 loader-set2"></div>
+        </div>
+
+        <div id="background"></div>
+
+
+        <!--WebGL Checker-->
+        <canvas id="checker_webgl"></canvas>
+        <div id="container_webgl">
+            <!--WebGL here!!-->
+        </div>
+
+
+        <!-- WebGL_or_Normal  -->
+        <div id="select_mode" class="pc">
+
+            <div class="normal btn_wrapper">
+                <div class="btn">
+                    <div class="bd">
+                            <div class="bdT"></div>
+                            <div class="bdB"></div>
+                            <div class="bdR"></div>
+                            <div class="bdL"></div>
+                        </div>
+                    <p>Normal_Mode</p>
+                </div>
+                <p class="info">
+                    通常のhtmlでのサイト表示になります。<br>
+                    画面下部のWebGLボタンより表示モードを切り替え可能です。<br>
+                </p>
+            </div>
+
+            <div class="webgl btn_wrapper">
+                <div class="btn">
+                    <div class="bd">
+                            <div class="bdT"></div>
+                            <div class="bdB"></div>
+                            <div class="bdR"></div>
+                            <div class="bdL"></div>
+                        </div>
+                    <p>WebGL_Mode</p>
+                </div>
+                <p class="info">
+                    3DCGで表現された電脳空間内でサイトをお楽しみいただけます。<br>
+                    ※お使いのブラウザ、またはバージョンによっては正常に表示されない場合があります。
+                    その際はお手数ですが、画面下部のWebGLボタンより表示モードを切り替えて閲覧ください。
+                </p>
+            </div>
+
+        </div>
+
+        <!-- Add your site or application content here -->
+        <div id="wrapper">
+
+			<div id="menu_outer">
+            <div id="logo">
+                <a href="/"><h1><object type="image/svg+xml" data="http://www.realize-project.jp/wp-content/themes/1.0/img/logo.svg"></object></h1></a>
+            </div>
+
+            <!--SNS-->
+            <!--
+            <ul id="snsList">
+
+                <li id="snsF"><div class="snsFv"><a href="javascript:void(0);"><img src="http://www.realize-project.jp/wp-content/themes/1.0/img/icon_sns_f.png" width="22" height="20"></a><div class="popSns" style="display: none;"><div class="popSnsIn"><iframe src="//www.facebook.com/v2.0/plugins/like.php?href=http%3a%2f%2fwww%2erealize%2dprojet%2ejp%2f&amp;send=false&amp;layout=button_count&amp;width=120&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;locale=en_US" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:120px; height:21px;" allowtransparency="true"></iframe></div></div></div></li>
+                <li id="snsT"><div class="snsFv"><a href="javascript:void(0);"><img src="http://www.realize-project.jp/wp-content/themes/1.0/img/icon_sns_t.png" width="22" height="20"></a><div class="popSns" style="display: none;"><div class="popSnsIn"><iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="http://platform.twitter.com/widgets/tweet_button.b169aa788731255dd55f1bb243b660e1.en.html#_=1431604001016&amp;count=horizontal&amp;dnt=false&amp;hashtags=%E3%82%B9%E3%83%88%E3%83%A9%E3%82%A4%E3%83%89%E9%9B%86%E4%B8%AD&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http%3A%2F%2Frealize-project.jp%2F&amp;size=m&amp;text=%E3%80%8C%E9%9B%86%E4%B8%AD%E5%8A%9B%E3%82%92%E6%8C%81%E7%B6%9A%E3%81%9B%E3%82%88%E3%80%8D%E3%82%B9%E3%83%88%E3%83%A9%E3%82%A4%E3%83%89%E3%81%AE%E3%83%9B%E3%83%BC%E3%83%A0%E3%83%9A%E3%83%BC%E3%82%B8%E3%80%82&amp;url=http%3A%2F%2Fwww.realize-project.jp%2F" class="twitter-share-button twitter-tweet-button twitter-share-button twitter-count-horizontal" title="Twitter Tweet Button" data-twttr-rendered="true" style="position: static; visibility: visible; width: 87px; height: 20px;"></iframe><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div></div></div></li>
+                <li id="snsM"><div class="snsFv"><a href="javascript:void(0);"><img src="http://www.realize-project.jp/wp-content/themes/1.0/img/icon_sns_m.png" width="22" height="20"></a><div class="popSns"><div class="popSnsIn">
+                    <div data-plugins-type="mixi-favorite" data-service-key="92462ce28460d103ed25a831964592ce6d29db12" data-size="medium" data-href="" data-show-faces="true" data-show-count="true" data-show-comment="true" data-width=""></div><script type="text/javascript">(function(d) {var s = d.createElement('script'); s.type = 'text/javascript'; s.async = true;s.src = '//static.mixi.jp/js/plugins.js#lang=ja';d.getElementsByTagName('head')[0].appendChild(s);})(document);</script>                    </div></div></div>
+                </li>
+                <li id="rss"><div class="snsFv"><a href="http://www.realize-project.jp/wp-content/themes/1.0/special/feed/" target="_blank"><img src="http://www.realize-project.jp/wp-content/themes/1.0/img/icon_rss.png" width="22" height="20"></a></div></li>
+            </ul>
+             -->
+
+            <header class="header">
+
+                <div id="menu">
+                    <nav>
+                        <ul>
+                            <li class="first"><a href="http://www.realize-project.jp/"><p>TOP</p></a></li>
+                            <li class="seconds"><a href="/about_ghost_in_the_shell/"><p>攻殻機動隊<br class="hidden-xs-block">とは</p></a></li>
+                            <li><a href="/about_realize_project/"><p>REALIZE PROJECT<br class="hidden-xs-block">とは</p></a></li>
+                            <li class="seconds"><a href="/award/" target="_self"><p>THE AWARD</p></a></li>
+                            <li class="seconds"><a href="/projects/"><p>プロジェクト</p></a></li>
+                            <li class="seconds"><a href="/graph/"><p>攻殻グラフ</p></a></li>
+                            <li class="seconds"><a href="/member/"><p>MEMBER</p></a></li>
+                            <li class="seconds"><a href="/contact/"><p>CONTACT</p></a></li>
+                        </ul>
+                    </nav>
+
+                    <ul class="snscount cf">
+                        <li class="top_snscount top_snscount_fb fl"><a class="box_entrysns_fb d_b" href="https://www.facebook.com/sharer.php?u=http://realize-project.jp/&amp;t=攻殻機動隊 REALIZE PROJECT 公式サイト。日本の「夢」と「英知」を結集した、かつてないスケールのプロジェクト。" target="_blank" data-url="[SITE_HTTP_URL]"><img src="http://www.realize-project.jp/wp-content/themes/1.0/img/icon_sns_f.png" width="24">
+                          <!-- <span>0</span> -->
+                        </a></li>
+                        <li class="top_snscount top_snscount_tw fl"><a class="box_entrysns_tw d_b" href="https://twitter.com/share?text=攻殻機動隊 REALIZE PROJECT 公式サイト。日本の「夢」と「英知」を結集した、かつてないスケールのプロジェクト。&amp;hashtags=realize_project&amp;url=http://www.realize-project.jp" target="_blank" data-url="http://www.realize-project.jp"><img src="http://www.realize-project.jp/wp-content/themes/1.0/img/icon_sns_t.png" width="24">
+                          <!-- <span>0</span> -->
+                        </a></li>
+                        <li class="top_snscount top_snscount_rss fl"><a href="http://realize-project.jp/special/feed/" target="_blank"><img src="http://www.realize-project.jp/wp-content/themes/1.0/img/icon_rss.png" width="24"></a></li>
+                    </ul>
+                </div>
+
+                <div id="menu_btn" class="sp">
+                    <a href="#" class="modal-close animation"><i class="line1"></i><i class="line2"></i><i class="line3"></i></a>
+                </div>
+
+            </header>
+</div>
+            <div id="container_wrapper">
+                <div id="container">
+                </div>
+                <div id="container_top">
+                    <!--html pjax here-->
+
+                    <div id="top_news">
+
+                        <h2>SPECIAL</h2>
+                        <p class="info">REALIZE PROJECT独自の取材を展開。様々な角度から「攻殻機動隊」の世界をリアルに実現する可能性を探ります。</p>
+                        <div id="special_wrapper">
+                            <ul class="bxslider">
+
+
+            
+                <li class="news_li">
+            <div class="news_wrapper" id='special6451'>
+
+                <div class="date"><p>
+                    
+                2015<br><span>12/30</span></p></div>
+                <a href="http://www.realize-project.jp/special/award2015-report">
+                    <div class="news_img">
+                        <div class="bd">
+                            <div class="bdT"></div>
+                            <div class="bdB"></div>
+                            <div class="bdR"></div>
+                            <div class="bdL"></div>
+                        </div>
+
+                        <img class="img_fix" src="/share/uploads/report_2015.jpg">
+                        <div class="news_text">
+                            「攻殻の世界をリアライズせよ!」攻殻機動隊REALIZE PROJECT 東京・神戸・福岡大会レポート                        </div>
+                    </div>
+                </a>
+                <div class="snsArea">
+                    <ul class="box_contain cf">
+                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                    </ul>
+                </div>
+
+                 <script type="text/javascript">
+
+                    $(document).ready(function(){
+                       get_share_count('http://www.realize-project.jp/special/award2015-report', 'special6451');
+                    });
+
+                </script>
+
+            </div>
+        </li>
+
+    
+                <li class="news_li">
+            <div class="news_wrapper" id='special6203'>
+
+                <div class="date"><p>
+                    
+                2015<br><span>12/15</span></p></div>
+                <a href="http://www.realize-project.jp/special/nict_inoue02/">
+                    <div class="news_img">
+                        <div class="bd">
+                            <div class="bdT"></div>
+                            <div class="bdB"></div>
+                            <div class="bdR"></div>
+                            <div class="bdL"></div>
+                        </div>
+
+                        <img class="img_fix" src="/share/uploads/special_inoue2.jpg">
+                        <div class="news_text">
+                            SFの世界もセキュリティの世界もデザインの合理性を追求すると六角形になる！？NICTのサイバーセキュリティ研究室 井上室長に聞いた可視化エンジンを作っている意味                        </div>
+                    </div>
+                </a>
+                <div class="snsArea">
+                    <ul class="box_contain cf">
+                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                    </ul>
+                </div>
+
+                 <script type="text/javascript">
+
+                    $(document).ready(function(){
+                       get_share_count('http://www.realize-project.jp/special/nict_inoue02/', 'special6203');
+                    });
+
+                </script>
+
+            </div>
+        </li>
+
+    
+                <li class="news_li">
+            <div class="news_wrapper" id='special5581'>
+
+                <div class="date"><p>
+                    
+                2015<br><span>11/27</span></p></div>
+                <a href="http://www.realize-project.jp/special/nict_inoue01/">
+                    <div class="news_img">
+                        <div class="bd">
+                            <div class="bdT"></div>
+                            <div class="bdB"></div>
+                            <div class="bdR"></div>
+                            <div class="bdL"></div>
+                        </div>
+
+                        <img class="img_fix" src="/share/uploads/special_inoue1-1.png">
+                        <div class="news_text">
+                            IoTデバイスの普及によりサイバー攻撃が増加！？　NICTのサイバーセキュリティ研究室 井上室長に聞いたサイバー攻撃の可視化で見えてくるもの                        </div>
+                    </div>
+                </a>
+                <div class="snsArea">
+                    <ul class="box_contain cf">
+                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                    </ul>
+                </div>
+
+                 <script type="text/javascript">
+
+                    $(document).ready(function(){
+                       get_share_count('http://www.realize-project.jp/special/nict_inoue01/', 'special5581');
+                    });
+
+                </script>
+
+            </div>
+        </li>
+
+    
+                <li class="news_li">
+            <div class="news_wrapper" id='special4622'>
+
+                <div class="date"><p>
+                    
+                2015<br><span>11/05</span></p></div>
+                <a href="http://www.realize-project.jp/special/iwata02/">
+                    <div class="news_img">
+                        <div class="bd">
+                            <div class="bdT"></div>
+                            <div class="bdB"></div>
+                            <div class="bdR"></div>
+                            <div class="bdL"></div>
+                        </div>
+
+                        <img class="img_fix" src="/wp-content/themes/1.0/img/news/special_iwata02.jpg">
+                        <div class="news_text">
+                            研究者がアート活動をする意義「触覚」の第一人者 岩田洋夫教授が説く「魅せ方力」                        </div>
+                    </div>
+                </a>
+                <div class="snsArea">
+                    <ul class="box_contain cf">
+                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                    </ul>
+                </div>
+
+                 <script type="text/javascript">
+
+                    $(document).ready(function(){
+                       get_share_count('http://www.realize-project.jp/special/iwata02/', 'special4622');
+                    });
+
+                </script>
+
+            </div>
+        </li>
+
+    
+                <li class="news_li">
+            <div class="news_wrapper" id='special4609'>
+
+                <div class="date"><p>
+                    
+                2015<br><span>10/25</span></p></div>
+                <a href="http://www.realize-project.jp/special/iwata01/">
+                    <div class="news_img">
+                        <div class="bd">
+                            <div class="bdT"></div>
+                            <div class="bdB"></div>
+                            <div class="bdR"></div>
+                            <div class="bdL"></div>
+                        </div>
+
+                        <img class="img_fix" src="/wp-content/themes/1.0/img/news/special_iwata01.jpg">
+                        <div class="news_text">
+                            バーチャル世界で触覚をつくる！筑波大 岩田洋夫教授が語るハプティックスの最先端                        </div>
+                    </div>
+                </a>
+                <div class="snsArea">
+                    <ul class="box_contain cf">
+                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                    </ul>
+                </div>
+
+                 <script type="text/javascript">
+
+                    $(document).ready(function(){
+                       get_share_count('http://www.realize-project.jp/special/iwata01/', 'special4609');
+                    });
+
+                </script>
+
+            </div>
+        </li>
+
+    
+                <li class="news_li">
+            <div class="news_wrapper" id='special4426'>
+
+                <div class="date"><p>
+                    
+                2015<br><span>10/09</span></p></div>
+                <a href="http://www.realize-project.jp/special/tsukamoto02/">
+                    <div class="news_img">
+                        <div class="bd">
+                            <div class="bdT"></div>
+                            <div class="bdB"></div>
+                            <div class="bdR"></div>
+                            <div class="bdL"></div>
+                        </div>
+
+                        <img class="img_fix" src="/wp-content/themes/1.0/img/news/special_tsukamoto02.jpg">
+                        <div class="news_text">
+                            ウェアラブルデバイスに付随する「錬度」とは？塚本昌彦が語る2029年への視座(後編)                        </div>
+                    </div>
+                </a>
+                <div class="snsArea">
+                    <ul class="box_contain cf">
+                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                    </ul>
+                </div>
+
+                 <script type="text/javascript">
+
+                    $(document).ready(function(){
+                       get_share_count('http://www.realize-project.jp/special/tsukamoto02/', 'special4426');
+                    });
+
+                </script>
+
+            </div>
+        </li>
+
+    
+                <li class="news_li">
+            <div class="news_wrapper" id='special4207'>
+
+                <div class="date"><p>
+                    
+                2015<br><span>10/02</span></p></div>
+                <a href="http://www.realize-project.jp/special/tsukamoto01/">
+                    <div class="news_img">
+                        <div class="bd">
+                            <div class="bdT"></div>
+                            <div class="bdB"></div>
+                            <div class="bdR"></div>
+                            <div class="bdL"></div>
+                        </div>
+
+                        <img class="img_fix" src="/wp-content/themes/1.0/img/news/special_tsukamoto01.jpg">
+                        <div class="news_text">
+                            インプラントの実現は「体内の見える化」から！塚本昌彦が語る2029年への視座(前編)                        </div>
+                    </div>
+                </a>
+                <div class="snsArea">
+                    <ul class="box_contain cf">
+                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                    </ul>
+                </div>
+
+                 <script type="text/javascript">
+
+                    $(document).ready(function(){
+                       get_share_count('http://www.realize-project.jp/special/tsukamoto01/', 'special4207');
+                    });
+
+                </script>
+
+            </div>
+        </li>
+
+            **NODATA**
+    
+                            </ul>
+                        </div>
+                        <div class="base_btn">
+                            <a href="/list-special">
+                                <div class="base_btn_wrapper">
+                                    <div class="bd">
+                                        <div class="bdT"></div>
+                                        <div class="bdB"></div>
+                                        <div class="bdR"></div>
+                                        <div class="bdL"></div>
+                                    </div>
+                                    <p>すべてのSpecialを見る</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div id="top_report">
+                        <h2>Report</h2>
+                        <p class="info">イベントレポートやプロジェクトの情報を掲載。アワードに向けたコンテストやハッカソン、ピッチの進捗情報も掲載予定。</p>
+
+                                                                        
+                        
+                        <article id='report5639'>
+
+                                <div class="bd">
+                                    <div class="bdT"></div>
+                                    <div class="bdB"></div>
+                                    <div class="bdR"></div>
+                                    <div class="bdL"></div>
+                                </div>
+                                <div class="date"><p>
+                                    
+                                2015<br><span>12/27</span></p></div>
+
+                                <a href="http://www.realize-project.jp/report/kobeitfes03/">
+                                    <div class="news_img"><img class="img_fix lazy" src="http://www.realize-project.jp/wp-content/themes/1.0/img/loading_dummy.gif" data-original="/share/uploads/report_kobeitfes03.jpg"></div>
+                                    <div class="news_text">
+                                        「SFや科学は明るい未来のために使わなければいけない」神山監督x塚本教授x井上室長が今と未来を語る攻殻ブレスト（3）                                    </div>
+                                </a>
+
+                                <div class="snsArea">
+                                    <ul class="box_contain cf">
+                                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                                    </ul>
+                                </div>
+                                <script type="text/javascript">
+
+                                    $(document).ready(function(){
+                                       get_share_count('http://www.realize-project.jp/report/kobeitfes03/', 'report5639');
+                                    });
+
+                                </script>
+
+                        </article>
+                        
+                        
+                        <article id='report5626'>
+
+                                <div class="bd">
+                                    <div class="bdT"></div>
+                                    <div class="bdB"></div>
+                                    <div class="bdR"></div>
+                                    <div class="bdL"></div>
+                                </div>
+                                <div class="date"><p>
+                                    
+                                2015<br><span>12/26</span></p></div>
+
+                                <a href="http://www.realize-project.jp/report/kobeitfes02/">
+                                    <div class="news_img"><img class="img_fix lazy" src="http://www.realize-project.jp/wp-content/themes/1.0/img/loading_dummy.gif" data-original="/share/uploads/report_kobeitfes02.jpg"></div>
+                                    <div class="news_text">
+                                        「人工知能は人間よりも経験値を上げていく速度が速い」神山監督x塚本教授x井上室長が今と未来を語る攻殻ブレスト（2）                                    </div>
+                                </a>
+
+                                <div class="snsArea">
+                                    <ul class="box_contain cf">
+                                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                                    </ul>
+                                </div>
+                                <script type="text/javascript">
+
+                                    $(document).ready(function(){
+                                       get_share_count('http://www.realize-project.jp/report/kobeitfes02/', 'report5626');
+                                    });
+
+                                </script>
+
+                        </article>
+                        
+                        
+                        <article id='report5601'>
+
+                                <div class="bd">
+                                    <div class="bdT"></div>
+                                    <div class="bdB"></div>
+                                    <div class="bdR"></div>
+                                    <div class="bdL"></div>
+                                </div>
+                                <div class="date"><p>
+                                    
+                                2015<br><span>12/16</span></p></div>
+
+                                <a href="http://www.realize-project.jp/report/kobeitfes/">
+                                    <div class="news_img"><img class="img_fix lazy" src="http://www.realize-project.jp/wp-content/themes/1.0/img/loading_dummy.gif" data-original="/share/uploads/report_kobeitfes.jpg"></div>
+                                    <div class="news_text">
+                                        「攻殻機動隊 S.A.C.から15年。世界はどう変わったか？」神山監督x塚本教授x井上室長が今と未来を語る攻殻ブレスト（1）                                    </div>
+                                </a>
+
+                                <div class="snsArea">
+                                    <ul class="box_contain cf">
+                                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                                    </ul>
+                                </div>
+                                <script type="text/javascript">
+
+                                    $(document).ready(function(){
+                                       get_share_count('http://www.realize-project.jp/report/kobeitfes/', 'report5601');
+                                    });
+
+                                </script>
+
+                        </article>
+                        
+                        
+                        <article id='report4650'>
+
+                                <div class="bd">
+                                    <div class="bdT"></div>
+                                    <div class="bdB"></div>
+                                    <div class="bdR"></div>
+                                    <div class="bdL"></div>
+                                </div>
+                                <div class="date"><p>
+                                    
+                                2015<br><span>10/16</span></p></div>
+
+                                <a href="http://www.realize-project.jp/report/2015setsumeikai/">
+                                    <div class="news_img"><img class="img_fix lazy" src="http://www.realize-project.jp/wp-content/themes/1.0/img/loading_dummy.gif" data-original="/wp-content/themes/1.0/img/news/report_2015setsumeikai.jpg"></div>
+                                    <div class="news_text">
+                                        「攻殻の世界をリアライズせよ！」攻殻機動隊 REALIZE PROJECT 参加者説明会レポート                                    </div>
+                                </a>
+
+                                <div class="snsArea">
+                                    <ul class="box_contain cf">
+                                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                                    </ul>
+                                </div>
+                                <script type="text/javascript">
+
+                                    $(document).ready(function(){
+                                       get_share_count('http://www.realize-project.jp/report/2015setsumeikai/', 'report4650');
+                                    });
+
+                                </script>
+
+                        </article>
+                                                    **NODATA**
+                        
+                          <div class="base_btn">
+                              <a href="/list-report">
+                                  <div class="base_btn_wrapper">
+                                      <div class="bd">
+                                          <div class="bdT"></div>
+                                          <div class="bdB"></div>
+                                          <div class="bdR"></div>
+                                          <div class="bdL"></div>
+                                      </div>
+                                      <p>Reportリストページへ</p>
+                                  </div>
+                              </a>
+                          </div>
+
+                    </div>
+
+                    <!--
+                    <div id="top_attention">
+                        <div id="attention_area_wrapper">
+                            <div class="bd">
+                                <div class="bdT"></div>
+                                <div class="bdB"></div>
+                                <div class="bdR"></div>
+                                <div class="bdL"></div>
+                            </div>
+                            <a href="/attention"><img class="img_fix" src="http://www.realize-project.jp/wp-content/themes/1.0/img/attention/event01.jpg"></a>
+                        </div>
+                    </div>
+                      -->
+
+
+                    <div id="top_facebook">
+                        <h2>Facebook POST</h2>
+                        <p class="info">REALIZE PROJECTのFacebookページ。公式サイトだけでは紹介しきれない、旬なニュースを配信中。</p>
+                        <div id="fb-root"></div>
+
+                        <div id="fb_wrapper_pc" class="pc">
+
+                           <!--  <div class="fb_post">
+                                <div class="fb-post" data-href="https://www.facebook.com/FacebookDevelopers/posts/492903030860962" data-width="500"><div class="fb-xfbml-parse-ignore"></div></div>
+                            </div>
+                            <div class="fb_post">
+                                <div class="fb-post" data-href="https://www.facebook.com/FacebookDevelopers/posts/492892127528719" data-width="500"><div class="fb-xfbml-parse-ignore"></div></div>
+                            </div> -->
+                        </div>
+                        <div id="fb_wrapper_sp" class="sp">
+                            <!-- <div class="fb_post">
+                                <div class="fb-post" data-href="https://www.facebook.com/FacebookDevelopers/posts/492903030860962" data-width="500"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/FacebookDevelopers/posts/10151471074398553"><p>Be the first to know when we release a new video by subscribing to our official Facebook Developers YouTube channel!  http://www.youtube.com/facebookdevelopers</p>Posted by <a href="https://www.facebook.com/FacebookDevelopers">Facebook Developers</a> on <a href="https://www.facebook.com/FacebookDevelopers/posts/10151471074398553">2013年5月29日</a></blockquote></div></div>
+                            </div>
+                            <div class="fb_post">
+                                <div class="fb-post" data-href="https://www.facebook.com/FacebookDevelopers/posts/492892127528719" data-width="500"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/FacebookDevelopers/posts/10151471074398553"><p>Be the first to know when we release a new video by subscribing to our official Facebook Developers YouTube channel!  http://www.youtube.com/facebookdevelopers</p>Posted by <a href="https://www.facebook.com/FacebookDevelopers">Facebook Developers</a> on <a href="https://www.facebook.com/FacebookDevelopers/posts/10151471074398553">2013年5月29日</a></blockquote></div></div>
+                            </div> -->
+                        </div>
+
+                        <div class="base_btn">
+                            <a href="https://www.facebook.com/G.I.S.realize.project" target="_blank">
+                                <div class="base_btn_wrapper">
+                                    <div class="bd">
+                                        <div class="bdT"></div>
+                                        <div class="bdB"></div>
+                                        <div class="bdR"></div>
+                                        <div class="bdL"></div>
+                                    </div>
+                                    <p class="blue">Facebookページへ</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+
+
+                    <div id="top_article">
+                        <h2>Realize POST</h2>
+                        <p class="info">様々なニュース系サイトからREALIZE PROJECTがよりすぐった「リアライズ」な情報を随時配信中。</p>
+
+            
+                <article id='curation7013'>
+                <div class="bd">
+                    <div class="bdT"></div>
+                    <div class="bdB"></div>
+                    <div class="bdR"></div>
+                    <div class="bdL"></div>
+                </div>
+
+                <div class="date"><p>2016<br><span>01/18</span></p></div>
+                <a href="http://www.realize-project.jp/curation/engadget-japan-616bc4e712e923bf7245c74388f7c176/">
+                    <div class="news_img"><img class="img_fix lazy" src="http://www.realize-project.jp/wp-content/themes/1.0/img/loading_dummy.gif" data-original="http://o.aolcdn.com/hss/storage/midas/667707e195ba3d941ef2ab06489d09d3/203274402/101.jpg"></div>
+                    <div class="news_text">
+                        プライバシーを保護したままビッグデータに活用、 NICTが暗号化されたデータを分類できる解析技術を開発                    </div>
+                </a>
+
+                <div class="snsArea">
+                    <ul class="box_contain cf">
+                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                    </ul>
+                </div>
+
+                <script type="text/javascript">
+
+                    $(document).ready(function(){
+                       get_share_count('http://japanese.engadget.com/2016/01/18/nict/', 'curation7013');
+                    });
+
+                </script>
+
+        </article>
+
+        
+                <article id='curation6906'>
+                <div class="bd">
+                    <div class="bdT"></div>
+                    <div class="bdB"></div>
+                    <div class="bdR"></div>
+                    <div class="bdL"></div>
+                </div>
+
+                <div class="date"><p>2016<br><span>01/18</span></p></div>
+                <a href="http://www.realize-project.jp/curation/engadget-japan-a62d79509754944a4a969f470f1aaf0e/">
+                    <div class="news_img"><img class="img_fix lazy" src="http://www.realize-project.jp/wp-content/themes/1.0/img/loading_dummy.gif" data-original="http://o.aolcdn.com/hss/storage/midas/4569cfcbe34ed82efaa9ee76e7047199/203274061/main.jpg"></div>
+                    <div class="news_text">
+                        泳ぎ下手な精子を助けるマイクロロボ・南極大陸に世界最大級の峡谷・家事をこなす人型ロボット現る(画像ピックアップ15)                    </div>
+                </a>
+
+                <div class="snsArea">
+                    <ul class="box_contain cf">
+                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                    </ul>
+                </div>
+
+                <script type="text/javascript">
+
+                    $(document).ready(function(){
+                       get_share_count('http://japanese.engadget.com/2016/01/17/15/', 'curation6906');
+                    });
+
+                </script>
+
+        </article>
+
+        
+                <article id='curation6875'>
+                <div class="bd">
+                    <div class="bdT"></div>
+                    <div class="bdB"></div>
+                    <div class="bdR"></div>
+                    <div class="bdL"></div>
+                </div>
+
+                <div class="date"><p>2016<br><span>01/14</span></p></div>
+                <a href="http://www.realize-project.jp/curation/engadget-japan-57d0fc3fa2c762e31ad5683de189850f/">
+                    <div class="news_img"><img class="img_fix lazy" src="http://www.realize-project.jp/wp-content/themes/1.0/img/loading_dummy.gif" data-original="http://o.aolcdn.com/hss/storage/midas/f3ef7216725d66544068fa891e37bb9f/203259904/top.png"></div>
+                    <div class="news_text">
+                        人が乗れるドローン『184』を中国EHangが発表。目的地まで平均時速100kmで自動運転                    </div>
+                </a>
+
+                <div class="snsArea">
+                    <ul class="box_contain cf">
+                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                    </ul>
+                </div>
+
+                <script type="text/javascript">
+
+                    $(document).ready(function(){
+                       get_share_count('http://japanese.engadget.com/2016/01/14/184-ehang-100km/', 'curation6875');
+                    });
+
+                </script>
+
+        </article>
+
+        
+                <article id='curation6849'>
+                <div class="bd">
+                    <div class="bdT"></div>
+                    <div class="bdB"></div>
+                    <div class="bdR"></div>
+                    <div class="bdL"></div>
+                </div>
+
+                <div class="date"><p>2016<br><span>01/13</span></p></div>
+                <a href="http://www.realize-project.jp/curation/engadget-japan-dd3d585bbdbca14bdbe100f09dbb01e3/">
+                    <div class="news_img"><img class="img_fix lazy" src="http://www.realize-project.jp/wp-content/themes/1.0/img/loading_dummy.gif" data-original="http://o.aolcdn.com/hss/storage/midas/36e4b7f7e2beda75e681a05440e26b73/203253879/04.jpg"></div>
+                    <div class="news_text">
+                        攻殻機動隊の世界を現実化！モノづくりイベントが渋谷ヒカリエで2月11日開催。REALIZE PROJECT the AWARD                    </div>
+                </a>
+
+                <div class="snsArea">
+                    <ul class="box_contain cf">
+                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                    </ul>
+                </div>
+
+                <script type="text/javascript">
+
+                    $(document).ready(function(){
+                       get_share_count('http://japanese.engadget.com/2016/01/13/the-award-2-11-realize-project/', 'curation6849');
+                    });
+
+                </script>
+
+        </article>
+
+        
+                <article id='curation6725'>
+                <div class="bd">
+                    <div class="bdT"></div>
+                    <div class="bdB"></div>
+                    <div class="bdR"></div>
+                    <div class="bdL"></div>
+                </div>
+
+                <div class="date"><p>2016<br><span>01/06</span></p></div>
+                <a href="http://www.realize-project.jp/curation/engadget-japan-d7be7d70beae87bfaabee2c886e42a64/">
+                    <div class="news_img"><img class="img_fix lazy" src="http://www.realize-project.jp/wp-content/themes/1.0/img/loading_dummy.gif" data-original="http://o.aolcdn.com/dims-shared/dims3/GLOB/crop/1172x781+86+8/resize/590x393!/format/jpg/quality/85/http://o.aolcdn.com/hss/storage/midas/3e24691886e31a4007fb6b5dda096c54/203205778/%253F%253F%253F%253F%253F%253F%253F%253F%253F+2016-01-04+18.20.02.jpeg"></div>
+                    <div class="news_text">
+                        「人工知能は人間よりも経験値を上げていく速度が速い」神山監督x塚本教授x井上室長が語る攻殻ブレスト                    </div>
+                </a>
+
+                <div class="snsArea">
+                    <ul class="box_contain cf">
+                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                    </ul>
+                </div>
+
+                <script type="text/javascript">
+
+                    $(document).ready(function(){
+                       get_share_count('http://japanese.engadget.com/2016/01/05/x-x/', 'curation6725');
+                    });
+
+                </script>
+
+        </article>
+
+        
+                <article id='curation6739'>
+                <div class="bd">
+                    <div class="bdT"></div>
+                    <div class="bdB"></div>
+                    <div class="bdR"></div>
+                    <div class="bdL"></div>
+                </div>
+
+                <div class="date"><p>2016<br><span>01/05</span></p></div>
+                <a href="http://www.realize-project.jp/curation/engadget-japan-dae129e4363fd7a84add5dfce1e9ff02/">
+                    <div class="news_img"><img class="img_fix lazy" src="http://www.realize-project.jp/wp-content/themes/1.0/img/loading_dummy.gif" data-original="http://o.aolcdn.com/hss/storage/midas/1edf7d9d9e288260ae5c878cdd416bb3/203209671/trans.jpg"></div>
+                    <div class="news_text">
+                        【動画】これがCerevoの歩くプロジェクターロボ Tipron 、可変型ホームロボットをスマホで動かしてみた！                    </div>
+                </a>
+
+                <div class="snsArea">
+                    <ul class="box_contain cf">
+                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                    </ul>
+                </div>
+
+                <script type="text/javascript">
+
+                    $(document).ready(function(){
+                       get_share_count('http://japanese.engadget.com/2016/01/05/cerevo-tipron/', 'curation6739');
+                    });
+
+                </script>
+
+        </article>
+
+        
+                <article id='curation6643'>
+                <div class="bd">
+                    <div class="bdT"></div>
+                    <div class="bdB"></div>
+                    <div class="bdR"></div>
+                    <div class="bdL"></div>
+                </div>
+
+                <div class="date"><p>2016<br><span>01/04</span></p></div>
+                <a href="http://www.realize-project.jp/curation/engadget-japan-8a04f4c9211a30808082677577d698b4/">
+                    <div class="news_img"><img class="img_fix lazy" src="http://www.realize-project.jp/wp-content/themes/1.0/img/loading_dummy.gif" data-original="http://o.aolcdn.com/hss/storage/midas/a5dc62e28897cdcd287ec1be832fcb7e/203188010/report_kobeitfes.jpg"></div>
+                    <div class="news_text">
+                        「攻殻機動隊 S.A.C.から15年。世界はどう変わったか？」神山監督x塚本教授x井上室長が公開ブレスト                    </div>
+                </a>
+
+                <div class="snsArea">
+                    <ul class="box_contain cf">
+                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                    </ul>
+                </div>
+
+                <script type="text/javascript">
+
+                    $(document).ready(function(){
+                       get_share_count('http://japanese.engadget.com/2016/01/04/s-a-c-15-x-x/', 'curation6643');
+                    });
+
+                </script>
+
+        </article>
+
+        
+                <article id='curation6609'>
+                <div class="bd">
+                    <div class="bdT"></div>
+                    <div class="bdB"></div>
+                    <div class="bdR"></div>
+                    <div class="bdL"></div>
+                </div>
+
+                <div class="date"><p>2015<br><span>12/31</span></p></div>
+                <a href="http://www.realize-project.jp/curation/engadget-japan-575c64046ad8353043803f7c1262b362/">
+                    <div class="news_img"><img class="img_fix lazy" src="http://www.realize-project.jp/wp-content/themes/1.0/img/loading_dummy.gif" data-original="http://o.aolcdn.com/hss/storage/midas/7c0d9a783cd50dc304c79b7755e30036/203195101/sub01.jpg"></div>
+                    <div class="news_text">
+                        ディズニー・リサーチ、壁面も走れる4輪ロボット VertiGo を開発。2つのプロペラでスムーズに地面から壁走行へ移行                    </div>
+                </a>
+
+                <div class="snsArea">
+                    <ul class="box_contain cf">
+                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                    </ul>
+                </div>
+
+                <script type="text/javascript">
+
+                    $(document).ready(function(){
+                       get_share_count('http://japanese.engadget.com/2015/12/30/4-vertigo-2/', 'curation6609');
+                    });
+
+                </script>
+
+        </article>
+
+        
+                <article id='curation6307'>
+                <div class="bd">
+                    <div class="bdT"></div>
+                    <div class="bdB"></div>
+                    <div class="bdR"></div>
+                    <div class="bdL"></div>
+                </div>
+
+                <div class="date"><p>2015<br><span>12/20</span></p></div>
+                <a href="http://www.realize-project.jp/curation/engadget-japan-97e20943aa3a7b83182dbc4093ab4140/">
+                    <div class="news_img"><img class="img_fix lazy" src="http://www.realize-project.jp/wp-content/themes/1.0/img/loading_dummy.gif" data-original="http://o.aolcdn.com/hss/storage/midas/691781a01152f4de46e5101745256578/203123439/control.jpg"></div>
+                    <div class="news_text">
+                        ドライバーの視線の動きでナビを操作、車載システムを自在に操る新技術「Eye Glance」                    </div>
+                </a>
+
+                <div class="snsArea">
+                    <ul class="box_contain cf">
+                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                    </ul>
+                </div>
+
+                <script type="text/javascript">
+
+                    $(document).ready(function(){
+                       get_share_count('http://japanese.engadget.com/2015/12/19/eye-glance/', 'curation6307');
+                    });
+
+                </script>
+
+        </article>
+
+        
+                <article id='curation6105'>
+                <div class="bd">
+                    <div class="bdT"></div>
+                    <div class="bdB"></div>
+                    <div class="bdR"></div>
+                    <div class="bdL"></div>
+                </div>
+
+                <div class="date"><p>2015<br><span>12/10</span></p></div>
+                <a href="http://www.realize-project.jp/curation/engadget-japan-11352347d571f8435bdea9ba90f5542a/">
+                    <div class="news_img"><img class="img_fix lazy" src="http://www.realize-project.jp/wp-content/themes/1.0/img/loading_dummy.gif" data-original="http://o.aolcdn.com/hss/storage/midas/539f480f813876484c1922da7d5c930c/203110573/1449725261_top.jpg"></div>
+                    <div class="news_text">
+                        クラウド経由でドローンを操作する異例の実証実験、国際医療福祉専門学校の敷地内で実施                    </div>
+                </a>
+
+                <div class="snsArea">
+                    <ul class="box_contain cf">
+                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                    </ul>
+                </div>
+
+                <script type="text/javascript">
+
+                    $(document).ready(function(){
+                       get_share_count('http://japanese.engadget.com/2015/12/10/sugos-drone/', 'curation6105');
+                    });
+
+                </script>
+
+        </article>
+
+        
+                <article id='curation5573'>
+                <div class="bd">
+                    <div class="bdT"></div>
+                    <div class="bdB"></div>
+                    <div class="bdR"></div>
+                    <div class="bdL"></div>
+                </div>
+
+                <div class="date"><p>2015<br><span>11/20</span></p></div>
+                <a href="http://www.realize-project.jp/curation/engadget-japan-b4421162489c4aa988997af644ada6eb/">
+                    <div class="news_img"><img class="img_fix lazy" src="http://www.realize-project.jp/wp-content/themes/1.0/img/loading_dummy.gif" data-original="http://o.aolcdn.com/hss/storage/midas/12f248072ebd0ca6a5aac00a938ad8a6/202982554/next.jpg"></div>
+                    <div class="news_text">
+                        【動画あり】合体・分離できる未来のクルマ、自動運転の都市向け小型EV「Next」                    </div>
+                </a>
+
+                <div class="snsArea">
+                    <ul class="box_contain cf">
+                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                    </ul>
+                </div>
+
+                <script type="text/javascript">
+
+                    $(document).ready(function(){
+                       get_share_count('http://japanese.engadget.com/2015/11/20/ev-next/', 'curation5573');
+                    });
+
+                </script>
+
+        </article>
+
+        
+                <article id='curation5523'>
+                <div class="bd">
+                    <div class="bdT"></div>
+                    <div class="bdB"></div>
+                    <div class="bdR"></div>
+                    <div class="bdL"></div>
+                </div>
+
+                <div class="date"><p>2015<br><span>11/19</span></p></div>
+                <a href="http://www.realize-project.jp/curation/engadget-japan-5cff062f60c1a18901bbf32e7c97043d/">
+                    <div class="news_img"><img class="img_fix lazy" src="http://www.realize-project.jp/wp-content/themes/1.0/img/loading_dummy.gif" data-original="http://o.aolcdn.com/dims-shared/dims3/GLOB/crop/3000x2133+0+0/resize/1200x853!/format/jpg/quality/85/http://hss-prod.hss.aol.com/hss/storage/midas/5d9d701eccd4c13ca178c45c50384490/203004562/85999021.jpg"></div>
+                    <div class="news_text">
+                        失った「肉声」を取り戻す。機能する声帯を培養～移植する研究の初期段階が成功。拒絶反応もなし                    </div>
+                </a>
+
+                <div class="snsArea">
+                    <ul class="box_contain cf">
+                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                    </ul>
+                </div>
+
+                <script type="text/javascript">
+
+                    $(document).ready(function(){
+                       get_share_count('http://japanese.engadget.com/2015/11/19/vc/', 'curation5523');
+                    });
+
+                </script>
+
+        </article>
+
+        
+                <article id='curation5485'>
+                <div class="bd">
+                    <div class="bdT"></div>
+                    <div class="bdB"></div>
+                    <div class="bdR"></div>
+                    <div class="bdL"></div>
+                </div>
+
+                <div class="date"><p>2015<br><span>11/17</span></p></div>
+                <a href="http://www.realize-project.jp/curation/engadget-japan-a917c8a592ce48573d3fa7dd8616710f/">
+                    <div class="news_img"><img class="img_fix lazy" src="http://www.realize-project.jp/wp-content/themes/1.0/img/loading_dummy.gif" data-original="http://o.aolcdn.com/hss/storage/midas/46f674d4e7404cc38d0d3c1d1ad67d50/202984287/machine-vision-microexpression-detection.jpg"></div>
+                    <div class="news_text">
+                        笑顔の裏の表情をあばくAI技術を開発。無意識に表れる「微表情」を認識可能に                    </div>
+                </a>
+
+                <div class="snsArea">
+                    <ul class="box_contain cf">
+                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                    </ul>
+                </div>
+
+                <script type="text/javascript">
+
+                    $(document).ready(function(){
+                       get_share_count('http://japanese.engadget.com/2015/11/16/ai/', 'curation5485');
+                    });
+
+                </script>
+
+        </article>
+
+        
+                <article id='curation5396'>
+                <div class="bd">
+                    <div class="bdT"></div>
+                    <div class="bdB"></div>
+                    <div class="bdR"></div>
+                    <div class="bdL"></div>
+                </div>
+
+                <div class="date"><p>2015<br><span>11/13</span></p></div>
+                <a href="http://www.realize-project.jp/curation/engadget-japan-9d70ba17c9f852d586186fd41960904e/">
+                    <div class="news_img"><img class="img_fix lazy" src="http://www.realize-project.jp/wp-content/themes/1.0/img/loading_dummy.gif" data-original="http://o.aolcdn.com/hss/storage/midas/7ddc9c6a84fe7c4f5ae87e8423060efe/202974803/yamaha2.jpg"></div>
+                    <div class="news_text">
+                        動画：どんな乗り物も運転できるロボ開発計画、ヤマハ2年後に2輪世界王者越え （インタビュー）                    </div>
+                </a>
+
+                <div class="snsArea">
+                    <ul class="box_contain cf">
+                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                    </ul>
+                </div>
+
+                <script type="text/javascript">
+
+                    $(document).ready(function(){
+                       get_share_count('http://japanese.engadget.com/2015/11/13/2-2/', 'curation5396');
+                    });
+
+                </script>
+
+        </article>
+
+        
+                <article id='curation5378'>
+                <div class="bd">
+                    <div class="bdT"></div>
+                    <div class="bdB"></div>
+                    <div class="bdR"></div>
+                    <div class="bdL"></div>
+                </div>
+
+                <div class="date"><p>2015<br><span>11/13</span></p></div>
+                <a href="http://www.realize-project.jp/curation/engadget-japan-d7b820654498ca7535167797a5571bb2/">
+                    <div class="news_img"><img class="img_fix lazy" src="http://www.realize-project.jp/wp-content/themes/1.0/img/loading_dummy.gif" data-original="http://o.aolcdn.com/dims-shared/dims3/GLOB/crop/643x428+0+238/resize/590x393!/format/jpg/quality/85/http://o.aolcdn.com/hss/storage/midas/131dcad45bf14a0457d40278a07a0fd1/202968288/IMG_9998.jpg"></div>
+                    <div class="news_text">
+                        ネット将棋こそが今後の将棋界を広げる鍵になる?　将棋電王戦が貢献した将棋ファン層の拡大                    </div>
+                </a>
+
+                <div class="snsArea">
+                    <ul class="box_contain cf">
+                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                    </ul>
+                </div>
+
+                <script type="text/javascript">
+
+                    $(document).ready(function(){
+                       get_share_count('http://japanese.engadget.com/2015/11/12/shogi/', 'curation5378');
+                    });
+
+                </script>
+
+        </article>
+
+        
+                <article id='curation5283'>
+                <div class="bd">
+                    <div class="bdT"></div>
+                    <div class="bdB"></div>
+                    <div class="bdR"></div>
+                    <div class="bdL"></div>
+                </div>
+
+                <div class="date"><p>2015<br><span>11/09</span></p></div>
+                <a href="http://www.realize-project.jp/curation/engadget-japan-b7bb982da2ca12b27bb4c5e06c09c680/">
+                    <div class="news_img"><img class="img_fix lazy" src="http://www.realize-project.jp/wp-content/themes/1.0/img/loading_dummy.gif" data-original="http://o.aolcdn.com/hss/storage/midas/73a8fa59c2c0d1b9179a5c3dce7dc4d9/202937571/usb-killer.jpg"></div>
+                    <div class="news_text">
+                        USB端子を焼き切る『セキュリティ機器』が出資募集中。使えば未来永劫USBからの流出を阻止                    </div>
+                </a>
+
+                <div class="snsArea">
+                    <ul class="box_contain cf">
+                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                    </ul>
+                </div>
+
+                <script type="text/javascript">
+
+                    $(document).ready(function(){
+                       get_share_count('http://japanese.engadget.com/2015/11/09/usb-usb/', 'curation5283');
+                    });
+
+                </script>
+
+        </article>
+
+        
+                <article id='curation5058'>
+                <div class="bd">
+                    <div class="bdT"></div>
+                    <div class="bdB"></div>
+                    <div class="bdR"></div>
+                    <div class="bdL"></div>
+                </div>
+
+                <div class="date"><p>2015<br><span>10/28</span></p></div>
+                <a href="http://www.realize-project.jp/curation/engadget-japan-705d8be4674f5e263a66a8f74453220d/">
+                    <div class="news_img"><img class="img_fix lazy" src="http://www.realize-project.jp/wp-content/themes/1.0/img/loading_dummy.gif" data-original="http://o.aolcdn.com/hss/storage/midas/e4909d6b1fc0d92a5b1b7d27c4bb0f66/202872660/hp001.png"></div>
+                    <div class="news_text">
+                        時速1000kmオーバー！ イーロン・マスク提唱の超高速旅客システム Hyperloop 、テストコース着工へ。海外展開も検討中                    </div>
+                </a>
+
+                <div class="snsArea">
+                    <ul class="box_contain cf">
+                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                    </ul>
+                </div>
+
+                <script type="text/javascript">
+
+                    $(document).ready(function(){
+                       get_share_count('http://japanese.engadget.com/2015/10/27/1000km-hyperloop/', 'curation5058');
+                    });
+
+                </script>
+
+        </article>
+
+        
+                <article id='curation5026'>
+                <div class="bd">
+                    <div class="bdT"></div>
+                    <div class="bdB"></div>
+                    <div class="bdR"></div>
+                    <div class="bdL"></div>
+                </div>
+
+                <div class="date"><p>2015<br><span>10/26</span></p></div>
+                <a href="http://www.realize-project.jp/curation/engadget-japan-db13322a6fab0bf25f7db1802f29846f/">
+                    <div class="news_img"><img class="img_fix lazy" src="http://www.realize-project.jp/wp-content/themes/1.0/img/loading_dummy.gif" data-original="http://o.aolcdn.com/dims-shared/dims3/GLOB/crop/3500x1925+0+407/resize/1200x660!/format/jpg/quality/85/http://hss-prod.hss.aol.com/hss/storage/midas/c48cbc6d2e4805707c9ba53995060827/202858241/484937753.jpg"></div>
+                    <div class="news_text">
+                        世界約900台の監視カメラがマルウェア感染。協調してクラウドサーバーにDDoS攻撃を仕掛ける                    </div>
+                </a>
+
+                <div class="snsArea">
+                    <ul class="box_contain cf">
+                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                    </ul>
+                </div>
+
+                <script type="text/javascript">
+
+                    $(document).ready(function(){
+                       get_share_count('http://japanese.engadget.com/2015/10/26/900-ddos/', 'curation5026');
+                    });
+
+                </script>
+
+        </article>
+
+        
+                <article id='curation4969'>
+                <div class="bd">
+                    <div class="bdT"></div>
+                    <div class="bdB"></div>
+                    <div class="bdR"></div>
+                    <div class="bdL"></div>
+                </div>
+
+                <div class="date"><p>2015<br><span>10/22</span></p></div>
+                <a href="http://www.realize-project.jp/curation/engadget-japan-f9a6b50c19fffd6884f7f32b0971cb8a/">
+                    <div class="news_img"><img class="img_fix lazy" src="http://www.realize-project.jp/wp-content/themes/1.0/img/loading_dummy.gif" data-original="http://o.aolcdn.com/hss/storage/midas/8220d361fe98b28947cf390ce85b378c/202842746/01.jpg"></div>
+                    <div class="news_text">
+                        顔認識で自動追尾・撮影するスマートフォンスタンド『パパラッチくん』発売。Android/iOSアプリでマニュアル操作にも対応                    </div>
+                </a>
+
+                <div class="snsArea">
+                    <ul class="box_contain cf">
+                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                    </ul>
+                </div>
+
+                <script type="text/javascript">
+
+                    $(document).ready(function(){
+                       get_share_count('http://japanese.engadget.com/2015/10/22/a/', 'curation4969');
+                    });
+
+                </script>
+
+        </article>
+
+        
+                <article id='curation4641'>
+                <div class="bd">
+                    <div class="bdT"></div>
+                    <div class="bdB"></div>
+                    <div class="bdR"></div>
+                    <div class="bdL"></div>
+                </div>
+
+                <div class="date"><p>2015<br><span>10/15</span></p></div>
+                <a href="http://www.realize-project.jp/curation/engadget-japan-ef3111a0659cf06314bb483616066fab/">
+                    <div class="news_img"><img class="img_fix lazy" src="http://www.realize-project.jp/wp-content/themes/1.0/img/loading_dummy.gif" data-original="http://o.aolcdn.com/hss/storage/midas/5eb3d8e00e245000b30f924f2a726a24/202807154/01.jpg"></div>
+                    <div class="news_text">
+                        世界初！踊る卓上ロボットアイドル「プリメイドAI」、DMMからデビュー。10月29日予約開始                    </div>
+                </a>
+
+                <div class="snsArea">
+                    <ul class="box_contain cf">
+                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                    </ul>
+                </div>
+
+                <script type="text/javascript">
+
+                    $(document).ready(function(){
+                       get_share_count('http://japanese.engadget.com/2015/10/15/ai-dmm-10-29/', 'curation4641');
+                    });
+
+                </script>
+
+        </article>
+
+        
+                <article id='curation4339'>
+                <div class="bd">
+                    <div class="bdT"></div>
+                    <div class="bdB"></div>
+                    <div class="bdR"></div>
+                    <div class="bdL"></div>
+                </div>
+
+                <div class="date"><p>2015<br><span>10/06</span></p></div>
+                <a href="http://www.realize-project.jp/curation/engadget-japan-26cf6031b94c6c1fb563e702c3357622/">
+                    <div class="news_img"><img class="img_fix lazy" src="http://www.realize-project.jp/wp-content/themes/1.0/img/loading_dummy.gif" data-original="http://o.aolcdn.com/hss/storage/midas/d80d66992267c8a3977553b09255a18c/202755545/robohonear.jpg"></div>
+                    <div class="news_text">
+                        シャープ、二足歩行ロボット携帯電話 RoBoHoN 発表。プロジェクターも内蔵、音声や顔認識で操作                    </div>
+                </a>
+
+                <div class="snsArea">
+                    <ul class="box_contain cf">
+                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                    </ul>
+                </div>
+
+                <script type="text/javascript">
+
+                    $(document).ready(function(){
+                       get_share_count('http://japanese.engadget.com/2015/10/05/robohon/', 'curation4339');
+                    });
+
+                </script>
+
+        </article>
+
+        
+                <article id='curation4311'>
+                <div class="bd">
+                    <div class="bdT"></div>
+                    <div class="bdB"></div>
+                    <div class="bdR"></div>
+                    <div class="bdL"></div>
+                </div>
+
+                <div class="date"><p>2015<br><span>10/03</span></p></div>
+                <a href="http://www.realize-project.jp/curation/engadget-japan-cb68fb5878594c83413f7a245c2de7b1/">
+                    <div class="news_img"><img class="img_fix lazy" src="http://www.realize-project.jp/wp-content/themes/1.0/img/loading_dummy.gif" data-original="http://o.aolcdn.com/hss/storage/midas/d90ff4db6927d151fd40c11ed765a36a/202745180/img_0598_1024.jpg"></div>
+                    <div class="news_text">
+                        将棋電王戦への道 :コンピュータ将棋に革命をもたらしたボナンザのアルゴリズム                    </div>
+                </a>
+
+                <div class="snsArea">
+                    <ul class="box_contain cf">
+                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                    </ul>
+                </div>
+
+                <script type="text/javascript">
+
+                    $(document).ready(function(){
+                       get_share_count('http://japanese.engadget.com/2015/10/02/dennou1/', 'curation4311');
+                    });
+
+                </script>
+
+        </article>
+
+        
+                <article id='curation4274'>
+                <div class="bd">
+                    <div class="bdT"></div>
+                    <div class="bdB"></div>
+                    <div class="bdR"></div>
+                    <div class="bdL"></div>
+                </div>
+
+                <div class="date"><p>2015<br><span>10/02</span></p></div>
+                <a href="http://www.realize-project.jp/curation/engadget-japan-fe37fc4c3008627f286ab8764bb27a00/">
+                    <div class="news_img"><img class="img_fix lazy" src="http://www.realize-project.jp/wp-content/themes/1.0/img/loading_dummy.gif" data-original="http://o.aolcdn.com/hss/storage/midas/c252aa872b3b7350c761669d11a87a83/202734630/robottaxi.jpg"></div>
+                    <div class="news_text">
+                        自動運転のロボットタクシーが国内公道で実証試験。2016年より一般客を乗せて運行                    </div>
+                </a>
+
+                <div class="snsArea">
+                    <ul class="box_contain cf">
+                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                    </ul>
+                </div>
+
+                <script type="text/javascript">
+
+                    $(document).ready(function(){
+                       get_share_count('http://japanese.engadget.com/2015/10/02/2016/', 'curation4274');
+                    });
+
+                </script>
+
+        </article>
+
+        
+                <article id='curation4039'>
+                <div class="bd">
+                    <div class="bdT"></div>
+                    <div class="bdB"></div>
+                    <div class="bdR"></div>
+                    <div class="bdL"></div>
+                </div>
+
+                <div class="date"><p>2015<br><span>09/24</span></p></div>
+                <a href="http://www.realize-project.jp/curation/engadget-japan-bb08ece7099f8f1748881c361b95411a/">
+                    <div class="news_img"><img class="img_fix lazy" src="http://www.realize-project.jp/wp-content/themes/1.0/img/loading_dummy.gif" data-original="http://o.aolcdn.com/hss/storage/midas/5cd6ff3edcb5d9b10880c990314e004f/202693049/main.gif"></div>
+                    <div class="news_text">
+                        動画：ワイヤで吊るす万能『乗り物シミュレータ』発表。1.5G加速も再現                    </div>
+                </a>
+
+                <div class="snsArea">
+                    <ul class="box_contain cf">
+                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                    </ul>
+                </div>
+
+                <script type="text/javascript">
+
+                    $(document).ready(function(){
+                       get_share_count('http://japanese.engadget.com/2015/09/24/1-5g/', 'curation4039');
+                    });
+
+                </script>
+
+        </article>
+
+        
+                <article id='curation4008'>
+                <div class="bd">
+                    <div class="bdT"></div>
+                    <div class="bdB"></div>
+                    <div class="bdR"></div>
+                    <div class="bdL"></div>
+                </div>
+
+                <div class="date"><p>2015<br><span>09/22</span></p></div>
+                <a href="http://www.realize-project.jp/curation/engadget-japan-40463e401734e2ce11f31b9f74161668/">
+                    <div class="news_img"><img class="img_fix lazy" src="http://www.realize-project.jp/wp-content/themes/1.0/img/loading_dummy.gif" data-original="http://o.aolcdn.com/hss/storage/midas/1375868ab3be3b358987785fdc10e22e/202655895/01-mercedes-benz-concept-iaa-frankfurt-1.jpg"></div>
+                    <div class="news_text">
+                        高速走行時に変形するハイブリッド車 IAA 、メルセデスが発表。時速80kmで『エアロモード』に各部が可動、燃費向上                    </div>
+                </a>
+
+                <div class="snsArea">
+                    <ul class="box_contain cf">
+                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                    </ul>
+                </div>
+
+                <script type="text/javascript">
+
+                    $(document).ready(function(){
+                       get_share_count('http://japanese.engadget.com/2015/09/22/iaa-80km/', 'curation4008');
+                    });
+
+                </script>
+
+        </article>
+
+        
+                <article id='curation3354'>
+                <div class="bd">
+                    <div class="bdT"></div>
+                    <div class="bdB"></div>
+                    <div class="bdR"></div>
+                    <div class="bdL"></div>
+                </div>
+
+                <div class="date"><p>2015<br><span>09/08</span></p></div>
+                <a href="http://www.realize-project.jp/curation/engadget-japan-ada036841c30fd20933f97af4822dc35/">
+                    <div class="news_img"><img class="img_fix lazy" src="http://www.realize-project.jp/wp-content/themes/1.0/img/loading_dummy.gif" data-original="http://o.aolcdn.com/hss/storage/midas/8d9c340604136e75170d224752256424/202592344/6a11dfc47df348bbb39cebb3dfdbab4e+%281%29.jpg"></div>
+                    <div class="news_text">
+                        トヨタ、人工知能研究でMIT・スタンフォードと提携。ロボットや自動運転の研究センター設立                    </div>
+                </a>
+
+                <div class="snsArea">
+                    <ul class="box_contain cf">
+                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                    </ul>
+                </div>
+
+                <script type="text/javascript">
+
+                    $(document).ready(function(){
+                       get_share_count('http://japanese.engadget.com/2015/09/08/mit-60-darpa-pm/', 'curation3354');
+                    });
+
+                </script>
+
+        </article>
+
+        
+                <article id='curation3330'>
+                <div class="bd">
+                    <div class="bdT"></div>
+                    <div class="bdB"></div>
+                    <div class="bdR"></div>
+                    <div class="bdL"></div>
+                </div>
+
+                <div class="date"><p>2015<br><span>09/07</span></p></div>
+                <a href="http://www.realize-project.jp/curation/engadget-japan-58283524f14a5bb792a742d2579ec126/">
+                    <div class="news_img"><img class="img_fix lazy" src="http://www.realize-project.jp/wp-content/themes/1.0/img/loading_dummy.gif" data-original="http://o.aolcdn.com/dims-shared/dims3/GLOB/crop/4002x2582+0+218/resize/1200x774!/format/jpg/quality/85/http://hss-prod.hss.aol.com/hss/storage/midas/3cc3033d112add064b92ab5506e5e055/202016295/e7f747a761f7487385345f31edfca91d.jpeg"></div>
+                    <div class="news_text">
+                        自動運転車を『幻影』で走行不能にするハッキング、研究者が開発。LIDARセンサーへの反射光を偽装                    </div>
+                </a>
+
+                <div class="snsArea">
+                    <ul class="box_contain cf">
+                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                    </ul>
+                </div>
+
+                <script type="text/javascript">
+
+                    $(document).ready(function(){
+                       get_share_count('http://japanese.engadget.com/2015/09/06/lidar/', 'curation3330');
+                    });
+
+                </script>
+
+        </article>
+
+        
+                <article id='curation3126'>
+                <div class="bd">
+                    <div class="bdT"></div>
+                    <div class="bdB"></div>
+                    <div class="bdR"></div>
+                    <div class="bdL"></div>
+                </div>
+
+                <div class="date"><p>2015<br><span>08/31</span></p></div>
+                <a href="http://www.realize-project.jp/curation/engadget-japan-4e964c95c5381b1fb12d961470d12b0e/">
+                    <div class="news_img"><img class="img_fix lazy" src="http://www.realize-project.jp/wp-content/themes/1.0/img/loading_dummy.gif" data-original="http://o.aolcdn.com/hss/storage/midas/554a4c38c5550d52acdc3240943eee88/202555581/main.gif"></div>
+                    <div class="news_text">
+                        Googleのロボット自動車、「立ったまま停止中」の自転車にキョドる。停止中か走行中か判断できず                    </div>
+                </a>
+
+                <div class="snsArea">
+                    <ul class="box_contain cf">
+                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                    </ul>
+                </div>
+
+                <script type="text/javascript">
+
+                    $(document).ready(function(){
+                       get_share_count('http://japanese.engadget.com/2015/08/31/google/', 'curation3126');
+                    });
+
+                </script>
+
+        </article>
+
+        
+                <article id='curation3118'>
+                <div class="bd">
+                    <div class="bdT"></div>
+                    <div class="bdB"></div>
+                    <div class="bdR"></div>
+                    <div class="bdL"></div>
+                </div>
+
+                <div class="date"><p>2015<br><span>08/26</span></p></div>
+                <a href="http://www.realize-project.jp/curation/engadget-japan-5d716803a9d51b903fdccea4fae702a9/">
+                    <div class="news_img"><img class="img_fix lazy" src="http://www.realize-project.jp/wp-content/themes/1.0/img/loading_dummy.gif" data-original="http://o.aolcdn.com/dims-shared/dims3/GLOB/crop/4960x3569+0+171/resize/1200x864!/format/jpg/quality/85/http://hss-prod.hss.aol.com/hss/storage/adam/63fd7912e6f122bac29ed569f2f711f/200252902-001.jpeg"></div>
+                    <div class="news_text">
+                        ボタンで勃起する人工ペニスの形成手術が成功。6歳で事故に遭った男性、43歳で取り戻す                    </div>
+                </a>
+
+                <div class="snsArea">
+                    <ul class="box_contain cf">
+                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                    </ul>
+                </div>
+
+                <script type="text/javascript">
+
+                    $(document).ready(function(){
+                       get_share_count('http://japanese.engadget.com/2015/08/26/6-43/', 'curation3118');
+                    });
+
+                </script>
+
+        </article>
+
+        
+                <article id='curation2995'>
+                <div class="bd">
+                    <div class="bdT"></div>
+                    <div class="bdB"></div>
+                    <div class="bdR"></div>
+                    <div class="bdL"></div>
+                </div>
+
+                <div class="date"><p>2015<br><span>08/24</span></p></div>
+                <a href="http://www.realize-project.jp/curation/engadget-japan-3727d00090fb7fc56e6953d533de079b/">
+                    <div class="news_img"><img class="img_fix lazy" src="http://www.realize-project.jp/wp-content/themes/1.0/img/loading_dummy.gif" data-original="http://o.aolcdn.com/hss/storage/midas/def115248388b1f7f586cffd5a26ffae/202519985/01.jpg"></div>
+                    <div class="news_text">
+                        ペットを仮想空間に連れてゆける首輪VRトラッカー。没入中の事故を防止、しぐさもゲーム内クリーチャーに反映                    </div>
+                </a>
+
+                <div class="snsArea">
+                    <ul class="box_contain cf">
+                        <!-- <li class="box_entrysns_tw fr"><span>0</span></li> -->
+                        <li class="box_entrysns_fb fr"><span>0</span></li>
+                    </ul>
+                </div>
+
+                <script type="text/javascript">
+
+                    $(document).ready(function(){
+                       get_share_count('http://japanese.engadget.com/2015/08/24/vr/', 'curation2995');
+                    });
+
+                </script>
+
+        </article>
+
+                    **NODATA**
+        
+                    </div>
+                </div>
+            </div>
+
+            <!-- <p id="more"><a href="#">もっと表示する</a></p> -->
+
+            <div id="banner_area">
+                <div id="banner_area_wrapper">
+                    <div class="bd">
+                        <div class="bdT"></div>
+                        <div class="bdB"></div>
+
+                    </div>
+                    <ul>
+                        <li><a href="https://www.bandaivisual.co.jp/koukaku-special/" target="_blank"><img class="img_fix" src="http://www.realize-project.jp/wp-content/themes/1.0/img/banner/bnr_25th.jpg"></a></li>
+
+                    </ul>
+                </div>
+            </div>
+
+
+            <footer>
+
+                <div id="page_top">
+                    <div id="page_top_wrapper">
+                        <div class="bd">
+                            <div class="bdT"></div>
+                            <div class="bdB"></div>
+                            <div class="bdR"></div>
+                            <div class="bdL"></div>
+                        </div>
+                        <img class="img_fix" src="http://www.realize-project.jp/wp-content/themes/1.0/img/goto_top.png">
+                    </div>
+                </div>
+
+                <p>
+                    <small>
+                        ©士郎正宗／講談社<br>
+                        ©1995士郎正宗／講談社・バンダイビジュアル・MANGA ENTERTAINMENT<br>
+                        ©2004 士郎正宗/講談社・IG, ITNDDTD<br>
+                        ©士郎正宗・Production I.G／講談社・攻殻機動隊製作委員会<br>
+                        ©2011士郎正宗・Production I.G／講談社・攻殻機動隊製作委員会<br>
+                        ©士郎正宗・Production I.G／講談社・「攻殻機動隊ARISE」製作委員会<br>
+                        ©士郎正宗・Production I.G／講談社・「攻殻機動隊 新劇場版」製作委員会
+                    </small>
+                </p>
+                <div id="webgl_onoff" class="pc">
+                    <div class="bd">
+                            <div class="bdT"></div>
+                            <div class="bdB"></div>
+                            <div class="bdR"></div>
+                            <div class="bdL"></div>
+                    </div>
+                    <P>WebGL ON</p>
+                </div>
+            </footer>
+        </div>
+
+            <script src="http://www.realize-project.jp/wp-content/themes/1.0/js/jquery.cookie.min.js"></script>
+            <script src="http://www.realize-project.jp/wp-content/themes/1.0/js/jquery.pjax.min.js"></script>
+            <script src="http://www.realize-project.jp/wp-content/themes/1.0/js/TweenMax.min.js"></script>
+            <script src="http://www.realize-project.jp/wp-content/themes/1.0/js/Tween.min.js"></script>
+
+            <script src="http://www.realize-project.jp/wp-content/themes/1.0/js/build/three.min.js"></script>
+
+            <script src="http://www.realize-project.jp/wp-content/themes/1.0/js/loaders/ColladaLoader.min.js"></script>
+
+            <script src="http://www.realize-project.jp/wp-content/themes/1.0/js/vendor/three.js/examples/js/shaders/BokehShader2.min.js"></script>
+            <script src="http://www.realize-project.jp/wp-content/themes/1.0/js/vendor/three.js/examples/js/libs/dat.gui.min.js"></script>
+
+            <script src="http://www.realize-project.jp/wp-content/themes/1.0/js/tiny_segmenter.js"></script>
+            <script src="http://www.realize-project.jp/wp-content/themes/1.0/js/plugins.js"></script>
+
+            <script src="http://www.realize-project.jp/wp-content/themes/1.0/js/main.js"></script>
+            <script src="http://www.realize-project.jp/wp-content/themes/1.0/js/webgl_checker.js"></script>
+            <script src="http://www.realize-project.jp/wp-content/themes/1.0/js/menu.min.js"></script>
+            <script src="http://www.realize-project.jp/wp-content/themes/1.0/js/facebook_twitter_num.js"></script>
+            <script src="http://www.realize-project.jp/wp-content/themes/1.0/js/jquery.bxslider.min.js"></script>
+            <script src="http://www.realize-project.jp/wp-content/themes/1.0/js/menu_scroll.js"></script>
+
+             <script src="http://www.realize-project.jp/wp-content/themes/1.0/js/ga.js"></script>
+
+
+
+            <script type="text/javascript">
+
+                //Lazy Load
+                $(function(){
+                    $(".lazy").lazyload({
+                        threshold: 0,
+                        effect: "fadeIn",
+                    });
+                });
+
+
+
+            </script>
+
+
+            <script>
+
+                /*-------------------------------------------------*/
+                // start
+                /*-------------------------------------------------*/
+                $(document).ready(function()
+                {
+                    $("#snsList > li").hover(
+                            function(){
+                                $(this).find(".popSns").show();
+                            },
+                            function(){
+                                $(this).find(".popSns").hide();
+                            }
+                    );
+                });
+
+            </script>
+
+    </body>
+</html>

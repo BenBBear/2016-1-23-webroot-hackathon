@@ -1,0 +1,443 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja" dir="ltr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="keywords" content="アプラホール, アプラたかいし, 高石市, 文化ホール, たかいし市民文化会館" />
+<meta name="Description" content="南海本線「高石」駅前にオープンした、たかいし市民会館（アプラホール）は、市民文化ホール・生涯学習センター・図書館・消費生活センターを備えた施設です。みなさまのご利用をお待ちしております。" />
+<title>アプラたかいし</title>
+<link rel="stylesheet" type="text/css" href="/lib/cmn_css/base.css" media="screen, all" />
+<link rel="stylesheet" type="text/css" href="/lib/cmn_css/component.css" media="screen, all" />
+<link rel="stylesheet" type="text/css" href="css/uniq.css" media="screen, all" />
+<link rel="stylesheet" type="text/css" href="/lib/cmn_css/font.css" id="fontStyle" media="screen" />
+<link rel="stylesheet" type="text/css" href="/lib/cmn_css/print.css" media="print" />
+<link rel="stylesheet" type="text/css" href="/lib/cmn_js/fancybox/jquery.fancybox-1.3.4.css" />
+<script type="text/javascript" src="/lib/cmn_js/default.js"></script>
+<script type="text/javascript" src="/lib/cmn_js/innerlink.js"></script>
+<script type="text/javascript" src="/lib/cmn_js/jquery.js"></script>
+<script type="text/javascript" src="/lib/cmn_js/jqueryAutoHeight.js"></script>
+<script type="text/javascript" src="/lib/cmn_js/jquery_opacity-rollover.js"></script>
+<script type="text/javascript" src="/lib/cmn_js/jquery.faderollover.js"></script>
+<script type="text/javascript" src="/lib/cmn_js/scrolltop/jquery_scrolltop.js"></script>
+<script type="text/javascript" src="/lib/cmn_js/fancybox/jquery.easing-1.3.pack.js"></script>
+<script type="text/javascript" src="/lib/cmn_js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+<script type="text/javascript" src="/lib/cmn_js/jquery.partsApplaTOP.js"></script>
+<script type="text/javascript" src="/lib/cmn_js/googleanalytics.js"></script>
+
+<script type="text/javascript">
+$(function (){
+	//設定
+	var active="active",interval=5000;
+	var index=0, timerId=null;
+	var tabs=$("#thumbBtn > .thumbBtnInr .thumbBtnInr02  li"), content=$("#view > p"), cap=$("#caption > li");
+	
+	//クラスの付与
+	tabs.each(function(){$(this).removeClass(active);});
+	content.hide();
+	cap.hide();
+	tabs.eq(0).addClass(active);
+	content.eq(0).fadeIn("fast");
+	cap.eq(0).fadeIn("fast");
+	
+	//クリックされたらactiveというクラスを付与、
+	//切り替え、タイマーをリセット
+	tabs.mouseover(function(){
+		if($(this).hasClass("active")) return;
+		if(timerId) clearInterval(timerId),timerId=null;
+		change(tabs.index(this));
+		setTimer();
+		return false;
+	});
+	
+	//タイマー
+	setTimer();
+	function setTimer(){
+		timerId=setTimeout(timeProcess,interval);
+		return false;
+	}
+	
+	function timeProcess(){
+		change((index+1)%tabs.length);
+		timerId=setTimeout(arguments.callee,interval);
+	}
+	
+	//切り替え
+	function change(t_index){
+		tabs.eq(index).removeClass(active);
+		tabs.eq(t_index).addClass(active);
+		//fadeout
+		setTimeout(function(){
+			content.eq(index).stop(true, true).fadeOut(1000),
+			cap.eq(index).stop(true, true).hide()
+		;}, 0);
+		//fadein
+		setTimeout(function(){
+			index=t_index;
+			content.eq(index).fadeIn(1000),
+			cap.eq(index).fadeIn(1000)
+		;}, 0)
+	}
+});
+</script>
+
+<!---/スマホサイト振り分け/--->
+<script type="text/javascript">
+var params = new Array('/sp/', 'スマートフォン向けのサイトを表示しますか？');
+if (navigator.userAgent.match(/iPhone|iPod|Android.+Mobile|Windows\sPhone/i) && (document.referrer.indexOf('http://' + location.hostname) != 0) && (document.referrer.indexOf('https://' + location.hostname) != 0) && (document.referrer.indexOf(params[0]) != 0) && confirm(params[1])) location.href = params[0];
+</script>
+<link rel="alternate" media="handheld" type="text/html" href="http://siawasewedding.zmhs.jp/" />
+<!---/スマホサイト振り分けend/--->
+
+<!--[if IE 6]>
+<script src="/lib/cmn_js/DD_belatedPNG.js"></script>
+<script>
+DD_belatedPNG.fix('img, .png_bg');
+</script>
+<![endif]-->
+
+</head>
+<body onload="disable_links_outline()">
+<div id="header">
+  <p class="logo"><a href="/"><span>アプラたかいし</span></a></p>
+  <ul class="headList">
+    <li class="li01"><a href="/utility/floormap.php"><span>フロアマップ</span></a></li>
+    <li class="li02"><a href="/utility/sitemap.php"><span>サイトマップ</span></a></li>
+    <li class="li03"><a href="/utility/access.php"><span>アクセス</span></a></li>
+  </ul>
+</div>
+<!-- ▲▲ #header ▲▲ -->
+
+<div id="mv">
+
+<div class="galleryBox">
+<div class="g-inner"> 
+<!-- メイン画像-->
+<div id="view">
+<p><a href="/shopnews/detail.php?id=47"><img src="/upImage/banner/banner_1402654133_090054900.jpg" alt="ミスタードーナツ　青カードご優待" /></a></p>
+<p><a href="/shopnews/detail.php?id=56"><img src="/upImage/banner/banner_1436752983_071861100.jpg" alt="SLOT抽選会" /></a></p>
+<p><a href="/shopnews/detail.php?id=52"><img src="/upImage/banner/banner_1439808434_032599700.jpg" alt="日曜ポイント2倍" /></a></p>
+<p><a href=""><img src="/upImage/banner/banner_1449901651_004935300.jpg" alt="アプラ名演会" /></a></p>
+<br class="clear_noie" />
+</div>
+</div> 
+<!-- サムネイル画像-->
+<div id="thumbBtn">
+<div class="thumbBtnInr">
+<ul class="thumbBtnInr02">
+<li><img src="/upImage/banner/banner_1402654133_090054900.jpg" alt="ミスタードーナツ　青カードご優待" width="172" /></li>
+<li><img src="/upImage/banner/banner_1436752983_071861100.jpg" alt="SLOT抽選会" width="172" /></li>
+<li><img src="/upImage/banner/banner_1439808434_032599700.jpg" alt="日曜ポイント2倍" width="172" /></li>
+<li class="last"><img src="/upImage/banner/banner_1449901651_004935300.jpg" alt="アプラ名演会" width="172" /></li>
+</ul>
+</div>
+</div>
+
+<br class="clear_noie" />
+</div>
+<!---->     
+<!-- ▲▲ #mv ▲▲ -->
+
+<div id="gNav">
+  <div class="gNavInr">
+    <ul>
+      <li class="li01"><a href="/shopnews/"><span>アプラたかいしのショップニュース</span></a></li>
+      <li class="li02"><a href="/shop/"><span>アプラたかいしのショップ案内</span></a></li>
+      <li class="li03"><a href="/event/"><span>アプラホールイベント</span></a></li>
+      <li class="li04"><a href="/facility/"><span>アプラホールの施設案内</span></a></li>
+      <li class="li05"><a href="/library/"><span>高石市立図書館</span></a></li>
+      <li class="li06"><a href="/area/"><span>アプラたかいしの周辺情報</span></a></li>
+    </ul>
+  </div>
+</div>
+<!-- ▲▲ #gNav ▲▲ -->
+
+<div id="contents">
+<div id="contentsInr">
+  <div id="main">
+    <div class="section">
+      <h1 class="btm10"><a href="shopnews/"><img src="/lib/cmn_img/h_shopNews.gif" alt="ショップニュース" width="690" height="26"/></a></h1>
+      <ul class="newsImg">
+        <li><a href="/shopnews/detail.php?id=25"><img src="/upImage/shopNews/shopNews_1359777779_060343500.jpg" alt="" /> アプラ青カードのお知らせ<br />
+コノミヤの5％OFF優待も大好評!!</a></li>
+        <li><a href="/shopnews/detail.php?id=19"><img src="/upImage/shopNews/shopNews_1350173456_075417700.jpg" alt="" /> あらぎ物産店<br />
+新鮮な野菜が並びます！</a></li>
+        <li class="last"><a href="/shopnews/detail.php?id=22"><img src="/upImage/shopNews/shopNews_1348890670_024319400.jpg" alt="" /> パン工房ボングー　<br />
+移店RENEWAL OPEN<br />
+ポイントお得ＤＡＹ</a></li>
+
+      </ul>
+      <br class="clear_noie" />
+    </div>
+    <!-- /section -->
+    
+    <div class="section">
+      <h1 class="btm10"><a href="event/"><img src="/lib/cmn_img/h_hallEvent.gif" alt="ショップニュース" width="690" height="26"/></a></h1>
+      <ul class="newsImg">
+        <li><a href="/event/detail.php?id=224"><img src="/upImage/event/planEvent_1446794973_025325000.jpg" alt="" /> アプラ名演会　－Part.1－<br />
+完売いたしました。ありがとうございました！</a></li>
+        <li><a href="/event/detail.php?id=89"><img src="/upImage/event/planEvent_1448691907_067210700.jpg" alt="" /> 歌声喫茶風　♪ うたはともだち ♪　<br />
+うたとも</a></li>
+        <li class="last"><a href="/event/detail.php?id=227"><img src="/upImage/event/planEvent_1452388874_024223800.jpg" alt="" /> Valentine’s-Day<br />
+アコースティックコンサート</a></li>
+      </ul>
+      <br class="clear_noie" />
+    </div>
+    <!-- /section -->
+    
+    <div class="newsBox">
+      <h2><span>新着情報</span><a href="/news/"><img src="/lib/cmn_img/icon_list.gif" alt="一覧へ" width="54" height="14" /><br class="clear_noie">
+        </a></h2>
+      <dl>
+        <a href="./news/detail.php?id=27">
+        <dt><img src="/lib/cmn_img/icon_1.gif" alt="総合" width="54" height="12" /></dt>
+        <dd>お知らせ（お車でご来場のお客様）</dd>
+        </a>
+      </dl>
+      <dl>
+        <a href="./news/detail.php?id=47">
+        <dt><img src="/lib/cmn_img/icon_1.gif" alt="総合" width="54" height="12" /></dt>
+        <dd>アプラXmasツリー＆アプラカード抽選会のご案内</dd>
+        </a>
+      </dl>
+      <dl>
+        <a href="./news/detail.php?id=41">
+        <dt><img src="/lib/cmn_img/icon_1.gif" alt="総合" width="54" height="12" /></dt>
+        <dd>更新【プライバシーポリシー】、アプラカード会員規約のご案内</dd>
+        </a>
+      </dl>
+      <dl>
+        <a href="./news/detail.php?id=39">
+        <dt><img src="/lib/cmn_img/icon_2.gif" alt="アプラホール" width="54" height="12" /></dt>
+        <dd>消費税増税に伴う料金改定のお知らせ</dd>
+        </a>
+      </dl>
+      <dl>
+        <a href="./news/detail.php?id=36">
+        <dt><img src="/lib/cmn_img/icon_2.gif" alt="アプラホール" width="54" height="12" /></dt>
+        <dd>音楽室・ギャラリー・こどもスタディの控室利用についてのお知らせ</dd>
+        </a>
+      </dl>
+    </div>
+    <div class="calContainer">
+      <h2><a href="/event/"><img src="/lib/cmn_img/h_calendar.gif" alt="ホールイベントカレンダー" width="330" height="26" /></a></h2>
+      <div class="calBox">
+        <div class="calInr">
+          <table class="cal01">
+            <tr class="month">
+              <th colspan="7">01月</th>
+            </tr>
+            <tr class="week">
+              <th>日</th>
+              <th>月</th>
+              <th>火</th>
+              <th>水</th>
+              <th>木</th>
+              <th>金</th>
+              <th>土</th>
+            </tr>
+<tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+<td>
+1
+
+</td>
+<td>
+2
+
+</td>
+</tr>
+<tr>
+<td>
+3
+
+</td>
+<td>
+4
+
+</td>
+<td class="event01">
+<a href="./event/?d=2016-01-05&ajust=#title">5
+</a>
+</td>
+<td class="event01">
+<a href="./event/?d=2016-01-06&ajust=#title">6
+</a>
+</td>
+<td class="event01">
+<a href="./event/?d=2016-01-07&ajust=#title">7
+</a>
+</td>
+<td class="event01">
+<a href="./event/?d=2016-01-08&ajust=#title">8
+</a>
+</td>
+<td class="event01">
+<a href="./event/?d=2016-01-09&ajust=#title">9
+</a>
+</td>
+</tr>
+<tr>
+<td class="event01">
+<a href="./event/?d=2016-01-10&ajust=#title">10
+</a>
+</td>
+<td class="event01">
+<a href="./event/?d=2016-01-11&ajust=#title">11
+</a>
+</td>
+<td>
+12
+
+</td>
+<td class="event01">
+<a href="./event/?d=2016-01-13&ajust=#title">13
+</a>
+</td>
+<td class="event01">
+<a href="./event/?d=2016-01-14&ajust=#title">14
+</a>
+</td>
+<td class="event01">
+<a href="./event/?d=2016-01-15&ajust=#title">15
+</a>
+</td>
+<td class="event01">
+<a href="./event/?d=2016-01-16&ajust=#title">16
+</a>
+</td>
+</tr>
+<tr>
+<td class="event01">
+<a href="./event/?d=2016-01-17&ajust=#title">17
+</a>
+</td>
+<td class="event01">
+<a href="./event/?d=2016-01-18&ajust=#title">18
+</a>
+</td>
+<td class="event01">
+<a href="./event/?d=2016-01-19&ajust=#title">19
+</a>
+</td>
+<td class="event01">
+<a href="./event/?d=2016-01-20&ajust=#title">20
+</a>
+</td>
+<td class="event01">
+<a href="./event/?d=2016-01-21&ajust=#title">21
+</a>
+</td>
+<td class="event01">
+<a href="./event/?d=2016-01-22&ajust=#title">22
+</a>
+</td>
+<td class="event01">
+<a href="./event/?d=2016-01-23&ajust=#title">23
+</a>
+</td>
+</tr>
+<tr>
+<td class="event01">
+<a href="./event/?d=2016-01-24&ajust=#title">24
+</a>
+</td>
+<td class="event01">
+<a href="./event/?d=2016-01-25&ajust=#title">25
+</a>
+</td>
+<td>
+26
+
+</td>
+<td class="event01">
+<a href="./event/?d=2016-01-27&ajust=#title">27
+</a>
+</td>
+<td class="event01">
+<a href="./event/?d=2016-01-28&ajust=#title">28
+</a>
+</td>
+<td class="event01">
+<a href="./event/?d=2016-01-29&ajust=#title">29
+</a>
+</td>
+<td>
+30
+
+</td>
+</tr>
+<tr>
+<td class="event01">
+<a href="./event/?d=2016-01-31&ajust=#title">31
+</a>
+</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+</tr>
+
+          </table>
+        </div>
+      </div>
+    </div>
+    <br class="clear_noie" />
+  </div>
+  <!-- ▲▲ #main ▲▲ -->
+  <div id="lMenu">
+    <div id="lmenuInfoBox" class="btm20">
+      <h3><img src="/lib/cmn_img/img_info_01.gif" alt="営業時間" width="200" height="20" /></h3>
+    <ul class="lmenuInfo">
+          <li class="li01">各店によります</li>
+          <li class="li02">9:30～20:00</li>
+          <li class="li03">イベントによります</li>
+          <li class="li04">9:30～19:00<br />(土・日は17:00迄)</li>
+        </ul>
+      <h3><img src="/lib/cmn_img/img_info_06.gif" alt="アクセス" width="200" height="20" /></h3>
+      <ul class="lmenuInfo">
+      <li class="access">高石市綾園１丁目9番1号<br />●南海本線「高石駅」下車すぐ</li>
+      <li class="li05">215台</li>
+      <li class="btnMap"><a href="/utility/access.php"><img src="/lib/cmn_img/btn_lmenu_map.gif" alt="アクセスマップはこちら" width="180" height="23"/></a></li>
+      </ul>
+      <h3><img src="/lib/cmn_img/img_info_08.gif" width="200" height="69" alt="お問い合わせ" /></h3>
+    </div>
+    <ul class="sideBnr">
+      <li><a href="/area/"><img src="/lib/cmn_img/bnr_lmenu_01.gif" alt="" width="200" height="161" /></a></li>
+      <li><a href="/card/"><img src="/lib/cmn_img/bnr_lmenu_02.gif" alt="" width="200" height="90" /></a></li>
+      <li><a href="/mail_member/"><img src="/lib/cmn_img/bnr_lmenu_03.gif" alt="" width="200" height="50" /></a></li>
+      <li><a href="http://www.facebook.com/pages/%E3%82%A2%E3%83%97%E3%83%A9%E3%81%9F%E3%81%8B%E3%81%84%E3%81%97/294043120703945" class="blank"><img src="/lib/cmn_img/bnr_lmenu_04.gif" alt="" width="200" height="50" /></a></li>
+      <li><a href="/event/"><img src="/lib/cmn_img/bnr_lmenu_05.gif" alt="" width="200" height="50" /></a></li>
+    </ul>
+  </div>
+  <!-- ▲▲ #lMenu ▲▲ --> 
+  <br class="clear_noie" />
+</div>
+</div>
+<!-- ▲▲ #contentsInr ▲▲ -->
+</div>
+<!-- ▲▲ #contents ▲▲ -->
+
+<div id="footer">
+  <div id="footerInr">
+    <p id="pageTop"> <a href="#header"><img width="92" height="17" alt="このページのトップへ" src="/lib/cmn_img/img_pagetop.gif"></a> </p>
+    <p class="footerLogo"><img src="/lib/cmn_img/img_footer_logo.gif" alt="アプラたかいし" width="195" height="41" /></p>
+    <p class="footerList">|　<a href="/utility/link.php">リンク</a>　|　<a href="/utility/about.php">アプラたかいしについて</a>　|　<a href="/contact/">お問い合わせ</a>　|　<a href="/utility/privacy.php">プライバシーポリシー</a>　|</p>
+    <address>
+    &copy; Copyright 2012 appla takaishi, All Rights Reserved.
+    </address>
+  </div>
+</div>
+</div>
+<!--/footerShopList--> 
+
+<!-- ▲▲ #contents ▲▲ -->
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<html>
+<head>
+<link rel='shortcut icon' href='./img/sun3.ico'>
+<meta http-equiv='Content-type' content='text/html; charset=UTF-8'>
+<meta http-equiv='Pragma' content='no-cache'>
+<meta http-equiv='Cache-Control' content='no-cache, must-revalidate'>
+<meta http-equiv='Expires' content='Thu, 01 Dec 1994 16:00:00 GMT'>
+
+<link href='./default.css' rel='stylesheet' type='text/css'>
+
+<script language='JavaScript' src='./js/jquery-1.8.1.min.js'></script>
+<script language='JavaScript' src='./js/jquery.timers.js'></script>
+
+<title>発電モニタ</title>
+</head>
+<body>
+<div id=title_plate>
+<div id=title_info>発電モニタ</div>
+</div>
+<div class=contents>
+<form method=post>
+ユーザーID<br>
+<input type=text     name=uid id=uid maxlength=255 style='width:240px; ime-mode:disabled;' value='' istyle='3' format='*a' mode="alphabet"><br>
+パスワード<br>
+<input type=password name=pwd id=pwd maxlength=255 style='width:240px; ime-mode:disabled;' value='' istyle='3' format='*a' mode="alphabet"><br>
+<div class=msg>&nbsp;</div><button type=submit id=btnSubmit>ログイン</button>&nbsp;
+<input type=checkbox name=save_login value=1 >ユーザーIDを記憶する
+</form>
+</div>
+<script>
+
+$(function(){
+  if ($('#uid').val() == ''){
+    $('#uid').focus();
+  }else{
+    $('#pwd').focus();
+  };
+});
+
+</script>
+</body>
+</html>

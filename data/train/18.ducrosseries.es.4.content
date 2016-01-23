@@ -1,0 +1,416 @@
+
+
+<!DOCTYPE HTML>
+ <html>
+<head>
+<meta charset="utf-8">
+<meta name="description" content="Disfruta de carreras al aire libre en varias modalidades (DuCross, TriCross...)" />
+<meta name="keywords" content="maratón, correr, deporte, ducross, tricross, trichallenge, ironchild" />
+
+<title>DucrosSeries</title>
+<link rel="shortcut icon" type="image/x-icon" href="images/ducross.ico">
+<link rel="stylesheet" type="text/css" href="css/estilo.css">
+<!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="css/HackStile.css"><![endif]-->
+<link rel="stylesheet" type="text/css" href="../css/tooltip.css">
+<link rel="stylesheet" type="text/css" href="css/datepicker.css"/>
+<link href='http://fonts.googleapis.com/css?family=Marcellus+SC' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Marcellus' rel='stylesheet' type='text/css'>
+
+<!-- Start Slider section -->
+	<link rel="stylesheet" type="text/css" href="slider/engine1/style.css" />
+	<script type="text/javascript" src="slider/engine1/jquery.js"></script>
+    <script type="text/javascript" src="funciones/jquery.js"></script>
+	<script type="text/javascript" src="funciones/datepicker.js"></script>
+    <script type="text/javascript" src="funciones/eye.js"></script>
+    <script type="text/javascript" src="funciones/utils.js"></script>
+   <script type="text/javascript">
+    (function($){
+	var initLayout = function() {
+		var hash = window.location.hash.replace('#', '');
+		var currentTab = $('ul.navigationTabs a')
+							.bind('click', showTab)
+							.filter('a[rel=' + hash + ']');
+		if (currentTab.size() == 0) {
+			currentTab = $('ul.navigationTabs a:first');
+		}
+		showTab.apply(currentTab.get(0));
+		$('#date').DatePicker({
+			flat: true,
+			date: '2008-07-31',
+			current: '2008-07-31',
+			calendars: 1,
+			starts: 1,
+			view: 'years'
+		});
+		var now = new Date();
+		now.addDays(-10);
+		var now2 = new Date();
+		now2.setHours(0,0,0,0);
+		var textos= ['Valdemorillo']
+		
+		$('#date2').DatePicker({
+			flat: true,
+			textos: [,'Cierre inscripciones DU ROAD CAÑADA</a>','DU ROAD CAÑADA</a>','Cierre inscripciones Du Valdemorillo</a>','Du Valdemorillo</a>'],
+			date: ['2010-01-01','2016-01-20 00:00:00','2016-01-24 00:00:00','2016-02-16 00:00:00','2016-02-21 00:00:00'],
+			
+			format: 'Y-m-d',
+			calendars: 1,
+			mode: 'multiple',
+			onChange: function(formated, dates) {
+			},
+			starts: 0
+		});
+		$('#clearSelection').bind('click', function(){
+			$('#date3').DatePickerClear();
+			return false;
+		});
+		$('#date3').DatePicker({
+			flat: true,
+			date: ['2009-12-28','2010-01-23'],
+			current: '2010-01-01',
+			calendars: 3,
+			mode: 'range',
+			starts: 1
+		});
+		$('.inputDate').DatePicker({
+			format:'m/d/Y',
+			date: $('#inputDate').val(),
+			current: $('#inputDate').val(),
+			starts: 1,
+			position: 'right',
+			onBeforeShow: function(){
+				$('#inputDate').DatePickerSetDate($('#inputDate').val(), true);
+			},
+			onChange: function(formated, dates){
+				$('#inputDate').val(formated);
+				if ($('#closeOnSelect input').attr('checked')) {
+					$('#inputDate').DatePickerHide();
+				}
+			}
+		});
+		var now3 = new Date();
+		now3.addDays(-4);
+		var now4 = new Date()
+		$('#widgetCalendar').DatePicker({
+			flat: true,
+			format: 'd B, Y',
+			date: [new Date(now3), new Date(now4)],
+			calendars: 3,
+			mode: 'range',
+			starts: 1,
+			onChange: function(formated) {
+				$('#widgetField span').get(0).innerHTML = formated.join(' &divide; ');
+			}
+		});
+		var state = false;
+		$('#widgetField>a').bind('click', function(){
+			$('#widgetCalendar').stop().animate({height: state ? 0 : $('#widgetCalendar div.datepicker').get(0).offsetHeight}, 500);
+			state = !state;
+			return false;
+		});
+		$('#widgetCalendar div.datepicker').css('position', 'absolute');
+	};
+	
+	var showTab = function(e) {
+		var tabIndex = $('ul.navigationTabs a')
+							.removeClass('active')
+							.index(this);
+		$(this)
+			.addClass('active')
+			.blur();
+		$('div.tab')
+			.hide()
+				.eq(tabIndex)
+				.show();
+	};
+	
+	EYE.register(initLayout, 'init');
+	$('#datepickerSelected ').addClass('tooltip');
+})(jQuery)
+    </script>
+     <script type="text/javascript">
+    
+ads = new Array(7);
+ads[0] = "http://www.ducrosseries.es/img/banner_du.jpg";
+ads[1] = "http://www.ducrosseries.es/img/XTERRA_Madrid_Logo.jpg";
+ads[2] = "http://www.ducrosseries.es/img/banner_tri.jpg";
+ads[3] = "http://www.ducrosseries.es/img/banner_ducross.jpg";
+ads[4] = "http://www.ducrosseries.es/img/banner_runin.jpg";
+ads[5] = "http://www.ducrosseries.es/img/FamiliaPhysiorelax2.jpg";
+ads[6] = "http://www.ducrosseries.es/img/ENERGY_-300x220.png";
+
+
+
+ 
+/* ARRAY DE URLs */
+arrayURLs = new Array(7);
+arrayURLs[0] = "http://www.ducrosseries.es/pruebas_ducross.php"
+arrayURLs[1] = "http://www.xterramadrid.org"
+arrayURLs[2] = "http://www.ducrosseries.es/pruebas_tricross.php"
+arrayURLs[3] = "http://www.icepower-shop.es"
+arrayURLs[4] = "http://runin.es/?q=1"
+arrayURLs[5] = "https://www.physiorelax.es/"
+arrayURLs[6] = "http://es.fortepharma.com/"
+ 
+//variable para llevar la cuenta de las imagenes
+var longuitudArray = ads.length;
+var contador = 0
+ 
+// Cojemos un numero aleatorio
+contador = Math.floor((Math.random() * longuitudArray))
+ 
+// Cambia la imagen cada segundo en este ejemplo
+var tiempo = 3// En segundos
+var timer = tiempo * 1000;
+ 
+function banner() {
+    contador++;
+    contador = contador % longuitudArray
+    document.banner.src = ads[contador];
+    setTimeout("banner()", timer);
+}
+ 
+function ponerURL() {
+    contador2 = contador;
+	url = window.open(arrayURLs[contador2]);
+}
+     </script>
+	<!-- End Slider section -->
+   
+<!-- Google Analytics -->    
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-20551383-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<!-- Fin Google Analytics -->  
+
+</head>
+
+<body onload="banner()">
+<center>
+
+		<div class="Contenedor">
+            
+            	
+                
+                
+				<table class="TablaCabecera" cellpadding="0" cellspacing="0">
+                	<tr class="FilaIconos">
+                        <td class="ColIconos">
+                        	<header>
+                            <div class="TextoCabecera">
+                        		<a href="http://www.ducrosseries.es" style="text-decoration:none;"><h1 class="TituloDucross">DUCROSSERIES.ES</h1></a> 
+                            </div>
+                            </header>
+                            <div class="IconosIzq">
+                            	<a href="index.php"><img src="http://ducrosseries.es/img/iconos/ico_home.png" border="0" /></a>
+                            	<a href="contacto.php"><img src="http://ducrosseries.es/img/iconos/ico_email.png" border="0" /></a>
+                            	<a href="ayuda.php"><img src="http://ducrosseries.es/img/iconos/ico_ayuda.png" border="0" /></a>
+                            </div>
+                            <div class="EspacioSeparador">
+                            	 <a href="http://www.ducrosseries.es/iniciar_sesion.php">Accede a tu cuenta o regístrate</a>                             </div>
+                            <div class="IconosDer" >
+                            	<a href="https://www.facebook.com/pages/Ducrosseries/170383853005709" target="_blank"><img src="http://ducrosseries.es/img/iconos/ico_facebook.png" border="0" /></a>
+                            	<a href="https://twitter.com/DUCROSSERIES" target="_blank"><img src="http://ducrosseries.es/img/iconos/ico_twitter.png" border="0" /></a>
+                            	<a href="http://www.flickr.com/photos/ducross/" target="_blank"><img src="http://ducrosseries.es/img/iconos/ico_flickr.png" border="0" /></a>
+                                <a href="http://www.youtube.com/user/DuCrossSeries?gl=ES" target="_blank"><img src="http://ducrosseries.es/img/iconos/ico_youtube.png" border="0" /></a>&nbsp;&nbsp;
+                            </div>                         	
+                        </td>
+                    </tr>
+                    <tr>
+                    	<td>
+                        
+                        	<div class="Cartelitos">
+                                <img src="img/cross_flags_izq.png" border="0" usemap="#Map" />
+                            </div> 
+                            
+                            <div class="Cartelitos2">
+                                <img src="img/cross_flags_der.png" border="0" usemap="#Map2" />
+                            </div>
+                        	
+                          <!-- Start Slider section -->
+
+                            <div id="wowslider-container1">
+	<div class="ws_images"><ul>
+        <li><img src="http://www.ducrosseries.es/slider/data1/images/600_1.jpg" alt="600_1" title="600_1" id="wows1_0"/></li>
+        <li><img src="http://www.ducrosseries.es/slider/data1/images/600_4.jpg" alt="600_4" title="600_4" id="wows1_3"/></li>
+        <li><img src="http://www.ducrosseries.es/slider/data1/images/600_7.jpg" alt="600_7" title="600_7" id="wows1_6"/></li>
+        <li><img src="http://www.ducrosseries.es/slider/data1/images/600_5.jpg" alt="600_5" title="600_5" id="wows1_4"/></li>
+        <li><img src="http://www.ducrosseries.es/slider/data1/images/600_6.jpg" alt="600_6" title="600_6" id="wows1_5"/></li>
+        <li><img src="http://www.ducrosseries.es/slider/data1/images/600_4.jpg" alt="600_4" title="600_4" id="wows1_3"/></li>
+    </ul></div>
+                            
+                            <div class="ws_shadow"></div>
+                            </div>
+                            <script type="text/javascript" src="http://www.ducrosseries.es/slider/engine1/wowslider.js"></script>
+                            <script type="text/javascript" src="http://www.ducrosseries.es/slider/engine1/script.js"></script>
+                            <!-- End Slider section -->
+    
+                        </td>
+                    </tr>
+                </table>
+<map name="Map" id="Map">
+  <area shape="rect" coords="2,5,139,61" href="pruebas_ducross.php" />
+  <area shape="rect" coords="2,77,138,137" href="pruebas_tricross.php" />
+  <area shape="rect" coords="-1,149,133,208" href="pruebas_trichallenge.php" />
+  <area shape="rect" coords="4,223,138,282" href="pruebas_otros.php" />
+</map>
+
+<map name="Map2" id="Map2">
+<area shape="rect" coords="0,4,142,63" href="http://www.basic-fit.es/" target="_blank" />
+<area shape="rect" coords="0,74,141,133" href="pruebas_running.php" />
+<area shape="rect" coords="0,146,139,205" href="pruebas_mtb.php" />
+<area shape="rect" coords="0,224,137,283" href="pruebas_swim.php" />
+
+</map>
+            	
+            	
+                <nav>
+                <table class="TablaMenuIndex" cellpadding="0" cellspacing="0">
+                	<tr class="FilaMenu">
+                    	<td class="CeldaMenu">
+                        	<a class="EnlaceMenu" href="pruebas_ducross.php" >PRUEBAS 2016</a>
+                        </td>
+                        <td class="CeldaMenu Separador">
+                        	<a class="EnlaceMenu" href="inscripcion_paso1.php" >INSCRIPCIONES</a>
+                        </td>
+                        <td class="CeldaMenu">
+                        	<a class="EnlaceMenu" href="clasificaciones.php" >RESULTADOS</a>
+                        </td>
+                         <!-- <td class="CeldaMenu Separador">
+                        	<a class="EnlaceMenu" href="http://www.ducrosseries.es/club_runners.php" >CLUB DUCROSS</a>
+                        </td>-->
+                        <td class="CeldaMenu Separador">
+                        	<a class="EnlaceMenu" href="galeria.php" >GALERÍA</a>
+                        </td>
+                        <td class="CeldaMenu SeparadorIzquierda">
+                        	<a class="EnlaceMenu" href="noticias_ducross.php" >+INFO</a>
+                        </td>
+                        <!-- <td class="CeldaMenuSeparador">
+                        	<a class="EnlaceMenu" href="" >CLUB</a>
+                        </td>-->
+                    </tr>
+                </table> <!--Fin TablaMenu-->
+                </nav>
+
+                        
+            	<table class="TablaContenidoCentral" cellpadding="0" cellspacing="0">
+                	<tr> 
+                    	<td class="CeldaContenidoCentralCalendario"> 
+                           
+                          <div id="date2" align="center" style="margin:0; padding:0; width:335px;"></div>
+                           
+                        </td>
+                        <td class="CeldaContenidoCentralNoticia"> <!--Fila 1 - noticia 1-->
+                        
+                        	<font class="TituloContenidoCentral">FAMILY RACE</font><br />
+                            <font class="FechaContenidoCentral">21/01/2016</font><br />
+                            <font class="TextoContenidoCentral">
+                            
+                            <div>
+	Participa en Family Race, una saludable actividad deportiva apta para todas las edades, divertida, solidaria y llena de sorpresas.</div>
+<div>
+	&nbsp;</div>
+<div>
+	Para recorrer los 5 o 10 kil&oacute;metros de la carrera solo necesitas unas piernas en forma, mucho coraz&oacute;n y muchas ganas de divertirte sanamente.</div>
+<div>
+	&nbsp;</div>
+<div>
+	Tambien pruebas infantiles.</div>
+<div>
+	&nbsp;</div>
+<div>
+	<a href="https://youtu.be/h3qkvTYeTog">VIDEO DE JAVI NIEVES</a></div>
+<div>
+	&nbsp;</div>
+<div>
+	<a href="http://www.rockthesport.com/evento/encuentro-madrid">MAS INFO</a></div>
+                            
+                            
+                              <a href="noticias_ducross.php?cp=240" class="EnlaceSeguirLeyendo"> (...) seguir leyendo </a>
+                            
+                            </font>
+                            
+                        </td>
+                        <td class="CeldaContenidoCentralFoto" align="center"> <!--Fila 1 - foto 1-->
+                        	<img class="FotoPortada Vertical" src="http://www.ducrosseries.es/ficheros/Cartelweb.jpg" border="0" align="right" />
+                        </td> 
+                    </tr>
+                    <tr>
+                    	<td class="CeldaContenidoCentralCalendario" align="center"> <!--Fila 2 - banner-->
+                            <a href="javascript:ponerURL()">
+            <img src="" name="banner" >
+        </a>
+                        </td>
+                        <td class="CeldaContenidoCentralNoticia"> <!--Fila 2 - noticia 2-->
+                        
+                        	<font class="TituloContenidoCentral">Du Road, tu primer reto para 2016</font><br />
+                            <font class="FechaContenidoCentral">21/01/2016</font><br />
+                            <font class="TextoContenidoCentral">
+                            
+                            <p>
+	<strong>El pr&oacute;ximo 24 de enero, la localidad de Villanueva de la Ca&ntilde;ada ver&aacute; nacer un nuevo concepto de prueba deportiva. Se trata de &lsquo;Du Road&rsquo;, el duatl&oacute;n de carretera que viene avalado por la experiencia y el saber hacer del equipo de Du Cross Series, y que promete cambiar la percepci&oacute;n de los duatletas tradicionales. Adem&aacute;s, los 100 primeros inscritos se beneficiar&aacute;n de una promoci&oacute;n especial de apertura.</strong></p>
+ 
+                            
+                            
+                              <a href="noticias_ducross.php?cp=239" class="EnlaceSeguirLeyendo"> (...) seguir leyendo </a>
+                            
+                            </font>
+                        </td>
+                        <td class="CeldaContenidoCentralFoto" align="center"> <!--Fila 2 - foto 2-->
+                        	<img class="FotoPortada Vertical" src="http://www.ducrosseries.es/ficheros/Cartel I Du Road.jpg" border="0" align="right" />
+                        </td> 
+                    </tr>
+                    <tr>
+                    	<td colspan="3" height="25px" bgcolor="#FFF">
+							<img src="img/home_body_pie.png" border="0" alt="ImagenPie" />
+                        </td>
+                    </tr>
+                </table> <!--Fin TablaContenidoCentral-->
+                
+                <table class="TablaBannersPie" cellpadding="0" cellspacing="0" width="900px">
+                    <tr>
+                        <td height="45px">&nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            <a href="http://www.basic-fit.es/" target="_blank"><img src="http://www.ducrosseries.es/img/BasicFit_Logo.jpg"  border="0" align="left" style="position:relative; top:3px;" /></a>
+                            <a href="http://www.powerade.es/" target="_blank"><img src="http://www.ducrosseries.es/img/Logo_Powerade.jpg" border="0"  /></a>
+                            <a href="http://www.sanferbike.com/" target="_blank"><img src="http://www.ducrosseries.es/img/logo-sanferbike-2014-mini.gif" border="0" align="right" style="position:relative; top:-30px;"  /></a>
+                        </td>
+                    </tr>
+                </table> <!--Fin TablaBannersPie-->
+           </div>
+            
+           <div class="ContenedorPie">
+           
+           		<footer>            
+            	<div class="Pie">
+                	<p class="TextoPieIzq">&copy; Ducrosseries 2012 - 2016</p>
+                    <font class="TextoPieDer"><a class="EnlacesPie" href="#" target="_blank">Aviso Legal</a> | <a class="EnlacesPie" href="#" target="_blank">Política de Privacidad</a> |<a class="EnlacesPie" href="http://www.ducrosseries.es/contacto.php">Contacto</a></font>
+                	<img src="http://www.ducrosseries.es/img/footer.png" border="0" alt="Imagen Pie" />
+                </div>
+                </footer>
+                                
+                
+                <!-- Start Cookie Assisstant (http://cookieassistant.com) -->
+				<script src="http://app.cookieassistant.com/widget.js?token=zWxNePXmCB-0Rttv4kYePw" type="text/javascript"></script>
+                <div id="cookie_assistant_container"></div>
+                <!-- End Cookie Assistant -->
+
+
+          </div>
+          
+</center>
+</body>
+</html>

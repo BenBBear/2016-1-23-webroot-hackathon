@@ -1,0 +1,388 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>駐車場を探すならParking NAVI（パーキングナビ）</title>
+	<meta name="viewport" content="width=1290">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="keywords" content="時間,貸し,駐車場,月極,検索,予約,Pナビ,">
+    <meta name="description" content="時間貸駐車場や月極駐車場を探すなら駐車場検索パーキングナビ。駐車場に関する情報をしっかりと掲載！駐車場情報掲載、駐車場オーナー様向け収益改善についてもお問い合わせください。">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <link rel="shortcut icon" href="./favicon.ico">
+    <link href="css/import.css" rel="stylesheet">
+	<script src="js/jquery.min.js"></script>
+	<script src="js/ore3.js"></script>
+	<script src="js/function.js"></script>
+	<script src="js/search.js"></script>
+
+<!--html5のブラウザ互換用-->
+<!--[if lt IE 9]>
+    <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<!--[if lte IE 8]>
+	<script src="js/ore3_png_for_ie8.js"></script>
+<![endif]-->
+	<script type="text/javascript">
+		$(function(){
+			// 入力フォーム初期化
+			$("input:text").focus(function(){
+				$(this).css("color","#000000");		
+				if(this.value == this.defaultValue){
+					$(this).val('');
+				}
+			}).blur(function(){	
+				if($(this).val() == ''){
+					$(this).val(this.defaultValue).css("color","#999999");
+				}
+			});
+      		});
+
+        var bg = new Image();
+        bg.onload = function(){
+            document.getElementsByTagName( "nav" )[0].style.visibility 	= "visible";
+            document.getElementById( "ico_hour" ).style.visibility 		= "visible";
+            document.getElementById( "ico_monthly" ).style.visibility 	= "visible";
+        };
+        bg.src = "./img/home/bg_contents.jpg";
+
+        $ore3(window).bind("load", function(){
+			// ロール処理 
+			ore3_roll( "roll", 1000, 3000 );
+		});
+		// ---------------------------
+		// ロール処理
+		function ore3_roll( id, speed, interval ){
+			var roll = new Object();
+			roll.o 		= document.getElementById( id );
+			roll.li 	= roll.o.getElementsByTagName( "li" );
+			roll.lilen	= roll.li.length;
+			roll.height 	= 38;
+		
+			$ore3(roll.o).css("position", "relative");
+			$ore3(roll.o).css("top", "0px");
+			$ore3(roll.o).css("left", "0px");
+			$ore3(roll.o).css("height", (roll.height*roll.lilen) + "px");
+		
+			//
+			var moveUp = function() {
+				// move
+				$ore3(roll.o).amove({
+					top: Number( -(roll.height) ),
+					left: 0,
+					sec: speed,
+					callback: function(f){
+						var newli		= document.createElement("li");
+						newli.innerHTML = roll.li[0].innerHTML;
+						$ore3(newli).css("height", roll.height+"px");
+						roll.o.removeChild( roll.li[0] );
+						roll.o.appendChild( newli );
+            $ore3(roll.o).css("top", "0px");
+						setTimeout( moveUp, interval );
+					}
+				});
+				// fade
+				setTimeout( function(){
+					$ore3(roll.li[0]).afade({
+						start: 100,
+						end: 0,
+						sec: (speed * 0.4)
+					});
+				}, (speed * 0.2) );
+			};
+		
+			setTimeout( moveUp, interval );
+		}
+	</script>
+<!--google-analytics.com -->
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-52701322-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!--/google-analytics.com -->
+</head>
+<body id="home">
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id))
+            return;
+          js = d.createElement(s);
+          js.id = id;
+          js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1&appId=473907059374486";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+        <div id="bodyWrap">
+        <header class="wrap">
+     		    <iframe id="iframeHour" src="searchHour.php" width="924px" height="690px" name="iframeHour" frameborder="0"></iframe>
+      			<iframe id="iframeMonthly" src="searchMonthly.php" width="924px" height="690px" name="iframeMonthly" frameborder="0"></iframe>
+
+            <div id="sns">
+                <ul class="clearfix">
+                    <li><h1>時間貸駐車場や月極駐車場を探すなら駐車場検索パーキングナビ</h1></li>
+                    <li id="twitter">
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://parkingnavi.jp/" data-text="時間貸・月極駐車場を探すなら [駐車場検索サイトParking NAVI（パーキングナビ）]" data-lang="ja">ツイート</a>
+                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>                
+                    </li>
+                    <li>
+                        <div class="fb-like" data-href="https://parkingnavi.jp/" data-width="69" data-height="20" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+                    </li>
+                </ul>
+            </div>
+            <nav>
+                <h6>
+                    <a href="https://parkingnavi.jp/">
+                      	<img src="img/common/header/bg_logo.png" alt="駐車場検索ならパーキングナビ">
+                        <img src="img/common/header/logo.png" alt=ParkingNAVIパーキングナビ" class="png4ie8">
+                    </a>
+                </h6>
+                <ul class="clearfix">
+                    <li id="nav01">
+                        <a href="javascript:void(0);">
+                            <img src="img/common/nav/nav01.png" alt="月極駐車場をさがす" class="imgover">
+                        </a>
+                    </li>
+                    <li id="nav02">
+                        <a href="javascript:void(0);">
+                            <img src="img/common/nav/nav02.png" alt="時間貸駐車場をさがす" class="imgover">
+                        </a>
+                    </li>
+                    <li id="nav03">
+                        <a href="./pocket/">
+                            <img src="img/common/nav/nav03.png" alt="駐車場オーナー様へ" class="imgover">
+                        </a>
+                    </li>
+                    <li id="nav04">
+                        <a href="./contact.php">
+                            <img src="img/common/nav/nav04.png" alt="お問い合わせ" class="imgover">
+                        </a>
+                    </li>
+                </ul>
+                <p id="mascot">
+                    <img src="img/common/header/mascot.png" alt="キャラクター">
+                </p>
+            </nav>
+
+        </header>
+    
+        <article class="wrap">
+            <section>
+                <div id="hour">
+                    <img src="img/home/bg_hour_parking.png" alt="時間貸駐車場をさがす">
+                    <img src="img/home/hour_parking.png" alt="時間貸駐車場をさがす" class="png4ie8">
+                </div>
+                <div id="monthly">
+                    <img src="img/home/bg_monthly_parking.png" alt="月極駐車場をさがす">
+                    <img src="img/home/monthly_parking.png" alt="月極駐車場をさがす" class="png4ie8">
+                </div>
+                <div id="pickup">
+                    <!-- PICKUP -->
+                    <a href="https://parkingnavi.jp/contact.php?bc=2&mc=6&area=undefined">
+                        <img src="img/home/pickup.png" alt="月極駐車場を探してもらう" title="月極駐車場を専門担当者がお探しします。お問い合わせはこちらをクリック" class="png4ie8">
+                    </a>
+                </div>
+                <div id="ico_hour">
+                  <img src="img/home/ico/ico_hour.gif">
+                </div>
+                <div id="ico_monthly">
+                	<img src="img/home/ico/ico_monthly.gif">
+                </div>
+                <div id="ico_center">
+                	<img src="img/home/ico/ico_center.gif">
+          			</div>
+            </section>
+            <section id="information" class="clearfix">
+              <div id="rollWrap">
+                <ul id="roll">
+                                        <li>
+                        <p>
+                            <img src="img/home/ico_news.gif" alt="お知らせ">
+                            <span>
+                                    
+                            </span>
+                        </p>
+                        <p>
+                                                            <a href="https://parkingnavi.jp/contact.php?bc=4&mc=2">イベント開催時の臨時駐車場についてご相談ください！</a>
+                                                    </p>
+                    </li>
+                                        <li>
+                        <p>
+                            <img src="img/home/ico_news.gif" alt="お知らせ">
+                            <span>
+                                    
+                            </span>
+                        </p>
+                        <p>
+                                                            <a href="https://parkingnavi.jp/pocket/">駐車場オーナー様！　パーキングナビで駐車場情報を掲載しませんか。</a>
+                                                    </p>
+                    </li>
+                                        <li>
+                        <p>
+                            <img src="img/home/ico_news.gif" alt="お知らせ">
+                            <span>
+                                    
+                            </span>
+                        </p>
+                        <p>
+                                                            <a href="https://parkingnavi.jp/info/shakoshoumei.html">車庫証明を自分で取得するには？【月極駐車場の疑問】</a>
+                                                    </p>
+                    </li>
+                                        <li>
+                        <p>
+                            <img src="img/home/ico_news.gif" alt="お知らせ">
+                            <span>
+                                    
+                            </span>
+                        </p>
+                        <p>
+                                                            <a href="https://parkingnavi.jp/info/sharyousize.html">機械式駐車場に駐車できる車両サイズ制限の調べ方って？</a>
+                                                    </p>
+                    </li>
+                                    </ul>
+      				</div>
+                <ul id="bnr" class="clearfix">
+                    <li>
+                        <a rel="nofollow" href="https://parkingnavi.jp/request_parking/">
+                            <img src="img/home/bnr/bnr04.png" alt="お持ちの時間貸・月極駐車場を当サイトに掲載させてください！">
+                        </a>
+                    </li>
+                                    <li>
+                        <a rel="nofollow" href="https://parkingnavi.jp/chart/">
+                            <img src="img/home/bnr/bnr01.gif" alt="月極駐車場の探し方">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./pocket/" target="_blank">
+                            <img src="img/home/bnr/bnr02.gif" alt="Pocket Park ポケットパーク 空席の月極駐車場を借り上げ">
+                        </a>
+                    </li>
+					<li><a rel="nofollow" href="https://nissan-rentacar.com/kokoren/" target="_blank">
+                            <img src="img/home/bnr/bnr03_kokoren.jpg"></a>
+                    </li>
+                </ul>
+            </section>
+                    <!--indexcontents--><section id="indexcontents" class="clearfix">
+               <!-- <p width="100%" class="decspt10 decspb20"><span class="decfcf00b">エコパーク愛野及び愛野駅周辺での駐車場のお探しについて</span><br />
+				弊社の駐車場に愛野駅周辺の駐車場がございません。最も近い駐車場で静岡駅周辺になりますが、こちらは静岡駅から愛野駅へ1時間ほど電車移動が必要となります。<br />
+				→静岡駅 南口まで徒歩1分　<a href="https://parkingnavi.jp/details.php?parking_id=163">サウスポット伊伝パーキング</a>　／　→静岡駅 南口まで徒歩3分　<a href="https://parkingnavi.jp/details.php?parking_id=164">中西ガレージ</a>
+				</p>-->
+            <ul width="100%">
+           <li>
+           <!-- <a href="https://parkingnavi.jp/info/tukigime.html" title="今イチオシしたい！月極駐車場"><img src="images/img_index/indexcontents_banamonth.png" alt="今イチオシしたい！月極駐車場" style="margin-bottom:3px;margin-left:-20px;"></a><br />
+            	<a href="https://parkingnavi.jp/info/tukigime.html" title="今イチオシしたい！月極駐車場">今イチオシしたい！月極駐車場</a>[2015.1.9更新]<br />
+            	<p>月極駐車場営業担当から今どうしてもイチオシしたい！<br />【<span class="decfbold">新宿エリア</span>】の月極駐車場をご紹介します。</p><br />-->
+            	<img src="images/img_index/indexcontents_ttl_02.png" alt="月極駐車場の疑問" style="margin-bottom:8px;">
+            	<br />
+            	<a href="https://parkingnavi.jp/info/shakoshoumei.html" title="自動車保管場所証明証【車庫証明】取得方法について">車庫証明の取得方法</a><br />
+            	<p>車庫証明を自分で申請するために必要な書類など取得方法について。</p><br />
+            	<a href="https://parkingnavi.jp/info/sharyousize.html" title="機械式駐車場のサイズ制限について">機械式駐車場の車両サイズ</a><br />
+            	<p>機械式の駐車スペースには、車両制限があります。<br />各項目について図説します。</p><br />
+            	<a href="https://parkingnavi.jp/info/question_parking03.html" title="アンケート：月極駐車場探しの定番はやっぱりネット検索？">月極駐車場探しはやっぱりネット検索？</a><br />
+            	<p>以前は駐車場だったところがいきなり住宅になるなんて・・・。<br />いますぐに探したい！やっぱりネット検索？</p><br />
+            	<a href="https://parkingnavi.jp/info/question_parking04.html" title="アンケート：初めての月極駐車場探しはやっぱり不安！">初めての月極駐車場探しはやっぱり不安！</a><br />
+            	<p>不特定多数の車が不規則に集まる場所。<br />最適な駐車場を選ぶには。</p><br />
+            	<a href="https://parkingnavi.jp/info/question_parking05.html" title="アンケート：駐車場を選ぶ決め手は賃料の安さ？それとも・・・">駐車場を選ぶ決め手は賃料の安さ？それとも・・・</a><br />
+            	<p>安ければなんでもいい？<br />見比べて、検討して・・・。最後に決める手になるのは？</p><br />
+            </li>
+            <li>
+            <!--<a href="https://parkingnavi.jp/details.php?parking_id=165" title="イトーヨーカドー船橋店立体駐車場　借り替えキャンペーン！"><img src="images/img_index/indexcontents_banatime.png" alt="イトーヨーカドー船橋店立体駐車場　借り替えキャンペーン！" style="margin-bottom:3px;margin-left:-20px;"></a><br />
+            	<a href="https://parkingnavi.jp/details.php?parking_id=165" title="イトーヨーカドー船橋店立体駐車場　借り替えキャンペーン！">イトーヨーカドー船橋店立体駐車場　借り替えキャンペーン！</a><br />
+            	<p>新規契約車に限り初月賃料無料！全高155cm内の軽自動車限定で月極契約を募集しています。<br />
+申し込み・詳細はこちらの<a href="https://parkingnavi.jp/details.php?parking_id=165">月極・定期メニュー</a>をご覧ください。</p>-->
+            	<img src="images/img_index/indexcontents_ttl_01.png" alt="時間貸駐車場の疑問" style="margin-bottom:8px;"><br /><a href="https://parkingnavi.jp/info/question_parking01.html" title="アンケート：駐車場は事前にネットで調べますか？">駐車場は事前に調べる？</a><br />
+            	<p>目的地の近くの駐車場。調べる派？行き当たりばったり派？</p><br />
+            	<a href="https://parkingnavi.jp/info/question_parking02.html" title="アンケート：駐車場の待ち時間はしかたない？">駐車場の待ち時間はしかたない？</a><br />
+            	<p>駐車場前の入場待ち列にうんざり・・・。<br />予定通りに駐車したいですね。</p><br />
+            	<a href="https://parkingnavi.jp/info/chusharyoukin.html" title="駐車料金を安くできるサービスとは">駐車料金を安くしたい！【NEW】</a><br />
+            	<p>駐車料金を少しでも安くするために利用したい駐車場サービス<br />を紹介します！</p><br />
+            	<a href="https://parkingnavi.jp/info/sharyousize02.html" title="駐車場の車両制限はなんのため？【NEW】">駐車場の車両制限はなんのため？【NEW】</a><br />
+            	<p>軽自動車扱いだから、と気にせず向かったら車の高さが制限オーバー!?<br />
+            	そもそも、車両制限はなんのために設定されているものなの？</p><br />
+            	<img src="images/img_index/indexcontents_ttl_03.png" alt="駐車場の周辺情報" style="margin-bottom:8px;"><br />
+            <a href="info/kankou-yokosuka1.html">三笠公園・無人島猿島など横須賀の公園周辺</a><br />
+            <a href="info/kankou-yokosuka2.html">ヨコスカフレンドシップデーと周辺情報</a><br />
+            <a href="info/kankou-hachioji.html">八王子駅周辺</a><br />
+            <a href="info/kankou-tsuchiura.html">土浦駅周辺</a><br />
+            <a href="info/kankou-seisekisakuragaoka.html">「耳をすませば」のロケ地など聖蹟桜ヶ丘駅周辺</a><br />
+            <a href="info/kankou-kichijoji.html">吉祥寺駅周辺</a><br />
+            <a href="info/kankou-kirarina.html">キラリナ京王吉祥寺周辺</a><br />
+            <a href="info/kankou-mizonokuchi.html">溝ノ口駅（溝の口駅）周辺</a><br />
+            <a href="info/kankou-sapporo-dome.html">札幌ドーム周辺</a><br />
+            <a href="info/kankou-chigasaki.html">茅ヶ崎駅周辺</a><br />
+            <a href="info/kankou-hikarie.html">渋谷ヒカリエ周辺</a><br />
+            <a href="info/kankou-shinagawa.html">品川駅周辺</a><br />
+            <a href="info/kankou-shizuoka.html">静岡駅周辺</a><br />
+            <a href="info/kankou-akihabara.html">秋葉原駅周辺</a><br />
+            <a href="info/kankou-kawasaki.html">川崎駅周辺のお買い物スポット</a>
+            </li>
+            <li style="background-color:#d6eeff;"><a href="https://twitter.com/ParkingNAVI" target="_blank"><img src="images/img_index/indexcontents_twitter.png" alt="駐車場のお得な利用情報つぶやきます！" style="margin-left:-15px;" /></a><div><a class="twitter-timeline" href="https://twitter.com/ParkingNAVI" data-widget-id="512861569470824448">@ParkingNAVI からのツイート</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div></li>
+            </ul>
+        </section><!--/indexcontents-->
+        </article>
+    </div>
+	<!--フッター[S]-->
+    <footer>
+    	<nav class="wrap clearfix">
+        	<ul class="clearfix">
+                <li>
+                    <a href="http://www.pmo.co.jp/company/" target="_blank">
+                        サイト運営会社概要
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.pmo.co.jp/privacy.html" target="_blank">
+                        プライバシーポリシー
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.pmo.co.jp/aboutsite.html" target="_blank">
+                        サイト利用について
+                    </a>
+                </li>
+                <li>
+                    <a href="./faq/index.html">
+                        よくあるご質問
+                    </a>
+                </li>
+			</ul>
+            <div class="clearfix">
+                <p id="fLogo">
+                    <a href="http://www.pmo.co.jp">
+                        <img src="img/common/footer/logo.gif" alt="PMO">
+                    </a>
+                </p>
+                <p id="copy">
+                    Copyright(c) Parking Management Organization, LTD. All Rights Reserved.
+                </p>
+			</div>
+        </nav>
+    </footer>
+	<!--フッター[E]-->
+    <!-- User Insight PCDF Code Start : parkingnavi.jp -->
+    <script type="text/javascript">
+    <!--
+    var _uic = _uic ||{}; var _uih = _uih ||{};_uih['id'] = 31713;
+    _uih['lg_id'] = '';
+    _uih['fb_id'] = '';
+    _uih['tw_id'] = '';
+    _uih['uigr_1'] = ''; _uih['uigr_2'] = ''; _uih['uigr_3'] = ''; _uih['uigr_4'] = ''; _uih['uigr_5'] = '';
+    _uih['uigr_6'] = ''; _uih['uigr_7'] = ''; _uih['uigr_8'] = ''; _uih['uigr_9'] = ''; _uih['uigr_10'] = '';
+    /* DO NOT ALTER BELOW THIS LINE */
+    /* WITH FIRST PARTY COOKIE */
+    (function() {
+    var bi = document.createElement('scri'+'pt');bi.type = 'text/javascript'; bi.async = true;
+    bi.src = ('https:' == document.location.protocol ? 'https://bs' : 'http://c') + '.nakanohito.jp/b3/bi.js';
+    var s = document.getElementsByTagName('scri'+'pt')[0];s.parentNode.insertBefore(bi, s);
+    })();
+    //-->
+    </script>
+    <!-- User Insight PCDF Code End : parkingnavi.jp -->
+</body>
+</html>

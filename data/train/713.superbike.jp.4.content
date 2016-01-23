@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja-JP" lang="ja-JP">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-jp" />
+<meta http-equiv="X-UA-Compatible" content="IE=emulateIE7" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<link rel="alternate" type="application/atom+xml" title="Atom" href="http://www.superbike.jp/atom.xml" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.superbike.jp/index.xml" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.superbike.jp/rsd.xml" />
+<meta name="robots" content="all" />
+<meta http-equiv="imagetoolbar" content="no">
+
+<link rel="stylesheet" type="text/css" media="all" href="common/css/SpryMenuBarHorizontal.css" />
+<link rel="stylesheet" type="text/css" media="all" href="common/css/common.css" />
+<link rel="stylesheet" type="text/css" media="all" href="common/css/right_bnr.css" />
+<link rel="SHORTCUT ICON" href="favicon.ico" />
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" ></script>
+
+<script src="common/js/SpryMenuBar.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+<!--
+window.onload = function(){
+new Spry.Widget.MenuBar("MenuBar22");
+}
+// -->
+</script>
+
+<script src="common/js/youtube_api_v3.js"></script>
+<script src="https://apis.google.com/js/client.js?onload=onJSClientLoad"></script>
+
+<link rel="stylesheet" href="common/css/prettyPhoto.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
+<script src="common/js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8">
+$(function(){
+$("a[rel^='prettyPhoto']").prettyPhoto();
+});
+</script>
+
+<script src="common/js/smartRollover.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+$(function(){
+    $('#slideshow a img').hover(
+        function() {
+            $(this).stop().animate({opacity:0.5},600);
+        },
+        function() {
+            $(this).stop().animate({opacity:1},600);
+        }
+    );
+	
+    $('#race_rd_menu12 a img').hover(
+        function() {
+            $(this).stop().animate({opacity:0},600);
+        },
+        function() {
+            $(this).stop().animate({opacity:1},600);
+        }
+    );
+});
+</script>
+
+
+
+<script type="text/javascript">
+
+/*** 
+    Simple jQuery Slideshow Script
+    Released by Jon Raasch (jonraasch.com) under FreeBSD license: free to use or modify, not responsible for anything, etc.  Please link out to me if you like it :)
+***/
+
+function slideSwitch() {
+    var $active = $('#slideshow DIV.active');
+
+    if ( $active.length == 0 ) $active = $('#slideshow DIV:last');
+
+    // use this to pull the divs in the order they appear in the markup
+    var $next =  $active.next().length ? $active.next()
+        : $('#slideshow DIV:first');
+
+    // uncomment below to pull the divs randomly
+    // var $sibs  = $active.siblings();
+    // var rndNum = Math.floor(Math.random() * $sibs.length );
+    // var $next  = $( $sibs[ rndNum ] );
+
+
+    $active.addClass('last-active');
+
+    $next.css({opacity: 0.0})
+        .addClass('active')
+        .animate({opacity: 1.0}, 600, function() {
+            $active.removeClass('active last-active');
+        });
+}
+
+$(function() {
+    setInterval( "slideSwitch()", 7200 );
+});
+
+</script>
+
+<link rel="stylesheet" type="text/css" media="all" href="common/css/image_rotator.css" />
+<script type="text/javascript">
+$(document).ready(function() {	
+
+	//Show Banner
+	$(".main_image .desc").show(); //Show Banner
+	$(".main_image .block").animate({ opacity: 0.85 }, 1 ); //Set Opacity
+
+	//Click and Hover events for thumbnail list
+	$(".image_thumb ul li:first").addClass('active'); 
+	$(".image_thumb ul li").click(function(){ 
+		//Set Variables
+		var imgAlt = $(this).find('img').attr("alt"); //Get Alt Tag of Image
+		var imgTitle = $(this).find('a').attr("href"); //Get Main Image URL
+		var imgDesc = $(this).find('.block').html(); 	//Get HTML of block
+		var imgDescHeight = $(".main_image").find('.block').height();	//Calculate height of block	
+		
+		if ($(this).is(".active")) {  //If it's already active, then...
+			return false; // Don't click through
+		} else {
+			//Animate the Teaser				
+			$(".main_image .block").animate({ opacity: 0, marginBottom: -imgDescHeight }, 250 , function() {
+				$(".main_image .block").html(imgDesc).animate({ opacity: 0.85,	marginBottom: "0" }, 250 );
+				$(".main_image img").attr({ src: imgTitle , alt: imgAlt});
+			});
+		}
+		
+		$(".image_thumb ul li").removeClass('active'); //Remove class of 'active' on all lists
+		$(this).addClass('active');  //add class of 'active' on this list only
+		return false;
+		
+	}) .hover(function(){
+		$(this).addClass('hover');
+		}, function() {
+		$(this).removeClass('hover');
+	});
+			
+	//Toggle Teaser
+	$("a.collapse").click(function(){
+		$(".main_image .block").slideToggle();
+		$("a.collapse").toggleClass("show");
+	});
+	
+});//Close Function
+</script>
+
+<script type="text/javascript" src="common/js/heightLine.js"></script>
+<script src="common/js/scrollup.js" type="text/javascript"></script>
+
+<title>MFJ SUPERBIKE Official Fan-Site - SUPERBIKE.JP</title>
+<meta name="keywords" content="">
+<meta name="description" content="MFJ全日本ロードレース選手権　オフィシャル・ファンサイト">
+
+<link rel="stylesheet" type="text/css" media="all" href="common/css/index_20120411.css" />
+
+</head>
+
+<body>
+<!-- ↓↓コンタクト↓↓ --><!-- #BeginLibraryItem "/Library/contactus.lbi" --><div id="contactus" >
+<a href="https://www.superbike.jp:8443/contact/contact.php?iframe=true&amp;width=700&amp;height=520" rel="prettyPhoto"><img src="common/_img/contactus_1.png" width="80" height="24" alt="Contact Us" title=""/></a>Contact Us</div><!-- #EndLibraryItem --><!-- ↑↑コンタクト↑↑ -->
+<!-- ↓↓wrapper↓↓ -->
+<div id="wrapper" >
+<a name="up" id="up"></a>
+<!-- ↓↓ヘッダ↓↓ --><!-- #BeginLibraryItem "/Library/headder.lbi" --><div id="header" >
+<div id="head_left" >
+<h1 style="overflow:hidden;"><a href="index.html"><img src="common/_img/title.png" alt="MFJ SUPERBIKE ALL JAPAN ROAD RACE CHAMPIONSHIP" width="234" height="60" border="0" title=""/><img src="common/_img/sub_title.png" alt="Offical Fan-Site" width="93" height="60" title="" style="margin-left:3px;"/></a>MFJ SUPERBIKE ALL JAPAN ROAD RACE CHAMPIONSHIP - Offical Fan-Site</h1>
+</div>
+<div id="head_right" ><h2><a href="http://kokunai.nihon-kankou.or.jp" target="_blank"><img src="common/_img/nippon.png" alt="Offical Fan-Site" width="208" height="60" title=""/></a>がんばろう！日本 - We are together,Japan.</h2></div>
+<div id="head_center" ></div>
+<div id="content_clear" ></div>
+</div><!-- #EndLibraryItem --><!-- ↑↑ヘッダ↑↑ -->
+
+<!-- ↓↓上メニュー↓↓ --><!-- ↑↑上メニュー↑↑--><!-- #BeginLibraryItem "/Library/menu_normal.lbi" --><div id="menu" >
+
+<div id="navi" lang="en">
+<ul id="MenuBar22" class="MenuBarHorizontal clearfix">
+
+<li><a href="superbike/page1.html" class="MenuBarItemSubmenu">MFJ SUPERBIKE</a>
+<ul>
+<li><a href="superbike/page1.html">全日本選手権とは</a></li>
+<li><a href="superbike/page2.html">クラス／マシン</a></li>
+<li><a href="superbike/page3.html">ルール／概要</a></li>
+<li><a href="superbike/page4.html">観戦のススメ</a></li>
+<li><a href="superbike/page5.html">歴代チャンピオン</a></li>
+</ul>
+</li>
+
+<li><a href="news/index.html" class="MenuBarItemSubmenu">News</a>
+<ul>
+<li><a href="news/index.html">ニュース</a></li>
+<li><a href="information/index.html">インフォメーション</a></li>
+<li><a href="ridersblog.html">ライダーBlog</a></li>
+<li><a href="teamrss.html">チームRSS</a></li>
+<li><a href="http://www.youtube.com/user/MFJSUPERBIKE" target="_blank">YouTube公式CH</a></li>
+</ul>
+</li>
+
+<li><a href="round/index.html" class="MenuBarItemSubmenu">Race Calendar</a></li>
+
+<li><a href="results/index.html" class="MenuBarItemSubmenu">Results</a>
+<ul>
+<li><a href="http://www.mfj.or.jp/user/contents/race_result2015/road_race/2015result/rd01/index.html" target="_blank">Round.1</a></li>
+<li><a href="http://www.mfj.or.jp/user/contents/race_result2015/road_race/2015result/rd02/index.html" target="_blank">Round.2</a></li>
+<li><a href="http://www.mfj.or.jp/user/contents/race_result2015/road_race/2015result/rd03/index.html" target="_blank">Round.3</a></li>
+<li><a href="http://www.mfj.or.jp/user/contents/race_result2015/road_race/2015result/rd04/index.html" target="_blank">Round.4</a></li>
+<li><a href="http://www.mfj.or.jp/user/contents/race_result2015/road_race/2015result/rd05/index.html" target="_blank">Round.5</a></li>
+<li><a href="http://www.mfj.or.jp/user/contents/race_result2015/road_race/2015result/rd06/index.html" target="_blank">Round.6</a></li>
+<li><a href="http://www.mfj.or.jp/user/contents/race_result2015/road_race/2015result/rd07/index.html" target="_blank">Round.7</a></li>
+<li><a href="http://www.mfj.or.jp/user/contents/race_result2015/road_race/2015result/rd08/index.html" target="_blank">Round.8</a></li>
+<li><a href="http://www.mfj.or.jp/user/contents/race_result2015/road_race/2015result/rd09/index.html" target="_blank">Round.9</a></li>
+<li><a href="results/archives.html">Archives</a></li>
+</ul>
+</li>
+
+<li><a href="datacenter/profile_.php?year=2015&class=JSB1000" class="MenuBarItemSubmenu">Team & Riders</a>
+<ul>
+<li><a href="datacenter/profile_.php?year=2015&class=JSB1000">JSB1000</a></li>
+<li><a href="datacenter/profile_.php?year=2015&class=JGP2">J-GP2</a></li>
+<li><a href="datacenter/profile_.php?year=2015&class=JGP3">J-GP3</a></li>
+<li><a href="datacenter/profile_.php?year=2015&class=ST600">ST600</a></li>
+<!--<li><a href="../datacenter/profile_.php?year=2011&class=GPMONO">GP-MONO</a></li>-->
+</ul>
+</li>
+
+<li><a href="supporters.html" class="MenuBarItemSubmenu">Supporters</a></li>
+
+<li><a href="links/page3.html" class="MenuBarItemSubmenu">Links</a>
+<ul>
+<li><a href="datacenter/profile_.php?year=2015&class=JSB1000">ライダー</a></li>
+<li><a href="datacenter/profile_.php?year=2015&class=JSB1000">チーム</a></li>
+<li><a href="links/page3.html">サーキット</a></li>
+<li><a href="links/page4.html">メーカー</a></li>
+<li><a href="links/page5.html">関連団体</a></li>
+</ul>
+</li>
+
+<li><a href="press.html" class="MenuBarItemSubmenu">Press Area</a>
+<ul>
+<li><a href="press.html">ご登録</a></li>
+<li><a href="http://www.superbike.jp/press/press/index.php" target="_blank">ログイン</a></li>
+</ul>
+</li>
+
+</ul>
+
+</div>
+
+</div><!-- #EndLibraryItem --><!-- ↓↓次回レースバナー↓↓ -->
+<div id="racebanner12" >
+
+<div id="slideshow">
+
+<!--<div class="active"><a href="https://youtu.be/VWGPE6ZeTY0&amp;width=700&amp;height=394" rel="prettyPhoto"><img src="images/race_bnr/2015_jsb_movie_bnr.jpg" alt="" /></a></div>-->
+<div class="active"><img src="images/race_bnr/2015-in-end_jsb.jpg" alt="" /></div>
+<div><img src="images/race_bnr/2015-in-end_gp2.jpg" alt="" /></div>
+<div><img src="images/race_bnr/2015-in-end_gp3.jpg" alt="" /></div>
+<div><img src="images/race_bnr/2015-in-end_st600.jpg" alt="" /></div>
+<div><img src="images/race_bnr/2015-in-end.jpg" alt="" /></div>
+<!--<div><a href="round/rd9.html"><img src="images/race_bnr/2015-in-rd9.jpg" alt="" /></a></div>-->
+</div>
+</div>
+
+<!-- ↑↑次回レースバナー↑↑ -->
+
+<!-- ↓↓ラウンドメニュー↓↓ --><!-- #BeginLibraryItem "/Library/round.lbi" -->
+<div id="race_rd_menu12" >
+<ul>
+<li class="rd1"><a href="round/index.html"><img src="common/_img/navi/2016/rd1_x.jpg" alt="第1戦 筑波 4/9-10" width="110" height="92" title=""/></a>第1戦 筑波 4/9-10</li>
+<li class="rd2"><a href="round/index.html"><img src="common/_img/navi/2016/rd2_x.jpg" alt="第2戦 2&amp;4 鈴鹿 4/23-24" width="110" height="92" title=""/></a>第2戦 2&amp;4 鈴鹿 4/23-24</li>
+<li class="rd3"><a href="round/index.html"><img src="common/_img/navi/2016/rd3_x.jpg" alt="第3戦 ツインリンクもてぎ 5/28-29" width="110" height="92" title=""/></a>第3戦 ツインリンクもてぎ 5/28-29</li>
+<li class="rd4"><a href="round/index.html"><img src="common/_img/navi/2016/rd4_x.jpg" alt="第4戦 オートポリス 6/11-12" width="110" height="92" title=""/></a>第4戦 オートポリス 6/11-12</li>
+<li class="rd5"><a href="round/index.html"><img src="common/_img/navi/2016/rd5_x.jpg" alt="第5戦 スポーツランドSUGO 6/25-26" width="110" height="92" title=""/></a>第5戦 スポーツランドSUGO 6/25-26</li>
+<li class="rd6"><a href="round/index.html"><img src="common/_img/navi/2016/rd6_x.jpg" alt="第6戦 2&amp;4 ツインリンクもてぎ 8/20-21" width="110" height="92" title=""/></a>第6戦 2&amp;4 ツインリンクもてぎ 8/20-21</li>
+<li class="rd7"><a href="round/index.html"><img src="common/_img/navi/2016/rd7_x.jpg" alt="第7戦 2&amp;4 オートポリス 9/10-11" width="110" height="92" title=""/></a>第7戦 2&amp;4 オートポリス 9/10-11</li>
+<li class="rd8"><a href="round/index.html"><img src="common/_img/navi/2016/rd8_x.jpg" alt="第8戦 岡山国際 9/24-25" width="110" height="92" title=""/></a>第8戦 岡山国際 9/24-25</li>
+<li class="rd9"><a href="round/index.html"><img src="common/_img/navi/2016/rd9_x.jpg" alt="第9戦 MFJGP 鈴鹿 11/5-6" width="110" height="92" title=""/></a>第9戦 MFJGP 鈴鹿 11/5-6</li>
+</ul>
+</div><!-- #EndLibraryItem --><!-- ↑↑ラウンドメニュー↓↓ -->
+<div id="space" ></div>
+<!-- ↓↓メイン↓↓ -->
+<div id="contents" >
+<!-- ↓↓左コンテンツ↓↓ -->
+<div id="left_cont" ><!-- #BeginLibraryItem "/Library/enq_bnr.lbi" -->
+<!--<div style="margin:0 auto ; width:100%;"><a href="../images/2014MFJ_GUIDE.pdf" target="_blank"><img src="../images/bnr_sp/2014_guide_1.png" width="100%" height="auto" border="0" /></a></div>-->
+<!-- #EndLibraryItem -->
+
+<!--
+<div style="margin:20px 0; border:2px solid #cc0000; padding:1em;">
+<h4 style="text-align:center; font-weight:bold;">全日本ロードレース選手権第7戦 in 筑波　中止のお知らせ</h4>
+<br>
+<p style="text-align:center;">このたびの台風18号が、筑波サーキット近隣を含む広範囲にわたり甚大な影響をもたらしました。</p>
+<p style="text-align:center;">この状況を鑑み、第7戦 筑波大会を中止することと決定いたしました。</p>
+<br>
+<p style="text-align:center;">被災者の皆様には心からお見舞い申し上げます。<br>そして、一日も早い復旧がなされますようお祈り申し上げます。</p>
+<br>
+<p style="text-align:center;"><a href="http://www.jasc.or.jp/news/2015/09/14/%E5%85%A8%E6%97%A5%E6%9C%AC%E3%83%AD%E3%83%BC%E3%83%89%E3%83%AC%E3%83%BC%E3%82%B9%E9%81%B8%E6%89%8B%E6%A8%A9%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA%E7%AC%AC7%E6%88%A6%E7%AD%91%E6%B3%A2%E5%A4%A7%E4%BC%9A/" target="_blank">筑波サーキットリリース</a></p>
+</div>
+-->
+
+<!-- ↓↓ヘッドラインニュース↓↓ -->
+<div id="headline_h3" ><h3><a href="news/index.html"><img src="images/index/headline_h3.png" width="149" height="25" alt="News HEADLINE" title=""/></a>　News HEADLINE</h3></div>
+<div id="headline_capt" >専属の記者がMFJ SUPERBIKEに関する最新の情報をお伝えします。　<a href="http://www.superbike.jp/news/index.xml" target="_blank"><strong>RSSリンク可能。</strong></a></div>
+<div id="content_clear" ></div>
+<div id="headline">
+<div id="main" class="container">
+<div class="main_image">
+<div align="center">
+<!--<img src="http://www.superbike.jp/news/images/20160120_01.jpg" alt="20160120_01.jpg" width="532" height="354" border="0" title=""/>-->
+<img src="http://www.superbike.jp/news/images/20160120_01.jpg" alt="20160120_01.jpg" border="0" title="" style="height:355px; width:auto;"/>
+</div>
+<div style="display: block;" class="desc">
+          <!-- ↓↓<a href="#" class="collapse">Close Me!</a>↓↓ -->
+          <div style="opacity: 0.85;" class="block">
+            <h2><a href="http://www.superbike.jp/news/2016/01/jsb1000_21.html">
+              須貝義行がアプリリアでJSB1000に参戦！
+            </a></h2>
+            <small>News
+              2016/01/20
+              </small>
+            <p>・・・ <a href="http://www.superbike.jp/news/2016/01/jsb1000_21.html">
+              TEAM SUGAI RACING JAPAN 2016年シーズン体制
+            </a></p>
+          </div>
+        </div>
+      
+    
+  </div>
+  <div class="image_thumb">
+    <ul>
+                        <li><div style="margin:0; width:90px; text-align:center; float:left;"><a href="http://www.superbike.jp/news/images/20160120_01.jpg"><img src="http://www.superbike.jp/news/images/20160120_01.jpg" alt="20160120_01.jpg" border="0"  title="" style="height:60px; width:auto;"/></a></div>
+            <div class="block">
+              <h2><a href="http://www.superbike.jp/news/2016/01/jsb1000_21.html">須貝義行がアプリリアでJSB1000に参戦！</a></h2>
+              <small>News 2016/01/20</small>
+              <p>・・・ <a href="http://www.superbike.jp/news/2016/01/jsb1000_21.html">TEAM SUGAI RACING JAPAN 2016年シーズン体制</a></p>
+              </div>
+            <div id="content_clear" ></div>
+            </li>
+                    <li><div style="margin:0; width:90px; text-align:center; float:left;"><a href="http://www.superbike.jp/news/images/20160118_01.jpg"><img src="http://www.superbike.jp/news/images/20160118_01.jpg" alt="20160118_01.jpg" border="0"  title="" style="height:60px; width:auto;"/></a></div>
+            <div class="block">
+              <h2><a href="http://www.superbike.jp/news/2016/01/toho_racing_1.html">東広島から日本一を目指すTOHO Racing</a></h2>
+              <small>News 2016/01/18</small>
+              <p>・・・ <a href="http://www.superbike.jp/news/2016/01/toho_racing_1.html">山口辰也がJSB1000にフル参戦</a></p>
+              </div>
+            <div id="content_clear" ></div>
+            </li>
+                    <li><div style="margin:0; width:90px; text-align:center; float:left;"><a href="http://www.superbike.jp/news/images/20160116_01.jpg"><img src="http://www.superbike.jp/news/images/20160116_01.jpg" alt="20160116_01.jpg" border="0"  title="" style="height:60px; width:auto;"/></a></div>
+            <div class="block">
+              <h2><a href="http://www.superbike.jp/news/2016/01/20163.html">2016年も3クラスにエントリーするプラスワン</a></h2>
+              <small>News 2016/01/16</small>
+              <p>・・・ <a href="http://www.superbike.jp/news/2016/01/20163.html">TEAM PLUS ONE 2016年体制発表</a></p>
+              </div>
+            <div id="content_clear" ></div>
+            </li>
+                    <li><div style="margin:0; width:90px; text-align:center; float:left;"><a href="http://www.superbike.jp/news/images/20160115_01.jpg"><img src="http://www.superbike.jp/news/images/20160115_01.jpg" alt="20160115_01.jpg" border="0"  title="" style="height:60px; width:auto;"/></a></div>
+            <div class="block">
+              <h2><a href="http://www.superbike.jp/news/2016/01/jgp2_22.html">岩崎哲朗が新体制でJ-GP2にチャレンジ！</a></h2>
+              <small>News 2016/01/15</small>
+              <p>・・・ <a href="http://www.superbike.jp/news/2016/01/jgp2_22.html">OGURAclutch with パワービルダーよりZX-6R+ピレリで参戦</a></p>
+              </div>
+            <div id="content_clear" ></div>
+            </li>
+                    <li><div style="margin:0; width:90px; text-align:center; float:left;"><a href="http://www.superbike.jp/news/images/20160114_02.jpg"><img src="http://www.superbike.jp/news/images/20160114_02.jpg" alt="20160114_02.jpg" border="0"  title="" style="height:60px; width:auto;"/></a></div>
+            <div class="block">
+              <h2><a href="http://www.superbike.jp/news/2016/01/24_10.html">鈴鹿2&4レースの冠スポンサー決定!!</a></h2>
+              <small>News 2016/01/14</small>
+              <p>・・・ <a href="http://www.superbike.jp/news/2016/01/24_10.html">大会名称は「2016 NGKスパークプラグ 鈴鹿2&4レース」</a></p>
+              </div>
+            <div id="content_clear" ></div>
+            </li>
+          
+        
+      
+      </ul>
+</div>
+
+</div>
+</div>
+<div id="headline_more" ><a href="news/index.html"><img src="images/index/more_1.png" width="45" height="18" alt="read more" title=""/>以前のニュースをみる</a></div>
+<!-- ↑↑ヘッドラインニュース↑↑ -->
+<div id="left_space" ></div>
+<!-- ↓↓RSSコンテンツ↓↓ -->
+
+<div id="rss_info" >
+<h3><a href="information/index.html"><img src="images/index/infomation.png" width="105" height="25" alt="Information" title="" />Information</a></h3>
+<div id="rss_wrap" >
+<div id="rss_body" >
+<div id="rss_cont" >
+<table border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" >
+<tr>
+<td width="95" align="center" valign="middle">
+<a href="http://www.superbike.jp/information/2015/12/20161motorise.html" target="_parent">
+<img src="/pics/MOTORISE201601.jpg" alt="" border="0" style="margin-right:5px; height:60px; width:auto;"/>
+</a>
+</td>
+<td valign="top">
+<div id="rss_cont_date">2015/12/21</div>
+<a href="http://www.superbike.jp/information/2015/12/20161motorise.html">2016年1月のMOTORISEは"バイクの社会！"特集</a>
+<div id="rss_cont_p_left">「大人のバイク時間 MOTORISE」第119回・第120回 1月放送番組</div>
+</td>
+</tr>
+</table>
+<div id="rss_cont_hr" ></div>
+<table border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" >
+<tr>
+<td width="95" align="center" valign="middle">
+<a href="http://www.superbike.jp/information/2015/12/trick_star_racing_2016.html" target="_parent">
+<img src="/pics/20151221_trick-01.jpg" alt="" border="0" style="margin-right:5px; height:60px; width:auto;"/>
+</a>
+</td>
+<td valign="top">
+<div id="rss_cont_date">2015/12/21</div>
+<a href="http://www.superbike.jp/information/2015/12/trick_star_racing_2016.html">TRICK STAR Racing 2016年 ライダー募集！！</a>
+<div id="rss_cont_p_left"> &nbsp; &nbsp; TRICK STAR Racingが2016年国内...</div>
+</td>
+</tr>
+</table>
+<div id="rss_cont_hr" ></div>
+<table border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" >
+<tr>
+<td width="95" align="center" valign="middle">
+<a href="http://www.superbike.jp/information/2015/12/2016jp250.html" target="_parent">
+<img src="/pics/2015_trick_JP250-1.jpg" alt="" border="0" style="margin-right:5px; height:60px; width:auto;"/>
+</a>
+</td>
+<td valign="top">
+<div id="rss_cont_date">2015/12/04</div>
+<a href="http://www.superbike.jp/information/2015/12/2016jp250.html">2016年JP250対応コンプリートマシンを発売開始</a>
+<div id="rss_cont_p_left">TRICK STAR（トリックスター）</div>
+</td>
+</tr>
+</table>
+<div id="rss_cont_hr" ></div>
+<table border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" >
+<tr>
+<td width="95" align="center" valign="middle">
+<a href="http://www.superbike.jp/information/2015/11/post_97.html" target="_parent">
+<img src="/pics/2015hiroshima1.jpg" alt="" border="0" style="margin-right:5px; height:60px; width:auto;"/>
+</a>
+</td>
+<td valign="top">
+<div id="rss_cont_date">2015/11/26</div>
+<a href="http://www.superbike.jp/information/2015/11/post_97.html">「広島モーターサイクルレース全史」発刊！</a>
+<div id="rss_cont_p_left">三保浩一郎氏著　11月1日発売</div>
+</td>
+</tr>
+</table>
+<div id="rss_cont_hr" ></div>
+<table border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" >
+<tr>
+<td width="95" align="center" valign="middle">
+<a href="http://www.superbike.jp/information/2015/11/12motorise_3.html" target="_parent">
+<img src="/pics/MOTORISE201512.jpg" alt="" border="0" style="margin-right:5px; height:60px; width:auto;"/>
+</a>
+</td>
+<td valign="top">
+<div id="rss_cont_date">2015/11/26</div>
+<a href="http://www.superbike.jp/information/2015/11/12motorise_3.html">12月のMOTORISEはオフロード天国</a>
+<div id="rss_cont_p_left">「大人のバイク時間 MOTORISE」第117回・第118回 12月放送番組</div>
+</td>
+</tr>
+</table>
+<div id="rss_cont_hr" ></div>
+<table border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" >
+<tr>
+<td width="95" align="center" valign="middle">
+<a href="http://www.superbike.jp/information/2015/11/post_96.html" target="_parent">
+<img src="http://www.superbike.jp/information/images/20151112_01.jpg" alt="20151112_01.jpg" border="0" style="margin-right:5px; height:60px; width:auto;"/>
+</a>
+</td>
+<td valign="top">
+<div id="rss_cont_date">2015/11/13</div>
+<a href="http://www.superbike.jp/information/2015/11/post_96.html">オガちゃんと一緒に走ろう！</a>
+<div id="rss_cont_p_left">エスパルスドリームレーシング スキルアップミーティング・MDF祭り</div>
+</td>
+</tr>
+</table>
+<div id="rss_cont_hr" ></div>
+<table border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" >
+<tr>
+<td width="95" align="center" valign="middle">
+<a href="http://www.superbike.jp/information/2015/10/11motorise_2.html" target="_parent">
+<img src="/pics/MOTORISE201511.jpg" alt="" border="0" style="margin-right:5px; height:60px; width:auto;"/>
+</a>
+</td>
+<td valign="top">
+<div id="rss_cont_date">2015/10/30</div>
+<a href="http://www.superbike.jp/information/2015/10/11motorise_2.html">11月のMOTORISEはライダーズ・ファッション！特集</a>
+<div id="rss_cont_p_left">「大人のバイク時間 MOTORISE」第115回・第116回 11月放送番組</div>
+</td>
+</tr>
+</table>
+<div id="rss_cont_hr" ></div>
+<table border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" >
+<tr>
+<td width="95" align="center" valign="middle">
+<a href="http://www.superbike.jp/information/2015/10/11.html" target="_parent">
+<img src="http://www.superbike.jp/information/images/20151028_01.jpg" alt="20151028_01.jpg" border="0" style="margin-right:5px; height:60px; width:auto;"/>
+</a>
+</td>
+<td valign="top">
+<div id="rss_cont_date">2015/10/28</div>
+<a href="http://www.superbike.jp/information/2015/10/11.html">第11回を迎える北川圭一杯。誰でも楽しめるミニバイク耐久</a>
+<div id="rss_cont_p_left">2015 北川圭一杯ミニバイクレース 12月6日（日）開催！</div>
+</td>
+</tr>
+</table>
+<div id="rss_cont_hr" ></div>
+<table border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" >
+<tr>
+<td width="95" align="center" valign="middle">
+<a href="http://www.superbike.jp/information/2015/10/1017_mfj2015.html" target="_parent">
+<img src="/pics/2015_HashiroTohoku2.jpg" alt="" border="0" style="margin-right:5px; height:60px; width:auto;"/>
+</a>
+</td>
+<td valign="top">
+<div id="rss_cont_date">2015/10/07</div>
+<a href="http://www.superbike.jp/information/2015/10/1017_mfj2015.html">10/17開催 MFJ東北復興応援ツーリング2015 キックオフセレモニー</a>
+<div id="rss_cont_p_left">バイク芸人チュートリアル福田充徳さんも来場決定！！</div>
+</td>
+</tr>
+</table>
+<div id="rss_cont_hr" ></div>
+<table border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" >
+<tr>
+<td width="95" align="center" valign="middle">
+<a href="http://www.superbike.jp/information/2015/10/10motorise_2.html" target="_parent">
+<img src="/pics/MOTORISE201510.jpg" alt="" border="0" style="margin-right:5px; height:60px; width:auto;"/>
+</a>
+</td>
+<td valign="top">
+<div id="rss_cont_date">2015/10/01</div>
+<a href="http://www.superbike.jp/information/2015/10/10motorise_2.html">10月のMOTORISEはぐっさんと行く バイクみちのく二人旅！</a>
+<div id="rss_cont_p_left">「大人のバイク時間 MOTORISE」第113回・第114回 10月放送番組</div>
+</td>
+</tr>
+</table>
+<div id="rss_cont_hr" ></div>
+
+
+</div>
+</div>
+</div>
+<div id="rss_capt" >二輪関連のリリースやイベント情報等をお伝えいたします。</div>
+<div id="rss_more" ><a href="information/index.html"><img src="images/index/more_1.png" width="45" height="18" alt="read more" title=""/>以前のインフォメーションをみる</a></div>
+</div>
+
+<div id="rss_team" >
+<h3><a href="teamrss.html"><img src="images/index/team_rss.png" width="161" height="25" alt="Maker&amp;Team RSS" title="" />Team RSS UPDATE</a></h3>
+<div id="rss_wrap" >
+<div id="rss_body" >
+<div id="rss_cont" >
+
+    <div id="rss_cont_date" >2016/01/22</div><p><a href="http://ameblo.jp/7coffice/entry-12120412643.html" target="blognew">ホームページ</a></p><div id="rss_cont_p_right" >７C　社長坂井信人のブログ</div>
+    <div id="rss_cont_hr" ></div>
+    
+    
+    <div id="rss_cont_date" >2016/01/22</div><p><a href="http://ameblo.jp/dfrboss/entry-12120223430.html" target="blognew">2016モデルYZF-R25入荷</a></p><div id="rss_cont_p_right" >DFRBOSSのブログ</div>
+    <div id="rss_cont_hr" ></div>
+    
+    
+    <div id="rss_cont_date" >2016/01/21</div><p><a href="http://www.h-m-f.jp/?cn=100099&bgc=10000092" target="blognew">特殊なマフラー</a></p><div id="rss_cont_p_right" >H.M.Fブログ</div>
+    <div id="rss_cont_hr" ></div>
+    
+    
+    <div id="rss_cont_date" >2016/01/20</div><p><a href="http://ameblo.jp/7coffice/entry-12119666426.html" target="blognew">思い返すと</a></p><div id="rss_cont_p_right" >７C　社長坂井信人のブログ</div>
+    <div id="rss_cont_hr" ></div>
+    
+    
+    <div id="rss_cont_date" >2016/01/20</div><p><a href="http://ameblo.jp/7coffice/entry-12119612960.html" target="blognew">NSF250R Challenge</a></p><div id="rss_cont_p_right" >７C　社長坂井信人のブログ</div>
+    <div id="rss_cont_hr" ></div>
+    
+</div>
+</div>
+</div>
+<div id="rss_capt" >エントリーチームの最新RSS配信を一覧表示しています。</div>
+<div id="rss_more" ><a href="teamrss.html"><img src="images/index/more_1.png" width="45" height="18" alt="read more" title=""/>チーム、メーカーのRSS更新をみる</a></div>
+</div>
+
+<div id="rss_rider" >
+<h3><a href="ridersblog.html"><img src="images/index/rider_rss.png" width="183" height="25" alt="Rider's Blog UPDATE" title="" />Rider's Blog UPDATE</a></h3>
+<div id="rss_wrap" >
+<div id="rss_body" >
+<div id="rss_cont" >
+
+    <div id="rss_cont_date" >2016/01/23</div><p><a href="http://blog.livedoor.jp/garagespeed/archives/1683988.html" target="blognew">新年</a></p><div id="rss_cont_p_right" >レーシングライダー　黒川武彦</div>
+    <div id="rss_cont_hr" ></div>
+    
+    
+    <div id="rss_cont_date" >2016/01/22</div><p><a href="http://ameblo.jp/takanakagami/entry-12120378179.html" target="blognew">「自転車トレーニング」</a></p><div id="rss_cont_p_right" >Taka Nakagami Official Blog</div>
+    <div id="rss_cont_hr" ></div>
+    
+    
+    <div id="rss_cont_date" >2016/01/22</div><p><a href="http://ameblo.jp/kazuki-tokudome/entry-12120323640.html" target="blognew">トレーニング8日目</a></p><div id="rss_cont_p_right" >レーシングライダー徳留和樹　</div>
+    <div id="rss_cont_hr" ></div>
+    
+    
+    <div id="rss_cont_date" >2016/01/22</div><p><a href="http://ameblo.jp/rider-kunikawa/entry-12120276903.html" target="blognew">kuni school開催について。</a></p><div id="rss_cont_p_right" >國川浩道official blog</div>
+    <div id="rss_cont_hr" ></div>
+    
+    
+    <div id="rss_cont_date" >2016/01/22</div><p><a href="http://blog.eigyo.co.jp/g-harada/article/221919" target="blognew">洗浄</a></p><div id="rss_cont_p_right" >KAWASAKIプライベーターの挑戦</div>
+    <div id="rss_cont_hr" ></div>
+    
+</div>
+</div>
+</div>
+<div id="rss_capt" >ライダーのブログの最新更新情報を一覧表示しています。</div>
+<div id="rss_more" ><a href="ridersblog.html"><img src="images/index/more_1.png" width="45" height="18" alt="read more" title=""/>ライダーのブログ更新をみる</a></div>
+</div>
+<div style="clear:both;" ></div>
+<!-- ↑↑RSSコンテンツ↑↑ -->
+<div id="left_space" ></div>
+
+<div id="result_h3" style="width:153px;"><h3><a href="http://www.racingheroes.jp/" target="_blank"><img src="images/index/rh_h3.png" width="153" height="25" alt="Information" title="" />Racing Heroes UPDATE</a></h3></div>
+<div id="result_capt" style="width:667px;">レーシングライダーの人間ドラマに迫るバイクレース専門サイト！　<a href="http://www.racingheroes.jp/" target="_blank"><strong>Racing Heroes</strong></a></div>
+<div id="content_clear" ></div>
+
+<div id="rh">
+<ul>
+
+    <li class="heightLine-2"><a href="http://www.racingheroes.jp/heroes/nakasuga_champ" target="blognew"><img src="http://www.racingheroes.jp/sys/wp-content/uploads/2015/12/IMG_3016.jpg" width="140" height="93" border="0" /></a><div id="rss_cont_date">2015/12/23</div><a href="http://www.racingheroes.jp/heroes/nakasuga_champ" target="blognew">「R1は速い、だけど、オレも速い」4年連続チャンピオン・中須賀克行選手の言葉の重み</a></a><div id="rss_cont_p_left">敵無し？　イヤ、闘う相手が...</div></li>
+    
+    
+    <li class="heightLine-2"><a href="http://www.racingheroes.jp/2015/12/7248.html" target="blognew"><img src="http://www.racingheroes.jp/sys/wp-content/uploads/2015/12/IMG_4563.jpg" width="140" height="93" border="0" /></a><div id="rss_cont_date">2015/12/20</div><a href="http://www.racingheroes.jp/2015/12/7248.html" target="blognew">2015年度MFJランキング認定表彰式</a></a><div id="rss_cont_p_left">2015年度「MFJランキング認定表...</div></li>
+    
+    
+    <li class="heightLine-2"><a href="http://www.racingheroes.jp/2015/12/7190.html" target="blognew"><img src="http://www.racingheroes.jp/sys/wp-content/uploads/2015/12/IMG_4358.jpg" width="140" height="93" border="0" /></a><div id="rss_cont_date">2015/12/08</div><a href="http://www.racingheroes.jp/2015/12/7190.html" target="blognew">2015年 ハルクプロ 感謝の夕べ 「2016年体制」発表！</a></a><div id="rss_cont_p_left">2015年「ハルクプロ・感謝の夕...</div></li>
+    
+    
+    <li class="heightLine-2"><a href="http://www.racingheroes.jp/onephoto/jrr_rd9suzuka_race2" target="blognew"><img src="http://www.racingheroes.jp/sys/wp-content/uploads/2015/11/AI2Q7962.jpg" width="140" height="93" border="0" /></a><div id="rss_cont_date">2015/11/04</div><a href="http://www.racingheroes.jp/onephoto/jrr_rd9suzuka_race2" target="blognew">2015全日本ロードレース最終戦 鈴鹿サーキット 決勝レース2</a></a><div id="rss_cont_p_left">まさかの赤旗中断、7周の超ス...</div></li>
+    
+    
+    <li class="heightLine-2"><a href="http://www.racingheroes.jp/onephoto/jrr_rd9suzuka_race1" target="blognew"><img src="http://www.racingheroes.jp/sys/wp-content/uploads/2015/11/IMG_2604.jpg" width="140" height="93" border="0" /></a><div id="rss_cont_date">2015/11/03</div><a href="http://www.racingheroes.jp/onephoto/jrr_rd9suzuka_race1" target="blognew">2015全日本ロードレース最終戦 鈴鹿サーキット 決勝レース1</a></a><div id="rss_cont_p_left">史上初の快挙、全日本ロード...</div></li>
+    
+</ul>
+</div>
+
+<div id="headline_more" ><a href="http://www.racingheroes.jp/" target="_blank"><img src="images/index/more_1.png" width="45" height="18" alt="read more" title=""/>以前のインフォメーションをみる</a></div>
+
+<!--<div id="left_space" ></div>
+<p style="text-align:center;"></p>-->
+
+<div id="left_space" ></div>
+
+<div id="result_h3"><h3><a href="http://www.youtube.com/user/MFJSUPERBIKE" target="_blank"><img src="images/index/result_h3.jpg" width="203" height="25" alt="News HEADLINE" title=""/></a>　YouTube Official Channel</h3></div>
+<div id="result_capt">予選・決勝直後のライダーのインタビューを中心に全日本ロードレースの迫力を動画にて配信します。　<a href="https://www.youtube.com/feeds/videos.xml?channel_id=UCNxIR1lEGrAznIFgfANkefQ" target="_blank"><strong>RSSリンク可能。</strong></a></div>
+<div id="content_clear" ></div>
+
+<div id="result">
+<ul id="results"></ul>
+</div>
+
+<div id="headline_more" ><a href="http://www.youtube.com/user/MFJSUPERBIKE" target="_blank"><img src="images/index/more_1.png" width="45" height="18" alt="read more" title=""/>他の動画を見る</a></div>
+
+<!--<div id="left_space" ></div>
+<p style="text-align:center;"></p>-->
+
+<div id="left_space" ></div>
+<!-- ↓↓pickupコンテンツ↓↓ -->
+<p style="text-align:center;"><img src="images/index/2012_live_bnr.jpg" width="800" height="165" border="0" usemap="#Map">
+  <map name="Map">
+    <area shape="rect" coords="434,47,599,124" href="http://www.ustream.tv/channel/road-race" target="_blank">
+    <area shape="rect" coords="621,48,785,127" href="http://www.mfj-livech.com/jrr/" target="_blank">
+  </map>
+</p>
+<!-- ↑↑pickupコンテンツ↑↑ -->
+
+<div id="left_space" ></div>
+<!-- ↓↓ランキング↓↓ -->
+<div id="ranking_left">
+<div id="rps" >
+<h3><img src="images/index/rps_h3.png" alt="Rider Point Standing" width="178" height="25" title="" />Rider Point Standing</h3>
+<div id="rps_main_back" >
+<table width="658" border="0" cellspacing="10" cellpadding="0">
+<tr valign="top">
+<td>
+<div class="section">
+<h4><img src="images/index/jsb.png" width="152" height="23" alt="JSB1000" title="" /></h4>
+<dl class="section">
+<dt><a href="http://www.superbike.jp/datacenter/rider_.php?year=2015&rider_id=1085?iframe=true&amp;width=700&amp;height=520" rel="prettyPhoto[JSB]">中須賀 克行</a></dt>
+<dd>203</dd>
+<dt><a href="http://www.superbike.jp/datacenter/rider_.php?year=2015&rider_id=1086?iframe=true&amp;width=700&amp;height=520" rel="prettyPhoto[JSB]">高橋 巧</a></dt>
+<dd>149</dd>
+<dt><a href="http://www.superbike.jp/datacenter/rider_.php?year=2015&rider_id=1091?iframe=true&amp;width=700&amp;height=520" rel="prettyPhoto[JSB]">渡辺 一樹</a></dt>
+<dd>135</dd>
+<dt><a href="http://www.superbike.jp/datacenter/rider_.php?year=2015&rider_id=1087?iframe=true&amp;width=700&amp;height=520" rel="prettyPhoto[JSB]">津田 拓也</a></dt>
+<dd>129</dd>
+<dt><a href="http://www.superbike.jp/datacenter/rider_.php?year=2015&rider_id=1090?iframe=true&amp;width=700&amp;height=520" rel="prettyPhoto[JSB]">柳川 明</a></dt>
+<dd>116</dd>
+</dl>
+<div id="cs"><a href="http://www.mfj.or.jp/user/contents/race_result2015/road_race/2015result/rd09/jsb_standing2.html" target="_blank">Complete Standings</a></div>
+</div>
+</td>
+<td>
+<div class="section">
+<h4><img src="images/index/gp2.png" width="152" height="23" alt="J-GP2" title="" /></h4>
+<dl class="section">
+<dt><a href="http://www.superbike.jp/datacenter/rider_.php?year=2015&rider_id=1113?iframe=true&width=700&height=520" rel="prettyPhoto[gp2]">高橋 裕紀</a></dt>
+<dd>128</dd>
+<dt><a href="http://www.superbike.jp/datacenter/rider_.php?year=2015&rider_id=1115?iframe=true&width=700&height=520" rel="prettyPhoto[gp2]">生形 秀之</a></dt>
+<dd>121</dd>
+<dt><a href="http://www.superbike.jp/datacenter/rider_.php?year=2015&rider_id=1118?iframe=true&width=700&height=520" rel="prettyPhoto[gp2]">関口 太郎</a></dt>
+<dd>100</dd>
+<dt><a href="http://www.superbike.jp/datacenter/rider_.php?year=2015&rider_id=1114?iframe=true&width=700&height=520" rel="prettyPhoto[gp2]">日浦 大治朗</a></dt>
+<dd>94</dd>
+<dt><a href="http://www.superbike.jp/datacenter/rider_.php?year=2015&rider_id=1128?iframe=true&width=700&height=520" rel="prettyPhoto[gp2]">岩田 悟</a></dt>
+<dd>90</dd>
+</dl>
+<div id="cs"><a href="http://www.mfj.or.jp/user/contents/race_result2015/road_race/2015result/rd09/gp2_standing.html" target="_blank">Complete Standings</a></div>
+</div>
+</td>
+<td>
+<div class="section">
+<h4><img src="images/index/gp3.png" width="152" height="23" alt="J-GP3" title="" /></h4>
+<dl class="section">
+<dt style="width:105px"><a href="http://www.superbike.jp/datacenter/rider_.php?year=2015&rider_id=1133?iframe=true&width=700&height=520" rel="prettyPhoto[gp3]">水野 涼</a></dt>
+<dd>115</dd>
+<dt style="width:105px"><a href="http://www.superbike.jp/datacenter/rider_.php?year=2015&rider_id=1135?iframe=true&width=700&height=520" rel="prettyPhoto[gp3]">真崎 一輝</a></dt>
+<dd>111</dd>
+<dt style="width:105px"><a href="http://www.superbike.jp/datacenter/rider_.php?year=2015&rider_id=1134?iframe=true&width=700&height=520" rel="prettyPhoto[gp3]">栗原 佳祐</a></dt>
+<dd>98</dd>
+<dt style="width:105px"><a href="http://www.superbike.jp/datacenter/rider_.php?year=2015&rider_id=1142?iframe=true&width=700&height=520" rel="prettyPhoto[gp3]">國峰 啄磨</a></dt>
+<dd>80</dd>
+<dt style="width:105px"><a href="http://www.superbike.jp/datacenter/rider_.php?year=2015&rider_id=1159?iframe=true&width=700&height=520" rel="prettyPhoto[gp3]">Gerry Salim</a></dt>
+<dd>78</dd>
+</dl>
+<div id="cs"><a href="http://www.mfj.or.jp/user/contents/race_result2015/road_race/2015result/rd09/gp3_standing.html" target="_blank">Complete Standings</a></div>
+</div>
+</td>
+<td>
+<div class="section">
+<h4><img src="images/index/st600.png" width="152" height="23" alt="ST 600" title="" /></h4>
+<dl class="section">
+<dt><a href="http://www.superbike.jp/datacenter/rider_.php?year=2015&rider_id=1170?iframe=true&width=700&height=520" rel="prettyPhoto[st]">横江 竜司</a></dt>
+<dd>104</dd>
+<dt><a href="http://www.superbike.jp/datacenter/rider_.php?year=2015&rider_id=1168?iframe=true&amp;width=700&amp;height=520" rel="prettyPhoto[st]">Decha KRAISART</a></dt>
+<dd>97</dd>
+<dt><a href="http://www.superbike.jp/datacenter/rider_.php?year=2015&rider_id=1182?iframe=true&width=700&height=520" rel="prettyPhoto[st]">大久保 光</a></dt>
+<dd>81</dd>
+<dt><a href="http://www.superbike.jp/datacenter/rider_.php?year=2015&rider_id=1169?iframe=true&amp;width=700&amp;height=520" rel="prettyPhoto[st]">Chalermpol POLAMAI</a></dt>
+<dd>74</dd>
+<dt><a href="http://www.superbike.jp/datacenter/rider_.php?year=2015&rider_id=1167?iframe=true&amp;width=700&amp;height=520" rel="prettyPhoto[st]">前田 恵助</a></dt>
+<dd>68</dd>
+</dl>
+<div id="cs"><a href="http://www.mfj.or.jp/user/contents/race_result2015/road_race/2015result/rd09/600_standing.html" target="_blank">Complete Standings</a></div>
+</div>
+</td>
+</tr>
+</table>
+
+<div style="padding:0 10px; color:#333333; font-size:10px; text-align:center; line-height:1.4; font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;">2015 最終戦 MFJ GRAND PRIX SUZUKA 終了時点</div>
+
+</div>
+</div>
+
+<div id="left_space" style="width:658px;"></div>
+
+<div id="tps" >
+<h3><img src="images/index/tps_h3.png" alt="Rider Point Standing" width="179" height="25" title="" />Team Point Standing</h3>
+<div id="rps_main_back" >
+<table width="658" border="0" cellspacing="10" cellpadding="0">
+<tr>
+<td valign="top">
+
+<div class="section">
+<h4><img src="images/index/jsb.png" width="152" height="23" alt="JSB1000" title="" /></h4>
+<dl class="section">
+<dt class="tps"><a href="http://www.superbike.jp/datacenter/team_.php?year=2015&team_id=772?iframe=true&amp;width=700&amp;height=520" rel="prettyPhoto[t-JSB]">YAMAHA FACTORY RACING TEAM</a></dt>
+<dd>203</dd>
+<dt class="tps"><a href="http://www.superbike.jp/datacenter/team_.php?year=2015&team_id=773?iframe=true&amp;width=700&amp;height=520" rel="prettyPhoto[t-JSB]">MuSASHi RT ハルク・プロ</a></dt>
+<dd>149</dd>
+<dt><a href="http://www.superbike.jp/datacenter/team_.php?year=2015&team_id=777?iframe=true&amp;width=700&amp;height=520" rel="prettyPhoto[t-JSB]">TeamGREEN 26</a></dt>
+<dd>135</dd>
+</dl>
+<div id="cs"><a href="http://www.mfj.or.jp/user/contents/race_result2015/road_race/2015result/rd09/jsb_standing2.html" target="_blank">Complete Standings</a></div>
+</div>
+</td>
+<td valign="top">
+<div class="section">
+<h4><img src="images/index/gp2.png" width="152" height="23" alt="J-GP2" title="" /></h4>
+<dl class="section">
+<dt class="tps"><a href="http://www.superbike.jp/datacenter/team_.php?year=2015&team_id=792?iframe=true&width=700&height=520" rel="prettyPhoto[t-gp2]">MORIWAKI RACING</a></dt>
+<dd>128</dd>
+<dt class="tps"><a href="http://www.superbike.jp/datacenter/team_.php?year=2015&team_id=793?iframe=true&width=700&height=520" rel="prettyPhoto[t-gp2]">エスパルスドリームレーシング</a></dt>
+<dd>121</dd>
+<dt class="tps"><a href="http://www.superbike.jp/datacenter/team_.php?year=2015&team_id=795?iframe=true&width=700&height=520" rel="prettyPhoto[t-gp2]">MISTRESA with HARC-PRO.</a></dt>
+<dd>100</dd>
+</dl>
+<div id="cs"><a href="http://www.mfj.or.jp/user/contents/race_result2015/road_race/2015result/rd09/gp2_standing.html" target="_blank">Complete Standings</a></div>
+</div>
+</td>
+<td valign="top">
+<div class="section">
+<h4><img src="images/index/gp3.png" width="152" height="23" alt="J-GP3" title="" /></h4>
+<dl class="section">
+<dt class="tps"><a href="http://www.superbike.jp/datacenter/team_.php?year=2015&team_id=773?iframe=true&width=700&height=520" rel="prettyPhoto[t-gp3]">MuSASHi RT ハルク・プロ</a></dt>
+<dd>115</dd>
+<dt style="width:105px"><a href="http://www.superbike.jp/datacenter/team_.php?year=2015&team_id=806?iframe=true&width=700&height=520" rel="prettyPhoto[t-gp3]">RSC</a></dt>
+<dd>111</dd>
+<dt style="width:105px"><a href="http://www.superbike.jp/datacenter/team_.php?year=2015&team_id=773?iframe=true&width=700&height=520" rel="prettyPhoto[t-gp3]">TEAM HARC-PRO</a></dt>
+<dd>98</dd>
+</dl>
+<div id="cs"><a href="http://www.mfj.or.jp/user/contents/race_result2015/road_race/2015result/rd09/gp3_standing.html" target="_blank">Complete Standings</a></div>
+</div>
+</td>
+<td valign="top">
+<div class="section">
+<h4><img src="images/index/st600.png" width="152" height="23" alt="ST 600" title="" /></h4>
+<dl class="section">
+<dt class="tps"><a href="http://www.superbike.jp/datacenter/team_.php?year=2015&team_id=825?iframe=true&width=700&height=520" rel="prettyPhoto[t-st]">Yamaha Thailand Racing Team</a></dt>
+<dd>116</dd>
+<dt><a href="http://www.superbike.jp/datacenter/team_.php?year=2015&team_id=824?iframe=true&width=700&height=520" rel="prettyPhoto[t-st]">伊藤レーシング</a></dt>
+<dd>84</dd>
+<dt><a href="http://www.superbike.jp/datacenter/team_.php?year=2015&team_id=811?iframe=true&width=700&height=520" rel="prettyPhoto[t-st]">Kohara Racing</a></dt>
+<dd>81</dd>
+</dl>
+<div id="cs"><a href="http://www.mfj.or.jp/user/contents/race_result2015/road_race/2015result/rd09/600_standing.html" target="_blank">Complete Standings</a></div>
+</div>
+</td>
+</tr>
+</table>
+<div style="padding:0 10px; color:#333333; font-size:10px; text-align:center; line-height:1.4; font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;">2015 最終戦 MFJ GRAND PRIX SUZUKA 終了時点</div>
+</div>
+</div>
+
+</div>
+<div id="ranking_right" >
+
+<div class="section2">
+<h4><img src="images/index/gp3-youth2.png" width="152" height="23" alt="J-GP3 youth" title=""  /></h4>
+<dl class="section">
+<dt style="width:105px"><a href="http://www.superbike.jp/datacenter/rider_.php?year=2015&rider_id=1133?iframe=true&width=700&height=520" rel="prettyPhoto[gp3-y]">水野 涼</a></dt>
+<dd>115</dd>
+<dt style="width:105px"><a href="http://www.superbike.jp/datacenter/rider_.php?year=2015&rider_id=1135?iframe=true&width=700&height=520" rel="prettyPhoto[gp3-y]">真崎 一輝</a></dt>
+<dd>111</dd>
+<dt style="width:105px"><a href="http://www.superbike.jp/datacenter/rider_.php?year=2015&rider_id=1134?iframe=true&width=700&height=520" rel="prettyPhoto[gp3-y]">栗原 佳祐</a></dt>
+<dd>98</dd>
+<dt style="width:105px"><a href="http://www.superbike.jp/datacenter/rider_.php?year=2015&rider_id=1142?iframe=true&width=700&height=520" rel="prettyPhoto[gp3-y]">國峰 啄磨</a></dt>
+<dd>80</dd>
+<dt style="width:105px"><a href="http://www.superbike.jp/datacenter/rider_.php?year=2015&rider_id=1137?iframe=true&width=700&height=520" rel="prettyPhoto[gp3-y]">三原 壮紫</a></dt>
+<dd>60</dd>
+</dl>
+<div id="cs"><a href="http://www.mfj.or.jp/user/contents/race_result2015/road_race/2015result/rd09/gp3_standing.html" target="_blank">Complete Standings</a></div>
+<div style="padding:0 10px; font-size:10px; text-align:center; font-weight:bold; line-height:1.4; color:#006666; font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;"><br />J-GP3クラス<br />ユースカップについて</div>
+<div style="padding:0 10px; color:#333333; font-size:10px; line-height:1.4; font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;"><br />「全日本J-GP3 Youth Cup」は12歳から17歳以下のユースカップ登録選手を対象とした若年層の育成プログラムです。ポイントは、レースの総合順位に基づき与えられます。</div>
+<div style="padding:0 10px; color:#333333; font-size:10px; line-height:1.4; font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;"><br />将来の全日本選手権を担う若手の活躍にもご注目ください。</div>
+<div style="margin:0; width:152px; height:10px; line-height:10px; overflow:hidden;"></div>
+</div>
+
+</div>
+<div style="clear:both;" ></div>
+<!-- ↑↑ランキング↑↑ -->
+</div>
+<!-- ↑↑左コンテンツ↑↑ -->
+
+<!-- ↓↓右コンテンツ↓↓ -->
+<div id="right_cont" ><!-- #BeginLibraryItem "/Library/right_bnr.lbi" -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div id="right_bnr" >
+<ul>
+<li><a href="https://twitter.com/MFJ_SUPERBIKE" target="_blank"><img src="images/right_bnr/twitter_1.png" alt="MFJ SUPERBIKE　公式ツィッター" width="75" height="75" border="0" title="MFJ SUPERBIKE　公式ツィッター" /></a><a href="https://www.facebook.com/superbike.jp" target="_blank"><img src="images/right_bnr/fb_1.png" alt="MFJ SUPERBIKE　公式FACEBOOK" width="75" height="75" border="0" title="MFJ SUPERBIKE　公式FACEBOOK" /></a></li>
+<li class="hr"></li>
+<li><a href="mailmagazine.html"><img src="images/right_bnr/mail_m_1.jpg" alt="メルマガ登録" width="150" height="150" title=""/></a><br />
+<span>エントリーフォームからあなたのメールアドレスを登録すると最新の全日本ロードレース情報やメルマガ受信者だけの特典企画満載のメルマガが配信されます。</span></li>
+<!--<li><a href="../supporters.html"><img src="../images/right_bnr/supporters_1.png" alt="サポーターズ" width="150" height="150" border="0" title="" /></a></li>-->
+<li class="hr"></li>
+<!--<li style="text-align:center;"><a href="../superbike/2015MFJ_MotorcycleRaceGuide.pdf" target="_blank"><img src="../images/right_bnr/2015guide_1.png" alt="MFJ 全日本選手権シリーズ観戦ガイド2015" width="150" height="212" border="0" title="MFJ 全日本選手権シリーズ観戦ガイド2015" /></a><br />
+<span style="font-weight:bold;">2015年観戦ガイド(PDF)</span></li>
+<li class="hr"></li>-->
+<li><a href="http://www.racingheroes.jp/" target="_blank"><img src="images/right_bnr/rh_bnr_1.png" alt="レーシングライダーの人間ドラマに迫るバイクレース専門サイト！　Racing Heroes" width="150" height="150" border="0" title="レーシングライダーの人間ドラマに迫るバイクレース専門サイト！　Racing Heroes" /></a></li>
+<li class="hr"></li>
+
+<li style="margin:0;">
+<a href="http://f1express.cnc.ne.jp/r2-1/index.php?cat_id=29&fr=gnv" target="_blank"><img src="sp_bnr/201411_touchu_1.jpg" alt="東京中日スポーツ F1EXPRESS" width="150" height="90" border="0" title="東京中日スポーツ F1EXPRESS" /></a>
+<img src="sp_bnr/tochu_feed.jpg" alt="東京中日スポーツ F1EXPRESS" width="150" height="30" border="0" />
+</li>
+<li style="border:solid 1px #9c8213; height:120px; overflow:auto; margin:-2px 0 0; padding:0 0.5em;">
+<div class="rss_cont_hr2" ></div>
+
+    <p><a href="http://f1express.cnc.ne.jp/r2-1/index.php?cat_id=29&teiko_id=280168&top_flg=0&fr=szk" target="blognew">高橋巧、今年こそ「打倒！　中須賀」</a></p>
+    <div class="rss_cont_hr2" ></div>
+    
+    
+    <p><a href="http://f1express.cnc.ne.jp/r2-1/index.php?cat_id=29&teiko_id=280017&top_flg=0&fr=szk" target="blognew">ＪＳＢ１０００王者中須賀克行、７度目の王者目指し速さ追及</a></p>
+    <div class="rss_cont_hr2" ></div>
+    
+    
+    <p><a href="http://f1express.cnc.ne.jp/column/sato/index.php?cat_id=214&teiko_id=280054&top_flg=0&fr=szk" target="blognew">異種競技バトル</a></p>
+    <div class="rss_cont_hr2" ></div>
+    
+    
+    <p><a href="http://f1express.cnc.ne.jp/column/sato/index.php?cat_id=214&teiko_id=280025&top_flg=0&fr=szk" target="blognew">大久保に見た光</a></p>
+    <div class="rss_cont_hr2" ></div>
+    
+    
+    <p><a href="http://f1express.cnc.ne.jp/column/sato/index.php?cat_id=214&teiko_id=280024&top_flg=0&fr=szk" target="blognew">東北復興応援ツーリング</a></p>
+    <div class="rss_cont_hr2" ></div>
+    
+</li>
+<li><span>※記事全文の閲覧には会員登録（有料）が必要となります。</span></li>
+<li class="hr"></li>
+<li><a href="http://jp.asiaroadracing.com/" target="_blank"><img src="images/right_bnr/2012_PetronasLogo.jpg" alt="アジアロードレース選手権" width="150" border="0" title="" /></a></li>
+<li class="hr"></li>
+<li style="text-align:center;"><a href="http://www.twellv.co.jp/program/sports/road.html" target="_blank"><img src="images/right_bnr/bs12_2013_bnr.gif" alt="BS12 JRR" width="150" border="0" title="" /></a><br />
+<span style="font-weight:bold;">レース6日後の<br>土曜夜7時より放映</span></li>
+<li class="hr"></li>
+<li><a href="http://okunomatsu.co.jp/" target="_blank"><img src="images/right_bnr/banner32_oku.jpg" alt="奥の松酒造" width="150" border="0" title="" /></a></li>
+<li class="hr"></li>
+<li><a href="http://www.sony.jp/actioncam/" target="_blank"><img src="sp_bnr/2015_sony_1.jpg" alt="Sony デジタルビデオカメラ　アクションカム" width="150" border="0" title="" /></a></li>
+<li class="hr"></li>
+<!--<li><a href="http://www.f-nippon.co.jp/" target="_blank"><img src="../images/right_bnr/2-4_motegi.png" width="150" border="0" title="" /></a></li>
+<li class="hr"></li>-->
+<li><a href="http://www.bs11.jp/entertainment/917/" target="_blank"><img src="images/right_bnr/motorise_bnr.png" alt="BS11 大人のバイクの時間" width="150" border="0" title="" /></a></li>
+<li class="hr"></li>
+<!--<li><a href="http://www.moriwaki.co.jp/40th/index.html" target="_blank"><img src="../sp_bnr/moriwaki40_bnr.jpg" width="150" border="0" title="モリワキ祭　--温故知真-- in 鈴鹿サーキット" /></a></li>
+<li class="hr"></li>-->
+<li><a href="http://www.circuit-toyrun.jp/" target="_blank"><img src="images/right_bnr/toyrun.png" alt="サーキット トイラン" width="150" border="0" title="" /></a></li>
+<li class="hr"></li>
+<li><a href="http://www.ridingsport.com/" target="_blank"><img src="images/right_bnr/banner12_rs.gif" alt="ライディングスポーツ" width="150" border="0" /></a></li>
+<li class="hr"></li>
+<li><a href="http://artw.jp/" target="_blank"><img src="images/right_bnr/reydg2ro.png" width="150" height="42" border="0"></a></li>
+</ul>
+</div>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script><!-- #EndLibraryItem --></div>
+<!-- ↑↑右コンテンツ↑↑ -->
+<div style="clear:both;" ></div>
+</div>
+<!-- ↑↑メイン↑↑ -->
+
+<div id="space" ></div>
+<!-- ↓↓スポンサー↓↓ --><!-- #BeginLibraryItem "/Library/sponsors1.lbi" -->
+
+<div id="sponsors" >
+<h3><img src="common/_img/h3_sponsors.png" width="81" height="25" alt="Sponsors" title=""/>Sponsors</h3>
+<div id="sponsors_bnr" >
+<ul>
+<li><a href="http://www.honda.co.jp/motor/" target="_blank"><img src="images/sponsors/honda.png" alt="HONDA" width="225" height="70" border="0" title=""/>　HONDA</a></li>
+<li><a href="http://www.yamaha-motor.co.jp/" target="_blank"><img src="images/sponsors/yamaha.png" alt="YAMAHA" width="225" height="70" border="0" title=""/>　YAMAHA</a></li>
+<li><a href="http://www1.suzuki.co.jp/motor/index.html" target="_blank"><img src="images/sponsors/suzuki.png" alt="SUZUKI" width="225" height="70" border="0" title=""/>　SUZUKI</a></li>
+<li><a href="http://www.kawasaki-motors.com/" target="_blank"><img src="images/sponsors/kawasaki.png" alt="Kawasaki" width="225" height="70" border="0" title=""/>　Kawasaki</a></li>
+</ul>
+</div>
+</div><!-- #EndLibraryItem --><div style="clear:both;" ></div>
+<!-- ↑↑スポンサー↑↑ -->
+<div id="space" ></div>
+<!-- ↓↓ページアップ↓↓ -->
+<div id="pageup" ><a href="body">↑ up</a></div>
+<!-- ↑↑ページアップ↑↑ -->
+<div id="space" ></div>
+<!-- ↓↓下メニュー↓↓ --><!-- #BeginLibraryItem "/Library/sub-navi.lbi" --><div id="subnavi" >
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="superbike/page1.html">MFJ SUPERBIKE</a></li>
+<li><a href="news/index.html">News</a></li>
+<li><a href="round/index.html">Race Calendar</a></li>
+<li><a href="results/index.html">Results</a></li>
+<li><a href="datacenter/profile_.php?year=2014&class=JSB1000">Team & Riders</a></li>
+<li><a href="supporters.html">Supporters</a></li>
+<li><a href="links/page3.html">Links</a></li>
+<li><a href="press.html">Press Area</a></li>
+</ul>
+</div>
+<!-- #EndLibraryItem --><!-- ↑↑下メニュー↑↑ -->
+<div id="space" ></div>
+<!-- ↓↓フッタ↓↓ -->
+<div id="line1000" ></div>
+<div id="space" ></div><!-- #BeginLibraryItem "/Library/footter.lbi" -->
+<div id="footer" >
+<div id="foot_left" ><a href="termsofus.html">サイトの利用に際して</a></div>
+<div id="foot_right" ><a href="http://www.mfj.or.jp/" target="_blank"><img src="common/_img/mfj.png" width="100" height="30" alt="MFJ" title=""/>　財団法人日本モーターサイクルスポーツ協会</a></div>
+<div id="content_clear" ></div>
+</div><!-- #EndLibraryItem --><div id="space" ></div>
+<!-- ↑↑フッタ↑↑ -->
+</div>
+<!-- ↑↑wrapper↑↑ -->
+<!-- ↓↓コピーライト↓↓ --><!-- #BeginLibraryItem "/Library/copyrights.lbi" -->
+<div id="copyrights" >
+<a href="http://www.mfj.or.jp/" target="_blank"><img src="common/_img/copyrights_1.png" width="200" height="24" alt="&copy; 2016 MFJ. All rights reserved." title=""/>Copyright (C) 2016 MFJ. All rights reserved.</a>
+</div><!-- #EndLibraryItem --><!-- ↑↑コピーライト↑↑ -->
+<!-- ↓↓アクセス解析タグ↓↓ --><!-- #BeginLibraryItem "/Library/script_foot.lbi" -->
+<script language="javascript">
+<!--
+document.write('<img src="http://www.superbike.jp/w3a/writelog.php?ref='+document.referrer+'" width="1" height="1">');
+// -->
+</script>
+<noscript>
+<img src="http://www.superbike.jp/w3a/writelog.php?ref" width="1" height="1">
+</noscript>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-15744240-1");
+pageTracker._trackPageview();
+} catch(err) {}
+</script>
+<!-- #EndLibraryItem --><!-- ↑↑アクセス解析タグ↑↑ -->
+</body>
+</html>

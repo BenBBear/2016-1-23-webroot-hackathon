@@ -1,0 +1,707 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>HOME | 第35回 大阪国際女子マラソン　公式ホームページ</title>
+<meta name="Keywords" content="第35回,大阪,国際,女子マラソン,公式サイト,ヤンマースタジアム長居, osaka, international, women, marathon" />
+<meta name="Description" content="第35回 大阪国際女子マラソン　公式ホームページ" />
+<meta http-equiv="Content-style-type" content="text/css" />
+<meta http-equiv="Content-script-type" content="text/javascript" />
+<meta name="robots" content="index,follow" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="大阪国際女子マラソン">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/images/top/fb.jpg">
+<meta property="og:site_name" content="大阪国際女子マラソン">
+<meta property="og:description" content="第35回 大阪国際女子マラソン　公式ホームページ">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://d.osaka-marathon.jp/rss.xml">
+<link rel="stylesheet" type="text/css" href="/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="/css/jquery.lightbox.css" />
+<link rel="stylesheet" type="text/css" href="/css/layout.css" />
+<link rel="stylesheet" type="text/css" href="/css/common.css" />
+<link rel="stylesheet" type="text/css" href="/css/page.css" />
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/jquery-ui.js"></script>
+<script type="text/javascript" src="/js/jquery.lightbox.min.js"></script>
+<script type="text/javascript" src="/js/jquery.pajinate.js"></script>
+<script type="text/javascript" src="/js/jqCommon.js"></script>
+<script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAApSPzEVeOMlEHFKCmikT0jRSplWNlqK5Jyr8JE1EtTB-1E6jomhR6j40B_Ivab10l-uhjHu5BSaczzA"></script>
+<script type="text/javascript" src="/js/jquery.isotope.min.js"></script>
+<script type="text/javascript" src="/js/xdr.js"></script>
+<script type="text/javascript" src="/js/jqTop.js"></script>
+<script type="text/javascript" src="/js/jquery.xdomainajax.js"></script>
+<script type="text/javascript" src="/js/feed.js"></script>
+<script type="text/javascript">	
+	$(function() {
+		//$.support.cors = true; // remove for IE8
+		updateNews('update');
+		updateNews2('news');
+		//updateLoop();		
+	})
+	function gotoRss(){
+		var url = targetHostname + 'rss.xml';
+		window.open(url, 'oilm');		
+	}
+	function gotoRssUpdate(){
+		var url = targetHostname + 'rss_update.xml';
+		window.open(url, 'oilm');		
+	}
+	function gotoNews(){
+		var url = targetHostname + 'news/';
+		location.href = url;	
+	}
+	function gotoUpdate(){
+		var url = targetHostname + 'update/';
+		location.href = url;	
+	}
+	function updateLoop() {
+	  var update_time = 10; // sec
+	  timerID = setInterval(function(){updateNews('update');updateNews2('news')},update_time*1000);
+	}
+	function updateNews(update){
+		var winWidth = $(window).width();
+		var winHeight = $(window).height();
+		var fLandscape = winHeight < winWidth;
+		var strNum = (winWidth <= 480) || (fLandscape && (winWidth <= 659)) ? 33 : 17;
+		var maxNum = 5;
+		var count = 0;
+		$.getJSON(targetHostname + update + ".json" + timestamp,function(data){
+			$('#top'+update).empty();
+			$.each(data,function(i,items){
+				count++;
+				if(count > maxNum){ return false; }
+				var url = items.URL;
+				var trancateTitle = items.TITLE;
+				if(trancateTitle.length > strNum){
+					trancateTitle = trancateTitle.substring(0, strNum);
+					trancateTitle += '...';
+				}
+				if(url.substr( 0, 4 ) == "http"){
+					var title = url.length ? '<a href="'+url+'" target="oilm">' + trancateTitle + '</a>' : trancateTitle;
+				}else{
+					var title = url.length ? '<a href="'+url+'" target="_self">' + trancateTitle + '</a>' : trancateTitle;	
+				}
+				var tag = '<span class="date">' + items.DATE + ' ' + items.TIME + '</span><br />';
+				tag += '<div class="ntitle">' + title + '</div>';
+				$('#top'+update).append($('<li></li>').append(tag));
+			});
+		});
+	}
+	function updateNews2(news){
+		var winWidth = $(window).width();
+		var winHeight = $(window).height();
+		var fLandscape = winHeight < winWidth;
+		var strNum = (winWidth <= 480) || (fLandscape && (winWidth <= 659)) ? 33 : 17;
+		var maxNum = 5;
+		var count = 0;
+		$.getJSON(targetHostname + news + ".json" + timestamp,function(data){
+			$('#top'+news).empty();
+			$.each(data,function(i,items){
+				count++;
+				if(count > maxNum){ return false; }
+				var url = items.URL;
+				var trancateTitle = items.TITLE;
+				if(trancateTitle.length > strNum){
+					trancateTitle = trancateTitle.substring(0, strNum);
+					trancateTitle += '...';
+				}
+				var title = url.length ? '<a href="'+url+'" target="oilm">' + trancateTitle + '</a>' : trancateTitle;
+								
+				var tag = '<span class="date">' + items.DATE + ' ' + items.TIME + '</span><br />';
+				tag += '<div class="ntitle">' + title + '</div>';
+				$('#top'+news).append($('<li></li>').append(tag));
+			});
+		});
+	}
+</script><!--[if lt IE 9]>
+<script type="text/javascript" src="../js/respond.min.js"></script>
+<![endif]-->
+<!--
+<script type="text/javascript">
+    uri =  targetHostname + 'enjoyrun/osakamarathonimg.php';
+    $.get(uri, function(data){
+		$('#enjoyimg').append(data.responseText);
+    });
+</script>
+-->
+<!-- ga -->
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-10886593-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+<!-- ga end -->
+</head>
+<body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div id='wrapper'>
+	<div id='content-wrapper'>
+		<div id="app-utility" class="pc-content tablet-content ico-util opacity">
+			<a href="/"><img src="/images/mobile/common/ico_home.png" width="32" alt="HOME" /></a>
+			<a href="/en/"><img src="/images/mobile/common/ico_en.png" width="32" alt="English" /></a>
+		</div>
+		<div class='box pc-content tablet-content' id='sidebar'>
+			<div id="header">
+				<h1><a href="/"><img src="/images/common/logo35.png" width="174" alt="第35回 大阪国際女子マラソン" /></a></h1>
+				<div class="counter">
+					<div><img src="/images/common/bg_countdown.png" width="190" alt="大会まであと" /></div>
+					<p id="d1"></p>
+					<p id="d2"></p>
+					<p id="d3"></p>
+					<p id="h1"></p>
+					<p id="h2"></p>
+				</div>
+				<!-- counter --> 
+				<!--お車での--> 
+				<!--<div class="counter">
+					<div><img src="/images/common/car.png" width="190" alt="お車での" /></div>
+				</div> --> 
+				<!-- お車終わり --> 
+			</div>
+			<div id="gnav">
+				<ul>
+					<li class="first current"><a href="/">HOME</a><span  class="ico-menu"></span></li>
+					<li>速報！ニュース<span  class="ico-menu"></span>
+						<ul class="list-ico-arrow-w">
+							<li><a href="/news/">新着記事</a></li>
+							<li><a href="/update/">更新情報</a></li>
+						</ul>
+					</li>
+					<li>大会について<span class="ico-menu"></span>
+						<ul class="list-ico-arrow-w">
+							<li><a href="/entry/">大会要項</a></li>
+							<li><a href="/theme/">大会テーマ</a></li>
+						</ul>
+					</li>
+					<li>選手情報<span class="ico-menu"></span>
+						<ul class="list-ico-arrow-w">
+							<li><a href="/runner">招待選手</a></li>
+							<li><a href="/runner/nextheroine.html">ネクスト ヒロイン</a></li>
+							<li><a href="/runner/pdf/general2.pdf" target="oilm">一般選手(PDF)</a></li>
+							<li><a href="/runner/release.html">記者会見</a></li>
+						</ul>
+					</li>
+					<li>コースガイド<span class="ico-menu"></span>
+						<ul class="list-ico-arrow-w">
+							<li><a href="/course/">コース図</a></li>
+							<li><a href="/course/supporter.html">応援ガイド</a></li>
+						</ul>
+					</li>
+					<li>大会記録<span class="ico-menu"></span>
+						<ul class="list-ico-arrow-w">
+							<li><a href="/record/">前回大会の記録</a></li>
+							<li><a href="/record/search.html">過去記録</a></li>
+						</ul>
+					</li>
+					<li class="last"><a href="/history/">大会プレイバック</a><span class="ico-menu"></span></li>
+				</ul>
+			</div>
+			<!-- gnav -->
+			<div id="primary-links" class="link-arrow-w">
+				<ul>
+					<li><a href="/gallery/">フォトギャラリー</a></li>
+					<li><a href="/access/">交通規制について</a></li>
+					<li><a href="/access/nagai.html">長居公園内の通行規制について</a></li>
+					<li><a href="/press/">報道関係者の方へ</a></li>
+				</ul>
+				<p><a class="btn-english" href="/en/">English page</a></p>
+			</div>
+			<!-- primary-links -->
+			<div class="side-banner waku-01">
+				<p><img src="images/common/banner/aims.jpg" alt="" /></p>
+				<p><img src="images/common/banner/iaaf_jaaf.jpg" alt="" /></p>
+				<h3>主催</h3>
+				<p class="mb-30"><a href="http://www.jaaf.or.jp/" target="oilm"><img src="/images/common/banner/jaaf.png" width="154" alt="公益財団法人 日本陸上競技連盟" /></a></p>
+				<p class="mb-30"><a href="http://www.ktv.jp/marathon/index.html" target="oilm"><img src="/images/common/banner/ktv.jpg" width="154" alt="関西テレビ放送" /></a></p>
+				<p class="mb-30"><a href="http://www.sankei.com/" target="oilm"><img src="/images/common/banner/sankei.jpg" width="154" alt="産経新聞社" /></a></p>
+				<p class="mb-30"><a href="http://www.sanspo.com/" target="oilm"><img src="/images/common/banner/sanspo.jpg" width="154" alt="サンケイスポーツ" /></a></p>
+				<h3>主管</h3>
+				<p><a href="http://www.oaaa.jp/" target="oilm"><img src="/images/common/banner/aaa.png" width="158" alt="一般財団法人 大阪陸上競技協会" /></a></p>
+			</div>
+			<!-- side-banner  -->
+			<div class="side-contact">
+				<p><img src="/images/common/side_tel.png" width="174" alt="大会についてのお問い合わせ" /></p>
+				<p class="text-left info">〒556-8662<br />
+				大阪市浪速区湊町2-1-57<br />
+				産経新聞社内<br />
+				大阪国際女子マラソン大会事務局<br />
+				(平日午前10時～午後5時)</p>
+			</div>
+		</div>
+		<!-- sidebar -->
+		<div class='box mobile-content' id='sidebar'>
+			<div id="header">
+				<h1><a href="/"><img src="/images/common/logo35.png" width="155" alt="第35回 大阪国際女子マラソン" /></a></h1>
+				<div class="header-right">
+					<div class="ico-util">
+						<a href="/"><img src="/images/mobile/common/ico_home.png" width="32" alt="HOME" /></a>
+						<a href="/en/"><img src="/images/mobile/common/ico_en.png" width="32" alt="English" /></a>
+					</div>
+					<div class="counter">
+						<div><img src="/images/common/bg_countdown.png" width="130" alt="大会まであと" /></div>
+						<p id="d1m"></p>
+						<p id="d2m"></p>
+						<p id="d3m"></p>
+						<p id="h1m"></p>
+						<p id="h2m"></p>
+					</div>
+					<!-- counter -->
+				</div>
+				<div class="clear"></div>
+			</div>
+			<!--お車での-->
+			<!--<div style=""><img src="/images/mobile/common/car-mobile.png" width="100%" alt="お車での" /></div> -->
+			<br/>
+			<div id="gnav-mobile">
+				<ul>
+					<li class="first current"><a href="/">HOME</a><span class="ico-menu"></span></li>
+					<li>速報！ニュース<span class="ico-menu"></span>
+						<ul class="list-ico-arrow-w">
+							<li><a href="/news/">新着記事</a></li>
+							<li><a href="/update/">更新情報</a></li>
+						</ul>
+					</li>
+					<li>大会について<span class="ico-menu"></span>
+						<ul class="list-ico-arrow-w">
+							<li><a href="/entry/">大会要項</a></li>
+							<li><a href="/theme/">大会テーマ</a></li>
+						</ul>
+					</li>
+					<li>選手情報<span class="ico-menu"></span>
+						<ul class="list-ico-arrow-w">
+							<li><a href="/runner/">招待選手</a></li>
+							<li><a href="/runner/nextheroine.html">ネクスト ヒロイン</a></li>
+							<li><a href="/runner/pdf/general2.pdf" target="oilm">一般選手(PDF)</a></li>
+							<li><a href="/runner/release.html">記者会見</a></li>
+						</ul>
+					</li>
+					<li>コースガイド<span class="ico-menu"></span>
+						<ul class="list-ico-arrow-w">
+							<li><a href="/course/">コース図</a></li>
+							<li><a href="/course/supporter.html">応援ガイド</a></li>
+						</ul>
+					</li>
+					<li>大会記録<span class="ico-menu"></span>
+						<ul class="list-ico-arrow-w">
+							<li><a href="/record/">前回大会の記録</a></li>
+							<li><a href="/search.html">過去記録</a></li>
+						</ul>
+					</li>
+					<li><a href="/history/">大会プレイバック</a><span class="ico-menu"></span></li>
+					<li class="last"><a href="/en/">English</a><span  class="ico-menu"></span></li>
+				</ul>
+			</div>
+			<!-- gnav -->
+			<div id="primary-links" class="link-arrow-w clearfix">
+				<ul>
+					<li><a href="/gallery/">フォトギャラリー</a></li>
+					<li><a href="/access/">交通規制について</a></li>
+					<li><a href="/access/nagai.html">長居公園内の通行規制について</a></li>
+					<li><a href="/press/">報道関係者の方へ</a></li>
+				</ul>
+			</div>
+			<!-- primary-links -->
+		</div>
+		<!-- sidebar mobile -->
+		<div id="content-main-wrapper">
+			<div id='content-main'>
+				<div id="top-content" class="opacity pc-isotope">
+					<div class="cell cell-all lank-20 site-links">
+						<div class="cell-wrapper_top">
+							<table class="center">
+								<tr>
+									<td valign="middle" nowrap="nowrap"><h3 class="ffunder">協賛</h3></td>
+									<td style="vertical-align:middle;"><a href="http://www.nitto.co.jp/" target="oilm"><img id="midle" src="/images/common/banner/nitto.jpg" alt="日東電工" class="ffunder"/></a></td>
+									<td valign="middle" nowrap="nowrap"><h3 class="ffunder">協力</h3></td>
+									<td style="vertical-align:middle;"><a href="http://www.daihatsu.co.jp/" target="oilm"><img id="midle" src="/images/common/banner/daihatsu.jpg"  alt="ダイハツ工業" class="ffunder"/></a></td>
+									<td style="vertical-align:middle;"><a href="http://citizen.jp/" target="oilm"><img id="midle" src="/images/common/banner/citizen.jpg"  alt="シチズン時計" class="ffunder"/></a></td>
+								</tr>
+							</table>
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="mobile-content side-banner cell-box cell-02 lank-19">
+						<div class="cell-wrapper">
+							<h3>協賛</h3>
+							<p><a href="http://www.nitto.co.jp/" target="oilm"><img src="/images/common/banner/nitto_sp.jpg" alt="日東電工" /></a></p>
+							<h3>協力</h3>
+							<p><a href="http://www.daihatsu.co.jp/" target="oilm"><img src="/images/common/banner/daihatsu_sp.jpg" alt="ダイハツ工業" /></a></p>
+							<p><a href="http://citizen.jp/" target="oilm"><img src="/images/common/banner/citizen.jpg" alt="シチズン時計" /></a></p>
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="cell cell-02 cell-v02 lank-01 cell-no-bg">
+						<ul class="clearfix">
+						<!--<ul id="top-main-slideshow" class="clearfix">-->
+							<li>
+								<p><a href="/runner/"><img src="/images/top/main_runner.png" width="440" alt="" /></a></p>
+							</li>
+							<!--<li>
+								<p><img src="../images/top/main_start02.png" width="440" alt="" /></a></p>
+							</li>-->
+							
+						</ul>
+					</div>
+					<div class="cell cell-01 lank-02 col-news">
+						<div class="top-news-list">
+							<div class="link-btn">
+								<div class="msg-01"><a href="javascript:void(0)" onclick="gotoRss();"><img src="/images/common/btn_rss.png" width="50" alt="RSS" /></a></div>
+								<div class="msg-02"><a href="javascript:void(0)" onclick="gotoNews();"><img src="/images/common/btn_more.png" width="45" alt="more" /></a></div>
+								<div class="clear"></div>
+							</div>
+							<h2 class="red">新着記事</h2>
+							<ul id="topnews">
+							</ul>
+						</div>
+					</div>
+					<div class="cell cell-01 lank-03 col-news">
+						<div class="top-news-list">
+							<div class="link-btn">
+								<div class="msg-01"><a href="javascript:void(0)" onclick="gotoRssUpdate();"><img src="/images/common/btn_rss.png" width="50" alt="RSS" /></a></div>
+								<div class="msg-02"><a href="javascript:void(0)" onclick="gotoUpdate();"><img src="/images/common/btn_more.png" width="45" alt="more" /></a></div>
+								<div class="clear"></div>
+							</div>
+							<h2 class="red">更新情報</h2>
+							<ul id="topupdate">
+							</ul>
+						</div>
+					</div>
+					<!--記者会見-->
+					<div class="cell cell-02 lank-07 col-2col col-arrow">
+						<div class="cell-wrapper">
+							<a href="/runner/release.html">
+								<div class="photo-left"><img src="/images/top/p_release.jpg" width="210" alt="招待選手 記者会見" /></div>
+								<div class="desc-right">
+									<h3 class="title">招待選手 記者会見</h3>
+									<p>1月31日にヤンマースタジアム長居（大阪市東住吉区）で行われる「第35回大阪国際女子マラソン」の記者会見が12月24日、関西テレビ（北区）で行われました。</p>
+								</div>
+								<div class="clear"></div>
+							</a>
+						</div>
+					</div>
+					<!--招待選手-->
+					<div class="cell cell-01 lank-08 col-arrow">
+						<div class="cell-wrapper">
+							<a href="/runner/">
+								<div><img src="/images/top/p_03.jpg" alt="招待選手" /></div>
+								<h3 class="title">招待選手</h3>
+								<p></p>
+							</a>
+						</div>
+					</div>
+					<!--ネクスト ヒロイン枠選手-->
+					<div class="cell cell-01 lank-09 col-arrow">
+						<div class="cell-wrapper">
+							<a href="/runner/nextheroine.html">
+								<div><img src="/images/top/p_next.jpg"/></div>
+								<h3 class="title">ネクスト ヒロイン<br />招待選手</h3>
+								<p></p>
+							</a>
+						</div>
+					</div>
+					<!--逸品縁日PREMIUM-->
+					<!--<div class="cell cell-01 lank-09 col-arrow">
+						<div class="cell-wrapper">
+							<a href="http://www.eventscramble.jp/e/ippin" target="_blank">
+								<div><img src="/images/top/p_ippin.jpg"/></div>
+								<h3 class="title">逸品縁日PREMIUM</h3>
+								<p>観戦の合間に、プレミアムなグルメを楽しもう！</p>
+							</a>
+						</div>
+					</div>-->
+					<!--逸品縁日PREMIUM-->
+					<div class="cell cell-02 lank-13" cell-no-bg>
+						<a href="/premium/" target="_blank"><img src="/images/top/p_premium.jpg" alt="逸品縁日PREMIUM" /></a>
+					</div>
+					<!--大阪国際女子マラソン大会ガイド -->
+					<div class="cell cell-02 lank-10 col-2col col-arrow">
+						<div class="cell-wrapper">
+							<a href="/pr/">
+								<div class="photo-left"><img src="/images/top/p_pr.jpg" width="210" alt="大阪国際女子マラソン大会ガイド " /></div>
+								<div class="desc-right">
+									<h3 class="title">大阪国際女子マラソン<br>大会ガイド </h3>
+									<p>大会展望、有力選手情報、コースの見どころなど、大阪国際女子マラソンの大会ガイドはこちらよりダウンロードできます。 </p>
+								</div>
+							</a>				
+						</div>
+					</div>
+					<!--大阪エンジョイランー-->
+					<div class="cell cell-02 lank-14" cell-no-bg>
+						<a href="/enjoyrun2016/" target="_blank" id="enjoyimg"><img src="/images/top/p_enjoy2016_2.jpg" alt="大阪エンジョイラン" /></a>
+					</div>
+					<!--フォトギャラリー-->
+					<div class="cell cell-01 lank-04 col-arrow">
+						<div class="cell-wrapper">
+							<a href="/gallery/">
+								<div><img src="/images/top/p_gallery.jpg" alt="フォトギャラリー" /></div>
+								<h3 class="title">フォトギャラリー</h3>
+								<p><!--あのシーンをもう一度。 --></p>
+							</a>
+						</div>
+					</div>
+					<!--大阪国際女子マラソン 舞台裏 -->
+					<div class="cell cell-02 lank-20 col-backstage">
+						<a href="http://osaka-womens-marathon.blog.jp/" target="oilm"><img src="/images/top/p_backstage.jpg" alt="大阪国際女子マラソン 舞台裏" /></a>
+						<div id="feed"></div>
+					</div>
+					<!--大会Facebook-->
+					<div class="cell cell-02 lank-16 cell-no-bg" style="background-color:#FFF;">
+						<div class="fb-page" data-href="https://www.facebook.com/osakawomensmarathon" data-width="440" data-height="215" data-small-header="true" data-adapt-container-width="false" data-hide-cover="true" data-show-facepile="false" data-show-posts="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/osakawomensmarathon"><a href="https://www.facebook.com/osakawomensmarathon" class="btn-link-red"><span>&nbsp;</span> 大阪国際女子マラソン公式Facebook</a></blockquote></div></div>
+					</div>
+					<!--交通規制-->
+					<div class="cell cell-01 lank-12">
+						<div class="cell-wrapper">
+							<div><img src="/images/top/p_access.jpg" alt="交通規制のお知らせ" /></div>
+							<h3 class="title">交通規制のお知らせ</h3>
+							<p></p>					
+							<a class="btn-link-red" href="/access/"><span>&nbsp;</span> 詳しくはこちら</a>
+						</div>
+					</div>
+					<!--第34回大会結果-->
+					<div class="cell cell-01 lank-05">
+						<div class="cell-wrapper">
+							<div><img src="/images/top/p_record.jpg" alt="第34回 今大会記録" /></div>
+							<h3 class="title">第34回　結果</h3>
+							<p><!--熱い大会がここにある！ --></p>
+							<a class="btn-link-red" href="/record/"><span>&nbsp;</span> 前回大会の記録はこちら</a>
+						</div>
+					</div>
+					<!--過去大会結果-->
+					<div class="cell cell-01 lank-06">
+						<div class="cell-wrapper">
+							<div><img src="/images/top/p_search.jpg" alt="過去大会結果" /></div>
+							<h3 class="title">過去記録</h3>
+							<p><!--熱い大会がここにある！ --></p>
+							<a class="btn-link-red" href="http://data.osaka-marathon.jp/record/search.php"><span>&nbsp;</span> 全ての大会記録へ</a>
+						</div>
+					</div>
+					<!--大阪ハーフマラソン-->
+					<div class="cell cell-02 lank-16 cell-no-bg">
+						<a href="http://half.osaka-marathon.jp/" target="oilm"><img src="../images/top/p_ohalf2016.jpg" alt="大阪ハーフマラソン" /></a>
+					</div>
+					<!--コース図-->
+					<div class="cell cell-02 lank-17 col-2col col-arrow">
+						<div class="cell-wrapper">
+							<a href="/course/">
+								<div class="photo-left"><img src="/images/top/p_map.jpg" width="210" alt="コース図" /></div>
+									<div class="desc-right">
+										<h3 class="title">コース図</h3>
+										<p>フラットで走りやすい<br />世界屈指の高速コース</p>
+									</div>
+								<div class="clear"></div>
+							</a>
+						</div>
+					</div>
+					<!--応援ガイド-->
+					<div class="cell cell-02 lank-18 col-2col col-arrow">
+						<div class="cell-wrapper">
+							<a href="/course/supporter.html">
+								<div class="photo-left"><img src="/images/top/p_guide.jpg" width="210" alt="応援ガイド" /></div>
+								<div class="desc-right">
+									<h3 class="title">応援ガイド</h3>
+									<p>発着地点のヤンマースタジアム長居をはじめ、大阪城エリア、中之島エリア、折り返しなど、各ポイントの通過時間や観戦ポイントを紹介</p>
+								</div>
+								<div class="clear"></div>
+							</a>
+						</div>
+					</div>
+					<!--大会プレイバック -->
+					<div class="cell cell-01 lank-19 col-arrow">
+						<div class="cell-wrapper">
+							<a href="/history/">
+								<div><img src="/images/top/p_02.jpg" alt="大会プレイバック" /></div>
+								<h3 class="title">大会プレイバック</h3>
+								<p><!--ダイジェスト動画公開！--></p>
+								<!--<a class="btn-link-red" href="/history/detail_32.html"><span>&nbsp;</span>まずは第32回大会へ</a>-->
+							</a>
+						</div>
+					</div>
+					<!--大会テーマ-->
+					<div class="cell cell-02 lank-21 col-2col col-arrow">
+						<div class="cell-wrapper">
+							<a href="/theme/">
+								<div class="photo-left"><img src="/images/top/p_theme.jpg" width="210" alt="大会テーマ" /></div>
+								<div class="desc-right">
+									<h3 class="title">大会テーマ</h3>
+									<p>家族の支え、恩師の教え、沿道の声援…。<br />選手たちは数多の“LOVES”を受けて走る―。</p>
+								</div>
+								<div class="clear"></div>
+							</a>				
+						</div>
+					</div>
+					<!--記者会見-->
+					<!--<div class="cell cell-02 lank-07 col-2col col-arrow">
+						<div class="cell-wrapper">
+							<a href="/runner/conference.html">
+								<div class="photo-left"><img src="../images/top/p_conference.jpg" width="210" alt="招待選手 記者会見" /></div>
+								<div class="desc-right">
+									<h3 class="title">招待選手 記者会見</h3>
+									<p>｢第34回大阪国際女子マラソン」（平成27年1月25日開催）の記者会見が1月23日、大阪市中央区のホテルニューオータニ大阪で開かれました。</p>
+								</div>
+								<div class="clear"></div>
+							</a>
+						</div>
+					</div>-->
+					<!--オフィシャルグッズ-->
+					<!--<div class="cell cell-01 lank-11">
+						<div class="cell-wrapper">
+							<div><img src="/images/top/p_goods.jpg" alt="オフィシャルグッズSHOP" /></div>
+							<h3 class="title">オフィシャルグッズSHOP</h3>
+							<p></p>					
+							<a class="btn-link-red" href="/goods/"><span>&nbsp;</span>商品を見る</a>
+						</div>
+					</div>-->
+					<!--ネクスト ヒロイン枠-->
+					<!--<div class="cell cell-01 lank-15 col-arrow">
+						<div class="cell-wrapper">
+							<a href="/nextheroine/">
+								<div><img src="../images/top/p_12.jpg" alt="ネクスト ヒロイン枠" /></div>
+								<h3 class="title">ネクスト ヒロイン枠</h3>
+								<p>若手選手に挑戦の場を提供</p>
+							</a>
+						</div>
+					</div>-->
+					<!--レース後コメント-->
+					<!--<div class="cell cell-01 lank-06">
+						<div class="cell-wrapper">
+							<div><img src="/images/top/p_afterrace.jpg" /></div>
+							<h3 class="title">レース後コメント</h3>
+							<p></p>					
+							<a class="btn-link-red" href="/runner/afterrace.html"><span>&nbsp;</span> 詳しくはこちら</a>
+						</div>
+					</div>-->
+					<!--LINEアカウント-->
+					<!--<div class="cell cell-02 lank-22 col-2col col-arrow">
+						<div class="cell-wrapper">
+							<a href="http://www.ktv.jp/marathon/line.html" target="_blank">
+								<div class="photo-left"><img src="/images/top/p_line.jpg" width="210"/></div>
+								<div class="desc-right">
+									<h3 class="title">大阪国際女子マラソン<br />LINEアカウント</h3>
+									<p>大阪国際女子マラソンLINEアカウントができました！<br />レース中、皆様からの応援メッセージをLINEで募集します<br />詳しくはこちらをクリック！</p>
+								</div>
+								<div class="clear"></div>
+							</a>
+						</div>
+					</div>-->
+					<!--MYLOVES --> 
+					<!--<div class="cell cell-02 lank-14 col-2col col-arrow">
+						<div class="cell-wrapper">
+							<a href="/myloves/">
+								<div class="photo-left"><img src="../images/top/p_theme2.jpg" width="210" alt="大会テーマ" /></div>
+								<div class="desc-right">
+									<h3 class="title">私のLOVES</h3>
+									<p>「あなたの走りを支えてくれる<br />”LOVES”は何ですか？」<br /><br />2014年1月20日更新<br />103　松浦　七実さん<br />106　原　裕美子さん<br />446　中村　あゆ子さん<br />478　水戸瀬　真由美さん<br /></p>
+									<p style="padding-top:10px;"><img src="../images/common/btn_more.png" width="70px" style="width:70px;" /></p>
+								</div>
+								<div class="clear"></div>
+							</a>				
+						</div>
+					</div>--> 
+					<!--記者発表--> 
+					<!--<div class="cell cell-02 lank-07 col-2col col-arrow">
+						<div class="cell-wrapper">
+							<a href="/runner/release.html">
+								<div class="photo-left"><img src="../images/top/p_release.jpg" width="210" alt="記者発表" /></div>
+								<div class="desc-right">
+									<h3 class="title">記者発表</h3>
+									<p>「第34回大阪国際女子マラソン」（2015年1月25日開催）の記者発表が2014年12月24日、大阪市中央区のホテルニューオータニ大阪で開かれ、国内招待選手が出席。大会に向けた意気込みを語りました。</p>
+								</div>
+								<div class="clear"></div>
+							</a>				
+						</div>
+					</div> -->
+					<!--大会ダイジェスト動画 -->
+					<!--<div class="cell cell-01 lank-04">
+						<div class="cell-wrapper">
+							<div><img src="/images/top/p_movie.jpg" alt="" /></div>
+							<h3 class="title">大会ダイジェスト動画</h3>
+							<p>関西テレビサイトにて公開中！</p>
+							<a class="btn-link-red" href="http://www.ktv.jp/marathon/digest.html" target="_blank"><span>&nbsp;</span>動画はこちら</a>
+						</div>
+					</div>-->
+					<!-- 関西テレビ 番組ツイート-->
+					<!--<div class="cell cell-02 lank-20 col-2col col-arrow">
+						<div class="cell-wrapper">
+								<div class="photo-left" style="width:22%"><img src="../images/top/twitter.png" width="100" alt="関西テレビ 番組ツイート" /></div>
+								<div class="desc-right" style="width:75%">
+									<h3 class="title">関西テレビ　番組公式Twitter</h3>
+									<p><a class="twitter-timeline" href="https://twitter.com/owm_ktv" data-widget-id="413174748919508994">@owm_ktv からのツイート</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></p>
+								</div>
+								<div class="clear"></div>
+						</div>
+					</div>-->
+					<div class="cell cell-all lank-20 site-links">
+						<div class="cell-wrapper">
+							<div class="link-site-title">
+								<p>関連サイト</p>
+							</div>
+							<div class="links-site">
+								<!--<a href="http://www.sankei.com/" target="oilm"><img src="/images/common/banner/link_sankeinews.png" width="72" alt="産経ニュース" title="産経ニュース"></a> -->
+								<a href="http://www.iza.ne.jp/" target="oilm"><img src="/images/common/banner/link_iza.png" width="54" alt="izaイザ" title="izaイザ"></a><!-- <a href="http://www.ktv.jp/marathon/index.html" target="oilm"><img src="/images/common/banner/link_kansaitv.png" width="100" alt="関西テレビ" title="関西テレビ"></a>-->
+								<a href="http://www.obc1314.co.jp/" target="oilm"><img src="/images/common/banner/link_obc.png" width="108" alt="ラジオ大阪" title="ラジオ大阪"></a>
+								<!--<a href="http://www.obc1314.co.jp/" target="oilm"><img src="/images/common/banner/link_obc.png" width="108" alt="ラジオ大阪" title="ラジオ大阪"></a> -->
+								<!--<a href="http://www.sanspo.com/" target="oilm"><img src="/images/common/banner/link_sanspo.png" width="107" alt="サンスポ" title="サンスポ"></a>-->
+								<a href="http://www.zakzak.co.jp/" target="oilm"><img src="/images/common/banner/link_zakzak.png" width="76" alt="ZAKZAK" title="ZAKZAK"></a>
+								<a href="http://www.sankeibiz.jp/" target="oilm"><img src="/images/common/banner/link_biz.png" width="79" alt="Sankei BIZ" title="Sankei BIZ"></a>
+								<!--<a href="http://www.sankei-kansai.com/" target="oilm"><img src="/images/common/banner/link_sankei.png" width="74" alt="産経関西" title="産経関西"></a>-->
+								<a href="http://www.eventscramble.jp/" target="oilm"><img src="/images/common/banner/link_event.png" width="108" alt="イベントスクランブル" title="イベントスクランブル"></a>
+								<div class="clear"></div>
+							</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<div class="mobile-content side-banner cell-box cell-02 lank-19">
+					<div class="cell-wrapper">
+						<p><img src="images/common/banner/aims.jpg" alt="" /></p>
+						<p><img src="images/common/banner/iaaf_jaaf.jpg" alt="" /></p>
+						<h3>主催</h3>
+						<p><a href="http://www.jaaf.or.jp/" target="oilm"><img src="/images/common/banner/jaaf.png" alt="共益財団法人 日本陸上競技連盟" /></a></p>
+						<p><a href="http://www.ktv.jp/marathon/index.html" target="oilm"><img src="/images/common/banner/ktv.jpg" alt="関西テレビ放送" /></a></p>
+						<p><a href="http://www.sankei.com/" target="oilm"><img src="/images/common/banner/sankei.jpg" alt="産経新聞社" /></a></p>
+						<p><a href="http://www.sanspo.com/" target="oilm"><img src="/images/common/banner/sanspo.jpg" alt="サンケイスポーツ" /></a></p>
+						<h3>主管</h3>
+						<p><a href="http://www.oaaa.jp/" target="oilm"><img src="/images/common/banner/aaa.png" alt="一般財団法人 大阪陸上競技協会" /></a></p>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<!-- side-banner  -->
+			</div>
+			<!-- top-content -->
+			<div class="clear"></div>
+			<div class="mobile-content bottom-contact">
+				<p><img src="/images/mobile/common/info_tel.png" width="280" alt="大会についてのお問い合わせ" /></p>
+			</div>
+		</div>
+		<!-- content-main -->
+	</div>
+	<!-- content-main-wrapper -->
+</div>
+<!-- content-wrapper --> 
+</div>
+<!-- warepper -->
+<div class="clear"></div>
+<div id="footer">
+	<div class="footer-content">
+		<div class="pagetop"><a href="#wrapper">PAGE TOP</a></div>
+		<p><img src="/images/common/footer_logo35.png" width="290" alt="第35回 大阪国際女子マラソン" /></p>
+		<p class="pc-content tablet-content copyright">Copyright&copy; 第35回 大阪国際女子マラソン All rights reserved.</p>
+		<p class="mobile-content copyright">Copyright&copy; 第35回 大阪国際女子マラソン<br />
+All rights reserved.</p>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="en-us" http-equiv="Content-Language" />
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<script src="webScripts/jQuery/jquery-1.7.1.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){      
+	$("div#optDivAll").hide();
+	$("div#optDivEMail").hide();
+});
+
+function showhide(r, checkbox, hidebox){
+	var cb=r.form[checkbox];
+	cb.checked?$("div#" + hidebox).show():$("div#" + hidebox).hide();
+}
+
+</script>
+
+<title>vBox Verify</title>
+<style type="text/css">
+.style2 {
+	font-family: Arial, Helvetica, sans-serif;
+	color: #0000FF;
+}
+.style1 {
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.style3 {
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: xx-small;
+}
+.style4 {
+	text-decoration: underline;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: medium;
+	color: #0000FF;
+}
+.style6 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: small;
+}
+.style9 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: medium;
+	color: #0000FF;
+}
+.style12 {
+	text-align: left;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: small;
+}
+.style13 {
+	font-family: Arial, Helvetica, sans-serif;
+	color: #FF0000;
+}
+.style14 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: medium;
+	color: #008000;
+}
+.style15 {
+	border: 1px solid #FF0000;
+}
+.style16 {
+	text-align: center;
+}
+.style17 {
+	margin-top: 8px;
+	margin-left: 32px;
+	margin-bottom: 8px;
+}
+.style18 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: small;
+	color: #FF0000;
+	margin-top: 12px;
+}
+.style19 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+}
+</style>
+</head>
+
+<body>
+
+
+<h1 class="style2">vBox Verify:&nbsp; Submit your vBox files for verification.</h1>
+<table style="width: 100%">
+	<tr>
+		<td class="style1">vBox Verify</td>
+		<td class="style1"><a href="PerfDB.php">vBox Perf DB</a></td>
+		<td class="style1">vBox Racer</td>
+		<td class="style1">vBox Dyno</td>
+		<td class="style1"><a href="mailto:admin@perfdb.com">Contact Us</a></td>
+	</tr>
+	<tr>
+		<td class="style3">Submit your vBox files for verification.</td>
+		<td class="style3">View the vBox and Perf Database</td>
+		<td class="style3">View and make your own vBox Racer videos.</td>
+		<td class="style3">Calculte HP and TQ from vBox Files</td>
+		<td class="style3">Who are we and what do we do here?</td>
+	</tr>
+</table>
+
+<hr />
+<ul>
+	<li class="style14">Step-1:&nbsp; Submit and Verify</li>
+	<li class="style14">Step-2:&nbsp; Choose which results you want to keep; 
+	generate graphs.</li>
+	<li class="style14">Step-3:&nbsp; Download graphs, or link to PerfDB.com.</li>
+	<li class="style14">Optional:&nbsp; Edit your entires for #-Shifts, etc.</li>
+</ul>
+<table style="width: 100%">
+	<tr>
+		<td style="width: 35%" valign="top"><span class="style9">Reasons to choose </span> <span class="style4">vBox Verify</span>:<br class="style6" />
+		<br class="style6" />
+		<span class="style9">Verifies all of the following:
+		</span>
+		<ul>
+			<li class="style6">Lost satellite signals</li>
+			<li class="style6">Missing data</li>
+			<li class="style6">vBox sample rate consistency</li>
+			<li class="style6">vBox data integrity (CRC)</li>
+			<li class="style6">Excessive slope</li>
+		</ul>
+		<p class="style9">Searches and verifies files for all of the following tests:</p>
+		<table style="width: 100%">
+			<tr>
+				<td class="style19" valign="top">
+				<p><strong>Standing Velocity Tests</strong></p>
+				<ul>
+					<li class="style19">0-60 MPH</li>
+					<li class="style19">0-100 KPH</li>
+					<li class="style19">0-100 MPH</li>
+					<li class="style19">0-150 MPH</li>
+					<li class="style19">0-300 KPH</li>
+				</ul>
+				</td>
+				<td valign="top">
+				<p class="style19"><strong>Flying Velocity Tests</strong></p>
+				<ul>
+					<li class="style19">60-130 MPH</li>
+					<li class="style19">100-150 MPH</li>
+					<li class="style19">100-200 KPH</li>
+				</ul>
+				</td>
+			</tr>
+			<tr>
+				<td class="style6" colspan="2">
+				<p><strong>Distance Tests</strong></p>
+				<ul>
+					<li class="style6">1/8 Mile Drag Races (NHRA Rules)</li>
+					<li class="style6">1/4 Mile Drag Races (NHRA Rules)</li>
+					<li class="style6">Standing 1/2 Mile (Texas Mile Rules)</li>
+					<li class="style6">Standing 1-Mile (Texas Mile Rules</li>
+				</ul>
+				</td>
+			</tr>
+			<tr>
+				<td class="style19" valign="top">
+				<p><strong>Deceleration Tests</strong></p>
+				<ul>
+					<li class="style19">20-0 MPH (Decel)</li>
+					<li class="style19">30-0 MPH (Decel)</li>
+					<li class="style19">60-0 MPH (Decel)</li>
+					<li class="style19">75-0 MPH (Decel)</li>
+					<li class="style19">100-0 MPH (Decel)</li>
+				</ul>
+				</td>
+				<td valign="top">
+				<p class="style19"><strong>Brake Triggered Tests</strong></p>
+				<ul>
+					<li class="style19">20-0 MPH (Brake Triggered)</li>
+					<li class="style19">30-0 MPH (Brake Triggered)</li>
+					<li class="style19">60-0 MPH (Brake Triggered)</li>
+					<li class="style19">75-0 MPH (Brake Triggered)</li>
+					<li class="style19">100-0 MPH (Brake Triggered)</li>
+				</ul>
+				</td>
+			</tr>
+		</table>
+		<p class="style9">Other key features</p>
+		<ul>
+			<li class="style6"><span class="style6">Submit files individually for verification.</span><br class="style6" />
+			</li>
+			<li class="style6"><span class="style6">Supports all vBox file formats and sample rates</span><br class="style6" />
+			<span class="style6">(5Hz, 10Hz, 20Hz, 100 Hz).</span></li>
+			<li class="style6">More accurate than vBox Tools software by Race 
+			Logic.</li>
+			<li class="style6">Auto-generate your own verification graphs.</li>
+			<li class="style6">Link to, or download your result graphs.</li>
+			<li class="style6">Create your own custom template and print graphs 
+			to your own specifications.</li>
+			<li class="style6">Quick Response bar code will take people to your 
+			web site, or can be used as a verification ID (optional).</li>
+			<li class="style6">Add your own watermark (optional).</li>
+			</ul>
+		<p class="style9">Future features</p>
+		<ul>
+			<li class="style6">Submit files in batch .ZIP file archive.</li>
+			<li class="style6">Auto-generate vBox Dyno graphs.</li>
+			<li class="style6">Create comparison graphs between your results and 
+			any others in the database.</li>
+			<li class="style6">Watermark your own graphs.</li>
+			<li class="style6">Edit your own entries for #-Shifts, Density 
+			Altitude, etc.</li>
+			<li class="style6">Add new entries, or remove your old ones.</li>
+			<li class="style6">Privacy features allows this site to maintain 
+			private databases for individual car forums.</li>
+			<li class="style6">vBulletin API available upon special request. 
+			Displays your own private database from PerfDB data into your own 
+			car forum.&nbsp; Supports infinite number of private databases for 
+			individual car brands/models if desired.</li>
+			</ul>
+		</td>
+		<td valign="top">
+<form name=vehTypeMenu action="perfdb_submit.php" method=post enctype="multipart/form-data">
+<table style="width: 100%">
+
+
+<tr>
+	<TD class="style12" valign="top">vBox File(s) to analyze:<br />
+	(.DBN, .VBO, files only)</TD><TD valign="top">
+	<font face="Arial">
+	<input name="vbFile" type="file" SIZE=60 tabindex="5" class="style6"></font><br>
+    <input class="style19" name="accelTests" type="checkbox" checked="checked" value="1"/><span class="style19">Enable 
+	Acceleration Tests</span><br class="style19" />
+	<input class="style19" name="decelTests" type="checkbox" value="1" /><span class="style19">Enable 
+	Braking and Deceleration Tests</span><br />
+	</TD>
+	<input type="hidden" name="MAX_FILE_SIZE" value="10000000" />
+  	</tr>
+</table>
+	<input class="style18" name="optBox" onclick="showhide(this, 'optBox', 'optDivAll')" type="checkbox" value="1" /><span class="style18">Change 
+	advanced options? (Send email, GPS options, Google Earth options, etc) </span><br />
+<div id="optDivAll" class="style17">
+	<input name="sendEMail" type="checkbox" value="1" onclick="showhide(this, 'sendEMail', 'optDivEMail')"/><span class="style6">Send EMail 
+	Summary, Graphs, Google Earth?</span><br />
+	<div id="optDivEMail" class="style17">
+		<table style="width: 70%">
+			<tr>
+				<td class="style6">EMail Name</td>
+				<td><input name="emailName" class="style6" size="64"></td>
+			</tr>
+			<tr>
+				<td class="style6">EMail Address</td>
+				<td><input name="emailAddress" class="style6" size="64"></td>
+			</tr>
+		</table>
+		<input class="style6" name="sendGraphs" type="checkbox" value="1"/><span class="style6">Attach Performance Graphs</span><br />
+		<input class="style6" name="sendGoogKML" type="checkbox" value="1"/><span class="style6">Generate Google-Earth .KML file.</span>
+	</div>
+	<input class="style6" name="useRelHt" type="checkbox" value="1" /><span class="style6">Use 
+relative height data instead of GPS height if available.</span><br />
+</div><p />
+<INPUT TYPE="submit" VALUE="Submit Your File(s)" style="font-size: 12pt; font-family: Arial; font-weight: bold"> </font>
+<input type="hidden" name="submitFlag" value="1">
+<input type="hidden" name="templateID" value="3c11c1aeb4c8e183bc7c998925261ffd">
+<input type="hidden" name="zeroThreshold" value="">
+<input type="hidden" name="anon" value="0">
+
+	<br />
+
+	<br />
+	<table class="style15">
+		<tr>
+			<td>
+			<h3 class="style16">Richard Hammond&#39;s Jet Car from 
+			Top Gear using RaceLogic vBox 3i*</h3>
+			<br />
+	<img alt="" height="718" src="http://www.perfdb.com/vBoxFiles/ID000001-1332526643-ANON/graphs/TEST-000009-D-STNDMILE.jpg" width="1024" /></td>
+		</tr>
+	</table>
+	<br />
+		</form>
+</td>
+	</tr>
+</table>
+<p class="style13">Privacy Statement:</p>
+<p class="style13">Data contained in 
+the vBox files is not shared with any outside individuals, companies, friends or 
+foes.&nbsp; Only vBox files used to maintain the Performance Database are kept 
+on this site.&nbsp; All files submitted but not selected as part of the 
+performance database are automatically deleted.</p>
+<hr />
+<p class="style13">* For more information on Race Logic or vBox devices, visit
+<a href="http://www.racelogic.co.uk">http://www.racelogic.co.uk</a>, or
+<a href="http://VBOXmotorsport.com">http://VBOXmotorsport.com</a>.</p>
+<p class="style13">&nbsp;</p>
+<p class="style13">&nbsp;</p>
+
+</body>
+
+</html>

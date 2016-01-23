@@ -1,0 +1,884 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>
+	すべての Netflix 映画およびシリーズ - EigaNetflix.jp
+</title><script src="/bundles/modernizr?v=wBEWDufH_8Md-Pbioxomt90vm6tJN2Pyy9u9zHtWsPo1"></script>
+<link href="/Content/css?v=OhsI-WeSDDunChhQpYiUgmnffrgO62xnhlwTlh2MvGk1" rel="stylesheet"/>
+<link href="favicon.ico" rel="shortcut icon" type="image/x-icon" /><link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css" />
+    <script type="text/javascript" src="/Scripts/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery-ui.min.js"></script>
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/Scripts/mn.js"></script>
+    
+    <script>
+        $( document ).ready(function() {
+            $(".hidecatlst").click(function () {
+                $(".catlst").slideToggle("slow", function () {
+                    $.ajax({
+                        type: "POST",
+                        url: "/Service.ashx",
+                        data: "{ catsVisible:'" + $(".catlst").is(":visible") + "'}",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        complete: function (response) {
+                            $(".catlst").is(":visible") == true ? $(".hidecatlst").html("<span class='glyphicon glyphicon-chevron-up'></span> <span class='uline'>ジャンルを非表示にする</span>") : $(".hidecatlst").html("<span class='glyphicon glyphicon-chevron-down'></span> <span class='uline'>ジャンルを表示する</a>");
+                        }
+                    });
+
+                });
+            });
+        });
+    </script>
+
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-56706868-26', 'auto');
+        ga('create', 'UA-56706868-1', 'auto', {'name': 'mainTracker'});
+        ga('require', 'displayfeatures');
+        ga('send', 'pageview');
+        ga('mainTracker.send', 'pageview');
+
+    </script>
+    
+
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=marrontrade" async="async"></script>
+    
+    <script>        var adpos = "hd";</script>
+    <script type="text/javascript" src="/adserver/ad.js"></script>
+
+<meta name="description" content="EigaNetflix.jp から、Netflix 日本のすべてのセレクションを検索できます。Moviemeter や IMDB からの詳細も含まれています。更にEigaNetflix.jpでは、すべての新作リリースの要約も提供されており、どの新作映画やシリーズが Netflix に追加されたのかが明確にわかります。毎週、すべての新作リリース情報が含まれた週 1 回の電子メールを受信しませんか？今すぐ登録してください！" /><meta http-equiv="content-language" content="ja-JP" /></head>
+<body>
+    <script>        var adpos = "sob";</script>
+    <script type="text/javascript" src="/adserver/ad.js"></script>
+
+    <form method="post" action="./" id="ctl01">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+
+
+<script src="/bundles/MsAjaxJs?v=c42ygB2U07n37m_Sfa8ZbLGVu4Rr2gsBo7MvUEnJeZ81" type="text/javascript"></script>
+<script src="Scripts/bootstrap.min.js" type="text/javascript"></script>
+<script src="Scripts/respond.min.js" type="text/javascript"></script>
+<script src="/bundles/WebFormsJs?v=AAyiAYwMfvmwjNSBfIMrBAqfU5exDukMVhrRuZ-PDU01" type="text/javascript"></script>
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="CA0B0334" />
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="rg4gPMyhdUyQFp7ZEU2X1MfIB7+IJSVnxJp45mNu1bCcnRJ+Y/ZQOWPrT8KozsCHERRsPsZWAXHUqqa3JSEvfDuHF5V5lTTAMUIP0wji8laAybD7FRdMBzIW3m09TXDD5bKW8xJFJY2LwfgNXl/G+A==" />
+        
+
+        <div class="navbarctr">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="./" class="navbar-brand"><span class="logo">EigaNetflix.jp</span> <small>非公式 Netflix ガイド</small></a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a id="hypMenuHome" href="/">ホーム</a></li>
+                        <li><a id="hypMenuNew" href="/%e6%96%b0%e4%bd%9c%e6%98%a0%e7%94%bb">新作映画</a></li>
+                        <li><a id="hypMenuPopular" href="/%e4%ba%ba%e6%b0%97-%e6%98%a0%e7%94%bb">人気映画</a></li>
+                        <li><a id="hypMenuNews" class="hidden-md hidden-sm" href="/netflix-%e3%83%8b%e3%83%a5%e3%83%bc%e3%82%b9">Netflix ニュース</a></li>
+                    </ul>
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="account/register">登録</a></li>
+                            <li><a href="account/login">ログイン</a></li>
+                        </ul>
+                    
+                    
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="container body-content">
+
+            <!-- NF_leaderbord_resp -->
+            <div class="lbctr">
+                <script>        var adpos = "lbtop";</script>
+                <script type="text/javascript" src="/adserver/ad.js"></script>
+            </div>
+
+            
+
+    <div class="jumbotron hidden-xs">
+        <h1 class="bml">毎日更新される Netflix コンテンツのセレクションと Netflix ニュース</h1>
+        <p class="lead">EigaNetflix.jp から、Netflix 日本のすべてのセレクションを検索できます。Moviemeter や IMDB からの詳細も含まれています。更にEigaNetflix.jpでは、すべての新作リリースの要約も提供されており、どの新作映画やシリーズが Netflix に追加されたのかが明確にわかります。毎週、すべての新作リリース情報が含まれた<a href="/account/register">週 1 回の電子メールを受信</a>しませんか？<a href="/account/register">今すぐ登録してください</a>！</p>
+        <p class="lead">現在、Netflix セレクションには<span class="bold">1.532</span> <a href="/タイプ/tv-シリーズ">tv-シリーズ</a>, <a href="/タイプ/ドキュメンタリー">ドキュメンタリー</a> および <a href="/タイプ/映画">映画</a>が含まれています。</p>
+    </div>
+    
+    <div class="row">
+        <div class="col-xs-12 col-sm-8">
+            
+    <!--googleoff: index-->
+    <div class="ipcheckctr">
+        Netflix USA で<a href="http://www.movies-net.com">Movies-Net.com</a>を探しているのではありませんか？
+    </div>
+    <!--googleon: index-->
+
+
+
+
+            <h2>Netflix コンテンツの検索</h2>
+            <p>
+               
+
+    <script>
+        $( document ).ready(function() {
+            $('#MainContent_ccSearch_txtSearch').autocomplete({
+                source: "/Service.ashx",
+                minLength: 2,
+                html: true,
+                focus: function(event, ui) {
+                    // prevent autocomplete from updating the textbox
+                //event.preventDefault();
+                    // manually update the textbox
+                $(this).val(ui.item.title);
+            },
+            select: function(event, ui) {
+                // prevent autocomplete from updating the textbox
+                //event.preventDefault();
+                // manually update the textbox and hidden field
+                $(this).val(ui.item.title);
+                window.document.location = ui.item.url;
+            }
+            }).data("ui-autocomplete")._renderItem = function (ul, item) {
+                return $("<li></li>")
+                    .data("item.autocomplete", item)
+                    .append("<div class='acitmctr'><a href='" + item.url + "'><img width='40' src='" + item.boxurl + "'><span class='acitmtitle'>" + item.title + "<br /><span class='acitmftr'>" + item.created + " | " + item.type + " | " + item.year + (item.runtime == "0 min." ? "" : (" | " + item.runtime)) + "</span></span></a></div>")
+                    .appendTo(ul);
+            };
+        });
+    </script>
+
+<div class="srchctr">
+    <div class="srchcnt input-group pull-right">
+        <input name="ctl00$MainContent$ccSearch$txtSearch" type="text" value="タイトル、ジャンル、俳優または監督で検索" maxlength="50" id="MainContent_ccSearch_txtSearch" class="form-control" onfocus="if (this.value==&#39;タイトル、ジャンル、俳優または監督で検索&#39;) { this.value = &#39;&#39; };" onblur="if (this.value==&#39;&#39;) { this.value = &#39;タイトル、ジャンル、俳優または監督で検索&#39; };" /> 
+        <span class="input-group-btn">
+            <button onclick="__doPostBack('ctl00$MainContent$ccSearch$btnSearch','')" id="MainContent_ccSearch_btnSearch" class="btn btn-success"><span class="glyphicon glyphicon-search"></span></button>
+        </span>
+    </div>
+</div>
+
+    <div class="dropdown ddlcat visible-xs">
+    <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">カテゴリーを選択 <span class="caret"></span></button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+        
+                    <li role="presentation"><a href="/カテゴリー/アニメ" id="MainContent_ccSearch_rpCategoriesDDL_hypCategory_0" role="menuitem" tabindex="-1">アニメ (131)</a></li>
+            
+                    <li role="presentation"><a href="/カテゴリー/アメリカ映画" id="MainContent_ccSearch_rpCategoriesDDL_hypCategory_1" role="menuitem" tabindex="-1">アメリカ映画 (430)</a></li>
+            
+                    <li role="presentation"><a href="/カテゴリー/キッズ・ファミリー映画" id="MainContent_ccSearch_rpCategoriesDDL_hypCategory_2" role="menuitem" tabindex="-1">キッズ・ファミリー映画 (132)</a></li>
+            
+                    <li role="presentation"><a href="/カテゴリー/コメディ" id="MainContent_ccSearch_rpCategoriesDDL_hypCategory_3" role="menuitem" tabindex="-1">コメディ (18)</a></li>
+            
+                    <li role="presentation"><a href="/カテゴリー/サスペンス" id="MainContent_ccSearch_rpCategoriesDDL_hypCategory_4" role="menuitem" tabindex="-1">サスペンス (16)</a></li>
+            
+                    <li role="presentation"><a href="/カテゴリー/ドキュメンタリー" id="MainContent_ccSearch_rpCategoriesDDL_hypCategory_5" role="menuitem" tabindex="-1">ドキュメンタリー (29)</a></li>
+            
+                    <li role="presentation"><a href="/カテゴリー/ヒューマンドラマ" id="MainContent_ccSearch_rpCategoriesDDL_hypCategory_6" role="menuitem" tabindex="-1">ヒューマンドラマ (215)</a></li>
+            
+                    <li role="presentation"><a href="/カテゴリー/ホラー映画" id="MainContent_ccSearch_rpCategoriesDDL_hypCategory_7" role="menuitem" tabindex="-1">ホラー映画 (36)</a></li>
+            
+                    <li role="presentation"><a href="/カテゴリー/受賞歴のある映画" id="MainContent_ccSearch_rpCategoriesDDL_hypCategory_8" role="menuitem" tabindex="-1">受賞歴のある映画 (87)</a></li>
+            
+                    <li role="presentation"><a href="/カテゴリー/国内tv番組・ドラマ" id="MainContent_ccSearch_rpCategoriesDDL_hypCategory_9" role="menuitem" tabindex="-1">国内TV番組・ドラマ (229)</a></li>
+            
+                    <li role="presentation"><a href="/カテゴリー/国内映画" id="MainContent_ccSearch_rpCategoriesDDL_hypCategory_10" role="menuitem" tabindex="-1">国内映画 (394)</a></li>
+            
+                    <li role="presentation"><a href="/カテゴリー/海外tv番組・ドラマ" id="MainContent_ccSearch_rpCategoriesDDL_hypCategory_11" role="menuitem" tabindex="-1">海外TV番組・ドラマ (165)</a></li>
+            
+    </ul>
+    </div>
+    <div class="hidden-xs">
+        <div id="MainContent_ccSearch_divToggle" class="hidecatlst"><span class="glyphicon glyphicon-chevron-up"></span> <span class='uline'>ジャンルを非表示にする</span></div><div id="MainContent_ccSearch_divCatLst" class="row catlst">
+            
+                    <div class="col-xs-6 col-sm-4 col-md-4"><a id="MainContent_ccSearch_rpCategories_hypCategory_0" href="/%e3%82%ab%e3%83%86%e3%82%b4%e3%83%aa%e3%83%bc/%e3%82%a2%e3%83%8b%e3%83%a1">アニメ (131)</a></div>
+                
+                    <div class="col-xs-6 col-sm-4 col-md-4"><a id="MainContent_ccSearch_rpCategories_hypCategory_1" href="/%e3%82%ab%e3%83%86%e3%82%b4%e3%83%aa%e3%83%bc/%e3%82%a2%e3%83%a1%e3%83%aa%e3%82%ab%e6%98%a0%e7%94%bb">アメリカ映画 (430)</a></div>
+                
+                    <div class="col-xs-6 col-sm-4 col-md-4"><a id="MainContent_ccSearch_rpCategories_hypCategory_2" href="/%e3%82%ab%e3%83%86%e3%82%b4%e3%83%aa%e3%83%bc/%e3%82%ad%e3%83%83%e3%82%ba%e3%83%bb%e3%83%95%e3%82%a1%e3%83%9f%e3%83%aa%e3%83%bc%e6%98%a0%e7%94%bb">キッズ・ファミリー映画 (132)</a></div>
+                
+                    <div class="col-xs-6 col-sm-4 col-md-4"><a id="MainContent_ccSearch_rpCategories_hypCategory_3" href="/%e3%82%ab%e3%83%86%e3%82%b4%e3%83%aa%e3%83%bc/%e3%82%b3%e3%83%a1%e3%83%87%e3%82%a3">コメディ (18)</a></div>
+                
+                    <div class="col-xs-6 col-sm-4 col-md-4"><a id="MainContent_ccSearch_rpCategories_hypCategory_4" href="/%e3%82%ab%e3%83%86%e3%82%b4%e3%83%aa%e3%83%bc/%e3%82%b5%e3%82%b9%e3%83%9a%e3%83%b3%e3%82%b9">サスペンス (16)</a></div>
+                
+                    <div class="col-xs-6 col-sm-4 col-md-4"><a id="MainContent_ccSearch_rpCategories_hypCategory_5" href="/%e3%82%ab%e3%83%86%e3%82%b4%e3%83%aa%e3%83%bc/%e3%83%89%e3%82%ad%e3%83%a5%e3%83%a1%e3%83%b3%e3%82%bf%e3%83%aa%e3%83%bc">ドキュメンタリー (29)</a></div>
+                
+                    <div class="col-xs-6 col-sm-4 col-md-4"><a id="MainContent_ccSearch_rpCategories_hypCategory_6" href="/%e3%82%ab%e3%83%86%e3%82%b4%e3%83%aa%e3%83%bc/%e3%83%92%e3%83%a5%e3%83%bc%e3%83%9e%e3%83%b3%e3%83%89%e3%83%a9%e3%83%9e">ヒューマンドラマ (215)</a></div>
+                
+                    <div class="col-xs-6 col-sm-4 col-md-4"><a id="MainContent_ccSearch_rpCategories_hypCategory_7" href="/%e3%82%ab%e3%83%86%e3%82%b4%e3%83%aa%e3%83%bc/%e3%83%9b%e3%83%a9%e3%83%bc%e6%98%a0%e7%94%bb">ホラー映画 (36)</a></div>
+                
+                    <div class="col-xs-6 col-sm-4 col-md-4"><a id="MainContent_ccSearch_rpCategories_hypCategory_8" href="/%e3%82%ab%e3%83%86%e3%82%b4%e3%83%aa%e3%83%bc/%e5%8f%97%e8%b3%9e%e6%ad%b4%e3%81%ae%e3%81%82%e3%82%8b%e6%98%a0%e7%94%bb">受賞歴のある映画 (87)</a></div>
+                
+                    <div class="col-xs-6 col-sm-4 col-md-4"><a id="MainContent_ccSearch_rpCategories_hypCategory_9" href="/%e3%82%ab%e3%83%86%e3%82%b4%e3%83%aa%e3%83%bc/%e5%9b%bd%e5%86%85tv%e7%95%aa%e7%b5%84%e3%83%bb%e3%83%89%e3%83%a9%e3%83%9e">国内TV番組・ドラマ (229)</a></div>
+                
+                    <div class="col-xs-6 col-sm-4 col-md-4"><a id="MainContent_ccSearch_rpCategories_hypCategory_10" href="/%e3%82%ab%e3%83%86%e3%82%b4%e3%83%aa%e3%83%bc/%e5%9b%bd%e5%86%85%e6%98%a0%e7%94%bb">国内映画 (394)</a></div>
+                
+                    <div class="col-xs-6 col-sm-4 col-md-4"><a id="MainContent_ccSearch_rpCategories_hypCategory_11" href="/%e3%82%ab%e3%83%86%e3%82%b4%e3%83%aa%e3%83%bc/%e6%b5%b7%e5%a4%96tv%e7%95%aa%e7%b5%84%e3%83%bb%e3%83%89%e3%83%a9%e3%83%9e">海外TV番組・ドラマ (165)</a></div>
+                
+            <div class="col-xs-6 col-sm-4 col-md-4 pull-right bold"><a id="MainContent_ccSearch_hypCategories" href="/%e3%82%ab%e3%83%86%e3%82%b4%e3%83%aa%e3%83%bc-">すべてのカテゴリーを見る…</a></div>
+        </div>
+    </div>
+
+            </p>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 bml">
+                    
+<div class="bml">
+    <div  class="lsttitlectr">
+        <div class="lsttitle">新作の Netflix 映画 & シリーズ</div>
+        <div class="lsttitlemore"><a id="MainContent_ccNew_hypMore" href="/%e6%96%b0%e4%bd%9c%e6%98%a0%e7%94%bb">もっと見る &raquo;</a></div>
+    </div>
+    
+            <div class="row mrow">
+                <div class="col-xs-3"><a title="リベンジポルノ" href="/リベンジポルノ/22123"><img src="/media/25/リベンジポルノ_80092873.jpg" class="img-responsive" alt="リベンジポルノ" /></a></div>
+                <div class="col-xs-9">
+                    <div class="mtitle"><a href="/リベンジポルノ/22123">リベンジポルノ</a></div>
+                    <div class="msyn"> 女優を目指す女と小説家志望の男がSNSで出会い、恋をする。だが手軽な恋の代償は大き過ぎた...! インターネット社会の歪んだ性愛と危険性を描く作品。</div>
+                    <div id="MainContent_ccNew_rpList_divFooter_0" class="mfooter">19 1月 2016 | 映画 | 2014 | 80 分</div>
+                </div>
+            </div>
+            
+        
+            <div class="row mrow">
+                <div class="col-xs-3"><a title="パーマネント野ばら" href="/パーマネント野ばら/22122"><img src="/media/25/パーマネント野ばら_80092886.jpg" class="img-responsive" alt="パーマネント野ばら" /></a></div>
+                <div class="col-xs-9">
+                    <div class="mtitle"><a href="/パーマネント野ばら/22122">パーマネント野ばら</a></div>
+                    <div class="msyn"> 出戻りのなおこと母が切り盛りする海辺の町に佇む美容院。夫の浮気やギャンブルで苦労する女友達2人をよそに、なおこは高校教師と静かな恋を育むが...。</div>
+                    <div id="MainContent_ccNew_rpList_divFooter_1" class="mfooter">19 1月 2016 | 映画 | 2010 | 99 分</div>
+                </div>
+            </div>
+            
+        
+            <div class="row mrow">
+                <div class="col-xs-3"><a title="シュガーバニーズフルール" href="/シュガーバニーズフルール/22118"><img src="/media/25/シュガーバニーズフルール_80093405.jpg" class="img-responsive" alt="シュガーバニーズフルール" /></a></div>
+                <div class="col-xs-9">
+                    <div class="mtitle"><a href="/シュガーバニーズフルール/22118">シュガーバニーズフルール</a></div>
+                    <div class="msyn"> 学校に新しい先生がやってきた。ソフィアとシュガーバニーズたちはガーデニングを学び、庭にきれいな花を咲かせるため奮闘するが...。</div>
+                    <div id="MainContent_ccNew_rpList_divFooter_2" class="mfooter">19 1月 2016 | Tv-シリーズ | 2009</div>
+                </div>
+            </div>
+            
+        
+            <div class="row mrow">
+                <div class="col-xs-3"><a title="いのちの食べかた" href="/いのちの食べかた/22119"><img src="/media/25/いのちの食べかた_70064385.jpg" class="img-responsive" alt="いのちの食べかた" /></a></div>
+                <div class="col-xs-9">
+                    <div class="mtitle"><a href="/いのちの食べかた/22119">いのちの食べかた</a></div>
+                    <div class="msyn"> 動物や野菜の"いのち"が人間の食卓に並ぶまでを淡々と映すドキュメンタリー。食料生産現場を飾らず描いた作品に、生きることの意味を考えさせられる。</div>
+                    <div id="MainContent_ccNew_rpList_divFooter_3" class="mfooter">19 1月 2016 | ドキュメンタリー | 2005 | 92 分</div>
+                </div>
+            </div>
+            
+        
+            <div class="row mrow">
+                <div class="col-xs-3"><a title="月はどっちに出ている" href="/月はどっちに出ている/22120"><img src="/media/25/月はどっちに出ている_80093271.jpg" class="img-responsive" alt="月はどっちに出ている" /></a></div>
+                <div class="col-xs-9">
+                    <div class="mtitle"><a href="/月はどっちに出ている/22120">月はどっちに出ている</a></div>
+                    <div class="msyn"> 母と変り者の同僚たちにもまれる毎日を送る在日コリアンのタクシー運転手が、チャーミングだが手強いフィリピーナのホステスに恋をして…。</div>
+                    <div id="MainContent_ccNew_rpList_divFooter_4" class="mfooter">19 1月 2016 | 映画 | 1993 | 109 分</div>
+                </div>
+            </div>
+            
+        
+            <div class="row mrow">
+                <div class="col-xs-3"><a title="完全なる飼育" href="/完全なる飼育/22121"><img src="/media/25/完全なる飼育_80093167.jpg" class="img-responsive" alt="完全なる飼育" /></a></div>
+                <div class="col-xs-9">
+                    <div class="mtitle"><a href="/完全なる飼育/22121">完全なる飼育</a></div>
+                    <div class="msyn"> 見知らぬ中年男性に誘拐監禁される女子高生クニコ。初めは激しく抵抗するが、優しさに触れて心を開き、彼に"飼育"されることを受け入れるようになっていく。</div>
+                    <div id="MainContent_ccNew_rpList_divFooter_5" class="mfooter">19 1月 2016 | 映画 | 1999 | 96 分</div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="adctr">
+                        <script>        var adpos = "lbmiddle";</script>
+                        <script type="text/javascript" src="/adserver/ad.js"></script>
+                    </div>
+                </div>
+            </div>
+            
+        
+            <div class="row mrow">
+                <div class="col-xs-3"><a title="亜人" href="/亜人/22116"><img src="/media/25/亜人_80043576.jpg" class="img-responsive" alt="亜人" /></a></div>
+                <div class="col-xs-9">
+                    <div class="mtitle"><a href="/亜人/22116">亜人</a></div>
+                    <div class="msyn"> 決して死なない亜人だと判明し、警察や政府から追われる高校生・永井圭。逃亡中に出会った亜人・佐藤が助けを申し出るが、佐藤の狙いは一体...。</div>
+                    <div id="MainContent_ccNew_rpList_divFooter_6" class="mfooter">19 1月 2016 | Tv-シリーズ | 2016</div>
+                </div>
+            </div>
+            
+        
+            <div class="row mrow">
+                <div class="col-xs-3"><a title="銀のエンゼル" href="/銀のエンゼル/22117"><img src="/media/25/銀のエンゼル_80093268.jpg" class="img-responsive" alt="銀のエンゼル" /></a></div>
+                <div class="col-xs-9">
+                    <div class="mtitle"><a href="/銀のエンゼル/22117">銀のエンゼル</a></div>
+                    <div class="msyn"> 北海道の田舎町にあるコンビニのオーナー。妻の入院で深夜の勤務に就く羽目になり、気ままな生活は一転。コンビニに立ち寄る様々な来訪者との交流が始まる。</div>
+                    <div id="MainContent_ccNew_rpList_divFooter_7" class="mfooter">19 1月 2016 | 映画 | 2004 | 110 分</div>
+                </div>
+            </div>
+            
+        
+    <a id="MainContent_ccNew_hypMoreBottom" class="bold" href="/%e6%96%b0%e4%bd%9c%e6%98%a0%e7%94%bb">新作の Netflix 映画およびシリーズをもっと見る &raquo;</a>
+</div>
+                </div>
+                <div class="col-xs-12 col-sm-6 bml">
+                    
+<div class="bml">
+    <div  class="lsttitlectr">
+        <div class="lsttitle">EigaNetflix.jp で最も頻繁に観賞された作品</div>
+        <div class="lsttitlemore"></div>
+    </div>
+    
+            <div class="row mrow">
+                <div class="col-xs-3"><a title="6年愛" href="/6年愛/19494"><img src="/media/25/6年愛_80045922.jpg" class="img-responsive" alt="6年愛" /></a></div>
+                <div class="col-xs-9">
+                    <div class="mtitle"><a href="/6年愛/19494">6年愛</a></div>
+                    <div class="msyn"><div id="MainContent_ccPopular_rpList_divScore_0" class="mscore">2.91</div> 6年つきあった大学生カップルに卒業が近づく。就職を控え将来に不安と希望が入り混じるなか、一方に思いがけないチャンスが。2人の恋の行方は？</div>
+                    <div id="MainContent_ccPopular_rpList_divFooter_0" class="mfooter">20 9月 2015 | 映画 | 2015 | 79 分</div>
+                </div>
+            </div>
+            
+        
+            <div class="row mrow">
+                <div class="col-xs-3"><a title="性風俗: 英国の売春宿" href="/性風俗-英国の売春宿/5314"><img src="/media/25/性風俗-英国の売春宿_80016335.jpg" class="img-responsive" alt="性風俗: 英国の売春宿" /></a></div>
+                <div class="col-xs-9">
+                    <div class="mtitle"><a href="/性風俗-英国の売春宿/5314">性風俗: 英国の売春宿</a></div>
+                    <div class="msyn"><div id="MainContent_ccPopular_rpList_divScore_1" class="mscore">3.17</div> ロンドン北部の娼家に潜入した覆面リポーターが、様々な事情で祖国を逃れた不法移民を中心とするセックスワーカーの搾取の実態を暴く。</div>
+                    <div id="MainContent_ccPopular_rpList_divFooter_1" class="mfooter">20 9月 2015 | ドキュメンタリー | 2013 | 62 分</div>
+                </div>
+            </div>
+            
+        
+            <div class="row mrow">
+                <div class="col-xs-3"><a title="1日1ドルで生活" href="/1日1ドルで生活/15639"><img src="/media/25/1日1ドルで生活_80026944.jpg" class="img-responsive" alt="1日1ドルで生活" /></a></div>
+                <div class="col-xs-9">
+                    <div class="mtitle"><a href="/1日1ドルで生活/15639">1日1ドルで生活</a></div>
+                    <div class="msyn"><div id="MainContent_ccPopular_rpList_divScore_2" class="mscore">3.59</div> 米国からグアテマラ山間部へ旅立つ4人の若者。目的は、1日1ドル以下で暮らす極度の貧困を直に体験すること。その目に映る貧窮の現実と理由とは?</div>
+                    <div id="MainContent_ccPopular_rpList_divFooter_2" class="mfooter">20 9月 2015 | ドキュメンタリー | 2013 | 56 分</div>
+                </div>
+            </div>
+            
+        
+            <div class="row mrow">
+                <div class="col-xs-3"><a title="ミス・フィッシャーの殺人ミステリー" href="/ミス-フィッシャーの殺人ミステリー/12957"><img src="/media/25/ミス-フィッシャーの殺人ミステリー_70259338.jpg" class="img-responsive" alt="ミス・フィッシャーの殺人ミステリー" /></a></div>
+                <div class="col-xs-9">
+                    <div class="mtitle"><a href="/ミス-フィッシャーの殺人ミステリー/12957">ミス・フィッシャーの殺人ミステリー</a></div>
+                    <div class="msyn"><div id="MainContent_ccPopular_rpList_divScore_3" class="mscore">4.05</div> 1920年代のオーストラリアを舞台に、エレガントな女性探偵フライニー・フィッシャーが大活躍! 時には危険な世界にも足を踏み入れ殺人事件解決に挑む。</div>
+                    <div id="MainContent_ccPopular_rpList_divFooter_3" class="mfooter">20 9月 2015 | Tv-シリーズ | 2013</div>
+                </div>
+            </div>
+            
+        
+            <div class="row mrow">
+                <div class="col-xs-3"><a title="シュガーバニーズフルール" href="/シュガーバニーズフルール/22118"><img src="/media/25/シュガーバニーズフルール_80093405.jpg" class="img-responsive" alt="シュガーバニーズフルール" /></a></div>
+                <div class="col-xs-9">
+                    <div class="mtitle"><a href="/シュガーバニーズフルール/22118">シュガーバニーズフルール</a></div>
+                    <div class="msyn"> 学校に新しい先生がやってきた。ソフィアとシュガーバニーズたちはガーデニングを学び、庭にきれいな花を咲かせるため奮闘するが...。</div>
+                    <div id="MainContent_ccPopular_rpList_divFooter_4" class="mfooter">19 1月 2016 | Tv-シリーズ | 2009</div>
+                </div>
+            </div>
+            
+        
+            <div class="row mrow">
+                <div class="col-xs-3"><a title="スタテン・アイランド・サマー" href="/スタテン-アイランド-サマー/18850"><img src="/media/25/スタテン-アイランド-サマー_80053561.jpg" class="img-responsive" alt="スタテン・アイランド・サマー" /></a></div>
+                <div class="col-xs-9">
+                    <div class="mtitle"><a href="/スタテン-アイランド-サマー/18850">スタテン・アイランド・サマー</a></div>
+                    <div class="msyn"><div id="MainContent_ccPopular_rpList_divScore_5" class="mscore">2.63</div> 高校最後の夏、プール監視員のバイトをするダニーはド派手なプールパーティーを計画するが…。「サタデー・ナイト・ライヴ」新旧スター揃い踏みの青春コメディ。</div>
+                    <div id="MainContent_ccPopular_rpList_divFooter_5" class="mfooter">20 9月 2015 | 映画 | 2015 | 107 分</div>
+                </div>
+            </div>
+            
+        
+            <div class="row mrow">
+                <div class="col-xs-3"><a title="ゴーイング・クリア: サイエントロジーと信仰という監禁" href="/ゴーイング-クリア-サイエントロジーと信仰という監禁/20575"><img src="/media/25/ゴーイング-クリア-サイエントロジーと信仰という監禁_80037110.jpg" class="img-responsive" alt="ゴーイング・クリア: サイエントロジーと信仰という監禁" /></a></div>
+                <div class="col-xs-9">
+                    <div class="mtitle"><a href="/ゴーイング-クリア-サイエントロジーと信仰という監禁/20575">ゴーイング・クリア: サイエントロジーと信仰という監禁</a></div>
+                    <div class="msyn"><div id="MainContent_ccPopular_rpList_divScore_6" class="mscore">3.74</div> 元信者へのインタビューを通し、信者への体罰や違法行為などサイエントロジーにまつわる疑惑を鋭く検証。ベストセラー本を原作とした衝撃のドキュメンタリー。</div>
+                    <div id="MainContent_ccPopular_rpList_divFooter_6" class="mfooter">1 11月 2015 | ドキュメンタリー | 2015 | 119 分</div>
+                </div>
+            </div>
+            
+        
+            <div class="row mrow">
+                <div class="col-xs-3"><a title="シャドウハンター: The Mortal Instruments" href="/シャドウハンター-the-mortal-instruments/22046"><img src="/media/25/シャドウハンター-the-mortal-instruments_80084447.jpg" class="img-responsive" alt="シャドウハンター: The Mortal Instruments" /></a></div>
+                <div class="col-xs-9">
+                    <div class="mtitle"><a href="/シャドウハンター-the-mortal-instruments/22046">シャドウハンター: The Mortal Instruments</a></div>
+                    <div class="msyn"><div id="MainContent_ccPopular_rpList_divScore_7" class="mscore">4.00</div> 平凡な暮らしを送っていた女子学生のクラリー。自分が妖魔を狩る一族"シャドウハンター"の一員と知り、戸惑いながらも選ばれし者として危険な戦いに挑む。</div>
+                    <div id="MainContent_ccPopular_rpList_divFooter_7" class="mfooter">13 1月 2016 | Tv-シリーズ | 2016</div>
+                </div>
+            </div>
+            
+        
+    
+</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    
+<div class="bml">
+    <div  class="lsttitlectr">
+        <div class="lsttitle">Netflix で近日上映が予測される作品</div>
+        <div class="lsttitlemore"><a id="MainContent_ccNewReleases_hypMore" href="/netflix-%e8%bf%91%e6%97%a5%e4%b8%8a%e6%98%a0%e4%bd%9c%e5%93%81">もっと見る &raquo;</a></div>
+    </div>
+    
+            <div class="row">
+                <div class="col-xs-4 col-sm-3">2015</div>
+                <div class="col-xs-8 col-sm-9">
+                    <div class="mtitle">Dawn of the Croods</div>
+                    <div class="mfooter">Kids</div>
+                </div>
+            </div>
+        
+            <div class="row">
+                <div class="col-xs-4 col-sm-3">23 1月 2016</div>
+                <div class="col-xs-8 col-sm-9">
+                    <div class="mtitle">Chelsea Does</div>
+                    <div class="mfooter">Docu-Series</div>
+                </div>
+            </div>
+        
+            <div class="row">
+                <div class="col-xs-4 col-sm-3">29 1月 2016</div>
+                <div class="col-xs-8 col-sm-9">
+                    <div class="mtitle">Ever After High: Dragon Games</div>
+                    <div class="mfooter">Kids</div>
+                </div>
+            </div>
+        
+            <div class="row">
+                <div class="col-xs-4 col-sm-3">16 2月 2016</div>
+                <div class="col-xs-8 col-sm-9">
+                    <div class="mtitle">Better Call Saul </div>
+                    <div class="mfooter">Series</div>
+                </div>
+            </div>
+        
+            <div class="row">
+                <div class="col-xs-4 col-sm-3">26 2月 2016</div>
+                <div class="col-xs-8 col-sm-9">
+                    <div class="mtitle">Crouching Tiger, Hidden Dragon: Sword Of Destiny</div>
+                    <div class="mfooter">Film</div>
+                </div>
+            </div>
+        
+            <div class="row">
+                <div class="col-xs-4 col-sm-3">2016</div>
+                <div class="col-xs-8 col-sm-9">
+                    <div class="mtitle">Pee Wee's Big Holiday</div>
+                    <div class="mfooter">Film</div>
+                </div>
+            </div>
+        
+    <a id="MainContent_ccNewReleases_hypMoreBottom" class="bold" href="/netflix-%e8%bf%91%e6%97%a5%e4%b8%8a%e6%98%a0%e4%bd%9c%e5%93%81">予測される Netflix 映画およびシリーズ &raquo;</a>
+</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <script>        var adpos = "lbbottom";</script>
+                    <script type="text/javascript" src="/adserver/ad.js"></script>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+
+            
+<div class="promoctr">
+    <h3>電子メールで新作リリースを受け取りませんか？</h3>
+    <p>その週に Netflix がリリースした新作映画やシリーズが掲載された週 1 回の電子メールをぜひ受信してください。</p>
+    <p><a href="/account/register">ここをクリック</a>すれば無料で登録できます。</p>
+</div>
+
+            <div class="adctr">
+                <script>        var adpos = "sbtop";</script>
+                <script type="text/javascript" src="/adserver/ad.js"></script>
+            </div>
+
+            
+
+            
+<div class="blck bml">
+    <div  class="lsttitlectr">
+        <div class="lsttitle">観賞したい作品のタイプ</div>
+    </div>
+    <table id="MainContent_ccGenresEmo_rpList" class="dllst" cellspacing="0">
+	<tr>
+		<td>
+            <a id="MainContent_ccGenresEmo_rpList_hypGenre_0" href="/%e3%82%b8%e3%83%a3%e3%83%b3%e3%83%ab/%e3%82%a6%e3%82%a3%e3%83%83%e3%83%88%e3%81%ab%e5%af%8c%e3%82%93%e3%81%a0%e4%bd%9c%e5%93%81">ウィットに富んだ作品 (45)</a>
+        </td><td>
+            <a id="MainContent_ccGenresEmo_rpList_hypGenre_1" href="/%e3%82%b8%e3%83%a3%e3%83%b3%e3%83%ab/%e3%82%a8%e3%82%ad%e3%82%b5%e3%82%a4%e3%83%86%e3%82%a3%e3%83%b3%e3%82%b0%e3%81%aa%e4%bd%9c%e5%93%81">エキサイティングな作品 (289)</a>
+        </td>
+	</tr><tr>
+		<td>
+            <a id="MainContent_ccGenresEmo_rpList_hypGenre_2" href="/%e3%82%b8%e3%83%a3%e3%83%b3%e3%83%ab/%e3%81%8a%e3%82%82%e3%81%97%e3%82%8d%e3%81%8a%e3%81%8b%e3%81%97%e3%81%84%e4%bd%9c%e5%93%81">おもしろおかしい作品 (109)</a>
+        </td><td>
+            <a id="MainContent_ccGenresEmo_rpList_hypGenre_3" href="/%e3%82%b8%e3%83%a3%e3%83%b3%e3%83%ab/%e3%82%b7%e3%83%8b%e3%82%ab%e3%83%ab%e3%81%aa%e4%bd%9c%e5%93%81">シニカルな作品 (13)</a>
+        </td>
+	</tr><tr>
+		<td>
+            <a id="MainContent_ccGenresEmo_rpList_hypGenre_4" href="/%e3%82%b8%e3%83%a3%e3%83%b3%e3%83%ab/%e3%82%b9%e3%82%ad%e3%83%a3%e3%83%b3%e3%83%80%e3%83%a9%e3%82%b9%e3%81%aa%e4%bd%9c%e5%93%81">スキャンダラスな作品 (4)</a>
+        </td><td>
+            <a id="MainContent_ccGenresEmo_rpList_hypGenre_5" href="/%e3%82%b8%e3%83%a3%e3%83%b3%e3%83%ab/%e3%82%b9%e3%83%aa%e3%83%aa%e3%83%b3%e3%82%b0%e3%81%aa%e4%bd%9c%e5%93%81">スリリングな作品 (180)</a>
+        </td>
+	</tr><tr>
+		<td>
+            <a id="MainContent_ccGenresEmo_rpList_hypGenre_6" href="/%e3%82%b8%e3%83%a3%e3%83%b3%e3%83%ab/%e3%82%be%e3%82%af%e3%82%be%e3%82%af%e3%81%99%e3%82%8b%e4%bd%9c%e5%93%81">ゾクゾクする作品 (17)</a>
+        </td><td>
+            <a id="MainContent_ccGenresEmo_rpList_hypGenre_7" href="/%e3%82%b8%e3%83%a3%e3%83%b3%e3%83%ab/%e3%83%80%e3%83%bc%e3%82%af%e3%81%aa%e4%bd%9c%e5%93%81">ダークな作品 (144)</a>
+        </td>
+	</tr><tr>
+		<td>
+            <a id="MainContent_ccGenresEmo_rpList_hypGenre_8" href="/%e3%82%b8%e3%83%a3%e3%83%b3%e3%83%ab/%e3%81%a1%e3%82%87%e3%81%a3%e3%81%a8%e5%a4%89%e3%82%8f%e3%81%a3%e3%81%9f%e4%bd%9c%e5%93%81">ちょっと変わった作品 (87)</a>
+        </td><td>
+            <a id="MainContent_ccGenresEmo_rpList_hypGenre_9" href="/%e3%82%b8%e3%83%a3%e3%83%b3%e3%83%ab/%e3%81%a1%e3%82%87%e3%81%a3%e3%81%b4%e3%82%8a%e4%b8%8b%e5%93%81">ちょっぴり下品 (2)</a>
+        </td>
+	</tr><tr>
+		<td>
+            <a id="MainContent_ccGenresEmo_rpList_hypGenre_10" href="/%e3%82%b8%e3%83%a3%e3%83%b3%e3%83%ab/%e3%83%86%e3%83%b3%e3%82%b7%e3%83%a7%e3%83%b3max%e3%81%aa%e4%bd%9c%e5%93%81">テンションMAXな作品 (30)</a>
+        </td><td>
+            <a id="MainContent_ccGenresEmo_rpList_hypGenre_11" href="/%e3%82%b8%e3%83%a3%e3%83%b3%e3%83%ab/%e3%83%89%e3%83%a9%e3%82%a4%e3%83%bb%e3%83%a6%e3%83%bc%e3%83%a2%e3%82%a2%e3%81%ae%e5%8a%b9%e3%81%84%e3%81%9f%e4%bd%9c%e5%93%81">ドライ・ユーモアの効いた作品 (19)</a>
+        </td>
+	</tr><tr>
+		<td>
+            <a id="MainContent_ccGenresEmo_rpList_hypGenre_12" href="/%e3%82%b8%e3%83%a3%e3%83%b3%e3%83%ab/%e3%83%90%e3%82%a4%e3%82%aa%e3%83%ac%e3%83%b3%e3%83%88%e3%81%aa%e4%bd%9c%e5%93%81">バイオレントな作品 (154)</a>
+        </td><td>
+            <a id="MainContent_ccGenresEmo_rpList_hypGenre_13" href="/%e3%82%b8%e3%83%a3%e3%83%b3%e3%83%ab/%e3%83%8f%e3%83%83%e3%83%94%e3%83%bc%e3%81%ab%e3%81%aa%e3%82%8b%e4%bd%9c%e5%93%81">ハッピーになる作品 (67)</a>
+        </td>
+	</tr><tr>
+		<td>
+            <a id="MainContent_ccGenresEmo_rpList_hypGenre_14" href="/%e3%82%b8%e3%83%a3%e3%83%b3%e3%83%ab/%e3%83%95%e3%82%a1%e3%83%9f%e3%83%aa%e3%83%bc%e5%90%91%e3%81%91">ファミリー向け (28)</a>
+        </td><td>
+            <a id="MainContent_ccGenresEmo_rpList_hypGenre_15" href="/%e3%82%b8%e3%83%a3%e3%83%b3%e3%83%ab/%e3%81%b6%e3%81%a3%e9%a3%9b%e3%82%93%e3%81%a0%e4%bd%9c%e5%93%81">ぶっ飛んだ作品 (31)</a>
+        </td>
+	</tr><tr>
+		<td>
+            <a id="MainContent_ccGenresEmo_rpList_hypGenre_16" href="/%e3%82%b8%e3%83%a3%e3%83%b3%e3%83%ab/%e3%83%ad%e3%83%9e%e3%83%b3%e3%83%81%e3%83%83%e3%82%af%e3%81%aa%e4%bd%9c%e5%93%81">ロマンチックな作品 (179)</a>
+        </td><td>
+            <a id="MainContent_ccGenresEmo_rpList_hypGenre_17" href="/%e3%82%b8%e3%83%a3%e3%83%b3%e3%83%ab/%e4%b8%8d%e6%b0%97%e5%91%b3%e3%81%aa%e4%bd%9c%e5%93%81">不気味な作品 (28)</a>
+        </td>
+	</tr><tr>
+		<td>
+            <a id="MainContent_ccGenresEmo_rpList_hypGenre_18" href="/%e3%82%b8%e3%83%a3%e3%83%b3%e3%83%ab/%e5%81%89%e5%a4%a7%e3%81%aa%e3%83%93%e3%82%b8%e3%83%a7%e3%83%b3">偉大なビジョン (9)</a>
+        </td><td>
+            <a id="MainContent_ccGenresEmo_rpList_hypGenre_19" href="/%e3%82%b8%e3%83%a3%e3%83%b3%e3%83%ab/%e5%89%8d%e5%90%91%e3%81%8d%e3%81%aa%e6%b0%97%e6%8c%81%e3%81%a1%e3%81%ab%e3%81%aa%e3%82%8b%e4%bd%9c%e5%93%81">前向きな気持ちになる作品 (2)</a>
+        </td>
+	</tr><tr>
+		<td>
+            <a id="MainContent_ccGenresEmo_rpList_hypGenre_20" href="/%e3%82%b8%e3%83%a3%e3%83%b3%e3%83%ab/%e5%95%8f%e9%a1%8c%e3%82%92%e6%8f%90%e8%b5%b7%e3%81%99%e3%82%8b%e4%bd%9c%e5%93%81">問題を提起する作品 (19)</a>
+        </td><td>
+            <a id="MainContent_ccGenresEmo_rpList_hypGenre_21" href="/%e3%82%b8%e3%83%a3%e3%83%b3%e3%83%ab/%e5%b7%a7%e5%a6%99%e3%81%aa%e4%bd%9c%e5%93%81">巧妙な作品 (19)</a>
+        </td>
+	</tr><tr>
+		<td>
+            <a id="MainContent_ccGenresEmo_rpList_hypGenre_22" href="/%e3%82%b8%e3%83%a3%e3%83%b3%e3%83%ab/%e5%bf%83%e3%81%ab%e9%9f%bf%e3%81%8f%e4%bd%9c%e5%93%81">心に響く作品 (107)</a>
+        </td><td>
+            <a id="MainContent_ccGenresEmo_rpList_hypGenre_23" href="/%e3%82%b8%e3%83%a3%e3%83%b3%e3%83%ab/%e5%bf%83%e6%b8%a9%e3%81%be%e3%82%8b%e4%bd%9c%e5%93%81">心温まる作品 (61)</a>
+        </td>
+	</tr><tr>
+		<td>
+            <a id="MainContent_ccGenresEmo_rpList_hypGenre_24" href="/%e3%82%b8%e3%83%a3%e3%83%b3%e3%83%ab/%e6%80%96%e3%81%84%e4%bd%9c%e5%93%81">怖い作品 (76)</a>
+        </td><td>
+            <a id="MainContent_ccGenresEmo_rpList_hypGenre_25" href="/%e3%82%b8%e3%83%a3%e3%83%b3%e3%83%ab/%e6%83%85%e7%86%b1%e7%9a%84%e3%81%aa%e4%bd%9c%e5%93%81">情熱的な作品 (31)</a>
+        </td>
+	</tr><tr>
+		<td>
+            <a id="MainContent_ccGenresEmo_rpList_hypGenre_26" href="/%e3%82%b8%e3%83%a3%e3%83%b3%e3%83%ab/%e6%83%b3%e5%83%8f%e3%81%8c%e3%81%b5%e3%81%8f%e3%82%89%e3%82%80%e4%bd%9c%e5%93%81">想像がふくらむ作品 (98)</a>
+        </td><td>
+            <a id="MainContent_ccGenresEmo_rpList_hypGenre_27" href="/%e3%82%b8%e3%83%a3%e3%83%b3%e3%83%ab/%e6%84%9f%e5%82%b7%e7%9a%84%e3%81%aa%e4%bd%9c%e5%93%81">感傷的な作品 (45)</a>
+        </td>
+	</tr><tr>
+		<td>
+            <a id="MainContent_ccGenresEmo_rpList_hypGenre_28" href="/%e3%82%b8%e3%83%a3%e3%83%b3%e3%83%ab/%e6%84%9f%e5%8b%95%e7%9a%84%e3%81%aa%e4%bd%9c%e5%93%81">感動的な作品 (133)</a>
+        </td><td>
+            <a id="MainContent_ccGenresEmo_rpList_hypGenre_29" href="/%e3%82%b8%e3%83%a3%e3%83%b3%e3%83%ab/%e6%b0%97%e9%aa%a8%e3%81%ae%e3%81%82%e3%82%8b%e4%bd%9c%e5%93%81">気骨のある作品 (61)</a>
+        </td>
+	</tr><tr>
+		<td>
+            <a id="MainContent_ccGenresEmo_rpList_hypGenre_30" href="/%e3%82%b8%e3%83%a3%e3%83%b3%e3%83%ab/%e7%8b%ac%e5%89%b5%e7%9a%84%e3%81%aa%e4%bd%9c%e5%93%81">独創的な作品 (58)</a>
+        </td><td>
+            <a id="MainContent_ccGenresEmo_rpList_hypGenre_31" href="/%e3%82%b8%e3%83%a3%e3%83%b3%e3%83%ab/%e7%9f%a5%e3%82%89%e3%82%8c%e3%81%96%e3%82%8b%e4%bd%9c%e5%93%81">知られざる作品 (41)</a>
+        </td>
+	</tr><tr>
+		<td>
+            <a id="MainContent_ccGenresEmo_rpList_hypGenre_32" href="/%e3%82%b8%e3%83%a3%e3%83%b3%e3%83%ab/%e7%9f%a5%e6%80%a7%e3%81%ab%e8%a8%b4%e3%81%88%e3%82%8b%e4%bd%9c%e5%93%81">知性に訴える作品 (58)</a>
+        </td><td>
+            <a id="MainContent_ccGenresEmo_rpList_hypGenre_33" href="/%e3%82%b8%e3%83%a3%e3%83%b3%e3%83%ab/%e8%a1%9d%e6%92%83%e3%81%ae%e3%83%9f%e3%82%b9%e3%83%86%e3%83%aa%e3%83%bc">衝撃のミステリー (16)</a>
+        </td>
+	</tr><tr>
+		<td>
+            <a id="MainContent_ccGenresEmo_rpList_hypGenre_34" href="/%e3%82%b8%e3%83%a3%e3%83%b3%e3%83%ab/%e8%aa%b0%e3%82%82%e3%81%8c%e6%a5%bd%e3%81%97%e3%82%81%e3%82%8b%e4%bd%9c%e5%93%81">誰もが楽しめる作品 (13)</a>
+        </td><td>
+            <a id="MainContent_ccGenresEmo_rpList_hypGenre_35" href="/%e3%82%b8%e3%83%a3%e3%83%b3%e3%83%ab/%e8%ad%b0%e8%ab%96%e3%82%92%e5%91%bc%e3%82%93%e3%81%a0%e4%bd%9c%e5%93%81">議論を呼んだ作品 (14)</a>
+        </td>
+	</tr>
+</table>
+</div>
+
+            
+<div class="bml toplistctr">
+    <div  class="lsttitlectr">
+        <div class="lsttitle">Netflix 概要</div>
+        <div class="lsttitlemore"></div>
+    </div>
+    
+            <div class="toplistsitm"><span class="glyphicon glyphicon-play"></span><a href="/ファクト/最も評価の高い-netflix-映画とシリーズ" id="MainContent_ccTopLists_rpList_hypTitle_0">最も評価の高い Netflix 映画とシリーズ</a></div>
+        
+            <div class="toplistsitm"><span class="glyphicon glyphicon-play"></span><a href="/ファクト/ベスト-netflix-シリーズ" id="MainContent_ccTopLists_rpList_hypTitle_1">ベスト Netflix シリーズ</a></div>
+        
+            <div class="toplistsitm"><span class="glyphicon glyphicon-play"></span><a href="/ファクト/ベスト-netflix-ドキュメンタリー" id="MainContent_ccTopLists_rpList_hypTitle_2">ベスト Netflix ドキュメンタリー</a></div>
+        
+            <div class="toplistsitm"><span class="glyphicon glyphicon-play"></span><a href="/ファクト/最も観賞される頻度の多い-netflix-映画" id="MainContent_ccTopLists_rpList_hypTitle_3">最も観賞される頻度の多い Netflix 映画</a></div>
+        
+            <div class="toplistsitm"><span class="glyphicon glyphicon-play"></span><a href="/ファクト/最も観賞される頻度の低い-netflix-映画" id="MainContent_ccTopLists_rpList_hypTitle_4">最も観賞される頻度の低い Netflix 映画</a></div>
+        
+            <div class="toplistsitm"><span class="glyphicon glyphicon-play"></span><a href="/ファクト/最も評価の高かった削除された-netflix-映画" id="MainContent_ccTopLists_rpList_hypTitle_5">最も評価の高かった削除された Netflix 映画</a></div>
+        
+            <div class="toplistsitm"><span class="glyphicon glyphicon-play"></span><a href="/ファクト/最も長い-netflix-映画" id="MainContent_ccTopLists_rpList_hypTitle_6">最も長い Netflix 映画</a></div>
+        
+            <div class="toplistsitm"><span class="glyphicon glyphicon-play"></span><a href="/ファクト/最も評価の低い-netflix-映画とシリーズ" id="MainContent_ccTopLists_rpList_hypTitle_7">最も評価の低い Netflix 映画とシリーズ</a></div>
+        
+</div>
+
+            <div class="adctr">
+                <script>        var adpos = "sbmiddle";</script>
+                <script type="text/javascript" src="/adserver/ad.js"></script>
+            </div>
+
+            
+<div class="bml">
+    <div  class="lsttitlectr">
+        <div class="lsttitle">Netflix ニュース</div>
+        <div class="lsttitlemore"><a id="MainContent_ccNews_hypMore" href="/netflix-%e3%83%8b%e3%83%a5%e3%83%bc%e3%82%b9">もっと見る &raquo;</a></div>
+    </div>
+    
+            <div class="row mrow">
+                <div class="col-xs-3 col-sm-2"><a id="MainContent_ccNews_rpList_hypImage_0" href="/%e3%83%8b%e3%83%a5%e3%83%bc%e3%82%b9/netflix%e3%81%af%e3%83%9e%e3%83%bc%e3%83%99%e3%83%ab%e3%81%ae%e3%83%91%e3%83%8b%e3%83%83%e3%82%b7%e3%83%a3%e3%83%bc%e3%82%92%e4%b8%bb%e4%ba%ba%e5%85%ac%e3%81%ab%e3%81%97%e3%81%9f%e3%82%b9%e3%83%94%e3%83%b3%e3%82%aa%e3%83%95%e4%bd%9c%e5%93%81%e3%82%92/10510"><img src="http://a2.bing4.com/th?id=ON.A71C66D5A623FF38DE4B9268D730B9C0&pid=News" class="img-responsive" alt="Netflixはマーベルのパニッシャーを主人公にしたスピンオフ作品を ..." /></a></div>
+                <div class="col-xs-9 col-sm-10">
+                    <div class="ntitle"><a id="MainContent_ccNews_rpList_hypTitle_0" href="/%e3%83%8b%e3%83%a5%e3%83%bc%e3%82%b9/netflix%e3%81%af%e3%83%9e%e3%83%bc%e3%83%99%e3%83%ab%e3%81%ae%e3%83%91%e3%83%8b%e3%83%83%e3%82%b7%e3%83%a3%e3%83%bc%e3%82%92%e4%b8%bb%e4%ba%ba%e5%85%ac%e3%81%ab%e3%81%97%e3%81%9f%e3%82%b9%e3%83%94%e3%83%b3%e3%82%aa%e3%83%95%e4%bd%9c%e5%93%81%e3%82%92/10510">Netflixはマーベルのパニッシャーを主人公にしたスピンオフ作品を ...</a></div>
+                    <div class="nftr">2016/01/21 21:24:00 | アメーバニュース</div>
+                    <div id="MainContent_ccNews_rpList_divFooter_0" class="mfooter"></div>
+                </div>
+            </div>
+        
+            <div class="row mrow">
+                <div class="col-xs-3 col-sm-2"><a id="MainContent_ccNews_rpList_hypImage_1" href="/%e3%83%8b%e3%83%a5%e3%83%bc%e3%82%b9/netflix%e3%80%8c%e3%83%ac%e3%83%a2%e3%83%8b%e3%83%bc-%e3%82%b9%e3%83%8b%e3%82%b1%e3%83%83%e3%83%88%e3%81%ae%e4%b8%96%e3%81%ab%e3%82%82%e4%b8%8d%e5%b9%b8%e3%81%9b%e3%81%aa%e7%89%a9%e8%aa%9e%e3%80%8d%e3%81%ab%e3%83%8b%e3%83%bc%e3%83%ab/10507"><img src="http://a1.bing4.com/th?id=ON.FF3568644C7F6B006F002BDD78357EF1&pid=News" class="img-responsive" alt="Netflix「レモニー・スニケットの世にも不幸せな物語」にニール ..." /></a></div>
+                <div class="col-xs-9 col-sm-10">
+                    <div class="ntitle"><a id="MainContent_ccNews_rpList_hypTitle_1" href="/%e3%83%8b%e3%83%a5%e3%83%bc%e3%82%b9/netflix%e3%80%8c%e3%83%ac%e3%83%a2%e3%83%8b%e3%83%bc-%e3%82%b9%e3%83%8b%e3%82%b1%e3%83%83%e3%83%88%e3%81%ae%e4%b8%96%e3%81%ab%e3%82%82%e4%b8%8d%e5%b9%b8%e3%81%9b%e3%81%aa%e7%89%a9%e8%aa%9e%e3%80%8d%e3%81%ab%e3%83%8b%e3%83%bc%e3%83%ab/10507">Netflix「レモニー・スニケットの世にも不幸せな物語」にニール ...</a></div>
+                    <div class="nftr">2016/01/21 20:08:00 | 映画.com</div>
+                    <div id="MainContent_ccNews_rpList_divFooter_1" class="mfooter"></div>
+                </div>
+            </div>
+        
+            <div class="row mrow">
+                <div class="col-xs-3 col-sm-2"><a id="MainContent_ccNews_rpList_hypImage_2" href="/%e3%83%8b%e3%83%a5%e3%83%bc%e3%82%b9/%e5%8f%88%e5%90%89%e7%9b%b4%e6%a8%b9%e5%8e%9f%e4%bd%9c%e3%81%aenetflix%e3%83%89%e3%83%a9%e3%83%9e%e3%80%8c%e7%81%ab%e8%8a%b1%e3%80%8d%e6%92%ae%e5%bd%b1%e5%bf%ab%e8%aa%bf/10512"><img src="http://a1.bing4.com/th?id=ON.8D300EAA341CFFFEBE15C5408AFE08B8&pid=News" class="img-responsive" alt="又吉直樹原作のNetflixドラマ「火花」撮影快調！" /></a></div>
+                <div class="col-xs-9 col-sm-10">
+                    <div class="ntitle"><a id="MainContent_ccNews_rpList_hypTitle_2" href="/%e3%83%8b%e3%83%a5%e3%83%bc%e3%82%b9/%e5%8f%88%e5%90%89%e7%9b%b4%e6%a8%b9%e5%8e%9f%e4%bd%9c%e3%81%aenetflix%e3%83%89%e3%83%a9%e3%83%9e%e3%80%8c%e7%81%ab%e8%8a%b1%e3%80%8d%e6%92%ae%e5%bd%b1%e5%bf%ab%e8%aa%bf/10512">又吉直樹原作のNetflixドラマ「火花」撮影快調！</a></div>
+                    <div class="nftr">2016/01/21 20:08:00 | 映画.com</div>
+                    <div id="MainContent_ccNews_rpList_divFooter_2" class="mfooter"></div>
+                </div>
+            </div>
+        
+            <div class="row mrow">
+                <div class="col-xs-3 col-sm-2"><a id="MainContent_ccNews_rpList_hypImage_3" href="/%e3%83%8b%e3%83%a5%e3%83%bc%e3%82%b9/netflix%e3%80%8c%e3%83%ac%e3%83%a2%e3%83%8b%e3%83%bc-%e3%82%b9%e3%83%8b%e3%82%b1%e3%83%83%e3%83%88%e3%81%ae%e4%b8%96%e3%81%ab%e3%82%82%e4%b8%8d%e5%b9%b8%e3%81%9b%e3%81%aa%e7%89%a9%e8%aa%9e%e3%80%8d%e3%82%aa%e3%83%a9%e3%83%95%e4%bc%af%e7%88%b5%e3%81%ab/10509"><img src="http://a2.bing4.com/th?id=ON.4A3F193950E1042FE9293A325A838754&pid=News" class="img-responsive" alt="Netflix「レモニー・スニケットの世にも不幸せな物語」オラフ伯爵に ..." /></a></div>
+                <div class="col-xs-9 col-sm-10">
+                    <div class="ntitle"><a id="MainContent_ccNews_rpList_hypTitle_3" href="/%e3%83%8b%e3%83%a5%e3%83%bc%e3%82%b9/netflix%e3%80%8c%e3%83%ac%e3%83%a2%e3%83%8b%e3%83%bc-%e3%82%b9%e3%83%8b%e3%82%b1%e3%83%83%e3%83%88%e3%81%ae%e4%b8%96%e3%81%ab%e3%82%82%e4%b8%8d%e5%b9%b8%e3%81%9b%e3%81%aa%e7%89%a9%e8%aa%9e%e3%80%8d%e3%82%aa%e3%83%a9%e3%83%95%e4%bc%af%e7%88%b5%e3%81%ab/10509">Netflix「レモニー・スニケットの世にも不幸せな物語」オラフ伯爵に ...</a></div>
+                    <div class="nftr">2016/01/21 12:08:00 | シネマトゥデイ</div>
+                    <div id="MainContent_ccNews_rpList_divFooter_3" class="mfooter"></div>
+                </div>
+            </div>
+        
+            <div class="row mrow">
+                <div class="col-xs-3 col-sm-2"><a id="MainContent_ccNews_rpList_hypImage_4" href="/%e3%83%8b%e3%83%a5%e3%83%bc%e3%82%b9/netflix%e3%83%89%e3%83%a9%e3%83%9e%e3%80%8e%e3%83%87%e3%82%a2%e3%83%87%e3%83%93%e3%83%ab%e3%80%8f%e3%81%ab%e7%99%bb%e5%a0%b4%e3%81%ae%e3%82%a2%e3%83%b3%e3%83%81%e3%83%92%e3%83%bc%e3%83%ad%e3%83%bc%e3%81%8c%e3%82%b9%e3%83%94%e3%83%b3%e3%82%aa%e3%83%95%e3%81%ab/10513"><img src="http://a2.bing4.com/th?id=ON.05FFCED106710E1C9FF63774989DC49B&pid=News" class="img-responsive" alt="Netflixドラマ『デアデビル』に登場のアンチヒーローがスピンオフに？" /></a></div>
+                <div class="col-xs-9 col-sm-10">
+                    <div class="ntitle"><a id="MainContent_ccNews_rpList_hypTitle_4" href="/%e3%83%8b%e3%83%a5%e3%83%bc%e3%82%b9/netflix%e3%83%89%e3%83%a9%e3%83%9e%e3%80%8e%e3%83%87%e3%82%a2%e3%83%87%e3%83%93%e3%83%ab%e3%80%8f%e3%81%ab%e7%99%bb%e5%a0%b4%e3%81%ae%e3%82%a2%e3%83%b3%e3%83%81%e3%83%92%e3%83%bc%e3%83%ad%e3%83%bc%e3%81%8c%e3%82%b9%e3%83%94%e3%83%b3%e3%82%aa%e3%83%95%e3%81%ab/10513">Netflixドラマ『デアデビル』に登場のアンチヒーローがスピンオフに？</a></div>
+                    <div class="nftr">2016/01/21 4:24:00 | アメーバニュース</div>
+                    <div id="MainContent_ccNews_rpList_divFooter_4" class="mfooter"></div>
+                </div>
+            </div>
+        
+    <a id="MainContent_ccNews_hypMoreBottom" href="/netflix-%e3%83%8b%e3%83%a5%e3%83%bc%e3%82%b9">Netflix ニュースをもっと見る</a>
+</div>
+
+            <div class="bml">
+                <div  class="lsttitlectr">
+                    <div class="lsttitle">俳優別の Netflix 映画 & シリーズ</div>
+                    <div class="lsttitlemore"><a id="MainContent_hypActorsMore" href="/%e4%bf%b3%e5%84%aa-">もっと見る &raquo;</a></div>
+                </div>
+                <div class="row">
+                        <div class="col-xs-12"><div class="actorimg"><a href="/俳優/井口裕香" id="MainContent_rpActors_hypImage_0"><img src="/media/actors/noactor.jpg" alt="井口裕香" width="60" /></a><a id="MainContent_rpActors_hypActor_0" href="/%e4%bf%b3%e5%84%aa/%e4%ba%95%e5%8f%a3%e8%a3%95%e9%a6%99">井口裕香 (2)</a></div></div>
+                    
+                        <div class="col-xs-12"><div class="actorimg"><a href="/俳優/オドレイ・フルーロ" id="MainContent_rpActors_hypImage_1"><img src="/media/actors/noactor.jpg" alt="オドレイ・フルーロ" width="60" /></a><a id="MainContent_rpActors_hypActor_1" href="/%e4%bf%b3%e5%84%aa/%e3%82%aa%e3%83%89%e3%83%ac%e3%82%a4%e3%83%bb%e3%83%95%e3%83%ab%e3%83%bc%e3%83%ad">オドレイ・フルーロ (1)</a></div></div>
+                    
+                        <div class="col-xs-12"><div class="actorimg"><a href="/俳優/ゴードン・ピンセント" id="MainContent_rpActors_hypImage_2"><img src="/media/actors/noactor.jpg" alt="ゴードン・ピンセント" width="60" /></a><a id="MainContent_rpActors_hypActor_2" href="/%e4%bf%b3%e5%84%aa/%e3%82%b4%e3%83%bc%e3%83%89%e3%83%b3%e3%83%bb%e3%83%94%e3%83%b3%e3%82%bb%e3%83%b3%e3%83%88">ゴードン・ピンセント (2)</a></div></div>
+                    
+                        <div class="col-xs-12"><div class="actorimg"><a href="/俳優/クレイグ・ロバーツ" id="MainContent_rpActors_hypImage_3"><img src="/media/actors/noactor.jpg" alt="クレイグ・ロバーツ" width="60" /></a><a id="MainContent_rpActors_hypActor_3" href="/%e4%bf%b3%e5%84%aa/%e3%82%af%e3%83%ac%e3%82%a4%e3%82%b0%e3%83%bb%e3%83%ad%e3%83%90%e3%83%bc%e3%83%84">クレイグ・ロバーツ (1)</a></div></div>
+                    
+                        <div class="col-xs-12"><div class="actorimg"><a href="/俳優/南桂介" id="MainContent_rpActors_hypImage_4"><img src="/media/actors/noactor.jpg" alt="南桂介" width="60" /></a><a id="MainContent_rpActors_hypActor_4" href="/%e4%bf%b3%e5%84%aa/%e5%8d%97%e6%a1%82%e4%bb%8b">南桂介 (1)</a></div></div>
+                    </div>
+                <a id="MainContent_hypMoreActors" class="bold" href="/%e4%bf%b3%e5%84%aa-">Netflix 映画およびシリーズに出演する全俳優および女優 &raquo;</a>
+            </div>
+
+            <div class="adctr">
+                <script>        var adpos = "sbbottom";</script>
+                <script type="text/javascript" src="/adserver/ad.js"></script>
+            </div>
+
+        </div>
+    </div>
+
+
+            <hr />
+        </div>
+        <footer>
+            <div class="ftrctr">
+                <div class="container">
+                    <div class="row">
+                        <div id="pnlFlags">
+	
+                            <div class="col-lg-12 text-center bold">以下の国でEigaNetflix.jpを利用できます：</div>
+                            <div class="col-lg-12 text-center">
+                                
+                                        <a style="text-decoration: none;" rel="nofollow" title="Nederland" href="http://www.opnetflix.nl">
+                                            <img src="/images/flags/1.png" alt="Nederland" width="32" />
+                                        </a>
+                                    
+                                        <a style="text-decoration: none;" rel="nofollow" title="USA" href="http://www.movies-net.com">
+                                            <img src="/images/flags/5.png" alt="USA" width="32" />
+                                        </a>
+                                    
+                                        <a style="text-decoration: none;" rel="nofollow" title="México" href="http://www.ennetflix.mx">
+                                            <img src="/images/flags/15.png" alt="México" width="32" />
+                                        </a>
+                                    
+                                        <a style="text-decoration: none;" rel="nofollow" title="Deutschland" href="http://www.aufnetflix.de">
+                                            <img src="/images/flags/3.png" alt="Deutschland" width="32" />
+                                        </a>
+                                    
+                                        <a style="text-decoration: none;" rel="nofollow" title="Canada" href="http://www.onnetflix.ca">
+                                            <img src="/images/flags/4.png" alt="Canada" width="32" />
+                                        </a>
+                                    
+                                        <a style="text-decoration: none;" rel="nofollow" title="Brasil" href="http://www.nonetflix.com.br">
+                                            <img src="/images/flags/14.png" alt="Brasil" width="32" />
+                                        </a>
+                                    
+                                        <a style="text-decoration: none;" rel="nofollow" title="United Kingdom" href="http://www.onnetflix.co.uk">
+                                            <img src="/images/flags/11.png" alt="United Kingdom" width="32" />
+                                        </a>
+                                    
+                                        <a style="text-decoration: none;" rel="nofollow" title="New Zealand" href="http://www.onnetflix.nz">
+                                            <img src="/images/flags/22.png" alt="New Zealand" width="32" />
+                                        </a>
+                                    
+                                        <a style="text-decoration: none;" rel="nofollow" title="Schweiz" href="http://www.aufnetflix.ch">
+                                            <img src="/images/flags/13.png" alt="Schweiz" width="32" />
+                                        </a>
+                                    
+                                        <a style="text-decoration: none;" rel="nofollow" title="Uruguay" href="http://www.ennetflix.uy">
+                                            <img src="/images/flags/18.png" alt="Uruguay" width="32" />
+                                        </a>
+                                    
+                                        <a style="text-decoration: none;" rel="nofollow" title="Argentina" href="http://www.ennetflix.com.ar">
+                                            <img src="/images/flags/8.png" alt="Argentina" width="32" />
+                                        </a>
+                                    
+                                        <a style="text-decoration: none;" rel="nofollow" title="Sverige" href="http://www.panetflix.se">
+                                            <img src="/images/flags/12.png" alt="Sverige" width="32" />
+                                        </a>
+                                    
+                                        <a style="text-decoration: none;" rel="nofollow" title="Italia" href="http://www.sunetflix.it">
+                                            <img src="/images/flags/26.png" alt="Italia" width="32" />
+                                        </a>
+                                    
+                                        <a style="text-decoration: none;" rel="nofollow" title="Portugal" href="http://www.filmes-online.pt">
+                                            <img src="/images/flags/28.png" alt="Portugal" width="32" />
+                                        </a>
+                                    
+                                        <a style="text-decoration: none;" rel="nofollow" title="Chili" href="http://www.ennetflix.cl">
+                                            <img src="/images/flags/23.png" alt="Chili" width="32" />
+                                        </a>
+                                    
+                                        <a style="text-decoration: none;" rel="nofollow" title="Colombia" href="http://www.ennetflix.co">
+                                            <img src="/images/flags/21.png" alt="Colombia" width="32" />
+                                        </a>
+                                    
+                                        <a style="text-decoration: none;" rel="nofollow" title="Australia" href="http://www.onnetflix.com.au">
+                                            <img src="/images/flags/17.png" alt="Australia" width="32" />
+                                        </a>
+                                    
+                                        <a style="text-decoration: none;" rel="nofollow" title="Venezuela" href="http://www.ennetflix.com.ve">
+                                            <img src="/images/flags/19.png" alt="Venezuela" width="32" />
+                                        </a>
+                                    
+                                        <a style="text-decoration: none;" rel="nofollow" title="Ecuador" href="http://www.ennetflix.ec">
+                                            <img src="/images/flags/24.png" alt="Ecuador" width="32" />
+                                        </a>
+                                    
+                                        <a style="text-decoration: none;" rel="nofollow" title="Danmark" href="http://www.panetflix.dk">
+                                            <img src="/images/flags/6.png" alt="Danmark" width="32" />
+                                        </a>
+                                    
+                                        <a style="text-decoration: none;" rel="nofollow" title="Belgi&euml;" href="http://www.opnetflix.be">
+                                            <img src="/images/flags/2.png" alt="Belgi&euml;" width="32" />
+                                        </a>
+                                    
+                                        <a style="text-decoration: none;" rel="nofollow" title="Panamá" href="http://www.netflixpanama.com">
+                                            <img src="/images/flags/16.png" alt="Panamá" width="32" />
+                                        </a>
+                                    
+                                        <a style="text-decoration: none;" rel="nofollow" title="Perú" href="http://www.ennetflix.pe">
+                                            <img src="/images/flags/20.png" alt="Perú" width="32" />
+                                        </a>
+                                    
+                                        <a style="text-decoration: none;" rel="nofollow" title="France" href="http://www.surnetflix.fr">
+                                            <img src="/images/flags/7.png" alt="France" width="32" />
+                                        </a>
+                                    
+                                        <a style="text-decoration: none;" rel="nofollow" title="日本" href="http://www.eiganetflix.jp">
+                                            <img src="/images/flags/25.png" alt="日本" width="32" />
+                                        </a>
+                                    
+                                        <a style="text-decoration: none;" rel="nofollow" title="España" href="http://www.netflixespana.es">
+                                            <img src="/images/flags/27.png" alt="España" width="32" />
+                                        </a>
+                                    
+                                        <a style="text-decoration: none;" rel="nofollow" title="Österreich" href="http://www.aufnetflix.at">
+                                            <img src="/images/flags/10.png" alt="Österreich" width="32" />
+                                        </a>
+                                    
+                                        <a style="text-decoration: none;" rel="nofollow" title="Luxemburg" href="http://www.aufnetflix.lu">
+                                            <img src="/images/flags/9.png" alt="Luxemburg" width="32" />
+                                        </a>
+                                    
+                            </div>
+                        
+</div>
+                        <div class="col-lg-12 text-center"><a id="hypAboutUs" href="/eiganetflix%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6">当社について</a> - <a id="hypAboutNetflix" href="/netflix-%e3%81%a8%e3%81%af">Netflix とは？</a> - <a id="hypContentPerCountry" href="/%e5%90%84%e5%9b%bd%e3%81%ae-netflix-%e4%bd%9c%e5%93%81%e6%95%b0">各国の Netflix 作品数</a> - <a id="hypNewReleases" href="/netflix-%e8%bf%91%e6%97%a5%e4%b8%8a%e6%98%a0%e4%bd%9c%e5%93%81">Netflix 近日上映作品</a> - <a id="hypContact" rel="nofollow" href="/%e9%80%a3%e7%b5%a1%e5%85%88">連絡先</a> - <a id="hypDisclaimer" rel="nofollow" href="/%e5%85%8d%e8%b2%ac%e6%9d%a1%e9%a0%85">免責条項</a></div>
+                        <div class="col-lg-12 text-center">&copy; 2013 - 2016 EigaNetflix.jpは Binq Media B.V.の製品です</div>
+                        <div class="col-lg-12 text-center">Media Park, Heideheuvel 1, Bob Spaaklaantje 2B, 1217 ZG Hilversum, The Netherlands (オランダ)</div>
+                        <div class="col-lg-12 text-center small" style="display: none;">
+                            <div class="hidden-sm hidden-md hidden-lg">XS</div>
+                            <div class="hidden-xs hidden-md hidden-lg">SM</div>
+                            <div class="hidden-sm hidden-xs hidden-lg">MD</div>
+                            <div class="hidden-sm hidden-md hidden-xs">LG</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </form>
+    <script>        var adpos = "eob";</script>
+    <script type="text/javascript" src="/adserver/ad.js"></script>
+</body>
+</html>

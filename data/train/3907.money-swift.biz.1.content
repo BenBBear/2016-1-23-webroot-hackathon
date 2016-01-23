@@ -1,0 +1,669 @@
+
+
+
+
+
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>SupremaCard – Jedermannkonto – Schufafreies Girokonto</title>
+    
+
+
+
+
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="robots" content="all">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+    <link rel="stylesheet" href="/struts/css_xhtml/styles.css" type="text/css" />
+<script src="/struts/utils.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="https://cdn.mastercard-prepaid.de/prepaidfrontends/js/_general/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="https://cdn.mastercard-prepaid.de/prepaidfrontends/js/_general/jquery-ui-1.10.4.js"></script>
+
+    <link id="linkCanonical" rel="canonical" href="https://www.supremacard.de/mainpage"/>
+
+    <link href="https://cdn.mastercard-prepaid.de/prepaidfrontends/style_res/_general/popup.css" rel="stylesheet" type="text/css"/>
+    <link href="https://cdn.mastercard-prepaid.de/prepaidfrontends/style_res/_general/standard.css" rel="stylesheet" type="text/css"/>
+    <link href="https://cdn.mastercard-prepaid.de/prepaidfrontends/style_res/_general/style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://cdn.mastercard-prepaid.de/prepaidfrontends/style_res/supremacard/colors.css" rel="stylesheet" type="text/css"/>
+    <link href="https://cdn.mastercard-prepaid.de/prepaidfrontends/style_res/_general/menu.css" rel="stylesheet" type="text/css"/>
+    <link href="https://cdn.mastercard-prepaid.de/prepaidfrontends/style_res/supremacard/mobileMenu.css" rel="stylesheet" type="text/css"/>
+    <link href="https://cdn.mastercard-prepaid.de/prepaidfrontends/style_res/supremacard/img_main/common/favicon.ico" rel="icon" type="image/x-icon"/>
+
+    <script type="text/javascript">
+        // Load context for JavaScript files without Struts tag support, e.g. show_info.js
+        var contextRoot = 'https://www.supremacard.de/';
+    </script>
+
+    <link href="https://cdn.mastercard-prepaid.de/prepaidfrontends/style_res/_general/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="https://cdn.mastercard-prepaid.de/prepaidfrontends/js/_general/standard.js"></script>
+    <script type="text/javascript" src="https://cdn.mastercard-prepaid.de/prepaidfrontends/js/_general/ajax_request.js"></script>
+    <script type="text/javascript" src="https://cdn.mastercard-prepaid.de/prepaidfrontends/js/_general/show_info.js"></script>
+    <script type="text/javascript" src="https://cdn.mastercard-prepaid.de/prepaidfrontends/js/_general/toggle_rounded_box.js"></script>
+    <script type="text/javascript" src="https://cdn.mastercard-prepaid.de/prepaidfrontends/js/_general/swfobject.js"></script>
+    <script type="text/javascript"
+            src="https://cdn.mastercard-prepaid.de/prepaidfrontends/js/_general/jquery.address-1.6.js?state=/&strict=0"></script>
+    <script type="text/javascript" src="https://cdn.mastercard-prepaid.de/prepaidfrontends/js/_general/jquery.popup.min.js"></script>
+    <script type="text/javascript" src="https://cdn.mastercard-prepaid.de/prepaidfrontends/js/_general/contact_box_info.js"></script>
+    <script type="text/javascript" src="https://cdn.mastercard-prepaid.de/prepaidfrontends/js/_general/password_strength_indicator.js"></script>
+    <script type="text/javascript" src="https://cdn.mastercard-prepaid.de/prepaidfrontends/js/_general/fancy.js"></script>
+    <script type="text/javascript" src="https://cdn.mastercard-prepaid.de/prepaidfrontends/js/supremacard/piwik.js"></script>
+    <script type="text/javascript" src="https://cdn.mastercard-prepaid.de/prepaidfrontends/js/_general/postIdentPDF.js"></script>
+    <script type="text/javascript" src="https://cdn.mastercard-prepaid.de/prepaidfrontends/js/_general/jquery.countdown.js"></script>
+    <script type="text/javascript" src="https://cdn.mastercard-prepaid.de/prepaidfrontends/js/_general/removeParameters.js"></script>
+    <script type="text/javascript" src="https://cdn.mastercard-prepaid.de/prepaidfrontends/js/_general/menu.js"></script>
+
+    
+
+
+    <script type="text/javascript" src="https://cdn.mastercard-prepaid.de/prepaidfrontends/js/_general/mobileMenu.js"></script>
+
+    
+
+
+
+
+
+
+
+<script type="text/javascript">
+    function getValidationUrl(type) {
+        switch (type) {
+            case 'comparison':
+                return 'https://www.supremacard.de/validation/comparisonJson';
+            case 'emailExists':
+                return 'https://www.supremacard.de/validation/emailExistsJson';
+            case 'emailSyntax':
+                return 'https://www.supremacard.de/validation/emailSyntaxJson';
+            case 'onlyLetters':
+                return 'https://www.supremacard.de/validation/onlyLettersJson';
+            case 'onlyNumbers':
+                return 'https://www.supremacard.de/validation/onlyNumbersJson';
+            case 'postalCode':
+                return 'https://www.supremacard.de/validation/postalCodeJson';
+            case 'requiredValue':
+                return 'https://www.supremacard.de/validation/requiredValueJson';
+            case 'formattedPastDate':
+                return 'https://www.supremacard.de/validation/formattedPastDateJson';
+            case 'formattedFutureDate':
+                return 'https://www.supremacard.de/validation/formattedFutureDateJson';
+            case 'formattedIntervalDate':
+                return 'https://www.supremacard.de/validation/formattedIntervalDateJson';
+            case 'mustHaveDigits':
+                return 'https://www.supremacard.de/validation/mustHaveDigitsJson';
+            case 'tradeRegisterNumber':
+                return 'https://www.supremacard.de/validation/tradeRegisterNumberJson';
+            case 'streetAndNumber':
+                return 'https://www.supremacard.de/validation/streetAndNumberJson';
+            case 'requiredInput':
+                return 'https://www.supremacard.de/validation/requiredInputJson';
+            case 'mobileNumberSyntax':
+                return 'https://www.supremacard.de/validation/mobileNumberSyntaxJson';
+            case 'tan':
+                return 'https://www.supremacard.de/validation/tanJson';
+        }
+
+        return '';
+    }
+
+    function clientValidation(field, type, args) {
+        switch (type) {
+            case 'minLength':
+                if ($(field).val().length < args[0]) {
+                    return '<strong>Passwort:</strong><span>Bitte geben Sie ein Passwort an und achten Sie auch darauf, dass <em>mindestens 5 und maximal 20 Zeichen</em> verwendet werden. Bitte beachten Sie, dass <em>Leerzeichen</em> am Anfang oder Ende gekürzt werden. </span>';
+                }
+        }
+
+        return '';
+    }
+
+    function validateField(field, type, args, key) {
+
+        //The password has to be validate by Client-side because it has been filtered by XSSSecureServletRequest before Server-side validation.
+        if (type == 'passwordStrength') {
+            if ($(field).val().length < 5 || $(field).val().length > 20) {
+                handleFieldsErrors(field, ['<strong>Passwort:</strong><span>Bitte geben Sie ein Passwort an und achten Sie auch darauf, dass <em>mindestens 5 und maximal 20 Zeichen</em> verwendet werden. Bitte beachten Sie, dass <em>Leerzeichen</em> am Anfang oder Ende gekürzt werden. </span>']);
+                return;
+            } else {
+                handleFieldsErrors(field);
+                return;
+            }
+        }
+
+        var url = getValidationUrl(type);
+        if (!args) {
+            args = [];
+        }
+
+        if (url) {
+            // Server-side validation
+            $.getJSON(url, {'value': $(field).val(), 'messageKey': key, 'params': args.join(";")}, function (data) {
+                if (data != null) {
+                    $.each(data, function (key, val) {
+                        switch (key) {
+                            case 'fieldErrors':
+                                handleFieldsErrors(field, val);
+                                break;
+                            case 'actionErrors':
+                                handleActionErrors();
+                                if (type == 'tan' && val.length >= 1) {
+                                    $('input[type="submit"]').submit();
+                                }
+                                break;
+                            case 'actionMessages':
+                                handleActionMessages();
+                                break;
+                        }
+                    });
+                }
+            });
+        } else {
+            // Client-side validation
+            handleError(field, clientValidation(field, type, args));
+        }
+    }
+
+    function handleFieldsErrors(field, errors) {
+        if (jQuery.isEmptyObject(errors)) {
+            $(field).removeClass('error');
+            $(field).addClass('success');
+            removeError(field, findErrorArea(field));
+            if ($(field).parents('.middleContent').next('#rightContent').find('.hideOnError')) {
+                $('.hideOnError').show();
+            }
+        } else {
+            handleError(field, errors);
+            if ($(field).parents('.middleContent').next('#rightContent').find('.hideOnError')) {
+                $('.hideOnError').hide();
+            }
+        }
+
+        searchDependableFields(field);
+    }
+
+
+    function searchDependableFields(field) {
+    }
+
+    function handleError(field, error) {
+        if (error != null) {
+            $(field).removeClass('success');
+            $(field).addClass('error');
+            var errorArea = findErrorArea(field);
+            errorArea.css('display', 'inline');
+            populateErrors(field, errorArea, error);
+        }
+    }
+
+    function populateErrors(field, searchLocation, error) {
+        $.each(error, function (idx, val) {
+            var errorId = $(field).attr('name');
+            $(searchLocation).find('[id="' + errorId + '"]').html(val.toString()).removeClass('hidden');
+            var titleBar = $(field).parents('form').find('div.titleBar');
+            $(titleBar).removeClass('validated');
+            $(titleBar).find('div.validatedIcon').removeClass('validatedIcon').addClass('Icon');
+        });
+    }
+
+
+    function removeError(field, errorArea) {
+        var errorId = $(field).attr('name');
+        var errorElem = $(errorArea).find('[id="' + errorId + '"]');
+        $(errorElem).html('').addClass('hidden');
+        testIfErrorsPresent(errorArea);
+    }
+
+    function testIfErrorsPresent(errorArea) {
+        var empty = true;
+        $(errorArea).find('li').each(function (index) {
+            if (!$(this).is(':empty')) {
+                empty = false;
+            }
+        });
+        if (empty) {
+            $(errorArea).css('display', 'none');
+        } else {
+            if ($(field).parents('.middleContent').next('#rightContent').find('.hideOnError')) {
+                $('.hideOnError').hide();
+            }
+        }
+    }
+
+    function findErrorArea(field) {
+        if ($(field).parents('.middleContent').next('#rightContent').find('div.errorArea').length) {
+            return $(field).parents('.middleContent').next('#rightContent').find('div.errorArea');
+        } else if ($(field).parents('#centerContent').find('div.errorArea').length) {
+            return $(field).parents('#centerContent').find('div.errorArea');
+        } else {
+            return null;
+        }
+    }
+
+    function handleActionErrors() {
+    }
+
+    function handleActionMessages() {
+    }
+
+    function validateFieldLength(lenght, field, type, args, key) {
+        if ($(field).val().length == lenght) {
+            if (type == 'tan') {
+                if (lastValue != $(field).val()) {
+                    clearTimeout(validateTimeout);
+                    validateTimeout = setTimeout(function () {
+                        validateField(field, type, args, key);
+                    }, 500);
+                    lastValue = $(field).val();
+                }
+            } else {
+                validateField(field, type, args, key);
+            }
+        }
+    }
+
+</script>
+    
+
+
+
+
+
+
+
+<script type="text/javascript">
+    function lookup(type, lookupResponse, args, responseFields, defaultValues, field, length) {
+        var url = 'https://www.supremacard.de/secure/lookup/lookup';
+        if (!args) {
+            args = [];
+        }
+
+        if (field != null && length != null && $(field).val().length < length) {
+            return;
+        }
+
+        if (url) {
+            // Server-side Lookup data
+            $.getJSON(url, {'lookUpType': type, 'params': args.join("-") }, function (data) {
+                if (data != null) {
+                    $.each(data, function (key, values) {
+                        if (values != null) {
+                            switch (key) {
+                                case 'lookupResponse':
+                                    handleLookupResponse(lookupResponse, values, responseFields, defaultValues, field, length);
+                                    break;
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+    }
+
+    function handleLookupResponse(lookupResponse, values, responseFields, defaultValues, field, length) {
+        switch (lookupResponse) {
+            case 'autoComplete':
+                autoCompleteField(values, responseFields, defaultValues, field, length);
+                break;
+            case 'autoFill':
+                autoFillField(values, responseFields, defaultValues);
+                break;
+            case 'autoChangeContent':
+                autoChangeContent(values, responseFields, defaultValues);
+                break;
+        }
+    }
+
+    function autoFillField(values, responseFields, defaultValues) {
+        $.each(responseFields, function (index) {
+            if (values[index] == null && defaultValues[index] != null) {
+                $(responseFields[index]).val(defaultValues[index]);
+            } else if (values[index] != null) {
+                $(responseFields[index]).val($.trim(values[index]));
+            }
+        });
+    }
+
+    function autoCompleteField(values, responseFields, defaultValues, field, length) {
+        $(field).autocomplete({
+            source: values,
+            minLength: length,
+            delay: 200,
+            select: function (event, ui) {
+                var selectedData = ui.item.label.split('||');
+                event.preventDefault();
+                autoFillField(selectedData, responseFields, defaultValues);
+            }
+        });
+    }
+
+    function autoChangeContent(values, responseFields, defaultValues) {
+        $.each(responseFields, function (index) {
+            if (values[index] == null && defaultValues[index] != null) {
+                $(responseFields[index]).html(defaultValues[index]);
+            } else if (values[index] != null) {
+                $(responseFields[index]).html(values[index]);
+            }
+        });
+    }
+</script>
+
+
+    
+    <script type="text/javascript" src="https://cdn.mastercard-prepaid.de/prepaidfrontends/js/_general/left_box_content_slide.js"></script>
+    
+        
+        <meta name="description" content="Kontoeröffnung ohne Schufa? Die SupremaCard ist eine schufafreie Kreditkarte für Jedermann > JETZT mehr erfahren.">
+        <meta name="keywords" content="supremacard, kreditkarten schufafrei, jedermann-konto, jedermannkonto, kreditkarte für jedermann">
+    
+    
+
+</head>
+
+<body>
+<div class="wrapper">
+    <header id="header">
+        <div class="mainpageHeader">
+            
+
+
+
+
+
+
+
+
+<img src="https://cdn.mastercard-prepaid.de/prepaidfrontends/style_res/supremacard/img_main/common/img_pc_logo_slogan.svg"
+     alt="Paycenter"/>
+
+<div id="loginBox">
+
+<form id="loginForm" name="loginForm" action="/login/login" method="post" autocomplete="off" accept-charset="UTF-8">
+
+
+        <input type="hidden" name="petafuel.token.name" value="login.token" />
+<input type="hidden" name="login.token" value="MZWONI9T1ANU2F90QWZCEM44H7T4X005" />
+
+        <label id="loginForm_email_label" for="email">eMail</label>
+        <input type="text" name="email" value="" id="email" autocomplete="off" autofocus="autofocus"/>
+        <label id="loginForm_password_label" for="password">Passwort</label>
+        <input type="password" name="password" id="password" autocomplete="off"/>
+        <div class="submitButton" id="login">
+            <input type="submit" id="loginForm_login" name="login" value="Login" class="buttonWithArrow"/>
+
+        </div>
+    </form>
+
+
+
+
+</div>
+
+        </div>
+    </header>
+
+    <nav id="menu">
+        
+
+
+
+
+
+
+
+<div id="menu_main">
+    <ul>
+        
+            <!-- Public -->
+            <li><a href="https://www.supremacard.de/mainpage">Startseite</a></li>
+            <li><a href="https://www.supremacard.de/furtherinfo/showInfoSchufa">Weitere Informationen</a></li>
+            <li><a href="http://wiki.paycenter.de" target="_blank">Fragen & Antworten</a></li>
+            <li><a href="https://www.supremacard.de/fee/showFeeFree">Preisverzeichnis</a></li>
+            <li class="lastChild"><a href="https://www.supremacard.de/contact/show">Kontakt</a></li>
+        
+    </ul>
+</div>
+
+    </nav>
+
+    <div id="main">
+        <div id="banner">
+            
+
+    <div id="indexteaser">
+    <div class="indexTeaserText">
+        <h1 class="highlighted">SupremaCard</h1>
+		<h2>Kreditkarte ohne Schufa für Jedermann</h2>
+        <p>Bestellen Sie eine echte MasterCard auf Guthabenbasis mit
+		weltweiter Akzeptanz. Komplett schufafrei, ohne Bonitätsprüfung
+		und mit vielen Vorteilen:</p>
+        <ul>
+            <li>Eigene Kontonummer</li>
+            <li>Pfändungssicheres Konto</li>
+            <li>Kostenfreie Aufladung</li>
+            <li>Kein Auslandsentgelt</li>
+            <li>Sicheres Online-Banking</li>
+        </ul>
+		<div class="button">
+			<a class="buttonWithArrow" href="https://www.supremacard.de/registration/quick/showQuickRegistration">Bestellen</a>
+		</div>
+		<div class="indexTeaserLink">
+			<a class="popup" href="https://www.supremacard.de/showPopUp"><img alt="Video" src="https://cdn.mastercard-prepaid.de/prepaidfrontends/style_res/supremacard/img_main/mainpage/btn_video.svg"></a> <a href="http://demo.paycenter.de/supremacard/home" target="_blank"><img alt="Demo-Seite" src="https://cdn.mastercard-prepaid.de/prepaidfrontends/style_res/supremacard/img_main/mainpage/btn_demo.svg"></a>
+		</div>
+    </div>
+</div>
+
+
+
+        </div>
+        <div id="pageContent">
+            
+
+
+
+
+
+
+
+<div id="indexBannerBoxes">
+    <div>
+        <div id="leftBoxContent">
+            <h4>Kundenbewertungen</h4>
+<p>Erfahren Sie mehr über die SupremaCard, indem<br>Sie die Meinungen unserer Kunden lesen.</p>
+<img alt="Bewertung" src="https://cdn.mastercard-prepaid.de/prepaidfrontends/style_res/supremacard/img_main/mainpage/img_assessment.svg">
+<a href="https://www.paycenter.de/index.php/mitgestalten/bewertung.html" target="_blank">Zu den Bewertungen</a>
+        </div>
+    </div>
+
+    <div>
+        <div id="middleBoxContent">
+            <h4>Unabhängig von SCHUFA</h4>
+
+            <p>Bei der Online-Bestellung erfolgt keine<br>Auskunft oder Meldung an die SCHUFA.</p>
+
+            <img alt="Schufafrei"
+                 src="https://cdn.mastercard-prepaid.de/prepaidfrontends/style_res/supremacard/img_main/mainpage/img_seal.svg">
+
+            <a href="https://www.supremacard.de/furtherinfo/showInfoSchufa">Weitere Informationen</a>
+        </div>
+    </div>
+
+    <div>
+        <div id="rightBoxContent">
+            <h4>Bester Service für Sie</h4>
+
+            <div id="contactInfoText">Sie haben Fragen?<br><b>Wir helfen Ihnen gerne.</b></div>
+
+            <div class="contactBoxElement" title="Sie haben Fragen?<br><b>PayCenter Wiki aufrufen.</b><br>">
+                <a target="_blank" href="http://wiki.paycenter.de/index.php/Hauptseite">
+                    <img alt="Paycenter Wiki"
+                         title="Paycenter Wiki"
+                         src="https://cdn.mastercard-prepaid.de/prepaidfrontends/style_res/supremacard/img_main/common/btn_wiki_small.svg"/>
+                </a>
+            </div>
+
+            <div class="contactBoxElement" title="Sie haben Fragen?<br><b>Rückruftermin vereinbaren.</b><br>">
+                <a target="_blank" href="https://www.paycenter.de/index.php/component/callback/ ">
+                    <img alt="Rückruf"
+                         title="Rückruf"
+                         src="https://cdn.mastercard-prepaid.de/prepaidfrontends/style_res/supremacard/img_main/common/btn_recall_small.svg">
+                </a>
+            </div>
+
+            <div class="contactBoxElement" title="Sie haben Fragen?<br><b>Unsere Hotline: 0800 0700 170 00.</b><br>">
+                <img alt="Hotline"
+                     title="Hotline"
+                     src="https://cdn.mastercard-prepaid.de/prepaidfrontends/style_res/supremacard/img_main/common/btn_hotline_small.svg">
+            </div>
+
+            <div class="contactBoxElement" title="Sie haben Fragen?<br><b>Kontaktformular.</b><br>">
+                <a target="_blank" href=" https://www.paycenter.de/index.php/component/callback/?view=contact">
+                    <img alt="Kontakt"
+                         title="Kontakt"
+                         src="https://cdn.mastercard-prepaid.de/prepaidfrontends/style_res/supremacard/img_main/common/btn_form_small.svg">
+                </a>
+            </div>
+
+            <div class="contactBoxElement" title="Sie haben Fragen?<br><b>Unsere Anschrift.</b><br>">
+                <a href="https://www.supremacard.de/contact/show"><img alt="Adresse"
+                         title="Adresse"
+                         src="https://cdn.mastercard-prepaid.de/prepaidfrontends/style_res/supremacard/img_main/common/btn_address_small.svg"></a>
+            </div>
+
+            
+        </div>
+    </div>
+
+    <div class="clear"></div>
+</div>
+
+
+        </div>
+        <footer id="mainpageFooter">
+            
+
+
+
+
+
+
+
+<div id="footerLeftContent">
+    
+
+    <a target="_blank" href="https://www.facebook.com/paycenterprepaidmastercard">
+        <img src="https://cdn.mastercard-prepaid.de/prepaidfrontends/style_res/supremacard/img_main/common/ic_facebook.svg"
+             alt="Facebook"/>
+    </a>
+
+    <a target="_blank" href="https://plus.google.com/+PaycenterDeutschland/about">
+        <img src="https://cdn.mastercard-prepaid.de/prepaidfrontends/style_res/supremacard/img_main/common/ic_google.svg"
+             alt="Google Plus"
+             title="Google Plus"/>
+    </a>
+</div>
+<div id="footerMiddleContent">
+    <a href="https://www.paycenter.de/index.php/component/callback/?view=partner" target="_blank">
+        Partnerprogramm
+    </a>
+    |
+    <a href="https://cdn.mastercard-prepaid.de/prepaidfrontends/pdf/_general/AGB_PayCenter.pdf" target="_blank">AGB</a>
+    |
+    
+        <a href="https://www.supremacard.de/legalnotice/show">Impressum</a>
+    
+    
+    |
+    <a id="last" href="https://cdn.mastercard-prepaid.de/prepaidfrontends/pdf/_general/Datenschutz.pdf" target="_blank">Datenschutzbestimmungen</a>
+</div>
+<div id="footerRightContent">
+    <img class="footerSeal"
+         src="https://cdn.mastercard-prepaid.de/prepaidfrontends/style_res/supremacard/img_main/common/ic_pci.png"
+         alt="PCI"/>
+    <img class="footerSeal"
+         src="https://cdn.mastercard-prepaid.de/prepaidfrontends/style_res/supremacard/img_main/common/ic_tuev.png"
+         alt="TÜV"/>
+    <span>Sicher durch den hochzertifizierten Partner <a target="_blank" href="https://www.petafuel.de"><u><b>petaFuel</b></u></a></span>
+    <a target="_blank" href="https://www.paycenter.de/">
+        <img class="pcLogo"
+             src="https://cdn.mastercard-prepaid.de/prepaidfrontends/style_res/supremacard/img_main/common/img_logo_pc02.svg"
+             alt="Paycenter"/>
+    </a>
+</div>
+
+        </footer>
+    </div>
+    <div class="push"></div>
+</div>
+<div id="underFooter">
+    
+
+
+
+
+
+
+
+
+    <div>
+        <section>
+            <article>
+                <h4>Ihre MasterCard mit Kontofunktion</h4>
+
+<p>Durch das Guthabensystem der SupremaCard ist eine Anfrage
+oder Meldung bei der Schufa nicht notwendig und wird selbst
+im Falle einer Pfändung nicht durchgeführt. Wir verzichten auch auf Bonitätsprüfungen.</p>
+
+<p>Ihr optionales Onlinekonto bei PayCenter enthält ein kostenfreies
+Pfändungsschutz-Konto (P-Konto) für das keine zusätzlichen
+Gebühren veranschlagt werden. Ist Ihr P-Konto aktiv, steht Ihnen im Falle einer Pfändung ein gesetzlich festgelegter Freibetrag zur Verfügung. Die aktuellen Freibeträge finden Sie im <a href="http://wiki.paycenter.de/index.php/P-Konto" target="_blank">PayCenter Wiki</a>.</p>
+
+<p>Es gibt zudem keine Mindestvertragslaufzeiten. Sie können die Prepaid MasterCard jederzeit kündigen – bequem über den passwortgeschützten Online-Bereich der Karte</p>
+            </article>
+            <article>
+                <h4>Deutsche Bankverbindung</h4>
+
+<p>Die Kontofunktion der Prepaid MasterCard beinhaltet eine
+deutsche Bankverbindung mit eigener Kontonummer. Bereits
+nach dem ersten Registrierungsschritt können Überweisungen
+(z.B. Gehalt, Provision oder soziale Zuwendung) auf das
+Konto eingehen. Nach der Legitimation per PostIdent sind
+Überweisungen an jede beliebige Bankverbindung möglich.
+Natürlich auch SEPA-Zahlungen ins Ausland.</p>
+
+<p>Auch Lastschriften können von Ihrem privaten Kartenkonto
+eingezogen werden, sofern diese Option von Ihnen
+freigeschalten wurde.</p>
+
+<p>Firmenlastschriften sind nicht möglich.
+Für Unternehmen ohne Handelsregister-Eintrag ist das Konto
+auch gewerblich nutzbar.</p>
+            </article>
+            <article>
+                <h4>Eine Überziehung und Verschuldung ist nicht möglich</h4>
+
+<p>Mit der SupremaCard erhalten Sie ein guthabenbasiertes
+Konto. Bei sämtlichen Abbuchungen erfolgt zunächst eine
+elektronische Anfrage, ob das Guthaben aktuell vorhanden ist.
+Eine Überziehung und Verschuldung ist daher nicht möglich.</p>
+
+<p>Zur Sicherheit der Kunden kann das MasterCard Konto nur
+bis maximal 10.000 Euro aufgeladen werden.</p>
+
+<p>Dank des TÜV- und PCI-zertifizierten Prozessors petaFuel GmbH, entspricht unsere Datensicherheit den offiziell gültigen Standards und bietet somit optimalen Schutz vor Betrügern. Das Einhalten strenger Sicherheitskriterien im Umgang mit sensiblen Kundendaten hat höchste Priorität.</p>
+            </article>
+        </section>
+    </div>
+
+
+</div>
+</body>
+
+</html>

@@ -1,0 +1,663 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<meta name="app_env" content="PROD" />
+
+<meta name="keywords" content="AA時刻,運賃,駅情報,路線図,列車,新幹線,予約,きっぷ,切符,キップ,JR九州">
+
+<meta name="description" content="JR九州のきっぷ検索に関するページです。">
+<title>割引きっぷ検索結果｜JR九州</title>
+
+    <!--ページ共通のJS、CSS-->
+    <link rel="stylesheet" type="text/css" href="/common_re/css/import.css">
+    <script type="text/javascript" src="/common_re/js/include.js"></script>
+    <!--ページ共通のJS、CSS-->
+
+<link rel="stylesheet" type="text/css" href="/fare/css/search.css">
+
+<script type="text/javascript" src="/common_re/js/jquery.selectboxutils.js"></script>
+<script type="text/javascript" src="/fare/js/search.js"></script>
+<script type="text/javascript" src="/common_re/js/analytics.js" charset="utf-8"></script>
+
+</head>
+
+<body>
+
+
+<a name="pageTop" id="pageTop"></a>
+<div id="wrap">
+
+<div id="jkHeader">
+<div class="inner">
+<div class="hTop">
+<h1 id="logo"><a href="http://www.jrkyushu.co.jp/index.jsp"><img src="/common_re/img/logo.gif" width="278" height="55" alt="九州旅客鉄道株式会社"></a></h1>
+<div class="hLink">
+<ul class="hForeign">
+<li class="cr"><a href="http://www.jrkyushu.co.jp/index.jsp"><img src="/common_re/img/hforeign_jp.png" alt="日本語" width="31" height="14"></a></li>
+<li><a href="http://www.jrkyushu.co.jp/english/index.html"><img src="/common_re/img/hforeign_en.png" alt="English" width="35" height="14"></a></li>
+<li><a href="http://www.jrkyushu.co.jp/korean/index.html"><img src="/common_re/img/hforeign_kr.png" alt="Korean" width="29" height="14"></a></li>
+<li><a href="http://kyushurailpass.com/"><img src="/common_re/img/hforeign_chk.png" alt="簡体中文" width="38" height="14"></a></li>
+<li><a href="http://www.jrkyushu.co.jp/chinese/index.html"><img src="/common_re/img/hforeign_chh.png" alt="繁体中文" width="38" height="14"></a></li>
+</ul>
+<!-- #srchBox -->
+<div id="srchBox">
+<form action="http://custom.search.yahoo.co.jp/search" method="get" id="srch" target="yjserp">
+<p id="srchForm">
+<input type="text" value="サイト内検索" name="p" id="srchInput">
+<input type="submit" value="　" id="srchBtn">
+<input type="hidden" id="fr" name="fr" value="cse">
+<input type="hidden" id="ei" name="ei" value="UTF-8">
+<input type="hidden" id="csid" name="csid" value="naMtinlwE9v_3Jp_PULHFeqfcc7NUb.YGVXW">
+</p>
+<ul id="srchToggle">
+<li id="srchInsite"><label for="yjInsite"><input type="radio" name="vs" value="www.jrkyushu.co.jp" id="yjInsite" checked="checked">サイト内検索</label></li>
+<li id="srchWeb"><label for="yjWeb"><input type="radio" name="vs" value="" id="yjWeb">ウェブ検索</label></li>
+</ul>
+</form>
+<p id="srchLogo"><a href="http://www.yahoo.co.jp"><img src="http://i.yimg.jp/images/search/customsearch/yjlogo/yjlogo_type1_ffffff.gif" width="124" height="20" alt="powered by Yahoo! JAPAN"></a></p>
+<img src="http://custom.search.yahoo.co.jp/images/window/naMtinlwE9v_3Jp_PULHFeqfcc7NUb.YGVXW.gif">
+</div>
+<!-- /#srchBox -->
+</div>
+
+<div class="hSite">
+<ul>
+<li><a href="http://www.jrkyushu.co.jp/develop/index.jsp" id="hGroup"><img src="/common_re/img/hlink_group.gif" width="260" height="40" alt="JR九州グループのお店・サービス" class="rollover"></a></li>
+<li><a href="http://www.jrkyushu.co.jp/profile/index.jsp" id="hCompany"><img src="/common_re/img/hlink_company.gif" width="159" height="40" alt="企業・採用" class="rollover"></a></li>
+<li><a href="http://www.jrkyushu.co.jp/faq/index.jsp" id="hFaq"><img src="/common_re/img/hlink_inquiry.gif" width="156" height="40" alt="お問い合わせ ご意見・ご要望" class="rollover"></a></li>
+</ul>
+</div>
+</div>
+
+<div class="hNav">
+<ul>
+<li class="hnav01"><a href="http://www.jrkyushu.co.jp/fare/index.jsp" id="hFare"><img src="/common_re/img/hnav01.jpg" width="464" height="55" alt="列車予約/時刻・運賃検索" class="rollover"></a>
+<ul>
+<li><a href="http://train.yoyaku.jrkyushu.co.jp/" target="_blank" id="hYoyaku" onclick="ga('send', 'event','top', 'train.yoyaku_click', '', {'nonInteraction':1});"><img src="/common_re/img/hnav01_01.jpg" width="72" height="42" alt="列車予約" class="rollover"></a></li>
+<li><a href="/fare/ticket/" id="hTicket"><img src="/common_re/img/hnav01_02.jpg" width="72" height="42" alt="割引きっぷ" class="rollover"></a></li>
+<li><a href="http://www.jrkyushu.co.jp/trains/unkou.jsp" id="hUnkou"><img src="/common_re/img/hnav01_03.jpg" width="72" height="42" alt="運行情報" class="rollover"></a></li>
+</ul>
+</li>
+<li class="hnav02"><a href="http://www.jrkyushu.co.jp/train/index.jsp" id="hTrain"><img src="/common_re/img/hnav02.jpg" width="302" height="55" alt="おすすめ列車の旅情報" class="rollover"></a>
+<ul>
+<li><a href="https://www.jrkyushu.co.jp/trains/" id="hTrains"><img src="/common_re/img/hnav02_01.jpg" width="72" height="42" alt="観光列車（D＆S）" class="rollover"></a></li>
+</ul>
+</li>
+<li class="hnav03"><a href="http://jrkyushuryoko.jp/" id="hTravel" onclick="ga('send', 'event','top', 'kyushu.travel_click', 'header', {'nonInteraction':1});"><img src="/common_re/img/hnav03.jpg" width="210" height="55" alt="宿泊旅行の予約・検索" class="rollover"></a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<!--[SP]-->
+<div id="spHeader" class="nStyle">
+	<div class="headerArea">
+		<p class="menu"><a href="javascript:void(0);"><img src="/smt/images_re/common/header/menu-btn.gif" alt="メニュー"></a></p>
+		<h1><img src="/smt/images_re/common/header/logo.gif" alt="九州旅客鉄道株式会社" ></h1>
+		<p class="search"><a href="javascript:void(0);"><img src="/smt/images_re/common/header/search-btn.gif" alt="検索"></a></p>
+
+		<ul class="navigation" id="spSideNavigation">
+			<li><a href="http://www.jrkyushu.co.jp/smt/index.html">TOP</a></li>
+			<li><a href="http://www.jrkyushu.co.jp/sp/fare.html">列車予約/時刻・運賃検索</a></li>
+			<li><a href="http://www.jrkyushu.co.jp/trains/unkou.jsp">運行情報</a></li>
+			<li><a href="/fare/ticket/">割引きっぷ一覧</a></li>
+			<li><a href="http://www.jrkyushu.co.jp/member/index.jsp">JR九州Web会員について</a></li>
+			<li><a href="http://www.jrkyushu.co.jp/profile/index.html">企業情報・採用情報</a></li>
+			<li><a href="http://www.jrkyushu.co.jp/develop/">JR九州グループのお店・サービス</a></li>
+			<li><a href="http://www.jrkyushu.co.jp/profile/news.jsp">ニュースリリース</a></li>
+			<li><a href="http://www.jrkyushu.co.jp/faq/index.jsp">お問い合わせ/ご意見・ご要望</a></li>
+		</ul>
+	</div>
+	<ul class="navigation" id="spMainNavigation">
+		<li class="fare"><a href="http://www.jrkyushu.co.jp/sp/fare.html"><img src="/smt/images_re/common/header/navigation/fare.gif" alt="列車予約時刻・運賃検索"></a></li>
+		<li class="train"><a href="http://www.jrkyushu.co.jp/sp/"><img src="/smt/images_re/common/header/navigation/train.gif" alt="おすすめ列車の旅情報"></a></li>
+		<li class="reserve"><a href="http://jrkyushuryoko.jp/" onclick="ga('send', 'event','top', 'kyushu.travel_click', 'header', {'nonInteraction':1});"><img src="/smt/images_re/common/header/navigation/reserve.gif" alt="宿泊旅行の予約・検索"></a></li>
+	</ul>
+
+<!-- #srchBox -->
+<div id="srchSp">
+<form action="http://custom.search.yahoo.co.jp/search" method="get" id="srch" target="yjserp">
+<p id="srchFormSp">
+<input type="search" results="5" name="p" value="" placeholder="サイト内検索" id="srchInputSp">
+<input type="image" src="/smt/images_re/common/header/searchform-btn.gif" alt="検索" id="srchBtnSp" onClick="document.getElementById('srchInputSp').focus();">
+<input type="hidden" id="fr" name="fr" value="cse">
+<input type="hidden" id="ei" name="ei" value="UTF-8">
+<input type="hidden" id="csid" name="csid" value="naMtinlwE9v_3Jp_PULHFeqfcc7NUb.YGVXW">
+</p>
+<p class="button"><a href="javascript:void(0);"><img src="/smt/images_re/common/header/close-btn.gif" alt="閉じる" ></a></p>
+<ul id="srchToggle">
+<li id="srchInsite"><label for="yjInsite"><input type="radio" name="vs" value="www.jrkyushu.co.jp" id="yjInsite" checked="checked">サイト内検索</label></li>
+<li id="srchWeb"><label for="yjWeb"><input type="radio" name="vs" value="" id="yjWeb">ウェブ検索</label></li>
+</ul>
+</form>
+<p id="srchLogo"><a href="http://www.yahoo.co.jp"><img src="http://i.yimg.jp/images/search/customsearch/yjlogo/yjlogo_type1_ffffff.gif" width="124" height="20" alt="powered by Yahoo! JAPAN"></a></p>
+<img src="http://custom.search.yahoo.co.jp/images/window/naMtinlwE9v_3Jp_PULHFeqfcc7NUb.YGVXW.gif">
+</div>
+<!-- /#srchBox -->
+<!-- /spHeader --></div>
+<!--[SP]-->
+
+
+<div class="topicPath">
+  <ul>
+    <li><a href="http://www.jrkyushu.co.jp/">JR九州トップページ</a>&nbsp;&gt;&nbsp;</li>
+    <li><a href="http://www.jrkyushu.co.jp/fare/">列車予約/時刻・運賃検索</a>&nbsp;&gt;&nbsp;</li>
+    <li>割引きっぷ検索結果</li>
+  </ul>
+</div>
+
+<!--==container==-->
+<div id="jkContainer">
+
+    <h2 class="title legacy"><span>割引きっぷ検索結果</span></h2>
+
+    <div id="jkContents" class="nStyle"> 
+        <div class="contTop"> 
+            <div class="formBox">
+ 
+                                <p class="case">該当するきっぷが<span class="sys_total_hits">66件</span>見つかりました。</p>
+                
+
+    
+                
+                <div class="naviBox">
+                    <ul class="navi sys_pagination">
+
+<li class="num active"><a href="http://jrkyushu-kippu.jp/fare/ticket/list?page=1">1</a></li><li class="num"><a href="http://jrkyushu-kippu.jp/fare/ticket/list?page=2">2</a></li><li class="num"><a href="http://jrkyushu-kippu.jp/fare/ticket/list?page=3">3</a></li><li class="num"><a href="http://jrkyushu-kippu.jp/fare/ticket/list?page=4">4</a></li><li class="num"><a href="http://jrkyushu-kippu.jp/fare/ticket/list?page=5">5</a></li>
+<li class="next"><a href="http://jrkyushu-kippu.jp/fare/ticket/list?page=2"><img src="/fare/img/search/next.gif" /></a></li>
+</ul>                </div>
+
+                <div class="sys_search_result">                                <div class="explain sys_search_item">
+                    <h3><span class="sys_ticket_name">ガチきっぷ　平成28年3月～4月ご利用分</span></h3>
+                    <ul class="list">
+                                                                        <li class="red sys_sales_limit">3日前まで購入可</li>
+                                                                                                                                                                                                                                                                                                                                                                                                                        
+                                                                        <li class="white sys_ticket_type">片道</li>
+                                                
+                                                                    </ul>                    <div class="division">
+                        <p class="text sys_caption">18歳から24歳限定！！3日前までの購入で九州内の主要都市間がおトクにご利用いただけるきっぷです。</p>
+                        <dl>
+                                                        <dd>　</dd>
+                                                    </dl>
+                        <table>
+                            <tr><th>利用期間</th><td class="sys_use_period">2016年3月1日～2016年4月3日</td></tr>
+                            <tr><th>販売期間</th><td class="sys_sales_period">2016年2月1日～2016年3月31日</td></tr>
+                            <tr><th>ご利用除外日</th><td class="sys_no_use_day_caption"></td></tr>
+                        </table>
+
+                                                <p class="detail"><a class="sys_detail_link" target="_blank" href="http://jrkyushu-kippu.jp/fare/ticket/197">詳細情報を見る</a></p>
+                                            </div>                </div>                                <div class="explain sys_search_item">
+                    <h3><span class="sys_ticket_name">列車限定！九州ネット早特14</span></h3>
+                    <ul class="list">
+                                                                        <li class="red sys_sales_limit">14日前まで購入可</li>
+                                                                                                <li class="red sys_sales_method">ネット限定</li>
+                                                                                                                                                                                                <li class="red sys_unchangeable">変更不可</li>
+                                                                                                                                                <li class="red sys_period_limit">期間限定</li>
+                                                                                                <li class="red sys_train_limit">列車限定</li>
+                                                                                                <li class="red sys_seat_limit">席数限定</li>
+                        
+                                                                        <li class="white sys_ticket_type">片道</li>
+                                                
+                                                                    </ul>                    <div class="division">
+                        <p class="text sys_caption">14日前までのネット予約で博多～鹿児島中央間がおトク！！</p>
+                        <dl>
+                                                        <dd>　</dd>
+                                                    </dl>
+                        <table>
+                            <tr><th>利用期間</th><td class="sys_use_period">2015年12月4日～2016年2月29日</td></tr>
+                            <tr><th>販売期間</th><td class="sys_sales_period">2015年11月4日～2016年2月15日</td></tr>
+                            <tr><th>ご利用除外日</th><td class="sys_no_use_day_caption">2015年12月25日～2016年1月10日</td></tr>
+                        </table>
+
+                                                <p class="detail"><a class="sys_detail_link" target="_blank" href="http://www.jrkyushu.co.jp/tabi/hayatoku14/index.jsp">詳細情報を見る</a></p>
+                                            </div>                </div>                                <div class="explain sys_search_item">
+                    <h3><span class="sys_ticket_name">お買い物往復きっぷ</span></h3>
+                    <ul class="list">
+                                                                                                                                                                        <li class="red sys_day_ticket">当日購入可</li>
+                                                                                                                                                                                                                                                                                                                        
+                                                                        <li class="white sys_ticket_type">往復JR＋利用券</li>
+                                                
+                                                                    </ul>                    <div class="division">
+                        <p class="text sys_caption">門司港・小倉～博多間の在来線特急列車の自由席の往復JR券とアミュプラザ等のお買い物お食事利用券1,000円分がセットになった割引きっぷです。</p>
+                        <dl>
+                                                        <dd>　</dd>
+                                                    </dl>
+                        <table>
+                            <tr><th>利用期間</th><td class="sys_use_period">～2016年3月27日</td></tr>
+                            <tr><th>販売期間</th><td class="sys_sales_period">～2016年3月27日</td></tr>
+                            <tr><th>ご利用除外日</th><td class="sys_no_use_day_caption">平日（土曜日、日曜日、祝日、4月25日～5月6日、12月26日～1月3日はご利用になれます。）</td></tr>
+                        </table>
+
+                                                <p class="detail"><a class="sys_detail_link" target="_blank" href="http://jrkyushu-kippu.jp/fare/ticket/93">詳細情報を見る</a></p>
+                                            </div>                </div>                                <div class="explain sys_search_item">
+                    <h3><span class="sys_ticket_name">つばめ限定！九州ネット早特7</span></h3>
+                    <ul class="list">
+                                                                        <li class="red sys_sales_limit">7日前まで購入可</li>
+                                                                                                <li class="red sys_sales_method">ネット限定</li>
+                                                                                                                                                                                                <li class="red sys_unchangeable">変更不可</li>
+                                                                                                                                                                                                <li class="red sys_train_limit">列車限定</li>
+                                                                        
+                                                                        <li class="white sys_ticket_type">片道</li>
+                                                
+                                                                    </ul>                    <div class="division">
+                        <p class="text sys_caption">7日前までに九州新幹線「つばめ」を予約すると博多&hArr;熊本間が期間・席数限定で 片道からおトクです！ </p>
+                        <dl>
+                                                        <dd>　</dd>
+                                                    </dl>
+                        <table>
+                            <tr><th>利用期間</th><td class="sys_use_period">通年</td></tr>
+                            <tr><th>販売期間</th><td class="sys_sales_period">通年</td></tr>
+                            <tr><th>ご利用除外日</th><td class="sys_no_use_day_caption"></td></tr>
+                        </table>
+
+                                                <p class="detail"><a class="sys_detail_link" target="_blank" href="http://jrkyushu-kippu.jp/fare/ticket/194">詳細情報を見る</a></p>
+                                            </div>                </div>                                <div class="explain sys_search_item">
+                    <h3><span class="sys_ticket_name">九州ネット早特7</span></h3>
+                    <ul class="list">
+                                                                        <li class="red sys_sales_limit">7日前まで購入可</li>
+                                                                                                <li class="red sys_sales_method">ネット限定</li>
+                                                                                                                                                                                                <li class="red sys_unchangeable">変更不可</li>
+                                                                                                                                                                                                                                                <li class="red sys_seat_limit">席数限定</li>
+                        
+                                                                        <li class="white sys_ticket_type">片道</li>
+                                                
+                                                                    </ul>                    <div class="division">
+                        <p class="text sys_caption">7日前までの予約で博多&hArr;熊本/鹿児島中央間が席数限定で 片道からおトクです！ </p>
+                        <dl>
+                                                        <dd>　</dd>
+                                                    </dl>
+                        <table>
+                            <tr><th>利用期間</th><td class="sys_use_period">通年</td></tr>
+                            <tr><th>販売期間</th><td class="sys_sales_period">通年</td></tr>
+                            <tr><th>ご利用除外日</th><td class="sys_no_use_day_caption"></td></tr>
+                        </table>
+
+                                                <p class="detail"><a class="sys_detail_link" target="_blank" href="http://jrkyushu-kippu.jp/fare/ticket/5">詳細情報を見る</a></p>
+                                            </div>                </div>                                <div class="explain sys_search_item">
+                    <h3><span class="sys_ticket_name">九州ネット早特3</span></h3>
+                    <ul class="list">
+                                                                        <li class="red sys_sales_limit">3日前まで購入可</li>
+                                                                                                <li class="red sys_sales_method">ネット限定</li>
+                                                                                                                                                                                                                                                                                                                                                                                                <li class="red sys_seat_limit">席数限定</li>
+                        
+                                                                        <li class="white sys_ticket_type">片道</li>
+                                                
+                                                                    </ul>                    <div class="division">
+                        <p class="text sys_caption">3日前までの予約で九州新幹線・九州内の特急列車のご利用に便利なネット限定きっぷです。</p>
+                        <dl>
+                                                        <dd>　</dd>
+                                                    </dl>
+                        <table>
+                            <tr><th>利用期間</th><td class="sys_use_period">通年</td></tr>
+                            <tr><th>販売期間</th><td class="sys_sales_period">通年</td></tr>
+                            <tr><th>ご利用除外日</th><td class="sys_no_use_day_caption"></td></tr>
+                        </table>
+
+                                                <p class="detail"><a class="sys_detail_link" target="_blank" href="http://jrkyushu-kippu.jp/fare/ticket/1">詳細情報を見る</a></p>
+                                            </div>                </div>                                <div class="explain sys_search_item">
+                    <h3><span class="sys_ticket_name">九州ネットきっぷ</span></h3>
+                    <ul class="list">
+                                                                                                                        <li class="red sys_sales_method">ネット限定</li>
+                                                                                                <li class="red sys_day_ticket">当日購入可</li>
+                                                                                                                                                                                                                                                                                                                        
+                                                                        <li class="white sys_ticket_type">片道</li>
+                                                
+                                                                    </ul>                    <div class="division">
+                        <p class="text sys_caption">受取前で出発前なら何度でも変更できる九州新幹線・九州内の特急列車のご利用に便利なネット限定きっぷです。</p>
+                        <dl>
+                                                        <dd>　</dd>
+                                                    </dl>
+                        <table>
+                            <tr><th>利用期間</th><td class="sys_use_period">通年</td></tr>
+                            <tr><th>販売期間</th><td class="sys_sales_period">通年</td></tr>
+                            <tr><th>ご利用除外日</th><td class="sys_no_use_day_caption"></td></tr>
+                        </table>
+
+                                                <p class="detail"><a class="sys_detail_link" target="_blank" href="http://jrkyushu-kippu.jp/fare/ticket/123">詳細情報を見る</a></p>
+                                            </div>                </div>                                <div class="explain sys_search_item">
+                    <h3><span class="sys_ticket_name">九州新幹線２枚きっぷ</span></h3>
+                    <ul class="list">
+                                                                                                                                                                        <li class="red sys_day_ticket">当日購入可</li>
+                                                                                                                                                                                                                                                                                                                        
+                                                                        <li class="white sys_ticket_type">回数券</li>
+                                                
+                                                                    </ul>                    <div class="division">
+                        <p class="text sys_caption">九州新幹線を利用してビジネスに観光に大変おトクな2枚つづりの回数券です。</p>
+                        <dl>
+                                                        <dd>　</dd>
+                                                    </dl>
+                        <table>
+                            <tr><th>利用期間</th><td class="sys_use_period">通年</td></tr>
+                            <tr><th>販売期間</th><td class="sys_sales_period">通年</td></tr>
+                            <tr><th>ご利用除外日</th><td class="sys_no_use_day_caption"></td></tr>
+                        </table>
+
+                                                <p class="detail"><a class="sys_detail_link" target="_blank" href="http://jrkyushu-kippu.jp/fare/ticket/10">詳細情報を見る</a></p>
+                                            </div>                </div>                                <div class="explain sys_search_item">
+                    <h3><span class="sys_ticket_name">九州新幹線日帰り２枚きっぷ</span></h3>
+                    <ul class="list">
+                                                                                                                                                                        <li class="red sys_day_ticket">当日購入可</li>
+                                                                                                                                                                                                                                                                                                                        
+                                                                        <li class="white sys_ticket_type">回数券</li>
+                                                
+                                                                    </ul>                    <div class="division">
+                        <p class="text sys_caption">九州新幹線（自由席）を当日中の往復や2名さまの片道がおトクにご利用できる2枚つづりの回数券です。（有効期間は1日間）</p>
+                        <dl>
+                                                        <dd>　</dd>
+                                                    </dl>
+                        <table>
+                            <tr><th>利用期間</th><td class="sys_use_period">通年</td></tr>
+                            <tr><th>販売期間</th><td class="sys_sales_period">通年</td></tr>
+                            <tr><th>ご利用除外日</th><td class="sys_no_use_day_caption"></td></tr>
+                        </table>
+
+                                                <p class="detail"><a class="sys_detail_link" target="_blank" href="http://jrkyushu-kippu.jp/fare/ticket/9">詳細情報を見る</a></p>
+                                            </div>                </div>                                <div class="explain sys_search_item">
+                    <h3><span class="sys_ticket_name">Ｂ＆Ｓみやざきネットきっぷ</span></h3>
+                    <ul class="list">
+                                                                                                                        <li class="red sys_sales_method">ネット限定</li>
+                                                                                                <li class="red sys_day_ticket">当日購入可</li>
+                                                                                                                                                                                                                                                                                                                        
+                                                                        <li class="white sys_ticket_type">片道</li>
+                                                
+                                                                    </ul>                    <div class="division">
+                        <p class="text sys_caption">福岡市内～宮崎間の新幹線・Ｂ＆Ｓみやざきが片道からおトクなネット限定のきっぷです。</p>
+                        <dl>
+                                                        <dd>　</dd>
+                                                    </dl>
+                        <table>
+                            <tr><th>利用期間</th><td class="sys_use_period">通年</td></tr>
+                            <tr><th>販売期間</th><td class="sys_sales_period">通年</td></tr>
+                            <tr><th>ご利用除外日</th><td class="sys_no_use_day_caption"></td></tr>
+                        </table>
+
+                                                <p class="detail"><a class="sys_detail_link" target="_blank" href="http://jrkyushu-kippu.jp/fare/ticket/8">詳細情報を見る</a></p>
+                                            </div>                </div>                                <div class="explain sys_search_item">
+                    <h3><span class="sys_ticket_name">２枚きっぷ（自由席）</span></h3>
+                    <ul class="list">
+                                                                                                                                                                        <li class="red sys_day_ticket">当日購入可</li>
+                                                                                                                                                                                                                                                                                                                        
+                                                                        <li class="white sys_ticket_type">回数券</li>
+                                                
+                                                                    </ul>                    <div class="division">
+                        <p class="text sys_caption">ビジネスに観光に大変おトクな2枚つづりの回数券です。</p>
+                        <dl>
+                                                        <dd>　</dd>
+                                                    </dl>
+                        <table>
+                            <tr><th>利用期間</th><td class="sys_use_period">通年</td></tr>
+                            <tr><th>販売期間</th><td class="sys_sales_period">通年</td></tr>
+                            <tr><th>ご利用除外日</th><td class="sys_no_use_day_caption"></td></tr>
+                        </table>
+
+                                                <p class="detail"><a class="sys_detail_link" target="_blank" href="http://jrkyushu-kippu.jp/fare/ticket/16">詳細情報を見る</a></p>
+                                            </div>                </div>                                <div class="explain sys_search_item">
+                    <h3><span class="sys_ticket_name">２枚きっぷ（指定席）</span></h3>
+                    <ul class="list">
+                                                                                                                                                                        <li class="red sys_day_ticket">当日購入可</li>
+                                                                                                                                                                                                                                                                                                                        
+                                                                        <li class="white sys_ticket_type">回数券</li>
+                                                
+                                                                    </ul>                    <div class="division">
+                        <p class="text sys_caption">ビジネスに観光に大変おトクな2枚つづりの回数券です。</p>
+                        <dl>
+                                                        <dd>　</dd>
+                                                    </dl>
+                        <table>
+                            <tr><th>利用期間</th><td class="sys_use_period">通年</td></tr>
+                            <tr><th>販売期間</th><td class="sys_sales_period">通年</td></tr>
+                            <tr><th>ご利用除外日</th><td class="sys_no_use_day_caption"></td></tr>
+                        </table>
+
+                                                <p class="detail"><a class="sys_detail_link" target="_blank" href="http://jrkyushu-kippu.jp/fare/ticket/17">詳細情報を見る</a></p>
+                                            </div>                </div>                                <div class="explain sys_search_item">
+                    <h3><span class="sys_ticket_name">２枚きっぷ（乗車券）</span></h3>
+                    <ul class="list">
+                                                                                                                                                                        <li class="red sys_day_ticket">当日購入可</li>
+                                                                                                                                                                                                                                                                                                                        
+                                                                        <li class="white sys_ticket_type">回数券</li>
+                                                
+                                                                    </ul>                    <div class="division">
+                        <p class="text sys_caption">ビジネスに観光に大変おトクな2枚つづりの回数券です。</p>
+                        <dl>
+                                                        <dd>　</dd>
+                                                    </dl>
+                        <table>
+                            <tr><th>利用期間</th><td class="sys_use_period">通年</td></tr>
+                            <tr><th>販売期間</th><td class="sys_sales_period">通年</td></tr>
+                            <tr><th>ご利用除外日</th><td class="sys_no_use_day_caption"></td></tr>
+                        </table>
+
+                                                <p class="detail"><a class="sys_detail_link" target="_blank" href="http://jrkyushu-kippu.jp/fare/ticket/14">詳細情報を見る</a></p>
+                                            </div>                </div>                                <div class="explain sys_search_item">
+                    <h3><span class="sys_ticket_name">4枚きっぷ（自由席）</span></h3>
+                    <ul class="list">
+                                                                                                                                                                        <li class="red sys_day_ticket">当日購入可</li>
+                                                                                                                                                                                                                                                                                                                        
+                                                                        <li class="white sys_ticket_type">回数券</li>
+                                                
+                                                                    </ul>                    <div class="division">
+                        <p class="text sys_caption">ビジネスに観光に大変おトクな4枚つづりの回数券です。</p>
+                        <dl>
+                                                        <dd>　</dd>
+                                                    </dl>
+                        <table>
+                            <tr><th>利用期間</th><td class="sys_use_period">通年</td></tr>
+                            <tr><th>販売期間</th><td class="sys_sales_period">通年</td></tr>
+                            <tr><th>ご利用除外日</th><td class="sys_no_use_day_caption"></td></tr>
+                        </table>
+
+                                                <p class="detail"><a class="sys_detail_link" target="_blank" href="http://jrkyushu-kippu.jp/fare/ticket/18">詳細情報を見る</a></p>
+                                            </div>                </div>                                <div class="explain sys_search_item">
+                    <h3><span class="sys_ticket_name">4枚きっぷ（指定席）</span></h3>
+                    <ul class="list">
+                                                                                                                                                                        <li class="red sys_day_ticket">当日購入可</li>
+                                                                                                                                                                                                                                                                                                                        
+                                                                        <li class="white sys_ticket_type">回数券</li>
+                                                
+                                                                    </ul>                    <div class="division">
+                        <p class="text sys_caption">ビジネスに観光に大変おトクな4枚つづりの回数券です。</p>
+                        <dl>
+                                                        <dd>　</dd>
+                                                    </dl>
+                        <table>
+                            <tr><th>利用期間</th><td class="sys_use_period">通年</td></tr>
+                            <tr><th>販売期間</th><td class="sys_sales_period">通年</td></tr>
+                            <tr><th>ご利用除外日</th><td class="sys_no_use_day_caption"></td></tr>
+                        </table>
+
+                                                <p class="detail"><a class="sys_detail_link" target="_blank" href="http://jrkyushu-kippu.jp/fare/ticket/19">詳細情報を見る</a></p>
+                                            </div>                </div>                                </div>
+                <p class="show"><span class="sys_range_total_hits">66</span>件中 <span class="sys_range_first_index">1</span>～<span class="sys_range_last_index">15</span>件を表示</p>
+
+                <div class="naviBox">
+                    <ul class="navi sys_pagination">
+
+<li class="num active"><a href="http://jrkyushu-kippu.jp/fare/ticket/list?page=1">1</a></li><li class="num"><a href="http://jrkyushu-kippu.jp/fare/ticket/list?page=2">2</a></li><li class="num"><a href="http://jrkyushu-kippu.jp/fare/ticket/list?page=3">3</a></li><li class="num"><a href="http://jrkyushu-kippu.jp/fare/ticket/list?page=4">4</a></li><li class="num"><a href="http://jrkyushu-kippu.jp/fare/ticket/list?page=5">5</a></li>
+<li class="next"><a href="http://jrkyushu-kippu.jp/fare/ticket/list?page=2"><img src="/fare/img/search/next.gif" /></a></li>
+</ul>                </div>
+                <p class="kip_img sp"><img src="/fare/img/search/kip_search.gif" alt="おトクなきっぷ検索"></p>
+
+                
+
+                                <div class="section" id="form">
+                    <form method="GET" action="http://jrkyushu-kippu.jp/fare/ticket/list" accept-charset="UTF-8" class="sys_search_form" id="sys_form">
+                    <div class="division">
+                        <div class="leftBox">
+                            <ul>
+                                <li class="departure">
+                                    <span><img src="/fare/img/search/text1.gif" alt="出発エリア"></span>
+                                    <select class="selectStyle" name="departure_area"><option value="" selected="selected">特に指定なし</option><option value="1">福岡エリア</option><option value="2">北九州エリア</option><option value="3">佐賀エリア</option><option value="4">長崎エリア</option><option value="5">大分エリア</option><option value="6">熊本エリア</option><option value="7">宮崎エリア</option><option value="8">鹿児島エリア</option><option value="9">九州外</option></select>                                </li>
+                                <li class="use">
+                                    <span><img src="/fare/img/search/text3.gif" alt="ご利用日"></span>
+                                    <div class="useYear">
+                                        <select tabindex="5" class="searchYear selectStyle" id="trYear" name="use_year"><option value="" selected="selected">--</option><option value="2016">2016</option><option value="2017">2017</option></select>                                        <img src="/img_re/index/ss_year.gif" width="14" height="14" alt="年">
+                                    </div>
+                                    <div class="useMonth">
+                                        <select tabindex="5" class="searchMonth selectStyle" id="trMonth" name="use_month"><option value="" selected="selected">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option></select>                                        <img src="/img_re/index/ss_month.gif" width="14" height="14" alt="月">
+                                    </div>
+                                    <div class="useDay">
+                                        <select tabindex="6" class="searchDay selectStyle" id="trDay" name="use_day"><option value="" selected="selected">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option></select>                                        <img src="/img_re/index/ss_day.gif" width="14" height="14" alt="日">
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>                        <div class="rightBox">
+                            <ul>
+                                <li class="arrival">
+                                    <span><img src="/fare/img/search/text2.gif" alt="到着エリア"></span>
+                                    <select class="selectStyle" name="arrival_area"><option value="" selected="selected">特に指定なし</option><option value="1">福岡エリア</option><option value="2">北九州エリア</option><option value="3">佐賀エリア</option><option value="4">長崎エリア</option><option value="5">大分エリア</option><option value="6">熊本エリア</option><option value="7">宮崎エリア</option><option value="8">鹿児島エリア</option><option value="9">九州外</option></select>                                </li>
+                                <li class="keyword">
+                                    <span><img src="/fare/img/search/text4.gif" alt="関連キーワード"></span>
+                                    <input class="selectStyle" name="keyword" type="text" value="">                                </li>
+                            </ul>
+                        </div>                    </div>
+                                        <p class="more_btn"><a href="" class="alpha close"><img src="/fare/img/search/more_btn.gif" alt="クリック" /></a></p>
+                    
+                                        <div class="division denial" id="add" style="display:none;">
+                                            <ul class="type clearfix">
+                            <li>
+                                <span><img src="/fare/img/search/text5.gif" alt="商品種別"></span>
+                                <select class="selectStyle" name="ticket_kinds"><option value="" selected="selected">特に指定なし</option><option value="1">［インターネット限定］片道割引きっぷ</option><option value="2">［インターネット限定］往復割引きっぷ</option><option value="3">［インターネット限定］本州方面へのおトクなきっぷ</option><option value="4">［駅で買える］片道割引きっぷ</option><option value="5">［駅で買える］往復割引きっぷ</option><option value="6">［駅で買える］回数券（2枚、4枚きっぷなど）</option><option value="7">［駅で買える］観光に便利なきっぷ</option><option value="8">［駅で買える］九州の乗り放題きっぷ</option><option value="9">［駅で買える］往復+グルメ・入場券・イベント券付割引きっぷ</option><option value="10">［駅で買える］乗り放題きっぷ</option><option value="11">［駅で買える］本州方面への割引きっぷ</option><option value="12">［駅で買える］定期券</option><option value="13">［駅で買える］イベント券・入場券</option><optgroup label=" "></optgroup></select>                            </li>
+                            <li>
+                                <span><img src="/fare/img/search/text7.gif" alt="発売期日"></span>
+                                <span class="rdo"><label><input name="day_ticket" type="checkbox" value="1">当日購入可</label></span>
+                            </li>
+                        </ul>
+                        <dl>
+                            <dt><img src="/fare/img/search/text6.gif" alt="きっぷタイプ"></dt>
+                            <dd>
+                                <ul>
+                                                                        <li class="kata">
+                                    <label>
+                                                                        <input name="ticket_type[]" type="checkbox" value="1">片道                                                                        </label>
+                                    </li>
+                                                                        <li class="ouhuku">
+                                    <label>
+                                                                        <input name="ticket_type[]" type="checkbox" value="2">往復                                                                        </label>
+                                    </li>
+                                                                        <li class="num">
+                                    <label>
+                                                                        <input name="ticket_type[]" type="checkbox" value="3">回数券                                                                        </label>
+                                    </li>
+                                                                        <li class="teiki">
+                                    <label>
+                                                                        <input name="ticket_type[]" type="checkbox" value="13">定期券                                                                        </label>
+                                    </li>
+                                                                        <li class="nori">
+                                    <label>
+                                                                        <input name="ticket_type[]" type="checkbox" value="5">乗り放題                                                                        </label>
+                                    </li>
+                                                                        <li class="free">
+                                    <label>
+                                                                        <input name="ticket_type[]" type="checkbox" value="4">往復JR＋着地フリー                                                                        </label>
+                                    </li>
+                                                                        <li class="type">
+                                    <label>
+                                                                        <input name="ticket_type[]" type="checkbox" value="6">一周タイプ                                                                        </label>
+                                    </li>
+                                                                        <li class="enter">
+                                    <label>
+                                                                        <input name="ticket_type[]" type="checkbox" value="11">往復JR＋利用券                                                                        </label>
+                                    </li>
+                                                                        <li class="ship2">
+                                    <label>
+                                                                        <input name="ticket_type[]" type="checkbox" value="9">往復JR＋往復船                                                                        </label>
+                                    </li>
+                                                                        <li class="ship">
+                                    <label>
+                                                                        <input name="ticket_type[]" type="checkbox" value="8">往復JR＋往復高速船                                                                        </label>
+                                    </li>
+                                                                        <li class="event3">
+                                    <label>
+                                                                        <input name="ticket_type[]" type="checkbox" value="14">往復JR＋往復バス＋利用券                                                                        </label>
+                                    </li>
+                                                                        <li class="event">
+                                    <label>
+                                                                        <input name="ticket_type[]" type="checkbox" value="7">利用券                                                                        </label>
+                                    </li>
+                                                                    </ul>
+                            </dd>
+                        </dl>
+                    </div>
+                    <p class="search_btn"><a href="" class="alpha"><img src="/fare/img/search/search_btn.gif" alt="検索"></a></p>
+                                        </form>                </div>
+            </div>        </div>    </div>
+    <div class="pc" id="pageTop">
+        <p><a href="#pageTop" class="scroll"><img src="/common_re/img/pagetop.png" width="50" height="50" alt="PAGE TOP"></a></p>
+    </div>
+</div>
+
+<div id="jkFooter">
+<div class="fTop">
+<p id="fLogo"><img src="/common_re/img/footer_logo.gif" width="75" height="60" alt="JR九州"></p>
+<div class="fNav">
+<dl class="fNavTri">
+<dt>JR九州 各支社</dt>
+<dd>
+<ul class="fNav01">
+<li><a href="http://www.jrkyushu.co.jp/nagasaki/" target="_blank">長崎支社</a> <img src="/common_re/img/icn_blank.gif" width="12" height="10" alt=""></li>
+<li><a href="http://www.jrkyushu.co.jp/kagoshima/index.html" target="_blank">鹿児島支社</a> <img src="/common_re/img/icn_blank.gif" width="12" height="10" alt=""></li>
+</ul>
+<ul class="fNav02">
+<li><a href="http://www.jrkyushu.co.jp/ooita/index.html" target="_blank">大分支社</a> <img src="/common_re/img/icn_blank.gif" width="12" height="10" alt=""></li>
+<li><a href="http://www.jrkyushu.co.jp/tokyo/index.html" target="_blank">東京支社</a> <img src="/common_re/img/icn_blank.gif" width="12" height="10" alt=""></li>
+</ul>
+<ul class="fNav03">
+<li><a href="http://www.jrkyushu.co.jp/kumamoto/index.html" target="_blank">熊本支社</a> <img src="/common_re/img/icn_blank.gif" width="12" height="10" alt=""></li>
+<li><a href="http://www.jrkyushu.cn/" target="_blank">上海事務所</a> <img src="/common_re/img/icn_blank.gif" width="12" height="10" alt=""></li>
+</ul>
+</dd>
+</dl>
+<dl class="fNavFr">
+<dt>JR九州企業情報</dt>
+<dd>
+<ul class="fNav11">
+<li><a href="http://www.jrkyushu.co.jp/profile/outline/profile.jsp">会社概要</a></li>
+<li><a href="http://www.jrkyushu.co.jp/sizai/index.jsp">調達情報</a></li>
+</ul>
+<ul class="fNav12">
+<li><a href="http://www.jrkyushu.co.jp/recruit/" target="_blank">採用情報</a> <img src="/common_re/img/icn_blank.gif" width="12" height="10" alt=""></li>
+<li><a href="http://www.jrkyushu.co.jp/develop/press_bk.jsp">ニュースリリース</a></li>
+</ul>
+<ul class="fNav13">
+<li><a href="http://www.jrkyushu.co.jp/profile/zaimu.jsp">財務情報</a></li>
+<li><a href="http://www.jrkyushu.co.jp/profile/index.jsp#suggest">おすすめリンク</a></li>
+</ul>
+</dd>
+</dl>
+</div>
+</div>
+
+<div class="fSite">
+<ul>
+<li><a href="http://www.jrkyushu.co.jp/privacy/privacy.jsp">個人情報の取扱について</a> ｜</li>
+<li><a href="http://www.jrkyushu.co.jp/profile/privacy.jsp">個人情報保護方針</a> ｜</li>
+<li><a href="http://www.jrkyushu.co.jp/html/sitemap/index.jsp">サイトマップ</a></li>
+</ul>
+</div>
+
+<div id="copyRight"><p>Copyright(C) Kyushu Railway Company. All Rights Reserved.</p></div>
+</div>
+
+<!--[SP]-->
+<div id="spFooter" class="nStyle">
+	
+	<!--pageTop=-->
+	<p id="pageTop"><a href="#wrap" class="smart"><img src="/smt/images_re/common/pagetop.png" alt="PAGE TOP"></a></p>
+	<!--pageTop-->
+	<p class="logo"><img src="/smt/images_re/common/logo.gif" alt="九州旅客鉄道株式会社"></p>
+	<p class="copyRight">Copyright(C) Kyushu Railway Company.<br />All Rights Reserved.</p>
+	<p class="link pc"><a href="http://www.jrkyushu.co.jp/"><img src="/smt/images_re/common/icon/pc.png" alt="">PCサイトへ</a></p>
+	
+<!-- /spFooter --></div>
+<!--[SP]-->
+
+</div>
+<!--/wrap-->
+
+</body>
+</html>

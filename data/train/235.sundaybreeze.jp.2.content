@@ -1,0 +1,982 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="google-site-verification" content="uZMXHk1ONL9CU7YffJjIndnSVaIEj9AnAwCL9X_Z1pM" />
+  <meta name="keywords" content="競馬,データベース,重賞,G1,レース,馬,厩舎,騎手,予想,結果,競走馬,検索" />
+  <meta http-equiv="content-type" content="text/html; charset=euc-jp" />
+  <meta http-equiv="content-script-type" content="text/javascript; charset=euc-jp" />
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="/style/style.css" type="text/css" media="all" />
+  <script type="text/javascript" src="/style/jquery.js" charset="euc-jp"></script>
+  <script type="text/javascript" src="/style/jscripts.js" charset="euc-jp"></script>
+  <script type="text/javascript" src="/style/js_index.js" charset="euc-jp"></script>
+  <script type="text/javascript" src="/style/modal.js" charset="euc-jp"></script>
+  <meta name="description" content="日本全国すべての競馬(JRA、全地方競馬)のデータベースです。開催情報、レース結果、競走馬の血統データ、競走馬・レースのデータベース検索はもちろん、レースの払戻金や全着順は確定後すぐ更新しています。メンバー登録でお気に入り馬のメール配信、予想大会、POGも開催中！もちろんすべて無料でご利用いただけます。" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@sunday_breeze" />
+  <meta name="twitter:title" content="競馬情報データベース The Sunday Breeze" />
+  <meta name="twitter:creator" content="@sunday_breeze" />
+  <meta name="twitter:domain" content="www.sundaybreeze.jp" />
+  <meta name="twitter:description" content="日本全国すべての競馬(JRA、全地方競馬)のデータベースです。開催情報、レース結果、競走馬の血統データ、競走馬・レースのデータベース検索はもちろん、レースの払戻金や全着順は確定後すぐ更新しています。メンバー登録でお気に入り馬のメール配信、予想大会、POGも開催中！もちろんすべて無料でご利用いただけます。" />
+  <meta name="twitter:image" content="http://www.sundaybreeze.jp/images/cap/index.jpg" />
+  <title>競馬情報データベース The Sunday Breeze</title>
+</head>
+<body>
+<div id="modal">
+<div class="background"></div>
+<div class="container"></div>
+</div>
+<div id="wrapper">
+  <div id="title">
+    <div id="skip">こちらは競馬情報データベース The Sunday Breezeです。<br /><a href="#main">全ページ共通メニューを飛ばす</a></div>
+    <noscript>
+      <img src="/images/topimg_noscript.png" id="topimagenoscript" alt="Java Scriptが有効になっていません。(一応)動作しますが、有効にしていただくことにより、より快適にご覧いただくことができます。可能であれば、お手数ですがJava Scriptを有効にした上でページを再読込してください。" />
+    </noscript>
+    <form action="/results.html" method="get">
+      <input type="text" class="search-text header_search" name="q" value="馬名・レース名" /><input style="background: url('/images/btnback90.gif'); border: 0; width:90px; height: 25px;" type="submit" value="" />&nbsp;
+    </form>
+    <div class="topinfo text-c main_s linewide">
+    <span class="moji_r">【お詫び】</span>サーバの負荷が高くなり<br />
+    表示に時間がかかることがあります。<br />
+    ご迷惑をおかけし申し訳ありません。<br />
+    現在の負荷レベル(目安)：<span class="moji_b main_l">1</span>(やや遅い)/5
+    </div>
+  </div>
+  <div id="menubar">
+    <ul class="menu">
+      <li class="off" onmouseover="this.className='on waku1'" onmouseout="this.className='off'"><a href="/index.html">トップ</a></li>
+      <li class="off" onmouseover="this.className='on waku2'" onmouseout="this.className='off'">このサイトについて
+        <ul class="hd">
+          <li><a href="/readme.html">はじめにお読みください</a></li>
+          <li><a href="/sitemap.html">サイトマップ</a></li>
+          <li><a href="/contact.html">管理人へ連絡</a></li>
+        </ul>
+      </li>
+      <li class="off" onmouseover="this.className='on waku3'" onmouseout="this.className='off'"><a href="/calendar.html">レースカレンダー(出走馬・結果)</a></li>
+      <li class="off" onmouseover="this.className='on waku4'" onmouseout="this.className='off'">データベース検索
+        <ul class="hd">
+          <li><a href="/h_search.html">競走馬を検索</a></li>
+          <li><a href="/r_search.html">レースを検索</a></li>
+          <li><a href="/p_search.html">騎手・調教師を検索</a></li>
+        </ul>
+      </li>
+      <li class="off" onmouseover="this.className='on waku5'" onmouseout="this.className='off'">SBメンバーズ
+        <ul class="hd">
+          <li><a href="http://members.sundaybreeze.jp/">SBメンバーズって何？</a></li>
+          <li><a href="http://members.sundaybreeze.jp/mypage.html">メンバーログイン(マイページ)</a></li>
+        </ul>
+      </li>
+      <!-- li class="off" onmouseover="this.className='on waku6'" onmouseout="this.className='off'"><a href="/sitemap.html">サイトマップ</a></li -->
+      <li class="off" onmouseover="this.className='on waku6'" onmouseout="this.className='off'"><a href="http://serverroom.sundaybreeze.jp/" target="_blank">管理人ブログ</a>
+        <ul class="hd">
+          <li><div style="font-size:x-small">[最新ネタ]<br /><span style="font-size:small;font-weight:bold;">データベースの更新系/参照系のすべての切り分けが完了。</span><br />(2016年1月22日21時56分更新)</div></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div id="content">
+    この「<h4>The Sunday Breeze<span class="main_s">(ザ サンデーブリーズ)</span></h4>」は<span class="moji_b">組織・団体</span>ではなく
+    <span class="moji_b">ただの競馬好きの管理人</span>が<span class="moji_r">自宅にあるサーバ</span>で<span class="main_s">こっそりひっそり</span>運営している<br />
+    <span class="moji_r">日本全国すべての競馬(中央競馬(JRA)・全地方競馬)のレース情報・競走馬情報を扱うデータベースサイト</span><span class="main_s">です。</span><br />
+    <div class="main text-c">
+<!-- 特別お知らせあればここに -->
+    <!-- div class="linewide main_l moji_r" style="border:3px dotted #f00">
+    【お詫び】サーバ障害によるデータベース破損のため<br />
+    データが正常に表示・更新できない状態になっています。<br />
+    ご迷惑をおかけし申し訳ありません。<br /><br />
+     復旧見込みは今のところ未定です。</div -->
+    <!-- a href="/r_detail_201511294106.html"><img src="/images_com/kammuri.jpg" alt="「Sunday Breeze特別」ありがとうございました！" style="border: 1px solid #000" /></a><br / -->
+    <img src="/images/newyear.png" alt="あけましておめでとうございます。" style="border: 1px solid #000" /><br />
+    <!-- a href="http://members.sundaybreeze.jp/pog2015/"><img src="/images/titlepog2015.jpg" alt="Sunday Breeze POG！新シーズン4月8日指名馬登録受付開始" style="border: 1px solid #000; width:840px" /><br />4月8日より新シーズン指名馬登録受付を開始しました！</a -->
+    </div>
+    <div class="mainpart">
+      <img src="/images/menu-kaisai.jpg" alt="今週の開催情報" /><br /><br />
+      <ul class="tab">
+        <li class="tab"><a href="#tab20160122">1月22日(金)</a></li>
+        <li class="tab"><a href="#tab20160123">1月23日(<span class="moji_b">土</span>)</a></li>
+        <li class="tab"><a href="#tab20160124">1月24日(<span class="moji_r">日</span>)</a></li>
+        <li class="tab"><a href="#tab20160125">1月25日(月)</a></li>
+        <li class="tab"><a href="#tab20160127">1月27日(水)</a></li>
+      </ul>
+      <div class="loading"></div>
+      <ul class="panel line13">
+        <li id="tab20160122"><a name="tab20160122" class="skip">1月22日(金)の特別レース</a>
+          <dl>
+          <dt>
+            <a href="/racemonth_2016012229.html" class="bold">
+              船橋競馬
+            </a>
+                                                &nbsp;全結果更新済み
+&nbsp;&nbsp;
+        
+
+          </dt>
+          <dd class="entry" style="margin:0 0 15px 15px;">
+            <!-- ここから特別レース情報 -->
+            <h3>9レース</h3>
+            <h2>
+            <a href="/entry_201601222909.html">初富特別</a></h2>
+            (C1・ダート1600m)<br />
+            <h3>10レース</h3>
+            <h2>
+            <a href="/entry_201601222910.html">鯛ノ浦特別</a></h2>
+            (B1・ダート1600m)<br />
+          <!-- ここまで特別レース情報 -->
+          </dd>
+          <dt>
+            <a href="/racemonth_2016012234.html" class="bold">
+              名古屋競馬
+            </a>
+                                                &nbsp;全結果更新済み
+&nbsp;&nbsp;
+        
+
+          </dt>
+          <dd class="entry" style="margin:0 0 15px 15px;">
+            <!-- ここから特別レース情報 -->
+            <h3>9レース</h3>
+            <h2>
+            <a href="/entry_201601223409.html">葉牡丹特別</a></h2>
+            (C・ダート1400m)<br />
+            <h3>10レース</h3>
+            <h2>
+            <a href="/entry_201601223410.html">ガーネットオープン</a></h2>
+            (オープン・ダート1600m)<br />
+          <!-- ここまで特別レース情報 -->
+          </dd>
+          </dl>
+        </li>
+        <li id="tab20160123"><a name="tab20160123" class="skip">1月23日(<span class="moji_b">土</span>)の特別レース</a>
+          <dl>
+          <dt>
+            <a href="/racemonth_2016012306.html" class="bold">
+              <img src="/images_com/ico-jra.png" alt="JRA" />1回中山競馬7日目            </a>
+                                                &nbsp;馬番付出馬表更新済み
+&nbsp;&nbsp;
+                    
+
+
+          </dt>
+          <dd class="entry" style="margin:0 0 15px 15px;">
+            <!-- ここから特別レース情報 -->
+            <h3>9レース</h3>
+            <h2>
+            <a href="/entry_201601230609.html">若竹賞</a></h2>
+            (500万下・芝1800m)<br />
+            <h3>10レース</h3>
+            <h2>
+            <a href="/entry_201601230610.html">初霞賞</a></h2>
+            (1000万下・ダート1200m)<br />
+            <h3>11レース</h3>
+            <h2>
+            <a href="/entry_201601230611.html">アレキサンドライトステークス</a></h2>
+            (1600万下・ダート1800m)<br />
+          <!-- ここまで特別レース情報 -->
+          </dd>
+          <dt>
+            <a href="/racemonth_2016012307.html" class="bold">
+              <img src="/images_com/ico-jra.png" alt="JRA" />1回中京競馬3日目            </a>
+                                                &nbsp;馬番付出馬表更新済み
+&nbsp;&nbsp;
+                    
+
+
+          </dt>
+          <dd class="entry" style="margin:0 0 15px 15px;">
+            <!-- ここから特別レース情報 -->
+            <h3>10レース</h3>
+            <h2>
+            <a href="/entry_201601230710.html">なずな賞</a></h2>
+            (500万下・芝1400m)<br />
+            <h3>11レース</h3>
+            <h2>
+            <a href="/entry_201601230711.html">中京スポニチ賞</a></h2>
+            (1000万下・ダート1900m)<br />
+            <h3>12レース</h3>
+            <h2>
+            <a href="/entry_201601230712.html">西尾特別</a></h2>
+            (500万下・芝2000m)<br />
+          <!-- ここまで特別レース情報 -->
+          </dd>
+          <dt>
+            <a href="/racemonth_2016012308.html" class="bold">
+              <img src="/images_com/ico-jra.png" alt="JRA" />1回京都競馬7日目            </a>
+                                                &nbsp;馬番付出馬表更新済み
+&nbsp;&nbsp;
+                    
+
+
+          </dt>
+          <dd class="entry" style="margin:0 0 15px 15px;">
+            <!-- ここから特別レース情報 -->
+            <h3>9レース</h3>
+            <h2>
+            <a href="/entry_201601230809.html">祇園特別</a></h2>
+            (1000万下・芝1200m)<br />
+            <h3>10レース</h3>
+            <h2>
+            <a href="/entry_201601230810.html">若駒ステークス</a></h2>
+            (オープン・芝2000m)<br />
+            <h3>11レース</h3>
+            <h2>
+            <a href="/entry_201601230811.html">太秦ステークス</a></h2>
+            (オープン・ダート1200m)<br />
+          <!-- ここまで特別レース情報 -->
+          </dd>
+          <dt>
+            <a href="/racemonth_2016012313.html" class="bold">
+              帯広競馬
+            </a>
+                        <img src="/images/ico-hakubo.png" alt="はくぼ競馬" />                        &nbsp;馬番付出馬表更新済み
+&nbsp;&nbsp;
+                    
+
+
+          </dt>
+          <dd class="entry" style="margin:0 0 15px 15px;">
+            <!-- ここから特別レース情報 -->
+            <h3>10レース</h3>
+            <h2>
+            <a href="/entry_201601231310.html">吹雪特別</a></h2>
+            (B2・ダート200m)<br />
+          <!-- ここまで特別レース情報 -->
+          </dd>
+          <dt>
+            <a href="/racemonth_2016012342.html" class="bold">
+              佐賀競馬
+            </a>
+                        <img src="/images/ico-hakubo.png" alt="はくぼ競馬" />            <img src="/images/ico-grade.png" alt="重賞あり" />            &nbsp;馬番付出馬表更新済み
+&nbsp;&nbsp;
+                    
+
+
+          </dt>
+          <dd class="entry" style="margin:0 0 15px 15px;">
+            <!-- ここから特別レース情報 -->
+            <h3>11レース</h3>
+            <h2>
+            <a href="/entry_201601234211.html">第4回筑紫野賞</a></h2>
+            (<span class="G2">佐賀S2</span>・ダート1750m)<br />
+          <!-- ここまで特別レース情報 -->
+          </dd>
+          </dl>
+        </li>
+        <li id="tab20160124"><a name="tab20160124" class="skip">1月24日(<span class="moji_r">日</span>)の特別レース</a>
+          <dl>
+          <dt>
+            <a href="/racemonth_2016012406.html" class="bold">
+              <img src="/images_com/ico-jra.png" alt="JRA" />1回中山競馬8日目            </a>
+                                    <img src="/images/ico-grade.png" alt="重賞あり" />            &nbsp;馬番なし出馬表更新済み
+&nbsp;&nbsp;
+                    
+
+
+          </dt>
+          <dd class="entry" style="margin:0 0 15px 15px;">
+            <!-- ここから特別レース情報 -->
+            <h3>9レース</h3>
+            <h2>
+            <a href="/entry_201601240609.html">初茜賞</a></h2>
+            (1000万下・ダート1800m)<br />
+            <h3>10レース</h3>
+            <h2>
+            <a href="/entry_201601240610.html">東雲賞</a></h2>
+            (1000万下・芝2000m)<br />
+            <h3>11レース</h3>
+            <h2>
+            <a href="/entry_201601240611.html">第57回アメリカジョッキークラブカップ</a></h2>
+            (<span class="G2">G2</span>・芝2200m)<br />
+          <!-- ここまで特別レース情報 -->
+          </dd>
+          <dt>
+            <a href="/racemonth_2016012407.html" class="bold">
+              <img src="/images_com/ico-jra.png" alt="JRA" />1回中京競馬4日目            </a>
+                                    <img src="/images/ico-grade.png" alt="重賞あり" />            &nbsp;馬番なし出馬表更新済み
+&nbsp;&nbsp;
+                    
+
+
+          </dt>
+          <dd class="entry" style="margin:0 0 15px 15px;">
+            <!-- ここから特別レース情報 -->
+            <h3>10レース</h3>
+            <h2>
+            <a href="/entry_201601240710.html">蒲郡特別</a></h2>
+            (500万下・芝1200m)<br />
+            <h3>11レース</h3>
+            <h2>
+            <a href="/entry_201601240711.html">第33回東海テレビ杯東海ステークス</a></h2>
+            (<span class="G2">G2</span>・ダート1800m)<br />
+            <h3>12レース</h3>
+            <h2>
+            <a href="/entry_201601240712.html">知立特別</a></h2>
+            (1000万下・芝1400m)<br />
+          <!-- ここまで特別レース情報 -->
+          </dd>
+          <dt>
+            <a href="/racemonth_2016012408.html" class="bold">
+              <img src="/images_com/ico-jra.png" alt="JRA" />1回京都競馬8日目            </a>
+                                                &nbsp;馬番なし出馬表更新済み
+&nbsp;&nbsp;
+                    
+
+
+          </dt>
+          <dd class="entry" style="margin:0 0 15px 15px;">
+            <!-- ここから特別レース情報 -->
+            <h3>9レース</h3>
+            <h2>
+            <a href="/entry_201601240809.html">睦月賞</a></h2>
+            (1000万下・芝2400m)<br />
+            <h3>10レース</h3>
+            <h2>
+            <a href="/entry_201601240810.html">山科ステークス</a></h2>
+            (1600万下・ダート1200m)<br />
+            <h3>11レース</h3>
+            <h2>
+            <a href="/entry_201601240811.html">石清水ステークス</a></h2>
+            (1600万下・芝1600m)<br />
+          <!-- ここまで特別レース情報 -->
+          </dd>
+          <dt>
+            <a href="/racemonth_2016012442.html" class="bold">
+              佐賀競馬
+            </a>
+                        <img src="/images/ico-hakubo.png" alt="はくぼ競馬" />            <img src="/images/ico-grade.png" alt="重賞あり" />            &nbsp;馬番付出馬表更新済み
+&nbsp;&nbsp;
+                    
+
+
+          </dt>
+          <dd class="entry" style="margin:0 0 15px 15px;">
+            <!-- ここから特別レース情報 -->
+            <h3>10レース</h3>
+            <h2>
+            <a href="/entry_201601244210.html">2016M&Kジョッキーズカップ(第2戦)</a></h2>
+            (B・ダート1800m)<br />
+            <h3>11レース</h3>
+            <h2>
+            <a href="/entry_201601244211.html">第3回鶴見岳賞</a></h2>
+            (<span class="G2">佐賀S2</span>・ダート1400m)<br />
+          <!-- ここまで特別レース情報 -->
+          </dd>
+          </dl>
+        </li>
+        <li id="tab20160125"><a name="tab20160125" class="skip">1月25日(月)の特別レース</a>
+          <dl>
+          <dt>
+            <a href="/racemonth_2016012533.html" class="bold">
+              笠松競馬
+            </a>
+                                                &nbsp;馬番付出馬表更新済み
+&nbsp;&nbsp;
+                    
+
+
+          </dt>
+          <dd class="entry" style="margin:0 0 15px 15px;">
+            <!-- ここから特別レース情報 -->
+            <h3>9レース</h3>
+            <h2>
+            <a href="/entry_201601253309.html">水仙特別B1b</a></h2>
+            (B・ダート1800m)<br />
+            <h3>10レース</h3>
+            <h2>
+            <a href="/entry_201601253310.html">千両特別A3B1a</a></h2>
+            (A・ダート1600m)<br />
+          <!-- ここまで特別レース情報 -->
+          </dd>
+          </dl>
+        </li>
+        <li id="tab20160127"><a name="tab20160127" class="skip">1月27日(水)の特別レース</a>
+          <dl>
+          <dt>
+            <a href="/racemonth_2016012731.html" class="bold">
+              川崎競馬
+            </a>
+                                    <img src="/images/ico-grade.png" alt="重賞あり" />            &nbsp;馬番付出馬表更新済み
+&nbsp;&nbsp;
+                    
+
+
+          </dt>
+          <dd class="entry" style="margin:0 0 15px 15px;">
+            <!-- ここから特別レース情報 -->
+            <h3>11レース</h3>
+            <h2>
+            <a href="/entry_201601273111.html">農林水産大臣賞典 第65回川崎記念</a></h2>
+            (<span class="G1">交流Jpn1</span>・ダート2100m)<br />
+          <!-- ここまで特別レース情報 -->
+          </dd>
+          </dl>
+        </li>
+      </ul>
+      <br />
+      <br />
+      <br />
+<!-- 広告ここから -->
+      <div style="text-align:center">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- メイン中入れ -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:468px;height:60px"
+     data-ad-client="ca-pub-8445978019440145"
+     data-ad-slot="4391781715"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+      </div>
+<!-- 広告ここまで -->
+      <hr />
+      <img src="/images/menu-ranking.jpg" alt="Sunday Breeze 検索ランキング" /><br /><br />
+        <table class="line13" style="border-collapse: collapse;">
+          <tr>
+              <td colspan="2" style="border:none;"><img src="/images/head-h_rank.png" alt="競走馬ランキング" /></td>
+              <td colspan="1" style="border:none;"><img src="/images/head-r_rank.png" alt="レースランキング" /></td></tr>
+          <tr>
+          <td class="bold" style="border-right: dotted 1px #333;border-bottom:dashed 1px #333;padding: 3px;">
+            <span class="head">1位</span>&nbsp;41<span class="main_s">アクセス</span><br />
+            &nbsp;<a href="http://www.sundaybreeze.jp/h_detail_01332a1596c23.html" class="bold">ビービーバーレル</a><span style="font-size:x-small">(牝3歳)</span>
+          </td>
+          <td style="font-size:x-small;border-left:none;border-right: dotted 1px #333;border-bottom: dashed 1px #333;padding: 3px;">
+            <span class="head">11位</span>&nbsp;19<span class="main_s">アクセス</span><br />
+            &nbsp;<a href="http://www.sundaybreeze.jp/h_detail_01332945997c1.html" class="bold">ジュエラー</a><span style="font-size:x-small">(牝3歳)</span>
+          </td>
+          <td style="margin-top:0;border-bottom:dashed 1px #333;">
+            <span class="bold"><span class="head">1位</span>&nbsp;251<span class="main_s">アクセス</span>&nbsp;
+            <a href="/r_detail_201601110611.html">フェアリーS</a></span><br />
+            &nbsp;<span style="font-size:x-small;vertical-align:top">(<a href="/racemonth_2016011106.html">2016年1月11日中山競馬</a>)</span>
+          </td>
+        </tr>
+          <tr>
+          <td class="bold" style="border-right: dotted 1px #333;border-top:dashed 1px #333;border-bottom:dashed 1px #333;padding: 3px;">
+            <span class="head">2位</span>&nbsp;30<span class="main_s">アクセス</span><br />
+            &nbsp;<a href="http://www.sundaybreeze.jp/h_detail_0133036e886f2.html" class="bold">アンクルダイチ</a><span style="font-size:x-small">(牡4歳)</span>
+          </td>
+          <td style="font-size:x-small;border-left:none;border-right: dotted 1px #333;border-top:dashed 1px #333;border-bottom: dashed 1px #333;padding: 3px;">
+            <span class="head">12位</span>&nbsp;19<span class="main_s">アクセス</span><br />
+            &nbsp;<a href="http://www.sundaybreeze.jp/h_detail_013218a1415dc.html" class="bold">[地]ローレルカンタータ</a><img src="/images_com/ico-camera.png" alt="写真あり" /><span style="font-size:x-small">(牡10歳)</span>
+          </td>
+          <td style="margin-top:0;border-top:dashed 1px #333;border-bottom:dashed 1px #333;">
+            <span class="bold"><span class="head">2位</span>&nbsp;250<span class="main_s">アクセス</span>&nbsp;
+            <a href="/r_detail_201601160711.html">愛知杯</a></span><br />
+            &nbsp;<span style="font-size:x-small;vertical-align:top">(<a href="/racemonth_2016011607.html">2016年1月16日中京競馬</a>)</span>
+          </td>
+        </tr>
+          <tr>
+          <td class="bold" style="border-right: dotted 1px #333;border-top:dashed 1px #333;border-bottom:dashed 1px #333;padding: 3px;">
+            <span class="head">3位</span>&nbsp;30<span class="main_s">アクセス</span><br />
+            &nbsp;<a href="http://www.sundaybreeze.jp/h_detail_0132b4db47a12.html" class="bold">ウインクルキラリ</a><img src="/images_com/ico-camera.png" alt="写真あり" /><span style="font-size:x-small">(牝6歳)</span>
+          </td>
+          <td style="font-size:x-small;border-left:none;border-right: dotted 1px #333;border-top:dashed 1px #333;border-bottom: dashed 1px #333;padding: 3px;">
+            <span class="head">13位</span>&nbsp;18<span class="main_s">アクセス</span><br />
+            &nbsp;<a href="http://www.sundaybreeze.jp/h_detail_0132dc4a4a116.html" class="bold">[地]ビートザボーダー</a><img src="/images_com/ico-camera.png" alt="写真あり" /><span style="font-size:x-small">(牝5歳)</span>
+          </td>
+          <td style="margin-top:0;border-top:dashed 1px #333;border-bottom:dashed 1px #333;">
+            <span class="bold"><span class="head">3位</span>&nbsp;237<span class="main_s">アクセス</span>&nbsp;
+            <a href="/r_detail_201601170811.html">日経新春杯</a></span><br />
+            &nbsp;<span style="font-size:x-small;vertical-align:top">(<a href="/racemonth_2016011708.html">2016年1月17日京都競馬</a>)</span>
+          </td>
+        </tr>
+          <tr>
+          <td class="bold" style="border-right: dotted 1px #333;border-top:dashed 1px #333;border-bottom:dashed 1px #333;padding: 3px;">
+            <span class="head">4位</span>&nbsp;28<span class="main_s">アクセス</span><br />
+            &nbsp;<a href="http://www.sundaybreeze.jp/h_detail_01332a7692cb9.html" class="bold">ウインクルスーパー</a><span style="font-size:x-small">(牝3歳)</span>
+          </td>
+          <td style="font-size:x-small;border-left:none;border-right: dotted 1px #333;border-top:dashed 1px #333;border-bottom: dashed 1px #333;padding: 3px;">
+            <span class="head">14位</span>&nbsp;18<span class="main_s">アクセス</span><br />
+            &nbsp;<a href="http://www.sundaybreeze.jp/h_detail_01332ad898814.html" class="bold">ステイパーシスト</a><span style="font-size:x-small">(牡3歳)</span>
+          </td>
+          <td style="margin-top:0;border-top:dashed 1px #333;border-bottom:dashed 1px #333;">
+            <span class="bold"><span class="head">4位</span>&nbsp;235<span class="main_s">アクセス</span>&nbsp;
+            <a href="/r_detail_201601170611.html">京成杯</a></span><br />
+            &nbsp;<span style="font-size:x-small;vertical-align:top">(<a href="/racemonth_2016011706.html">2016年1月17日中山競馬</a>)</span>
+          </td>
+        </tr>
+          <tr>
+          <td class="bold" style="border-right: dotted 1px #333;border-top:dashed 1px #333;border-bottom:dashed 1px #333;padding: 3px;">
+            <span class="head">5位</span>&nbsp;27<span class="main_s">アクセス</span><br />
+            &nbsp;<a href="http://www.sundaybreeze.jp/h_detail_01332ac587d81.html" class="bold">[地]ストリートギャング</a><span style="font-size:x-small">(牡3歳)</span>
+          </td>
+          <td style="font-size:x-small;border-left:none;border-right: dotted 1px #333;border-top:dashed 1px #333;border-bottom: dashed 1px #333;padding: 3px;">
+            <span class="head">15位</span>&nbsp;18<span class="main_s">アクセス</span><br />
+            &nbsp;<a href="http://www.sundaybreeze.jp/h_detail_01328d0b446a7.html" class="bold">アミカブルナンバー</a><img src="/images_com/ico-camera.png" alt="写真あり" /><span style="font-size:x-small">(牝7歳)</span>
+          </td>
+          <td style="margin-top:0;border-top:dashed 1px #333;border-bottom:dashed 1px #333;">
+            <span class="bold"><span class="head">5位</span>&nbsp;215<span class="main_s">アクセス</span>&nbsp;
+            <a href="/r_detail_201601100811.html">シンザン記念</a></span><br />
+            &nbsp;<span style="font-size:x-small;vertical-align:top">(<a href="/racemonth_2016011008.html">2016年1月10日京都競馬</a>)</span>
+          </td>
+        </tr>
+          <tr>
+          <td class="bold" style="border-right: dotted 1px #333;border-top:dashed 1px #333;border-bottom:dashed 1px #333;padding: 3px;">
+            <span class="head">6位</span>&nbsp;27<span class="main_s">アクセス</span><br />
+            &nbsp;<a href="http://www.sundaybreeze.jp/h_detail_0132dbe18692d.html" class="bold">ショウナンバッハ</a><span style="font-size:x-small">(牡5歳)</span>
+          </td>
+          <td style="font-size:x-small;border-left:none;border-right: dotted 1px #333;border-top:dashed 1px #333;border-bottom: dashed 1px #333;padding: 3px;">
+            <span class="head">16位</span>&nbsp;17<span class="main_s">アクセス</span><br />
+            &nbsp;<a href="http://www.sundaybreeze.jp/h_detail_01332ac799cf0.html" class="bold">[地]ダイシゴーゴー</a><span style="font-size:x-small">(牡3歳)</span>
+          </td>
+          <td style="margin-top:0;border-top:dashed 1px #333;border-bottom:dashed 1px #333;">
+            <span class="bold"><span class="head">6位</span>&nbsp;104<span class="main_s">アクセス</span>&nbsp;
+            <a href="/r_detail_201601160611.html">カーバンクルS</a></span><br />
+            &nbsp;<span style="font-size:x-small;vertical-align:top">(<a href="/racemonth_2016011606.html">2016年1月16日中山競馬</a>)</span>
+          </td>
+        </tr>
+          <tr>
+          <td class="bold" style="border-right: dotted 1px #333;border-top:dashed 1px #333;border-bottom:dashed 1px #333;padding: 3px;">
+            <span class="head">7位</span>&nbsp;25<span class="main_s">アクセス</span><br />
+            &nbsp;<a href="http://www.sundaybreeze.jp/h_detail_01332a039a117.html" class="bold">ウインクルサルーテ</a><span style="font-size:x-small">(牝3歳)</span>
+          </td>
+          <td style="font-size:x-small;border-left:none;border-right: dotted 1px #333;border-top:dashed 1px #333;border-bottom: dashed 1px #333;padding: 3px;">
+            <span class="head">17位</span>&nbsp;17<span class="main_s">アクセス</span><br />
+            &nbsp;<a href="http://www.sundaybreeze.jp/h_detail_01328e3144baa.html" class="bold">アブマーシュ</a><img src="/images_com/ico-camera.png" alt="写真あり" /><span style="font-size:x-small">(牝7歳)</span>
+          </td>
+          <td style="margin-top:0;border-top:dashed 1px #333;border-bottom:dashed 1px #333;">
+            <span class="bold"><span class="head">7位</span>&nbsp;103<span class="main_s">アクセス</span>&nbsp;
+            <a href="/entry_201601240611.html">アメリカジョッキーC</a></span><br />
+            &nbsp;<span style="font-size:x-small;vertical-align:top">(<a href="/racemonth_2016012406.html">2016年1月24日中山競馬</a>)</span>
+          </td>
+        </tr>
+          <tr>
+          <td class="bold" style="border-right: dotted 1px #333;border-top:dashed 1px #333;border-bottom:dashed 1px #333;padding: 3px;">
+            <span class="head">8位</span>&nbsp;22<span class="main_s">アクセス</span><br />
+            &nbsp;<a href="http://www.sundaybreeze.jp/h_detail_01332a1b87cc4.html" class="bold">ミエノドリーマー</a><span style="font-size:x-small">(牡3歳)</span>
+          </td>
+          <td style="font-size:x-small;border-left:none;border-right: dotted 1px #333;border-top:dashed 1px #333;border-bottom: dashed 1px #333;padding: 3px;">
+            <span class="head">18位</span>&nbsp;16<span class="main_s">アクセス</span><br />
+            &nbsp;<a href="http://www.sundaybreeze.jp/h_detail_0132dbf24981e.html" class="bold">ネオリアリズム</a><img src="/images_com/ico-camera.png" alt="写真あり" /><span style="font-size:x-small">(牡5歳)</span>
+          </td>
+          <td style="margin-top:0;border-top:dashed 1px #333;border-bottom:dashed 1px #333;">
+            <span class="bold"><span class="head">8位</span>&nbsp;88<span class="main_s">アクセス</span>&nbsp;
+            <a href="/r_detail_201601133011.html">TCK女王盃</a></span><br />
+            &nbsp;<span style="font-size:x-small;vertical-align:top">(<a href="/racemonth_2016011330.html">2016年1月13日大井競馬</a>)</span>
+          </td>
+        </tr>
+          <tr>
+          <td class="bold" style="border-right: dotted 1px #333;border-top:dashed 1px #333;border-bottom:dashed 1px #333;padding: 3px;">
+            <span class="head">9位</span>&nbsp;20<span class="main_s">アクセス</span><br />
+            &nbsp;<a href="http://www.sundaybreeze.jp/h_detail_0132dc554a1b2.html" class="bold">ウインクルミラクル</a><span style="font-size:x-small">(牝5歳)</span>
+          </td>
+          <td style="font-size:x-small;border-left:none;border-right: dotted 1px #333;border-top:dashed 1px #333;border-bottom: dashed 1px #333;padding: 3px;">
+            <span class="head">19位</span>&nbsp;16<span class="main_s">アクセス</span><br />
+            &nbsp;<a href="http://www.sundaybreeze.jp/h_detail_01330294881b2.html" class="bold">[地]ハーベストブルー</a><span style="font-size:x-small">(牝4歳)</span>
+          </td>
+          <td style="margin-top:0;border-top:dashed 1px #333;border-bottom:dashed 1px #333;">
+            <span class="bold"><span class="head">9位</span>&nbsp;88<span class="main_s">アクセス</span>&nbsp;
+            <a href="/r_detail_201601100611.html">ニューイヤーS</a></span><br />
+            &nbsp;<span style="font-size:x-small;vertical-align:top">(<a href="/racemonth_2016011006.html">2016年1月10日中山競馬</a>)</span>
+          </td>
+        </tr>
+          <tr>
+          <td class="bold" style="border-right: dotted 1px #333;border-top:dashed 1px #333;padding: 3px;">
+            <span class="head">10位</span>&nbsp;20<span class="main_s">アクセス</span><br />
+            &nbsp;<a href="http://www.sundaybreeze.jp/h_detail_01328e2a454a4.html" class="bold">[地]イデアシュリュー</a><img src="/images_com/ico-camera.png" alt="写真あり" /><span style="font-size:x-small">(牝7歳)</span>
+          </td>
+          <td style="font-size:x-small;border-left:none;border-right: dotted 1px #333;border-top:dashed 1px #333;padding: 3px;">
+            <span class="head">20位</span>&nbsp;15<span class="main_s">アクセス</span><br />
+            &nbsp;<a href="http://www.sundaybreeze.jp/h_detail_01330290870ec.html" class="bold">[地]ランカティラカ</a><span style="font-size:x-small">(牡4歳)</span>
+          </td>
+          <td style="margin-top:0;border-top:dashed 1px #333;">
+            <span class="bold"><span class="head">10位</span>&nbsp;73<span class="main_s">アクセス</span>&nbsp;
+            <a href="/r_detail_201601143310.html">白銀争覇</a></span><br />
+            &nbsp;<span style="font-size:x-small;vertical-align:top">(<a href="/racemonth_2016011433.html">2016年1月14日笠松競馬</a>)</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="border:none; text-align:right" colspan="2"><a href="/h_search.html">&gt;&gt;競走馬ランキングをもっと見る</a></td>
+          <td style="border:none; text-align:right"><a href="/r_search.html">&gt;&gt;レースランキングをもっと見る</a></td>
+        </tr>
+      </table>
+      <hr />
+      <img src="/images/menu-leading.jpg" alt="各種リーディング" /><br /><br />
+      <div id="leading" class="loading"></div>
+      <span class="main_s">(JRAリーディングはJRAのレースのみ、地方競馬リーディングは地方競馬のレースのみ集計しています)</span>
+      <!-- 広告ここから -->
+      <br /><br />
+      <div style="text-align:center">
+<a href="http://ad2.trafficgate.net/t/r/37/1958/194086_227499/" target="_blank">
+<img src="http://srv2.trafficgate.net/t/b/37/1958/194086_227499/" alt="" />
+</a> 
+      </div>
+<!-- 広告ここまで -->
+      <hr />
+      <img src="/images/menu-mor.png" alt="「ウマもる！」最近のつぶやき" /><br /><br />
+<div class="line13">
+<div style="width:100%; background-color:#cfc;padding:4px">
+<a href="/r_detail_201512293010.html">東京大賞典</a><span class="main_s">(2015年12月29日大井)</span>
+へのつぶやき
+<span class="main_s">(ルークさん&nbsp;2015-12-29 10:14:45)</span>
+</div>
+<table>
+<tr><td class="noborder" style="width:45px"><img src="/inner/getimage.phpp?u_name=akira" style="width:45px;height:45px;vertical-align:middle" alt="" /></td>
+<td class="noborder" style="padding: 0 0 0 5px; vertical-align:middle;">ここはビシっと当てたい</td></tr>
+</table>
+<br />
+<div style="width:100%; background-color:#cfc;padding:4px">
+<a href="/r_detail_201512293010.html">東京大賞典</a><span class="main_s">(2015年12月29日大井)</span>
+へのつぶやき
+<span class="main_s">(アオヤギさん&nbsp;2015-12-29 07:27:15)</span>
+</div>
+<table>
+<tr><td class="noborder" style="width:45px"><img src="/inner/getimage.phpp?u_name=AOYATSB" style="width:45px;height:45px;vertical-align:middle" alt="" /></td>
+<td class="noborder" style="padding: 0 0 0 5px; vertical-align:middle;">地方馬はよくて3着だと思うのですが
+一応押さえで</td></tr>
+</table>
+<br />
+<div style="width:100%; background-color:#cfc;padding:4px">
+<a href="/r_detail_201512293010.html">東京大賞典</a><span class="main_s">(2015年12月29日大井)</span>
+へのつぶやき
+<span class="main_s">(白イチゴさん&nbsp;2015-12-28 18:44:11)</span>
+</div>
+<table>
+<tr><td class="noborder" style="width:45px"><img src="/images_com/noimage.png" style="width:45px;height:45px;vertical-align:middle" alt="" /></td>
+<td class="noborder" style="padding: 0 0 0 5px; vertical-align:middle;">地方馬プレティオヴラスの波乱に期待。</td></tr>
+</table>
+<br />
+<div style="width:100%; background-color:#cfc;padding:4px">
+<a href="/r_detail_201512293010.html">東京大賞典</a><span class="main_s">(2015年12月29日大井)</span>
+へのつぶやき
+<span class="main_s">(管理人さん&nbsp;2015-12-27 18:54:23)</span>
+</div>
+<table>
+<tr><td class="noborder" style="width:45px"><img src="/inner/getimage.phpp?u_name=webadmin" style="width:45px;height:45px;vertical-align:middle" alt="" /></td>
+<td class="noborder" style="padding: 0 0 0 5px; vertical-align:middle;">たぶんJRA馬で決まりでしょう。</td></tr>
+</table>
+<br />
+<div style="width:100%; background-color:#cfc;padding:4px">
+<a href="/r_detail_201512270610.html">有馬記念</a><span class="main_s">(2015年12月27日中山)</span>
+へのつぶやき
+<span class="main_s">(ルークさん&nbsp;2015-12-27 12:05:55)</span>
+</div>
+<table>
+<tr><td class="noborder" style="width:45px"><img src="/inner/getimage.phpp?u_name=akira" style="width:45px;height:45px;vertical-align:middle" alt="" /></td>
+<td class="noborder" style="padding: 0 0 0 5px; vertical-align:middle;">有馬で引退は結構勝ってるイメージがあるので優秀の美を</td></tr>
+</table>
+<br />
+<div style="width:100%; background-color:#cfc;padding:4px">
+<a href="/r_detail_201512270610.html">有馬記念</a><span class="main_s">(2015年12月27日中山)</span>
+へのつぶやき
+<span class="main_s">(管理人さん&nbsp;2015-12-27 11:37:36)</span>
+</div>
+<table>
+<tr><td class="noborder" style="width:45px"><img src="/inner/getimage.phpp?u_name=webadmin" style="width:45px;height:45px;vertical-align:middle" alt="" /></td>
+<td class="noborder" style="padding: 0 0 0 5px; vertical-align:middle;">これまでの敬意を表して</td></tr>
+</table>
+<br />
+<div style="width:100%; background-color:#cfc;padding:4px">
+<a href="/r_detail_201512270610.html">有馬記念</a><span class="main_s">(2015年12月27日中山)</span>
+へのつぶやき
+<span class="main_s">(タッキーさん&nbsp;2015-12-27 11:32:25)</span>
+</div>
+<table>
+<tr><td class="noborder" style="width:45px"><img src="/images_com/noimage.png" style="width:45px;height:45px;vertical-align:middle" alt="" /></td>
+<td class="noborder" style="padding: 0 0 0 5px; vertical-align:middle;">最後に笑いたい</td></tr>
+</table>
+<br />
+<div style="width:100%; background-color:#cfc;padding:4px">
+<a href="/r_detail_201512270610.html">有馬記念</a><span class="main_s">(2015年12月27日中山)</span>
+へのつぶやき
+<span class="main_s">(アオヤギさん&nbsp;2015-12-27 04:42:15)</span>
+</div>
+<table>
+<tr><td class="noborder" style="width:45px"><img src="/inner/getimage.phpp?u_name=AOYATSB" style="width:45px;height:45px;vertical-align:middle" alt="" /></td>
+<td class="noborder" style="padding: 0 0 0 5px; vertical-align:middle;">ムーアJならと思ってたのですが
+信頼できそうな軸馬もいないので
+一応印は付けたけど馬連9頭BOX36点で</td></tr>
+</table>
+<br />
+<div style="width:100%; background-color:#cfc;padding:4px">
+<a href="/r_detail_201512270610.html">有馬記念</a><span class="main_s">(2015年12月27日中山)</span>
+へのつぶやき
+<span class="main_s">(白イチゴさん&nbsp;2015-12-27 02:29:27)</span>
+</div>
+<table>
+<tr><td class="noborder" style="width:45px"><img src="/images_com/noimage.png" style="width:45px;height:45px;vertical-align:middle" alt="" /></td>
+<td class="noborder" style="padding: 0 0 0 5px; vertical-align:middle;">夢よりも的中を優先させた予想。券種を幅広くして、ヒモは絞りたい。</td></tr>
+</table>
+<br />
+<div style="width:100%; background-color:#cfc;padding:4px">
+<a href="/r_detail_201512270610.html">有馬記念</a><span class="main_s">(2015年12月27日中山)</span>
+へのつぶやき
+<span class="main_s">(Tsuha.m.Aさん&nbsp;2015-12-26 21:25:24)</span>
+</div>
+<table>
+<tr><td class="noborder" style="width:45px"><img src="/inner/getimage.phpp?u_name=tsuhama" style="width:45px;height:45px;vertical-align:middle" alt="" /></td>
+<td class="noborder" style="padding: 0 0 0 5px; vertical-align:middle;">有馬の結果でお年玉の振る舞い方が変わりマス</td></tr>
+</table>
+<br />
+</div>
+      <hr />
+    </div>
+    <div class="sidemenu">
+      <img src="/images/menu-info.png" alt="サイトからのお知らせ" /><br /><br />
+<div class="line13">
+<dl>
+<dt class="topic_t"><img src="/images/pict_s_info.png" class="topicicon" alt="サイト情報" style="float:left" />
+<span style="cursor:pointer;color:#00c;font-weight:bold;border-bottom:1px solid #00c">皆様からのご意見・ご要望を募集しています</span>
+<span class="main_s text-r">(12月24日21時59分更新)</span>
+</dt>
+<dd class="topic_d" style="clear:left; margin:0 0 0 -5px;font-size:x-small">
+        このサイトは個人運営です。<br />
+        皆様のご意見を元に、<br />
+        ページを直し、データを直し、<br />
+        管理人は日々奮闘しております。<br />
+        皆様あっての「The Sunday Breeze」でございます。<br />
+        <br />
+        皆様のご意見・ご要望をお聞かせください。<br />
+        もちろんバグ(不具合)報告もお待ちしております。<br />
+        <a href="/contact.html">こちら</a>よりご投稿をお待ちしております。<br />
+        
+</dd>
+</dl>
+</div>
+      <hr />
+      <img src="/images/menu-jrainfo.png" alt="JRAからのお知らせ" /><br /><br />
+<span style="font-size:x-small">(JRAホームページへリンクしています)</span><br /><br />
+<a href="http://jra.jp/news/201601/012305.html" target="_blank">【！】アメリカジョッキークラブカップ（GII）の前日発売を取りやめ</a><br />
+<span style="font-size:x-small">(1月23日 06時00分更新)</span>
+<hr style="border:dotted 1px #090" /><a href="http://jra.jp/news/201601/012303.html" target="_blank">【！】本日【１月２３日（土）】の京都競馬は通常どおり開催いたします</a><br />
+<span style="font-size:x-small">(1月23日 06時00分更新)</span>
+<hr style="border:dotted 1px #090" /><a href="http://jra.jp/news/201601/012201.html" target="_blank">【！】京都競馬の金曜日夜間発売を取りやめ</a><br />
+<span style="font-size:x-small">(1月22日 17時30分更新)</span>
+<hr style="border:dotted 1px #090" /><a href="http://jra.jp/keiba/baba/index.html" target="_blank">馬場情報　〜１月２２日（金）正午現在〜</a><br />
+<span style="font-size:x-small">(1月22日 13時00分更新)</span>
+<hr style="border:dotted 1px #090" /><a href="http://jra.jp/news/201601/012101.html" target="_blank">ダートグレード競走のＪＲＡ出走予定馬【１月２７日（水）】</a><br />
+<span style="font-size:x-small">(1月21日 17時39分更新)</span>
+      <hr />
+      <img src="/images/menu-narinfo.png" alt="NARからのお知らせ" /><br /><br />
+<span style="font-size:x-small">(NARホームページへリンクしています)</span><br /><br />
+<a href="http://www.keiba.go.jp/topics/2015/1214.html" target="_blank">第30回 全日本新人王争覇戦 出場騎手が決定</a><br />
+<span style="font-size:x-small">(1月19日 15時47分更新)</span>
+<hr style="border:dotted 1px #090" /><a href="http://www.keiba.go.jp/topics/2016/0112.html" target="_blank">『NARグランプリ2015』表彰馬・表彰者決定</a><br />
+<span style="font-size:x-small">(1月12日 13時58分更新)</span>
+<hr style="border:dotted 1px #090" /><a href="http://www.keiba.go.jp/topics/2016/0101.html" target="_blank">地方競馬全国協会より新年のご挨拶</a><br />
+<span style="font-size:x-small">(1月5日 09時11分更新)</span>
+<hr style="border:dotted 1px #090" /><a href="http://www.keiba.go.jp/topics/2015/1229_1.html" target="_blank">地方競馬１レース＆一日の売上レコード更新(12/29 大井)</a><br />
+<span style="font-size:x-small">(1月5日 09時11分更新)</span>
+<hr style="border:dotted 1px #090" /><a href="http://www.keiba.go.jp/topics/2015/1231.html" target="_blank">ＧＤＪ2015　2歳シーズンの総合結果今年の2歳チャンピオンはモダンウーマン</a><br />
+<span style="font-size:x-small">(1月5日 09時11分更新)</span>
+      <hr />
+      <img src="/images/menu-tip.png" alt="今日のおすすめの1頭" /><br /><br />
+      <div class="line13">
+        <h4>中山競馬 第5レース<br />
+        &nbsp;<a href="/entry_201601230605.html">3歳未勝利</a></h4><br />
+        <h4><span class="waku waku6">12番</span>
+        <a href="http://www.sundaybreeze.jp/h_detail_013329ae99417.html" class="bold">メゾンリー</a>&nbsp;</h4>
+        <br /><br />
+        通算成績：全2863戦<br />
+        &nbsp;勝率：<span class="bold moji_b">29.86%</span><br />
+        &nbsp;連対率：<span class="bold moji_b">45.37%</span><br />
+        &nbsp;複勝率：<span class="bold moji_b">57.35%</span><br />
+        <table style="font-size:x-small">
+          <tr>
+            <td>1着</td><td>2着</td><td>3着</td><td>着外</td>
+          </tr>
+          <tr>
+            <td class="text-r">855頭</td><td class="text-r">444頭</td><td class="text-r">343頭</td><td class="text-r">1221頭</td>
+          </tr>
+        </table>
+      </div>      <hr />
+      <img src="/images/menu-birthday.png" alt="今日生まれの競走馬" /><br /><br />
+        <div class="line13">
+        <a href="http://www.sundaybreeze.jp/h_detail_01328d0b446a7.html" class="bold">アミカブルナンバー</a><img src="/images_com/ico-camera.png" alt="写真あり" />(牝7歳)<br />
+<a href="http://www.sundaybreeze.jp/h_detail_0132b41b4715a.html" class="bold">ノウレッジ</a><img src="/images_com/ico-camera.png" alt="写真あり" />(牡6歳)<br />
+<a href="http://www.sundaybreeze.jp/h_detail_0132b41b47a1f.html" class="bold">サンブルエミューズ</a><img src="/images_com/ico-camera.png" alt="写真あり" />(牝6歳)<br />
+<a href="http://www.sundaybreeze.jp/h_detail_01328d0b4552c.html" class="bold">リュクスメジャー</a><img src="/images_com/ico-camera.png" alt="写真あり" />(牝7歳)<br />
+<a href="http://www.sundaybreeze.jp/h_detail_0133023b86dee.html" class="bold">タガノアザガル</a>(牡4歳)<br />
+<a href="http://www.sundaybreeze.jp/h_detail_01328d0b448ec.html" class="bold">フォントルロイ</a><img src="/images_com/ico-camera.png" alt="写真あり" />(牡7歳)<br />
+<a href="http://www.sundaybreeze.jp/h_detail_0132b41b48222.html" class="bold">ナンヨーカノン</a><img src="/images_com/ico-camera.png" alt="写真あり" />(牝6歳)<br />
+<a href="http://www.sundaybreeze.jp/h_detail_0132db2b4a701.html" class="bold">ラインハート</a>(牝5歳)<br />
+<a href="http://www.sundaybreeze.jp/h_detail_0132b41b47587.html" class="bold">ジューヴルエール</a><img src="/images_com/ico-camera.png" alt="写真あり" />(牡6歳)<br />
+<a href="http://www.sundaybreeze.jp/h_detail_0133023b86a22.html" class="bold">シラユキ</a>(牝4歳)<br />
+<a href="http://www.sundaybreeze.jp/h_detail_0133294b96ac8.html" class="bold">ルミナスティアラ</a>(牝3歳)<br />
+<a href="http://www.sundaybreeze.jp/h_detail_0133023b8691a.html" class="bold">エミーズプライド</a><img src="/images_com/ico-camera.png" alt="写真あり" />(牝4歳)<br />
+<a href="http://www.sundaybreeze.jp/h_detail_0132b41b46d13.html" class="bold">エムノクラウン</a>(牡6歳)<br />
+<a href="http://www.sundaybreeze.jp/h_detail_0132b41b48439.html" class="bold">ドリームディバ</a><img src="/images_com/ico-camera.png" alt="写真あり" />(牝6歳)<br />
+<a href="http://www.sundaybreeze.jp/h_detail_0133294b88815.html" class="bold">ミネット</a>(牝3歳)<br />
+<a href="http://www.sundaybreeze.jp/h_detail_0132b41b47ef0.html" class="bold">ニシノヒメゴト</a><img src="/images_com/ico-camera.png" alt="写真あり" />(牝6歳)<br />
+<a href="http://www.sundaybreeze.jp/h_detail_0132db2b4981c.html" class="bold">トップザサブライ</a>(せん5歳)<br />
+<a href="http://www.sundaybreeze.jp/h_detail_0132b41b4869a.html" class="bold">セプテンバーローズ</a>(牝6歳)<br />
+<a href="http://www.sundaybreeze.jp/h_detail_0133294b989f8.html" class="bold">ブライテストムーン</a>(牝3歳)<br />
+<a href="http://www.sundaybreeze.jp/h_detail_0133294b88a3d.html" class="bold">キングラディウス</a>(牡3歳)<br />
+<a href="http://www.sundaybreeze.jp/h_detail_0132b41b4806b.html" class="bold">ミルクヒメ</a><img src="/images_com/ico-camera.png" alt="写真あり" />(牝6歳)<br />
+<a href="http://www.sundaybreeze.jp/h_detail_0133023b8707b.html" class="bold">マーブルヒル</a>(牡4歳)<br />
+<a href="http://www.sundaybreeze.jp/h_detail_0133294b96120.html" class="bold">リリーシューター</a>(牡3歳)<br />
+<a href="http://www.sundaybreeze.jp/h_detail_0132db2b4a113.html" class="bold">バトルタラサ</a>(牝5歳)<br />
+<a href="http://www.sundaybreeze.jp/h_detail_0133023b87aa8.html" class="bold">プリンセチア</a>(牝4歳)<br />
+<a href="http://www.sundaybreeze.jp/h_detail_0133294b92ce2.html" class="bold">サンドラ</a>(牝3歳)<br />
+<a href="http://www.sundaybreeze.jp/h_detail_0133023b87469.html" class="bold">ブラッシングスター</a>(牡4歳)<br />
+<a href="http://www.sundaybreeze.jp/h_detail_0133023b87f05.html" class="bold">モンサンギエナ</a>(牝4歳)<br />
+<a href="http://www.sundaybreeze.jp/h_detail_0133023b86a5c.html" class="bold">アイファーコジーン</a>(牡4歳)<br />
+...など        全35頭<span class="main_s">(現役馬のみ)</span>
+        </div>
+      <hr />
+<!-- script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- サイド -->
+<!-- ins class="adsbygoogle"
+     style="display:inline-block;width:120px;height:240px"
+     data-ad-client="ca-pub-8445978019440145"
+     data-ad-slot="5200863715"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+      <hr / -->
+      <img src="/images/menu-twitter.png" alt="管理人のつぶやき" /><br /><br />
+      <a class="twitter-timeline"  href="https://twitter.com/sunday_breeze" 
+         data-widget-id="345344505165279232" width="160" height="800"
+         data-chrome="noheader noscrollbar nofooter transparent" >@sunday_breeze からのツイート</a>
+      <script>
+!function(d,s,id) {
+	var js, fjs=d.getElementsByTagName(s)[0], p=/^http:/.test(d.location) ? 'http': 'https';
+	if (!d.getElementById(id)) { 
+		js=d.createElement(s);
+		js.id=id;
+		js.src=p+"://platform.twitter.com/widgets.js";
+		fjs.parentNode.insertBefore(js,fjs);
+	}
+}
+(document,"script","twitter-wjs");
+
+$(window).load(function() {
+	function changeWidget() {
+		var twFrame = $('iframe.twitter-timeline');
+		if (twFrame.length > 0) {
+			twFrame.contents().find('div.header').css('display', 'none');
+		} else {
+			setTimeout(changeWidget, 500);
+		}
+	}
+	changeWidget();
+});
+
+      </script>
+    </div>
+  </div>
+  <div id="contentfoot">
+        <br />
+        <br />
+        <span class="main_s">この「The Sunday Breeze」は個人で運営している、完全に無料のサイトです。
+        皆様に多くご利用いただき、広告をクリックしていただくことで、何とか運営できています。<br />
+        皆様のクリックがこのページを支えています。管理人の勝手なお願いではありますが、ご協力をお願いいたします。</span><br /><br />
+<!-- i-mobile for PC client script -->
+<script type="text/javascript">
+	imobile_pid = "44395"; 
+	imobile_asid = "602365"; 
+	imobile_width = 728; 
+	imobile_height = 90;
+</script>
+<script type="text/javascript" src="http://spdeliver.i-mobile.co.jp/script/ads.js?20101001"></script>
+<br /><br />
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- フッタ -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-8445978019440145"
+     data-ad-slot="2212201315"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<hr />
+        競馬関連リンク
+        <br />
+        <a href="http://jra.jp/" target="_blank">
+          <img src="/images_com/jralink.gif" alt="JRAホームページ" height="31" width="88" title="JRA 日本中央競馬会" />
+        </a>&nbsp;
+        <a href="http://www.keiba.go.jp/" target="_blank">
+          <img src="/images_com/narban_6.png" alt="NARホームページ" title="NAR 地方競馬全国協会" />
+        </a><br />
+        <a href="http://www.banei-keiba.or.jp/" target="_blank">
+          <img src="/images_com/banei-tokachi.jpg" alt="ばんえい帯広競馬" height="31" width="88" title="ばんえい帯広競馬" />
+        </a>&nbsp;
+        <a href="http://www.hokkaidokeiba.net/" target="_blank">
+          <img src="/images_com/hokkkaidokeiba.gif" alt="ホッカイドウ競馬" title="ホッカイドウ競馬" />
+        </a>&nbsp;
+        <a href="http://www.iwatekeiba.or.jp/" target="_blank">
+          <img src="/images_com/iwatekeiba.gif" height="31" width="88" alt="岩手競馬" title="岩手競馬" />
+        </a>&nbsp;
+        <a href="http://www.nankankeiba.com/" target="_blank">
+          <img src="/images_com/nk-bnr-s-02.gif" alt="南関東4競馬場" title="南関東4競馬場" />
+        </a>&nbsp;
+        <a href="http://www.kanazawakeiba.com/" target="_blank">
+          <img src="/images_com/knzkeiba2.gif" height="31" width="88" alt="金沢競馬" title="金沢競馬" />
+        </a><br />
+        <a href="http://www.nagoyakeiba.com/" target="_blank">
+          <img src="/images_com/ngykeiba.gif" height="31" width="88" alt="名古屋競馬" title="名古屋競馬" />
+        </a>&nbsp;
+        <a href="http://www.kasamatsu-keiba.com/" target="_blank">
+          <img src="/images_com/ksmkeiba.jpg" height="31" width="88" alt="笠松競馬" title="笠松競馬" />
+        </a>&nbsp;
+        <a href="http://www.sonoda-himeji.jp/" target="_blank">
+          <img src="/images_com/sonohime.gif" height="31" width="88" alt="園田・姫路競馬" title="そのだ競馬・ひめじ競馬" />
+        </a>&nbsp;
+        <a href="http://www.keiba.or.jp/" target="_blank">
+          <img src="/images_com/tkmkeiba.gif" height="31" width="88" alt="高知競馬" title="高知競馬" />
+        </a>&nbsp;
+        <a href="http://www.sagakeiba.net/" target="_blank">
+          <img src="/images_com/sagakeiba.gif" height="31" width="88" alt="佐賀競馬" title="佐賀競馬" />
+        </a><br />
+        <br />
+        <a href="http://turfnotepog.sundaybreeze.jp/" target="_blank">
+          <img src="/images_com/turfnote.gif" alt="現在手抜き中競馬サイト" height="31" width="88" />
+        </a>&nbsp;
+        <a href="http://www.g-horse.com/red_navi/red_navi.cgi?mode=jump&amp;id=00015&amp;url=http://www.g-horse.com/" target="_blank">
+          <img src="http://www.g-horse.com/search/img/g-h.gif" width="88" height="31" alt="競馬サイト専門サーチ" />
+        </a>&nbsp;
+        <a href="http://www.keiba-s.com/?key=ksp10427" target="_blank">
+          <img src="http://www.keiba-s.com/pc/img/12.gif" alt="競馬ランキング&amp;競馬情報検索エンジン 競馬サーチ.com" title="競馬ランキング&amp;競馬情報検索エンジン 競馬サーチ.com" />
+        </a>&nbsp;
+        <a href="http://keiba-db.jp/" target="_blank">
+          <img src="http://keiba-db.jp/images/keibadb8831.gif" alt="競馬の様々なジャンルのサイトをカテゴリ別に検索可能な競馬の情報サイト" />
+        </a>
+        <hr />
+        サーバ関連リンク
+        <br />
+        <a href="http://www.jp.freebsd.org/" target="_blank">
+          <img src="/images_com/fbsdpb1.gif" width="88" height="31" alt="うちのサーバはFreeBSDだ！" />
+        </a>&nbsp;
+        <a href="http://www.php.net/" target="_blank">
+          <img src="/images_com/php.gif" width="80" height="36" alt="このページはPHPだ！" />
+        </a>&nbsp;
+        <a href="http://www.mysql.com/" target="_blank">
+          <img src="/images_com/mysql.png" width="83" height="31" alt="データベースMySQL使ってる！" />
+        </a>&nbsp;
+        <a href="http://jigsaw.w3.org/css-validator/" target="_blank">
+          <img src="http://jigsaw.w3.org/css-validator/images/vcss-blue" alt="CSS2.0に準拠してます！" height="31" width="88" />
+        </a>&nbsp;
+        <a href="http://validator.w3.org/check?uri=referer" target="_blank">
+          <img src="http://www.w3.org/Icons/valid-xhtml10-blue" alt="XHTML1.0に準拠してます！" height="31" width="88" />
+        </a>
+        <br />
+        <hr />
+        <script type="text/javascript">
+        <!--
+function ClickedNotice() {
+  var objImg = document.createElement('img') ;
+  objImg.src = "http://www.quick-links.com/cgi-bin/emlj/clkntc.cgi?userid=lp123909&time=" + (new Date()).getTime() ;
+  var objBody = document.getElementsByTagName("body").item(0) ;
+  objBody.appendChild(objImg) ;
+  setTimeout("moveEmlj()",1000)
+  return(false) ;
+}
+function moveEmlj() {
+  window.location.href = "http://www.quick-links.com/emlj/" ;
+}
+//-->
+        </script>
+        <a href="http://www.quick-links.com/emlj/" onClick="return ClickedNotice()" target="_blank">
+          <img src="http://www.quick-links.com/emlj/banner/aflbanner9.gif" alt="かんたん相互リンク" />
+        </a><img src="http://www.quick-links.com/cgi-bin/emlj/pvwntc.cgi?userid=lp123909;lnktyp=dj" width="1" height="1" alt="" />
+        <br />
+        <a href="http://www.quick-links.com/emlj/lp/123909/" target="_blank">
+          相互リンク集
+        </a>
+        <br />
+        <br />
+  </div>
+  &copy;1999-2016 The Sunday Breeze All rights reserved.<br />
+  このサイトに掲載されている写真や画像を、管理人の許可なく無断で他サイトに掲載しないでください。訴えます。
+</div>
+</body>
+</html>

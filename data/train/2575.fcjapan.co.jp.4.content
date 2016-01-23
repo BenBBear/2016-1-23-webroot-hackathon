@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="ie ie6 no-js pc" lang="ja"><![endif]-->
+<!--[if IE 7]><html class="ie ie7 no-js pc" lang="ja"><![endif]-->
+<!--[if IE 8]><html class="ie ie8 no-js pc" lang="ja"><![endif]-->
+<!--[if IE 9]><html class="ie ie9 no-js pc" lang="ja"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js pc" lang="ja" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml"><!--<![endif]-->
+<head>
+		<meta charset="utf-8" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta http-equiv="Content-Script-type" content="text/javascript" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+	<meta name="viewport" content="width=980">
+	<meta name="keywords" content="サッカー,フットサル,施設予約,施設ガイド,施設検索,大会検索,大会情報,フットサル施設,フットサル大会,フットサルリーグ,Fリーグ,FUTSAL,futsal,Futsal,FC JAPAN" />
+	<meta name="description" content="サッカー・フットサルの最新ニュースやフットサル大会情報、施設ガイドなどを掲載した、フットボール専門情報サイトです。フットサルの空き施設検索や予約、大会検索などもできます。" />
+	<!-- OGP Settings -->
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="フットボール専門情報サイト【fcjapan】" />
+	<meta property="og:title" content="Top" />
+	<meta property="og:url" content="http://www.fcjapan.co.jp/" />
+	<meta property="og:image" content="/src/image/og-image.png" />
+	<meta property="og:description" content="サッカー・フットサルの最新ニュースやフットサル大会情報、施設ガイドなどを掲載した、フットボール専門情報サイトです。フットサルの空き施設検索や予約、大会検索などもできます。" />
+	<meta property="og:locale" content="ja_JP" />
+	<title>フットボール専門情報サイト【fcjapan】</title>
+	<!-- Begin CSS -->
+	<link rel="stylesheet" type="text/css" href="/css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="/css/base.css" />
+	<link rel="stylesheet" type="text/css" href="/css/layout.css" />
+	<link rel="stylesheet" type="text/css" href="/css/module.css" />
+	<link rel="stylesheet" type="text/css" href="/css/contents.css" />
+	<link rel="stylesheet" type="text/css" href="/css/jquery-ui.min.css" />
+	<link rel="stylesheet" type="text/css" href="/css/jquery-ui.structure.min.css" />
+	<link rel="stylesheet" type="text/css" href="/css/jquery-ui.theme.min.css" />
+	<link rel="stylesheet" type="text/css" href="/css/colorbox.css" />
+	<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<!--[if IE]>
+	<link rel="stylesheet" type="text/css" href="/css/ie.css" />
+	<![endif]-->
+<!-- Begin other links -->
+	<link rel="icon" type="image/x-icon" href="/src/image/favicon.ico" />
+	<link rel="shortcut icon" type="image/x-icon" href="/src/image/favicon.ico" />
+	<link rel="apple-touch-icon" href="/src/image/apple-touch-icon.png" />
+	<!-- Begin JavaScripts (Load JavaScripts at head, for Internet Explorer 7, 8) -->
+	<!--[if lt IE 9]>
+	<script type="text/javascript" src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.3.0/respond.js"></script>
+	<![endif]-->
+</head>
+
+<body id="home">
+		<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.3&appId=262049907205465";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	
+	<div id="container" class="l-container">
+
+		 	<header id="header" class="l-header mb50">
+		<div class="l-inner p-t20">
+			<div class="cf">
+				<ul class="flo_left sns">
+					<li class="inlineBlock"><a href="https://twitter.com/fc_japan?original_referer=http%3A%2F%2Fdev.creaman.com%2Fnakamae%2Ffcjapan-pc%2F&profile_id=112979400&tw_i=612817230028341249&tw_p=embeddedtimeline&tw_w=611759612660846592" rel="external" class="opacity"><img src="/src/image/common/header/header-twi.png"></a></li>
+					<li class="inlineBlock"><a href="https://www.facebook.com/fcjapan" rel="external" class="opacity"><img src="/src/image/common/header/header-fb.png"></a></li>
+				</ul>
+				<ul class="flo_right sponsor">
+					<li class="inlineBlock"><a href="http://www.nipponham.co.jp/" rel="external" class="opacity"><img src="/src/image/common/header/nichiham.gif"></a></li>
+					<li class="inlineBlock"><a href="http://toyota.jp/" rel="external" class="opacity"><img src="/src/image/common/header/toyota.gif"></a></li>
+				</ul>
+			</div>
+			<div class="cf">
+								<!--ログイン時は  <p class="flo_right login fs10 p-t30"><a href="#" class="opacity orange"><img src="/src/image/common/header/logout.png"> ログアウト</a></p>  -->
+				<h1 class="txt_center mb30"><a href="/"><img src="/src/image/common/header/logo.png"></a></h1>
+			</div>
+			<ul class="txt_center nav fs15">
+		
+			
+			
+				<li><a href="http://yoyaku.fcjapan.jp/page/index.html">FUTSAL</a></li>
+				<li class="fs8"><i class="fa fa-star"></i></li>
+				<li><a href="/e-toto/">eTOTO</a></li>
+				<li class="fs8"><i class="fa fa-star"></i></li>
+				<li><a href="/coaching/">COACHING</a></li>
+				<li class="fs8"><i class="fa fa-star"></i></li>
+				<li><a href="https://www.facebook.com/fcjapan/photos_stream?tab=photos_albums" rel="external">GALLERY</a></li>
+				<li class="fs8"><i class="fa fa-star"></i></li>
+				<li><a href="http://blog.fcjapan.co.jp/" rel="external">BLOG</a></li>
+
+			</ul>
+			<!--[if lte IE 8]>
+				<p class="txt_center red" style="margin-top: 20px;">
+					InternetExplorer 8以下で当システムをお使いの場合、うまく表示がされない場合がございます。<br />
+					恐れ入りますが、InternetExplorer 9以上にアップグレードをお願いいたします。<br />
+					操作方法は以下をご参照ください。<br />
+					<a href="https://support.microsoft.com/ja-jp/kb/2498518" rel="external" class="underLine red">https://support.microsoft.com/ja-jp/kb/2498518</a>
+				</p>
+			<![endif]-->
+		</div>
+	</header><!-- End [header id="header"] -->
+		
+		
+		<div id="contents" class="l-contents cf">
+			
+			<div class="l-inner cf">
+				<article class="l-article cf topics">
+					<div class="flo_right">
+						<img src="/src/image/home/photo01.jpg">
+					</div>
+					<div class="flo_left">
+						<h3 class="h3Blue white hiragino fs15 mb20"><i class="fa fa-star"></i> Topics</h3>
+						<ul class="inner20 block mb10">
+							<li class="mb8"><a href="http://www.fcjapan.co.jp/jcom_15c/"  target=_blank><span class="fs10 water">&#9654;</span> 2015王座決定戦 J:COMフットサルフェスタ、ジェコログでご覧いただけます♪</a></li>
+							<li class="mb8"><a href="http://www.fcjapan.co.jp/jcom20/index.html"  target=_blank><span class="fs10 water">&#9654;</span> パロマ杯 第20回J:COMフットサルフェスタ</a></li>
+							<li class="mb8"><a href="http://hondacup.jp/"  target=_blank><span class="fs10 water">&#9654;</span> ホンダカップフットサルフェスタ</a></li>
+
+							<li class="mb8"><a href="http://yoyaku.fcjapan.jp/page/index.html"><span class="fs10 water">&#9654;</span> フットサルページにはフットサルの最新ニュースや大会情報が満載！</a></li>				
+                        </ul><!--
+						<p class="txt_right fs15"><a href="/news/" class="blue opacity">Topics 一覧へ　<img src="/src/image/common/arrow-blue.png"></a></p> -->
+					</div>
+				</article>
+			</div><!-- End [div class="l-inner"] -->
+			
+			<hr class="green"/>
+			<article class="l-article cf categoryNav categoryNavFutsal">
+				<div class="l-inner cf">
+					<h2 class="flo_left white fwNormal fs42 p-t60">FUTSAL</h2>
+					<ul class="flo_right">
+						<li><a href="http://yoyaku.fcjapan.jp/team/scripts/user/faci_search.php" class="opacity"><img src="/src/image/common/category-nav/futsal-nav-reserve.gif"></a></li>
+						<li><a href="http://yoyaku.fcjapan.jp/team/scripts/user/sisetu_index.php" class="opacity"><img src="/src/image/common/category-nav/futsal-nav-facilities.gif"></a></li>
+						<li><a href="http://yoyaku.fcjapan.jp/team/scripts/user/compe_index.php" class="opacity"><img src="/src/image/common/category-nav/futsal-nav-event.gif"></a></li>
+					</ul>
+				</div>
+			</article>
+			
+			<div class="l-inner cf">
+				<article class="l-article cf futsal">
+					<div class="flo_right">
+						<a href="http://yoyaku.fcjapan.jp/page/about.html" class="opacity"><img src="/src/image/home/fcjapan-bnr.gif"></a>
+					</div>
+					<div class="flo_left">
+						<h3 class="h3Green white hiragino fs15 mb20"><i class="fa fa-star"></i> Futsal News</h3>
+						<ul class="inner20 block mb10">
+    <li class="mb8"><a href="http://www.jfa.jp/news/00008670/"  target=_blank><span class="fs10 emerald">&#9654;</span> フットサル日本代表 トレーニングキャンプ３日目、フィジカルメニューを中心に調整 /JFA</a></li>
+    <li class="mb8"><a href="http://www.fleague.jp/news/?p=16608"  target=_blank><span class="fs10 emerald">&#9654;</span> SuperSports XEBIO CUP in 郡山＆福岡、参加チーム募集開始！/Ｆリーグ</a></li>
+        <li class="mb8"><a href="http://vasagey.com/info/news/18359"  target=_blank><span class="fs10 emerald">&#9654;</span> 芝野選手が25日(月)の「もぎたて情報局」に生出演 /バサジィ大分</a></li>
+        <li class="mb8"><a href="http://www.voscuore.co.jp/archives/6787"  target=_blank><span class="fs10 emerald">&#9654;</span> 郡山カップ付帯事業 フットサル・クリニックに選手が参加 /ヴォスクオーレ仙台</a></li>
+        <li class="mb8"><a href="http://agleymina.jp/news/news-3258.html"  target=_blank><span class="fs10 emerald">&#9654;</span> 第２回「Ｕ－９フットサル大会」に５選手が参加、レポート /アグレミーナ浜松</a></li>
+                            
+                            
+                            
+                            
+
+						</ul>
+						<p class="txt_right fs15"><a href="http://www.fcjapan.co.jp/futsal/back.html" class="emerald opacity">Futsal News 一覧へ　<img src="/src/image/common/arrow-green.png"></a></p>
+					</div>
+				</article>
+			</div><!-- End [div class="l-inner"] -->
+			
+			<hr class="blue"/>
+			<article class="l-article cf categoryNav categoryNavContents">
+				<div class="l-inner cf">
+					<h2 class="flo_right white fwNormal fs42 p-t60">CONTENTS</h2>
+					<ul class="flo_left">
+						<li><a href="/e-toto/" class="opacity"><img src="/src/image/common/category-nav/contents-nav-etoto.gif"></a></li>
+						<li><a href="/coaching/" class="opacity"><img src="/src/image/common/category-nav/contents-nav-coaching.gif"></a></li>
+						<li><a href="https://www.facebook.com/fcjapan/photos_stream?tab=photos_albums" rel="external" class="opacity"><img src="/src/image/common/category-nav/contents-nav-gallery.gif"></a></li>
+					</ul>
+				</div>
+			</article>
+			
+			<div class="l-inner cf">
+				<article class="l-article cf contents">
+					<div class="flo_right borderBlue">
+						<div class="cf">
+							<div class="flo_right txt_center hiragino blue fs18 floMarginLeft">
+								<img src="/src/image/home/kagawa.jpg"><br />
+								Hiroshi Kagawa
+							</div>
+							<div class="flo_left kagawaPhotoList">
+								<ul class="mb5">
+									<li><a href="http://www.fifa.com/ballon-dor/presidential-award/index.html" rel="external">賀川浩が日本人として初めてFIFA会長賞を受賞</a></li>
+									<li><a href="http://www.jfa.or.jp/jfa/topics/2010/169.html" rel="external">第7回日本サッカー殿堂に賀川浩が掲額</a></li>
+								</ul>
+								<p class="water">[Kagawa Soccer Library]</p>
+								<ul class="mb5">
+									<li><a href="http://library.footballjapan.jp/index.html" rel="external">このくにとサッカー (1.18更新)</a></li>
+								</ul>
+								<p class="water">[賀川浩の片言隻句]</p>
+								<ul class="mb5">
+									<li><a href="http://kagawa.footballjapan.jp/" rel="external">リオオリンピック予選で3連勝　もっともやり難い相手を突破してベスト4へ進もう (1.21更新)</a></li>
+								</ul>
+								<p class="water">[キリンチャレンジカップの楽しみ]</p>
+								<ul class="mb5">
+									<li><a href="http://kirin.footballjapan.jp/" rel="external">2015年6月11日 日本代表 対イラク代表(続） (2015.6.14更新)</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="flo_left">
+						<h3 class="h3Blue white hiragino fs15 mb20"><i class="fa fa-star"></i> Soccer News</h3>
+						<ul class="inner20 block mb10">
+		<li class="mb8"><a href="http://www.fcjapan.co.jp/news/index.html"><span class="fs10 water">&#9654;</span> ＜コッパ・イタリア＞連覇狙うユベントスが準決勝へ</a></li>
+        <li class="mb8"><a href="http://www.fcjapan.co.jp/news/index.html"><span class="fs10 water">&#9654;</span> ＜FAカップ＞トッテナムがレスターに勝利、４回戦進出</a></li>
+        <li class="mb8"><a href="http://www.fcjapan.co.jp/news/index.html"><span class="fs10 water">&#9654;</span> Ｕ－23アジア選手権、準々決勝進出チーム出揃う</a></li>
+        <li class="mb8"><a href="http://www.fcjapan.co.jp/news/index.html"><span class="fs10 water">&#9654;</span> ＜コパ・デル・レイ＞バルセロナがビルバオに先勝</a></li>
+
+                            
+						</ul>
+						<p class="txt_right fs15"><a href="/news/index.html" class="blue opacity">Soccer News 一覧へ　<img src="/src/image/common/arrow-blue.png"></a></p>
+					</div>
+				</article>
+			</div><!-- End [div class="l-inner"] -->
+			
+			<hr class="green"/>
+			<article class="l-article cf categoryNav categoryNavRecommend">
+				<div class="l-inner cf">
+					<h2 class="flo_left white fwNormal fs42 p-t60">RECOMMEND</h2>
+					<div class="flo_right">
+						<dl class="cf">
+							<dt>
+								<a href="http://ameblo.jp/akira-calciofantastico/" rel="external" class="opacity">
+									<img src="/src/image/home/yoshida-bnr.jpg">
+								</a>
+							</dt>
+							<dd class="mb5">
+								10数年前、17歳で単身海を渡ったサムライでイタリアを知る男。<br />
+								■最新記事：<a href="http://ameblo.jp/akira-calciofantastico/" rel="external" class="underLine">「SY32の表参道店でも販売開始... 」(1.20)</a>
+							</dd>
+							<dt>
+								<a href="http://ameblo.jp/osodribble" rel="external" class="opacity">
+									<img src="/src/image/home/kosobe-bnr.jpg">
+								</a>
+							</dt>
+							<dd class="mb10">
+								ドリブルで日本の未来を切り開くシンデレラボーイ。<br />
+								■最新記事：<a href="http://ameblo.jp/osodribble/" rel="external" class="underLine">「コロンビア」(1.21)</a>
+							</dd>
+							<dt>
+								<a href="http://www.morishi.net/" rel="external" class="opacity green2">
+									森島寛晃オフィシャルサイト
+								</a>
+							</dt>
+							<dd class="mb5">
+								■最新記事：<a href="http://www.morishi.net/" rel="external" class="underLine">「懐かしの500円硬貨」(1.2)</a>
+							</dd>
+							<dt>
+								<a href="http://ameblo.jp/r-morioka/" rel="external" class="opacity green2">
+									森岡隆三オフィシャルブログ
+								</a>
+							</dt>
+							<dd class="mb5">
+								■最新記事：<a href="http://ameblo.jp/r-morioka/" rel="external" class="underLine">「あけましておめでとうございます！」(1.1)</a>
+							</dd>
+						</dl>
+					</div>
+				</div>
+			</article>
+			
+			<div class="l-inner cf">
+				<article class="l-article cf timeline">
+					<div class="flo_right facebookTime">
+						<h4 class="fs30 green2 fwNormal mb20">Official facebook</h4>
+						<div class="fb-page" data-href="https://www.facebook.com/fcjapan" data-width="460px" data-height="350" data-small-header="true" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="true" data-show-posts="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/fcjapan"><a href="https://www.facebook.com/fcjapan">Fcjapan</a></blockquote></div></div>
+					</div>
+					<div class="flo_left twitterTime">
+						<h4 class="fs30 green2 fwNormal mb20">Official Twitter</h4>
+						<a class="twitter-timeline" href="https://twitter.com/fc_japan" data-chrome="noheader nofooter noborders" data-widget-id="611759612660846592" width="460px">@fc_japanさんのツイート</a>
+						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+					</div>
+				</article>
+			</div><!-- End [div class="l-inner"] -->
+			
+				<hr class="blue"/>
+	<article class="l-article cf categoryNav categoryNavInfo">
+		<div class="l-inner cf">
+			<h2 class="flo_right white fwNormal fs42 p-t60">INFO.</h2>
+			<ul class="flo_left">
+				<li><a href="http://yoyaku.fcjapan.jp/page/for-owner.html" rel="external" class="opacity"><img src="/src/image/common/category-nav/info-nav-reserve.gif"></a></li>
+				<li><a href="/advertising/" class="opacity"><img src="/src/image/common/category-nav/info-nav-ad.gif"></a></li>
+				<!--li><a href="/static/for-owner.html" class="opacity"><img src="/src/image/common/category-nav/info-nav-owner.gif"></a></li-->
+			</ul>
+		</div>
+	</article>
+	
+				
+		</div><!-- End [div id="contents" class="l-contents"] -->
+
+			<footer id="footer" class="l-footer p-t30 mb20">
+		<div class="l-inner cf">
+			<article class="l-article cf bnrArea">
+				<ul class="txt_center">
+					<li><a href="http://www.fcjapan.co.jp/jcom/" rel="external"><img src="/src/image/common/bnr/jcomfutsal_fcjapan.gif"></a></li>
+				    <li><a href="http://hondacup.jp/" rel="external"><img src="/src/image/common/bnr/hondacup.gif"></a></li>
+				    <li><a href="http://www.toto-dream.com/" rel="external"><img src="/src/image/common/bnr/banner_toto.gif"></a></li>
+				    <li><a href="http://www.rapaz-wa.com" rel="external"><img src="/src/image/common/bnr/bur_rapaz.gif"></a></li>
+				    <li><a href="http://fcjapan.co.jp/kcfl/" rel="external"><img src="/src/image/common/bnr/kcfl_fcjapan1.gif"></a></li>
+				    <li><a href="http://gacup.jp/" rel="external"><img src="/src/image/common/bnr/gacup_jp_w240_b.png" height="60"></a></li>
+				    <li><a href="http://www.fcjapan.co.jp/advertising/index.html" rel="external"><img src="/src/image/common/bnr/add_top.gif"></a></li>
+				    <li><a href="http://calciofantastico.com/" rel="external"><img src="/src/image/common/bnr/1030CFbn120-60.jpg"></a></li>
+				    <li><a href="http://www.posto-segreto.com/" rel="external"><img src="/src/image/common/bnr/postosegreto_bnC.jpg" height="60"></a></li><br>
+                    <li><a href="https://www.youtube.com/channel/UCTrX7CEIVFUiq21I5zRBUkw" rel="external"><img src="/src/image/common/bnr/youtube_obi_off.png"></a><br>
+                    <iframe width="470" height="264" src="https://www.youtube.com/embed/nts8bLjy86w?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></li>
+				</ul>
+			</article>
+			
+			<p class="txt_center mb30 pagetop">
+				<a href="#top" rel="anchor"><img src="/src/image/common/footer/pagetop.png"></p>
+			</p>
+			
+			<div class="cf">
+				<ul class="flo_left txtLink hiragino">
+					<li><a href="/company/"><i class="fa fa-square"></i> 会社概要</a></li>
+					<li><a href="mailto:info@fcjapan.co.jp"><i class="fa fa-square"></i> お問い合わせ</a></li>
+					<li><a href="/recruit/"><i class="fa fa-square"></i> 人材募集</a></li>
+					<li><a href="/advertising/"><i class="fa fa-square"></i> 広告掲載</a></li>
+					<li><a href="/privacypolicy/"><i class="fa fa-square"></i> 個人情報保護方針</a></li>
+				</ul>
+				<p class="flo_right">Copyright &copy; fcjapan,LTD. All rights reserved.</p>
+			</div>
+		</div><!-- End [div class="l-inner"] -->
+		
+	</footer><!-- End [footer id="footer"] -->
+	
+		
+	</div><!-- End [div id="container"] -->
+
+		<!-- Begin JavaScripts (Load JavaScripts at bottom, this will reduce page load time) -->
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="/script/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/script/jquery-cookie.js"></script>
+	<script type="text/javascript" src="/script/datepicker-ja.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+	<script type="text/javascript" src="/script/app.js"></script>
+	<script type="text/javascript">jQuery(function($){ App.init(); });</script>
+	<script type="text/javascript" src="/script/contents.js"></script>
+	<script type="text/javascript" src="/script/jquery.colorbox.js"></script>
+		
+	<!-- Begin JavaScripts for specifig page -->
+	<script type="text/javascript">
+	//<![CDATA[[
+	jQuery(function($){
+	    // 何かページ固有の処理があればここに記述。基本は、共通処理はapp.jsに、ページ固有の処理はcontents.js内にそれぞれまとめる。
+	});
+	//]]>
+	</script>
+	
+		<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-10817237-1']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+	</body>
+</html>

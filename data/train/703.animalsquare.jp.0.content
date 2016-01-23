@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>どうぶつひろば - ブリーダー直販の子犬販売サイト</title>
+<meta name="keywords" contents="どうぶつひろば,動物広場,ブリーダー,子犬,子犬販売">
+<meta name="description" contents="どうぶつひろば は専門・厳選ブリーダーが直販する子犬販売サイトです。安心保証や嬉しいサービス、子犬の役立つ情報も充実。柴犬をはじめトイプードル・チワワ・ダックスフンド・シーズー・ミックス犬などの人気犬種も多数販売しています。">
+<base href="https://animalsquare.jp/puppies/">
+<!-- The below script Makes IE understand the new html5 tags are there and applies our CSS to it -->
+<!--[if IE]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+<link href="css/import.css?date=20131031" rel="stylesheet" type="text/css">
+<link href="images/common/favicon.ico" rel="shortcut icon">
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="js/jglycy-1.0.js"></script>
+<script type="text/javascript" src="js/jquery.jtruncsubstr-1.0rc.js"></script>
+<script type="text/javascript" src="js/jquery.dropdownPlain.js"></script>
+<link href="../js/css/smoothness/jquery-ui-1.10.3.custom.min.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../js/jquery-ui-1.10.3.custom.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript">
+function favorite( child ) {
+	$.ajax( {
+		url: './?_command=favorite&child=' + child,
+		type: 'GET',
+		dataType: 'script',
+		async: false
+	} );
+}
+
+
+var bookmark_url = 'https://animalsquare.jp/';
+var bookmark_title = 'どうぶつひろば';
+
+function bookmark_set() {
+	if ( document.all )  {
+		window.external.AddFavorite( bookmark_url, bookmark_title );
+		return;
+	}
+
+	if ( window.sidebar && window.sidebar.addPanel ) {
+		window.sidebar.addPanel( bookmark_title, bookmark_url, "" );
+		return;
+	}
+
+	jAlert( "Google Chrome/Safariの場合、CtrlキーとDキーを同時に押してください。<br>その他の場合はご自身のブラウザからお気に入りへ追加下さい。", '確認してください' );
+}
+
+
+$( window ).bind( 'load', function() {
+	if ( window.opera) {
+		$( '#bookmark_button' ).attr( { href: bookmark_url, rel: 'sidebar', title: bookmark_title } );
+	} else {
+		$( '#bookmark_button' ).attr( 'href', 'javascript:void(0);' ).bind( 'click', bookmark_set );
+	}
+
+	$( '#bookmark_button' ).css( 'display', '' );
+} );
+</script>
+</head>
+<body>
+<script type="text/javascript">
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-43792601-1', 'animalsquare.jp');
+ga('send', 'pageview');
+
+</script>
+<header id="headarea">
+  <hgroup id="header">
+    <div id="head_logo">
+		<h1><span style="width: 240px;">ブリーダー直販の子犬販売サイト</span><a href="./"><img src="images/common/logo.gif" width="270" height="63" alt="どうぶつひろば"></a></h1>
+    </div>
+    <div id="head_bookmark"><a id="bookmark_button" href="#" style="display: none;"><img src="images/common/btn_bookmark.jpg" alt="ブックマークする" width="97" height="20"></a></div>
+    <div id="btn_shop" style="float:right;margin-right:10px;">
+    	<a href="https://animalsquare.jp/osaka/"><img src="images/common/btn_shop_osaka_off.jpg" width="270" height="63"></a>
+    </div>
+    <div id="snsarea">
+        <a href="http://now.ameba.jp/?entryText=%E3%81%A9%E3%81%86%E3%81%B6%E3%81%A4%E3%81%B2%E3%82%8D%E3%81%B0%0D%0Ahttp%3A%2F%2Fanimalsquare.jp%2F" target="_blank"><img alt="Amebaなうで紹介" src="images/common/now.png" width="61" height="21"></a>
+        <a href="https://twitter.com/intent/tweet?source=webclient&text=%E3%81%A9%E3%81%86%E3%81%B6%E3%81%A4%E3%81%B2%E3%82%8D%E3%81%B0+http%3A%2F%2Fanimalsquare.jp%2F" target="_blank" rel="nofollow"><img src="images/common/tweet.jpg" width="70" height="22" alt="Twitter"></a>
+        <br>
+        <a href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fanimalsquare.jp%2F%26amp%3Bt%3D%E3%81%A9%E3%81%86%E3%81%B6%E3%81%A4%E3%81%B2%E3%82%8D%E3%81%B0" target="_blank" rel="nofollow"><img src="images/common/fshare.jpg" width="61" height="20" alt="Facebook"></a>
+        <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fanimalsquare.jp%2F&width=120&height=21&colorscheme=light&layout=button_count&action=like&show_faces=false&send=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width: 120px; height:21px;" allowTransparency="true"></iframe>
+    </div>
+  </hgroup>
+  <nav id="gnav">
+    <ul class="dropdown">
+      <li><a href="./"><img src="images/common/gnav_top_on.jpg" alt="ホーム" width="140" height="56"></a></li>
+      <li><a href="first/"><img src="images/common/gnav_first_off.jpg" alt="はじめての方へ" width="141" height="56"></a></li>
+      <li><a href="javascript:void(0);"><img src="images/common/gnav_info_off.jpg" alt="お役立ち情報" width="141" height="56"></a>
+        <ul class="sub_menu">
+          <li><a href="info/price/">気になるお金、犬の生涯費用</a></li>
+          <li><a href="info/comparson/">徹底比較！どこで買いますか？</a></li>
+          <li><a href="info/purpose/">目的別、飼いやすい犬種</a></li>
+          <li><a href="info/before/">飼う前に必要なこと</a></li>
+          <li><a href="info/after/">飼いはじめてから必要なこと</a></li>
+          <li><a href="info/age/">年齢早見表</a></li>
+          <li><a href="info/toilet/">トイレトレーニング（しつけ）徹底解説</a></li>
+          <li><a href="contents/">ニュース＆コンテンツ</a></li>
+          <li><a href="blog/">どうぶつひろばブログ</a></li>
+          <li><a href="petish/">ペット消臭・除菌の決定版 「ペティッシュ」</a></li>
+        </ul>
+      </li>
+      <li><a href="flow/"><img src="images/common/gnav_flow_off.jpg" alt="ご購入の流れ" width="140" height="56"></a></li>
+      <li><a href="qa/"><img src="images/common/gnav_qa_off.jpg" alt="よくあるご質問" width="140" height="56"></a></li>
+      <li><a href="voice/"><img src="images/common/gnav_voice_off.jpg" alt="お客様の声" width="138" height="56"></a></li>
+      <li><a href="contact/"><img src="images/common/gnav_contact_off.jpg" alt="お問い合わせ" width="120" height="56"></a></li>
+    </ul>
+  </nav>
+</header>
+
+<div id="index_mainimage">
+  <div id="slideshow">
+    <div>
+      <div><a href="first/"><img src="images/index/mainimage.jpg" width="960" height="300" alt=""></a></div>
+      <div><a href="present/"><img src="images/index/mainimage3.jpg" width="960" height="300" alt=""></a></div>
+      <div><a href="areaservice/"><img src="images/index/mainimage5.jpg" width="960" height="300" alt=""></a></div>
+    </div>
+    <ul id="index_mainimage_nav">
+      <li style="margin-bottom:10px;"><a href="first/"><img src="images/index/mainimage_2.jpg" width="300" height="60" alt=""></a></li>
+      <li style="margin-bottom:10px;"><a href="present/"><img src="images/index/mainimage_3.jpg" width="300" height="60" alt=""></a></li>
+      <li><a href="areaservice/"><img src="images/index/mainimage_5.jpg" width="300" height="60" alt=""></a></li>
+    </ul>
+  </div>
+</div>
+<div id="maincontents" style="margin-bottom:0;"> 
+  <!--ページシグネチャここから-->
+  <article id="index" class="contents">
+  <div id="introduction" style="text-align:center;">
+      <div class="titlle">どうぶつひろばへようこそ！</div>
+      <div class="subtitle">〓 ネットで探せて便利、ブリーダーさんに会えて安心 〓</div>
+      <div class="contents">子犬探しなら どうぶつひろば にお任せ。うれしい子犬とブリーダーさんの検索サイトできました。<br>
+      子犬はもう、<u><b>ブリーダーさんから直接お求めになる時代</b></u>。</div>
+      <div class="contents">ブリーダーさんなら毛色やサイズはもちろん、性格・健康、血統や両親など、ペットショップではわからないことも何でも知っています。<br>
+      <div class="contents">どうぶつひろば では、子犬の出産・販売情報・子犬に関する役立つ情報をはじめ、<br>ネットで不安な<b>トラブルサポートや万が一の保証も充実！</b></div>
+      柴犬やトイプードル、チワワやダックスフンドといった人気犬種だけでなく、まだ知らないマイナーな犬種まで、<br>あなたにぴったりの子犬がきっと見つかる！</div>
+    </div>
+    <div id="index_topics">
+      <img src="images/index/title_new_stock.gif" alt="新着子犬情報＆コンテンツ" width="958" height="40" border="0">
+      <div id="index_news">
+        <div id="index_top_news">
+          <div id="index_top_news_pict"><a href="contents/index.html?id=410"><img width="80" src="/images/editor/images/contents/201510/IMG_2593%20(1).JPG" alt="犬を飼うにあたって絶対に避けて通れないのが、生活する上で発生する費用の負担です。ゴールデンレトリーバーのような大型犬..."></a></div>
+          <div id="index_top_news_title"><a href="contents/index.html?id=410">ゴールデンレトリーバーの年間費用</a></div>
+          <a href="contents/index.html?id=410">犬を飼うにあたって絶対に避けて通れないのが、生活する上で発生する費用の負担です。ゴールデンレトリーバーのような大型犬は食費など、中型犬や小型犬より...</a>
+        </div>
+        <hr>
+        <div id="index_sub_news">
+          <ul>
+            <li><a href="contents/index.html?id=409"><div class="index_sub_news_pict"><img width="50" src="/images/editor/images/contents/201510/4d061182f497724cc70eee5124a628b5_s.jpg" alt="賢く、明るく、人間のことが大好きなゴールデンレトリーバーは、わたしたち愛犬家にとって最高のパートナーになり得る素晴ら..."></div>ゴールデンレトリーバーを飼うのに向いている人・いない人</a></li>
+            <li><a href="contents/index.html?id=400"><div class="index_sub_news_pict"><img width="50" src="/images/editor/images/contents/201510/golden_history.png" alt="大型犬の中でも、最もメジャーな犬種の一つであるゴールデンレトリーバー。家庭犬として理想的な数々の特徴で知られる優秀な..."></div>ゴールデンレトリーバーの歴史</a></li>
+            <li><a href="contents/index.html?id=398"><div class="index_sub_news_pict"><img width="50" src="/images/editor/images/contents/201510/file000177357244.jpg" alt="犬を飼い始めるときにまず重要なのは、自分の目で直接見てから犬を選ぶことです。ゴールデンレトリーバーのような人気犬種は..."></div>失敗しない！　ゴールデンレトリーバーの子犬の選び方</a></li>
+            <li><a href="contents/index.html?id=399"><div class="index_sub_news_pict"><img width="50" src="/images/editor/images/contents/201510/dog_golden_retriever.png" alt="均整の取れた大きな体に優れた知性と温和さを併せ持つゴールデンレトリーバー。まさに「気は優しくて力持ち」といったイメー..."></div>ゴールデンレトリーバーの飼い方・世話の仕方</a></li>
+            <li><a href="contents/index.html?id=413"><div class="index_sub_news_pict"><img width="50" src="/images/editor/images/contents/201510/manydog.jpg" alt="誰しも、寂しい暮らしより賑やかな生活を好むものです。それは犬との生活でも同じことですね。いざ犬を飼い始めてみると、1頭..."></div>たくさんの犬に囲まれて 複数の犬を飼う場合の注意点</a></li>
+            <li><a href="contents/index.html?id=397"><div class="index_sub_news_pict"><img width="50" src="/images/editor/images/contents/201510/5501ed43df577e93eac7c33568beca39_s.jpg" alt="介助犬や警察犬など、様々な仕事で活躍していることからも分かる通り、ゴールデンレトリーバーは賢く、訓練への適性が高い犬..."></div>ゴールデンレトリーバーの効果的なしつけ方</a></li>
+            <li><a href="contents/index.html?id=412"><div class="index_sub_news_pict"><img width="50" src="/images/editor/images/contents/201510/sleepdog.jpg" alt="幸せな時間は少しでも長く楽しみたい。愛犬と一緒に過ごす生活を思う時、月日の経過について思いを馳せる方も多いことでしょ..."></div>ずっと一緒にいたいから 愛犬に長生きしてもらうために意識すべ</a></li>
+            <li><a href="contents/index.html?id=411"><div class="index_sub_news_pict"><img width="50" src="/images/editor/images/contents/201510/file000177357244.jpg" alt="ゴールデンレトリーバーというと、体が大きいだけあって元気で丈夫そうなイメージがあるかもしれません。もちろんそのイメー..."></div>ゴールデンレトリーバーのかかりやすい病気と対策</a></li>
+          </ul>
+          <div class="readmore"><a href="contents/index.html">さらに見る...</a></div>
+        </div>
+      </div>
+      <div id="index_pickup">
+        <div id="today_pickup">
+          <div id="today_pict">
+            <a href="Shih+Tzu/1006215120005/"><img width="280" src="thumbnail.php?path=images%2Fchild%2F3028%2FphpsMk0et_aIMG_0502.JPG&width=400&height=280" alt="シーズー|シーズーくん　　かわいい男の子"></a>
+          </div>
+          <div id="today_box">
+            <div id="today_link"><a href="Shih+Tzu/1006215120005/">矢次ブリーダーさんのシーズー<br><span id="today_link_birthday">2015年11月20日生まれ</span></a><img width="17" height="17" src="images/common/icon_male.jpg" alt="男の子"></div>
+            <div id="today_recommend">1/23<br>今日の<br>わんこ</div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div id="index_new_stock">
+        <ul>
+          <li><a href="Dachshund/1009316010005/"><img width="145" src="thumbnail.php?path=images%2Fchild%2F3112%2FphpzcQjXV_aIMG_7416.JPG&width=133&height=100" alt="ダックスフンド|カニヘン　　チョコソリットちゃん">ダックスフンド<br>2015年12月生まれ <img width="17" height="17" src="images/common/icon_female.jpg" alt="女の子"><br>チョコソリット<br>佐賀県<br>矢次ブリーダーさん</a></li>
+          <li><a href="Dachshund/1009316010004/"><img width="145" src="thumbnail.php?path=images%2Fchild%2F3111%2Fphp1HEGaY_aIMG_7196.JPG&width=133&height=100" alt="ダックスフンド|カニヘン　ブルータンちゃん">ダックスフンド<br>2015年12月生まれ <img width="17" height="17" src="images/common/icon_female.jpg" alt="女の子"><br>ブルータン<br>佐賀県<br>矢次ブリーダーさん</a></li>
+          <li><a href="Dachshund/1009316010003/"><img width="145" src="thumbnail.php?path=images%2Fchild%2F3110%2FphpOYZk4y_aIMG_7031.JPG&width=133&height=100" alt="ダックスフンド|カニヘン　　チョコタン君">ダックスフンド<br>2015年12月生まれ <img width="17" height="17" src="images/common/icon_male.jpg" alt="男の子"><br>チョコタン<br>佐賀県<br>矢次ブリーダーさん</a></li>
+          <li><a href="French+Bulldog/1015816010002/"><img width="145" src="thumbnail.php?path=images%2Fchild%2F3109%2FphpdSF06A_aIMG_6568.JPG&width=133&height=100" alt="フレンチブルドッグ|クリームちゃん">フレンチブルドッグ<br>2015年12月生まれ <img width="17" height="17" src="images/common/icon_female.jpg" alt="女の子"><br>クリーム<br>佐賀県<br>矢次ブリーダーさん</a></li>
+          <li><a href="French+Bulldog/1015816010001/"><img width="145" src="thumbnail.php?path=images%2Fchild%2F3108%2FphpdfgpKF_aIMG_6260.JPG&width=133&height=100" alt="フレンチブルドッグ|パイドちゃん">フレンチブルドッグ<br>2015年12月生まれ <img width="17" height="17" src="images/common/icon_female.jpg" alt="女の子"><br>パイドカラー<br>佐賀県<br>矢次ブリーダーさん</a></li>
+          <li><a href="Bichon+Frise/1013216010004/"><img width="145" src="thumbnail.php?path=images%2Fchild%2F3107%2Fphp6ofmuN_aIMG_5973.JPG&width=133&height=100" alt="ビションフリーゼ|ビションちゃん">ビションフリーゼ<br>2015年12月生まれ <img width="17" height="17" src="images/common/icon_female.jpg" alt="女の子"><br>ホワイト<br>佐賀県<br>矢次ブリーダーさん</a></li>
+          <li><a href="Bichon+Frise/1013216010003/"><img width="145" src="thumbnail.php?path=images%2Fchild%2F3106%2FphptI0DaY_aIMG_5832.JPG&width=133&height=100" alt="ビションフリーゼ|ビション　　男の子">ビションフリーゼ<br>2015年12月生まれ <img width="17" height="17" src="images/common/icon_male.jpg" alt="男の子"><br>ホワイト<br>佐賀県<br>矢次ブリーダーさん</a></li>
+          <li><a href="Chihuahua/1010616010007/"><img width="145" src="thumbnail.php?path=images%2Fchild%2F3105%2FphpGtmAE9_aIMG_5533.JPG&width=133&height=100" alt="チワワ|チワワちゃん">チワワ<br>2015年12月生まれ <img width="17" height="17" src="images/common/icon_female.jpg" alt="女の子"><br>チョコタン<br>佐賀県<br>矢次ブリーダーさん</a></li>
+          <li><a href="Chihuahua/1010616010006/"><img width="145" src="thumbnail.php?path=images%2Fchild%2F3104%2Fphp572oGJ_aIMG_5402.JPG&width=133&height=100" alt="チワワ|チョコタンちゃん">チワワ<br>2015年12月生まれ <img width="17" height="17" src="images/common/icon_female.jpg" alt="女の子"><br>チョコタン<br>佐賀県<br>矢次ブリーダーさん</a></li>
+          <li><a href="Cavalier+King+Charles+Spaniel/1004216010002/"><img width="145" src="thumbnail.php?path=images%2Fchild%2F3103%2FphpHBzDsa_IMGP1840.JPG&width=133&height=100" alt="キャバリア|元気に育ちました">キャバリア<br>2015年12月生まれ <img width="17" height="17" src="images/common/icon_male.jpg" alt="男の子"><br>ブレーンハイム<br>三重県<br>長谷川ブリーダーさん</a></li>
+          <li><a href="Bernese+Mountain+Dog/1012316010003/"><img width="145" src="thumbnail.php?path=images%2Fchild%2F3102%2FphpbINTvo_m2016_01170207.JPG&width=133&height=100" alt="バーニーズ|可愛いバニちゃん（7番ちゃん）">バーニーズ<br>2015年11月生まれ <img width="17" height="17" src="images/common/icon_female.jpg" alt="女の子"><br>ブラック・ラスト＆ホワイト<br>北海道<br>喜納ブリーダーさん</a></li>
+          <li><a href="Bichon+Frise/1013216010002/"><img width="145" src="thumbnail.php?path=images%2Fchild%2F3099%2Fphp6IsFoe_%E3%83%9E%E3%82%B7%E3%83%A5%E3%83%9E%E3%83%AD%E5%AD%901.jpg&width=133&height=100" alt="ビションフリーゼ|活発な男の子">ビションフリーゼ<br>2015年11月生まれ <img width="17" height="17" src="images/common/icon_male.jpg" alt="男の子"><br>ホワイト<br>香川県<br>村上ブリーダーさん</a></li>
+        </ul>
+      </div>
+      <div class="new_stock_footer"></div>
+    </div>
+    <section class="index_list" style="background:#fff7f7;">
+      <h2><img src="images/index/title_top.gif" alt="人気犬種" width="958" height="40" border="0">どうぶつひろば</h2>
+      <ul>
+        <li><a href="Siba/"><img height="110" src="images/index/list/Siba.jpg" alt="柴犬"></a><span class="num">(283)</span></li>
+        <li><a href="Chihuahua/"><img height="110" src="images/index/list/Chihuahua.jpg" alt="チワワ"></a><span class="num">(147)</span></li>
+        <li><a href="Toy+Poodle/"><img height="110" src="images/index/list/Toy Poodle.jpg" alt="トイ・プードル"></a><span class="num">(130)</span></li>
+        <li><a href="Jack+Russell+Terrier/"><img height="110" src="images/index/list/Jack Russell Terrier.jpg" alt="ジャック・ラッセル・テリア"></a><span class="num">(77)</span></li>
+        <li><a href="Dachshund/"><img height="110" src="images/index/list/Dachshund.jpg" alt="ダックスフンド"></a><span class="num">(63)</span></li>
+        <li><a href="Yorkshire+Terrir/"><img height="110" src="images/index/list/Yorkshire Terrir.jpg" alt="ヨークシャー・テリア"></a><span class="num">(31)</span></li>
+        <li><a href="Shih+Tzu/"><img height="110" src="images/index/list/Shih Tzu.jpg" alt="シー・ズー"></a><span class="num">(31)</span></li>
+        <li><a href="Bichon+Frise/"><img height="110" src="images/index/list/Bichon Frise.jpg" alt="ビション・フリーゼ"></a><span class="num">(29)</span></li>
+        <li><a href="Pomeranian/"><img height="110" src="images/index/list/Pomeranian.jpg" alt="ポメラニアン"></a><span class="num">(27)</span></li>
+      </ul>
+    </section>
+    <div id="index_list_nav">
+      <ul>
+        <li><a href="#index_a">ア</a></li>
+        <li><a href="#index_ka">カ</a></li>
+        <li><a href="#index_sa">サ</a></li>
+        <li><a href="#index_ta">タ</a></li>
+        <li><a href="#index_na">ナ</a></li>
+        <li><a href="#index_ha">ハ</a></li>
+        <li><a href="#index_ma">マ</a></li>
+        <li><a href="#index_ya">ヤ</a></li>
+        <li><a href="#index_ra">ラ</a></li>
+        <li><a href="#index_wa">ワ</a></li>
+      </ul>
+    </div>
+    <section id="index_list">
+      <section id="index_a" class="index_list">
+        <h2><img src="images/index/title_a.gif" alt="ア行から始まる犬種" width="958" height="40" border="0">どうぶつひろば</h2>
+        <ul>
+          <li><a href="Akita/"><img src="images/index/list/Akita.jpg" width="310" height="110"></a></li>
+          <li><a href="Afghan+Hound/"><img src="images/index/list/Afghan Hound.jpg" width="310" height="110"></a></li>
+          <li><a href="American+Cocker+Spaniel/"><img src="images/index/list/American Cocker Spaniel.jpg" width="310" height="110"></a></li>
+          <li><a href="Italian+Greyhound/"><img src="images/index/list/Italian Greyhound.jpg" width="310" height="110"></a></li>
+          <li><a href="English+Cocker+Spaniel/"><img src="images/index/list/English Cocker Spaniel.jpg" width="310" height="110"></a></li>
+          <li><a href="Whippet/"><img src="images/index/list/Whippet.jpg" width="310" height="110"></a></li>
+          <li><a href="Welsh+Corgi+Pembroke/"><img src="images/index/list/Welsh Corgi Pembroke.jpg" width="310" height="110"></a></li>
+          <li><a href="West+Highland+White+Terrier/"><img src="images/index/list/West Highland White Terrier.jpg" width="310" height="110"></a></li>
+          <li><a href="Australian+Shepherd/"><img src="images/index/list/Australian Shepherd.jpg" width="310" height="110"></a></li>
+        </ul>
+        <div class="index_list_pagetop"><a href="#maincontents">ページの先頭へ戻る</a></div>
+      </section>
+      <section id="index_ka" class="index_list">
+        <h2><img src="images/index/title_ka.gif" alt="カ行から始まる犬種" width="958" height="40" border="0">どうぶつひろば</h2>
+        <ul>
+          <li><a href="Kai/"><img src="images/index/list/Kai.jpg" width="310" height="110"></a></li>
+          <li><a href="Dachshund/"><img src="images/index/list/Kaninchen Dachshund.jpg" width="310" height="110"></a></li>
+          <li><a href="Cavalier+King+Charles+Spaniel/"><img src="images/index/list/Cavalier King Charles Spaniel.jpg" width="310" height="110"></a><span class="num">(3)</span></li>
+          <li><a href="Great+Dane/"><img src="images/index/list/Great Dane.jpg" width="310" height="110"></a></li>
+          <li><a href="Great+Pyrenees/"><img src="images/index/list/Great Pyrenees.jpg" width="310" height="110"></a></li>
+          <li><a href="Cairn+Terrier/"><img src="images/index/list/Cairn Terrier.jpg" width="310" height="110"></a><span class="num">(1)</span></li>
+          <li><a href="Golden+Retriever/"><img src="images/index/list/Golden Retriever.jpg" width="310" height="110"></a><span class="num">(2)</span></li>
+          <li><a href="English+Cocker+Spaniel/"><img src="images/index/list/English Cocker Spaniel.jpg" width="310" height="110"></a></li>
+          <li><a href="Welsh+Corgi+Pembroke/"><img src="images/index/list/Welsh Corgi Pembroke.jpg" width="310" height="110"></a></li>
+          <li><a href="Brussels+Griffon/"><img src="images/index/list/Brussels Griffon.jpg" width="310" height="110"></a></li>
+          <li><a href="Border+Collie/"><img src="images/index/list/Border Collie.jpg" width="310" height="110"></a><span class="num">(9)</span></li>
+          <li><a href="Rough+Collie/"><img src="images/index/list/Rough Collie.jpg" width="310" height="110"></a></li>
+        </ul>
+        <div class="index_list_pagetop"><a href="#maincontents">ページの先頭へ戻る</a></div>
+      </section>
+      <section id="index_sa" class="index_list">
+        <h2><img src="images/index/title_sa.gif" alt="サ行から始まる犬種" width="958" height="40" border="0">どうぶつひろば</h2>
+        <ul>
+          <li><a href="Samoyed/"><img src="images/index/list/Samoyed.jpg" width="310" height="110"></a></li>
+          <li><a href="Shetland+Sheepdog/"><img src="images/index/list/Shetland Sheepdog.jpg" width="310" height="110"></a></li>
+          <li><a href="Siba/"><img src="images/index/list/Siba.jpg" width="310" height="110"></a><span class="num">(59)</span></li>
+          <li><a href="Siberian+Husky/"><img src="images/index/list/Siberian Husky.jpg" width="310" height="110"></a></li>
+          <li><a href="Shih+Tzu/"><img src="images/index/list/Shih Tzu.jpg" width="310" height="110"></a><span class="num">(11)</span></li>
+          <li><a href="Jack+Russell+Terrier/"><img src="images/index/list/Jack Russell Terrier.jpg" width="310" height="110"></a><span class="num">(15)</span></li>
+          <li><a href="German+Shepherd+Dog/"><img src="images/index/list/German Shepherd Dog.jpg" width="310" height="110"></a><span class="num">(1)</span></li>
+          <li><a href="Scottish+Terrier/"><img src="images/index/list/Scottish Terrier.jpg" width="310" height="110"></a></li>
+          <li><a href="Standard+Poodle/"><img src="images/index/list/Standard Poodle.jpg" width="310" height="110"></a><span class="num">(3)</span></li>
+          <li><a href="St.+Bernard/"><img src="images/index/list/St. Bernard.jpg" width="310" height="110"></a></li>
+          <li><a href="Miniature+Schnauzer/"><img src="images/index/list/Miniature Schnauzer.jpg" width="310" height="110"></a></li>
+        </ul>
+        <div class="index_list_pagetop"><a href="#maincontents">ページの先頭へ戻る</a></div>
+      </section>
+      <section id="index_ta" class="index_list">
+        <h2><img src="images/index/title_ta.gif" alt="タ行から始まる犬種" width="958" height="40" border="0">どうぶつひろば</h2>
+        <ul>
+          <li><a href="Dachshund/"><img src="images/index/list/Dachshund.jpg" width="310" height="110"></a><span class="num">(8)</span></li>
+          <li><a href="Dalmatian/"><img src="images/index/list/Dalmatian.jpg" width="310" height="110"></a></li>
+          <li><a href="Tibetan+Spaniel/"><img src="images/index/list/Tibetan Spaniel.jpg" width="310" height="110"></a></li>
+          <li><a href="Chinese+Crested+Dog/"><img src="images/index/list/Chinese Crested Dog.jpg" width="310" height="110"></a></li>
+          <li><a href="Chihuahua/"><img src="images/index/list/Chihuahua.jpg" width="310" height="110"></a><span class="num">(43)</span></li>
+          <li><a href="Chin/"><img src="images/index/list/Chin.jpg" width="310" height="110"></a><span class="num">(1)</span></li>
+          <li><a href="Toy+Poodle/"><img src="images/index/list/Toy Poodle.jpg" width="310" height="110"></a><span class="num">(51)</span></li>
+          <li><a href="Toy+Manchester+Terrier/"><img src="images/index/list/Toy Manchester Terrier.jpg" width="310" height="110"></a></li>
+          <li><a href="Dobermann/"><img src="images/index/list/Dobermann.jpg" width="310" height="110"></a></li>
+        </ul>
+        <div class="index_list_pagetop"><a href="#maincontents">ページの先頭へ戻る</a></div>
+      </section>
+      <section id="index_na" class="index_list">
+        <h2><img src="images/index/title_na.gif" alt="ナ行から始まる犬種" width="958" height="40" border="0">どうぶつひろば</h2>
+        <ul>
+          <li><a href="Nihon+Spitz/"><img src="images/index/list/Nihon Spitz.jpg" width="310" height="110"></a><span class="num">(2)</span></li>
+          <li><a href="Newfoundland/"><img src="images/index/list/Newfoundland.jpg" width="310" height="110"></a></li>
+          <li><a href="Norfolk+Terrier/"><img src="images/index/list/Norfolk Terrier.jpg" width="310" height="110"></a></li>
+          <li><a href="Norwich+Terrier/"><img src="images/index/list/Norwich Terrier.jpg" width="310" height="110"></a></li>
+        </ul>
+        <div class="index_list_pagetop"><a href="#maincontents">ページの先頭へ戻る</a></div>
+      </section>
+      <section id="index_ha" class="index_list">
+        <h2><img src="images/index/title_ha.gif" alt="ハ行から始まる犬種" width="958" height="40" border="0">どうぶつひろば</h2>
+        <ul>
+          <li><a href="Basset+Hound/"><img src="images/index/list/Basset Hound.jpg" width="310" height="110"></a></li>
+          <li><a href="Bernese+Mountain+Dog/"><img src="images/index/list/Bernese Mountain Dog.jpg" width="310" height="110"></a><span class="num">(2)</span></li>
+          <li><a href="Pug/"><img src="images/index/list/Pug.jpg" width="310" height="110"></a><span class="num">(2)</span></li>
+          <li><a href="Papillon/"><img src="images/index/list/Papillon.jpg" width="310" height="110"></a><span class="num">(1)</span></li>
+          <li><a href="Bichon+Frise/"><img src="images/index/list/Bichon Frise.jpg" width="310" height="110"></a><span class="num">(6)</span></li>
+          <li><a href="Beagle/"><img src="images/index/list/Beagle.jpg" width="310" height="110"></a></li>
+          <li><a href="Flat-Coated+Retriever/"><img src="images/index/list/Flat-Coated Retriever.jpg" width="310" height="110"></a></li>
+          <li><a href="French+Bulldog/"><img src="images/index/list/French Bulldog.jpg" width="310" height="110"></a><span class="num">(4)</span></li>
+          <li><a href="Brussels+Griffon/"><img src="images/index/list/Brussels Griffon.jpg" width="310" height="110"></a></li>
+          <li><a href="Bulldog/"><img src="images/index/list/Bulldog.jpg" width="310" height="110"></a><span class="num">(4)</span></li>
+          <li><a href="Pekingese/"><img src="images/index/list/Pekingese.jpg" width="310" height="110"></a></li>
+          <li><a href="Boxer/"><img src="images/index/list/Boxer.jpg" width="310" height="110"></a></li>
+          <li><a href="Boston+Terrier/"><img src="images/index/list/Boston Terrier.jpg" width="310" height="110"></a></li>
+          <li><a href="Borzoi/"><img src="images/index/list/Borzoi.jpg" width="310" height="110"></a></li>
+          <li><a href="Border+Collie/"><img src="images/index/list/Border Collie.jpg" width="310" height="110"></a><span class="num">(9)</span></li>
+          <li><a href="Pomeranian/"><img src="images/index/list/Pomeranian.jpg" width="310" height="110"></a><span class="num">(12)</span></li>
+          <li><a href="Siberian+Husky/"><img src="images/index/list/Siberian Husky.jpg" width="310" height="110"></a></li>
+          <li><a href="Standard+Poodle/"><img src="images/index/list/Standard Poodle.jpg" width="310" height="110"></a><span class="num">(3)</span></li>
+          <li><a href="Toy+Poodle/"><img src="images/index/list/Toy Poodle.jpg" width="310" height="110"></a><span class="num">(51)</span></li>
+          <li><a href="Miniature+Poodle/"><img src="images/index/list/Miniature Poodle.jpg" width="310" height="110"></a></li>
+          <li><a href="Wire-haired+Fox+Terrier/"><img src="images/index/list/Wire-haired Fox Terrier.jpg" width="310" height="110"></a></li>
+        </ul>
+        <div class="index_list_pagetop"><a href="#maincontents">ページの先頭へ戻る</a></div>
+      </section>
+      <section id="index_ma" class="index_list">
+        <h2><img src="images/index/title_ma.gif" alt="マ行から始まる犬種" width="958" height="40" border="0">どうぶつひろば</h2>
+        <ul>
+          <li><a href="Maltese/"><img src="images/index/list/Maltese.jpg" width="310" height="110"></a><span class="num">(2)</span></li>
+          <li><a href="Hybrid/"><img src="images/index/list/Hybrid.jpg" width="310" height="110"></a><span class="num">(13)</span></li>
+          <li><a href="Miniature+Schnauzer/"><img src="images/index/list/Miniature Schnauzer.jpg" width="310" height="110"></a></li>
+          <li><a href="Dachshund/"><img src="images/index/list/Miniature Dachshund.jpg" width="310" height="110"></a></li>
+          <li><a href="Miniature+Pinscher/"><img src="images/index/list/Miniature Pinscher.jpg" width="310" height="110"></a></li>
+          <li><a href="Miniature+Bull+Terrier/"><img src="images/index/list/Miniature Bull Terrier.jpg" width="310" height="110"></a></li>
+          <li><a href="Miniature+Poodle/"><img src="images/index/list/Miniature Poodle.jpg" width="310" height="110"></a></li>
+          <li><a href="Siba/"><img src="images/index/list/Siba.jpg" width="310" height="110"></a><span class="num">(59)</span></li>
+        </ul>
+        <div class="index_list_pagetop"><a href="#maincontents">ページの先頭へ戻る</a></div>
+      </section>
+      <section id="index_ya" class="index_list">
+        <h2><img src="images/index/title_ya.gif" alt="ヤ行から始まる犬種" width="958" height="40" border="0">どうぶつひろば</h2>
+        <ul>
+          <li><a href="Yorkshire+Terrir/"><img src="images/index/list/Yorkshire Terrir.jpg" width="310" height="110"></a><span class="num">(5)</span></li>
+        </ul>
+        <div class="index_list_pagetop"><a href="#maincontents">ページの先頭へ戻る</a></div>
+      </section>
+      <section id="index_ra" class="index_list">
+        <h2><img src="images/index/title_ra.gif" alt="ラ行から始まる犬種" width="958" height="40" border="0">どうぶつひろば</h2>
+        <ul>
+          <li><a href="Rough+Collie/"><img src="images/index/list/Rough Collie.jpg" width="310" height="110"></a></li>
+          <li><a href="Labrador+Retriever/"><img src="images/index/list/Labrador Retriever.jpg" width="310" height="110"></a></li>
+          <li><a href="Rottweiler/"><img src="images/index/list/Rottweiler.jpg" width="310" height="110"></a></li>
+        </ul>
+        <div class="index_list_pagetop"><a href="#maincontents">ページの先頭へ戻る</a></div>
+      </section>
+      <section id="index_wa" class="index_list">
+        <h2><img src="images/index/title_wa.gif" alt="ワ行から始まる犬種" width="958" height="40" border="0">どうぶつひろば</h2>
+        <ul>
+          <li><a href="Weimaraner/"><img src="images/index/list/Weimaraner.jpg" width="310" height="110"></a></li>
+          <li><a href="Wire-haired+Fox+Terrier/"><img src="images/index/list/Wire-haired Fox Terrier.jpg" width="310" height="110"></a></li>
+        </ul>
+        <div class="index_list_pagetop"><a href="#maincontents">ページの先頭へ戻る</a></div>
+      </section>
+    </section>
+    <section id="index_hikken">
+      <h2><img src="images/index/title_info.gif" alt="必見!お役立ち情報" width="960" height="30"></h2>
+      <div id="index_hikken_list">
+        <div class="index_hikken_list"> <img src="images/index/image_hiyou.jpg" alt="気になる犬の生涯費用" width="50" height="50" class="img_l">
+          <h3><a href="info/price/">気になる犬の生涯費用</a></h3>
+          <p>子犬時代から老犬まで、犬の生涯費用について<br>
+              どうぶつひろば が犬種サイズ別に詳しくご紹介。</p>
+        </div>
+        <div class="index_hikken_list"> <img src="images/index/image_hikaku.jpg" alt="徹底比較! どこで買いますか" width="50" height="50" class="img_l">
+          <h3><a href="info/comparson/">徹底比較! どこで買いますか</a></h3>
+          <p>ブリーダー直販？ ショップ？<br>
+              様々な販売ルートをどうぶつひろばが徹底解剖！</p>
+        </div>
+        <div class="index_hikken_list"> <img src="images/index/image_dame.jpg" alt="目的別、飼いやすい犬種" width="50" height="50" class="img_l">
+          <h3><a href="info/purpose/">目的別、飼いやすい犬種</a></h3>
+          <p>「飼いやすい犬種はどれですか？」にどうぶつひろばがお応えします。</p>
+        </div>
+        <div class="index_hikken_list"> <img src="images/index/image_kaumae.jpg" alt="飼う前に必要なこと" width="50" height="50" class="img_l">
+          <h3><a href="info/before/">飼う前に必要なこと</a></h3>
+          <p>初めて飼う方でも安心。どうぶつひろばが<br>
+              子犬を飼う前に必要なことについてまとめました。</p>
+        </div>
+        <div class="index_hikken_list"> <img src="images/index/image_kaihajime.jpg" alt="飼いはじめてから必要なこと" width="50" height="50" class="img_l">
+          <h3><a href="info/after/">飼いはじめてから必要なこと</a></h3>
+          <p>子犬を飼いはじめてから必要なことについて、<br>
+              どうぶつひろばがアドバイスします。</p>
+        </div>
+        <div class="index_hikken_list"> <img src="images/index/image_nenrei.jpg" alt="年齢早見表" width="50" height="50" class="img_l">
+          <h3><a href="info/age/">年齢早見表</a></h3>
+          <p>どうぶつひろばオリジナル！
+              とっても分かりやすい「犬の年齢早見表」できました。</p>
+        </div>
+        <div class="index_hikken_list"> <img src="images/index/image_contents.jpg" alt="どうぶつろばコンテンツ" width="50" height="50" class="img_l">
+          <h3><a href="contents/">新着コンテンツ</a></h3>
+          <p>楽しくって役立つ豆知識が満載！どうぶつひろばの<br>オリジナルコンテンツ。ぜひ読んでみて！</p>
+        </div>
+        <div class="index_hikken_list"> <img src="images/index/image_blog.jpg" alt="子犬出産情報ブログ" width="50" height="50" class="img_l">
+          <h3><a href="blog/blog.html">子犬出産情報ブログ</a></h3>
+          <p>子犬の新着出産情報やブリーダーさん情報などを<br>日替わりで毎日お届けします！</p>
+        </div>
+      </div>
+      <div id="index_side">
+        <ul>
+          <li><a href="request/"><img src="images/common/side_btn_koinu.jpg" alt="子犬を探して欲しい" width="240" height="80"></a></li>
+          <li><a href="breeder/"><img src="images/common/side_btn_breeder.jpg" alt="ブリーダーさん募集" width="240" height="80"></a></li>
+        </ul>
+      </div>
+    </section>
+  </article>
+  
+  <!--ページシグネチャここまで-->
+</div>
+
+
+
+<footer id="footer">
+  <div class="foot_nav"><span>どうぶつひろば はブリーダー直販の子犬販売サイトです。</span><img src="images/common/foot_illust.png" width="80" height="83" class="img_r">
+    <ul>
+      <li><a href="./">HOME</a></li>
+      <li><a href="company/">会社概要</a></li>
+      <li><a href="contact/">お問い合わせ</a></li>
+      <li><a href="tradelaw/">特定商取引法表示</a></li>
+      <li><a href="privacy/">プライバシーポリシー </a></li>
+      <li><a href="agreement/">利用規約</a></li>
+      <li><a href="javascript:void(0);">リンク</a></li>
+      <li><a href="../breeder.php">ブリーダーさん専用ページ</a></li>
+    </ul>
+    <div id="footer_copy">
+      <p>Copyright&copy; どうぶつひろば. All rights reserved. </p>
+    </div>
+  </div>
+</footer>
+<!--
+<script type="text/JavaScript" src="js/access.js"></script>
+-->
+</body>
+</html>

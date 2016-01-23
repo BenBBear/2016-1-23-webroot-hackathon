@@ -1,0 +1,975 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<?php # This file is for the license server:
+# Default Licensing Server [Server ID: 1] [created: Fri, 14 Aug 2009 21:46:55 -0500]
+include_once 'configuration.php';
+$servers = array();
+$servers[] = 'http://licensemachine.com/license_server'; // main server
+# You can ignore everything below this line if you want to --------------------------
+$query_string="license={$license}";
+$per_server=false;
+$per_install=true;
+$per_site=false;
+$enable_dns_spoof=yes;
+# functions -------------------------------------------------------------------------
+// added v2.0.10
+function make_token() { return md5('54823a1d9ee4c347c8270af0161789e9'.time()); }
+// END added v2.0.10
+function phpaudit_exec_socket($http_host, $http_dir, $http_file, $querystring)
+{
+$fp=@fsockopen($http_host, 80, $errno, $errstr, 10); // was 5
+if (!$fp) { return false; }
+else
+{
+$header="POST ".($http_dir.$http_file)." HTTP/1.0\r\n";
+$header.="Host: ".$http_host."\r\n";
+$header.="Content-type: application/x-www-form-urlencoded\r\n";
+$header.="User-Agent: PHPAudit v2 (http://www.phpaudit.com)\r\n";
+$header.="Content-length: ".@strlen($querystring)."\r\n";
+$header.="Connection: close\r\n\r\n";
+$header.=$querystring;
+$data=false;
+if (@function_exists('stream_set_timeout')) { @stream_set_timeout($fp, 20); }
+@fputs($fp, $header);
+if (@function_exists('socket_get_status')) { $status=@socket_get_status($fp); } else { $status=true; }
+while (!@feof($fp)&&$status) {
+$data.=@fgets($fp, 1024);
+if (@function_exists('socket_get_status')) { $status=@socket_get_status($fp); } else {
+if (@feof($fp)==true) { $status=false; } else { $status=true; }
+}
+}
+@fclose ($fp);
+if (!strpos($data, '200')) { return false; }
+if (!$data) { return false; }
+$data=@explode("\r\n\r\n", $data, 2);
+if (!$data[1]) { return false; }
+if (@strpos($data[1], "verify")===false) { return false; }
+return $data[1];
+}
+}
+# DOES NOT WORK FOR WINDOWS!!!!!!!
+# No good way to get the mac address for win.
+function phpaudit_get_mac_address()
+{
+$fp=@popen("/sbin/ifconfig", "r");
+if (!$fp) { return -1; } # returns invalid, cannot open ifconfig
+$res=@fread($fp, 4096);
+@pclose($fp);
+$array=@explode("HWaddr", $res);
+if (@count($array)<2) { $array=@explode("ether", $res); } # FreeBSD
+$array=@explode("\n", $array[1]);
+$buffer[]=@trim($array[0]);
+$array=@explode("inet addr:", $res);
+if (@count($array)<2) { $array=@explode("inet ", $res); } # FreeBSD
+$array=@explode(" ", $array[1]);
+$buffer[]=@trim($array[0]);
+return $buffer;
+}
+function path_translated()
+{
+$option=array('PATH_TRANSLATED', 'ORIG_PATH_TRANSLATED', 'SCRIPT_FILENAME', 'DOCUMENT_ROOT',
+'APPL_PHYSICAL_PATH');
+foreach ($option as $key)
+{
+if (!isset($_SERVER[$key])||strlen(trim($_SERVER[$key]))<=0) { continue; }
+if (@substr(php_uname(), 0, 7)=='Windows')
+{
+return @substr($_SERVER[$key], 0, @strrpos($_SERVER[$key], '\\'));
+}
+return @substr($_SERVER[$key], 0, @strrpos($_SERVER[$key], '/'));
+}
+return false;
+// return 'no path could be determined.';
+}
+function server_addr()
+{
+$options=array('SERVER_ADDR', 'LOCAL_ADDR');
+foreach ($options as $key)
+{
+if (isset($_SERVER[$key])) { return $_SERVER[$key]; }
+}
+return false;
+// return 'no IP could be determined.';
+}
+# END functions ---------------------------------------------------------------------
+if ($per_server)
+{
+$server_array=phpaudit_get_mac_address();
+$query_string.="&access_host=".@gethostbyaddr(@gethostbyname($server_array[1]));
+$query_string.="&access_mac=".$server_array[0];
+}
+else if ($per_install)
+{
+$query_string.="&access_directory=".path_translated();
+$query_string.="&access_ip=".server_addr();
+$query_string.="&access_host=".$_SERVER['HTTP_HOST'];
+}
+else if ($per_site)
+{
+$query_string.="&access_ip=".server_addr();
+$query_string.="&access_host=".$_SERVER['HTTP_HOST'];
+}
+// added v2.0.10
+$query_string.='&access_token=';
+$query_string.=$token=make_token();
+// END added v2.0.10
+foreach($servers as $server) {
+$sinfo=@parse_url($server);
+$data=phpaudit_exec_socket($sinfo['host'], $sinfo['path'], '/validate_internal.php', $query_string);
+if ($data) { break; }
+}
+$parser=@xml_parser_create('');
+@xml_parser_set_option($parser, XML_OPTION_CASE_FOLDING, 0);
+@xml_parser_set_option($parser, XML_OPTION_SKIP_WHITE, 1);
+@xml_parse_into_struct($parser, $data, $values, $tags);
+@xml_parser_free($parser);
+$returned=$values[0]['attributes'];
+$returned['addon_array']=@str_replace(" ", '+', @unserialize(@base64_decode($returned['addon_array'])));
+if (empty($returned)) { $returned['status']="invalid"; }
+if ($returned['status']=="invalid") { die('Invalid license'); }
+if ($returned['status']=="suspended") { die('Suspended license'); }
+if ($returned['status']=="expired") { die('Expired license'); }
+if ($returned['status']=="pending") { die('Pending license'); }
+if ($returned['status']=="invalid_key") { die('Invalid license key'); }
+// added v2.0.10
+if ($returned['status']=='active'
+&&strcmp(md5('54823a1d9ee4c347c8270af0161789e9'.$token), $returned['access_token'])!=0
+&&$enable_dns_spoof=='yes'
+&&!$skip_dns_spoof)
+{
+$returned['status']="invalid"; }
+// END added v2.0.10
+unset($query_string, $per_server, $per_install, $per_site, $server, $data, $parser, $values, $tags, $sinfo, $token);
+?><title>Golf Lessons Online, Golf Swing Tips, Learn how to play
+golf</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="description" content="Improve your golf game in 30 days. Boost your driving range. Master the putting. Finally overcome embarrassment on the golf course!">
+<meta name="keywords" content="golfing tips, perfect golf swing, driving range, golf lessons online, golf book, how to play golf">
+<style>
+<!--
+p
+{margin-right:0in;
+margin-left:0in;
+font-size:12.0pt;
+font-family:"Times New Roman","serif";
+color:black}
+p.MsoNormal
+{mso-style-parent:"";
+margin-top:0in;
+margin-right:0in;
+margin-bottom:10.0pt;
+margin-left:0in;
+line-height:115%;
+font-size:11.0pt;
+font-family:"Calibri","sans-serif";
+color:windowtext}
+-->
+</style>
+</head>
+<body>
+<!-- Save for Web Slices (golfing_secrets.psd) -->
+<div align="center">
+<center>
+<table id="Table_01" border="0" cellpadding="0" cellspacing="0" height="961" width="880">
+<tbody>
+<tr>
+<td colspan="2"> <img src="images/index_01.jpg" alt="" height="90" width="440"></td>
+<td colspan="2"> <img src="images/index_02.jpg" alt="" height="90" width="440"></td>
+</tr>
+<tr>
+<td colspan="2"> <img src="images/index_03.jpg" alt="" height="180" width="440"></td>
+<td colspan="2"> <img src="images/index_04.jpg" alt="" height="180" width="440"></td>
+</tr>
+<tr>
+<td> <img src="images/index_05.jpg" alt="" height="100%" width="27"></td>
+<td colspan="2" bgcolor="#ffffff" valign="top">
+<div align="center">
+<table border="0" width="750">
+<tbody>
+<tr>
+<td>
+<p class="MsoNormal"><i><font size="4"><b><font face="Verdana"><span style="line-height: 115%;">Attention:
+Are You Ready To</span></font><span style="line-height: 115%; font-family: Verdana;"> End Your
+Embarrassment On The Golf Course TODAY!</span><font face="Verdana"><span style="line-height: 115%;">
+Step Out Onto The Tee Box With Complete Confidence And Hit The Ball
+With Power?</span></font></b><span style="line-height: 115%; font-family: Verdana;"><b> </b></span></font></i><b>
+<span style="font-size: 16pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;"><br>
+&nbsp;</span></b></p>
+<p class="MsoNormal" align="left"> <span style="font-size: 24pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;; color: rgb(192, 0, 0);"><b><img src="heading.png" border="0" height="171" width="691"></b></span></p>
+<h4 align="right"><span style="font-weight: 400;"> <font face="Freestyle Script" size="6">&nbsp;<font color="#000080">&nbsp;
+</font>&nbsp;&nbsp;&nbsp;&nbsp; </font>
+</span></h4>
+<img src="images/aaron_michaela.jpg" alt="" height="120" width="150">
+<p class="MsoNormal"> <span style="font-family: Arial,sans-serif;"> <font size="3">Tuesday
+27th Jul,
+5:45pm<br>
+From: Aaron &amp; Michaela Forman</font><br>
+&nbsp;</span></p>
+<p class="MsoNormal"> <span style="font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;"> <br>
+Dear Future Golf Pro,</span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+How many times have you been forced to walk off the golf course
+EMBARRASSED... or even humiliated by your own golf game?</span><span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+How many hours have you wasted practicing your swing &#8211; only to see
+absolutely NO IMPROVEMENT?</span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">Well,
+you need to understand that you are NOT ALONE! </span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">Golf
+is a very difficult game... it&#8217;s really a challenge to be able to
+perfect your swing, cut your handicap and consistently shoot in the 70s
+and the 80s. </span></p>
+<p class="MsoNormal" style="text-align: center;" align="center"> <b> <span style="font-size: 14pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+But, just like every other challenge in life, golf CAN be mastered!</span></b></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">And
+if you give us a few minutes we are going to show you EXACTLY how you
+can
+master the game of golf &#8211; simply and easily. </span></p>
+<p class="MsoNormal"><font size="3">
+<span style="font-family: Arial,sans-serif;">Did
+you know that </span> <span style="line-height: 115%; font-family: Arial,sans-serif;">
+The Game Of Golf CAN BE Mastered In Just A Few Short Weeks... IF You
+Have The Right System And The Right Secrets!</span></font></p>
+<p class="MsoNormal" align="center"> <img src="images/Font3BlueMed%20%28121%29.png" border="0" height="39" width="514"></p>
+<div align="center">&nbsp;
+<div align="center">
+<table id="Table_2" border="0" cellpadding="0" cellspacing="0" height="264" width="508">
+<tbody>
+<tr>
+<td> <img src="images/testimonial_01.png" alt="" height="106" width="20"></td>
+<td> <img src="images/testimonial_02.png" alt="" height="106" width="216"></td>
+<td> <img src="images/testimonial_03.png" alt="" height="106" width="251"></td>
+<td> <img src="images/testimonial_04.png" alt="" height="106" width="21"></td>
+</tr>
+<tr>
+<td> <img src="images/testimonial_05.png" alt="" height="100%" width="20"></td>
+<td colspan="2" valign="top">
+&nbsp;
+<p style="margin-top: 0pt; margin-bottom: 0pt;"><font face="Arial" size="3"> <br>
+This book has changed my game DRASTICALLY. I'm not what you would call
+an "ebook buyer" but this has been great. <b>My handicap has
+been dropping lower and lower and the guys think I'm paying for pricey
+golf instructions. My results have happened much faster than I could
+have imagined.&nbsp; </b><br>
+<br>
+You can go ahead and use my letter above. I can't imagine a amateur
+golfer in the world that wouldn't like using this system.</font></p>
+<p style="margin-top: 0pt; margin-bottom: 0pt;">
+<font face="Arial" size="3">&nbsp;<br>
+Cheers,<br>
+Oliver <br>
+&nbsp;</font></p>
+</td>
+<td> <img src="images/testimonial_07.png" alt="" height="100%" width="21"></td>
+</tr>
+<tr>
+<td> <img src="images/testimonial_08.png" alt="" height="28" width="20"></td>
+<td> <img src="images/testimonial_09.png" alt="" height="28" width="216"></td>
+<td> <img src="images/testimonial_10.png" alt="" height="28" width="251"></td>
+<td> <img src="images/testimonial_11.png" alt="" height="28" width="21"></td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<table id="Table_3" border="0" cellpadding="0" cellspacing="0" height="264" width="508">
+<tbody>
+<tr>
+<td> <img src="images/testimonial_01.png" alt="" height="106" width="20"></td>
+<td> <img src="images/testimonial_02.png" alt="" height="106" width="216"></td>
+<td> <img src="images/testimonial_03.png" alt="" height="106" width="251"></td>
+<td> <img src="images/testimonial_04.png" alt="" height="106" width="21"></td>
+</tr>
+<tr>
+<td> <img src="images/testimonial_05.png" alt="" height="100%" width="20"></td>
+<td colspan="2">
+<p align="left"><br>
+<font face="Arial" size="3"> <br>
+I just had a company golf outing this past weekend. I shot under 90 for
+the first time in my life. </font><font face="Arial">My
+boss was very impressed, he still kicked my ass, but there was more of
+a "fellow golfer" bond.</font></p>
+<p align="left"><font face="Arial" size="3">Less than a week later, the competitive bastard
+asked me to come play with him again and it became a twice a month
+thing.</font></p>
+<p align="left"><font face="Arial">Long
+story shor</font><font face="Arial" size="3">t,
+I've recently gotten a new position and pay raise, my game is better
+than ever and life is good. </font></p>
+<p align="left"><font face="Arial" size="3">Thanks man.<br>
+<br>
+Duncan</font></p>
+<p></p>
+</td>
+<td> <img src="images/testimonial_07.png" alt="" height="100%" width="21"></td>
+</tr>
+<tr>
+<td> <img src="images/testimonial_08.png" alt="" height="28" width="20"></td>
+<td> <img src="images/testimonial_09.png" alt="" height="28" width="216"></td>
+<td> <img src="images/testimonial_10.png" alt="" height="28" width="251"></td>
+<td> <img src="images/testimonial_11.png" alt="" height="28" width="21"></td>
+</tr>
+</tbody>
+</table>
+<p></p>
+</div>
+</div>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal" align="left"><b>
+<span style="font-size: 18pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">The
+ONLY Thing That Will Set You Apart From Other Golfers And Give You The
+Edge You Deserve... <br>
+</span></b> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;"><br>
+The difference between YOU and all the other golf players that are
+struggling right now is that YOU are here &#8211; and you are going do
+something about it! <br>
+&nbsp;</span></p>
+<table border="0" width="100%">
+<tbody>
+<tr>
+<td width="71">
+<p class="MsoNormal" style="text-indent: -0.25in; margin-left: 0.5in;"> <span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; font-family: Times New Roman; line-height: 115%;"><img src="images/shapes_0003_x9.png" border="0" height="27" width="39">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span> </p>
+</td>
+<td> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">You
+are tired of being the worst person in the foursome!</span></td>
+</tr>
+<tr>
+<td width="71">
+<p class="MsoNormal" style="text-indent: -0.25in; margin-left: 0.5in;"> <span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; font-family: Times New Roman; line-height: 115%;"><img src="images/shapes_0003_x9.png" border="0" height="27" width="39">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span> </p>
+</td>
+<td> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">You
+are tired of struggling in the sand traps while everyone else is making
+birdies!</span></td>
+</tr>
+<tr>
+<td width="71">
+<p class="MsoNormal" style="text-indent: -0.25in; margin-left: 0.5in;"> <span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; font-family: Times New Roman; line-height: 115%;"><img src="images/shapes_0003_x9.png" border="0" height="27" width="39">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span> </p>
+</td>
+<td> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">You
+are tired of your putts swerving around the cup!</span></td>
+</tr>
+<tr>
+<td width="71">
+<p class="MsoNormal" style="text-indent: -0.25in; margin-left: 0.5in;"> <span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; font-family: Times New Roman; line-height: 115%;"><img src="images/shapes_0003_x9.png" border="0" height="27" width="39">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span> </p>
+</td>
+<td> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">You
+are tired of practicing without seeing any change to your game!</span></td>
+</tr>
+</tbody>
+</table>
+<p class="MsoNormal" align="center"><b>
+<span style="line-height: 115%; font-family: Arial,sans-serif;"> <font size="4"><br>
+<br>
+And you are ready to do something about it...</font></span></b></p>
+<table border="0" cellpadding="4" width="100%">
+<tbody>
+<tr>
+<td width="47"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+<img src="images/shapes_0029_star-13.png" align="left" border="0" height="30" width="39"></span></td>
+<td>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">You
+are ready to take control over your swing, your putting and your
+entire game!</span></p>
+</td>
+</tr>
+<tr>
+<td width="47"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+<img src="images/shapes_0029_star-13.png" align="left" border="0" height="30" width="39"></span></td>
+<td> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+<b>You are ready to drop 6 strokes from your
+game by next week!</b></span></td>
+</tr>
+<tr>
+<td width="47"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+<img src="images/shapes_0029_star-13.png" align="left" border="0" height="30" width="39"></span></td>
+<td> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+You are ready to start shooting in the 70s and 80s EVERYTIME you play!</span></td>
+</tr>
+<tr>
+<td width="47"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+<img src="images/shapes_0029_star-13.png" align="left" border="0" height="30" width="39"></span></td>
+<td> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+<b>You are ready to eradicate your slice and
+shoot the ball perfectly straight!</b></span></td>
+</tr>
+<tr>
+<td width="47"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+<img src="images/shapes_0029_star-13.png" align="left" border="0" height="30" width="39"></span></td>
+<td> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+You are ready to impress your friends, end the embarrassment and
+finally take pride in your game!</span></td>
+</tr>
+<tr>
+<td width="47"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+<img src="images/shapes_0029_star-13.png" align="left" border="0" height="30" width="39"></span></td>
+<td><span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">You
+are ready to discover the secrets that are going to improve your game
+and give you the edge. </span></td>
+</tr>
+<tr>
+<td width="47"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+<img src="images/shapes_0029_star-13.png" align="left" border="0" height="30" width="39"></span></td>
+<td><span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">You
+are going to uncover the system that is going to give you the game you
+deserve </span> </td>
+</tr>
+<tr>
+<td width="47"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+<img src="images/shapes_0029_star-13.png" align="left" border="0" height="30" width="39"></span></td>
+<td><span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">Basically,
+you are going to master the game of golf... and you are going to be
+able to do it faster and easier than you ever thought possible. </span>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- End Save for Web Slices -->
+<p class="MsoNormal">&nbsp; </p>
+<p class="MsoNormal" align="center"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;"><br>
+</span><b> <span style="font-size: 16pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">Are
+You Ready To Become A Better Golfer? </span></b></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">If
+you wanted to become a better cook &#8211; you would get a cookbook....</span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">If
+you wanted to repair your car &#8211; you would get a repair manual...</span></p>
+<p class="MsoNormal" style="text-align: center;" align="center"> <b> <span style="font-size: 14pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+If you want to discover all the little dirty secrets about mastering
+the sport of golf &#8211; then you will read this website...</span></b></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">Golf
+may be frustrating to you right now, but if you give us just a few
+minutes we are going to tell you exactly how you can improve ANY golf
+game...<br>
+&nbsp;</span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+<img src="images/shapes_0029_star-13.png" align="left" border="0" height="30" width="39"></span><span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; font-family: Times New Roman; line-height: 115%;"></span><span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">Even
+if you are a complete newbie to the game of golf!</span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+<img src="images/shapes_0029_star-13.png" align="left" border="0" height="30" width="39">Even
+if you keep practicing and your game keeps getting worse and worse!</span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+<img src="images/shapes_0029_star-13.png" align="left" border="0" height="30" width="39">Even
+if you have been trying for YEARS to cut a few strokes of your game</span><font size="3"><span style="font-family: Arial,sans-serif;">
+with no success</span></font></p>
+<p class="MsoNormal">&nbsp; </p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">It
+doesn&#8217;t really matter WHAT your situation is, we have the exact remedy
+that will fix your golfing woes.</span></p>
+<div align="right">
+<table id="Table_4" align="right" border="0" cellpadding="0" cellspacing="0" height="368" width="155">
+<tbody>
+<tr>
+<td> <img src="images/inline3_01.jpg" alt="" height="9" width="4"></td>
+<td> <img src="images/inline3_02.jpg" alt="" height="9" width="142"></td>
+<td> <img src="images/inline3_03.jpg" alt="" height="9" width="9"></td>
+</tr>
+<tr>
+<td> <img src="images/inline3_04.jpg" alt="" height="192" width="4"></td>
+<td> <img src="images/inline3_05.jpg" alt="" height="192" width="142"></td>
+<td> <img src="images/inline3_06.jpg" alt="" height="192" width="9"></td>
+</tr>
+<tr>
+<td> <img src="images/inline3_07.jpg" alt="" height="100%" width="4"></td>
+<td bgcolor="#339932" valign="top">
+<form method="post" action="http://www.aweber.com/scripts/addlead.pl"><input name="meta_web_form_id" value="INSERT YOUR ID HERE" type="hidden"><input name="meta_split_id" value="" type="hidden"><input name="unit" value="INSERT YOUR LIST NAME HERE" type="hidden"><input name="redirect" value="INSERT YOUR URL HERE" id="INSERT YOUR URL HERE" type="hidden"><input name="meta_redirect_onlist" value="INSERT YOUR URL HERE" type="hidden"><input name="meta_adtracking" value="" type="hidden"><input name="meta_message" value="1" type="hidden"><input name="meta_required" value="from" type="hidden"><input name="meta_forward_vars" value="0" type="hidden">
+<table width="40">
+<tbody>
+<tr>
+<td colspan="2">&nbsp;</td>
+</tr>
+<tr>
+<td><b><font color="#ffffff">Name:</font></b></td>
+<td><input name="name" value="" size="8" type="text"></td>
+</tr>
+<tr>
+<td><font color="#ffffff"><b>Email:</b></font></td>
+<td><input name="from" value="" size="8" type="text"></td>
+</tr>
+<tr>
+<td colspan="2">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" align="center">
+<input name="submit" value="Download" type="submit"></td>
+</tr>
+</tbody>
+</table>
+</form>
+</td>
+<td> <img src="images/inline3_09.jpg" alt="" height="100%" width="9"></td>
+</tr>
+<tr>
+<td> <img src="images/inline3_10.jpg" alt="" height="21" width="4"></td>
+<td> <img src="images/inline3_11.jpg" alt="" height="21" width="142"></td>
+<td> <img src="images/inline3_12.jpg" alt="" height="21" width="9"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">The
+bottom line is that you want to improve your abilities and take pride
+in your game. And we have the system that is going to allow you to do
+just that! </span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">We
+are going to break everything down for you and explain everything that
+you need to know about the game of golf, the secrets of a perfect
+swing, and the mistakes that you MUST avoid. </span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">But
+that&#8217;s not all!</span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">Everything
+you have ever wanted to know about the game of golf &#8211; including expert
+tips and insider secrets &#8211; is all in one ground-breaking book... <b><i>Golfing
+Secrets.</i></b></span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;"><br>
+You could spend thousands of dollars on the best equipment in the
+world... but those new, shiny golf clubs will never make you a better
+player. </span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">You
+could waste thousands of hours &#8211; and years &#8211; practicing your swing...
+but all the practice in the world is useless unless you have the right
+system. </span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">But
+you don&#8217;t have to waste your money &#8211; and you don&#8217;t have to waste your
+time. You CAN master the game of golf in a few short WEEKS when you
+have </span><b><i> <span style="font-size: 12pt; line-height: 115%; font-family: Arial,sans-serif;">
+Golfing Secrets</span></i></b><span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+on your side. </span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">With
+the secrets, the system and the tips in </span><b><i>
+<span style="font-size: 12pt; line-height: 115%; font-family: Arial,sans-serif;">Golfing
+Secrets</span></i></b><span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+you can play &#8211; and BEAT &#8211; anyone with old, rusty clubs.<b><i>
+</i></b></span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">Just
+imagine being able to walk out on the course in a few short weeks from
+now and play BETTER than the guys who used to tease and mock you. </span>
+</p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">Just
+imagine their faces when you follow-through with that first perfect
+swing and make a birdie. </span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">Just
+imagine how good it is going to feel to take pride in yourself and your
+game.&nbsp; </span> </p>
+<p class="MsoNormal" align="center"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">With
+</span><b><i> <span style="font-size: 12pt; line-height: 115%; font-family: Arial,sans-serif;">
+Golfing Secrets </span></i></b> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">you
+are going to have the power to do just that! You are going to be able
+to beat your opponents without them even knowing what hit them!<br>
+&nbsp;</span></p>
+<p class="MsoNormal" align="center"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+<img src="images/ebook_mdd.gif" border="0" height="438" width="357"></span></p>
+<p class="MsoNormal" align="center"> <img src="images/arrows2_0027_arrows-18-down.png" border="0" height="61" width="242"><b><i><span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;"><br>
+</span></i> <span style="font-size: 18pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+What Can You Expect To Learn <br>
+In This Revolutionary New Manual? </span></b></p>
+<p class="MsoNormal"><b><i> <span style="font-size: 12pt; line-height: 115%; font-family: Arial,sans-serif;">
+Golfing Secrets</span><span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+</span></i></b> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">is
+your complete guide to golf &#8211; from start to finish it&#8217;s all right here!
+</span> </p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">Just
+take a second to look over what you are going to discover when you get
+your own copy of </span><b><i> <span style="font-size: 12pt; line-height: 115%; font-family: Arial,sans-serif;">
+Golfing Secrets</span></i></b><span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;"><b><i>
+</i></b><i>today...</i></span></p>
+<table border="0" cellspacing="5" width="100%">
+<tbody>
+<tr>
+<td width="85"><b> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+<img src="images/shapes_0023_check-6.png" align="left" border="0" height="53" width="45"></span></b></td>
+<td>
+<p class="MsoNormal"><b> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">Get
+the hard-hitting introduction to golf that you never got!</span></b><span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+<br>
+Finally uncover the secrets behind the game, what to expect on the golf
+course and the fundamental basics that will make you a better golfer.</span></p>
+</td>
+</tr>
+<tr>
+<td width="85"><b> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+<img src="images/shapes_0023_check-6.png" align="left" border="0" height="53" width="45"></span></b></td>
+<td><b> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+Are you prepared when you walk out on that course? </span> </b>
+<span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;"><br>
+Discover all the specs on balls, how to choose the right clubs for you,
+factors you MUST consider before you buy, which club to use where, what
+accessories you have to have and what
+accessories will just make you look
+stupid.</span></td>
+</tr>
+<tr>
+<td width="85"><b> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+<img src="images/shapes_0023_check-6.png" align="left" border="0" height="53" width="45"></span></b></td>
+<td>
+<p class="MsoNormal"><b> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">The
+&#8220;Better-Than-Golf-Lessons&#8221; Golf Lessons</span></b><span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;"><br>
+Don&#8217;t waste your money on golf lessons when you can have the
+hard-hitting information to playing golfer BETTER than the Pro! </span></p>
+</td>
+</tr>
+<tr>
+<td width="85"><b> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+<img src="images/shapes_0023_check-6.png" align="left" border="0" height="53" width="45"></span></b></td>
+<td><b> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+What do golf and fitness have to do with each other? A LOT! <br>
+</span></b> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+How and why your structure decides the game &#8211; and what you can do to
+get the most out of your potential!</span></td>
+</tr>
+<tr>
+<td width="85"><b> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+<img src="images/shapes_0023_check-6.png" align="left" border="0" height="53" width="45"></span></b></td>
+<td><b> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+The where and the who are just as important as the game itself! </span></b>
+<span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;"><br>
+Find out the nitty-gritty secrets NO ONE will tell you about driving
+ranges, courses, policies, group and team scenarios and what people you
+should ALWAYS avoid playing golf with!</span></td>
+</tr>
+<tr>
+<td width="85"><b> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+<img src="images/shapes_0023_check-6.png" align="left" border="0" height="53" width="45"></span></b></td>
+<td>
+<p class="MsoNormal"><span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; font-family: Times New Roman; line-height: 115%;">&nbsp;</span><b><span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">Once
+you get down the basics, then all you need to do is refine...<br>
+</span></b> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+You are going to be able to knock-out your competition and impress your
+friends with these basics... but you are going to be able to AMAZE even
+yourself when you master and refine your game.</span></p>
+</td>
+</tr>
+<tr>
+<td width="85"><b> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+<img src="images/shapes_0023_check-6.png" align="left" border="0" height="53" width="45"></span></b></td>
+<td><b> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+It don&#8217;t mean a thing if you ain&#8217;t got that SWING!</span></b><span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;"><br>
+Everything you need to know about perfecting your swing in weeks (not
+years). From your balance to power to grip &#8211; the secrets, tips and the
+amazing strategy is all right here!</span></td>
+</tr>
+<tr>
+<td width="85"><b> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+<img src="images/shapes_0023_check-6.png" align="left" border="0" height="53" width="45"></span></b></td>
+<td><b> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+The art of putting</span></b><span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;"><br>
+Putting can be complicated, but we are going to make it easy for you to
+eliminate the mind games, build your stroke and get the perfect posture
+to sink the ball in the cup every time!</span></td>
+</tr>
+<tr>
+<td width="85"><b> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+<img src="images/shapes_0023_check-6.png" align="left" border="0" height="53" width="45"></span></b></td>
+<td><span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; font-family: Times New Roman; line-height: 115%;">
+&nbsp;</span><b><span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">Eliminate
+your problems and take control of your golf game!<br>
+</span></b> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+Discover the biggest problems most golfers have &#8211; and how you can
+troubleshoot these issues before they become problems for you. </span></td>
+</tr>
+</tbody>
+</table>
+<p class="MsoNormal"> <span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; font-family: Times New Roman; line-height: 115%;">&nbsp;</span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">As
+you can see, you don&#8217;t have to spend day after day, month after month,
+years after year practicing your swing and praying that your game
+improves. You don&#8217;t have to spend your weeks being humiliated in front
+of your friends. </span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">With
+</span><b><i> <span style="font-size: 12pt; line-height: 115%; font-family: Arial,sans-serif;">
+Golfing Secrets</span></i></b><span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;"><b><i>
+</i></b>you are going to have everything you
+need to start shooting in the 70s and 80s every time you
+play!&nbsp; </span></p>
+<p class="MsoNormal"><b> <span style="font-size: 14pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+<br>
+</span> <span style="font-size: 16pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">Just
+Imagine Being Able To Step Out Onto That Green &#8211; With PRIDE and
+CONFIDENCE &#8211; In Only A Few Short Weeks </span> </b></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+<img src="images/golf_swing.jpg" align="right" border="0" height="211" width="225"></span><span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">Right
+now you have the opportunity to uncover the expert advice, the
+ground-breaking secrets and the master tips that you need to master the
+game of golf. </span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">And
+you are going to get it all &#8211; in one simple, straight forward and easy
+to read eBook.</span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">You
+are going to be able to stay 1 step ahead of your competition. You are
+going to be able to improve your game and claim the respect that you
+deserve.</span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">You
+finally have the chance to discover the secrets to perfect your swing
+and improve your shot. You finally have the opportunity to impress your
+friends and end the embarrassment. </span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">With<b><i>
+Golfing Secrets </i></b>you are going to have the
+opportunity to skip the years of struggle and the wasted effort and
+jump straight to the system and the expert secrets that really work! </span>
+</p>
+<p class="MsoNormal"><b> <span style="font-size: 16pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+<br>
+</span></b> <img src="images/shapes_0015_face-sad-1.png" align="right" border="0" height="23" width="36"><b><span style="font-size: 16pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">Are
+You Going To Continue To Suffer The Embarrassment... Or Are You Ready
+To Take Control And Take Back Your Pride? </span></b></p>
+<p> <span style="font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;"> Golfing has been
+called the greatest game in the world &#8211; and that is true. But it&#8217;s
+completely normal for you to have problems getting started and building
+your own game. </span></p>
+<p> <span style="font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;"> And that is why
+we have created <b><i>Golfing Secrets</i></b>,
+to give you the chance to skip over all the humiliation, frustration,
+anger and embarrassment. You can simply put <b><i>Golfing
+Secrets </i></b>to work for you and jump straight to your
+own, personal success! </span></p>
+<p> <span style="font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;"> You don&#8217;t have
+to waste thousands of dollars on lessons, videos and pros. You don&#8217;t
+have to waste years trying to uncover and decode the secrets of a great
+golf game.</span></p>
+<p> <span style="font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;"> You can just
+order <b><i>Golfing Secrets </i></b>and get
+the right system and the hard-hitting tips that you need to go from
+beginner to PRO! </span></p>
+<p class="MsoNormal"> <span style="font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;"> <br>
+</span><b> <span style="font-size: 16pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">If
+You Don&#8217;t Think That A Book Can Turn You Into A Better Golfer In Just A
+Few Short Weeks... Then Let Us PROVE YOU WRONG!</span></b></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">Look,
+we know how frustrated you feel right now. We know that you don&#8217;t feel
+like any tips, any suggestion, any lesson or any book could turn you
+into a great golfer... but the truth is that you CAN!</span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">With
+<b><i>Golfing Secrets </i></b>you
+can uncover the system that will change your game forever. You will
+discover the expert advice that will give you the edge and you will
+finally find the tips that you need to take your game to the next
+level. </span></p>
+<p class="MsoNormal"><b><i> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+Golfing Secrets </span></i></b> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">is
+a simple solution that is easy to read and straight to the point. </span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">We
+have taken all the secrets, knowledge, experience, and advice and
+created a guide that will help ANY golfer eliminate their problems and
+jump straight to playing like a PRO! </span></p>
+<table border="0" cellpadding="5" width="100%">
+<tbody>
+<tr>
+<td width="78"> <span style="font-size: 12pt; line-height: 115%; font-family: Symbol;">
+<img src="images/arrows2_0015_arrow-14-right.png" align="right" border="0" height="29" width="38"></span></td>
+<td> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">Just
+imagine being able to out-golf your friends and impress your clients!</span></td>
+</tr>
+<tr>
+<td width="78"> <span style="font-size: 12pt; line-height: 115%; font-family: Symbol;">
+<img src="images/arrows2_0015_arrow-14-right.png" align="right" border="0" height="29" width="38"></span></td>
+<td><span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">&nbsp;Just
+imagine being able to walk onto any course like a pro and play with
+complete confidence!</span></td>
+</tr>
+<tr>
+<td width="78"> <span style="font-size: 12pt; line-height: 115%; font-family: Symbol;">
+<img src="images/arrows2_0015_arrow-14-right.png" align="right" border="0" height="29" width="38"></span></td>
+<td><span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">Just
+imagine being able to play like a skilled golfer &#8211; and shot in the 70s
+and 80s every time!</span></td>
+</tr>
+<tr>
+<td width="78"> <span style="font-size: 12pt; line-height: 115%; font-family: Symbol;">
+<img src="images/arrows2_0015_arrow-14-right.png" align="right" border="0" height="29" width="38"></span></td>
+<td><span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">Just
+imagine being able to actually ENJOY playing golf because you are going
+to be able to actually WIN!</span></td>
+</tr>
+<tr>
+<td width="78"> <span style="font-size: 12pt; line-height: 115%; font-family: Symbol;">
+<img src="images/arrows2_0015_arrow-14-right.png" align="right" border="0" height="29" width="38"></span></td>
+<td><span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">Just
+imagine having everyone ask you what your secret is... and having all
+your friends BRAG ON YOU!</span></td>
+</tr>
+<tr>
+<td width="78"> <span style="font-size: 12pt; line-height: 115%; font-family: Symbol;">
+<img src="images/arrows2_0015_arrow-14-right.png" align="right" border="0" height="29" width="38"></span></td>
+<td><span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">Just
+imagine getting all the respect when you walk into the clubhouse! </span>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="MsoNormal" style="text-indent: -0.25in; margin-left: 0.5in;"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+<br>
+&nbsp;</span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: Arial,sans-serif; font-weight: 700;">
+Now it&#8217;s time to stop imaging things and start making them a reality! </span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;"><br>
+</span><b> <span style="font-size: 16pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">Stepping
+Out Onto That Tee Box And Perfectly Hitting The Ball With Complete
+Confidence... How Much Is That Worth To You?</span></b></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">We
+know that you are probably thinking that we&#8217;re going to charge an arm
+and
+a leg for the chance to play golf like a pro in just a few short
+weeks... </span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">And
+when you think about the game-changing strategy, the expert tips, and
+ground-breaking secrets... then it&#8217;s easy to see why everyone assumes
+that we&#8217;re going to charge $300, $400 or even $500 dollars for <b><i>Golfing
+Secrets</i></b>.</span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">But
+we&#8217;re not going to charge you $500&#8230;. We&#8217;re not even going to charge you
+$100 dollars for the opportunity to become a truly great golfer. </span></p>
+<p class="MsoNormal" align="left"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">We
+are only going to charge you $47.00 for everything...</span></p>
+<p class="MsoNormal" align="center">&nbsp;</p>
+<p class="MsoNormal" align="center"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">&nbsp;&nbsp;</span><span style="font-size: 12pt; line-height: 115%; font-family: Arial,sans-serif;"><a href="http://en.wikipedia.org/wiki/Golf_Swing#The_golf_swing"><img src="images/graphicprices_0007_$47-only.png" border="0" height="109" width="497"></a></span></p>
+<p class="MsoNormal" align="center">&nbsp;</p>
+<p class="MsoNormal" align="center"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">And
+to think that with a measly investment of $47.00 you are going to be
+able to reach your full potential and out-golf everyone you know!</span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">But
+we know that some of you might still be skeptical, and this is why we
+are
+going to make you an offer that NO ONE will be willing to make&#8230;</span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">&nbsp;</span></p>
+<p class="MsoNormal"><b> <span style="font-size: 16pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+You WILL Become a Better Golfer, Drop 6 Stokes of Your Game and Shoot
+in the 70s and 80s Every Time... Or it&#8217;s FREE!</span></b></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;"><br>
+That&#8217;s right! We know that you are going to finally have the system,
+the
+secrets and the tips that will allow you to master the game of golf.
+&nbsp;</span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">And
+we are so sure that <b><i>Golfing Secrets</i></b>
+will give you everything you need to start golfing at the level you
+deserve that we are going to make you a rock-solid guarantee you can
+trust. </span> </p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">You
+have a FULL 8 weeks to use <b><i> Golfing Secrets</i></b>
+for yourself and see how simple and how easy it is going to be to play
+a better game, take control over your swing, drop 6 stokes from your
+game, start playing in the 70s and 80s and get out of the sand traps
+once and for all and claim the respect that you deserve!</span></p>
+<p class="MsoNormal" align="center"> <img src="images/60-day-refund.gif" border="0" height="400" width="531"></p>
+<p class="MsoNormal" align="center">&nbsp;</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">But,
+if for any reason, you are not 100% satisfied with everything you are
+going to discover with <b><i>Golfing Secrets</i></b>,
+then all you have to do is let us know and we will refund every dime of
+your order. </span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">And
+our guarantee is 100% backed, so you know that it is solid! </span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">Really,
+you have nothing to lose by ordering today&#8230; your results and your
+success is guaranteed&#8230; the steps are simple and easy&#8230; all you really
+need is the desire and you WILL become the golfer that you deserve to
+be! <br>
+<br>
+&nbsp;</span></p>
+<p class="MsoNormal"><b> <span style="font-size: 16pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+It&#8217;s Time to Get Started... </span></b></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">It&#8217;s
+time for you to take the first step and take control over your golf
+game. It&#8217;s time for you to end your embarrassment and take back your
+pride. </span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">It&#8217;s
+time for you to know exactly what it feels like to play with your
+friends and your clients... and play well. </span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">And
+with <b><i>Golfing Secrets</i></b> you finally
+have the chance to have all of that and more... but you have to order
+RIGHT NOW! </span></p>
+<p class="MsoNormal" align="center"><font size="4"> <span style="line-height: 115%; font-family: Arial,sans-serif;">
+Don&#8217;t delay, order <b><i>Golfing Secrets</i></b>
+right now! </span></font></p>
+<p class="MsoNormal" align="center"><font size="4"> <span style="line-height: 115%; font-family: Arial,sans-serif;"> <img src="images/ebook_mdd.gif" border="0" height="438" width="357"><br>
+</span></font> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;"><br>
+</span> <a href="http://1.mforman78.pay.clickbank.net">
+<img style="border: 0px solid ; width: 453px; height: 115px;" alt="order button" src="images/order1.gif"></a></p>
+<p class="MsoNormal" align="center">&nbsp;</p>
+<h4 style="font-family: Brush Script MT;"><big><big><span style="font-family: Lucida Handwriting; color: rgb(99, 60, 140);">Aaron
+&amp;</span><span style="color: rgb(99, 60, 140);">
+Michaela<span style="font-family: Lucida Handwriting;">
+Forman</span></span></big></big></h4>
+<a target="_blank" style="color: rgb(0, 0, 255);" href="mailto:support@golfswingkings.com">support@golfswingkings.com</a>
+<p></p>
+<p> </p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">&nbsp;P.S.
+You are going to get <b><i>Golfing Secrets</i></b>
+</span> <span style="font-size: 12pt; line-height: 115%; font-family: Arial,sans-serif;">delivered
+to your email within seconds! </span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: Arial,sans-serif;">
+No waiting, no shipping, no delays! Just the powerful, golfing guide
+that you deserve &#8211; delivered instantly &#8211; so that you can get started
+using TODAY! </span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: Arial,sans-serif;">
+You really don&#8217;t have any excuse NOT to try </span><b> <i>
+<span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">Golfing
+Secrets</span></i></b><span style="font-size: 12pt; line-height: 115%; font-family: Arial,sans-serif;">...
+so order RIGHT NOW!</span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: Arial,sans-serif;">
+<br>
+P.P.S. Are you going to continue doing what you are doing &#8211; playing
+golf without the scores and the results that you deserve? Are you just
+going to continue to hope that you get lucky? Are you going to continue
+to be embarrassed and humiliated? </span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: Arial,sans-serif;">
+Or are you ready to step-up and take control over your golf game &#8211; and
+your pride?</span></p>
+<p class="MsoNormal"> <span style="font-size: 12pt; line-height: 115%; font-family: Arial,sans-serif;">
+Are you ready to discover the system and the expert secrets that are
+going to give you the gold game that you deserve?</span></p>
+<p class="MsoNormal" align="center"> <span style="font-size: 12pt; line-height: 115%; font-family: Arial,sans-serif;">
+Order </span><b><i> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+Golfing Secrets</span></i></b><span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">
+</span> <span style="font-size: 12pt; line-height: 115%; font-family: Arial,sans-serif;">today!</span></p>
+<p class="MsoNormal" align="center"> <span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;">&nbsp;</span></p>
+<p class="MsoNormal" align="center"> <span style="font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;"> &nbsp;</span><img src="images/shapes_0010_star-13.png" border="0" height="35" width="45"><a href="http://2.mforman78.pay.clickbank.net"><img src="images/Font2BlueMed%20%2867%29.png" border="0" height="34" width="169"></a><img src="images/shapes_0010_star-13.png" border="0" height="35" width="45"><span style="font-size: 12pt; line-height: 115%; font-family: &quot;Arial&quot;,&quot;sans-serif&quot;;"><br>
+&nbsp;</span></p>
+<p class="MsoNormal" align="center">&nbsp;
+</p>
+<p class="MsoNormal" align="center">&nbsp;
+</p>
+<p class="MsoNormal" align="center">&nbsp;
+</p>
+<p class="MsoNormal" align="center"> <a href="index.php"><span style="color: rgb(0, 0, 255);">Golfing
+Secrets</span></a> | <a target="_blank" style="color: rgb(0, 0, 255);" href="privacy_policy.php">
+Privacy Policy</a> | <a target="_blank" style="color: rgb(0, 0, 255);" href="terms_conditions.php">
+Terms and Conditions</a> | <a target="_blank" style="color: rgb(0, 0, 255);" href="disclaimer.php">
+Disclaimer</a> &nbsp;<br>
+<a target="_blank" style="color: rgb(0, 0, 255);" href="affiliates.php">Affiliates Make Money</a> | <a style="color: rgb(0, 0, 255);" href="mailto:support@golfswingkings.com">Contact Us</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+<td> <img src="images/index_07.jpg" alt="" height="100%" width="26"></td>
+</tr>
+<tr>
+<td colspan="2"> <img src="images/index_08.jpg" alt="" height="92" width="440"></td>
+<td colspan="2"> <img src="images/index_09.jpg" alt="" height="92" width="440"></td>
+</tr>
+<tr>
+<td colspan="2"> <img src="images/index_10_10.jpg" alt="" height="66" width="440"></td>
+<td colspan="2"> <img src="images/index_11.png" alt="" height="66" width="440"></td>
+</tr>
+<tr>
+<td> <img src="images/spacer.gif" alt="" height="1" width="27"></td>
+<td> <img src="images/spacer.gif" alt="" height="1" width="413"></td>
+<td> <img src="images/spacer.gif" alt="" height="1" width="414"></td>
+<td> <img src="images/spacer.gif" alt="" height="1" width="26"></td>
+</tr>
+</tbody>
+</table>
+<!-- End Save for Web Slices -->
+<!-- Start of ExitSplash.com Code -->
+<script language="javascript">
+var exitsplashmessage = '***************************************\n\n W A I T B E F O R E Y O U G O !\n\n CLICK THE *CANCEL* BUTTON RIGHT NOW\n TO STAY ON THE CURRENT PAGE.\n\n I HAVE SOMETHING VERY SPECIAL FOR YOU!\n\n***************************************';
+var exitsplashpage = 'exit.html';
+</script>
+<script language="javascript" src="exitsplash.php?tc=3399cc&amp;uh=none&amp;ad=none&amp;sh=no&amp;hv=no&amp;bh=22&amp;fs=12&amp;lf=Arial&amp;at="></script><!-- End of ExitSplash.com Code --></center>
+</div>
+</body></html>

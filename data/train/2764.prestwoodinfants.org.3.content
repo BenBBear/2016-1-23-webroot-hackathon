@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd\">
+<html>
+<head>
+<meta name="description" id = "" content="Prestwood Infant School Homepage Students Pupils School Website 01494 862263" />
+<meta name="keywords" id = "" content="Prestwood Infant School Homepage Students Pupils School Website 01494 862263" />
+<title>Prestwood Infant School</title>
+<style type="text/css" >
+    html, body {
+        height: 100%;
+        width: 100%;
+        margin: 0px;
+    }
+</style>
+
+<DIV style='position:absolute;top:-20500px;'><TABLE><TR><TD id="mediv"><FORM METHOD="POST" target="loc" name="meform1" id="meform1" action="/system/clientJSP/longiframe.html.nocache" accept-charset="utf-8"><INPUT TYPE="hidden" NAME="jspCmd" ID="jspCmd" VALUE=""><INPUT TYPE="hidden" NAME="jspArgs" ID="jspArgs" VALUE=""><INPUT TYPE="hidden" NAME="jspCmd2" ID="jspCmd2" VALUE=""><INPUT TYPE="hidden" NAME="jspArgs2" ID="jspArgs2" VALUE=""><INPUT TYPE="hidden" NAME="jspCmd3" ID="jspCmd3" VALUE=""><INPUT TYPE="hidden" NAME="jspArgs3" ID="jspArgs3" VALUE=""><INPUT TYPE="hidden" NAME="jspCmd4" ID="jspCmd4" VALUE=""><INPUT TYPE="hidden" NAME="jspArgs4" ID="jspArgs4" VALUE=""><INPUT TYPE="hidden" NAME="jspCmd5" ID="jspCmd5" VALUE=""><INPUT TYPE="hidden" NAME="jspArgs5" ID="jspArgs5" VALUE=""><INPUT TYPE="hidden" NAME="callBack" ID="callBack" VALUE=""><INPUT TYPE="hidden" NAME="viewFrame" ID="viewFrame" VALUE=""><INPUT TYPE="hidden" NAME="oceanUrlForward" ID="oceanUrlForward" VALUE=""></FORM></TD><TD id="meiframes"><IFRAME NAME="loc" ID="loc" style="height:0px;width:0px;"></IFRAME></TD></TR></TABLE></DIV>
+<script type = "text/javascript" src = "/system/html2canvas/html2canvas.js?version=07Sep2015" ></script>
+<script type = "text/javascript" src = "/system/clientJSP/include.js?version=07Sep2015&noCookieTest=null" ></script>
+
+
+<script type="text/javascript">
+// ----------
+// check the orientation and return a specific resolution
+// ----------
+function _display_theme_js___detect_orientation() {
+
+    // check for device orientation
+    if (window.orientation == 90 || window.orientation == -90 || window.orientation === 0 || window.orientation == 180) {
+    
+        return 1024 + "_" + 768;
+    
+    }
+
+    // return the resolution 800 x 600 so the page fits nicely on the device if we never get a match for the above
+    return 800 + "_" + 600;
+}
+
+// ----------
+// returns the right resolution for a theme
+// ----------
+function _display_theme_js___get_theme_resolution( theme_type ) {
+        
+    // declare the heights and widths we support
+    // column 0 is the width, 
+    // column 1 is the height
+    var valid_heights = [ [ 1440, 900 ], [ 1280, 1024 ], [ 1280, 800 ], [ 1024, 768 ], [ 800, 600 ] ];
+    
+    // get the screens height and width
+    var current_width  = screen.width;
+    var current_height = screen.height;
+
+    // work out where to start our loop
+    // this is because we have extra resolutions for our CSS types
+    var starting_position = 0;
+    if ( theme_type != "css" ) {
+        starting_position = 2;
+    }
+    
+    // detect whether the user is on one of the devices listed
+    if(navigator.userAgent.match(/Android/i)
+    || navigator.userAgent.match(/webOS/i)
+    || navigator.userAgent.match(/iPhone/i)
+    || navigator.userAgent.match(/iPad/i)
+    || navigator.userAgent.match(/iPod/i)
+    || navigator.userAgent.match(/BlackBerry/i)
+    || navigator.userAgent.match(/Windows Phone/i)) {
+    
+        // if we are a mobile device of some sort we want to go and calculate the orientation and return a res
+        return _display_theme_js___detect_orientation();
+        
+    }
+
+    // declare the width to use variable, and set it to the biggest value in our array
+    var width_to_use  = valid_heights[ starting_position ][0];
+    var height_to_use = valid_heights[ starting_position ][1];
+    
+    // loop through all of the valid heights
+    for ( var i = starting_position; i < valid_heights.length ; i = i + 1 ) {
+    
+        // get the next values from the loop
+        var next_width  = valid_heights[i][0];
+        var next_height = valid_heights[i][1];
+        
+        // if we our screen size is bigger in both height and width than the loop height and width
+        if ( current_width >= next_width && current_height >= next_height ) {
+        
+            // set our resolution to use variables
+            width_to_use  = next_width;
+            height_to_use = next_height;
+            
+            // stop looping
+            break;
+        }
+    }
+    
+    // return the width to use for the theme resolution
+    return width_to_use + "_" + height_to_use;
+}
+
+// ----------
+// display the correct theme
+// ----------
+function _display_theme_js___display( school_id ) {    
+
+    // lay focus on the page
+    top.focus();
+
+    // get the theme details
+    var themeDetails = (
+{ template : "14", name : "Pencils", type : "css" });
+
+    // get the resolution
+    var resolution = _display_theme_js___get_theme_resolution( themeDetails.type );
+
+    // declare the default site URL
+    var site_url = "/public/Content_Management/themes/" + themeDetails.name + "/index.html.nc?school_id=" + school_id + "&resolution=" + resolution;
+
+    // if this isn't a css theme, we should use the old theme path
+    if ( themeDetails.type != "css" ){
+        site_url = "/public/Content_Management/themes/" + themeDetails.name + "/" + resolution + "/index.html.nc?school_id=" + school_id;
+    }
+
+    // set the correct URL
+    oceanGetElementById( "school_page" ).src = site_url;
+    
+}
+
+var _display_theme = {};
+_display_theme.display = _display_theme_js___display;
+</script>
+</head>
+<body>
+<iframe src="about:blank" id=school_page style="position: absolute; height: 100%; width: 100%; margin: 0px; border: 0px;" frameborder=0>Not Supported</iframe>
+<script type="text/javascript">
+_display_theme.display( 1541 );
+</script>
+</body>
+</html>

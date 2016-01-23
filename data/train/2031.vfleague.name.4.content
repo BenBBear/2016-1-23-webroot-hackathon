@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="description" content="Лучший футбольный менеджер - онлайн игра - свой собственный футбольный клуб каждому!" />
+<meta name="viewport" content="width=800, user-scalable=yes">
+<title>Виртуальная Футбольная Лига - онлайн игра - лучший футбольный менеджер</title>
+<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<link href="/vsolmain-1.7.9.css" rel="stylesheet" type="text/css" />
+<link href="/vsolmain-defbrowser-1.0.0.css" rel="stylesheet" type="text/css" /><link rel="image_src" href="//www.virtualsoccer.ru/pics/logo_mail.gif" /><link rel="stylesheet" type="text/css" href="/ajax/jquery.ui-vfl.1.1.0.css" />
+<link rel="stylesheet" type="text/css" href="/ajax/jquery.theme.ui-vfl.1.1.0.css" />
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-18510454-1']);
+_gaq.push(['_setDomainName', 'virtualsoccer.ru']);
+_gaq.push(['_setAllowLinker', true]);
+_gaq.push(['_trackPageview']);
+(function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<script type="text/javascript" src="/ajax/flash_detection.js"></script>
+<script type="text/javascript" src="/ajax/jquery-1.11.3.min.js"></script>    
+<script type="text/javascript" src="/ajax/jquery.ui-vfl.1.1.1.js"></script>
+<link href="/ajax/pnotify.custom.min.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/ajax/pnotify.custom.min.js"></script>
+<script type="text/javascript" src="/ajax/jquery.cookie.js"></script>
+
+<script type="text/javascript">
+function initPage() {
+    $(".qts").tooltip({
+        show: {effect: "toggle", duration:1, delay:500}, hide: false, track: false, position: {my: "center bottom+35", at: "center bottom"},
+        content: function() {return $(this).attr("title")}
+    }).on("focusout mouseout", function() {$(this).tooltip("close")});
+    $(".qtx").tooltip({
+        show: {effect: "toggle", duration:1, delay:500}, hide: false, track: false, position: {my: "center bottom+35", at: "center bottom"},
+        content: function() {return $(this).attr("title")}
+    }).on("click focusin focusout mouseout", function() {$(this).tooltip("close")});
+    $(".qt").tooltip({
+        show: {effect: "toggle", duration:1, delay:500}, hide: false, track: true, content: function() {return $(this).attr("title")}
+    })
+    $(".qtt").tooltip({
+        show: {effect: "toggle", duration:1, delay:500}, hide: false, track: true, content: function() {return $("#"+$(this).attr("title")).html();}
+    })
+}
+$(function() {initPage()});
+function clearPage() {
+    try{$(".qts").tooltip("destroy")} catch(err) {}
+    try{$(".qtx").tooltip("destroy")} catch(err) {}
+    try{$(".qt").tooltip("destroy")} catch(err) {}
+    try{$(".qtt").tooltip("destroy")} catch(err) {}
+}
+</script>
+</head><body>
+<div style="position:absolute; z-index:-2; background-image:url(/menu/sky_high1.jpg); left:0px; height:93px; width:100%" id="toppage"></div>
+<div style="position:absolute; z-index:-2; background-image:url(/pics/grandient.png); background-repeat:repeat-x; left:0px; height:80%; top:93px; width:100%;"></div>
+<table style="border-width:0px; height:100%; width:800px">
+<tr style="height:3px">
+<td style="width:5px"></td>
+<td style="width:790px"></td>
+<td style="width:5px"></td>
+</tr>
+<tr style="height:5px">
+<td style="background-image:url(/menu/top_left.gif)"></td>
+<td style="background-image:url(/menu/horiz.gif)"></td>
+<td style="background-image:url(/menu/top_right.gif)"></td>
+</tr>
+<tr style="height:1px">
+<td style="background-image:url(/menu/vert.gif)" rowspan="3"></td>
+<td class="bwh"></td>
+<td style="background-image:url(/menu/vert.gif)" rowspan="3"></td>
+</tr>
+<tr>
+<td class="bwh vt tmain">
+<script type="text/javascript" src="/ajax/menu-1.0.1.min.js"></script>
+<form method="post" id="login_form" name="login_form" action="/managerzone.php">
+<input type="hidden" name="loginwidth" value="" />
+<input type="hidden" name="loginheight" value="" />
+<input type="hidden" name="loginappver" value="" />
+<input type="hidden" name="loginusagent" value="" />
+<input type="hidden" name="loginoscpu" value="" />
+<input type="hidden" name="loginswfver" value="" />
+<table class="wst">
+<tr>
+<td style="width:65%; height:60px">
+<div style="position:relative; left:-8px; top:-4px; width:100%">
+<img id="img_logo" src="pics/logo36.png" alt="" title="" style="position:absolute; left:2px; top:-31px; border:0; width:500px; height:75px" /></div>
+</td>
+<td style="width:35%; height:60px">
+<table style="margin-right:0px">
+    <tr>
+        <td class="txtr" height="21">
+            <img src="pics/login.gif" alt="" title="" style="padding:5px 0px 0px 0px; width:33px; height:11px; border:0" />
+        </td>
+        <td class="txtr" height="21">
+            <input class="form4" name="login_n" type="text" maxlength="40" onkeypress="return runenter(event,'login_form')" value="" style="width:85px" />
+        </td>
+        <td class="txtr" height="21">
+            <img src="pics/passw.gif" alt="" title="" style="padding:5px 1px 0px 4px; width:38px; height:11px; border:0" />
+        </td>
+        <td class="txtr" height="21">
+            <input class="form4" name="login_p" type="password" maxlength="40" value="" onkeypress="return runenter(event,'login_form')" style="width:85px" />
+        </td>
+        <td class="txtr" height="21">
+            <img class="qt" src="pics/forgot.gif" title="Забыли пароль?" alt="" style="padding:3px 0px 0px 0px; width:11px; height:16px; border:0; cursor:pointer" onclick="fpass()" />
+        </td>
+    </tr>
+    <tr>
+        <td class="txtr" colspan="5" height="18" valign="bottom"><a class="butn-enter-vk qt" style="width:66px; height:14px; margin-right:3px" href="http://oauth.vk.com/authorize?client_id=4458665&redirect_uri=http://www.virtualsoccer.ru/managerzone.php&response_type=code" title="Вход в игру через Вконтакте"><img src="pics/vk2.gif" border="0" style="margin:0 2px 0 0; width:12px; height:13px; vertical-align:middle;" />контакте</a><a class="butn-enter-fb qt" style="width:58px; height:14px; margin-right:3px" href="http://www.virtualsoccer.ru/facebook_login.php" title="Вход в игру через Facebook"><img src="pics/fb2.gif" border="0" style="margin:0; width:5px; height:13px; vertical-align:middle" />acebook</a><a class="butn-enter-orange qt" style="width:18px; height:14px; margin-right:10px" href="http://www.odnoklassniki.ru/oauth/authorize?client_id=1095703040&redirect_uri=http://www.virtualsoccer.ru/managerzone.php&response_type=code" title="Вход в игру через Одноклассники"><img src="pics/od2.gif" border="0" style="margin:0; width:12px; height:13px; vertical-align:middle" /></a><a class="butn-enter qt" style="width:100px; height:14px" href="javascript:void(0)" onclick="loginsubmit('login_form'); return false" title="Нажмите для входа в игру">вход в игру</a></td>
+        <td></td>
+    </tr>
+</table>
+</td></tr>
+</table>
+</form>
+<table class="wst">
+    <tr style="background-color:#e5f7e6">
+        <td style="padding:3px 0 0 0; white-space:nowrap; width:100%; min-width:100%; border-top:1px dotted #006600; height:16px">
+            <div style="position:relative; z-index:98">
+                <a class="mnuh" href="index.php"><b>Главная</b></a>
+                 | <a class="mnuh" href="news.php"><b>Новости</b></a> | <a class="mnuh" href="online.php"><b>Онлайн</b></a> | <a class="mnuh" href="rules.php"><b>Правила</b></a> | <a class="mnuh" href="vox.php"><b>Опросы</b></a> | <a class="mnuh" href="halloffame.php"><b>Аллея славы</b></a> |                                     <a class="mnu2" href="v3_user_register.php"><b>Регистрация в игре</b></a> | <a class="mnuh" href="lost_password.php"><b>Забыли пароль?</b></a>
+                            </div>
+        </td>
+    </tr>
+    <tr style="background-color:#e5f7e6">
+        <td style="padding:0; white-space:nowrap; width:100%; min-width:100%; height:16px">
+                                    <a class="mnuh" href="shed.php"><b>Расписание</b></a> | <a class="mnuh" href="league.php"><b>Турниры</b></a> | <a class="mnuh" href="teams.php"><b>Команды</b></a> | <a class="mnuh" href="plrz_show.php"><b>Игроки</b></a> | <a class="mnuh" href="transferlist.php"><b>Трансфер</b></a> | <a class="mnuh" href="obmen.php"><b>Обмены</b></a> | <a class="mnuh" href="arendalist.php"><b>Аренда</b></a>                    </td>
+    </tr>
+    <tr style="background-color:#e5f7e6">
+        <td style="padding:0 0 3px 0; white-space:nowrap; width:100%; min-width:100%; border-bottom:1px dotted #006600; height:16px">
+                                                <a class="mnuh" href="//forum.vfleague.name" target="_blank"><b>Форум</b></a> | 
+        <a class="mnuh" href="/chat/" target="_blank"><b>Чат</b></a> | 
+        <a class="mnuh" href="links.php"><b>Ссылки</b></a>
+         | <a class="mnuh" href="about.php"><b>Контакты</b></a>                        </td>
+    </tr>
+</table><noscript>
+<fieldset style="color:#990000; background-color:#FFEEEE; border: 1px dotted #660000; margin: 5px 1px; padding: 5px">
+В вашем браузере <b>выключен JavaScript</b>!<br />Пожалуйста, измените настройки браузера, чтобы футбольный менеджер мог корректно работать.
+</fieldset>
+</noscript>
+<table class="wst">
+<tr>
+<td class="txtj vt" style="padding-right:3px; width:78%">
+<h1>Добро пожаловать в мир виртуального футбола!</h1>
+<p><strong>Виртуальная Футбольная Лига</strong> - это игра, в которой вы выступаете в роли тренера виртуальной футбольной команды, 
+<strong>футбольный менеджер онлайн</strong>. Здесь вы можете выбрать себе команду и привести её к победам и славе. 
+Более десяти тысяч тренеров стремятся со своими клубами к этим целям!</p>
+<table style="float:right; margin:6px 6px 0px 10px"><tr><td><a href="v3_user_register.php" class="butn-green qt" title="Нажмите для перехода на страницу регистрации" style="padding:6px 40px">Начать карьеру менеджера</a></td></tr></table>
+Внутри нашего мира - <strong>всё как в настоящем футболе</strong>: национальные чемпионаты и кубки, Лига чемпионов и Лига Европы, Кубок Либертадорес и Кубок африканской конфедерации, чемпионаты мира и отдельных континентов, товарищеские игры и коммерческие турниры - <strong>все страны и соревнования</strong>. <br /><br />Вы можете сделать карьеру успешного тренера-менеджера, меняя места своей работы или достигнув футбольных вершин со своим первым клубом. К вашим услугам уникальная <strong>возможность создать целую футбольную империю</strong>, состоящую из нескольких команд на разных континентах под вашим руководством. Каждый сезон вы можете претендовать на место у руля национальных сборных.<br /><br /><strong>В роли тренера ваша задача</strong> - определять тактику, стратегию и схему игры в каждом матче, выбирать футболистов в стартовый состав, проводить замены. Следить за усталостью и формой футболистов, проводить тренировки. Участвовать в национальном чемпионате и кубке своей страны, претендовать на попадание в континентальные кубки.<br /><br /><strong>В роли менеджера задачи ещё интереснее</strong> - построить инфраструктуру команды: стадион, базу, спортивную школу, тренировочные и медицинские центры. Успешно играть на трансферном, арендном и обменном рынках. Организовывать и принимать участие в товарищеских матчах и коммерческих турнирах. Брать под своё управление новые команды или переходить из клуба в более сильный клуб при первой возможности.<br /><br />Мы предлагаем вам интересное общение и новые знакомства. Всех участников Лиги объединяют две вещи - русский язык и футбол. <strong>А участие в игре - бесплатное</strong>. Скачивать ничего не нужно. Достаточно иметь возможность посещать сайт хотя бы несколько раз в неделю и работающий почтовый ящик. <br /><br />В августе 2015 года нашему сайту <strong>исполнилось 14 лет</strong>. Мы - одна из старейших онлайн-игр рунета! Многие считают нашу игру <strong>лучшим</strong> футбольным менеджером <strong>на русском языке</strong>.
+<h1>Последние игровые новости</h1>
+<div style="margin:10px 0px"><strong>СЕГОДНЯ ДНЕМ</strong><br />Интрига в Межконтинентальном кубке сохраняется до финального тура, что не может не радовать. В <a class="bb" href="matchlist.php?day=11270&amp;season=36&amp;page=1&amp;online=0&amp;type=1">4-м туре</a>, который пройдёт в пятницу днем, между собой встретятся:<br /><ul class="bb"><li class="bb">Банфилд (Аргентина) - Портсмут (Англия) <a class="bb" href="previewmatch.php?day=11270&amp;match_id=365346">?:?</a><br /></li><li class="bb">Каролина Динамо (США) - Авенир Спортив де Ла Марса (Тунис) <a class="bb" href="previewmatch.php?day=11270&amp;match_id=365347">?:?</a><br /></li></ul>Кам Фонь перед решающей битвой получает день отдыха.<br /><br /><strong>СЕГОДНЯ ВЕЧЕРОМ</strong><br />Также предпоследний тур будет сыгран в <a class="bb" href="matchlist.php?day=11271&amp;season=36&amp;page=1&amp;online=0&amp;type=1">Кубке межсезонья</a>.<br /><br />Перед ним сразу 8 команд имеет стопроцентный показатель по набранным очкам: <i>Каролина Динамо (США) (D1), АСК Нуджум (Мавритания) (D4), Гур Аль Сафи (Иордания) (D9), Санта Круз (Бахрейн) (D13), Сиэттл Саундерс (США) (D16), Карл-Цайсс Йена (Германия) (D19), ОФК Никшич (Черногория) (D37) и Рома (Аруба) (D38)</i>.<br /><br />Посмотрим, удастся ли кому-нибудь из них остаться в этом списке спустя два тура.<br /><br /><strong>ВЕСТИ С ПОЛЕЙ</strong><br />В четверг днем прошёл <a class="bb" href="matchlist.php?day=11268&amp;season=36&amp;page=1&amp;online=0&amp;type=1">3-й тур</a> Межконтинентального кубка, и вот его итоги:<br /><ul class="bb"><li class="bb">Портсмут (Англия) - Кам Фонь (Макао) <a class="bb" href="viewmatch.php?day=11268&amp;match_id=365344">1:1</a><br /></li><li class="bb">Банфилд (Аргентина) - Каролина Динамо (США) <a class="bb" href="viewmatch.php?day=11268&amp;match_id=365345">2:2</a><br /></li></ul>Вот такой получился ничейный игровой день, по итогам которого все команды остались на своих местах с теми же отрывами. Кам Фонь с семью очками имеет 2 зачетных балла преимущества над Портсмутом, Каролина - третья с двумя очками, но с игрой в запасе. Между этими командами и будет разыгран трофей. Банфилд и Авенир турнирную таблицу пока замыкают, но имеют шансы забраться в призовую тройку.<br /><br />В тот же день был сыгран и 8-й тур <a class="bb" href="matchlist.php?day=11269&amp;season=36&amp;page=1&amp;online=0&amp;type=1">Кубка межсезонья</a>.<br /><br /><strong>FAQ</strong><br />Все чаще и чаще стал поступать вопрос: <i>Осталось ли в новых правилах зависимость построения защиты (с последним защитником/в линию) от того, каким стилем играет соперник?</i><br /><br />Отвечаем, чтобы больше этот момент не оставался неосвещенным: <i>Нет, теперь нельзя выиграть построение защиты. Это правило было удалено. Теперь выбор между игрой с последним защитником или в линию зависит только от того, каким стилем играет ваша команда и хотите ли вы получите бонус/штраф центральным защитникам.</i> [<a href="news.php">подробнее</a>]</div>
+<h1>Как стать менеджером футбольной команды?</h1><p style="margin-bottom:0px">Для того, чтобы стать участником игры, вам нужно:</p>
+<ul>
+<li><a href="v3_user_register.php" class="hdr2">зарегистрироваться в игре</a>, получить письмо с кодом подтверждения регистрации;</li>
+<li>активировать свою регистрацию с помощью кода, полученного в письме, <a href="v3_user_confirm.php">на этой странице</a>;</li>
+<li>зайти на сайт под своим логином / паролем (ввести их вверху страницы, в шапке сайта);</li>
+<li>подать заявку на <a href="register.php">новую</a> или <a href="teams_free.php">свободную</a> команду;</li>
+<li>дождаться, пока модератор рассмотрит вашу заявку и отдаст клуб в ваше распоряжение;</li>
+<li>ознакомиться с самыми простыми разделами <a href="rules.php">правил</a> (по желанию);</li>
+<li><!--noindex-->зарегистрироваться <a href="/forum/" target="_blank" rel="nofollow">на форуме</a> и <a href="/chat/" target="_blank" rel="nofollow">в чате</a> (по желанию);<!--/noindex--></li>
+<li>и всё - <b>приступить к игре!</b> - постепенно вникая в тонкости и детали игрового процесса.</li>
+</ul>
+<p style="margin-top:0px">Свои вопросы вы можете задать опытным игрокам на форуме и в чате. На каждой странице внизу указаны контакты руководителей проекта. Обо всех проблемах и вопросах вы можете написать в наиболее подходящий раздел <a href="v3_dialog.php?p=8">тех.поддержки сайта</a>.</p><h1>Футбольная аналитика</h1>
+<p>Журналисты Виртуальной Футбольной Лиги регулярно публикуют <a href="/news.php?t=12">обзоры состоявшихся туров</a>:</p><div class="txt3l" style="margin-bottom:3px; vertical-align:middle"><img class="qt" src="/cntr/80.gif" title="Федерация Кубы" style="vertical-align:bottom; width:20px; height:14px; border:0px" /> <b>Куба (D3-A), тур 30</b>: <span style="white-space:nowrap"><a href="/v2obz.php?num=49870&amp;day=11217&amp;team_id=8960" target="_blank">Show must go on</a> (<a href="/v3_profile.php?num=33605" class="mnu">utka</a>)</span></div>
+<div class="txt3l" style="margin-bottom:3px; vertical-align:middle"><img class="qt" src="/cntr/1.gif" title="Федерация Австралии" style="vertical-align:bottom; width:20px; height:14px; border:0px" /> <b>Австралия (D4-D), тур 30</b>: <span style="white-space:nowrap"><a href="/v2obz.php?num=49210&amp;day=11217&amp;team_id=15904" target="_blank">ФИНИШ Чемпионата!!!</a> (<a href="/v3_profile.php?num=237174" class="mnu">Craft1973</a>)</span></div>
+<div class="txt3l" style="margin-bottom:3px; vertical-align:middle"><img class="qt" src="/cntr/82.gif" title="Федерация Кыргызстана" style="vertical-align:bottom; width:20px; height:14px; border:0px" /> <b>Кыргызстан (D1), тур 30</b>: <span style="white-space:nowrap"><a href="/v2obz.php?num=49878&amp;day=11217&amp;team_id=5165" target="_blank">Финиш чемпионата!</a> (<a href="/v3_profile.php?num=60189" class="mnu">Murik2101</a>)</span></div>
+<div class="txt3l" style="margin-bottom:3px; vertical-align:middle"><img class="qt" src="/cntr/155.gif" title="Федерация Уругвая" style="vertical-align:bottom; width:20px; height:14px; border:0px" /> <b>Уругвай (D1), тур 30</b>: <span style="white-space:nowrap"><a href="/v2obz.php?num=50505&amp;day=11217&amp;team_id=15127" target="_blank">Итоговый обзор.</a> (<a href="/v3_profile.php?num=80185" class="mnu">Pan-Lyolek</a>)</span></div>
+<div class="txt3l" style="margin-bottom:3px; vertical-align:middle"><img class="qt" src="/cntr/155.gif" title="Федерация Уругвая" style="vertical-align:bottom; width:20px; height:14px; border:0px" /> <b>Уругвай (D2), тур 30</b>: <span style="white-space:nowrap"><a href="/v2obz.php?num=50506&amp;day=11217&amp;team_id=15127" target="_blank">Отшумел чемпионат, подведём его итоги.</a> (<a href="/v3_profile.php?num=80185" class="mnu">Pan-Lyolek</a>)</span></div>
+<div class="txt3l" style="margin-bottom:3px; vertical-align:middle"><img class="qt" src="/cntr/167.gif" title="Федерация Шотландии" style="vertical-align:bottom; width:20px; height:14px; border:0px" /> <b>Шотландия (D1), тур 30</b>: <span style="white-space:nowrap"><a href="/v2obz.php?num=50624&amp;day=11217&amp;team_id=33" target="_blank">Ну вот и все...</a> (<a href="/v3_profile.php?num=50330" class="mnu">alex11</a>)</span></div>
+<div class="txt3l" style="margin-bottom:3px; vertical-align:middle"><img class="qt" src="/cntr/12.gif" title="Федерация Афганистана" style="vertical-align:bottom; width:20px; height:14px; border:0px" /> <b>Афганистан (D1), тур 30</b>: <span style="white-space:nowrap"><a href="/v2obz.php?num=49309&amp;day=11217&amp;team_id=14605" target="_blank">Afghan Premier League. Season #35.</a> (<a href="/v3_profile.php?num=149689" class="mnu">kov</a>)</span></div>
+<div class="txt3l" style="margin-bottom:3px; vertical-align:middle"><img class="qt" src="/cntr/22.gif" title="Федерация Бенина" style="vertical-align:bottom; width:20px; height:14px; border:0px" /> <b>Бенин (D2), тур 30</b>: <span style="white-space:nowrap"><a href="/v2obz.php?num=49370&amp;day=11217&amp;team_id=9606" target="_blank">Обзор от президента</a> (<a href="/v3_profile.php?num=137352" class="mnu">Фаворит</a>)</span></div>
+<div class="txt3l" style="margin-bottom:3px; vertical-align:middle"><img class="qt" src="/cntr/22.gif" title="Федерация Бенина" style="vertical-align:bottom; width:20px; height:14px; border:0px" /> <b>Бенин (D1), тур 30</b>: <span style="white-space:nowrap"><a href="/v2obz.php?num=49369&amp;day=11217&amp;team_id=9606" target="_blank">Обзор от президента</a> (<a href="/v3_profile.php?num=137352" class="mnu">Фаворит</a>)</span></div>
+<div class="txt3l" style="margin-bottom:3px; vertical-align:middle"><img class="qt" src="/cntr/120.gif" title="Федерация Перу" style="vertical-align:bottom; width:20px; height:14px; border:0px" /> <b>Перу (D4-B), тур 29</b>: <span style="white-space:nowrap"><a href="/v2obz.php?num=50178&amp;day=11215&amp;team_id=23671" target="_blank">Знакомство с Перу</a> (<a href="/v3_profile.php?num=275307" class="mnu">Valentinych</a>)</span></div>
+<h1><a class="mnu" href="/news.php?t=5">Новости федераций</a></h1><div class="txt3l" style="margin:5px auto 10px auto"><img class="qt" src="/cntr/87.gif" title="Федерация Ливана" style="vertical-align:bottom; width:20px; height:14px; border:0px" /> <a href="/federation.php?num=87" class="mnu"><b>Ливан</b></a>: <a href="/federation_comments.php?nat_id=87&amp;p=1&amp;num=253714">Приветствую друзья!!!</a> (<a href="v3_profile.php?num=81288" class="mnu">ridik82</a>)</div><div class="txt2j" style="padding-top:5px; overflow:hidden; width:600px">Благодарю Вас за доверие, постараюсь не подвести! Никогда не видел в себе журналистские способности, но постараюсь вести колонку новостей так, чтобы тем, кто читал ранее - продолжал, а не читавшие начали) Если что поправляйте) <br /><br />&nbsp;&nbsp; и к работе)<br /><br /><strong> ТТФ-21 <br /><br />&nbsp;&nbsp; Для тех, кто не заглядывает на форум, сообщу о том, что наша федерация участвует в Товарищеском Турнире Федераций. В этом сезоне 85 федераций принимает участие. Очень почетно выиграть этот турнир, в первую очередь он показывает лицо федерации, насколько она сплоченная и организованная. Надеюсь все отнесутся ответственно к этому турниру. <br />&nbsp;&nbsp; <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 24 января Ливан-Маврикий&nbsp;&nbsp;</strong><br /><br /><strong><br /><br />Чемпионат Мира <br /><br />Также в это воскресенье продолжается отбор на Чемпионат Мира. Наши сборные играют в родных стенах со сборными Тувалу. Прошу прислушиваться к просьбам тренеров наших сборных команд.<br /><br />У национальной команды есть шансы на второе место, пять матчей мы играем дома и только три на выезде<br /><br /></strong><table class="nil" border="1"><tr><th class="th">N</th><th class="th">КОМАНДА</th><th class="th">И</th><th class="th">В</th><th class="th">Н</th><th class="th">П</th><th class="th">О</th></tr><tr><td  class="txt">1</td><td  class="txt">Япония</td><td  class="txt">10</td><td  class="txt">8</td><td  class="txt">2</td><td  class="txt">0</td><td  class="txt">26</td></tr><tr><td  class="txt">2</td><td  class="txt">Бахрейн</td><td  class="txt">10</td><td  class="txt">5</td><td  class="txt">3</td><td  class="txt">2</td><td  class="txt">18</td></tr><tr><td  class="txt">3</td><td  class="txt">Мьянма</td><td  class="txt">10</td><td  class="txt">5</td><td  class="txt">3</td><td  class="txt">2</td><td  class="txt">18</td></tr><tr><td  class="txt">4</td><td  class="txt">Ливан</td><td  class="txt">10</td><td  class="txt">5</td><td  class="txt">3</td><td  class="txt">2</td><td  class="txt">18</td></tr><tr><td  class="txt">5</td><td  class="txt">Гонконг</td><td  class="txt">10</td><td  class="txt">4</td><td  class="txt">4</td><td  class="txt">2</td><td  class="txt">16</td></tr><tr><td  class="txt">6</td><td  class="txt">Гуам</td><td  class="txt">10</td><td  class="txt">4</td><td  class="txt">2</td><td  class="txt">4</td><td  class="txt">14</td></tr><tr><td  class="txt">7</td><td  class="txt">Новая Каледония</td><td  class="txt">10</td><td  class="txt">2</td><td  class="txt">4</td><td  class="txt">4</td><td  class="txt">10</td></tr><tr><td  class="txt">8</td><td  class="txt">Сирия</td><td  class="txt">10</td><td  class="txt">3</td><td  class="txt">1</td><td  class="txt">6</td><td  class="txt">10</td></tr><tr><td  class="txt">9</td><td  class="txt">Китайский Тайбэй</td><td  class="txt">10</td><td  class="txt">2</td><td  class="txt">2</td><td  class="txt">6</td><td  class="txt">8</td></tr><tr><td  class="txt">10</td><td  class="txt">Тувалу</td><td  class="txt">10</td><td  class="txt">0</td><td  class="txt">0</td><td  class="txt">10</td><td  class="txt">0</td></tr></table><br /><strong>У молодежной команды все отлично)</strong><br /><br /><table class="nil" border="1"><tr><th class="th">N</th><th class="th">КОМАНДА</th><th class="th">И</th><th class="th">В</th><th class="th">Н</th><th class="th">П</th><th class="th">О</th></tr><tr><td  class="txt">1</td><td  class="txt">Ливан</td><td  class="txt">10</td><td  class="txt">8</td><td  class="txt">1</td><td  class="txt">1</td><td  class="txt">25</td></tr><tr><td  class="txt">2</td><td  class="txt">Бахрейн</td><td  class="txt">10</td><td  class="txt">6</td><td  class="txt">4</td><td  class="txt">0</td><td  class="txt">22</td></tr><tr><td  class="txt">3</td><td  class="txt">Япония</td><td  class="txt">10</td><td  class="txt">6</td><td  class="txt">2</td><td  class="txt">2</td><td  class="txt">20</td></tr><tr><td  class="txt">4</td><td  class="txt">Гуам</td><td  class="txt">10</td><td  class="txt">5</td><td  class="txt">2</td><td  class="txt">3</td><td  class="txt">17</td></tr><tr><td  class="txt">5</td><td  class="txt">Сирия</td><td  class="txt">10</td><td  class="txt">4</td><td  class="txt">3</td><td  class="txt">3</td><td  class="txt">15</td></tr><tr><td  class="txt">6</td><td  class="txt">Китайский Тайбэй</td><td  class="txt">10</td><td  class="txt">4</td><td  class="txt">2</td><td  class="txt">4</td><td  class="txt">14</td></tr><tr><td  class="txt">7</td><td  class="txt">Мьянма</td><td  class="txt">10</td><td  class="txt">2</td><td  class="txt">3</td><td  class="txt">5</td><td  class="txt">9</td></tr><tr><td  class="txt">8</td><td  class="txt">Новая Каледония</td><td  class="txt">10</td><td  class="txt">2</td><td  class="txt">2</td><td  class="txt">6</td><td  class="txt">8</td></tr><tr><td  class="txt">9</td><td  class="txt">Гонконг</td><td  class="txt">10</td><td  class="txt">1</td><td  class="txt">4</td><td  class="txt">5</td><td  class="txt">7</td></tr><tr><td  class="txt">10</td><td  class="txt">Тувалу</td><td  class="txt">10</td><td  class="txt">0</td><td  class="txt">1</td><td  class="txt">9</td><td  class="txt">1</td></tr></table><br /><strong>Юношам будет тяжело, с основным конкурентом играем в гостях.</strong><br /><br /><table class="nil" border="1"><tr><th class="th">N</th><th class="th">КОМАНДА</th><th class="th">И</th><th class="th">В</th><th class="th">Н</th><th class="th">П</th><th class="th">О</th></tr><tr><td  class="txt">1</td><td  class="txt">Бахрейн</td><td  class="txt">10</td><td  class="txt">9</td><td  class="txt">1</td><td  class="txt">0</td><td  class="txt">28</td></tr><tr><td  class="txt">2</td><td  class="txt">Япония</td><td  class="txt">10</td><td  class="txt">7</td><td  class="txt">1</td><td  class="txt">2</td><td  class="txt">22</td></tr><tr><td  class="txt">3</td><td  class="txt">Ливан</td><td  class="txt">10</td><td  class="txt">6</td><td  class="txt">3</td><td  class="txt">1</td><td  class="txt">21</td></tr><tr><td  class="txt">4</td><td  class="txt">Гонконг</td><td  class="txt">10</td><td  class="txt">6</td><td  class="txt">2</td><td  class="txt">2</td><td  class="txt">20</td></tr><tr><td  class="txt">5</td><td  class="txt">Мьянма</td><td  class="txt">10</td><td  class="txt">5</td><td  class="txt">2</td><td  class="txt">3</td><td  class="txt">17</td></tr><tr><td  class="txt">6</td><td  class="txt">Китайский Тайбэй</td><td  class="txt">10</td><td  class="txt">4</td><td  class="txt">2</td><td  class="txt">4</td><td  class="txt">14</td></tr><tr><td  class="txt">7</td><td  class="txt">Гуам</td><td  class="txt">10</td><td  class="txt">2</td><td  class="txt">2</td><td  class="txt">6</td><td  class="txt">8</td></tr><tr><td  class="txt">8</td><td  class="txt">Сирия</td><td  class="txt">10</td><td  class="txt">2</td><td  class="txt">2</td><td  class="txt">6</td><td  class="txt">8</td></tr><tr><td  class="txt">9</td><td  class="txt">Новая Каледония</td><td  class="txt">10</td><td  class="txt">1</td><td  class="txt">1</td><td  class="txt">8</td><td  class="txt">4</td></tr><tr><td  class="txt">10</td><td  class="txt">Тувалу</td><td  class="txt">10</td><td  class="txt">0</td><td  class="txt">0</td><td  class="txt">10</td><td  class="txt">0</td></tr></table></div><h1>Дни рождения</h1>
+<p style="margin-bottom:0px"><b>Сегодня день рождения</b> празднуют менеджеры:</p>
+<ul>
+<li><a href="v3_profile.php?num=15346" class="mnu" target="_blank"><i>Виктор Натуралов</i></a> (<a href="v3_profile.php?num=15346" target="_blank"><i>viktor1972</i></a>) - исполняется 44  года!<div class="txt2l" style="padding-top:1px; padding-left:8px">Клубы: <a href="roster.php?num=748" target="_blank" class="mnu">Маастрихт (Маастрихт, Голландия)</a>, <a href="roster.php?num=6059" target="_blank" class="mnu">Пан Пэйпер (Вебуйе, Кения)</a>, <a href="roster.php?num=9470" target="_blank" class="mnu">Буа ФК (Буа, Фиджи)</a></div></li><li><a href="v3_profile.php?num=16171" class="mnu" target="_blank"><i>Никола Франковски</i></a> (<a href="v3_profile.php?num=16171" target="_blank"><i>MykolaIce</i></a>) - исполняется 41  год!<div class="txt2l" style="padding-top:1px; padding-left:8px">Клубы: <a href="roster.php?num=683" target="_blank" class="mnu">Букаспор (Измир, Турция)</a>, <a href="roster.php?num=7004" target="_blank" class="mnu">Нортерн (Гонконг, Гонконг)</a>, <a href="roster.php?num=8358" target="_blank" class="mnu">Гольф Леопардс (Фритаун, Сьерра Леоне)</a></div></li><li><a href="v3_profile.php?num=28501" class="mnu" target="_blank"><i>Александр Дюкин</i></a> (<a href="v3_profile.php?num=28501" target="_blank"><i>Malysh</i></a>) - исполняется 35  лет!<div class="txt2l" style="padding-top:1px; padding-left:8px">Клубы: <a href="roster.php?num=9067" target="_blank" class="mnu">Диконс (Диконс, Барбадос)</a>, <a href="roster.php?num=12828" target="_blank" class="mnu">ПК-37 (Иисалми, Финляндия)</a>, <a href="roster.php?num=14174" target="_blank" class="mnu">Элан (Таджура, Джибути)</a></div></li><li><a href="v3_profile.php?num=70091" class="mnu" target="_blank"><i>Александр Гончаренко</i></a> (<a href="v3_profile.php?num=70091" target="_blank"><i>Santa-hohol</i></a>) - исполняется 33  года!<div class="txt2l" style="padding-top:1px; padding-left:8px">Клубы: <a href="roster.php?num=9303" target="_blank" class="mnu">Хопперс (Грин Бэй, Антигуа и Барбуда)</a>, <a href="roster.php?num=10300" target="_blank" class="mnu">ФК Саванна (Саванна, Маврикий)</a>, <a href="roster.php?num=14772" target="_blank" class="mnu">Перекихе (Бени, Боливия)</a>, <a href="roster.php?num=20027" target="_blank" class="mnu">Сиах Джамеган Хорасан (Мешхед, Иран)</a>, <a href="roster.php?num=23933" target="_blank" class="mnu">ФК Раднички (Беране, Черногория)</a></div></li><li><a href="v3_profile.php?num=72169" class="mnu" target="_blank"><i>Саня Шапошников</i></a> (<a href="v3_profile.php?num=72169" target="_blank"><i>shap777</i></a>) - исполняется 26  лет!<div class="txt2l" style="padding-top:1px; padding-left:8px">Клуб: <a href="roster.php?num=5925" target="_blank" class="mnu">Этуаль Дель Эст (Кибунго, Руанда)</a></div></li><li><a href="v3_profile.php?num=81927" class="mnu" target="_blank"><i>Ербол из Ақтөбе</i></a> (<a href="v3_profile.php?num=81927" target="_blank"><i>Erbol</i></a>)<div class="txt2l" style="padding-top:1px; padding-left:8px">Клубы: <a href="roster.php?num=616" target="_blank" class="mnu">Актобе (Актобе, Казахстан)</a>, <a href="roster.php?num=11116" target="_blank" class="mnu">Папануи Рэдвуд (Крайстчерч, Нов. Зеландия)</a></div></li><li><a href="v3_profile.php?num=90048" class="mnu" target="_blank"><i>Arkadiy Grebenuk</i></a> (<a href="v3_profile.php?num=90048" target="_blank"><i>arked</i></a>) - исполняется 30  лет!<div class="txt2l" style="padding-top:1px; padding-left:8px">Клубы: <a href="roster.php?num=13955" target="_blank" class="mnu">Трефелин (Порт-Толбот, Уэльс)</a>, <a href="roster.php?num=22600" target="_blank" class="mnu">ИРБ Берриан (Берриан, Алжир)</a></div></li><li><a href="v3_profile.php?num=155150" class="mnu" target="_blank"><i>Михаил Прокопенко</i></a> (<a href="v3_profile.php?num=155150" target="_blank"><i>ToRRnaDo</i></a>) - исполняется 22  года!<div class="txt2l" style="padding-top:1px; padding-left:8px">Клубы: <a href="roster.php?num=5732" target="_blank" class="mnu">ФК Энголастерс (Энголастерс, Андорра)</a>, <a href="roster.php?num=11557" target="_blank" class="mnu">Бенфика (Браунс Таун, Ямайка)</a>, <a href="roster.php?num=14222" target="_blank" class="mnu">Реал (Сан Валентин, Экваториальная Гвинея)</a></div></li><li><a href="v3_profile.php?num=158257" class="mnu" target="_blank"><i>роман гольдман</i></a> (<a href="v3_profile.php?num=158257" target="_blank"><i>goldman1976</i></a>) - исполняется 40  лет!<div class="txt2l" style="padding-top:1px; padding-left:8px">Клуб: <a href="roster.php?num=20141" target="_blank" class="mnu">Хапоэль (Мигдаль а-Эмек, Израиль)</a></div></li><li><a href="v3_profile.php?num=259548" class="mnu" target="_blank"><i>Алексей Печенкин</i></a> (<a href="v3_profile.php?num=259548" target="_blank"><i>makrill</i></a>)<div class="txt2l" style="padding-top:1px; padding-left:8px">Клубы: <a href="roster.php?num=18972" target="_blank" class="mnu">Мабеоана (Матсиенг, Лесото)</a>, <a href="roster.php?num=23616" target="_blank" class="mnu">Гренада Кристиан Академии (Виктория, Гренада)</a></div></li><li><a href="v3_profile.php?num=259770" class="mnu" target="_blank"><i>Евгений Казаков</i></a> (<a href="v3_profile.php?num=259770" target="_blank"><i>Аббевиль</i></a>) - исполняется 49  лет!<div class="txt2l" style="padding-top:1px; padding-left:8px">Клуб: <a href="roster.php?num=14517" target="_blank" class="mnu">И.М.С Спорт Клуб (Уиже, Ангола)</a></div></li><li><a href="v3_profile.php?num=275411" class="mnu" target="_blank"><i>Павел Гавриленко</i></a> (<a href="v3_profile.php?num=275411" target="_blank"><i>kazanih</i></a>) - исполняется 18  лет!<div class="txt2l" style="padding-top:1px; padding-left:8px">Клуб: <a href="roster.php?num=11795" target="_blank" class="mnu">Блэкберн Юнайтед (Блэкберн, Шотландия)</a></div></li></ul><h1>Интересные факты об игре</h1>
+<p><b>Пресс-конференция</b> -  <i>Константин Карс ("Славия" Прага):<br /></i> "Играйте честно. Поверьте, так действительно интереснее выигрывать. К достоинствам отнесу ВИПство. Мне, к примеру, очень удобно играть будучи ВИПом. Дизайн. ВСОЛ очень выигрывает перед остальными лигами в этом аспекте." [<a href="halloffame.php?s=2&amp;t=310">подробнее</a>]</p><p><b>Гимн Лиги</b> - песня о нашей игре, которую придумали и записали сами игроки [<a href="mp3.php">слушать</a>]</p>
+<p><b>Уголок поэзии:</b> Стихи и поэмы - о футболе и о Лиге [<a href="poetry.php">подробнее</a>]</p>
+</td>
+<td class="vt" style="background-color:#e5f7e6"><table class="wst"><tr><td class="txt vt"><fieldset style="margin: 1px 0px; padding: 5px 2px; border: 1px solid #668866;"><legend style="color:#006600; margin-left:5px; text-align:left; padding:0px 4px"><b>Форум</b></legend><iframe src="/frm/recent.php" style="width:98%; height:246px; border:0" scrolling="no" frameBorder="0"></iframe></fieldset></td></tr><tr><td class="txt vt"><fieldset style="margin: 1px 0px; padding: 5px 2px; border: 1px solid #668866;"><legend style="color:#006600; margin-left:5px; text-align:left; padding:0px 4px"><b>Чат</b></legend><div><iframe src="chat_info_header.php" style="width:98%; height:20px; border:0" scrolling="no" frameBorder="0"></iframe></div><div><iframe src="chat_info_users.php" style="width:98%; height:246px; border:0" scrolling="no" frameBorder="0"></iframe></div></fieldset></td></tr><tr><td class="txt"><fieldset style="margin:6px 0px 1px 0px; padding:5px 2px; border: 1px solid #668866;"><!--noindex--><a href="http://vk.com/club4966917" rel="nofollow" target="_blank"><img class="qt" src="pics/ss_vkontakte.png" title="Наша группа вконтакте" alt="Наша группа вконтакте" style="border:0px; padding:0px 2px; width:35px; height:35px" /></a><a href="http://www.facebook.com/virtualsoccer" rel="nofollow" target="_blank"><img class="qt" src="pics/ss_facebook.png" title="Наша страница в Facebook" alt="Наша страница в Facebook" style="border:0px; padding:0px 2px; width:35px; height:35px" /></a><a href="http://www.twitter.com/virtual_soccer" rel="nofollow" target="_blank"><img class="qt" src="pics/ss_twitter.png" title="Наш twitter" alt="Наш twitter" style="border:0px; padding:0px 2px; width:35px; height:35px" /></a><a href="http://odnoklassniki.ru/virtualsoccer" rel="nofollow" target="_blank"><img class="qt" src="pics/ss_ok.png" title="Наша группа в Одноклассниках" alt="Наша группа в Одноклассниках" style="border:0px; padding:0px 2px; width:35px; height:35px" /></a><!--/noindex--></fieldset></td></tr><tr><td class="txt vt"><fieldset style="margin:1px 0px; padding:5px 2px; border: 1px solid #668866;"><legend style="color:#006600; margin-left:5px; text-align:left; padding:0px 4px">Сезон: <b>36</b>, День: <b>36</b></legend><div style="padding:1px 0px"><table class="nil wst"><tr><td class="lh13 txt5" colspan="2"><u>Менеджеры</u>:</td></tr><tr><td class="lh13 txt5r" style="width:62%">Всего менеджеров:</td><td class="lh13 txt5l" style="white-space:nowrap"><b>8 533</b></td></tr><tr><td class="lh13 txt5r">Без команд:</td><td class="lh13 txt5l" style="white-space:nowrap"><b>827</b></td></tr><tr><td class="lh13 txt5r">С командами:</td><td class="lh13 txt5l" style="white-space:nowrap"><b>7 706</b></td></tr><tr><td class="lh13 txt5r qt" title="Команд у менеджеров с командами (в среднем)">Команд у менедж.:</td><td class="lh13 txt5l" style="white-space:nowrap"><b>2.05</b></td></tr><tr>
+<td class="lh13 txt5r">Регистрации:</td>
+<td class="lh13 txt5l" style="white-space:nowrap"><span class="qt" title="За вчера"><b>45</b></span> <span class="qt" title="За сегодня">(<b>8</b>)</span></td>
+</tr>
+<tr><td class="lh13 txt5" colspan="2" style="padding-top:4px"><u>Команды</u>:</td></tr><tr><td class="lh13 txt5r" style="white-space:nowrap">Всего команд:</td><td class="lh13 txt5l" style="white-space:nowrap"><b>19 521</b></td></tr><tr><td class="lh13 txt5r">Свободных:</td><td class="lh13 txt5l" style="white-space:nowrap"><b>3 711</b></td></tr><tr><td class="lh13 txt5r" style="white-space:nowrap">Денег в среднем:</td><td class="lh13 txt5l" style="white-space:nowrap"><b>13 478</b>к</td></tr><tr><td class="lh13 txt5r" style="white-space:nowrap">Долг в среднем:</td><td class="lh13 txt5l" style="white-space:nowrap"><b>188</b>к</td></tr><tr><td class="lh13 txt5r" style="white-space:nowrap">Вместимость стад.:</td><td class="lh13 txt5l" style="white-space:nowrap"><b>56 108</b></td></tr><tr><td class="lh13 txt5" colspan="2" style="padding-top:4px"><u>Средние показатели по базам</u>:</td></tr><tr><td class="lh13 txt5r" style="white-space:nowrap">Уровень базы:</td><td class="lh13 txt5l" style="white-space:nowrap"><b>6,41</b></td></tr><tr><td class="lh13 txt5r" style="white-space:nowrap">Трен.центры:</td><td class="lh13 txt5l" style="white-space:nowrap"><b>5,86</b></td></tr><tr><td class="lh13 txt5r" style="white-space:nowrap">Спортшколы:</td><td class="lh13 txt5l" style="white-space:nowrap"><b>5,31</b></td></tr><tr><td class="lh13 txt5r" style="white-space:nowrap">Медцентры:</td><td class="lh13 txt5l" style="white-space:nowrap"><b>6,96</b></td></tr><tr><td class="lh13 txt5r" style="white-space:nowrap">Физ.центры:</td><td class="lh13 txt5l" style="white-space:nowrap"><b>6,57</b></td></tr><tr><td class="lh13 txt5r" style="white-space:nowrap">Скаутцентры:</td><td class="lh13 txt5l" style="white-space:nowrap"><b>3,11</b></td></tr><tr><td class="lh13 txt5" colspan="2" style="padding-top:4px"><u>Игроки</u>:</td></tr><tr><td class="lh13 txt5r" style="white-space:nowrap">Всего игроков:</td><td class="lh13 txt5l" style="white-space:nowrap"><b>381 988</b></td></tr><tr><td class="lh13 txt5r" style="white-space:nowrap">Игроков в команде:</td><td class="lh13 txt5l" style="white-space:nowrap"><b>19,57</b></td></tr><tr><td class="lh13 txt5r" style="white-space:nowrap">Средн. возраст:</td><td class="lh13 txt5l" style="white-space:nowrap"><b>25,12</b></td></tr><tr><td class="lh13 txt5r" style="white-space:nowrap">Средн. сила:</td><td class="lh13 txt5l" style="white-space:nowrap"><b>80,02</b></td></tr><tr><td class="lh13 txt5r" style="white-space:nowrap">Совмещения у:</td><td class="lh13 txt5l" style="white-space:nowrap"><b>66,88</b>%</td></tr></table></div></fieldset></td></tr><tr><td class="txt"><fieldset style="margin: 1px 0px; padding: 5px 2px; border: 1px solid #668866;"><legend style="color:#006600; margin-left:5px; text-align:left; padding:0px 4px"><b>TOP-10 менеджеров</b></legend><div style="padding:1px 0px"><table class="wst">
+<tr style="height:16px">
+<td class="txt2r" style="width:12px"><b>1.</b></td>
+<td class="txt2l" style="padding-left:2px"><a href="v3_profile.php?num=14744" class="mnu">ТисРАДим</a></td>
+<td class="txt2 qt" style="width:20px" title="Россия"><div class="cntr" style="background-position: -252px -60px" title="Россия"></div></td>
+<td class="txt2r" style="width:32px"><b>663.47</b></td>
+</tr>
+<tr style="height:16px">
+<td class="txt2r"><b>2.</b></td>
+<td class="txt2l" style="padding-left:2px"><a href="v3_profile.php?num=130530" class="mnu">RANDG</a></td>
+<td class="txt2 qt" title="Россия"><div class="cntr" style="background-position: -252px -60px" title="Россия"></div></td>
+<td class="txt2r"><b>647.39</b></td>
+</tr>
+<tr style="height:16px">
+<td class="txt2r"><b>3.</b></td>
+<td class="txt2l" style="padding-left:2px"><a href="v3_profile.php?num=100167" class="mnu">SiDi</a></td>
+<td class="txt2"></td>
+<td class="txt2r"><b>637.18</b></td>
+</tr>
+<tr style="height:16px">
+<td class="txt2r"><b>4.</b></td>
+<td class="txt2l" style="padding-left:2px"><a href="v3_profile.php?num=211527" class="mnu">Roxy1310</a></td>
+<td class="txt2 qt" title="Россия"><div class="cntr" style="background-position: -252px -60px" title="Россия"></div></td>
+<td class="txt2r"><b>631.81</b></td>
+</tr>
+<tr style="height:16px">
+<td class="txt2r"><b>5.</b></td>
+<td class="txt2l" style="padding-left:2px"><a href="v3_profile.php?num=117965" class="mnu">emil777</a></td>
+<td class="txt2 qt" title="Россия"><div class="cntr" style="background-position: -252px -60px" title="Россия"></div></td>
+<td class="txt2r"><b>630.23</b></td>
+</tr>
+<tr style="height:16px">
+<td class="txt2r"><b>6.</b></td>
+<td class="txt2l" style="padding-left:2px"><a href="v3_profile.php?num=43195" class="mnu">Zanfaz</a></td>
+<td class="txt2 qt" title="Россия"><div class="cntr" style="background-position: -252px -60px" title="Россия"></div></td>
+<td class="txt2r"><b>628.61</b></td>
+</tr>
+<tr style="height:16px">
+<td class="txt2r"><b>7.</b></td>
+<td class="txt2l" style="padding-left:2px"><a href="v3_profile.php?num=242129" class="mnu">Infinity</a></td>
+<td class="txt2 qt" title="Украина"><div class="cntr" style="background-position: -315px -60px" title="Украина"></div></td>
+<td class="txt2r"><b>628.29</b></td>
+</tr>
+<tr style="height:16px">
+<td class="txt2r"><b>8.</b></td>
+<td class="txt2l" style="padding-left:2px"><a href="v3_profile.php?num=251844" class="mnu">Munn</a></td>
+<td class="txt2 qt" title="Украина"><div class="cntr" style="background-position: -315px -60px" title="Украина"></div></td>
+<td class="txt2r"><b>628.02</b></td>
+</tr>
+<tr style="height:16px">
+<td class="txt2r"><b>9.</b></td>
+<td class="txt2l" style="padding-left:2px"><a href="v3_profile.php?num=72" class="mnu">Dus</a></td>
+<td class="txt2 qt" title="Россия"><div class="cntr" style="background-position: -252px -60px" title="Россия"></div></td>
+<td class="txt2r"><b>626.46</b></td>
+</tr>
+<tr style="height:16px">
+<td class="txt2r"><b>10.</b></td>
+<td class="txt2l" style="padding-left:2px"><a href="v3_profile.php?num=215679" class="mnu">Ridik</a></td>
+<td class="txt2 qt" title="Беларусь"><div class="cntr" style="background-position: -21px -90px" title="Беларусь"></div></td>
+<td class="txt2r"><b>626.31</b></td>
+</tr>
+</table></div><div class="txt2" style="padding:3px 0px">[<a href="statistics.php?act=99">подробнее</a>]</div></fieldset></td></tr><tr><td><fieldset style="margin: 1px 0px; padding: 5px; border: 1px solid #668866;"><legend style="color:#006600; margin-left:5px; text-align:left; padding:0px 4px"><b>Друзья</b></legend><!--noindex--><div style="padding:1px 0px"><a href="http://www.euro-football.ru" target="_blank"><img src="http://www.euro-football.ru/eurobann1.gif" title="EURO ФУТБОЛ" style="width:88px; height:31px; border:0" /></a></div><!--/noindex--><div class="txt2" style="padding:3px 0px">[<a href="/button.php">как сюда попасть</a>]</div></fieldset></td></tr><tr><td class="txt"><fieldset style="margin: 1px 0px; padding: 5px; border: 1px solid #668866;"><legend style="color:#006600; margin-left:5px; text-align:left; padding:0px 4px"><b>Наша кнопка</b></legend><div style="padding:1px 0px"><a href="/button.php"><img src="http://www.vsol.info/pics/vsol_button.gif" style="width:88px; height:31px; border:0; padding-top:6px" alt="VIRTUALSOCCER.RU - Футбольная онлайн-игра" /></a></div><div class="txt2" style="padding:3px 0px">[<a href="/button.php">сотрудничество с нами</a>]</div></fieldset></td></tr><tr><td class="txt"><fieldset style="margin:1px 0px; padding:5px; border: 1px solid #668866;"><legend style="color:#006600; margin-left:5px; text-align:left; padding:0px 4px"><b>Счетчики</b></legend><div style="padding:1px 0px"><!--noindex-->
+<div style="margin:2px 0px">
+<!--Start TopSport-->
+<a href="http://www.topsport.ru" rel="nofollow" target="_blank">
+<img src="http://www.topsport.ru/ts/counter.asp?id=3090" alt="Рейтинг TopSport" style="width:88px; height:31px; border:0" />
+</a>
+<!--End TopSport-->
+</div>
+<div style="margin:2px 0px">
+<!-- begin of Top100 logo -->
+<a href="http://top100.rambler.ru/navi/801281/">
+<img src="http://top100-images.rambler.ru/top100/banner-88x31-rambler-green2.gif" alt="Rambler's Top100" style="width:88px; height:31px; border:0" />
+</a>
+<!-- end of Top100 logo -->
+</div>
+<div style="margin:2px 0px">
+<!-- Rating@Mail.ru counter -->
+<a href="http://top.mail.ru/jump?from=256872" rel="nofollow" target="_blank">
+<img src="//top-fwz1.mail.ru/counter?id=256872;t=54;l=1" alt="Рейтинг@Mail.ru" style="width:88px; height:31px; border:0" /></a>
+<!-- //Rating@Mail.ru counter -->
+</div>
+<div style="margin:2px 0px">
+<!-- HotLog -->
+<script type="text/javascript">
+var hotlog_counter_id = 311217;
+var hotlog_hit = 13;
+var hotlog_counter_type = 609;
+</script>
+<script src="http://js.hotlog.ru/counter.js" type="text/javascript"></script>
+<noscript>
+<a href="http://click.hotlog.ru/?311217" target="_blank"><img src="http://hit13.hotlog.ru/cgi-bin/hotlog/count?s=311217&amp;im=609" alt="HotLog" style="width:88px; height:31px; border:0" /></a>
+</noscript>
+<!-- /HotLog -->
+</div>
+<div style="margin:2px 0px">
+<!--LiveInternet logo-->
+<a href="http://www.liveinternet.ru/click" target="_blank">
+<img src="//counter.yadro.ru/logo?16.16" title="LiveInternet: показано число просмотров за 24 часа, посетителей за 24 часа и за сегодня" alt="" style="width:88px; height:31px; border:0" />
+</a>
+<!--/LiveInternet-->
+</div>
+<div style="margin:2px 0px">
+<a href="http://www.yandex.ru/cy?base=0&amp;host=www.virtualsoccer.ru" rel="nofollow" target="_blank">
+<img src="http://www.yandex.ru/cycounter?www.virtualsoccer.ru" alt="Яндекс цитирования" style="width:88px; height:31px; border:0" />
+</a>
+</div>
+<!--/noindex-->
+</div></fieldset></td></tr><tr><td class="txt">
+<!--noindex-->
+<fieldset style="margin: 1px 0px; padding: 5px; border: 1px solid #668866;">
+<legend style="color:#006600; margin-left:5px; text-align:left; padding:0px 4px"><b>Мы принимаем</b></legend>
+<div style="padding:3px 0px"><a href="https://passport.webmoney.ru/asp/certview.asp?wmid=965340530937" target="_blank" rel="nofollow"><img class="qt" style="width:88px; height:31px; border:1px #006600 solid" src="http://www.webmoney.ru/img/icons/88x31_wm_v_blue_on_white_ru.png" alt="Здесь находится аттестат нашего WM идентификатора 965340530937" title="Здесь находится аттестат нашего WM идентификатора 965340530937" /></a></div>
+<div style="padding:3px 0px"><a href="http://rbkmoney.ru/" target="_blank" rel="nofollow"><img class="qt" style="width:88px; height:31px; border:1px #006600 solid" src="vip/rbk_button.jpg" alt="Мы принимаем RBK Money" title="Мы принимаем RBK Money" /></a></div>
+<div style="padding:3px 0px"><a href="http://www.z-payment.com" target="_blank" rel="nofollow"><img class="qt" style="width:88px; height:31px; border:1px #006600 solid" src="http://www.z-payment.com/images/banners/ban12n2.gif" alt="Принимаем Z-Payment" title="Принимаем Z-Payment" /></a></div>
+</fieldset>
+<!--/noindex-->
+</td></tr>
+</table>
+</td>
+</tr>
+</table>
+<div id="notice_reg" style="display:none">Для того, чтобы начать карьеру менеджера в нашей игре, вам нужно <b>зарегистрироваться</b> и получить команду:<div style="margin:6px 15px; text-align:center"><span style="float:right"><a class="butn-green butn-notify" href="v3_user_register.php"><b>Зарегистрироваться в игре</b></a></span></div></div>
+<script type="text/javascript">
+var stack_bottomright = {"dir1": "up", "dir2": "left", "firstpos1": 10, "firstpos2": 10};
+function hide_hint(h,d,t) {
+  $.ajax({
+    dataType: "json", type: "POST", timeout: 5000,
+    url:"/ajax/hide_hint.php",
+    data: {"hint":h, "details":d, "team":t},
+    success: function(result) {}
+  });
+}
+$(function(){
+  new PNotify({
+    title: "Виртуальная Футбольная Лига",
+    text: $("#notice_reg").html(),
+    type: "notice",
+    hide: false, 
+    addclass: "pgreen stack-bottomright",
+    stack: stack_bottomright
+  }).get().on("click", function(e){if ($(e.target).is(".ui-icon-close")) {hide_hint(203,0,0)}});
+});
+</script>
+</td></tr>
+<tr style="height:50px">
+<td class="bwh">
+<footer><hr style="color:#999999; background-color:#999999; height:1px; border-style:none; margin-top:3px; margin-bottom:3px; width:95%" />
+<div class="lh14 und" style="padding-top:0"><b><a class="bb" href="http://www.virtualsoccer.ru/about.php" style="color:#999999">© 2001-2016 vfleague.com</a></b></div>
+<table>
+<tr>
+<td class="lh14 und"><a href="v3_dialog.php?p=8" class="und"><b>Обратиться в тех.поддержку</b></a> - Почта: <a href="mailto:info@virtualsoccer.ru" class="und"><b>info@virtualsoccer.ru</b></a> - ICQ: <b>868616</b>, <b>665695</b> - Skype: <a href="skype:al_karpuk?chat" class="und"><b>al_karpuk</b></a>, <a href="skype:avers_b?chat" class="und"><b>avers_b</b></a></td>
+</tr>
+</table>
+<div id="unddiv" class="lh14 und" style="padding-bottom:10px">Страница сгенерирована за 0.0018 сек.[m], 0 запр.. unknown unknown</div>
+</footer><div style="position: absolute; height:1px"><!--noindex-->
+<!-- Rating@Mail.ru counter -->
+<script type="text/javascript">//<![CDATA[
+var _tmr = _tmr || [];
+_tmr.push({id: "256872", type: "pageView", start: (new Date()).getTime()});
+(function (d, w) {
+  var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true;
+  ts.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//top-fwz1.mail.ru/js/code.js";
+  var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+  if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+})(document, window);
+//]]></script><noscript><div style="position:absolute;left:-10000px;">
+<img src="//top-fwz1.mail.ru/counter?id=256872;js=na" style="border:0; height:1px; width:1px" alt="Рейтинг@Mail.ru" />
+</div></noscript>
+<!-- //Rating@Mail.ru counter -->
+<!-- begin of Top100 code -->
+<script id="top100Counter" type="text/javascript" src="http://counter.rambler.ru/top100.jcn?801281"></script>
+<noscript><img src="//counter.rambler.ru/top100.cnt?801281" alt="" style="width:1px; height:1px; border:0" /></noscript>
+<!-- end of Top100 code -->
+<!-- Yandex.Metrika counter -->
+<div style="display:none;"><script type="text/javascript">
+(function(w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter219873 = new Ya.Metrika(219873);
+            yaCounter219873.clickmap(true);
+            yaCounter219873.trackLinks(true);
+        } catch(e) { }
+    });
+})(window, 'yandex_metrika_callbacks');
+</script></div>
+<script src="//mc.yandex.ru/metrika/watch.js" type="text/javascript" defer="defer"></script>
+<noscript><div style="position:absolute"><img src="//mc.yandex.ru/watch/219873" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<!--LiveInternet counter-->
+<script type="text/javascript"><!--
+new Image().src = "//counter.yadro.ru/hit?r"+escape(document.referrer)+((typeof(screen)=="undefined")?"":";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+";"+Math.random();
+//--></script>
+<!--/LiveInternet-->
+<!--/noindex-->
+</div>
+</td>
+</tr>
+<tr style="height:5px">
+<td style="background-image: url(/menu/bottom_left.gif)"></td>
+<td style="background-image: url(/menu/horiz.gif)"></td>
+<td style="background-image: url(/menu/bottom_right.gif)"></td>
+</tr>
+<tr style="height:10px">
+<td colspan="3"></td>
+</tr>
+</table>
+<div style="position:relative; z-index:-2; top:0px; height:0px">
+<div style="position:absolute; z-index:-2; bottom:0px; left:0px; width:100%"><img src="menu/stad_new.gif" style="width:100%; margin-bottom:-4px;" alt="" /></div>
+</div>
+</body></html>

@@ -1,0 +1,2201 @@
+﻿
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="css/style.css" rel="stylesheet" type="text/css" charset="utf-8" />
+<link rel="icon" type="image/png" href="" />
+<title>
+Mountain Action - All about Mountain</title>
+
+<meta name="description" content="All about Mountain">
+<meta name="keywords" content="ΟΡΕΙΝΟ ΤΡΕΞΙΜΟ, ΠΟΔΗΛΑΤΟ, ΟΡΕΙΒΑΣΙΑ, ΑΝΑΡΡΙΧΗΣΗ, ΣΚΙ, ΚΑΤΑΒΑΣΗ ΦΑΡΑΓΓΙΩΝ, ΠΑΡΑΠΕΝΤΕ, CANOE - KAYAK" />
+
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/facebox.js"></script>
+<link rel="stylesheet" type="text/css" href="css/facebox.css" />
+
+<script type='text/javascript' src='js/jquery.aviaSlider.js'></script>  
+<script type="text/javascript" src="js/jquery.ticker.js"></script>
+<script src="js/mobilynotes.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/jquery.pause.js"></script>
+<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="js/jquery.media.js"></script>
+<script type="text/javascript" src="js/jquery.scrollTo.js"></script>
+<script type="text/javascript" src="js/jquery.url.js"></script>
+<script src="js/jquery.custom_radio_checkbox.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/urlencode.js"></script>
+<script type="text/javascript" src="js/jScrollPane.js"></script>
+<link rel="stylesheet" href="css/lightbox.css" type="text/css" media="screen" />
+<script src="js/jquery.lightbox.js" type="text/javascript"></script>
+    
+<link rel="stylesheet" type="text/css" media="all" href="css/jScrollPane.css" />
+
+<script type="text/javascript" src="js/highslide/highslide.js"></script>
+<link rel="stylesheet" type="text/css" href="js/highslide/highslide.css" />
+
+
+<script type="text/javascript">
+hs.registerOverlay({
+overlayId: 'closebutton',
+position: 'top right',
+fade: 2 // fading the semi-transparent overlay looks bad in IE
+});
+
+
+hs.graphicsDir = 'js/highslide/graphics/';
+hs.wrapperClassName = 'borderless';
+</script>
+
+<script type="text/javascript">
+var is_the_mouse_hover=false;
+
+(function($){
+  $.fn.shuffle = function() {
+    return this.each(function(){
+      var items = $(this).children();
+      return (items.length)
+        ? $(this).html($.shuffle(items))
+        : this;
+    });
+  }
+ 
+  $.shuffle = function(arr) {
+    for(
+      var j, x, i = arr.length; i;
+      j = parseInt(Math.random() * i),
+      x = arr[--i], arr[i] = arr[j], arr[j] = x
+    );
+    return arr;
+  }
+})(jQuery);
+
+
+function auto_photo_roller(){
+$('#main_news_box_top').stop(true, true);
+	var length=0;
+	$(".main_news_box_item").each(function(){
+	length++;	
+	});
+if(is_the_mouse_hover==false){
+marginleft=parseInt($('#main_news_box_top').css('margin-left'))-615;
+
+
+if(marginleft==-length*615){
+$('#main_news_box_top').fadeOut(400, function(){
+$('#main_news_box_top').css('margin-left',0);	
+$('#main_news_box_top').fadeIn(400);
+});
+}else if(marginleft==615){
+$('#main_news_box_top').fadeOut(400, function(){
+$('#main_news_box_top').css('margin-left',-(length-1)*615);	
+$('#main_news_box_top').fadeIn(400);
+});	
+} else {
+$('#main_news_box_top').animate({marginLeft: marginleft}, 600);
+}
+}
+window.setTimeout('auto_photo_roller()',8000);
+}
+
+
+
+//ajax query function start
+function ajax_query(where_to_show, what_to_show, loading){
+$('#'+where_to_show).html($('#'+loading).html());
+
+$.ajax({
+url: what_to_show,
+success: function(response) {
+// update status element
+//$('#'+loading).hide();
+$('#'+where_to_show).html(response);
+
+},
+
+timeout: 9000,
+error: function(){
+alert('Error loading XML document');
+},
+
+
+error: function(xhr) {
+alert('Error!  Status = ' + xhr.status);
+}
+
+});
+
+
+}
+
+//ajax query function end
+
+
+
+var photosImagesum=0;
+var mainImagesum=0;
+
+
+$(document).ready(function(){
+var winHeight=$(window).height();
+var winWidth=$(window).width();
+var photosImagesum=0;
+
+$('#main_news_box_bottom a').click(function(){
+$('#main_news_box_top').stop(true, true);
+goto=$(this).attr('goto');
+var length=0;
+$(".main_news_box_item").each(function(){
+length++;	
+});
+
+var marginleft;
+if(goto=='prev'){
+	marginleft=parseInt($('#main_news_box_top').css('margin-left'))+615;
+} else if(goto=='next'){
+	marginleft=parseInt($('#main_news_box_top').css('margin-left'))-615;
+} else {
+	marginleft= -((goto-1)*615);
+}
+	
+if(marginleft==-length*615){
+$('#main_news_box_top').fadeOut(400, function(){
+$('#main_news_box_top').css('margin-left',0);	
+$('#main_news_box_top').fadeIn(400);
+});
+}else if(marginleft==615){
+$('#main_news_box_top').fadeOut(400, function(){
+$('#main_news_box_top').css('margin-left',-(length-1)*615);	
+$('#main_news_box_top').fadeIn(400);
+});	
+} else {
+$('#main_news_box_top').animate({marginLeft: marginleft}, 600);
+}
+
+});
+
+window.setTimeout('auto_photo_roller()',8000);
+
+$('#bottom_news_box_bottom a').click(function(){
+$('#bottom_news_box_top').stop(true, true);
+goto=$(this).attr('goto');
+var length=0;
+$(".bottom_news_box_item").each(function(){
+length++;	
+});
+
+var marginleft;
+if(goto=='prev'){
+	marginleft=parseInt($('#bottom_news_box_top').css('margin-left'))+314;
+} else if(goto=='next'){
+	marginleft=parseInt($('#bottom_news_box_top').css('margin-left'))-314;
+} else {
+	marginleft= -((goto-1)*314);
+}
+	
+if(marginleft==-length*314){
+$('#bottom_news_box_top').fadeOut(400, function(){
+$('#bottom_news_box_top').css('margin-left',0);	
+$('#bottom_news_box_top').fadeIn(400);
+});
+}else if(marginleft==314){
+$('#bottom_news_box_top').fadeOut(400, function(){
+$('#bottom_news_box_top').css('margin-left',-(length-1)*314);	
+$('#bottom_news_box_top').fadeIn(400);
+});	
+} else {
+$('#bottom_news_box_top').animate({marginLeft: marginleft}, 600);
+}
+
+});
+
+$('#bottom_news_box2_bottom a').click(function(){
+$('#bottom_news_box2_top').stop(true, true);
+goto=$(this).attr('goto');
+var length=0;
+$(".bottom_news_box2_item").each(function(){
+length++;	
+});
+
+var marginleft;
+if(goto=='prev'){
+	marginleft=parseInt($('#bottom_news_box2_top').css('margin-left'))+314;
+} else if(goto=='next'){
+	marginleft=parseInt($('#bottom_news_box2_top').css('margin-left'))-314;
+} else {
+	marginleft= -((goto-1)*314);
+}
+	
+if(marginleft==-length*314){
+$('#bottom_news_box2_top').fadeOut(400, function(){
+$('#bottom_news_box2_top').css('margin-left',0);	
+$('#bottom_news_box2_top').fadeIn(400);
+});
+}else if(marginleft==314){
+$('#bottom_news_box2_top').fadeOut(400, function(){
+$('#bottom_news_box2_top').css('margin-left',-(length-1)*314);	
+$('#bottom_news_box2_top').fadeIn(400);
+});	
+} else {
+$('#bottom_news_box2_top').animate({marginLeft: marginleft}, 600);
+}
+
+});
+
+
+$('#xrhsima_box_in_in div').each(function(){
+mainImagesum=mainImagesum+53;
+});
+	
+photosImagesum=mainImagesum+53;
+$('#xrhsima_box_in_in').width(photosImagesum);	
+
+$('.xrhsima_box_in_arr').click(function(){
+	thisnumber=$(this).attr('id');
+	img_width=53;
+	if(thisnumber=='xrhsima_arr_left'){
+		if(Math.abs(parseInt($('#xrhsima_box_in_in').css('margin-left')))>img_width){
+			
+		$('#xrhsima_box_in_in').animate({marginLeft: parseInt($('#xrhsima_box_in_in').css('margin-left'))+img_width},300)	
+		} else {
+		$('#xrhsima_box_in_in').animate({marginLeft: 0},300)		
+		}
+	} else {
+		if(Math.abs(parseInt($('#xrhsima_box_in_in').css('margin-left')))<mainImagesum-img_width*2){
+		$('#xrhsima_box_in_in').animate({marginLeft: parseInt($('#xrhsima_box_in_in').css('margin-left'))-img_width},300)
+		} else {
+		//$('#photo_box_middle_in').animate({marginLeft: -(mainImagesum-img_width)},500)		
+		}		
+	}
+	
+});
+
+
+$('#front_news2').vTicker({
+speed: 1000,
+pause: 5000,
+showItems: 1,
+animation: 'fade',
+mousePause: true,
+width: 447,
+height: 210,
+direction: 'left', 
+btn:'.news_btn'
+});
+
+$('.resume_item_right').click(function(){
+	if($(this).find('.resume_item_right_bottom').css('display')=='block'){
+	$(this).css('background', 'url(images/design/resume_top.png) no-repeat bottom right');
+	} else{
+	$(this).css('background', 'url(images/design/resume_top.png) no-repeat bottom left');	
+	}
+	$(this).find('.resume_item_right_bottom').slideToggle(400);
+});
+
+$('#photo_box_middle_in div').each(function(){
+mainImagesum=mainImagesum+220;
+});
+	
+photosImagesum=mainImagesum+130;
+$('#photo_box_middle_in').width(photosImagesum);	
+	
+$('.photos_box_in_arr').click(function(){
+
+	thisnumber=$(this).attr('id');
+	img_width=220;
+	
+	if(thisnumber=='photos_arr_left'){
+		if(Math.abs(parseInt($('#photo_box_middle_in').css('margin-left')))>img_width){
+		$('#photo_box_middle_in').animate({marginLeft: parseInt($('#photo_box_middle_in').css('margin-left'))+img_width},300)	
+		} else {
+		$('#photo_box_middle_in').animate({marginLeft: 0},300)		
+		}
+	} else {
+		
+		if(Math.abs(parseInt($('#photo_box_middle_in').css('margin-left')))<mainImagesum-img_width){
+		$('#photo_box_middle_in').animate({marginLeft: parseInt($('#photo_box_middle_in').css('margin-left'))-img_width},300)
+		} else {
+		//$('#photo_box_middle_in').animate({marginLeft: -(mainImagesum-img_width)},500)		
+		}		
+	}
+	
+});
+
+$(".lightbox").lightbox();
+
+main_col_left_height=$('#main_col_left').height();
+main_col_right_height=$('#main_col_right').height();
+
+if(main_col_right_height<main_col_left_height){
+$('#main_col_right').css('padding-bottom', main_col_left_height-main_col_right_height);	
+} else {
+$('#main_col_left_bottom').css('margin-top', parseInt($('#main_col_left_bottom').css('padding-bottom'))+main_col_right_height-main_col_left_height-100);		
+}
+
+$('.left_menu_item_item_a').click(function(){
+	if($(this).attr('return')=='false'){
+	$('.sub_menu_box').not($(this).parent().find('.sub_menu_box')).slideUp(500);
+	$(this).parent().find('.sub_menu_box').slideToggle(500);
+	return false;	
+	}
+});
+
+$('.sub_menu_box_a').click(function(){
+	if($(this).attr('return')=='false'){
+	$('.sub_sub_menu_box').not($(this).parent().find('.sub_sub_menu_box')).slideUp(500);
+	$(this).parent().find('.sub_sub_menu_box').slideToggle(500);
+	return false;	
+	}
+});
+
+$('.sub_menu_item a').click(function(){
+	if($(this).attr('return')=='false'){
+	$(this).parent().find('.sub_sub_menu_box').slideToggle(500);
+	return false;	
+	}
+})
+
+
+
+$('#terms_check').click(function(){
+	if($(this).attr('checked')){
+	$('#accept_terms').val(1);
+	} else {
+	$('#accept_terms').val('');	
+	}
+});
+
+if($('#main_container').height()<winHeight-32){
+$('#main_container').css('min-height', winHeight-32);	
+}
+
+$('.pop_close_btn').click(function(){
+$(this).parent().parent().parent().remove();
+});
+
+$('#check_coupon_btn').click(function(){
+var this_value;
+this_value=$(this).parent().find('#check_coupon_txt').val();
+$('#coupon_check').fadeIn(500);
+$('#coupon_check_con').html('Loading...');
+
+$.ajax({
+url: 'check_coupon.php?code='+this_value,
+success: function(response) {
+// update status element
+//$('#'+loading).hide();
+$('#coupon_check_con').html(response);
+
+}
+});
+});
+
+$('a[rel*=facebox]').facebox({
+loading_image : 'images/loading.gif',
+close_image   : 'images/closelabel.gif'
+});
+
+
+
+$('.show_answer').click(function(){
+	this_faq_item_bottom=$(this).parent().parent().find('.faq_item_bottom');
+	if($(this_faq_item_bottom).css('display')=='block'){
+		$(this_faq_item_bottom).slideUp(500);
+		$(this).find('h4').html('Δείτε την απάντηση');
+	} else {
+		$(this_faq_item_bottom).slideDown(500);
+		$(this).find('h4').html('Κλείσιμο');
+	}
+});
+
+$('#slider1').aviaSlider({	
+	blockSize: {height: 200, width:'full'},
+	transition: 'fade',
+	display: 'all',
+	slideControlls: 'items',
+	transitionOrder: ['diagonaltop', 'diagonalbottom','topleft', 'bottomright', 'random']
+});
+
+$("#search").focus(function(){
+if($("#search").val()=='Αναζήτηση...'){
+$("#search").val('');
+}
+}); 
+$("#search").blur(function(){
+if($("#search").val()==''){
+$("#search").val('Αναζήτηση...');
+}
+});
+
+
+$("#search2").focus(function(){
+if($("#search2").val()=='Αναζήτηση...'){
+$("#search2").val('');
+}
+}); 
+$("#search2").blur(function(){
+if($("#search2").val()==''){
+$("#search2").val('Αναζήτηση...');
+}
+});
+
+$("#newsletter_text").focus(function(){
+if($("#newsletter_text").val()=='E-MAIL'){
+$("#newsletter_text").val('');
+}
+}); 
+$("#newsletter_text").blur(function(){
+if($("#newsletter_text").val()==''){
+$("#newsletter_text").val('E-MAIL');
+}
+});
+
+$("#newsletter_text2").focus(function(){
+if($("#newsletter_text2").val()=='E-MAIL'){
+$("#newsletter_text2").val('');
+}
+}); 
+$("#newsletter_text2").blur(function(){
+if($("#newsletter_text2").val()==''){
+$("#newsletter_text2").val('E-MAIL');
+}
+});
+
+$("#newsletter_submit_btn").click(function(){
+
+$.ajax({
+
+url: 'included_pages/newsletter_s.php?email='+$('#newsletter_text').val(),
+success: function(response) {
+$('#newsletter_msg').html(response);
+},
+
+timeout: 9000
+
+});	
+
+return false;
+});
+
+$("#newsletter_submit_btn2").click(function(){
+
+$.ajax({
+
+url: 'included_pages/newsletter_s2.php?email='+$('#newsletter_text2').val(),
+success: function(response) {
+$('#newsletter_msg2').html(response);
+},
+
+timeout: 9000
+
+});	
+
+return false;
+});
+	
+$("#news_sxolia_btn").click(function() {
+req='';
+$("#news_sxolio_form_middle input").each(function() {
+req+=$(this).attr('name')+'='+urlencode($(this).val())+'&';
+
+});
+
+$("#news_sxolio_form_middle textarea").each(function() {
+req+=$(this).attr('name')+'='+urlencode($(this).val())+'&';
+});
+
+$("#news_sxolio_form_middle select").each(function() {
+req+=$(this).attr('name')+'='+urlencode($(this).val())+'&';
+});
+
+
+$('#news_sxolio_form_top').html('Επεξεργασία...');
+$.ajax({
+
+url: 'sxolio_send.php?'+req,
+success: function(response) {
+$('#news_sxolio_form_top').html(response);
+},
+
+timeout: 9000
+
+});
+return false;
+});
+
+	
+$("#contact_submit_btn").click(function() {
+req='';
+$("#contact_form input").each(function() {
+req+=$(this).attr('name')+'='+urlencode($(this).val())+'&';
+
+});
+
+$("#contact_form textarea").each(function() {
+req+=$(this).attr('name')+'='+urlencode($(this).val())+'&';
+});
+
+$("#contact_form select").each(function() {
+req+=$(this).attr('name')+'='+urlencode($(this).val())+'&';
+});
+
+
+$('#contact_results').html('Επεξεργασία...');
+$.ajax({
+
+url: 'contact_send.php?'+req,
+success: function(response) {
+$('#contact_results').html(response);
+},
+
+timeout: 9000
+
+});
+return false;
+});
+
+
+
+
+
+});
+</script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-34211932-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+$('a.media').each(function(){
+var media_width=$(this).attr('width');
+var media_height=$(this).attr('height');
+var media_image=$(this).attr('image');
+
+$(this).media({
+    width:     media_width, 
+    height:    media_height, 
+	image:    media_image,
+	flashvars:     {image: media_image}, 
+    autoplay:  false
+});
+});
+});
+</script>
+
+</head>
+
+<body >
+
+<div id="text_loading" style="display:none;"><div style="padding:30px; position:absolute;"><img src="images/design/ajax-loader.gif" alt="loading..." /></div></div>
+
+<div id="container">
+<div id="container_top"> </div><!--container_top END-->
+
+
+
+<div id="main_content_out">
+<div id="main_content">
+<div id="banners_left" align="center">
+<div class="banner_top_item">
+<a href="http://explorerssociety.gr/index.php" target="_blank"><img src="images/photos/VQOITAOLCU.jpg" width="140" height="284" border="0" /></a></div><!--banner_item END-->
+<div class="banner_top_item">
+<a href="http://www.olympus-climbing.gr/" target="_blank"><img src="images/photos/CFGRKSXLTO.jpg" width="140" height="140" border="0" /></a></div><!--banner_item END-->
+<div class="banner_top_item">
+<a href="http://mountainspirit.gr/" target="_blank"><img src="images/photos/PYYWGBJFJI.jpg" width="140" height="129" border="0" /></a></div><!--banner_item END-->
+<div class="banner_top_item">
+<a href="http://klaoudatos-skishop.gr/" target="_blank"><img src="images/photos/CMEKSKAMBH.jpg" width="140" height="221" border="0" /></a></div><!--banner_item END-->
+<div class="banner_top_item">
+<a href="http://www.v15.gr/" target="_blank"><img src="images/photos/MSMXIEDNYO.jpg" width="140" height="178" border="0" /></a></div><!--banner_item END-->
+<div class="banner_top_item">
+<a href="http://www.go-mrp.com/index.php" target="_blank"><img src="images/photos/JOPNTSYSXY.jpg" width="140" height="163" border="0" /></a></div><!--banner_item END-->
+
+</div><!--banners_left END-->
+<div id="header">
+<a href="index.php"><img src="images/design/logo_mountainaction.png" width="357" height="87" alt="mountain action" /></a>
+</div><!--header END-->
+<div id="main_content_top">
+<div id="main_content_top_top">
+<div id="main_content_top_top_left">
+<a  style="color:#E53917" href="index.php">ΑΡΧΙΚΗ</a>&nbsp;&nbsp; | &nbsp;&nbsp;
+<a href="index.php?page=gen_articles&amp;id=20">MOUNTAIN ACTION</a>
+&nbsp;&nbsp; | &nbsp;&nbsp;
+<a href="index.php?page=contact&amp;id=21">ΕΠΙΚΟΙΝΩΝΙΑ</a>
+</div><!--main_content_top_top_left END-->
+<div id="main_content_top_top_right">
+<div id="btn_y"><a href="#"></a></div><!--btn_y END-->
+<div id="btn_f"><a target="_blank" href="http://www.facebook.com/pages/Mountain-action/243312555734787"></a></div><!--btn_f END-->
+<div id="btn_b"><a target="_blank"  href="https://twitter.com/#!/mountainaction1"></a></div><!--btn_b END-->
+<div id="newsletter_top">
+<input name="newsletter" id="newsletter_text" type="text" value="E-MAIL" />
+<a id="newsletter_submit_btn" href="#"></a>
+<div class="clear"></div>
+<div id="newsletter_msg" style="position:absolute; z-index:10000; display:none; margin-top:-75px; margin-left:70px; width:200px; text-align:center"></div>
+</div><!--newsletter_top END-->
+<div class="clear"></div>
+</div><!--main_content_top_top_right END-->
+<div class="clear"></div> 
+</div><!--main_content_top_top END-->
+<div id="main_content_top_bottom">
+<ul class="aviaslider" id="slider1">
+  <li><img src="images/photos/CACWEROBMC.jpg" width="900" height="250" /></li>
+  <li><img src="images/photos/VLJJATDNUA.jpg" width="900" height="250" /></li>
+  <li><img src="images/photos/ACMFAIQYMO.jpg" width="900" height="250" /></li>
+  <li><img src="images/photos/DCMNMUGWXB.jpg" width="900" height="250" /></li>
+  <li><img src="images/photos/FFLLLRJMXP.jpg" width="900" height="250" /></li>
+  <li><img src="images/photos/VYPNHVJLHU.jpg" width="900" height="250" /></li>
+  <li><img src="images/photos/UPUCJYKLIS.jpg" width="900" height="250" /></li>
+  <li><img src="images/photos/CLTKLPMMGQ.jpg" width="900" height="250" /></li>
+  <li><img src="images/photos/MCEBMGVLCK.jpg" width="900" height="250" /></li>
+  <li><img src="images/photos/KNNOBMEDNS.jpg" width="900" height="250" /></li>
+  <li><img src="images/photos/BUOARKISBJ.jpg" width="900" height="250" /></li>
+  <li><img src="images/photos/WOYFPSQTNW.jpg" width="900" height="250" /></li>
+  <li><img src="images/photos/NCLKOXTPRM.jpg" width="900" height="250" /></li>
+</ul>
+</div><!--main_content_top_bottom END-->
+</div><!--main_content_top END-->
+<div id="main_content_bottom">
+
+<div id="main_content_bottom_left">
+<div id="search_box">
+<div id="search_box_left"></div><!--search_box_left END-->
+<div id="search_box_right">
+<form name="search_form" id="search_form" action="index.php" method="get">
+<div class="search_item">
+<input id="search" name="search" value="Αναζήτηση..." type="text" />
+</div><!--search_item END-->
+
+<input type="hidden" name="page" value="search" />
+<input name="submit" value="" type="submit" />
+</form>
+<div class="clear"></div>
+</div><!--search_box_right END-->
+</div><!--search_box END-->
+
+<div class="left_content_item">
+<div class="left_menu_item_title_1">
+
+</div><!--left_menu_item_title END-->
+<div class="left_menu_item_bottom">
+<div class="left_menu_item_item">
+<a class="left_menu_item_item_a"  href="index.php?page=news&amp;id=3"  return="false">ΟΡΕΙΝΟ ΤΡΕΞΙΜΟ</a>
+<div class="sub_menu_box" >
+<div class="sub_menu_box_in">
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=articles&amp;id=23&amp;article_id=29" >ΠΕΡΙΓΡΑΦΗ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=24"  >ΠΡΟΓΡΑΜΜΑ ΑΓΩΝΩΝ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=26"  >ΕΝΗΜΕΡΩΣΗ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=27"  >ΣΥΝΕΝΤΕΥΞΗ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=articles&amp;id=45&amp;article_id=19" >ΔΙΑΤΡΟΦΗ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=49"  >ΔΙΕΘΝΗ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=58"  >ΕΞΟΠΛΙΣΜΟΣ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=67"  >ΠΡΟΠΟΝΗΣΗ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=74"  >VIDEO</a>
+</div><!--sub_menu_item END-->
+</div><!--sub_menu_box_in END-->
+</div><!--sub_menu_box END-->
+</div><!--left_menu_item_item END-->
+<div class="left_menu_item_item">
+<a class="left_menu_item_item_a"  href="index.php?page=news&amp;id=5"  return="false">ΟΡΕΙΒΑΣΙΑ</a>
+<div class="sub_menu_box" >
+<div class="sub_menu_box_in">
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=articles&amp;id=34&amp;article_id=9" >ΠΕΡΙΓΡΑΦΗ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=44"  >ΕΝΗΜΕΡΩΣΗ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=articles&amp;id=54&amp;article_id=38" >ΟΡΕΙΒΑΤΙΚΟΙ ΣΥΛΛΟΓΟΙ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=56"  >ΕΞΟΠΛΙΣΜΟΣ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=57"  >ΤΑΙΝΙΕΣ - ΝΤΟΚΥΜΑΝΤΕΡ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=75"  >ΑΠΟΣΤΟΛΕΣ</a>
+</div><!--sub_menu_item END-->
+</div><!--sub_menu_box_in END-->
+</div><!--sub_menu_box END-->
+</div><!--left_menu_item_item END-->
+<div class="left_menu_item_item">
+<a class="left_menu_item_item_a"  href="index.php?page=news&amp;id=4"  return="false">ΠΟΔΗΛΑΤΟ</a>
+<div class="sub_menu_box" >
+<div class="sub_menu_box_in">
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=articles&amp;id=43&amp;article_id=16" >ΠΡΟΓΡΑΜΜΑ ΑΓΩΝΩΝ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=47"  >ΕΝΗΜΕΡΩΣΗ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=articles&amp;id=63&amp;article_id=54" >ΣΥΝΕΝΤΕΥΞΗ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=70"  >VIDEO</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=articles&amp;id=82&amp;article_id=278" >ΕΞΟΠΛΙΣΜΟΣ</a>
+</div><!--sub_menu_item END-->
+</div><!--sub_menu_box_in END-->
+</div><!--sub_menu_box END-->
+</div><!--left_menu_item_item END-->
+<div class="left_menu_item_item">
+<a class="left_menu_item_item_a"  href="index.php?page=news&amp;id=6"  return="false">ΑΝΑΡΡΙΧΗΣΗ</a>
+<div class="sub_menu_box" >
+<div class="sub_menu_box_in">
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=articles&amp;id=36&amp;article_id=10" >ΠΕΡΙΓΡΑΦΗ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=46"  >ΕΝΗΜΕΡΩΣΗ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=71"  >ΕΞΟΠΛΙΣΜΟΣ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=77"  >ΑΦΙΕΡΩΜΑ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=articles&amp;id=79&amp;article_id=182" >ΤΑΙΝΙΕΣ-NTOKYMANTEΡ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=80"  >VIDEO</a>
+</div><!--sub_menu_item END-->
+</div><!--sub_menu_box_in END-->
+</div><!--sub_menu_box END-->
+</div><!--left_menu_item_item END-->
+<div class="left_menu_item_item">
+<a class="left_menu_item_item_a"  href="index.php?page=news&amp;id=7"  return="false">ΣΚΙ</a>
+<div class="sub_menu_box" >
+<div class="sub_menu_box_in">
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=articles&amp;id=35&amp;article_id=8" >ΠΕΡΙΓΡΑΦΗ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=48"  >ΕΝΗΜΕΡΩΣΗ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=50"  >ΔΙΕΘΝΗ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=articles&amp;id=59&amp;article_id=49" >VIDEO</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=articles&amp;id=66&amp;article_id=59" >ΑΦΙΕΡΩΜΑ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=81"  >ΕΞΟΠΛΙΣΜΟΣ</a>
+</div><!--sub_menu_item END-->
+</div><!--sub_menu_box_in END-->
+</div><!--sub_menu_box END-->
+</div><!--left_menu_item_item END-->
+<div class="left_menu_item_item">
+<a class="left_menu_item_item_a"  href="index.php?page=news&amp;id=31"  return="false">CANYONING</a>
+<div class="sub_menu_box" >
+<div class="sub_menu_box_in">
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=articles&amp;id=39&amp;article_id=12" >ΠΕΡΙΓΡΑΦΗ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=articles&amp;id=40&amp;article_id=13" >ΒΙΒΛΙΑ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=53"  >ΕΝΗΜΕΡΩΣΗ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=articles&amp;id=69&amp;article_id=85" >ΣΥΝΕΝΤΕΥΞΗ</a>
+</div><!--sub_menu_item END-->
+</div><!--sub_menu_box_in END-->
+</div><!--sub_menu_box END-->
+</div><!--left_menu_item_item END-->
+<div class="left_menu_item_item">
+<a class="left_menu_item_item_a"  href="index.php?page=news&amp;id=10"  return="false">CANOE - KAYAK</a>
+<div class="sub_menu_box" >
+<div class="sub_menu_box_in">
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=articles&amp;id=33&amp;article_id=6" >ΠΕΡΙΓΡΑΦΗ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=articles&amp;id=73&amp;article_id=123" >ΕΝΗΜΕΡΩΣΗ</a>
+</div><!--sub_menu_item END-->
+</div><!--sub_menu_box_in END-->
+</div><!--sub_menu_box END-->
+</div><!--left_menu_item_item END-->
+<div class="left_menu_item_item">
+<a class="left_menu_item_item_a"  href="index.php?page=news&amp;id=9"  return="false">ΑΛΕΞΙΠΤΩΤΟ ΠΛΑΓΙΑΣ</a>
+<div class="sub_menu_box" >
+<div class="sub_menu_box_in">
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=articles&amp;id=37&amp;article_id=35" >ΠΕΡΙΓΡΑΦΗ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=articles&amp;id=52&amp;article_id=36" >ΛΕΣΧΕΣ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=65"  >ΕΝΗΜΕΡΩΣΗ</a>
+</div><!--sub_menu_item END-->
+</div><!--sub_menu_box_in END-->
+</div><!--sub_menu_box END-->
+</div><!--left_menu_item_item END-->
+<div class="left_menu_item_item">
+<a class="left_menu_item_item_a"  href="index.php?page=news&amp;id=83"  return="false">ΤΡΙΑΘΛΟ</a>
+<div class="sub_menu_box" >
+<div class="sub_menu_box_in">
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=84"  >ΕΝΗΜΕΡΩΣΗ</a>
+</div><!--sub_menu_item END-->
+</div><!--sub_menu_box_in END-->
+</div><!--sub_menu_box END-->
+</div><!--left_menu_item_item END-->
+<div class="left_menu_item_item">
+<a class="left_menu_item_item_a"  href="index.php?page=news&amp;id=85"  return="false">ΑΠΟΣΤΟΛΕΣ</a>
+<div class="sub_menu_box" >
+<div class="sub_menu_box_in">
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=articles&amp;id=86&amp;article_id=342" >ΔΙΕΘΝΗ</a>
+</div><!--sub_menu_item END-->
+</div><!--sub_menu_box_in END-->
+</div><!--sub_menu_box END-->
+</div><!--left_menu_item_item END-->
+</div><!--left_menu_item_bottom END-->
+</div><!--left_content_item END-->
+
+
+<div class="left_content_item">
+<div class="left_menu_item_title_2">
+
+</div><!--left_menu_item_title END-->
+<div class="left_menu_item_bottom">
+<div class="left_menu_item_item">
+<a class="left_menu_item_item_a"  href="index.php?page=news&amp;id=11">ΕΝΗΜΕΡΩΣΗ</a>
+
+<div class="sub_menu_box" >
+<div class="sub_menu_box_in">
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=11&amp;category_id=3" >ΟΡΕΙΝΟ ΤΡΕΞΙΜΟ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=11&amp;category_id=5" >ΟΡΕΙΒΑΣΙΑ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=11&amp;category_id=4" >ΠΟΔΗΛΑΤΟ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=11&amp;category_id=6" >ΑΝΑΡΡΙΧΗΣΗ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=11&amp;category_id=7" >ΣΚΙ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=11&amp;category_id=31" >CANYONING</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=11&amp;category_id=10" >CANOE - KAYAK</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=11&amp;category_id=9" >ΑΛΕΞΙΠΤΩΤΟ ΠΛΑΓΙΑΣ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=11&amp;category_id=83" >ΤΡΙΑΘΛΟ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=11&amp;category_id=85" >ΑΠΟΣΤΟΛΕΣ</a>
+</div><!--sub_menu_item END-->
+</div><!--sub_menu_box_in END-->
+</div><!--sub_menu_box END-->
+
+</div><!--left_menu_item_item END-->
+<div class="left_menu_item_item">
+<a class="left_menu_item_item_a"  href="index.php?page=news&amp;id=13">ΣΥΝΕΝΤΕΥΞH</a>
+
+<div class="sub_menu_box" >
+<div class="sub_menu_box_in">
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=13&amp;category_id=3" >ΟΡΕΙΝΟ ΤΡΕΞΙΜΟ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=13&amp;category_id=5" >ΟΡΕΙΒΑΣΙΑ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=13&amp;category_id=4" >ΠΟΔΗΛΑΤΟ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=13&amp;category_id=6" >ΑΝΑΡΡΙΧΗΣΗ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=13&amp;category_id=7" >ΣΚΙ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=13&amp;category_id=31" >CANYONING</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=13&amp;category_id=10" >CANOE - KAYAK</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=13&amp;category_id=9" >ΑΛΕΞΙΠΤΩΤΟ ΠΛΑΓΙΑΣ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=13&amp;category_id=83" >ΤΡΙΑΘΛΟ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=13&amp;category_id=85" >ΑΠΟΣΤΟΛΕΣ</a>
+</div><!--sub_menu_item END-->
+</div><!--sub_menu_box_in END-->
+</div><!--sub_menu_box END-->
+
+</div><!--left_menu_item_item END-->
+<div class="left_menu_item_item">
+<a class="left_menu_item_item_a"  href="index.php?page=news&amp;id=14">ΕΞΟΠΛΙΣΜΟΣ</a>
+
+<div class="sub_menu_box" >
+<div class="sub_menu_box_in">
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=14&amp;category_id=3" >ΟΡΕΙΝΟ ΤΡΕΞΙΜΟ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=14&amp;category_id=5" >ΟΡΕΙΒΑΣΙΑ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=14&amp;category_id=4" >ΠΟΔΗΛΑΤΟ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=14&amp;category_id=6" >ΑΝΑΡΡΙΧΗΣΗ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=14&amp;category_id=7" >ΣΚΙ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=14&amp;category_id=31" >CANYONING</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=14&amp;category_id=10" >CANOE - KAYAK</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=14&amp;category_id=9" >ΑΛΕΞΙΠΤΩΤΟ ΠΛΑΓΙΑΣ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=14&amp;category_id=83" >ΤΡΙΑΘΛΟ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=14&amp;category_id=85" >ΑΠΟΣΤΟΛΕΣ</a>
+</div><!--sub_menu_item END-->
+</div><!--sub_menu_box_in END-->
+</div><!--sub_menu_box END-->
+
+</div><!--left_menu_item_item END-->
+<div class="left_menu_item_item">
+<a class="left_menu_item_item_a"  href="index.php?page=news&amp;id=16">ΔΙΕΘΝΗ</a>
+
+<div class="sub_menu_box" >
+<div class="sub_menu_box_in">
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=16&amp;category_id=3" >ΟΡΕΙΝΟ ΤΡΕΞΙΜΟ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=16&amp;category_id=5" >ΟΡΕΙΒΑΣΙΑ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=16&amp;category_id=4" >ΠΟΔΗΛΑΤΟ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=16&amp;category_id=6" >ΑΝΑΡΡΙΧΗΣΗ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=16&amp;category_id=7" >ΣΚΙ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=16&amp;category_id=31" >CANYONING</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=16&amp;category_id=10" >CANOE - KAYAK</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=16&amp;category_id=9" >ΑΛΕΞΙΠΤΩΤΟ ΠΛΑΓΙΑΣ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=16&amp;category_id=83" >ΤΡΙΑΘΛΟ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=16&amp;category_id=85" >ΑΠΟΣΤΟΛΕΣ</a>
+</div><!--sub_menu_item END-->
+</div><!--sub_menu_box_in END-->
+</div><!--sub_menu_box END-->
+
+</div><!--left_menu_item_item END-->
+<div class="left_menu_item_item">
+<a class="left_menu_item_item_a"  href="index.php?page=news&amp;id=12">ΑΦΙΕΡΩΜΑ</a>
+
+<div class="sub_menu_box" >
+<div class="sub_menu_box_in">
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=12&amp;category_id=3" >ΟΡΕΙΝΟ ΤΡΕΞΙΜΟ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=12&amp;category_id=5" >ΟΡΕΙΒΑΣΙΑ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=12&amp;category_id=4" >ΠΟΔΗΛΑΤΟ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=12&amp;category_id=6" >ΑΝΑΡΡΙΧΗΣΗ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=12&amp;category_id=7" >ΣΚΙ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=12&amp;category_id=31" >CANYONING</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=12&amp;category_id=10" >CANOE - KAYAK</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=12&amp;category_id=9" >ΑΛΕΞΙΠΤΩΤΟ ΠΛΑΓΙΑΣ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=12&amp;category_id=83" >ΤΡΙΑΘΛΟ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=12&amp;category_id=85" >ΑΠΟΣΤΟΛΕΣ</a>
+</div><!--sub_menu_item END-->
+</div><!--sub_menu_box_in END-->
+</div><!--sub_menu_box END-->
+
+</div><!--left_menu_item_item END-->
+<div class="left_menu_item_item">
+<a class="left_menu_item_item_a"  href="index.php?page=news&amp;id=15">ΔΙΑΤΡΟΦΗ</a>
+
+<div class="sub_menu_box" >
+<div class="sub_menu_box_in">
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=15&amp;category_id=3" >ΟΡΕΙΝΟ ΤΡΕΞΙΜΟ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=15&amp;category_id=5" >ΟΡΕΙΒΑΣΙΑ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=15&amp;category_id=4" >ΠΟΔΗΛΑΤΟ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=15&amp;category_id=6" >ΑΝΑΡΡΙΧΗΣΗ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=15&amp;category_id=7" >ΣΚΙ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=15&amp;category_id=31" >CANYONING</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=15&amp;category_id=10" >CANOE - KAYAK</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=15&amp;category_id=9" >ΑΛΕΞΙΠΤΩΤΟ ΠΛΑΓΙΑΣ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=15&amp;category_id=83" >ΤΡΙΑΘΛΟ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=15&amp;category_id=85" >ΑΠΟΣΤΟΛΕΣ</a>
+</div><!--sub_menu_item END-->
+</div><!--sub_menu_box_in END-->
+</div><!--sub_menu_box END-->
+
+</div><!--left_menu_item_item END-->
+<div class="left_menu_item_item">
+<a class="left_menu_item_item_a"  href="index.php?page=news&amp;id=41">ΒΙΒΛΙΑ</a>
+
+<div class="sub_menu_box" >
+<div class="sub_menu_box_in">
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=41&amp;category_id=3" >ΟΡΕΙΝΟ ΤΡΕΞΙΜΟ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=41&amp;category_id=5" >ΟΡΕΙΒΑΣΙΑ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=41&amp;category_id=4" >ΠΟΔΗΛΑΤΟ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=41&amp;category_id=6" >ΑΝΑΡΡΙΧΗΣΗ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=41&amp;category_id=7" >ΣΚΙ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=41&amp;category_id=31" >CANYONING</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=41&amp;category_id=10" >CANOE - KAYAK</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=41&amp;category_id=9" >ΑΛΕΞΙΠΤΩΤΟ ΠΛΑΓΙΑΣ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=41&amp;category_id=83" >ΤΡΙΑΘΛΟ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=41&amp;category_id=85" >ΑΠΟΣΤΟΛΕΣ</a>
+</div><!--sub_menu_item END-->
+</div><!--sub_menu_box_in END-->
+</div><!--sub_menu_box END-->
+
+</div><!--left_menu_item_item END-->
+<div class="left_menu_item_item">
+<a class="left_menu_item_item_a"  href="index.php?page=news&amp;id=17">ΤΑΙΝΙΕΣ-NTOKYMANTEΡ</a>
+
+<div class="sub_menu_box" >
+<div class="sub_menu_box_in">
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=17&amp;category_id=3" >ΟΡΕΙΝΟ ΤΡΕΞΙΜΟ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=17&amp;category_id=5" >ΟΡΕΙΒΑΣΙΑ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=17&amp;category_id=4" >ΠΟΔΗΛΑΤΟ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=17&amp;category_id=6" >ΑΝΑΡΡΙΧΗΣΗ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=17&amp;category_id=7" >ΣΚΙ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=17&amp;category_id=31" >CANYONING</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=17&amp;category_id=10" >CANOE - KAYAK</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=17&amp;category_id=9" >ΑΛΕΞΙΠΤΩΤΟ ΠΛΑΓΙΑΣ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=17&amp;category_id=83" >ΤΡΙΑΘΛΟ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=17&amp;category_id=85" >ΑΠΟΣΤΟΛΕΣ</a>
+</div><!--sub_menu_item END-->
+</div><!--sub_menu_box_in END-->
+</div><!--sub_menu_box END-->
+
+</div><!--left_menu_item_item END-->
+<div class="left_menu_item_item">
+<a class="left_menu_item_item_a"  href="index.php?page=news&amp;id=18">VIDEO</a>
+
+<div class="sub_menu_box" >
+<div class="sub_menu_box_in">
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=18&amp;category_id=3" >ΟΡΕΙΝΟ ΤΡΕΞΙΜΟ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=18&amp;category_id=5" >ΟΡΕΙΒΑΣΙΑ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=18&amp;category_id=4" >ΠΟΔΗΛΑΤΟ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=18&amp;category_id=6" >ΑΝΑΡΡΙΧΗΣΗ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=18&amp;category_id=7" >ΣΚΙ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=18&amp;category_id=31" >CANYONING</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=18&amp;category_id=10" >CANOE - KAYAK</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=18&amp;category_id=9" >ΑΛΕΞΙΠΤΩΤΟ ΠΛΑΓΙΑΣ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=18&amp;category_id=83" >ΤΡΙΑΘΛΟ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=18&amp;category_id=85" >ΑΠΟΣΤΟΛΕΣ</a>
+</div><!--sub_menu_item END-->
+</div><!--sub_menu_box_in END-->
+</div><!--sub_menu_box END-->
+
+</div><!--left_menu_item_item END-->
+<div class="left_menu_item_item">
+<a class="left_menu_item_item_a"  href="index.php?page=news&amp;id=68">ΠΡΟΠΟΝΗΣΗ</a>
+
+<div class="sub_menu_box" >
+<div class="sub_menu_box_in">
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=68&amp;category_id=3" >ΟΡΕΙΝΟ ΤΡΕΞΙΜΟ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=68&amp;category_id=5" >ΟΡΕΙΒΑΣΙΑ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=68&amp;category_id=4" >ΠΟΔΗΛΑΤΟ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=68&amp;category_id=6" >ΑΝΑΡΡΙΧΗΣΗ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=68&amp;category_id=7" >ΣΚΙ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=68&amp;category_id=31" >CANYONING</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=68&amp;category_id=10" >CANOE - KAYAK</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=68&amp;category_id=9" >ΑΛΕΞΙΠΤΩΤΟ ΠΛΑΓΙΑΣ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=68&amp;category_id=83" >ΤΡΙΑΘΛΟ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=68&amp;category_id=85" >ΑΠΟΣΤΟΛΕΣ</a>
+</div><!--sub_menu_item END-->
+</div><!--sub_menu_box_in END-->
+</div><!--sub_menu_box END-->
+
+</div><!--left_menu_item_item END-->
+<div class="left_menu_item_item">
+<a class="left_menu_item_item_a"  href="index.php?page=news&amp;id=76">ΑΠΟΣΤΟΛΕΣ</a>
+
+<div class="sub_menu_box" >
+<div class="sub_menu_box_in">
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=76&amp;category_id=3" >ΟΡΕΙΝΟ ΤΡΕΞΙΜΟ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=76&amp;category_id=5" >ΟΡΕΙΒΑΣΙΑ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=76&amp;category_id=4" >ΠΟΔΗΛΑΤΟ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=76&amp;category_id=6" >ΑΝΑΡΡΙΧΗΣΗ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=76&amp;category_id=7" >ΣΚΙ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=76&amp;category_id=31" >CANYONING</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=76&amp;category_id=10" >CANOE - KAYAK</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=76&amp;category_id=9" >ΑΛΕΞΙΠΤΩΤΟ ΠΛΑΓΙΑΣ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=76&amp;category_id=83" >ΤΡΙΑΘΛΟ</a>
+</div><!--sub_menu_item END-->
+<div class="sub_menu_item">
+<a class="sub_menu_item_a"   href="index.php?page=news&amp;id=76&amp;category_id=85" >ΑΠΟΣΤΟΛΕΣ</a>
+</div><!--sub_menu_item END-->
+</div><!--sub_menu_box_in END-->
+</div><!--sub_menu_box END-->
+
+</div><!--left_menu_item_item END-->
+</div><!--left_menu_item_bottom END-->
+</div><!--left_content_item END-->
+
+
+<div class="left_content_item">
+<div class="left_menu_item_title_3">
+
+</div><!--left_menu_item_title END-->
+<div class="left_top_item_bottom">
+<div class="left_top_item_item first_item">
+<a href="index.php?page=articles&amp;id=75&amp;article_id=373">Αποστολή The North Face©: Mount Olympus<br />Μέρος 1o: Η Κόψη Σκολιού</a>
+</div><!--left_top_item_item END-->
+<div class="left_top_item_item second_item">
+<a href="index.php?page=articles&amp;id=26&amp;article_id=374">Τρέχοντας στα Χνάρια της Αρκούδας 2014 - Περιγραφή & Animation διαδρομής</a>
+</div><!--left_top_item_item END-->
+<div class="left_top_item_item third_item">
+<a href="index.php?page=articles&amp;id=57&amp;article_id=273">ΑΠΟ ΤΟΝ ΟΛΥΜΠΟ ΣΤΟ ΕΒΕΡΕΣΤ - Μια ταινία του Παύλου Τσιαντού</a>
+</div><!--left_top_item_item END-->
+<div class="left_top_item_item forth_item">
+<a href="index.php?page=articles&amp;id=66&amp;article_id=59">Ορειβατικό Σκι στον Όλυμπο</a>
+</div><!--left_top_item_item END-->
+<div class="left_top_item_item fifth_item">
+<a href="index.php?page=articles&amp;id=84&amp;article_id=324">1o XTERRA Greece - ΔΕΛΤΙΟ ΤΥΠΟΥ</a>
+</div><!--left_top_item_item END-->
+
+</div><!--left_top_item_bottom END-->
+</div><!--left_content_item END-->
+
+
+<div class="left_content_item">
+<div id="xrhsima_box">
+<table width="200" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td align="left" width="17">
+<div class="xrhsima_box_in_arr" id="xrhsima_arr_left">
+&nbsp;
+</div>
+</td>
+<td>
+<div id="xrhsima_box_in">
+<div id="xrhsima_box_in_in">
+<div style=" background-image:url(images/photos/XALIQLMGNE.gif);" class="xrhsima_box_item">
+<a href="index.php?page=gen_articles&amp;article_id=1"></a>
+</div><!--xrhsima_box_item END-->
+<div style=" background-image:url(images/photos/BTBQPQQDNG.jpg);" class="xrhsima_box_item">
+<a href="index.php?page=gen_articles&amp;article_id=6"></a>
+</div><!--xrhsima_box_item END-->
+<div style=" background-image:url(images/photos/DMHWKRRNND.gif);" class="xrhsima_box_item">
+<a href="index.php?page=gen_articles&amp;article_id=7"></a>
+</div><!--xrhsima_box_item END-->
+<div style=" background-image:url(images/photos/PDYTMTDTBB.jpg);" class="xrhsima_box_item">
+<a href="index.php?page=gen_articles&amp;article_id=8"></a>
+</div><!--xrhsima_box_item END-->
+<div class="clear"></div>
+</div><!--xrhsima_box_in_in END-->
+</div><!--xrhsima_box_in END-->
+</td>
+<td align="right" width="17">
+<div class="xrhsima_box_in_arr" id="xrhsima_arr_right">
+&nbsp;
+</div>
+</td>
+</tr>
+</table>
+</div><!--xrhsima_box END-->
+</div><!--left_content_item END-->
+
+<div class="left_content_item">
+<div id="left_item_trypa">
+<div id="left_item_trypa_in">
+<div style="padding-top:10px;">
+<div id="facebook_box">
+<iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FMountain-action%2F243312555734787&amp;width=182&amp;height=288&amp;colorscheme=light&amp;show_faces=true&amp;border_color=%23ffffff&amp;stream=false&amp;header=false&amp;appId=172030056218691" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:182px; height:288px;" allowTransparency="true"></iframe>
+</div><!--facebook_box END-->
+</div>
+</div><!--left_item_trypa_in END-->
+</div><!--left_item_trypa END-->
+</div><!--left_content_item END-->
+
+</div><!--main_content_bottom_left END-->
+<div id="main_content_bottom_right">
+<div id="main_news">
+<div id="main_news_trypa">
+<div id="main_news_trypa_in">
+<div id="main_news_trypa_in_in">
+<div id="main_news_box_out">
+<div id="main_news_box">
+<h3>Ενημέρωση</h3>
+<div id="main_news_box_top">
+<div id="main_news_box_top_in">
+
+<div class="main_news_box_item"   this_item="first" the_i="1">
+<div class="main_news_box_item_left">
+<a href="index.php?page=articles&id=26&article_id=392"><img src="images/photos/thumbnails/XAXIAGOWLB.jpg" /></a>
+</div><!--main_news_box_item_left END-->
+<div class="main_news_box_item_right">
+<h5>20.03.2014</h5>
+<h4>ΕΝΗΜΕΡΩΣΗ</h4>
+<h2><a style="color:#000;" href="index.php?page=articles&id=26&article_id=392">5ος Διεθνής Ορεινός Αγώνας Ψηλορείτης</a></h2>
+&#160;
+<a class="more_btn" href="index.php?page=articles&id=26&article_id=392"></a>
+</div><!--main_news_box_item_right END-->
+<div class="clear"></div>
+</div><!--main_news_box_item END-->
+<div class="main_news_box_item"    the_i="2">
+<div class="main_news_box_item_left">
+<a href="index.php?page=articles&id=&article_id=393"><img src="images/photos/thumbnails/CISQCJHEYP.jpg" /></a>
+</div><!--main_news_box_item_left END-->
+<div class="main_news_box_item_right">
+<h5>20.03.2014</h5>
+<h4>ΕΞΟΠΛΙΣΜΟΣ</h4>
+<h2><a style="color:#000;" href="index.php?page=articles&id=&article_id=393">Garmin® fēnix 2: Κυκλοφορεί</a></h2>
+&#160;
+<a class="more_btn" href="index.php?page=articles&id=&article_id=393"></a>
+</div><!--main_news_box_item_right END-->
+<div class="clear"></div>
+</div><!--main_news_box_item END-->
+<div class="main_news_box_item"    the_i="3">
+<div class="main_news_box_item_left">
+<a href="index.php?page=articles&id=26&article_id=391"><img src="images/photos/thumbnails/PNEASYHBXL.jpg" /></a>
+</div><!--main_news_box_item_left END-->
+<div class="main_news_box_item_right">
+<h5>18.03.2014</h5>
+<h4>ΕΝΗΜΕΡΩΣΗ</h4>
+<h2><a style="color:#000;" href="index.php?page=articles&id=26&article_id=391">Pearl Izumi Mountain Cup 2014 - Πάρνηθα Αποτελέσματα</a></h2>
+&#160;
+<a class="more_btn" href="index.php?page=articles&id=26&article_id=391"></a>
+</div><!--main_news_box_item_right END-->
+<div class="clear"></div>
+</div><!--main_news_box_item END-->
+<div class="main_news_box_item"    the_i="4">
+<div class="main_news_box_item_left">
+<a href="index.php?page=articles&id=26&article_id=387"><img src="images/photos/thumbnails/MDGCSXNMIP.jpg" /></a>
+</div><!--main_news_box_item_left END-->
+<div class="main_news_box_item_right">
+<h5>15.03.2014</h5>
+<h4>ΕΝΗΜΕΡΩΣΗ</h4>
+<h2><a style="color:#000;" href="index.php?page=articles&id=26&article_id=387">Skyrunner® Series Greece</a></h2>
+&#160;Sponsored by Salomon Hellas
+<a class="more_btn" href="index.php?page=articles&id=26&article_id=387"></a>
+</div><!--main_news_box_item_right END-->
+<div class="clear"></div>
+</div><!--main_news_box_item END-->
+<div class="main_news_box_item"    the_i="5">
+<div class="main_news_box_item_left">
+<a href="index.php?page=articles&id=46&article_id=388"><img src="images/photos/thumbnails/ASQPQWTHWW.jpg" /></a>
+</div><!--main_news_box_item_left END-->
+<div class="main_news_box_item_right">
+<h5>15.03.2014</h5>
+<h4>ΕΝΗΜΕΡΩΣΗ</h4>
+<h2><a style="color:#000;" href="index.php?page=articles&id=46&article_id=388">CAMP αναρρίχησης βράχου, Μετέωρα</a></h2>
+<strong>22-23-24-25/3/2014</strong>
+<a class="more_btn" href="index.php?page=articles&id=46&article_id=388"></a>
+</div><!--main_news_box_item_right END-->
+<div class="clear"></div>
+</div><!--main_news_box_item END-->
+<div class="main_news_box_item"    the_i="6">
+<div class="main_news_box_item_left">
+<a href="index.php?page=articles&id=46&article_id=389"><img src="images/photos/thumbnails/HHKCORBHGF.jpg" /></a>
+</div><!--main_news_box_item_left END-->
+<div class="main_news_box_item_right">
+<h5>15.03.2014</h5>
+<h4>ΕΝΗΜΕΡΩΣΗ</h4>
+<h2><a style="color:#000;" href="index.php?page=articles&id=46&article_id=389">ΣΧΟΛΗ ΑΝΑΡΡΙΧΗΣΗΣ ΒΡΑΧΟΥ ΜΕΣΟΥ ΕΠΙΠΕΔΟΥ 2014</a></h2>
+&#160;
+<a class="more_btn" href="index.php?page=articles&id=46&article_id=389"></a>
+</div><!--main_news_box_item_right END-->
+<div class="clear"></div>
+</div><!--main_news_box_item END-->
+<div class="main_news_box_item"    the_i="7">
+<div class="main_news_box_item_left">
+<a href="index.php?page=articles&id=&article_id=384"><img src="images/photos/thumbnails/VVWMVWFINJ.jpg" /></a>
+</div><!--main_news_box_item_left END-->
+<div class="main_news_box_item_right">
+<h5>08.03.2014</h5>
+<h4>ΕΝΗΜΕΡΩΣΗ</h4>
+<h2><a style="color:#000;" href="index.php?page=articles&id=&article_id=384">CHOREGEO:1st Sponsorship Conference 2014</a></h2>
+<strong>5 - 6 Απριλίου 2014</strong><br /><br type="_moz" />
+<a class="more_btn" href="index.php?page=articles&id=&article_id=384"></a>
+</div><!--main_news_box_item_right END-->
+<div class="clear"></div>
+</div><!--main_news_box_item END-->
+<div class="main_news_box_item"    the_i="8">
+<div class="main_news_box_item_left">
+<a href="index.php?page=articles&id=26&article_id=386"><img src="images/photos/thumbnails/HDFFRJIVCC.jpg" /></a>
+</div><!--main_news_box_item_left END-->
+<div class="main_news_box_item_right">
+<h5>08.03.2014</h5>
+<h4>ΕΝΗΜΕΡΩΣΗ</h4>
+<h2><a style="color:#000;" href="index.php?page=articles&id=26&article_id=386">HYDRA'S TRAIL EVENT</a></h2>
+<b><span lang="EL">5 &amp; 6 Απριλίου 2014<br /><br type="_moz" /></span></b>
+<a class="more_btn" href="index.php?page=articles&id=26&article_id=386"></a>
+</div><!--main_news_box_item_right END-->
+<div class="clear"></div>
+</div><!--main_news_box_item END-->
+<div class="main_news_box_item"    the_i="9">
+<div class="main_news_box_item_left">
+<a href="index.php?page=articles&id=46&article_id=383"><img src="images/photos/thumbnails/JGQCKNQFVR.jpg" /></a>
+</div><!--main_news_box_item_left END-->
+<div class="main_news_box_item_right">
+<h5>05.03.2014</h5>
+<h4>ΕΝΗΜΕΡΩΣΗ</h4>
+<h2><a style="color:#000;" href="index.php?page=articles&id=46&article_id=383">Συνεργασία της The North Face® με τον Άρη Θεοδωρόπουλο</a></h2>
+&#160;<strong style="font-size: 10px;">ΔΕΛΤΙΟ ΤΥΠΟΥ</strong>&#160;<br /><br type="_moz" />
+<a class="more_btn" href="index.php?page=articles&id=46&article_id=383"></a>
+</div><!--main_news_box_item_right END-->
+<div class="clear"></div>
+</div><!--main_news_box_item END-->
+<div class="main_news_box_item"    the_i="10">
+<div class="main_news_box_item_left">
+<a href="index.php?page=articles&id=46&article_id=378"><img src="images/photos/thumbnails/JAQKGVDMMR.jpg" /></a>
+</div><!--main_news_box_item_left END-->
+<div class="main_news_box_item_right">
+<h5>02.03.2014</h5>
+<h4>ΕΝΗΜΕΡΩΣΗ</h4>
+<h2><a style="color:#000;" href="index.php?page=articles&id=46&article_id=378">Tradwave</a></h2>
+<em>Ωδή στην παραδοσιακή αναρρίχηση και τους παραδοσιακούς ανθρώπους.<br /><br type="_moz" /></em>
+<a class="more_btn" href="index.php?page=articles&id=46&article_id=378"></a>
+</div><!--main_news_box_item_right END-->
+<div class="clear"></div>
+</div><!--main_news_box_item END-->
+<div class="main_news_box_item"    the_i="11">
+<div class="main_news_box_item_left">
+<a href="index.php?page=articles&id=26&article_id=375"><img src="images/photos/thumbnails/DBWUUUXCEW.jpg" /></a>
+</div><!--main_news_box_item_left END-->
+<div class="main_news_box_item_right">
+<h5>24.02.2014</h5>
+<h4>ΕΝΗΜΕΡΩΣΗ</h4>
+<h2><a style="color:#000;" href="index.php?page=articles&id=26&article_id=375">Taygetos Challenge by Salomon  </a></h2>
+<strong>22-23/03/2014</strong>
+<a class="more_btn" href="index.php?page=articles&id=26&article_id=375"></a>
+</div><!--main_news_box_item_right END-->
+<div class="clear"></div>
+</div><!--main_news_box_item END-->
+<div class="main_news_box_item"    the_i="12">
+<div class="main_news_box_item_left">
+<a href="index.php?page=articles&id=26&article_id=374"><img src="images/photos/thumbnails/CMRBMKXCLY.jpg" /></a>
+</div><!--main_news_box_item_left END-->
+<div class="main_news_box_item_right">
+<h5>17.02.2014</h5>
+<h4>ΕΝΗΜΕΡΩΣΗ</h4>
+<h2><a style="color:#000;" href="index.php?page=articles&id=26&article_id=374">Τρέχοντας στα Χνάρια της Αρκούδας 2014 - Περιγραφή & Animation διαδρομής</a></h2>
+<strong>Το animation &amp; η αναλυτική διαδρομή του αγώνα.</strong><br />
+<a class="more_btn" href="index.php?page=articles&id=26&article_id=374"></a>
+</div><!--main_news_box_item_right END-->
+<div class="clear"></div>
+</div><!--main_news_box_item END-->
+<div class="main_news_box_item"    the_i="13">
+<div class="main_news_box_item_left">
+<a href="index.php?page=articles&id=26&article_id=370"><img src="images/photos/thumbnails/BXWOTBPTFG.jpg" /></a>
+</div><!--main_news_box_item_left END-->
+<div class="main_news_box_item_right">
+<h5>06.02.2014</h5>
+<h4>ΕΝΗΜΕΡΩΣΗ</h4>
+<h2><a style="color:#000;" href="index.php?page=articles&id=26&article_id=370">The North Face Zagori Mountain Running 2014</a></h2>
+<strong>26 &amp; 27 Ιουλίου 2014</strong>
+<a class="more_btn" href="index.php?page=articles&id=26&article_id=370"></a>
+</div><!--main_news_box_item_right END-->
+<div class="clear"></div>
+</div><!--main_news_box_item END-->
+<div class="main_news_box_item"    the_i="14">
+<div class="main_news_box_item_left">
+<a href="index.php?page=articles&id=26&article_id=365"><img src="images/photos/thumbnails/YTHTTICCEF.jpg" /></a>
+</div><!--main_news_box_item_left END-->
+<div class="main_news_box_item_right">
+<h5>02.02.2014</h5>
+<h4>ΕΝΗΜΕΡΩΣΗ</h4>
+<h2><a style="color:#000;" href="index.php?page=articles&id=26&article_id=365">Kilkis Trail Running 2014</a></h2>
+<strong>2ος Αγώνας ορεινού ημιμαραθωνίου Κιλκίς</strong>
+<a class="more_btn" href="index.php?page=articles&id=26&article_id=365"></a>
+</div><!--main_news_box_item_right END-->
+<div class="clear"></div>
+</div><!--main_news_box_item END-->
+<div class="main_news_box_item"    the_i="15">
+<div class="main_news_box_item_left">
+<a href="index.php?page=articles&id=26&article_id=366"><img src="images/photos/thumbnails/YOAOCGOOYP.jpg" /></a>
+</div><!--main_news_box_item_left END-->
+<div class="main_news_box_item_right">
+<h5>02.02.2014</h5>
+<h4>ΕΝΗΜΕΡΩΣΗ</h4>
+<h2><a style="color:#000;" href="index.php?page=articles&id=26&article_id=366">YPSARION MARATHON 2014</a></h2>
+<span style="color: rgb(255, 51, 0);">1ος Ορεινός Μαραθώνιος Θάσου<br />03.05.2014</span>
+<a class="more_btn" href="index.php?page=articles&id=26&article_id=366"></a>
+</div><!--main_news_box_item_right END-->
+<div class="clear"></div>
+</div><!--main_news_box_item END-->
+<div class="main_news_box_item" this_item="last"   the_i="16">
+<div class="main_news_box_item_left">
+<a href="index.php?page=articles&id=&article_id=122"><img src="images/photos/thumbnails/JJOXXGRJGA.jpg" /></a>
+</div><!--main_news_box_item_left END-->
+<div class="main_news_box_item_right">
+<h5>05.06.2012</h5>
+<h4>ΕΝΗΜΕΡΩΣΗ</h4>
+<h2><a style="color:#000;" href="index.php?page=articles&id=&article_id=122">Τράπεζα Αίματος </a></h2>
+<span style="text-align: justify; ">Το&#160;</span><span style="text-align: justify; color: rgb(255, 51, 0); ">mountainaction.info</span><span style="text-align: justify; ">&#160;πρόσφατα δημιούργησε τράπεζα αίματος στο</span><strong style="text-align: justify; ">&#160;Ιπποκράτειο Νοσοκομείο Θεσσαλονίκης</strong><strong>...</strong><span style="text-align: justify; "><br type="_moz" /></span>
+<a class="more_btn" href="index.php?page=articles&id=&article_id=122"></a>
+</div><!--main_news_box_item_right END-->
+<div class="clear"></div>
+</div><!--main_news_box_item END-->
+<div class="clear"></div>
+</div><!--main_news_box_top_in END-->
+</div><!--main_news_box_top END-->
+<div id="main_news_box_bottom">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="left"><a goto="1">1</a>|<a goto="2">2</a>|<a goto="3">3</a>|<a goto="4">4</a>|<a goto="5">5</a>|<a goto="6">6</a>|<a goto="7">7</a>|<a goto="8">8</a>|<a goto="9">9</a>|<a goto="10">10</a>|<a goto="11">11</a>|<a goto="12">12</a>|<a goto="13">13</a>|<a goto="14">14</a>|<a goto="15">15</a>|<a goto="16">16</a></td>
+    <td align="right"><a class="prev_or_left" goto="prev"></a>&nbsp;&nbsp;<a class="prev_or_right" goto="next"></a></td>
+  </tr>
+</table>
+
+</div><!--main_news_box_bottom END-->
+
+</div><!--main_news_box END-->
+</div><!--main_news_box_out END-->
+
+</div><!--main_news_trypa_in_in END-->
+</div><!--main_news_trypa_in END-->
+</div><!--main_news_trypa END-->
+</div><!--main_news END-->
+
+<div id="main_content_bottom_right_middle">
+
+<div class="main_bottom_news_box_item">
+<div class="main_bottom_news_box_item_in">
+<h3>Ενημέρωση</h3>
+<div class="main_bottom_news_box_item_photo">
+<a href="index.php?page=articles&id=48&article_id=380"><img src="images/photos/thumbnails/CVNVNOWPGM.jpg" width="215" height="118.39527027" /></a>
+</div><!--main_news_box_item_left END-->
+<h5>06.03.2014</h5>
+<h4>ΣΚΙ</h4>
+<h2><a style="color:#000" href="index.php?page=articles&id=48&article_id=380">OLYMPUS Ski Mountaineering Team Race 2014 - Πρόγραμμα</a></h2>
+<a style="margin-left:10px;" class="more_btn" href="index.php?page=articles&id=48&article_id=380"></a>
+<div class="clear"></div>
+</div><!--main_bottom_news_box_item_in END-->
+</div><!--main_news_box_item END-->
+<div class="main_bottom_news_box_item">
+<div class="main_bottom_news_box_item_in">
+<h3>Αποστολές</h3>
+<div class="main_bottom_news_box_item_photo">
+<a href="index.php?page=articles&id=75&article_id=373"><img src="images/photos/thumbnails/GAQCLHONWT.jpg" width="215" height="118.39527027" /></a>
+</div><!--main_news_box_item_left END-->
+<h5>07.02.2014</h5>
+<h4>ΟΡΕΙΒΑΣΙΑ</h4>
+<h2><a style="color:#000" href="index.php?page=articles&id=75&article_id=373">Αποστολή The North Face©: Mount Olympus<br />Μέρος 1o: Η Κόψη Σκολιού</a></h2>
+<a style="margin-left:10px;" class="more_btn" href="index.php?page=articles&id=75&article_id=373"></a>
+<div class="clear"></div>
+</div><!--main_bottom_news_box_item_in END-->
+</div><!--main_news_box_item END-->
+<div class="main_bottom_news_box_item">
+<div class="main_bottom_news_box_item_in">
+<h3>Ενημέρωση</h3>
+<div class="main_bottom_news_box_item_photo">
+<a href="index.php?page=articles&id=24&article_id=345"><img src="images/photos/thumbnails/HKOVVADJMI.jpg" width="215" height="118.39527027" /></a>
+</div><!--main_news_box_item_left END-->
+<h5>12.01.2014</h5>
+<h4>ΟΡΕΙΝΟ ΤΡΕΞΙΜΟ</h4>
+<h2><a style="color:#000" href="index.php?page=articles&id=24&article_id=345">Πρόγραμμα Αγώνων Ορεινού Τρεξίματος 2014</a></h2>
+<a style="margin-left:10px;" class="more_btn" href="index.php?page=articles&id=24&article_id=345"></a>
+<div class="clear"></div>
+</div><!--main_bottom_news_box_item_in END-->
+</div><!--main_news_box_item END-->
+<div class="main_bottom_news_box_item">
+<div class="main_bottom_news_box_item_in">
+<h3>Ενημέρωση</h3>
+<div class="main_bottom_news_box_item_photo">
+<a href="index.php?page=articles&id=48&article_id=351"><img src="images/photos/thumbnails/JGDOFWAJLS.jpg" width="215" height="118.39527027" /></a>
+</div><!--main_news_box_item_left END-->
+<h5>08.01.2014</h5>
+<h4>ΣΚΙ</h4>
+<h2><a style="color:#000" href="index.php?page=articles&id=48&article_id=351">Πρόγραμμα Αγώνων Ορειβατικού Σκι 2014</a></h2>
+<a style="margin-left:10px;" class="more_btn" href="index.php?page=articles&id=48&article_id=351"></a>
+<div class="clear"></div>
+</div><!--main_bottom_news_box_item_in END-->
+</div><!--main_news_box_item END-->
+<div class="main_bottom_news_box_item">
+<div class="main_bottom_news_box_item_in">
+<h3>Ενημέρωση</h3>
+<div class="main_bottom_news_box_item_photo">
+<a href="index.php?page=articles&id=48&article_id=353"><img src="images/photos/thumbnails/DRIJOTKPOH.jpg" width="215" height="118.39527027" /></a>
+</div><!--main_news_box_item_left END-->
+<h5>08.01.2014</h5>
+<h4>ΣΚΙ</h4>
+<h2><a style="color:#000" href="index.php?page=articles&id=48&article_id=353">WAYOUT SKI CAMPS</a></h2>
+<a style="margin-left:10px;" class="more_btn" href="index.php?page=articles&id=48&article_id=353"></a>
+<div class="clear"></div>
+</div><!--main_bottom_news_box_item_in END-->
+</div><!--main_news_box_item END-->
+<div class="main_bottom_news_box_item">
+<div class="main_bottom_news_box_item_in">
+<h3>Ενημέρωση</h3>
+<div class="main_bottom_news_box_item_photo">
+<a href="index.php?page=articles&id=26&article_id=339"><img src="images/photos/thumbnails/QKVBLLUCMB.jpg" width="215" height="118.39527027" /></a>
+</div><!--main_news_box_item_left END-->
+<h5>24.10.2013</h5>
+<h4>ΟΡΕΙΝΟ ΤΡΕΞΙΜΟ</h4>
+<h2><a style="color:#000" href="index.php?page=articles&id=26&article_id=339">Αναζητώντας τον εκλείποντα πολιτισμό στα μονοπάτια της Ροδόπης</a></h2>
+<a style="margin-left:10px;" class="more_btn" href="index.php?page=articles&id=26&article_id=339"></a>
+<div class="clear"></div>
+</div><!--main_bottom_news_box_item_in END-->
+</div><!--main_news_box_item END-->
+<div class="main_bottom_news_box_item">
+<div class="main_bottom_news_box_item_in">
+<h3>Ενημέρωση</h3>
+<div class="main_bottom_news_box_item_photo">
+<a href="index.php?page=articles&id=26&article_id=337"><img src="images/photos/thumbnails/TSIQADGUPQ.jpg" width="215" height="118.39527027" /></a>
+</div><!--main_news_box_item_left END-->
+<h5>02.10.2013</h5>
+<h4>ΟΡΕΙΝΟ ΤΡΕΞΙΜΟ</h4>
+<h2><a style="color:#000" href="index.php?page=articles&id=26&article_id=337">Ο Νίκος Καλοφύρης στην ομάδα της The North Face®</a></h2>
+<a style="margin-left:10px;" class="more_btn" href="index.php?page=articles&id=26&article_id=337"></a>
+<div class="clear"></div>
+</div><!--main_bottom_news_box_item_in END-->
+</div><!--main_news_box_item END-->
+<div class="main_bottom_news_box_item">
+<div class="main_bottom_news_box_item_in">
+<h3>Video</h3>
+<div class="main_bottom_news_box_item_photo">
+<a href="index.php?page=articles&id=70&article_id=335"><img src="images/photos/thumbnails/YHJQJEIBGC.jpg" width="215" height="118.39527027" /></a>
+</div><!--main_news_box_item_left END-->
+<h5>21.09.2013</h5>
+<h4>ΠΟΔΗΛΑΤΟ</h4>
+<h2><a style="color:#000" href="index.php?page=articles&id=70&article_id=335">Mt. Olympus Freeride Downhill Experience</a></h2>
+<a style="margin-left:10px;" class="more_btn" href="index.php?page=articles&id=70&article_id=335"></a>
+<div class="clear"></div>
+</div><!--main_bottom_news_box_item_in END-->
+</div><!--main_news_box_item END-->
+<div class="main_bottom_news_box_item">
+<div class="main_bottom_news_box_item_in">
+<h3>Εξοπλισμός</h3>
+<div class="main_bottom_news_box_item_photo">
+<a href="index.php?page=articles&id=&article_id=332"><img src="images/photos/thumbnails/CIDUFSMBQD.jpg" width="215" height="118.39527027" /></a>
+</div><!--main_news_box_item_left END-->
+<h5>11.09.2013</h5>
+<h4></h4>
+<h2><a style="color:#000" href="index.php?page=articles&id=&article_id=332">Garmin® VIRB και VIRB Elite</a></h2>
+<a style="margin-left:10px;" class="more_btn" href="index.php?page=articles&id=&article_id=332"></a>
+<div class="clear"></div>
+</div><!--main_bottom_news_box_item_in END-->
+</div><!--main_news_box_item END-->
+<div class="main_bottom_news_box_item">
+<div class="main_bottom_news_box_item_in">
+<h3>Ενημέρωση</h3>
+<div class="main_bottom_news_box_item_photo">
+<a href="index.php?page=articles&id=44&article_id=317"><img src="images/photos/thumbnails/VAOTKOSTJY.jpg" width="215" height="118.39527027" /></a>
+</div><!--main_news_box_item_left END-->
+<h5>01.05.2013</h5>
+<h4>ΟΡΕΙΒΑΣΙΑ</h4>
+<h2><a style="color:#000" href="index.php?page=articles&id=44&article_id=317">2ο The North Face Secret Camp by Explorers' Society</a></h2>
+<a style="margin-left:10px;" class="more_btn" href="index.php?page=articles&id=44&article_id=317"></a>
+<div class="clear"></div>
+</div><!--main_bottom_news_box_item_in END-->
+</div><!--main_news_box_item END-->
+<div class="main_bottom_news_box_item">
+<div class="main_bottom_news_box_item_in">
+<h3>Ταινίες & Ντοκυμαντερ</h3>
+<div class="main_bottom_news_box_item_photo">
+<a href="index.php?page=articles&id=72&article_id=234"><img src="images/photos/thumbnails/JEDBVIRPOQ.jpg" width="215" height="118.39527027" /></a>
+</div><!--main_news_box_item_left END-->
+<h5>20.11.2012</h5>
+<h4></h4>
+<h2><a style="color:#000" href="index.php?page=articles&id=72&article_id=234">MAY THE GODS SKI WITH YOU</a></h2>
+<a style="margin-left:10px;" class="more_btn" href="index.php?page=articles&id=72&article_id=234"></a>
+<div class="clear"></div>
+</div><!--main_bottom_news_box_item_in END-->
+</div><!--main_news_box_item END-->
+<div class="main_bottom_news_box_item">
+<div class="main_bottom_news_box_item_in">
+<h3>Ταινίες & Ντοκυμαντερ</h3>
+<div class="main_bottom_news_box_item_photo">
+<a href="index.php?page=articles&id=57&article_id=273"><img src="images/photos/thumbnails/CJQUVKUGNH.jpg" width="215" height="118.39527027" /></a>
+</div><!--main_news_box_item_left END-->
+<h5>23.09.2012</h5>
+<h4>ΟΡΕΙΒΑΣΙΑ</h4>
+<h2><a style="color:#000" href="index.php?page=articles&id=57&article_id=273">ΑΠΟ ΤΟΝ ΟΛΥΜΠΟ ΣΤΟ ΕΒΕΡΕΣΤ - Μια ταινία του Παύλου Τσιαντού</a></h2>
+<a style="margin-left:10px;" class="more_btn" href="index.php?page=articles&id=57&article_id=273"></a>
+<div class="clear"></div>
+</div><!--main_bottom_news_box_item_in END-->
+</div><!--main_news_box_item END-->
+<div class="clear"></div>
+
+</div><!--main_content_bottom_right_middle END-->
+
+<div id="bottom_news">
+<div id="bottom_news_trypa">
+<div id="bottom_news_trypa_in">
+<div id="bottom_news_trypa_in_left">
+<div id="bottom_news_box">
+<h3>Εξοπλισμός</h3>
+<div id="bottom_news_box_top">
+<div id="bottom_news_box_top_in">
+<div class="bottom_news_box_item"   this_item="first" the_i="1">
+<div class="bottom_news_box_item_top">
+<a href="index.php?page=articles&id=&article_id=393"><img src="images/photos/thumbnails/CISQCJHEYP.jpg" width="310" height="170.709459459" /></a>
+</div><!--main_news_box_item_left END-->
+<div class="bottom_news_box_item_bottom">
+<h5>20.03.2014</h5>
+<h2><a style="color:#000" href="index.php?page=articles&id=&article_id=393">Garmin® fēnix 2: Κυκλοφορεί</a></h2>
+&#160;
+<a class="more_btn_w" href="index.php?page=articles&id=&article_id=393"></a>
+</div><!--bottom_news_box_item_bottom END-->
+</div><!--bottom_news_box_item END-->
+<div class="bottom_news_box_item"    the_i="2">
+<div class="bottom_news_box_item_top">
+<a href="index.php?page=articles&id=81&article_id=368"><img src="images/photos/thumbnails/RXLDNPQANN.jpg" width="310" height="170.709459459" /></a>
+</div><!--main_news_box_item_left END-->
+<div class="bottom_news_box_item_bottom">
+<h5>04.02.2014</h5>
+<h2><a style="color:#000" href="index.php?page=articles&id=81&article_id=368">Elan Ski - Amphibio Technology</a></h2>
+&#160;
+<a class="more_btn_w" href="index.php?page=articles&id=81&article_id=368"></a>
+</div><!--bottom_news_box_item_bottom END-->
+</div><!--bottom_news_box_item END-->
+<div class="bottom_news_box_item"    the_i="3">
+<div class="bottom_news_box_item_top">
+<a href="index.php?page=articles&id=81&article_id=369"><img src="images/photos/thumbnails/YOFANCKPHT.jpg" width="310" height="170.709459459" /></a>
+</div><!--main_news_box_item_left END-->
+<div class="bottom_news_box_item_bottom">
+<h5>04.02.2014</h5>
+<h2><a style="color:#000" href="index.php?page=articles&id=81&article_id=369">Dynafit Ski Mountaineering</a></h2>
+Τα νέα μοντέλα της Dynafit<br /><br /><br type="_moz" />
+<a class="more_btn_w" href="index.php?page=articles&id=81&article_id=369"></a>
+</div><!--bottom_news_box_item_bottom END-->
+</div><!--bottom_news_box_item END-->
+<div class="bottom_news_box_item"    the_i="4">
+<div class="bottom_news_box_item_top">
+<a href="index.php?page=articles&id=&article_id=332"><img src="images/photos/thumbnails/CIDUFSMBQD.jpg" width="310" height="170.709459459" /></a>
+</div><!--main_news_box_item_left END-->
+<div class="bottom_news_box_item_bottom">
+<h5>11.09.2013</h5>
+<h2><a style="color:#000" href="index.php?page=articles&id=&article_id=332">Garmin® VIRB και VIRB Elite</a></h2>
+Οι 2 νέες <strong>HD Action Cameras</strong> που θα καταγράψουν κάθε δευτερόλεπτο των δραστηριοτήτων σας!<br /><br /><br type="_moz" />
+<a class="more_btn_w" href="index.php?page=articles&id=&article_id=332"></a>
+</div><!--bottom_news_box_item_bottom END-->
+</div><!--bottom_news_box_item END-->
+<div class="bottom_news_box_item"    the_i="5">
+<div class="bottom_news_box_item_top">
+<a href="index.php?page=articles&id=&article_id=311"><img src="images/photos/thumbnails/YTBKDPNHMG.jpg" width="310" height="170.709459459" /></a>
+</div><!--main_news_box_item_left END-->
+<div class="bottom_news_box_item_bottom">
+<h5>14.04.2013</h5>
+<h2><a style="color:#000" href="index.php?page=articles&id=&article_id=311">GARMIN® - BaseCamp™ Software</a></h2>
+Εκμεταλλευτείτε κάθε δραστηριότητα και ξαναζήστε κάθε ταξίδι που καταγράφετε με ένα GPS της Garmin® με το δωρεάν λογισμικό&#160;<strong><a href="http://www.garmin.com/en-US/shop/downloads/basecamp#TB_inline?height=625&amp;width=940&amp;inlineId=1" target="_blank">BaseCamp™</a></strong>.&#160;
+<a class="more_btn_w" href="index.php?page=articles&id=&article_id=311"></a>
+</div><!--bottom_news_box_item_bottom END-->
+</div><!--bottom_news_box_item END-->
+<div class="bottom_news_box_item"    the_i="6">
+<div class="bottom_news_box_item_top">
+<a href="index.php?page=articles&id=82&article_id=278"><img src="images/photos/thumbnails/CAFJECRJOM.jpg" width="310" height="170.709459459" /></a>
+</div><!--main_news_box_item_left END-->
+<div class="bottom_news_box_item_bottom">
+<h5>18.02.2013</h5>
+<h2><a style="color:#000" href="index.php?page=articles&id=82&article_id=278">EDGE® 510 | 810: Οι έξυπνες συσκευές επιδόσεων & πλοήγησης της GARMIN</a></h2>
+Η Garmin® δίνει νέο νόημα στην ποδηλατική σας εμπειρία&#160;με τα νέα Edge® 810/510 και την εφαρμογή Garmin Connect™ Mobile.&#160;
+<a class="more_btn_w" href="index.php?page=articles&id=82&article_id=278"></a>
+</div><!--bottom_news_box_item_bottom END-->
+</div><!--bottom_news_box_item END-->
+<div class="bottom_news_box_item"    the_i="7">
+<div class="bottom_news_box_item_top">
+<a href="index.php?page=articles&id=5&article_id=269"><img src="images/photos/thumbnails/VESSKWMDVU.jpg" width="310" height="170.709459459" /></a>
+</div><!--main_news_box_item_left END-->
+<div class="bottom_news_box_item_bottom">
+<h5>04.02.2013</h5>
+<h2><a style="color:#000" href="index.php?page=articles&id=5&article_id=269">FENIX: Το νέο ρολόι της Garmin με GPS</a></h2>
+<span style="font-family: Arial, Verdana, Helvetica, sans-serif; line-height: 18px;">Το πρώτο ρολόι της Garmin που συνδυάζει την τεχνολογία GPS με λειτουργίες ABC (Altimeter, Barometer &amp; Compass).<br /><br type="_moz" /></span>
+<a class="more_btn_w" href="index.php?page=articles&id=5&article_id=269"></a>
+</div><!--bottom_news_box_item_bottom END-->
+</div><!--bottom_news_box_item END-->
+<div class="bottom_news_box_item"    the_i="8">
+<div class="bottom_news_box_item_top">
+<a href="index.php?page=articles&id=81&article_id=254"><img src="images/photos/thumbnails/EVMERDTGCY.jpg" width="310" height="170.709459459" /></a>
+</div><!--main_news_box_item_left END-->
+<div class="bottom_news_box_item_bottom">
+<h5>22.12.2012</h5>
+<h2><a style="color:#000" href="index.php?page=articles&id=81&article_id=254">Arva Link 2013</a></h2>
+With two different modes - for beginners or for advanced users
+<a class="more_btn_w" href="index.php?page=articles&id=81&article_id=254"></a>
+</div><!--bottom_news_box_item_bottom END-->
+</div><!--bottom_news_box_item END-->
+<div class="bottom_news_box_item"    the_i="9">
+<div class="bottom_news_box_item_top">
+<a href="index.php?page=articles&id=81&article_id=247"><img src="images/photos/thumbnails/UPQIKDIURW.jpg" width="310" height="170.709459459" /></a>
+</div><!--main_news_box_item_left END-->
+<div class="bottom_news_box_item_bottom">
+<h5>21.12.2012</h5>
+<h2><a style="color:#000" href="index.php?page=articles&id=81&article_id=247">Titan TF-X 2013 Boot</a></h2>
+The best-in-class downhill performing boot, and compatibility with all alpine style bindings.&#160;
+<a class="more_btn_w" href="index.php?page=articles&id=81&article_id=247"></a>
+</div><!--bottom_news_box_item_bottom END-->
+</div><!--bottom_news_box_item END-->
+<div class="bottom_news_box_item"    the_i="10">
+<div class="bottom_news_box_item_top">
+<a href="index.php?page=articles&id=81&article_id=248"><img src="images/photos/thumbnails/GFWFUNQWJM.jpg" width="310" height="170.709459459" /></a>
+</div><!--main_news_box_item_left END-->
+<div class="bottom_news_box_item_bottom">
+<h5>21.12.2012</h5>
+<h2><a style="color:#000" href="index.php?page=articles&id=81&article_id=248">One U-MF 2013</a></h2>
+Ski tourers looking for PU performance and progressive flex at unbelievable lightness.<br /><br type="_moz" />
+<a class="more_btn_w" href="index.php?page=articles&id=81&article_id=248"></a>
+</div><!--bottom_news_box_item_bottom END-->
+</div><!--bottom_news_box_item END-->
+<div class="bottom_news_box_item"    the_i="11">
+<div class="bottom_news_box_item_top">
+<a href="index.php?page=articles&id=81&article_id=249"><img src="images/photos/thumbnails/DMRKNTRRJH.jpg" width="310" height="170.709459459" /></a>
+</div><!--main_news_box_item_left END-->
+<div class="bottom_news_box_item_bottom">
+<h5>21.12.2012</h5>
+<h2><a style="color:#000" href="index.php?page=articles&id=81&article_id=249">Huascaran GTX Proshell 2013 Jacket</a></h2>
+Lightweight, durable and fully waterproof 3L Gore Tex® Pro Shell Jacket with high breathability.
+<a class="more_btn_w" href="index.php?page=articles&id=81&article_id=249"></a>
+</div><!--bottom_news_box_item_bottom END-->
+</div><!--bottom_news_box_item END-->
+<div class="bottom_news_box_item"    the_i="12">
+<div class="bottom_news_box_item_top">
+<a href="index.php?page=articles&id=81&article_id=250"><img src="images/photos/thumbnails/GCFXYDEVXQ.jpg" width="310" height="170.709459459" /></a>
+</div><!--main_news_box_item_left END-->
+<div class="bottom_news_box_item_bottom">
+<h5>21.12.2012</h5>
+<h2><a style="color:#000" href="index.php?page=articles&id=81&article_id=250">Expert Plus GT</a></h2>
+Strong mountaineering boot with a classical design.&#160;
+<a class="more_btn_w" href="index.php?page=articles&id=81&article_id=250"></a>
+</div><!--bottom_news_box_item_bottom END-->
+</div><!--bottom_news_box_item END-->
+<div class="bottom_news_box_item" this_item="last"   the_i="13">
+<div class="bottom_news_box_item_top">
+<a href="index.php?page=articles&id=81&article_id=251"><img src="images/photos/thumbnails/ANDULQFGGF.jpg" width="310" height="170.709459459" /></a>
+</div><!--main_news_box_item_left END-->
+<div class="bottom_news_box_item_bottom">
+<h5>21.12.2012</h5>
+<h2><a style="color:#000" href="index.php?page=articles&id=81&article_id=251">Jacket Denali 2013</a></h2>
+Warm, insulating sport jacket.
+<a class="more_btn_w" href="index.php?page=articles&id=81&article_id=251"></a>
+</div><!--bottom_news_box_item_bottom END-->
+</div><!--bottom_news_box_item END-->
+<div class="clear"></div>
+</div><!--bottom_news_box_top_in END-->
+</div><!--bottom_news_box_top END-->
+<div id="bottom_news_box_bottom">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="left"><a goto="1">1</a>|<a goto="2">2</a>|<a goto="3">3</a>|<a goto="4">4</a>|<a goto="5">5</a>|<a goto="6">6</a>|<a goto="7">7</a>|<a goto="8">8</a>|<a goto="9">9</a>|<a goto="10">10</a>|<a goto="11">11</a>|<a goto="12">12</a>|<a goto="13">13</a></td>
+    <td align="right"><a class="prev_w_left" goto="prev"></a>&nbsp;&nbsp;<a class="prev_w_right" goto="next"></a></td>
+  </tr>
+</table>
+
+</div><!--bottom_news_box_bottom END-->
+</div><!--bottom_news_box END-->
+
+</div><!--bottom_news_trypa_in_left END-->
+
+<div id="bottom_news_trypa_in_right">
+
+<div id="bottom_news_box2">
+<h3>Διεθνή</h3>
+<div id="bottom_news_box2_top">
+<div id="bottom_news_box2_top_in">
+<div class="bottom_news_box2_item"   this_item="first" the_i="1">
+<div class="bottom_news_box2_item_top">
+<a href="index.php?page=articles&id=50&article_id=377"><img src="images/photos/thumbnails/FBPHCEQOPL.jpg" width="310" height="170.709459459"  /></a>
+</div><!--main_news_box_item_left END-->
+<div class="bottom_news_box2_item_bottom">
+<h5>23.02.2014</h5>
+<h2><a style="color:#000" href="index.php?page=articles&id=50&article_id=377">Πανευρωπαϊκό  Πρωτάθλημα Ορειβατικού Σκι - Ανδόρρα</a></h2>
+<strong>14 έως 16 Φεβρουαρίου 2014</strong><br /><br type="_moz" />
+<a style="margin-top:3px;" class="more_btn" href="index.php?page=articles&id=50&article_id=377"></a>
+</div><!--bottom_news_box_item_bottom END-->
+</div><!--bottom_news_box_item END-->
+<div class="bottom_news_box2_item"    the_i="2">
+<div class="bottom_news_box2_item_top">
+<a href="index.php?page=articles&id=86&article_id=342"><img src="images/photos/thumbnails/DTPSBYYQWO.jpg" width="310" height="170.709459459"  /></a>
+</div><!--main_news_box_item_left END-->
+<div class="bottom_news_box2_item_bottom">
+<h5>03.12.2013</h5>
+<h2><a style="color:#000" href="index.php?page=articles&id=86&article_id=342">The North Face Winter Expedition: NANGA PARBAT</a></h2>
+Η χειμερινή αποστολή των Simone Moro, David Göttler &amp; Emilio Previtali
+<a style="margin-top:3px;" class="more_btn" href="index.php?page=articles&id=86&article_id=342"></a>
+</div><!--bottom_news_box_item_bottom END-->
+</div><!--bottom_news_box_item END-->
+<div class="bottom_news_box2_item"    the_i="3">
+<div class="bottom_news_box2_item_top">
+<a href="index.php?page=articles&id=49&article_id=329"><img src="images/photos/thumbnails/HOOAUYFUPQ.jpg" width="310" height="170.709459459"  /></a>
+</div><!--main_news_box_item_left END-->
+<div class="bottom_news_box2_item_bottom">
+<h5>12.07.2013</h5>
+<h2><a style="color:#000" href="index.php?page=articles&id=49&article_id=329">KILIAN’S CLASSIK 2013</a></h2>
+&#160;
+<a style="margin-top:3px;" class="more_btn" href="index.php?page=articles&id=49&article_id=329"></a>
+</div><!--bottom_news_box_item_bottom END-->
+</div><!--bottom_news_box_item END-->
+<div class="bottom_news_box2_item"    the_i="4">
+<div class="bottom_news_box2_item_top">
+<a href="index.php?page=articles&id=48&article_id=302"><img src="images/photos/thumbnails/VPMJXETCFO.jpg" width="310" height="170.709459459"  /></a>
+</div><!--main_news_box_item_left END-->
+<div class="bottom_news_box2_item_bottom">
+<h5>26.03.2013</h5>
+<h2><a style="color:#000" href="index.php?page=articles&id=48&article_id=302">28th PIERRA MENTA</a></h2>
+21-24.03.2013
+<a style="margin-top:3px;" class="more_btn" href="index.php?page=articles&id=48&article_id=302"></a>
+</div><!--bottom_news_box_item_bottom END-->
+</div><!--bottom_news_box_item END-->
+<div class="bottom_news_box2_item"    the_i="5">
+<div class="bottom_news_box2_item_top">
+<a href="index.php?page=articles&id=27&article_id=237"><img src="images/photos/thumbnails/WPCMFBBKOO.jpg" width="310" height="170.709459459"  /></a>
+</div><!--main_news_box_item_left END-->
+<div class="bottom_news_box2_item_bottom">
+<h5>14.12.2012</h5>
+<h2><a style="color:#000" href="index.php?page=articles&id=27&article_id=237">Φάνης Αρκουμάνης: Solukhumbu Trail 2012</a></h2>
+<div style="text-align: justify;">Ο Φάνης Αρκουμάνης μιλάει στο Μ.Α. για την εμπειρία του στον αγώνα Solukhumbu Trail 2012 στο Nepal.</div>
+<a style="margin-top:3px;" class="more_btn" href="index.php?page=articles&id=27&article_id=237"></a>
+</div><!--bottom_news_box_item_bottom END-->
+</div><!--bottom_news_box_item END-->
+<div class="bottom_news_box2_item"    the_i="6">
+<div class="bottom_news_box2_item_top">
+<a href="index.php?page=articles&id=49&article_id=221"><img src="images/photos/thumbnails/NJSIQGVMFW.jpg" width="310" height="170.709459459"  /></a>
+</div><!--main_news_box_item_left END-->
+<div class="bottom_news_box2_item_bottom">
+<h5>04.10.2012</h5>
+<h2><a style="color:#000" href="index.php?page=articles&id=49&article_id=221">Kilian's Quest: ‪If you can walk you can run</a></h2>
+<strong style="color: rgb(77, 77, 77); font-family: Arial, Helvetica, sans-serif; font-size: 10px; ">Salomon Running TV - S4 E06</strong><br />Το 6ο επεισόδιο της σειράς Kilian's Quest ο Kilian συναντάει τον Scott Jurek.
+<a style="margin-top:3px;" class="more_btn" href="index.php?page=articles&id=49&article_id=221"></a>
+</div><!--bottom_news_box_item_bottom END-->
+</div><!--bottom_news_box_item END-->
+<div class="bottom_news_box2_item" this_item="last"   the_i="7">
+<div class="bottom_news_box2_item_top">
+<a href="index.php?page=articles&id=49&article_id=211"><img src="images/photos/thumbnails/WSHUGSSRQA.jpg" width="310" height="170.709459459"  /></a>
+</div><!--main_news_box_item_left END-->
+<div class="bottom_news_box2_item_bottom">
+<h5>22.09.2012</h5>
+<h2><a style="color:#000" href="index.php?page=articles&id=49&article_id=211">Η εμπειρία του Κωνσταντίνου Κοζανίτη στον Tor des Géants 2012</a></h2>
+<font color="#ff3300" face="Arial, Helvetica, sans-serif" size="2">Σκέψεις, εντυπώσεις, συμπεράσματα...</font><br />
+<a style="margin-top:3px;" class="more_btn" href="index.php?page=articles&id=49&article_id=211"></a>
+</div><!--bottom_news_box_item_bottom END-->
+</div><!--bottom_news_box_item END-->
+<div class="clear"></div>
+</div><!--bottom_news_box_top_in END-->
+</div><!--bottom_news_box_top END-->
+<div id="bottom_news_box2_bottom">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="left"><a goto="1">1</a>|<a goto="2">2</a>|<a goto="3">3</a>|<a goto="4">4</a>|<a goto="5">5</a>|<a goto="6">6</a>|<a goto="7">7</a></td>
+    <td align="right"><a class="prev_or_left" goto="prev"></a>&nbsp;&nbsp;<a class="prev_or_right" goto="next"></a></td>
+  </tr>
+</table>
+
+</div><!--bottom_news_box_bottom END-->
+</div><!--bottom_news_box END-->
+
+</div><!--bottom_news_trypa_in_right END-->
+<div class="clear"></div>
+</div><!--bottom_news_trypa_in END-->
+</div><!--bottom_news_trypa END-->
+</div><!--bottom_news END-->
+</div><!--main_content_bottom_right END-->
+<div class="clear"></div>
+
+</div><!--main_content_bottom END-->
+</div><!--main_content END-->
+</div><!--main_content_out END-->
+
+<div id="bottom_white">
+<div id="bottom_white_in">
+<div id="bottom_banners_left">
+<div class="bottom_banner_item">
+<a href="http://www.summitzero.gr/" target="_blank"><img src="images/photos/YDKBUPLCOE.jpg" width="230" height="85" border="0" /></a></div><!--bottom_banner_item END-->
+<div class="bottom_banner_item">
+<a href="http://www.garmin.gr/" target="_blank"><img src="images/photos/AEVLMMNGWW.jpg" width="230" height="85" border="0" /></a></div><!--bottom_banner_item END-->
+<div class="bottom_banner_item">
+<a href="http://www.specialized.gr/" target="_blank"><img src="images/photos/RQTSNCEKBL.jpg" width="230" height="85" border="0" /></a></div><!--bottom_banner_item END-->
+<div class="bottom_banner_item">
+<a href="http://www.actionbikeclub.gr/" target="_blank"><img src="images/photos/JBBSUJMVDH.jpg" width="230" height="85" border="0" /></a></div><!--bottom_banner_item END-->
+
+<div class="clear"></div>
+</div><!--bottom_banners_left END-->
+<div id="bottom_banners_right">
+<div class="bottom_banner_item">
+<a href="http://www.olympus-climbing.gr/" target="_blank"><img src="images/photos/UBJXLMXFKO.jpg" width="230" height="85" border="0" /></a></div><!--bottom_banner_item END-->
+<div class="bottom_banner_item">
+<a href="http://ostraconmed.com/withings" target="_blank"><img src="images/photos/HUFJTNNNYV.jpg" width="230" height="85" border="0" /></a></div><!--bottom_banner_item END-->
+<div class="bottom_banner_item">
+<a href="http://www.goexperience.com.gr/index.php" target="_blank"><img src="images/photos/PNBXBPNAIG.jpg" width="230" height="85" border="0" /></a></div><!--bottom_banner_item END-->
+<div class="bottom_banner_item">
+<a href="http://www.runnermagazine.gr/" target="_blank"><img src="images/photos/ERTGXVARTM.jpg" width="230" height="85" border="0" /></a></div><!--bottom_banner_item END-->
+<div class="clear"></div>
+</div><!--bottom_banners_right END-->
+<div class="clear"></div>
+</div><!--bottom_white_in END-->
+</div><!--bottom_white END-->
+<div id="bottom_last_items_out">
+<div id="bottom_last_items">
+<div id="bottom_last_items_1">
+<a href="index.php">ΑΡΧΙΚΗ</a>
+<a href="index.php?page=gen_articles&amp;id=20">MOUNTAIN ACTION</a>
+<a href="index.php?page=contact&amp;id=21">ΕΠΙΚΟΙΝΩΝΙΑ</a>
+</div><!--bottom_last_items_1 END-->
+<div id="bottom_last_items_2">
+<h2>ΔΡΑΣΤΗΡΙΟΤΗΤΕΣ</h2>
+<a href="index.php?page=news&amp;id=3">ΟΡΕΙΝΟ ΤΡΕΞΙΜΟ</a>
+<a href="index.php?page=news&amp;id=5">ΟΡΕΙΒΑΣΙΑ</a>
+<a href="index.php?page=news&amp;id=4">ΠΟΔΗΛΑΤΟ</a>
+<a href="index.php?page=news&amp;id=6">ΑΝΑΡΡΙΧΗΣΗ</a>
+<a href="index.php?page=news&amp;id=7">ΣΚΙ</a>
+<a href="index.php?page=news&amp;id=31">CANYONING</a>
+<a href="index.php?page=news&amp;id=10">CANOE - KAYAK</a>
+<a href="index.php?page=news&amp;id=9">ΑΛΕΞΙΠΤΩΤΟ ΠΛΑΓΙΑΣ</a>
+<a href="index.php?page=news&amp;id=83">ΤΡΙΑΘΛΟ</a>
+<a href="index.php?page=news&amp;id=85">ΑΠΟΣΤΟΛΕΣ</a>
+</div><!--bottom_last_items_2 END-->
+<div id="bottom_last_items_3">
+<h2>ΣΤΗΛΕΣ</h2>
+<a href="index.php?page=news&amp;id=11">ΕΝΗΜΕΡΩΣΗ</a>
+<a href="index.php?page=news&amp;id=13">ΣΥΝΕΝΤΕΥΞH</a>
+<a href="index.php?page=news&amp;id=14">ΕΞΟΠΛΙΣΜΟΣ</a>
+<a href="index.php?page=news&amp;id=16">ΔΙΕΘΝΗ</a>
+<a href="index.php?page=news&amp;id=12">ΑΦΙΕΡΩΜΑ</a>
+<a href="index.php?page=news&amp;id=15">ΔΙΑΤΡΟΦΗ</a>
+<a href="index.php?page=news&amp;id=41">ΒΙΒΛΙΑ</a>
+<a href="index.php?page=news&amp;id=17">ΤΑΙΝΙΕΣ-NTOKYMANTEΡ</a>
+<a href="index.php?page=news&amp;id=18">VIDEO</a>
+<a href="index.php?page=news&amp;id=68">ΠΡΟΠΟΝΗΣΗ</a>
+<a href="index.php?page=news&amp;id=76">ΑΠΟΣΤΟΛΕΣ</a>
+</div><!--bottom_last_items_3 END-->
+<div id="bottom_last_items_4">
+<h2>TOP 5</h2>
+<a href="#">ΧΡΗΣΙΜΕΣ ΠΛΗΡΟΦΟΡΙΕΣ</a>
+</div><!--bottom_last_items_4 END-->
+<div id="bottom_last_items_5">
+<div id="bottom_last_items_5_top">
+<div id="btn_y_b"><a href="#"></a></div><!--btn_y END-->
+<div id="btn_f_b"><a target="_blank" href="http://www.facebook.com/pages/Mountain-action/243312555734787"></a></div><!--btn_f END-->
+<div id="btn_b_b"><a target="_blank"  href="https://twitter.com/#!/mountainaction1"></a></div><!--btn_b END-->
+<div id="newsletter_bottom">
+<input name="newsletter" id="newsletter_text2" type="text" value="E-MAIL" />
+<a id="newsletter_submit_btn2" href="#"></a>
+<div class="clear"></div>
+<div id="newsletter_msg2" style="position:absolute; z-index:10000; display:none; margin-top:-20px; margin-left:70px; width:200px; text-align:center"></div>
+</div><!--newsletter_bottom END-->
+<div class="clear"></div>
+
+<div id="search_box2">
+<form name="search_form2" id="search_form2" action="index.php" method="get">
+<div class="search_item2">
+<input id="search2" name="search" value="Αναζήτηση..." type="text" />
+</div><!--search_item END-->
+
+<input type="hidden" name="page" value="search" />
+<input name="submit" value="" type="submit" />
+</form>
+<div class="clear"></div>
+</div><!--search_box2 END-->
+
+</div><!--bottom_last_items_5_top END-->
+
+</div><!--bottom_last_items_5 END-->
+<div class="clear"></div>
+</div><!--bottom_last_items END-->
+</div><!--bottom_last_items_out END-->
+<div id="footer">
+<table style=" font-size:9px; line-height:30px;" width="950" align="center" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="30%" align="left">
+DESIGNED BY <a href="http://www.shiftdesign.gr/" target="_blank">SHIFT</a>
+    </td>
+    <td align="center" style="font-weight:bold">© Mountain Action 2012</td>
+    <td width="30%" align="right">
+    DEVELOPED &amp; AND DESIGNED BY <a href="http://www.fedenet.gr/" target="_blank">FEDENET</a>
+    </td>
+  </tr>
+</table>
+</div><!--footer END-->
+</div><!--container END-->
+
+</body>
+</html>
+

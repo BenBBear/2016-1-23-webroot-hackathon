@@ -1,0 +1,1679 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="IBM:HPB-Input-Mode" content="mode/flm; pagewidth=750; pageheight=900">
+<TITLE>ヘア・サロンワタナベ
+<META http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<META name="IBM:HPB-Input-Mode" content="mode/flm; pagewidth=750; pageheight=900">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<SCRIPT>
+<!--HPB_SCRIPT_INFO_40
+//HPB_VFX_EVT Element:BODY Event:OnLoad Handler:HpbVfxinit('Layer14','HpbVfx0101','D130',1000,1000,1); 
+//HPB_VFX_PAR Element:BODY Event:OnLoad LayerID:Layer14 Entry:HpbVfx0101 Param:D130 1stDelay:1000 NxtDelay:1000 Loop:1 
+//-->
+</SCRIPT><SCRIPT language="JavaScript">
+<!--HPB_SCRIPT_VFX_40
+//
+//  Licensed Materials - Property of IBM
+//  5724G06
+//  (C) Copyright IBM Corp. 1995, 2003 All Rights Reserved.
+//
+var layerId       =  0; var func          =  1; var effectPattern =  2; 
+var startTime     =  3; var nextLayerIdx  =  4; var nextStartTime =  5; 
+var intervalTime  =  6; var repeat        =  7; var endVisibility =  8;
+var posX          =  9; var posY          = 10; var posStartX     = 11;
+var posStartY     = 12; var posEndX       = 13; var posEndY       = 14;
+var stepX         = 15; var stepY         = 16; var frame         = 17;
+var accelerationX = 18; var accelerationY = 19; var angle         = 20;
+var fixedX        = 21; var fixedY        = 22; 
+
+var appVer = parseInt(navigator.appVersion);
+var isNC=false,isN6=false,isIE=false;
+if (document.all && appVer >= 4) isIE=true; else
+  if (document.getElementById && appVer > 4) isN6=true; else
+    if (document.layers && appVer >= 4) isNC=true;
+var elt;
+elt = new Array;
+var layerobj;
+layerobj = new Array;
+var lastobj;
+
+function HpbVfxinit() {
+  var w_str;
+  if (isNC||isN6||isIE) {
+    var n_div = arguments.length / 6;
+    for (var div = 0; div < n_div; div++) {
+      var args = 6 * div;
+      var arg1 = arguments[args];
+      var arg2 = arguments[args+1];
+      var arg3 = arguments[args+2];
+      var arg4 = arguments[args+3];
+      var arg5 = arguments[args+4];
+      var arg6 = arguments[args+5];
+      elt[div] = new Array(arg1,arg2,arg3,arg4,-1,arg5,0,arg6,true,-32767,-32767,-32767,-32767,-32767,-32767,-32767,-32767,40,1.0,1.0,0,-1,-1);
+  } }
+
+  if (isNC) {
+    for (i=0; i < elt.length; i++) {
+      w_str = "document." + elt[i][layerId];
+      layerobj[i] = eval(w_str);
+      if (layerobj[i]) {
+        layerobj[i].init = false;
+        layerobj[i].innerH = window.innerHeight;
+        layerobj[i].innerW = window.innerWidth;
+        layerobj[i].pos_x = layerobj[i].left;
+        layerobj[i].pos_y = layerobj[i].top;
+        layerobj[i].pos_w = layerobj[i].clip.width;
+        layerobj[i].pos_h = layerobj[i].clip.height;
+  } } }
+  if (isN6) {
+    for (i=0; i < elt.length; i++) {
+      layerobj[i] = document.getElementById(elt[i][layerId]);
+      if (layerobj[i]) {
+        layerobj[i].init = false;
+        layerobj[i].innerH = window.innerHeight;
+        layerobj[i].innerW = window.innerWidth;
+        layerobj[i].pos_x = parseInt(layerobj[i].style.left);
+        layerobj[i].pos_y = parseInt(layerobj[i].style.top);
+        layerobj[i].pos_w = parseInt(layerobj[i].style.width);
+        layerobj[i].pos_h = parseInt(layerobj[i].style.height);
+  } } }
+  if (isIE) {
+    for (i=0; i < elt.length; i++) {
+      w_str = "document.all.item(\"" + elt[i][layerId] + "\")";
+      if (eval(w_str)) {
+        w_str = "document.all.item(\"" + elt[i][layerId] + "\").style";
+        layerobj[i] = eval(w_str);
+        if (layerobj[i]) {
+          layerobj[i].init = false;
+          layerobj[i].innerH = document.body.clientHeight;
+          layerobj[i].innerW = document.body.clientWidth;
+          layerobj[i].pos_x = layerobj[i].pixelLeft;
+          layerobj[i].pos_y = layerobj[i].pixelTop;
+          layerobj[i].pos_w = layerobj[i].pixelWidth;
+          layerobj[i].pos_h = layerobj[i].pixelHeight;
+  } } } }
+
+  if (isNC||isN6||isIE) {
+    for (i=0; i < elt.length; i++) {
+      if (layerobj[i]) {
+        if (elt[i][posX] == -32767) elt[i][posX] = layerobj[i].pos_x;
+        if (elt[i][posY] == -32767) elt[i][posY] = layerobj[i].pos_y;
+        if (elt[i][effectPattern].charAt(0) == "A") {
+          if (elt[i][posX] != -32767) elt[i][posEndX] = elt[i][posX];
+          if (elt[i][posY] != -32767) elt[i][posEndY] = elt[i][posY];
+          if (elt[i][effectPattern].charAt(1) == "1") {
+            elt[i][posStartX] = layerobj[i].pos_w * -1;
+            if (elt[i][posY] != -32767) elt[i][posStartY] = elt[i][posY];
+          }
+          if (elt[i][effectPattern].charAt(1) == "3") {
+            if (elt[i][posX] != -32767) elt[i][posStartX] = elt[i][posX];
+            elt[i][posStartY] = layerobj[i].pos_h * -1;
+          }
+          if (elt[i][effectPattern].charAt(1) == "5") {
+            elt[i][posStartX] = layerobj[i].pos_w * -1;
+            elt[i][posStartY] = layerobj[i].pos_h * -1;
+          }
+          if (elt[i][effectPattern].charAt(1) == "8") {
+            elt[i][posStartX] = layerobj[i].pos_w * -1;
+            elt[i][posStartY] = layerobj[i].innerH;
+        } }
+        if (elt[i][effectPattern].charAt(0) == "B") {
+          if (elt[i][posX] != -32767) elt[i][posStartX] = elt[i][posX];
+          if (elt[i][posY] != -32767) elt[i][posStartY] = elt[i][posY];
+          if (elt[i][effectPattern].charAt(1) == "2") {
+            elt[i][posEndX] = layerobj[i].pos_w * -1;
+            if (elt[i][posY] != -32767) elt[i][posEndY] = elt[i][posY];
+          }
+          if (elt[i][effectPattern].charAt(1) == "4") {
+            if (elt[i][posX] != -32767) elt[i][posEndX] = elt[i][posX];
+            elt[i][posEndY] = layerobj[i].pos_h * -1;
+          }
+          if (elt[i][effectPattern].charAt(1) == "6") {
+            elt[i][posEndX] = layerobj[i].pos_w * -1;
+            elt[i][posEndY] = layerobj[i].pos_h * -1;
+          }
+          if (elt[i][effectPattern].charAt(1) == "7") {
+            elt[i][posEndX] = layerobj[i].pos_w * -1;
+            elt[i][posEndY] = layerobj[i].innerH;
+        } }
+        if (elt[i][effectPattern].charAt(0) == "C") {
+          if (elt[i][effectPattern].charAt(1) == "2") {
+            elt[i][posStartX] = layerobj[i].innerW;
+            elt[i][posEndX] = layerobj[i].pos_w * -1;
+            if (elt[i][posY] != -32767) {
+              elt[i][posStartY] = elt[i][posY];
+              elt[i][posEndY] = elt[i][posY];
+            }
+          }
+          if (elt[i][effectPattern].charAt(1) == "1") {
+            elt[i][posStartX] = layerobj[i].pos_w * -1;
+            elt[i][posEndX] = layerobj[i].innerW;
+            if (elt[i][posY] != -32767) {
+              elt[i][posStartY] = elt[i][posY];
+              elt[i][posEndY] = elt[i][posY];
+            }
+          }
+          if (elt[i][effectPattern].charAt(1) == "3") {
+            if (elt[i][posX] != -32767) {
+              elt[i][posStartX] = elt[i][posX];
+              elt[i][posEndX] = elt[i][posX];
+            }
+            elt[i][posStartY] = layerobj[i].pos_h * -1;
+            elt[i][posEndY] = layerobj[i].innerH;
+          }
+          if (elt[i][effectPattern].charAt(1) == "4") {
+            if (elt[i][posX] != -32767) {
+              elt[i][posStartX] = elt[i][posX];
+              elt[i][posEndX] = elt[i][posX];
+            }
+            elt[i][posStartY] = layerobj[i].innerH;
+            elt[i][posEndY] = layerobj[i].pos_h * -1;
+          }
+          if (elt[i][effectPattern].charAt(1) == "7") {
+            elt[i][posStartX] = layerobj[i].innerW;
+            elt[i][posStartY] = layerobj[i].pos_h * -1;
+            elt[i][posEndX] = layerobj[i].pos_w * -1;
+            elt[i][posEndY] = layerobj[i].innerH;
+          }
+          if (elt[i][effectPattern].charAt(1) == "5") {
+            elt[i][posStartX] = layerobj[i].pos_w * -1;
+            elt[i][posStartY] = layerobj[i].pos_h * -1;
+            elt[i][posEndX] = layerobj[i].innerW;
+            elt[i][posEndY] = layerobj[i].innerH;
+          }
+          if (elt[i][effectPattern].charAt(1) == "6") {
+            elt[i][posStartX] = layerobj[i].innerW;
+            elt[i][posStartY] = layerobj[i].innerH;
+            elt[i][posEndX] = layerobj[i].pos_w * -1;
+            elt[i][posEndY] = layerobj[i].pos_h * -1;
+          }
+          if (elt[i][effectPattern].charAt(1) == "8") {
+            elt[i][posStartX] = layerobj[i].pos_w * -1;
+            elt[i][posStartY] = layerobj[i].innerH;
+            elt[i][posEndX] = layerobj[i].innerW;
+            elt[i][posEndY] = layerobj[i].pos_h * -1;
+        } }
+        if (elt[i][effectPattern].charAt(0) == "D") {
+          if (elt[i][effectPattern].charAt(1) == "1") {
+            elt[i][stepX] = 4;  elt[i][stepY] = 0;
+          }
+          if (elt[i][effectPattern].charAt(1) == "3") {
+            elt[i][stepX] = 0;  elt[i][stepY] = 4;
+        } }
+        if (elt[i][effectPattern].charAt(0) == "F") {
+          if (elt[i][effectPattern].charAt(1) == "4") {
+            if (elt[i][posX] != -32767) {
+              elt[i][posStartX] = elt[i][posX];
+              elt[i][posEndX] = elt[i][posX] + layerobj[i].pos_w;
+            }
+            if (elt[i][posY] != -32767) {
+              elt[i][posStartY] = elt[i][posY];
+              if (elt[i][effectPattern].charAt(3) == "1") elt[i][posEndY] = elt[i][posY] + 80;
+              if (elt[i][effectPattern].charAt(3) == "2") elt[i][posEndY] = elt[i][posY] + 160;
+              if (elt[i][effectPattern].charAt(3) == "3") elt[i][posEndY] = elt[i][posY] + 320;
+            }
+            elt[i][stepX] = 0;  elt[i][stepY] = 4;
+          }
+          if (elt[i][effectPattern].charAt(1) == "2") {
+            if (elt[i][posX] != -32767) {
+              elt[i][posStartX] = elt[i][posX];
+              if (elt[i][effectPattern].charAt(3) == "1") elt[i][posEndX] = elt[i][posX] + 80;
+              if (elt[i][effectPattern].charAt(3) == "2") elt[i][posEndX] = elt[i][posX] + 160;
+              if (elt[i][effectPattern].charAt(3) == "3") elt[i][posEndX] = elt[i][posX] + 320;
+            }
+            if (elt[i][posY] != -32767) {
+              elt[i][posStartY] = elt[i][posY];
+              elt[i][posEndY] = elt[i][posY] + layerobj[i].pos_h;
+            }
+            elt[i][stepX] = 4;  elt[i][stepY] = 0;
+        } }
+        if (elt[i][effectPattern].charAt(0) == "G") {
+          if (elt[i][effectPattern].charAt(1) == "2") {
+            elt[i][posStartX] = 0;
+            if (elt[i][effectPattern].charAt(3) == "1") elt[i][posStartY] = 80;
+            if (elt[i][effectPattern].charAt(3) == "2") elt[i][posStartY] = 160;
+            if (elt[i][effectPattern].charAt(3) == "3") elt[i][posStartY] = 320;
+            elt[i][posEndX] = 1;  elt[i][posEndY] = 1;
+        } }
+        if (elt[i][effectPattern].charAt(0) == "H") {
+          if (elt[i][effectPattern].charAt(3) == "1") {
+            elt[i][stepX] = 8;  elt[i][stepY] = 8;
+          }
+          if (elt[i][effectPattern].charAt(3) == "2") {
+            elt[i][stepX] = 16;  elt[i][stepY] = 16;
+          }
+          if (elt[i][effectPattern].charAt(3) == "3") {
+            elt[i][stepX] = 32;  elt[i][stepY] = 32;
+          }
+          if (elt[i][effectPattern].charAt(1) == "2") {
+            elt[i][stepX] = 0;  elt[i][fixedX] = true;  elt[i][fixedY] = true;
+          }
+          if (elt[i][effectPattern].charAt(1) == "1") {
+            elt[i][stepY] = 0;  elt[i][fixedX] = true;  elt[i][fixedY] = true;
+          }
+          if (elt[i][effectPattern].charAt(1) == "3") {
+            elt[i][fixedX] = false;  elt[i][fixedY] = false;
+        } }
+        if (elt[i][effectPattern].charAt(0) == "I") {
+          if (elt[i][effectPattern].charAt(3) == "1") {
+            elt[i][posStartX] = 40;  elt[i][posStartY] = 40;
+          }
+          if (elt[i][effectPattern].charAt(3) == "2") {
+            elt[i][posStartX] = 80;  elt[i][posStartY] = 80;
+          }
+          if (elt[i][effectPattern].charAt(3) == "3") {
+            elt[i][posStartX] = 160;  elt[i][posStartY] = 160;
+          }
+          elt[i][posEndX] = 1;  elt[i][posEndY] = 1;  elt[i][stepX] = -32767;
+          if (elt[i][effectPattern].charAt(1) == "1") {
+            elt[i][posY] += elt[i][posStartY];
+            elt[i][stepY] = Math.PI * 3 / 2;
+            elt[i][frame] = 40;
+          }
+          if (elt[i][effectPattern].charAt(1) == "2") {
+            elt[i][posY] -= elt[i][posStartY];
+            elt[i][stepY] = Math.PI * 1 / 2;
+            elt[i][frame] = 40;
+          }
+          if (elt[i][effectPattern].charAt(1) == "3") {
+            elt[i][posX] -= elt[i][posStartX];
+            elt[i][stepY] = Math.PI * 0 / 2;
+            elt[i][frame] = 40;
+          }
+          if (elt[i][effectPattern].charAt(1) == "4") {
+            elt[i][posX] += elt[i][posStartX];
+            elt[i][stepY] = Math.PI * 2 / 2;
+            elt[i][frame] = 40;
+          }
+          if (elt[i][effectPattern].charAt(1) == "5") {
+            elt[i][posY] += elt[i][posStartY];
+            elt[i][stepY] = Math.PI * 3 / 2;
+            elt[i][frame] = -40;
+          }
+          if (elt[i][effectPattern].charAt(1) == "6") {
+            elt[i][posY] -= elt[i][posStartY];
+            elt[i][stepY] = Math.PI * 1 / 2;
+            elt[i][frame] = -40;
+          }
+          if (elt[i][effectPattern].charAt(1) == "7") {
+            elt[i][posX] -= elt[i][posStartX];
+            elt[i][stepY] = Math.PI * 0 / 2;
+            elt[i][frame] = -40;
+          }
+          if (elt[i][effectPattern].charAt(1) == "8") {
+            elt[i][posX] += elt[i][posStartX];
+            elt[i][stepY] = Math.PI * 2 / 2;
+            elt[i][frame] = -40;
+        } }
+        if (elt[i][effectPattern].charAt(0) == "J") {
+          if (elt[i][effectPattern].charAt(3) == "1") {
+            elt[i][posStartX] = 0;  elt[i][posStartY] = 80;
+          }
+          if (elt[i][effectPattern].charAt(3) == "2") {
+            elt[i][posStartX] = 0;  elt[i][posStartY] = 160;
+          }
+          if (elt[i][effectPattern].charAt(3) == "3") {
+            elt[i][posStartX] = 0;  elt[i][posStartY] = 320;
+          }
+          elt[i][posEndX] = 1;  elt[i][posEndY] = 1;
+          elt[i][stepX] = -32767;  elt[i][stepY] = 0;
+          if (elt[i][effectPattern].charAt(1) == "2") {
+            elt[i][accelerationY] = 0.99;  elt[i][frame] = 40;
+        } }
+        if (elt[i][effectPattern].charAt(0) == "K") {
+          if (elt[i][effectPattern].charAt(3) == "1") {
+            elt[i][posStartX] = 40;  elt[i][posStartY] = 40;
+          }
+          if (elt[i][effectPattern].charAt(3) == "2") {
+            elt[i][posStartX] = 80;  elt[i][posStartY] = 80;
+          }
+          if (elt[i][effectPattern].charAt(3) == "3") {
+            elt[i][posStartX] = 160;  elt[i][posStartY] = 160;
+          }
+          elt[i][stepX] = -32767;  elt[i][stepY] = 0;
+          if (elt[i][effectPattern].charAt(1) == "1") {
+            elt[i][posEndX] = 13;  elt[i][posEndY] = 12;  elt[i][frame] = 160;
+          }
+          if (elt[i][effectPattern].charAt(1) == "2") {
+            elt[i][posEndX] = 7;  elt[i][posEndY] = 2;  elt[i][frame] = 160;
+          }
+          if (elt[i][effectPattern].charAt(1) == "3") {
+            elt[i][posEndX] = 11;  elt[i][posEndY] = 4;  elt[i][frame] = 160;
+          }
+          if (elt[i][effectPattern].charAt(1) == "4") {
+            elt[i][posEndX] = 7;  elt[i][posEndY] = 4;  elt[i][frame] = 160;
+        } }
+        if (elt[i][effectPattern].charAt(2) == "1") elt[i][intervalTime] = 200;
+        if (elt[i][effectPattern].charAt(2) == "2") elt[i][intervalTime] = 100;
+        if (elt[i][effectPattern].charAt(2) == "3") elt[i][intervalTime] = 50;
+        if ( elt[i][startTime] >= 0 ) setTimeout( "HpbVfxtimer(" + i + ")", elt[i][startTime] );
+} } } }
+
+function HpbVfxtimer(tid) {
+  if (isNC||isN6||isIE) {
+    if (layerobj[tid]) {
+      var func_str;
+      func_str = elt[tid][func] + "( tid, elt[tid], layerobj[tid] )";
+      eval(func_str);
+} } }
+
+function HpbVfxshowobj(obj) {
+  if (obj) {
+    if (isNC) obj.visibility = "show";
+    if (isN6) obj.style.visibility = "visible";
+    if (isIE) obj.visibility = "visible";
+    lastobj = obj;
+} }
+
+function HpbVfxhideobj(obj) {
+  if (obj) {
+    if (isNC) obj.visibility = "hide";
+    if (isN6) obj.style.visibility = "hidden";
+    if (isIE) obj.visibility = "hidden";
+} }
+
+function HpbVfxmoveobj(obj,x,y) {
+  if (obj) {
+    if (isNC) {obj.left=x;obj.top=y;}
+    if (isN6) {obj.style.left=x+"px";obj.style.top=y+"px";}
+    if (isIE) {obj.left=x;obj.top=y;}
+} }
+
+function HpbVfxclipobj(obj,t,r,b,l) {
+  if (obj) {
+    if (isNC) {obj.clip.left=l;obj.clip.top=t;obj.clip.right=r;obj.clip.bottom=b;}
+    if (isN6) obj.style.clip = "rect(" + t + "px," + (r-l) + "px," + (b-t) + "px," + l + "px)";
+    if (isIE) obj.clip = "rect(" + t + "," + r + "," + b + "," + l + ")";
+} }
+
+function HpbVfx0001(tid,et,ob) {
+  var x;  var y;
+  if (ob) {
+    if (ob.init == false) {
+      if (et[stepX] != -32767) ob.stepX = et[stepX] * Math.cos(et[angle]);
+      else ob.stepX = (et[posEndX] - et[posStartX]) / et[frame];
+      if (et[stepY] != -32767) ob.stepY = et[stepY] * Math.sin(et[angle]);
+      else ob.stepY = (et[posEndY] - et[posStartY]) / et[frame];
+      if (ob.stepX > 0 && ob.stepX < 1) ob.stepX = 1;
+      if (ob.stepX < 0 && ob.stepX > -1) ob.stepX = -1;
+      if (ob.stepY > 0 && ob.stepY < 1) ob.stepY = 1;
+      if (ob.stepY < 0 && ob.stepY > -1) ob.stepY = -1;
+      if (et[posStartX] != -32767) ob.x = et[posStartX];
+      else if (ob.stepX > 0) ob.x = 0 - ob.pos_w; else ob.x = ob.innerW - ob.pos_w;
+      if (et[posStartY] != -32767) ob.y = et[posStartY];
+      else if (ob.stepY > 0) ob.y = 0 - ob.pos_h; else ob.y = ob.innerH - ob.pos_h;
+      if (et[posEndX] != -32767) ob.posEndX = et[posEndX];
+      else if (ob.stepX > 0) ob.posEndX = ob.innerW - ob.pos_w; else ob.posEndX = 0 - ob.pos_w;
+      if (et[posEndY] != -32767) ob.posEndY = et[posEndY];
+      else if (ob.stepY > 0) ob.posEndY = ob.innerH - ob.pos_h; else ob.posEndY = 0 - ob.pos_h;
+      HpbVfxshowobj(ob);
+      ob.init = true;  ob.frame = 0;
+    }
+    ob.stepX = ob.stepX * et[accelerationX];
+    if (ob.stepX > 0 && ob.stepX < 1) ob.stepX = 1;
+    if (ob.stepX < 0 && ob.stepX > -1) ob.stepX = -1;
+    ob.stepY = ob.stepY * et[accelerationY];
+    if (ob.stepY > 0 && ob.stepY < 1) ob.stepY = 1;
+    if (ob.stepY < 0 && ob.stepY > -1) ob.stepY = -1;
+    ob.x += ob.stepX;  ob.y += ob.stepY;
+    var endX;  var endY;
+    endX = false;  endY = false;
+    if (ob.stepX > 0) if (ob.x >= ob.posEndX) {endX = true;  ob.x = ob.posEndX;}
+    if (ob.stepX < 0) if (ob.x <= ob.posEndX) {endX = true;  ob.x = ob.posEndX;}
+    if (ob.stepX == 0) endX = true;
+    if (ob.stepY > 0) if (ob.y >= ob.posEndY) {endY = true;  ob.y = ob.posEndY;}
+    if (ob.stepY < 0) if (ob.y <= ob.posEndY) {endY = true;  ob.y = ob.posEndY;}
+    if (ob.stepY == 0) endY = true;
+    HpbVfxmoveobj(ob,Math.round( ob.x ),Math.round(ob.y));
+    if (endX == true && endY == true) {
+      if (et[endVisibility] == false) HpbVfxhideobj(ob);
+      ob.init = false;
+      if (et[repeat] == true) setTimeout("HpbVfxtimer(" + tid + ")",et[startTime]);
+      else if (et[nextLayerIdx] >= 0) setTimeout("HpbVfxtimer(" + et[nextLayerIdx] + ")",et[nextStartTime]);
+    } else setTimeout("HpbVfxtimer(" + tid + ")",et[intervalTime]);
+} }
+
+function HpbVfx0101(tid,et,ob) {
+  var cl;  var cr;  var ct;  var cb;  var tm;  var x;  var y;
+  if (ob) {
+    if (ob.init == false) {
+      if (et[stepX] != -32767) ob.cs_x = et[stepX]; else ob.cs_x = ob.pos_w / et[frame];
+      if (et[stepY] != -32767) ob.cs_y = et[stepY]; else ob.cs_y = ob.pos_h / et[frame];
+      ob.c_x = 0;  ob.c_y = 0;
+      HpbVfxshowobj(ob);
+      ob.init = true;
+    }
+    tm = false;
+    cl = 0;  cr = ob.pos_w;  ct = 0;  cb = ob.pos_h;
+    x = ob.pos_x;  y = ob.pos_y;
+    if (et[fixedX] == false) {
+      if (ob.cs_x > 0) {
+        ob.c_x += ob.cs_x;
+        if (cr > ob.c_x) {
+          cl = cr - ob.c_x;  tm = true;  x = ob.pos_x - ob.pos_w + ob.c_x;
+      } }
+      if (ob.cs_x < 0) {
+        ob.c_x += ob.cs_x;  cr = ob.c_x * -1;
+        if (cr < ob.pos_w) {
+          tm = true;  x = ob.pos_x + ob.pos_w + ob.c_x;
+        } else cr = ob.pos_w;
+      }
+    } else {
+      if (ob.cs_x > 0) {
+        ob.c_x += ob.cs_x;
+        if (cr > ob.c_x) {cr = ob.c_x;  tm = true;}
+      }
+      if (ob.cs_x < 0) {
+        ob.c_x += ob.cs_x;  cl = ob.c_x * -1;
+        if (cl < ob.pos_w) {tm = true;  cl = ob.pos_w - cl;} else cl = 0;
+    } }
+    if (et[fixedY] == false) {
+      if (ob.cs_y > 0) {
+        ob.c_y += ob.cs_y;
+        if (cb > ob.c_y) {ct = cb - ob.c_y;  tm = true;  y = ob.pos_y - ob.pos_h + ob.c_y;}
+      }
+      if (ob.cs_y < 0) {
+        ob.c_y += ob.cs_y;  cb = ob.c_y * -1;
+        if ( cb < ob.pos_h ) {tm = true;  y = ob.pos_y + ob.pos_h + ob.c_y;} else cb = ob.pos_h;
+      }
+    } else {
+      if (ob.cs_y > 0) {
+        ob.c_y += ob.cs_y;
+        if (cb > ob.c_y) {cb = ob.c_y;  tm = true;}
+      }
+      if (ob.cs_y < 0) {
+        ob.c_y += ob.cs_y;  ct = ob.c_y * -1;
+        if (ct < ob.pos_h) {tm = true;  ct = ob.pos_h - ct;} else ct = 0;
+    } }
+    HpbVfxclipobj(ob,ct,cr,cb,cl);
+    HpbVfxmoveobj(ob,x,y);
+    if (tm) setTimeout("HpbVfxtimer(" + tid + ")",et[intervalTime]);
+    else {
+      if (et[endVisibility] == false) HpbVfxhideobj(ob);
+      ob.init = false;
+      if (et[repeat] == true) setTimeout("HpbVfxtimer(" + tid + ")",et[startTime]);
+      else if (et[nextLayerIdx] >= 0) setTimeout("HpbVfxtimer(" + et[nextLayerIdx] + ")",et[nextStartTime]);
+} } }
+
+function HpbVfx0201(tid,et,ob) {
+  var cl;  var cr;  var ct;  var cb;  var tm;  var x;  var y;
+  if (ob) {
+    if (ob.init == false) {
+      if (et[stepX] != -32767) ob.cs_x = et[stepX]; else ob.cs_x = ob.pos_w / et[frame];
+      if (et[stepY] != -32767) ob.cs_y = et[stepY]; else ob.cs_y = ob.pos_h / et[frame];
+      ob.c_w = et[posEndX] - et[posStartX];  ob.c_h = et[posEndY] - et[posStartY];
+      ob.c_x = 0;  ob.c_y = 0;
+      HpbVfxshowobj(ob);
+      ob.init = true;
+    }
+    tm = false;
+    cl = 0;  cr = ob.pos_w;  ct = 0;  cb = ob.pos_h;
+    x = et[posStartX];  y = et[posStartY];
+    if (ob.cs_x > 0) {
+      ob.c_x += ob.cs_x;
+      if (ob.c_x < (ob.pos_w - ob.c_w)) {
+        cl = ob.c_x;  cr = cl + ob.c_w;
+        tm = true;
+      } else cl = ob.pos_w - ob.c_w;
+    }
+    if (ob.cs_x < 0) {
+      ob.c_x += ob.cs_x;  cr = ob.pos_w + ob.c_x;
+      if (cr > ob.c_w) {cl = cr - ob.c_w;  tm = true;}
+      else cr = ob.c_w;
+    }
+    if (ob.cs_y > 0) {
+      ob.c_y += ob.cs_y;
+      if (ob.c_y < (ob.pos_h - ob.c_h)) {
+        ct = ob.c_y;  cb = ct + ob.c_h;
+        tm = true;
+      } else ct = ob.pos_h - ob.c_h;
+    }
+    if (ob.cs_y < 0) {
+      ob.c_y += ob.cs_y;  cb = ob.pos_h + ob.c_y;
+      if (cb > ob.c_h) {ct = cb - ob.c_h;  tm = true;}
+      else cb = ob.c_h;
+    }
+    HpbVfxclipobj(ob,ct,cr,cb,cl);
+    x -= cl;  y -= ct;
+    HpbVfxmoveobj(ob,x,y);
+    if (tm) setTimeout( "HpbVfxtimer(" + tid + ")",et[intervalTime]);
+    else {
+      if (et[endVisibility] == false) HpbVfxhideobj(ob);
+      ob.init = false;
+      if (et[repeat] == true) setTimeout("HpbVfxtimer(" + tid + ")",et[startTime]);
+      else if (et[nextLayerIdx] >= 0) setTimeout("HpbVfxtimer(" + et[nextLayerIdx] + ")",et[nextStartTime]);
+} } }
+
+function HpbVfx0301(tid,et,ob) {
+  var x;  var y;  var tx;  var ty;
+  if (ob) {
+    if (ob.init == false) {
+      if (et[stepX] != -32767) ob.step = et[stepX]; else ob.step = (Math.PI * 2) / et[frame];
+      ob.boundX = et[posStartX];  ob.boundY = et[posStartY];
+      ob.angle = 0.0;
+      HpbVfxshowobj(ob);
+      ob.init = true;
+    }
+    tx = Math.cos(ob.angle * et[posEndX]) * ob.boundX;  ty = Math.sin(ob.angle * et[posEndY]) * ob.boundY;
+    if (et[fixedX] != 0) tx = Math.abs(tx) * et[fixedX];
+    if (et[fixedY] != 0) ty = Math.abs(ty) * et[fixedY];
+    x = et[posX];  y = et[posY];
+    x += tx * Math.cos(et[angle]);  y += tx * Math.sin(et[angle]);
+    x += ty * Math.cos(et[angle] + (Math.PI / 2));  y += ty * Math.sin(et[angle] + (Math.PI / 2));
+    HpbVfxmoveobj(ob,Math.round(x),Math.round(y));
+    if (et[accelerationX] != 1.0 || et[accelerationY] != 1.0) {
+      ob.boundX *= et[accelerationX];  ob.boundY *= et[accelerationY];
+      if (ob.boundX < 4  && ob.boundY < 4) {
+        ob.init = false;
+        if (et[repeat] == true) setTimeout("HpbVfxtimer(" + tid + ")",et[startTime]);
+        else if (et[nextLayerIdx] >= 0) setTimeout("HpbVfxtimer(" + et[nextLayerIdx] + ")",et[nextStartTime]);
+      } else {
+        ob.angle += ob.step;
+        setTimeout("HpbVfxtimer(" + tid + ")",et[intervalTime]);
+      }
+    } else {
+      if (ob.angle >= (2 * Math.PI)) {
+        ob.init = false;
+        if (et[repeat] == true) setTimeout("HpbVfxtimer(" + tid + ")",et[startTime]);
+        else if (et[nextLayerIdx] >= 0) setTimeout("HpbVfxtimer(" + et[nextLayerIdx] + ")",et[nextStartTime]);
+      } else {
+        ob.angle += ob.step;
+        setTimeout("HpbVfxtimer(" + tid + ")",et[intervalTime]);
+} } } }
+
+function HpbVfx0311(tid,et,ob) {
+  var x;  var y;  var ws;
+  if (ob) {
+    if (ob.init == false) {ob.setp = 0;  HpbVfxshowobj(ob);  ob.init = true;}
+    x = et[posX];  y = et[posY];
+    if (et[fixedX] == true) ws = ob.setp;
+    else {
+      ws = Math.round(Math.random() * 4);
+      if (ws > 3) ws = 0;
+    }
+    if (ws == 1) x += et[stepX];
+    if (ws == 3) x -= et[stepX];
+    if (et[fixedY] == true) ws = ob.setp;
+    else {
+      ws = Math.round(Math.random() * 4);
+      if (ws > 3) ws = 0;
+    }
+    if (ws == 1) y += et[stepY];
+    if (ws == 3) y -= et[stepY];
+    HpbVfxmoveobj(ob,Math.round(x),Math.round(y));
+    ob.setp ++;
+    if (ob.setp >= 4) {
+      ob.init = false;
+      if (et[repeat] == true) setTimeout("HpbVfxtimer(" + tid + ")",et[startTime]);
+      else if (et[nextLayerIdx] >= 0) setTimeout("HpbVfxtimer(" + et[nextLayerIdx] + ")",et[nextStartTime]);
+    } else setTimeout("HpbVfxtimer(" + tid + ")",et[intervalTime]);
+} }
+
+function HpbVfx0401(tid,et,ob) {
+  var x;  var y;  var tx;  var ty;
+  if (ob) {
+    if (ob.init == false) {
+      if (et[stepX] != -32767) ob.step = et[stepX]; else ob.step = (Math.PI * 2) / et[frame];
+      ob.angle = 0.0;
+      HpbVfxshowobj(ob);
+      ob.init = true;
+    }
+    tx = Math.cos((ob.angle * et[posEndX]) + et[stepY]) * et[posStartX];
+    ty = Math.sin((ob.angle * et[posEndY]) + et[stepY]) * et[posStartY];
+    x = et[posX];  y = et[posY];
+    x += tx * Math.cos(et[angle]);  y += tx * Math.sin(et[angle]);
+    x += ty * Math.cos(et[angle] + (Math.PI / 2));  y += ty * Math.sin(et[angle] + (Math.PI / 2));
+    HpbVfxmoveobj(ob,Math.round(x),Math.round(y));
+    if (Math.abs(ob.angle) >= (2 * Math.PI)) {
+      ob.init = false;
+      if (et[repeat] == true) setTimeout("HpbVfxtimer(" + tid + ")",et[startTime]);
+      else if (et[nextLayerIdx] >= 0) setTimeout("HpbVfxtimer(" + et[nextLayerIdx] + ")",et[nextStartTime]);
+    } else {
+      ob.angle += ob.step;
+      setTimeout("HpbVfxtimer(" + tid + ")",et[intervalTime]);
+} } }
+
+function HpbVfx0501(tid,et,ob) {
+  if (ob) {
+    if (ob.init == false) {HpbVfxshowobj(ob);  ob.init = true;}
+    var px;  var py;
+    if (isNC) {px = window.pageXOffset;  py = window.pageYOffset;}
+    if (isN6) {px = window.pageXOffset;  py = window.pageYOffset;}
+    if (isIE) {px = document.body.scrollLeft;  py = document.body.scrollTop;}
+    HpbVfxmoveobj(ob,Math.round(px + et[posX]),Math.round(py + et[posY]));
+    setTimeout("HpbVfxtimer(" + tid + ")",et[intervalTime]);
+} }
+//-->
+</SCRIPT>
+<META http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META name="IBM:HPB-Input-Mode" content="mode/flm; pagewidth=750; pageheight=900">
+</TITLE>
+<SCRIPT>
+<!--HPB_SCRIPT_INFO_40
+//HPB_VFX_EVT Element:BODY Event:OnLoad Handler:HpbVfxinit('Layer14','HpbVfx0101','D130',1000,1000,1); 
+//HPB_VFX_PAR Element:BODY Event:OnLoad LayerID:Layer14 Entry:HpbVfx0101 Param:D130 1stDelay:1000 NxtDelay:1000 Loop:1 
+//-->
+</SCRIPT><SCRIPT language="JavaScript">
+<!--HPB_SCRIPT_VFX_40
+//
+//  Licensed Materials - Property of IBM
+//  5724G06
+//  (C) Copyright IBM Corp. 1995, 2003 All Rights Reserved.
+//
+var layerId       =  0; var func          =  1; var effectPattern =  2; 
+var startTime     =  3; var nextLayerIdx  =  4; var nextStartTime =  5; 
+var intervalTime  =  6; var repeat        =  7; var endVisibility =  8;
+var posX          =  9; var posY          = 10; var posStartX     = 11;
+var posStartY     = 12; var posEndX       = 13; var posEndY       = 14;
+var stepX         = 15; var stepY         = 16; var frame         = 17;
+var accelerationX = 18; var accelerationY = 19; var angle         = 20;
+var fixedX        = 21; var fixedY        = 22; 
+
+var appVer = parseInt(navigator.appVersion);
+var isNC=false,isN6=false,isIE=false;
+if (document.all && appVer >= 4) isIE=true; else
+  if (document.getElementById && appVer > 4) isN6=true; else
+    if (document.layers && appVer >= 4) isNC=true;
+var elt;
+elt = new Array;
+var layerobj;
+layerobj = new Array;
+var lastobj;
+
+function HpbVfxinit() {
+  var w_str;
+  if (isNC||isN6||isIE) {
+    var n_div = arguments.length / 6;
+    for (var div = 0; div < n_div; div++) {
+      var args = 6 * div;
+      var arg1 = arguments[args];
+      var arg2 = arguments[args+1];
+      var arg3 = arguments[args+2];
+      var arg4 = arguments[args+3];
+      var arg5 = arguments[args+4];
+      var arg6 = arguments[args+5];
+      elt[div] = new Array(arg1,arg2,arg3,arg4,-1,arg5,0,arg6,true,-32767,-32767,-32767,-32767,-32767,-32767,-32767,-32767,40,1.0,1.0,0,-1,-1);
+  } }
+
+  if (isNC) {
+    for (i=0; i < elt.length; i++) {
+      w_str = "document." + elt[i][layerId];
+      layerobj[i] = eval(w_str);
+      if (layerobj[i]) {
+        layerobj[i].init = false;
+        layerobj[i].innerH = window.innerHeight;
+        layerobj[i].innerW = window.innerWidth;
+        layerobj[i].pos_x = layerobj[i].left;
+        layerobj[i].pos_y = layerobj[i].top;
+        layerobj[i].pos_w = layerobj[i].clip.width;
+        layerobj[i].pos_h = layerobj[i].clip.height;
+  } } }
+  if (isN6) {
+    for (i=0; i < elt.length; i++) {
+      layerobj[i] = document.getElementById(elt[i][layerId]);
+      if (layerobj[i]) {
+        layerobj[i].init = false;
+        layerobj[i].innerH = window.innerHeight;
+        layerobj[i].innerW = window.innerWidth;
+        layerobj[i].pos_x = parseInt(layerobj[i].style.left);
+        layerobj[i].pos_y = parseInt(layerobj[i].style.top);
+        layerobj[i].pos_w = parseInt(layerobj[i].style.width);
+        layerobj[i].pos_h = parseInt(layerobj[i].style.height);
+  } } }
+  if (isIE) {
+    for (i=0; i < elt.length; i++) {
+      w_str = "document.all.item(\"" + elt[i][layerId] + "\")";
+      if (eval(w_str)) {
+        w_str = "document.all.item(\"" + elt[i][layerId] + "\").style";
+        layerobj[i] = eval(w_str);
+        if (layerobj[i]) {
+          layerobj[i].init = false;
+          layerobj[i].innerH = document.body.clientHeight;
+          layerobj[i].innerW = document.body.clientWidth;
+          layerobj[i].pos_x = layerobj[i].pixelLeft;
+          layerobj[i].pos_y = layerobj[i].pixelTop;
+          layerobj[i].pos_w = layerobj[i].pixelWidth;
+          layerobj[i].pos_h = layerobj[i].pixelHeight;
+  } } } }
+
+  if (isNC||isN6||isIE) {
+    for (i=0; i < elt.length; i++) {
+      if (layerobj[i]) {
+        if (elt[i][posX] == -32767) elt[i][posX] = layerobj[i].pos_x;
+        if (elt[i][posY] == -32767) elt[i][posY] = layerobj[i].pos_y;
+        if (elt[i][effectPattern].charAt(0) == "A") {
+          if (elt[i][posX] != -32767) elt[i][posEndX] = elt[i][posX];
+          if (elt[i][posY] != -32767) elt[i][posEndY] = elt[i][posY];
+          if (elt[i][effectPattern].charAt(1) == "1") {
+            elt[i][posStartX] = layerobj[i].pos_w * -1;
+            if (elt[i][posY] != -32767) elt[i][posStartY] = elt[i][posY];
+          }
+          if (elt[i][effectPattern].charAt(1) == "3") {
+            if (elt[i][posX] != -32767) elt[i][posStartX] = elt[i][posX];
+            elt[i][posStartY] = layerobj[i].pos_h * -1;
+          }
+          if (elt[i][effectPattern].charAt(1) == "5") {
+            elt[i][posStartX] = layerobj[i].pos_w * -1;
+            elt[i][posStartY] = layerobj[i].pos_h * -1;
+          }
+          if (elt[i][effectPattern].charAt(1) == "8") {
+            elt[i][posStartX] = layerobj[i].pos_w * -1;
+            elt[i][posStartY] = layerobj[i].innerH;
+        } }
+        if (elt[i][effectPattern].charAt(0) == "B") {
+          if (elt[i][posX] != -32767) elt[i][posStartX] = elt[i][posX];
+          if (elt[i][posY] != -32767) elt[i][posStartY] = elt[i][posY];
+          if (elt[i][effectPattern].charAt(1) == "2") {
+            elt[i][posEndX] = layerobj[i].pos_w * -1;
+            if (elt[i][posY] != -32767) elt[i][posEndY] = elt[i][posY];
+          }
+          if (elt[i][effectPattern].charAt(1) == "4") {
+            if (elt[i][posX] != -32767) elt[i][posEndX] = elt[i][posX];
+            elt[i][posEndY] = layerobj[i].pos_h * -1;
+          }
+          if (elt[i][effectPattern].charAt(1) == "6") {
+            elt[i][posEndX] = layerobj[i].pos_w * -1;
+            elt[i][posEndY] = layerobj[i].pos_h * -1;
+          }
+          if (elt[i][effectPattern].charAt(1) == "7") {
+            elt[i][posEndX] = layerobj[i].pos_w * -1;
+            elt[i][posEndY] = layerobj[i].innerH;
+        } }
+        if (elt[i][effectPattern].charAt(0) == "C") {
+          if (elt[i][effectPattern].charAt(1) == "2") {
+            elt[i][posStartX] = layerobj[i].innerW;
+            elt[i][posEndX] = layerobj[i].pos_w * -1;
+            if (elt[i][posY] != -32767) {
+              elt[i][posStartY] = elt[i][posY];
+              elt[i][posEndY] = elt[i][posY];
+            }
+          }
+          if (elt[i][effectPattern].charAt(1) == "1") {
+            elt[i][posStartX] = layerobj[i].pos_w * -1;
+            elt[i][posEndX] = layerobj[i].innerW;
+            if (elt[i][posY] != -32767) {
+              elt[i][posStartY] = elt[i][posY];
+              elt[i][posEndY] = elt[i][posY];
+            }
+          }
+          if (elt[i][effectPattern].charAt(1) == "3") {
+            if (elt[i][posX] != -32767) {
+              elt[i][posStartX] = elt[i][posX];
+              elt[i][posEndX] = elt[i][posX];
+            }
+            elt[i][posStartY] = layerobj[i].pos_h * -1;
+            elt[i][posEndY] = layerobj[i].innerH;
+          }
+          if (elt[i][effectPattern].charAt(1) == "4") {
+            if (elt[i][posX] != -32767) {
+              elt[i][posStartX] = elt[i][posX];
+              elt[i][posEndX] = elt[i][posX];
+            }
+            elt[i][posStartY] = layerobj[i].innerH;
+            elt[i][posEndY] = layerobj[i].pos_h * -1;
+          }
+          if (elt[i][effectPattern].charAt(1) == "7") {
+            elt[i][posStartX] = layerobj[i].innerW;
+            elt[i][posStartY] = layerobj[i].pos_h * -1;
+            elt[i][posEndX] = layerobj[i].pos_w * -1;
+            elt[i][posEndY] = layerobj[i].innerH;
+          }
+          if (elt[i][effectPattern].charAt(1) == "5") {
+            elt[i][posStartX] = layerobj[i].pos_w * -1;
+            elt[i][posStartY] = layerobj[i].pos_h * -1;
+            elt[i][posEndX] = layerobj[i].innerW;
+            elt[i][posEndY] = layerobj[i].innerH;
+          }
+          if (elt[i][effectPattern].charAt(1) == "6") {
+            elt[i][posStartX] = layerobj[i].innerW;
+            elt[i][posStartY] = layerobj[i].innerH;
+            elt[i][posEndX] = layerobj[i].pos_w * -1;
+            elt[i][posEndY] = layerobj[i].pos_h * -1;
+          }
+          if (elt[i][effectPattern].charAt(1) == "8") {
+            elt[i][posStartX] = layerobj[i].pos_w * -1;
+            elt[i][posStartY] = layerobj[i].innerH;
+            elt[i][posEndX] = layerobj[i].innerW;
+            elt[i][posEndY] = layerobj[i].pos_h * -1;
+        } }
+        if (elt[i][effectPattern].charAt(0) == "D") {
+          if (elt[i][effectPattern].charAt(1) == "1") {
+            elt[i][stepX] = 4;  elt[i][stepY] = 0;
+          }
+          if (elt[i][effectPattern].charAt(1) == "3") {
+            elt[i][stepX] = 0;  elt[i][stepY] = 4;
+        } }
+        if (elt[i][effectPattern].charAt(0) == "F") {
+          if (elt[i][effectPattern].charAt(1) == "4") {
+            if (elt[i][posX] != -32767) {
+              elt[i][posStartX] = elt[i][posX];
+              elt[i][posEndX] = elt[i][posX] + layerobj[i].pos_w;
+            }
+            if (elt[i][posY] != -32767) {
+              elt[i][posStartY] = elt[i][posY];
+              if (elt[i][effectPattern].charAt(3) == "1") elt[i][posEndY] = elt[i][posY] + 80;
+              if (elt[i][effectPattern].charAt(3) == "2") elt[i][posEndY] = elt[i][posY] + 160;
+              if (elt[i][effectPattern].charAt(3) == "3") elt[i][posEndY] = elt[i][posY] + 320;
+            }
+            elt[i][stepX] = 0;  elt[i][stepY] = 4;
+          }
+          if (elt[i][effectPattern].charAt(1) == "2") {
+            if (elt[i][posX] != -32767) {
+              elt[i][posStartX] = elt[i][posX];
+              if (elt[i][effectPattern].charAt(3) == "1") elt[i][posEndX] = elt[i][posX] + 80;
+              if (elt[i][effectPattern].charAt(3) == "2") elt[i][posEndX] = elt[i][posX] + 160;
+              if (elt[i][effectPattern].charAt(3) == "3") elt[i][posEndX] = elt[i][posX] + 320;
+            }
+            if (elt[i][posY] != -32767) {
+              elt[i][posStartY] = elt[i][posY];
+              elt[i][posEndY] = elt[i][posY] + layerobj[i].pos_h;
+            }
+            elt[i][stepX] = 4;  elt[i][stepY] = 0;
+        } }
+        if (elt[i][effectPattern].charAt(0) == "G") {
+          if (elt[i][effectPattern].charAt(1) == "2") {
+            elt[i][posStartX] = 0;
+            if (elt[i][effectPattern].charAt(3) == "1") elt[i][posStartY] = 80;
+            if (elt[i][effectPattern].charAt(3) == "2") elt[i][posStartY] = 160;
+            if (elt[i][effectPattern].charAt(3) == "3") elt[i][posStartY] = 320;
+            elt[i][posEndX] = 1;  elt[i][posEndY] = 1;
+        } }
+        if (elt[i][effectPattern].charAt(0) == "H") {
+          if (elt[i][effectPattern].charAt(3) == "1") {
+            elt[i][stepX] = 8;  elt[i][stepY] = 8;
+          }
+          if (elt[i][effectPattern].charAt(3) == "2") {
+            elt[i][stepX] = 16;  elt[i][stepY] = 16;
+          }
+          if (elt[i][effectPattern].charAt(3) == "3") {
+            elt[i][stepX] = 32;  elt[i][stepY] = 32;
+          }
+          if (elt[i][effectPattern].charAt(1) == "2") {
+            elt[i][stepX] = 0;  elt[i][fixedX] = true;  elt[i][fixedY] = true;
+          }
+          if (elt[i][effectPattern].charAt(1) == "1") {
+            elt[i][stepY] = 0;  elt[i][fixedX] = true;  elt[i][fixedY] = true;
+          }
+          if (elt[i][effectPattern].charAt(1) == "3") {
+            elt[i][fixedX] = false;  elt[i][fixedY] = false;
+        } }
+        if (elt[i][effectPattern].charAt(0) == "I") {
+          if (elt[i][effectPattern].charAt(3) == "1") {
+            elt[i][posStartX] = 40;  elt[i][posStartY] = 40;
+          }
+          if (elt[i][effectPattern].charAt(3) == "2") {
+            elt[i][posStartX] = 80;  elt[i][posStartY] = 80;
+          }
+          if (elt[i][effectPattern].charAt(3) == "3") {
+            elt[i][posStartX] = 160;  elt[i][posStartY] = 160;
+          }
+          elt[i][posEndX] = 1;  elt[i][posEndY] = 1;  elt[i][stepX] = -32767;
+          if (elt[i][effectPattern].charAt(1) == "1") {
+            elt[i][posY] += elt[i][posStartY];
+            elt[i][stepY] = Math.PI * 3 / 2;
+            elt[i][frame] = 40;
+          }
+          if (elt[i][effectPattern].charAt(1) == "2") {
+            elt[i][posY] -= elt[i][posStartY];
+            elt[i][stepY] = Math.PI * 1 / 2;
+            elt[i][frame] = 40;
+          }
+          if (elt[i][effectPattern].charAt(1) == "3") {
+            elt[i][posX] -= elt[i][posStartX];
+            elt[i][stepY] = Math.PI * 0 / 2;
+            elt[i][frame] = 40;
+          }
+          if (elt[i][effectPattern].charAt(1) == "4") {
+            elt[i][posX] += elt[i][posStartX];
+            elt[i][stepY] = Math.PI * 2 / 2;
+            elt[i][frame] = 40;
+          }
+          if (elt[i][effectPattern].charAt(1) == "5") {
+            elt[i][posY] += elt[i][posStartY];
+            elt[i][stepY] = Math.PI * 3 / 2;
+            elt[i][frame] = -40;
+          }
+          if (elt[i][effectPattern].charAt(1) == "6") {
+            elt[i][posY] -= elt[i][posStartY];
+            elt[i][stepY] = Math.PI * 1 / 2;
+            elt[i][frame] = -40;
+          }
+          if (elt[i][effectPattern].charAt(1) == "7") {
+            elt[i][posX] -= elt[i][posStartX];
+            elt[i][stepY] = Math.PI * 0 / 2;
+            elt[i][frame] = -40;
+          }
+          if (elt[i][effectPattern].charAt(1) == "8") {
+            elt[i][posX] += elt[i][posStartX];
+            elt[i][stepY] = Math.PI * 2 / 2;
+            elt[i][frame] = -40;
+        } }
+        if (elt[i][effectPattern].charAt(0) == "J") {
+          if (elt[i][effectPattern].charAt(3) == "1") {
+            elt[i][posStartX] = 0;  elt[i][posStartY] = 80;
+          }
+          if (elt[i][effectPattern].charAt(3) == "2") {
+            elt[i][posStartX] = 0;  elt[i][posStartY] = 160;
+          }
+          if (elt[i][effectPattern].charAt(3) == "3") {
+            elt[i][posStartX] = 0;  elt[i][posStartY] = 320;
+          }
+          elt[i][posEndX] = 1;  elt[i][posEndY] = 1;
+          elt[i][stepX] = -32767;  elt[i][stepY] = 0;
+          if (elt[i][effectPattern].charAt(1) == "2") {
+            elt[i][accelerationY] = 0.99;  elt[i][frame] = 40;
+        } }
+        if (elt[i][effectPattern].charAt(0) == "K") {
+          if (elt[i][effectPattern].charAt(3) == "1") {
+            elt[i][posStartX] = 40;  elt[i][posStartY] = 40;
+          }
+          if (elt[i][effectPattern].charAt(3) == "2") {
+            elt[i][posStartX] = 80;  elt[i][posStartY] = 80;
+          }
+          if (elt[i][effectPattern].charAt(3) == "3") {
+            elt[i][posStartX] = 160;  elt[i][posStartY] = 160;
+          }
+          elt[i][stepX] = -32767;  elt[i][stepY] = 0;
+          if (elt[i][effectPattern].charAt(1) == "1") {
+            elt[i][posEndX] = 13;  elt[i][posEndY] = 12;  elt[i][frame] = 160;
+          }
+          if (elt[i][effectPattern].charAt(1) == "2") {
+            elt[i][posEndX] = 7;  elt[i][posEndY] = 2;  elt[i][frame] = 160;
+          }
+          if (elt[i][effectPattern].charAt(1) == "3") {
+            elt[i][posEndX] = 11;  elt[i][posEndY] = 4;  elt[i][frame] = 160;
+          }
+          if (elt[i][effectPattern].charAt(1) == "4") {
+            elt[i][posEndX] = 7;  elt[i][posEndY] = 4;  elt[i][frame] = 160;
+        } }
+        if (elt[i][effectPattern].charAt(2) == "1") elt[i][intervalTime] = 200;
+        if (elt[i][effectPattern].charAt(2) == "2") elt[i][intervalTime] = 100;
+        if (elt[i][effectPattern].charAt(2) == "3") elt[i][intervalTime] = 50;
+        if ( elt[i][startTime] >= 0 ) setTimeout( "HpbVfxtimer(" + i + ")", elt[i][startTime] );
+} } } }
+
+function HpbVfxtimer(tid) {
+  if (isNC||isN6||isIE) {
+    if (layerobj[tid]) {
+      var func_str;
+      func_str = elt[tid][func] + "( tid, elt[tid], layerobj[tid] )";
+      eval(func_str);
+} } }
+
+function HpbVfxshowobj(obj) {
+  if (obj) {
+    if (isNC) obj.visibility = "show";
+    if (isN6) obj.style.visibility = "visible";
+    if (isIE) obj.visibility = "visible";
+    lastobj = obj;
+} }
+
+function HpbVfxhideobj(obj) {
+  if (obj) {
+    if (isNC) obj.visibility = "hide";
+    if (isN6) obj.style.visibility = "hidden";
+    if (isIE) obj.visibility = "hidden";
+} }
+
+function HpbVfxmoveobj(obj,x,y) {
+  if (obj) {
+    if (isNC) {obj.left=x;obj.top=y;}
+    if (isN6) {obj.style.left=x+"px";obj.style.top=y+"px";}
+    if (isIE) {obj.left=x;obj.top=y;}
+} }
+
+function HpbVfxclipobj(obj,t,r,b,l) {
+  if (obj) {
+    if (isNC) {obj.clip.left=l;obj.clip.top=t;obj.clip.right=r;obj.clip.bottom=b;}
+    if (isN6) obj.style.clip = "rect(" + t + "px," + (r-l) + "px," + (b-t) + "px," + l + "px)";
+    if (isIE) obj.clip = "rect(" + t + "," + r + "," + b + "," + l + ")";
+} }
+
+function HpbVfx0001(tid,et,ob) {
+  var x;  var y;
+  if (ob) {
+    if (ob.init == false) {
+      if (et[stepX] != -32767) ob.stepX = et[stepX] * Math.cos(et[angle]);
+      else ob.stepX = (et[posEndX] - et[posStartX]) / et[frame];
+      if (et[stepY] != -32767) ob.stepY = et[stepY] * Math.sin(et[angle]);
+      else ob.stepY = (et[posEndY] - et[posStartY]) / et[frame];
+      if (ob.stepX > 0 && ob.stepX < 1) ob.stepX = 1;
+      if (ob.stepX < 0 && ob.stepX > -1) ob.stepX = -1;
+      if (ob.stepY > 0 && ob.stepY < 1) ob.stepY = 1;
+      if (ob.stepY < 0 && ob.stepY > -1) ob.stepY = -1;
+      if (et[posStartX] != -32767) ob.x = et[posStartX];
+      else if (ob.stepX > 0) ob.x = 0 - ob.pos_w; else ob.x = ob.innerW - ob.pos_w;
+      if (et[posStartY] != -32767) ob.y = et[posStartY];
+      else if (ob.stepY > 0) ob.y = 0 - ob.pos_h; else ob.y = ob.innerH - ob.pos_h;
+      if (et[posEndX] != -32767) ob.posEndX = et[posEndX];
+      else if (ob.stepX > 0) ob.posEndX = ob.innerW - ob.pos_w; else ob.posEndX = 0 - ob.pos_w;
+      if (et[posEndY] != -32767) ob.posEndY = et[posEndY];
+      else if (ob.stepY > 0) ob.posEndY = ob.innerH - ob.pos_h; else ob.posEndY = 0 - ob.pos_h;
+      HpbVfxshowobj(ob);
+      ob.init = true;  ob.frame = 0;
+    }
+    ob.stepX = ob.stepX * et[accelerationX];
+    if (ob.stepX > 0 && ob.stepX < 1) ob.stepX = 1;
+    if (ob.stepX < 0 && ob.stepX > -1) ob.stepX = -1;
+    ob.stepY = ob.stepY * et[accelerationY];
+    if (ob.stepY > 0 && ob.stepY < 1) ob.stepY = 1;
+    if (ob.stepY < 0 && ob.stepY > -1) ob.stepY = -1;
+    ob.x += ob.stepX;  ob.y += ob.stepY;
+    var endX;  var endY;
+    endX = false;  endY = false;
+    if (ob.stepX > 0) if (ob.x >= ob.posEndX) {endX = true;  ob.x = ob.posEndX;}
+    if (ob.stepX < 0) if (ob.x <= ob.posEndX) {endX = true;  ob.x = ob.posEndX;}
+    if (ob.stepX == 0) endX = true;
+    if (ob.stepY > 0) if (ob.y >= ob.posEndY) {endY = true;  ob.y = ob.posEndY;}
+    if (ob.stepY < 0) if (ob.y <= ob.posEndY) {endY = true;  ob.y = ob.posEndY;}
+    if (ob.stepY == 0) endY = true;
+    HpbVfxmoveobj(ob,Math.round( ob.x ),Math.round(ob.y));
+    if (endX == true && endY == true) {
+      if (et[endVisibility] == false) HpbVfxhideobj(ob);
+      ob.init = false;
+      if (et[repeat] == true) setTimeout("HpbVfxtimer(" + tid + ")",et[startTime]);
+      else if (et[nextLayerIdx] >= 0) setTimeout("HpbVfxtimer(" + et[nextLayerIdx] + ")",et[nextStartTime]);
+    } else setTimeout("HpbVfxtimer(" + tid + ")",et[intervalTime]);
+} }
+
+function HpbVfx0101(tid,et,ob) {
+  var cl;  var cr;  var ct;  var cb;  var tm;  var x;  var y;
+  if (ob) {
+    if (ob.init == false) {
+      if (et[stepX] != -32767) ob.cs_x = et[stepX]; else ob.cs_x = ob.pos_w / et[frame];
+      if (et[stepY] != -32767) ob.cs_y = et[stepY]; else ob.cs_y = ob.pos_h / et[frame];
+      ob.c_x = 0;  ob.c_y = 0;
+      HpbVfxshowobj(ob);
+      ob.init = true;
+    }
+    tm = false;
+    cl = 0;  cr = ob.pos_w;  ct = 0;  cb = ob.pos_h;
+    x = ob.pos_x;  y = ob.pos_y;
+    if (et[fixedX] == false) {
+      if (ob.cs_x > 0) {
+        ob.c_x += ob.cs_x;
+        if (cr > ob.c_x) {
+          cl = cr - ob.c_x;  tm = true;  x = ob.pos_x - ob.pos_w + ob.c_x;
+      } }
+      if (ob.cs_x < 0) {
+        ob.c_x += ob.cs_x;  cr = ob.c_x * -1;
+        if (cr < ob.pos_w) {
+          tm = true;  x = ob.pos_x + ob.pos_w + ob.c_x;
+        } else cr = ob.pos_w;
+      }
+    } else {
+      if (ob.cs_x > 0) {
+        ob.c_x += ob.cs_x;
+        if (cr > ob.c_x) {cr = ob.c_x;  tm = true;}
+      }
+      if (ob.cs_x < 0) {
+        ob.c_x += ob.cs_x;  cl = ob.c_x * -1;
+        if (cl < ob.pos_w) {tm = true;  cl = ob.pos_w - cl;} else cl = 0;
+    } }
+    if (et[fixedY] == false) {
+      if (ob.cs_y > 0) {
+        ob.c_y += ob.cs_y;
+        if (cb > ob.c_y) {ct = cb - ob.c_y;  tm = true;  y = ob.pos_y - ob.pos_h + ob.c_y;}
+      }
+      if (ob.cs_y < 0) {
+        ob.c_y += ob.cs_y;  cb = ob.c_y * -1;
+        if ( cb < ob.pos_h ) {tm = true;  y = ob.pos_y + ob.pos_h + ob.c_y;} else cb = ob.pos_h;
+      }
+    } else {
+      if (ob.cs_y > 0) {
+        ob.c_y += ob.cs_y;
+        if (cb > ob.c_y) {cb = ob.c_y;  tm = true;}
+      }
+      if (ob.cs_y < 0) {
+        ob.c_y += ob.cs_y;  ct = ob.c_y * -1;
+        if (ct < ob.pos_h) {tm = true;  ct = ob.pos_h - ct;} else ct = 0;
+    } }
+    HpbVfxclipobj(ob,ct,cr,cb,cl);
+    HpbVfxmoveobj(ob,x,y);
+    if (tm) setTimeout("HpbVfxtimer(" + tid + ")",et[intervalTime]);
+    else {
+      if (et[endVisibility] == false) HpbVfxhideobj(ob);
+      ob.init = false;
+      if (et[repeat] == true) setTimeout("HpbVfxtimer(" + tid + ")",et[startTime]);
+      else if (et[nextLayerIdx] >= 0) setTimeout("HpbVfxtimer(" + et[nextLayerIdx] + ")",et[nextStartTime]);
+} } }
+
+function HpbVfx0201(tid,et,ob) {
+  var cl;  var cr;  var ct;  var cb;  var tm;  var x;  var y;
+  if (ob) {
+    if (ob.init == false) {
+      if (et[stepX] != -32767) ob.cs_x = et[stepX]; else ob.cs_x = ob.pos_w / et[frame];
+      if (et[stepY] != -32767) ob.cs_y = et[stepY]; else ob.cs_y = ob.pos_h / et[frame];
+      ob.c_w = et[posEndX] - et[posStartX];  ob.c_h = et[posEndY] - et[posStartY];
+      ob.c_x = 0;  ob.c_y = 0;
+      HpbVfxshowobj(ob);
+      ob.init = true;
+    }
+    tm = false;
+    cl = 0;  cr = ob.pos_w;  ct = 0;  cb = ob.pos_h;
+    x = et[posStartX];  y = et[posStartY];
+    if (ob.cs_x > 0) {
+      ob.c_x += ob.cs_x;
+      if (ob.c_x < (ob.pos_w - ob.c_w)) {
+        cl = ob.c_x;  cr = cl + ob.c_w;
+        tm = true;
+      } else cl = ob.pos_w - ob.c_w;
+    }
+    if (ob.cs_x < 0) {
+      ob.c_x += ob.cs_x;  cr = ob.pos_w + ob.c_x;
+      if (cr > ob.c_w) {cl = cr - ob.c_w;  tm = true;}
+      else cr = ob.c_w;
+    }
+    if (ob.cs_y > 0) {
+      ob.c_y += ob.cs_y;
+      if (ob.c_y < (ob.pos_h - ob.c_h)) {
+        ct = ob.c_y;  cb = ct + ob.c_h;
+        tm = true;
+      } else ct = ob.pos_h - ob.c_h;
+    }
+    if (ob.cs_y < 0) {
+      ob.c_y += ob.cs_y;  cb = ob.pos_h + ob.c_y;
+      if (cb > ob.c_h) {ct = cb - ob.c_h;  tm = true;}
+      else cb = ob.c_h;
+    }
+    HpbVfxclipobj(ob,ct,cr,cb,cl);
+    x -= cl;  y -= ct;
+    HpbVfxmoveobj(ob,x,y);
+    if (tm) setTimeout( "HpbVfxtimer(" + tid + ")",et[intervalTime]);
+    else {
+      if (et[endVisibility] == false) HpbVfxhideobj(ob);
+      ob.init = false;
+      if (et[repeat] == true) setTimeout("HpbVfxtimer(" + tid + ")",et[startTime]);
+      else if (et[nextLayerIdx] >= 0) setTimeout("HpbVfxtimer(" + et[nextLayerIdx] + ")",et[nextStartTime]);
+} } }
+
+function HpbVfx0301(tid,et,ob) {
+  var x;  var y;  var tx;  var ty;
+  if (ob) {
+    if (ob.init == false) {
+      if (et[stepX] != -32767) ob.step = et[stepX]; else ob.step = (Math.PI * 2) / et[frame];
+      ob.boundX = et[posStartX];  ob.boundY = et[posStartY];
+      ob.angle = 0.0;
+      HpbVfxshowobj(ob);
+      ob.init = true;
+    }
+    tx = Math.cos(ob.angle * et[posEndX]) * ob.boundX;  ty = Math.sin(ob.angle * et[posEndY]) * ob.boundY;
+    if (et[fixedX] != 0) tx = Math.abs(tx) * et[fixedX];
+    if (et[fixedY] != 0) ty = Math.abs(ty) * et[fixedY];
+    x = et[posX];  y = et[posY];
+    x += tx * Math.cos(et[angle]);  y += tx * Math.sin(et[angle]);
+    x += ty * Math.cos(et[angle] + (Math.PI / 2));  y += ty * Math.sin(et[angle] + (Math.PI / 2));
+    HpbVfxmoveobj(ob,Math.round(x),Math.round(y));
+    if (et[accelerationX] != 1.0 || et[accelerationY] != 1.0) {
+      ob.boundX *= et[accelerationX];  ob.boundY *= et[accelerationY];
+      if (ob.boundX < 4  && ob.boundY < 4) {
+        ob.init = false;
+        if (et[repeat] == true) setTimeout("HpbVfxtimer(" + tid + ")",et[startTime]);
+        else if (et[nextLayerIdx] >= 0) setTimeout("HpbVfxtimer(" + et[nextLayerIdx] + ")",et[nextStartTime]);
+      } else {
+        ob.angle += ob.step;
+        setTimeout("HpbVfxtimer(" + tid + ")",et[intervalTime]);
+      }
+    } else {
+      if (ob.angle >= (2 * Math.PI)) {
+        ob.init = false;
+        if (et[repeat] == true) setTimeout("HpbVfxtimer(" + tid + ")",et[startTime]);
+        else if (et[nextLayerIdx] >= 0) setTimeout("HpbVfxtimer(" + et[nextLayerIdx] + ")",et[nextStartTime]);
+      } else {
+        ob.angle += ob.step;
+        setTimeout("HpbVfxtimer(" + tid + ")",et[intervalTime]);
+} } } }
+
+function HpbVfx0311(tid,et,ob) {
+  var x;  var y;  var ws;
+  if (ob) {
+    if (ob.init == false) {ob.setp = 0;  HpbVfxshowobj(ob);  ob.init = true;}
+    x = et[posX];  y = et[posY];
+    if (et[fixedX] == true) ws = ob.setp;
+    else {
+      ws = Math.round(Math.random() * 4);
+      if (ws > 3) ws = 0;
+    }
+    if (ws == 1) x += et[stepX];
+    if (ws == 3) x -= et[stepX];
+    if (et[fixedY] == true) ws = ob.setp;
+    else {
+      ws = Math.round(Math.random() * 4);
+      if (ws > 3) ws = 0;
+    }
+    if (ws == 1) y += et[stepY];
+    if (ws == 3) y -= et[stepY];
+    HpbVfxmoveobj(ob,Math.round(x),Math.round(y));
+    ob.setp ++;
+    if (ob.setp >= 4) {
+      ob.init = false;
+      if (et[repeat] == true) setTimeout("HpbVfxtimer(" + tid + ")",et[startTime]);
+      else if (et[nextLayerIdx] >= 0) setTimeout("HpbVfxtimer(" + et[nextLayerIdx] + ")",et[nextStartTime]);
+    } else setTimeout("HpbVfxtimer(" + tid + ")",et[intervalTime]);
+} }
+
+function HpbVfx0401(tid,et,ob) {
+  var x;  var y;  var tx;  var ty;
+  if (ob) {
+    if (ob.init == false) {
+      if (et[stepX] != -32767) ob.step = et[stepX]; else ob.step = (Math.PI * 2) / et[frame];
+      ob.angle = 0.0;
+      HpbVfxshowobj(ob);
+      ob.init = true;
+    }
+    tx = Math.cos((ob.angle * et[posEndX]) + et[stepY]) * et[posStartX];
+    ty = Math.sin((ob.angle * et[posEndY]) + et[stepY]) * et[posStartY];
+    x = et[posX];  y = et[posY];
+    x += tx * Math.cos(et[angle]);  y += tx * Math.sin(et[angle]);
+    x += ty * Math.cos(et[angle] + (Math.PI / 2));  y += ty * Math.sin(et[angle] + (Math.PI / 2));
+    HpbVfxmoveobj(ob,Math.round(x),Math.round(y));
+    if (Math.abs(ob.angle) >= (2 * Math.PI)) {
+      ob.init = false;
+      if (et[repeat] == true) setTimeout("HpbVfxtimer(" + tid + ")",et[startTime]);
+      else if (et[nextLayerIdx] >= 0) setTimeout("HpbVfxtimer(" + et[nextLayerIdx] + ")",et[nextStartTime]);
+    } else {
+      ob.angle += ob.step;
+      setTimeout("HpbVfxtimer(" + tid + ")",et[intervalTime]);
+} } }
+
+function HpbVfx0501(tid,et,ob) {
+  if (ob) {
+    if (ob.init == false) {HpbVfxshowobj(ob);  ob.init = true;}
+    var px;  var py;
+    if (isNC) {px = window.pageXOffset;  py = window.pageYOffset;}
+    if (isN6) {px = window.pageXOffset;  py = window.pageYOffset;}
+    if (isIE) {px = document.body.scrollLeft;  py = document.body.scrollTop;}
+    HpbVfxmoveobj(ob,Math.round(px + et[posX]),Math.round(py + et[posY]));
+    setTimeout("HpbVfxtimer(" + tid + ")",et[intervalTime]);
+} }
+//-->
+</SCRIPT><SCRIPT language="JavaScript">
+<!--HPB_SCRIPT_ROV_50
+//
+//  Licensed Materials - Property of IBM
+//  5724G06
+//  (C) Copyright IBM Corp. 1995, 2003 All Rights Reserved.
+//
+
+// HpbImgPreload:
+//
+function HpbImgPreload()
+{
+  var appVer=parseInt(navigator.appVersion);
+  var isNC=false,isN6=false,isIE=false;
+  if (document.all && appVer >= 4) isIE=true; else
+    if (document.getElementById && appVer > 4) isN6=true; else
+      if (document.layers && appVer >= 4) isNC=true;
+  if (isNC||isN6||isIE)
+  {
+    if (document.images)
+    {
+      var imgName = HpbImgPreload.arguments[0];
+      var cnt;
+      swImg[imgName] = new Array;
+      for (cnt = 1; cnt < HpbImgPreload.arguments.length; cnt++)
+      {
+        swImg[imgName][HpbImgPreload.arguments[cnt]] = new Image();
+        swImg[imgName][HpbImgPreload.arguments[cnt]].src = HpbImgPreload.arguments[cnt];
+      }
+    }
+  }
+}
+// HpbImgFind:
+//
+function HpbImgFind(doc, imgName)
+{
+  for (var i=0; i < doc.layers.length; i++)
+  {
+    var img = doc.layers[i].document.images[imgName];
+    if (!img) img = HpbImgFind(doc.layers[i], imgName);
+    if (img) return img;
+  }
+  return null;
+}
+// HpbImgSwap:
+//
+function HpbImgSwap(imgName, imgSrc)
+{
+  var appVer=parseInt(navigator.appVersion);
+  var isNC=false,isN6=false,isIE=false;
+  if (document.all && appVer >= 4) isIE=true; else
+    if (document.getElementById && appVer > 4) isN6=true; else
+      if (document.layers && appVer >= 4) isNC=true;
+  if (isNC||isN6||isIE)
+  {
+    if (document.images)
+    {
+      var img = document.images[imgName];
+      if (!img) img = HpbImgFind(document, imgName);
+      if (img) img.src = imgSrc;
+    }
+  }
+}
+var swImg; swImg=new Array;
+//-->
+</SCRIPT><SCRIPT language="JavaScript">
+<!--HPB_SCRIPT_PLD_50
+HpbImgPreload('_HPB_ROLLOVER1', 'RIMG0402.JPG', 'RIMG0422.JPG');
+//-->
+</SCRIPT>
+<STYLE type="text/css">
+<!--
+FONT{
+  cursor : pointer;
+  font-weight : bold;
+}
+P{
+  font-weight : bold;
+}
+SPAN{
+  font-weight : bold;
+}
+-->
+</STYLE>
+</HEAD>
+<BODY bgcolor="#330000" text="#CC0099" link="#3333CC" vlink="#CC33CC" alink="#00FFCC" background="v5_bcg080.gif" onload="HpbVfxinit('Layer14','HpbVfx0101','D130',1000,1000,1); HpbVfxinit('Layer14','HpbVfx0101','D130',1000,1000,1);">
+<DIV style="width : 177px;height : 827px;top : 176px;left : -1px;
+  position : absolute;
+  z-index : 12;
+" id="Layer16">
+<DIV style="top : 0px;left : 0px;
+  position : absolute;
+  z-index : 1;
+  width : 177px;
+  height : 827px;
+" id="Layer23">
+<TABLE border="1" bgcolor="#ffffcc" width="177" height="827">
+  <TBODY>
+    <TR>
+      <TD align="left" bgcolor="#ffffcc" valign="top" width="195" height="612"><FONT color="#330000" size="+1"><FONT size="-1" color="#ff0033">3月23日より鷲宮町も<BR>
+      久喜市となりました。<BR>
+      <BR>
+      </FONT></FONT><A href="akatyann1.html" target="_blank"><FONT color="#330000" size="+1"><FONT size="-1" color="#330000">赤ちゃん筆</FONT></FONT><FONT color="#330000"><FONT size="-2" color="#330000">のコー</FONT></FONT></A><FONT color="#330000"><FONT size="-2" color="#330000">ナー</FONT></FONT><FONT color="#000000"><BR>
+      <A href="sobauti.html" target="_blank"><IMG src="soba149.gif" width="40" height="24" border="0"><FONT size="-2" color="#330000">十割りそば</FONT><BR>
+      <FONT size="-1" color="#330000">手打ちそばの作り方</FONT></A><A href="http://www.kukiriyou.com/" target="_blank"><BR>
+      <FONT size="-1" color="#330000">久喜支部ホームページ</FONT></A><BR>
+      </FONT><FONT color="#330000"><FONT size="-1" color="#330000">埼玉県理容競技会</FONT><BR>
+      <FONT size="-2" color="#330000">（ヘ</FONT></FONT><A href="kyoukai.html" target="_blank"><FONT color="#330000"><FONT size="-2" color="#330000">ア・コンクール）</FONT></FONT><FONT color="#330000" size="-1">選考会　第１位で</FONT><BR>
+      <FONT color="#ff3300" size="2">関東甲信越大会進出決定</FONT></A><BR>
+      <IMG src="RIMG000721.jpg" width="106" height="81" border="0"><BR>
+      <FONT color="#ff0033"><FONT color="#330000"><A href="kyoukai.html" target="_blank"><FONT color="#330000" size="2"><BR>
+      全国大会へ出場決定！！<BR>
+      </FONT></A></FONT></FONT> <BR>
+      <A href="#" id="_HPB_ROLLOVER1" onmouseout="HpbImgSwap('_HPB_ROLLOVER1', 'RIMG0402.JPG');" onmouseover="HpbImgSwap('_HPB_ROLLOVER1', 'RIMG0422.JPG');"><IMG src="RIMG0402.JPG" width="92" height="126" border="0" name="_HPB_ROLLOVER1"></A><BR>
+      <BR>
+      <B><A href="http://pvworld.blog102.fc2.com/blog-entry-2607.html" target="_blank"><FONT color="#330000" size="-1">GReeeeN 「遙か」　映画「ＲＯＯＫＩＥＳの主題歌<FONT color="#330000" size="-1">」　のプロモーション</FONT>ビデオが当店の直ぐ近くで撮影され　チョピリですが写っていますよ！！</FONT></A></B><BR>
+      <BR>
+      <FONT color="#330000">2012埼玉県ニューヘアコレクション</FONT><BR>
+      <IMG src="2012.jpg" width="120" height="84" border="0"><BR>
+      <BR>
+      <IMG src="20122.jpg" width="118" height="83" border="0"></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</DIV>
+</DIV>
+<DIV style="top : 168px;left : 205px;
+  position : absolute;
+  z-index : 17;
+" id="Layer4"></DIV>
+<DIV style="top : 12px;left : 310px;
+  position : absolute;
+  z-index : 1;
+  width : 406px;
+  height : 76px;
+  visibility : hidden;
+" id="Layer14" align="left"><B><FONT face="HGP祥南行書体" size="+3" color="#33cc00"><FONT color="#cc3399"><FONT color="#ff0033"><FONT color="#330000"><FONT color="#ff0033"><FONT color="#330000"><FONT color="#330000"><I>いらっしゃいませ　ようこそ　<BR>
+Haiｒ Salon Watanabe へ</I></FONT></FONT></FONT></FONT></FONT></FONT></FONT></B></DIV>
+<DIV style="top : 705px;left : 238px;
+  position : absolute;
+  z-index : 2;
+  width : 394px;
+  height : 120px;
+" id="Layer19">
+<DIV align="center">
+<TABLE class="MsoNormalTable" border="0" cellpadding="0" style="mso-cellspacing:1.5pt">
+  <TBODY>
+    <TR style="mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes;
+  height:67.5pt">
+      <TD width="498" valign="top" style="width:373.5pt;padding:.75pt .75pt .75pt .75pt;
+  height:67.5pt">
+      <P class="MsoNormal"><SPAN style="color:black">ヘアサロン <SPAN lang="EN-US">&nbsp;</SPAN>ワタナベ<SPAN lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+      </SPAN>　　住所　　埼玉県久喜市葛梅<SPAN lang="EN-US">606-24&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+      </SPAN>　　電話　　<SPAN lang="EN-US">0480-58-2469<BR>
+      </SPAN>　　営業時間　午前８時〜午後７時まで<SPAN lang="EN-US"><BR>
+      </SPAN>　　定休日　毎週月曜・第２・第３火曜日</SPAN><SPAN lang="EN-US"><o:p></o:p></SPAN></P>
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</DIV>
+<P><!-- Editor text component. --></P>
+</DIV>
+<DIV style="top : -26px;left : 661px;
+  position : absolute;
+  z-index : 3;
+" id="Layer12"><IMG src="image005.gif" width="91" height="91" border="0"></DIV>
+<DIV style="top : 9px;left : 20px;
+  position : absolute;
+  z-index : 4;
+" id="Layer17">
+<P><FONT color="#000000" size="2">2004/3/15開設</FONT></P>
+</DIV>
+<DIV style="top : 15px;left : 141px;
+  position : absolute;
+  z-index : 5;
+" id="Layer26"></DIV>
+<DIV style="width : 96px;height : 69px;top : 38px;left : 172px;
+  position : absolute;
+  z-index : 6;
+" id="Layer21">
+<DIV style="top : 0px;left : 0px;
+  position : absolute;
+  z-index : 2;
+  width : 84px;
+  height : 51px;
+" id="Layer28"><IMG src="hsw12.jpg" width="84" height="51" border="0"></DIV>
+<DIV style="top : 53px;left : 9px;
+  position : absolute;
+  z-index : 1;
+  width : 87px;
+  height : 13px;
+" id="Layer22" align="center">
+<P>　</P>
+</DIV>
+</DIV>
+<DIV style="top : 644px;left : 321px;
+  position : absolute;
+  z-index : 7;
+  width : 280px;
+  height : 16px;
+" id="Layer6" align="left"><FONT color="#000000" size="-1">貴方は </FONT><IMG SRC="/0.gif" ALT="0"><IMG SRC="/7.gif" ALT="7"><IMG SRC="/4.gif" ALT="4"><IMG SRC="/1.gif" ALT="1"><IMG SRC="/7.gif" ALT="7"><IMG SRC="/8.gif" ALT="8"><FONT color="#000000" size="-1">番目のお客様です</FONT><FONT color="#000000">　</FONT><FONT color="#000000" size="-1">　　　</FONT></DIV>
+<DIV style="top : 174px;left : 295px;
+  position : absolute;
+  z-index : 8;
+" id="Layer27"></DIV>
+<DIV style="width : 124px;height : 98px;top : 40px;left : 25px;
+  position : absolute;
+  z-index : 9;
+" id="Layer46">
+<DIV style="top : 10px;left : 2px;
+  position : absolute;
+  z-index : 3;
+  width : 18px;
+  height : 16px;
+" id="Layer25"><IMG src="image007.gif" width="18" height="16" border="0"></DIV>
+<DIV style="top : 2px;left : 2px;
+  position : absolute;
+  z-index : 2;
+  width : 42px;
+  height : 34px;
+" id="Layer5">
+<P><FONT size="+1"><FONT face="HGP創英角ﾎﾟｯﾌﾟ体" color="#3333cc"><A href="framepage002.html"><FONT size="-2" color="#ff0000">お店の入口</FONT></A></FONT></FONT></P>
+</DIV>
+<DIV style="top : 0px;left : 0px;
+  position : absolute;
+  z-index : 1;
+  width : 124px;
+  height : 98px;
+" id="Layer11"><A href="framepage002.html"><IMG src="P1010061.JPG" width="124" height="98" border="0"></A></DIV>
+</DIV>
+<DIV style="top : 252px;left : 100px;
+  position : absolute;
+  z-index : 10;
+" id="Layer50">
+
+</DIV>
+<DIV style="top : 142px;left : 119px;
+  position : absolute;
+  z-index : 11;
+" id="Layer1"></DIV>
+<DIV style="top : 136px;left : 49px;
+  position : absolute;
+  z-index : 13;
+" id="Layer20"></DIV>
+<DIV style="top : 223px;left : 31px;
+  position : absolute;
+  z-index : 14;
+" id="Layer24"></DIV>
+<DIV style="top : 221px;left : 41px;
+  position : absolute;
+  z-index : 15;
+" id="Layer41"></DIV>
+<DIV style="top : 168px;left : 205px;
+  position : absolute;
+  z-index : 16;
+" id="Layer3"></DIV>
+<DIV style="top : 104px;left : 723px;
+  position : absolute;
+  z-index : 18;
+" id="Layer32"></DIV>
+<DIV style="top : 277px;left : 332px;
+  position : absolute;
+  z-index : 19;
+" id="Layer33"></DIV>
+<DIV style="top : 80px;left : 307px;
+  position : absolute;
+  z-index : 20;
+" id="Layer30"></DIV>
+<DIV style="top : 398px;left : 268px;
+  position : absolute;
+  z-index : 21;
+" id="Layer29"></DIV>
+<DIV style="width : 14px;top : 203px;left : 109px;
+  position : absolute;
+  z-index : 22;
+" id="Layer15"></DIV>
+<DIV style="top : 190px;left : 221px;
+  position : absolute;
+  z-index : 23;
+" id="Layer18"></DIV>
+<DIV style="top : 182px;left : 83px;
+  position : absolute;
+  z-index : 24;
+" id="Layer36"></DIV>
+<DIV style="top : 227px;left : 33px;
+  position : absolute;
+  z-index : 25;
+" id="Layer13">
+
+</DIV>
+<DIV style="top : 232px;left : 81px;
+  position : absolute;
+  z-index : 26;
+" id="Layer37"></DIV>
+<MAP name="logo311">
+  <AREA shape="circle" coords="26,23,15" nohref>
+  <AREA shape="default" nohref>
+</MAP>
+<DIV style="top : 342px;left : 36px;
+  position : absolute;
+  z-index : 27;
+" id="Layer39">
+
+</DIV>
+<DIV style="top : 177px;left : 4px;
+  position : absolute;
+  z-index : 28;
+" id="Layer44"></DIV>
+<DIV style="top : 178px;left : 330px;
+  position : absolute;
+  z-index : 29;
+" id="Layer57"></DIV>
+<DIV style="top : 165px;left : 250px;
+  position : absolute;
+  z-index : 30;
+" id="Layer59">
+
+</DIV>
+<DIV style="top : 372px;left : 267px;
+  position : absolute;
+  z-index : 31;
+" id="Layer60"></DIV>
+<DIV style="top : 307px;left : 493px;
+  position : absolute;
+  z-index : 32;
+" id="Layer10"></DIV>
+<DIV style="top : 235px;left : 53px;
+  position : absolute;
+  z-index : 33;
+" id="Layer9">
+<HR width="100">
+</DIV>
+<DIV style="top : 328px;left : 773px;
+  position : absolute;
+  z-index : 34;
+" id="Layer45"></DIV>
+<DIV style="top : 362px;left : 659px;
+  position : absolute;
+  z-index : 35;
+" id="Layer47"></DIV>
+<DIV style="top : 312px;left : 288px;
+  position : absolute;
+  z-index : 36;
+  visibility : visible;
+" id="Layer7"><IMG src="0191.jpg" width="292" height="218" border="0"></DIV>
+<DIV style="top : 130px;left : 299px;
+  position : absolute;
+  z-index : 37;
+  width : 398px;
+  height : 38px;
+" id="Layer2">
+<P><FONT color="#000000" size="+2">隣のレストランが開店します。</FONT></P>
+</DIV>
+<DIV style="top : 230px;left : 301px;
+  position : absolute;
+  z-index : 38;
+  width : 251px;
+  height : 32px;
+" id="Layer8">
+<P><FONT color="#ff0000">くるみ亭<FONT color="#000000">として新装オープン<BR>
+ハンバーグ･ステーキ＆ケーキなど<BR>
+お弁当も販売します。<BR>
+<BR>
+</FONT></FONT></P>
+</DIV>
+<DIV style="top : 180px;left : 270px;
+  position : absolute;
+  z-index : 39;
+  width : 407px;
+  height : 111px;
+" id="Layer31">
+<P><FONT color="#ff0000" size="+3">１１月１９日（火）オープン</FONT><BR>
+</P>
+</DIV>
+<DIV style="top : 554px;left : 308px;
+  position : absolute;
+  z-index : 40;
+" id="Layer34">
+<P><FONT size="-1" color="#000000">※以前のキッチンＦｕｊｉとは、関係ありません。</FONT></P>
+</DIV>
+</BODY>
+</HTML>

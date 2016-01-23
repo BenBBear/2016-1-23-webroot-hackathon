@@ -1,0 +1,248 @@
+ 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="favicon.ico" rel="shortcut icon">
+<link href="images/icon.png" type="image/png" rel="icon">
+<title>Avenues Unlimited</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+<!--<script type="text/javascript" language="javascript" src="titans.js"></script>-->
+<link rel="stylesheet" type="text/css" href="css/jquery-ui-1.8.13.custom.css" />
+<!--
+<script type="text/javascript" language="javascript" src="js/jquery-1.3.1.min.js"></script>
+<script type="text/javascript" language="javascript" src="js/jquery-1.5.min.js"></script>
+<script language="javascript" type="text/javascript" src="js/jquery-1.5.2.js"></script>-->
+
+<script language="javascript" type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script language="javascript" type="text/javascript" src="js/accordian.js"></script>
+<script language="javascript" type="text/javascript" src="js/my_gallery.jquery.js"></script>
+<script language="javascript" type="text/javascript">
+	$(document).ready(function(){
+			$('.gallery').myGallery({
+				duration:500,
+				thumbnailLocation:'bottom',
+				selectedThumb: '#355FAC',
+				slideshow: true
+			});
+								//^^ our function name
+		});
+</script>
+
+
+
+<script>
+function makepage(src)
+{
+  // We break the closing script tag in half to prevent
+  // the HTML parser from seeing it as a part of
+  // the *main* page.
+
+  return "<html>\n" +
+    "<head>\n" +
+    "<title>Temporary Printing Window</title>\n" +
+    "<script>\n" +
+    "function step1() {\n" +
+    "  setTimeout('step2()', 10);\n" +
+    "}\n" +
+    "function step2() {\n" +
+    "  window.print();\n" +
+    "  window.close();\n" +
+    "}\n" +
+    "</scr" + "ipt>\n" +
+    "</head>\n" +
+    "<body onLoad='step1()'>\n" +
+    "<img src='" + src + "'/>\n" +
+    "</body>\n" +
+    "</html>\n";
+}
+
+function printme(evt)
+{
+  if (!evt) {
+    // Old IE
+    evt = window.event;
+  }    
+  var image = evt.target;
+  if (!image) {
+    // Old IE
+    image = window.event.srcElement;
+  }
+  src = image.src;
+  link = "about:blank";
+  var pw = window.open(link, "_new");
+  pw.document.open();
+  pw.document.write(makepage(src));
+  pw.document.close();
+}
+</script>
+
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-49780130-1', 'myavenuesunlimited.com');
+  ga('require', 'displayfeatures');
+  ga('require', 'linkid', 'linkid.js');
+  ga('send', 'pageview');
+
+</script>
+<!-- CLOSE GOOGLE ANALYTICS -->
+
+</head>
+
+<body>
+
+<!-- ClickTale Top part -->
+<script type="text/javascript">
+var WRInitTime=(new Date()).getTime();
+</script>
+<!-- ClickTale end of Top part -->
+
+<div id="fb-root"></div>
+<script>
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+<div id="banner"><!--Open Banner -->
+	<div id="logo"><a href="index.php"><img src="images/logo.png" /></a></div>
+		<div id="nav"><!--Open Nav -->
+			
+<ul>
+    	<a href="index.php?pg=home">
+        <li  >
+        HOME
+        </li>
+        </a>
+        
+        <!--
+        <a href="mylistings.php?filter=7385 Webster St">
+        <li >
+        LISTINGS
+        </li>
+        </a>
+        -->
+        
+        <a href="sellers.php?pg=sellersAbout">
+        <li >
+        SELLERS
+        </li>
+        </a>
+        
+        <a href="buyers.php?pg=buyersAbout">
+        <li >
+        BUYERS
+        </li>
+        </a>
+        
+        <a href="myteamintro.php">
+        <li >
+        AFFILIATES
+        </li>
+        </a>
+        
+        <a href="about.php?pg=about">
+        <li >
+        ABOUT US
+        </li>
+        </a>
+        
+        <a href="send_form_email.php">
+        <li >
+        CONTACT
+        </li>
+        </a>
+</ul>		</div><!--Close Nav -->
+	<div id="bannerBars"></div>
+	<div id="address">5800 Franklin Street, Suite 106, Denver, CO 80216</div>
+</div><!--Close Banner -->
+
+
+
+<!-- ///////////////// OPEN CONTACT FORM ///////////////////////// -->
+<!-- ///////////////// CLOSE CONTACT FORM ///////////////////////// -->
+<div id="container"><!--Open Container-->
+<div id="pageTitle" style="font-size:40px;">WELCOME TO<BR />AVENUES UNLIMITED</div>
+<div id="hometext" style="font-size:15px; font-weight:lighter;">
+Avenues Unlimited is an independent real estate company dedicated to setting the highest standards in the industry.  We are Realtors® working together in a “Cooperative” environment to ensure our clients are given the utmost service and expertise.  Joann (Perito) Velasquez, owner and broker, creates a professional and engaging environment for her agents.  
+<br /><br />
+<span style="font-style:italic">“We love what we do and our clients know it. Their satisfaction is our driving force.” <br /> -Joann Velasquez</span>
+<br /><br />
+The economy and real estate market is forever changing.  Real estate is localized.  Being present in the marketplace at all times is crucial.  Since we serve the entire Front Range, we are constantly on top of trends and statistics that are relevant to the area.  The rule of thumb followed ten years ago is different from today’s.  Having the right professional with skillful negotiation, local market expertise, and broad experiences changes one’s experience.  Often, these qualities are the difference between a good transaction and a great transaction.
+
+</div>
+
+<div id="containerBox">
+
+<div id="homeTitle">How Can We Help You Today?</div>
+
+<div id="homepic1">
+<a href="http://myavenuesunlimited.com/send_form_email.php">
+<img src="images/homepic4.jpg" />
+</a>
+</div>
+
+<div id="homepic2">
+<a href="buyers.php?pg=buyersAbout">
+<img src="images/homepic2.jpg" />
+</a>
+</div>
+
+<div id="homepic3">
+<a href="sellers.php?pg=sellersAbout">
+<img src="images/homepic3.jpg" />
+</a>
+</div>
+
+<div id="homepic4">
+<a href="http://realtorresourceguide.com/" target="_blank">
+<img src="images/homepic5.png" />
+</a>
+</div>
+
+<div id="missiontitle">Mission Statement</div>
+<div id="missionstatement">
+Avenues Unlimited is dedicated to helping clients stay on the right path in real estate transactions.  We do this by developing a keen understanding of their direction, applying accurate expertise, providing timely and thorough communication, and giving clients the tools needed to succeed.  We believe these ingredients blend to create a positive, rewarding experience.
+</div>
+
+
+<div id="hometeamtitle">Our Team</div>
+<div id="hometeam">
+<a href="myteam.php">Our team</a> consists of professionals with varied back grounds.  Our diversity and mutual philosophies are our strengths.  We work together to provide the best possible experience, and help our clients achieve their individual goals.  We hold each other accountable and deliver what we say we will.  Choosing Avenues Unlimited will be your first, and best decision in your real estate transaction.
+</div>
+
+</div><!--Close Container Box-->
+
+</div> <!--Close Container -->
+
+<!-- ClickTale Bottom part -->
+<script type='text/javascript'>
+ 
+// The ClickTale Balkan Tracking Code may be programmatically customized using hooks:
+//
+//   function ClickTalePreRecordingHook() { /* place your customized code here */  }
+//
+// For details about ClickTale hooks, please consult the wiki page http://wiki.clicktale.com/Article/Customizing_code_version_2
+ 
+document.write(unescape("%3Cscript%20src='"+
+(document.location.protocol=='https:'?
+"https://clicktalecdn.sslcs.cdngc.net/wwwxx/ptc/xxxxxx-xxxx-xxxx-xxx-xxxxxx.js":
+"http://cdn.clicktale.net/wwwxx/ptc/xxxxxx-xxxx-xxxx-xxx-xxxxxx.js")+"'%20type='text/javascript'%3E%3C/script%3E"));
+</script>
+ 
+<!-- ClickTale end of Bottom part -->
+
+</body>
+</html>
+
+          

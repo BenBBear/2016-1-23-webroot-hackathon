@@ -1,0 +1,922 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="ja" xml:lang="ja" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Language" content="ja" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" />
+	<meta name="mixi-check-robots" CONTENT="nodescription, noimage">
+	<meta name="copyright" content="© 2016 Nikkei Inc. All rights reserved." />
+	<meta name="Description" content="日本経済新聞社が運営する住宅情報の総合サイトです。住まい選びに役立つニュース、コラムやデザイナーズ住宅・リフォーム事例、専門家によるＱ＆Ａなど、上質で信頼できる情報を掲載。同時に、リクルートの国内最大級の住宅情報サイト「SUUMO」と連携し、新築・中古のマンション、一戸建て、賃貸など豊富な物件を検索可能です。" />
+	<meta name="Keywords" content="住宅,住まい,不動産,新築,中古,マンション,一戸建て,注文住宅,デザイナーズ住宅,土地,宅地,分譲,賃貸,リフォーム,リノベーション,住宅設備,リクルート,SUUMO,マンション管理,ハウジング,住宅サーチ,日本経済新聞,日経" />
+	<meta name="robots" content="index,follow,noodp,noydir" />
+
+	<link rel="stylesheet" type="text/css" href="http://parts.nikkei.co.jp/parts/sumai2011/css/reset.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="http://parts.nikkei.co.jp/parts/sumai2011/css/normal.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="http://parts.nikkei.co.jp/parts/sumai2011/css/layout.hensei.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="http://parts.nikkei.co.jp/parts/sumai2011/css/style.css" media="all" />
+
+	<script type="text/javascript" src="http://parts.nikkei.co.jp/parts/sumai2011/js/script_20110808_1.js" ></script>
+
+	<script type="text/javascript" src="http://parts.nikkei.co.jp/parts/sumai2011/js/jquery-1.5.min.js" ></script>
+	<script type="text/javascript" src="http://parts.nikkei.com/parts/js/ad/initA.js"></script>	
+	
+	<script type="text/javascript" src="http://parts.nikkei.co.jp/parts/sumai2011/js/sha1.js"></script>
+	<script type="text/javascript" src="http://parts.nikkei.co.jp/parts/sumai2011/js/preFeature_k.js"></script>
+	
+	<title>
+物件検索TOP - NIKKEI 住宅サーチ
+
+    </title>
+
+
+<!--SiteCatalyst code-->
+<script language="JavaScript" type="text/javascript"><!--
+	var now = new Date();
+	var pageName = location.href;
+	var channel = "住宅サーチ";
+	var server = "sumai.nikkei.co.jp";
+	var pageType = ""; //error or not
+
+	var prop1 = "sm-search"; //Genre
+	var prop2 = "sm-searchtop"; //SubGenre
+
+	var prop3 = ""; //HeadLine
+	var prop4 = ""; //Article_ID
+	var prop5 = ""; //page
+	var prop6 = now.getHours();
+	
+	var prop20 = "";
+
+	//Add by 2008.12.24
+	var gsOID = "";
+	var gsPOS = "";
+// -->
+</script>
+<!--SiteCatalyst code-->
+
+</head>
+
+
+
+<body>
+
+
+<!-- ▼======▼======▼======▼ ユニバーサルバー ▼======▼======▼======▼ -->
+<div id="HENSEI2011-UNIVERSAL_BAR">
+	<div id="HENSEI2011-UNIVERSAL_BAR_BODY_fixed" class="cmn-clearfix">
+		<h2 class="cmn-hide">日本経済新聞 関連サイト</h2>
+		<div id="HENSEI2011-UNIVERSAL_BAR_SERVICE">
+			<ul class="bs-service">
+				<li><a href="http://www.nikkei.com/">日経電子版</a></li>
+				<li><a href="http://store.nikkei.com/">電子書籍</a></li>
+				<li><a href="http://bizacademy.nikkei.co.jp">Bizアカデミー</a></li>
+				<li><a href="http://bizgate.nikkei.co.jp/">BizGate</a></li>
+				<li><a href="http://sumai.nikkei.co.jp/">住宅</a></li>
+				<li><a href="http://www.nikkei.com/rd/gr/ds_all_002.html" target="_blank">レストラン</a></li>
+				<li class="cmnc-career"><a href="http://career.nikkei.co.jp/">転職<!--[if IE 7]><!--></a><!--<![endif]-->
+			<!--[if lte IE 6]><table><tr><td><![endif]-->
+				<ul>
+					<li><a href="http://tenshoku.nikkei.co.jp/r-agent/">エグゼクティブ転職</a></li>
+					<li><a href="http://career.nikkei.co.jp/">日経キャリアNET</a></li>
+				</ul>
+			<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+				</li>
+				<li class="cmnc-bp"><a href="http://www.nikkeibp.co.jp/" target="_blank" title="日経BPのビジネス情報ポータル">日経BP<!--[if IE 7]><!--></a><!--<![endif]-->
+			<!--[if lte IE 6]><table><tr><td><![endif]-->
+				<ul>
+					<li><a href="http://itpro.nikkeibp.co.jp/" target="_blank" title="ITプロフェッショナルのための専門情報">ITpro</a></li>
+					<li><a href="http://techon.nikkeibp.co.jp/" target="_blank" title="技術者を応援する総合情報サイト">日経テクノロジー</a></li>
+					<li><a href="http://pc.nikkeibp.co.jp/" target="_blank" title="仕事に役立つパソコン総合情報">PC Online</a></li>
+					<li><a href="http://na.nikkeibp.co.jp/" target="_blank" title="建築・住宅の専門情報">日経アーキテクチュア</a></li>
+					<li><a href="http://business.nikkeibp.co.jp/" target="_blank" title="ビジネスリーダーの羅針盤">日経ビジネス</a></li>
+				</ul>
+			<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+			</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<!-- ▲======▲======▲======▲ ユニバーサルバー ▲======▲======▲======▲ -->
+
+<!-- // header // -->
+	<div id="header">
+		<div id="headerinner" class="clearfix">
+			<h1 id="logo"><img src="http://parts.nikkei.co.jp/parts/sumai2011/img/common/logo.gif" alt="住宅サーチ for Premium Life" width="80" height="80" usemap="#lg_maplink" /></h1>
+
+			<div>
+				<div class="headercat">
+					<h2><img src="http://parts.nikkei.co.jp/parts/sumai2011/img/common/cat.gif" alt="快適で上質な住まいを賢く選ぶための総合情報サイト" width="381" height="14" /></h2>
+					<div class="btnsitemap"><a href="/help/exemption/"><img src="http://parts.nikkei.co.jp/parts/sumai2011/img/common/header_usage.gif" alt="サイトのご利用にあたって（免責事項）" width="211" height="16" id="husage" onmouseover="MM_swapImage('husage','','http://parts.nikkei.co.jp/parts/sumai2011/img/common/header_usage_o.gif',1)" onmouseout="MM_swapImgRestore()" /></a>　<a href="/help/sitemap/"><img src="http://parts.nikkei.co.jp/parts/sumai2011/img/common/header_sitemap.gif" alt="サイトマップ" width="84" height="16" id="hsitemap" onmouseover="MM_swapImage('hsitemap','','http://parts.nikkei.co.jp/parts/sumai2011/img/common/header_sitemap_o.gif',1)" onmouseout="MM_swapImgRestore()" /></a></div>
+				</div>
+
+				<ul id="global">
+					<li class="top"><a href="/"><img src="http://parts.nikkei.co.jp/parts/sumai2011/img/common/global1.gif" alt="TOP" width="48" height="45" id="global1" onmouseover="MM_swapImage('global1','','http://parts.nikkei.co.jp/parts/sumai2011/img/common/global1_o.gif',1)" onmouseout="MM_swapImgRestore()" /></a></li>
+					<li><a href="/search/zenkoku/"><img src="http://parts.nikkei.co.jp/parts/sumai2011/img/common/global2.gif" alt="住まいを探す" width="106" height="45" id="global2" onmouseover="MM_swapImage('global2','','http://parts.nikkei.co.jp/parts/sumai2011/img/common/global2_o.gif',1)" onmouseout="MM_swapImgRestore()" /></a></li>					
+					<li><a href="/news/list/"><img src="http://parts.nikkei.co.jp/parts/sumai2011/img/common/global3.gif" alt="最新ニュース" width="106" height="45" id="global3" onmouseover="MM_swapImage('global3','','http://parts.nikkei.co.jp/parts/sumai2011/img/common/global3_o.gif',1)" onmouseout="MM_swapImgRestore()" /></a></li>
+					<li><a href="/sp/"><img src="http://parts.nikkei.co.jp/parts/sumai2011/img/common/global4.gif" alt="今月の特集" width="106" height="45" id="global4" onmouseover="MM_swapImage('global4','','http://parts.nikkei.co.jp/parts/sumai2011/img/common/global4_o.gif',1)" onmouseout="MM_swapImgRestore()" /></a></li>
+					<li><a href="/edit/rba/modelroom/list/"><img src="http://parts.nikkei.co.jp/parts/sumai2011/img/common/global5.gif" alt="プロの目モデルルーム編" width="106" height="45" id="global5" onmouseover="MM_swapImage('global5','','http://parts.nikkei.co.jp/parts/sumai2011/img/common/global5_o.gif',1)" onmouseout="MM_swapImgRestore()" /></a></li>
+					<li><a href="/edit/soudan/list/"><img src="http://parts.nikkei.co.jp/parts/sumai2011/img/common/global6.gif" alt="専門家に聞く" width="106" height="45" id="global6" onmouseover="MM_swapImage('global6','','http://parts.nikkei.co.jp/parts/sumai2011/img/common/global6_o.gif',1)" onmouseout="MM_swapImgRestore()" /></a></li>
+					<li><a href="/style/"><img src="http://parts.nikkei.co.jp/parts/sumai2011/img/common/global7.gif" alt="実例を見る" width="106" height="45" id="global7" onmouseover="MM_swapImage('global7','','http://parts.nikkei.co.jp/parts/sumai2011/img/common/global7_o.gif',1)" onmouseout="MM_swapImgRestore()" /></a></li>
+					<li><a href="/suumo/pre/"><img src="http://parts.nikkei.co.jp/parts/sumai2011/img/common/globalX.gif" alt="マンション販売前情報" width="106" height="45" id="globalX" onmouseover="MM_swapImage('globalX','','http://parts.nikkei.co.jp/parts/sumai2011/img/common/globalX_o.gif',1)" onmouseout="MM_swapImgRestore()" /></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<map name="lg_maplink">
+		<area shape="circle" coords="40,40,38" href="/" alt="住宅サーチ for Premium Life" />
+	</map> 
+<!-- //// header // -->
+
+
+
+<!-- // panlist // -->
+	<div id="panlist" class="clearfix">
+
+		<p id="pan" class="s"><a href="/">TOP</a><span>住まいを探す</span><strong>全国</strong></p>
+		<ul id="pansidepr" class="s">
+
+<script type="text/javascript">
+<!--
+	var nkadimp_Atarget = '/SITE=SUMALL/AREA=TXT1/AAMSZ=TEXT/OENCJP=UTF8';
+	if (typeof (nkadimp_Abta) == "undefined") { var nkadimp_Abta = ""; }
+	var nkadimp_Apid = Math.floor(10000000000 * Math.random());
+//--></script>
+
+<script type="text/javascript">
+<!--
+	var nkadimp_Arnd0 = Math.floor(10000000000 * Math.random());
+
+	document.write('<scr' + 'ipt type="text/javascript" language="JavaScript" src="http://adpriv.nikkei.com/jserver/acc_random=' + nkadimp_Arnd0 + '/pageid=' + nkadimp_Apid + nkadimp_Atarget + nkadimp_Abta + '">' + '<' + '/scr' + 'ipt>');
+
+//--></script>
+
+</ul>
+	</div>
+<!-- //// panlist // -->
+
+
+<!-- // wrapper // -->
+
+	<div id="wrapper" class="clearfix">
+
+
+    <!-- // maincontents // -->
+    <div id="maincontentstop">
+		
+<script type="text/javascript" src="http://parts.nikkei.co.jp/parts/sumai2011/js/wordSearch.js">
+</script>
+<div class="borderline_right_top" style="padding-bottom:30px;">
+
+	<h2><img src="http://parts.nikkei.co.jp/parts/sumai2011/img/common/title_hopesearch2.gif" alt="駅名・地名から住まいを探す" width="329" height="40" /></h2>
+	<form id="wordSearch" action="/search/gw" method="post">
+	<div style="margin-left:7px;">
+		<div style="border:#E0E0E0 solid 2px;background:#EEEEEE;padding:10px 0px 6px 10px;width:599px;">
+		<table style="margin:0px;"><tr>
+			<td><select id="areaSelect2" name="area" class="s w266" style="width:130px;">
+				<option value="">エリアを選択</option>
+              <option value="1">北海道</option>
+              <option value="2">東北</option>
+              <option value="3" selected>関東</option>
+              <option value="4">甲信越・北陸</option>
+              <option value="5">東海</option>
+              <option value="6">関西</option>
+              <option value="7">中国</option>
+              <option value="8">四国</option>
+              <option value="9">九州・沖縄</option>
+
+			</select></td>
+			<td style="padding-left:4px;"><input id="keywordText" name="keyword" type="text" style="width:210px" class="w260 s" onfocus="if (this.value == '例）吉祥寺 港区など') this.value = ''; this.style.color='#666';this.style.background = '#fff';" onblur="if (this.value == '') this.value = '例）吉祥寺 港区など'; this.style.color='#666';this.style.background = '#fff';" value="例）吉祥寺 港区など" /></td>
+			<td  style="padding-left:23px;"><a href="JavaScript:if (document.getElementById('areaSelect2').value == '') { alert('エリアを選択してください。'); } else { if (document.getElementById('keywordText').value == '例）吉祥寺 港区など') { document.getElementById('keywordText').value = '' }; WordSearchSubmit('wordSearch','areaSelect2','keywordText'); }">
+			    <img src="http://parts.nikkei.co.jp/parts/sumai2011/img/common/btn_search4b.gif" width="206" height="46" /></a></td>
+		</tr></table>
+		</div>
+	</div>
+	</form>
+	
+</div>
+
+
+		<!---*** ページ下検索ボックス *************************************--->
+	    <div class="borderline_right_top">
+		<script type="text/javascript" src="/union/tools/parts_kensakubox.aspx" ></script>
+	    </div>
+		<!---*** ページ下検索ボックス *************************************--->
+
+		
+
+<div class="borderline_right_top" style="margin-bottom:30px;">
+
+	<!-- // top_map // -->
+	<h2><img src="http://parts.nikkei.co.jp/parts/sumai2011/img/common/title_hopesearch3.gif" alt="エリアから住まいを探す" width="329" height="40" /></h2>
+
+	<div class="textbox">
+		<img src="http://parts.nikkei.co.jp/parts/sumai2011/img/common/top_map.gif" alt="" width="604" height="278" usemap="#mapnaviMap" id="mapnavi" />
+	</div>
+	
+	
+</div>
+
+
+<map name="mapnaviMap" id="mapnaviMap">
+    <!-- // 北海道 // -->
+	<area shape="rect" coords="10,15,146,39" href="/search/hokkaido/" alt="北海道" onmouseover="MM_swapImage('mapnavi','','http://parts.nikkei.co.jp/parts/sumai2011/img/common/top_map_1.gif',1)" onmouseout="MM_swapImgRestore()" />
+	<area shape="poly" coords="478,51,493,15,531,15,591,46,584,68,517,67,517,72,445,76,457,51" href="/search/hokkaido/" alt="北海道" onmouseover="MM_swapImage('mapnavi','','http://parts.nikkei.co.jp/parts/sumai2011/img/common/top_map_1.gif',1)" onmouseout="MM_swapImgRestore()" />
+    <!-- // 東北 // -->
+	<area shape="rect" coords="162,16,266,40" href="/search/tohoku/" alt="東北" onmouseover="MM_swapImage('mapnavi','','http://parts.nikkei.co.jp/parts/sumai2011/img/common/top_map_2.gif',1)" onmouseout="MM_swapImgRestore()" />
+	<area shape="poly" coords="443,85,467,85,465,89,487,91,493,86,516,86,502,121,495,121,478,158,413,158" href="/search/tohoku/" alt="東北" onmouseover="MM_swapImage('mapnavi','','http://parts.nikkei.co.jp/parts/sumai2011/img/common/top_map_2.gif',1)" onmouseout="MM_swapImgRestore()" />
+    <!-- // 関東 // -->
+	<area shape="rect" coords="282,15,399,40" href="/search/kanto/" alt="関東" onmouseover="MM_swapImage('mapnavi','','http://parts.nikkei.co.jp/parts/sumai2011/img/common/top_map_3.gif',1)" onmouseout="MM_swapImgRestore()" />
+	<area shape="poly" coords="412,160,477,160,470,180,476,181,459,220,439,219,448,202,425,202,417,220,386,220,393,206,355,206,360,191,398,191" href="/search/kanto/" alt="関東" onmouseover="MM_swapImage('mapnavi','','http://parts.nikkei.co.jp/parts/sumai2011/img/common/top_map_3.gif',1)" onmouseout="MM_swapImgRestore()" />
+    <!-- // 甲信越・北陸 // -->
+	<area shape="rect" coords="9,53,146,76" href="/search/koshinetsu/" alt="甲信越・北陸" onmouseover="MM_swapImage('mapnavi','','http://parts.nikkei.co.jp/parts/sumai2011/img/common/top_map_4.gif',1)" onmouseout="MM_swapImgRestore()" />
+	<area shape="poly" coords="422,133,397,190,302,190,303,182,317,177,326,159,346,158,345,164" href="/search/koshinetsu/" alt="甲信越・北陸" onmouseover="MM_swapImage('mapnavi','','http://parts.nikkei.co.jp/parts/sumai2011/img/common/top_map_4.gif',1)" onmouseout="MM_swapImgRestore()" />
+    <!-- // 東海 // -->
+	<area shape="rect" coords="162,53,265,76" href="/search/tokai/" alt="東海" onmouseover="MM_swapImage('mapnavi','','http://parts.nikkei.co.jp/parts/sumai2011/img/common/top_map_5.gif',1)" onmouseout="MM_swapImgRestore()" />
+	<area shape="poly" coords="300,191,358,191,353,208,390,208,386,216,303,216,295,237,280,238" href="/search/tokai/" alt="東海" onmouseover="MM_swapImage('mapnavi','','http://parts.nikkei.co.jp/parts/sumai2011/img/common/top_map_5.gif',1)" onmouseout="MM_swapImgRestore()" />
+    <!-- // 関西 // -->
+	<area shape="rect" coords="282,53,398,78" href="/search/kansai/" alt="関西" onmouseover="MM_swapImage('mapnavi','','http://parts.nikkei.co.jp/parts/sumai2011/img/common/top_map_6.gif',1)" onmouseout="MM_swapImgRestore()" />
+	<area shape="poly" coords="240,184,302,183,278,239,244,237,256,210,228,210" href="/search/kansai/" alt="関西" onmouseover="MM_swapImage('mapnavi','','http://parts.nikkei.co.jp/parts/sumai2011/img/common/top_map_6.gif',1)" onmouseout="MM_swapImgRestore()" />
+    <!-- // 中国 // -->
+	<area shape="rect" coords="9,89,145,112" href="/search/chugoku/" alt="中国" onmouseover="MM_swapImage('mapnavi','','http://parts.nikkei.co.jp/parts/sumai2011/img/common/top_map_7.gif',1)" onmouseout="MM_swapImgRestore()" />
+	<area shape="poly" coords="143,183,131,210,226,210,239,183" href="/search/chugoku/" alt="中国" onmouseover="MM_swapImage('mapnavi','','http://parts.nikkei.co.jp/parts/sumai2011/img/common/top_map_7.gif',1)" onmouseout="MM_swapImgRestore()" />
+    <!-- // 四国 // -->
+	<area shape="rect" coords="161,89,266,112" href="/search/shikoku/" alt="四国" onmouseover="MM_swapImage('mapnavi','','http://parts.nikkei.co.jp/parts/sumai2011/img/common/top_map_8.gif',1)" onmouseout="MM_swapImgRestore()" />
+	<area shape="poly" coords="134,222,169,222,171,226,192,226,193,222,224,222,211,251,192,251,193,245,148,245,144,251,121,251" href="/search/shikoku/" alt="四国" onmouseover="MM_swapImage('mapnavi','','http://parts.nikkei.co.jp/parts/sumai2011/img/common/top_map_8.gif',1)" onmouseout="MM_swapImgRestore()" />
+    <!-- // 九州・沖縄 // -->
+	<area shape="rect" coords="282,89,398,112" href="/search/kyushu/" alt="九州・沖縄" onmouseover="MM_swapImage('mapnavi','','http://parts.nikkei.co.jp/parts/sumai2011/img/common/top_map_9.gif',1)" onmouseout="MM_swapImgRestore()" />
+	<area shape="poly" coords="50,182,130,182,103,247,77,247,81,241,64,241,61,246,50,246,69,202,60,201,53,210,38,210" href="/search/kyushu/" alt="九州・沖縄" onmouseover="MM_swapImage('mapnavi','','http://parts.nikkei.co.jp/parts/sumai2011/img/common/top_map_9.gif',1)" onmouseout="MM_swapImgRestore()" />
+	<area shape="poly" coords="42,248,48,234,24,234,18,248" href="/search/kyushu/" alt="九州・沖縄" onmouseover="MM_swapImage('mapnavi','','http://parts.nikkei.co.jp/parts/sumai2011/img/common/top_map_9.gif',1)" onmouseout="MM_swapImgRestore()" />
+</map>
+        <ul class="contentsbottompr3_gray ms">
+		    
+
+<script type="text/javascript">
+<!--
+	var nkadimp_Atarget = '/SITE=SUMALL/AREA=TXT2/AAMSZ=TEXT/OENCJP=UTF8';
+	if (typeof (nkadimp_Abta) == "undefined") { var nkadimp_Abta = ""; }
+	var nkadimp_Apid = Math.floor(10000000000 * Math.random());
+//--></script>
+
+<script type="text/javascript">
+<!--
+	var nkadimp_Arnd0 = Math.floor(10000000000 * Math.random());
+
+	document.write('<scr' + 'ipt type="text/javascript" language="JavaScript" src="http://adpriv.nikkei.com/jserver/acc_random=' + nkadimp_Arnd0 + '/pageid=' + nkadimp_Apid + nkadimp_Atarget + nkadimp_Abta + '">' + '<' + '/scr' + 'ipt>');
+
+//--></script>
+
+<script type="text/javascript">
+<!--
+	var nkadimp_Arnd1 = Math.floor(10000000000 * Math.random());
+
+	document.write('<scr' + 'ipt type="text/javascript" language="JavaScript" src="http://adpriv.nikkei.com/jserver/acc_random=' + nkadimp_Arnd1 + '/pageid=' + nkadimp_Apid + nkadimp_Atarget + nkadimp_Abta + '">' + '<' + '/scr' + 'ipt>');
+
+//--></script>
+
+<script type="text/javascript">
+<!--
+	var nkadimp_Arnd2 = Math.floor(10000000000 * Math.random());
+
+	document.write('<scr' + 'ipt type="text/javascript" language="JavaScript" src="http://adpriv.nikkei.com/jserver/acc_random=' + nkadimp_Arnd2 + '/pageid=' + nkadimp_Apid + nkadimp_Atarget + nkadimp_Abta + '">' + '<' + '/scr' + 'ipt>');
+
+//--></script>
+
+<script type="text/javascript">
+<!--
+	var nkadimp_Arnd3 = Math.floor(10000000000 * Math.random());
+
+	document.write('<scr' + 'ipt type="text/javascript" language="JavaScript" src="http://adpriv.nikkei.com/jserver/acc_random=' + nkadimp_Arnd3 + '/pageid=' + nkadimp_Apid + nkadimp_Atarget + nkadimp_Abta + '">' + '<' + '/scr' + 'ipt>');
+
+//--></script>
+
+<script type="text/javascript">
+<!--
+	var nkadimp_Arnd4 = Math.floor(10000000000 * Math.random());
+
+	document.write('<scr' + 'ipt type="text/javascript" language="JavaScript" src="http://adpriv.nikkei.com/jserver/acc_random=' + nkadimp_Arnd4 + '/pageid=' + nkadimp_Apid + nkadimp_Atarget + nkadimp_Abta + '">' + '<' + '/scr' + 'ipt>');
+
+//--></script>
+
+<script type="text/javascript">
+<!--
+	var nkadimp_Arnd5 = Math.floor(10000000000 * Math.random());
+
+	document.write('<scr' + 'ipt type="text/javascript" language="JavaScript" src="http://adpriv.nikkei.com/jserver/acc_random=' + nkadimp_Arnd5 + '/pageid=' + nkadimp_Apid + nkadimp_Atarget + nkadimp_Abta + '">' + '<' + '/scr' + 'ipt>');
+
+//--></script>
+
+
+        </ul>
+
+		<div style="margin:5px;">
+			<dl class="sitemapcat clearfix">
+
+<!-- // 賃貸 // -->
+				<dt class="sitemaparea m">賃貸</dt>
+					<dd class="ms">
+						<ul class="width3">
+							<li><a href="http://nikkei-suumo.jp/chintai/hokkaido/">北海道の賃貸</a></li>
+							<li><a href="http://nikkei-suumo.jp/chintai/tohoku/">東北の賃貸</a></li>
+							<li><a href="http://nikkei-suumo.jp/chintai/kanto/">関東の賃貸</a></li>
+							<li><a href="http://nikkei-suumo.jp/chintai/koshinetsu/">甲信越・北陸の賃貸</a></li>
+							<li><a href="http://nikkei-suumo.jp/chintai/tokai/">東海の賃貸</a></li>
+							<li><a href="http://nikkei-suumo.jp/chintai/kansai/">関西の賃貸</a></li>
+							<li><a href="http://nikkei-suumo.jp/chintai/chugoku/">中国の賃貸</a></li>
+							<li><a href="http://nikkei-suumo.jp/chintai/shikoku/">四国の賃貸</a></li>
+							<li><a href="http://nikkei-suumo.jp/chintai/kyushu/">九州・沖縄の賃貸</a></li>
+						</ul>
+					</dd>
+
+<!-- // 新築マンション購入 // -->
+				<dt class="sitemaparea m">新築マンション購入</dt>
+					<dd class="ms">
+						<ul class="width3">
+							<li><a href="http://nikkei-suumo.jp/mansion/hokkaido/">北海道の新築マンション</a></li>
+							<li><a href="http://nikkei-suumo.jp/mansion/tohoku/">東北の新築マンション</a></li>
+							<li><a href="http://nikkei-suumo.jp/mansion/kanto/">関東の新築マンション</a></li>
+							<li><a href="http://nikkei-suumo.jp/mansion/koshinetsu/">甲信越・北陸の新築マンション</a></li>
+							<li><a href="http://nikkei-suumo.jp/mansion/tokai/">東海の新築マンション</a></li>
+							<li><a href="http://nikkei-suumo.jp/mansion/kansai/">関西の新築マンション</a></li>
+							<li><a href="http://nikkei-suumo.jp/mansion/chugoku/">中国の新築マンション</a></li>
+							<li><a href="http://nikkei-suumo.jp/mansion/shikoku/">四国の新築マンション</a></li>
+							<li><a href="http://nikkei-suumo.jp/mansion/kyushu/">九州・沖縄の新築マンション</a></li>
+						</ul>
+					</dd>
+
+<!-- // 中古マンション購入 // -->
+				<dt class="sitemaparea m">中古マンション購入</dt>
+					<dd class="ms">
+						<ul class="width3">
+							<li><a href="http://nikkei-suumo.jp/chukomansion/hokkaido/">北海道の中古マンション</a></li>
+							<li><a href="http://nikkei-suumo.jp/chukomansion/tohoku/">東北の中古マンション</a></li>
+							<li><a href="http://nikkei-suumo.jp/chukomansion/kanto/">関東の中古マンション</a></li>
+							<li><a href="http://nikkei-suumo.jp/chukomansion/koshinetsu/">甲信越・北陸の中古マンション</a></li>
+							<li><a href="http://nikkei-suumo.jp/chukomansion/tokai/">東海の中古マンション</a></li>
+							<li><a href="http://nikkei-suumo.jp/chukomansion/kansai/">関西の中古マンション</a></li>
+							<li><a href="http://nikkei-suumo.jp/chukomansion/chugoku/">中国の中古マンション</a></li>
+							<li><a href="http://nikkei-suumo.jp/chukomansion/shikoku/">四国の中古マンション</a></li>
+							<li><a href="http://nikkei-suumo.jp/chukomansion/kyushu/">九州・沖縄の中古マンション</a></li>
+						</ul>
+					</dd>
+
+<!-- // 新築一戸建て購入 // -->
+				<dt class="sitemaparea m">新築一戸建て購入</dt>
+					<dd class="ms">
+						<ul class="width3">
+							<li><a href="http://nikkei-suumo.jp/ikkodate/hokkaido/">北海道の新築一戸建て</a></li>
+							<li><a href="http://nikkei-suumo.jp/ikkodate/tohoku/">東北の新築一戸建て</a></li>
+							<li><a href="http://nikkei-suumo.jp/ikkodate/kanto/">関東の新築一戸建て</a></li>
+							<li><a href="http://nikkei-suumo.jp/ikkodate/koshinetsu/">甲信越・北陸の新築一戸建て</a></li>
+							<li><a href="http://nikkei-suumo.jp/ikkodate/tokai/">東海の新築一戸建て</a></li>
+							<li><a href="http://nikkei-suumo.jp/ikkodate/kansai/">関西の新築一戸建て</a></li>
+							<li><a href="http://nikkei-suumo.jp/ikkodate/chugoku/">中国の新築一戸建て</a></li>
+							<li><a href="http://nikkei-suumo.jp/ikkodate/shikoku/">四国の新築一戸建て</a></li>
+							<li><a href="http://nikkei-suumo.jp/ikkodate/kyushu/">九州・沖縄の新築一戸建て</a></li>
+						</ul>
+					</dd>
+
+<!-- // 中古一戸建て購入 // -->
+				<dt class="sitemaparea m">中古一戸建て購入</dt>
+					<dd class="ms">
+						<ul class="width3">
+							<li><a href="http://nikkei-suumo.jp/chukoikkodate/hokkaido/">北海道の中古一戸建て</a></li>
+							<li><a href="http://nikkei-suumo.jp/chukoikkodate/tohoku/">東北の中古一戸建て</a></li>
+							<li><a href="http://nikkei-suumo.jp/chukoikkodate/kanto/">関東の中古一戸建て</a></li>
+							<li><a href="http://nikkei-suumo.jp/chukoikkodate/koshinetsu/">甲信越・北陸の中古一戸建て</a></li>
+							<li><a href="http://nikkei-suumo.jp/chukoikkodate/tokai/">東海の中古一戸建て</a></li>
+							<li><a href="http://nikkei-suumo.jp/chukoikkodate/kansai/">関西の中古一戸建て</a></li>
+							<li><a href="http://nikkei-suumo.jp/chukoikkodate/chugoku/">中国の中古一戸建て</a></li>
+							<li><a href="http://nikkei-suumo.jp/chukoikkodate/shikoku/">四国の中古一戸建て</a></li>
+							<li><a href="http://nikkei-suumo.jp/chukoikkodate/kyushu/">九州・沖縄の中古一戸建て</a></li>
+						</ul>
+					</dd>
+
+<!-- // 土地購入 // -->
+				<dt class="sitemaparea m">土地購入</dt>
+					<dd class="ms">
+						<ul class="width3">
+							<li><a href="http://nikkei-suumo.jp/tochi/hokkaido/">北海道の土地情報</a></li>
+							<li><a href="http://nikkei-suumo.jp/tochi/tohoku/">東北の土地情報</a></li>
+							<li><a href="http://nikkei-suumo.jp/tochi/kanto/">関東の土地情報</a></li>
+							<li><a href="http://nikkei-suumo.jp/tochi/koshinetsu/">甲信越・北陸の土地情報</a></li>
+							<li><a href="http://nikkei-suumo.jp/tochi/tokai/">東海の土地情報</a></li>
+							<li><a href="http://nikkei-suumo.jp/tochi/kansai/">関西の土地情報</a></li>
+							<li><a href="http://nikkei-suumo.jp/tochi/chugoku/">中国の土地情報</a></li>
+							<li><a href="http://nikkei-suumo.jp/tochi/shikoku/">四国の土地情報</a></li>
+							<li><a href="http://nikkei-suumo.jp/tochi/kyushu/">九州・沖縄の土地情報</a></li>
+						</ul>
+					</dd>
+
+<!-- // 注文住宅 // -->
+				<dt class="sitemaparea m">注文住宅</dt>
+					<dd class="ms">
+						<ul class="width3">
+							<li><a href="http://nikkei-suumo.jp/chumon/hokkaido/nikkei_index.html">北海道の注文住宅</a></li>
+							<li><a href="http://nikkei-suumo.jp/chumon/tohoku/nikkei_index.html">東北の注文住宅</a></li>
+							<li><a href="http://nikkei-suumo.jp/chumon/kanto/nikkei_index.html">関東の注文住宅</a></li>
+							<li><a href="http://nikkei-suumo.jp/chumon/koshinetsu/nikkei_index.html">甲信越・北陸の注文住宅</a></li>
+							<li><a href="http://nikkei-suumo.jp/chumon/tokai/nikkei_index.html">東海の注文住宅</a></li>
+							<li><a href="http://nikkei-suumo.jp/chumon/kansai/nikkei_index.html">関西の注文住宅</a></li>
+							<li><a href="http://nikkei-suumo.jp/chumon/chugoku/nikkei_index.html">中国の注文住宅</a></li>
+							<li><a href="http://nikkei-suumo.jp/chumon/shikoku/nikkei_index.html">四国の注文住宅</a></li>
+							<li><a href="http://nikkei-suumo.jp/chumon/kyushu/nikkei_index.html">九州・沖縄の注文住宅</a></li>
+						</ul>
+					</dd>
+
+<!-- // リフォーム // -->
+				<dt class="sitemaparea m">リフォーム</dt>
+					<dd class="ms">
+						<ul class="width3">
+							<li><a href="http://nikkei-suumo.jp/reform/hokkaido/">北海道のリフォーム</a></li>
+							<li><a href="http://nikkei-suumo.jp/reform/tohoku/">東北のリフォーム</a></li>
+							<li><a href="http://nikkei-suumo.jp/reform/kanto/">関東のリフォーム</a></li>
+							<li><a href="http://nikkei-suumo.jp/reform/koshinetsu/">甲信越・北陸のリフォーム</a></li>
+							<li><a href="http://nikkei-suumo.jp/reform/tokai/">東海のリフォーム</a></li>
+							<li><a href="http://nikkei-suumo.jp/reform/kansai/">関西のリフォーム</a></li>
+							<li><a href="http://nikkei-suumo.jp/reform/chugoku/">中国のリフォーム</a></li>
+							<li><a href="http://nikkei-suumo.jp/reform/shikoku/">四国のリフォーム</a></li>
+							<li><a href="http://nikkei-suumo.jp/reform/kyushu/">九州・沖縄のリフォーム</a></li>
+						</ul>
+					</dd>
+
+<!-- // 住宅設備 // -->
+				<!--dt class="sitemaparea m">住宅設備</dt>
+					<dd class="ms">
+						<ul class="width2">
+							<li><a href="#">キッチン</a><span style="color:red">（未）</span></li>
+							<li><a href="#">バス・サニタリー</a><span style="color:red">（未）</span></li>
+							<li><a href="#">エクステリア</a><span style="color:red">（未）</span></li>
+							<li><a href="#">玄関ドア・窓</a><span style="color:red">（未）</span></li>
+							<li><a href="#">セキュリティ</a><span style="color:red">（未）</span></li>
+							<li><a href="#">家具・インテリア</a><span style="color:red">（未）</span></li>
+							<li><a href="#">キッチン関連機器</a><span style="color:red">（未）</span></li>
+							<li><a href="#">外装材・断熱材</a><span style="color:red">（未）</span></li>
+							<li><a href="#">リビング・内装材・室内ドア・収納</a><span style="color:red">（未）</span></li>
+							<li><a href="#">空調・冷暖房</a><span style="color:red">（未）</span></li>
+							<li><a href="#">エネルギー</a><span style="color:red">（未）</span></li>
+							<li><a href="#">家電・ホームシアター・ネットワーク</a><span style="color:red">（未）</span></li>
+						</ul>
+					</dd-->
+
+<!-- // 売却 // -->
+				<dt class="sitemaparea m">売却</dt>
+					<dd class="ms">
+						<ul class="width2">
+							<li><a href="http://nikkei-suumo.jp/baikyaku/hokkaido/">北海道の査定・売却情報</a></li>
+							<li><a href="http://nikkei-suumo.jp/baikyaku/tohoku/">東北の査定・売却情報</a></li>
+							<li><a href="http://nikkei-suumo.jp/baikyaku/kanto/">関東の査定・売却情報</a></li>
+							<li><a href="http://nikkei-suumo.jp/baikyaku/koshinetsu/">甲信越・北陸の査定・売却情報</a></li>
+							<li><a href="http://nikkei-suumo.jp/baikyaku/tokai/">東海の査定・売却情報</a></li>
+							<li><a href="http://nikkei-suumo.jp/baikyaku/kansai/">関西の査定・売却情報</a></li>
+							<li><a href="http://nikkei-suumo.jp/baikyaku/chugoku/">中国の査定・売却情報</a></li>
+							<li><a href="http://nikkei-suumo.jp/baikyaku/shikoku/">四国の査定・売却情報</a></li>
+							<li><a href="http://nikkei-suumo.jp/baikyaku/kyushu/">九州・沖縄の査定・売却情報</a></li>
+						</ul>
+					</dd>
+
+			</dl>
+</div>
+<!-- //// 住まいを探す // -->
+        
+    </div>
+    <!-- // maincontents // -->
+	
+
+
+
+
+<!-- // rightmenu // -->
+		<div id="rightmenu_top">
+			
+            
+
+<!-- // reccolumn // -->
+
+			
+
+<div id="reccolumn" class="m">
+	<div style="vertical-align:top;text-align:right;height:15px;font-size:0px;"><img src="/eigyo/img/rightcolumn/recruit_logo.gif" height="12" width="113" /></div>
+	<div style="font-size:93%;">
+    
+    <a href="http://nikkei-suumo.jp/tokushu/pre/mansion_kanto/?vos=di0363xxxxzp001000201zzz_0000000001">新登場！ 注目のマンションピックアップ</a><BR>
+        
+    <a href="http://nikkei-suumo.jp/jj/chintai/top/FR301FA080/?ar=030&bs=040&vos=di0363xxxxzp000000000zzz_0000000002">上質な暮らしを実現 ハイグレード賃貸物件</a><BR>
+        
+    <a href="http://nikkei-suumo.jp/tokushu/pre/mansion_kansai/?vos=di0363xxxxzp001000201zzz_0000000001">【関西版】これから販売される新築マンション</a><BR>
+        
+	</div>
+</div>
+
+
+
+<!-- //// reccolumn // -->
+
+<!-- // right banner // -->
+
+			<div id="addspace1">
+
+<script type="text/javascript">
+<!--
+	var nkadimp_Atarget = '/SITE=SUMALL/AREA=RECT1/AAMSZ=300X250/OENCJP=UTF8';
+	if (typeof (nkadimp_Abta) == "undefined") { var nkadimp_Abta = ""; }
+	var nkadimp_Apid = Math.floor(10000000000 * Math.random());
+//--></script>
+
+<script type="text/javascript">
+<!--
+	var nkadimp_Arnd0 = Math.floor(10000000000 * Math.random());
+
+	document.write('<scr' + 'ipt type="text/javascript" language="JavaScript" src="http://adpriv.nikkei.com/jserver/acc_random=' + nkadimp_Arnd0 + '/pageid=' + nkadimp_Apid + nkadimp_Atarget + nkadimp_Abta + '">' + '<' + '/scr' + 'ipt>');
+
+//--></script>
+
+</div>
+
+<!-- //// right banner // -->
+
+<!-- // right banner list // -->
+
+			<div id="addlistspace">
+				<ul class="s">
+
+
+<script type="text/javascript">
+<!--
+	var nkadimp_Atarget = '/SITE=SUMALL/AREA=PRTXT/AAMSZ=68X68/OENCJP=UTF8';
+	if (typeof (nkadimp_Abta) == "undefined") { var nkadimp_Abta = ""; }
+	var nkadimp_Apid = Math.floor(10000000000 * Math.random());
+//--></script>
+
+<script type="text/javascript">
+<!--
+	var nkadimp_Arnd0 = Math.floor(10000000000 * Math.random());
+
+	document.write('<scr' + 'ipt type="text/javascript" language="JavaScript" src="http://adpriv.nikkei.com/jserver/acc_random=' + nkadimp_Arnd0 + '/pageid=' + nkadimp_Apid + nkadimp_Atarget + nkadimp_Abta + '">' + '<' + '/scr' + 'ipt>');
+
+//--></script>
+
+<script type="text/javascript">
+<!--
+	var nkadimp_Arnd1 = Math.floor(10000000000 * Math.random());
+
+	document.write('<scr' + 'ipt type="text/javascript" language="JavaScript" src="http://adpriv.nikkei.com/jserver/acc_random=' + nkadimp_Arnd1 + '/pageid=' + nkadimp_Apid + nkadimp_Atarget + nkadimp_Abta + '">' + '<' + '/scr' + 'ipt>');
+
+//--></script>
+
+<script type="text/javascript">
+<!--
+	var nkadimp_Arnd2 = Math.floor(10000000000 * Math.random());
+
+	document.write('<scr' + 'ipt type="text/javascript" language="JavaScript" src="http://adpriv.nikkei.com/jserver/acc_random=' + nkadimp_Arnd2 + '/pageid=' + nkadimp_Apid + nkadimp_Atarget + nkadimp_Abta + '">' + '<' + '/scr' + 'ipt>');
+
+//--></script>
+
+<script type="text/javascript">
+<!--
+	var nkadimp_Arnd3 = Math.floor(10000000000 * Math.random());
+
+	document.write('<scr' + 'ipt type="text/javascript" language="JavaScript" src="http://adpriv.nikkei.com/jserver/acc_random=' + nkadimp_Arnd3 + '/pageid=' + nkadimp_Apid + nkadimp_Atarget + nkadimp_Abta + '">' + '<' + '/scr' + 'ipt>');
+
+//--></script>
+
+
+				</ul>
+			</div>
+
+<!-- //// right banner list // -->
+
+<!-- // recoinfo // -->
+
+			<div id="recoinfo">
+				<div class="tit"><img src="http://parts.nikkei.co.jp/parts/sumai2011/img/common/rtitle_recoinfo.gif" alt="おすすめ情報（PR）" width="149" height="24" /></div>
+				<ul class="ms">
+
+
+<script type="text/javascript">
+<!--
+	var nkadimp_Atarget = '/SITE=SUMALL/AREA=TXT3/AAMSZ=TEXT/OENCJP=UTF8';
+	if (typeof (nkadimp_Abta) == "undefined") { var nkadimp_Abta = ""; }
+	var nkadimp_Apid = Math.floor(10000000000 * Math.random());
+//--></script>
+
+<script type="text/javascript">
+<!--
+	var nkadimp_Arnd0 = Math.floor(10000000000 * Math.random());
+
+	document.write('<scr' + 'ipt type="text/javascript" language="JavaScript" src="http://adpriv.nikkei.com/jserver/acc_random=' + nkadimp_Arnd0 + '/pageid=' + nkadimp_Apid + nkadimp_Atarget + nkadimp_Abta + '">' + '<' + '/scr' + 'ipt>');
+
+//--></script>
+
+<script type="text/javascript">
+<!--
+	var nkadimp_Arnd1 = Math.floor(10000000000 * Math.random());
+
+	document.write('<scr' + 'ipt type="text/javascript" language="JavaScript" src="http://adpriv.nikkei.com/jserver/acc_random=' + nkadimp_Arnd1 + '/pageid=' + nkadimp_Apid + nkadimp_Atarget + nkadimp_Abta + '">' + '<' + '/scr' + 'ipt>');
+
+//--></script>
+
+
+				</ul>
+			</div>
+
+<!-- //// recoinfo // -->
+
+
+
+<!-- // レクタングル広告 // -->
+<!-- 
+<div class="addspace">
+	<a href="http://www.reformhaku.jp/" target="_blank"><img src="/eigyo/img/rightcolumn/RI2013_banner_300x60.jpg" alt="リフォーム＆インテリア2013" /></a>
+</div>
+ -->
+
+
+
+
+<!-- // pressrelease // -->
+
+			<div id="pressrelease">
+				<div class="btnarrowright"><a href="/release/house/list/"><img src="http://parts.nikkei.co.jp/parts/sumai2011/img/common/icon_arrow6.gif" alt="" name="rtitle_pressrelease" width="42" height="42" id="rtitle_pressrelease" onmouseover="MM_swapImage('rtitle_pressrelease','','http://parts.nikkei.co.jp/parts/sumai2011/img/common/icon_arrow6_o.gif',1)" onmouseout="MM_swapImgRestore()" /></a></div>
+				<div class="tit"><a href="/release/house/list/"><img src="http://parts.nikkei.co.jp/parts/sumai2011/img/common/rtitle_pressrelease.gif" alt="プレスリリース" width="219" height="52" onmouseover="MM_swapImage('rtitle_pressrelease','','http://parts.nikkei.co.jp/parts/sumai2011/img/common/icon_arrow6_o.gif',1)" onmouseout="MM_swapImgRestore()" /></a></div>
+				<ul class="ms">
+
+					<li><a href="/release/house/detail/405253/">ニチベイ、ロールスクリーン「ソフィー　トレンドコレクション」に新柄を追加し発売</a></li>
+
+					<li><a href="/release/house/detail/405249/">サンゲツ、リフォーム向け壁紙を収録した見本帳を発売</a></li>
+
+					<li><a href="/release/house/detail/405229/">伊藤忠都市開発など、オキュラスリフト活用の「クレヴィア豊洲」モデルルームを開設</a></li>
+
+				</ul>
+			</div>
+
+<!-- //// pressrelease // -->
+
+
+
+
+
+
+
+<!-- // ranking // -->
+
+			
+
+<!-- //// ranking // -->
+
+
+
+
+<!-- // right banner bottom list // -->
+<!-- 
+            <div id="addlistspacebottom">
+	            <div class="tit"><img src="http://parts.nikkei.co.jp/parts/sumai2011/img/common/rtitle_recoobject.gif" alt="おすすめ物件" width="103" height="24" /></div>
+                <ul id="ul_BKN"><script type="text/javascript" src="http://sumai.nikkei.co.jp/eigyo/js/RecommBKN.js"></script></ul>
+
+
+    	    </div>
+ -->
+<!-- //// right banner bottom list // -->
+
+<!-- //// Twitter公式「プロフィールウィジェット」 // -->
+<div id="sideTwitterWidgets">
+<div class="twinfo">
+<a class="twitter-timeline" width="300"  lang="ja" href="https://twitter.com/sumai_nikkei" data-widget-id="344994671015100417" data-chrome="nofooter">@sumai_nikkei からのツイート</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+<br>
+※正しく表示されない場合はしばらくお待ちいただくか<br><a href="http://twitter.com/sumai_nikkei" target="_blank">こちらのリンク</a>をクリックしてください
+</div>
+
+</div>
+<!-- //// Twitter公式「プロフィールウィジェット」 // -->
+
+<!-- //// 販売前おすすめ物件特集 // -->
+            <div id="sidePreInfo">
+                <div class="titleArea"><img src="http://parts.nikkei.co.jp/parts/sumai2011/img/common/symai_title_h4.gif"  alt="販売前おすすめ物件特集" /><br /></div>
+	            <!-- ここで表示してます。 -->
+	            <div id="id_PreFeatureRight030"></div>
+	            <div id="id_PreFeatureRight060"></div>
+	            <div id="id_PreFeatureRight031"></div>
+	            <div id="id_PreFeatureRight061"></div>
+            </div>
+            <div class="clearfix"></div>
+<!-- //// 販売前おすすめ物件特集 // -->
+
+		</div>
+<!-- //// rightmenu // -->
+
+		<br class="clr" />
+		<div id="prbox" class="clearfix">
+			<h2><img src="http://parts.nikkei.co.jp/parts/sumai2011/img/common/title_pr.gif" alt="" width="32" height="24" /></h2>
+			<ul>
+				<li>
+
+<script type="text/javascript">
+<!--
+	var nkadimp_Atarget = '/SITE=SUMALL/AREA=SUBMRN/AAMSZ=100X100/OENCJP=UTF8';
+	if (typeof (nkadimp_Abta) == "undefined") { var nkadimp_Abta = ""; }
+	var nkadimp_Apid = Math.floor(10000000000 * Math.random());
+//--></script>
+
+<script type="text/javascript">
+<!--
+	var nkadimp_Arnd0 = Math.floor(10000000000 * Math.random());
+
+	document.write('<scr' + 'ipt type="text/javascript" language="JavaScript" src="http://adpriv.nikkei.com/jserver/acc_random=' + nkadimp_Arnd0 + '/pageid=' + nkadimp_Apid + nkadimp_Atarget + nkadimp_Abta + '">' + '<' + '/scr' + 'ipt>');
+
+//--></script>
+
+</li>
+				<li><script type="text/javascript">
+<!--
+	var nkadimp_Arnd0 = Math.floor(10000000000 * Math.random());
+
+	document.write('<scr' + 'ipt type="text/javascript" language="JavaScript" src="http://adpriv.nikkei.com/jserver/acc_random=' + nkadimp_Arnd0 + '/pageid=' + nkadimp_Apid + nkadimp_Atarget + nkadimp_Abta + '">' + '<' + '/scr' + 'ipt>');
+
+//--></script>
+
+</li>
+				<li><script type="text/javascript">
+<!--
+	var nkadimp_Arnd0 = Math.floor(10000000000 * Math.random());
+
+	document.write('<scr' + 'ipt type="text/javascript" language="JavaScript" src="http://adpriv.nikkei.com/jserver/acc_random=' + nkadimp_Arnd0 + '/pageid=' + nkadimp_Apid + nkadimp_Atarget + nkadimp_Abta + '">' + '<' + '/scr' + 'ipt>');
+
+//--></script>
+
+</li>
+			</ul>
+		</div>
+<!-- // footersitemap // -->
+		<div id="footersitemap">
+			<div class="sitemapbox s">
+
+				<ul>
+					<li class="cat"><a href="http://sumai.nikkei.co.jp/">トップページ</a></li>
+					<li class="cat"><a href="/search/">住まいを探す</a></li>
+					<li><a href="/suumo/pre/#h2_kantou_mansion">販売前おすすめマンション</a></li>
+					<li class="btm"><a href="/suumo/pre/#h2_kantou_house">おすすめ一戸建て</a></li>
+
+					<li><a href="/search/hokkaido/">北海道</a></li>
+					<li><a href="/search/tohoku/">東北</a></li>
+					<li><a href="/search/kanto/">関東</a></li>
+					<li><a href="/search/koshinetsu/">甲信越・北陸</a></li>
+					<li><a href="/search/tokai/">東海</a></li>
+					<li><a href="/search/kansai/">関西</a></li>
+					<li><a href="/search/chugoku/">中国</a></li>
+					<li><a href="/search/shikoku/">四国</a></li>
+					<li class="btm"><a href="/search/kyusyu/">九州・沖縄</a></li>
+
+					<li class="cat">住宅サーチ×SUUMO</li>
+					<li class="btm"><a href="/edit/suumojournal/">SUUMOジャーナルから</a></li>
+
+				</ul>
+
+				<ul class="shortv">
+					<li class="cat"><a href="/news/">ニュース</a></li>
+					<li><a href="/news/mansion/">マンション</a></li>
+					<li><a href="/news/house/">一戸建て</a></li>
+					<li><a href="/news/setsubi/">住宅設備</a></li>
+					<li><a href="/news/money/">マネー</a></li>
+					<li><a href="/news/gyoukai/">業界</a></li>
+					<li><a href="/news/reform/">リフォーム</a></li>
+					<li><a href="/news/town/">街づくり</a></li>
+					<li><a href="/news/smart/">SmartHouse</a></li>
+					<li><a href="/news/kouji/">特集:公示地価</a></li>
+					<li><a href="/news/rosen/">特集:路線価</a></li>
+					<li class="btm"><a href="/news/kijun/">特集:基準地価</a></li>
+
+					<li class="cat"><a href="/release/">プレスリリース</a></li>
+					<li><a href="/release/house/">住宅</a></li>
+					<li><a href="/release/construction/">建設・土木</a></li>
+					<li class="btm"><a href="/release/other/">その他</a></li>
+
+				</ul>
+
+				<ul class="longv">
+					<li class="cat"><a href="/edit/rba/">住宅最前線 こだわリポート</a></li>
+					<li><a href="/edit/rba/modelroom/">モデルルーム見聞</a></li>
+					<li><a href="/edit/rba/house/">一戸建て</a></li>
+					<li><a href="/edit/rba/company/">企業情報</a></li>
+					<li class="btm"><a href="/edit/rba/etc/">その他</a></li>
+
+					<li class="cat"><a href="/edit/soudan/">住宅ねっと相談室 あらかると</a></li>
+					<li><a href="/edit/soudan/mansion/">マンション</a></li>
+					<li><a href="/edit/soudan/house/">一戸建て</a></li>
+					<li><a href="/edit/soudan/land/">土地</a></li>
+					<li><a href="/edit/soudan/rent/">賃貸</a></li>
+					<li><a href="/edit/soudan/tax/">税金＆ローン</a></li>
+					<li><a href="/edit/soudan/community/">コミュニティー</a></li>
+					<li class="btm"><a href="/edit/soudan/etc/">その他</a></li>
+
+					<li class="cat">プロのアドバイス</li>
+					<li><a href="/edit/mercury/">月例マンション動向（首都圏）</a></li>
+					<li><a href="/edit/classroom/">失敗しない家づくり教室</a></li>
+					<li class="btm"><a href="/edit/doubleincome">共働き夫婦が幸せになる家づくり</a></li>
+
+					<li class="cat">街を知る</li>
+					<li><a href="/edit/street/">わが街の駅前商店街</a></li>
+					<li class="btm"><a href="/style/town/">この街に暮らしたい</a></li>
+				</ul>
+
+				<ul class="rightside">
+					<li class="cat"><a href="/style/">実例を見る</a></li>	
+					<li><a href="/edit/case/">自分らしい住まいのカタチ</a></li>
+					<li><a href="/style/renovate/">快適リノベLIFE</a></li>
+					<li><a href="/style/design/">住むならデザイナーズ住宅</a></li>
+					<li><a href="/style/frontier/">こだわりのデザイナーズ住宅</a></li>
+					<li><a href="/style/mansion/">Tokyo デザイナーズマンション</a></li>
+					<li><a href="/style/gardening/">イングリッシュ・ガーデニング</a></li>
+					<li><a href="/style/kyousyou/">狭小住宅イズム</a></li>
+					<li><a href="/style/rojiura/">路地裏の極上住宅</a></li>
+					<li><a href="/style/slowlife/">スローライフの住宅術</a></li>
+					<li><a href="/style/kokyu/">呼吸する住宅</a></li>
+					<li><a href="/style/kominka/">古民家再生物語</a></li>
+					<li><a href="/style/tukuri/">素敵な暮らしのつくり方</a></li>
+					<li><a href="/style/creator/">クリエーターたちの挑戦</a></li>
+					<li><a href="/style/tyumon/">うちの施主のおかしな注文</a></li>
+					<li><a href="/style/plants/">環境にやさしいガーデニング</a></li>
+					<li class="btm"><a href="/style/normandie/">ノルマンディー 豊饒の庭</a></li>
+
+					<li class="cat"><a href="/edit/info/"></a>お知らせ</li>
+					<li><a href="/edit/spot/">スポットライト</a></li>
+					<li><a href="/edit/info/">サイトからのお知らせ</a></li>
+				</ul>
+
+
+			</div>
+		</div>
+<!-- //// footersitemap // -->
+	</div>
+
+<!-- //// wrapper // -->
+
+
+<!-- ▼======▼======▼======▼ 日本経済新聞社について ▼======▼======▼======▼ -->
+	<div id="footershadow">&nbsp;</div>
+	<div id="HENSEI2010-ABOUT_NIKKEI">
+		<div class="HENSEI2010-fixed HENSEI2010-clearfix">
+			<h2 class="HENSEI2010-title">このサイトについて</h2>
+			<ul class="HENSEI2010-clearfix">
+				<li class="HENSEI2010-first"><a href="https://sch.nikkei.co.jp/sumai/info/" target="_blank">お問合わせ</a></li>
+				<li><a href="http://ps.nikkei.co.jp/adweb/">広告ガイド</a></li>
+				<li><a href="/help/exemption/">サイトのご利用にあたって(免責事項)</a></li>
+				<li><a href="/help/sitemap/">サイトマップ</a></li>
+			</ul>
+			<h2 class="HENSEI2010-title">日本経済新聞社について</h2>
+			<ul class="HENSEI2010-clearfix">
+				<li class="HENSEI2010-first"><a href="http://reprint.nikkei.co.jp/">記事利用</a></li>
+				<li><a href="http://www.nikkei.co.jp/privacy/">個人情報の取り扱い</a></li>
+				<li><a href="http://www.nikkei.co.jp/saiyo/">本社採用案内</a></li>
+				<li><a href="http://www.nikkei.co.jp/nikkeiinfo/company/group.html">日経グループ情報</a></li>
+				<li><a href="http://www.nikkei.co.jp/nikkeiinfo/">会社情報・お知らせ</a></li>
+				<li><a href="http://adweb.nikkei.co.jp/">新聞広告お申し込みガイド</a></li>
+				<li><a href="http://www.nikkei4946.com/">NIKKEI4946.com（紙面紹介と購読案内）</a></li>
+			</ul>
+			<ul class="HENSEI2010-copyright">
+				<li>Copyright © 2016 Nikkei Inc. All rights reserved.</li>
+			</ul>
+		</div>
+	</div>
+<!-- ▲======▲======▲======▲ 日本経済新聞社について ▲======▲======▲======▲ -->
+
+<div id="SITE_CATALYST">
+
+<!-- SiteCatalyst code version: H.9.
+Copyright 1997-2007 Omniture, Inc. More info available at
+http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src='http://parts.nikkei.co.jp/parts/SC2/sumai/s_codeDSsumai20141101.js'></script>
+<script language="JavaScript" type="text/javascript" src='http://parts.nikkei.co.jp/parts/SC2/s_cDS.js'></script>
+<script language="JavaScript" type="text/javascript">
+<!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<noscript><a href="http://www.omniture.com" title="Web Analytics"><img src="http://nikkei.d1.sc.omtrdc.net/b/ss/nikkeicojpdsmstallprod,nikkeicojpgrpmstallprod,nikkeicojpsumaiprod/1/H.9--NS/0" height="1" width="1" border="0" alt="" /></a></noscript>
+<!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.9. -->
+</div>
+
+
+<script type="text/javascript">
+    //---GA basetag---
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-21030281-1']);
+    _gaq.push(['_setDomainName', 'none']);
+    _gaq.push(['_setAllowLinker', true]);
+    _gaq.push(['_trackPageview']);
+
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+</script>
+<script type="text/javascript" src="/util/tool/nikkei.webantenna.js"></script>
+</body>
+</html>

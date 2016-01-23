@@ -1,0 +1,278 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="verify-v1" content="TKObkaoilejNjqMWyOocNQmKeHEs38Fs1/82pE3XMUU=" />
+<title>AKATSUKI : The Official Site − 草野球チームあかつき</title>
+<link rel="stylesheet" type="text/css" href="/css/import.css" media="screen,tv" />
+<link rel="Shortcut Icon" type="image/x-icon" href="/img/favicon.ico" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="./rss/index.rdf" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
+<script type="text/javascript" src="/js/jquery.cookie.js" charset="Shift_JIS"></script>
+<script type="text/javascript" src="/js/jkl-parsexml.js" charset="Shift_JIS"></script>
+<script type="text/javascript" src="/js/common.js?289722" charset="Shift_JIS"></script>
+<script type='text/javascript' src='/js/jquery.simplemodal.js'></script>
+<script type='text/javascript' src='/js/osx.js'></script>
+<script type="text/javascript">
+if($.cookie('stVal') == 'bat' || $.cookie('stVal') == 'pit') {
+	getRank($.cookie('stVal'));
+}
+else if($.cookie('stVal') == 'person') {
+	stId = $.cookie('stId');
+	if(!stId) {
+		stId = 1;
+	}
+	getPlayerRecord(stId);
+}
+else {
+	getRank('bat');
+}
+</script>
+</head>
+<body id="sect-home" onload="javascript:initLoadData();loadWeather();">
+<div id="container">
+	<div id="header">
+		<div id="logo">
+			<h1>
+				<a href="/" title="AKATSUKI : 草野球チームあかつき">AKATSUKI : 草野球チームあかつき</a>
+			</h1>
+		</div>
+		<div id="naviBlock">
+			<div id="search">
+				<form action="/search/index.html">
+					<p><input type="text" id="searchInput" name="q" /><input type="image" src="/img/searchbtn.jpg" class="searchButton" alt="検索" value="search" name="sa" title="Submit Your Search" /></p>
+<input type="hidden" name="cx" value="partner-pub-4818740562082524:5d2q9i-7nfm" />
+<input type="hidden" name="cof" value="FORID:9" />
+<input type="hidden" name="ie" value="Shift_JIS" />
+				</form>
+			</div>
+			<div id="navi">
+				<ul>
+					<li id="nvStats"><a href="/stats/index.php" id="nvaStats" name="nvaStats">成績</a></li>
+					<li id="nvScoreboard"><a href="/scoreboard/index.html" id="nvaScoreboard" name="nvaScoreboard">試合結果</a></li>
+					<li id="nvNews"><a href="/news/index.html" id="nvaNews" name="nvaNews">ニュース</a></li>
+					<li id="nvRoster"><a href="/roster/index.html" id="nvaRoster" name="nvaRoster">選手名鑑</a></li>
+<!--					<li id="nvFame"><a href="/fame/index.html" id="nvaFame" name="nvaFame">殿堂</a></li>-->
+					<li id="nvVideo"><a href="/video/index.html" id="nvaVideo" name="nvaVideo">ビデオ</a></li>
+					<li id="nvStadium"><a href="/stadium/index.html" id="nvaStadium" name="nvaStadium">球場</a></li>
+<!--					<li id="nvSimulation"><a href="/simulation/index.html" id="nvaSimulation" name="nvaSimulation">シミュレーション</a></li>-->
+					<li id="nvShinjo"><a href="/shinjo/index.html" id="nvaShinjo" name="nvaShinjo">俺の信条</a></li>
+				</ul>
+			</div>		</div>
+	</div>
+	<div id="main">
+		<div id="HomeColLeft">
+			<div id="stats">
+				<h2 class="header">STATS</h2>
+				<div id="statsContent" class="contentBlock"><p style="width:16px;margin:0 auto;padding: 10px 0;"><img src="/img/ajax-loader.gif" width="16" height="16" alt="loading" /></p></div>
+				<div id="stats-select">
+					<div class="clearfix" id="selectBlock">
+						<ul>
+							<li id="stHit"><a name="stHit" href="javascript:getRank('bat');"><span>HIT</span></a></li>
+							<li id="stPit"><a name="stPit" href="javascript:getRank('pit');"><span>PITCH</span></a></li>
+							<li id="stPsn"><a name="stPsn" href="javascript:getPlayerRecord();"><span>PERSON</span></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="scoreboard" class="clearfix">
+				<h2 class="header">SCOREBOARD</h2>
+				<div class="contentBlock clearfix">
+					<ol>
+						<li class="sContentRow clearfix ">
+							<p class="warrow">15.11.28@
+<a href="/stadium/index.html?sid=36">大宮健保 61</a>							</p>
+							<p class="score"><a href="/scoreboard/1511281.html" name="score1" id="score1">AKT&nbsp;18-2&nbsp;MBL</a></p>
+						</li>
+						<li class="sContentRow clearfix clear">
+							<p class="warrow">15.10.31@
+<a href="/stadium/index.html?sid=51">篠崎公園</a>							</p>
+							<p class="score"><a href="/scoreboard/1510311.html" name="score2" id="score2">AKT&nbsp;11-1&nbsp;TYA</a></p>
+						</li>
+						<li class="sContentRow clearfix clear">
+							<p class="warrow">15.09.26@
+<a href="/stadium/index.html?sid=34">大宮健保 60</a>							</p>
+							<p class="score"><a href="/scoreboard/1509261.html" name="score3" id="score3">AKT&nbsp;0-16&nbsp;BRV</a></p>
+						</li>
+						<li class="sContentRow clearfix clear">
+							<p class="warrow">15.09.19@
+<a href="/stadium/index.html?sid=39">城北</a>							</p>
+							<p class="score"><a href="/scoreboard/1509191.html" name="score4" id="score4">AKT&nbsp;7-4&nbsp;DLK</a></p>
+						</li>
+						<li class="sContentRow clearfix clear">
+							<p class="warrow">15.09.05@
+<a href="/stadium/index.html?sid=47">新狭山</a>							</p>
+							<p class="score"><a href="/scoreboard/1509051.html" name="score5" id="score5">AKT&nbsp;7-9&nbsp;KPW</a></p>
+						</li>
+						<li class="sContentRow clearfix clear">
+							<p class="warrow">15.08.23@
+<a href="/stadium/index.html?sid=49">武蔵野野球場</a>							</p>
+							<p class="score"><a href="/scoreboard/1508232.html" name="score6" id="score6">AKT&nbsp;13-2&nbsp;亜大野球部</a></p>
+						</li>
+						<li class="sContentRow clearfix clear">
+							<p class="warrow">15.08.23@
+<a href="/stadium/index.html?sid=49">武蔵野野球場</a>							</p>
+							<p class="score"><a href="/scoreboard/1508231.html" name="score7" id="score7">AKT&nbsp;13-3&nbsp;亜大野球部</a></p>
+						</li>
+						<li class="sContentRow clearfix clear">
+							<p class="warrow">15.08.08@
+<a href="/stadium/index.html?sid=36">大宮健保 61</a>							</p>
+							<p class="score"><a href="/scoreboard/1508081.html" name="score8" id="score8">AKT&nbsp;2-10&nbsp;BBF</a></p>
+						</li>
+						<li class="sContentRow clearfix clear">
+							<p class="warrow">15.08.01@
+<a href="/stadium/index.html?sid=47">新狭山</a>							</p>
+							<p class="score"><a href="/scoreboard/1508011.html" name="score9" id="score9">AKT&nbsp;4-6&nbsp;KPW</a></p>
+						</li>
+						<li class="sContentRow clearfix clear">
+							<p class="warrow">15.05.23@
+<a href="/stadium/index.html?sid=44">東スポセン</a>							</p>
+							<p class="score"><a href="/scoreboard/1505231.html" name="score10" id="score10">AKT&nbsp;13-11&nbsp;STG</a></p>
+						</li>
+					</ol>
+					<p class="more">&raquo;<a href="/scoreboard/index.html" name="score" id="score">more</a></p>
+				</div>
+			</div>
+		</div>
+		<div id="HomeColMiddle">
+			<div id="newsFlash">
+				<h2 class="header">NEWS FLASH</h2>
+				<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="478" height="335" id="video" align="middle">
+				<param name="allowScriptAccess" value="sameDomain" />
+				<param name="movie" value="./swf/news.swf" /><param name="quality" value="high" /><param name="bgcolor" value="#000000" /><embed src="./swf/news.swf" quality="high" bgcolor="#000000" width="478" height="335" name="video" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+				</object>
+			</div>
+			<div class="middleContent clearfix">
+				<div id="news">
+					<h2 class="header">NEWS</h2>
+					<div class="newsBlock clearfix">
+						<ol>
+							<li class="sContentRow clearfix">
+								<p class="title"><a href="/news/47.html" name="news1" id="news1">11.04.10&nbsp;2011年シーズン開幕！今井乱調も、マリアーノ・リベラ降臨！</a></p>
+								<p class="text">　「まさにバットをへし折る電動ノコギリだな」<br />
+<br />
+　マリアーノ・リベラを称賛するニューヨーカーの一言が、すべてを物語るであろう。<br />
+<br />
+<br />
+<br />
+　東日本大震災の影響で、ホームグラウンド・トゥイニーヨ...</p>
+							</li>
+							<li class="sContentRow clearfix">
+								<p class="title"><a href="/news/38.html" name="news2" id="news2">10.04.03&nbsp;今井→土田→今井！阪神ばりリレーで乱打戦制す！</a></p>
+								<p class="text">　「ピッチャー葛西！」<br />
+　「ピッチャー遠山！」<br />
+　「ピッチャー葛西！」<br />
+　「ピッチャー遠山！」<br />
+<br />
+　野村監督の「勝利の連立方程式」が全てを物語るであろう。<br />
+<br />
+<br />
+　２点リードで迎えた最終...</p>
+							</li>
+							<li class="sContentRow clearfix">
+								<p class="title"><a href="/news/37.html" name="news3" id="news3">10.03.20&nbsp;男・橋本、３度目の負傷退場！片腕の代走屋！</a></p>
+								<p class="text">　「アンタはまだ、終ったわけじゃない…」<br />
+<br />
+　真・雀鬼11でヤ○ザに片腕を落とされた裏プロ城島に、桜井章一が放った一言がすべてを物語るであろう。<br />
+<br />
+<br />
+　一流の勝負師としてのプライドが悲劇を生...</p>
+							</li>
+							<li class="sContentRow clearfix">
+								<p class="title"><a href="/news/32.html" name="news4" id="news4">10.03.13&nbsp;２０１０年シーズン開幕！原点回帰の１９年目！</a></p>
+								<p class="text">　「ファック（不惑）！」<br />
+<br />
+　今年不惑を迎える男・橋本の一言が全てを物語るであろう。<br />
+<br />
+<br />
+<br />
+　「Catch and Release　〜原点〜」を新キャッチフレーズに、１９年目のシーズンが開...</p>
+							</li>
+							<li class="sContentRow clearfix">
+								<p class="title"><a href="/news/31.html" name="news5" id="news5">09.11.28&nbsp;「維新」成る！FEリーグ初制覇！！</a></p>
+								<p class="text">　「時は来た！」<br />
+<br />
+　１９９０．２．１０、猪木・坂口組との世代交代を懸けた一戦の直前に、橋本真也が放った一言が全てを物語るであろう。<br />
+<br />
+<br />
+　あかつき初のリーグ参戦となった昨年のFEリーグは勝...</p>
+							</li>
+						</ol>
+						<p class="rss"><a href="rss/index.rdf" name="rsslink" id="rsslink"><img class="rss-link" src="img/rss.gif" width="16" height="16" alt="rss feed" />RSS</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="HomeColRight">
+			<div id="video">
+				<h2 class="header">VIDEO</h2>
+				<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="212" height="200" id="video" align="middle">
+				<param name="allowScriptAccess" value="sameDomain" />
+				<param name="movie" value="/swf/video.swf" /><param name="quality" value="high" /><param name="bgcolor" value="#000000" /><embed src="	/swf/video.swf" quality="high" bgcolor="#000000" width="212" height="200" name="video" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+				</object>
+			</div>
+			<div class="banner-mobile">
+				<img src="img/banner_mobile.jpg" width="212" height="86" alt="あかつきモバイル" />
+			</div>
+			<div id="baseballnews">
+				<h2 class="header">Professional Baseball</h2>
+				<div class="contentBlock clearfix">
+					<ul>
+						<div id="baseballNewsBlock"></div>
+					</ul>
+				</div>
+				<div id="baseballNewsSectBlock"></div>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		<p class="copyright"><span>COPYRIGHT &copy; AKATSUKI ALL RIGHTS RESERVED.</span></p>
+		<ul class="footer-navi">
+			<li><a href="http://homepage2.nifty.com/unizo/frame.html" target="_blank">FEリーグ</a></li>
+			<li>&nbsp;|&nbsp;</li>
+			<li><a href="/special/mahjong/">麻雀部</a></li>
+			<li>&nbsp;|&nbsp;</li>
+			<li><a href="/special/daesung/">デソン挙式</a></li>
+			<li>&nbsp;|&nbsp;</li>
+			<li><a href="#" class="osx">出欠登録</a></li>
+		</ul>
+	</div>
+	<div id="osx-modal-content">
+		<div id="osx-modal-title">ログイン</div>
+		<div class="close"><a href="#" class="simplemodal-close">x</a></div>
+		<div id="osx-modal-data">
+			<span id="have_an_account">
+				<div id="message"></div>
+				<form action="" id="signin" method="post">
+					<p class="textbox">
+						<label for="username">ID</label>
+						<input type="text" tabindex="4" title="username" value="" name="username" id="username" gtbfieldid="17">
+					</p>
+					<p class="textbox">
+						<label for="password">パスワード</label>
+						<input type="password" tabindex="5" title="password" value="" name="password" id="password">
+					</p>
+					<p class="login-button">
+						<input type="submit" tabindex="7" value="ログイン" id="signin_submit">
+					<input type="hidden" name="mode" id="mode" value="login" />
+				</form>
+			</span>
+		</div>
+	</div></div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-4516854-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+<script type="text/javascript" src="http://www.akatsuki-baseball.com/clickheat/js/clickheat.js"></script><noscript><p><a href="http://www.labsmedia.com/index.html">Open source marketing tools</a></p></noscript><script type="text/javascript"><!--
+clickHeatSite = '';clickHeatGroup = 'index';clickHeatServer = 'http://www.akatsuki-baseball.com/clickheat/click.php';initClickHeat(); //-->
+</script>
+</body>
+</html>

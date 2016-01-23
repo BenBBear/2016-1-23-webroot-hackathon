@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta http-equiv="Content-Language" content="en-us" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" title="CSS" type="text/css" href="css/header.css" media="all" />
+<link rel="stylesheet" title="CSS" type="text/css" href="css/font.css" media="all" />
+<link rel="stylesheet" title="CSS" type="text/css" href="css/color.css" media="all" />
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" /> 
+<link rel="icon" type="image/vnd.microsoft.icon" href="favicon.ico" /> 
+<title>Website</title>
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+</head>
+
+<body onload="calcHeight();" onmouseover="x=0;calcHeight();" style="padding:0 0 0 0; margin:0 0 0 0;" >
+<form name="Form1" method="post" action="" id="Form1">
+<input type="hidden" name="RadScriptManager1_TSM" id="RadScriptManager1_TSM" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTEzMzQ1OTQzNjZkZK5mUBG+vUBZUxZwqlAwW/z0XXtctVI8aa8SFl1xZ99+" />
+
+
+<script src="/Telerik.Web.UI.WebResource.axd?_TSM_HiddenField_=RadScriptManager1_TSM&amp;compress=1&amp;_TSM_CombinedScripts_=%3b%3bSystem.Web.Extensions%2c+Version%3d4.0.0.0%2c+Culture%3dneutral%2c+PublicKeyToken%3d31bf3856ad364e35%3aen-US%3a1453655a-6b8d-49b1-94c2-f77a352f5241%3aea597d4b" type="text/javascript"></script>
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="77724732" />
+  
+
+  <!--HeaderStart-->
+  <div id="header_body" style="height:125px; overflow:hidden;">
+  <table style="width:100%;" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td class="header_logo"><img src="~logo.jpg" height="125px" width="1600px"/></td>
+    </tr>
+  </table>
+</div>
+
+<div align="left" style="top:92px; position:absolute; width:100%;">	  
+
+</div>
+
+<div class="header_title" style="top:20px; left:35px; height:105px; position:absolute; overflow:hidden; " >
+  <p class="header_title"><span style="font-size:38px; color:#00501b; font-weight:normal; padding:0 10px 0 10px;">Cassadaga&nbsp;Country&nbsp;Club</span></p>
+  <p class="header_subtitle"><span style="font-size:20px; color:#00501b; font-weight:normal; padding:0 10px 0 10px;">Tuesday&nbsp;Night&nbsp;Mens&nbsp;League</span></p>
+</div>
+
+
+
+  <!--HeaderEnd-->
+
+  <table style="width:100%;" border="0" cellpadding="0" cellspacing="0">
+    <tr onmouseover="Body();">
+      <td style="vertical-align:top;">
+  <iframe id="menu" name="menu" src="~menu.aspx" style="height:2000px; width:225px;" scrolling="auto" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+</td>
+      <td style="width:100%; vertical-align:top;">
+        <iframe id="page" name="page" src="LM/Team Results (3B5).html" style="height:2000px; width:100%;" scrolling="auto" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+      </td>
+    </tr>
+
+    <!--FooterStart-->
+    <tr onmouseover="Footer();">
+      <td colspan="2">
+        <iframe id="footer" name="footer" src="~footer.aspx" style="height:10px; width:100%;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+      </td>
+    </tr>
+    <!--FooterEnd-->
+
+</table>
+
+<script type="text/javascript">
+  var headeron = 1;
+  var footeron = 1;
+
+  function RadMenuCloseOnClicked(sender, args) {
+    sender.close();
+  }   
+
+  function PrintHandler(sender, args) {
+    if (args.get_item().get_value() == 'mPrint') {
+      var newwindow = window.open(window.parent.frames['page'].location.href);
+      newwindow.print();
+    }
+  }
+
+  function Body() {
+    if (headeron == 1 || footeron == 1) {
+      if (document.getElementById('footer') != null) {
+        document.getElementById('footer').style.height = '12px';
+      }
+      headeron = 0;
+      footeron = 0;
+      calcHeight();
+    }
+  }
+
+  function Footer() {
+    if (footeron == 0) {
+      document.getElementById('footer').style.height = '44px';
+      footeron = 1;
+      calcHeight();
+    }
+  }
+
+
+  function calcHeight() {
+    if (document.getElementById('header_body') == null) {
+      headerh = 1; 
+    }
+    else {
+      headerh = parseInt(document.getElementById('header_body').style.height);
+    }
+
+    if (document.getElementById('footer') == null) {
+      footerh = 2;
+    }
+    else {
+      footerh = parseInt(document.getElementById('footer').style.height) + 9;
+    }
+    
+    h = (typeof window.innerHeight != 'undefined' ? window.innerHeight : window.document.documentElement.clientHeight);
+    h = h - headerh - footerh;
+    if (document.getElementById('menu') != null) {
+      document.getElementById('menu').style.height = parseInt(h) + "px";
+    }
+    document.getElementById('page').style.height = parseInt(h) + "px";
+  }
+
+</script>
+</form>
+</body>
+</html>
+

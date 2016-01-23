@@ -1,0 +1,981 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="ja" dir="ltr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=shift_jis">
+<title>ゴルフ場予約サイト【関西ゴルフライフ】</title>
+<meta NAME="description" CONTENT="ゴルフ場予約サイトの関西ゴルフライフ。インターネットで格安、簡単にスピードエントリー！大阪、兵庫、滋賀、京都、奈良、三重、和歌山、中国地方の情報満載">
+<meta NAME="keywords" CONTENT="ゴルフ場,予約,関西,大阪,兵庫,滋賀,京都,奈良,三重,和歌山,中国">
+<link href="font.css" rel="stylesheet" type="text/css">
+<META http-equiv="Content-Script-Type" content="text/javascript">
+<style type="text/css">
+<!--
+.スタイル1 {
+  font-size: 21px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  background-color: #CC3300;
+  color: #FFFFFF;
+}
+.スタイル2 {font-size: 16px}
+.スタイル12 {
+  color: #006600;
+  font-weight: bold;
+}
+.スタイル19 {
+  color: #FF3333;
+  font-weight: bold;
+  font-size: 15px;
+}
+.スタイル20 {
+  color: #CC0033;
+  font-weight: bold;
+  font-size: 32px;
+}
+.スタイル21 {
+  color: #006600;
+  font-weight: bold;
+  background-color: #CCFFFF;
+  font-size: 18px;
+}
+.スタイル30 {font-size: 16px; color: #006600; font-weight: bold; }
+.スタイル43 {font-size: 13px}
+.スタイル46 {color: #000000}
+.スタイル47 {font-size: 15px}
+.スタイル48 {color: #FF0000}
+.スタイル60 {
+  background-color: #99FF00;
+  color: #000000;
+  font-size: 16px;
+  font-weight: bold;
+}
+.スタイル63 {color: #990000}
+.スタイル66 {color: #660000}
+.スタイル71 {
+  color: #660000;
+  font-weight: bold;
+}
+.スタイル72 {color: #990000; font-weight: bold; }
+.スタイル74 {color: #660033}
+.スタイル82 {color: #006600}
+.スタイル83 {color: #336600}
+.スタイル84 {
+  background-color: #99FF00;
+  color: #000066;
+  font-size: 16px;
+}
+.スタイル87 {
+  color: #006600
+}
+.スタイル88 {color: #006600; font-size: 15px; }
+.スタイル91 {font-size: 12px}
+.スタイル92 {color: #003300}
+.スタイル93 {color: #006600; font-size: 13px; }
+.スタイル94 {background-color: #99FF00; color: #000000; font-size: 13px; font-weight: bold; }
+.スタイル96 {color: #336600; font-weight: bold; }
+.スタイル98 {font-size: 18px}
+.スタイル101 {font-size: 13px; font-weight: bold; }
+.スタイル103 {color: #FF0000; font-weight: bold; }
+.スタイル111 {color: #990000; font-size: 15px; }
+.スタイル112 {
+  font-size: 15px;
+  color: #336600;
+  font-weight: bold;
+}
+.スタイル113 {color: #336600; font-size: 15px; }
+.スタイル114 {font-size: 11px}
+.スタイル115 {background-color: #99FF00; color: #000000; font-size: 12px; font-weight: bold; }
+.スタイル117 {color: #006600; font-weight: bold; font-size: 15px; }
+.スタイル118 {color: #660000; font-size: 15px; }
+.style11 {color: #660000; font-weight: bold; background-color: #99FFCC; }
+.style12 {font-size: 29px}
+.style27 {color: #006600; font-weight: bold; background-color: #CCFFFF; font-size: 15px; }
+.style36 {
+  color: #006600;
+  font-weight: bold;
+}
+.style45 {color: #660000; font-weight: bold; background-color: #99FFCC; font-size: 18px; }
+.style46 {color: #660000; font-weight: bold; background-color: #99FFCC; font-size: 16px; }
+.style47 {color: #990000; font-weight: bold; font-size: 15px; }
+.style57 {font-family: "Courier New", Courier, mono}
+.style60 {
+  color: #339900;
+  font-size: 13px;
+}
+.style61 {font-size: 21px}
+.style71 {background-color: #33FFFF}
+.style72 {font-weight: bold; font-size: 18px; color: #660000;}
+.style73 {color: #336600; font-weight: bold; font-size: 13px; }
+.style77 {color: #000000; font-size: 13px; }
+.style78 {font-size: 16px; color: #006600; }
+.style86 {color: #006600; font-weight: bold; background-color: #CCFFFF; font-size: 21px; }
+.style87 {color: #990000; font-weight: bold; font-size: 13px; }
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<div align="center">
+  <table width="780" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="198"><img src="img/top/main_02.gif" width=198 height=176 alt="ゴルフ場予約サイト"></td>
+    <td width="232" valign="top" style="background:#FFFFFF url(img/top/main_03.gif);background-repeat:no-repeat;"><p style="margin-top: 0"><img src="img/sub/spacer.gif" alt="　" width="232" height="65"><br>
+      <img src="img/sub/spacer.gif" alt="　" width="6" height="10"><strong>ゴルフ場予約サイト、ゴルフライフ</strong></p>      </td>
+    <td width="63" valign="top" style="background:#FFFFFF url(img/top/main_04.gif);background-repeat:no-repeat;"><img src="img/sub/spacer.gif" alt="　" width="63" height="10"></td>
+    <td width="287" valign="bottom" style="background:#FFFFFF url(img/top/main_05.gif);background-repeat:no-repeat;"><img src="img/sub/spacer.gif" alt="　" width="283" height="10"><br>
+      <table width="287" border="0" cellspacing="0" cellpadding="5">
+        <tr>
+          <td><img src="img/top/midashi-a.gif" alt="年会費・手数料無料" width="158" height="35"></td>
+        </tr>
+        <tr>
+          <td><a href="info_regist.php"><img src="img/sub/registration.gif" alt="ゴルフ場予約/会員登録" width="260" height="40" border="0"></a></td>
+        </tr>
+        <tr>
+          <td>関西ゴルフライフは関西圏のゴルフ場に格安で<br>
+            エントリーでき、予約は２４時間、簡単に行なえ<br>
+            ます！会員登録は、入会金・会費全て無料です。</td>
+        </tr>
+      </table></td>
+  </tr>
+  <tr>
+    <td colspan="4"><table width="780" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td><img src="img/head/head_06.gif" width=168 height=26 alt="JIDゴルフインフォメーション"></td>
+        <td><img src="img/head/head_07.gif" width=141 height=26 alt="　"></td>
+        <td><a href="index.html"><img src="img/head/head_08.gif" alt="HOME / ゴルフ場予約" width=90 height=26 border="0"></a></td>
+        <td><a href="golf/index.html"><img src="img/head/head_09.gif" alt="ゴルフ場予約一覧" width=90 height=26 border="0"></a></td>
+        <td><a href="kiyaku.html"><img src="img/head/head_10.gif" alt="会員規約 / ゴルフ場予約" width=90 height=26 border="0"></a></td>
+        <td><a href="aboutus.html"><img src="img/head/head_11.gif" alt="ゴルフ場予約 / 関西ゴルフライフ会社案内" width=91 height=26 border="0"></a></td>
+        <td><a href="info_regist.php"><img src="img/head/head_12.gif" alt="会員登録/ゴルフ場予約" width=110 height=26 border="0"></a></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td colspan="4"><IMG SRC="img/top/main_07.gif" WIDTH=780 HEIGHT=23 ALT="ゴルフ場予約"></td>
+  </tr>
+  <tr>
+    <td height="28" colspan="4" style="background:#FFFFFF url(img/top/main_08.gif);background-repeat:no-repeat;"><h1 class="y-yl30">インターネットで<span class="brown2">簡単・格安</span>ゴルフ場予約！<span class="brown2">即日エントリー</span>可能！</h1></td>
+  </tr>
+</table>
+<br>
+<table width="780" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="266" height="5313" valign="top"><table width="254" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="264"><img src="img/top/subtitle-osusume.gif" alt="ゴルフ場予約 おすすめ情報" width="250" height="22"></td>
+        </tr>
+    </table>
+      <table width="254" border="0" cellpadding="0" cellspacing="1" bgcolor="#266334">
+        <tr>
+          <td width="259" bgcolor="#FFFFFF">            <table width="248" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="257" align="center" bgcolor="#EEEDD0"><table width="240" border="0" cellspacing="0" cellpadding="5">
+                  <tr>
+                    <td width="105" rowspan="2" valign="top"><a href="golf/golf_O-03.html"><img src="img/golf/O-03/phot3_O-03.gif" alt="池田カンツリー倶楽部（大阪）" width="105" height="68" border="0"></a></td>
+                    <td width="135"><a href="golf/golf_O-03.html" class="menu"><strong>池田カンツリー<br>
+                      倶楽部</strong>（大阪）</a></td>
+                  </tr>
+                  <tr>
+                    <td>　</td>
+                  </tr>
+                </table>
+                  <table width="100" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td><img src="img/sub/spacer.gif" alt="　" width="63" height="5"></td>
+                    </tr>
+                  </table></td>
+              </tr>
+              <tr>
+                <td><img src="img/sub/line-g.gif" alt="　" width="248" height="1"></td>
+              </tr>
+              <tr>
+                <td align="center" bgcolor="#FCFBF5">                  <table width="240" border="0" cellspacing="0" cellpadding="5">
+                  <tr>
+                    <td><a href="golf/golf_O-08.html" class="menu"><strong>岸和田カントリー倶楽部</strong>（大阪）</a></td>
+                    </tr>
+                </table>
+                  <table width="100" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td><img src="img/sub/spacer.gif" alt="　" width="63" height="5"></td>
+                    </tr>
+                  </table></td>
+              </tr>
+              <tr>
+                <td><img src="img/sub/line-g.gif" alt="　" width="248" height="1"></td>
+              </tr>
+              <tr>
+                <td align="center" bgcolor="#EEEDD0">                  <table width="240" border="0" cellspacing="0" cellpadding="5">
+                  <tr>
+                    <td><a href="golf/golf_H-02.html" class="menu"><strong>旭国際宝塚カンツリー倶楽部</strong>（兵庫）</a></td>
+                  </tr>
+                </table>
+                  <table width="100" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td><img src="img/sub/spacer.gif" alt="　" width="63" height="5"></td>
+                    </tr>
+                  </table>                  </td>
+              </tr>
+            </table>            </td>
+        </tr>
+      </table>
+      <table width="250" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td><img src="img/top/table-under.gif" alt="　" width="250" height="5"></td>
+        </tr>
+      </table>
+      <table width="100" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td><img src="img/sub/spacer.gif" alt="　" width="63" height="15"></td>
+        </tr>
+      </table>
+      <table width="250" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td><img src="img/top/subtitle-mokuteki.gif" alt="おすすめゴルフ場予約" width="250" height="22"></td>
+        </tr>
+      </table>
+      <table width="269" border="0" cellpadding="0" cellspacing="1" bgcolor="#266334">
+        <tr>
+          <td width="267" bgcolor="#FFFFFF">
+            <table width="250" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td bgcolor="#EEEDD0"><img src="img/top/mokuteki-a.gif" alt="名物ホールがあるゴルフ場予約" width="199" height="15" hspace="5" vspace="5"></td>
+              </tr>
+              <tr>
+                <td width="250" align="center" bgcolor="#EEEDD0">                  <table width="227" border="0" cellspacing="0" cellpadding="5">
+                      <tr>
+                        <td width="223" valign="top"><a href="golf/golf_H-30.html"><img src="img/golf/H-30/phot3_H-30.gif" alt="白鷺ゴルフクラブ（兵庫）" width="105" height="68" hspace="5" border="0" style="float:left"></a><a href="golf/golf_H-30.html" class="menu"><strong>白鷺ゴルフクラブ<br>
+                        </strong>（兵庫）</a><br>
+                        ティグランドとグリーン以外は存在せず、森に囲まれた細長い池を超え、グリーンまでキャリーの飛距離が必要なホールです。</td>
+                      </tr>
+                    </table>
+                    <table width="100" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td><img src="img/sub/spacer.gif" alt="　" width="63" height="5"></td>
+                      </tr>
+                </table>                </td></tr>
+              <tr>
+                <td><img src="img/sub/line-g.gif" alt="　" width="248" height="1"></td>
+              </tr>
+              <tr>
+                <td align="center" bgcolor="#EEEDD0">
+                  <table width="233" border="0" cellspacing="0" cellpadding="5">
+                    <tr>
+                      <td width="223"><a href="golf/golf_K-05.html" class="menu"><strong>月ケ瀬カントリークラブ</strong>（京都）</a></td>
+                    </tr>
+                  </table>
+                  <table width="100" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td><img src="img/sub/spacer.gif" alt="　" width="63" height="5"></td>
+                    </tr>
+                  </table>                </td>
+              </tr>
+              <tr>
+                <td><img src="img/sub/line-g.gif" alt="　" width="248" height="1"></td>
+              </tr>
+              <tr>
+                <td bgcolor="#FCFBF5"><img src="img/top/mokuteki-b.gif" alt="温泉付きゴルフ場予約" width="139" height="15" hspace="5" vspace="5"></td>
+              </tr>
+              <tr>
+                <td align="center" bgcolor="#FCFBF5">
+                  <table width="231" border="0" cellspacing="0" cellpadding="5">
+                    <tr>
+                      <td width="221" valign="top"><a href="reserve.php?no=H-01&name=津カントリー倶楽部" class="menu"><strong>津カントリー倶楽部</strong>（三重）</a></td>
+                      </tr>
+                  </table>
+                  <table width="100" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td><img src="img/sub/spacer.gif" alt="　" width="63" height="5"></td>
+                    </tr>
+                  </table>                </td>
+              </tr>
+              <tr>
+                <td><img src="img/sub/line-g.gif" alt="　" width="248" height="1"></td>
+              </tr>
+            </table>          </td>
+        </tr>
+      </table>
+      <table width="250" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td><img src="img/top/table-under.gif" alt="　" width="250" height="5"></td>
+        </tr>
+      </table>
+      <br>
+      <table width="254" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="254" class="y-t5">そのほかにも兵庫県、大阪府、奈良県、静岡県の有名ゴルフ場が手配できます。会員登録後、メ−ルやお電話で当社係員までお申込ください。</td>
+        </tr>
+        <tr>
+          <td height="587" class="y-t5" style="background:#FFFFFF url(img/sub/line-g.gif);background-repeat:repeat-x;"><p align="center" class="スタイル21">ＪＩＤゴルフインフォメ-ション</p>
+            <p class="スタイル20">　　　速報</p>
+            <p align="center" class="スタイル21" style="margin-bottom: 0;">マスターズゴルフ倶楽部</p>
+<p class="スタイル84" style="margin-top: 0; margin-bottom: 0;">　<span class="スタイル94">山陽自動車道　三木東ｲﾝﾀ-　約１2ｋ</span></p>
+<p style="margin-top: 0; margin-bottom: 0;"><strong>　</strong></p>
+<p style="margin-top: 0;"><strong>10月〜12月</strong></p>
+<p style="margin-bottom: 0;"><span class="スタイル96">平　日　ｷｬﾃﾞｲ　</span>　　　<span class="スタイル72">　１６，０００円</span></p>
+<p style="margin-top: 0; margin-bottom: 0;"><span class="スタイル96">土曜･日曜･祝　</span>　　<strong>　<span class="スタイル63">　２３，０００円</span></strong></p>
+<p class="スタイル43" style="margin-top: 0; margin-bottom: 0;"><strong><img src="images/p03sanroi17.jpg" width="234" height="176">　　　</strong></p>
+<p style="margin-top: 0; margin-bottom: 0;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong class="style36">17番ﾎ-ﾙ</strong></p>
+<p style="margin-top: 0; margin-bottom: 0;">　</p>
+<p align="center" class="スタイル21" style="margin-top: 0; margin-bottom: 0;">センチュリ−三木ゴルフ倶楽部</p>
+<p class="スタイル60" style="margin-top: 0; margin-bottom: 0;">　　　<span class="スタイル101">中国道　吉川ｲﾝﾀ-　13.3ｋｍ</span></p>
+            <p style="margin-top: 0; margin-bottom: 0;">　<strong>加藤福一氏設計のチャンピオンコ−ス！</strong></p>
+            <p style="margin-top: 0; margin-bottom: 0;"><strong>１８番ﾎ-ﾙは池がグリ−ンまで迫って性格なｼｭｯﾄを要する</strong>。</p>
+            <p style="margin-top: 0; margin-bottom: 0;"><strong>　</strong></p>
+            <p class="style27" style="margin-top: 0; margin-bottom: 0;">　10月･１１月</p>
+            <p class="style73" style="margin-top: 0; margin-bottom: 0;">&nbsp; 平　日　ｷｬﾃﾞｲ　　　<span class="スタイル63">１３，８５０円</span></p>
+            <p class="style73" style="margin-top: 0; margin-bottom: 0;">　　　　　　ｾﾙﾌ　　　　<span class="スタイル63">１０，６１０円</span></p>
+            <p class="style73" style="margin-top: 0; margin-bottom: 0;">　土・日・祝　ｷｬﾃﾞｲ　<span class="スタイル63"><strong>２１，４１０円 　</strong></span><strong>　　　</strong>            </p>
+            <p style="margin-top: 0; margin-bottom: 0;">　　　　　　</p>
+            <p style="margin-top: 0; margin-bottom: 0;">　　　　　　</p>
+<p class="style73" style="margin-top: 0; margin-bottom: 0;">　　　☆　コンペパﾂクあり</p>
+            <p class="style73" style="margin-top: 0; margin-bottom: 0;">　　</p>
+            <p style="margin-top: 0; margin-bottom: 0;"><img src="images/course_img_04miki_000.jpg" width="190" height="140"></p>
+<p style="margin-top: 0;"><strong>　　　　　　　　<span class="style36">4番</span></strong><span class="style36">ﾎ-ﾙ</span></p>
+            <p align="center" class="スタイル21" style="margin-bottom: 0;">ロ−ズウッドゴルフクラブ</p>
+<p class="スタイル84" style="margin-top: 0; margin-bottom: 0;">　<span class="スタイル101">山陽道　三木小野ｲﾝﾀ-　3.5ｋｍ</span></p>
+<p style="margin-top: 0; margin-bottom: 0;">　<span class="スタイル103">☆　好評中！　朝食ﾊﾞｲｷﾝｸﾞサ−ビス</span></p>
+<p style="margin-top: 0; margin-bottom: 0;">　</p>
+<p class="スタイル47" style="margin-top: 0; margin-bottom: 0;">　<strong>１０月･１１月</strong></p>
+<p style="margin-top: 0; margin-bottom: 0;">　<span class="スタイル87">平　日　ｾﾙﾌ</span>　<span class="スタイル72">　　９，８００円</span></p>
+<p style="margin-top: 0;">　<span class="スタイル87">土曜･日曜ｾﾙﾌ</span>　<span class="スタイル72">１７，１９８円</span></p>
+<p>　　<span class="スタイル96"><span class="スタイル47">☆全日　　昼食付</span></span></p>
+<p><img src="images/rozu.jpg" width="230" height="163"></p>
+<p align="center" class="スタイル21" style="margin-bottom: 0;">東条湖カントリ-倶楽部</p>
+<p class="スタイル60" style="margin-top: 0;">　<span class="スタイル43">中国道　東条ｲﾝﾀ-　6.0ｋｍ</span></p>
+<p class="スタイル72" style="margin-bottom: 0;">　10月･１１月</p>
+<p class="スタイル72" style="margin-top: 0; margin-bottom: 0;">　<span class="スタイル96">平　日　ｾﾙﾌ</span>　７，０００円</p>
+<p class="スタイル72" style="margin-top: 0; margin-bottom: 0;">　<span class="スタイル96">土・日　ｾﾙﾌ　</span>１２，５００円</p>
+<p class="style47" style="margin-top: 0; margin-bottom: 0;">　</p>
+<p class="スタイル72" style="margin-top: 0; margin-bottom: 0;"><strong><span class="スタイル83">　　　　　　</span><span class="スタイル87">&nbsp;</span></strong><span class="スタイル87">全日昼付</span></p>
+<p style="margin-top: 0;"><strong><span class="スタイル83">&nbsp;</span>　（土・日・祝　<span class="スタイル63">１，０００円</span>　昼券付）</strong></p>
+<p style="margin-bottom: 0;"><strong><span class="スタイル83"> &nbsp;                         &nbsp;&nbsp;&nbsp;☆&nbsp;</span></strong><span class="スタイル83"><strong>&nbsp;</strong></span><strong>時間帯によりプレー費割引あり</strong></p>
+<p class="style73" style="margin-top: 0; margin-bottom: 0;">　</p>
+<p class="スタイル112" style="margin-top: 0; margin-bottom: 0;">　</p>
+<p class="スタイル63" style="margin-top: 0;">　　　　　</p>
+<p style="margin-bottom: 0;"><img src="images/g9.jpg" width="230" height="153"></p>
+<p style="margin-top: 0;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<span class="スタイル87"> ９番ホ−ル</span></p>
+<div align="center" class="スタイル21">八重桜カントリークラブ</div>
+<p class="スタイル60" style="margin-top: 0; margin-bottom: 0;">　　<span class="スタイル43">名阪道　一本松ｲﾝﾀ-　約５</span></p>
+<p style="margin-top: 0; margin-bottom: 0;">１０月･１１月</p>
+<p style="margin-top: 0; margin-bottom: 0;"><span class="スタイル87">　平日　ｾﾙﾌ　　</span><span class="スタイル63">　１０，０００円</span></p>
+<p style="margin-top: 0; margin-bottom: 0;"><span class="スタイル87">　土曜　ｾﾙﾌ</span>　<span class="スタイル63">　　１７，０００円</span></p>
+<p style="margin-top: 0; margin-bottom: 0;">　<span class="スタイル96">日曜　ｾﾙﾌ</span>　　　<span class="スタイル63">１８，０００円</span></p>
+<p style="margin-top: 0;">　<strong>☆時間帯によりプレー費割引あり</strong></p>
+<p>　　<strong>　月曜・昼付</strong></p>
+<p align="center" class="スタイル21" style="margin-bottom: 0;">　秋津原ゴルフクラブ</p>
+<p align="left" style="margin-top: 0; margin-bottom: 0;">　　　<span class="style11">名阪道ｲﾝﾀ-〜約１０分</span><span class="スタイル43">　　　　　　　</span></p>
+<p align="left" class="スタイル94" style="margin-top: 0;">今秋　日本プロシニヤ選手権開催コ−ス</p>
+<p class="スタイル63" style="margin-bottom: 0;">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0;"><span class="スタイル112">&nbsp;<span class="スタイル91">月曜ｾﾙﾌ</span></span><strong> （昼付）</strong>&nbsp;<span class="スタイル63"><strong>１０，７７０円</strong></span></p>
+<p style="margin-top: 0; margin-bottom: 0;">&nbsp; <span class="スタイル96">平 日 ｷｬﾃﾞｲ付&nbsp;&nbsp;</span><span class="スタイル72"> １３，８６０円</span></p>
+<p style="margin-top: 0; margin-bottom: 0;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>&nbsp;&nbsp; 金曜昼付</strong></p>
+<p style="margin-top: 0; margin-bottom: 0;">&nbsp;<span class="style73">土曜･日曜･祝&nbsp; </span></p>
+<p style="margin-top: 0; margin-bottom: 0;"><span class="style73"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ｷｬﾃﾞｲ付 </span><span class="スタイル72">１９．９９０円</span></p>
+<p style="margin-top: 0;">　</p>
+<p style="margin-bottom: 0;"><img src="images/h17_02akitu.jpg" width="230" height="121"></p>
+<p style="margin-top: 0;">　　　　　　　　<span class="スタイル12">17番ﾎ-ﾙ</span></p>
+<p style="margin-bottom: 0;">&nbsp;</p>
+<p align="center" class="スタイル21" style="margin-top: 0; margin-bottom: 0;">るり渓ゴルフクラブ</p>
+<p class="スタイル115" style="margin-top: 0; margin-bottom: 0;">　　　阪神高速　木部ｲﾝﾀｰ　約２５</p>
+            <p class="スタイル71" style="margin-top: 0; margin-bottom: 0;">　１２月</p>
+            <p class="スタイル71" style="margin-top: 0; margin-bottom: 0;">　<span class="スタイル96">平　日　ｾﾙﾌ　</span>　　７，２９０円</p>
+            <p class="スタイル71" style="margin-top: 0; margin-bottom: 0;"><span class="スタイル96">土曜・日曜　ｾﾙﾌ</span>　１１，９３０円</p>
+            <p class="スタイル71" style="margin-top: 0; margin-bottom: 0;">月曜･金曜　ｾﾙﾌ　８，１５０円昼付</p>
+            <p class="スタイル71" style="margin-top: 0;">　　</p>
+            <p style="margin-bottom: 0;">&nbsp;</p>
+            <p style="margin-top: 0; margin-bottom: 0;">　　</p>
+            <p style="margin-top: 0;">　　<img src="images/rurikei.jpg" width="225" height="175"></p>
+            <p align="center" class="スタイル21" style="margin-bottom: 0;">富士ｽﾀｼﾞｱﾑｺﾞﾙﾌ倶楽部<span class="スタイル47">北ｺ-ｽ</span></p>
+            <p class="スタイル115" style="margin-top: 0;">　　　　　名阪　下柘植ｲﾝﾀ-　約1<strong>０</strong></p>
+            <p style="margin-bottom: 0;"><strong>11月</strong></p>
+            <p style="margin-top: 0; margin-bottom: 0;">　<span class="スタイル87"><strong>平日　ｾﾙﾌ　　</strong></span><strong>　<span class="スタイル63">　８，５４０円</span></strong></p>
+            <p style="margin-top: 0; margin-bottom: 0;"><strong>　<span class="スタイル87">土・日ｾﾙﾌ　</span>　<span class="スタイル63">　１４，５００円</span></strong></p>
+            <p style="margin-top: 0; margin-bottom: 0;"><strong>１２月</strong></p>
+            <p style="margin-top: 0; margin-bottom: 0;">　<span class="スタイル96">平日　ｾﾙﾌ</span>　　　　<span class="スタイル72">　８，２００円</span></p>
+            <p style="margin-top: 0;">　<span class="スタイル96">土･日ｾﾙﾌ</span>　　　<strong><span class="スタイル63">　１２，７００円</span></strong></p>
+            <p>　　　　<strong>　全日　昼付</strong></p>
+            <p class="スタイル21" style="margin-bottom: 0;">富士ｽﾀｼﾞｱﾑｺﾞﾙﾌ倶楽部<span class="スタイル43">南ｺ-ｽ</span></p>
+            <p class="スタイル115" style="margin-top: 0;">　　ご存知　ジャンボ尾崎設計のチャンピオンコ−ス。一度挑戦してみてくだ<strong>さい</strong></p>
+            <p style="margin-bottom: 0;"><strong>1１月</strong></p>
+            <p style="margin-top: 0; margin-bottom: 0;">　<span class="スタイル96">平　日　キャデイ付　　</span>　　<span class="スタイル72">１２，３５０円</span></p>
+            <p style="margin-top: 0; margin-bottom: 0;">　<span class="スタイル96">土・日　キャデイ付　</span>　　　<span class="スタイル72">１７，９００円</span></p>
+            <p style="margin-top: 0; margin-bottom: 0;"><strong>１２月</strong></p>
+            <p style="margin-top: 0; margin-bottom: 0;">　<span class="スタイル96">平　日　キャデイ付</span>　　　　　<span class="スタイル72">１１，７３０円</span></p>
+            <p style="margin-top: 0; margin-bottom: 0;">　<span class="スタイル96">土・日　キャデイ付　</span>　　　　<span class="スタイル72">１６，３６０円</span></p>
+            <p class="スタイル96" style="margin-top: 0;">　</p>
+            <p style="margin-bottom: 0;">　　　　　　　　　全日昼付</p>
+            <p style="margin-top: 0; margin-bottom: 0;">　</p>
+            <p class="スタイル63" style="margin-top: 0; margin-bottom: 0;"><img src="images/fujis1_000.jpg" width="180" height="120"></p>
+            <p style="margin-top: 0;">　　</p>
+            <p class="スタイル21" style="margin-bottom: 0;">グランディ鳴門ゴルフクラブ36</p>
+            <p class="スタイル115" style="margin-top: 0; margin-bottom: 0;">　瀬戸内海に隣接したリゾ−トコ−ス！</p>
+            <p class="スタイル115" style="margin-top: 0;">　鳴門インタ−〜約16ｋｍ</p>
+            <p class="スタイル12" style="margin-bottom: 0;">　　平日　　ｾﾙﾌ　　&nbsp;&nbsp;<span class="スタイル72">１１，８６７円</span></p>
+            <p class="スタイル12" style="margin-top: 0; margin-bottom: 0;">　　　〃　　ｷｬﾃﾞｨ付&nbsp;&nbsp;<span class="スタイル72">１４，４９２円</span></p>
+            <p class="スタイル12" style="margin-top: 0; margin-bottom: 0;">　　土・日　ｾﾙﾌ&nbsp;&nbsp;<span class="style61">&nbsp;&nbsp;&nbsp;</span><span class="スタイル72">１７，２２２円</span></p>
+            <p class="スタイル87" style="margin-top: 0; margin-bottom: 0;"><span class="スタイル12">　　　〃　 ｷｬﾃﾞｨ付<span class="スタイル98">　</span></span><span class="スタイル72">１９，８４７円</span></p>
+            <p style="margin-top: 0;"><img src="images/1_001.jpg" width="230" height="120"></p></td>
+        </tr>
+        <tr>
+          <td height="181" class="y-t5" style="background:#FFFFFF url(img/sub/line-g.gif);background-repeat:repeat-x;"><p style="margin-top: 0; margin-bottom: 0">お問い合わせ</p>
+            <p style="margin-top: 0; margin-bottom: 0;">　　　　（株）JIDゴルフインフォメ−ション</p>
+            <p style="margin-top: 0; margin-bottom: 0;">　　TEL　06-4800-3339　まで</p>
+            <p style="margin-top: 0; margin-bottom: 0;">　メ−ル　<span class="スタイル47">entry@jidg.jp</span></p></td>
+        </tr>
+      </table>      
+      <hr>
+      <hr></td>
+    <td width="514" valign="top" class="スタイル30"><table width="510" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="23" height="20" valign="top" style="background:#FFFFFF url(img/sub/midashi-back-a.gif);background-repeat:no-repeat;"><img src="img/sub/mark-f.gif" alt="ゴルフ場予約" width="20" height="20"></td>
+        <td width="487" style="background:#FFFFFF url(img/sub/midashi-back-a.gif);background-repeat:no-repeat;"><h2 class="s11">地域からゴルフ場を探す　</h2>        </td>
+        </tr>
+    </table>
+      <img src="img/sub/spacer.gif" alt="　" width="63" height="10"><br>
+      <table width="510" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="45" align="center">&nbsp;</td>
+          <td width="465"><table width="371" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="11"><img src="img/sub/mark-c.gif" alt="　" width="5" height="13" hspace="3" vspace="3"></td>
+              <td width="360" class="s11"><a href="golf/index.html#a">関西地方</a></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td><table width="360" border="0" cellpadding="0" cellspacing="0" class="s11">
+                  <tr>
+                    <td width="10"><img src="img/sub/mark-d.gif" alt="　" width="6" height="6"></td>
+                    <td width="40"><a href="golf/index.html#a">大阪</a></td>
+                    <td width="10"><img src="img/sub/mark-d.gif" alt="　" width="6" height="6"></td>
+                    <td width="40"><a href="golf/index.html#b">兵庫</a></td>
+                    <td width="10"><img src="img/sub/mark-d.gif" alt="　" width="6" height="6"></td>
+                    <td width="40"><a href="golf/index.html#c">滋賀</a></td>
+                    <td width="10"><img src="img/sub/mark-d.gif" alt="　" width="6" height="6"></td>
+                    <td width="40"><a href="golf/index.html#d">京都</a></td>
+                    <td width="10"><img src="img/sub/mark-d.gif" alt="　" width="6" height="6"></td>
+                    <td width="40"><a href="golf/index.html#e">奈良</a></td>
+                    <td width="10"><img src="img/sub/mark-d.gif" alt="　" width="6" height="6"></td>
+                    <td width="40"><a href="golf/index.html#f">三重</a></td>
+                    <td width="10"><img src="img/sub/mark-d.gif" alt="　" width="6" height="6"></td>
+                    <td width="50"><a href="golf/index.html#g">和歌山</a></td>
+                  </tr>
+                </table>              </td>
+            </tr>
+            <tr>
+              <td><img src="img/sub/mark-c.gif" alt="　" width="5" height="13" hspace="3" vspace="3"></td>
+              <td class="s11"><a href="golf/index.html#h">中国地方</a></td>
+            </tr>
+            <tr>
+              <td><img src="img/sub/spacer.gif" alt="　" width="5" height="10" hspace="3" vspace="3"></td>
+              <td class="s11"><img src="img/sub/spacer.gif" alt="　" width="5" height="10" hspace="3" vspace="3"></td>
+            </tr>
+            <tr>
+              <td><img src="img/sub/mark-c.gif" alt="　" width="5" height="13" hspace="3" vspace="3"></td>
+              <td class="s11"><a href="reserve.php?no=*&name=%90%84%91E%83S%83%8B%83t%8F%EA">推薦ゴルフ場</a></td>
+            </tr>
+            <tr>
+              <td><img src="img/sub/mark-c.gif" alt="　" width="5" height="13" hspace="3" vspace="3"></td>
+              <td class="s11">その他全国ゴルフ場</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>他にも全国のゴルフ場のご予約も承ります。<br>
+      お電話（06-4800−3339）でお問い合わせ下さい。</td>
+            </tr>
+          </table></td>
+        </tr>
+      </table>
+      <br>      <table width="510" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="100" height="20" valign="top" style="background:#FFFFFF url(img/sub/midashi-back-a.gif);background-repeat:no-repeat;"><img src="img/top/topix.gif" alt="TOPIX / ゴルフ場予約" width="98" height="20"></td>
+          <td width="410" style="background:#FFFFFF url(img/sub/midashi-back-a.gif);background-repeat:no-repeat;"><h2 class="s11">今月のお知らせ</h2>          </td>
+        </tr>
+      </table> 
+      <p class="oshirase">〜大変恐れ入ります。最新情報に更新作業中です〜</p>
+
+           
+      <p align="center" class="style45" style="margin-top: 0; margin-bottom: 0;">&nbsp; ☆　タラオカントリ-クラブ　☆　　</p>
+      <p class="スタイル48" style="margin-top: 0; margin-bottom: 0;">　第４５回日本女子プロ選手権開催　2012年9月6日〜9日</p>
+      <p class="スタイル84" style="margin-top: 0; margin-bottom: 0;">　標高600ｍの丘陵地に36ﾎ-ﾙを展開　避暑地に最適ゴルフ場</p>
+      <p class="スタイル47" style="margin-top: 0;">　　　新名神　信楽ｲﾝﾀ-〜30分　・　名阪　大内ｲﾝﾀ-〜20分</p>
+      <table width="467" border="1">
+        
+        <tr valign="top">
+          <th width="149" scope="row"><div align="center"> 東コ−ス</div></th>
+          <td width="100"><div align="left">　　　　平　日</div></td>
+          <td width="87">　　土　曜</td>
+          <td width="103"><div align="left">　　　日　曜</div>            </td>
+        </tr>
+        
+        <tr valign="top">
+          <th scope="row">11月</th>
+          <td><div align="center" class="スタイル111">１０，９９０円</div></td>
+          <td><span class="スタイル47">　</span><span class="スタイル63">１５，９９８円</span></td>
+          <td><div align="center" class="スタイル111">１６，９９８円</div></td>
+        </tr>
+        <tr valign="top">
+          <th scope="row">西コース</th>
+          <td>　　　　平　日</td>
+          <td>　　土　曜</td>
+          <td>　　　日曜</td>
+        </tr>
+        <tr valign="top">
+          <th height="36" scope="row">11月</th>
+          <td>　<span class="スタイル63">１１，４９０円
+            </span>
+            <div align="center"></div></td>
+          <td>　<span class="スタイル63">１６，９９８円</span></td>
+          <td>　<span class="スタイル47">　<span class="スタイル63">1７,998円</span></span></td>
+        </tr>
+      </table>
+      <p style="margin-top: 0; margin-bottom: 0;">　</p>
+      <p style="margin-top: 0; margin-bottom: 0;">　&nbsp;&nbsp;　　　　　　　　　&nbsp;&nbsp;&nbsp;平日昼付<span class="スタイル98">　</span></p>
+      <p style="margin-top: 0;">　　　　東コース月曜　ｾﾙﾌ　<span class="スタイル63">８，０００円</span>昼付</p>
+      <p style="margin-bottom: 0;">　　　　西コース月曜　ｾﾙﾌ<span class="スタイル63">　８，５００円</span>昼付</p>
+      <p style="margin-top: 0; margin-bottom: 0;"><span class="スタイル98"><span class="スタイル2"> 　　　</span></span></p>
+<p style="margin-top: 0;">　</p>
+<p align="center"><img src="images/img_west10.jpg" width="360" height="240"></p>
+      <p align="center" class="style45" style="margin-bottom: 0;">☆　るり渓ゴルフクラブ　☆</p>
+      <p style="margin-top: 0; margin-bottom: 0;">　<span class="style60">阪神高速　木部ｲﾝﾀ-〜約30分</span>　京都の丘陵地　標高600ｍに27ﾎ-ﾙ</p>
+      <p align="center" style="margin-top: 0; margin-bottom: 0;">　　　<span class="スタイル43">セルフﾌﾟﾚ-料金</span></p>
+      <p align="center" style="margin-top: 0; margin-bottom: 0;">１０月･１１月</p>
+      <div align="center">
+        <table width="217" border="1">
+          <tr valign="top">
+            <td width="93"><div align="center">平　日</div></td>
+              <td width="108"><div align="center" class="スタイル47">&nbsp;<span class="スタイル63">７，６１０円</span></div></td>
+            </tr>
+          
+          <tr valign="top">
+            <td><div align="center">土・日・祝</div></td>
+              <td><div align="center" class="スタイル111">１２，４７０円</div></td>
+            </tr>
+        </table>
+        <p class="スタイル47" style="margin-top: 0; margin-bottom: 0;">日により昼付日あり</p>
+        <p class="スタイル47" style="margin-top: 0; margin-bottom: 0;">　</p>
+      </div>
+      <div align="center"></div>
+      <p align="center" class="style45" style="margin-top: 0;">☆　枚方カントリー倶楽部 ☆ </p>
+      <p style="margin-bottom: 0;">&nbsp;　</p>
+      <p style="margin-top: 0; margin-bottom: 0;">　平　日　&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <span class="スタイル63">&nbsp; １９，２５０円</span> （ｷｬﾃﾞｲ付）</p>
+      <p style="margin-top: 0;">　&nbsp;&nbsp;&nbsp;&nbsp; 　（平日　３組以上▲<span class="スタイル63">１，０００円</span>）</p>
+      <p style="margin-bottom: 0;">　土曜・日曜・祝日<span class="スタイル63">　３０，０５０円</span> （ｷｬﾃﾞｲ付）</p>
+      <p style="margin-top: 0;">　</p>
+      <p>　☆　１０月１９日（月）１１月９日（月）１２月２１日（月）</p>
+<p>　　ｾﾙﾌデー　　プレー費　<span class="スタイル63">１３，２１０円</span></p>
+      <p style="margin-bottom: 0;">　　</p>
+      <p align="center" class="style45" style="margin-top: 0; margin-bottom: 0;">☆　ＫＯＭＡカントリークラブ　☆</p>
+      <p style="margin-top: 0; margin-bottom: 0;">　　１０月〜１２月</p>
+      <p style="margin-top: 0; margin-bottom: 0;">　平　　日　　　　　　　　　　　　<span class="スタイル63">１５，５３０円</span>　（ｷﾔﾃﾞｲ付）</p>
+      <p style="margin-top: 0; margin-bottom: 0;">　　　　　　　　　　　　　　　　　　<span class="スタイル63">　９，５３０円</span>　（ｾﾙﾌ）</p>
+      <p style="margin-top: 0; margin-bottom: 0;">土曜・日曜・祝日　　　　　　　　<span class="スタイル63">２０，７７０円</span>　（ｷｬﾃﾞｲ付）</p>
+      <p style="margin-top: 0; margin-bottom: 0;">　　　　　　　　　　　　　　　　　　<span class="スタイル63">１４，７７０円</span>　（ｾﾙﾌ）</p>
+      <p style="margin-top: 0; margin-bottom: 0;">　</p>
+      <p align="center" class="スタイル21" style="margin-top: 0; margin-bottom: 0;"><span class="style45">☆　ヤマトカントリークラブ　</span></p>
+      <p style="margin-top: 0; margin-bottom: 0;">　　　　　　</p>
+      <p style="margin-top: 0; margin-bottom: 0;">　　　　　　　　　</p>
+      <p style="margin-top: 0; margin-bottom: 0;">　　　☆１０月１日（木）１０月２９日（木）</p>
+      <p style="margin-top: 0;">　　　　１１月２日（月）１１月３０日月）１２月２日（水）</p>
+      <p style="margin-bottom: 0;">　　　　　　　　　　プレー費<span class="スタイル63">　８，７８０円</span></p>
+      <p style="margin-top: 0;">　　　（昼付+昼時１ドリンク付+各コース売店１ドリンク付ｘ２）</p>
+      <p style="margin-bottom: 0;">　　　</p>
+<p style="margin-top: 0; margin-bottom: 0;">　　　１０月･１１月</p>
+      <p style="margin-top: 0; margin-bottom: 0;">　　　　　　　　　平　　日　　　　　　　<span class="スタイル63">９，３２０円</span>（ｾﾙﾌ）昼付</p>
+      <p style="margin-top: 0;">　　　　　　　　　土曜・日曜　　　<span class="スタイル63">　１５，２６０円</span>（ｾﾙﾌ）昼付</p>
+      <p style="margin-bottom: 0;">&nbsp;</p>
+<p align="center" class="style45" style="margin-top: 0; margin-bottom: 0;"> ☆　レークスワンカントリー倶楽部 ☆</p>
+<p style="margin-top: 0; margin-bottom: 0;">　&nbsp;&nbsp;&nbsp;&nbsp;　　</p>
+<p style="margin-top: 0; margin-bottom: 0;">　　</p>
+<p style="margin-top: 0;">　　　１０月･１１月</p>
+<p style="margin-bottom: 0;">　　　　　　平　日　　　　　　　　　　　　　<span class="スタイル63">　９，２９０円　</span>（ｾﾙﾌ）</p>
+<p style="margin-top: 0; margin-bottom: 0;">　　　　　　月　曜　　　　　　　　　　　　　<span class="スタイル63">　６，８６０円</span>　（ｾﾙﾌ）</p>
+<p style="margin-top: 0; margin-bottom: 0;">　　　　　土曜・日曜・祝日　　　　　　　　<span class="スタイル63">１５，２３０円　</span>（ｾﾙﾌ）</p>
+<p style="margin-top: 0; margin-bottom: 0;">　　　　　　　　　　　　　　　全日　（<span class="スタイル63">1,080円</span>昼券付）</p>
+<p style="margin-top: 0; margin-bottom: 0;">　　　　　　</p>
+<p align="center" class="style71" style="margin-top: 0; margin-bottom: 0;"><span class="style72">☆　阿山カンツリー倶楽部</span><span class="スタイル66">　☆</span></p>
+<p style="margin-top: 0;">　１０月〜１２月</p>
+<p style="margin-bottom: 0;"><span style="font-size: 16px">　　　　　　平　日<span class="スタイル48">　&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style57">&nbsp;&nbsp;　 　　</span></span><span class="スタイル63">９，２５５</span></span><span class="スタイル63">円</span><span class="style57">　</span>ｾﾙﾌ・昼付</p>
+<p style="margin-top: 0; margin-bottom: 0;">　　　　　　木　曜　　　１組（４名）<span class="スタイル63">　２０，０００円</span></p>
+<p style="margin-top: 0; margin-bottom: 0;">　　　　　　</p>
+<p style="margin-top: 0; margin-bottom: 0;">　　　　　 土曜･日曜　<span class="スタイル63"><span class="style61">&nbsp;&nbsp;<span class="スタイル43">&nbsp;　&nbsp;&nbsp;&nbsp;&nbsp; <span class="スタイル47">　　　</span></span></span>１４，４１７円</span>　ｾﾙﾌ</p>
+<p style="margin-top: 0; margin-bottom: 0;">　　　　　　　　　　　　　　<span class="スタイル63">　</span></p>
+<p style="margin-top: 0; margin-bottom: 0;">　　</p>
+<p align="center" class="style46" style="margin-top: 0; margin-bottom: 0;">☆三田レークサイドカントリークラブ　</p>
+<p style="margin-top: 0; margin-bottom: 0;">　</p>
+<p style="margin-top: 0; margin-bottom: 0;">　　１１月</p>
+<p style="margin-top: 0; margin-bottom: 0;">　　　　　　平　日　　　　　　　　　　　　<span class="スタイル63">７，９８０円　</span>　ｾﾙﾌ　昼付</p>
+<p style="margin-top: 0; margin-bottom: 0;">　　　　　　土曜・日曜・祝日　　　　　<span class="スタイル63">１５，８００円</span>　　ｾﾙﾌ　昼付　　　　</p>
+<p style="margin-top: 0; margin-bottom: 0;">　　　　　　　　　　　　　　　</p>
+<p style="margin-top: 0; margin-bottom: 0;">　　　　　　　　　<br>
+</p>
+<table width="510" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="45" align="center">&nbsp;</td>
+          <td width="465"><p style="margin-top: 0; margin-bottom: 0;">ゴルフ場の予約が便利です！<br>
+            会員登録頂いた方にはお得なコースをご案内いたします。</p>            </td>
+        </tr>
+      </table>      　
+      　　
+      <p style="margin-top: 0; margin-bottom: 0">予約窓口　　　<span class="スタイル47"><span class="スタイル46">株式会社JIDゴルフインフォメ-ショ</span>ン</span></p>
+      <p style="margin-top: 0; margin-bottom: 0;">　　　　　　　　　　電話　　　 　<span class="スタイル98">06-4800-3339</span></p>
+      <p style="margin-top: 0; margin-bottom: 0;">　　　　　　　　　　ﾌﾘ-ﾀﾞｲﾔﾙ　<span class="スタイル98">0120-200-562</span>　<br>
+          <br>
+      </p>
+      <table width="510" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="100" height="20" valign="top" style="background:#FFFFFF url(img/sub/midashi-back-a.gif);background-repeat:no-repeat;"><img src="img/sub/mark-g.gif" alt="絶対得宣言 / ゴルフ場予約　" width="98" height="20"></td>
+          <td width="410" style="background:#FFFFFF url(img/sub/midashi-back-a.gif);background-repeat:no-repeat;"><h2 class="s11">今週のおすすめゴルフ場予約</h2>          </td>
+        </tr>
+      </table>
+      <table width="510" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td align="center" valign="top" class="スタイル2"><img src="img/sub/spacer.gif" alt="　" width="63" height="5"><br>            
+            <table width="528" height="2415" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td height="17" colspan="2" align="center" valign="top" class="スタイル12"><p class="スタイル21" style="margin-bottom: 0">☆　関空クラシックゴルフ倶楽部</p>
+                <p align="left" class="スタイル2" style="margin-top: 0; margin-bottom: 0;">&nbsp;&nbsp;　　　　　　　　　　　（旧　砂川国際ゴルフクラブ）</p>
+                <p align="left" class="スタイル2" style="margin-top: 0;">　　１０月･１１月&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 　　　　　</p>
+                <p align="left" class="スタイル2" style="margin-bottom: 0;">　　　平　日　　　<span class="スタイル63">９，３００円</span><span class="スタイル96">　ｾﾙﾌ　</span><span class="スタイル63">　</span>　　　<span class="スタイル63">１２，５４０円</span>　ｷｬﾃﾞｲ付</p>
+                <p align="left" class="スタイル2" style="margin-top: 0; margin-bottom: 0;">　　　土　曜　　<span class="スタイル63">１２，８００円</span>　ｾﾙﾌ<span class="スタイル98">　　　　 </span><span class="スタイル63">１６，０４０円　</span><span class="スタイル96">ｷｬﾃﾞｲ付</span></p>
+                <p align="left" class="スタイル2" style="margin-top: 0;">　　　日　曜　　<span class="スタイル63">１３，５００円　</span><span class="スタイル96">ｾﾙﾌ</span>　　　　<span class="スタイル63">　１６，７４０円　</span>ｷｬﾃﾞｲ付</p>
+                <p align="left" class="スタイル2" style="margin-bottom: 0;">　　　　　　☆　月曜ｾﾙﾌ　<span class="スタイル63">８，５８２円</span>　昼付</p>
+                <p align="left" class="スタイル2" style="margin-top: 0; margin-bottom: 0;">　　　　　　</p>
+                <p align="left" class="スタイル2" style="margin-top: 0; margin-bottom: 0;">　</p>
+                <p class="style46" style="margin-top: 0; margin-bottom: 0;">☆　作州武蔵カントリー倶楽部</p>
+                <p align="left" class="スタイル2" style="margin-top: 0; margin-bottom: 0;">　</p>
+                <p align="left" class="スタイル2" style="margin-top: 0; margin-bottom: 0;">　１０月･１１月</p>
+                <p align="left" class="スタイル2" style="margin-top: 0; margin-bottom: 0;"><span class="スタイル63">　　　</span><span class="スタイル96">　平　日　</span><span class="スタイル63">　　　　　　　６，９８０円</span>（ｾﾙﾌ）<span class="スタイル63">１，０００円</span>昼補助あり</p>
+                <p align="left" class="スタイル2" style="margin-top: 0; margin-bottom: 0;">　　　　土・日・祝日　　　　<span class="スタイル63">１０，９８０円</span>（ｾﾙﾌ）<span class="スタイル63">１，０００円</span>昼補助あり</p>
+                <p align="left" class="スタイル2" style="margin-top: 0; margin-bottom: 0;">　　　</p>
+                <p align="left" class="スタイル2" style="margin-top: 0; margin-bottom: 0;">　　　　　　</p>
+                <p class="style46" style="margin-top: 0; margin-bottom: 0;">☆　センチュリー吉川ゴルフ倶楽部</p>
+<p align="left" class="スタイル2" style="margin-top: 0;">　　　</p>
+<p align="left" class="スタイル2" style="margin-bottom: 0;">　　１０/１４〜１１/２７</p>
+<p align="left" class="スタイル2" style="margin-top: 0; margin-bottom: 0;">　　平　日　　　　　　　　　　　　　<span class="スタイル63">　１０，２８０円</span>　ｾﾙﾌ</p>
+<p align="left" class="スタイル2" style="margin-top: 0; margin-bottom: 0;">　土曜・日曜・祝日　　　　　　　　　<span class="スタイル63">１６，２２０円</span>　ｾﾙﾌ</p>
+<p align="left" class="スタイル2" style="margin-top: 0;">　　　　　　　　　　　　☆　全日昼付</p>
+<p style="margin-bottom: 0;">&nbsp;</p>
+<p align="left" class="スタイル2" style="margin-top: 0; margin-bottom: 0;">　☆　１０月１３日（火）１１月２４日（火）１１月３０日（月）</p>
+<p align="left" class="スタイル2" style="margin-top: 0; margin-bottom: 0;">　　　　１２月７日（月）１２月１４日（月）１２月２１日（月）</p>
+<p align="left" class="スタイル2" style="margin-top: 0; margin-bottom: 0;">　　　</p>
+<p align="left" class="スタイル2" style="margin-top: 0;">　　　　　　　プレー費　<span class="スタイル63">８，０００円</span>（ｾﾙﾌ）昼付</p>
+<p align="left" class="スタイル2" style="margin-bottom: 0;">　☆　１０月１０日（土）１０月１２日（祝）１１月２２日（日）１１月２３日（祝）</p>
+<p align="left" class="スタイル2" style="margin-top: 0; margin-bottom: 0;">　　　</p>
+<p align="left" class="スタイル2" style="margin-top: 0;">　　　　　　　プレー費　<span class="スタイル63">１４，６００円</span>（セルフ）昼付</p>
+<p align="left" class="スタイル2">　</p></td>
+            </tr>
+            <tr>
+              <td height="71" colspan="2" align="center" valign="top" bgcolor="#FFFFFF" class="style12"><p style="margin-bottom: 0;">&nbsp;</p>
+                <p style="margin-top: 0; margin-bottom: 0;">センチュリ-吉川ゴルフ倶楽部</p>
+                <p class="style77" style="margin-top: 0;">山陽道三木東〜6.5ｋｍ　中国道　池田インタ-〜約４０分</p>
+                <p align="left" class="スタイル2" style="margin-bottom: 0;">　<span class="スタイル87">加藤福一氏設計の醍醐味のあるコ-ス。フェアウェイ幅80ﾔ-ﾄﾞと広く</span></p>
+                <p align="left" class="style78" style="margin-top: 0; margin-bottom: 0;">　距離もある。バンカ−ノ数が96個と難易度も高い。</p>
+                <p align="left" class="style78" style="margin-top: 0; margin-bottom: 0;">　大きな池が5ﾎ-ﾙに点在する腕の見せどころ</p>
+                <p align="left" class="スタイル2" style="margin-top: 0; margin-bottom: 0;">　　　　　　<span class="スタイル96">　</span></p>
+                <p align="left" class="スタイル2" style="margin-top: 0; margin-bottom: 0;">　　　　<span class="スタイル63">　</span></p>
+                <p align="left" class="スタイル30" style="margin-top: 0; margin-bottom: 0;">　　　　　　　　　<span class="スタイル98">　　　　　</span></p>
+                <p align="left" class="スタイル30" style="margin-top: 0; margin-bottom: 0;"><img src="images/clubhouse01_002.jpg" width="538" height="184"></p>                </td>
+            </tr>
+            <tr>
+              <td height="1353" colspan="2" align="center" valign="top" class="スタイル12"><p align="center" class="スタイル60" style="margin-bottom: 0;">　　　　☆ ゴルフ場　紹介　☆　</p>
+                <p align="left" class="スタイル66" style="margin-top: 0; margin-bottom: 0;">　　</p>
+                <h1 align="center" style="margin-top: 0; margin-bottom: 0;"><span class="style12">池田カンツリ−倶楽部</span>　</h1>
+                <h1 align="center" class="スタイル43" style="margin-top: 0; margin-bottom: 0;">大阪市内から30分で名門ｺ-ｽへ</h1>
+                <h1 align="center" class="スタイル21" style="margin-top: 0; margin-bottom: 0;">平日セルフプレ−を実行しました</h1>
+                <table width="425" border="1">
+                  <tr valign="top">
+                    <td width="84"><div align="center">
+                      <p style="margin-top: 0; margin-bottom: 0">期間</p>
+                      <p style="margin-top: 0; margin-bottom: 0;">平日ﾌﾟﾚ-</p>
+                    </div></td>
+                    <td width="100"><div align="center">コ−ス</div></td>
+                    <td width="114"><div align="center">セルフカ−ト</div></td>
+                    <td width="99"><div align="center">ｷｬﾃﾞｨ･ｶ-ﾄ</div></td>
+                  </tr>
+                  
+                  <tr valign="top">
+                    <td height="24"><p class="スタイル91" style="margin-top: 0; margin-bottom: 0">　&nbsp;１０月・１１月</p>
+                      <p class="スタイル91" style="margin-top: 0;">　ｾﾙﾌ平日昼</p>                      </td>
+                    <td><p style="margin-top: 0; margin-bottom: 0">綾羽⇒衣懸</p>                      </td>
+                    <td><div align="right">
+                      <p style="margin-top: 0; margin-bottom: 0;"><span class="style47">１０，２６０円</span></p>
+                      </div></td>
+                    <td class="スタイル66"><div align="right" class="style47">１５，１２０円</div></td>
+                  </tr>
+                  <tr valign="top">
+                    <td height="33"><div align="center">〃</div>
+                      <p style="margin-top: 0; margin-bottom: 0">　　</p></td>
+                    <td><p style="margin-top: 0; margin-bottom: 0">衣懸⇒五月平</p>
+                      <p style="margin-top: 0; margin-bottom: 0;">　　</p></td>
+                    <td><div align="right">
+                      <p style="margin-top: 0; margin-bottom: 0;"><span class="style47">１１，３４０円</span></p>
+                      </div></td>
+                    <td class="スタイル66"><div align="right" class="style47">１７，１７２円</div></td>
+                  </tr>
+                </table>
+                <p class="スタイル47" style="margin-top: 0; margin-bottom: 0">　　月曜　昼付</p>
+                <p align="center" style="margin-top: 0; margin-bottom: 0;"><img src="images/9h_000.JPG" width="333" height="250"></p>
+                <p align="center" style="margin-top: 0;">池田CC　五月平　9H</p>
+                <h1 align="center" class="style12" style="margin-bottom: 0;">キングスロ−ドゴルフクラブ</h1>
+<h1 align="left" class="スタイル43" style="margin-top: 0; margin-bottom: 0;">　　　　　　　　　　　　　中国道　吉川ｲﾝﾀ-〜約8分。</h1>
+                <p align="center" class="style27" style="margin-top: 0; margin-bottom: 0;">　平成3年開場の接待ゴルフ場！</p>
+                <table width="408" border="1">
+                  <tr valign="top">
+                    <td width="127"><div align="center">期間</div></td>
+                    <td width="114"><div align="center">平日（特別料金）</div></td>
+                    <td width="145"><div align="center">土・日・祝日（特別料金）</div></td>
+                  </tr>
+                  <tr valign="top">
+                    <td><div align="left">
+                      <p style="margin-top: 0; margin-bottom: 0">10/1〜12/13　ｾﾙﾌ</p>
+                      </div></td>
+                    <td><div align="right" class="スタイル47">
+                      <div align="center"><span class="style87">１１，０００円</span></div>
+                    </div></td>
+                    <td class="スタイル66"><div align="center" class="style87">１８，０００円</div></td>
+                  </tr>
+                  <tr valign="top">
+                    <td><div align="left">
+                      <p style="margin-top: 0; margin-bottom: 0">　　　〃　　キャデイ付</p>
+                      </div></td>
+                    <td><div align="right" class="スタイル47">
+                      <div align="center"><span class="style87">１３，０００円</span></div>
+                    </div></td>
+                    <td class="スタイル66"><div align="center" class="style87">２０，０００円</div></td>
+                  </tr>
+                  <tr valign="top">
+                    <td><p style="margin-top: 0; margin-bottom: 0">12/15〜2３　ｾﾙﾌ</p>
+                      </td>
+                    <td>　　<span class="スタイル63">１０，３５０円</span></td>
+                    <td class="スタイル66">　　　　１７，０００円</td>
+                  </tr>
+                  <tr valign="top">
+                    <td>　　〃　　キャデイ付</td>
+                    <td>　<span class="スタイル63">　１２，３５０円</span></td>
+                    <td class="スタイル66">　　　　１９，０００円</td>
+                  </tr>
+                </table>
+                <p class="スタイル47" style="margin-top: 0; margin-bottom: 0;">平日昼付・平日９名以上▲<span class="スタイル63">５００円</span></p>
+                <p class="スタイル47" style="margin-top: 0;">土・日・祝　９名以上昼付</p>
+                <p style="margin-bottom: 0;"><img src="images/18gmae-2_000.jpg" width="277" height="208"></p>
+                <p style="margin-top: 0;">キングスロ−ドGC　18H</p>
+                <h1 align="center" style="margin-bottom: 0;">　<span class="style12">花屋敷ゴルフ倶楽部</span>　ひろのｺ-ｽ</h1>
+<p class="スタイル46" style="margin-top: 0; margin-bottom: 0;">舞鶴道　三田西ｲﾝﾀ-〜約7分</p>
+                <p align="center" class="スタイル21" style="margin-top: 0; margin-bottom: 0;"><span class="スタイル47">　LPGA他数々のト−ナメント開催！本格ゴルフ場</span></p>
+                <p align="left" style="margin-top: 0; margin-bottom: 0">　キャディ付料金</p>
+                <table width="410" border="1">
+                  <tr valign="top">
+                    <td width="100">&nbsp;</td>
+                    <td width="100"><div align="center">平日</div></td>
+                    <td width="100"><div align="center">土曜日</div></td>
+                    <td width="100"><div align="center">日曜・祝日</div></td>
+                  </tr>
+                  <tr valign="top">
+                    <td>　10月〜12月</td>
+                    <td class="style47"><div align="right" class="style47">１４，８６０円</div></td>
+                    <td class="style47"><div align="right" class="style47">２２，９６０円</div></td>
+                    <td class="style47"><div align="right" class="style47">２６，２００円</div></td>
+                  </tr>
+                </table>
+                <p style="margin-top: 0; margin-bottom: 0">金曜昼付・１０名以上▲<span class="スタイル63">1,080円</span></p>
+                <p class="style11" style="margin-top: 0; margin-bottom: 0;">シニヤ・レディスデ−を実施！</p>
+                <p align="left" class="スタイル12" style="margin-top: 0; margin-bottom: 0;">　　キャディ付料金</p>
+                <table width="395" border="1">
+                  <tr valign="top">
+                    <td width="95"><p style="margin-top: 0; margin-bottom: 0">シニヤ特別</p>
+                      <p class="style47" style="margin-top: 0; margin-bottom: 0;">　14,860円</p></td>
+                    <td width="284"><p style="margin-top: 0; margin-bottom: 0">毎月第２金曜日</p>
+                      <p style="margin-top: 0; margin-bottom: 0;">1R・昼食・ラウンド終了軽食・粗品付</p></td>
+                  </tr>
+                  
+                  <tr valign="top">
+                    <td><p style="margin-top: 0; margin-bottom: 0">レディス特別</p>
+                      <p class="style47" style="margin-top: 0; margin-bottom: 0;">　14,860円</p></td>
+                    <td><p style="margin-top: 0; margin-bottom: 0">毎月第４金曜日</p>
+                      <p style="margin-top: 0; margin-bottom: 0;">1R・昼食・ラウンド終了軽食・粗品付</p></td>
+                  </tr>
+                </table>
+                <p align="left" class="スタイル12" style="margin-bottom: 0;"><img src="images/h_16hirono_000.jpg" width="500" height="185"></p>
+                <p align="center" class="スタイル12" style="margin-top: 0; margin-bottom: 0;">花屋敷GCひろのｺ-ｽ　16番Ｈ</p>                </td>
+            </tr>
+            <tr>
+              <td height="20" colspan="2" align="center" valign="top" class="スタイル12">&nbsp;</td>
+            </tr>
+            <tr>
+              <td height="16" colspan="2" align="center" valign="top" class="スタイル1"><div align="center" class="style86">
+                <p style="margin-bottom: 0;">&nbsp;</p>
+                <p style="margin-top: 0; margin-bottom: 0;">毎年　恒例の　1日　45ホ−ルラウンド達成チャレンジ</p>
+              </div>                </td>
+            </tr>
+            <tr>
+              <td width="308" height="16" class="style11"><p style="margin-bottom: 0;"><span class="スタイル98">　東条の森ＣＣ　<span class="スタイル47">大蔵ｺ-ｽ27Ｈ・東条ｺ-ｽ18Ｈ</span></span>　</p>
+                <p style="margin-top: 0; margin-bottom: 0;">　　　　毎週　月曜日（8/1１除く）</p></td>
+              <td width="175" valign="top" class="スタイル115">　
+                <p class="スタイル2" style="margin-top: 0; margin-bottom: 0">参加費　昼食付</p>
+                <p class="スタイル2" style="margin-top: 0; margin-bottom: 0;">　１９，９９０<span class="スタイル98">円</span></p></td>
+            </tr>
+          </table>
+            <br>            
+            <table width="480" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td><img src="img/top/toujyou.jpg" width="220" height="135"><br>
+                  <table width="220" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td align="right">東条コース 12番</td>
+                    </tr>
+                  </table></td>
+                <td><img src="img/top/okura.jpg" width="220" height="135"><br>
+                  <table width="220" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td align="right">大蔵コ−ス</td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table>
+            <img src="img/sub/spacer.gif" alt="　" width="63" height="5"><br>
+            <table width="490" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="490" height="179" align="default" valign="default"><blockquote style="margin-top: 0; margin-bottom: 0;">
+                  <p class="スタイル115" style="margin-top: 0; margin-bottom: 0">　</p>
+                  <p class="スタイル115" style="margin-top: 0; margin-bottom: 0;">　　　　　　　　　　<span class="スタイル98">東条の森カントリ−クラブ</span>　</p>
+                  <p class="スタイル115" style="margin-top: 0; margin-bottom: 0;">　　　　　　東条ｺ-ｽ　18Ｈ　　　大蔵ｺ-ｽ　27Ｈ　　　宇城ｺ-ｽ　18Ｈ　　</p>
+                  <p class="スタイル115" style="margin-top: 0; margin-bottom: 0;">１１月</p>
+                  <p class="スタイル117" style="margin-top: 0; margin-bottom: 0;">セルフプレ−　平　日　　　　金曜　　&nbsp;&nbsp; 　土曜・日曜</p>
+                  <p class="スタイル47" style="margin-top: 0; margin-bottom: 0;"><span class="style36">大蔵ｺ-ｽ</span><span class="スタイル63">　　　8,534円　　</span><span class="スタイル72">7.994円　　　 17.066円</span></p>
+                  <p align="left" class="スタイル118" style="margin-top: 0; margin-bottom: 0;"><span class="スタイル96">東条ｺ-ｽ</span>　　　9,182<span class="スタイル72">円<span class="スタイル43">　　<span class="スタイル47">8,534円&nbsp;&nbsp;&nbsp;　　17,930円&nbsp;　</span>　　</span>　</span></p>
+                  <p align="left" class="スタイル118" style="margin-top: 0; margin-bottom: 0;"><span class="スタイル96">宇城ｺ-ｽ</span>　　　8,318<span class="スタイル72">円　　7,778円</span>　　　16,850<span class="スタイル63">円</span></p>
+                  <p style="margin-top: 0; margin-bottom: 0;">　　　　　　　　　　　<span class="スタイル47">　平日限定昼付</span></p>
+                  </blockquote>                  </td>
+              </tr>
+            </table>            
+            <table width="500" height="40" border="0" cellpadding="0" cellspacing="0">
+              <tr>
+                <td>&nbsp;</td>
+              </tr>
+            </table>
+            <img src="img/sub/spacer.gif" alt="　" width="63" height="10"></td>
+        </tr>
+        <tr>
+          <td height="2" align="center"><img src="img/sub/line-e.gif" alt="　" width="510" height="1"></td>
+        </tr>
+      </table>      
+      <img src="img/sub/spacer.gif" alt="　" width="63" height="10"><img src="img/sub/spacer.gif" alt="　" width="63" height="10"> <img src="img/sub/spacer.gif" alt="　" width="63" height="10"><br>      
+      <table width="510" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="120" valign="top"><a href="golf/golf_H-22.html"><img src="img/golf/H-22/phot3_H-22.gif" alt="グリーンエースカントリークラブ（兵庫）" width="105" height="68" border="0"></a></td>
+          <td width="390"><table width="390" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="339" height="20"><a href="golf/golf_H-22.html" class="menu">やしろ東条カントリークラブ（兵庫）</a></td>
+              <td width="51"><a href="reserve.php?no=H-22&name=%83O%83%8A%81%5B%83%93%83G%81%5B%83X%83J%83%93%83g%83%8A%81%5B%83N%83%89%83u"><img src="img/golf/mark-yoyaku.gif" alt="予約" width="51" height="21" border="0"></a></td>
+            </tr>
+            <tr>
+              <td height="20" colspan="2">中国道　東条Ic〜8km</td>
+            </tr>
+            <tr>
+              <td colspan="2">コース面積48万坪にゆったりとした18ホールが配され、<br>
+                自然の赤松林でセパレートされている。<br>
+コースはフラットな丘陵地形、コース内に7つの池があり<br>
+17番ロングはセカンド、グリーン手前と2つの池越えを要する。</td>
+            </tr>
+            <tr>
+              <td colspan="2"><table width="389" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td width="12" height="20" class="s7">●</td>
+                  <td width="72">&nbsp;</td>
+                  <td width="305" class="brown"><p style="margin-top: 0; margin-bottom: 0">ｾﾙﾌ平日7,990円・土曜・13,990円日曜・13,990円</p>                    </td>
+                  </tr>
+              </table>
+                <img src="img/sub/spacer.gif" alt="　" width="63" height="5"></td>
+              </tr>
+          </table></td>
+        </tr>
+        <tr>
+          <td colspan="2"><img src="img/sub/line-e.gif" alt="　" width="510" height="1"></td>
+          </tr>
+      </table>
+      <img src="img/sub/spacer.gif" alt="　" width="63" height="10"><br>
+      <table width="510" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="120" valign="top"><a href="golf/golf_S-02.html"><img src="img/golf/S-02/phot3_S-02.gif" alt="ザ・カントリークラブ（滋賀）" width="105" height="68" border="0"></a></td>
+          <td width="390">            <table width="390" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td width="339" height="20"><a href="golf/golf_S-02.html" class="menu">オレンジシガカントリークラブ（滋賀）</a></td>
+                  <td width="51"><a href="reserve.php?no=S-02&name=%83U%81E%83J%83%93%83g%83%8A%81%5B%83N%83%89%83u"><img src="img/golf/mark-yoyaku.gif" alt="予約" width="51" height="21" border="0"></a></td>
+                </tr>
+                <tr>
+                  <td height="20" colspan="2">第２名神高速　信楽Ｉｃ〜0.8ｋｍ</td>
+                </tr>
+                <tr>
+                  <td colspan="2">南斜面の緩やかな丘陵に広がっているコースで距離もたっぷりある。飛距離、技術により要求されるものが違うので容易には攻められない。</td>
+                </tr>
+                <tr>
+                  <td colspan="2"><table width="389" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td width="12" height="20" class="s7">●</td>
+                        <td width="72">１0月１１月</td>
+                        <td width="305" class="brown">ｾﾙﾌ平日9,490円・土曜14,890円・日曜15,970円</td>
+                      </tr>
+                    </table>
+                  <img src="img/sub/spacer.gif" alt="　" width="63" height="5"></td>
+                </tr>
+          </table>          </td></tr>
+        <tr>
+          <td colspan="2"><img src="img/sub/line-e.gif" alt="　" width="510" height="1"></td>
+        </tr>
+      </table>      
+      <img src="img/sub/spacer.gif" alt="　" width="63" height="10"><br>
+      <table width="510" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td><table width="510" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="459" height="20"><a href="golf/golf_C-05.html" class="menu">ザ・オークレットゴルフクラブ（中国）</a></td>
+                <td width="51"><a href="reserve.php?no=C-05&name=ザ・オークレットゴルフクラブ"><img src="img/golf/mark-yoyaku.gif" alt="予約" width="51" height="21" border="0"></a></td>
+              </tr>
+              <tr>
+                <td height="20" colspan="2">中国道　美作Ic〜12ｋｍ</td>
+              </tr>
+              <tr>
+                <td colspan="2">湯郷温泉街を通り抜けコースに向かう。<br>
+                  小高い丘陵地に大西久光氏が手がけた”あるがままの自然のコース”日本ダンロップ監修。<br>
+                  独創的なデザインでベントのワングリーンを採用する本格志向のコース。</td>
+              </tr>
+              <tr>
+                <td colspan="2"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td width="12" height="20" class="s7">●</td>
+                      <td width="100">ゴルフライフ価格<br></td>
+                      <td class="brown">&nbsp;</td>
+                    </tr>
+                  </table>                </td>
+              </tr>
+            </table>
+            <img src="img/sub/spacer.gif" alt="　" width="63" height="5"></td>
+        </tr>
+        <tr>
+          <td height="30"><img src="img/sub/line-e.gif" alt="　" width="510" height="1"></td>
+        </tr>
+      </table>      </td>
+    <td width="514" valign="top" class="スタイル30">&nbsp;</td>
+  </tr>
+</table>
+<br>
+<table width="780" height="9" border="0" cellpadding="0" cellspacing="0" bgcolor="#266334">
+  <tr>
+    <td height="9" align="center"><img src="img/foot/copy.gif" alt="　" width="257" height="9"></td>
+  </tr>
+</table>
+<table width="780" height="20" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td align="center"><a href="index.html">ゴルフ場予約サイト 関西ゴルフライフ</a></td>
+  </tr>
+</table>
+</div>
+<script language="JavaScript">
+<!--
+document.write("<img src='http://www.jidg.jp/acc/acclog.cgi?");
+document.write("referrer="+document.referrer+"&");
+document.write("width="+screen.width+"&");
+document.write("height="+screen.height+"&");
+document.write("color="+screen.colorDepth+"'>");
+// -->
+</script>
+</body>
+</html>

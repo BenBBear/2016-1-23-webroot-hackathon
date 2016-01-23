@@ -1,0 +1,1240 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja" xmlns:og="http://ogp.me/ns#" xmlns:mixi="http://mixi-platform.com/ns#">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta name="description" content="ニコニコ静画は、「イラスト」や「マンガ」を投稿したり、「電子書籍」にコメントを付けたりして楽しむことができるサイトです。">
+<meta name="copyright" content="&copy; DWANGO Co., Ltd.">
+<meta name="keywords" content="静画,ニコ静,ニコニコ画像,画像,ニコニコ静止画,静止画,コメント,スライドショー,イラスト,描いてみた,電子書籍,漫画">
+<meta name="google-site-verification" content="YXmjNZj6B4bv7SWXrQgt0wF74WSbtzdCsLEGTu6LWs8" />
+<meta property="mixi:device-mobile" content="http://m.nicoseiga.jp/" />
+<meta name="mixi-check-robots" content="noimage" />
+<title>ニコニコ静画</title>
+<link rel="alternate" media="handheld" type="application/xhtml+xml" href="http://m.nicoseiga.jp/" />
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" type="text/css" href="/css/common/common_l.css?x0kqzo">
+<!--[if IE 7]>
+<link rel="stylesheet" type="text/css" href="/css/manga/ie7.css">
+<![endif]-->
+<script src="/js/common.min.js?vg7qfm" type="text/javascript"></script>
+<script src="/js/illust/common.min.js?ikfsxr" type="text/javascript"></script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-58SQ8K');</script>
+<!-- End Google Tag Manager -->    
+<link rel="stylesheet" type="text/css" href="/css/top/index_new_l.css?u6fuzu">
+<script src="http://ads.nicovideo.jp/assets/js/ads-2.9.0.min.js?201409162109" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="/js/nicoheader/resources/siteHeader.css?201503272040" />
+<link rel="stylesheet" type="text/css" href="/js/nicoheader/resources/nicolib-CommonNotificationHeader.css?201410040550" />
+<script type="text/javascript" src="/js/nicoheader/siteHeader.js?201509072300"></script>
+<script type="text/javascript" src="/js/nicoheader/nicolib-CommonNotificationHeader.js?201506151928"></script></head>
+
+<body class="mode_2 seigatop seiga">
+<div id="wrapper">
+<div id="header_block">
+<div id="bar" class="bar_mode">
+<div id="bar_cnt" class="cfix">
+<div id="siteHeader">
+<div id="siteHeaderInner">
+<ul class="siteHeaderGlovalNavigation">
+<li><a href="http://www.nicovideo.jp/?header" class="iconNiconico"><span>niconico</span></a></li>
+<li><a href="http://www.nicovideo.jp/video_top/?header"><span>動画</span></a></li>
+<li><a href="/?header"><span>静画</span></a></li>
+<li><a href="http://live.nicovideo.jp/?header"><span>生放送</span></a></li>
+<li><a href="http://ch.nicovideo.jp/?header"><span>チャンネル</span></a></li>
+<li><a href="http://ch.nicovideo.jp/portal/blomaga?header"><span>ブロマガ</span></a></li>
+<li><a href="http://app.nicovideo.jp/?header"><span>アプリ</span></a></li>
+<li class="siteHeaderOther" id="siteHeaderLeftMenu">
+<a href="javascript:void(0);"><span>その他▼</span></a>
+<ul id="siteHeaderLeftMenuContainer" style="display: none;">
+<li><a href="http://ichiba.nicovideo.jp/?header">市場</a></li>
+<li><a href="http://dic.nicovideo.jp/?header">大百科</a></li>
+<li><a href="http://uad.nicovideo.jp/?header">ニコニ広告</a></li>
+<li><a href="http://commons.nicovideo.jp/?header">コモンズ</a></li>
+<li><a href="http://niconare.nicovideo.jp/?header">ニコナレ</a></li>
+<li><a href="http://3d.nicovideo.jp/?header">ニコニ立体</a></li>
+<li><a href="http://jk.nicovideo.jp/?header">実況</a></li>
+<li><a href="http://com.nicovideo.jp/?header">コミュニティ</a></li>
+<li><a href="http://news.nicovideo.jp/?header">ニュース</a></li>
+<li class="menuServiceList"><a href="http://www.nicovideo.jp/top_service?header">サービス・デバイス一覧</a></li>
+</ul>
+</li>
+</ul>
+<ul class="siteHeaderMenuList">
+<!-- start notification header -->
+<li id="siteHeaderNotification" class="siteHeaderLogin">
+<a href="/login/redirect?next_url=%2F"><span>ログイン</span></a>
+</li>
+<li class="siteHeaderHorizon">
+<a href="https://account.nicovideo.jp/register?sec=common_header&amp;site=seiga&amp;next_url=%2F&mode=landing" style="color:#F1B700;" class="siteHeaderRegister"><span>ニコニコ会員登録</span></a>
+</li>
+<!-- end notification header -->
+<li>
+<a class="siteHeaderRankingLink" href="/ranking" title="静画ランキング"><span>ランキング</span></a>
+</li>
+<li><a href="/create/"><span>投稿する</span></a></li>
+<li><a href="/my/"><span>マイページ</span></a></li>
+<li class="siteHeaderOther" id="siteHeaderRightMenu">
+<a href="javascript:void(0);"><span>メニュー▼</span></a>
+<ul style="display: none;" id="siteHeaderRightMenuContainer">
+<li class="siteHeaderRightMenuGroupLabel"><a href="/illust/">イラスト</a></li>
+<li><a href="/my/clip">クリップ</a></li>
+<li><a href="/my/personalize">定点観測</a></li>
+<li><a href="/my/image">投稿イラスト</a></li>
+<li class="siteHeaderRightMenuGroupLabel"><a href="/manga/">マンガ</a></li>
+<li><a href="/my/manga/favorite">お気に入り</a></li>
+<li><a href="/my/manga">投稿マンガ</a></li>
+<li><a href="/my/manga/bought">購入したマンガ</a></li>
+<li class="siteHeaderRightMenuGroupLabel"><a href="/book/">電子書籍</a></li>
+<li><a href="/my/book/tsundoku">あとで読む書籍</a></li>
+<li><a href="/my/book/history">最近読んだ書籍</a></li>
+<li><a href="/my/book/bought">購入した書籍</a></li>
+<li class="siteHeaderRightMenuSeparator"></li>
+<li><a href="http://point.nicovideo.jp/index/bank/?from_notification=2">ポイント購入</a></li>
+<li id="siteHeaderRightMenuUnfix"><a href="javascript:void(0);">ヘッダー:<span class="siteHeaderScroll">追従</span></a></li>
+<li id="siteHeaderRightMenuFix"><a href="javascript:void(0);">ヘッダー:<span class="siteHeaderFix">固定</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div id="header" class="header_mode">
+<div id="header_cnt" class="cfix">
+<div id="logo" class="mt10">
+<h1>
+<a href="/?track=home" >
+<img src="/img/common/logo_min.png?201307091930" alt="ニコニコ静画">
+</a>
+</h1>
+</div>
+<div id="sg_menu_search">
+<div id="sg_search_box">
+<form id="head_search_form" action="search" method="get">
+<input type="text" name="q" id="bar_search" value="イラスト・マンガ・電子書籍を検索" class="search_form_text header_left" maxlength="510">
+<input id="search_button" type="image" src="/img/common/header/btn_search.png" alt="検索">
+</form>
+</div>
+</div>
+<script type="text/javascript">
+if (!location.pathname.match(/^\/search\//)) {
+(function() {
+var $bar_search = $j('#bar_search');
+if ($bar_search.val() != $bar_search.prop('defaultValue')) {
+$bar_search.val($bar_search.prop('defaultValue'));  // for browser back
+}
+$bar_search.focus(function() {
+if ($j(this).val() == this.defaultValue) {
+$j(this).css({'color':'#000000', 'font-size':'14px'}).val('').addClass("edited");
+}
+}).blur(function() {
+if ($j.trim($j(this).val()) === '') {
+$j(this).css({'color':'#bbbbbb', 'font-size':'12px'}).val(this.defaultValue).removeClass("edited");
+}
+});
+})()
+}
+(function($,window,searchTarget){
+$(function(){
+search.init("search", searchTarget);
+});
+})
+(jQuery,window,"top");
+</script>
+<div id="ad_468_60">
+<div id="seiga_pc_top">
+<script type="text/javascript">
+<!--
+(function(zone, zone_id) {
+new Ads.Advertisement({ zone: zone_id }).set(zone);
+})('seiga_pc_top', 159);
+// -->
+</script>
+</div>
+</div>        <div id="sg_global_navi" class="cfix">
+<ul id="sg_global_navi_main" data-active="top">
+<li><a class="sg_navi_top" href="/?track=global_navi_top">トップ</a></li>
+<li><a class="sg_navi_illust" href="/illust/?track=global_navi_top">イラスト</a></li>
+<li><a class="sg_navi_manga" href="/manga/?track=global_navi_top">マンガ</a></li>
+<li><a class="sg_navi_book" href="/book/?track=global_navi_top">電子書籍</a></li>
+</ul>
+<script>
+(function($){
+var active = $("#sg_global_navi_main").data("active");
+if (active == 'shunga') {
+active = 'illust';
+} else if (active == 'my') {
+active = 'top';
+}
+$("#sg_global_navi_main").find("li .sg_navi_"+active).addClass("active");
+})
+(jQuery)
+</script>
+</div>
+</div>
+<div class="sg_global_bar cfix">
+<ul class="sg_pankuzu">
+<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/" itemprop="url"><span itemprop="title">ニコニコ静画</span></a></li>
+<li class="active" itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><span itemprop="title">トップページ</span></li>
+</ul>
+<ul id="sg_global_navi_sub">
+<li><a class="sg_navi_create" href="/create/?track=global_navi_top">投稿する</a></li>
+<li><a class="sg_navi_my" href="/my/?track=global_navi_top">マイページ</a></li>
+</ul>
+</div>
+</div>
+</div><div id="top_seiga_ad"><div class="wrapper"><a href="http://info.stg.nicovideo.jp/seiga/dqmsl/?track=seigatop_bn" target="_blank"><img src="http://lohas.nicoseiga.jp//material/0eb9bc/5512976" alt="" style="height:150px;"></a></div></div> </div>
+<!--↓メインコンテンツ-->
+<div id="main" class="cfix">
+
+<div id="content" class="cfix">
+  <div id="top_seigamenu_area" class="cfix">
+  <p class="seiga_description">ニコニコ静画は、「イラスト」や「マンガ」を投稿したり、「電子書籍」にコメントを付けたりして楽しむことができるサイトです。</p>
+  <ul class="top_seigamenu ">
+    <li><a href="/illust/?track=pickup_description" class="seigamenu_illust"><span class="seigamenu_txt">イラスト</span><span class="seigamenu_disc"><em>みんなでイラストを投稿したり見たりするならこちら</em></span></a></li>
+    <li><a href="/manga/?track=pickup_description" class="seigamenu_manga"><span class="seigamenu_txt">マンガ</span><span class="seigamenu_disc"><em>ニコニコ漫画（公式）や投稿マンガを読むならこちら</em></span></a></li>
+    <li><a href="/book/?track=pickup_description" class="seigamenu_book"><span class="seigamenu_txt">電子書籍</span><span class="seigamenu_disc"><em>名作話題作のコミックやラノベを読みたい方はこちら</em></span></a></li>
+    
+  </ul>
+</div>
+<div id="top_pickup_area">
+  <h2><strong>PICKUP CONTENTS!</strong><span class="line"> | </span>運営ピックアップコンテンツ</h2>
+  <div style="position: absolute;padding-top: 7px">    <div id="top_pickup_list_wrapper">
+      <div id="top_pickup_list_items">
+        <ul id="top_pickup_list" class="cfix">
+                                            <li>
+              <a href="http://info.nicovideo.jp/seiga/jumpsq_winter/?track=top_pickup">
+                <span class="pickup_thumnail">
+                  <img src="http://lohas.nicoseiga.jp//material/08e963/5512842" alt="">
+                </span>
+                <span class="pickup_txt">
+                  ジャンプSQ.の話題作を続々公開中!!
+                </span>
+                <span class="pickup_label">
+                                      <img src="/img/index/label_manga.png?201307091930" width="60" height="36" alt="">
+                                  </span>
+              </a>
+            </li>
+                                  <li>
+              <a href="http://info.nicovideo.jp/seiga/rcc/?track=top_pickup">
+                <span class="pickup_thumnail">
+                  <img src="http://lohas.nicoseiga.jp//material/a578d9/5513301" alt="">
+                </span>
+                <span class="pickup_txt">
+                  入賞作品を3DS差し替えジャケットにして贈呈！
+                </span>
+                <span class="pickup_label">
+                                      <img src="/img/index/label_illust.png?201307091930" width="60" height="36" alt="">
+                                  </span>
+              </a>
+            </li>
+                                  <li>
+              <a href="http://seiga.nicovideo.jp/watch/bk331054?track=top_pickup">
+                <span class="pickup_thumnail">
+                  <img src="http://lohas.nicoseiga.jp//material/2697af/5510935" alt="">
+                </span>
+                <span class="pickup_txt">
+                  見守るタツミ、憤るウェイブ。姉妹の結末は!?
+                </span>
+                <span class="pickup_label">
+                                      <img src="/img/index/label_book.png?201307091930" width="60" height="36" alt="">
+                                  </span>
+              </a>
+            </li>
+                                  <li>
+              <a href="http://seiga.nicovideo.jp/watch/bk330223?track=top_pickup">
+                <span class="pickup_thumnail">
+                  <img src="http://lohas.nicoseiga.jp//material/cb2206/5510897" alt="">
+                </span>
+                <span class="pickup_txt">
+                  前年度覇者・瑞沢の戦いの行方は!?
+                </span>
+                <span class="pickup_label">
+                                      <img src="/img/index/label_book.png?201307091930" width="60" height="36" alt="">
+                                  </span>
+              </a>
+            </li>
+                                  <li>
+              <a href="http://seiga.nicovideo.jp/comic/13285?track=top_pickup">
+                <span class="pickup_thumnail">
+                  <img src="http://lohas.nicoseiga.jp//material/419350/5512848" alt="">
+                </span>
+                <span class="pickup_txt">
+                  1週間お疲れ！自分をねぎらう「ご褒美ごはん」!
+                </span>
+                <span class="pickup_label">
+                                      <img src="/img/index/label_manga.png?201307091930" width="60" height="36" alt="">
+                                  </span>
+              </a>
+            </li>
+                                  <li>
+              <a href="http://info.nicovideo.jp/seiga/dagashikashi_contest/?track=top_pickup">
+                <span class="pickup_thumnail">
+                  <img src="http://lohas.nicoseiga.jp//material/2aa0be/5512840" alt="">
+                </span>
+                <span class="pickup_txt">
+                  だがしかしイラストコンテスト、ついに募集開始！
+                </span>
+                <span class="pickup_label">
+                                      <img src="/img/index/label_illust.png?201307091930" width="60" height="36" alt="">
+                                  </span>
+              </a>
+            </li>
+                                  <li>
+              <a href="http://seiga.nicovideo.jp/watch/bk330783?track=top_pickup">
+                <span class="pickup_thumnail">
+                  <img src="http://lohas.nicoseiga.jp//material/a7575d/5510903" alt="">
+                </span>
+                <span class="pickup_txt">
+                  嫉妬、悪意、憎悪、殺意…追走劇、ここに完結
+                </span>
+                <span class="pickup_label">
+                                      <img src="/img/index/label_book.png?201307091930" width="60" height="36" alt="">
+                                  </span>
+              </a>
+            </li>
+                                  <li>
+              <a href="http://seiga.nicovideo.jp/comic/15914?track=top_pickup">
+                <span class="pickup_thumnail">
+                  <img src="http://lohas.nicoseiga.jp//material/8fed3e/5512845" alt="">
+                </span>
+                <span class="pickup_txt">
+                  30ン歳独身OLの無敵キネマ生活！今回の映画は!?
+                </span>
+                <span class="pickup_label">
+                                      <img src="/img/index/label_manga.png?201307091930" width="60" height="36" alt="">
+                                  </span>
+              </a>
+            </li>
+                                  <li>
+              <a href="http://seiga.nicovideo.jp/book/series/126519?track=top_pickup">
+                <span class="pickup_thumnail">
+                  <img src="http://lohas.nicoseiga.jp//material/2bf60e/5511677" alt="">
+                </span>
+                <span class="pickup_txt">
+                  【新刊配信】アレな動画で視聴数を稼げ！
+                </span>
+                <span class="pickup_label">
+                                      <img src="/img/index/label_book.png?201307091930" width="60" height="36" alt="">
+                                  </span>
+              </a>
+            </li>
+                                  <li>
+              <a href="http://seiga.nicovideo.jp/watch/bk330673?track=top_pickup">
+                <span class="pickup_thumnail">
+                  <img src="http://lohas.nicoseiga.jp//material/14b0bc/5510894" alt="">
+                </span>
+                <span class="pickup_txt">
+                  学園生活部のキャンパスライフ、始まります！
+                </span>
+                <span class="pickup_label">
+                                      <img src="/img/index/label_book.png?201307091930" width="60" height="36" alt="">
+                                  </span>
+              </a>
+            </li>
+                                  <li>
+              <a href="http://seiga.nicovideo.jp/comic/18939?track=top_pickup">
+                <span class="pickup_thumnail">
+                  <img src="http://lohas.nicoseiga.jp//material/61f449/5512850" alt="">
+                </span>
+                <span class="pickup_txt">
+                  ｺｽﾌﾟﾚ企画☆みんなからのﾘｸｴｽﾄの結果は!?
+                </span>
+                <span class="pickup_label">
+                                      <img src="/img/index/label_manga.png?201307091930" width="60" height="36" alt="">
+                                  </span>
+              </a>
+            </li>
+                                  <li>
+              <a href="http://seiga.nicovideo.jp/comic/14223?track=top_pickup">
+                <span class="pickup_thumnail">
+                  <img src="http://lohas.nicoseiga.jp//material/0c900b/5510319" alt="">
+                </span>
+                <span class="pickup_txt">
+                  ヒロイン・セカイちゃんがとっても可愛いですよ
+                </span>
+                <span class="pickup_label">
+                                      <img src="/img/index/label_manga.png?201307091930" width="60" height="36" alt="">
+                                  </span>
+              </a>
+            </li>
+                            </ul>
+      </div>
+
+      <ul id="top_pickup_controller">
+                  <li class="prev"><a>←</a></li>
+          <li class="next"><a>→</a></li>
+              </ul>
+    </div>
+  </div>
+</div>
+<script src="/js/jquery/jquery.jcarousellite.min.js"></script>
+<script>
+
+(function($){
+  $("#top_pickup_list_items").jCarouselLite({
+    btnNext : "#top_pickup_controller .next a",
+    btnPrev : "#top_pickup_controller .prev a",
+    circular: true,
+    visible :5
+  });
+})(jQuery);
+
+</script>  <div id="main_area_l" class="main_content">
+            
+        <div id="top_info_box" class="content_area">
+    <div class="title">
+        <h2>お知らせ</h2>
+        <ul class="more_link">
+          <li class="more_link_txt"><a href="http://blog.nicovideo.jp/seiga/">もっと読む</a></li>
+        </ul>
+    </div>
+    <div class="content_area_inner cfix">
+        <dl class="cfix">
+          <dt>01/22<span class="category">マンガ</span></dt><dd data-title="Android版ニコニコ漫画アプリの一部のバージョンでクラッシュする問題について" data-link="http://blog.nicovideo.jp/seiga/2016/01/android-5.html"><a href="http://blog.nicovideo.jp/seiga/2016/01/android-5.html" rel="nofollow">Android版ニコニコ漫画アプリの一部のバージョンでクラッシュする問題について<img src="img/index/icon_new.png" width="38" height="12" alt="NEW"></a></dd><dt>01/22<span class="category">イラスト</span></dt><dd data-thumbnail="http://blog.nicovideo.jp/seiga/NO.4.jpg" data-title="「だがしかしイラストコンテスト」募集開始！" data-link="http://blog.nicovideo.jp/seiga/2016/01/post-1010.html"><a href="http://blog.nicovideo.jp/seiga/2016/01/post-1010.html" rel="nofollow">「だがしかしイラストコンテスト」募集開始！<img src="img/index/icon_new.png" width="38" height="12" alt="NEW"></a></dd><dt>01/22<span class="category">マンガ</span></dt><dd data-thumbnail="http://blog.nicovideo.jp/seiga/%E9%9D%99%E7%94%BB%EF%BC%B4%EF%BC%AF%EF%BC%B0%E7%94%A8_20160104_sq.jpg" data-title="1/22更新作品追加！「ジャンプSQ.冬のマンガ祭り」開催中!!" data-link="http://blog.nicovideo.jp/seiga/2016/01/0122sq.html"><a href="http://blog.nicovideo.jp/seiga/2016/01/0122sq.html" rel="nofollow">1/22更新作品追加！「ジャンプSQ.冬のマンガ祭り」開催中!!<img src="img/index/icon_new.png" width="38" height="12" alt="NEW"></a></dd><dt>01/22<span class="category">イラスト</span></dt><dd data-thumbnail="http://blog.nicovideo.jp/seiga/valentine2016_180.png" data-title="甘～いイラストがいっぱい！Happy Valentine 2016" data-link="http://blog.nicovideo.jp/seiga/2016/01/valentine2016.html"><a href="http://blog.nicovideo.jp/seiga/2016/01/valentine2016.html" rel="nofollow">甘～いイラストがいっぱい！Happy Valentine 2016<img src="img/index/icon_new.png" width="38" height="12" alt="NEW"></a></dd><dt>01/22<span class="category">電子書籍</span></dt><dd data-title="【復旧】1/22(金)一部書籍がマイリストに登録が出来ない" data-link="http://blog.nicovideo.jp/seiga/2016/01/122-4.html"><a href="http://blog.nicovideo.jp/seiga/2016/01/122-4.html" rel="nofollow">【復旧】1/22(金)一部書籍がマイリストに登録が出来ない<img src="img/index/icon_new.png" width="38" height="12" alt="NEW"></a></dd><dt>01/21<span class="category">イラスト</span></dt><dd data-thumbnail="http://blog.nicovideo.jp/seiga/dqmsl_180_180.jpg" data-title="ドラゴンクエストモンスターズスーパーライト モンスターデザイン大募集！" data-link="http://blog.nicovideo.jp/seiga/2016/01/post-1009.html"><a href="http://blog.nicovideo.jp/seiga/2016/01/post-1009.html" rel="nofollow">ドラゴンクエストモンスターズスーパーライト モンスターデザイン大募集！<img src="img/index/icon_new.png" width="38" height="12" alt="NEW"></a></dd><dt>01/20<span class="category">イラスト</span></dt><dd data-thumbnail="http://blog.nicovideo.jp/seiga/rockman_180.jpg" data-title="RCC×ニコニコ静画 ロックマンイラストコンテスト開催！" data-link="http://blog.nicovideo.jp/seiga/2016/01/rcc.html"><a href="http://blog.nicovideo.jp/seiga/2016/01/rcc.html" rel="nofollow">RCC×ニコニコ静画 ロックマンイラストコンテスト開催！<img src="img/index/icon_new.png" width="38" height="12" alt="NEW"></a></dd>
+        </dl>
+        <div class="top_info_thumnail_spring"></div>
+        <div class="top_info_thumnail">
+          <a class="utip" title="">
+            <div class="top_info_thumnail_wrapper">
+              <img src="/img/common/loader.gif" alt="">
+            </div>
+          </a>
+        </div>
+    </div>
+    <script type="text/javascript">
+      
+      $j(function(){
+        var $thumbnailBox = $j('#top_info_box').find(".top_info_thumnail");
+        var $thumbnailBoxSpring = $j('#top_info_box').find(".top_info_thumnail_spring");
+        var $thumbnail = $thumbnailBox.children("a").find("img");
+        
+        var initialImage = $thumbnail.attr("src");
+        
+        var $article = $j('#top_info_box').find("dd");
+        
+        var thumbnailTopPadding = ($j('#top_info_box').find(".content_area_inner").height() - $thumbnailBox.innerHeight()) / ($article.length - 1);
+        var imageCount = 0;
+        $article.each(function(idx){
+          var thumbnailUrl = $j(this).attr("data-thumbnail");
+          var thumbnailTitle = $j(this).attr("data-title");
+          var thumbnailLink = $j(this).attr("data-link");
+          if(thumbnailUrl && thumbnailUrl.length > 0){
+            $thumbnailBox.css("display", "table-cell");
+            imageCount++;
+            if($thumbnail.attr("src") == initialImage){
+              $thumbnailBoxSpring.css("padding-top", thumbnailTopPadding * idx);
+              $thumbnail.attr("src", thumbnailUrl);
+              $j(this).attr("class", "selected");
+              $thumbnailBox.children("a").attr({"title": thumbnailTitle, "href" : thumbnailLink});
+            }
+            $j(this).mouseover(function(){
+              $thumbnailBoxSpring.css("padding-top", thumbnailTopPadding * idx);
+              $thumbnailBox.children("a").attr({"title": thumbnailTitle, "href" : thumbnailLink});
+              $j('#top_info_box').find("dd.selected").attr("class", "");
+              $j(this).attr("class", "selected");
+              if($thumbnail.attr("src") != thumbnailUrl){
+                $thumbnail.attr("src", initialImage);
+                $thumbnail.attr("src", thumbnailUrl);
+              }
+            });
+          }
+        });
+        if(imageCount == 0){
+          var thumbnailBoxWidth = $thumbnailBox.width()
+          $article.each(function(){
+            $j(this).width($j(this).width() + thumbnailBoxWidth);
+          });
+          var $articleBox = $j('#top_info_box').find("dl");
+          $articleBox.width($articleBox.width() + thumbnailBoxWidth);
+          $thumbnailBox.remove();
+        }
+      });
+      
+    </script>
+</div>
+
+    <div id="top_newcomment_box" class="itemlist_area cfix"><div class="title"><h2>最近コメントがついた作品</h2><ul class="more_link_list"><li class="more_link_txt">もっと見る<ul class="more_sublink_list"><li class="arrow01_left illust_link"><a href="/illust/list/comment_created?track=seiga_com">イラスト</a></li><li class="arrow01_left manga_link"><a href="/manga/list?sort=comment_created&track=seiga_com">マンガ</a></li><li class="arrow01_left book_link"><a href="/book/list?sort=n&group=b&track=seiga_com">電子書籍</a></li></ul></li></ul></div><div class="itemlist"><div class="item"><a href="/comic/15914?track=seiga_com"><div class="item_list_img"><div class="center_img  "><span class="center_img_inner" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/mg_thumb/5504767q?1453168834" alt=""><span class="center_img_spring">&nbsp;</span></span></div><div class="item_info_container"><div class="item_info"><span class="item_title"><span class="kind">[マンガ]</span>木根さんの１人でキネマ</span><span class="item_usr">アサイ</span></div></div></div><div class="kind_icon icon_manga border">イラスト</div><div class="summary_comment"><span class="comment_txt">！？ じわっと来たぜ… さすがにタイトルは言わないが、去年、個人的…</span></div></a></div><div class="item"><a href="/comic/19720?track=seiga_com"><div class="item_list_img"><div class="center_img  "><span class="center_img_inner" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/mg_thumb/5514512q" alt=""><span class="center_img_spring">&nbsp;</span></span></div><div class="item_info_container"><div class="item_info"><span class="item_title"><span class="kind">[マンガ]</span>４コマちっく東方</span><span class="item_usr">千羽チドリ</span></div></div></div><div class="kind_icon icon_manga border">イラスト</div><div class="summary_comment"><span class="comment_txt">羽動いててかわいい おいいいいｗ お、うお えやね いいやつだなw</span></div></a></div><div class="item"><a href="/watch/bk322787?track=seiga_com"><div class="item_list_img"><div class="center_img  "><span class="center_img_inner" ><img class="lazyload" data-original="http://seiga.nicovideo.jp/book/static/img/book/000/322/787/daKKIRJdXyQymDZV.300x300.jpg?1448012186" alt=""><span class="center_img_spring">&nbsp;</span></span></div><div class="item_info_container"><div class="item_info"><span class="item_title"><span class="kind">[電子書籍]</span>進撃の巨人（１８）</span><span class="item_usr">講談社</span></div></div></div><div class="kind_icon icon_book border">イラスト</div><div class="summary_comment"><span class="comment_txt">リヴァイ乱入ワロタｗｗ 道中におった寝てた巨人じゃね クダサイシゴトオ ジャンボォオオ...</span></div></a></div><div class="item"><a href="/seiga/im5480069?track=seiga_com"><div class="item_list_img"><div class="center_img  "><span class="center_img_inner" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/5480069z?" alt=""><span class="center_img_spring">&nbsp;</span></span></div><div class="item_info_container"><div class="item_info"><span class="item_title"><span class="kind">[イラスト]</span>こいしちゃんです！</span><span class="item_usr">巍（たかし）</span></div></div></div><div class="kind_icon icon_illust border">イラスト</div><div class="summary_comment"><span class="comment_txt">でかいしちゃん やっぱ巍さんの絵は可 挿れたい 大きい（大きい） 大きい（ボール） 大きい（確信） 大きい </span></div></a></div><div class="item"><a href="/seiga/im5515127?track=seiga_com"><div class="item_list_img"><div class="center_img  "><span class="center_img_inner" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/5515127z?" alt=""><span class="center_img_spring">&nbsp;</span></span></div><div class="item_info_container"><div class="item_info"><span class="item_title"><span class="kind">[イラスト]</span>幸運の女神の正体を知った暁ちゃん漫画</span><span class="item_usr">浅野和成</span></div></div></div><div class="kind_icon icon_illust border">イラスト</div><div class="summary_comment"><span class="comment_txt">骸骨じゃ男か女か分か ざんねん！暁の冒険は 敵に死をもたらすのな 敵に死をもたらすので 死ぬぜぇ…俺の姿を見 し…死神は神様だし、 なるほど敵にとっては もしかしたらス</span></div></a></div><div class="item"><a href="/seiga/im3565589?track=seiga_com"><div class="item_list_img"><div class="center_img  "><span class="center_img_inner" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/3565589z?" alt=""><span class="center_img_spring">&nbsp;</span></span></div><div class="item_info_container"><div class="item_info"><span class="item_title"><span class="kind">[イラスト]</span>いつ撮った？</span><span class="item_usr">あつし</span></div></div></div><div class="kind_icon icon_illust border">イラスト</div><div class="summary_comment"><span class="comment_txt">加賀「頭にきました」 大人げねえな 扶桑姉妹やら加賀やら 加賀｢吹雪｡いつ撮った 加賀「ねぇ吹雪さんな おいやめろ ↑赤城と約4年しか違わ 俺「艦これ空母界の老 やっちまっ</span></div></a></div><div class="item"><a href="/seiga/im5451156?track=seiga_com"><div class="item_list_img"><div class="center_img  "><span class="center_img_inner" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/5451156z?" alt=""><span class="center_img_spring">&nbsp;</span></span></div><div class="item_info_container"><div class="item_info"><span class="item_title"><span class="kind">[イラスト]</span>北上提督と秘書艦球磨 その27</span><span class="item_usr">ひかわ７９＠1/17砲雷D-33</span></div></div></div><div class="kind_icon icon_illust border">イラスト</div><div class="summary_comment"><span class="comment_txt">まぁ、弱くても好きな 加古の無修正の頃をし WoWsの球磨と古鷹の関 もう改二は来なくても まあ、当時は火力49し ↑現在（改）の能力値 ↑↑下方修正の意味を知 加古大好き 結</span></div></a></div><div class="item"><a href="/seiga/im1537457?track=seiga_com"><div class="item_list_img"><div class="center_img  "><span class="center_img_inner" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/1537457z?" alt=""><span class="center_img_spring">&nbsp;</span></span></div><div class="item_info_container"><div class="item_info"><span class="item_title"><span class="kind">[イラスト]</span>？</span><span class="item_usr">9enS2000</span></div></div></div><div class="kind_icon icon_illust border">イラスト</div><div class="summary_comment"><span class="comment_txt">↑もう限界突破してる 順調に成長していく閲 少しずつ少しずつ 朝癒し 閲覧数100万いったり 寝るぜ！ 着込むならぬねこむ… おはようむ。 寝る時 寒いから癒しで暖めて もう</span></div></a></div><div class="item"><a href="/seiga/im3808971?track=seiga_com"><div class="item_list_img"><div class="center_img  "><span class="center_img_inner" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/3808971z?" alt=""><span class="center_img_spring">&nbsp;</span></span></div><div class="item_info_container"><div class="item_info"><span class="item_title"><span class="kind">[イラスト]</span>利根えも～ん～深海棲艦たちがいじめるよ～なにか道具出して～</span><span class="item_usr">な！</span></div></div></div><div class="kind_icon icon_illust border">イラスト</div><div class="summary_comment"><span class="comment_txt">エヴァ初号機暴走と１ ＼ぱーんぱーぱぱっぱ グレンキャノンもだ！ 実はイデオンガンより イデオ・バスタが合体 カーシャに押させろ！ イデの意思って赤ちゃ ｺﾛｼｱｴｰ Ｂメカ</span></div></a></div><div class="item"><a href="/watch/bk317583?track=seiga_com"><div class="item_list_img"><div class="center_img  "><span class="center_img_inner" ><img class="lazyload" data-original="http://seiga.nicovideo.jp/book/static/img/book/000/317/583/DkaeqDDVpWnHzwUD.300x300.jpg?1445253280" alt=""><span class="center_img_spring">&nbsp;</span></span></div><div class="item_info_container"><div class="item_info"><span class="item_title"><span class="kind">[電子書籍]</span>悪魔も踏むを恐れるところ 1巻</span><span class="item_usr">スクウェア・エニックス</span></div></div></div><div class="kind_icon icon_book border">イラスト</div><div class="summary_comment"><span class="comment_txt">ガッシュかな？ ほのぼのしとんなぁ エロゲ脳ｗｗ ガッシュカナァ？ シリアス終了 </span></div></a></div><div class="item"><a href="/comic/19721?track=seiga_com"><div class="item_list_img"><div class="center_img  "><span class="center_img_inner" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/mg_thumb/5514659q?1453473954" alt=""><span class="center_img_spring">&nbsp;</span></span></div><div class="item_info_container"><div class="item_info"><span class="item_title"><span class="kind">[マンガ]</span>小４～中２の頃書いた全１６巻の黒歴史漫画【神・手～ゴットハンド～】</span><span class="item_usr">6世</span></div></div></div><div class="kind_icon icon_manga border">イラスト</div><div class="summary_comment"><span class="comment_txt">小学生でも構図や表現に工夫がこらしてあるな中学校のも見たい その…</span></div></a></div><div class="item"><a href="/watch/bk290832?track=seiga_com"><div class="item_list_img"><div class="center_img  "><span class="center_img_inner" ><img class="lazyload" data-original="http://seiga.nicovideo.jp/book/static/img/book/000/290/832/soUAfkRRSfLIPATj.300x300.jpg?1437121579" alt=""><span class="center_img_spring">&nbsp;</span></span></div><div class="item_info_container"><div class="item_info"><span class="item_title"><span class="kind">[電子書籍]</span>銀魂 モノクロ版 59</span><span class="item_usr">集英社</span></div></div></div><div class="kind_icon icon_book border">イラスト</div><div class="summary_comment"><span class="comment_txt">船を囮にする度に嘆いてたのかｗ ここでも天導衆の差し金を・・・ 恩師斬りをしなきゃ、み...</span></div></a></div></div></div>
+    <div id="top_new_box" class="itemlist_area cfix"><div class="title"><h2>新着作品</h2><ul class="more_link_list"><li class="more_link_txt">もっと見る<ul class="more_sublink_list"><li class="arrow01_left illust_link"><a href="/illust/list/image_created?track=seiga_new">イラスト</a></li><li class="arrow01_left manga_link"><a href="/manga/list?sort=manga_updated&track=seiga_new">マンガ</a></li><li class="arrow01_left book_link"><a href="/book/list?sort=f&order=d&track=seiga_new">電子書籍</a></li></ul></li></ul></div><div class="itemlist"><div class="item"><a href="/watch/bk331233?track=seiga_new"><div class="item_list_img"><div class="center_img  "><span class="center_img_inner" ><img class="lazyload" data-original="http://seiga.nicovideo.jp/book/static/img/book/000/331/233/uVFLbRybhtKrRcgk.300x300.jpg?1453475128" alt=""><span class="center_img_spring">&nbsp;</span></span></div><div class="item_info_container"><div class="item_info"><span class="item_title"><span class="kind">[電子書籍]</span>盾の勇者の成り上がり　5</span><span class="item_usr">KADOKAWA / メディアファクトリー</span></div></div></div><div class="kind_icon icon_book border">イラスト</div></a></div><div class="item"><a href="/seiga/im5515426?track=seiga_new"><div class="item_list_img"><div class="center_img  "><span class="center_img_inner" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/5515426z?" alt=""><span class="center_img_spring">&nbsp;</span></span></div><div class="item_info_container"><div class="item_info"><span class="item_title"><span class="kind">[イラスト]</span>ことりちゃんPart2</span><span class="item_usr">ぐッさん</span></div></div></div><div class="kind_icon icon_illust border">イラスト</div></a></div><div class="item"><a href="/comic/19325?track=seiga_new"><div class="item_list_img"><div class="center_img  "><span class="center_img_inner" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/mg_thumb/5514967q" alt=""><span class="center_img_spring">&nbsp;</span></span></div><div class="item_info_container"><div class="item_info"><span class="item_title"><span class="kind">[マンガ]</span>艦これ漫画</span><span class="item_usr">ラパ</span></div></div></div><div class="kind_icon icon_manga border">イラスト</div></a></div><div class="item"><a href="/watch/bk331134?track=seiga_new"><div class="item_list_img"><div class="center_img  "><span class="center_img_inner" ><img class="lazyload" data-original="http://seiga.nicovideo.jp/book/static/img/book/000/331/134/xYAdCSkBkfVeFQBo.300x300.jpg?1453286023" alt=""><span class="center_img_spring">&nbsp;</span></span></div><div class="item_info_container"><div class="item_info"><span class="item_title"><span class="kind">[電子書籍]</span>デザート 2016年3月号 [2016年1月23日発売]</span><span class="item_usr">講談社</span></div></div></div><div class="kind_icon icon_book border">イラスト</div></a></div><div class="item"><a href="/watch/bk331240?track=seiga_new"><div class="item_list_img"><div class="center_img  "><span class="center_img_inner" ><img class="lazyload" data-original="http://seiga.nicovideo.jp/book/static/img/book/000/331/240/ciPvWWMrKeiOGcGA.300x300.jpg?1453475127" alt=""><span class="center_img_spring">&nbsp;</span></span></div><div class="item_info_container"><div class="item_info"><span class="item_title"><span class="kind">[電子書籍]</span>超人ロック　ドラゴンズブラッド 2</span><span class="item_usr">KADOKAWA / メディアファクトリー</span></div></div></div><div class="kind_icon icon_book border">イラスト</div></a></div><div class="item"><a href="/comic/19124?track=seiga_new"><div class="item_list_img"><div class="center_img  "><span class="center_img_inner" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/mg_thumb/5515428q" alt=""><span class="center_img_spring">&nbsp;</span></span></div><div class="item_info_container"><div class="item_info"><span class="item_title"><span class="kind">[マンガ]</span>ファンタジスタ　ライト　ボーイ</span><span class="item_usr">メタモル・あうと郎</span></div></div></div><div class="kind_icon icon_manga border">イラスト</div></a></div><div class="item"><a href="/seiga/im5515435?track=seiga_new"><div class="item_list_img"><div class="center_img  "><span class="center_img_inner" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/5515435z?" alt=""><span class="center_img_spring">&nbsp;</span></span></div><div class="item_info_container"><div class="item_info"><span class="item_title"><span class="kind">[イラスト]</span>にともみ</span><span class="item_usr">残念な人</span></div></div></div><div class="kind_icon icon_illust border">イラスト</div></a></div><div class="item"><a href="/comic/18931?track=seiga_new"><div class="item_list_img"><div class="center_img  "><span class="center_img_inner" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/mg_thumb/5515005q" alt=""><span class="center_img_spring">&nbsp;</span></span></div><div class="item_info_container"><div class="item_info"><span class="item_title"><span class="kind">[マンガ]</span>新約：不気味の谷　-NT：Uncanny Valley-</span><span class="item_usr">Chill</span></div></div></div><div class="kind_icon icon_manga border">イラスト</div></a></div><div class="item"><a href="/seiga/im5515433?track=seiga_new"><div class="item_list_img"><div class="center_img  "><span class="center_img_inner" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/5515433z?" alt=""><span class="center_img_spring">&nbsp;</span></span></div><div class="item_info_container"><div class="item_info"><span class="item_title"><span class="kind">[イラスト]</span>Sロトマシーン</span><span class="item_usr">hoooi</span></div></div></div><div class="kind_icon icon_illust border">イラスト</div></a></div><div class="item"><a href="/seiga/im5515463?track=seiga_new"><div class="item_list_img"><div class="center_img  "><span class="center_img_inner" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/5515463z?" alt=""><span class="center_img_spring">&nbsp;</span></span></div><div class="item_info_container"><div class="item_info"><span class="item_title"><span class="kind">[イラスト]</span>ジブリ実況「魔女の宅急便」</span><span class="item_usr">甘宮ソラ</span></div></div></div><div class="kind_icon icon_illust border">イラスト</div></a></div><div class="item"><a href="/seiga/im5515447?track=seiga_new"><div class="item_list_img"><div class="center_img  "><span class="center_img_inner" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/5515447z?" alt=""><span class="center_img_spring">&nbsp;</span></span></div><div class="item_info_container"><div class="item_info"><span class="item_title"><span class="kind">[イラスト]</span>長い棒を持つとついついあらぬ方向にはしゃいでしまうゆかりさん</span><span class="item_usr">モロ出し</span></div></div></div><div class="kind_icon icon_illust border">イラスト</div></a></div><div class="item"><a href="/seiga/im5515440?track=seiga_new"><div class="item_list_img"><div class="center_img  "><span class="center_img_inner" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/5515440z?" alt=""><span class="center_img_spring">&nbsp;</span></span></div><div class="item_info_container"><div class="item_info"><span class="item_title"><span class="kind">[イラスト]</span>お茶会させてみたかっただけ</span><span class="item_usr">オル☆</span></div></div></div><div class="kind_icon icon_illust border">イラスト</div></a></div></div></div>
+        <div id="top_tag_box" class="itemlist_area cfix"><div class="title"><h2>注目のタグ<span class="tag">[<span class="tag_string">四条貴音</span><a href="http://dic.nicovideo.jp/a/%E5%9B%9B%E6%9D%A1%E8%B2%B4%E9%9F%B3"><img src="img/tag/dic_on.png" alt=""></a>]</span></h2><ul class="more_link_list"><li class="more_link_txt">もっと見る<ul class="more_sublink_list"><li class="arrow01_left illust_link"><a href="/tag/%E5%9B%9B%E6%9D%A1%E8%B2%B4%E9%9F%B3?track=seiga_tag">イラスト</a></li><li class="arrow01_left manga_link"><a href="/manga/tag/%E5%9B%9B%E6%9D%A1%E8%B2%B4%E9%9F%B3?track=seiga_tag">マンガ</a></li><li class="arrow01_left book_link"><a href="/book/list?tag=%E5%9B%9B%E6%9D%A1%E8%B2%B4%E9%9F%B3&track=seiga_tag">電子書籍</a></li></ul></li></ul></div><div class="itemlist"><div class="item"><a href="/comic/11204?track=seiga_tag"><div class="item_list_img"><div class="center_img  "><span class="center_img_inner" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/mg_thumb/5481399q" alt=""><span class="center_img_spring">&nbsp;</span></span></div><div class="item_info_container"><div class="item_info"><span class="item_title"><span class="kind">[マンガ]</span>アイマス４コマ置き場</span><span class="item_usr">サック</span></div></div></div><div class="kind_icon icon_manga border">イラスト</div></a></div><div class="item"><a href="/seiga/im5509846?track=seiga_tag"><div class="item_list_img"><div class="center_img  "><span class="center_img_inner" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/5509846z?" alt=""><span class="center_img_spring">&nbsp;</span></span></div><div class="item_info_container"><div class="item_info"><span class="item_title"><span class="kind">[イラスト]</span>四条貴音さん、お誕生日おめでとうございます</span><span class="item_usr">EVA16号機</span></div></div></div><div class="kind_icon icon_illust border">イラスト</div></a></div><div class="item"><a href="/seiga/im5465861?track=seiga_tag"><div class="item_list_img"><div class="center_img  "><span class="center_img_inner" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/5465861z?" alt=""><span class="center_img_spring">&nbsp;</span></span></div><div class="item_info_container"><div class="item_info"><span class="item_title"><span class="kind">[イラスト]</span>貴音さま</span><span class="item_usr">そらまめ</span></div></div></div><div class="kind_icon icon_illust border">イラスト</div></a></div><div class="item"><a href="/seiga/im5509785?track=seiga_tag"><div class="item_list_img"><div class="center_img  "><span class="center_img_inner" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/5509785z?" alt=""><span class="center_img_spring">&nbsp;</span></span></div><div class="item_info_container"><div class="item_info"><span class="item_title"><span class="kind">[イラスト]</span>【1月21日】貴音さん誕生日おめでとう！【中の人も】</span><span class="item_usr">きいろいの</span></div></div></div><div class="kind_icon icon_illust border">イラスト</div></a></div><div class="item"><a href="/seiga/im5511990?track=seiga_tag"><div class="item_list_img"><div class="center_img  "><span class="center_img_inner" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/5511990z?" alt=""><span class="center_img_spring">&nbsp;</span></span></div><div class="item_info_container"><div class="item_info"><span class="item_title"><span class="kind">[イラスト]</span>からーおじゃま</span><span class="item_usr">バチ</span></div></div></div><div class="kind_icon icon_illust border">イラスト</div></a></div><div class="item"><a href="/seiga/im5506275?track=seiga_tag"><div class="item_list_img"><div class="center_img  "><span class="center_img_inner" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/5506275z?" alt=""><span class="center_img_spring">&nbsp;</span></span></div><div class="item_info_container"><div class="item_info"><span class="item_title"><span class="kind">[イラスト]</span>生存競争</span><span class="item_usr">Toramaru</span></div></div></div><div class="kind_icon icon_illust border">イラスト</div></a></div><div class="item"><a href="/seiga/im5509757?track=seiga_tag"><div class="item_list_img"><div class="center_img  "><span class="center_img_inner" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/5509757z?" alt=""><span class="center_img_spring">&nbsp;</span></span></div><div class="item_info_container"><div class="item_info"><span class="item_title"><span class="kind">[イラスト]</span>しじょ誕</span><span class="item_usr">委員長</span></div></div></div><div class="kind_icon icon_illust border">イラスト</div></a></div><div class="item"><a href="/seiga/im5512264?track=seiga_tag"><div class="item_list_img"><div class="center_img  "><span class="center_img_inner" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/5512264z?" alt=""><span class="center_img_spring">&nbsp;</span></span></div><div class="item_info_container"><div class="item_info"><span class="item_title"><span class="kind">[イラスト]</span>27歳貴音</span><span class="item_usr">だーす</span></div></div></div><div class="kind_icon icon_illust border">イラスト</div></a></div><div class="item"><a href="/seiga/im5512087?track=seiga_tag"><div class="item_list_img"><div class="center_img  "><span class="center_img_inner" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/5512087z?" alt=""><span class="center_img_spring">&nbsp;</span></span></div><div class="item_info_container"><div class="item_info"><span class="item_title"><span class="kind">[イラスト]</span>四条貴音</span><span class="item_usr">ぷら</span></div></div></div><div class="kind_icon icon_illust border">イラスト</div></a></div><div class="item"><a href="/seiga/im5484120?track=seiga_tag"><div class="item_list_img"><div class="center_img  "><span class="center_img_inner" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/5484120z?" alt=""><span class="center_img_spring">&nbsp;</span></span></div><div class="item_info_container"><div class="item_info"><span class="item_title"><span class="kind">[イラスト]</span>コンビニ徹夜組</span><span class="item_usr">ねこ号</span></div></div></div><div class="kind_icon icon_illust border">イラスト</div></a></div><div class="item"><a href="/comic/10426?track=seiga_tag"><div class="item_list_img"><div class="center_img  "><span class="center_img_inner" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/mg_thumb/5419675q" alt=""><span class="center_img_spring">&nbsp;</span></span></div><div class="item_info_container"><div class="item_info"><span class="item_title"><span class="kind">[マンガ]</span>アイマスマンガ置き場</span><span class="item_usr">サック</span></div></div></div><div class="kind_icon icon_manga border">イラスト</div></a></div><div class="item"><a href="/comic/14369?track=seiga_tag"><div class="item_list_img"><div class="center_img  "><span class="center_img_inner" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/mg_thumb/5462112q" alt=""><span class="center_img_spring">&nbsp;</span></span></div><div class="item_info_container"><div class="item_info"><span class="item_title"><span class="kind">[マンガ]</span>アイマスイラスト置き場</span><span class="item_usr">サック</span></div></div></div><div class="kind_icon icon_manga border">イラスト</div></a></div></div></div>
+    <div id="top_event_box" class="content_area">
+      <div class="title">
+  <h2>イベント</h2>
+  <ul class="more_link">
+    <li class="more_link_txt"><a href="/campaign/new?track=seiga_campaign">もっと見る</a></li>
+  </ul>
+</div>
+<div class="content_area_inner cfix">
+    <div class="pickup_event" style="background-color: #4169e1; color: #FFFFFF"><!--★イベントによって色変更-->
+    <div class="pickup_event_item cfix">
+      <p class="event_banner"><a href="http://info.nicovideo.jp/seiga/daia_ace/?track=seiga_campaign"><img class="lazyload" data-original="http://lohas.nicoseiga.jp//material/752cee/3643587" alt=""></a></p>
+      <div class="event_info">
+        <h3><img src="/img/index/img_ev_pickup.png" width="76" height="28" alt="pickup"><a href="http://info.nicovideo.jp/seiga/daia_ace/?track=seiga_campaign" style="color: #fff;">ダイヤのAエンドカードコンテスト</a></h3><!--★イベントによって色変更-->
+        <p class="event_txt">地上波・ニコニコチャンネルで放送中の「ダイヤのA」のエンドカードを大募集！</p>
+      </div>
+    </div>
+        <div class="pickup_event_list cfix">
+                        <div class="item">
+        <a href="/seiga/im5149985?track=seiga_campaign" title="ストレッチ中" class="tooltip">
+          <div class="item_list_img">
+          <div class="center_img  center_img_size_80"><span class="center_img_inner" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp//thumb/5149985q?" alt=""><span class="center_img_spring">&nbsp;</span></span></div>          </div>
+          <div class="kind_icon icon_illust border">イラスト</div>
+        </a>
+      </div>
+                        <div class="item">
+        <a href="/seiga/im5071446?track=seiga_campaign" title="熱中症に気をつけて" class="tooltip">
+          <div class="item_list_img">
+          <div class="center_img  center_img_size_80"><span class="center_img_inner" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp//thumb/5071446q?" alt=""><span class="center_img_spring">&nbsp;</span></span></div>          </div>
+          <div class="kind_icon icon_illust border">イラスト</div>
+        </a>
+      </div>
+                        <div class="item">
+        <a href="/seiga/im4895765?track=seiga_campaign" title="闘志" class="tooltip">
+          <div class="item_list_img">
+          <div class="center_img  center_img_size_80"><span class="center_img_inner" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp//thumb/4895765q?" alt=""><span class="center_img_spring">&nbsp;</span></span></div>          </div>
+          <div class="kind_icon icon_illust border">イラスト</div>
+        </a>
+      </div>
+                        <div class="item">
+        <a href="/seiga/im4741990?track=seiga_campaign" title="亮さん" class="tooltip">
+          <div class="item_list_img">
+          <div class="center_img  center_img_size_80"><span class="center_img_inner" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp//thumb/4741990q?" alt=""><span class="center_img_spring">&nbsp;</span></span></div>          </div>
+          <div class="kind_icon icon_illust border">イラスト</div>
+        </a>
+      </div>
+                        <div class="item">
+        <a href="/seiga/im5491891?track=seiga_campaign" title="" class="tooltip">
+          <div class="item_list_img">
+          <div class="center_img  center_img_size_80"><span class="center_img_inner" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp//thumb/5491891q?" alt=""><span class="center_img_spring">&nbsp;</span></span></div>          </div>
+          <div class="kind_icon icon_illust border">イラスト</div>
+        </a>
+      </div>
+                        <div class="item">
+        <a href="/seiga/im5040727?track=seiga_campaign" title="はよー" class="tooltip">
+          <div class="item_list_img">
+          <div class="center_img  center_img_size_80"><span class="center_img_inner" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp//thumb/5040727q?" alt=""><span class="center_img_spring">&nbsp;</span></span></div>          </div>
+          <div class="kind_icon icon_illust border">イラスト</div>
+        </a>
+      </div>
+                        <p class="more_event_link"><a href="/campaign/redirect?campaign=daiaace_ed2013&track=seiga_campaign" title="もっと見る" class="utip">もっと見る</a></p>
+    </div>
+      </div>
+    <div class="event_list">
+          <div class="event_item cfix" >
+  <p class="event_banner"><a href="http://blog.nicovideo.jp/seiga/2016/01/valentine2016.html?track=seiga_campaign"><img class="lazyload" data-original="http://lohas.nicoseiga.jp//material/3fe0b1/5512685" alt=""></a></p>
+  <ul class="event_info">
+    <li class="event_title"><a href="http://blog.nicovideo.jp/seiga/2016/01/valentine2016.html?track=seiga_campaign">Happy Valentine 2016</a></li>
+    <li class="event_date">2016年01月22日(金)～2016年02月14日(日) 23:59</li>
+    <li class="event_link">
+      <a href="http://blog.nicovideo.jp/seiga/2016/01/valentine2016.html?track=seiga_campaign">イベント詳細</a>
+            &nbsp;｜&nbsp;
+      <a href="/campaign/redirect?campaign=valentine2016&track=seiga_campaign">応募作品一覧</a>
+          </li>
+  </ul>
+</div>          <div class="event_item cfix" >
+  <p class="event_banner"><a href="http://info.nicovideo.jp/seiga/dagashikashi_contest/?track=seiga_campaign"><img class="lazyload" data-original="http://lohas.nicoseiga.jp//material/f8d901/5511627" alt=""></a></p>
+  <ul class="event_info">
+    <li class="event_title"><a href="http://info.nicovideo.jp/seiga/dagashikashi_contest/?track=seiga_campaign">だがしかしイラストコンテスト</a></li>
+    <li class="event_date">2016年01月22日(金)～2016年02月29日(月) 23:59</li>
+    <li class="event_link">
+      <a href="http://info.nicovideo.jp/seiga/dagashikashi_contest/?track=seiga_campaign">イベント詳細</a>
+            &nbsp;｜&nbsp;
+      <a href="/campaign/redirect?campaign=dagashikashi_contest&track=seiga_campaign">応募作品一覧</a>
+          </li>
+  </ul>
+</div>          <div class="event_item cfix" >
+  <p class="event_banner"><a href="http://info.nicovideo.jp/seiga/dqmsl/?track=seiga_campaign"><img class="lazyload" data-original="http://lohas.nicoseiga.jp//material/a66175/5507871" alt=""></a></p>
+  <ul class="event_info">
+    <li class="event_title"><a href="http://info.nicovideo.jp/seiga/dqmsl/?track=seiga_campaign">DQMSLモンスターデザインコンテスト</a></li>
+    <li class="event_date">2016年01月21日(木)～2016年03月06日(日) 23:59</li>
+    <li class="event_link">
+      <a href="http://info.nicovideo.jp/seiga/dqmsl/?track=seiga_campaign">イベント詳細</a>
+            &nbsp;｜&nbsp;
+      <a href="/campaign/redirect?campaign=dqmsl&track=seiga_campaign">応募作品一覧</a>
+          </li>
+  </ul>
+</div>          <div class="event_item cfix" >
+  <p class="event_banner"><a href="http://info.nicovideo.jp/seiga/rcc/?track=seiga_campaign"><img class="lazyload" data-original="http://lohas.nicoseiga.jp//material/3078a2/5507959" alt=""></a></p>
+  <ul class="event_info">
+    <li class="event_title"><a href="http://info.nicovideo.jp/seiga/rcc/?track=seiga_campaign">RCC イラストコンテスト</a></li>
+    <li class="event_date">2016年01月20日(水)～2016年02月21日(日) 23:59</li>
+    <li class="event_link">
+      <a href="http://info.nicovideo.jp/seiga/rcc/?track=seiga_campaign">イベント詳細</a>
+            &nbsp;｜&nbsp;
+      <a href="/campaign/redirect?campaign=rcc&track=seiga_campaign">応募作品一覧</a>
+          </li>
+  </ul>
+</div>          <div class="event_item cfix" >
+  <p class="event_banner"><a href="http://blog.nicovideo.jp/seiga/2016/01/reitaisai13.html?track=seiga_campaign"><img class="lazyload" data-original="http://lohas.nicoseiga.jp//material/3414cd/5490238" alt=""></a></p>
+  <ul class="event_info">
+    <li class="event_title"><a href="http://blog.nicovideo.jp/seiga/2016/01/reitaisai13.html?track=seiga_campaign">博麗神社例大祭13カタログイラストコンテスト</a></li>
+    <li class="event_date">2016年01月15日(金)～2016年02月21日(日) 23:59</li>
+    <li class="event_link">
+      <a href="http://blog.nicovideo.jp/seiga/2016/01/reitaisai13.html?track=seiga_campaign">イベント詳細</a>
+            &nbsp;｜&nbsp;
+      <a href="/campaign/redirect?campaign=reitaisai13&track=seiga_campaign">応募作品一覧</a>
+          </li>
+  </ul>
+</div>        <p class="more_link"><a href="/campaign/old?track=seiga_campaign" class="arrow01_right static">過去のイベント一覧へ</a></p>
+  </div>
+</div>
+    </div>
+  </div>
+  <div id="main_area_r">
+    <div id="top_ads_box">
+<script type="text/javascript"><!--
+
+new Ads.Advertisement({ zone: 433 }).set('top_ads_box');
+
+// --></script>
+</div>    <div id="pc_seiga_top_300x60_text_east " class="ads_300x60"></div>
+<script type="text/javascript">
+(function(element_id, zone_id) {
+  
+  new Ads.Advertisement({zone: zone_id}).set(element_id, function () {
+    if (this.isHtml()) {
+      var adText = this.getAppend().replace(/\r?\n/g, '<br>');
+    } else {
+      var adText = this.link(this.getBannertext().replace(/\r?\n/g, '<br>'));
+    }
+    return [ '<div class="banner">', this.getTag(), '</div><span>', adText, '</span>' ].join("\n");
+  });
+  
+})('pc_seiga_top_300x60_text_east ', 592);
+</script>        <div class="ads_prtext">
+  <ul id="seiga_pc_prtext"></ul>
+  <script type="text/javascript">
+  (function(element_id, zone_id, count) {
+    
+    new Ads.Advertisement({zone: zone_id, count: count}).set(element_id, function () {
+      return [ '<li><span>PR</span> ', this.link(this.getBannertext()), '</li>'].join("");
+    });
+    
+  })('seiga_pc_prtext', 132, 3);
+  </script>
+</div>    <div id="top_rank_box" class="rank_area cfix">
+  <div class="title">
+      <div class="title_icon"><img src="img/index/img_title_rank.png" width="47" height="50" alt="静画ランキング"></div>
+      <h2>静画ランキング</h2>
+  </div>
+  <div class="rank_area_inner">
+            <div class="rank_illust cfix">
+          <h3>イラストランキング</h3>
+          <h4 class="category"><a href="/illust/ranking/point/hourly/g_creation">創作</a></h4>
+          <div class="rank_list">
+    <div class="rank_item cfix">
+    <div class="rank_no no01">1</div>
+    <div class="rank_thumnail">
+                      <div class="center_img  center_img_size_80"><a class="center_img_inner " href="/seiga/im5510654?track=top_ranking" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/5510654q?" alt=""><span class="center_img_spring">&nbsp;</span></a></div>          </div>
+    <ul class="rank_info">
+              <li class="rank_title"><a href="/seiga/im5510654?track=top_ranking">こっちへおいで？</a></li>
+        <li class="rank_disc"> </li>
+        <li class="rank_usr"><a href="/user/illust/14551597">イオ</a></li>
+          </ul>
+  </div>
+    <div class="rank_item cfix">
+    <div class="rank_no no02">2</div>
+    <div class="rank_thumnail">
+                      <div class="center_img  center_img_size_80"><a class="center_img_inner " href="/seiga/im5512345?track=top_ranking" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/5512345q?" alt=""><span class="center_img_spring">&nbsp;</span></a></div>          </div>
+    <ul class="rank_info">
+              <li class="rank_title"><a href="/seiga/im5512345?track=top_ranking">風呂が空いてると聞いたので</a></li>
+        <li class="rank_disc">来たらこうなった </li>
+        <li class="rank_usr"><a href="/user/illust/2606234">けい</a></li>
+          </ul>
+  </div>
+    <div class="rank_item cfix">
+    <div class="rank_no no03">3</div>
+    <div class="rank_thumnail">
+                      <div class="center_img  center_img_size_80"><a class="center_img_inner " href="/seiga/im5513486?track=top_ranking" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/5513486q?" alt=""><span class="center_img_spring">&nbsp;</span></a></div>          </div>
+    <ul class="rank_info">
+              <li class="rank_title"><a href="/seiga/im5513486?track=top_ranking">狐白157 狐白日和27</a></li>
+        <li class="rank_disc">お狐様サプライズ
+次　ｶｰﾝｶｰﾝｶｰﾝ
+前　im5511237
+■ｺﾐｭco1373214■… </li>
+        <li class="rank_usr"><a href="/user/illust/384289">やる気のない夕海</a></li>
+          </ul>
+  </div>
+  </div>
+          <!--//創作ここまで-->
+
+          <h4 class="category"><a href="/illust/ranking/point/hourly/g_fanart">ファンアート</a></h4>
+          <div class="rank_list">
+    <div class="rank_item cfix">
+    <div class="rank_no no01">1</div>
+    <div class="rank_thumnail">
+                      <div class="center_img  center_img_size_80"><a class="center_img_inner " href="/seiga/im5513586?track=top_ranking" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/5513586q?" alt=""><span class="center_img_spring">&nbsp;</span></a></div>          </div>
+    <ul class="rank_info">
+              <li class="rank_title"><a href="/seiga/im5513586?track=top_ranking">Ｐちゃん、寒いから早く一緒に入るにゃ</a></li>
+        <li class="rank_disc">エロ絵もたまーに描くかも。 </li>
+        <li class="rank_usr"><a href="/user/illust/23427553">セネト</a></li>
+          </ul>
+  </div>
+    <div class="rank_item cfix">
+    <div class="rank_no no02">2</div>
+    <div class="rank_thumnail">
+                      <div class="center_img  center_img_size_80"><a class="center_img_inner " href="/seiga/im5513312?track=top_ranking" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/5513312q?" alt=""><span class="center_img_spring">&nbsp;</span></a></div>          </div>
+    <ul class="rank_info">
+              <li class="rank_title"><a href="/seiga/im5513312?track=top_ranking">アイドルマスターシンデレラガールズ＆パンツァー</a></li>
+        <li class="rank_disc">ラブライカwith戦車道 プラウダ高校編　第一話「同士です！」
+
+… </li>
+        <li class="rank_usr"><a href="/user/illust/10258492">イノシラ</a></li>
+          </ul>
+  </div>
+    <div class="rank_item cfix">
+    <div class="rank_no no03">3</div>
+    <div class="rank_thumnail">
+                      <div class="center_img  center_img_size_80"><a class="center_img_inner " href="/seiga/im5512329?track=top_ranking" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/5512329q?" alt=""><span class="center_img_spring">&nbsp;</span></a></div>          </div>
+    <ul class="rank_info">
+              <li class="rank_title"><a href="/seiga/im5512329?track=top_ranking">MBシャロちゃん</a></li>
+        <li class="rank_disc">歩くイメージビデオ </li>
+        <li class="rank_usr"><a href="/user/illust/374412">9LAW</a></li>
+          </ul>
+  </div>
+  </div>
+          <!--//ファンアートここまで-->
+
+          <h4 class="category"><a href="/illust/ranking/point/hourly/g_popular">殿堂入り</a></h4>
+          <div class="rank_list">
+    <div class="rank_item cfix">
+    <div class="rank_no no01">1</div>
+    <div class="rank_thumnail">
+                      <div class="center_img  center_img_size_80"><a class="center_img_inner " href="/seiga/im5512654?track=top_ranking" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/5512654q?" alt=""><span class="center_img_spring">&nbsp;</span></a></div>          </div>
+    <ul class="rank_info">
+              <li class="rank_title"><a href="/seiga/im5512654?track=top_ranking">聞き間違い？</a></li>
+        <li class="rank_disc">NOと言える
+えっ＞im5510201
+もっとNO&gt;im5513220
+ </li>
+        <li class="rank_usr"><a href="/user/illust/44607">ハマー</a></li>
+          </ul>
+  </div>
+    <div class="rank_item cfix">
+    <div class="rank_no no02">2</div>
+    <div class="rank_thumnail">
+                      <div class="center_img  center_img_size_80"><a class="center_img_inner " href="/seiga/im5512580?track=top_ranking" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/5512580q?" alt=""><span class="center_img_spring">&nbsp;</span></a></div>          </div>
+    <ul class="rank_info">
+              <li class="rank_title"><a href="/seiga/im5512580?track=top_ranking">改二おめでとう！お嬢様みたいで可愛いよ霞ちゃん可…</a></li>
+        <li class="rank_disc">（膝上20cmってとこか…）
+
+
+https://twitter.com/yakitomeito </li>
+        <li class="rank_usr"><a href="/user/illust/37947526">焼きトマト</a></li>
+          </ul>
+  </div>
+    <div class="rank_item cfix">
+    <div class="rank_no no03">3</div>
+    <div class="rank_thumnail">
+                      <div class="center_img  center_img_size_80"><a class="center_img_inner " href="/seiga/im5513220?track=top_ranking" ><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/5513220q?" alt=""><span class="center_img_spring">&nbsp;</span></a></div>          </div>
+    <ul class="rank_info">
+              <li class="rank_title"><a href="/seiga/im5513220?track=top_ranking">冗談です？</a></li>
+        <li class="rank_disc">更にNO
+まだ笑顔＞im5512654 </li>
+        <li class="rank_usr"><a href="/user/illust/44607">ハマー</a></li>
+          </ul>
+  </div>
+  </div>
+          <!--//殿堂入りここまで-->
+          
+          <p class="more_link"><a href="/illust/ranking/" class="arrow01_right static">イラストランキングへ</a></p>
+      </div>
+            <!--//イラストここまで-->
+
+      <div class="rank_manga cfix">
+          <h3>マンガランキング</h3>
+          <div class="rank_list">
+    <div class="rank_item cfix">
+    <div class="rank_no no01">1</div>
+    <div class="rank_thumnail">
+                      <a class="mg_thumb_img" href="/comic/10449?track=seiga_rank"><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/mg_thumb/5469975q?" alt="">
+          <span class="mg_status">4話連載中</span>
+        </a>
+          </div>
+    <ul class="rank_info">
+              <li class="rank_title"><a href="/comic/10449?track=seiga_rank">To LOVEる-とらぶる-ダークネス</a></li>
+        <li class="rank_body">最新話：<a href="/watch/mg154847?track=seiga_rank">【特別選り抜き】57話 Principal～好調じゃない一日～</a></li>
+        <li class="rank_usr">
+          矢吹健太朗 長谷見沙貴        </li>
+          </ul>
+  </div>
+    <div class="rank_item cfix">
+    <div class="rank_no no02">2</div>
+    <div class="rank_thumnail">
+                      <a class="mg_thumb_img" href="/comic/16679?track=seiga_rank"><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/mg_thumb/5515011q?" alt="">
+          <span class="mg_status">9話連載中</span>
+        </a>
+          </div>
+    <ul class="rank_info">
+              <li class="rank_title"><a href="/comic/16679?track=seiga_rank">ひとり暮らしの小学生</a></li>
+        <li class="rank_body">最新話：<a href="/watch/mg157675?track=seiga_rank">第十四話「新学期」其の二</a></li>
+        <li class="rank_usr">
+          <a href="/manga/list?user_id=6255801">松下　幸市朗</a>        </li>
+          </ul>
+  </div>
+    <div class="rank_item cfix">
+    <div class="rank_no no03">3</div>
+    <div class="rank_thumnail">
+                      <a class="mg_thumb_img" href="/comic/17864?track=seiga_rank"><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/mg_thumb/5515378q?" alt="">
+          <span class="mg_status">21話連載中</span>
+        </a>
+          </div>
+    <ul class="rank_info">
+              <li class="rank_title"><a href="/comic/17864?track=seiga_rank">艦これ色々まんが</a></li>
+        <li class="rank_body">最新話：<a href="/watch/mg157689?track=seiga_rank">艦これ漫画 ～天龍の剣～巻之十三</a></li>
+        <li class="rank_usr">
+          <a href="/manga/list?user_id=51607430">つけしる</a>        </li>
+          </ul>
+  </div>
+    <div class="rank_item cfix">
+    <div class="rank_no no04">4</div>
+    <div class="rank_thumnail">
+                      <a class="mg_thumb_img" href="/comic/17850?track=seiga_rank"><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/mg_thumb/5513307q?" alt="">
+          <span class="mg_status">94話連載中</span>
+        </a>
+          </div>
+    <ul class="rank_info">
+              <li class="rank_title"><a href="/comic/17850?track=seiga_rank">宇宙大恋愛三枠目</a></li>
+        <li class="rank_body">最新話：<a href="/watch/mg157619?track=seiga_rank">第294話</a></li>
+        <li class="rank_usr">
+          <a href="/manga/list?user_id=3411138">makotoji</a>        </li>
+          </ul>
+  </div>
+    <div class="rank_item cfix">
+    <div class="rank_no no05">5</div>
+    <div class="rank_thumnail">
+                      <a class="mg_thumb_img" href="/comic/18128?track=seiga_rank"><img class="lazyload" data-original="http://lohas.nicoseiga.jp/thumb/mg_thumb/5513302q?" alt="">
+          <span class="mg_status">59話連載中</span>
+        </a>
+          </div>
+    <ul class="rank_info">
+              <li class="rank_title"><a href="/comic/18128?track=seiga_rank">男がいる！！</a></li>
+        <li class="rank_body">最新話：<a href="/watch/mg157617?track=seiga_rank">第59話</a></li>
+        <li class="rank_usr">
+          <a href="/manga/list?user_id=3411138">makotoji</a>        </li>
+          </ul>
+  </div>
+  </div>
+          <p class="more_link"><a href="/manga/ranking?track=seiga_rank" class="arrow01_right static">マンガランキングへ</a></p>
+      </div>
+      <!--//マンガここまで-->
+
+      <div class="rank_book cfix">
+          <h3>電子書籍ランキング</h3>
+          <div class="rank_list">
+    <div class="rank_item cfix">
+    <div class="rank_no no01">1</div>
+    <div class="rank_thumnail">
+              <div class="center_img  center_img_size_80"><a class="center_img_inner " href="/watch/bk330673" ><img class="lazyload" data-original="https://nb.nimg.jp/book/static/img/book/000/330/673/iwtcLJIneRgzKGxE.100x100.jpg?1453096949" alt=""><span class="center_img_spring">&nbsp;</span></a></div>          </div>
+    <ul class="rank_info">
+              <li class="rank_title"><a href="/watch/bk330673?track=top_ranking">がっこうぐらし！　７巻</a></li>
+        <li class="rank_genre bk_genre"><a href="/book/list?genre=%E9%9D%92%E5%B9%B4%E3%82%B3%E3%83%9F%E3%83%83%E3%82%AF">青年コミック</a></li>
+        <li class="rank_author">
+                      <a href="/search/%E6%B5%B7%E6%B3%95%E7%B4%80%E5%85%89%EF%BC%88%E3%83%8B%E3%83%88%E3%83%AD%E3%83%97%E3%83%A9%E3%82%B9%EF%BC%89?target=book">海法紀光（ニトロプラス）</a>
+                        (原作)&nbsp;&nbsp;
+                      <a href="/search/%E5%8D%83%E8%91%89%E3%82%B5%E3%83%89%E3%83%AB?target=book">千葉サドル</a>
+                        (作画)&nbsp;&nbsp;
+                  </li>
+          </ul>
+  </div>
+    <div class="rank_item cfix">
+    <div class="rank_no no02">2</div>
+    <div class="rank_thumnail">
+              <div class="center_img  center_img_size_80"><a class="center_img_inner " href="/watch/bk331054" ><img class="lazyload" data-original="https://nb.nimg.jp/book/static/img/book/000/331/054/AhYSuLzwXBtosxyI.100x100.jpg?1453256738" alt=""><span class="center_img_spring">&nbsp;</span></a></div>          </div>
+    <ul class="rank_info">
+              <li class="rank_title"><a href="/watch/bk331054?track=top_ranking">アカメが斬る！ 13巻</a></li>
+        <li class="rank_genre bk_genre"><a href="/book/list?genre=%E5%B0%91%E5%B9%B4%E3%82%B3%E3%83%9F%E3%83%83%E3%82%AF">少年コミック</a></li>
+        <li class="rank_author">
+                      <a href="/search/%E3%82%BF%E3%82%AB%E3%83%92%E3%83%AD?target=book">タカヒロ</a>
+                        (原作)&nbsp;&nbsp;
+                      <a href="/search/%E7%94%B0%E4%BB%A3%E5%93%B2%E4%B9%9F?target=book">田代哲也</a>
+                        (作画)&nbsp;&nbsp;
+                  </li>
+          </ul>
+  </div>
+    <div class="rank_item cfix">
+    <div class="rank_no no03">3</div>
+    <div class="rank_thumnail">
+              <div class="center_img  center_img_size_80"><a class="center_img_inner " href="/watch/bk304363" ><img class="lazyload" data-original="https://nb.nimg.jp/book/static/img/book/000/304/363/kiAnPFoTJZtJJAxp.100x100.jpg?1438908525" alt=""><span class="center_img_spring">&nbsp;</span></a></div>          </div>
+    <ul class="rank_info">
+              <li class="rank_title"><a href="/watch/bk304363?track=top_ranking">がっこうぐらし！　６巻</a></li>
+        <li class="rank_genre bk_genre"><a href="/book/list?genre=%E9%9D%92%E5%B9%B4%E3%82%B3%E3%83%9F%E3%83%83%E3%82%AF">青年コミック</a></li>
+        <li class="rank_author">
+                      <a href="/search/%E6%B5%B7%E6%B3%95%E7%B4%80%E5%85%89%EF%BC%88%E3%83%8B%E3%83%88%E3%83%AD%E3%83%97%E3%83%A9%E3%82%B9%EF%BC%89?target=book">海法紀光（ニトロプラス）</a>
+                        (原作)&nbsp;&nbsp;
+                      <a href="/search/%E5%8D%83%E8%91%89%E3%82%B5%E3%83%89%E3%83%AB?target=book">千葉サドル</a>
+                        (作画)&nbsp;&nbsp;
+                  </li>
+          </ul>
+  </div>
+    <div class="rank_item cfix">
+    <div class="rank_no no04">4</div>
+    <div class="rank_thumnail">
+              <div class="center_img  center_img_size_80"><a class="center_img_inner " href="/watch/bk257770" ><img class="lazyload" data-original="https://nb.nimg.jp/book/static/img/book/000/257/770/HQpOPxiWjvtgxeRv.100x100.jpg?1415178457" alt=""><span class="center_img_spring">&nbsp;</span></a></div>          </div>
+    <ul class="rank_info">
+              <li class="rank_title"><a href="/watch/bk257770?track=top_ranking">おじさんとマシュマロ</a></li>
+        <li class="rank_genre bk_genre"><a href="/book/list?genre=%E9%9D%92%E5%B9%B4%E3%82%B3%E3%83%9F%E3%83%83%E3%82%AF">青年コミック</a></li>
+        <li class="rank_author">
+                      <a href="/search/%E9%9F%B3%E4%BA%95%E3%82%8C%E3%81%93%E4%B8%B8?target=book">音井れこ丸</a>
+                        (著)&nbsp;&nbsp;
+                  </li>
+          </ul>
+  </div>
+    <div class="rank_item cfix">
+    <div class="rank_no no05">5</div>
+    <div class="rank_thumnail">
+              <div class="center_img  center_img_size_80"><a class="center_img_inner " href="/watch/bk280811" ><img class="lazyload" data-original="https://nb.nimg.jp/book/static/img/book/000/280/811/LAVSgVZCVjIbgYqB.100x100.jpg?1427118323" alt=""><span class="center_img_spring">&nbsp;</span></a></div>          </div>
+    <ul class="rank_info">
+              <li class="rank_title"><a href="/watch/bk280811?track=top_ranking">がっこうぐらし！　１巻</a></li>
+        <li class="rank_genre bk_genre"><a href="/book/list?genre=%E9%9D%92%E5%B9%B4%E3%82%B3%E3%83%9F%E3%83%83%E3%82%AF">青年コミック</a></li>
+        <li class="rank_author">
+                      <a href="/search/%E6%B5%B7%E6%B3%95%E7%B4%80%E5%85%89%EF%BC%88%E3%83%8B%E3%83%88%E3%83%AD%E3%83%97%E3%83%A9%E3%82%B9%EF%BC%89?target=book">海法紀光（ニトロプラス）</a>
+                        (原作)&nbsp;&nbsp;
+                      <a href="/search/%E5%8D%83%E8%91%89%E3%82%B5%E3%83%89%E3%83%AB?target=book">千葉サドル</a>
+                        (作画)&nbsp;&nbsp;
+                  </li>
+          </ul>
+  </div>
+  </div>
+          <p class="more_link"><a href="/book/ranking/" class="arrow01_right static">書籍ランキングへ</a></p>
+      </div>
+      <!--//書籍ここまで-->
+
+      <p class="more_rank_button"><a href="/ranking" class="static">総合ランキングをもっと見る</a></p>
+  </div>
+</div>        <div class="clear"></div>
+  </div>
+  <div class="ads_sidewall left " id="pc_seiga_top_228x1024_sidewall_left"></div>
+<div class="ads_sidewall right" id="pc_seiga_top_228x1024_sidewall_right"></div>
+<script type="text/javascript">
+
+(function(params) {
+  Ads.Sidewall.setParameters(params);
+  Ads.Sidewall.invoke();
+}({
+
+  zoneIds: [590, 591],
+  locations: ['pc_seiga_top_228x1024_sidewall_left', 'pc_seiga_top_228x1024_sidewall_right'],
+  contentsWidth: document.getElementById('content').clientWidth
+
+}));
+
+jQuery(function($) {
+  var $main     = $("#main");
+  var $banner   = $("#top_seiga_ad .wrapper, #top_seiga_ad_b");
+  var $sidewall = $(".ads_sidewall");
+
+  if ($banner.length >= 1) {
+    var offset = $banner.offset().top - $main.offset().top;
+    $sidewall.css({ top: offset +'px' });
+  }
+});
+
+</script>
+</div>
+<script type="text/javascript" src="/js/jquery/jquery.powertip.min.js"></script>
+<script type="text/javascript" >
+
+  $j(".tooltip").powerTip({
+    followMouse : true,
+    fadeInTime : 0,
+    fadeOutTime : 0,
+    closeDelay : 0
+  })
+
+</script>
+
+<script type="text/javascript" src="/js/jquery/jquery.lazyload.min.js"></script>
+<script type="text/javascript">
+  var _target = "img.lazyload";
+  var _holder = "/img/_.gif";
+  var _threshold = 200;
+  var _failurelimit =0;
+  var $containers = jQuery("#main_area_l,#main_area_r");
+
+  
+    jQuery(function($) {
+      $containers.each(function() {
+        $(_target, this).lazyload({
+          threshold: _threshold,
+          placeholder: _holder,
+          failure_limit: _failurelimit
+        });
+      });
+      window.onload = function() {
+        $(document).trigger("scroll");
+      };
+    });
+  
+</script>
+<div id="ad_728_90">
+<div id="seiga_pc_footer">
+<script type="text/javascript">
+<!--
+(function(zone, zone_id) {
+  
+  
+  new Ads.Advertisement({ zone: zone_id }).set(zone);
+  
+
+})('seiga_pc_footer', 160);
+// -->
+</script>
+</div>
+</div>
+
+</div>
+<div id="sg_footer">
+    <div id="sg_footer_page_top"><a href="#">ページトップへ</a> </div>
+    <div id="sg_footer_box">
+        <div class="cfix">
+            <div id="sg_footer_date" class="l">
+              静画：<span class="counter">5,515,483</span> ／
+              コメント：<span class="counter">25,676,354</span>
+            </div>
+            <div id="sg_footer_menu" class="r">
+              <a href="http://dwango.co.jp/">運営会社</a> ｜
+              <a href="/rule">利用規約</a> ｜
+              <a href="http://qa.nicovideo.jp/category/show/402">ヘルプ</a> ｜
+              <a href="http://bbs.nicovideo.jp/request/">要望掲示板</a> ｜
+              <a href="/">トップページ</a> </div>
+        </div>
+    </div>
+    <address>
+      <a href="http://dwango.co.jp">&copy; DWANGO Co., Ltd.</a>
+    </address>
+</div>
+
+
+  <style type="text/css">
+#top_calendar_box {
+  display: none;  
+}
+#top_calendar_box h2 {
+  color: #D90000;
+}
+#top_calendar_box .content_area_inner {
+  display: block;
+  min-height: 120px;
+}
+#top_calendar_box .content_area_inner .calendar_thumnail {
+  float: left;
+  width: 105px;
+  margin: 0;
+}
+#top_calendar_box .content_area_inner .calendar_thumnail img {
+  width: 105px;
+  height: 140px;
+}
+#top_calendar_box .content_area_inner .calendar_box {
+  float: left;
+  width: 215px;
+  margin-left: 10px;
+}
+#top_calendar_box .content_area_inner .calendar_box .calendar_info {
+  display: block;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #FFEFF0;
+}
+#top_calendar_box .content_area_inner .calendar_box .calendar_info .calendar_day {
+  color: #D90000;
+  font-family: helvetica, Arial, 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', 'Meiryo', 'メイリオ', 'sans-serif';
+  line-height: 140%;
+  font-size: 180%;
+  padding: 14px 0;
+  border-bottom: 1px solid #FFC3D8;
+  text-align: center;
+}
+#top_calendar_box .content_area_inner .calendar_box .calendar_info .calendar_day strong {
+  font-size: 140%;
+  font-weight: bold;
+}
+#top_calendar_box .content_area_inner .calendar_box .calendar_info .calendar_usr {
+  padding: 8px;
+  font-size: 80%;
+  text-align: center;
+}
+#top_calendar_box .content_area_inner .calendar_box .calendar_info .calendar_usr a {
+  color: #333;
+}
+#top_calendar_box .content_area_inner .calendar_box .calendar_info .calendar_usr strong {
+  font-size: 120%;
+}
+#top_calendar_box .content_area_inner .calendar_box .calendar_text {
+  padding: 10px 10px 10px 0;
+  float: left;
+  line-height: 150%;
+}
+#top_calendar_box .content_area_inner .calendar_link {
+  clear: both;
+  padding: 10px 0 0 0;
+}
+#top_calendar_box .content_area_inner .calendar_link li {
+  float: left;
+}
+#top_calendar_box .content_area_inner .calendar_link li a {
+  display: block;
+  line-height: 23px;
+  text-align: center;
+  color: #ffffff;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  font-size: 94%;
+}
+#top_calendar_box .content_area_inner .calendar_link li a:hover {
+  text-decoration: none;
+}
+#top_calendar_box .content_area_inner .calendar_link li a.btn_link_yesterday {
+  width: 150px;
+  text-indent: 12px;
+  background: #999999 url(http://lohas.nicoseiga.jp/material/8ee8dd/4864871) no-repeat 4px -140px;
+}
+#top_calendar_box .content_area_inner .calendar_link li a.btn_link_yesterday:hover {
+  background-color: #bbbbbb;
+}
+#top_calendar_box .content_area_inner .calendar_link li a.btn_link_today {
+  background-color: #D90000;
+  width: 174px;
+  margin-left: 5px;
+}
+#top_calendar_box .content_area_inner .calendar_link li a.btn_link_today:hover {
+  background-color: #EA514E;
+}
+</style>
+<div id="top_calendar_box" class="top_pop_box content_area cfix">
+  <div class="title">
+    <div class="title_icon"><img src="http://lohas.nicoseiga.jp/material/5898ca/4864638" width="47" height="50" alt=" "></div>
+    <h2>日めくりカレンダー</h2>
+  </div>
+  <div class="content_area_inner cfix">
+    <div class="calendar_thumnail"><a target="_blank"><img></a></div>
+    <div class="calendar_box">
+      <div class="calendar_info">
+        <p class="calendar_day"><span class="year">2015</span>年<strong class="month">5</strong>月<strong class="date">1</strong>日</p>
+        <p class="calendar_usr"> <a target="_blank"><strong class="nickname"></strong>さんのイラスト</a> </p>
+        <p class="calendar_text">超会議お絵かきチャットの参加イラストを日替わりで更新！</p>
+      </div>
+    </div>
+    <ul class="calendar_link cfix">
+      <li><a class="btn_link_yesterday" target="_blank">昨日の日めくりを見る</a></li>
+      <li><a class="btn_link_today" target="_blank">今日の日めくりをもっと見る</a></li>
+    </ul>
+  </div>
+</div>
+<script type="text/javascript">
+
+(function($) {
+  //-------------------------------------------------------
+  var now = new Date();
+  var diff = location.hash? parseInt(location.hash.substr(1), 10) : 0;
+  if (!isNaN(diff)) {
+    now = new Date( now.getTime() + diff);
+  }
+
+  var today     = getKey( now.getTime() );
+  var yesterday = getKey( now.getTime() - 86400000 );
+
+  var y = now.getFullYear();
+  var m = now.getMonth() + 1;
+  var d = now.getDate();
+
+  var rooms = [];
+  $.ajax({
+  url: "/ajax/oekakichat/banner",
+  data: {"app_path": "chokaigi2015", "namespace": "calendar", "year": y, "month": m, "date": d}
+  }).success(function( data ) {
+    $.each(data, function(i, calendar){
+     rooms[calendar.id] = {
+      'snapshot': calendar.snapshot,
+      'nickname': calendar.owner.nickname
+     };
+    });
+
+    //-------------------------------------------------------
+    var keys = [];
+    if (Object.keys) {
+      keys = Object.keys(rooms);
+    } else {
+      for(var prop in rooms) {
+        if (data.hasOwnProperty(prop)) keys.push(prop);
+      }
+    }
+    if (keys.length == 0) return;
+
+    var idx = Math.floor(Math.random() * keys.length) ;
+    var roomId = keys[ idx ];
+    var room = rooms[roomId];
+
+    //-------------------------------------------------------
+    var $calendarDay = $(".calendar_day ");
+    $calendarDay.find(".year" ).text(y);
+    $calendarDay.find(".month").text(m);
+    $calendarDay.find(".date" ).text(d);
+
+    var calenderUrl   = 'http://oekaki.seiga.nicovideo.jp/chokaigi2015/calendar';
+    var wallUrl       = calenderUrl + '/' + roomId;
+    var todayUrl      = calenderUrl + '$' + today;
+    var yesterdayUrl  = calenderUrl + '$' + yesterday;
+    var thumbUrl      = room.snapshot;
+
+    var $top_calendar_box = $("#top_calendar_box");
+
+    $(".calendar_thumnail img")
+      .error(function() {
+        $top_calendar_box.hide();
+      })
+      .attr('src', thumbUrl);
+    $(".calendar_thumnail a, .calendar_usr a").attr('href', wallUrl);
+    $(".calendar_usr .nickname").text(room.nickname);
+
+    $(".btn_link_yesterday").attr('href', yesterdayUrl);
+    $(".btn_link_today").attr('href', todayUrl);
+
+    $("#top_ads_box").after( $top_calendar_box );
+    $("#top_pop_box").remove();
+    $("#top_blomaga_box").insertAfter(".ads_300x60");
+    
+    $top_calendar_box.show();
+
+  }).error(function(){
+    return;
+  });
+  
+  //-------------------------------------------------------
+  function getKey(time) {
+    var now = new Date( time );
+    var y = now.getFullYear();
+    var m = now.getMonth() + 1;
+    var d = now.getDate();
+
+    return (y - 2000)
+          + (((m < 10)? '0' : '') + m)
+          + (((d < 10)? '0' : '') + d);
+  }
+
+})(jQuery);
+</script>
+<script>
+<!--
+$j(function() {
+  var banner = '<div style="margin-bottom: 21px;"><a href="https://secure.nicovideo.jp/secure/nico_smbccard?cc_refferer=seiga"><img src="http://lohas.nicoseiga.jp/material/11f34b/3609581"></a></div>';
+  $j('#top_event_box').before(banner);
+});
+-->
+</script>
+
+<script type="text/javascript" charset="utf-8" src="http://notification.nicovideo.jp/res/notify.js" async defer></script>
+<script type="text/javascript" charset="utf-8" src="http://enquete.nicovideo.jp/static/js/enquete.js" async defer></script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <title>Villages of Westglen - Home</title>
+    
+    <link type="text/css" href="menu.css" rel="stylesheet" />
+    <link type="text/css" href="assets/styles/vow_styles.css" rel="stylesheet" />
+    <script type="text/javascript" src="assets/scripts/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="menu.js"></script>
+	<script type="text/javascript" src="assets/scripts/niftycube.js"></script>
+
+	<script type="text/javascript">
+
+//Slideshow with transparent text
+
+	$(document).ready(function() {		
+		
+		//Execute the slideShow
+		slideShow();
+	
+		Nifty("div#container");
+		Nifty("div#content,div#nav","same-height small");
+		Nifty("div#header,div#footer","small");
+
+	});
+	
+	function slideShow() {
+	
+		//Set the opacity of all images to 0
+		$('#gallery a').css({opacity: 0.0});
+		
+		//Get the first image and display it (set it to full opacity)
+		$('#gallery a:first').css({opacity: 1.0});
+		
+		//Set the caption background to semi-transparent
+		$('#gallery .caption').css({opacity: 0.7});
+	
+		//Resize the width of the caption according to the image width
+		$('#gallery .caption').css({width: $('#gallery a').find('img').css('width')});
+		
+		//Get the caption of the first image from REL attribute and display it
+		$('#gallery .content').html($('#gallery a:first').find('img').attr('rel'))
+		.animate({opacity: 0.7}, 400);
+		
+		//Call the gallery function to run the slideshow, 6000 = change to next image after 6 seconds
+		setInterval('gallery()',6000);
+		
+	}
+	
+	function gallery() {
+		
+		//if no IMGs have the show class, grab the first image
+		var current = ($('#gallery a.show')?  $('#gallery a.show') : $('#gallery a:first'));
+	
+		//Get next image, if it reached the end of the slideshow, rotate it back to the first image
+		var next = ((current.next().length) ? ((current.next().hasClass('caption'))? $('#gallery a:first') :current.next()) : $('#gallery a:first'));	
+		
+		//Get next image caption
+		var caption = next.find('img').attr('rel');	
+		
+		//Set the fade in effect for the next image, show class has higher z-index
+		next.css({opacity: 0.0})
+		.addClass('show')
+		.animate({opacity: 1.0}, 1000);
+	
+		//Hide the current image
+		current.animate({opacity: 0.0}, 1000)
+		.removeClass('show');
+		
+		//Set the opacity to 0 and height to 1px
+		$('#gallery .caption').animate({opacity: 0.0}, { queue:false, duration:0 }).animate({height: '1px'}, { queue:true, duration:300 });	
+		
+		//Animate the caption, opacity to 0.7 and heigth to 100px, a slide up effect
+		$('#gallery .caption').animate({opacity: 0.7},100 ).animate({height: '100px'},500 );
+		
+		//Display the content
+		$('#gallery .content').html(caption);
+		
+	}
+	
+	</script>
+</head>
+<body>
+
+<div id="container">
+
+<div id="header">
+    <img style="text-align:center" src="assets/images/westglen_site_header.gif" width="991px" height="80" alt="villages of westglen /">
+	<div id="menu">
+        <ul class="menu">
+            <li class="current"><a href="javascript:;"><span>Home</span></a>
+            </li>
+            <li><a href="events.htm"><span>Events</span></a>
+            </li>
+            <li><a href="newsletters.htm"><span>Newsletters</span></a></li>
+            <li class="last"><a href="contacts.htm"><span>Contacts</span></a></li>
+        </ul>
+    </div>
+</div>
+
+<!-- end header -->
+<div id="content">
+    
+    <div id="gallery">
+        <a href="welcome.htm" class="show">
+            <img src="assets/images/westglen_entrance.jpg" alt="Welcome to Westglen" width="700" height="446" title=""rel="<h3>Welcome to the Villages of Westglen Homeowners Association</h3>Building a friendly community together" />
+        </a>
+        
+        <a href="events.htm">
+            <img src="assets/images/bike_kid_01.jpg" alt="Bike Parade" width="700" height="446" title="" rel="<h3>Bike Parade</h3>Join us on August 26th at 4:00pm Westglen Park! We are going to kick off the fun with a bike parade!" />
+        </a>
+        
+        <a href="events.htm">
+            <img src="assets/images/progressive_dinner_01.jpg" alt="Progressive Dinner" width="700" height="446" title="" rel="<h3>Westglen's Progressive Dinner</h3>Mark your calendars for September 22nd for Westglen's Progressive Dinner!" />
+        </a>
+        
+      <div class="caption">
+        	<div class="content"></div>
+        </div>
+	</div>
+    
+	<div class="clear"></div>
+</div>
+    
+<div id="nav">
+    <h2>SPONSOR</h2>
+    <p><img class="floatRight" src="assets/images/bk.jpg" width="117" height="122" alt="Brian Kwilosz">Brian Kwilosz, Broker/Owner
+    </p>
+    <p>630.701.0397 </p>
+    <p>Direct: 630.967.0400 </p>
+    <p>Fax: 630.463.5282</p>
+    <p><a href="mailto:brian.kwilosz@gmail.com">brian.kwilosz@gmail.com</a>
+    <p><a href="http://www.chicagolandhometeam.com/">Exit Real Estate Partners</a></p>
+    <img src="assets/images/logo_exit.gif" alt="exit logo">
+    <p>6900 S. Main Street #206 <br/>
+    Downers Grove, IL  60516
+    </p>
+    <p>&nbsp;</p>
+</div>
+
+<div id="footer">
+    <div id="copyright">Sponsored by Brian Kwilosz, Broker/Owner of <a href="http://www.chicagolandhometeam.com/">Exit Real Estate Partners</a>.  Site designed, developed and maintained by <a href="nadda.kwilosz@gmail.com">Nadda Kwilosz</a>.
+    </div>
+</div>
+
+</div>
+
+</body>
+</html>

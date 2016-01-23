@@ -1,0 +1,518 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-jp" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="Keywords" content="PSA ASIA,pro snowboarder,snowboard,プロスノーボーダー,スノーボード,スノボ,ボード,單板滑雪" />
+<meta name="Description" content="Snowboard Pro Tour Info, Pro Snowboarders profiles, Rankings and more. スノーボードのプロツアー情報、プロ選手情報、ランキングなどを提供しています。" />
+<link rel="stylesheet" href="common/css/style.css" type="text/css" />
+<link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="icon" href="/favicon.ico" type="image/vnd.microsoft.icon" /> 
+<title>PSA ASIA Official Website</title>
+<script type="text/javascript" src="common/js/psa.js"></script>
+<script type="text/javascript" src="common/js/bsn.Crossfader.js"></script>
+</head>
+
+<body id="Home">
+<div id="container">
+<!-- ▼ サイト共通ヘッダ ▼ -->
+  <div id="header"><!-- #BeginLibraryItem "/Library/global-header.lbi" -->
+  <div id="global-header">
+    <p id="logo"><a href="/"><img src="img/psa_logo.jpg" alt="PSA ASIA" width="119" height="120" /></a></p>
+    <p id="site-title"><img src="img/bg_site-name.jpg" alt="Pro Snowboaders Association Asia" width="900" height="120" /></p>
+  </div><!-- #EndLibraryItem --><!-- #BeginLibraryItem "/Library/global-navi-home.lbi" --><div id="global-navi">
+        <ul class="global-navi-list">
+          <li class="gnavilist" onmouseover="this.className='gnavilist-over'" onmouseout="this.className='gnavilist'"><a href="tourinfo"><img src="img/global-navi_tourinfo.jpg" alt="TOUR INFO" /></a>
+           <div class="sub-navi">
+             <ul>
+               <li class="snavilist"><a href="tourinfo/tour"><img onmouseover="this.src='img/g-navi-s_tour_hover.jpg'" onmouseout="this.src='img/g-navi-s_tour.jpg'" src="img/g-navi-s_tour.jpg" alt="ツアー情報" /></a></li>
+			   <li class="snavilist"><a href="tourinfo/structure"><img onmouseover="this.src='img/g-navi-s_structure_hover.jpg'" onmouseout="this.src='img/g-navi-s_structure.jpg'" src="img/g-navi-s_structure.jpg" alt="ツアー構造" /></a></li>
+			   <li class="snavilist"><a href="tourinfo/officialevent"><img onmouseover="this.src='img/g-navi-s_officialevent_hover.jpg'" onmouseout="this.src='img/g-navi-s_officialevent.jpg'" src="img/g-navi-s_officialevent.jpg" alt="公式種目" /></a></li>
+			   <li class="snavilist"><a href="tourinfo/rules"><img onmouseover="this.src='img/g-navi-s_rule_hover.jpg'" onmouseout="this.src='img/g-navi-s_rule.jpg'" src="img/g-navi-s_rule.jpg" alt="ルール" /></a></li>
+               <li class="snavilist"><a href="rankinginfo/ranking"><img onmouseover="this.src='img/g-navi-s_ranking_hover.jpg'" onmouseout="this.src='img/g-navi-s_ranking.jpg'" src="img/g-navi-s_ranking.jpg" alt="ランキング" /></a></li>
+             </ul>
+           </div>
+          </li>
+          <li class="gnavilist" onmouseover="this.className='gnavilist-over'" onmouseout="this.className='gnavilist'"><a href="ridersinfo"><img src="img/global-navi_ridersinfo.jpg" alt="RIDERS INFO" /></a>
+            <div class="sub-navi">
+              <ul>
+                <li class="snavilist"><a href="ridersinfo/profile"><img onmouseover="this.src='img/g-navi-s_profile_hover.jpg'" onmouseout="this.src='img/g-navi-s_profile.jpg'" src="img/g-navi-s_profile.jpg" alt="プロファイル" /></a></li>
+                <li class="snavilist"><a href="ridersinfo/bestrider"><img onmouseover="this.src='img/g-navi-s_bestrider_hover.jpg'" onmouseout="this.src='img/g-navi-s_bestrider.jpg'" src="img/g-navi-s_bestrider.jpg" alt="ベストライダー &amp; ルーキー" /></a></li>
+				<li class="snavilist"><a href="ridersinfo/pickup"><img onmouseover="this.src='img/g-navi-s_pickup_hover.jpg'" onmouseout="this.src='img/g-navi-s_pickup.jpg'" src="img/g-navi-s_pickup.jpg" alt="ピックアップライダー" /></a></li>
+                <li class="snavilist"><a href="ridersinfo/statistics"><img onmouseover="this.src='img/g-navi-s_statistics_hover.jpg'" onmouseout="this.src='img/g-navi-s_statistics.jpg'" src="img/g-navi-s_statistics.jpg" alt="プロ選手統計" /></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="gnavilist" onmouseover="this.className='gnavilist-over'" onmouseout="this.className='gnavilist'"><a href="rankinginfo"><img src="img/global-navi_rankinginfo.jpg" alt="RANKING INFO" /></a>
+            <div class="sub-navi">
+              <ul>
+                <li class="snavilist"><a href="rankinginfo/ranking"><img onmouseover="this.src='img/g-navi-s_ranking_hover.jpg'" onmouseout="this.src='img/g-navi-s_ranking.jpg'" src="img/g-navi-s_ranking.jpg" alt="ランキング" /></a></li>
+                <li class="snavilist"><a href="rankinginfo/protrial"><img onmouseover="this.src='img/g-navi-s_trial_hover.jpg'" onmouseout="this.src='img/g-navi-s_trial.jpg'" src="img/g-navi-s_trial.jpg" alt="プロトライアルランキング" /></a></li>
+                <li class="snavilist"><a href="rankinginfo/pastranking"><img onmouseover="this.src='img/g-navi-s_past-ranking_hover.jpg'" onmouseout="this.src='img/g-navi-s_past-ranking.jpg'" src="img/g-navi-s_past-ranking.jpg" alt="過去のランキング" /></a></li>
+                <li class="snavilist"><a href="rankinginfo/toprider"><img onmouseover="this.src='img/g-navi-s_toprider_hover.jpg'" onmouseout="this.src='img/g-navi-s_toprider.jpg'" src="img/g-navi-s_toprider.jpg" alt="歴代ベストライダー" /></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="gnavilist" onmouseover="this.className='gnavilist-over'" onmouseout="this.className='gnavilist'"><a href="event"><img src="img/global-navi_event.jpg" alt="EVENT" /></a>
+            <div class="sub-navi">
+              <ul>
+               <li class="snavilist"><a href="event/events"><img onmouseover="this.src='img/g-navi-s_events_hover.jpg'" onmouseout="this.src='img/g-navi-s_events.jpg'" src="img/g-navi-s_events.jpg" alt="イベント" /></a></li>
+               <li class="snavilist"><a href="event/camp"><img onmouseover="this.src='img/g-navi-s_camp_hover.jpg'" onmouseout="this.src='img/g-navi-s_camp.jpg'" src="img/g-navi-s_camp.jpg" alt="プロキャンプ" /></a></li>
+               <li class="snavilist"><a href="event/campaign"><img onmouseover="this.src='img/g-navi-s_campaign_hover.jpg'" onmouseout="this.src='img/g-navi-s_campaign.jpg'" src="img/g-navi-s_campaign.jpg" alt="クリーンキャンペーン" /></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="gnavilist" onmouseover="this.className='gnavilist-over'" onmouseout="this.className='gnavilist'"><a href="sponsorship"><img src="img/global-navi_sponsorship.jpg" alt="SPONSORSHIP" /></a>
+            <div class="sub-navi">
+              <ul>
+                <li class="snavilist"><a href="sponsorship/corporatesponsor"><img onmouseover="this.src='img/g-navi-s_corporatesponsor_hover.jpg'" onmouseout="this.src='img/g-navi-s_corporatesponsor.jpg'" src="img/g-navi-s_corporatesponsor.jpg" alt="企業スポンサー" /></a></li>
+                <li class="snavilist"><a href="sponsorship/individualsponsor"><img onmouseover="this.src='img/g-navi-s_individualsponsor_hover.jpg'" onmouseout="this.src='img/g-navi-s_individualsponsor.jpg'" src="img/g-navi-s_individualsponsor.jpg" alt="個人スポンサー" /></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="gnavilist" onmouseover="this.className='gnavilist-over'" onmouseout="this.className='gnavilist'"><a href="membership"><img src="img/global-navi_membership.jpg" alt="MEMBERSHIP" /></a>
+            <div class="sub-navi">
+              <ul>
+                <li class="snavilist"><a href="membership/regulation"><img onmouseover="this.src='img/g-navi-s_regulation_hover.jpg'" onmouseout="this.src='img/g-navi-s_regulation.jpg'" src="img/g-navi-s_regulation.jpg" alt="プロ資格を取るには" /></a></li>
+                <li class="snavilist"><a href="membership/qualify"><img onmouseover="this.src='img/g-navi-s_qualify_hover.jpg'" onmouseout="this.src='img/g-navi-s_qualify.jpg'" src="img/g-navi-s_qualify.jpg" alt="プロ資格取得者" /></a></li>
+                <li class="snavilist"><a href="membership/message"><img onmouseover="this.src='img/g-navi-s_message_hover.jpg'" onmouseout="this.src='img/g-navi-s_message.jpg'" src="img/g-navi-s_message.jpg" alt="プロからメッセージ" /></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="gnavilist" onmouseover="this.className='gnavilist-over'" onmouseout="this.className='gnavilist'"><a href="link"><img src="img/global-navi_link.jpg" alt="LINK" /></a>
+            <div class="sub-navi">
+              <ul>
+	            <li class="snavilist"><a href="link/sponsor"><img onmouseover="this.src='img/g-navi-s_sponsor_hover.jpg'" onmouseout="this.src='img/g-navi-s_sponsor.jpg'" src="img/g-navi-s_sponsor.jpg" alt="スポンサー" /></a></li>
+                <li class="snavilist"><a href="link/resort"><img onmouseover="this.src='img/g-navi-s_resort_hover.jpg'" onmouseout="this.src='img/g-navi-s_resort.jpg'" src="img/g-navi-s_resort.jpg" alt="リゾート" /></a></li>
+				<li class="snavilist"><a href="link/manufacturer"><img onmouseover="this.src='img/g-navi-s_manufacturer_hover.jpg'" onmouseout="this.src='img/g-navi-s_manufacturer.jpg'" src="img/g-navi-s_manufacturer.jpg" alt="メーカー" /></a></li>
+                <li class="snavilist"><a href="link/media"><img onmouseover="this.src='img/g-navi-s_media_hover.jpg'" onmouseout="this.src='img/g-navi-s_media.jpg'" src="img/g-navi-s_media.jpg" alt="メディア" /></a></li>
+                <li class="snavilist"><a href="link/assn"><img onmouseover="this.src='img/g-navi-s_assn_hover.jpg'" onmouseout="this.src='img/g-navi-s_assn.jpg'" src="img/g-navi-s_assn.jpg" alt="協会・団体" /></a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div><!-- #EndLibraryItem --></div>
+<!-- ▲ サイト共通ヘッダ ▲ -->
+<!-- ▼ ページコンテンツ ▼ -->
+    <div id="page">
+      <div id="body-main">
+<!-- ▼ ムービー ▼ -->
+        <div id="movie" class="section">
+          <h2>Movie</h2>
+
+          <!--ピクチャ用-->
+          <p><img src="img/1.jpg"></p>
+
+          <!--サーバ上ムービー用-->
+          <!--<p><object id="flvplayer" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="640" height="480">
+          <param name="movie" value="mov/player-viral.swf?file=1011_ss_ishiuchi.flv&image=preview.jpg&fullscreen=true">
+          <param name="wmode" value="transparent">
+          <embed name="wiitube_refine" src="mov/player-viral.swf?file=1011_ss_ishiuchi.flv&image=preview.jpg&fullscreen=true" width="640" height="480" wmode="opaque" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
+          </embed>
+          </object></p>-->
+
+        </div>
+<!-- ▲ ムービー ▲ -->
+<!-- ▼ インフォメーション ▼ -->
+        <div id="topics" class="section list-block">
+          <h2>INFORMATION</h2>
+          <div class="list-container">
+            <div id="topics-list">
+<dl>
+<dt>2016.01.20</dt>
+<dd>［競技会中止のお知らせ］　1月30-31日開催予定でした「FUKUI IZUMI AIRMASTER with YONEX」ですが、雪不足により中止とすることが決定されました。競技会開催には200cmの積雪が必要なところ、40cmの積雪しかない中で雪の確保に尽力してくださいましたが、特にランディングへの影響が懸念され、中止の判断となりました。今シーズンはスケジュールの都合がつかず延期開催もできないとのことで残念ですが、また今後に繋げていきたいというご意向も伺っています。</dd>
+</dl>
+<dl>
+<dt>2016.01.12</dt>
+<dd>［競技会延期のお知らせ］　1月22-23日開催予定でした「MBA 5」ですが、雪不足により、2月23-24日（火-水）に延期とすることが決定されました。エントリーは引き続き2月16日まで受付致します。キャンセルご希望の方は、デジエントリーからの案内に従ってお手続きをお願い致します。</dd>
+</dl>
+<dl>
+<dt>2016.01.06</dt>
+<dd>1月8日（金）、事務局外業務のため、事務局を不在にします。</dd>
+</dl>
+<dl>
+<dt>2016.01.04</dt>
+<dd>［競技会延期のお知らせ］　1月16-17日開催予定でした「Kinseiryuho TAKAHIRO Memorial CUP in Kurumayama」ですが、雪不足により、1月30-31日（土-日）に延期とすることが決定されました。エントリーは引き続き23日まで受付致します。キャンセルご希望の方は、デジエントリーからの案内に従ってお手続きをお願い致します。</dd>
+</dl>
+<dl>
+<dt>2015.12.28</dt>
+<dd>12月29日（火）〜31日（木）、事務局をお休み致します。</dd>
+</dl>
+              <p class="more"><a href="topics/index.html"><span class="mark">&gt;&gt;</span>more</a></p>
+            </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+<!-- ▲ インフォメーション ▲ -->
+<!-- ▼ ツイッター ▼ -->
+        <div id="twitter" class="section list-block">
+          <h2>TWEET</h2>
+          <div class="list-container">
+            <div id="twitter-list">
+              <a class="twitter-timeline" width="520" height="320" href="https://twitter.com/PSAASIA"  data-widget-id="405561483402031104">@PSAASIA からのツイート</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+<!-- ▲ ツイッター ▲ -->
+<!-- ▼ スポンサー ▼ -->
+        <div id="sponsor" class="section list-block">
+          <h2>SPONSORS</h2>
+          <div class="list-container">
+            <div id="sponsor-list">
+              <dl class="first">
+                <dt><a href="http://kenbiki.jp/"><img src="img/sponsor_kenbiki.png" alt="古式腱引 筋整流法" width="210" height="120" /></a></dt>
+              </dl>
+              <dl class="second">
+                <dt><a href="http://morispo.co.jp/"><img src="img/sponsor_morispo.png" alt="モリヤマスポーツ" width="210" height="120" /></a></dt>
+              </dl>
+              <dl class="third">
+                <dt><a href="https://www.facebook.com/FUKUIIZUMI.AIRMASTER/"><img src="img/sponsor_fukuiizumi.png" alt="福井和泉エアーマスターwithヨネックス" width="210" height="120" /></a></dt>
+              </dl>
+            </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+<!-- ▲ スポンサー ▲ -->
+<!-- ▼ ピックアップライダー ▼ -->
+        <!--<div id="pick-up-riders" class="section list-block">
+          <h2>PICK UP RIDERS</h2>
+          <div class="list-container">
+            <div id="pick-up-riders-list">
+              <dl class="first">
+                <dt><img src="img/photo_pickup_prog_2.jpg" alt="PROG" width="210" height="120" /></dt>
+                <dd class="text">プロライダーやPSA ASIAの情報をお知らせするコーナーを不定期にて開設します。その名もプロのプロによるブロ・・・“PROG”プログ！！<br />
+                    ほかではなかなか見られない、プロの素顔、本音、ここだけの話などなど…お楽しみください！</dd>
+                <dd class="more"><a href="ridersinfo/pickup/details/0910_prog_2_kurokimakoto.html"><span class="mark">&gt;&gt;</span>more</a></dd>
+              </dl>
+              <dl class="second">
+                <dt><img src="img/photo_pickup_1011br.jpg" alt="10.11 Best Riders and Rookies of the Year" width="210" height="120" /></dt>
+                <dd class="text">10.11 PSA ASIA SNOWBOARD PRO TOUR、各種目のツアー優勝者であるベストライダーと、プロ登録1年目しか受賞チャンスのないルーキー・オブ・ザ・イヤー。<br />
+                    その栄冠を手にした選手たちのインタビューとフォトグラフをお届けします。</dd>
+                <dd class="more"><a href="ridersinfo/bestrider/"><span class="mark">&gt;&gt;</span>more</a></dd>
+              </dl>
+              <dl class="third">
+                <dt><a href="http://www.psa-asia.com/tourinfo/tour/1213/pdf/1213_05_06_hasco_program_en.pdf"><img src="img/photo_pickup_1213psaopen.jpg" alt="12.13 HASCO presents PSA OPEN banner" width="210" height="120" /></a></dt>
+                <dd class="text">"HASCO presents PSA OPEN" will be held in Ishiuchi Maruyama, Niigata, Japan. Halfpipe event is recognized by TTR 4stars, PSA ASIA and JSBA. Slopestyle is held simultaneously. This is one of the largest snowboard competition in Japan!!</dd>
+                <dd class="more"><a href="http://www.psa-asia.com/tourinfo/tour/1213/pdf/1213_05_06_hasco_program_en.pdf"><span class="mark">&gt;&gt;</span>PDF Program in English</a></dd>
+              </dl>
+            </div>
+          </div>
+          <div class="clear"></div>
+        </div>-->
+<!-- ▲ ピックアップライダー ▲ -->
+      </div>
+<!-- ▼ ランキングテーブル ▼ -->
+      <div id="body-sub">
+        <div id="mens-topfive" class="section rank-table-block">
+          <h2>MENS TOP5</h2>
+          <div id="al_m" class="rank-table-container">
+            <table cellspacing="0" class="rank-table">
+              <tr class="table-heading">
+                <th colspan="2" class="table-info"><a href="tourinfo/tour/">14.15 Tour Ranking Alpine</a></th>
+                <th class="logo"><img src="img/discipline_al.jpg" alt="Alpine" width="78" height="39" /></th>
+              </tr>
+              <tr class="first">
+                <th class="rank">1st</th>
+                <td class="rider"><a href="http://www.psa-asia.com/ridersinfo/profile/profiles/profiles.php?profileID=3000926">TOZAKI Hiroki</a></td>
+                <td class="sponsor"><img src="img/brand_hogrel.jpg" alt="HOGREL" width="78" height="31" /></td>
+              </tr>
+              <tr class="second">
+                <th class="rank">2nd</th>
+                <td class="rider"><a href="http://www.psa-asia.com/ridersinfo/profile/profiles/profiles.php?profileID=3000726">KOBAYASHI Manabu</a></td>
+                <td class="sponsor"><img src="img/brand_wintertree.jpg" alt="ウインターツリー" width="78" height="31" /></td>
+              </tr>
+              <tr class="third">
+                <th class="rank">3rd</th>
+                <td class="rider"><a href="http://www.psa-asia.com/ridersinfo/profile/profiles/profiles.php?profileID=3000912">KAWASHIMA Kousuke</a></td>
+                <td class="sponsor"><img src="img/brand_bc.jpg" alt="BC STREAM" width="78" height="31" /></td>
+              </tr>
+              <tr class="fourth">
+                <th class="rank">4th</th>
+                <td class="rider"><a href="http://www.psa-asia.com/ridersinfo/profile/profiles/profiles.php?profileID=3000751">KON Takuhiro</a></td>
+                <td class="sponsor"><img src="img/brand_yonex.jpg" alt="YONEX☆MAC" width="78" height="31" /></td>
+              </tr>
+              <tr class="fifth">
+                <th class="rank">5th</th>
+                <td class="rider"><a href="http://www.psa-asia.com/ridersinfo/profile/profiles/profiles.php?profileID=3000723">YOKOI Kento</a></td>
+                <td class="sponsor"><img src="img/brand_yonex.jpg" alt="YONEX" width="78" height="31" /></td>
+              </tr>
+            </table>
+            <div class="bottom"></div>
+          </div>
+          <div style="clear:both"></div>
+          <div id="fs_m" class="rank-table-container">
+            <table cellspacing="0" class="rank-table">
+              <tr class="table-heading">
+                <th colspan="2" class="table-info"><a href="tourinfo/tour/">14.15 Tour Ranking Freestyle</a></th>
+                <th class="logo"><img src="img/discipline_hp.jpg" alt="Freestyle" width="78" height="39" /></th>
+              </tr>
+              <tr class="first">
+                <th class="rank">1st</th>
+                <td class="rider"><a href="http://www.psa-asia.com/ridersinfo/profile/profiles/profiles.php?profileID=3000962">YOSHIDA Masakaze</a></td>
+                <td class="sponsor"><img src="img/brand_kissmark.jpg" alt="kissmark" width="78" height="31" /></td>
+              </tr>
+              <tr class="second">
+                <th class="rank">2nd</th>
+                <td class="rider"><a href="http://www.psa-asia.com/ridersinfo/profile/profiles/profiles.php?profileID=3000735">OGAWA Yuma</a></td>
+                <td class="sponsor"><img src="img/brand_scooter.jpg" alt="Scooter" width="78" height="31" /></td>
+              </tr>
+              <tr class="third">
+                <th class="rank">3rd</th>
+                <td class="rider"><a href="http://www.psa-asia.com/ridersinfo/profile/profiles/profiles.php?profileID=3000871">YOSHIMOTO Yuji</a></td>
+                <td class="sponsor"><img src="img/brand_morispo.jpg" alt="モリヤマスポーツ" width="78" height="31" /></td>
+              </tr>
+              <tr class="fourth">
+                <th class="rank">4th</th>
+                <td class="rider"><a href="http://www.psa-asia.com/ridersinfo/profile/profiles/profiles.php?profileID=3000671">ABE Takafumi</a></td>
+                <td class="sponsor"><img src="img/brand_november.jpg" alt="NOVEMBER" width="78" height="31" /></td>
+              </tr>
+              <tr class="fifth">
+                <th class="rank">5th</th>
+                <td class="rider"><a href="http://www.psa-asia.com/ridersinfo/profile/profiles/profiles.php?profileID=3000474">FUJINUMA Itaru</a></td>
+                <td class="sponsor"><img src="img/brand_head.jpg" alt="head alb" width="78" height="31" /></td>
+              </tr>
+            </table>
+            <div class="bottom"></div>
+          </div>
+          <div style="clear:both"></div>
+          <div id="sx_m" class="rank-table-container">
+            <table cellspacing="0" class="rank-table">
+              <tr class="table-heading">
+                <th colspan="2" class="table-info"><a href="tourinfo/tour/">Mitsumata Ups'n'Downs Opening Kagura CC</a></th>
+                <th class="logo"><img src="img/discipline_sx.jpg" alt="Snowboardcross" width="78" height="39" /></th>
+              </tr>
+              <tr class="first">
+                <th class="rank">1st</th>
+                <td class="rider"><a href="http://www.psa-asia.com/ridersinfo/profile/profiles/profiles.php?profileID=3000970">TAKAHARA Yoshiki</a></td>
+                <td class="sponsor"><img src="img/brand_oxess.jpg" alt="oxess" width="78" height="31" /></td>
+              </tr>
+              <tr class="second">
+                <th class="rank">2nd</th>
+                <td class="rider"><a href="http://www.psa-asia.com/ridersinfo/profile/profiles/profiles.php?profileID=3000731">MOTOKI Yuki</a></td>
+                <td class="sponsor"><img src="img/brand_murasaki.jpg" alt="ムラサキ/VOLKL" width="78" height="31" /></td>
+              </tr>
+              <tr class="third">
+                <th class="rank">3rd</th>
+                <td class="rider"><a href="http://www.psa-asia.com/ridersinfo/profile/profiles/profiles.php?profileID=3000676">MOTOKI Kohei</a></td>
+                <td class="sponsor"><img src="img/brand_murasaki.jpg" alt="ムラサキ/VOLKL" width="78" height="31" /></td>
+              </tr>
+              <tr class="fourth">
+                <th class="rank">4th</th>
+                <td class="rider"><a href="http://www.psa-asia.com/ridersinfo/profile/profiles/profiles.php?profileID=3000704">INOUE Takahiro</a></td>
+                <td class="sponsor"><img src="img/brand_ansinlink.jpg" alt="ANSIN-LINK" width="78" height="31" /></td>
+              </tr>
+              <tr class="fifth">
+                <th class="rank">5th</th>
+                <td class="rider"><a href="http://www.psa-asia.com/ridersinfo/profile/profiles/profiles.php?profileID=3000907">NAGAOKA Tasuku</a></td>
+                <td class="sponsor"><img src="img/brand_oxess.jpg" alt="OXESS" width="78" height="31" /></td>
+              </tr>
+            </table>
+            <div class="bottom"></div>
+          </div>
+        </div>
+
+        <div id="womens-topfive" class="section rank-table-block">
+          <h2>WOMENS TOP5</h2>
+          <div id="al_f" class="rank-table-container">
+            <table cellspacing="0" class="rank-table">
+              <tr class="table-heading">
+                <th colspan="2" class="table-info"><a href="tourinfo/tour/">14.15 Tour Ranking Alpine</a></th>
+                <th class="logo"><img src="img/discipline_al.jpg" alt="Alpine" width="78" height="39" /></th>
+              </tr>
+              <tr class="first">
+                <th class="rank">1st</th>
+                <td class="rider"><a href="http://www.psa-asia.com/ridersinfo/profile/profiles/profiles.php?profileID=3050414">SHITAKA Akari</a></td>
+                <td class="sponsor"><img src="img/brand_ogasaka.jpg" alt="OGASAKA" width="78" height="31" /></td>
+              </tr>
+              <tr class="second">
+                <th class="rank">2nd</th>
+                <td class="rider"><a href="http://www.psa-asia.com/ridersinfo/profile/profiles/profiles.php?profileID=3050404">KOGITA Masako</a></td>
+                <td class="sponsor"><img src="img/brand_fcu.jpg" alt="FCU シーダーズ" width="78" height="31" /></td>
+              </tr>
+              <tr class="third">
+                <th class="rank">3rd</th>
+                <td class="rider"><a href="http://www.psa-asia.com/ridersinfo/profile/profiles/profiles.php?profileID=3050265">MARUYAMA Miki</a></td>
+                <td class="sponsor"><img src="img/brand_jaseyjay.jpg" alt="jjsnowboad" width="78" height="31" /></td>
+              </tr>
+              <tr class="fourth">
+                <th class="rank">4th</th>
+                <td class="rider"><a href="http://www.psa-asia.com/ridersinfo/profile/profiles/profiles.php?profileID=3050450">SHIIBA Naomi</a></td>
+                <td class="sponsor"><img src="img/brand_blank.jpg" alt="　" width="78" height="31" /></td>
+              </tr>
+              <tr class="fifth">
+                <th class="rank">5th</th>
+                <td class="rider"><a href="http://www.psa-asia.com/ridersinfo/profile/profiles/profiles.php?profileID=3050461">ISHINAKA Aoi</a></td>
+                <td class="sponsor"><img src="img/brand_moss.jpg" alt="MOSS　千束道場" width="78" height="31" /></td>
+              </tr>
+            </table>
+            <div class="bottom"></div>
+          </div>
+          <div style="clear:both"></div>
+          <div id="fs_f" class="rank-table-container">
+            <table cellspacing="0" class="rank-table">
+              <tr class="table-heading">
+                <th colspan="2" class="table-info"><a href="tourinfo/tour/">14.15 Tour Ranking Freestyle</a></th>
+                <th class="logo"><img src="img/discipline_hp.jpg" alt="Freestyle" width="78" height="39" /></th>
+              </tr>
+              <tr class="first">
+                <th class="rank">1st</th>
+                <td class="rider"><a href="http://www.psa-asia.com/ridersinfo/profile/profiles/profiles.php?profileID=3050425">OGAWA Hikaru</a></td>
+                <td class="sponsor"><img src="img/brand_november.jpg" alt="NOVEMBER" width="78" height="31" /></td>
+              </tr>
+              <tr class="second">
+                <th class="rank">2nd</th>
+                <td class="rider"><a href="http://www.psa-asia.com/ridersinfo/profile/profiles/profiles.php?profileID=3050469">YOSHIKA Rina</a></td>
+                <td class="sponsor"><img src="img/brand_freak.jpg" alt="FREAK" width="78" height="31" /></td>
+              </tr>
+              <tr class="third">
+                <th class="rank">3rd</th>
+                <td class="rider"><a href="http://www.psa-asia.com/ridersinfo/profile/profiles/profiles.php?profileID=3050430">IMAI Kurumi</a></td>
+                <td class="sponsor"><img src="img/brand_roxy.jpg" alt="ROXY" width="78" height="31" /></td>
+              </tr>
+              <tr class="fourth">
+                <th class="rank">4th</th>
+                <td class="rider"><a href="http://www.psa-asia.com/ridersinfo/profile/profiles/profiles.php?profileID=3050331">HAMAZAKI Ayumi</a></td>
+                <td class="sponsor"><img src="img/brand_scooter.jpg" alt="SCOOTER" width="78" height="31" /></td>
+              </tr>
+              <tr class="fifth">
+                <th class="rank">5th</th>
+                <td class="rider"><a href="http://www.psa-asia.com/ridersinfo/profile/profiles/profiles.php?profileID=3050349">SUZUKI Tokuko</a></td>
+                <td class="sponsor"><img src="img/brand_arg.jpg" alt="ARG(アシックス)" width="78" height="31" /></td>
+              </tr>
+            </table>
+            <div class="bottom"></div>
+          </div>
+          <div style="clear:both"></div>
+          <div id="sx_f" class="rank-table-container">
+            <table cellspacing="0" class="rank-table">
+              <tr class="table-heading">
+                <th colspan="2" class="table-info"><a href="tourinfo/tour/">Mitsumata Ups'n'Downs Opening Kagura CC</a></th>
+                <th class="logo"><img src="img/discipline_sx.jpg" alt="Snowboardcross" width="78" height="39" /></th>
+              </tr>
+              <tr class="first">
+                <th class="rank">1st</th>
+                <td class="rider"><a href="http://www.psa-asia.com/ridersinfo/profile/profiles/profiles.php?profileID=3050390">TOMIDA Maria</a></td>
+                <td class="sponsor"><img src="img/brand_oxess.jpg" alt="OXESSCALLA" width="78" height="31" /></td>
+              </tr>
+              <tr class="second">
+                <th class="rank">2nd</th>
+                <td class="rider"><a href="http://www.psa-asia.com/ridersinfo/profile/profiles/profiles.php?profileID=3050424">KONNO Hiromi</a></td>
+                <td class="sponsor"><img src="img/brand_oxess.jpg" alt="OXESS" width="78" height="31" /></td>
+              </tr>
+              <tr class="third">
+                <th class="rank">3rd</th>
+                <td class="rider">ISHIWATA Nozomi</td>
+                <td class="sponsor"><img src="img/brand_ama.jpg" alt="Amateur" width="78" height="31" /></td>
+              </tr>
+              <tr class="fourth">
+                <th class="rank">4th</th>
+                <td class="rider"><a href="http://www.psa-asia.com/ridersinfo/profile/profiles/profiles.php?profileID=3050426">KAMATA Tomoko</a></td>
+                <td class="sponsor"><img src="img/brand_yonex.jpg" alt="YONEX" width="78" height="31" /></td>
+              </tr>
+              <tr class="fifth">
+                <th class="rank">5th</th>
+                <td class="rider"><a href="http://www.psa-asia.com/ridersinfo/profile/profiles/profiles.php?profileID=3050437">MAEDA Kanae</a></td>
+                <td class="sponsor"><img src="img/brand_blank.jpg" alt="　" width="78" height="31" /></td>
+              </tr>
+            </table>
+            <div class="bottom"></div>
+          </div>
+        </div>
+<!-- ▲ ランキングテーブル ▲ -->
+<!-- ▼ リンクバナー ▼ -->
+        
+        <div id="twitter">
+          <ul><li><a href="http://sbn.japaho.com/blog/psaasia/" target="_blank"><img src="img/banner_sbn.jpg" width="240" height="65" /></a></li></ul>
+        </div>
+        
+        <div id="ustream">
+          <ul><li><a href="http://www.ustream.tv/channel/psaasia/" target="_blank"><img src="img/banner_ustream.jpg" alt="PSA ASIA TV on USTREAM" width="240" height="65" /></a></li></ul>
+        </div>
+        
+        <div id="youtube">
+          <ul><li><a href="https://www.youtube.com/psaasia/"><img src="img/banner_youtube.jpg" alt="PSA ASIA Movie on YouTube" width="240" height="65" /></a></li></ul>
+        </div>
+        
+        <div id="jsba_yearbook">
+          <ul><li><a href="http://www.srpi.co.jp/jsbayearbook2014/" target="_blank"><img src="img/banner_jsbayearbook.jpg" alt="JSBA YEARBOOK" width="240" height="65" /></a></li></ul>
+        </div>
+        
+        <div id="dgent">
+          <ul><li><a href="http://dgent.jp/event-list.asp?sc=007" target="_blank"><img src="img/banner_dgent.jpg" width="240" height="65" /></a></li></ul>
+        </div>
+        
+        <div id="wst">
+          <ul><li><a href="http://www.worldsnowboardtour.com/" target="_blank"><img src="img/banner_wst.jpg" alt="World Snowboard Tour" width="240" height="65" /></a></li></ul>
+        </div>
+        
+        <div id="jsba">
+          <ul><li><a href="http://www.jsba.or.jp/" target="_blank"><img src="img/banner_jsba.jpg" width="240" height="65" /></a></li></ul>
+        </div>
+        
+        <!--<div id="alberta">
+          <ul><li><a href="http://www.alberta-dining.co.jp/" target="_blank"><img src="img/banner_alberta.jpg" width="240" height="65" /></a></li></ul>
+        </div>-->
+        
+        <!--<div id="partnership_program">
+          <ul><li><a href="link/resort/index.html"><img src="img/banner_partnership_program.jpg" alt="Partnership Program" width="240" height="65" /></a></li></ul>
+        </div>-->
+        
+        <div id="funtoshare">
+          <ul><li><a href="http://funtoshare.env.go.jp/"><img src="img/banner_funtoshare.jpg" alt="Fun to Share" width="240" height="65" /></a></li></ul>
+        </div>
+<!-- ▲ リンクバナー ▲ -->
+      </div>
+    </div>
+<!-- ▲ ページコンテンツ ▲ -->
+<!-- ▼ 広告 ▼ --><!-- #BeginLibraryItem "/Library/pr-box.lbi" --><div id="pr-box" class="right-outside">
+      <ul class="pr-list">
+        <!--<li class="pr-banner"><a href="http://www.realmout.com/" target="_blank"><img src="../../img/mout.jpg" width="120" height="620" /></a></li>-->
+<!--google adsense-->
+        <li class="pr-ads">
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- PSA ASIA -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:160px;height:600px"
+     data-ad-client="ca-pub-2832286301090037"
+     data-ad-slot="4553193500"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+        </li>
+<!--google adsense-->
+       <li class="pr-button"><img src="img/pr_button.png" width="160" alt="" height="25" /></li>
+      </ul>
+    </div><!-- #EndLibraryItem --><!-- ▲ 広告 ▲ -->
+<!-- ▼ 右上ナビ ▼ --><!-- #BeginLibraryItem "/Library/info-navi.lbi" -->
+    <div id="info-navi">
+      <ul class="info-navi-list">
+        <li id="inavilist-sitemap"><a href="sitemap/index.html">SITEMAP</a></li>
+        <li id="inavilist-contact"><a href="contact/index.html">CONTACT</a></li>
+      </ul>
+    </div><!-- #EndLibraryItem --><!-- ▲ 右上ナビ ▲ -->
+<!-- ▼ サイト共通フッタ ▼ --><!-- #BeginLibraryItem "/Library/footer.lbi" -->    <div id="footer">
+      <ul class="footer-list">
+        <li id="footerlist-members"><a href="members/index.html">メンバーズオンリー</a></li>
+        <li id="footerlist-aboutpsa"><a href="aboutpsa/index.html">PSA ASIAとは</a></li>                                                      
+        <li id="footerlist-privacy"><a href="privacy/index.html">プライバシーポリシー</a></li>
+        <li id="footerlist-tokusho"><a href="">特定商取引法に基づく表示</a></li>
+        <li id="footerlist-aboutlink"><a href="aboutlink/index.html">当サイトへのリンク</a></li>
+        <li id="footerlist-copyright">All Rights Reserved PSA ASIA</li>                                                      
+      </ul>
+    </div><!-- #EndLibraryItem --><!-- ▲ サイト共通フッタ ▲ -->
+  </div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3191424-1";
+urchinTracker();
+</script>
+<script type="text/javascript">
+ var cf = new Crossfader( new Array('sx_m','al_m','fs_m'), 500, 5000 );
+ var cf = new Crossfader( new Array('sx_f','al_f','fs_f'), 500, 5000 );
+</script>
+</body>
+</html>

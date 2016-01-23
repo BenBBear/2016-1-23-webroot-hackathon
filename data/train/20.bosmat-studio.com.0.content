@@ -1,0 +1,515 @@
+
+			<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+			<html xmlns="http://www.w3.org/1999/xhtml">
+			<head>
+			<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+			<title> עיצוב גרפי, עיצוב לוגו, מיתוג עסקי, מעצב גרפי – סטודיו  בושמת לעיצוב ,  מעצבת גרפית </title>
+
+<meta NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+
+<meta name= "keywords" content= ", מיתוג עסקי, עיצוב לוגו, מעצב גרפי, סטודיו לעיצוב גרפי, עיצוב גראפי, מעצבים גרפיים, עיצוב אתרים, עיצוב תערוכות, עיצוב תדמית, מעצבת גרפית">
+
+<META NAME="Description" CONTENT="עיצוב גרפי, עיצוב לוגו או מיתוג עסקי זה סטודיו בושמת! סטודיו בושמת לעיצוב הוקם ב-2004 על ידי בושמת עלימה. הסטודיו מתפרש על פני טווח רחב במיוחד של תחומים ומעניק פתרונות עיצוב לכל צורך: מתדמית, לוגואים, קטלוגים וספרים, דרך עיצוב תערוכות ואריזות, ועד למדיה דיגיטלית. בעצם כל מה שמשלב חשיבה ועיצוב.">
+
+
+			<style>
+				body 
+				{ 
+					font: 12px arial; 
+					color: #717171;
+					background: white;
+					padding: 0;
+					margin: 0;
+					background:#DEDEDC;
+				}
+				
+				* 
+				{ 
+					margin: 0; 
+					padding: 0;
+				}
+				#box_news {width: 150px;height: 93px;}
+
+				
+				#news_scroll{width: 150px; height: 140px;}
+			</style>
+			<script type="text/javascript">
+				http =ajaxRequest();
+				function strech(){
+				}
+				function sendLogin(){
+					document.getElementById("frms").submit();
+				}
+				function sendf(){
+					document.getElementById("frms1").submit();
+				}
+				function resetf(){
+					document.getElementById("frms1").reset();
+				}
+				function send2F(){
+					e = document.getElementById("friendEmail");
+					n = document.getElementById("yourName");
+					e = escape(e.value);
+					n=unic_utf8(text_unic(n.value));
+					getAjax("index.php?pid=send2F&e="+e+"&n="+n,send2FCB);
+				}
+				function send2FCB(){
+					if(http.readyState == 4){
+						if(http.responseText.search(/problem/i)!=-1)
+							alert(http.responseText);
+						else{
+							alert(http.responseText);
+						}
+					}
+				}
+				function sDisplay(id){
+					elm = document.getElementById(id);
+					if(elm.style.display=="none"){
+						elm.style.display="";
+					}else{
+						elm.style.display="none";
+					}
+				}
+				
+				function friendCupon(id){
+					getAjax("index.php?pid=friendCupon&id="+id,friendCuponCB);
+				}
+				function GetTopPos(inputObj){
+					var returnValue = inputObj.offsetTop;
+					while((inputObj = inputObj.offsetParent) != null){
+					  returnValue += inputObj.offsetTop;
+					}
+					return returnValue;
+				  }
+				  
+				  function GetLeftPos(inputObj){
+					var returnValue = inputObj.offsetLeft;
+					while((inputObj = inputObj.offsetParent) != null)returnValue += inputObj.offsetLeft;
+					return returnValue;
+				  }
+				function friendCuponCB(){
+					if(http.readyState == 4){
+						if(http.responseText.search(/problem/i)!=-1)
+							alert(http.responseText);
+						else{
+							det = http.responseText.split("@");
+							try{
+								io = document.getElementById("friendBut"+det[0]);
+								io.style.width=io.style.width;
+							}catch(eX){
+								io = document.getElementById("friendBut");
+							}
+							div = document.createElement('div');
+							div.id="container";
+							div.style.width="320px";
+							div.style.background="url(images/friendBg.gif)";
+							div.style.backgroundRepeat="repeat-x";
+							div.style.height="105px";
+							div.style.position="absolute";
+							div.style.textAlign="center";
+							div.style.padding="13px";
+							div.style.border="2px solid black";
+							div.style.top=(parseInt(GetTopPos(io))-40)+"px";
+							div.style.left=(parseInt(GetLeftPos(io))+40)+"px";
+							div.innerHTML=det[1];
+							document.body.appendChild(div);
+						}
+					}
+				}
+				function smsCuponCB(){
+					if(http.readyState == 4){
+						if(http.responseText.search(/problem/i)!=-1)
+							alert(http.responseText);
+						else{
+							det = http.responseText.split("@");
+							try{
+								io = document.getElementById("friendBut"+det[0]);
+								io.style.width=io.style.width;
+							}catch(eX){
+								io = document.getElementById("friendBut");
+							}
+							div = document.createElement('div');
+							div.id="container";
+							div.style.width="320px";
+							div.style.background="url(images/friendBg.gif)";
+							div.style.backgroundRepeat="repeat-x";
+							div.style.height="75px";
+							div.style.position="absolute";
+							div.style.textAlign="center";
+							div.style.padding="13px";
+							div.style.border="2px solid black";
+							div.style.top=(parseInt(GetTopPos(io))-40)+"px";
+							div.style.left=(parseInt(GetLeftPos(io))+40)+"px";
+							div.innerHTML=det[1];
+							document.body.appendChild(div);
+						}
+					}
+				}
+				function smsCupon(id,aj){
+					if(aj){
+						getAjax("index.php?pid=smsCupon&id="+id,smsCuponCB);
+					}else{
+						d = document.getElementById("sms");
+						if(d.value==""){
+							alert("לא הוכנס מספר למשלוח");
+						}	
+					}
+				}
+				function printCupon(id){
+					getAjax("index.php?pid=printCupon&id="+id,printCuponCB);
+				}
+				function printCuponCB(){
+					if(http.readyState == 4){
+						if(http.responseText.search(/problem/i)!=-1)
+							alert(http.responseText);
+						else{
+							window.open('cupon.html','קופון','width=568,height=275');
+						}
+					}
+				}
+				function ajaxRequest(){
+					var xRequest="";
+					if (window.XMLHttpRequest)
+					{
+						xRequest=new XMLHttpRequest();
+					}
+					else if (typeof ActiveXObject != "undefined")
+					{
+						xRequest=new ActiveXObject("Microsoft.XMLHTTP");
+					}
+					return xRequest;
+				}
+				function getAjax(url,callback,postData){
+						http.open("get", url);
+						http.onreadystatechange =callback;
+						http.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+						http.send(postData);
+				}
+				function closeWin(){
+					d = document.getElementById("container");
+					d.parentNode.removeChild(d);
+				}
+				function cartCupon(id){
+					getAjax("index.php?pid=cartCupon&id="+id,cartCuponCB);
+				}
+				function cart2Cupon(id){
+					getAjax("index.php?pid=cart2Cupon&id="+id,cart2CuponCB);
+				}
+				function cartCuponCB(){
+					if(http.readyState == 4){
+						if(http.responseText.search(/problem/i)!=-1)
+							alert(http.responseText);
+						else{
+							dat = http.responseText.split("@");
+							co = document.getElementById("cartt");
+							co.innerHTML = dat[0];
+							if(dat[0]!="0"){
+								co.href="index.php?pid=cart";
+							}else{
+								co.href="#";
+							}
+							alert(dat[1]);
+						}
+					}
+				}
+				function cart2CuponCB(){
+					if(http.readyState == 4){
+						if(http.responseText.search(/problem/i)!=-1)
+							alert(http.responseText);
+						else{
+							dat = http.responseText.split("@");
+							co = document.getElementById("cartt");
+							co.innerHTML = dat[0];
+							if(dat[0]!="0"){
+								co.href="index.php?pid=cart";
+							}else{
+								co.href="#";
+							}
+							alert(dat[1]);
+						}
+					}
+				}
+				function intrestOff(){
+					var elSel = document.getElementById("intrest");
+					var i;
+					for (i = elSel.length - 1; i>=0; i--) {
+					  if (elSel.options[i].selected) {
+						elSel.remove(i);
+					  }
+					}
+				}
+				function selPage(el){
+					location.href = el.value;
+				}
+				function intrestAdd(){
+				  var elOptNew = document.createElement("option");
+				  var elSel = document.getElementById("intrest");
+				  cag = document.getElementById("catg1");
+				  cit = document.getElementById("city1");
+				  if(cag.selectedIndex==0){
+					alert("בחר קטגוריה");
+					return;
+				  }
+				  if(cit.selectedIndex==0){
+					alert("בחר עיר");
+					return;
+				  }
+				  elOptNew.text = cag.options[cag.selectedIndex].text+" ("+cit.options[cit.selectedIndex].text+")";
+				  elOptNew.value= cag.value+"@"+cit.value;
+				  try {
+					elSel.add(elOptNew, null);
+				  }
+				  catch(ex) {
+					elSel.add(elOptNew);
+				  }
+				}
+				function text_unic(str) {
+					return escape(str);
+				}
+				function unic_utf8(str) {
+					nc = "";
+					for (i = 0; i < str.length; i++) {
+						s = str.substr(i, 6);
+						if (arr = s.match(/%u[0-9A-F][0-9A-F][0-9A-F][0-9A-F]/i)) {
+							c = arr[0].substr(2, 4);
+							c = unic_u(c);
+							i += 5;
+						} else {
+							c = str.charAt(i);
+						};
+						nc += c;
+					};
+					return nc;
+				}
+			
+				function unic_u(str) {
+					num = parseInt(str, 16);
+					c1 = (num & parseInt("1111000000000000", 2)) >> 12;
+					c2 = (num & parseInt("0000111111000000", 2)) >> 6;
+					c3 = (num & parseInt("0000000000111111", 2));
+					c1 = dec2hex(c1 | parseInt("11100000", 2));
+					c2 = dec2hex(c2 | parseInt("10000000", 2));
+					c3 = dec2hex(c3 | parseInt("10000000", 2));
+					str = "";
+					str += "%" + c1.substr(2);
+					str += "%" + c2.substr(2);
+					str += "%" + c3.substr(2);
+					return str;
+				}
+				function dec2hex(dec) {
+					h = new Array('0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F');
+					hex = '';
+					hex += h[Math.floor(dec / 0x1000)]; dec = dec % 0x1000;
+					hex += h[Math.floor(dec / 0x100)]; dec = dec % 0x100;
+					hex += h[Math.floor(dec / 0x10)]; dec = dec % 0x10;
+					hex += h[Math.floor(dec / 0x1)]; dec = dec % 0x1;
+					return hex;
+				}
+			</script>
+			
+			<script type="text/javascript" src="js/j.js"></script>
+			<script type="text/javascript" src="js/query.js"></script>
+			<script type="text/javascript" src="js/cycle.js"></script>
+			
+			</head>
+			
+			<body onload="strech();">
+			<center>
+							<div align="center" style="width:905px;">
+								<table border="0" cellpadding="0" cellspacing="0" width="100%">
+									<tr>
+										<td align="center" valign="top" style="background:url(images/heade2r.jpg);background-repeat:no-repeat;width:905px;height:213px;">
+											<div align="center" style="padding-top:30px;">
+											<table dir="rtl" cellspacing="0" cellpadding="0" width="850"><tr><td align="center" valign="middle" style="color:black;font-size:16px;font-weight:bold;width:105px;height:20px;border-left:1px solid black;">
+								<a href="index.php?pid=2" style="color:black;font-size:14px;font-weight:bold;text-decoration:none;">אודות הסטודיו
+							</td><td align="center" valign="middle" style="color:black;font-size:16px;font-weight:bold;width:105px;height:20px;border-left:1px solid black;">
+								<a href="index.php?pid=4" style="color:black;font-size:14px;font-weight:bold;text-decoration:none;">עיצוב גרפי
+							</td><td align="center" valign="middle" style="color:black;font-size:16px;font-weight:bold;width:65px;height:20px;border-left:1px solid black;">
+								<a href="index.php?pid=6" style="color:black;font-size:14px;font-weight:bold;text-decoration:none;">מאמרים
+							</td><td align="center" valign="middle" style="color:black;font-size:16px;font-weight:bold;width:65px;height:20px;border-left:1px solid black;">
+								<a href="index.php?pid=8" style="color:black;font-size:14px;font-weight:bold;text-decoration:none;">המלצות
+							</td><td align="center" valign="middle" style="color:black;font-size:16px;font-weight:bold;width:105px;height:20px;border-left:1px solid black;">
+								<a href="index.php?pid=10" style="color:black;font-size:14px;font-weight:bold;text-decoration:none;">צור קשר
+							</td><td align="center" valign="middle" style="color:black;font-size:16px;font-weight:bold;width:105px;height:20px;border-left:1px solid black;">
+								<a href="index.php?pid=1" style="color:black;font-size:14px;font-weight:bold;text-decoration:none;">דף הבית
+							</td><td align="center" valign="middle" style="color:black;font-size:16px;font-weight:bold;width:105px;height:20px;border-left:1px solid black;">
+								<a href="index.php?pid=67" style="color:black;font-size:14px;font-weight:bold;text-decoration:none;">עיצוב למשרד עורכי דין רפאל בייפוס
+							</td><td align="center" valign="middle" style="color:black;font-size:16px;font-weight:bold;width:105px;height:20px;">
+								<a href="index.php?pid=56" style="color:black;font-size:14px;font-weight:bold;text-decoration:none;">מיתוג כולל
+							</td></tr></table>
+											</div>
+											<div align="center" style="padding-top:8px;padding-left:5px;">
+											<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0" width="850" height="119">
+						  <param name="movie" value="images/bosmat.swf" />
+						  <param name="quality" value="high" />
+						  <embed src="images/bosmat.swf" quality="high" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash"  width="850" height="119"></embed>
+						</object>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td align="center" valign="top" style="background:url(images/bodyBG2.gif);background-repeat:repeat-y;width:905px;">
+											<table dir="rtl" cellspacing="0" cellpadding="0" width="850">
+					<tr>
+						<td width="230" align="center" valign="top" ><div style="padding-left:20px;"><table cellspacing="0" cellpadding="0" width="160"><tr>
+							<td align="center" valign="top" style="">
+								<table width="160" cellspacing="0" cellpadding="0">
+									<tr>
+										<td align="right" valign="middle" style="padding-right:10px;color:black;font-size:13px;font-weight:bold;width:160px;height:36px;background:url(images/cubeH.gif);background-repeat:no-repeat;">
+											<div style="padding-top:5px;">מיתוג</div>
+										</td>
+									</tr>
+									<tr>
+										<td align="center" valign="middle" style="min-height:20px;width:160px;background:url(images/menuM.gif);background-repeat:repeat-y;">
+											<table cellspacing="0" cellpadding="0" width="160"><tr><td style="background:url(images/cubeM.gif);background-repeat:no-repeat;width:160px;height:14px;font-size:12px;color:black;padding-right:10px;" align="right" valign="middle">
+								<a href="index.php?pid=13" style="font-size:12px;color:black;text-decoration:none;">עיצוב גרפי לכרטיסי ביקור</a>
+								</td></tr></table>
+										</td>
+									</tr>
+									<tr>
+										<td align="center" valign="middle" style="font-size:13px;font-weight:bold;width:160px;height:15px;background:url(images/cubeD.gif);background-repeat:no-repeat;">
+											
+										</td>
+									</tr>
+								</table>
+							</td>
+						  </tr><tr>
+							<td align="center" valign="top" style="padding-top:10px;">
+								<table width="160" cellspacing="0" cellpadding="0">
+									<tr>
+										<td align="right" valign="middle" style="padding-right:10px;color:black;font-size:13px;font-weight:bold;width:160px;height:36px;background:url(images/cubeH.gif);background-repeat:no-repeat;">
+											<div style="padding-top:5px;">עיצוב לדפוס</div>
+										</td>
+									</tr>
+									<tr>
+										<td align="center" valign="middle" style="min-height:20px;width:160px;background:url(images/menuM.gif);background-repeat:repeat-y;">
+											<table cellspacing="0" cellpadding="0" width="160"><tr><td style="background:url(images/cubeM.gif);background-repeat:no-repeat;width:160px;height:14px;font-size:12px;color:black;padding-right:10px;" align="right" valign="middle">
+								<a href="index.php?pid=12" style="font-size:12px;color:black;text-decoration:none;">עיצוב גרפי למודעות</a>
+								</td></tr></table>
+										</td>
+									</tr>
+									<tr>
+										<td align="center" valign="middle" style="font-size:13px;font-weight:bold;width:160px;height:15px;background:url(images/cubeD.gif);background-repeat:no-repeat;">
+											
+										</td>
+									</tr>
+								</table>
+							</td>
+						  </tr><tr>
+							<td align="center" valign="top" style="padding-top:10px;">
+								<table width="160" cellspacing="0" cellpadding="0">
+									<tr>
+										<td align="right" valign="middle" style="padding-right:10px;color:black;font-size:13px;font-weight:bold;width:160px;height:36px;background:url(images/cubeH.gif);background-repeat:no-repeat;">
+											<div style="padding-top:5px;">אינטרנט</div>
+										</td>
+									</tr>
+									<tr>
+										<td align="center" valign="middle" style="min-height:20px;width:160px;background:url(images/menuM.gif);background-repeat:repeat-y;">
+											<table cellspacing="0" cellpadding="0" width="160"><tr><td style="background:url(images/cubeM.gif);background-repeat:no-repeat;width:160px;height:14px;font-size:12px;color:black;padding-right:10px;" align="right" valign="middle">
+								<a href="index.php?pid=23" style="font-size:12px;color:black;text-decoration:none;">עיצוב אתרים</a>
+								</td></tr></table>
+										</td>
+									</tr>
+									<tr>
+										<td align="center" valign="middle" style="font-size:13px;font-weight:bold;width:160px;height:15px;background:url(images/cubeD.gif);background-repeat:no-repeat;">
+											
+										</td>
+									</tr>
+								</table>
+							</td>
+						  </tr><tr>
+							<td align="center" valign="top" style="padding-top:10px;">
+								<table width="160" cellspacing="0" cellpadding="0">
+									<tr>
+										<td align="right" valign="middle" style="padding-right:10px;color:black;font-size:13px;font-weight:bold;width:160px;height:36px;background:url(images/cubeH.gif);background-repeat:no-repeat;">
+											<div style="padding-top:5px;">קצת עלינו</div>
+										</td>
+									</tr>
+									<tr>
+										<td align="center" valign="middle" style="min-height:20px;width:160px;background:url(images/menuM.gif);background-repeat:repeat-y;">
+											<table cellspacing="0" cellpadding="0" width="160"></table>
+										</td>
+									</tr>
+									<tr>
+										<td align="center" valign="middle" style="font-size:13px;font-weight:bold;width:160px;height:15px;background:url(images/cubeD.gif);background-repeat:no-repeat;">
+											
+										</td>
+									</tr>
+								</table>
+							</td>
+						  </tr></table></div></td>
+						<td width="620" align="justify" valign="top" dir="rtl" style="color:black;font-size:14px;padding:10px;"><p class="MsoNormal" dir="RTL" align="justify">
+            <font face="Arial" color="#536199">
+            <span lang="HE" style="font-size: 10pt"><p style='text-align:justify;' style="text-align: justify;"><span style="font-family: Arial; color: #993300; font-size: small;"><strong><span style="font-size: medium;"><span style="font-size: small;"><a title="עיצוב גרפי" href="index.php?pid=11"><img style="border: 0pt none;" src="html/media/lo.jpg" alt="לוגו | עיצוב לוגו | סטודיו לעיצוב לוגו" width="198" height="160" /></a></span></span></strong></span><span style="font-family: Arial; color: #993300; font-size: small;"><strong><span style="font-size: medium;"> </span></strong></span><strong><a href="index.php?pid=23" style="color: #993300;"><img title="עיצוב גרפי" style="border: 0pt none;" src="html/media/web-sites.jpg" alt="עיצוב גרפי לאתרי אינטרנט" width="198" height="160" /></a></strong><strong><a href="index.php?pid=23" style="color: #993300;"><img title="עיצוב גרפי" style="border: 0pt none;" src="html/media/web-sites.jpg" alt="עיצוב גרפי לאתרי אינטרנט" width="198" height="160" /></a></strong></p>
+<p style='text-align:justify;' style="text-align: center;"><span style="font-size: medium; color: #993300;"><strong>האתר בימים אלו בתהליך שדרוג, תוכלו להכנס לגלריות לוגויים ואתרי אינטרנט למעלה</strong></span></p>
+<p style='text-align:justify;' style="text-align: center;"><span style="font-size: medium; color: #993300;"><strong>אנא בקרו אותנו שוב:)</strong></span></p>
+<p style='text-align:justify;' style="text-align: center;"><span style="font-size: medium; color: #993300;"><strong><br /></strong></span></p>
+<p style='text-align:justify;' style="text-align: center;"><span style="font-size: medium; color: #993300;"><strong>בכדי להזניק את העסק שלכם קדימה , כדאי לבחור ב"סטודיו בושמת"<br /><br /><img style="float: right;" src="html/media/signon.png" alt="" width="368" height="84" /></strong></span></p>
+<p style='text-align:justify;'>&nbsp;</p>
+<p style='text-align:justify;'>&nbsp;</p>
+<p style='text-align:justify;' style="text-align: justify;">&nbsp;</p>
+<p style='text-align:justify;' style="text-align: justify;">&nbsp;</p>
+<p style='text-align:justify;' style="text-align: justify;">&nbsp;</p>
+<p style='text-align:justify;' style="text-align: justify;">&nbsp;</p>
+<p style='text-align:justify;'><img src="html/media/HITECH.png" alt="" width="147" height="189" /><img src="html/media/retro.png" alt="" width="147" height="189" /><img src="html/media/romantic.png" alt="" width="160" height="198" /></p>
+<table style="width: 580px;" border="0" cellspacing="5" cellpadding="5" align="right">
+
+<tr>
+<td>
+<p style='text-align:justify;'>ב<span style="font-size: small; color: #003300;">רוכים הבאים לסטודיו בושמת ל<a href="index.php">עיצוב גרפי</a></span><br /><span style="font-size: small; color: #003300;">סטודיו בושמת הינו סטודיו הנותן מענה לחברות ממשלתיות, מוסדות, עיריות, תאגידים וארגונים גדולים.הסטודיו מתמחה במיתוג עירוני ותקשורת חזותית המונית.</span></p>
+<p style='text-align:justify;'><span style="font-size: small; color: #003300;"> העבודות החדשות שלנו: מיתוג לרינה בהיר שמלות כלה , עיצוב לוגו , עיצוב אתר אינטרנט ועיצוב דפי פייבסבוק  <a title="מיכל לסר" href="http://www.leaveamark.co.il/leaveamark/Index.aspx?Id=20" target="_blank">מיכל לסר</a></span></p>
+<h1></h1>
+<h1></h1>
+<h1><span style="font-size: small; color: #003300;"> חלק מלקוחותינו הינם: סופר-פארם, עירית אילת, עיריית רמת גן, עיריית עכו, תאגידי מים, עין נטפים, בת ים , גבעתיים.המרכז למשקפי שמש ועוד לקוחות פרטיים רבים</span></h1>
+<p style='text-align:justify;'>&nbsp;</p>
+<h2><span style="font-size: small; color: #003300;">שירותי העיצוב שלנו:</span><br /><span style="font-size: small; color: #003300;">&gt; <a href="hhttp://bosmat-studio.com/index.php">עיצוב גרפי </a>- <a href="index.php?pid=56">עיצוב תדמית כוללת</a></span><br /><span style="font-size: small; color: #003300;">&gt; עיצוב חוברות ועלונים</span><br /><span style="font-size: small; color: #003300;">&gt;<a title="עיצוב אתריי אינטרנט | עיצוב גרפי | עיצוב גראפי" href="index.php?pid=23">בניית אתרי אינטרנט ובאנרים</a></span><br /><span style="font-size: small; color: #003300;">&gt; מגזינים דיגטילים</span></h2>
+<p style='text-align:justify;'>&nbsp;</p>
+<p style='text-align:justify;'>&nbsp;</p>
+<p style='text-align:justify;' style="text-align: justify;"><span style="font-size: small; color: #003300;"><a href="index.php">עיצוב גרפי </a><a href="index.php"></a>מנצח</span><br /><span style="font-size: small; color: #003300;">עיצוב שקולע לאמרה ולסיפור שאותו אתם רוצים לשדר ולמסאר שאותו אתם רוצים להעביר</span><span style="font-size: small; color: #003300;"> </span><span style="font-size: small; color: #003300;">עיצוב שמדבר אל קהל יעד , גיל ומצב סוציואקונומי מוגדר.</span></p>
+<p style='text-align:justify;' style="text-align: justify;"><span style="font-size: small; color: #003300;">היום קיימים בשוק אינספור מעצבים, אך ללא היכולת לעשות מיתוג ובידול של העסק שלכם, רוב ההשקעתכם תלך לאיבוד</span></p>
+<p style='text-align:justify;' style="text-align: justify;"><span style="font-size: small; color: #003300;"><span style="font-size: medium;"><strong>מיהו הקהל יעד שלכם?</strong></span></span></p>
+<p style='text-align:justify;' style="text-align: justify;"><span style="font-size: small; color: #003300;"><span style="font-size: medium;"><strong> </strong></span>האם העסק שלכם פונה לילדים? נשים?  לאנשי אקסטרים? או אולי אניש מחשבים?</span><br /><span style="font-size: small; color: #003300;">כל אלו הם שאלות שצריכות להענות בקפידה על מנת ליצור לעסק שלכם את הקו הגרפי המנצח.</span><br /><br /><span style="font-size: small; color: #003300;">לוגו, כרטיס ביקור ואתר אינטרנט אפשר גם פולדר עם פרופיל חברה מעוצב.. והיד עוד נטויה</span><br /><span style="font-size: small; color: #003300;">כדי לקרוא עוד על <a href="index.php">עיצוב גרפי </a>מנצח <a href="index.php?pid=6">לחצו כאן&gt;&gt;</a></span></p>
+<p style='text-align:justify;' style="text-align: justify;">&nbsp;</p>
+<p style='text-align:justify;'><span style="font-size: small; color: #003300;">לקבלת ייעוץ חינם והצעת מחיר התקשרו:</span><br /><span style="font-size: small; color: #003300;">נייד : 052-9770200  משרד: 077-4006550</span><br /><span style="font-size: small; color: #003300;"><a href="mailto:info@bosmat-studio.com">info@bosmat-studio.com</a> </span><br /><span style="font-size: small; color: #003300;"> <a href="mailto:bosmat-studio@013.net">bosmat-studio@013.net</a></span></p>
+<p style='text-align:justify;'><span lang="HE" style="font-size: small; color: #003300;"> </span></p>
+<h2><span style="font-size: small; color: #003300;"><a href="http://www.bosmat-studio.com/">עיצוב גרפי</a> מנצח</span><br /><br /><span style="font-size: small; color: #003300;">עיצוב גרפי טוב, זה שם המשחק</span><br /><span style="font-size: small; color: #003300;">עיצוב שמעורר את החושים ואת הרגשות, ממש כמו שיר או ציור אשר גורם למוח לחרוץ דעה ומניע אותו לפעולה זהו, עיצוב מנצח. בעידן טכנולוגי מתקדם וחדשני התמונה הראשונית היא אשר תכריע אם נמשיך לקרוא ולהתעניין במה שמונח לפנינו ותיצור במוחנו את הזהות והקשר עם המוצר, מכאן החשיבות המרובה של עבודה מעמיקה מקצועית ומדויקת.</span><br /> <br /><br /><span style="font-size: small; color: #003300;"> אז, האם האריזה שלכם מוכרת ? </span><br /><span style="font-size: small; color: #003300;">העסק הטוב ביותר בעולם, ללא החזות הנכונה, המודעות המזמינות והשיווק הממוקד, עלול לשדר מסר שונה לגמרי. איכותו של המסר המועבר לצופה מורכב מה<a href="http://www.bosmat-studio.com/">עיצוב הגרפי </a>המשלב בתוכו ניתוח מקצועי וחשיבה מעמיקה של קהל היעד, מטרות,תחושות, רגשות ותמהיל נכון של טקסט הבאים לידי ביטוי בתמונה חזותית. </span><br /><br /><span style="font-size: small; color: #003300;">חברות ועסקים משקיעים משאבים רבים בפרסום וקידום מכירות, אך ללא <a href="http://www.bosmat-studio.com/">עיצוב גרפי</a> נכון, עלול אותו עסק לפספס את המטרה ועל ידי כך "לזרוק כסף בפרסום". </span><br /> <br /><br /><span style="font-size: small; color: #003300;">סוף מעשה במחשבה תחילה </span><br /><span style="font-size: small; color: #003300;">בבואנו לתכנן מוצר אותו אנו רוצים לשווק, עלינו להגדיר לעצמנו את המטרות אליהן אנו רוצים להגיע.</span><br /><span style="font-size: small; color: #003300;">לבדוק מיהו קהל היעד?</span><br /><span style="font-size: small; color: #003300;">מהם המאפיינים הייחודיים שלנו?</span><br /><span style="font-size: small; color: #003300;">ועל פי פרמטרים אלו לתכנן את העיצוב הגרפי המתאים ביותר לתדמית אותה אנו רוצים לבנות לחברה. לאחר בדיקה מעמיקה ואיסוף כל הנתונים ניתן יהיה לגשת ולעצב בהתאם, לוגו שיזוהה עם מטרות וערכי החברה ויישאר בתודעת הלקוח , אתר אינטרנט ידידותי למשתמש שייתן שירות ומענה הולם, כרטיסי ביקור שישמרו אצל הצרכן, פליירים ועוד.</span><br /><br /><span style="font-size: small; color: #003300;">אז צרו קשר עוד היום וביחד נוכל למתג את העסק שלכם.. </span><br /><span style="font-size: small; color: #003300;">052-9770200</span></h2>
+<p style='text-align:justify;'>&nbsp;</p>
+<p style='text-align:justify;'><span style="font-size: small; color: #003300;"><a href="http://www.bosmat-studio.com/">עיצוב גרפי</a><a title="עיצוב גרפי" href="http://www.bosmat-studio.com/"> </a>| <a title="עיצוב גרפי" href="http://www.bosmat-studio.com/">טיפוגרפיה</a><a title="עיצוב גרפי" href="http://www.bosmat-studio.com/"> </a>| <a title="מותג" href="http://www.bosmat-studio.com/">מותג</a><a title="מותג" href="http://www.bosmat-studio.com/"> </a>| <a title="ארט דיזין" href="http://www.bosmat-studio.com/">ארט דיזיין</a> | <a href="http://www.bosmat-studio.com/">כרטיסי ביקור</a><a href="http://www.bosmat-studio.com/"> </a>| <a title="עיצוב לוגו " href="index.php?pid=11">לוגו</a><a title="עיצוב לוגו " href="index.php?pid=11"> </a>| <a title="לוגו" href="index.php?pid=11">לוגו</a><a title="לוגו" href="index.php?pid=11"> </a>| <a href="index.php?pid=25">באנרים</a><a href="index.php?pid=25"> </a>| <a title="דרושים גרפיקאים" href="http://www.bosmat-studio.com/">גרפיקאי</a> | <a title="דרוש גרפיקאי" href="http://www.bosmat-studio.com/">גרפיקאים</a> | <a title="גרפיקה" href="http://www.bosmat-studio.com/">גרפיקה</a> | <a title="מעצב" href="http://www.bosmat-studio.com/">מעצב</a> |<a title="מעצב גרפי" href="http://www.bosmat-studio.com/">מעצב גרפי</a> | <a title="מעצבים" href="http://www.bosmat-studio.com/">מעצבים </a>| <a title="מעצבים גרפיים" href="http://www.bosmat-studio.com/">מעצבים גרפיים</a> | <a title="עיצוב" href="http://www.bosmat-studio.com/">עיצוב</a> | <a title="הזמנות" href="http://www.bosmat-studio.com/">הזמנות</a> | <a title="הזמנות" href="http://www.bosmat-studio.com/">ניירת משרדית</a>| <a title="שלטי חוצות ובאנרים" href="http://www.bosmat-studio.com/">שלטי חוצות</a> | <a title="שלטי חוצות ובאנרים" href="packeging.html/">עיצוב אריזות</a> | <a title="עיצוב אתרים" href="http://www.bosmat-studio.com/">עיצוב אתרים</a> | <a title="עיצוב אתרים" href="articleat.html">בניית אתרים</a> | <a title="עיצוב קטלוגים" href="http://www.bosmat-studio.com/">קטלוגים שירותי גרפיקה</a> | <a title="שרות גרפיקה" href="http://www.bosmat-studio.com/">שרותי גרפיקה</a> | <a title="שרות גרפיקה" href="http://www.bosmat-studio.com/">מודעות ועלונים</a> | <a title="תקשורת חזותית בשילוב גרפיקה" href="http://www.bosmat-studio.com/">תקשורת חזותית</a> | <a title="תקשורת חזותית בשילוב גרפיקה" href="http://www.bosmat-studio.com/">תקשורת חזותית וגרפיקה</a>| <a title="קידום אתרים" href="http://www.bosmat-studio.com/">קידום אתרים</a><span lang="he"> </span>| <span lang="he"><a href="http://www.bosmat-studio.com/">קישורים</a></span> </span></p>
+<br /></td>
+</tr>
+
+</table><div class="gallery"></div></span></font></p>
+</td>
+						
+					</tr>
+					</table>
+					
+											
+
+
+										</td>
+									</tr>
+									<tr>
+										<td align="center" valign="top" style="background:url(images/footer3.gif);background-repeat:no-repeat;width:905px;height:97px;">
+										</td>
+									</tr>
+								</table>
+							</div>
+						</center>
+			
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-10358486-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</body>
+</html> 

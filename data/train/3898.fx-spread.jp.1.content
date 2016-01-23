@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Language" content="ja" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <link rel="SHORTCUT ICON" href="http://www.fx-spread.jp/images/favicon.ico" />
+    
+    <meta name="keywords" content="FX,スプレッド,FX スプレッド,最小,小さい,狭い" />
+    <meta name="description" content="【スプレッド】はFX取引で重要な意味を持ちます。特にデイトレーダーの方はこれを気にすることなく、勝利することはないと言っても過言ではないでしょう。そのスプレッドの比較を行い、スプレッド最小・最狭のFX業者を紹介します。" />
+    <title>FXスプレッド｜スプレッド最小のFX業者ココだ！</title>
+    
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="http://www.fx-spread.jp/css/style.css">
+    <link rel="stylesheet" type="text/css" href="http://www.fx-spread.jp/css/contents.css">
+    
+    <!-- js -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
+    <script type="text/javascript" src="http://www.fx-spread.jp/js/jquery.tablesorter.min.js"></script>
+    <script type="text/javascript" src="http://www.fx-spread.jp/js/jquery.tablehover.js"></script>
+        
+    <!--[if lt IE 9]>
+    <script src="http://www.fx-spread.jp/admin/wp-content/themes/origin/js/html5.js"></script>
+    <![endif]-->
+</head>
+
+
+
+<body>
+<div class="wrap">
+
+
+
+    <div id="header-info">
+        <div class="inner">
+            <div class="breadcrumbs min">
+                <p>初心者でも分かる！スプレッドに特化したFXポータルサイト</p>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <header class="inner">
+        <h1><a href="http://www.fx-spread.jp"><img src="http://www.fx-spread.jp/images/logo.png" width="250" height="50" alt="FXスプレッド｜スプレッド最小のFX業者ココだ！"></a></h1>
+        
+        <form action="http://www.fx-spread.jp" method="get">
+            <input id="search-form" type="text" name="s" size="30" placeholder="例）スプレッド 狭い">
+            <input id="search-bt" type="submit" value="検索">
+        </form>
+    </header>
+    
+    
+    
+    <div id="global-nav">
+        <nav class="inner">
+            <ul class="menu">
+                <li><a href="http://www.fx-spread.jp/news/">FXニュース</a></li>
+                
+                <li class="menu-single">
+                    <a href="http://www.fx-spread.jp/knowledge/">スプレッドとは</a>
+                    <ul class="menu-second-level">
+                        <li><a href="http://www.fx-spread.jp/knowledge/decision.html">スプレッドはどうやって決まる？</a></li>
+                        <li><a href="http://www.fx-spread.jp/knowledge/point.html">スプレッド表記のポイント</a></li>
+                        <li><a href="http://www.fx-spread.jp/knowledge/change.html">固定のスプレッドも変動する</a></li>
+                        <li><a href="http://www.fx-spread.jp/knowledge/slippage.html">スリッページって何？</a></li>
+                        <li><a href="http://www.fx-spread.jp/knowledge/stopgari.html">ストップ狩りは実在するのか</a></li>
+                        <li><a href="http://www.fx-spread.jp/knowledge/stopgari2.html">ストップ狩りの対策</a></li>
+                    </ul>
+                </li>
+                
+                <li class="menu-single">
+                    <a href="http://www.fx-spread.jp/fx/">FX業者一覧</a>
+                    <ul class="menu-second-level">
+                        <li><a href="http://www.fx-spread.jp/fx/click.html">GMOクリック証券</a></li>
+                        <li><a href="http://www.fx-spread.jp/fx/dmm.html">DMM FX</a></li>
+                        <li><a href="http://www.fx-spread.jp/fx/gaitameonline.html">外為オンライン</a></li>
+                        <li><a href="http://www.fx-spread.jp/fx/partners.html">マネーパートナーズ</a></li>
+                        <li><a href="http://www.fx-spread.jp/fx/minna.html">みんなのFX</a></li>
+                        <li><a href="http://www.fx-spread.jp/fx/">全業者を見る</a></li>
+                    </ul>
+                </li>
+                
+                <li><a href="http://www.fx-spread.jp/ichiran/">スプレッド一覧比較</a></li>
+                
+                <li class="menu-single">
+                    <a href="http://www.fx-spread.jp/currency/">通貨ペア別スプレッド</a>
+                    <ul class="menu-second-level">
+                        <li><a href="http://www.fx-spread.jp/currency/dy/">ドル/円</a></li>
+                        <li><a href="http://www.fx-spread.jp/currency/ey/">ユーロ/円</a></li>
+                        <li><a href="http://www.fx-spread.jp/currency/py/">ポンド/円</a></li>
+                        <li><a href="http://www.fx-spread.jp/currency/ay/">豪ドル/円</a></li>
+                        <li><a href="http://www.fx-spread.jp/currency/ny/">NZドル/円</a></li>
+                        <li><a href="http://www.fx-spread.jp/currency/ry/">ランド/円</a></li>
+                        <li><a href="http://www.fx-spread.jp/currency/">全てのペアを見る</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    
+    
+    
+    <div id="visual" class="mb30">
+        <p class="inner">
+            <img src="http://www.fx-spread.jp/images/visual.jpg" width="1100" height="200" alt="2015年最新 FXスプレッド比較">
+        </p>
+    </div>
+    
+    
+    
+    <div class="inner">
+        <div class="mb30">
+			                    	<h2 class="mb10">最新スワップ一覧【
+			<script type="text/javascript">
+				<!--
+					weeks=new Array("日","月","火","水","木","金","土");
+					today=new Date();
+					y=today.getFullYear();
+					m=today.getMonth()+1;
+					d=today.getDate();
+					w=weeks[today.getDay()];
+					document.write("",y,"年");
+					document.write("",m,"月");
+					document.write("",d,"日");
+					document.write("（",w,"）");
+				//-->
+            </script>
+            更新】</h2>
+            
+            <table id="sorter" class="tablesorter jquery-tablehover">
+            <thead>
+                <tr>
+                    <th>会社名</th>
+                    <th><img src="http://www.fx-spread.jp/images/icon/dy.gif" width="67" height="20"/><br />USD/JPY</th>
+                    <th><img src="http://www.fx-spread.jp/images/icon/ey.gif" width="67" height="20"/><br />EUR/JPY</th>
+                    <th><img src="http://www.fx-spread.jp/images/icon/py.gif" width="67" height="20"/><br />GBP/JPY</th>
+                    <th><img src="http://www.fx-spread.jp/images/icon/ay.gif" width="67" height="20"/><br />AUD/JPY</th>
+                    <th><img src="http://www.fx-spread.jp/images/icon/ny.gif" width="67" height="20"/><br />NZD/JPY</th>
+                    <th><img src="http://www.fx-spread.jp/images/icon/ry.gif" width="67" height="20"/><br />ZAR/JPY</th>
+                    <th><img src="http://www.fx-spread.jp/images/icon/cady.gif" width="67" height="20"/><br />CAD/JPY</th>
+                    <th><img src="http://www.fx-spread.jp/images/icon/chfy.gif" width="67" height="20"/><br />CHF/JPY</th>
+                    <th>公式HP</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+				                <tr>
+                    <td>
+                        <a href="http://www.fx-spread.jp/fx/click.html">
+                        GMOクリック証券</a>
+                    </td>
+                    <td>0.3銭</td>
+                    <td>0.6銭</td>
+                    <td>1.1銭</td>
+                    <td>0.7銭</td>
+                    <td>1.5銭</td>
+                    <td>1.4銭</td>
+                    <td>1.7銭</td>
+                    <td>1.8銭</td>
+                    <td>
+                        <a href="http://www.fx-spread.jp/ad/click.html" target="_blank">
+                        <img src="http://www.fx-spread.jp/images/bt-cell-ad.png" width="60" height="30" alt="GMOクリック証券口座開設"></a>
+                    </td>
+                </tr>
+                            
+				                <tr>
+                    <td>
+                        <a href="http://www.fx-spread.jp/fx/gaitameonline.html">
+                        外為オンライン</a>
+                    </td>
+                    <td>0.3銭</td>
+                    <td>0.6銭</td>
+                    <td>1.1銭</td>
+                    <td>0.7銭</td>
+                    <td>1.5銭</td>
+                    <td>1.4銭</td>
+                    <td>1.7銭</td>
+                    <td>1.8銭</td>
+                    <td>
+                        <a href="http://www.fx-spread.jp/ad/gaitameonline.html" target="_blank">
+                        <img src="http://www.fx-spread.jp/images/bt-cell-ad.png" width="60" height="30" alt="外為オンライン口座開設"></a>
+                    </td>
+                </tr>
+                            
+				                <tr>
+                    <td>
+                        <a href="http://www.fx-spread.jp/fx/hirose.html">
+                        ヒロセ通商</a>
+                    </td>
+                    <td>0.3銭</td>
+                    <td>0.7銭</td>
+                    <td>1.3銭</td>
+                    <td>0.8銭</td>
+                    <td>1.4銭</td>
+                    <td>1.4銭</td>
+                    <td>1.7銭</td>
+                    <td>3~10銭</td>
+                    <td>
+                        <a href="http://www.fx-spread.jp/ad/hirose.html" target="_blank">
+                        <img src="http://www.fx-spread.jp/images/bt-cell-ad.png" width="60" height="30" alt="ヒロセ通商口座開設"></a>
+                    </td>
+                </tr>
+                            
+				                <tr>
+                    <td>
+                        <a href="http://www.fx-spread.jp/fx/foreland.html">
+                        FXCMジャパン証券</a>
+                    </td>
+                    <td>0.3銭</td>
+                    <td>0.7銭</td>
+                    <td>0.8銭</td>
+                    <td>0.6銭</td>
+                    <td>0.9銭</td>
+                    <td>0.3銭</td>
+                    <td>1.1銭</td>
+                    <td>0.9銭</td>
+                    <td>
+                        <a href="http://www.fx-spread.jp/ad/foreland.html" target="_blank">
+                        <img src="http://www.fx-spread.jp/images/bt-cell-ad.png" width="60" height="30" alt="FXCMジャパン証券口座開設"></a>
+                    </td>
+                </tr>
+                            
+				                <tr>
+                    <td>
+                        <a href="http://www.fx-spread.jp/fx/fxonline.html">
+                        IGマーケッツ証券</a>
+                    </td>
+                    <td>0.6銭</td>
+                    <td>1.5銭</td>
+                    <td>銭</td>
+                    <td>1.9銭</td>
+                    <td>銭</td>
+                    <td>銭</td>
+                    <td>銭</td>
+                    <td>銭</td>
+                    <td>
+                        <a href="http://www.fx-spread.jp/ad/fxonline.html" target="_blank">
+                        <img src="http://www.fx-spread.jp/images/bt-cell-ad.png" width="60" height="30" alt="IGマーケッツ証券口座開設"></a>
+                    </td>
+                </tr>
+                            
+				                <tr>
+                    <td>
+                        <a href="http://www.fx-spread.jp/fx/mj.html">
+                        外為ジャパン</a>
+                    </td>
+                    <td>0.3銭</td>
+                    <td>0.6銭</td>
+                    <td>1.1銭</td>
+                    <td>0.7銭</td>
+                    <td>1.5銭</td>
+                    <td>1.4銭</td>
+                    <td>1.7銭</td>
+                    <td>1.8銭</td>
+                    <td>
+                        <a href="http://www.fx-spread.jp/ad/mj.html" target="_blank">
+                        <img src="http://www.fx-spread.jp/images/bt-cell-ad.png" width="60" height="30" alt="外為ジャパン口座開設"></a>
+                    </td>
+                </tr>
+                            
+				                <tr>
+                    <td>
+                        <a href="http://www.fx-spread.jp/fx/dmm.html">
+                        DMM FX</a>
+                    </td>
+                    <td>0.3銭</td>
+                    <td>0.6銭</td>
+                    <td>1.1銭</td>
+                    <td>0.7銭</td>
+                    <td>1.5銭</td>
+                    <td>1.4銭</td>
+                    <td>1.7銭</td>
+                    <td>1.8銭</td>
+                    <td>
+                        <a href="http://www.fx-spread.jp/ad/dmm.html" target="_blank">
+                        <img src="http://www.fx-spread.jp/images/bt-cell-ad.png" width="60" height="30" alt="DMM FX口座開設"></a>
+                    </td>
+                </tr>
+                            
+				                <tr>
+                    <td>
+                        <a href="http://www.fx-spread.jp/fx/gaitamecom.html">
+                        外為どっとコム</a>
+                    </td>
+                    <td>0.3銭</td>
+                    <td>0.6銭</td>
+                    <td>1.1銭</td>
+                    <td>0.7銭</td>
+                    <td>1.6銭</td>
+                    <td>1.6銭</td>
+                    <td>3.9銭</td>
+                    <td>2.9銭</td>
+                    <td>
+                        <a href="http://www.fx-spread.jp/ad/gaitamecom.html" target="_blank">
+                        <img src="http://www.fx-spread.jp/images/bt-cell-ad.png" width="60" height="30" alt="外為どっとコム口座開設"></a>
+                    </td>
+                </tr>
+                            
+				                <tr>
+                    <td>
+                        <a href="http://www.fx-spread.jp/fx/cyber.html">
+                        YJFX</a>
+                    </td>
+                    <td>0.4銭</td>
+                    <td>1銭</td>
+                    <td>1.8銭</td>
+                    <td>0.9銭</td>
+                    <td>1.8銭</td>
+                    <td>1.9銭</td>
+                    <td>2.4銭</td>
+                    <td>2.4銭</td>
+                    <td>
+                        <a href="http://www.fx-spread.jp/ad/cyber.html" target="_blank">
+                        <img src="http://www.fx-spread.jp/images/bt-cell-ad.png" width="60" height="30" alt="YJFX口座開設"></a>
+                    </td>
+                </tr>
+                            
+				                <tr>
+                    <td>
+                        <a href="http://www.fx-spread.jp/fx/central.html">
+                        セントラル短資FX</a>
+                    </td>
+                    <td>1銭</td>
+                    <td>2銭</td>
+                    <td>4銭</td>
+                    <td>3銭</td>
+                    <td>4銭</td>
+                    <td>銭</td>
+                    <td>4銭</td>
+                    <td>10銭</td>
+                    <td>
+                        <a href="http://www.fx-spread.jp/ad/central.html" target="_blank">
+                        <img src="http://www.fx-spread.jp/images/bt-cell-ad.png" width="60" height="30" alt="セントラル短資FX口座開設"></a>
+                    </td>
+                </tr>
+                            
+				                <tr>
+                    <td>
+                        <a href="http://www.fx-spread.jp/fx/financial.html">
+                        FXトレードフィナンシャル</a>
+                    </td>
+                    <td>0.3銭</td>
+                    <td>0.6銭</td>
+                    <td>2.2銭</td>
+                    <td>2銭</td>
+                    <td>3銭</td>
+                    <td>5~10銭</td>
+                    <td>5銭</td>
+                    <td>5銭</td>
+                    <td>
+                        <a href="http://www.fx-spread.jp/ad/financial.html" target="_blank">
+                        <img src="http://www.fx-spread.jp/images/bt-cell-ad.png" width="60" height="30" alt="FXトレードフィナンシャル口座開設"></a>
+                    </td>
+                </tr>
+                            
+				                <tr>
+                    <td>
+                        <a href="http://www.fx-spread.jp/fx/forex.html">
+                        フォレックストレード</a>
+                    </td>
+                    <td>1.3銭</td>
+                    <td>1.7銭</td>
+                    <td>2.3銭</td>
+                    <td>1.9銭</td>
+                    <td>2.8銭</td>
+                    <td>2.8銭</td>
+                    <td>2.1銭</td>
+                    <td>2.4銭</td>
+                    <td>
+                        <a href="http://www.fx-spread.jp/ad/forex.html" target="_blank">
+                        <img src="http://www.fx-spread.jp/images/bt-cell-ad.png" width="60" height="30" alt="フォレックストレード口座開設"></a>
+                    </td>
+                </tr>
+                            
+				            
+				            
+				            
+				            
+				            
+				            
+				            
+				                
+            </tbody>
+            </table>
+            
+			                    </div>
+    </div>
+    
+    
+    
+    <div class="inner">
+        <div class="left-col">
+        
+            <h2>スプレッドが小さいほど、狭いほど、アナタの利益に直結します！</h2>
+            <p class="p10 mb30">
+                FXのスプレッドとはどんなものでしょうか？<br />
+                簡単に言うと、<br />
+                <span class="yellow">FXのスプレッドというのは、通貨間の買値と売値の差のことを指し、実質投資家のコストとなります。</span><br /><br />
+                
+                FX業者はこのスプレッドの中の一部から利益を得ています。<br />
+                そのため、株式投資とは異なり、最近では当たり前になりつつある「取引手数料無料」でも経営が成り立つわけです。
+                言い方を変えると<span class="blue">「取引手数料」を取っている業者というのは二重に手数料を取っていると言う事が言えます</span>。
+                
+                <div class="box-2">
+                    <span class="b orange">POINT</span><br />
+                    下記の図で具体的に言うと「<span class="b">USD/JPY:BID 81円93.3銭　ASK 81円93.7銭</span>」という表示がされますが、
+                    これはFXを行う側から見て、買うとき（ASK）は81円93.7銭だけど、売るとき（BID）は81円93.3銭ということを示しています。
+                    この0.4銭がスプレッドと呼ばれているものです。<br /><br />
+                    
+                    <img src="http://www.fx-spread.jp/images/spread-sample.jpg" width="100%" height="auto" alt="スプレッド参考イメージ">
+                </div>
+            </p>
+            
+            
+            
+            <p class="mb30"><a href="http://www.fx-spread.jp/currency/dy/">
+                <img src="http://www.fx-spread.jp/images/banner-usd-jpy.png" width="760" height="110" alt="2015年9月ドル/円スプレッド比較">
+            </a></p>
+            
+            
+            
+            <h2>スプレッドのランキング</h2>
+            <span class="min">
+            <script type="text/javascript">
+                <!--
+                    weeks=new Array("日","月","火","水","木","金","土");
+                    today=new Date();
+                    y=today.getFullYear();
+                    m=today.getMonth()+1;
+                    d=today.getDate();
+                    w=weeks[today.getDay()];
+                    document.write("",y,"年");
+                    document.write("",m,"月");
+                    document.write("",d,"日");
+                //-->
+            </script>更新
+            </span><br />
+            
+                                    <article class="box-2 rank">
+                <p class="rank-title"><a href="http://www.fx-spread.jp/fx/click.html">1.GMOクリック証券</a></p>
+                
+                <div>
+                    <p class="left">
+                        <a href="http://www.fx-spread.jp/fx/click.html">
+                            <img class="border mb10" src="http://www.fx-spread.jp/admin/wp-content/uploads/2015/09/click-pc-thum.jpg" width="200" height="200" alt="GMOクリック証券">
+                        </a>
+                    </p>
+                    
+                    <div class="right" style="width:500px;">
+                        <p class="orange large">取引環境は間違いなく高水準！</p>
+                        <p>2011年12月21日より10通貨ペアのスプレッドが縮小され、ドル円で0.5銭固定になりました。 その他の主要通貨ペアもほぼDMMと同じレベルまで下げられました（詳細はコチラ）。
+
+今までスペック...</p>
+                        <p class="text-right"><a href="http://www.fx-spread.jp/fx/click.html">»続きを読む</a></p>
+                        
+                        <table>
+                            <tr>
+                                <th>手数料</th>
+                                <td>無料</td>
+                                <th>レバレッジ</th>
+                                <td>25倍</td>
+                                <th>初回入金額</th>
+                                <td>1万円～</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="clear">
+                    <p class="left"><a href="http://www.fx-spread.jp/fx/click.html">
+                        <img src="http://www.fx-spread.jp/images/bt-more-off.png" width="350" height="60">
+                    </a></p>
+                    
+                    <p class="right"><a href="http://www.fx-spread.jp/ad/click.html" target="_blank">
+                        <img src="http://www.fx-spread.jp/images/bt-ad-off.png" width="350" height="60">
+                    </a></p>
+                </div>
+            </article>
+                        <article class="box-2 rank">
+                <p class="rank-title"><a href="http://www.fx-spread.jp/fx/dmm.html">2.DMM FX</a></p>
+                
+                <div>
+                    <p class="left">
+                        <a href="http://www.fx-spread.jp/fx/dmm.html">
+                            <img class="border mb10" src="http://www.fx-spread.jp/admin/wp-content/uploads/2015/09/dmm-pc-thum.jpg" width="200" height="200" alt="DMM FX">
+                        </a>
+                    </p>
+                    
+                    <div class="right" style="width:500px;">
+                        <p class="orange large">業界最後発がFXに激震を起こす！</p>
+                        <p>DMMは21年の7月17日からサービスを開始した現時点での最後発のFX業者です。ゆえに、他者との差別化を図らなければ口座獲得が出来ません。 その差別化のポイントは「最狭スプレッド」！
+
+ドル/円が...</p>
+                        <p class="text-right"><a href="http://www.fx-spread.jp/fx/dmm.html">»続きを読む</a></p>
+                        
+                        <table>
+                            <tr>
+                                <th>手数料</th>
+                                <td>無料</td>
+                                <th>レバレッジ</th>
+                                <td>25倍</td>
+                                <th>初回入金額</th>
+                                <td>5万円～</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="clear">
+                    <p class="left"><a href="http://www.fx-spread.jp/fx/dmm.html">
+                        <img src="http://www.fx-spread.jp/images/bt-more-off.png" width="350" height="60">
+                    </a></p>
+                    
+                    <p class="right"><a href="http://www.fx-spread.jp/ad/dmm.html" target="_blank">
+                        <img src="http://www.fx-spread.jp/images/bt-ad-off.png" width="350" height="60">
+                    </a></p>
+                </div>
+            </article>
+                        <article class="box-2 rank">
+                <p class="rank-title"><a href="http://www.fx-spread.jp/fx/gaitameonline.html">3.外為オンライン</a></p>
+                
+                <div>
+                    <p class="left">
+                        <a href="http://www.fx-spread.jp/fx/gaitameonline.html">
+                            <img class="border mb10" src="http://www.fx-spread.jp/admin/wp-content/uploads/2015/09/gaitameonline-pc-thum.jpg" width="200" height="200" alt="外為オンライン">
+                        </a>
+                    </p>
+                    
+                    <div class="right" style="width:500px;">
+                        <p class="orange large">CMでの知名度と信用力で口座数は25万口座突破</p>
+                        <p>ドル円が1銭固定で決して最近のスプレッドの中では褒められた数値ではないですが、システムがしっかりしているので細かい取引をガンガン行えるのが特徴でしょう。
+
+大きく狙いたいと思う方も多いかもしれませ...</p>
+                        <p class="text-right"><a href="http://www.fx-spread.jp/fx/gaitameonline.html">»続きを読む</a></p>
+                        
+                        <table>
+                            <tr>
+                                <th>手数料</th>
+                                <td>無料</td>
+                                <th>レバレッジ</th>
+                                <td>25倍</td>
+                                <th>初回入金額</th>
+                                <td>5千円</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="clear">
+                    <p class="left"><a href="http://www.fx-spread.jp/fx/gaitameonline.html">
+                        <img src="http://www.fx-spread.jp/images/bt-more-off.png" width="350" height="60">
+                    </a></p>
+                    
+                    <p class="right"><a href="http://www.fx-spread.jp/ad/gaitameonline.html" target="_blank">
+                        <img src="http://www.fx-spread.jp/images/bt-ad-off.png" width="350" height="60">
+                    </a></p>
+                </div>
+            </article>
+                        <article class="box-2 rank">
+                <p class="rank-title"><a href="http://www.fx-spread.jp/fx/partners.html">4.マネーパートナーズ</a></p>
+                
+                <div>
+                    <p class="left">
+                        <a href="http://www.fx-spread.jp/fx/partners.html">
+                            <img class="border mb10" src="http://www.fx-spread.jp/admin/wp-content/uploads/2015/09/moneypartners-pc-thum.jpg" width="200" height="200" alt="マネーパートナーズ">
+                        </a>
+                    </p>
+                    
+                    <div class="right" style="width:500px;">
+                        <p class="orange large">約定率の高さは業界最高の９９％！</p>
+                        <p>マネーパートナーズはFX専業会社として初めて上場(ヘラクレス)を果たし、経済的バックボーンもしっかりとしたFX専門の業者です。
+
+また、このマネーパートナーズは約定率の高さが有名で、数値にして９９...</p>
+                        <p class="text-right"><a href="http://www.fx-spread.jp/fx/partners.html">»続きを読む</a></p>
+                        
+                        <table>
+                            <tr>
+                                <th>手数料</th>
+                                <td>無料</td>
+                                <th>レバレッジ</th>
+                                <td>25倍</td>
+                                <th>初回入金額</th>
+                                <td>1万円</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="clear">
+                    <p class="left"><a href="http://www.fx-spread.jp/fx/partners.html">
+                        <img src="http://www.fx-spread.jp/images/bt-more-off.png" width="350" height="60">
+                    </a></p>
+                    
+                    <p class="right"><a href="http://www.fx-spread.jp/ad/partners.html" target="_blank">
+                        <img src="http://www.fx-spread.jp/images/bt-ad-off.png" width="350" height="60">
+                    </a></p>
+                </div>
+            </article>
+                        <article class="box-2 rank">
+                <p class="rank-title"><a href="http://www.fx-spread.jp/fx/minna.html">5.みんなのFX</a></p>
+                
+                <div>
+                    <p class="left">
+                        <a href="http://www.fx-spread.jp/fx/minna.html">
+                            <img class="border mb10" src="http://www.fx-spread.jp/admin/wp-content/uploads/2015/09/minnano-pc-thum.jpg" width="200" height="200" alt="みんなのFX">
+                        </a>
+                    </p>
+                    
+                    <div class="right" style="width:500px;">
+                        <p class="orange large">スプレッド最小最狭に特化したFX業者</p>
+                        <p>とにかくスプレッドにこだわっています。スプレッドの叩き合いになっているようなFX業界の昨今。このみんなのFXはその競争に見事なまでも参加してくれています。ユーザーにとっては嬉しい限りです。
+
+また...</p>
+                        <p class="text-right"><a href="http://www.fx-spread.jp/fx/minna.html">»続きを読む</a></p>
+                        
+                        <table>
+                            <tr>
+                                <th>手数料</th>
+                                <td>無料</td>
+                                <th>レバレッジ</th>
+                                <td>25倍</td>
+                                <th>初回入金額</th>
+                                <td>10万円～</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="clear">
+                    <p class="left"><a href="http://www.fx-spread.jp/fx/minna.html">
+                        <img src="http://www.fx-spread.jp/images/bt-more-off.png" width="350" height="60">
+                    </a></p>
+                    
+                    <p class="right"><a href="http://www.fx-spread.jp/ad/minna.html" target="_blank">
+                        <img src="http://www.fx-spread.jp/images/bt-ad-off.png" width="350" height="60">
+                    </a></p>
+                </div>
+            </article>
+                        
+            <p class="p10 mb30">
+                当サイトの口座開設人気ランキングベスト５です。<br />
+                見て頂いたらわかるように、単純にスプレッドが狭い業者ほど上位にランクしているわけでなく、チャートの使い勝手、
+                サーバーの強さなどの評価も加味したトータルポイントが高い会社が上位にランクインしています。<br />
+                FXの口座は（特にデイトレをメインでお考えの方）、メイン口座とサブ口座の２つ以上で口座を開設されることがリスクヘッジに繋がりますので、
+                当サイトではオススメします。
+            </p>
+            
+            
+            
+            <p class="mb30"><a href="http://www.fx-spread.jp/currency/dy/">
+                <img src="http://www.fx-spread.jp/images/banner-usd-jpy.png" width="760" height="110" alt="2015年9月ドル/円スプレッド比較">
+            </a></p>
+            
+            
+            
+            <!--
+            <h2>最新ニュース</h2>
+            <ul class="p10">
+                                            </ul>
+            -->
+        </div>
+        
+                <div class="right-col">
+        
+            <p class="mb10"><a href="http://www.fx-spread.jp/ichiran/"><img src="http://www.fx-spread.jp/images/banner-spread.jpg" width="300" height="150" alt="最新スプレッド一覧"></a></p>
+            
+            <!--
+            <p class="mb10"><a href="http://www.fx-spread.jp/binaryoption/"><img src="http://www.fx-spread.jp/images/banner-binaryoption.jpg" width="300" height="100" alt="外為ニュース"></a></p>-->
+            
+            <p class="mb30"><a href="http://www.fx-spread.jp/fx/"><img src="http://www.fx-spread.jp/images/banner-ranking.jpg" width="300" height="100" alt="スプレッド金利ランキング"></a></p>
+            
+            
+        
+            <h2>日本円通貨ペア スプレッド</h2>
+            <ul class="sidebar-list sidebar-flag mb30">
+                <li><a href="http://www.fx-spread.jp/currency/dy/">
+                <img src="http://www.fx-spread.jp/images/flag-dy.jpg" width="30" height="auto" >
+                <img src="http://www.fx-spread.jp/images/flag-jp.jpg" width="30" height="auto" >　ドル/円</a></li>
+                
+                <li><a href="http://www.fx-spread.jp/currency/ey/">
+                <img src="http://www.fx-spread.jp/images/flag-ey.jpg" width="30" height="auto" >
+                <img src="http://www.fx-spread.jp/images/flag-jp.jpg" width="30" height="auto" >　ユーロ/円</a></li>
+                
+                <li><a href="http://www.fx-spread.jp/currency/py/">
+                <img src="http://www.fx-spread.jp/images/flag-py.jpg" width="30" height="auto" >
+                <img src="http://www.fx-spread.jp/images/flag-jp.jpg" width="30" height="auto" >　ポンド/円</a></li>
+                
+                <li><a href="http://www.fx-spread.jp/currency/ay/">
+                <img src="http://www.fx-spread.jp/images/flag-ay.jpg" width="30" height="auto" >
+                <img src="http://www.fx-spread.jp/images/flag-jp.jpg" width="30" height="auto" >　豪ドル/円</a></li>
+                
+                <li><a href="http://www.fx-spread.jp/currency/ny/">
+                <img src="http://www.fx-spread.jp/images/flag-ny.jpg" width="30" height="auto" >
+                <img src="http://www.fx-spread.jp/images/flag-jp.jpg" width="30" height="auto" >　NZドル/円</a></li>
+                
+                <li><a href="http://www.fx-spread.jp/currency/ry/">
+                <img src="http://www.fx-spread.jp/images/flag-ry.jpg" width="30" height="auto" >
+                <img src="http://www.fx-spread.jp/images/flag-jp.jpg" width="30" height="auto" >　ランド/円</a></li>
+            </ul>
+            
+            
+            
+            <h2>その他通貨ペア スプレッド</h2>
+            <ul class="sidebar-list sidebar-flag mb30">
+                <li><a href="http://www.fx-spread.jp/currency/ed/">
+                <img src="http://www.fx-spread.jp/images/flag-ey.jpg" width="30" height="auto" >
+                <img src="http://www.fx-spread.jp/images/flag-dy.jpg" width="30" height="auto" >　ユーロ/米ドル</a></li>
+                
+                <li><a href="http://www.fx-spread.jp/currency/ep/">
+                <img src="http://www.fx-spread.jp/images/flag-ey.jpg" width="30" height="auto" >
+                <img src="http://www.fx-spread.jp/images/flag-py.jpg" width="30" height="auto" >　ユーロ/ポンド</a></li>
+                
+                <li><a href="http://www.fx-spread.jp/currency/pd/">
+                <img src="http://www.fx-spread.jp/images/flag-py.jpg" width="30" height="auto" >
+                <img src="http://www.fx-spread.jp/images/flag-dy.jpg" width="30" height="auto" >　ポンド/米ドル</a></li>
+                
+                <li><a href="http://www.fx-spread.jp/currency/ad/">
+                <img src="http://www.fx-spread.jp/images/flag-ay.jpg" width="30" height="auto" >
+                <img src="http://www.fx-spread.jp/images/flag-dy.jpg" width="30" height="auto" >　豪ドル/米ドル</a></li>
+                
+                <li><a href="http://www.fx-spread.jp/currency/nd/">
+                <img src="http://www.fx-spread.jp/images/flag-ny.jpg" width="30" height="auto" >
+                <img src="http://www.fx-spread.jp/images/flag-dy.jpg" width="30" height="auto" >　NZドル/米ドル</a></li>
+            </ul>
+            
+            
+            
+            <h2 class="mb10">スプレッド金利の高い業者</h2>
+            <ul>
+            	<span class="sidebar-rank">
+					                                        
+                    <li class="clear box-3" style="overflow:hidden;">
+                        <p class="red b mb10">取引環境は間違いなく高水準！</p>
+                        <p class="text-center mb10"><a href="http://www.fx-spread.jp/fx/click.html"><img class="border" src="http://www.fx-spread.jp/admin/wp-content/uploads/2015/09/click-logo.jpg" width="200" height="auto"></a></p>
+                        <p>2011年12月21日より10通貨ペアのスプレッドが縮小され、ドル円で0.5銭固定になりました。 そ...</p>
+                        <p class="text-right"><a href="http://www.fx-spread.jp/fx/click.html">»続きを読む</a></p>
+                    </li>
+                    
+                                        
+                    <li class="clear box-3" style="overflow:hidden;">
+                        <p class="red b mb10">業界最後発がFXに激震を起こす！</p>
+                        <p class="text-center mb10"><a href="http://www.fx-spread.jp/fx/dmm.html"><img class="border" src="http://www.fx-spread.jp/admin/wp-content/uploads/2015/09/dmm-logo.jpg" width="200" height="auto"></a></p>
+                        <p>DMMは21年の7月17日からサービスを開始した現時点での最後発のFX業者です。ゆえに、他者との差別...</p>
+                        <p class="text-right"><a href="http://www.fx-spread.jp/fx/dmm.html">»続きを読む</a></p>
+                    </li>
+                    
+                                        
+                    <li class="clear box-3" style="overflow:hidden;">
+                        <p class="red b mb10">CMでの知名度と信用力で口座数は25万口座突破</p>
+                        <p class="text-center mb10"><a href="http://www.fx-spread.jp/fx/gaitameonline.html"><img class="border" src="http://www.fx-spread.jp/admin/wp-content/uploads/2015/09/gaitameonline-logo.jpg" width="200" height="auto"></a></p>
+                        <p>ドル円が1銭固定で決して最近のスプレッドの中では褒められた数値ではないですが、システムがしっかりして...</p>
+                        <p class="text-right"><a href="http://www.fx-spread.jp/fx/gaitameonline.html">»続きを読む</a></p>
+                    </li>
+                    
+                                    </span>
+                
+                
+                <span class="sidebar-list">
+					                                        
+                    <li><a href="http://www.fx-spread.jp/fx/partners.html">マネーパートナーズ</a></li>
+                    
+                                        
+                    <li><a href="http://www.fx-spread.jp/fx/minna.html">みんなのFX</a></li>
+                    
+                                        
+                    <li><a href="http://www.fx-spread.jp/fx/hirose.html">ヒロセ通商（LION FX）</a></li>
+                    
+                                        
+                    <li><a href="http://www.fx-spread.jp/fx/yjfx.html">YJFX</a></li>
+                    
+                                        
+                    <li><a href="http://www.fx-spread.jp/fx/forelandonline.html">FXCMジャパン証券（プレミアム口座）</a></li>
+                    
+                                        
+                    <li><a href="http://www.fx-spread.jp/fx/fxonline.html">IGマーケッツ証券</a></li>
+                    
+                                        
+                    <li><a href="http://www.fx-spread.jp/fx/forex.html">フォレックス・トレード</a></li>
+                    
+                                    </span>
+            </ul>
+            
+        </div>    
+    </div>
+    
+    <footer>
+        <nav class="inner">
+            <ul>
+                <h4>■メインメニュー</h4>
+                <li><a href="http://www.fx-spread.jp">トップページ</a></li>
+				                                
+                <li><a href="http://www.fx-spread.jp/ichiran/20150730.html">FXスプレッド一覧表</a></li>
+                
+				                
+                <li><a href="http://www.fx-spread.jp/news/">FXニュース</a></li>
+                <li><a href="http://www.fx-spread.jp/knowledge/">基礎知識</a></li>
+                <li><a href="http://www.fx-spread.jp/erabikata/">FX業者の選び方</a></li>
+            </ul>
+            
+            
+            
+            <ul>
+                <h4>■スプレッドの狭いFX業者一覧</h4>
+				                                
+                <li><a href="http://www.fx-spread.jp/fx/click.html">GMOクリック証券</a></li>
+            
+				                
+                <li><a href="http://www.fx-spread.jp/fx/dmm.html">DMM FX</a></li>
+            
+				                
+                <li><a href="http://www.fx-spread.jp/fx/gaitameonline.html">外為オンライン</a></li>
+            
+				                
+                <li><a href="http://www.fx-spread.jp/fx/partners.html">マネーパートナーズ</a></li>
+            
+				                
+                <li><a href="http://www.fx-spread.jp/fx/minna.html">みんなのFX</a></li>
+            
+				                
+                <li><a href="http://www.fx-spread.jp/fx/hirose.html">ヒロセ通商（LION FX）</a></li>
+            
+				                
+                <li><a href="http://www.fx-spread.jp/fx/yjfx.html">YJFX</a></li>
+            
+				                
+                <li><a href="http://www.fx-spread.jp/fx/forelandonline.html">FXCMジャパン証券（プレミアム口座）</a></li>
+            
+				                
+                <li><a href="http://www.fx-spread.jp/fx/">FX業者一覧</a></li>
+            </ul>
+            
+            
+            
+            <ul>
+                <h4>■通貨ペア別スプレッド</h4>
+                <li><a href="http://www.fx-spread.jp/currency/dy/">ドル/円</a></li>
+                <li><a href="http://www.fx-spread.jp/currency/ey/">ユーロ/円</a></li>
+                <li><a href="http://www.fx-spread.jp/currency/py/">ポンド/円</a></li>
+                <li><a href="http://www.fx-spread.jp/currency/ay/">豪ドル/円</a></li>
+                <li><a href="http://www.fx-spread.jp/currency/ny/">NZドル/円</a></li>
+                <li><a href="http://www.fx-spread.jp/currency/ry/">ランド/円</a></li>
+                <li><a href="http://www.fx-spread.jp/currency/">その他ペア</a></li>
+            </ul>
+            
+            
+            
+            <ul>
+                <h4>■その他</h4>
+                <li><a href="http://www.fx-spread.jp/contact/">お問い合わせ</a></li>
+                <li><a href="http://www.fx-spread.jp/sitemap/">サイトマップ</a></li>
+                <li><a href="http://www.fx-spread.jp/policy/">個人情報保護方針</a></li>
+                <li><a href="http://www.fx-spread.jp/law/">特定商取引に基づく表示</a></li>
+            </ul>
+        </nav>
+    </footer>
+    
+    <address>
+        Copyright (C) 2009 - 2015　スプレッド最小のFX業者ココだ！ All Rights Reserved.<br />
+        ※当サイトのテキスト・画像等すべての転載転用、商用販売を固く禁じます。
+    </address>
+    
+	<p id="page-top"><a href="#anc">トップへ<br/>戻る</a></p>
+    
+    <script type="text/javascript" src="http://www.fx-spread.jp/js/common.js"></script>
+    
+</div>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5031248-36']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</body>
+</html>

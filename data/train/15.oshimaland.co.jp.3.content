@@ -1,0 +1,364 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<meta content="本邦唯一の事故物件公示サイトです。これらの物件を取引する際には注意しましょう。" name="description"/>
+<meta content="大島てる,事故物件,訳あり物件,いわく付き物件,不動産" name="Keywords"/>
+<meta property="og:title" content="大島てる CAVEAT EMPTOR: 事故物件公示サイト"/>
+<meta property="og:type" content="company"/>
+<meta property="og:image" content="http://www.oshimaland.co.jp/images/logo.gif"/>
+ 
+<meta property="og:description" content="本邦唯一の事故物件公示サイトです。これらの物件を取引する際には注意しましょう。"/>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+<title>大島てる CAVEAT EMPTOR: 事故物件公示サイト</title>
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?3.17.2/cssreset/cssreset-min.css&3.17.2/cssfonts/cssfonts-min.css&3.17.2/cssgrids/cssgrids-min.css">
+<link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/stylesheets/top_all.css?1445249044" media="screen" rel="stylesheet" type="text/css"/>
+<!--[if lt IE 9]>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<!--<![endif]-->
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
+<script type="text/javascript" src="//maps.google.com/maps/api/js?language=ja&key=AIzaSyBjbCCL7lcFrhVklXWfQJ7ZWRvu0AQC6gI"></script>
+<script src="/javascripts/top_all.js?1445249033" type="text/javascript"></script>
+<script id="infoTemplate" type="text/template">
+  <div id="propertyDetail">
+    <div id="propertyDetailLinks">
+      <iframe allowtransparency="true" frameborder="0" scrolling="no" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fwww.oshimaland.co.jp%2F%3Fp%3D{{=key}}&amp;lang=ja&amp;count=none" style="width:70px; height:20px;vertical-align:top;"></iframe>
+      <iframe allowtransparency="true" frameborder="0" scrolling="no" src="//www.facebook.com/v2.3/plugins/like.php?locale=ja_JP&amp;href=http%3A%2F%2Fwww.oshimaland.co.jp%2F%3Fp%3D{{=key}}&amp;layout=button" style="border: none; overflow: hidden; width: 71px; height: 21px;"></iframe>
+      <input readonly="readonly" type="text" value="http://www.oshimaland.co.jp/?p={{=key}}" class="permalink"/>
+    </div>
+    <ul id="propertyDetailInfo">
+      <li><span class="sprite fire-icon"></span> {{-dt}}</li>
+      <li id='propertyDetailAddress' style="white-space: nowrap;">{{-ad}}　</li>
+      <li id='propertyDetailInfoText'>{{=info}}　</li>
+      {{ _.each( links, function( lnk ){  }}
+      <li><a href="{{=lnk.uri}}" target="_blank" class="navi">{{-lnk.title}}</a></li>
+      {{  });  }}
+    </ul>
+    <a href="#comment" id="comment" class="navi">写真・コメントの投稿・閲覧</a>
+    <a href="#zoomin" id="zoomin" class="navi">ズームイン</a>
+    <iframe src="http://oshimaland-files.appspot.com/count.html?key={{=key}}" scrolling="no" frameborder="0" style="margin-left: 0.3em;width: 6em;height: 1.1em;" ></iframe>
+    {{if (cr){  }}
+    <div id="propertyWarning">ユーザーによる投稿: {{-cr}}</div>
+    {{  }  }}
+    <div id="propertyDetaiPhotos">
+      {{if (images.length > 1){   }}
+      <div class="photoSwitchList">
+        {{ var cls='photoSwitch photoSwitchSelected'; _.each(images, function(img, index){  }}
+        <span class="{{=cls}}" target-id="photo{{=index+1}}">写真{{=index+1}}</span>
+        {{  cls='photoSwitch'; });  }}
+      </div>
+      {{  }  }}
+
+      {{if (images.length > 0){  }}
+      <div style="width:{{=width}}px;height:{{=height}}px">
+        {{ var cls='photoImg photoShow'; _.each(images, function(img, index){  }}
+        <div id="photo{{=index+1}}" class="{{=cls}}">
+          <img src="http://static.oshimaland.co.jp/photos/{{-img.name}}" width="{{=img.width}}" height="{{=img.height}}"/>
+        </div>
+        {{  cls='photoImg'; });  }}
+      </div>
+      {{  }  }}
+    </div>
+</script>
+<script id="commentTemplate" type="text/template">
+<iframe id="commentFrame" src="/comment/{{=key}}" frameborder="0" style="height:{{=frameHeight}}px" />
+</script>
+<script type="text/javascript">
+var microadCompass = microadCompass || {};
+microadCompass.queue = microadCompass.queue || [];
+</script>
+<script type="text/javascript" charset="UTF-8" src="//j.microad.net/js/compass.js" onload="new microadCompass.AdInitializer().initialize();" async></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-10781833-1', 'auto');
+  ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+
+</script>
+</head>
+<body>
+<div id="hd">
+<div class="yui3-u" id="logo"><a href="/"><div id="logo-img" class="sprite"></div></a>
+<div id="languages">
+<div><div id="flag-jp-img" class="sprite"></div>日本語</div>
+<div><div id="flag-us-img" class="sprite"></div><a href="http://www.oshimaland.com/" style="text-decoration: none;">English</a></div>
+</div>
+</div>
+<div id="top-right" class="yui3-u">
+<div id="a141e3044a06eb75a5c46dc31fb86b4a">
+<script type="text/javascript">
+		microadCompass.queue.push({
+			"spot": "a141e3044a06eb75a5c46dc31fb86b4a",
+			"url": "${COMPASS_EXT_URL}",
+			"referrer": "${COMPASS_EXT_REF}"
+		});
+	</script>
+</div>
+</div>
+<!--[if lte IE 8 ]>
+  <div id="ie6-alert"><div style="font-size: 250%;"><img alt="alert" src="http://static.oshimaland.co.jp/images/fire.gif" />このページはIE8以下には対応していません。</div>
+  最新のブラウザをお使いいただくか、スマートフォンでご覧ください。
+  </div>
+  <![endif]-->
+<div id="globalnav" class="clearfix">
+<ul><li id="area-list" menu-id="menu-area" class="tab-selected"><h1>事故物件</h1> <b class="caret"></b></li><li id="blog-list" menu-id="menu-blog">ブログ <b class="caret"></b></li><li id="link-list" menu-id="menu-link">大島てるリンク <b class="caret"></b></li></ul>
+<a id="notification" href="#">投稿・コメント方法</a>
+<div>
+<a href="http://b.hatena.ne.jp/entry/http://www.oshimaland.co.jp/" class="hatena-bookmark-button" data-hatena-bookmark-title="大島てる CAVEAT EMPTOR: 事故物件公示サイト" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;"/></a>
+<iframe allowtransparency="true" frameborder="0" scrolling="no" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fwww.oshimaland.co.jp%2F&amp;lang=ja" style="width:110px; height:20px;"></iframe>
+<iframe allowtransparency="true" frameborder="0" scrolling="no" src="//www.facebook.com/v2.3/plugins/like.php?href=http%3A%2F%2Fwww.oshimaland.co.jp%2F&amp;layout=button_count&amp;show_faces=true&amp;width=80&amp;action=like&amp;colorscheme=light&amp;height=21" style="border: none; overflow: hidden; width: 115px; height: 21px;"></iframe>
+<div id="plusone-holder"><div class="g-plusone" data-size="medium" data-href="http://www.oshimaland.co.jp/"></div></div>
+</div>
+</div>
+</div>
+<div class="yui3-g" id="layout">
+<div class="yui3-u" id="left">
+<div id="map" class="toggle-on-load"></div>
+<div id="loading" class="toggle-on-load loading-full"><img alt="" src="http://static.oshimaland.co.jp/images/loading.gif"/> Now Loading...</div>
+<div id="commentArea">
+<a id="backToMap" href="/" class="navi">« 地図に戻る</a>
+<div id="commentHolder"></div>
+</div>
+<div id="menu-area" class="menu-content">
+<a id="region-1" href="#region-1">北海道</a><br/>
+<a id="region-2" href="#region-2">東北</a><br/>
+<a id="region-3" href="#region-3">関東</a><br/>
+<a id="region-4" href="#region-4">中部</a><br/>
+<a id="region-5" href="#region-5">近畿</a><br/>
+<a id="region-6" href="#region-6">中国</a><br/>
+<a id="region-7" href="#region-7">四国</a><br/>
+<a id="region-8" href="#region-8">九州</a><br/>
+<hr/>
+<a id="region-africa" href="#region-africa">アフリカ</a><br/>
+<a id="region-asia" href="#region-asia">アジア</a><br/>
+<a id="region-australia" href="#region-australia">オセアニア</a><br/>
+<a id="region-europe" href="#region-europe">欧州</a><br/>
+<a id="region-north-america" href="#region-north-america">北米</a><br/>
+<a id="region-south-america" href="#region-south-america">南米</a>
+<hr/>
+<a id="city-newyork" href="#city-newyork">ニューヨーク</a><br/>
+<a id="city-paris" href="#city-paris">パリ</a><br/>
+<a id="city-london" href="#city-london">ロンドン</a>
+</div>
+<div id="menu-blog" class="menu-content">
+<a target="_blank" href="http://www.diamondblog.jp/official/oshimaland/" onclick="ga('send', 'event', 'outbound', 'click', 'http://www.diamondblog.jp/official/oshimaland/');">ダイヤモンドブログ</a><br/>
+<a target="_blank" href="http://blog.oshimaland.com/" onclick="ga('send', 'event', 'outbound', 'click', 'http://blog.oshimaland.com/');">Bloggerブログ</a>
+</div>
+<div id="menu-link" class="menu-content">
+<a target="_blank" href="https://twitter.com/oshimaland">Twitter</a><br/>
+<a target="_blank" href="https://facebook.com/oshimaland">Facebook</a><br/>
+<a href="pr.html">判決</a><br/>
+<a target="_blank" href="http://oshimaland.co.uk/">IR情報</a><br/>
+<a target="_blank" href="http://www.diamondblog.jp/official/oshimaland/offer/">お仕事依頼</a><br/>
+<table style="margin-top: 1em;">
+<tr>
+<td><a id="android-button" href="https://play.google.com/store/apps/details?id=jp.co.oshimaland.map" class="pull-left" target="_blank">
+<img alt="大島てる for Android" src="https://developer.android.com/images/brand/ja_app_rgb_wo_45.png" class="media-object"/>
+</a></td>
+<td style="padding-left: 0.3em;">
+<div><a href="https://play.google.com/store/apps/details?id=jp.co.oshimaland.map" target="_blank" style="color: #000000;">大島てる for Android</a></div>
+<span style="font-size: small;color:#555555;">Android 4.0以上対応</span>
+</td>
+</tr>
+</table>
+</div>
+<div style="display: none;">
+<form id="geocoder">
+<input id="geocoder-text" type="text"/>
+<input id="geocoder-btn" type="submit" value="住所検索"/>
+</form>
+<div id="dialog-notification">
+<div>
+<h3>物件投稿</h3>
+<span id="notification-contextmenu-img" class="sprite"></span>
+地図上の投稿したい場所で<strong>右クリック（またはCtrl+左クリック）</strong>し，<br/>「事故物件の新規作成」を選択してください。<br/>
+物件投稿フォームが表示されます。
+</div>
+<div><br/>
+<h3>コメント</h3>
+<span id="notification-comment-img" class="sprite"></span>
+事故物件詳細のポップアップで，<br/>「コメント・写真の投稿」をクリックしてください。<br/>
+コメント画面が表示されます。<br/>
+物件の写真を投稿することもできます。</div>
+</div>
+<div id="zane" style="background-color:rgba(0,0,0,0.5);cursor:pointer;height:100%;left:0;position:absolute;top:0;width:100%;z-index:10;-moz-user-select:none;-ms-user-select:none;-webkit-user-select:none;">
+<div style="position:absolute;top:0;left:0;right:0;bottom:0;margin:auto;width:600px;height:400px;">
+<a href="http://cp.zang-e.jp/" target="_blank" onclick="ga('send', 'event', 'outbound', 'click', 'http://cp.zang-e.jp/#map');">
+<img src="http://static.oshimaland.co.jp/static/zane-shindan.jpg" style="width:600px;height:400px;">
+</a>
+<div style="background-color:#333;border:3px solid #ddd;border-radius:50%;color:#ddd;font-size:30px;font-weight:700;height:30px;line-height:30px;position:absolute;right:-15px;top:-15px;width:30px;text-align:center;">×</div>
+</div>
+</div>
+</div>
+<div class="clearfix">
+<div id="twitarea" class="column">
+<ul id="twit">
+<li>1月23日 <a href='http://www.oshimaland.co.jp/?p=5btsj0o9'>広島県福山市東手城町一丁目の物件が投稿されました</a></li><li>1月23日 <a href='http://www.oshimaland.co.jp/?p=7s8c9ob1'>神奈川県川崎市高津区蟹ケ谷の物件が投稿されました</a></li><li>1月23日 <a href='http://www.oshimaland.co.jp/?p=k5jh8y4w'>大阪府吹田市江坂町三丁目の物件が投稿されました</a></li><li>1月23日 <a href='http://www.oshimaland.co.jp/?p=u12ctlil'>神奈川県厚木市三田の物件が投稿されました</a></li><li>1月23日 <a href='http://www.oshimaland.co.jp/?p=mvjzir07'>神奈川県川崎市高津区千年の物件が投稿されました</a></li><li>1月23日 <a href='http://www.oshimaland.co.jp/?p=ac0ax6jm'>栃木県小山市東山田の物件が投稿されました</a></li><li>1月23日 @p0psaurusaki ぜひお越しください！</li><li>1月23日 <a href='http://www.oshimaland.co.jp/?p=jwu785c1'>兵庫県加古川市西神吉町辻の物件が投稿されました</a></li><li>1月23日 <a href='http://www.oshimaland.co.jp/?p=rbeabbig'>兵庫県明石市二見町南二見の物件が投稿されました</a></li><li>1月23日 <a href='http://www.oshimaland.co.jp/?p=vr5ri3sx'>兵庫県加古郡播磨町東新島の物件が投稿されました</a></li><li>1月22日 <a href='http://www.oshimaland.co.jp/?p=hn1ctxey'>兵庫県加古川市西神吉町辻の物件が投稿されました</a></li><li>1月22日 <a href='http://www.oshimaland.co.jp/?p=h64z6feo'>愛知県小牧市外堀一丁目の物件が投稿されました</a></li><li>1月22日 <a href='http://www.oshimaland.co.jp/?p=nh2esszl'>岐阜県郡上市白鳥町為真の物件が投稿されました</a></li><li>1月22日 <a href='http://www.oshimaland.co.jp/?p=cq5dcr71'>鹿児島県奄美市名瀬小浜町の物件が投稿されました</a></li><li>1月22日 <a href='http://www.oshimaland.co.jp/?p=8wrpuu84'>兵庫県加古川市西神吉町辻の物件が投稿されました</a></li><li>1月22日 <a href='http://www.oshimaland.co.jp/?p=een44huz'>東京都八王子市中野上町五丁目の物件が投稿されました</a></li><li>1月22日 <a href='http://www.oshimaland.co.jp/?p=1gtdrmpd'>千葉県野田市山崎の物件が投稿されました</a></li><li>1月22日 <a href='http://www.diamondblog.jp/official/oshimaland/' target='_blank'>ブログが更新されました</a></li><li>1月22日 <a href='http://www.loft-prj.co.jp/schedule/plusone/41370' target='_blank'>残りわずかです！　大島てるがやって来る!! 事故物件ナイトvol.9</a></li><li>1月22日 RT @p0psaurusaki: 大須に大島てる来るじゃん行きたい</li><li>1月22日 <a href='http://www.oshimaland.co.jp/?p=j0l1hw6u'>新潟県長岡市平の物件が投稿されました</a></li><li>1月22日 <a href='http://www.oshimaland.co.jp/?p=lr98vm2n'>静岡県掛川市葵町の物件が投稿されました</a></li><li>1月22日 <a href='http://www.oshimaland.co.jp/?p=p3eqvnth'>東京都八王子市平岡町の物件が投稿されました</a></li><li>1月22日 <a href='http://www.oshimaland.co.jp/?p=wk5qqmwm'>大分県由布市湯布院町川上の物件が投稿されました</a></li><li>1月22日 <a href='http://www.oshimaland.co.jp/?p=29wfgmxw'>大分県由布市湯布院町川上の物件が投稿されました</a></li><li>1月22日 <a href='http://www.oshimaland.co.jp/?p=q3njgmus'>大分県由布市湯布院町川南の物件が投稿されました</a></li><li>1月22日 <a href='http://www.oshimaland.co.jp/?p=csqeawad'>大分県由布市湯布院町川南の物件が投稿されました</a></li><li>1月22日 <a href='http://www.oshimaland.co.jp/?p=n6lpemgb'>大分県由布市湯布院町川上の物件が投稿されました</a></li><li>1月22日 <a href='http://www.oshimaland.co.jp/?p=cxdjuxuh'>千葉県東金市東金の物件が投稿されました</a></li><li>1月22日 <a href='https://tiget.net/events/2786' target='_blank'>RT @puddingting: 2月14日(日) 「Pump Up!!～大島てるトークショー～」 | イベント情報、ご予約はこちら</a></li><li>1月22日 <a href='http://www.oshimaland.co.jp/?p=36mix25p'>東京都新宿区市谷本村町の物件が投稿されました</a></li><li>1月22日 RT @kinmokusei_0: ２月のロフトプラスワンの大島てるさんの奴行きたいんだけど、今日の夜、まだチケット買えるかなー
+e+のIDとか分からなくなって探すのめんどいからファミマで買いたいんだよー</li><li>1月22日 <a href='http://www.oshimaland.co.jp/?p=e8c5w8ph'>愛知県知立市弘栄三丁目の物件が投稿されました</a></li><li>1月22日 @kinmokusei_0 ぜひお越しください！まだまだ大丈夫です。</li><li>1月22日 RT @Exit_Seeker: 仲介業者は言いました。
+「絶対に大島てるで検索してはいけません」
+しかし、おじいさんは安値の理由が知りたくて堪らず検索してしまいました。
+心理的瑕疵の存在を知り、仲介業者を告知義務違反で訴えようと思いましたが、既に連絡がつかなくなってまし…</li><li>1月22日 <a href='http://www.oshimaland.co.jp/?p=3hkq32zx'>愛知県名古屋市中区大須二丁目の物件が投稿されました</a></li><li>1月22日 <a href='http://www.oshimaland.co.jp/?p=1mq31hw9'>神奈川県横須賀市久比里二丁目の物件が投稿されました</a></li><li>1月22日 <a href='http://htn.to/574eN1' target='_blank'>RT @comuchi: 2月の大島てるも行くことにした！角川慶子のキャラ、地味に楽しみだな～ / “大島てるがやって来る!! 事故物件ナイトvol.9 – LOFT PROJECT SCHEDULE”</a></li><li>1月22日 <a href='http://cinema-guru.com/news/9042/' target='_blank'>RT @sukekiyov: 『残穢【ざんえ】―住んではいけない部屋―』事故物件公示サイト「大島てる」版予告編公開</a></li><li>1月22日 <a href='http://www.oshimaland.co.jp/?p=ztlu3w53'>鹿児島県奄美市名瀬古田町の物件が投稿されました</a></li><li>1月22日 <a href='http://www.oshimaland.co.jp/?p=1vbrg1za'>東京都北区豊島五丁目の物件が投稿されました</a></li><li>1月22日 <a href='http://www.oshimaland.co.jp/?p=ivwekbcz'>秋田県秋田市御所野元町四丁目の物件が投稿されました</a></li><li>1月22日 <a href='http://www.oshimaland.co.jp/?p=9e7xexaq'>大阪府大阪市中央区十二軒町の物件が投稿されました</a></li><li>1月22日 RT @twcc98man: 次回の事故物件ナイト、仕事で都合つかず残念。</li><li>1月22日 <a href='http://www.oshimaland.co.jp/?p=o71q3xpf'>愛知県碧南市松本町の物件が投稿されました</a></li><li>1月22日 <a href='https://tiget.net/events/2786' target='_blank'>2月14日(日) 「Pump Up!!～大島てるトークショー～」 | イベント情報、ご予約はこちら</a></li><li>1月22日 <a href='http://www.oshimaland.co.jp/?p=hlo7fveh'>愛知県名古屋市中村区栄生町の物件が投稿されました</a></li><li>1月22日 <a href='http://www.oshimaland.co.jp/?p=8alyr3zj'>埼玉県ふじみ野市大井武蔵野の物件が投稿されました</a></li><li>1月22日 <a href='http://goo.gl/TjEnuI' target='_blank'>RT @LOFTPLUSONE: ※拡散希望※
+ロフトプラスワンきっての不謹慎イベント、前売券残りわずか！
+2月28日（日）「大島てるがやって来る!! 事故物件ナイトvol.9」
+出演：大島てる、角川慶子、エンド ケイプ、DJ急行
+前売券の購入はお早めに★
+詳細は</a></li><li>1月22日 <a href='http://www.oshimaland.co.jp/?p=qoomitog'>長野県上田市菅平高原の物件が投稿されました</a></li><li>1月22日 RT @MasudaToshinari: 友達から電話。「大島てる」って知ってる？　と聞かれた。聞いたことないし、説明も要領を得ない。「検索してみな、すごいから」と友達は繰り返す。見て驚いた。日本中の死亡事故物件の不動産をすべて調べ上げて公表しているのだ。「大島てる」というのは…</li><li>1月22日 <a href='http://www.oshimaland.co.jp/?p=ssdd81z5'>北海道紋別郡遠軽町の物件が投稿されました</a></li><li>1月22日 <a href='http://www.oshimaland.co.jp/?p=39yff53a'>東京都足立区中央本町三丁目の物件が投稿されました</a></li><li>1月22日 <a href='http://www.oshimaland.co.jp/?p=iai7fe53'>北海道苫小牧市白金町一丁目の物件が投稿されました</a></li><li>1月22日 <a href='http://www.oshimaland.co.jp/?p=exqb1kbf'>岡山県倉敷市玉島黒崎の物件が投稿されました</a></li><li>1月22日 @manadog321 足立区の物件は1階・3階・屋上でしたが，こちらは同じ部屋で2度です。ですから，こんどのイベントではこちらの話をするつもりです。</li><li>1月21日 <a href='http://www.oshimaland.co.jp/?p=ds3vqsqj'>東京都羽村市富士見平二丁目の物件が投稿されました</a></li><li>1月21日 <a href='http://www.diamondblog.jp/official/oshimaland/' target='_blank'>ブログが更新されました</a></li><li>1月21日 <a href='http://www.oshimaland.co.jp/?p=e0a0poe1'>神奈川県川崎市宮前区鷺沼四丁目の物件が投稿されました</a></li><li>1月21日 <a href='http://www.oshimaland.co.jp/?p=1mqq8rl2'>秋田県鹿角郡小坂町十和田湖大川岱の物件が投稿されました</a></li><li>1月21日 <a href='http://www.oshimaland.co.jp/?p=2msjgvir'>北海道苫小牧市王子町二丁目の物件が投稿されました</a></li><li>1月21日 <a href='http://www.oshimaland.co.jp/?p=xku0vaz3'>神奈川県川崎市宮前区宮前平二丁目の物件が投稿されました</a></li><li>1月21日 <a href='https://tiget.net/events/2786' target='_blank'>2月14日(日) 「Pump Up!!～大島てるトークショー～」 | イベント情報、ご予約はこちら</a></li><li>1月21日 @dragoner_JP ありがとうございます。削除します。</li><li>1月21日 @suzukifumina @yuuri905590 @asupons02 ありがとうございました！とっても楽しかったです。</li><li>1月21日 </li><li>1月21日 <a href='http://www.oshimaland.co.jp/?p=cj822u6g'>茨城県筑西市旭ヶ丘の物件が投稿されました</a></li><li>1月21日 <a href='http://www.oshimaland.co.jp/?p=f0c35f5f'>大阪府堺市美原区さつき野西三丁目の物件が投稿されました</a></li><li>1月21日 <a href='http://www.oshimaland.co.jp/?p=mf5cldbm'>北海道札幌市南区定山渓の物件が投稿されました</a></li><li>1月21日 <a href='http://www.oshimaland.co.jp/?p=sj7czv3p'>愛媛県東温市樋口の物件が投稿されました</a></li><li>1月21日 <a href='http://www.oshimaland.co.jp/?p=2op6gbv9'>愛媛県東温市樋口の物件が投稿されました</a></li><li>1月21日 <a href='http://www.oshimaland.co.jp/?p=w1s1lyl5'>愛媛県東温市樋口の物件が投稿されました</a></li><li>1月21日 <a href='http://www.oshimaland.co.jp/?p=gwlzhu04'>愛知県清須市西市場三丁目の物件が投稿されました</a></li><li>1月21日 RT @shishico22: 事故物件ナイトで自殺者in樹海の写真を見たけど、スーツ着てた。
+死ぬ時にまでスーツ着たくない。＞RT</li><li>1月21日 @dragoner_JP ご指摘を受けて削除したいと考えているのですが，北海道に塩軽町が見当たりません。</li><li>1月21日 <a href='https://tiget.net/events/2786' target='_blank'>RT @igakurikun: 2月14日(日) 「Pump Up!!～大島てるトークショー～」 | イベント情報、ご予約はこちら</a></li><li>1月21日 <a href='http://www.oshimaland.co.jp/?p=p0wk31tw'>愛知県あま市上萱津深見の物件が投稿されました</a></li><li>1月21日 <a href='http://cinema.ne.jp/zang-e2016012006/' target='_blank'>RT @Cinemasby: ワケあり物件専門家・大島てるとのコラボ予告映像？！映画『残穢』</a></li><li>1月21日 <a href='https://youtu.be/pSuy_xq-11Y' target='_blank'>RT @idobatainfo: 事故物件サイトの大島てるが映画を紹介／映画『残穢【ざんえ】―住んではいけない部屋―』予告編</a></li><li>1月21日 <a href='http://www.oshimaland.co.jp/?p=q9awk56o'>北海道旭川市５条西４丁目の物件が投稿されました</a></li><li>1月21日 <a href='http://www.oshimaland.co.jp/?p=vrz6xblt'>北海道北見市北２条東８丁目の物件が投稿されました</a></li><li>1月21日 <a href='http://www.oshimaland.co.jp/?p=hl55at4v'>兵庫県加古川市西神吉町辻の物件が投稿されました</a></li><li>1月21日 <a href='http://www.oshimaland.co.jp/?p=gzyu109y'>兵庫県加古川市別府町港町の物件が投稿されました</a></li><li>1月21日 <a href='http://www.oshimaland.co.jp/?p=tn8elwnz'>東京都板橋区三園１丁目の物件が投稿されました</a></li><li>1月21日 <a href='http://www.oshimaland.co.jp/?p=9l13ex2c'>東京都板橋区小豆沢三丁目の物件が投稿されました</a></li><li>1月21日 <a href='http://www.oshimaland.co.jp/?p=w61et1h6'>千葉県松戸市稔台一丁目の物件が投稿されました</a></li><li>1月20日 <a href='http://www.oshimaland.co.jp/?p=yomdzt2m'>東京都江東区常盤一丁目の物件が投稿されました</a></li><li>1月20日 <a href='http://www.oshimaland.co.jp/?p=ajjmdft2'>長野県飯田市座光寺の物件が投稿されました</a></li><li>1月20日 <a href='http://www.oshimaland.co.jp/?p=sloo0vlg'>愛媛県松山市和泉北一丁目の物件が投稿されました</a></li><li>1月20日 <a href='http://www.oshimaland.co.jp/?p=dz3b3heh'>北海道札幌市東区北37条東１９丁目の物件が投稿されました</a></li><li>1月20日 <a href='http://www.oshimaland.co.jp/?p=iqsq8eiz'>福岡県糸島市二丈石崎の物件が投稿されました</a></li><li>1月20日 <a href='http://www.diamondblog.jp/official/oshimaland/' target='_blank'>ブログが更新されました</a></li><li>1月20日 <a href='http://www.oshimaland.co.jp/?p=m10984ly'>北海道札幌市東区北15条東７丁目の物件が投稿されました</a></li><li>1月20日 <a href='http://www.oshimaland.co.jp/?p=oaoxbe0k'>山形県鶴岡市大山二丁目の物件が投稿されました</a></li><li>1月20日 <a href='http://youtu.be/VjML9RYrWh4' target='_blank'>RT @kei0_0y: 見たい！！　 RT @CinemaStyle_jp 1/30(土)公開『残穢【ざんえ】―住んではいけない部屋―』大島てる版予告編を公開しました！</a></li><li>1月20日 <a href='http://www.oshimaland.co.jp/?p=6553655y'>福岡県北九州市八幡西区本城東四丁目の物件が投稿されました</a></li><li>1月20日 <a href='https://youtu.be/iT695pSF_S8' target='_blank'>RT @nekozou23: 『残穢』予告動画</a></li><li>1月20日 <a href='http://www.oshimaland.co.jp/?p=20mqlabn'>茨城県東茨城郡茨城町若宮の物件が投稿されました</a></li><li>1月20日 <a href='http://www.oshimaland.co.jp/?p=ibrstb17'>広島県広島市東区東蟹屋町の物件が投稿されました</a></li><li>1月20日 <a href='http://sort.eplus.jp/sys/T1U14P0010163P0108P002179307P0050001P006001P0030001?utm_source=twitter&utm_medium=social&utm_content=tour' target='_blank'>前売券好評発売中！　大島てるがやって来る!! 事故物件ナイトvol.9</a></li>
+</ul>
+</div>
+</div>
+<div id="ft" class="yui3-u"><div style="display: inline-block;margin-right:8px;margin-bottom:4px;">
+<div id="a18c0ce7fa314f10c1efe6fe283cd496">
+<script type="text/javascript">
+		microadCompass.queue.push({
+			"spot": "a18c0ce7fa314f10c1efe6fe283cd496",
+			"url": "${COMPASS_EXT_URL}",
+			"referrer": "${COMPASS_EXT_REF}"
+		});
+	</script>
+</div>
+</div><div style="display: inline-block;">
+<div id="f691d8fa1281cf5612ea5488e0911d12">
+<script type="text/javascript">
+		microadCompass.queue.push({
+			"spot": "f691d8fa1281cf5612ea5488e0911d12",
+			"url": "${COMPASS_EXT_URL}",
+			"referrer": "${COMPASS_EXT_REF}"
+		});
+	</script>
+</div>
+</div>
+<div id="oshimaland-books">
+<h2>好評発売中</h2>
+<hr/>
+<div class="book">
+<div class="book-image"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/B013FGMQT8/oshimaland-22" target="_blank"><img src="http://static.oshimaland.co.jp/static/shimada-syuhei.png"/></a></div>
+<div class="book-title"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/B013FGMQT8/oshimaland-22" target="_blank">島田秀平の事故物件×心霊スポット 壱巻</a></div>
+</div>
+<div class="book">
+<div class="book-image"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/B013FGMNQ4/oshimaland-22" target="_blank"><img src="http://static.oshimaland.co.jp/static/shimada-syuhei2.png"/></a></div>
+<div class="book-title"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/B013FGMNQ4/oshimaland-22" target="_blank">島田秀平の事故物件×心霊スポット 弐巻</a></div>
+</div>
+<div class="book">
+<div class="book-image"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4072919489/oshimaland-22" target="_blank"><img src="http://ecx.images-amazon.com/images/I/51RcrddVJSL._SL100_.jpg"/></a></div>
+<div class="book-title"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4072919489/oshimaland-22" target="_blank">大島てるの絶対に借りてはいけない物件</a></div>
+<div class="book-author">主婦の友インフォス情報社</div>
+</div>
+<div class="book">
+<div class="book-image"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4813072135/oshimaland-22" target="_blank"><img src="http://ecx.images-amazon.com/images/I/61DoTqIQJfL._SL100_.jpg"/></a></div>
+<div class="book-title"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4813072135/oshimaland-22" target="_blank">放送できない怪事件DX</a></div>
+<div class="book-author">大洋図書</div>
+</div>
+<div class="book">
+<div class="book-image"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4834232336/oshimaland-22" target="_blank"><img src="http://ecx.images-amazon.com/images/I/51gPgXjMVlL._SL100_.jpg"/></a></div>
+<div class="book-title"><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4834232336/oshimaland-22" target="_blank">カラスヤサトシの怖いところに手が届く</a></div>
+<div class="book-author">カラスヤサトシ</div>
+</div>
+<div class="book">
+<div class="book-image"><a href="http://visurama.shop-pro.jp/?pid=88581897" target="_blank"><img src="http://static.oshimaland.co.jp/static/tshirt.png"/></a></div>
+<div class="book-title"><a href="http://visurama.shop-pro.jp/?pid=88581897" target="_blank">「大島てるの事故物件ナイト」Tシャツ</a></div>
+</div>
+</div>
+<p style="margin-top: 1em;">©2005-2016 Oshimaland Tous droits réservés.<a target="_blank" href="http://www.diamondblog.jp/official/oshimaland/offer/" style="margin-left: 1.5em;">お仕事依頼</a></p>
+</div>
+</div>
+<div class="yui3-u" id="right">
+<div id="right-container"><div>
+<div id="462cb76213a5f1b06ca9dd7990eb88a9">
+<script type="text/javascript">
+		microadCompass.queue.push({
+			"spot": "462cb76213a5f1b06ca9dd7990eb88a9",
+			"url": "${COMPASS_EXT_URL}",
+			"referrer": "${COMPASS_EXT_REF}"
+		});
+	</script>
+</div>
+</div>
+<div id="oshimaland-links">
+<h2>出演情報</h2>
+<ul style="margin-bottom: 0.8em;position:relative;">
+<li>無料配信中 <a target="_blank" href="http://gyao.yahoo.co.jp/player/10760/v00267/v0000000000000000555/" onclick="ga('send', 'event', 'outbound', 'click', 'http://gyao.yahoo.co.jp/player/10760/v00267/v0000000000000000555/');">肉食女子部 恐怖の〇〇にトリツカレタ男たち</a></li>
+<li>1月30日 <a target="_blank" href="http://eplus.jp/sys/T1U89P0101P006001P0050001P002179247P0030001P0006" onclick="ga('send', 'event', 'outbound', 'click', 'http://eplus.jp/sys/T1U89P0101P006001P0050001P002179247P0030001P0006');">福岡 筑前現実夜話 事故物件とゆうれい噺</a><span style="color:#FF5B5B;margin-left:0.5em;">好評発売中</span></li>
+<li>2月14日 <a target="_blank" href="https://tiget.net/events/2786" onclick="ga('send', 'event', 'outbound', 'click', 'https://tiget.net/events/2786');">名古屋 大須ライブハウスOYS</a><span style="color:#FF5B5B;margin-left:0.5em;">好評発売中</span></li>
+<li>2月19日 <a target="_blank" href="http://funky-nakamura.shop-pro.jp/?pid=97073498" onclick="ga('send', 'event', 'outbound', 'click', 'http://funky-nakamura.shop-pro.jp/?pid=97073498');">那覇 不安奇異夜話 琉球 現実夜話 事故物件とゆうれい噺</a><span style="color:#FF5B5B;margin-left:0.5em;">好評発売中</span></li>
+<li>2月28日 <a target="_blank" href="http://eplus.jp/sys/T1U14P0010843P006001P002179307P0030001" onclick="ga('send', 'event', 'outbound', 'click', 'http://eplus.jp/sys/T1U14P0010843P006001P002179307P0030001');">東京 大島てるがやって来る!! 事故物件ナイトvol.9</a><span style="color:#FF5B5B;margin-left:0.5em;">残りわずか</span></li>
+</ul>
+</div>
+<div style="margin-bottom: 0.9em;">
+<a id="zane-right" href="http://zang-e.jp/" target="_blank" onclick="ga('send', 'event', 'outbound', 'click', 'http://cp.zang-e.jp/#right');"><img src="http://static.oshimaland.co.jp/static/zane.jpg"></a>
+<table>
+<tr>
+<td style="padding-right: 6px;padding-top: 3px;">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4101240299/oshimaland-22" target="_blank" onclick="ga('send', 'event', 'outbound', 'click', 'http://www.amazon.co.jp/exec/obidos/ASIN/4101240299/oshimaland-22');"><img src="http://ecx.images-amazon.com/images/I/51ss6WS-xdL._SL100_.jpg"/></a>
+</td>
+<td colspan="2" valign="top" style="padding-top: 0.5em;">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4101240299/oshimaland-22" target="_blank" style="font-size: 111%;color: #000000;font-weight: bold;" onclick="ga('send', 'event', 'outbound', 'click', 'http://www.amazon.co.jp/exec/obidos/ASIN/4101240299/oshimaland-22');">残穢</a>
+<div style="margin-top: 3px;font-size: 12px;font-weight: 400;">小野不由美 </div>
+</td>
+</tr>
+</table>
+</div>
+<h2>新商品情報</h2>
+<table id="new-books">
+<tr>
+<td style="padding-right: 6px;">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/B013FGMQT8/oshimaland-22" target="_blank" onclick="ga('send', 'event', 'outbound', 'click', 'http://www.amazon.co.jp/exec/obidos/ASIN/B013FGMQT8/oshimaland-22');"><img src="http://static.oshimaland.co.jp/static/shimada-syuhei.png" alt="島田秀平の事故物件×心霊スポット 壱巻"/></a>
+</td>
+<td style="padding-right: 6px;">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/B013FGMNQ4/oshimaland-22" target="_blank" onclick="ga('send', 'event', 'outbound', 'click', 'http://www.amazon.co.jp/exec/obidos/ASIN/B013FGMNQ4/oshimaland-22');"><img src="http://static.oshimaland.co.jp/static/shimada-syuhei2.png" alt="島田秀平の事故物件×心霊スポット 弐巻"/></a>
+</td>
+<td valign="top" style="padding-top: 0.5em;">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/B013FGMQT8/oshimaland-22" target="_blank" class="new-books-title" onclick="ga('send', 'event', 'outbound', 'click', 'http://www.amazon.co.jp/exec/obidos/ASIN/B013FGMQT8/oshimaland-22');">島田秀平の事故物件×心霊スポット 壱巻・</a>
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/B013FGMNQ4/oshimaland-22" target="_blank" class="new-books-title" onclick="ga('send', 'event', 'outbound', 'click', 'http://www.amazon.co.jp/exec/obidos/ASIN/B013FGMNQ4/oshimaland-22');">弐巻</a>
+</td>
+</tr>
+<tr>
+<td style="padding-right: 6px;padding-top: 3px;">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4072919489/oshimaland-22" target="_blank" onclick="ga('send', 'event', 'outbound', 'click', 'http://www.amazon.co.jp/exec/obidos/ASIN/4072919489/oshimaland-22');"><img src="http://ecx.images-amazon.com/images/I/51RcrddVJSL._SL100_.jpg"/></a>
+</td>
+<td colspan="2" valign="top" style="padding-top: 0.5em;">
+<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4072919489/oshimaland-22" target="_blank" class="new-books-title" onclick="ga('send', 'event', 'outbound', 'click', 'http://www.amazon.co.jp/exec/obidos/ASIN/4072919489/oshimaland-22');">大島てるの絶対に借りてはいけない物件</a>
+<div class="new-books-author">主婦の友インフォス情報社</div>
+</td>
+</tr>
+</table>
+<div id="recent-comments">
+<h2>最近のコメント</h2>
+<script type="text/javascript" src="http://oshimaland.disqus.com/combination_widget.js?num_items=20&hide_mods=0&color=grey&default_tab=recent&excerpt_length=200"></script>
+</div>
+<div>
+<script type="text/javascript">
+var adstir_vars = {
+  ver    : "4.0",
+  app_id : "MEDIA-ea72c5ea",
+  ad_spot: 5,
+  center : false
+};
+</script>
+<script type="text/javascript" src="https://js.ad-stir.com/js/adstir.js?20130527"></script>
+</div>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+  window.___gcfg = {lang: 'ja'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+<script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button_wo_al.js" charset="utf-8" async="async"></script>
+</body>
+</html>

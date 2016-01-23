@@ -1,0 +1,198 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>森脇ゴルフスクール</title>
+<link rel="stylesheet" type="text/css" href="css/reset.css" media="all" />
+<link rel="stylesheet" type="text/css" href="css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="css/indivi.css" media="all" />
+<link rel="stylesheet" type="text/css" href="css/top.css" media="all" />
+<!--[if IE]>
+<link rel="stylesheet" type="text/css" href="css/ie.css" media="all" />
+<![endif]-->
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript">
+$(function(){
+	var config = {speed:'500'}
+	var voices = $("#voice .voiceList li");
+	var v_active = 0;
+	var changing = false;
+	
+	voices.eq(0).show();
+	
+	$("#voice .btn").click(function(e){
+		e.preventDefault();
+		var btn_kind = $(this).attr("class");
+		if(changing==false){
+			changing=true;
+			voices.fadeOut(config.speed);
+			if(btn_kind=='btn next'){
+				v_active++;
+				if(v_active >= voices.length){ v_active=0; }
+			}else{
+				v_active--;
+				if(v_active < 0){ v_active=voices.length-1; }
+			}
+			setTimeout(function(){
+				voices.eq(v_active).fadeIn(config.speed, function(){ changing=false;});
+			},config.speed);
+		}
+	});
+	
+
+});
+
+addEvent(window,"load",function(){
+	$("#news .newsList").append("<li>読み込んでいます</li>");
+	jQuery.ajax({
+			type:"GET",
+			url:'php/blog.php',
+			data:{},
+			cache:false,
+			success:function(data){
+				$("#news .newsList").empty();
+				var blog_url = "http://blog.moriwakigolfschool.com";
+				var newsList = $(data).find("#selected + .linktext li");
+				//console.log(newsList);
+				$(newsList).each(function(){
+					//console.log($(this).find("a").attr("href").slice(1));
+					var url = blog_url+($(this).find("a").attr("href")).slice(1);
+					var date = $(this).text().slice(-6,-1);
+					$("#news .newsList").append("<li><span class='date'>2012/"+date+"</span><a href='"+url+"' target='_blank'>"+$(this).find("a").text()+"</a></li>");
+				});
+				if($(newsList).size()==0){
+					$("#news .newsList").append("<li>お知らせはありません</li>");
+				}
+			}
+	});	
+});
+
+	//Google Analytics
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-32323064-1']);
+  _gaq.push(['_setDomainName', 'moriwakigolfschool.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<script type="text/javascript" src="http://www.moriwakigolfschool.com/acc/acctag.js"></script>
+</head>
+<body>
+<div id="screen">
+	<header>
+		<div class="lead">
+			<p class="wide">福岡市のゴルフスクール。初心者から上級者まで、一人ひとりに合わせたゴルフレッスン。ビデオによる通信レッスンも開講中。</p>
+		</div>
+		<div class="siteName wide clearfix">
+			<h1 class="logo"><img src="images/logo01.png" width="310" height="100" alt="森脇ゴルフスクール" /></h1>
+			<div class="character"><img src="images/img_character01.png" width="153" height="299" alt="森脇郁夫" /></div>
+			<div class="subMenu">
+				<p class="btn generic"><a href="contact.php">お問い合わせ</a></p>
+				<p class="btn generic"><a href="access.html">交通アクセス</a></p>
+			</div>
+		</div>
+	</header>
+	<nav id="menu">
+		<div class="inner">
+		<ul class="wide clearfix">
+			<li><a href="schoolinfo.html"><img src="images/menu01.png" width="160" height="40" alt="スクール案内" /></a></li>
+			<li><a href="profile.html"><img src="images/menu02.png" width="160" height="40" alt="プロフィール" /></a></li>
+			<li><a href="timetable.html"><img src="images/menu03.png" width="160" height="40" alt="レッスンスケジュール" /></a></li>
+			<li><a href="faq.html"><img src="images/menu04.png" width="160" height="40" alt="よくある質問" /></a></li>
+		</ul>
+		</div>
+	</nav><!-- /#menu -->
+	<div id="contents" class="wide clearfix">
+		<div id="main">
+			<section id="course" class="clearfix">
+				<article id="regular">
+					<h2 class="courseName"><a href="schoolinfo.html#regular">レギュラーコース</a></h2>
+					<p class="btn"><a href="schoolinfo.html#regular">詳細を見る</a></p>
+					<div class="textBody clearfix">
+						<p class="image"><img src="images/photo/img_lesson01.jpg" width="100" height="120" alt="" /></p>
+						<p class="caption">初心者から上級者まで<br />一人ひとりに<br />合わせたレッスン</p>
+						<p>その方のレベルや目標に合わせてレッスンします。初めてクラブを持つ方も大歓迎。随時入校受付中。</p>
+					</div>
+				</article>
+				<article id="video">
+					<h2 class="courseName"><a href="schoolinfo.html#video">ビデオ通信コース</a></h2>
+					<p class="btn"><a href="schoolinfo.html#video">詳細を見る</a></p>
+					<div class="textBody clearfix">
+						<p class="image"><img src="images/photo/img_video01.jpg" width="100" height="120" alt="" /></p>
+						<p class="caption">インターネットと<br />ビデオ撮影を利用した<br />フォローアップ講座</p>
+						<p>スイングを撮影したビデオを送っていただき、メールにてアドバイスします。遠隔地の方も受講可能です。</p>
+					</div>
+				</article>
+			</section><!-- /#course -->
+			
+			<section id="voice">
+				<h2 class="caption"><a href="voice.html">スクール生の声</a></h2>
+				<noscript><p>コンテンツの一部にJavaScriptを利用しています。<br />ブラウザのJavaScriptを有効にしてご覧ください。</p></noscript>
+				<ul class="voiceList">
+					<li><img src="images/voice/img_slideVoice01.png" width="640" height="130" alt="" /></li>
+					<li><img src="images/voice/img_slideVoice02.png" width="480" height="98" alt="" /></li>
+					<li><img src="images/voice/img_slideVoice03.png" width="480" height="98" alt="" /></li>
+					<li><img src="images/voice/img_slideVoice04.png" width="480" height="98" alt="" /></li>
+					<li><img src="images/voice/img_slideVoice05.png" width="480" height="130" alt="" /></li>
+				</ul>
+				<p class="btn prev"><a href="#"><img src="images/btn_voicePrev.png" width="30" height="30" alt="" /></a></p>
+				<p class="btn next"><a href="#"><img src="images/btn_voiceNext.png" width="30" height="30" alt="" /></a></p>
+				<p class="detail"><a href="voice.html">もっと見る</a></p>
+			</section><!-- /#voice -->
+			
+			<section id="news">
+				<h2>お知らせ</h2>
+				<ul class="newsList">
+					<noscript>
+					<li>コンテンツの表示にJavaScriptを利用しています。ブラウザのJavaScriptを有効にしてください。</li>
+					</noscript>
+				</ul>
+			</section><!-- /#news -->
+			
+		</div><!-- /#main -->
+		<div id="side">
+			<p class="btn offer">
+				<a href="request.php"><img src="images/btn_offer01.png" width="170" height="170" alt="お申込" /></a>
+			</p>
+			<p class="bnr"><a href="http://blog.moriwakigolfschool.com" target="_blank"><img src="images/bnr_blog.png" width="230" height="80" alt="校長のひとりごとブログ" /></a></p>
+			<nav>
+				<ul>
+					<!--li><a href="link.html">リンク集</a></li-->
+					<li><a href="privacy.html">個人情報保護方針</a></li>
+				</ul>
+			</nav>
+		</div><!-- /#side -->
+	</div><!-- /#contents -->
+	<!-- #BeginLibraryItem "/Library/footer.lbi" -->
+	<footer>
+		<div class="pageTop wide">
+			<p class="btn pageTop"><a href="#top">PAGE TOP</a></p>
+		</div>
+		<ul class="wide clearfix">
+			<li><a href="schoolinfo.html">スクール案内</a></li>
+			<li><a href="profile.html">プロフィール</a></li>
+			<li><a href="timetable.html">スケジュール</a></li>
+			<li><a href="faq.html">よくある質問</a></li>
+			<li><a href="voice.html">スクール生の声</a></li>
+		</ul>
+		<ul class="wide clearfix">
+			<li><a href="request.php">お申込</a></li>
+			<li><a href="contact.php">お問い合わせ</a></li>
+			<li><a href="access.html">交通アクセス</a></li>
+			<li><a href="privacy.html">個人情報保護方針</a></li>
+			<li><a href="trade.html">特定商取引法表示</a></li>
+		</ul>
+		<p class="copyright">Copyright &copy; Moriwaki Golf School. All Rights Reserved.</p>
+	</footer>
+<!-- #EndLibraryItem -->
+</div><!-- /#screen -->
+</body>
+</html>

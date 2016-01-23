@@ -1,0 +1,337 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta name="description" content="サムイ島で最初にオープンした日本人ダイビングショップ。タオ島コタオリゾート内にある『たおみせ』支店、プーケットには姉妹店のカタダイビングサービスも。ホテル、オプショナルツアー、レストラン、マッサージなどダイビング以外の情報も満載。サムイのことなら弊社におまかせ！">
+<meta name="keywords" content="サムイダイビングサービス,samui diving service,サムイ島,サムイ,コサムイ,タオ島,コタオ,アジア,タイ,ダイビング,スノーケル,シュノーケル,体験ダイビング,プーケット,カタダイビングサービス,日本人,クルーズ,ライセンス取得,ＰＡＤＩ">
+<meta http-equiv="Pragma" content="no-cache">
+<meta name="robots" content="index">
+<meta http-equiv="Page-Enter" content="blendTrans(Duration=0.8">
+<meta http-equiv="Content-script-type" content="text/javascript">
+<meta http-equiv="Content-style-type" content="text/css">
+<meta http-equiv="Generator" content="Microsoft Expression Web4">
+<meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1">
+<title>サムイダイビングサービス</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="Shortcut Icon" type="img/x-icon" href="favicon.ico">
+<link type="text/css" rel="stylesheet" href="responsive.gs.12col.css">
+<link rel="stylesheet" href="style.css" type="text/css">
+<!--[if lt IE 9]>
+   <script type="text/javascript" src="respond.min.js"></script>
+<![endif]-->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+    $(window).load(function(){
+        var setElm = $('.slideshow'),
+        setMaxWidth = 1000,
+        setMinWidth = 320,
+        fadeSpeed = 3000,
+        switchDelay = 8500,
+        sideNavi = 'off', // 'on' or 'off'
+        sideHide = 'hide', // 'hide' or 'show'
+        naviOpc = 0.5;
+ 
+        setElm.each(function(){
+            var targetObj = $(this),
+            findUl = targetObj.find('ul'),
+            findLi = targetObj.find('li'),
+            findLiFirst = targetObj.find('li:first');
+ 
+            findLi.css({display:'block',opacity:'0',zIndex:'99'});
+            findLiFirst.css({zIndex:'100'}).stop().animate({opacity:'1'},fadeSpeed);
+ 
+            function timer(){
+                setTimer = setInterval(function(){
+                    slideNext();
+                },switchDelay);
+            }
+            timer();
+ 
+            function slideNext(){
+                findUl.find('li:first-child').not(':animated').animate({opacity:'0'},fadeSpeed).next('li').css({zIndex:'100'}).animate({opacity:'1'},fadeSpeed).end().appendTo(findUl).css({zIndex:'99'});
+            }
+            function slidePrev(){
+                findUl.find('li:first-child').not(':animated').css({zIndex:'99'}).animate({opacity:'0'},fadeSpeed).siblings('li:last-child').css({zIndex:'100'}).animate({opacity:'1'},fadeSpeed).prependTo(findUl);
+            }
+            targetObj.css({width:setMaxWidth,display:'block'});
+ 
+            // メイン画像をベースにエリアの幅と高さを設定
+            var setLiImg = findLi.find('img'),
+            baseWidth = setLiImg.width(),
+            baseHeight = setLiImg.height();
+ 
+            // レスポンシブ動作メイン
+            function imgSize(){
+                var windowWidth = parseInt($(window).width());
+                if(windowWidth >= setMaxWidth) {
+                    targetObj.css({width:setMaxWidth,height:baseHeight});
+                    findUl.css({width:baseWidth,height:baseHeight});
+                    findLi.css({width:baseWidth,height:baseHeight});
+                } else if(windowWidth < setMaxWidth) {
+                    if(windowWidth >= setMinWidth) {
+                        targetObj.css({width:'100%'});
+                        findUl.css({width:'100%'});
+                        findLi.css({width:'100%'});
+                    } else if(windowWidth < setMinWidth) {
+                        targetObj.css({width:setMinWidth});
+                        findUl.css({width:setMinWidth});
+                        findLi.css({width:setMinWidth});
+                    }
+                    var reHeight = setLiImg.height();
+                    targetObj.css({height:reHeight});
+                    findUl.css({height:reHeight});
+                    findLi.css({height:reHeight});
+                }
+            }
+            $(window).resize(function(){imgSize();}).resize();
+ 
+            // サイドナビボタン（有り無し）
+            var agent = navigator.userAgent;
+            if(sideNavi == 'on'){
+                targetObj.append('<a href="javascript:void(0);" class="btnPrev"></a><a href="javascript:void(0);" class="btnNext"></a>');
+                var btnPrev = targetObj.find('.btnPrev'),btnNext = targetObj.find('.btnNext'),btnPrevNext = targetObj.find('.btnPrev,.btnNext');
+ 
+                if(agent.search(/iPhone/) != -1 || agent.search(/iPad/) != -1 || agent.search(/iPod/) != -1 || agent.search(/Android/) != -1){
+                    btnPrevNext.css({opacity:naviOpc});
+                } else {
+                    btnPrevNext.css({opacity:naviOpc}).hover(function(){
+                        $(this).stop().animate({opacity:naviOpc+0.2},200);
+                    },function(){
+                        $(this).stop().animate({opacity:naviOpc},200);
+                    });
+                }
+ 
+                if(sideHide == 'hide'){
+                    if(agent.search(/iPhone/) != -1 || agent.search(/iPad/) != -1 || agent.search(/iPod/) != -1 || agent.search(/Android/) != -1){
+                        btnPrevNext.css({visibility:'visible'});
+                    } else {
+                        btnPrevNext.css({visibility:'hidden'});
+                        targetObj.hover(function(){
+                            btnPrevNext.css({visibility:'visible'});
+                        },function(){
+                            btnPrevNext.css({visibility:'hidden'});
+                        });
+                    }
+                }
+ 
+                btnPrev.click(function(){switchPrev();});
+                btnNext.click(function(){switchNext();});
+            }
+ 
+            // ボタン移動動作
+            function switchNext(){
+                findLi.not(':animated').parents('ul').each(function(){
+                    clearInterval(setTimer);
+                    slideNext();
+                    timer();
+                });
+            }
+            function switchPrev(){
+                findLi.not(':animated').parents('ul').each(function(){
+                    clearInterval(setTimer);
+                    slidePrev();
+                    timer();
+                });
+            }
+ 
+        });
+    });
+});
+</script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<script type="text/javascript">
+$(function() {
+	var topBtn = $('#page-top');	
+	topBtn.hide();
+	$(window).scroll(function () {
+		if ($(this).scrollTop() > 200) {
+			topBtn.fadeIn();
+		} else {
+			topBtn.fadeOut();
+		}
+	});
+	//スクロールしてトップ
+    topBtn.click(function () {
+		$('body,html').animate({
+			scrollTop: 0
+		}, 500);
+		return false;
+    });
+});
+</script>
+</head>
+<body>
+<div id="all" class="container">
+<!--****■ページトップ*************************************-->
+<div id="header" class="container">
+  <div id="banner" class="row">
+    <div class="col span_7" >
+      <img alt="sdslogo" id="sdsbanner" src="index/sdsbanner.png">
+    </div><!--end div.col span_7-->
+    <div id="toplist" class="col span_5">
+      <ul>
+        <li><a href="../Index.htm">HOME</a></li>
+        <li><a href="../shop/shop.html">ABOUT US</a></li>
+        <li><a href="../q&a/q&a.html">Q&amp;A</a></li>
+      </ul>
+    </div><!--end div.col span_5-->
+   </div><!--end div#banner-->
+  <div class="row"><!--dropdown menu list start--> 
+  <div class="col span_2">
+    <ul class="dropmenu">
+    <li><a href="#">ダイビング</a>
+      <ul>
+      <li><a href="diving/fundive.html">ファンダイブ</a></li>
+      <li><a href="diving/taiken.html">体験ダイビング</a></li>
+      <li><a href="diving/license.html">ライセンスコース</a></li>
+      <li><a href="diving/package.html">宿泊パッケージ</a></li>
+      <li><a href="diving/taostay.html">タオ島ステイプラン</a></li>
+      <li><a href="diving/divesite.html">ダイブサイト情報</a></li>
+      </ul>
+    </li>
+    </ul>
+  </div>
+  <div class="col span_2">
+    <ul class="dropmenu">
+    <li><a href="#">海・陸ツアー</a>
+      <ul>
+      <li><a href="tour/snorkel.html">スノーケルツアー</a></li>
+      <li><a href="tour/fishing.html">フィッシングツアー</a></li>
+      <li><a href="tour/safari.html">サファリツアー</a></li>
+      <li><a href="tour/islandtour.html">島内観光ツアー</a></li>
+      </ul>
+    </li>
+    </ul>
+  </div>
+  <div class="col span_2">
+  <ul class="dropmenu">
+  <li><a href="#">ホテル・宿泊</a>
+    <ul>
+    <li><a href="hotel/hotel.html">サムイ島のホテル</a></li>
+    <li><a href="hotel/hotel.html#hotellist">取り扱いホテル一覧</a></li>
+    </ul>
+  </li>
+  </ul>
+  </div>
+  <div class="col span_2">
+    <ul class="dropmenu">
+    <li><a href="#">サムイ島案内</a>
+      <ul>
+      <li><a href="info/infosamui.html">基本情報</a></li>
+      <li><a href="info/access.html">サムイへのアクセス</a></li>
+      <li><a href="info/samuimap.html">サムイ島マップ</a></li>
+      <li><a href="info/restaurant.html">おすすめレストラン</a></li>
+      <li><a href="info/travelagency.html">旅行会社紹介</a></li>
+      <li><a href="info/magazine.html">特集掲載情報</a></li>
+      </ul>
+    </li>
+    </ul>
+  </div>
+  <div class="col span_2">
+  <ul class="dropmenu">
+  <li><a href="#">Gallery</a>
+    <ul>
+    <li><a href="gallery/gallery.html">絶景写真館</a></li>    
+    <li><a href="gallery/movie.html">おすすめ動画</a></li>
+    <li><a href="gallery/sakana.html">お魚図鑑(魚類）</a></li>
+    <li><a href="gallery/sonohoka.html">お魚図鑑(その他)</a></li>
+    </ul>
+  </li>
+  </ul>
+  </div>
+  <div class="col span_2">
+  <ul class="dropmenu">
+  <li><a href="#">ご予約</a>
+   <ul>
+   <li><a href="booking/booking.html">ご予約の流れ</a></li>
+   <li><a href="booking/kiyaku.html">ご利用規約</a></li>
+   <li><a href="http://ws.formzu.net/fgen/S33666007/">お問い合わせフォーム</a></li>
+   </ul>
+  </li>
+  </ul>
+  </div>
+  </div><!--end div.row(dropdown menu list-->
+  <div class="slideshow"><!--*****■スライドショー*******-->
+   <ul>    
+     <li><img src="index/_MG_0458.jpg" alt="憧れのジンベイザメ" class="active"></li>
+     <li><img src="index/_MG_4807.jpg" alt="キンセンフエダイ＆ジャワラビットフィッシュ"></li>
+     <li><img src="index/_MG_1723.jpg" alt="色彩が美しいメタリックシュリンプゴビー"></li>
+     <li><img src="index/_MG_4476.jpg" alt="水中に広がるお花畑のようなウミトサカ"></li>
+     <li><img src="index/_MG_4327.jpg" alt="マクロ派におすすめセラトブレグマSP"></li>
+     <li><img src="index/_MG_4903.jpg" alt="体長1Mオーバー！巨大ヤイトハタ"></li>
+     <li><img src="index/_MG_2216.jpg" alt="イバラカンザシに乗るタテジマヘビギンポ"></li>
+     <li><img src="index/_MG_5872.jpg" alt="一面に壁のように広がるギンガメアジ"></li>
+   </ul>
+  </div><!--end div.slideshow-->
+</div><!--end div#header.container-->
+<!--****ページトップここまで********************-->
+<div class="container">
+  <div class="row">	
+    <div class="col span_9"><!--leftside start-->
+      <div id="sdsnews" class="row">
+        <iframe src="news.html" width="100%" height="100%" style="margin:0;padding:0;vertical-align:top;text-align:center" frameborder="0" scrolling="AUTO"></iframe>
+      </div><!--end div#sdsnews-->
+      <div id="topic" class="row">
+        <div id="topic_category" class="col span_6">
+          <a href="diving/taostay.html"><img class="topic" alt="セイルロック+タオ島ステイ" src="index/sunset.jpg"></a>
+          <p>"安くいっぱい潜りたい！でもセイルロックは捨てがたい～"そんな方は両方楽しんじゃいましょう！サムイ発セイルロック2ダイブのツアー終了後に夕方のフェリーでその日のうちにタオ島に移動。翌朝からはタオ島でダイビング三昧！ダイビングご予約に加えて、タオ島へのフェリーやホテル予約も全てまとめて手配いたします。</p>
+	    </div>
+        <div id="topic_category" class="col span_6">
+          <a href="http://www.samuidiving.net/diving/fundive.html"><img class="topic" alt="選べるボート" src="index/speedboat.jpg"></a>
+          <p>"スノーケラーとダイバーが一緒に楽しめるツアーはありませんか？" "1日3ダイブはできませんか？"サムイダイビングサービスではスピードボートはもちろん、お客様の滞在日程やご要望に合わせて大型ダイビングボート、大型高速船(LOMPRAYAH)を含めた最適なボート、ツアーをご案内します。</p>
+        </div>
+        <div id="topic_category" class="col span_6">
+          <a href="http://www.samuidiving.net/diving/package.html"><img class="topic" alt="宿泊パッケージ" src="index/package.jpg"></a>
+          <p>宿泊パッケージというと安くていいけれど、どんなお部屋になるのか不安だし、周りに何もないところのホテルだったらどうしよう・・・という心配から躊躇われる方も多いのでは？サムイダイビングサービスでは複数の提携ホテルよりお客様ご自身でお部屋をお選びいただけますのでそんな心配はご無用ですよ！</p>
+        </div>
+        <div id="topic_category" class="col span_6">
+          <a href="http://www.samuidiving.net/diving/fundive.html#equipment"><img class="topic" alt="重器材無料キャンペーン" src="index/rental.jpg"></a>
+          <p>滞在中1~2回のダイビングの為にダイビング器材をすべて持ってくるのは嵩張るし、飛行機の重量制限が心配。かといってレンタルすると高くつくし…と悩まれる方も多いでしょう。サムイダイビングサービスなら今年も重器材（BCD＆レギュレーター）レンタル無料！是非ご利用ください♪</p>
+        </div>
+      </div><!--end div#topic-->
+      <div id="mainbanner" class="col span_4"><a href="http://oceana.ne.jp/feature/201306_thai_samui" target="_blank" title="ダイビングと海の総合サイト・オーシャナ "><img src="http://blog-imgs-60.fc2.com/s/d/s/sdssamui2/2013062218280151fs.jpg" alt="ヒトシ"><br>ダイビングと海の総合サイト<br>【Ocean+α】掲載特集</a></div>
+      <div id="mainbanner" class="col span_4"><a href="http://www.samuidiving.net/info/airportinformation.html" target="_blank" title="サムイ空港到着ターミナル案内"><img src="index/airportmapbanner.png" alt="空港マップ"><br>ご旅行前に要チェック！<br>【サムイ空港到着ターミナル案内】</a></div>
+    </div><!--div.col span_9(leftside)end-->
+    <div class="col span_3"><!--rightside start-->
+      <div class="row" style="background-color:#F2F2F2;">
+        <div id="bannerbox"><p class="caption">サムイダイビングサービスはこんな店</p><p class="introduction">サムイダイビングサービスは１９９７年にサムイ島で最初の日本人サービスとしてオープンして以来、当時日本ではまだほとんど知られていなかったリゾート地としてのサムイ島や周辺海域でのダイビング情報をガイドブックやダイビング雑誌、旅行業界など様々なメディアを通じて紹介して参りました。２００５年にはタオ島チャロックバーンカオ地区にある老舗リゾート”KO TAO RESORT"に支店を併設。サムイ、タオそれぞれの利点を生かしたツアーをご提供できるよう取り組んでおります。</p></div>
+        <div id="bannerbox"><p class="caption">最新情報をいち早くGet！</p><a href="https://www.facebook.com/pages/Samui-Diving-Service/232430530288419?ref=ts&fref=ts" target="_blank"><img class="bannerlogo" alt="facebook" src="index/fb.png"><br>【Facebook】</a></div>
+        <div id="bannerbox"><p class="caption">ローカル情報満載!</p><a href="http://sdssamui.blog21.fc2.com/" target="_blank"><img class="bannerlogo" alt="サムイぷらぷら日記" src="index/purapurabanner.png"><br>【サムイぷらぷら日記】</a></div>
+        <div id="bannerbox"><p class="caption">最近の海はどうでしょう⁈</p><a href="http://sdssamui2.blog137.fc2.com/" target="_blank"><img class="bannerlogo" alt="サムイ・海ブログ" src="index/umiblogbanner.png"><br>【サムイ海ブログ】</a></div>
+        <div id="bannerbox"><p class="caption">サムイ島のお天気</p><a href="http://www.wunderground.com/cgi-bin/findweather/getForecast?query=zmw:00000.1.48550&bannertypeclick=wu_clean2day" title="Ko Samui, Thailand Weather Forecast" target="_blank"><img class="bannerlogo" src="http://weathersticker.wunderground.com/weathersticker/cgi-bin/banner/ban/wxBanner?bannertype=wu_clean2day_metric_cond&airportcode=VTSM&ForcedCity=Ko Samui&ForcedState=&wmo=48550&language=JP" alt="Find more about Weather in Ko Samui, TH" width="300"><br>【Weather Underground】</a></div>
+        <div id="bannerbox"><p class="caption">タオ島支店たおみせ</p><a href="http://www.samuidiving.net/taomise/"><img class="bannerlogo" alt="サムイダイビングサービスたおみせ" src="index/taomisesite.png"><br>【たおみせホームページ】</a></div>
+        <div id="bannerbox"><p class="caption">プーケットの姉妹店</p><a href="http://www.katadiving.info"><img class="bannerlogo" alt="姉妹店カタダイビングサービス" src="index/kdssite.png"><br>【KATA DIVING SERVICE】</a></div>
+      </div>
+    </div><!--div.col span_3(rightside) end--> 
+  </div><!--div.row end-->
+</div><!--end div.container-->  
+<!--******ここからフッター**************************************-->
+<div id="footer" class="container">
+ <div class="foot">
+  <div id="footerlist" class="row">
+    <div class="col span_2"><a href="diving/fundive.html">ファンダイビング</a></div>
+    <div class="col span_2"><a href="diving/taiken.html">体験ダイビング</a></div>
+    <div class="col span_2"><a href="diving/license.html">ライセンスコース</a></div>
+    <div class="col span_2"><a href="diving/package.html">パッケージツアー</a></div>
+    <div class="col span_2"><a href="diving/taostay.html">タオステイツアー</a></div>
+    <div class="col span_2"><a href="tour/snorkel.html">スノーケルツアー</a></div>
+    <div class="col span_2"><a href="info/linksite.html">リンク集</a></div>
+    <div class="col span_2"><a href="gallery/sakana.html">お魚図鑑</a></div>
+    <div class="col span_2"><a href="shop/shop.html">SHOP紹介</a></div>
+    <div class="col span_2"><a href="shop/kyujin.html">求人募集</a></div>
+    <div class="col span_2"><a href="booking/booking.html">お問い合わせ</a></div>
+    <div class="col span_2"><a href="sitemap.html">サイトマップ</a></div>
+   </div><!--end div#footerlist-->
+  <div class="row">
+    <h3>SAMUI DIVING SERVICE(Samui Office)</h3>
+    <p class="footer">47/10 Moo4, Bophut, Koh Samui, Suratthani 84320 THAILAND<br>Tel/Fax:+66-(0)77-417369 Mobile:+66-(0)89-8737497<br>E-mail:<a href="mailto:samuidiv@cscoms.com">samuidiv@cscoms.com</a>,<a href="mailto:sdssamui@gmail.com">sdssamui@gmail.com</a></p>
+    <h5>©2001 SAMUI DIVING SERVICE All Right Reserved.</h5>
+  </div>
+ </div><!--end div.foot--> 
+</div><!--end div.#footercontainer--><!--フッター枠ここまで-->
+<p id="page-top"><a href="#all">▲<br>ページのTOPへ</a></p>
+</div><!--end div#all-->
+</body>
+</html>

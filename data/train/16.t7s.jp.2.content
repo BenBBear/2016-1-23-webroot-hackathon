@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+<head rel="shortcut icon" type="image/png" href="http://t7s.jp/image/footer0.png">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Tokyo 7th シスターズ</title>
+
+<!--meta-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="description" content="Tokyo 7th シスターズ">
+<meta property="og:title" content="Tokyo 7th シスターズ">
+<meta property="og:type" content="website">
+<meta property="og:description" content="フルボリュームのフルボイス＆フルＢＧＭのシナリオ！ボクらの時代のアイドル育成リズム＆アドベンチャーゲーム">
+<meta property="og:url" content="http://t7s.jp">
+<meta property="og:image" content="http://t7s.jp/image/top/p0.jpg">
+<meta property="og:site_name" content="Tokyo 7th シスターズ">
+
+<!--css-->
+<link href="http://t7s.jp/css/reset.css" rel="stylesheet" media="all" type="text/css">
+<link href="http://t7s.jp/css/base.css" rel="stylesheet" media="all" type="text/css">
+<link href="http://t7s.jp/css/nivo-slider.css" rel="stylesheet" media="all" type="text/css">
+<link href="http://t7s.jp/css/default/default.css" rel="stylesheet" media="all" type="text/css">
+<link href="http://t7s.jp/css/modern.css" rel="stylesheet" media="all and (min-width: 100px)" type="text/css">
+<link href="http://t7s.jp/css/social-btn.css" rel="stylesheet" media="all" type="text/css">
+
+<!--script-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script type="text/javascript" src="http://t7s.jp/js/modernizr.custom.64316.js"></script>
+<script type="text/javascript" src="http://t7s.jp/js/base.js"></script>
+<script type="text/javascript" src="http://t7s.jp/js/jquery.nivo.slider.js"></script>
+<script type="text/javascript" src="http://t7s.jp/js/SsaPlayer.js"></script>
+<script type="text/javascript" src="http://t7s.jp/js/animation.js" id="animation" data-base_url="http://t7s.jp" ></script>
+<script type="text/javascript" src="http://t7s.jp/js/initialize.js" id="ini" data-base_url="http://t7s.jp"></script>
+<script>
+$(function(){
+    $('#slider').nivoSlider({
+        pauseTime: 5000,
+        directionNav:false,
+        animSpeed: 300,
+        slices: 60,
+        //effect: 'sliceUp'
+		effect: 'fold'
+    });
+});
+</script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-2266197-29', 't7s.jp');
+  ga('send', 'pageview');
+</script>
+
+
+<!--[if IE 6]>
+<script type="text/javascript" src="http://t7s.jp/js/DD_belatedPNG_0.0.8a-min.js"></script>
+<script>
+DD_belatedPNG.fix('img, .png');
+</script>
+<![endif]-->
+
+</head>
+
+<body>
+<style>
+	#countDown {
+		position: absolute;
+		top: 73px;
+		left: 213px;
+		font-size: 3em;
+	}
+
+	#countDown img {
+		width: 55px;
+	}
+
+	#holocon_contents {
+		position: absolute;
+		top: 141px;
+		left: 457px;
+		margin: 0 auto;
+		width: 88px;
+		text-align: center;
+		-webkit-perspective: 1000;
+		-moz-perspective: 1000;
+	}
+	#tetrahedron {
+		//opacity:0.7;
+		width: 88px;
+		height: 77px;
+		position:relative;
+		-webkit-transform-style:preserve-3d;
+		-moz-transform-style:preserve-3d;
+	}
+	#tetrahedron div {
+		width: 88px;
+		height: 77px;
+		position:absolute;
+		-webkit-transform-style:preserve-3d;
+		-moz-transform-style:preserve-3d;
+		background-size:100% 100%;
+		padding-top: 77px;
+	}
+
+	#tetrahedron div:nth-child(1) {
+		-webkit-transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px);
+		-moz-transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateX(0px) translateY(0px) translateZ(0px);
+	}
+	#tetrahedron div:nth-child(2) {
+		-webkit-transform: rotateX(57deg) rotateY(57deg) rotateZ(-34deg) translateX(0px) translateY(0px) translateZ(0px);
+		-moz-transform: rotateX(57deg) rotateY(57deg) rotateZ(-34deg) translateX(0px) translateY(0px) translateZ(0px);
+	}
+	#tetrahedron div:nth-child(3) {
+		-webkit-transform: rotateX(50deg) rotateY(-53deg) rotateZ(26deg) translateX(0px) translateY(0px) translateZ(0px);
+		-moz-transform: rotateX(50deg) rotateY(-53deg) rotateZ(26deg) translateX(0px) translateY(0px) translateZ(0px);
+	}
+	#tetrahedron div:nth-child(4) {
+		-webkit-transform: rotateX(-71deg) rotateY(0deg) rotateZ(2deg) translateX(2px) translateY(-50px) translateZ(72px);
+		-moz-transform: rotateX(-71deg) rotateY(0deg) rotateZ(2deg) translateX(2px) translateY(-50px) translateZ(72px);
+	}
+
+	#tetrahedron {
+		-webkit-animation-name: rotation;
+		-webkit-animation-duration: 4s;
+		-webkit-animation-iteration-count: infinite;
+		-webkit-animation-direction: alternate;
+		-moz-animation-name: rotation;
+		-moz-animation-duration: 4s;
+		-moz-animation-iteration-count: infinite;
+		-moz-animation-direction: alternate;
+	}
+	@-webkit-keyframes rotation {
+		0% { -webkit-transform: rotateY(0deg) rotateX(-10deg) rotateZ(-10deg)}
+		100% { -webkit-transform: rotateY(360deg) rotateX(10deg) rotateZ(10deg)}
+	}
+	@-moz-keyframes rotation {
+		0% { -moz-transform: rotateY(0deg) rotateX(-10deg) rotateZ(-10deg)}
+		100% { -moz-transform: rotateY(360deg) rotateX(10deg) rotateZ(10deg)}
+	}
+
+	#idTrailerMovieWrapper {
+		margin-left: 0px !important;
+	}
+
+	.theme-default .nivo-controlNav {
+		top: 0px;
+		height: 30px;
+	}
+</style>
+
+<!--Movie-->
+<div id="idTrailerOverlayWrapper">
+	<div id="idTrailerCanvasBg"></div>
+	<img src="http://t7s.jp/image/trailer/Loading.gif" class="cTrailerLoading">
+	<div id="idTrailerCanvas">
+		<img src="http://t7s.jp/image/trailer/close0.gif" id="idMovieClose" class="cMovieClose" style="display: none;">
+	</div>
+</div>
+
+<!--idWrapper-->
+<div id="idWrapper">
+
+<!--idContainer-->
+<div id="idContainer">
+
+
+
+<div class="slider-wrapper theme-default">
+
+
+
+<a href="http://www.jvcmusic.co.jp/t7s/" target="_new"><img src="http://t7s.jp/image/top/p42.png" alt="todo" /></a>
+
+</div>
+<div id="idNavi"><a href="http://t7s.jp/"><img src="http://t7s.jp/image/gnavi0_s.gif" alt=""></a><a href="http://t7s.jp/intro"><img src="http://t7s.jp/image/gnavi1.png" alt=""></a><a href="http://t7s.jp/game"><img src="http://t7s.jp/image/gnavi2.png" alt=""></a><a href="http://t7s.jp/story"><img src="http://t7s.jp/image/gnavi3.png" alt=""></a><a href="http://t7s.jp/character"><img src="http://t7s.jp/image/gnavi4.png" alt=""></a><a href="http://t7s.jp/artists"><img src="http://t7s.jp/image/gnavi5.png" alt=""></a><a href="http://t7s.jp/trailer"><img src="http://t7s.jp/image/gnavi6.png" alt=""></a><a href="http://t7s.jp/release/discography"><img src="http://t7s.jp/image/gnavi7.png" alt=""></a></div>
+
+<!--cMain-->
+<div class="cMain">
+
+<div id="idTopLeft">
+<!-- -->
+<img src="http://t7s.jp/image/top/p1.gif" class="cTitle" alt="NEWS">
+<!-- -->
+<div class="cHr"></div>
+<iframe class="cIframe" src="http://t7s.jp/news">test</iframe>
+</div>
+<div id="idTopRight">
+
+<a href="https://www.youtube.com/watch?v=VHSmJdQ6e7I&feature=youtu.be" target="_blank"><img src="http://t7s.jp/image/top/banner_machi.jpg" alt="machiasobi"></a>
+<a href="http://www.jvcmusic.co.jp/t7s/37125/" target="_blank"><img src="http://t7s.jp/image/top/banner_777.jpg" alt="2nd"></a>
+<a href="http://www.jvcmusic.co.jp/t7s/37126/" target="_blank"><img src="http://t7s.jp/image/top/banner_lesca.jpg" alt="lesca"></a>
+<a href="http://www.kadokawa.co.jp/co/novelizations.php" target="_blank"><img src="http://t7s.jp/image/top/novelize.png" alt="novelize"></a>
+<a href="http://www.jvcmusic.co.jp/t7s/158/" target="_blank"><img src="http://t7s.jp/image/top/web_bnr_03.jpg" alt="bluray"></a>
+<a href="http://t7s.jp/campaign/single" target="_blank"><img src="http://t7s.jp/image/top/banner_0729.png" alt="壁紙"></a>
+<a href="http://www.ichijinsha.co.jp/special/t7s/" target="_blank"><img src="http://t7s.jp/image/top/banner_ichijin.png" alt="壁紙"></a>
+<a href="http://t7s.jp/campaign/live" target="_blank"><img src="http://t7s.jp/image/campaign/live/banner_pc_2.png" alt="ライブ"></a>
+<a href="http://t7s.jp/campaign/album" target="_blank"><img src="http://t7s.jp/image/campaign/live/banner_album_pc_2.png" alt="アルバム"></a>
+<a href="http://t7s.jp/campaign/resale" target="_blank"><img src="http://t7s.jp/image/campaign/live/banner_lfs_pc.png" alt="再販"></a>
+
+
+
+
+
+<a href="https://play.google.com/store/apps/details?id=jp.ne.donuts.t7s" target="_blank"><img src="http://t7s.jp/image/top/google.png" alt="GooglePlay" /></a>
+<a href="https://itunes.apple.com/app/apple-store/id763342319?pt=472220&ct=t7s.jp_pc&mt=8" target="_blank"><img src="http://t7s.jp/image/top/apple_store.png" alt="AppleStore"></a>
+<img src="http://t7s.jp/image/top/t7s_log2.png" height="43px" alt="Logo">
+<div style="line-height:1.85em;font-size:70%;">
+タイトル：Tokyo 7th シスターズ<br>
+ジャンル：アイドル育成リズム＆アドベンチャーゲーム<br>
+価格：基本プレイ無料（アプリ内課金あり）<br>
+対応OS：iOS6 以降 Android 4.0.3以降 5.1未満<br>
+</div>
+<br>
+<!-- -->
+<img src="http://t7s.jp/image/top/p2.gif" class="cTitle" alt="Twitter">
+<!-- -->
+<div class="cHr"></div>
+
+
+<!--twitter-->
+<div id="idTwitter"><div id="idTwitterInner">
+<a class="twitter-timeline" href="https://twitter.com/t7s14" data-widget-id="409847262550839296" data-chrome="noheader nofooter transparent" height="390" lang="ja" >タイムラインを読み込み中</a>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+</div></div>
+
+</div>
+<div class="cClear"></div>
+
+
+
+<!--social button-->
+<div class="social_btn">
+<div class="facebook"> 
+<div class="fb-like" data-href="http://t7s.jp/" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+</div>
+<div class="hatena">
+<a href="http://b.hatena.ne.jp/entry/http://t7s.jp/" class="hatena-bookmark-button" data-hatena-bookmark-title="Tokyo 7th シスターズ" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+</div>
+<div class="twitter"> 
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://t7s.jp" data-text="有名ボカロPが作曲！アイドル育成リズム＆アドベンチャーゲーム、Tokyo 7th シスターズ" data-via="t7s_staff" data-lang="ja">ツイート</a>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+</div>
+</div>
+
+<!--banner-->
+<div class="cTopBannerContainer" style="margin-top:0px;margin-left:640px"><!--
+--><a href="http://app.famitsu.com/category/game-tips/7th/" target="_blank"><img src="http://t7s.jp/image/top/famitsu.jpg" alt="ファミ通"></a><!--
+--><a href="http://dengekionline.com/pr/t7s/" target="_blank"><img src="http://t7s.jp/image/top/dengeki.jpg" alt="電撃"></a><!--
+--></div>
+
+</div>
+<!--/cMain-->
+<div id="idFooter"><a href="http://www.donuts.ne.jp/" style="text-decoration: none; color:#000000;" target="_blank"><img src="http://t7s.jp/image/footer0.png" alt="Donuts"><br>&copy;Donuts</a></div>
+
+</div>
+<!--/idContainer-->
+
+</div>
+<!--/idWrapper-->
+
+
+
+<script language="JavaScript">
+
+//$('#idTrailerMovieWrapper').fadeIn(6000);
+/*$('#idTrailerMovieWrapper').animate({paddingRight:1},{
+	//1秒かけてアニメーション
+	duration:4000,
+	//stepは、アニメーションが進むたびに呼ばれる
+	step:function(now){
+		//nowに現在のpadding-rightの値が渡してもらえる
+		//0から1に向かって変化していくnowを利用してscaleさせてみる
+		$(this).css({transform:'scale(' + now + ')'});
+	},
+	//終わったら
+	complete:function(){
+		//次のために、元に戻しておく
+		$('#idTrailerMovieWrapper').css('paddingRight', 0);
+	}
+});*/
+
+var tDate = new Date(2016, 0, 1, 17, 0, 0); // 2016/01/01 17:00指定※月は0から
+
+/*imgpath="http://t7s.jp/image/campaign/countdown/";
+var imgurl = [
+"num00.png", "num01.png", "num02.png", "num03.png", "num04.png",
+"num05.png", "num06.png", "num07.png", "num08.png", "num09.png"
+];
+
+var cache = [];
+
+// 画像の先読み
+for (var i = 0; i < imgpath+imgurl.length; i++) {
+	var img = document.createElement("img");
+	img.src = imgpath+imgurl[i];
+	cache.push(img);
+}*/
+
+// カウントダウン挿入用の要素と画像
+var cnt = 0;
+var bdif = (tDate.getTime() / 1000) - (1453502883+cnt);
+
+//var cd = document.getElementById("countDown");
+//var imgs = cd.getElementsByTagName("img");
+
+if (bdif > 0) {
+	//var timer = window.setInterval(function() {
+
+		var now = 1453502883+cnt;
+		var dif = (tDate.getTime() / 1000) - now;
+
+		/*var dDay = Math.floor(dif / 86400);
+		var dHour = Math.floor(dif % 86400 / 3600);
+		var dMin = Math.floor(dif % 3600 / 60);
+		var dSec = Math.floor(dif % 60 / 1);
+
+		if (dDay < 0) dDay = 0;
+		if (dHour < 0) dHour = 0;
+		if (dMin < 0) dMin = 0;
+		if (dSec < 0) dSec = 0;
+
+		dDay = dDay >= 10 ? "" + dDay : "0" + dDay;
+		dHour = dHour >= 10 ? "" + dHour : "0" + dHour;
+		dMin = dMin >= 10 ? "" + dMin : "0" + dMin;
+		dSec = dSec >= 10 ? "" + dSec : "0" + dSec;
+
+		imgs[0].src = imgpath+imgurl[dDay.charAt(0)];
+		imgs[1].src = imgpath+imgurl[dDay.charAt(1)];
+		imgs[2].src = imgpath+imgurl[dHour.charAt(0)];
+		imgs[3].src = imgpath+imgurl[dHour.charAt(1)];
+		imgs[4].src = imgpath+imgurl[dMin.charAt(0)];
+		imgs[5].src = imgpath+imgurl[dMin.charAt(1)];
+		imgs[6].src = imgpath+imgurl[dSec.charAt(0)];
+		imgs[7].src = imgpath+imgurl[dSec.charAt(1)];
+
+		imgs[0].alt = dDay.charAt(0);
+		imgs[1].alt = dDay.charAt(1);
+		imgs[2].alt = dHour.charAt(0);
+		imgs[3].alt = dHour.charAt(1);
+		imgs[4].alt = dMin.charAt(0);
+		imgs[5].alt = dMin.charAt(1);
+		imgs[6].alt = dSec.charAt(0);
+		imgs[7].alt = dSec.charAt(1);*/
+
+		cnt = cnt + 1;
+		if (dif == 4) {
+			//clearInterval(timer);
+			//$('#countDownImg').fadeOut(3000, function(){
+				$('#idTrailerCanvasBg').css('z-index', '9999');
+				$('#idTrailerCanvasBg').addClass('back_b');
+				$('#idTrailerCanvasBg').css('height', $('body').height());
+				$('#idTrailerCanvasBg').css({opacity: '0.0'}).animate({opacity: '1'}, 7000);
+				//$('#idTrailerMovieWrapper').fadeIn(6000);
+				//$('#idTrailerMovieWrapper iframe').attr("src","//www.youtube.com/embed/L4oef703GUM?rel=0&wmode=opaque");
+			//});
+		}
+		if (dif < 0) {
+			var animationList = new Array("046");
+			eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('6 1=7.5();2(4);$(\'#3\').8(\'e-9\',\'0\');d(1);$(\'#c\').a();$(\'#b\').f();',16,16,'|animationId|clearInterval|idTrailerCanvasBg|timer|shift|var|animationList|css|index|remove|countDownImg|tsube|setInitializeTop|z|hide'.split('|'),0,{}));
+		}
+	//}, 1000);
+} else {
+	//$('#idTrailerCanvasBg').css('z-index', '9999');
+	//$('#idTrailerCanvasBg').addClass('back_b');
+	//$('#idTrailerCanvasBg').css('height', $('body').height());
+	//$('#idTrailerCanvasBg').css({opacity: '0.0'}).animate({opacity: '1'}, 1000);
+	//var animationList = new Array("046");
+	//eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('6 1=7.5();2(4);$(\'#3\').8(\'e-9\',\'0\');d(1);$(\'#c\').a();$(\'#b\').f();',16,16,'|animationId|clearInterval|idTrailerCanvasBg|timer|shift|var|animationList|css|index|remove|countDownImg|tsube|setInitializeTop|z|hide'.split('|'),0,{}));
+	//initializeTheEnd();
+	//var fadeSpeed = 5000;
+    //$('#idTrailerCanvasBg').css({opacity: '0.0'}).animate({opacity: '1'}, fadeSpeed);
+	//var animationList = new Array("046");
+	//var animationId = animationList.shift();
+	//setInitializeTop(animationId);
+	/*imgs[0].src = imgpath+imgurl[0];
+	imgs[1].src = imgpath+imgurl[0];
+	imgs[2].src = imgpath+imgurl[0];
+	imgs[3].src = imgpath+imgurl[0];
+	imgs[4].src = imgpath+imgurl[0];
+	imgs[5].src = imgpath+imgurl[0];
+	imgs[6].src = imgpath+imgurl[0];
+	imgs[7].src = imgpath+imgurl[0];*/
+	//$('#countDownImg').hide();
+	//$('#countDownImg').next().attr('id', 'key' + '_visial');
+	//$("#key_visial").append('<img src="'+ $('#ini').data('base_url') + score + y + (c + o + n) + '.' + $("#countDownImg > span").attr("id") + '" />');
+	//$('#idTrailerMovieWrapper').fadeIn(6000);
+}
+
+</script>
+</body></html>

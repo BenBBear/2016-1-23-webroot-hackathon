@@ -1,0 +1,1318 @@
+<!doctype html>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+<!-- meta -->
+<meta charset="UTF-8">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta name="Keywords" content="分譲マンション,新築マンション,アデニウム,ADENIUM,ジョイント,ジョイントコーポレーション,東京,神奈川,埼玉,千葉">
+<meta name="Description" content="分譲マンション、新築マンションをお探しなら、アデニウムシリーズへ。ジョイントコーポレーションは、住空間のクオリティを追求し、良質な住まいを提供して参ります。">
+<!-- title -->
+<title>分譲マンションのアデニウム｜ジョイントコーポレーション</title>
+<!-- link -->
+<link rel="start" href="/" title="ホーム">
+<link rel="stylesheet" type="text/css" media="all" href="common/css/jquery.bxslider.css">
+<link rel="stylesheet" type="text/css" media="all" href="common/css/util.css">
+<link rel="stylesheet" type="text/css" media="all" href="common/css/reset.css">
+<link rel="stylesheet" type="text/css" media="all" href="common/css/index.css">
+<link href="common/css/index_parts_l.css" rel="stylesheet" media="screen and (min-width:480px)">
+<link href="common/css/index_l.css" rel="stylesheet" media="screen and (min-width:980px)">
+<link href="common/css/index_ll.css" rel="stylesheet" media="screen and (min-width:1220px)">
+<link href="common/css/index_lll.css" rel="stylesheet" media="screen and (min-width:1420px)">
+<link href="common/css/index_m.css" rel="stylesheet" media="screen and (min-width:720px) and (max-width:979px)">
+<link href="common/css/index_s.css" rel="stylesheet" media="screen and (min-width:480px) and (max-width:719px)">
+<link href="common/css/index_ss.css" rel="stylesheet" media="screen and (max-width:479px)">
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<link rel="stylesheet" type="text/css" media="all" href="common/css/index_l.css" />
+<link rel="stylesheet" type="text/css" media="all" href="common/css/index_parts_l.css" />
+<![endif]-->
+<!--[if IE 6]>
+<script type="text/javascript" src="common/js/DD_belatedPNG_0.0.8a.js"></script>
+<script>
+DD_belatedPNG.fix('img, .png_bg');
+</script>
+<![endif]-->
+<!-- js -->
+<script type="text/javascript" src="common/js/jquery.js" id="jqueryJS" charset="UTF-8"></script>
+<script type="text/javascript" src="common/js/util.js" id="utilJS" charset="UTF-8"></script>
+<script type="text/javascript" src="common/js/main.js" id="mainJS" charset="UTF-8"></script>
+<script type="text/javascript" src="common/js/jquery.bxslider.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="common/js/jqueryAutoHeight.js" charset="UTF-8"></script>
+<script type="text/javascript" src="common/js/jquery.masonry.min.js"></script>
+<script type="text/javascript" src="common/js/index.js"></script>
+<script type="text/javascript" src="common/js/easyanimation3.js" charset="UTF-8"></script>
+<script type="text/javascript" src="common/js/toolbox.js" charset="UTF-8"></script>
+<script type="text/javascript" src="common/js/fixed.js" charset="UTF-8"></script>
+<script>
+$(function(){
+	window._topSlider = $('#topSlider').bxSlider({
+		slideWidth: 960,
+		slideMargin: 0,
+		//startSlide: 1,
+		controls: false,
+		auto: true,
+		minSlides: 3,
+		maxSlides: 3,
+		moveSlides: 1,
+		speed: 1000,
+		pause: 5000,
+		onSliderLoad: function(){
+			$('#topSliderWrapper').css('visibility', 'visible');
+			var objs = getObj("topSlider").getElementsByTagName("LI");
+			for(var i=0; i<objs.length; i++){
+				if(objs[i]._animation) objs[i]._animation.clearAnimation();
+			}
+			this.walkCurrent();
+			addEvent(document, "contextmenu", bind(this.stopCurrent));
+		},
+		onSlideBefore: function(slideElement, oldIndex, newIndex){
+			var objs	= getObj("topSlider").getElementsByTagName("LI");
+			for(var i=0; i<objs.length; i++){
+				if(objs[i]._moved){
+					var x = objs[i].getElementsByTagName("IMG")[0].style.marginLeft.replace("px","");
+					if(objs[i]._animation) objs[i]._animation.clearAnimation();
+					objs[i]._animation  = new easyAnimation(objs[i].getElementsByTagName("IMG")[0], "marginLeft", x, 0, 0.5, 2).start();
+					objs[i]._moved		= false;
+				}
+			}
+		},
+		onSlideAfter: function(slideElement, oldIndex, newIndex){
+			this.walkCurrent();
+		},
+		walkCurrent: function(){
+			var obj		= bxSliderSearchCurrentObj();
+			if(obj._animation) obj._animation.clearAnimation();
+			obj._animation 	= new easyAnimation(obj.getElementsByTagName("IMG")[0], "marginLeft", 0, -100, 5.0, 1).start();
+			obj._moved		= true;
+		},
+		stopCurrent: function(){
+			var obj		= bxSliderSearchCurrentObj();
+			obj._animation.clearAnimation();
+			window._topSlider.goToNextSlide();
+		}
+	});
+	$('#bxSliderBtnL').click(function(){
+		window._topSlider.stopAuto();
+		window._topSlider.goToPrevSlide();
+		window._topSlider.startAuto();
+	});
+	$('#bxSliderBtnR').click(function(){
+		window._topSlider.stopAuto();
+		window._topSlider.goToNextSlide();
+		window._topSlider.startAuto();
+	});
+});
+function bxSliderSearchCurrentObj(){
+	var objs	= getObj("topSlider").getElementsByTagName("LI");
+	var obj		= objs[0];
+	var w		= getBrowserWidth();
+	for(var i=0; i<objs.length; i++) objs[i]._position = cumulativeOffset(objs[i]);
+	for(var i=0; i<objs.length; i++){
+		if(objs[i]._position[0] <= w/2 && obj._position[0] <= objs[i]._position[0]){
+			obj = objs[i];
+		}
+	}
+	return obj;
+}
+</script>
+<script>
+$(document).ready(function() {
+    $('.linklibox').click(function() {
+		window.open($(this).find('a').attr('href'));
+		return false;
+    });
+	window._orientation = window.orientation;
+});
+$(window).resize(function(){
+	if(msie && msie <= 8
+	|| ua.toUpperCase().match(/ANDROID/) && window._orientation == window.orientation) return false;
+	window._orientation = window.orientation;
+	if(window._reloadTimer) clearTimeout(window._reloadTimer);
+	window._reloadTimer = setTimeout(reloadSlider, 500);
+});
+function reloadSlider(){
+	window._topSlider.reloadSlider();
+}
+function checkSize(){
+	if(getObj("sizeCheckerSS").offsetTop) return 0;
+	else if(getObj("sizeCheckerS").offsetTop) return 1;
+	else if(getObj("sizeCheckerM").offsetTop) return 2;
+	else return 3;
+}
+
+function checkboxClick(btn){
+	var obj = btn.getElementsByTagName("SPAN")[0];
+	setClass(obj, getClass(obj).match("off")?"on":"off");
+	
+	var obj2 = btn.getElementsByTagName("input")[0];
+	obj2.checked = getClass(obj).match("off")? false : true;
+	
+	CheckLump();
+}
+
+
+function linkBoxHoverInit(){
+	if(!checkSize()){
+		setTimeout(linkBoxHoverInit, 1000);
+		return;
+	}
+	var objs = getElementsByClassName2(document, "linkBox", "DIV");
+	for(var i=0; i<objs.length; i++){
+		var obj = objs[i].getElementsByTagName("IMG")[0];
+		if(obj){
+			var w1	= obj.offsetWidth;
+			var w2	= Math.floor(w1*1.25);
+			var h1	= obj.offsetHeight;
+			var h2	= Math.floor(h1*1.25);
+			var x	= Math.round(-(w2-w1)/1.8);
+			var y	= Math.round(-(h2-h1)/1.8);
+			obj._animation1 = new easyAnimation(obj, "width", w1, w2, 0.5, 1, "", "", boxAnimationGroup);
+			obj._animation2 = new easyAnimation(obj, "height", h1, h2, 0.5, 1);
+			obj._animation3 = new easyAnimation(obj, "left", 0, x, 0.5, 1);
+			obj._animation4 = new easyAnimation(obj, "top", 0, y, 0.5, 1);
+			obj._animation5 = new easyAnimation(obj, "opacity", 1, 0.6, 0.5, 1);
+			addEvent(objs[i], "mouseover", bind(linkBoxHoverMouseOver, [obj]));
+			addEvent(objs[i], "mouseout", bind(linkBoxHoverMouseOut, [obj]));
+		}
+	}
+}
+
+function boxAnimationGroup(n, handler){
+	handler._objs[0]._animation2.animation(n);
+	handler._objs[0]._animation3.animation(n);
+	handler._objs[0]._animation4.animation(n);
+	handler._objs[0]._animation5.animation(n);
+}
+
+function linkBoxHoverMouseOver(obj){
+	if(checkSize()){
+		obj._animation1.start();
+	}
+}
+
+function linkBoxHoverMouseOut(obj){
+	obj._animation1.rewind();
+}
+
+addEvent(window, "load", linkBoxHoverInit);
+
+function scrollHandler(){
+	var obj		= getObj("pageTopBtn");
+	var isShow	= (getScrollTop() > 0);
+	if(!isShow && obj._animation._i <= 0){
+		obj._animation.start();
+	} else if(isShow && obj._animation._i >= 1){
+		obj._animation.rewind();
+	}
+}
+addEvent(window, "load", scrollHandlerInit);
+
+function scrollHandlerInit(){
+	getObj("pageTopBtn")._animation = new easyAnimation(getObj("pageTopBtn"), "opacity", 1, 0, 0.25, 1);
+	addEvent(window, "scroll", scrollHandler);
+	scrollHandler();
+}
+
+function tabBtnGroupInit(){
+	var objs = document.getElementsByTagName("IMG");
+	window._tabBtnGroups = new Array();
+	for(var i=0; i<objs.length; i++){
+		if(hasAttribute(objs[i], "rel") && objs[i].getAttribute("rel").match(/tabBtnGroup\[([^,\s]*)[\s,]+([^,\s]*)[\s,]+([^,\s]*)\]/)){
+			objs[i]._gid	= RegExp.$1;
+			objs[i]._tar	= getObj(RegExp.$2);
+			objs[i]._class	= RegExp.$3;
+			window._tabBtnGroups.push(objs[i]);
+			addEvent(objs[i], "mousedown", bind(tabBtnGroupClick, [objs[i]]));
+		}
+	}
+}
+
+function tabBtnGroupClick(obj){
+	var objs = window._tabBtnGroups;
+	for(var i=0; i<objs.length; i++){
+		if(obj == objs[i]){
+			if(objs[i]._tar && !objs[i]._tar._stat){
+				switchObj(objs[i]._tar);
+			}
+			$(objs[i]).removeEasyOver();
+			objs[i].src = objs[i].src.replace(/_?o?v?\.gif/, "_ov.gif");
+		} else{
+			if(objs[i]._tar && objs[i]._tar._stat){
+				switchObj(objs[i]._tar);
+			}
+			objs[i].src = objs[i].src.replace(/_?o?v?\.gif/, ".gif");
+			$(objs[i]).easyOver();
+		}
+	}
+}
+
+
+function tabBtnClose(){
+	var objs = window._tabBtnGroups;
+	for(var i=0; i<objs.length; i++){
+		if(objs[i]._tar && objs[i]._tar._stat){
+			switchObj(objs[i]._tar);
+		}
+	}
+}
+
+function searchCaseInit(){
+	window._articles = getElementsByClassName2(getObj("contentsArea"), "linkBox", "DIV");
+	for(var i=0; i<window._articles.length; i++){
+		if(hasAttribute(window._articles[i], "rel")){
+			searchCaseSetArg(window._articles[i]);
+		}
+	}
+}
+
+function searchCaseSetArg(obj){
+	obj._features = new Array();
+	var arg = obj.getAttribute("rel").split(";");
+	for(var i=0; i<arg.length; i++){
+		var words = arg[i].split("=");
+		if(words[0] == "sort"){
+			obj._area = words[1];
+		} else if(words[0]){
+			obj._features[words[0]] = 1;
+		}
+	}
+}
+
+function searchCase(type){
+	masonryRun();
+
+	var ignoreBlocks = getElementsByClassName2(document, "searchHide", "SECTION");
+	if(type == "all"){
+		for(var i=0; i<window._articles.length; i++){
+			var obj		= window._articles[i];
+			var tar		= parentsSearchTagName(obj, "SECTION");
+			if(tar._isHide)	$("#contentsArea").masonry('reveal', [$("#contentsArea").masonry('getItem', tar)]);
+			tar._isHide = false;
+		}
+		for(var i=0; i<ignoreBlocks.length; i++){
+			if(ignoreBlocks[i]._isHide){
+				$("#contentsArea").masonry('reveal', [$("#contentsArea").masonry('getItem', ignoreBlocks[i])]);
+				ignoreBlocks[i]._isHide = false;
+			}
+		}
+	} else{
+		var areas		= searchCaseGetThings("searchArea");
+		var features	= searchCaseGetThings("searchFeature");
+		for(var i=0; i<window._articles.length; i++){
+			var obj		= window._articles[i];
+			var tar		= parentsSearchTagName(obj, "SECTION");
+			var isHit	= false;
+			if(type == "sort"){
+				isHit = (areas[obj._area]);
+			} else{
+				for(var i2 in features){
+					if(obj._features[features[i2]]){
+						isHit = true;
+						break;
+					}
+				}
+			}
+			if(isHit && tar._isHide)	$("#contentsArea").masonry('reveal', [$("#contentsArea").masonry('getItem', tar)]);
+			if(!isHit && !tar._isHide)	$("#contentsArea").masonry('hide', [$("#contentsArea").masonry('getItem', tar)]);
+			tar._isHide = !isHit;
+		}
+		tabBtnClose();
+		for(var i=0; i<ignoreBlocks.length; i++){
+			if(!ignoreBlocks[i]._isHide){
+				$("#contentsArea").masonry('hide', [$("#contentsArea").masonry('getItem', ignoreBlocks[i])]);
+				ignoreBlocks[i]._isHide = true;
+			}
+		}
+	}
+	setTimeout('ie9init()', 500);
+}
+
+function searchCaseGetThings(id){
+	var objs	= getObj(id).getElementsByTagName("SPAN");
+	var ret		= (id == "searchArea")?new Array():new Object();
+	for(var i=0; i<objs.length; i++){
+		if(getClass(objs[i]).match("on")){
+			var rel = objs[i].parentNode.getAttribute("rel");
+			if(rel.match(/sort=([^;]+)/)){
+				ret[RegExp.$1] = 1;
+			} else if(rel.match(/feature=([^;]+)/)){
+				ret[RegExp.$1] = RegExp.$1;
+			}
+		}
+	}
+	return ret;
+}
+
+addEvent(window, "load", searchCaseInit);
+addEvent(window, "load", tabBtnGroupInit);
+
+</script>
+<script>
+<!-- 
+function CheckLump(){
+//	return 0;
+	var count = $('input:checked').length;
+	if (count > 0){
+		$('img#LumpBtn').attr('src', 'http://adenium.jp/imgs/btn_package.gif');
+		$('img#LumpBtn').attr('title', '');
+		$('#LumpLink').css('cursor', 'pointer');
+		$('img#main-LumpBtn').attr('src', 'http://adenium.jp/imgs/btn_package01.gif');
+		$('img#main-LumpBtn').attr('title', '');
+		$('#main-LumpLink').css('cursor', 'pointer');
+	}else{
+		$('img#LumpBtn').attr('src', 'imgs/btn_package_off.gif');
+		$('img#LumpBtn').attr('title', '資料請求の対象が選択されていません。');
+		$('#LumpLink').css('cursor', 'default');
+		$('img#main-LumpBtn').attr('src', 'http://adenium.jp/imgs/btn_package01_off.gif');
+		$('img#main-LumpBtn').attr('title', '資料請求の対象が選択されていません。');
+		$('#main-LumpLink').css('cursor', 'default');
+	}
+	return count;
+}
+
+function GoLump(){
+	var count = CheckLump();
+	if (count > 0){
+		document.lumpform.submit(true);
+	}
+	return false;
+}
+
+$(function(){
+	$("#LumpLink").hover(
+		function(){
+			var srcname = $('img#LumpBtn').attr("src").replace(".gif", "_ov.gif");
+			$('img#LumpBtn').attr("src",srcname)
+		},
+		function(){
+			var srcname = $('img#LumpBtn').attr("src").replace("_ov.gif", ".gif");
+			$('img#LumpBtn').attr("src", srcname) 
+		}
+	);
+	$("#main-LumpLink").hover(
+		function(){
+			var srcname = $('img#main-LumpBtn').attr("src").replace(".gif", "_ov.gif");
+			$('img#main-LumpBtn').attr("src",srcname)
+		},
+		function(){
+			var srcname = $('img#main-LumpBtn').attr("src").replace("_ov.gif", ".gif");
+			$('img#main-LumpBtn').attr("src", srcname) 
+		}
+	);
+});
+
+ -->
+</script>
+</head>
+<body id="top"><span id="pageTop"></span>
+<!-- ▼ ▼ ▼ ▼ ▼ グローバルナビ ▼ ▼ ▼ ▼ ▼ -->
+<header id="header" rel="fixed;top:0;left:0;">
+<div class="inner">
+<h1><a href="/"><img src="common/imgs/logo.gif"  alt="一生愛せるクオリティ。｜ADENIUM"/></a></h1>
+<section id="spNav">
+<a href="javascript:void(0);" onClick="switchObj('gNav')" id="menuBtn"><img src="common/imgs/sp_menu.gif"  alt=""/></a>
+</section>
+<nav id="gNav" style="display:none;">
+<ul>
+<li><img src="common/imgs/gnav_01_ov.gif" width="127" height="80"  alt=""/><span>物件を探す</span></li><!--
+--><li><a href="concept/"><img src="common/imgs/gnav_02.gif" width="158" height="80"  alt="" class="ahover"/><span>ブランドコンセプト</span></a></li><!--
+--><li><a href="result/"><img src="common/imgs/gnav_03.gif" width="115" height="80"  alt="" class="ahover"/><span>供給実績</span></a></li><!--
+--><li><a href="quality/"><img src="common/imgs/gnav_04.gif" width="118" height="80"  alt="" class="ahover"/><span>クオリティ</span></a></li><!--
+--><li><a href="http://adenium.jp/premiumclub/" target="_blank"><img src="common/imgs/gnav_05.gif" width="180" height="80"  alt="" class="ahover"/><span>ADENIUM PREMIUM CLUB</span></a></li><!--
+--><li class="closeBtn"><a href="javascript:void(0);" onClick="switchObj('gNav')">閉じる</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<!-- ▲ ▲ ▲ ▲ ▲ グローバルナビ ▲ ▲ ▲ ▲ ▲ -->
+<div id="topSliderWrapper"><!-- main slider -->
+<div id="topSliderInner">
+<ul id="topSlider">
+
+	<li><a href="/ms/kawasaki/" target="_blank"><img src="/panelimg/144_pp.jpg" alt="" class="largePhoto"/><img src="/panelimg/144_pp.jpg" alt="" class="smallPhoto"/></a></li>
+
+	<li><a href="/ms/hachimanyama/" target="_blank"><img src="/panelimg/220_pp.jpg" alt="" class="largePhoto"/><img src="/panelimg/220_pp.jpg" alt="" class="smallPhoto"/></a></li>
+
+	<li><a href="/ms/shinozaki/" target="_blank"><img src="/panelimg/215_pp.jpg" alt="" class="largePhoto"/><img src="/panelimg/215_pp.jpg" alt="" class="smallPhoto"/></a></li>
+
+	<li><a href="/premiumclub/campaign/2015winter/" target="_blank"><img src="/panelimg/226_pp.jpg" alt="" class="largePhoto"/><img src="/panelimg/226_pp.jpg" alt="" class="smallPhoto"/></a></li>
+
+	<li><a href="/feature/kansei.html" target="_blank"><img src="/panelimg/206_pp.jpg" alt="" class="largePhoto"/><img src="/panelimg/206_pp.jpg" alt="" class="smallPhoto"/></a></li>
+
+	<li><a href="/ms/the_oasisgarden/" target="_blank"><img src="/panelimg/199_pp.jpg" alt="" class="largePhoto"/><img src="/panelimg/199_pp.jpg" alt="" class="smallPhoto"/></a></li>
+
+	<li><a href="/premiumclub/" target="_blank"><img src="/panelimg/177_pp.jpg" alt="" class="largePhoto"/><img src="/panelimg/177_pp.jpg" alt="" class="smallPhoto"/></a></li>
+
+	<li><a href="/feature/kansei.html" target="_blank"><img src="/panelimg/207_pp.jpg" alt="" class="largePhoto"/><img src="/panelimg/207_pp.jpg" alt="" class="smallPhoto"/></a></li>
+
+	<li><a href="/premiumclub/campaign/2015winter/" target="_blank"><img src="/panelimg/227_pp.jpg" alt="" class="largePhoto"/><img src="/panelimg/227_pp.jpg" alt="" class="smallPhoto"/></a></li>
+
+	<li><a href="/concept/" target="_self"><img src="/panelimg/168_pp.jpg" alt="" class="largePhoto"/><img src="/panelimg/168_pp.jpg" alt="" class="smallPhoto"/></a></li>
+
+</ul>
+<div id="slideMaskLeft"></div>
+<div id="slideMaskRight"></div>
+</div>
+<img src="imgs/btn_main_img_l.png" alt="" id="bxSliderBtnL" />
+<img src="imgs/btn_main_img_r.png" alt="" id="bxSliderBtnR" />
+</div><!-- /main slider -->
+<div id="wrapper">
+<div id="wrapperInner">
+<div id="stage">
+<div id="mainStage">
+<nav id="sNav">
+<div class="inner">
+<ul>
+<li onClick="searchCase('all')"><img src="imgs/snav_01_ov.gif"  alt="全物件一覧" class="ahover" id="tabAll" rel="tabBtnGroup[tab, , ahover]" /></li><!--
+--><li><a href="javascript:void(0);"><img src="imgs/snav_02.gif" class="ahover" alt="全物件一覧" rel="tabBtnGroup[tab, searchArea, ahover]"/></a></li><!--
+--><li><a href="javascript:void(0);"><img src="imgs/snav_03.gif" class="ahover"  alt="全物件一覧" rel="tabBtnGroup[tab, searchFeature, ahover]"/></a></li>
+</ul>
+</div>
+<section class="sNavDetail" id="searchArea" style="display:none;">
+<div class="listBox">
+
+	
+	<ul class="list1">
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="sort=都心部"><span class="off"></span>都心部</a></li>
+	<li class="detail">千代田区／中央区／港区／新宿区／文京区／渋谷区</li>
+	
+
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="sort=23区北部"><span class="off"></span>23区北部</a></li>
+	<li class="detail">豊島区／北区／板橋区</li>
+	
+
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="sort=23区東部"><span class="off"></span>23区東部</a></li>
+	<li class="detail">台東区／墨田区／江東区／荒川区／足立区／葛飾区／江戸川区</li>
+	
+
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="sort=23区西部"><span class="off"></span>23区西部</a></li>
+	<li class="detail">中野区／杉並区／練馬区</li>
+	
+
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="sort=23区南部"><span class="off"></span>23区南部</a></li>
+	<li class="detail">新宿区／品川区／大田区／世田谷区</li>
+	
+	</ul>
+	
+
+	
+	<ul class="list2">
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="sort=都下"><span class="off"></span>都下</a></li>
+	<li class="detail">八王子市／立川市／武蔵野市／三鷹市／青梅市／府中市／昭島市／調布市／町田市／小金井市／小平市／日野市／東村山市／国分寺市／国立市／福生市／狛江市／東大和市／清瀬市／東久留米市／武蔵村山市／多摩市／稲城市／羽村市／あきる野市／西東京市／その他</li>
+	
+
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="sort=神奈川県"><span class="off"></span>神奈川県</a></li>
+	
+	
+
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="sort=埼玉"><span class="off"></span>埼玉</a></li>
+	
+	
+
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="sort=千葉"><span class="off"></span>千葉</a></li>
+	
+	
+	</ul>
+	
+
+</div>
+<div class="btn">
+<a href="javascript:void(0);" onClick="tabBtnClose()" class="closeBtn"><img src="imgs/btn_close.png" alt="閉じる" width="31" height="31"></a>
+<a href="javascript:void(0);" onClick="searchCase('sort');"><img src="imgs/btn_search.png" width="260" height="45" class="ahover" alt="検索する"/></a>
+</div>
+</section>
+<section class="sNavDetail" id="searchFeature" style="display:none;">
+<div class="listBox">
+
+	
+	<ul class="list1">
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="feature=免震構造"><span class="off"></span>免震構造</a></li>
+	
+
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="feature=制震構造"><span class="off"></span>制震構造</a></li>
+	
+
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="feature=壁式構造"><span class="off"></span>壁式構造</a></li>
+	
+
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="feature=ベタ基礎工法"><span class="off"></span>ベタ基礎工法</a></li>
+	
+
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="feature=眺望良好"><span class="off"></span>眺望良好</a></li>
+	
+
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="feature=陽当り良好"><span class="off"></span>陽当り良好</a></li>
+	
+
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="feature=タワーマンション"><span class="off"></span>タワーマンション</a></li>
+	
+
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="feature=屋上テラス付き"><span class="off"></span>屋上テラス付き</a></li>
+	
+
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="feature=駐車場100％完備"><span class="off"></span>駐車場100％完備</a></li>
+	
+
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="feature=専用庭・テラス付き"><span class="off"></span>専用庭・テラス付き</a></li>
+	
+
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="feature=ルーフバルコニー付き"><span class="off"></span>ルーフバルコニー付き</a></li>
+	
+
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="feature=浴室に窓付き"><span class="off"></span>浴室に窓付き</a></li>
+	
+
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="feature=窓付きキッチン"><span class="off"></span>窓付きキッチン</a></li>
+	
+
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="feature=バルコニー側にキッチン隣接"><span class="off"></span>バルコニー側にキッチン隣接</a></li>
+	
+
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="feature=ロフト付き"><span class="off"></span>ロフト付き</a></li>
+	
+	</ul>
+	
+
+	
+	<ul class="list2">
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="feature=ワイドスパン8メートル以上"><span class="off"></span>ワイドスパン8メートル以上</a></li>
+	
+
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="feature=ウォークインクロゼット"><span class="off"></span>ウォークインクロゼット</a></li>
+	
+
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="feature=シューズインクロゼット"><span class="off"></span>シューズインクロゼット</a></li>
+	
+
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="feature=ペット同居可"><span class="off"></span>ペット同居可</a></li>
+	
+
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="feature=ディスポーザー付き"><span class="off"></span>ディスポーザー付き</a></li>
+	
+
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="feature=２４時間常駐管理体制"><span class="off"></span>２４時間常駐管理体制</a></li>
+	
+
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="feature=セキュリティ充実"><span class="off"></span>セキュリティ充実</a></li>
+	
+
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="feature=第一種低層住居専用地域内"><span class="off"></span>第一種低層住居専用地域内</a></li>
+	
+
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="feature=幼稚園・保育園が徒歩10分以内"><span class="off"></span>幼稚園・保育園が徒歩10分以内</a></li>
+	
+
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="feature=小学校が徒歩10分以内"><span class="off"></span>小学校が徒歩10分以内</a></li>
+	
+
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="feature=病院（小児科・内科・総合）まで徒歩15分以内"><span class="off"></span>病院（小児科・内科・総合）まで徒歩15分以内</a></li>
+	
+
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="feature=大型ショッピングセンターまで徒歩１５分"><span class="off"></span>大型ショッピングセンターまで徒歩１５分</a></li>
+	
+
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="feature=大型公園まで徒歩15分"><span class="off"></span>大型公園まで徒歩15分</a></li>
+	
+
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="feature=最寄駅より徒歩5分以内"><span class="off"></span>最寄駅より徒歩5分以内</a></li>
+	
+
+	
+		<li><a href="javascript:void(0);" onClick="checkboxClick(this)" rel="feature=最寄駅より徒歩10分以内"><span class="off"></span>最寄駅より徒歩10分以内</a></li>
+	
+	</ul>
+	
+
+</div>
+<div class="btn">
+<a href="javascript:void(0);" onClick="tabBtnClose()" class="closeBtn"><img src="imgs/btn_close.png" alt="閉じる" width="31" height="31"></a>
+<a href="javascript:void(0);" onClick="searchCase('feature');"><img src="imgs/btn_search.png" width="260" height="45" class="ahover"  alt="検索する"/></a>
+</div>
+</section>
+</nav>
+
+<form name="lumpform" action="https://ssl.alpha-prm.jp/adenium.jp/contact/index.php" method="post">
+<div id="packageBtnBox">
+	<div class="inner">
+		<ul class="clearfix">
+			<li><img  src="imgs/txt_package01.gif" width="152" height="14"  alt="チェックを入れた物件に" title="チェックを入れた物件に" /></li>
+			<li><a href="javascript:void(0);" onClick="GoLump();" id="main-LumpLink" ><img id="main-LumpBtn" src="imgs/btn_package01_off.gif" width="280" height="40" class="ahover"  alt="一括資料請求する" title="資料請求の対象が選択されていません。" />
+			</a></li>
+		</ul>
+	</div>
+</div>
+<div id="contentsAreaBox" class="clearfix">
+<section id="contentsArea">
+
+	
+	
+		<section class="boxStage col2 searchHide">
+			<div class="box">
+				<a href="/premiumclub/campaign/2015winter/" target="_blank"><img src="/panelimg/225_pp.jpg" width="460" height="458"  alt="Panel" /></a>
+			</div><!-- //.box -->
+		</section><!-- //.boxStage -->
+	
+	
+
+	
+	
+	
+		
+		<section class="boxStage col1">
+			<div class="box">
+				<div class="linkBox" onClick="window.open('http://adenium.jp/ms/hachimanyama/');" rel="sort=23区西部;;">
+
+				<h2>コディア八幡山</h2>
+				<p class="photo"><a ><img src="/panelimg/104_rp.jpg" width="220"  alt=""/></a></p>
+
+				<div class="inner">
+					<p class="flag">空間価値を高めるPRC構造レジデンス</p>
+					<p class="spot">京王線快速停車駅「八幡山」駅徒歩6分</p>
+
+					<ul class="icon">
+						<li><img src="imgs/parts_panel_01.gif" width="66" height="20" alt="NEW"/></li><!-- 
+						 --><li><img src="imgs/parts_panel_02.gif" width="66" height="20" alt="予告広告"/></li>
+						
+						
+						
+					</ul>
+				</div><!-- //.inner -->
+			</div><!-- //.linkBox -->
+
+			<ul class="btn">
+				<li class="data ">
+					<a href="contact/rq_hachimanyama.php" target="_blank">
+						<img src="imgs/btn_data_txt.png" width="69" height="20"  alt="資料請求" />
+					</a>
+				</li><!-- 
+				 --><li class="reservation ">
+				 	 <a href="contact/rs_hachimanyama.php" target="_blank">
+				 	 	<img src="imgs/btn_reservation_txt.png" width="68" height="20"  alt="来場予約"/>
+				 	 </a>
+				 </li>
+			</ul>
+
+			<p class="package">
+				
+				<a href="javascript:void(0);" onClick="checkboxClick(this)">
+				<input type="checkbox" name="LumpRoomID[]" value="35" style="display: none;">
+				<span class="off"></span><img src="imgs/package_txt.png" width="103" height="16"  alt="一括資料請求"/></a>
+				
+				
+			</p>
+			</div><!-- //.box -->
+		</section><!-- //.boxStage -->
+	
+
+	
+	
+	
+		
+		<section class="boxStage col1">
+			<div class="box">
+				<div class="linkBox" onClick="window.open('http://adenium.jp/ms/shinozaki/');" rel="sort=23区東部;眺望良好;陽当り良好;専用庭・テラス付き;ルーフバルコニー付き;窓付きキッチン;ウォークインクロゼット;ペット同居可;幼稚園・保育園が徒歩10分以内;小学校が徒歩10分以内;病院（小児科・内科・総合）まで徒歩15分以内;大型公園まで徒歩15分;最寄駅より徒歩10分以内;">
+
+				<h2>アデニウム篠崎</h2>
+				<p class="photo"><a ><img src="/panelimg/103_rp.jpg" width="220"  alt=""/></a></p>
+
+				<div class="inner">
+					<p class="flag">都営新宿線「篠崎」駅徒歩8分、静穏な住宅街に誕生。</p>
+					<p class="imark">安心の全戸完成後実物販売。 　3LDK/3500万円台～</p>
+
+					<ul class="icon">
+						
+						
+						<li><img src="imgs/parts_panel_03.gif" width="66" height="20" alt="分譲中"/></li>
+						
+					</ul>
+				</div><!-- //.inner -->
+			</div><!-- //.linkBox -->
+
+			<ul class="btn">
+				<li class="data ">
+					<a href="contact/rq_shinozaki.php" target="_blank">
+						<img src="imgs/btn_data_txt.png" width="69" height="20"  alt="資料請求" />
+					</a>
+				</li><!-- 
+				 --><li class="reservation ">
+				 	 <a href="contact/rs_shinozaki.php" target="_blank">
+				 	 	<img src="imgs/btn_reservation_txt.png" width="68" height="20"  alt="来場予約"/>
+				 	 </a>
+				 </li>
+			</ul>
+
+			<p class="package">
+				
+				<a href="javascript:void(0);" onClick="checkboxClick(this)">
+				<input type="checkbox" name="LumpRoomID[]" value="36" style="display: none;">
+				<span class="off"></span><img src="imgs/package_txt.png" width="103" height="16"  alt="一括資料請求"/></a>
+				
+				
+			</p>
+			</div><!-- //.box -->
+		</section><!-- //.boxStage -->
+	
+
+	
+	
+	
+		
+		<section class="boxStage col1">
+			<div class="box">
+				<div class="linkBox" onClick="window.open('http://adenium.jp/ms/the_oasisgarden/');" rel="sort=23区東部;眺望良好;陽当り良好;専用庭・テラス付き;ルーフバルコニー付き;ウォークインクロゼット;ペット同居可;幼稚園・保育園が徒歩10分以内;小学校が徒歩10分以内;病院（小児科・内科・総合）まで徒歩15分以内;大型ショッピングセンターまで徒歩１５分;">
+
+				<h2>アデニウム<br>ザ・オアシスガーデン  </h2>
+				<p class="photo"><a ><img src="/panelimg/102_rp.jpg" width="220"  alt=""/></a></p>
+
+				<div class="inner">
+					<p class="flag">全111邸。2LDK〜4LDKの豊富なプランバリエーション。</p>
+					<p class="spot">3LDK/2900万円台～（予定）。大手町へ直通25分でアクセス。</p>
+
+					<ul class="icon">
+						
+						<li><img src="imgs/parts_panel_02.gif" width="66" height="20" alt="予告広告"/></li>
+						
+						
+					</ul>
+				</div><!-- //.inner -->
+			</div><!-- //.linkBox -->
+
+			<ul class="btn">
+				<li class="data ">
+					<a href="contact/rq_the_oasisgarden.php" target="_blank">
+						<img src="imgs/btn_data_txt.png" width="69" height="20"  alt="資料請求" />
+					</a>
+				</li><!-- 
+				 --><li class="reservation ">
+				 	 <a href="contact/rs_the_oasisgarden.php" target="_blank">
+				 	 	<img src="imgs/btn_reservation_txt.png" width="68" height="20"  alt="来場予約"/>
+				 	 </a>
+				 </li>
+			</ul>
+
+			<p class="package">
+				
+				<a href="javascript:void(0);" onClick="checkboxClick(this)">
+				<input type="checkbox" name="LumpRoomID[]" value="37" style="display: none;">
+				<span class="off"></span><img src="imgs/package_txt.png" width="103" height="16"  alt="一括資料請求"/></a>
+				
+				
+			</p>
+			</div><!-- //.box -->
+		</section><!-- //.boxStage -->
+	
+
+	
+	
+	
+		
+		<section class="boxStage col1">
+			<div class="box">
+				<div class="linkBox" onClick="window.open('http://adenium.jp/ms/kawasaki/');" rel="sort=神奈川県;陽当り良好;ウォークインクロゼット;ペット同居可;セキュリティ充実;幼稚園・保育園が徒歩10分以内;小学校が徒歩10分以内;病院（小児科・内科・総合）まで徒歩15分以内;大型ショッピングセンターまで徒歩１５分;大型公園まで徒歩15分;">
+
+				<h2>アデニウム川崎</h2>
+				<p class="photo"><a ><img src="/panelimg/96_rp.jpg" width="220"  alt=""/></a></p>
+
+				<div class="inner">
+					<p class="flag">ラゾーナ川崎プラザへ徒歩10分。南河原公園へ徒歩2分。</p>
+					<p class="spot">全戸南東・南西向きの伸びやかな住まい</p>
+
+					<ul class="icon">
+						
+						
+						<li><img src="imgs/parts_panel_03.gif" width="66" height="20" alt="分譲中"/></li>
+						
+					</ul>
+				</div><!-- //.inner -->
+			</div><!-- //.linkBox -->
+
+			<ul class="btn">
+				<li class="data ">
+					<a href="contact/rq_kawasaki.php" target="_blank">
+						<img src="imgs/btn_data_txt.png" width="69" height="20"  alt="資料請求" />
+					</a>
+				</li><!-- 
+				 --><li class="reservation ">
+				 	 <a href="contact/rs_kawasaki.php" target="_blank">
+				 	 	<img src="imgs/btn_reservation_txt.png" width="68" height="20"  alt="来場予約"/>
+				 	 </a>
+				 </li>
+			</ul>
+
+			<p class="package">
+				
+				<a href="javascript:void(0);" onClick="checkboxClick(this)">
+				<input type="checkbox" name="LumpRoomID[]" value="38" style="display: none;">
+				<span class="off"></span><img src="imgs/package_txt.png" width="103" height="16"  alt="一括資料請求"/></a>
+				
+				
+			</p>
+			</div><!-- //.box -->
+		</section><!-- //.boxStage -->
+	
+
+	
+	
+		<section class="boxStage col2 searchHide">
+			<div class="box">
+				<a href="/feature/kansei.html" target="_self"><img src="/panelimg/205_pp.jpg" width="460" height="458"  alt="Panel" /></a>
+			</div><!-- //.box -->
+		</section><!-- //.boxStage -->
+	
+	
+
+	
+	
+	
+		
+		<section class="boxStage col1">
+			<div class="box">
+				<div class="linkBox" onClick="window.open('http://adenium.jp/ms/takasago/');" rel="sort=23区東部;眺望良好;陽当り良好;専用庭・テラス付き;ルーフバルコニー付き;ワイドスパン8メートル以上;ウォークインクロゼット;シューズインクロゼット;ペット同居可;セキュリティ充実;幼稚園・保育園が徒歩10分以内;小学校が徒歩10分以内;病院（小児科・内科・総合）まで徒歩15分以内;大型公園まで徒歩15分;最寄駅より徒歩10分以内;">
+
+				<h2>アデニウム高砂</h2>
+				<p class="photo"><a ><img src="/panelimg/95_rp.jpg" width="220"  alt=""/></a></p>
+
+				<div class="inner">
+					<p class="flag">完売御礼！！おかげさまで完売いたしました</p>
+					<p class="spot">キャンセル待ち受付中</p>
+
+					<ul class="icon">
+						
+						
+						
+						<li><img src="imgs/parts_panel_04.gif" width="66" height="20" alt="完売御礼"/></li>
+					</ul>
+				</div><!-- //.inner -->
+			</div><!-- //.linkBox -->
+
+			<ul class="btn">
+				<li class="data ">
+					<a href="contact/rq_takasago.php" target="_blank">
+						<img src="imgs/btn_data_txt.png" width="69" height="20"  alt="資料請求" />
+					</a>
+				</li><!-- 
+				 --><li class="reservation ">
+				 	 <a href="contact/rs_takasago.php" target="_blank">
+				 	 	<img src="imgs/btn_reservation_txt.png" width="68" height="20"  alt="来場予約"/>
+				 	 </a>
+				 </li>
+			</ul>
+
+			<p class="package">
+				
+				<a href="javascript:void(0);" onClick="checkboxClick(this)">
+				<input type="checkbox" name="LumpRoomID[]" value="41" style="display: none;">
+				<span class="off"></span><img src="imgs/package_txt.png" width="103" height="16"  alt="一括資料請求"/></a>
+				
+				
+			</p>
+			</div><!-- //.box -->
+		</section><!-- //.boxStage -->
+	
+
+	
+	
+	
+		
+		<section class="boxStage col1">
+			<div class="box">
+				<div class="linkBox" onClick="window.open('http://adenium.jp/ms/shimura-bf/');" rel="sort=23区北部;ルーフバルコニー付き;窓付きキッチン;バルコニー側にキッチン隣接;ウォークインクロゼット;シューズインクロゼット;ペット同居可;セキュリティ充実;幼稚園・保育園が徒歩10分以内;小学校が徒歩10分以内;病院（小児科・内科・総合）まで徒歩15分以内;大型ショッピングセンターまで徒歩１５分;大型公園まで徒歩15分;最寄駅より徒歩5分以内;">
+
+				<h2>アデニウム志村<br>ブルームフォート</h2>
+				<p class="photo"><a ><img src="/panelimg/100_rp.jpg" width="220"  alt=""/></a></p>
+
+				<div class="inner">
+					<p class="flag">完売御礼</p>
+					<p class="spot">おかげさまで全38邸完売いたしました。</p>
+
+					<ul class="icon">
+						
+						
+						
+						<li><img src="imgs/parts_panel_04.gif" width="66" height="20" alt="完売御礼"/></li>
+					</ul>
+				</div><!-- //.inner -->
+			</div><!-- //.linkBox -->
+
+			<ul class="btn">
+				<li class="data rquestOff">
+					<a >
+						<img src="imgs/btn_data_txt.png" width="69" height="20"  alt="資料請求" />
+					</a>
+				</li><!-- 
+				 --><li class="reservation reservationOff">
+				 	 <a >
+				 	 	<img src="imgs/btn_reservation_txt.png" width="68" height="20"  alt="来場予約"/>
+				 	 </a>
+				 </li>
+			</ul>
+
+			<p class="package">
+				
+				
+				<img src="imgs/request_off.gif" width="103" height="16"  alt=""/>
+				
+			</p>
+			</div><!-- //.box -->
+		</section><!-- //.boxStage -->
+	
+
+	
+		<section class="boxStage imgBnrBox col1 searchHide">
+			<img src="/panelimg/224_pp.jpg" width="220" height="458"  alt="Panel" />
+		</section><!-- //.boxStage -->
+	
+	
+	
+
+	
+		<section class="boxStage imgBnrBox col1 searchHide">
+			<img src="/panelimg/208_pp.jpg" width="220" height="458"  alt="Panel" />
+		</section><!-- //.boxStage -->
+	
+	
+	
+
+	
+	
+		<section class="boxStage col2 searchHide">
+			<div class="box">
+				<a href="/premiumclub/" target="_blank"><img src="/panelimg/176_pp.jpg" width="460" height="458"  alt="Panel" /></a>
+			</div><!-- //.box -->
+		</section><!-- //.boxStage -->
+	
+	
+
+	
+	
+		<section class="boxStage col2 searchHide">
+			<div class="box">
+				<a href="/feature/joto.html" target="_self"><img src="/panelimg/166_pp.jpg" width="460" height="458"  alt="Panel" /></a>
+			</div><!-- //.box -->
+		</section><!-- //.boxStage -->
+	
+	
+
+	
+	
+		<section class="boxStage col2 searchHide">
+			<div class="box">
+				<a href="/feature/library.html" target="_self"><img src="/panelimg/161_pp.jpg" width="460" height="458"  alt="Panel" /></a>
+			</div><!-- //.box -->
+		</section><!-- //.boxStage -->
+	
+	
+
+
+</section><!-- //#contentsArea -->
+</div><!-- //#contentsAreaBox -->
+
+<p class="packageBtn">
+	<a href="javascript:void(0);" onClick="GoLump();" id="LumpLink" >
+		<img id="LumpBtn" src="imgs/btn_package_off.gif" width="460" height="45" class="ahover"  alt="一括資料請求する" title="資料請求の対象が選択されていません。" />
+	</a>
+</p>
+</form>
+</div><!-- //#mainStage -->
+
+
+<!-- 両サイドメニュー -->
+<div id="newsList">
+<!-- 左ここから -->
+<div id="newsStage">
+
+	<!-- ニュースここから -->
+	<div class="stageInner">
+		<h2><img src="imgs/ttl_news.gif" width="80" height="25"  alt="ニュース"/></h2>
+
+		<ul>
+
+			<li class="newsItem">
+				<ul>
+					<li class="date">
+						<span>2016.01.06</span>
+						<a href="http://adenium.jp/premiumclub/campaign/2015winter/">
+						【新着情報】2016年1月9日（土）より、「新春Wキャンペーン」を開催いたします。 是非この機会に、アデニウムシリーズをご体感ください。 
+						</a>
+					</li>
+					<li class="txt"> 
+						<a href="http://adenium.jp/premiumclub/campaign/2015winter/">
+						
+						</a>
+					</li>
+				</ul>
+			</li>
+
+			<li class="newsItem">
+				<ul>
+					<li class="date">
+						<span>2016.01.04</span>
+						<a href="http://adenium.jp/ms/takasago/">
+						【速報】
+						</a>
+					</li>
+					<li class="txt"> 
+						<a href="http://adenium.jp/ms/takasago/">
+						おかげさまで、アデニウム高砂は、＜全45邸＞完売いたしました。
+						</a>
+					</li>
+				</ul>
+			</li>
+
+			<li class="newsItem">
+				<ul>
+					<li class="date">
+						<span>2015.12.18</span>
+						<a href="http://adenium.jp/ms/hachimanyama/index.html">
+						【新着情報】
+						</a>
+					</li>
+					<li class="txt"> 
+						<a href="http://adenium.jp/ms/hachimanyama/index.html">
+						コディア八幡山　公式ＨＰのコンテンツを追加いたしました。
+ 〈コンセプトムービー、設計担当者の想い〉 
+						</a>
+					</li>
+				</ul>
+			</li>
+
+			<li class="newsItem">
+				<ul>
+					<li class="date">
+						<span>2015.11.30</span>
+						<a href="http://adenium.jp/ms/shimura-bf/index.html">
+						【速報】
+						</a>
+					</li>
+					<li class="txt"> 
+						<a href="http://adenium.jp/ms/shimura-bf/index.html">
+						おかげさまで、アデニウム志村ブルームフォートは、＜全38邸＞完売いたしました。
+						</a>
+					</li>
+				</ul>
+			</li>
+
+			<li class="newsItem">
+				<ul>
+					<li class="date">
+						<span>2015.11.19</span>
+						<a href="http://www.joint-group.co.jp/wp/wp-content/uploads/2015/11/cf0ec9985a3358f58b85a3ef11b36b30.pdf">
+						【新着情報】当社が開発した分譲マンションプロジェクトが、2015年度グッドデザイン賞を受賞しました。
+
+						</a>
+					</li>
+					<li class="txt"> 
+						<a href="http://www.joint-group.co.jp/wp/wp-content/uploads/2015/11/cf0ec9985a3358f58b85a3ef11b36b30.pdf">
+						
+						</a>
+					</li>
+				</ul>
+			</li>
+
+		</ul>
+
+	<p class="listLink"><a href="news/">一覧を見る</a></p>
+<!-- ニュースここまで -->
+<!-- ▼ ▼ ▼ ▼ ▼ 特集エリア ▼ ▼ ▼ ▼ ▼ -->
+<section class="special">
+<ul><!--
+--><li><a href="/feature/kansei.html"><img src="imgs/btn_special_10.jpg"  alt="オススメ完成物件特集"/></a></li><li><a href="/feature/sunshine.html"><img src="imgs/btn_special_02.jpg"  alt="陽当たりを楽しむ住まいの特集"/></a></li><!--
+--><li><a href="/feature/view.html"><img src="imgs/btn_special_03.jpg"  alt="眺望を楽しむ住まいの特集"/></a></li><!--
+-->
+<!--<li><a href="/feature/5min.html"><img src="imgs/btn_special_01.jpg"  alt="駅から徒歩5分以内の住まいの特集"/></a></li><li><a href="/feature/terrace.html"><img src="imgs/btn_special_04.jpg"  alt="専用庭・テラスを楽しむ住まいの特集"/></a></li> --><!--
+--><li><a href="/feature/station.html"><img src="imgs/btn_special_05.jpg"  alt="駅近マンション特集"/></a></li><!--
+--><li><a href="/feature/joto.html"><img src="imgs/btn_special_06.jpg"  alt="城東エリアおすすめマンション特集"/></a></li><!--
+--><li><a href="/feature/library.html"><img src="imgs/btn_special_07.jpg"  alt="アデニウム住まい情報ライブラリー"/></a></li>
+</ul>
+</section>
+<!-- ▲ ▲ ▲ ▲ ▲ 特集エリア ▲ ▲ ▲ ▲ ▲ -->
+</div><!-- //.stageInner -->
+</div><!-- //#newsStage -->
+<!-- 左ここまで -->
+
+<!-- 右ここから -->
+<div id="itemListStage">
+
+	<!-- 新着物件ここから -->
+	<h2><img src="imgs/ttl_new.gif" width="220" height="50"  alt="新着物件"/></h2>
+	<div class="listBox">
+		<ul>
+
+			<li class="listItem" onClick="location.href='/ms/hachimanyama/index.html'">
+				<ul>
+					<li class="photo"><img src="/panelimg/104_rp.jpg" width="80" height="60"  alt=""/></li>
+					<li class="txt">
+					<img src="imgs/icon_new_r.gif" width="50" height="15"  alt="NEW"/><br>
+					コディア八幡山</li>
+				</ul>
+			</li>
+
+		</ul>
+	</div><!-- //.listBox -->
+	<!-- 新着物件ここまで -->
+	
+	<!-- 閲覧ランキングここから -->
+	<h2><img src="imgs/ttl_ranking.gif" width="220" height="50"  alt="閲覧ランキング"/></h2>
+	<div class="listBox">
+		<ul>
+
+			<li class="listItem" onClick="location.href='/ms/hachimanyama/index.html'">
+			<ul>
+				<li class="photo"><img src="/panelimg/104_rp.jpg" width="80" height="60"  alt=""/></li>
+				<li class="txt"><img src="imgs/icon_1st.gif" width="47" height="15"  alt="NEW"/><br>
+				コディア八幡山</li>
+			</ul>
+			</li>
+
+			<li class="listItem" onClick="location.href='/ms/kawasaki/index.html'">
+			<ul>
+				<li class="photo"><img src="/panelimg/96_rp.jpg" width="80" height="60"  alt=""/></li>
+				<li class="txt"><img src="imgs/icon_2st.gif" width="47" height="15"  alt="NEW"/><br>
+				アデニウム川崎</li>
+			</ul>
+			</li>
+
+			<li class="listItem" onClick="location.href='/ms/the_oasisgarden/index.html'">
+			<ul>
+				<li class="photo"><img src="/panelimg/102_rp.jpg" width="80" height="60"  alt=""/></li>
+				<li class="txt"><img src="imgs/icon_3st.gif" width="47" height="15"  alt="NEW"/><br>
+				アデニウム<br>ザ・オアシスガーデン  </li>
+			</ul>
+			</li>
+
+			<li class="listItem" onClick="location.href='/ms/shinozaki/index.html'">
+			<ul>
+				<li class="photo"><img src="/panelimg/103_rp.jpg" width="80" height="60"  alt=""/></li>
+				<li class="txt"><img src="imgs/icon_4st.gif" width="47" height="15"  alt="NEW"/><br>
+				アデニウム篠崎</li>
+			</ul>
+			</li>
+
+		</ul>
+	</div><!-- //.listBox --
+	<!-- 閲覧ランキングここまで -->
+	<!-- 閲覧履歴ここから -->
+
+	<!-- 閲覧履歴ここから -->
+</div><!-- //#itemListStage -->
+</div><!-- //#newsList -->
+</div><!-- //#stage -->
+</div><!-- //#wrapperInner -->
+</div><!-- //#wrapper -->
+<!-- ▼ ▼ ▼ ▼ ▼ フッターエリア ▼ ▼ ▼ ▼ ▼ -->
+<footer id="footer">
+<div id="footerInner">
+<h2><a href="http://www.joint-group.co.jp/" target="_blank"><img src="common/imgs/logo_footer.gif" width="188" height="46"  alt="株式会社ジョイント・コーポレーション"/></a></h2>
+<div class="linkBox">
+<ul>
+<li><a href="http://daikoku.ebis.ne.jp/tr_set.php?argument=dK2pVzLk&ai=a52fdd6df0bc51" target="_blank">コーポレートサイト</a></li><!--
+--><li><a href="misc/privacy.html">個人情報の取扱いについて</a></li><!--
+--><li><a href="misc/privacypolicy.html">プライバシーポリシー</a></li><!--
+--><li><a href="misc/help.html">ヘルプ</a></li><!--
+--><li><a href="contact/inquiry.html">お問い合わせ</a></li><!--
+--><li><a href="misc/sitemap.html">サイトマップ</a>
+</ul>
+<p class="copyright">COPYRIGHT（C）JOINT CORPORATION All Rights Reserved.</p>
+</div>
+</div>
+</footer>
+<!-- ▲ ▲ ▲ ▲ ▲ フッターエリア ▲ ▲ ▲ ▲ ▲ -->
+<p id="pageTopBtn">
+<a href="#pageTop"><img src="common/imgs/btn_pagetop.png"  alt=""/></a>
+</p>
+<div style="height: 0px; overflow:hidden;">
+<span id="sizeCheckerSS">&nbsp;</span>
+<span id="sizeCheckerS">&nbsp;</span>
+<span id="sizeCheckerM">&nbsp;</span>
+<span id="sizeCheckerL">&nbsp;</span>
+</div>
+<div id="logtag">
+<!-- GA Start -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-45694088-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<!-- GA End -->
+<!-- User Insight PCDF Code Start : adenium.jp -->
+<script type="text/javascript">
+<!--
+var _uic = _uic ||{}; var _uih = _uih ||{};_uih['id'] = 50158;
+_uih['lg_id'] = '';
+_uih['fb_id'] = '';
+_uih['tw_id'] = '';
+_uih['uigr_1'] = ''; _uih['uigr_2'] = ''; _uih['uigr_3'] = ''; _uih['uigr_4'] = ''; _uih['uigr_5'] = '';
+_uih['uigr_6'] = ''; _uih['uigr_7'] = ''; _uih['uigr_8'] = ''; _uih['uigr_9'] = ''; _uih['uigr_10'] = '';
+/* DO NOT ALTER BELOW THIS LINE */
+/* WITH FIRST PARTY COOKIE */
+(function() {
+var bi = document.createElement('scri'+'pt');bi.type = 'text/javascript'; bi.async = true;
+bi.src = ('https:' == document.location.protocol ? 'https://bs' : 'http://c') + '.nakanohito.jp/b3/bi.js';
+var s = document.getElementsByTagName('scri'+'pt')[0];s.parentNode.insertBefore(bi, s);
+})();
+//-->
+</script>
+<!-- User Insight PCDF Code End : adenium.jp -->
+<!-- EBiS common tag version2.00 start -->
+<script type="text/javascript">
+<!--
+(function() {
+    var host = (location.protocol == 'http:')
+             ? 'http://daikoku.ebis.ne.jp'
+             : 'https://secure2.ebis.ne.jp';
+    var argument = 'dK2pVzLk';
+    var url      = host + '/ct_tag.php?argument=' + argument;
+    document.write('<scr' + 'ipt type="text/javascript" src="' + url + '"></scr' + 'ipt>');
+})();
+//-->
+</script>
+<!-- EBiS common tag end -->
+</div><!-- / #logtag -->
+</body>
+</html>

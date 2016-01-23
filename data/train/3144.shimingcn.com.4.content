@@ -1,0 +1,1295 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>模拟高尔夫|室内模拟高尔夫|高尔夫模拟器|室内高尔夫|环屏模拟高尔夫厂家—施明实业（上海，北京，深圳，广州，苏州）有限公司</title>
+    <meta name="keywords" content="模拟高尔夫|室内高尔夫|高尔夫模拟器|室内模拟高尔夫" />
+    <meta name="description" content="施明实业（上海，北京，深圳，广州，苏州）有限公司专注于新技术开发、产品设计、生产与推广的高新技术企业。公司专门从事模拟高尔夫,室内模拟高尔夫,室内高尔夫,高尔夫模拟器,环屏模拟高尔夫，模拟射击、模拟保龄球、模拟飞行等康体娱乐设备的生产、销售和研发。主要技术人员获得清华大学、哈尔滨工业大学等相关专业的硕士或博士学位，形成一支具有较强研发能力的科研团队。">
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        ul
+        {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        #canvas
+        {
+            width: 500px;
+            height: 380px;
+            position: relative;
+        }
+        #canvas .buttons
+        {
+            width: 150px;
+            height: 20px;
+            overflow: hidden;
+            zoom: 1;
+            position: absolute;
+            bottom: 3px;
+            right: -10px;
+            z-index: 1;
+        }
+        #canvas .button
+        {
+            float: left;
+            margin-left: 5px;
+            width: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            background-color: Black;
+            border: solid 1px white;
+            color: White;
+            text-align: center;
+        }
+        #canvas .button.active
+        {
+            background-color: Red;
+        }
+        #canvas .button.hover
+        {
+            background-color: Red;
+        }
+        #canvas .panel
+        {
+            width: 500px;
+            height: 358px;
+            position: absolute;
+            z-index: 0;
+        }
+.STYLE12 {
+	font-size: 24px;
+	color: #FF0000;
+	font-weight: bold;
+}
+	.STYLE15 {font-size:14px}
+	       a:link{
+	color:#666666;
+		   }
+		   a:active{
+		   color:#FFFFFF
+		   }
+		   a:hover{
+		   color:#FF0000
+		   }
+    .STYLE20 {
+	font-size: 18px;
+	color: #FF0000;
+}
+
+    </style>
+
+    <script src="js/jquery-1.7.js" type="text/javascript"></script>
+
+    <script src="js/jquery-ui-1.8.16.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+         $(function(){
+            var arry=[
+                {src:"fl_img01.jpg",alt:"一"},
+                {src:"fl_img02.jpg",alt:"二"},
+                {src:"fl_img03.jpg",alt:"三"},
+                {src:"fl_img04.jpg",alt:"四"},
+                {src:"fl_img05.jpg",alt:"四"}
+            ];
+            var canvas=$("#canvas");
+            var buttons=$("<ul />").appendTo(canvas).addClass("buttons");
+            var pictures=[];
+            var timer=-1;
+           
+            for(i=0;i<arry.length;i++){
+                pictures.push($("<img />").attr("src","images/"+arry[i].src).attr("alt",arry[i].alt).addClass("panel"));
+                var button=$("<li />").appendTo(buttons).addClass("button").text(i+1).click(i,function(event){
+                    var i=event.data;
+                   
+                    changePicture(canvas.data("curIndex"),i);
+                });
+                button.mouseover(i,function(event){
+                    var i=event.data;
+                    if(!$(this).hasClass("active")){
+                    $(this).addClass("hover");
+                    }
+                
+                });
+                button.mouseout(i,function(event){
+                    var i=event.data;
+                    
+                    $(this).removeClass("hover");
+                    
+                
+                });
+                  
+                    
+            }
+            canvas.hover(function(){
+                stop();
+                },function(){
+                    run();
+                }
+            );
+            changePicture(-1,0);
+            run();
+            
+                function run(){
+                    timer= setInterval(function(){
+                    var i=canvas.data("curIndex");
+                    var j=(i+1)%arry.length;
+                    changePicture(i,j);
+                },3000);
+            }
+            
+            function stop(){
+                if(timer!=-1)clearInterval(timer);
+            }
+            
+            function changePicture(i,j){
+                if(i==j)return;
+                canvas.data("curIndex",j);
+                canvas.children(".buttons").children().eq(j).addClass("active").removeClass("hover");
+                canvas.children(".panel").remove();
+                if(i==-1){
+                    pictures[j].appendTo(canvas);
+                }
+                else{
+                    canvas.children(".buttons").children().eq(i).removeClass("active");
+                    pictures[i].css({opacity:1}).appendTo(canvas);
+                    pictures[j].css({opacity:0}).appendTo(canvas);
+                    pictures[i].stop(true).animate({opacity:0},2000);
+                    pictures[j].animate({opacity:1},1000);
+                }
+            
+            }
+            
+            
+        });
+    
+    </script>
+
+    
+
+     
+    <script src="Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="topbj">
+        <div class="top">
+            <ul>
+                <li><a href="index_en.html">English</a></li>
+                <li><a href="index_tw.html">繁體中文</a></li>
+                <li><a href="index_jp.html">日本語</a></li>
+                <li><a href="index_fr.html">Français</a></li>
+                <li><a href="index_de.html">Deutsch</a></li>
+                <li><a href="index_es.html">Español</a></li>
+                <li><a href="index_it.html">Italiano</a></li>
+                <li><a href="index_np.html">Nederlands</a></li>
+                <li><a href="index_se.html">Svenska</a></li>
+                <li><a href="index_pt.html">Português</a></li>
+                <li><a href="index_ab.html">العربية</a></li>
+                <li>
+                    <div width="162" align="right">
+                        <form name="form1" method="post" action="">
+                        <select name="menu1" style="width: 150px;" onchange="MM_jumpMenu('parent',this,0)">
+                            <option selected="selected">Select Language</option>
+                            <option value="index_ru.html">русский </option>
+                            <option value="index_ua.html">Український</option>
+                            <option value="index_th.html">ภาษาไทย </option>
+                            <option value="index_tr.html">Türk </option>
+                            <option value="index_id.html">Bahasa Indonesia </option>
+                            <option value="index_vn.html">Việt </option>
+                            <option value="index_la.html">Latin </option>
+                            <option value="index_in.html">Hindi </option>
+                            <option value="index_ir.html">فارسی </option>
+                            <option value="index_no.html">Norske </option>
+                            <option value="index_pl.html">Polski </option>
+                            <option value="index_dk.html">Dansk </option>
+                            <option value="index_fi.html">Suomi </option>
+                            <option value="index_cz.html">český </option>
+                            <option value="index_my.html">Bahasa Melayu </option>
+                            <option value="index_il.html">עברית </option>
+                            <option value="index_gr.html">ελληνικά </option>
+                            <option value="index_hu.html">Magyar </option>
+                        </select>
+                        </form>
+                    </div>
+                </li>
+                <li width="68" align="right"><a href="sitemap.html">
+                    <img src="images/zd.jpg" width="13" height="12" alt="室内高尔夫" />网站地图</a> </li>
+            </ul>
+        </div>
+    </div>
+    <div class="flbj" align="center">
+        <table width="1000" border="0" align="center" cellpadding="0" cellspacing="0">
+            <tr>
+                <td width="227" valign="top" class="leftbj">
+                    <div class="leftbj1" align="left">
+                        <div class="logo1">
+                            <img src="images/logo.png" alt="模拟高尔夫" /></div>
+                        <div class="leftmenu" align="left">
+                            <ul>
+                                <li><a href="./">首页</a></li>
+                                <li><a href="cn_001about.html">关于我们</a></li>
+                                <li><a href="cn_100product.html">产品展示</a></li>
+                                <li><a href="cn_200case.html">案例展示</a></li>  
+                                <li><a href="cn_501golfpeizhiqingdan.html">配置清单</a></li>
+                                <li><a href="cn_501golfpeizhiqingdan.html">新闻中心</a></li>
+                                <li><a href="cn_002agency.html">诚招代理</a></li>
+                                <li><a href="cn_004contact.html">联系我们</a></li>
+                            </ul>
+                        </div>
+                        <div class="ltt12">
+                            <ul>
+                                <p>
+                                    模拟高尔夫</p>
+                                <li><a href="cn_130bravo_golf.html">Bravo模拟高尔夫 </a></li>
+                                <li><a href="cn_102_365golf.html">OKON (别名Over Swing) </a></li>
+                                <li><a href="cn_103fieldzon_golf.html">BoGolf 模拟高尔夫 </a></li>
+                                <li><a href="cn_101golfzon.html">Paron (别名Victor Golf)</a></li>
+                                <li><a href="cn_109aboutgolf.html">Fieldzon 高尔夫 </a></li>
+                                <li><a href="cn_118gc2_golf.html">365 Golf</a></li>
+                                <li><a href="cn_119victor_golf.html">DNX 最新三屏高尔夫</a></li>
+                                <li><a href="cn_120screenzon_golf.html">Golfzon 模拟高尔夫</a></li>
+                                <li></li>
+                                <li><a href="cn_122_3trak_golf.html">3-Trak模拟高尔夫</a></li>
+                                <li><a href="cn_123youxiang_golf.html">GC2-K (GC2) 高尔夫</a></li>
+                                 
+                                <li><a href="cn_108ring_screen_golf.html">环屏模拟高尔夫</a></li>
+                                <li><a href="cn_109single_screen_golf.html">单屏 (双直屏)</a>高尔夫</li>
+                                <li><a href="cn_110three_scree_golf.html">三屏模拟高尔夫</a></li>
+
+                                
+                                
+                            </ul>
+              </div>
+                        <div class="ltt12">
+                            <ul>
+                                <p>
+                                    <a href="#">模拟高尔夫辅助设备</a></p>
+                                <li><a href="cn_401hotel_golf.html">全自动回球机 </a></li>
+                                <li><a href="cn_402club_golf.html">半自动发球机 </a></li>
+                                <li><a href="cn_403_4sshop_golf.html"> </a></li>
+                                 <li><a href="cn_408golf_range.html">挥杆分析仪 </a></li>
+                                <li><a href="cn_404villa_golf.html">V1 PRO 挥杆分析软件 </a></li>
+                                <li><a href="cn_409bank_golf.html">打击打消声幕布</a></li>
+                                <li><a href="cn_407fitness_center_golf.html">模拟高尔夫专用机柜 </a></li>
+                                <li><a href="cn_407fitness_center_golf.html">模拟高尔夫超长打击垫</a></li>
+                                <li><a href="cn_106dynamic_platform.html">模拟高尔夫动感平台</a></li>
+                                <li><a href="cn_106dynamic_platform.html">推杆真实进洞练习器</a></li>
+                               
+                              
+                            </ul>
+</div>
+                         <div class="ltt12">
+                            <ul>
+                                <p>
+                                    <a href="cn_107golf_accessories.html">球场练习场设备</a></p>
+<li><a href="cn_104golf_green.html">高尔夫练习笼</a></li>
+                                <li></li>
+                                <li><a href="cn_106dynamic_platform.html">高尔夫滚草机</a></li>
+                                <li><a href="cn_130huiqiu_golf.html">摆动式转腰练习器 </a></li>
+                                <li><a href="cn_130huiqiu_golf.html">挥杆动作练习器</a></li>
+                                <li><a href="cn_130huiqiu_golf.html">加力动作练习器</a></li>
+                                <li><a href="cn_130huiqiu_golf.html">生物能力练习仪</a></li>
+                                <li> </li>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                        </div>
+                        <div class="ltt12">
+                            <ul>
+                                <p>
+                                    <a href="#">影院放映系列</a></p>
+                                <li></li>
+                                <li></li>
+                                <li><a href="cn_1215D_theatre.html">7D影院</a></li>
+                                <li><a href="cn_1224D_theatre.html">5D影院 </a></li>
+                                <li><a href="cn_1215D_theatre.html">4D影院</a></li>
+                            </ul>
+                        </div>
+                        <div class="ltt12">
+                            <ul>
+                                <p>
+                                    <a href="#">模拟产品系列</a></p>
+                                <li><a href="cn_161simulated_bowling.htm"></a></li>
+                                <li><a href="cn_166simulated_gummery.html">模拟射击</a></li>
+                                <li></li>
+                                <li><a href="cn_165simulated_archery.html">模拟射箭</a></li>
+                                <li><a href="cn_162simulated_flight.html">模拟飞行 </a></li>
+                                <li><a href="cn_163simulated_bazooka.html">模拟火箭筒</a></li>
+                                <li><a href="cn_164simulated_driving.html">模拟驾驶</a></li>
+                                <li><a href="cn_165simulated_archery.html"></a></li>
+                                <li><a href="cn_166simulated_gummery.html"></a></li>
+                                <li><a href="cn_161simulated_bowling.htm">模拟保龄球</a></li>
+                                <li><a href="cn_167simulated_motorboat.html">模拟摩托艇</a></li>
+                                <li><a href="cn_168simulated_F1_racing.html">模拟F1赛车</a></li>
+                            </ul>
+          </div>
+                        <div class="ltt12">
+                            <ul>
+                                <p>
+                                    <a href="#">康体产品系列</a></p>
+                                <li><a href="cn_181dart_machine.html">飞镖机</a></li>
+                                <li><a href="cn_182game_machine.html">游戏机 </a></li>
+                                <li><a href="cn_183shuffle_board.htm">沙弧球</a></li>
+                                <li><a href="cn_184table_airhockey.html">气悬球</a></li>
+                                <li><a href="cn_185finger_ball.htm">指弹球</a></li>
+                                <li><a href="cn_186table_football.htm">桌上球</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+                <td width="773" valign="top" class="bj111" align="left">
+                    <table width="749" height="361" border="0" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td height="308" valign="top">
+                                <script type="text/javascript">
+AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0','width','746','height','297','src','fl','quality','high','wmode','transparent','pluginspage','http://www.macromedia.com/go/getflashplayer','movie','fl' ); //end AC code
+</script><noscript><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0"
+                                    width="746" height="297">
+                                    <param name="movie" value="fl.swf" />
+                                    <param name="quality" value="high" />
+                                    <param name="wmode" value="transparent" />
+                                    <embed src="fl.swf" quality="high" wmode="transparent" pluginspage="http://www.macromedia.com/go/getflashplayer"
+                                        type="application/x-shockwave-flash" width="746" height="297"></embed>
+                                </object></noscript>                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="top">
+                                <table width="743" border="0" cellspacing="0" cellpadding="0" align="left">
+                                    <tr>
+                                        <td class="inab">
+                                            <table width="732" border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td width="680">
+                                                        <div class="inzt">
+                                                            关于我们</div>                                                    </td>
+                                                    <td width="52">
+                                                        <a href="#">更多&gt;&gt;</a>                                                    </td>
+                                                </tr>
+                                            </table>                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="inzt1">
+                                            <table width="743" border="0" cellspacing="0" cellpadding="0">
+                                                <tr align="left">
+                                                    <td class="texttt" style="width: 225px;">
+                                                        <span style="font-size: 14px; font-weight: bold;">施明实业有限公司 </span>专注于室内模拟高尔夫、室内高尔夫的技术开发、产品设计，并生产和销售高尔夫模拟器的各种设备。公司创立于1999年初，设于北京市中关村高新技术核心区。公司员工人数30余人，其中研发人员占40%以上，公司核心技术人员多为计算机三维图形领域专家，从业经验超过20年。主要技术人员获得清华大学、哈尔滨工业大学等相关专业的硕士或博士学位，形成一支具有较强研发能力的科研团队。
+                                                        <p><span style="font-weight: bold;">上海 </span>021--64426445 </p>
+                                                        <p><span style="font-weight: bold;">北京 </span>010--82561122</p>
+                                          <p>
+                                                            <span style="font-weight: bold;">广州 </span>020--37615090</p>
+                                                        <p>
+                                                            <span style="font-weight: bold;">深圳 </span>0755--83980173</p>
+                                                        <p>
+                            全国免费电话：400-7288-004 <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=296399592&amp;site=qq&amp;menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:296399592:41" alt="施明实业为您服务" title="施明实业为您服务"></a>     <!-- Baidu Button BEGIN --></p>
+                                                      <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare" align="right" style="width: 200px;">
+                                                                <a class="bds_tsina"></a><a class="bds_tqq"></a><a class="bds_qzone"></a><a class="bds_renren">
+                                                          </a><span class="bds_more">更多</span> <a class="shareCount"></a>                                                      </div>
+                                                            <!-- Baidu Button END -->
+                                                        </p>                                                    </td>
+                                              <td style="width: 500px; height: 358px;" align="left">
+                                                        <div id="canvas">
+                                                            <div style="height: 22px; margin-left: 5px; background-image: url(images/fl_img00.jpg);
+                                                                background-repeat: no-repeat; background-position: left center; padding-left: 16px;
+                                                                font-size: 14px; font-weight: bold; color: #1A8603; line-height: 22px;">                                                            </div>
+                                                        </div>                                                  </td>
+                                                </tr>
+                                            </table>                                        </td>
+                                    </tr>
+                                </table>
+                                <table width="743" border="0" cellspacing="0" cellpadding="0">
+                                            </table>                                      </td>
+                                    </tr>
+                                    <tr>
+                                                    <td height="50">
+                                                        <table border="0" cellspacing="1" cellpadding="10" width="100%" height="580">
+<tbody>
+<tr>
+<td bgcolor="#2c8910" valign="middle"  align="center" width="80"><font style="FONT-FAMILY: 黑体; COLOR: #ffffff; FONT-SIZE: 16px">品牌 </font></td>
+<td bgcolor="#2c8910" valign="middle"  align="center" width="70"><font style="FONT-FAMILY: 黑体; COLOR: #ffffff; FONT-SIZE: 16px">核心组件<br />价位</font></td>
+<td bgcolor="#2c8910" valign="middle"  align="center" width="70"><font style="FONT-FAMILY: 黑体; COLOR: #ffffff; FONT-SIZE: 16px">整套设备<br />价位 </font></td>
+<td bgcolor="#2c8910" valign="middle"  align="center" width="100"><font style="FONT-FAMILY: 黑体; COLOR: #ffffff; FONT-SIZE: 16px">适用<br />场所 </font></td>
+<td bgcolor="#2c8910" valign="middle"  align="center" width="40"><font style="FONT-FAMILY: 黑体; COLOR: #ffffff; FONT-SIZE: 16px">球场<br />数量 </font></td>
+<td bgcolor="#2c8910" valign="middle"  align="center"><font style="FONT-FAMILY: 黑体; COLOR: #ffffff; FONT-SIZE: 16px">球场软件<br />特点 </font></td>
+<td bgcolor="#2c8910" valign="middle"  align="center"><font style="FONT-FAMILY: 黑体; COLOR: #ffffff; FONT-SIZE: 16px">产品<br />特性 </font></td>
+<td bgcolor="#2c8910" valign="middle"  align="center" width="50"><font style="FONT-FAMILY: 黑体; COLOR: #ffffff; FONT-SIZE: 16px">左右手<br />击球 </font></td></tr>
+<tr>
+<td bgcolor="#d6e9d4" valign="middle" align="center">
+<p align="center"><strong><font style="FONT-FAMILY: 黑体; COLOR: #2c8c11; FONT-SIZE: 15px">365<br />Golf</font></strong></p></td>
+<td bgcolor="#e5f3e5" valign="middle" align="center">
+<p align="center">3.2万 </p></td>
+<td bgcolor="#e5f3e5" valign="middle" align="center">
+<p align="center">12-15 万 </p></td>
+<td rowspan="3" align="center" valign="middle" bgcolor="#e5f3e5"  style="">
+<p align="center" style="margin: 10px 10px 10px 10px;" >适合俱乐部、豪华会所、高级酒店、高尔夫练习场、培训场、健身馆、私人别墅、4S 店、酒吧、KTV等使用  </p></td>
+<td bgcolor="#e5f3e5" valign="middle" align="center">
+<p align="center">76个 </p></td>
+<td rowspan="4" align="center" valign="middle" bgcolor="#e5f3e5">
+<p align="left" style="margin: 10px 10px 10px 10px;" >根据真实球场，实名制3D电脑画面制作；软件人工升级 </p></td>
+<td rowspan="3" align="center" valign="middle" bgcolor="#e5f3e5">
+<p align="left" style="margin: 10px 10px 10px 10px;">韩国进口红外平板检测器，检测精准度达97%以上 </p></td>
+<td rowspan="3" align="center" valign="middle" bgcolor="#e5f3e5">
+<p align="center">支持 </p></td>
+</tr>
+<tr>
+<td bgcolor="#d6e9d4" valign="middle" align="center">
+<p align="center"><strong><font style="FONT-FAMILY: 黑体; COLOR: #2c8c11; FONT-SIZE: 15px">Fieldzon Golf</font></strong></p></td>
+<td bgcolor="#e5f3e5" valign="middle" align="center">
+<p align="center">2.9万 </p></td>
+<td bgcolor="#e5f3e5" valign="middle" align="center">
+<p align="center">11-14万</p></td>
+<td bgcolor="#e5f3e5" valign="middle" align="center">
+<p align="center">49个</p></td>
+</tr>
+<tr>
+<td bgcolor="#d6e9d4" valign="middle" align="center">
+<p align="center"><strong><font style="FONT-FAMILY: 黑体; COLOR: #2c8c11; FONT-SIZE: 15px">Dnx  Golf</font></strong></p></td>
+<td bgcolor="#e5f3e5" valign="middle" align="center">
+<p align="center">2.5万 </p></td>
+<td bgcolor="#e5f3e5" valign="middle" align="center">
+<p align="center">10-13万 </p></td>
+<td bgcolor="#e5f3e5" valign="middle" align="center">
+<p align="center">39个 </p></td>
+</tr>
+<tr>
+<td bgcolor="#d6e9d4" valign="middle" align="center">
+<p align="center"><strong><font style="FONT-FAMILY: 黑体; COLOR: #2c8c11; FONT-SIZE: 15px">Golfzon </font></strong></p></td>
+<td bgcolor="#e5f3e5" valign="middle" align="center">
+<p align="center">1.5万 </p></td>
+<td bgcolor="#e5f3e5" valign="middle" align="center">
+<p align="center">8-11万 </p></td>
+<td bgcolor="#e5f3e5" valign="middle" align="center">
+<p align="center" style="margin: 10px 10px 10px 10px;">适合高尔夫练习场、培训场、健身馆、4S店、私人别墅、员工娱乐福利、酒吧、KTV等使用 </p></td>
+<td bgcolor="#e5f3e5" valign="middle" align="center">
+<p align="center">85个 </p></td>
+<td bgcolor="#e5f3e5" valign="middle" align="center">
+<p align="left" style="margin: 10px 10px 10px 10px;">韩国进口红外检测器，检测精准度达97%以上 </p></td>
+<td bgcolor="#e5f3e5" valign="middle" align="center">
+<p align="center">否 </p></td>
+</tr>
+<tr>
+<td bgcolor="#d6e9d4" valign="middle" align="center">
+<p align="center"><strong><font style="FONT-FAMILY: 黑体; COLOR: #2c8c11; FONT-SIZE: 15px">GC2 <br />（高速摄像）</font></strong></p></td>
+<td bgcolor="#e5f3e5" valign="middle" align="center">
+<p align="center">7.5万 </p></td>
+<td bgcolor="#e5f3e5" valign="middle" align="center">
+<p align="center">20-28万 </p></td>
+<td rowspan="3" align="center" valign="middle" bgcolor="#e5f3e5"  style="">
+<p align="center" style="margin: 10px 10px 10px 10px;" >豪华会、高档俱乐部、私人别墅、高级酒、国际PGA比赛、汽车4S店 高尔夫练习场、培训场，健身馆等场所使用  </p></td>
+<td bgcolor="#e5f3e5" valign="middle" align="center">
+<p align="center">60 个 </p></td>
+<td rowspan="3" align="center" valign="middle" bgcolor="#e5f3e5">
+<p align="left" style="margin: 10px 10px 10px 10px;" >航拍技术还原1：1真实球场，全高清3D画质、全真实球场还原体验；软件自动升级，远程服务，全球联网 </p></td>
+<td bgcolor="#e5f3e5" valign="middle" align="center">
+<p align="left" style="margin: 10px 10px 10px 10px;">检测系统美国原装进口，便携式 LCD显示屏 双高速摄像机测量仪 </p></td>
+<td rowspan="3" align="center" valign="middle" bgcolor="#e5f3e5">
+<p align="center">支持 </p></td>
+</tr>
+<tr>
+<td bgcolor="#d6e9d4" valign="middle" align="center">
+<p align="center"><strong><font style="FONT-FAMILY: 黑体; COLOR: #2c8c11; FONT-SIZE: 15px">About Golf （雷达）</font></strong></p></td>
+<td bgcolor="#e5f3e5" valign="middle" align="center">
+<p align="center">8.0万 </p></td>
+<td bgcolor="#e5f3e5" valign="middle" align="center">
+<p align="center">27-34万</p></td>
+<td bgcolor="#e5f3e5" valign="middle" align="center">
+<p align="center">48个 </p></td>
+<td bgcolor="#e5f3e5" valign="middle" align="center">
+<p align="left" style="margin: 10px 10px 10px 10px;">检测系统美国原装进口,采用军用EDH雷达技术,检测精度达99%，可进行弹道、倒旋、挥杆等数据的精huigan确捕捉，并可测量自己的挥杆、球速以及杆数等参数，摆脱与有限电脑才能使用的缺点，更小巧、便携   </p></td>
+</tr>
+<tr>
+<td bgcolor="#d6e9d4" valign="middle" align="center">
+<p align="center"><strong><font style="FONT-FAMILY: 黑体; COLOR: #2c8c11; FONT-SIZE: 15px">3-Trak Golf （高速摄像追踪）</font></strong></p></td>
+<td bgcolor="#e5f3e5" valign="middle" align="center">
+<p align="center">12万 </p></td>
+<td bgcolor="#e5f3e5" valign="middle" align="center">
+<p align="center">29-38万 </p></td>
+<td bgcolor="#e5f3e5" valign="middle" align="center">
+<p align="center">29个 </p></td>
+<td bgcolor="#e5f3e5" valign="middle" align="center">
+<p align="left" style="margin: 10px 10px 10px 10px;">检测系统美国原装进口，商用化质量参考实验室水准高速摄像追踪系统，全高科ISU智能一体式阵列设计 </p></td>
+</tr>
+<tr>
+<td bgcolor="#d6e9d4" valign="middle" align="center">
+<p align="center"><strong><font style="FONT-FAMILY: 黑体; COLOR: #2c8c11; FONT-SIZE: 15px">victor(是Parongolf.com的产品，victor是parongolf贴牌产品)</font></strong></p></td>
+<td bgcolor="#e5f3e5" valign="middle" align="center">
+<p align="center">3.5万 </p></td>
+<td bgcolor="#e5f3e5" valign="middle" align="center">
+<p align="center">11-19万 </p></td>
+<td rowspan="2" align="center" valign="middle" bgcolor="#e5f3e5">
+<p align="left" style="margin: 10px 10px 10px 10px;">豪华会、高档俱乐部、私人别墅、高级酒、国际PGA比赛、汽车4S店 高尔夫练习场、培训场，健身馆等场所使用  </p>
+<p align="left" style="margin: 10px 10px 10px 10px;"></p></td>
+<td bgcolor="#e5f3e5" valign="middle" align="center">
+<p align="center">80个 </p></td>
+<td rowspan="2" align="center" valign="middle" bgcolor="#e5f3e5">
+<p align="left" style="margin: 10px 10px 10px 10px;">航拍技术还原1：1真实球场，全高清3D画质、全真实球场还原体验  </p>
+<p align="left" style="margin: 10px 10px 10px 10px;"></p></td>
+<td bgcolor="#e5f3e5" valign="middle" align="center">
+<p align="left" style="margin: 10px 10px 10px 10px;">检测系统韩国原装进口，此款为韩国Paron golf 产品，victor为贴牌 </p></td>
+<td bgcolor="#e5f3e5" valign="middle" align="center">
+<p align="center">支持 </p></td>
+</tr>
+<tr>
+<td bgcolor="#d6e9d4" valign="middle" align="center">
+<p align="center"><strong><font style="FONT-FAMILY: 黑体; COLOR: #2c8c11; FONT-SIZE: 15px">Greenjoy</font></strong></p></td>
+<td bgcolor="#e5f3e5" valign="middle" align="center">
+<p align="center">7.5万 </p></td>
+<td bgcolor="#e5f3e5" valign="middle" align="center">
+<p align="center">26-42万 </p></td>
+<td bgcolor="#e5f3e5" valign="middle" align="center">
+<p align="center">球场包可供选择 </p></td>
+<td bgcolor="#e5f3e5" valign="middle" align="center">
+<p align="left" style="margin: 10px 10px 10px 10px;">配备GC2感测器及动感平台 </p></td>
+<td bgcolor="#e5f3e5" valign="middle" align="center">
+<p align="center">支持 </p></td>
+</tr>
+</tbody></table>                                                    </td>
+                                                </tr>
+                                    
+                                                
+                                                <tr>
+                                        <td class="inzt2">                                                                              </td>
+                                    </tr>
+                                    
+                                </table>
+<table width="743" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td class="inab">
+                                            <table width="732" border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td width="680">
+                                                        <div class="inzt">
+                                                            案例展示</div>
+                                                    </td>
+                                                    <td width="52">
+                                                        <a href="#">更多&gt;&gt;</a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="inzt2">
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td>
+                                                        <table width="133" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="cn_207case.html">
+                                                                        <img src="images/pdt_img07.jpg" width="160" height="101" border="0" class="cctt1"
+                                                                            alt="福建某公司使用我公司模拟高尔夫设备" /></a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="28" align="center" class="texttt">
+                                                                    <a href="cn_207case.html">福建模拟保龄球</a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table width="133" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="cn_201case.html">
+                                                                        <img src="images/fl_img01.jpg" width="160" height="101" border="0" class="cctt1"
+                                                                            alt="我公司与天津市某公司的室内模拟高尔夫合作项目" /></a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="28" align="center" class="texttt">
+                                                                    <a href="cn_201case.html">天津市室内模拟高尔夫</a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table width="133" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="cn_203case.html">
+                                                                        <img src="images/fl_img03.jpg" width="160" height="101" border="0" class="cctt1"
+                                                                            alt="武汉市某公司购置我公司室内模拟高尔夫设备" /></a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="28" align="center" class="texttt">
+                                                                    <a href="cn_203case.html">武汉室内模拟高尔夫</a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table width="133" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="cn_202case.html">
+                                                                        <img src="images/tt12.jpg" width="160" height="101" border="0" class="cctt1" alt="黄山市某公司使用我公司室内模拟高尔夫设备施工效果图" /></a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="28" align="center" class="texttt">
+                                                                    <a href="cn_202case.html">黄山市室内模拟高尔夫</a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;
+                                            
+                                        </td>
+                                    </tr>
+                                </table>
+                  <table width="743" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td class="inab">
+                                            <table width="732" border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td width="680">
+                                                        <div class="inzt">
+                                                            产品展示</div>
+                                                    </td>
+                                                    <td width="52">
+                                                        <a href="#">更多&gt;&gt;</a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="inzt2">
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td>
+                                                        <table width="133" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="cn_100golf.html">
+                                                                        <img src="images/pdt_img01.jpg" width="160" height="101" border="0" class="cctt1"
+                                                                            alt="我公司室内模拟高尔夫产品“Golfan豪华版”" /></a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="28" align="center" class="texttt">
+                                                                    <a href="cn_100golf.html">Golfan豪华版室内高尔夫</a></td>
+                                                          </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table width="133" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="cn_101golfzon.html">
+                                                                        <img src="images/pdt_img02.jpg" width="160" height="101" border="0" class="cctt1"
+                                                                            alt="模拟高尔夫系列产品“Golfan专业版”" /></a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="28" align="center" class="texttt">
+                                                                    <a href="cn_101golfzon.html">Golfan专业版室内高尔夫</a></td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table width="133" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="cn_103golfan_standard.html">
+                                                                        <img src="images/pdt_img03.jpg" width="160" height="101" border="0" class="cctt1"
+                                                                            alt="室内模拟高尔夫“Golfan标准版”效果图" /></a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="28" align="center" class="texttt">
+                                                                    <a href="cn_103golfan_standard.html">Golfan标准版室内高尔夫</a>                                                                </td>
+                                                          </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table width="133" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="cn_104golf_green.html">
+                                                                        <img src="images/pdt_img04.jpg" width="160" height="101" border="0" class="cctt1" alt="模拟高尔夫产品—人工果岭" /></a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="28" align="center" class="texttt">
+                                                                    <a href="cn_104golf_green.html">人工果岭-室内高尔夫</a></td>
+                                                          </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;
+                                            
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td>
+                                                        <table width="133" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="cn_105golf_swing_analyzer.html">
+                                                                        <img src="images/pdt_img05.jpg" width="160" height="101" border="0" class="cctt1"
+                                                                            alt="模拟高尔夫产品—挥杆分析仪" /></a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="28" align="center" class="texttt"><a href="cn_105golf_swing_analyzer.html">高尔夫模拟器-挥杆分析仪</a></td>
+                                                          </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table width="133" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="cn_106dynamic_platform.html">
+                                                                        <img src="images/pdt_img06.jpg" width="160" height="101" border="0" class="cctt1"
+                                                                            alt="高尔夫模拟器—动感平台" /></a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="28" align="center" class="texttt">
+                                                                    <a href="cn_106dynamic_platform.html">高尔夫模拟器-动感平台</a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table width="133" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="cn_161simulated_bowling.htm">
+                                                                        <img src="images/pdt_img07.jpg" width="160" height="101" border="0" class="cctt1"
+                                                                            alt="模拟高尔夫产品—模拟保龄球" /></a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="28" align="center" class="texttt">
+                                                                    <a href="cn_161simulated_bowling.htm">高尔夫模拟器-模拟保龄球</a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table width="133" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="cn_165simulated_archery.html">
+                                                                        <img src="images/pdt_img08.jpg" width="160" height="101" border="0" class="cctt1"
+                                                                            alt="室内模拟高尔夫—模拟射箭" /></a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="28" align="center" class="texttt">
+                                                                    <a href="cn_165simulated_archery.html">高尔夫模拟器-射箭馆</a>                                                                </td>
+                                                          </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                  </table>
+                                <table width="743" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td class="inab">
+                                            <table width="732" border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td width="680">
+                                                        <div class="inzt">
+                                                            产品展示</div>
+                                                    </td>
+                                                    <td width="52">
+                                                        <a href="#">更多&gt;&gt;</a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="inzt2">&nbsp;</td>
+                                  </tr>
+                                    <tr>
+                                        <td>&nbsp;
+                                            
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td>
+                                                        <table width="133" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="cn_162simulated_flight.html">
+                                                                        <img src="images/pdt_img13.jpg" width="160" height="101" border="0" class="cctt1"
+                                                                            alt="高尔夫模拟器—模拟飞行" /></a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="28" align="center" class="texttt">
+                                                                    <a href="cn_162simulated_flight.html">模拟飞行</a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table width="133" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="cn_182game_machine.html">
+                                                                        <img src="images/pdt_img14.jpg" width="160" height="101" border="0" class="cctt1"
+                                                                            alt="室内模拟高尔夫—游戏机" /></a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="28" align="center" class="texttt">
+                                                                    <a href="cn_182game_machine.html">游戏机</a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table width="133" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="cn_163simulated_bazooka.html">
+                                                                        <img src="images/pdt_img15.jpg" width="160" height="101" border="0" class="cctt1"
+                                                                            alt="高尔夫模拟器—模拟火箭筒" /></a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="28" align="center" class="texttt">
+                                                                    <a href="cn_163simulated_bazooka.html">模拟火箭筒</a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table width="133" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="cn_164simulated_driving.html">
+                                                                        <img src="images/pdt_img16.jpg" width="160" height="101" border="0" class="cctt1"
+                                                                            alt="室内高尔夫—模拟驾驶" /></a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="28" align="center" class="texttt">
+                                                                    <a href="cn_164simulated_driving.html">模拟驾驶</a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table width="743" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td class="inab">
+                                            <table width="732" border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td width="680">
+                                                        <div class="inzt">
+                                                            产品展示</div>
+                                                    </td>
+                                                    <td width="52">
+                                                        <a href="#">更多&gt;&gt;</a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="inzt2">
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td>
+                                                        <table width="133" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="cn_183shuffle_board.htm">
+                                                                        <img src="images/pdt_img17.jpg" width="160" height="101" border="0" class="cctt1"
+                                                                            alt="高尔夫模拟器—沙弧球" /></a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="28" align="center" class="texttt">
+                                                                    <a href="cn_183shuffle_board.htm">沙弧球</a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table width="133" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="cn_184table_airhockey.html">
+                                                                        <img src="images/pdt_img18.jpg" width="160" height="101" border="0" class="cctt1"
+                                                                            alt="室内模拟高尔夫—气悬球" /></a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="28" align="center" class="texttt">
+                                                                    <a href="cn_184table_airhockey.html">气悬球</a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table width="133" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="cn_165simulated_archery.html">
+                                                                        <img src="images/h1.jpg" width="160" height="101" border="0" class="cctt1" alt="模拟高尔夫产品—模拟射箭" /></a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="28" align="center" class="texttt">
+                                                                    <a href="cn_165simulated_archery.html">模拟射箭</a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table width="133" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="cn_163simulated_bazooka.html">
+                                                                        <img src="images/h2.jpg" width="160" height="101" border="0" class="cctt1" alt="高尔夫模拟器—模拟火箭筒" /></a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="28" align="center" class="texttt">
+                                                                    <a href="cn_163simulated_bazooka.html">模拟火箭筒</a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;
+                                            
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td>
+                                                        <table width="133" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="cn_168simulated_F1_racing.html">
+                                                                        <img src="images/moni-8-2.png" width="160" height="101" border="0" class="cctt1"
+                                                                            alt="室内模拟高尔夫—模拟F1赛车" /></a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="28" align="center" class="texttt">
+                                                                    <a href="cn_168simulated_F1_racing.html">模拟F1赛车</a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table width="133" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="cn_181dart_machine.html">
+                                                                        <img src="images/p9_img02.jpg" width="160" height="101" border="0" class="cctt1"
+                                                                            alt="高尔夫模拟器—飞镖机" /></a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="28" align="center" class="texttt">
+                                                                    <a href="cn_181dart_machine.html">飞镖机</a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table width="133" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="cn_164simulated_driving.html">
+                                                                        <img src="images/moni-4-1.png" width="160" height="101" border="0" class="cctt1"
+                                                                            alt="室内高尔夫—模拟驾驶" /></a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="28" align="center" class="texttt">
+                                                                    <a href="cn_164simulated_driving.html">模拟驾驶</a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table width="133" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="cn_186table_football.htm">
+                                                                        <img src="images/p14_img01.jpg" width="160" height="101" border="0" class="cctt1"
+                                                                            alt="模拟高尔夫产品—桌上足球" /></a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="28" align="center" class="texttt">
+                                                                    <a href="cn_186table_football.htm">桌上足球</a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <table width="743" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td class="inab">
+                                            <table width="732" border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td width="680">
+                                                        <div class="inzt">
+                                                            客户分类</div>
+                                                    </td>
+                                                    <td width="52">
+                                                        <a href="#">更多&gt;&gt;</a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td>
+                                                        <table width="133" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="cn_401hotel_golf.html">
+                                                                        <img src="images/kehufenlei1.jpg" width="160"  border="0" class="cctt1" /></a>                                                                </td>
+                                                            </tr>
+                                                        </table>                                                    </td>
+                                                    <td>
+                                                        <table width="133" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="cn_402club_golf.html">
+                                                                        <img src="images/kehufenlei2.jpg" width="160"  border="0" class="cctt1" /></a>                                                                </td>
+                                                            </tr>
+                                                        </table>                                                    </td>
+                                                    <td>
+                                                        <table width="133" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td><a href="cn_403_4sshop_golf.html"><img src="images/kehufenlei3.jpg" width="160" border="0" class="cctt1" /></a></td>
+                                                            </tr>
+                                                    </table>                                                    </td>
+                                                      <td>
+                                                        <table width="133" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="cn_408golf_range.html">
+                                                                        <img src="images/kehufenlei8.jpg" width="160"  border="0" class="cctt1"/></a>
+                                                                </td>
+                                                            </tr>
+                                                            
+                                                        </table>
+                                                    </td>
+                                                </tr> <tr>
+                                        <td>&nbsp;
+                                            
+                                        </td>
+                                    </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                   
+                                    <tr>
+                                        <td>
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td>
+                                                        <table width="133" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="cn_404villa_golf.html">
+                                                                        <img src="images/kehufenlei4.jpg" width="160"  border="0" class="cctt1" /></a>                                                                </td>
+                                                            </tr>
+                                                        </table>                                                    </td>
+                                                    <td>
+                                                        <table width="133" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="cn_409bank_golf.html">
+                                                                        <img src="images/kehufenlei9.jpg" width="160"  border="0" class="cctt1" /></a>                                                                </td>
+                                                            </tr>
+                                                        </table>                                                    </td>
+                                                    <td>
+                                                        <table width="133" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td><a href="cn_406telecom_golf.html"><img src="images/kehufenlei6.jpg" width="160" border="0" class="cctt1" /></a></td>
+                                                            </tr>
+                                                    </table>                                                    </td>
+                                                    <td>
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td>
+                                                        <table width="133" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="cn_407fitness_center_golf.html">
+                                                                        <img src="images/kehufenlei7.jpg" width="160"  border="0" class="cctt1" ></a>                                                                </td>
+                                                            </tr>
+                                                        </table>                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                                </tr>
+                                            </table></td></tr>
+                                            
+                                    <tr>
+                                            
+                                    </tr>
+                              </table>
+                                        </td>
+                                    </tr>
+                              </table>
+                            <table width="743" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td class="inab">
+                                            <table width="732" border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td width="680">
+                                                        <div class="inzt">
+                                                            地区划分</div>                                                    </td>
+                                                    <td width="52">
+                                                        <a href="#">更多&gt;&gt;</a>                                                    </td>
+                                                </tr>
+                                            </table>                                        </td>
+                                    </tr>
+                                    <tr>
+                            <td align="left" valign="top" class="textt" style="padding: 15px;">
+                                <table width="700">
+                                    <tr align="left" >
+                                        <td><a href="cn_302beijing.html">北京模拟高尔夫</a></td>
+                                        <td><a href="cn_301shanghai.html">上海模拟高尔夫</a></td>
+                                        <td><a href="cn_303shenzhen.html">深圳模拟高尔夫</a></td>
+                                        <td><a href="cn_304guangzhou.html">广州模拟高尔夫</a></td>
+                                        <td><a href="cn_305suzhou.html">苏州模拟高尔夫</a></td>
+                                    </tr>
+                                    <tr align="left" >
+                                       <td><a href="cn_306qingdao.html">青岛模拟高尔夫</a></td>
+                                        <td><a href="cn_307dalian.html">大连模拟高尔夫</a></td>
+                                        <td><a href="cn_308tianjing.html">天津模拟高尔夫</a></td>
+                                        <td><a href="cn_309wuxi.html">无锡模拟高尔夫</a></td>
+                                        <td><a href="cn_310foshan.html">佛山模拟高尔夫</a></td>
+                                    </tr>
+                                    <tr align="left" >
+                                     <td><a href="cn_311chongqing.html">重庆模拟高尔夫</a></td>
+                                        <td><a href="cn_312ningbo.html">宁波模拟高尔夫</a></td>
+                                        <td><a href="cn_313hangzhou.html">杭州模拟高尔夫</a></td>
+                                        <td><a href="cn_314chengdu.html">成都模拟高尔夫</a></td>
+                                        <td><a href="cn_315wuhan.html">武汉模拟高尔夫</a></td>
+                                    </tr>
+                                      <tr align="left" >
+                                     <td><a href="cn_316yantai.html">烟台模拟高尔夫</a></td>
+                                        <td><a href="cn_317xiamen.html">厦门模拟高尔夫</a></td>
+                                        <td><a href="cn_318dongguan.html">东莞模拟高尔夫</a></td>
+                                        <td><a href="cn_319tangshan.html">唐山模拟高尔夫</a></td>
+                                        <td><a href="cn_320shenyang.html">沈阳模拟高尔夫</a></td>
+                                    </tr>
+                                       <tr align="left" >
+                                     <td><a href="cn_321wenzhou.html">温州模拟高尔夫</a></td>
+                                        <td><a href="cn_322jinan.html">济南模拟高尔夫</a></td>
+                                        <td><a href="cn_323zhengzhou.html">郑州模拟高尔夫</a></td>
+                                        <td><a href="cn_324changsha.html">长沙模拟高尔夫</a></td>
+                                        <td><a href="cn_325xian.html">西安模拟高尔夫</a></td>
+                                    </tr>
+                                </table>
+                                
+                            </td>
+                        </tr>
+                  </table>   
+                                </td>
+            </tr>
+                        <tr>
+                            <td valign="top">&nbsp;
+                                
+                            </td>
+                        </tr>
+      
+            <tr>
+                <td colspan="2" class="foot" align="left">
+                    <table width="992" height="56" border="0" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td width="775" class="foot1">
+                                Copyright© 1996-2011Simin 施明 All rights reserved<br />
+                                电话：18964648755
+                            </td>
+                            <td width="217" align="right">
+                                浙ICP备:05036097号
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="foot" align="left">
+                    友情链接：<a href="http://www.68golf.com">高尔夫球杆</a> <a href="http://www.soven.com">北京翻译公司</a> <a href="http://www.lohasgolf.cn">高尔夫球杆</a> <a href="http://www.chaohuigolf.com">高尔夫模拟器</a> <a href="http://equip.huagolf.com/">二手高尔夫球杆</a> <a href="http://www.golfhunter.com.cn">世界高尔夫</a> <a href="http://www.ugolf.com.cn">高尔夫球</a> <a href="http://www.golf72.cn">高尔夫搜索网</a><a href="http://www.beijing-fanyi.com">北京翻译公司</a> 
+           <a href="http://www.shanghai-fanyi.com">上海翻译公司</a>  <a href="http://www.soven.cn">深圳翻译公司</a> 
+           <a href="http://www.shimingcn.com">模拟高尔夫</a> <a href="http://www.shineigaoerfu.com">室内高尔夫</a> 
+           <a href="http://www.monigaoerfu.cn">室内模拟高尔夫</a> <a href="http://www.runlaichina.com">室内高尔夫</a> <a href="http://www.bjitm.com">模拟高尔夫</a>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+</div>
+    <!-- Baidu Button BEGIN -->
+
+    <script type="text/javascript" id="bdshare_js" data="type=tools"></script>
+
+    <script type="text/javascript" id="bdshell_js"></script>
+
+    <script type="text/javascript">
+	document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?t=" + new Date().getHours();
+    </script>
+
+    <!-- Baidu Button END -->
+
+    <script language="JavaScript" type="text/JavaScript"> 
+<!-- 
+function MM_jumpMenu(targ,selObj,restore){ //v3.0 
+  eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'"); 
+  if (restore) selObj.selectedIndex=0; 
+} 
+//--> 
+    </script>
+
+    <script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Faf288b49c3060579e9d7e13c32a6c57c' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+
+            <script type="text/javascript" charset="utf-8" src="js/84586.js"></script>
+        </body>
+</html>

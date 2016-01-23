@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ja">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
+<meta charset="utf-8">
+<title>福岡マラソン2015｜トップページ</title>
+<meta name="keywords" content="福岡マラソン2015,FUKUOKA MARATHON2015,都市を走る。海を走る。未来を走る。,福岡から糸島へ,福岡市,糸島市,一般財団法人福岡陸上競技協会">
+<meta name="description" content="都市を走る。海を走る。未来を走る。福岡から糸島へ。2つの都市を結ぶ42.195kmのドラマ「福岡マラソン」の開催です。都市と自然のコントラストが美しいコンパクトシティを体感し、めくるめく風景、人々の暖かさ、美味しい食材など、この街の魅力を五感で楽しめる、福岡ファンが世界中にひろがる大会を目指します。さあ、フィニッシュの先に待っている感動に満ちた未来をご一緒に。">
+<meta name="author" content="">
+<meta name="viewport" content="width=1200px">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta property="og:title" content="福岡マラソン2015 〜FUKUOKA MARATHON2015〜">
+<meta property="og:description" content="都市を走る。海を走る。未来を走る。福岡から糸島へ。2つの都市を結ぶ42.195kmのドラマ「福岡マラソン」の開催です。都市と自然のコントラストが美しいコンパクトシティを体感し、めくるめく風景、人々の暖かさ、美味しい食材など、この街の魅力を五感で楽しめる、福岡ファンが世界中にひろがる大会を目指します。さあ、フィニッシュの先に待っている感動に満ちた未来をご一緒に。">
+<meta property="og:url" content="http://f-marathon.jp/">
+<meta property="og:image" content="http://f-marathon.jp//images/common/ogp_img.png">
+<meta property="og:site_name" content="福岡マラソン2015">
+<meta property="og:type" content="website">
+<link rel="alternate" media="only screen and (max-width: 640px)" href="http://www.f-marathon.jp/sp/">
+<link rel="shortcut icon" href="/favicon.ico">
+<link href="css/contents.css" rel="stylesheet">
+<link href="css/flexslider.css" rel="stylesheet">
+<link href="css/slicknav.css" rel="stylesheet">
+<!--
+<link rel="stylesheet" href="font-awesome-4.3.0/css/font-awesome.min.css">
+-->
+<script src="js/googleAnalytics.js"></script>
+<script src="js/import.js"></script>
+<script src="js/jquery.psychokinesis-1.0.0.min.js"></script>
+<script src="js/jquery.psycle.min.js"></script>
+<script src="js/jquery.flexslider.js"></script>
+<script src="js/jquery.slicknav.js"></script>
+<script src="js/jquery.carouFredSel-6.2.1-packed.js"></script>
+<script>
+	$(document).ready(function(){
+
+		if (/ipod|iphone|backberry|windows phone/i.test(navigator.userAgent)){
+			location.href="/sp/";
+		}else if (/android.*mobile/i.test(navigator.userAgent)){
+			location.href="/sp/";
+		}
+
+	});
+	$(function() {
+
+		var $psycle = $('#mainVisual').psycle({
+			transition: 'fade',
+			startIndex: 0,
+			duration: 1200,
+			delay: 3000,
+			easing: 'swing',
+			auto: true,
+			cancel: false,
+			repeat: 'return',
+			panelContainerSelector: '>ul:eq(0)',
+			panelSelector: '>li',
+			cols: 1,
+			rows: 1,
+			offsetX: 0,
+			offsetY: 0,
+			innerFocus: false,
+			noFocus: true,
+			resizable: false,
+			bindKeyboard: false,
+			showOnlyOnce: null,
+			css3:false
+		});
+
+/*
+  		$('.flexslider').flexslider({
+   		 	animation: "fade",
+   		 	slideshowSpeed: "4000",
+   		 	// animationSpeed: "3000",
+   		 	controlNav: "false"
+  		});
+*/
+  		$('.flexslider02').flexslider({
+   		 	animation: "fade",
+   		 	slideshowSpeed: "3000",
+   		 	animationSpeed: "2000",
+   		 	controlNav: "false"
+  		});
+
+		 $('a[href^="#"]').SmoothScroll({
+        			duration : 1500,    // スピード（ミリ秒）
+        			easing : 'easeOutQuint' // 動き（イージング）
+   		 });
+
+   		  $(".clickLanguage").click(
+       		 	function(){
+           		 	$(".hideLang").toggleClass("openLang");
+        			}
+		);
+
+   		 $('#menu').slicknav({
+    			label: '',
+      			duration: 500,
+      			easingOpen: "easeOutQuint"
+   		 });
+
+
+
+		var htm = '<dl style="min-width:392px;">';
+		htm += '</dl>';
+
+		$("#hdCountContainer").append(htm);
+
+		/*------- GALLERY -------*/
+		$(".gallery1").carouFredSel({
+			width: "100%",
+			height: 205,
+			direction:"left",
+			infinite: true,
+			items: {
+				visible: 7,
+				start: 1
+			},
+			auto: 1000,
+			scroll : {
+				items : 1,
+				duration : 1200
+			}
+		});
+		$(".gallery2").carouFredSel({
+			width: "100%",
+			height: 205,
+			direction:"right",
+			infinite: true,
+			items: {
+				visible: 7,
+				start: 1
+			},
+			auto: 1000,
+			scroll : {
+				items : 1,
+				duration : 1200
+			}
+		});
+
+		$("#wejogContainer").css("display","none");
+
+		//preload
+		h = $("#topNewsListRel ul").height();
+		$("#topNewsTitleContaier").css("height",h + 20);
+
+	});
+
+$(window).scroll(function() {
+
+	t = $(this).scrollTop();
+
+	if(t > 300){
+		if(!$("#wejogContainer").hasClass("closed")){
+			$("#wejogContainer").fadeIn(100);
+		}
+	}else{
+		$("#wejogContainer").css("display","none");
+	}
+
+});
+$(window).load(function() {
+
+	h = $("#topNewsListRel ul").height();
+	$("#topNewsTitleContaier").css("height",h + 20);
+
+	var url = $(location).attr('href');
+	var url_sp = url.split("?id=");
+	var hash   = '#' + url_sp[url_sp.length - 1];
+		if (hash == "#runContentsContainer"){
+		var pos    = 920;
+		$("html, body").animate({scrollTop:pos}, 800, "swing");
+ 	}
+
+});
+</script>
+<style>
+<!--
+#secTopDateContainer #afterRunContentsContainer{
+	text-align:center;
+}
+#secTopDateContainer #afterRunContentsContainer #afterResult,
+#secTopDateContainer #afterRunContentsContainer #photoCreate{
+	float:none;
+	display:inline-block;
+}
+-->
+</style>
+</head>
+
+<body id="top">
+
+<header id="topHeader">
+	<div id="headerConttainer">
+		<h1><a href="/">福岡マラソン2015</a></h1>
+		<aside id="headerTopPart">
+			<ul id="hdLang">
+				<li><a href="/">日本語</a></li>
+				<li><a href="/en/">ENGLISH</a></li>
+				<li><a href="/cnh/">繁体中文</a></li>
+				<li><a href="/cnk">簡体中文</a></li>
+				<li><a href="/kr/">한국어</a></li>
+			</ul>
+			<ul id="hdSocial">
+				<li class="mypage">
+					<a href="https://runnet.jp/105397/entry_list.html" target="_blank"><img src="images/common/btn_mypage.png" height="13" width="81" alt="マイページ"></a>
+				</li>
+				<li class="btnFbOfficial">
+					<a href="https://ja-jp.facebook.com/fukuokamarathon.official" target="_blank"><img src="images/common/btn_facebook.png" height="13" width="140" alt="公式フェイスブック"></a>
+				</li>
+				<li class="btnFbShare">
+					<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Ff-marathon.jp%2F&amp;width=120&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:110px; height:21px;" allowTransparency="true"></iframe>
+				</li>
+			</ul>
+			<div id="hdLangResponsive">
+				<p class="clickLanguage"><!-- <i class="fa fa-bars"></i> --><img src="images/common/hl_select_language.png" height="20" width="130" alt="Select Language"></p>
+				<ul class="hideLang">
+					<li><a href="/">日本語</a></li>
+					<li><a href="/en/">ENGLISH</a></li>
+					<li><a href="/cnh/">繁体中文</a></li>
+					<li><a href="/cnk">簡体中文</a></li>
+					<li><a href="/kr/">한국어</a></li>
+				</ul>
+			</div><!-- hdLangResponsive -->
+		</aside>
+
+		<nav>
+			<ul id="menu">
+				<li class="navDropAbout">
+					<p class="responsiveHl">About 大会について</p>
+					<ul>
+						<li><a href="/about/" class="navAboutOutline">Outline 大会概要</a></li>
+						<li><a href="/about/course.html" class="navAboutCourse">Course コース紹介</a></li>
+						<li><a href="/about/sponsor.html" class="navAboutSponsor">Sponsor スポンサー</a></li>
+						<li><a href="/about/guest.html" class="navAboutRunners">Guest Runners ゲストランナーについて</a></li>
+					</ul>
+					<a href="/about/" class="navAbout">About 大会について</a>
+				</li>
+				<li><a href="/news/" class="navNews">News 大会ニュース</a></li>
+				<li class="navDropRunner">
+				<p class="responsiveHl">Runner ランナー</p>
+					<ul >
+						<li><a href="/runner/?id=secTopGuidelinesContainer" class="navGuideline">Guideline 募集要項</a></li>
+						<li><a href="/runner/apply.html?id=secApplyContainer" class="navRunnerApply">How to apply 申し込み方法</a></li>
+						<li><a href="/runner/fund.html?id=secFundContainer" class="navFund">Fund 応援資金</a></li>
+						<li><a href="/runner/guide.html?id=secRaceGuideContainer" class="navRunnerRaceGuide">Race Guide 参加案内</a></li>
+					</ul>
+					<a href="/runner/" class="navRunner">Runner ランナー</a>
+				</li>
+				<li class="navDropVolunteer">
+					<p class="responsiveHl">Volunteer ボランティア</p>
+					<ul >
+						<li><a href="/volunteer/?id=secGuideLineContainer" class="navVolunteerGuideline">Guideline 募集要項</a></li>
+						<li><a href="/volunteer/activity.html?id=secActivityContainer" class="navActivity">Activity 活動内容</a></li>
+						<li><a href="/volunteer/apply.html?id=secApplyContainer" class="navVolunteerApply">How to apply 申し込み方法</a></li>
+					</ul>
+					<a href="/volunteer/" class="navVolunteer">Volunteer ボランティア</a>
+				</li>
+				<li class="navDropCheerer">
+					<p class="responsiveHl">Cheerer 応援</p>
+					<ul>
+						<li><a href="/cheerer/?id=secGuideLineContainer" class="navCheererGuideline">Guideline 募集要項</a></li>
+						<li><a href="/cheerer/performer.html?id=secPerformerContainer" class="navCheererPerfomer">Performer 出演者紹介</a></li>
+						<li><a href="/cheerer/map.html?id=secMapContainer" class="navCheererMap">Map 応援マップ</a></li>
+					</ul>
+					<a href="/cheerer/" class="navCheerer">Cheerer 応援</a>
+				</li>
+
+				<li class="navDropEvent">
+					<p class="responsiveHl">Event イベント</p>
+					<ul>
+						<li><a href="/event/" class="navEventPre">Pre-race events 大会プレイベント</a></li>
+						<li><a href="/event/expo.html" class="navEventExpo">EXPO エキスポ</a></li>
+						<li><a href="/event/omotenashi.html" class="navEventOmotenashi">Omotenashi おもてなしエリア</a></li>
+					</ul>
+					<a href="/event/" class="navEvent">Event イベント</a>
+				</li>
+
+
+				<li><a href="/traffic/" class="navTraffic">Traffic 交通規制</a></li>
+				<li class="navDropFaq">
+				<p class="responsiveHl">FAQ よくある質問</p>
+					<ul>
+						<li><a href="/faq/" class="navFaqAll">All 全般について</a></li>
+						<li><a href="/faq/runner.html" class="navFaqRunner">Runner ランナーについて</a></li>
+						<li><a href="/faq/volunteer.html" class="navFaqVolunteer">Volunteer ボランティアについて</a></li>
+					</ul>
+					<a href="/faq/" class="navFaq">FAQ よくある質問</a>
+				</li>
+			</ul>
+		</nav>
+		<div id="headerRightContainer">
+			<div id="hdSponsorSlide" class="flexslider02">
+				<ul class="slides">
+					<li><a href="https://www.fukuokabank.co.jp/" target="_blank"><img src="images/index/bnr_ffg.gif" width="190" height="90" alt="株式会社福岡銀行" /></a></li>
+					<li><a href="http://www.fukuoka-toyota.co.jp/" target="_blank"><img src="images/index/bnr_toyota.gif" width="190" height="90" alt="福岡トヨタ自動車株式会社" /></a></li>
+					<li><a href="http://sanix.jp/" target="_blank"><img src="images/index/bnr_sanix.gif" width="190" height="90" alt="株式会社サニックス" /></a></li>
+					<li><a href="http://www.en-jp.net/" target="_blank"><img src="images/index/bnr_encrest.gif" width="190" height="90" alt="エンクレスト" /></a></li>
+					<li><a href="http://www.dai-ichi-life.co.jp/" target="_blank"><img src="images/index/bnr_daiichi.gif" width="190" height="90" alt="第一生命保険株式会社" /></a></li>
+					<li><a href="http://www.asahibeer.co.jp/dryzero/" target="_blank"><img src="images/index/bnr_zero.gif" width="190" height="90" alt="アサヒスーパードライゼロ" /></a></li>
+					<li><a href="http://www.nibishi.co.jp/" target="_blank"><img src="images/index/bnr_nibishi.gif" width="190" height="90" alt="ニビシ醤油株式会社" /></a></li>
+					<li><a href="http://www.ccwest.co.jp/" target="_blank"><img src="images/index/bnr_coke.gif" width="190" height="90" alt="コカ・コーラウエスト" /></a></li> -
+					<li><a href="http://www.adventure.co.jp/" target="_blank"><img src="images/index/bnr_adv.gif" width="190" height="90" alt="Adventure" /></a></li>
+				</ul>
+			</div>
+			<div id="hdCountContainer" style="margin-top:170px;">
+				<h2><img src="images/index/hl_the_day.png" height="40" width="392" alt="2015.11.8 SUN START"></h2>
+				<!--
+				<dl>
+					<dt><img src="images/index/hl_date_to.png" height="50" width="247" alt="福岡マラソン開催まであと"></dt>
+					<dd><img src="images/index/num_1.png" height="33" width="13" alt="1"></dd>
+					<dd><img src="images/index/num_2.png" height="33" width="24" alt="2"></dd>
+					<dd><img src="images/index/num_3.png" height="34" width="25" alt="3"></dd>
+				</dl>
+				-->
+			</div>
+		</div><!-- headerRightContainer -->
+	</div><!-- headerContainer -->
+	<div id="mainVisual" class="flexslider">
+		<ul class="slides">
+			<li><img src="images/index/slide05.jpg" height="550" width="1400" alt=""></li>
+			<li><img src="images/index/slide01.jpg" height="550" width="1400" alt=""></li>
+			<li><img src="images/index/slide02.jpg" height="550" width="1400" alt=""></li>
+			<li><img src="images/index/slide03.jpg" height="550" width="1400" alt=""></li>
+			<li><img src="images/index/slide04.jpg" height="550" width="1400" alt=""></li>
+		</ul>
+	</div>
+</header>
+
+<header id="header_sub" style="display:none;">
+	<div id="headerSubContainer">
+		<h1><a href="/">福岡マラソン2015</a></h1>
+		<aside id="headerSubTopPart">
+			<ul id="hdSubLang">
+				<li><a href="/">日本語</a></li>
+				<li><a href="/en/">ENGLISH</a></li>
+				<li><a href="/cnh/">繁体中文</a></li>
+				<li><a href="/cnk">簡体中文</a></li>
+				<li><a href="/kr/">한국어</a></li>
+			</ul>
+			<ul id="hdSocial">
+				<li class="mypage">
+					<a href="https://runnet.jp/105397/entry_list.html" target="_blank"><img src="images/common/btn_mypage.png" height="13" width="81" alt="マイページ"></a>
+				</li>
+				<li class="btnFbOfficial">
+					<a href="https://ja-jp.facebook.com/fukuokamarathon.official" target="_blank"><img src="/images/common/btn_facebook.png" height="13" width="140" alt="公式フェイスブック"></a>
+				</li>
+				<li class="btnFbShare">
+					<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Ff-marathon.jp%2F&amp;width=120&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:110px; height:21px;" allowTransparency="true"></iframe>
+				</li>
+			</ul>
+			<div id="hdSubLangResponsive">
+				<p class="clickLanguage"><!-- <i class="fa fa-bars"></i> --><img src="/images/common/hl_select_language_white.png" height="20" width="130" alt="Select Language"></p>
+				<ul class="hideLang">
+					<li><a href="/">日本語</a></li>
+					<li><a href="/en/">ENGLISH</a></li>
+					<li><a href="/cnh/">繁体中文</a></li>
+					<li><a href="/cnk">簡体中文</a></li>
+					<li><a href="/kr/">한국어</a></li>
+				</ul>
+			</div><!-- hdSubLangResponsive -->
+		</aside>
+
+		<nav id="navSub">
+			<ul id="subMenu">
+								<li><a href="/about/guest.html" class="navSubAbout">About 大会について</a></li>
+												<li><a href="/news/" class="navSubNews">News 大会ニュース</a></li>
+												<li><a href="/runner/guide.html?id=secRaceGuideContainer" class="navSubRunner">Runner ランナー</a></li>
+								<li><a href="/volunteer/" class="navSubVolunteer">Volunteer ボランティア</a></li>
+				<li><a href="/cheerer/map.html?id=secMapContainer" class="navSubCheerer">Cheerer 応援</a></li>
+				<li><a href="/event/expo.html" class="navSubEvent">Event イベント</a></li>
+				<li><a href="/traffic/" class="navSubTraffic">Traffic 交通規制</a></li>
+								<li><a href="/faq/" class="navSubFaq">FAQ よくある質問</a></li>
+							</ul>
+		</nav>
+	</div><!-- headerContainer -->
+</header>
+
+
+<div id="wejogContainer">
+	<p class="close"><img src="/images/common/close.png" alt="Close"></p>
+	<a href="/news/view/61"><img src="/images/common/bnr_copy_site.jpg" alt="コピーサイトにご注意"></a>
+</div>
+
+
+<article id="topArticleTop">
+	<section id="secTopNews">
+		<div id="topNewsListRel">
+			<div id="topNewsTitleContaier">
+				<h3><img src="images/index/hl_news.png" height="38" width="66" alt="大会ニュース"></h3>
+				<p><a href="/news/"><img src="images/index/btn_news_list.jpg" height="21" width="82" alt="一覧を見る"></a></p>
+			</div>
+						<ul>
+								<li>
+					<dl class="clearfix">
+						<dt><time>2015/12/18</time></dt>
+						<dd><a href="/news/view/84">【12月23日（水・祝）放送】福岡マラソン２０１５のテレビ番組のお知らせ</a></dd>
+					</dl>
+				</li>
+								<li>
+					<dl class="clearfix">
+						<dt><time>2015/11/26</time></dt>
+						<dd><a href="/news/view/83">福岡マラソン２０１６の開催日が決定しました！ </a></dd>
+					</dl>
+				</li>
+								<li>
+					<dl class="clearfix">
+						<dt><time>2015/11/13</time></dt>
+						<dd><a href="/news/view/82">福岡マラソン２０１５の大会結果（記録）が確認できます！ </a></dd>
+					</dl>
+				</li>
+								<li>
+					<dl class="clearfix">
+						<dt><time>2015/11/13</time></dt>
+						<dd><a href="/news/view/81">大会当日のランナー写真公開のお知らせ</a></dd>
+					</dl>
+				</li>
+								<li>
+					<dl class="clearfix">
+						<dt><time>2015/11/09</time></dt>
+						<dd><a href="/news/view/80">【参加賞（Ｔシャツ等）を受け取られていない方】受け取りは12/8（火）までです</a></dd>
+					</dl>
+				</li>
+							</ul>
+					</div>
+	</section>
+
+	<section id="secTopDateContainer">
+
+		<p><img src="images/index/info_nextyear.jpg" alt="福岡マラソン2016開催致します。"></p>
+
+		<h2><img src="images/index/info_2015fin.jpg" alt="福岡マラソン2015終了しました。"></h2>
+
+		<p class="fin2015Text">
+		第2回大会となる福岡マラソン２０１５が終了しました。<br>
+		約12,000人のランナーの皆さま、<br>
+		大会を支えてくださったボランティアやスタッフの皆さま、<br>
+		沿道から温かい声援を送ってくださった皆さまに、<br>
+		心より感謝申し上げます。<br>
+		<br>
+		そして<br>
+		長時間におよぶ交通規制をはじめ、円滑な大会運営のためにご理解ご協力いただいた<br>
+		福岡市民・糸島市民、事業者の皆さまをはじめとする<br>
+		全ての皆さまに厚くお礼申し上げます。
+		</p>
+
+		<div id="afterRunContentsContainer">
+			<div id="afterResult">
+				<h3>大会結果はこちら</h3>
+				<div>
+					<h4>大会記録</h4>
+					<figure><a href="https://runnet.jp/105397/record.html" target="_blank"><img src="images/index/service_result.jpg" alt="大会結果"></a></figure>
+				</div>
+			</div>
+
+			<div id="photoCreate">
+				<h3>写真サービスはこちら</h3>
+				<div>
+					<h4>フォトクリエイト</h4>
+					<figure><a href="http://allsports.jp/event/00316383.html" target="_blank"><img src="images/index/service_photo.jpg" alt="フォトクリエイト"></a></figure>
+				</div>
+			</div>
+		</div>
+
+
+		<div id="secTopAboutRun">
+			<div>
+				<h3><img src="images/index/20151001/hl_about.jpg" alt="都市を走る。海を走る。未来を走る。"></h3>
+				<p>
+				福岡から糸島へ。<br>
+				<br>
+				2つの都市を結ぶ42.195kmのドラマ<br>
+				「福岡マラソン」の開催です。
+				</p>
+			</div>
+		</div>
+
+			</section>
+
+</article>
+	<div id="topSlider">
+		<ul class="gallery1">
+			<li><figure><img src="images/index/pho_top_sub_slide01.jpg" height="205" width="269" alt="福岡マラソン2014の写真01"></figure></li>
+			<li><figure><img src="images/index/pho_top_sub_slide02.jpg" height="205" width="269" alt="福岡マラソン2014の写真02"></figure></li>
+			<li><figure><img src="images/index/pho_top_sub_slide03.jpg" height="205" width="269" alt="福岡マラソン2014の写真03"></figure></li>
+			<li><figure><img src="images/index/pho_top_sub_slide04.jpg" height="205" width="269" alt="福岡マラソン2014の写真04"></figure></li>
+			<li><figure><img src="images/index/pho_top_sub_slide05.jpg" height="205" width="269" alt="福岡マラソン2014の写真05"></figure></li>
+			<li><figure><img src="images/index/pho_top_sub_slide06.jpg" height="205" width="269" alt="福岡マラソン2014の写真06"></figure></li>
+			<li><figure><img src="images/index/pho_top_sub_slide07.jpg" height="205" width="269" alt="福岡マラソン2014の写真07"></figure></li>
+			<li><figure><img src="images/index/pho_top_sub_slide08.jpg" height="205" width="269" alt="福岡マラソン2014の写真08"></figure></li>
+			<li><figure><img src="images/index/pho_top_sub_slide09.jpg" height="205" width="269" alt="福岡マラソン2014の写真09"></figure></li>
+			<li><figure><img src="images/index/pho_top_sub_slide10.jpg" height="205" width="269" alt="福岡マラソン2014の写真10"></figure></li>
+			<li><figure><img src="images/index/pho_top_sub_slide11.jpg" height="205" width="269" alt="福岡マラソン2014の写真11"></figure></li>
+			<li><figure><img src="images/index/pho_top_sub_slide12.jpg" height="205" width="269" alt="福岡マラソン2014の写真12"></figure></li>
+		</ul>
+		<ul class="gallery2">
+			<li><figure><img src="images/index/pho_top_sub_slide14.jpg" height="205" width="269" alt="福岡マラソン2014の写真14"></figure></li>
+			<li><figure><img src="images/index/pho_top_sub_slide15.jpg" height="205" width="269" alt="福岡マラソン2014の写真15"></figure></li>
+			<li><figure><img src="images/index/pho_top_sub_slide16.jpg" height="205" width="269" alt="福岡マラソン2014の写真16"></figure></li>
+			<li><figure><img src="images/index/pho_top_sub_slide17.jpg" height="205" width="269" alt="福岡マラソン2014の写真17"></figure></li>
+			<li><figure><img src="images/index/pho_top_sub_slide18.jpg" height="205" width="269" alt="福岡マラソン2014の写真18"></figure></li>
+			<li><figure><img src="images/index/pho_top_sub_slide19.jpg" height="205" width="269" alt="福岡マラソン2014の写真19"></figure></li>
+			<li><figure><img src="images/index/pho_top_sub_slide20.jpg" height="205" width="269" alt="福岡マラソン2014の写真20"></figure></li>
+			<li><figure><img src="images/index/pho_top_sub_slide21.jpg" height="205" width="269" alt="福岡マラソン2014の写真21"></figure></li>
+			<li><figure><img src="images/index/pho_top_sub_slide22.jpg" height="205" width="269" alt="福岡マラソン2014の写真22"></figure></li>
+			<li><figure><img src="images/index/pho_top_sub_slide23.jpg" height="205" width="269" alt="福岡マラソン2014の写真23"></figure></li>
+			<li><figure><img src="images/index/pho_top_sub_slide24.jpg" height="205" width="269" alt="福岡マラソン2014の写真24"></figure></li>
+			<li><figure><img src="images/index/pho_top_sub_slide25.jpg" height="205" width="269" alt="福岡マラソン2014の写真25"></figure></li>
+		</ul>
+	</div>
+<article id="topArticleBottom">
+	<section id="secTopGuidelinesContainer">
+
+		<h3><img src="images/about/hl_outline.jpg" height="75" width="177" alt="大会要項"></h3>
+
+		<ul>
+			<li>
+				<dl>
+					<dt>大会名称</dt>
+					<dd>福岡マラソン2015<br>（英文表記） FUKUOKA MARATHON2015</dd>
+				</dl>
+			</li>
+			<li>
+				<dl>
+					<dt>開催種目</dt>
+					<dd>
+						<ul>
+							<li>
+							<strong>●マラソン</strong><br>
+							福岡市中央区天神（渡辺通り天神交差点）付近をスタートし、糸島市役所志摩庁舎付近をフィニッシュとする。<br>
+							＜日本陸上競技連盟公認コース＞
+							</li>
+							<li>
+							<strong>●車いす競技及びファンラン</strong><br>
+							福岡市中央区天神（渡辺通り天神交差点）付近をスタートし、百道中央公園付近をフィニッシュとする。
+							</li>
+						</ul>
+					</dd>
+				</dl>
+			</li>
+			<li>
+				<dl>
+					<dt>開催日時</dt>
+					<dd>
+						<strong>2015年（平成27年）11月8日（日）※雨天決行</strong>
+						<ul class="timeList">
+							<li><span>8:15</span>車いす競技　スタート</li>
+							<li><span>8:20</span>マラソン／ファンラン　スタート</li>
+							<li><span>15:20</span>マラソン終了</li>
+						</ul>
+					</dd>
+				</dl>
+			</li>
+			<li>
+				<dl>
+					<dt>参加者受付</dt>
+					<dd>
+						<ul>
+							<li class="topOutlineReceiver">
+								<dl>
+									<dt>日時：</dt>
+									<dd>2015年(平成27年)11月6日(金)　、7日（土）10：00～20：00<br>※大会当日(11月8日)の受付は行わない。</dd>
+								</dl>
+								<dl>
+									<dt>会場：</dt>
+									<dd>福岡市役所西側ふれあい広場</dd>
+								</dl>
+							</li><!-- topOutlineReceiver -->
+						</ul>
+					</dd>
+				</dl>
+			</li>
+			<li>
+				<dl>
+					<dt>表彰</dt>
+					<dd>
+						<ul class="topPrizeList">
+							<li>（1）マラソン総合：男女各1位～8位</li>
+							<li>（2）マラソン年代別：年齢区分（24歳以下、25歳以上29歳以下、以下同様に74歳まで5歳刻み、75歳以上）の男女各1位～3位</li>
+							<li>（3）車いす競技：男女各1位～3位</li>
+							<li>※（2）については表彰式を行わず、賞状を後日送付する。</li>
+							<li>※ファンランの表彰は行わない。</li>
+						</ul>
+					</dd>
+				</dl>
+			</li>
+		</ul>
+
+		<section id="secCourseMovieContainer">
+			<h4><img src="images/index/hl_top_course_movie.jpg" height="65" width="258" alt="コース紹介動画"></h4>
+			<iframe width="650" height="366" src="https://www.youtube.com/embed/_yqNcfHPmWc?rel=0&wmode=transparent" frameborder="0" wmode="transparent" allowfullscreen></iframe>
+			<p>この動画は、2014年3月に作成したものです。<br>実際のコースとは、下記の部分が異なります。</p>
+			<dl>
+				<dt>[変更点]</dt>
+				<dd>●九州大学伊都キャンパス前（20km付近）の折り返し区間を延長し、糸島市桜野小前（38km付近）の折り返しをなくしました。</dd>
+				<dd>●5km毎のポイントの位置が変更になりました。</dd>
+			</dl>
+		</section>
+	</section>
+
+	<p id="topGj"><a href="http://wejog.jp/" target="_blank"><img src="images/common/bn_wejog.gif" height="120" width="627" alt="WE JOG！LIFE STYLE JOG MAGAZINE"></a></p>
+
+	<section id="secTopOtherRaces">
+		<h3><img src="images/index/hl_top_other_races.jpg" height="75" width="272" alt="他大会へのリンク"></h3>
+		<ul>
+			<li><a href="http://marathon-kyushu.com/" target="_blank"><img src="images/index/marathon-in-kyushu.jpg" height="56" width="170" alt="九州マラソン"></a></li>
+			<li><a href="http://www.kumamotojyo-marathon.jp/" target="_blank"><img src="images/index/kumamotojyo.jpg" height="56" width="170" alt="熊本城マラソン"></a></li>
+			<li><a href="http://kitakyushu-marathon.jp/" target="_blank"><img src="images/index/kitakyushu.jpg" height="56" width="170" alt=""></a></li>
+			<li><a href="http://kaikyomarathon.jp/index.html" target="_blank"><img src="images/index/shimonoseki.jpg" height="56" width="170" alt="下関海峡マラソン"></a></li>
+			<li><a href="http://www.ibusuki-nanohana.com/marathon/" target="_blank"><img src="images/index/ibusuki.jpg" height="56" width="170" alt="いぶすき菜の花マラソン"></a></li>
+			<li><a href="http://www.kagoshima-marathon.jp/" target="_blank"><img src="images/index/kagoshima.jpg" height="56" width="170" alt="鹿児島マラソン"></a></li>
+		</ul>
+	</section>
+
+	<section id="secTopArchive">
+		<h3><img src="images/index/hl_top_archive.jpg" height="74" width="181" alt="過去の大会"></h3>
+		<p><a href="/2014/" target="_blank"><img src="images/index/bnr_fukuoka_marathon2014.jpg" height="80" width="418" alt="福岡マラソン2014"></a></p>
+	</section>
+</article>
+
+
+	<footer>
+		<div class="pageTop">
+			<a href="#top"><img src="/images/common/btn_page_top.jpg" height="122" width="70" alt="Page Top"></a>
+		</div>
+		<section id="secPartners">
+			<ul>
+				<li id="footerGSContainer">
+					<dl>
+						<dt><img src="/images/common/hl_footer_gold_sponsors.png" height="37" width="211" alt="Gold Sponsors"></dt>
+						<dd>
+							<ul>
+								<li><a href="http://www.fukuokabank.co.jp/" target="_blank"><img src="/images/common/foot_ffg.gif" height="80" width="190" alt="ふくおかフィナンシャルグループ・福岡銀行"></a></li>
+								<li><a href="http://www.fukuoka-toyota.co.jp/" target="_blank"><img src="/images/common/foot_toyota.gif" height="80" width="190" alt="福岡トヨタ"></a></li>
+								<li><a href="http://sanix.jp/" target="_blank"><img src="/images/common/foot_sanix.gif" height="80" width="190" alt="SANIX"></a></li>
+								<li><a href="http://www.en-jp.net/" target="_blank"><img src="/images/common/foot_encrest.gif" height="80" width="190" alt="ENCREST"></a></li>
+							</ul>
+						</dd>
+					</dl>
+				</li>
+				<li id="footerSSContainer">
+					<dl>
+						<dt><img src="/images/common/hl_footer_silver_sponsors.png" height="30" width="185" alt="Silver Sponsors"></dt>
+						<dd>
+							<ul>
+								<li><a href="http://www.dai-ichi-life.co.jp/" target="_blank"><img src="/images/common/foot_daiichi.gif" width="160" height="60" alt="第一生命保険株式会社" ></a></li>
+								<li><a href="http://www.asahibeer.co.jp/dryzero/" target="_blank"><img src="/images/common/foot_zero.gif" width="160" height="60" alt="アサヒスーパードライゼロ" ></a></li>
+							</ul>
+						</dd>
+					</dl>
+				</li>
+				<li id="footerBSContainer">
+					<dl>
+						<dt><img src="/images/common/hl_footer_bronze_sponsors.png" height="25" width="175" alt="Bronze Sponsors"></dt>
+						<dd>
+							<ul>
+								<li><a href="http://subway.city.fukuoka.lg.jp/" target="_blank"><img src="/images/common/foot_subway.gif" width="150" height="50" alt="福岡市地下鉄" /></a></li>
+								<li><a href="http://www.musundehiraite.com/" target="_blank"><img src="/images/common/foot_musunde.gif" width="150" height="50" alt="むすんでひらいて" /></a></li>
+								<li><a href="http://www.tamahome.jp/" target="_blank"><img src="/images/common/foot_tama.gif" width="150" height="50" alt="タマホーム" /></a></li>
+								<li><a href="http://www.nisshin.com" target="_blank"><img src="/images/common/foot_nissin.gif" width="150" height="50" alt="日清製粉グループ" /></a></li>
+								<li><a href="http://allsports.jp/event/00316383.html" target="_blank"><img src="/images/common/foot_allsports.gif" width="150" height="50" alt="オールスポーツコミュニティー" /></a></li>
+								<li><a href="http://jp.fujitsu.com/" target="_blank"><img src="/images/common/foot_fujitsu.gif" width="150" height="50" alt="富士通株式会社" /></a></li>
+								<li><a href="http://www.fukuda.co.jp/" target="_blank"><img src="/images/common/foot_fukuda.gif" width="150" height="50" alt="フクダ電子" /></a></li>
+								<li><a href="http://www.jtb.co.jp/" target="_blank"><img src="/images/common/foot_jtb.gif" width="150" height="50" alt="JTB" /></a></li>
+								<li><a href="http://www.shimizu-group.co.jp" target="_blank"><img src="/images/common/foot_shimizu.gif" width="150" height="50" alt="株式会社西日本シミズ" /></a></li>
+								<li><a href="http://fukuoka.parco.jp/" target="_blank"><img src="/images/common/foot_parco.gif" width="150" height="50" alt="株式会社パルコ" /></a></li>
+								<li><a href="http://corporate.shinnihonseiyaku.co.jp/" target="_blank"><img src="/images/common/foot_shinnihon.gif" width="150" height="50" alt="新日本製薬" /></a></li>
+								<li><a href="http://www.nittsu.co.jp/" target="_blank"><img src="/images/common/foot_nittsu.gif" width="150" height="50" alt="日本通運株式会社" /></a></li>
+								<li><a href="http://www.nishitetsu.jp/" target="_blank"><img src="/images/common/foot_nishitetsu.gif" width="150" height="50" alt="西日本鉄道株式会社" /></a></li>
+								<li><a href="http://www.shiroyama.co.jp/" target="_blank"><img src="/images/common/foot_shiroyama.gif" width="150" height="50" alt="株式会社城山" /></a></li>
+								<li><a href="http://www.nishikeinet.co.jp/" target="_blank"><img src="/images/common/foot_nishikei.gif" width="150" height="50" alt="株式会社にしけい" /></a></li>
+								<li><a href="http://www.futata.co.jp/" target="_blank"><img src="/images/common/foot_futata.gif" width="150" height="50" alt="株式会社フタタ" /></a></li>
+								<li><a href="http://www.bodywork.co.jp/" target="_blank"><img src="/images/common/foot_raffine.gif" width="150" height="50" alt="ラフィネ" /></a></li>
+								<li><a href="http://www.fukuoka-kyotei.com/root/japanese/" target="_blank"><img src="/images/common/foot_boat.gif" width="150" height="50" alt="BOATRACE" /></a></li>
+								<li><a href="http://www.ntt-bp.net/" target="_blank"><img src="/images/common/foot_nttbp.gif" width="150" height="50" alt="NTTBP" /></a></li>
+							</ul>
+						</dd>
+					</dl>
+				</li>
+				<li id="footerOSDPContainer">
+					<dl>
+						<dt><img src="/images/common/hl_footer_official_volunteer_Sponsor.png" height="30" width="314" alt="Official Volunteer Partner"></dt>
+						<dd><a href="http://www.nibishi.co.jp/" target="_blank"><img src="/images/common/foot_nibishi.gif" height="60" width="160" alt="ニビシ"></a></dd>
+					</dl>
+				</li>
+				<li id="footerOWPContainer">
+					<dl>
+						<dt><img src="/images/common/hl_footer_official_wear_partner.png" height="24" width="249" alt="Official Wear Partner"></dt>
+						<dd><a href="http://www.adventure.co.jp/" target="_blank"><img src="/images/common/foot_adv.gif" width="160" height="60" alt="Adventure"></a></dd>
+					</dl>
+				</li>
+				<li id="footerOSDPContainer">
+					<dl>
+						<dt><img src="/images/common/hl_footer_official_soft_drink_partner.png" height="23" width="296" alt="Official Soft Drink Partner"></dt>
+						<dd><a href="http://www.ccwest.co.jp/" target="_blank"><img src="/images/common/foot_coke.gif" width="160" height="60" alt="コカ・コーラウエスト"></a></dd>
+					</dl>
+				</li>
+				<li id="footerONContainer">
+					<dl>
+						<dt><img src="/images/common/hl_footer_official_newspaper.png" height="30" width="226" alt="Official Newspaper"></dt>
+						<dd><a href="http://www.nishinippon.co.jp/" target="_blank"><img src="/images/common/foot_nishinihon.gif" width="160" height="54" alt="西日本新聞"></a></dd>
+					</dl>
+				</li>
+				<li id="footerMPContainer">
+					<dl>
+						<dt><img src="/images/common/hl_footer_media_partners.png" height="23" width="176" alt="Media Partners"></dt>
+						<dd>
+							<ul>
+								<li><a href="http://www.kbc.co.jp/top.html" target="_blank"><img src="/images/common/foot_kbc.gif" width="160" height="54" alt="九州朝日放送"></a></li>
+								<li><a href="http://www.asahi.com/" target="_blank"><img src="/images/common/foot_asahi.gif" width="160" height="54" alt="朝日新聞"></a></li>
+							</ul>
+						</dd>
+					</dl>
+				</li>
+				<li id="footerORGContainer">
+					<dl>
+						<dt><img src="/images/common/hl_footer_organizers.png" height="28" width="132" alt="Organizers"></dt>
+						<dd>
+							<ul>
+								<li><a href="http://www.city.fukuoka.lg.jp/" target="_blank"><img src="/images/common/foot_fukuoka.gif" width="160" height="54" alt="福岡市"></a></li>
+								<li><a href="http://www.city.itoshima.lg.jp/" target="_blank"><img src="/images/common/foot_itoshima.gif" width="160" height="54" alt="糸島市"></a></li>
+								<li><a href="http://www.fukuriku.com/" target="_blank"><img src="/images/common/foot_rikujyo.gif" width="160" height="54" alt="福岡陸上競技協会"></a></li>
+							</ul>
+						</dd>
+					</dl>
+				</li>
+			</ul>
+			<ul id="footerSocialList">
+				<li><a href="https://www.facebook.com/fukuokamarathon.official" target="_blank"><img src="/images/common/foot_facebook.gif" width="48" height="48" alt="facebook" /></a></li>
+				<li><a href="https://www.youtube.com/user/fukuokamarathon" target="_blank"><img src="/images/common/foot_youtube.gif" width="48" height="48" alt="YouTube" /></a></li>
+				<li class="toto"><a href="http://www.toto-dream.com/support/" target="_blank"><img src="/images/common/foot_toto.gif" width="160" height="48" alt="toto" /></a></li>
+			</ul>
+		</section>
+
+		<section id="secFooterBottom">
+			<h1><a href="/"><img src="/images/common/logo_footer.jpg" height="110" width="97" alt="福岡マラソン2015"></a></h1>
+			<p>福岡マラソン実行委員会事務局<span id="footerAddress">（〒810-8620 福岡市中央区天神1-8-1）</span></p>
+			<p><em>TEL 092-711-4676</em><span>FAX 092-733-5595</span>受付時間9:30 ～ 17:00（土・日・祝日は除く）</p>
+			<p><small>©FUKUOKA MARATHON 2015. All Rights Reserved.</small></p>
+		</section>
+	</footer>
+</body>
+</html>

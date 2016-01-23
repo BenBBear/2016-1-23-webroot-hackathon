@@ -1,0 +1,639 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />    <title>
+        Monappy |  Home - Monacoin Portal&Wallet    </title>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" /><link rel="stylesheet" type="text/css" href="/css/bootflat.css" /><link rel="stylesheet" type="text/css" href="/css/main.css" /><script type="text/javascript" src="/js/jquery.min.js"></script><link href="/favicon.ico" type="image/x-icon" rel="icon" /><link href="/favicon.ico" type="image/x-icon" rel="shortcut icon" />
+<meta name="keywords" content="monacoin,モナコイン,モナーコイン,monappy">
+<meta name="description" content="monacoinと一緒にメッセージが送れるポータル＆ウェブウォレットサイト、Monappyです。ユーザー登録してmonacoinを100倍楽しみましょう。">
+<meta name="cat-mdes-site-42872457" content="cb5d6b4f-6b3f-4b20-9872-ec6edf6b8b41">
+</head>
+    <body style="padding-top: 70px;">
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Monappy</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-shopping-cart"></span> <span class="hidden-sm">Shopping</span> <b class="caret"></b></a>
+            <ul class="dropdown-menu" style="background:#F6bb42">
+              <li><a href="/payment_forms/browse/monappy">公式</a></li>
+              <li><a href="/payment_forms/browse/">ユーザー</a></li>
+              <li><a href="/payment_forms/browse_r18">R-18</a></li>
+            </ul>
+          </li>
+		  <li class="dropdown">
+			  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-picture"></span> <span class="hidden-sm">ピクプレ</span> <b class="caret"></b></a>
+			  <ul class="dropdown-menu" style="background:#f6bb42">
+				  <li><a href="/picture_places/browse">作品一覧</a></li>
+				  <li><a href="/picture_places/browse_r18">R-18</a></li>
+				  <li><a href="/picture_places/">作品投稿</a></li>
+				  <li><a href="/picture_place_themes/">お題投稿</a></li>
+			  </ul>
+		  </li>
+		  <li><a href=						  "/gifts/general_receive/"
+					  					  ><span class="glyphicon glyphicon-gift"></span> <span class="hidden-sm">ギフトコード</span></a></li>
+                  </ul>
+          <ul class="nav navbar-nav navbar-right">
+                <li><a href="/contacts/add">Contact</a></li>
+        <li><a href="/users/register">Register new account</a></li>
+        <li><a href="/users/login"><span class="glyphicon glyphicon-log-out"></span> Login</a></li>
+        
+                  </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+		<!-- Modal -->
+<div class="modal fade" id="send" tabindex="-1" role="dialog" aria-labelledby="sendLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="sendLabel">Login</h4>
+      </div>
+      <div class="modal-body">
+		  You need to login before you can send money at Monappy.<form action="/users/open" id="withdraw_form" method="post" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="_method" value="POST"/><input type="hidden" name="data[_Token][key]" value="61824dc1bf60a8040e7cabf4ed89ff0212e8c82c" id="Token568954191"/></div><div class="form-group required"><label for="UserUsername" class=""><span class="glyphicon glyphicon-user"></span> E-mail address</label><input name="data[User][username]" class="form-control" type="post" id="UserUsername" required="required"/></div><div class="form-group required"><label for="UserPassword" class=""><span class="glyphicon glyphicon-lock"></span> Password</label><input name="data[User][password]" class="form-control" type="password" id="UserPassword" required="required"/></div><div class="text-right" style="padding-bottom:20px;"> 
+<input  class="btn btn-lg btn-primary" type="submit" value="Login / Register"/> <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Cancel</button>
+<div style="display:none;"><input type="hidden" name="data[_Token][fields]" value="05d04440f28f9724566e8cf9411e083089cebb4b%3A" id="TokenFields1518929807"/><input type="hidden" name="data[_Token][unlocked]" value="" id="TokenUnlocked1437118662"/></div></form><script>
+    $(function() {
+        $("#sending").hide();
+    });
+</script>
+    </div>
+      </div>
+    </div>
+  </div>
+  </div>
+    <script type="text/javascript">
+//<![CDATA[
+$(document).ready(function () {$("#post_bm_to").bind("click", function (event) {var _confirm = confirm("0.05MONA will be used to post this message. OK?");if (!_confirm) {
+	return false;
+}$.ajax({complete:function (XMLHttpRequest, textStatus) {PNotify.prototype.options.delay = 4000;
+var resp = $.parseJSON(XMLHttpRequest.responseText);
+var stack_bottomleft =  {"dir1": "right", "dir2": "up", "push": "top"};
+if (resp.status == "ok"){
+	$('#post_message_text').val('');
+    new PNotify({
+        title: 'Done',
+        text: resp.message,
+        animation: 'slide',
+        type: 'success'
+    });
+    $('#post_bm').modal('hide');
+	
+} else {
+    new PNotify({
+        title: 'Error',
+        text: resp.message,
+        animation: 'slide',
+        type: 'error'
+    });
+}
+refreshBalance();
+create_mes_a(5);}, data:$("#post_bm_to").closest("form").serialize(), type:"post", url:"\/broadcast_messages\/add"});
+return false;});});
+//]]>
+</script>    <div class="container">
+
+
+
+        
+
+        
+<!-- Modal -->
+<div class="modal fade" id="post_bm" tabindex="-1" role="dialog" aria-labelledby="sendLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="sendLabel">Post Message</h4>
+      </div>
+      <div class="modal-body">
+<form action="/" id="message_form" method="post" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="_method" value="POST"/><input type="hidden" name="data[_Token][key]" value="61824dc1bf60a8040e7cabf4ed89ff0212e8c82c" id="Token414621942"/></div><div class="form-group required"><label for="post_message_text" class=""><span class="glyphicon glyphicon-envelope"></span> Message</label><textarea name="data[BroadcastMessage][message]" class="form-control" rows="5" id="post_message_text" cols="30" required="required"></textarea></div><p>
+There is a <b class="text-danger">0.05MONA</b> fee to post messages.</p>
+<div class="text-right" style="padding-bottom:20px;"> 
+<input  class="btn btn-primary btn-lg" id="post_bm_to" data-loading-text="送信中..." type="submit" value="Posts"/> <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Cancel</button>
+<div style="display:none;"><input type="hidden" name="data[_Token][fields]" value="0a46e04b2faf5faa4eaab17745baf761eb04d46a%3A" id="TokenFields1260080591"/><input type="hidden" name="data[_Token][unlocked]" value="" id="TokenUnlocked1161700574"/></div></form>    </div>
+      </div>
+    </div>
+  </div>
+  </div>
+<div class="row">
+<div class="col-lg-3 col-md-12"><DIV class="valign_middle" style="vertical-align:middle"><a href="/u/monappy"><img src="/img/monappy_logos.png"></a></div></div>
+<div class="col-lg-9 col-md-12">
+
+<small style="font-color:#777777">Please use the form below to register or login.</small><br />
+<form action="/users/open" class="well form-inline" id="UserOpenForm" method="post" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="_method" value="POST"/><input type="hidden" name="data[_Token][key]" value="61824dc1bf60a8040e7cabf4ed89ff0212e8c82c" id="Token219387332"/></div><div class="form-group required"><input name="data[User][username]" class="form-control" placeholder="Your e-mail address" maxlength="100" type="text" id="UserUsername" required="required"/></div> 
+<div class="form-group required"><input name="data[User][password]" class="form-control" placeholder="Password" type="password" id="UserPassword" required="required"/></div> 
+<div class="form-group"><input  class="btn btn-primary" type="submit" value="Register / Open wallet"/></div> 
+<a href="/users/forgot">Forgot password?</a>
+<div style="display:none;"><input type="hidden" name="data[_Token][fields]" value="05d04440f28f9724566e8cf9411e083089cebb4b%3A" id="TokenFields1138905594"/><input type="hidden" name="data[_Token][unlocked]" value="" id="TokenUnlocked670381875"/></div></form>
+
+</div>
+</div>
+<div class="row">
+
+
+
+    <div class="col-lg-3 col-md-3 col-sm-5">
+    
+<H1 style="font-size:20px;color:#888888;margin-bottom:10px"><a href="http://freesoft.tvbok.com/monacoin/start/monacoin_for_beginners.html" target="_blank">Monacoin for Beginners (JP)</a></H1>
+
+
+
+  <h5 style="color:#888888;margin-bottom:10px">Mona ⇔ JPY 
+<small style="color:#999999">Last update: 08:29</small>
+</h5>
+<table class="table">
+<tr>
+<td width="50%"><b><span style="color:#999999"><a href="https://monax.jp/" target="_blank">Monax</a></span></b><br>
+</td>
+<td><b><span style="color:#999999"><a href="https://zaif.jp/trade_mona_jpy" target="_blank">zaif</a></span></b><br></td>
+</tr>
+<tr>
+<td>Bid <span style="color:blue">0JPY</span><br />
+    Ask <span style="color:red">9999.9JPY</span>
+</td>
+<td>Bid <span style="color:blue">7.2JPY</span><br />
+    Ask <span style="color:red">7.3JPY</span></td>
+</tr>
+</table>
+<h1 style="font-size:22px;color:#888888;margin-bottom:10px">Monacoin Info</h1>
+<table class="table">
+<tr>
+<td>Hashrate</td>
+<td>41208.1 MH/s</td>
+</tr>
+<tr>
+<td>Diff</td>
+<td>800.7 </td>
+</tr>
+<tr>
+<td>Blocks</td>
+<td>557640</td>
+</tr>
+<tr>
+<td>Circulation</td>
+<td>27882000 MONA</td>
+</tr>
+</table>
+        <h1 style="font-size:22px;color:#888888;margin-bottom:10px">Monacoin LINK</h1>
+
+<div class="accordion">
+<h5><a data-toggle="collapse" data-target="#picup" data-parent="#accordion2" style="cursor:pointer">Recommended</a></h5>
+ <div id="picup" class="collapse in" style="margin-left:10px">
+  <div class="row">
+  <div class="col-xs-6">
+    <a href="https://monatr.jp/">mona-tore</a><br />
+    <a href="http://askmona.org/">AskMona</a><br />
+    <a href="http://mona-coin.com/">Charts</a>
+  </div>
+  <div class="col-xs-6">
+    <a href="https://twitter.com/_monappy_/lists/monacoin-s">MONA's List</a><br />
+    <a href="http://hope.2ch.net/cryptocoin/">Crypto BBS</a>
+  </div>
+  </div>
+ </div>
+</div>
+<div class="accordion">
+<h5><a data-toggle="collapse" data-target="#start" data-parent="#accordion2" style="cursor:pointer">Getting started</a></h5>
+  <div id="start" class="collapse" style="margin-left:10px">
+    <a href="http://dic.nicovideo.jp/a/monacoin">About Monacoin<br /><small style="color:#999999">- Nico Nico Dictionary</small></a><br />
+    <a href="http://monacoin.org/ja/">Monacoin Project<br /><small style="color:#999999">- Official Monacoin website</small></a><br />
+    <a href="http://monacoin.strikingly.com/">Monacoin explained in 60s</a><br />
+    <a href="http://freesoft.tvbok.com/">Bokunchi no TV bekkan<br /><small style="color:#999999">- PC and Network technology</small></a>
+  </div>
+</div>
+<div class="accordion">
+<h5><a data-toggle="collapse" data-target="#trade" data-parent="#accordion2" style="cursor:pointer">Exchanges</a></h5>
+  <div id="trade" class="collapse" style="margin-left:10px">
+    <a href="https://zaif.jp/trade_mona_jpy">zaif<br /><small style="color:#999999">- Robust MONA ⇔ JPY exchange.</small></a><br />
+    <a href="https://monax.jp/">Monax<br /><small style="color:#999999">- High security MONA ⇔ JPY exchange.</small></a><br />
+    <a href="https://monatr.jp/">mona-tore<br /><small style="color:#999999">- Multi-crypto exchange that uses MONA as its key currency.</small></a><br />
+    <a href="http://www.allcoin.com/">Allcoin.com<br /><small style="color:#999999">- Overseas multi-crypto exchange that also lists MONA.</small></a>
+  </div>
+</div>
+<div class="accordion">
+<h5><a data-toggle="collapse" data-target="#info" data-parent="#accordion2" style="cursor:pointer">Information</a></h5>
+  <div id="info" class="collapse" style="margin-left:10px">
+    <a href="http://satoshinakamoto.jp/monacharawidget.php">Mona Character Widget<br /><small style="color:#999999">- Widget with a MONA valuation indicator.</small></a><br />
+    <a href="http://mona-coin.com/"MonacoinCharts<br /><small style="color:#999999">- Various Monacoin valuation charts</small></a><br />
+    <a href="http://mc.mk6.jp/">MonaChart<br /><small style="color:#999999">- In-depth charts for the mona-tore exchange.</small></a><br />
+    <a href="http://aso.monax.jp/">Aso Search<br /><small style="color:#999999">- Easy-to-read blockchain search</small></a><br />
+    <a href="http://abe.monash.pw:3000/">insight</a>
+  </div>
+</div>
+<div class="accordion">
+<h5><a data-toggle="collapse" data-target="#wallet" data-parent="#accordion2" style="cursor:pointer">Wallet</a></h5>
+  <div id="wallet" class="collapse" style="margin-left:10px">
+    <a href="http://multimona.sv73.net/">MultiMona<br /><small style="color:#999999">- Light, functional wallet</small></a><br />
+    <a href="http://keystore00.github.io/">keystore00<br /><small style="color:#999999">- For Android</small></a><br />
+    <a href="http://offlinewallet.info/">Offline Wallet<br /><small style="color:#999999">- All you need is a passphrase.</small></a>
+  </div>
+</div>
+<div class="accordion">
+<h5><a data-toggle="collapse" data-target="#shop" data-parent="#accordion2" style="cursor:pointer">Shop</a></h5>
+  <div id="shop" class="collapse" style="margin-left:10px">
+    <a href="http://www.digiket.com/index/_data/AFID=monappy/">DiGiket.com<br /><small style="color:#999999">- Long-time doujinshi shop, now accepts MONA!</small></a><br />
+    <a href="http://giftmona.com/">GiftMona<br /><small style="color:#999999">- All kinds of gift cards and coupons.</small></a><br />
+    <a href="http://ship.monash.pw/">Monash Ship<br /><small style="color:#999999">- For those overseas.</small></a><br />
+    <a href="http://monazon.com/">Monazon<br /><small style="color:#999999">- Amazon gift cards.</small></a><br />
+    <a href="http://ilab.cc/">iLab Factory<br /><small style="color:#999999">- iPhone repair services and more.</small></a><br />
+    <a href="http://monacoin.sv73.net/">monacoinista<br /><small style="color:#999999">- Secondhand books and goods.</small></a>
+  </div>
+</div>
+<div class="accordion">
+<h5><a data-toggle="collapse" data-target="#post" data-parent="#accordion2" style="cursor:pointer">Posts</a></h5>
+  <div id="post" class="collapse" style="margin-left:10px">
+    <a href="http://askmona.org/">AskMona<br /><small style="color:#999999">- 2ch-like BBS that lets you tip MONA to posters.</small></a><br />
+    <a href="http://monapic.xyz/">Monapic<br /><small style="color:#999999">- Send MONA to artist contributions here.</small></a><br />
+    <a href="http://monafun.xyz/">Monafun<br /><small style="color:#999999">- Crowdfunding</small></a><br />
+    <a href="http://buybrain.monach.net/">BUY BRAIN<br /><small style="color:#999999">- Sell idea by MONA</small></a><br />
+    <a href="https://bitcointalk.org/index.php?topic=392436.0">bitcointalk<br /><small style="color:#999999">- Monacoin topic.</small></a>
+  </div>
+</div>
+<div class="accordion">
+<h5><a data-toggle="collapse" data-target="#service" data-parent="#accordion2" style="cursor:pointer">Services</a></h5>
+  <div id="service" class="collapse" style="margin-left:10px">
+    <a href="http://monash.pw/bot/">@tipmona<br /><small style="color:#999999">- Bot that sends MONA via Twitter.</small></a><br />
+    <a href="https://cryptad.com/">CryptAd<br /><small style="color:#999999">- Monacoin prize</small></a><br />
+    <a href="http://monacoin241.wix.com/monaads">Mona-Ads<br /><small style="color:#999999">- Ad with MONA</small></a><br />
+    <a href="http://monaqr.atpiyo.com/">MonaQR<br /><small style="color:#999999">- Send MONA from QR Code</small></a><br />
+  </div>
+</div>
+<div class="accordion">
+<h5><a data-toggle="collapse" data-target="#game" data-parent="#accordion2" style="cursor:pointer">Gaming</a></h5>
+  <div id="game" class="collapse" style="margin-left:10px">
+    <a href="http://www60.atwiki.jp/monacoin_mahjong/">monacoin麻雀Wiki<br /><small style="color:#999999">- 天鳳を利用したmonacoinが賞金の麻雀大会開催情報。毎週1～2回程度定期開催</small></a><br />
+    <a href="http://akalabo.com/">AKALABO<br /><small style="color:#999999">- monacoinでアイテムの売買が出来るminecraftサーバー</small></a><br />
+    <a href="http://games.usvsth3m.com/2048/monacoin-edition/">2048 MonacoinEdition<br /><small style="color:#999999">- モナキャラを利用したパズルゲーム？</small></a>
+  </div>
+</div>
+<div class="accordion">
+<h5><a data-toggle="collapse" data-target="#blog" data-parent="#accordion2" style="cursor:pointer">BLOG</a></h5>
+  <div id="blog" class="collapse" style="margin-left:10px">
+    <a href="http://blog.mona-digest.net/">mona digest<br /><small style="color:#999999">- moonacoinの最新情報</small></a><br />
+    <a href="http://monaboy.net/">MONA BOY<br /><small style="color:#999999">- 暗号通貨生活</small></a>
+  </div>
+</div><div class="accordion">
+<h5><a data-toggle="collapse" data-target="#2ch" data-parent="#accordion2" style="cursor:pointer">2ch</a></h5>
+  <div id="2ch" class="collapse" style="margin-left:10px">
+    <a href="http://hope.2ch.net/cryptocoin/">仮想通貨<br /><small style="color:#999999">- 新設された仮想通貨板</small></a><br />
+    <a href="http://anago.2ch.net/software/">ソフトウェア<br /><small style="color:#999999">- monacoinの技術的な情報スレッドはこちら</small></a><br />
+    <a href="http://viper.2ch.net/news4vip/">ニュース速報(VIP)<br /><small style="color:#999999">- 常時monacoinスレッドがありばら撒きやゲームなどが行われている</small></a><br />
+    <a href="http://anago.2ch.net/mj/">麻雀<br /><small style="color:#999999">- monacoinが賞金の麻雀大会などが定期的に開催</small></a>
+  </div>
+</div>
+<div class="accordion">
+<h5><a data-toggle="collapse" data-target="#potal" data-parent="#accordion2" style="cursor:pointer">Portals</a></h5>
+  <div id="potal" class="collapse" style="margin-left:10px">
+    <a href="http://mona-japan.com/">Mona-Japan!<br /><small style="color:#999999">- どこかで見た事があるようなポータルサイト。ブログや動画に直接MONAを投げられる</small></a>
+  </div>
+</div>
+<div class="accordion">
+<h5><a data-toggle="collapse" data-target="#sns" data-parent="#accordion2" style="cursor:pointer">Social Networks</a></h5>
+  <div id="sns" class="collapse" style="margin-left:10px">
+    <a href="https://plus.google.com/u/0/communities/116220849735212202796">Google+</a><br />
+    <a href="http://goo.gl/H92e4K">Facebook</a><br />
+    <a href="http://mixi.jp/view_community.pl?from=home_joined_community&id=6182891">mixi</a><br />
+    <a href="http://com.nicovideo.jp/community/co2253806">ニコニコ動画</a>
+  </div>
+</div>
+<div class="accordion">
+<h5><a data-toggle="collapse" data-target="#pool" data-parent="#accordion2" style="cursor:pointer">Pools</a></h5>
+  <div id="pool" class="collapse" style="margin-left:10px">
+    <a href="http://keystore00.github.io/pools.html">Monacoin Pools Stats<br /><small style="color:#999999">- 各プールのシェアが確認できる</small></a><br />
+    <a href="http://anipool.net/">Ani-Pool</a><br />
+    <a href="http://gikopool.net/">gikopool (,,ﾟДﾟ)</a><br />
+    <a href="http://vippool.net/">VIP pool</a><br />
+    <a href="http://simplemona.com/">Simple Mona</a>
+  </div>
+</div>
+</div>
+    <div class="col-lg-6 col-md-6 col-sm-7">
+<h4 style="border-radius: 10px;background-color:#f6bb42;padding:5px;color:#ffffff;margin-bottom:20px">MonappyBroadcast
+    </h4>
+
+	<div id="broadcast" style="clear:right">
+		    	<div class="media">
+		<a class="pull-left" href="#">
+		<img src="https://monaffy.jp/img/profile/small/2711.jpg?2016-01-18 18:52:11" style="max-width: 100%; height:auto;" width="50" height="50" class="" alt="" />		</a>
+		<div class="media-body">
+			<h4 class="media-heading"><a href="/u/huran113">@huran113</a> <a href="#" class="" data-toggle="modal" data-target="#send" onclick="$('#to_txt').val('@huran113');"><span class="glyphicon glyphicon-arrow-left"></span> Send</a></h4>
+			<p>
+			面白Tシャツを発売しています
+Monacoinでは買えませんが()
+<a href="/go?url=https%3A%2F%2Futme.uniqlo.com%2Fjp%2Ffront%2Fmkt%2Fshow%3Fid%3D179141%26locale%3Dja">https://utme.uniqlo.com/jp/front/mkt/show?id=179141&amp;locale=ja</a>			</p>
+			<small>
+			01/17 13:55:04			</small>
+		</div>
+	</div>
+		<div class="text-right">
+        <a href="/broadcast_messages/">
+		See more →		</a>
+		</div>
+	</div>
+
+<!--とりあえずこのような感じで最新1件のみ表示で-->
+<h4 style="border-radius: 10px;background-color:#3bafda;padding:5px;color:#ffffff;margin-bottom:20px"><a href="/payment_forms/browse/" style="color:#FFFFFF">MonappyPayments</a></h4>
+<div style="font-size:15px; line-height:19px;">
+	<a href="http://monappy.jp/checkout/yuzu_forever-JjSTkJU">【PCゲーム】7th Guest + 11th Hour</A> - <small style="color:#999999"><A href="/u/yuzu_forever">yuzu_forever</a></small><br />
+	<a href="http://monappy.jp/checkout/yuzu_forever-NFOXM3I">【PCゲーム】A Tex Murphy Adventure</A> - <small style="color:#999999"><A href="/u/yuzu_forever">yuzu_forever</a></small><br />
+	<a href="http://monappy.jp/checkout/yuzu_forever-QHeEhDI">【PCゲーム】TexMurphy Complete Pack</A> - <small style="color:#999999"><A href="/u/yuzu_forever">yuzu_forever</a></small><br />
+	<a href="http://monappy.jp/checkout/_Monamaga-IUh0KJY">モナマガ！ -Monacoin Magazine-  創刊号</A> - <small style="color:#999999"><A href="/u/_Monamaga">_Monamaga</a></small><br />
+	<a href="http://monappy.jp/checkout/yuzu_forever-GSFAkYA">Max Gentlemen Triple DLC Pack</A> - <small style="color:#999999"><A href="/u/yuzu_forever">yuzu_forever</a></small><br />
+	<a href="http://monappy.jp/checkout/monacoint_tanka-QDMZNhA">短歌＆仮想通貨モナコインマガジン「もな歌」第３号</A> - <small style="color:#999999"><A href="/u/monacoint_tanka">monacoint_tanka</a></small><br />
+	<a href="http://monappy.jp/checkout/yoooo-F5A2ZGY">GambitiousDigitalEntertainment</A> - <small style="color:#999999"><A href="/u/yoooo">yoooo</a></small><br />
+<hr style="margin-top: 10px; margin-bottom: 10px">
+		<div class="text-left">
+			<ul class="list-inline">
+				<li><a href="/payment_forms/browse/">総合</a></li>
+				<li>|</li>
+				<li><a href="/payment_forms/browse?category=0">物販</a></li>
+				<li>|</li>
+				<li><a href="/payment_forms/browse?category=1">データ</a></li>
+				<li>|</li>
+				<li><a href="/payment_forms/browse?category=2">金券</a></li>
+				<li>|</li>
+				<li><a href="/payment_forms/browse?category=3">暗号通貨</a></li>
+				<li>|</li>
+				<li><a href="/payment_forms/browse?category=4">More...</a></li>
+				<li>|</li>
+				<li><a href="/payment_forms/browse_r18">R-18</a></li>
+			</ul>
+		</div>
+</div>
+
+<!-- MonappyPicturePlacesを表示 -->
+<h4 style="border-radius: 10px;background-color:#90ee90;padding:5px;color:#ffffff;margin-bottom:20px"><a href="/picture_places/browse/" style="color:#FFFFFF">MonappyPicturePlaces</a></h4>
+<div class="list-inline" style="padding-left: 5px; padding-right: 5px; font-size:15px; line-height:19px;">
+	<a href="http://monappy.jp/picture_places/view/311">
+		<img src="https://monaffy.jp/img/picture_place/small/311.jpg" style="max-width: 100%" width="50" height="50" alt="" />	</a>
+	<a href="http://monappy.jp/picture_places/view/310">
+		<img src="https://monaffy.jp/img/picture_place/small/310.jpg" style="max-width: 100%" width="50" height="50" alt="" />	</a>
+	<a href="http://monappy.jp/picture_places/view/309">
+		<img src="https://monaffy.jp/img/picture_place/small/309.jpg" style="max-width: 100%" width="50" height="50" alt="" />	</a>
+	<a href="http://monappy.jp/picture_places/view/308">
+		<img src="https://monaffy.jp/img/picture_place/small/308.jpg" style="max-width: 100%" width="50" height="50" alt="" />	</a>
+	<a href="http://monappy.jp/picture_places/view/307">
+		<img src="https://monaffy.jp/img/picture_place/small/307.jpg" style="max-width: 100%" width="50" height="50" alt="" />	</a>
+	<a href="http://monappy.jp/picture_places/view/306">
+		<img src="https://monaffy.jp/img/picture_place/small/306.jpg" style="max-width: 100%" width="50" height="50" alt="" />	</a>
+	<a href="http://monappy.jp/picture_places/view/305">
+		<img src="https://monaffy.jp/img/picture_place/small/305.png" style="max-width: 100%" width="50" height="50" alt="" />	</a>
+	<a href="http://monappy.jp/picture_places/view/304">
+		<img src="https://monaffy.jp/img/picture_place/small/304.jpg" style="max-width: 100%" width="50" height="50" alt="" />	</a>
+	<a href="http://monappy.jp/picture_places/view/303">
+		<img src="https://monaffy.jp/img/picture_place/small/303.jpg" style="max-width: 100%" width="50" height="50" alt="" />	</a>
+	<a href="http://monappy.jp/picture_places/view/302">
+		<img src="https://monaffy.jp/img/picture_place/small/302.jpg" style="max-width: 100%" width="50" height="50" alt="" />	</a>
+<hr style="margin-top: 10px; margin-bottom: 10px">
+		<div class="text-left">
+			<ul class="list-inline">
+				<li><a href="picture_places/browse/">総合</a></li>
+				<li>|</li>
+				<li><a href="picture_places/browse?category=0">イラスト</a></li>
+				<li>|</li>
+				<li><a href="picture_places/browse?category=1">漫画</a></li>
+				<li>|</li>
+				<li><a href="picture_places/browse?category=2">写真</a></li>
+				<li>|</li>
+				<li><a href="picture_places/browse_r18">R-18</a></li>
+			</ul>
+		</div>
+</div>
+
+<div class="panel" style="padding: 5px; margin-top: 20px">
+	<div style="font-weight:bold; text-align: left">PR</div>
+			<H1 style="color: #888888;margin-bottom: 10px; margin-top: 0px;">
+			<a href="/ads/">
+				広告募集中！！			</a>
+		</H1>
+		広告スペースをMONAで販売中です。	</div>
+
+<!--放送中の番組を表示-->
+<h4 style="border-radius: 10px;background-color:#666666;padding:5px;color:#ffffff;margin-bottom:20px">MonacoinCasting
+	<a style="margin-left: 10px" href="http://live.nicovideo.jp/search?sort=recent&keyword=monacoin">
+		<img style="width: 20px;height:20px" src="/img/nc10878_24x24.png" alt="ニコニコ生放送検索ページ">
+	</a>
+	<a style="margin-left:5px" href="http://ja.twitcasting.tv/search/text/monacoin?hl=ja">
+		<img style="width: 20px;height: 20px" src="/img/twicas_icon_24x24.png" alt="ツイキャス検索ページ">
+	</a>
+</h4>
+<div style="font-size:15px; line-height:19px;">
+	現在放送中の生放送はありません<br />
+</div>
+
+
+
+<h4 style="border-radius: 10px;background-color:#309700;padding:5px;color:#ffffff;margin-bottom:10px;margin-top:25px"><a href="http://askmona.org/" style="color:#FFFFFF">AskMonaTopics</a></h4><P><div style="font-size:15px; line-height:19px;">
+		<A href="http://askmona.org/4117">カウンターパーティでネタトークン作って遊びませんか？</A> <small style="color:#999999">(129)</small><br />
+		<A href="http://askmona.org/3273">モナコイン相場</A> <small style="color:#999999">(283)</small><br />
+		<A href="http://askmona.org/3399">モナコインの品位を下げ普及を妨げる２ちゃんねる荒しの田村仁寿</A> <small style="color:#999999">(23)</small><br />
+		<A href="http://askmona.org/3837">好きなＣＰＵを語ろう</A> <small style="color:#999999">(38)</small><br />
+		<A href="http://askmona.org/3616">monacoin総合雑談スレ</A> <small style="color:#999999">(115)</small><br />
+		<A href="http://askmona.org/3673">【転んでも】クラウドマイニング情報共有用トピ3GHS【泣かない】</A> <small style="color:#999999">(783)</small><br />
+		<A href="http://askmona.org/3705">むしろ潔く乞食する奴らが集まるスレ part4 - 免許取りたい</A> <small style="color:#999999">(630)</small><br />
+
+</div>
+<!--ニコニコ動画を表示-->
+<h4 style="border-radius: 10px;background-color:#3d5fd1;padding:5px;color:#ffffff;margin-bottom:20px"><a href="http://www.nicovideo.jp/search/monacoin?sort=f&order=d" style="color:#ffffff">ニコニコ動画</a></h4>
+<div style="font-size:15px; line-height:19px;">
+			<a href="http://www.nicovideo.jp/watch/sm27991545?ref=search_key_video">【第16回MMD杯予選】空色町1コインコンサート</a><br />
+			<a href="http://www.nicovideo.jp/watch/sm27772444?ref=search_key_video">摩耶さまは夢見る少女じゃいられないそうです</a><br />
+			<a href="http://www.nicovideo.jp/watch/sm27326169?ref=search_key_video">おい、金魚見ねぇか？ Raspberry Pi2で作るハイテク水槽 #2</a><br />
+			<a href="http://www.nicovideo.jp/watch/sm26575129?ref=search_key_video">【第７回東方ニコ童祭】Place of yourself【あらいぐまファクトリー】</a><br />
+			<a href="http://www.nicovideo.jp/watch/sm26368446?ref=search_key_video">【LoL】無敵・復活動作を見てみよう【初心者講座番外編４】</a><br />
+	</div>
+
+<!--ニコニコ静画を表示-->
+<h4 style="border-radius: 10px;background-color:#ffaec9;padding:5px;color:#ffffff;margin-bottom:20px"><a href="http://seiga.nicovideo.jp/search/monacoin?target=illust&sort=&sort=image_created" style="color:#ffffff">ニコニコ静画</a></h4>
+<div style="font-size:15px; line-height:19px;">
+			<a href="http://seiga.nicovideo.jp/seiga/im5394271?track=seiga_illust_key">モナコイン</a><br />
+			<a href="http://seiga.nicovideo.jp/seiga/im5393325?track=seiga_illust_key">ぺちぺち</a><br />
+			<a href="http://seiga.nicovideo.jp/seiga/im5393185?track=seiga_illust_key">漫画「支払いはＭｏｎａで。」の二人</a><br />
+			<a href="http://seiga.nicovideo.jp/seiga/im5392276?track=seiga_illust_key">正月だあああああああああ</a><br />
+			<a href="http://seiga.nicovideo.jp/seiga/im5392118?track=seiga_illust_key">やっちゃいました。</a><br />
+	</div>
+
+<!--Youtubeを表示-->
+<h4 style="border-radius: 10px;background-color:#666666;padding:5px;color:#ffffff;margin-bottom:20px"><a href="https://www.youtube.com/results?search_sort=video_date_uploaded&search_query=%22monacoin%22" style="color:#ffffff">Youtube</a></h4>
+<div style="font-size:15px; line-height:19px;">
+			<a href="https://www.youtube.com/watch?v=ec0bzO46gbk">Play monacoin[モナコインの遊び方]</a><br />
+			<a href="https://www.youtube.com/watch?v=cKxJ32hlJbo">F1 2000 Button &amp; De la Rosa crash Monacoin Button car</a><br />
+			<a href="https://www.youtube.com/watch?v=feP61WTCl88">Previous Monacoin モナーコイン一年のあらすじ</a><br />
+			<a href="https://www.youtube.com/watch?v=T1Pt8KTNRWg">WATANABEAT_Monacoin_Compilation_Album_MV.exe</a><br />
+			<a href="https://www.youtube.com/watch?v=hvQMIX0DyWc">モナコミ前夜！！【１ヶ月1万monacoin生活30,31日目】</a><br />
+	</div>
+
+<!--7件くらい表示する感じで-->
+<h4 style="border-radius: 10px;background-color:#bb0030;padding:5px;color:#ffffff;margin-bottom:10px;margin-top:25px">BlogHeadline</h4>
+<div style="font-size:15px; line-height:19px;">
+	<a href="http://blog.mona-digest.net/?p=3743">【話題】MONA/JPYの取引所だったmonaxがサー...</A> - <small style="color:#999999"><A href="http://blog.mona-digest.net/">mona digest</a></small><br />
+	<a href="http://blog.mona-digest.net/?p=3728">【話題・注意喚起】Mole Poolがサーバ移転のため...</A> - <small style="color:#999999"><A href="http://blog.mona-digest.net/">mona digest</a></small><br />
+	<a href="http://blog.mona-digest.net/?p=3719">【話題】新たなMONAのマイニングプール「AikaPo...</A> - <small style="color:#999999"><A href="http://blog.mona-digest.net/">mona digest</a></small><br />
+</div>
+
+<h4 style="border-radius: 10px;background-color:#9999ff;padding:5px;color:#ffffff;margin-bottom:10px;margin-top:30px"><a href="http://www.digiket.com/index/_data/AFID=monappy/" style="color:#FFFFFF" target="_blank">DiGiket.com</a><small style="color:#FFFFFF"> - Purchase doujins with MONA</small></h4>
+<div class="row" style="padding: 0px; margin:0px;">
+	<a href="http://www.digiket.com/work/show/_data/ID=ITM0126933/AFID=monappy/" target="_blank"><img src="http://img.digiket.net/cg/126/ITM0126933_2.jpg" width="55" height="55" border="0"></a><a href="http://www.digiket.com/work/show/_data/ID=ITM0126271/AFID=monappy/" target="_blank"><img src="http://img.digiket.net/cg/126/ITM0126271_2.jpg" width="55" height="55" border="0"></a><a href="http://www.digiket.com/work/show/_data/ID=ITM0119536/AFID=monappy/" target="_blank"><img src="http://img.digiket.net/cg/119/ITM0119536_2.jpg" width="55" height="55" border="0"></a><a href="http://www.digiket.com/work/show/_data/ID=ITM0059459/AFID=monappy/" target="_blank"><img src="http://img.digiket.net/cg/59/ITM0059459_2.jpg" width="55" height="55" border="0"></a><a href="http://www.digiket.com/work/show/_data/ID=ITM0108134/AFID=monappy/" target="_blank"><img src="http://img.digiket.net/cg/108/ITM0108134_2.jpg" width="55" height="55" border="0"></a><a href="http://www.digiket.com/work/show/_data/ID=ITM0115009/AFID=monappy/" target="_blank"><img src="http://img.digiket.net/cg/115/ITM0115009_2.jpg" width="55" height="55" border="0"></a><a href="http://www.digiket.com/work/show/_data/ID=ITM0106055/AFID=monappy/" target="_blank"><img src="http://img.digiket.net/cg/106/ITM0106055_2.jpg" width="55" height="55" border="0"></a><a href="http://www.digiket.com/work/show/_data/ID=ITM0119620/AFID=monappy/" target="_blank"><img src="http://img.digiket.net/cg/119/ITM0119620_2.jpg" width="55" height="55" border="0"></a><a href="http://www.digiket.com/work/show/_data/ID=ITM0104115/AFID=monappy/" target="_blank"><img src="http://img.digiket.net/cg/104/ITM0104115_2.jpg" width="55" height="55" border="0"></a><a href="http://www.digiket.com/work/show/_data/ID=ITM0128771/AFID=monappy/" target="_blank"><img src="http://img.digiket.net/cg/128/ITM0128771_2.jpg" width="55" height="55" border="0"></a>	<a href="http://www.digiket.com/work/show/_data/ID=ITM0126087/AFID=monappy/" target="_blank"><img src="http://img.digiket.net/cg/126/ITM0126087_2.jpg" width="55" height="55" border="0"></a><a href="http://www.digiket.com/work/show/_data/ID=ITM0127284/AFID=monappy/" target="_blank"><img src="http://img.digiket.net/cg/127/ITM0127284_2.jpg" width="55" height="55" border="0"></a><a href="http://www.digiket.com/work/show/_data/ID=ITM0126514/AFID=monappy/" target="_blank"><img src="http://img.digiket.net/cg/126/ITM0126514_2.jpg" width="55" height="55" border="0"></a><a href="http://www.digiket.com/work/show/_data/ID=ITM0126333/AFID=monappy/" target="_blank"><img src="http://img.digiket.net/cg/126/ITM0126333_2.jpg" width="55" height="55" border="0"></a><a href="http://www.digiket.com/work/show/_data/ID=ITM0129247/AFID=monappy/" target="_blank"><img src="http://img.digiket.net/cg/129/ITM0129247_2.jpg" width="55" height="55" border="0"></a><a href="http://www.digiket.com/work/show/_data/ID=ITM0127887/AFID=monappy/" target="_blank"><img src="http://img.digiket.net/cg/127/ITM0127887_2.jpg" width="55" height="55" border="0"></a><a href="http://www.digiket.com/work/show/_data/ID=ITM0128188/AFID=monappy/" target="_blank"><img src="http://img.digiket.net/cg/128/ITM0128188_2.jpg" width="55" height="55" border="0"></a><a href="http://www.digiket.com/work/show/_data/ID=ITM0128007/AFID=monappy/" target="_blank"><img src="http://img.digiket.net/cg/128/ITM0128007_2.jpg" width="55" height="55" border="0"></a><a href="http://www.digiket.com/work/show/_data/ID=ITM0126530/AFID=monappy/" target="_blank"><img src="http://img.digiket.net/cg/126/ITM0126530_2.jpg" width="55" height="55" border="0"></a><a href="http://www.digiket.com/work/show/_data/ID=ITM0128374/AFID=monappy/" target="_blank"><img src="http://img.digiket.net/cg/128/ITM0128374_2.jpg" width="55" height="55" border="0"></a></div>
+</div>
+    <div class="col-lg-3 col-md-3 col-sm-12">
+
+<div class="row">
+  <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+      <H4 style="text-align:center"><a href="http://freesoft.tvbok.com/monacoin/wallet/monappy.html" target="_blank">How to use Monappy (JP)</a><small style="color:#999999"><br />(Explanation <a href="http://freesoft.tvbok.com/" target="_blank">Mr. Bokunchi TV Hotel</a> )</small></H4>
+
+
+<h1 style="font-size:22px;color:#888888;margin-bottom:10px">Monacoin Manga <br><small>by <a href="/u/akito">Akito Harunatsu</a></small></h1>
+<a href="/mangas/view/36"><img style="width:95%"  src="https://monaffy.jp/manga/monappy_lSUsc0_b.png"><br>
+<div class="text-center" style="margin-top:10px"><b>→ 第36話 is up! Read it here.</b></div></a>
+
+<div class="panel" style="padding: 5px; margin-top: 20px">
+        <div style="font-weight:bold; text-align: left">PR</div>
+			<H1 style="color: #888888;margin-bottom: 10px; margin-top: 0px;">
+			<a href="/ads/">
+				広告募集中！！			</a>
+		</H1>
+		広告スペースをMONAで販売中です。    </div>
+
+<h1 style="font-size:22px;color:#888888;margin-bottom:10px">Event Calendar</h1>
+
+
+	
+									
+	<div class="list-group" style="line-height:18px;">
+	<small>
+	
+					
+											<div style="background-color:#ffeccb;">
+							1月23日 土曜日						</div>
+					
+					<a href="http://www60.atwiki.jp/monacoin_mahjong/pages/43.html" target="_blank">
+													20:30-						
+						
+						もな麻雀　第28回 しんしんと降り積もる週末杯<br>
+					</a>
+
+															
+													
+													
+													
+													
+													
+													
+										
+											<div style="background-color:#ffeccb;">
+							1月30日 土曜日						</div>
+					
+					<a href="https://mona.doorkeeper.jp/events/37281" target="_blank">
+													18:00-						
+						
+						Monacoinミートアップ2016年1月<br>
+					</a>
+
+											</small>
+	</div>
+
+<div class="text-right">
+        <a href="/monacalendars">
+		See more →		</a>
+</div>
+<br>
+  <a href="/matomes/browse"><img src="/img/matome/kasologo.png" width="250" height="50" alt="かそつ～速報！" title="かそつ～速報！"></a>
+  <div class="well">
+			<div class="row" id="matome_top_style">
+			<div class="col-lg-3 col-md-4 col-sm-3 col-xs-3">
+			<a class="media-left" href="/matomes/view/22">
+				<img width="60" height="60" src="http://i.imgur.com/LpyDoge.png"/>
+			</a>
+			</div>
+			<div class="col-lg-9 col-md-8 col-sm-9 col-xs-9 ">
+			<a href="/matomes/view/22"><small>モナコインが急騰！一時14円に到達</small></a>
+			</div>
+		</div>
+		<br>
+			<div class="row" id="matome_top_style">
+			<div class="col-lg-3 col-md-4 col-sm-3 col-xs-3">
+			<a class="media-left" href="/matomes/view/21">
+				<img width="60" height="60" src="http://i.imgur.com/bhnCbbJ.png"/>
+			</a>
+			</div>
+			<div class="col-lg-9 col-md-8 col-sm-9 col-xs-9 ">
+			<a href="/matomes/view/21"><small>Zaifの住信SBIネット銀行口座が凍結！暗号通貨取引所の口座凍結が続く！</small></a>
+			</div>
+		</div>
+		<br>
+			<div class="row" id="matome_top_style">
+			<div class="col-lg-3 col-md-4 col-sm-3 col-xs-3">
+			<a class="media-left" href="/matomes/view/20">
+				<img width="60" height="60" src="http://i.imgur.com/119KZzd.png"/>
+			</a>
+			</div>
+			<div class="col-lg-9 col-md-8 col-sm-9 col-xs-9 ">
+			<a href="/matomes/view/20"><small>CoinCheckの楽天銀行口座凍結の謎がミステリーの様相を呈してきた...</small></a>
+			</div>
+		</div>
+		<br>
+		</div>
+</div>
+
+  <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+    <h5 style="color:#3bafda;margin-bottom:5px">#monacoin</h5>
+    <a class="twitter-timeline" data-chrome="nofooter" href="https://twitter.com/search?q=%23monacoin%2B-from%3Aonapolice%2B-from%3AOnacoinfund%2B-from%3Aonanonaka%2B-%23%E3%82%AA%E3%83%AF%E3%82%B3%E3%82%A4%E3%83%B3%2B-%23%E5%80%AD%E7%8C%BF" data-widget-id="479139704319647744">Tweets related to #monacoin</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.async=true;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+    <h5 style="color:#f6bb42;margin-bottom:5px">Official Monappy Twitter</h5>
+    <a class="twitter-timeline"  href="https://twitter.com/_monappy_"  data-widget-id="479138504085999616">@_monappy_ からのツイート</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.async=true;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+  </div>
+</div>
+
+    </div>
+    
+</div>
+
+    </div>
+<script type="text/javascript" src="/js/eas.js"></script>
+    </div>
+    <div class="footer" id="footer" style="text-align:center;font-size:12px;background-color:#FFFFFF;min-height: 130px; margin-top: 20px; top: 0px; position: relative;">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-offset-3 col-lg-6 col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6">
+				<div class="panel text-left" style="padding: 5px;">
+                    <div style=" text-align: center">- PR -</div>
+											<H1 style="color: #888888;margin-bottom: 10px; margin-top: 0px;">
+							<a href="/ads/">
+								広告募集中！！							</a>
+						</H1>
+						広告スペースをMONAで販売中です。									</div>
+			</div>
+		</div>
+	</div>
+    <div class="container">
+© 2014 Monappy / <a href="https://monappy.jp/pages/about">How to use Monappy (JP)</a> / <a href="https://monappy.jp/pages/terms">Terms</a> / <a href="https://monappy.jp/pages/privacy_policy">Privacy Policy</a> / <a href="https://monappy.jp/pages/api_help">API</a><br />
+            </div>
+    </div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-6183702-8', 'auto');
+  ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+
+</script>
+    <link rel="stylesheet" type="text/css" href="/css/lightbox.css" /><link rel="stylesheet" type="text/css" href="/css/pnotify.custom.min.css" /><link rel="stylesheet" type="text/css" href="/css/tooltipster.css" /><script type="text/javascript" src="/js/pnotify.custom.min.js"></script><script type="text/javascript" src="/js/image-scale.min.js"></script><script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><script type="text/javascript" src="/js/jquery.tooltipster.min.js"></script><script type="text/javascript" src="/js/jquery.cookie.js"></script><script type="text/javascript" src="/js/lightbox.min.js"></script><script type="text/javascript" src="/js/icheck.min.js"></script><script type="text/javascript" src="/js/footerFixed.js"></script><script type="text/javascript" src="/js/main.js"></script></body>
+</html>

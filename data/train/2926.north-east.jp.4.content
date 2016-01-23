@@ -1,0 +1,242 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<title>ノースイーストカヌーセンター</title>
+<link href="css/common.css" rel="stylesheet" type="text/css" />
+<link href="css/index.css" rel="stylesheet" type="text/css" />
+
+
+
+
+<script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAA0TOInbzkT-8ytqSpcdQKHBTDwCTgPTVCbqtoq5p471MI7rNueRQQQFQihG53L2eipOtbrEkqA-HUUA"></script>
+<script type="text/javascript">
+<!--
+ // API本体の読み込み
+google.load('feeds', '1');
+ // 初期化関数を定義
+function feeds_init() {
+ // 読み込むfeed
+var feed = new google.feeds.Feed("http://neccaiaicanoe.blog62.fc2.com/?xml");
+ // 読み込み件数
+feed.setNumEntries(5);
+ // 読み込んだfeedを加工する処理
+feed.load(function(result) {
+ // エラー？
+if (!result.error) {
+ // 結果を表示するエレメント
+var container = document.getElementById('googleFeed');
+ // 汎用変数textを初期化
+var text = '';
+
+// feedを処理するループ
+for (var i = 0; i < result.feed.entries.length; i++) {
+ // entryに１件取り出す
+var entry = result.feed.entries[i];
+
+ // 日付!!
+var dd = new Date(entry.publishedDate);
+var yearNum = dd.getYear();
+if (yearNum < 2000) yearNum += 1900;
+var date = yearNum + "年"+(dd.getMonth()+1)+"月"+dd.getDate()+"日";
+
+
+// feedのlink及びcontent属性のデータをHTMLに整形しつつtext変数に加える
+text += '<li style="text-align:left"><a href="' + entry.link + '" target="_blank">' + entry.title + '　(' + date + ')</a></li>' ;
+}
+ // DLタグで囲んでエレメントに出力
+container.innerHTML = '<ul id="user_news">' + text + '</ul>' ;
+}
+});
+}
+ // 関数をイベントハンドラとして登録
+google.setOnLoadCallback(feeds_init);
+-->
+</script>
+
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-42192692-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+
+
+<body>
+<div id="user_wrap">
+	<div id="user_header_1">
+		<ul>
+
+			<li><a href="sitemap.html">サイトマップ</a>｜</li>
+			<li><a href="privacy.html">個人情報保護方針</a></li>
+		</ul>
+	<!-- id "header_1"--></div>
+	<div id="user_header_2"><img src="img/common/header_03.jpg" alt="ノースイーストカヌーセンター" width="960" height="133" /><!-- id "user_header_2"--></div>
+
+
+	<div id="user_main_left">
+
+		<div id="g_navi">
+<ul>
+<li id="g_navi1_on"><a href="./"></a></li>
+<li id="g_navi2"><a href="canoe.html"></a></li>
+<li id="g_navi3"><a href="activity.html"></a></li>
+<li id="g_navi4"><a href="company.html"></a></li>
+<li id="g_navi5"><a href="access.html"></a></li>
+<li id="g_navi6"><a href="inquiry.html"></a></li>
+</ul>
+<div class="clear"></div>
+</div>
+		<div id="user_main_contents">
+
+<div id="user_con_1">
+
+<p><img src="img/index/main_title.jpg" width="325" height="26" /></p>
+<p>ここ北海道の東に中心に位置する弟子屈町には、摩周湖や屈斜路湖の他にもまだたくさんの自然が残されています。この自然を体感していただくため、ノースイーストカヌーセンターでは様々なツアーを通年を通してご案内しています。</p>
+<p>一度参加するとまた来たくなるような、おいしいカヌー＆ネイチャーツアーです。のんびりと贅沢な時間を過ごしませんか？</p>
+
+<!-- id "user_con_1"--></div>
+
+		<div id="user_news_title"><a href="http://neccaiaicanoe.blog62.fc2.com/" target="_blank">新着情報／お知らせ</a><!-- id "news_title"--></div>
+        
+		<div id="user_include_news">
+<div id="w250">
+<div id="googleFeed">now loading...</div>
+</div>
+<div id="feed02"><a href="http://neccaiaicanoe.blog62.fc2.com/blog-category-34.html" target="_blank"><img src="img/blog_banar01.jpg" alt="ユーコン旅日記" name="m_b10" width="230" height="50" id="m_b10" /></a><br />
+  <a href="http://neccaiaicanoe.blog62.fc2.com/blog-category-35.html" target="_blank"><img src="img/blog_banar02.jpg" alt="BE-PAL＆カヌーライフ" name="m_b10" width="230" height="50" id="m_b10" /></a><br />
+  <a href="http://neccaiaicanoe.blog62.fc2.com/blog-entry-966.html" target="_blank"><img src="img/blog_banar03.jpg" width="230" height="50" alt="20周年イベント" /></a></div>
+		<!-- id "user_include_news"--></div>
+        <div class="clear"></div>
+		<h4><img src="img/index/100817_1top_31.jpg" alt="オススメコース" width="655" height="51" /></h4>
+
+		<ul class="osusume clearfix">
+			<li id="osusume_01"><a href="canoe.html#ts_01">釧路川湿原1日コース</a></li>
+			<li id="osusume_02"><a href="canoe.html#ts_02">釧路川源流部1日コース</a></li>
+		</ul>
+		<ul class="osusume clearfix">
+			<li id="osusume_03"><a href="canoe.html#ts_14">犬と一緒に楽しめるツアー</a></li>
+			<li id="osusume_04"><a href="canoe.html#ts_03">釧路川源流ツアー</a></li>
+
+		</ul>
+		<ul class="osusume clearfix">
+			<li id="osusume_05"><a href="canoe.html#ts_02">子供と一緒にカヌー</a></li>
+			<li id="osusume_06"><a href="canoe.html#ts_01">カヌーで撮影してみたい</a></li>
+		</ul>
+
+
+
+
+<div class="clear" style="padding-bottom:30px;"></div>
+
+
+<h2>ノースイーストカヌーセンター20周年記念カヌーキャンプ</h2>
+
+
+
+<p><img src="img/index/20event.jpg" width="620" height="386" /></p>
+
+
+<div style="background-color:#e2eeff; margin:0 0 0 2em; padding:10px 0 0 0; width:620px;">
+<p>スペシャルゲスト　カヌーイースト　野田 知佑氏<br />
+動物写真家　竹田津 実氏</p>
+</div>
+
+<div style="background-color:#fff; margin:0 0 0 2em; padding:10px 0 0 0; width:620px;">
+<p>2011.9.22～23　屈斜路湖　和琴半島　和琴キャンプ場<br />
+参加費　お一人様　カヌー持参　20,000円（20名限定）<br />
+ガイド付カヌーツアー　30,000円（20名限定）
+</p>
+</div>
+
+<div style="background-color:#e2eeff; margin:0 0 50px 2em; padding:10px 0 0 0; width:620px;">
+<p>
+今年、ノースイーストは、1991年設立以来、20周年を迎えることとなりました。<br />
+3.11の大震災により、7月に予定していましたカヌーキャンプを9月22～23日の日程で<br />
+ゲストに野田知佑氏と竹田津実氏をお迎えして、開催することになりました。<br />
+
+いままでお世話になりましたお客様と関係者の方々と大いに飲み食べ、語り会おうとの<br />
+思いからの企画ですので、お時間を作って来てください。<br />
+<br />
+なお、参加の条件については、当社のカヌーツアーに参加していただいたお客様の限定<br />
+にさせていただきますので、ご了承ください。<br />
+<br />
+リピーターのお客様には、改めてご連絡をする予定です。<br />
+<br />
+申し込みについては、メールにて、お願いします。<br />
+申し込みの締め切りは、７月31日を予定しています。<br />
+
+<br />
+ノースイーストカヌーセンター　代表　平塚　一明<br />
+</p>
+</div>
+
+
+
+
+
+<h2>網走カヌーセンター</h2>
+<p>
+▼網走カヌーセンター<br />
+カヌーツアー料金： 
+大人3,000円 
+子供1,500円<br />
+
+所要時間：1時間30分<br />
+時間：5月初旬～10月末営業、体験は6～16時（予約優先、随時受付）<br />
+休み：期間中無休(荒天時中止)<br />
+</p>
+
+
+
+
+		<!-- id "user_main_contents"--></div>
+	<!-- id "user_main_left"--></div>
+	<div id="user_main_right">
+
+		<ul>
+<li id="r_navi_1"><a href="company.html#guide"><img src="img/common/header_03.jpg" alt="ノースイーストカヌーセンター" width="960" height="133" />ガイド紹介</a></li>
+			<li id="r_navi_4"><a href="guideline.html">カヌー時の服装と持ち物</a></li>
+			<li id="r_navi_2"><a href="access.html">アクセスマップ</a></li>
+			<li id="r_navi_3"><a href="inquiry.html">お問い合わせ</a></li>
+            <li><script src="http://tabiiro.jp/magazine/_common/js/bnr.js" type="text/javascript"></script><a href="javascript:fullscreen('http://tabiiro.jp/magazine/hokkaido/indivi/01_b_leisure02_LU/book.html');"><img src="http://tabiiro.jp/magazine/_b/01_north-east/230_70.jpg" border="0" alt="ウェブマガジン旅色の北海道（釧路）グルメ＆観光特集に紹介されました"></a></li>
+		</ul>
+        
+        <iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fnorth.east.canoe&amp;width=230&amp;height=75&amp;show_faces=true&amp;colorscheme=light&amp;stream=true&amp;show_border=true&amp;header=true&amp;appId=696300330397065" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:230px; height:75px;" allowTransparency="true"></iframe>
+        
+		<address>有限会社ノースイースト <br />
+
+		北海道川上郡弟子屈高栄1-5-4 <br />
+		TEL：015-482-5131/FAX：015-482-5150</address>
+	<!-- id "user_main_right"--></div>
+	<div id="user_foot_navi">
+		<ul>
+			<li><a href="./">トップページ</a>｜</li>
+			<li><a href="canoe.html">カヌー</a>｜</li>
+
+			<li><a href="activity.html">アクティビティ</a>｜</li>
+			<li><a href="company.html">会社概要</a>｜</li>
+			<li><a href="access.html">アクセス</a>｜</li>
+			<li><a href="inquiry.html">ご予約</a>｜</li>
+			<li><a href="link.html">リンク</a></li>
+
+		</ul>
+		<!-- id "user_foot_navi"--></div>
+	<div id="user_footer">
+		Copyright (C) 1991-2011 North East Corporation. All Rights Reserved.
+	<!-- id "user_footer"--></div>
+<!-- id "user_wrap"--></div>
+</body>
+</html>

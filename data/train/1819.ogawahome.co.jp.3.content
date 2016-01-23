@@ -1,0 +1,452 @@
+<!doctype html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="ja"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="ja"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="ja"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> 	<html lang="ja">
+<!--<![endif]-->
+<head>
+
+	<!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+<title>埼玉 オガワホーム　人と環境に優しい住宅メーカー 草加</title>
+<meta name="description" content="埼玉県の住宅メーカー「オガワホーム」では人と環境に優しい家づくりを長年ご提案しています。私たちは皆さまのお話をたくさん聞かせていただいて、どんな家づくりがより良いプランなのかを一緒に考えてご提案していく、ということを大切にしています。">
+<meta name="keywords" content="オガワホーム,健康住宅,天然素材,自然素材,埼玉の注文住宅,ロハススタイル,ロハスな家,ソラマド,soramado,ソラマド埼玉,リフォーム">
+
+
+	<!-- Mobile Specific Metas
+  ================================================== 
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- CSS
+  ================================================== -->
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/skeleton.css">
+<!--<link rel="stylesheet" href="css/layout.css">-->
+    <link rel="stylesheet" href="css/ogawahome.css" type="text/css" />
+    
+<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- Favicons
+	================================================== -->
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+
+<!-- スクロールトップ -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<!-- スマホ誘導スクリプト -->
+<script type="text/javascript" src="/js/redirect.js"></script>
+<script language="JavaScript">
+<!--
+$(function() {
+	var showFlag = false;
+	var topBtn = $('#page-top');	
+	topBtn.css('bottom', '-100px');
+	var showFlag = false;
+	//スクロールが100に達したらボタン表示
+	$(window).scroll(function () {
+		if ($(this).scrollTop() > 100) {
+			if (showFlag == false) {
+				showFlag = true;
+				topBtn.stop().animate({'bottom' : '20px'}, 200); 
+			}
+		} else {
+			if (showFlag) {
+				showFlag = false;
+				topBtn.stop().animate({'bottom' : '-100px'}, 200); 
+			}
+		}
+	});
+	//スクロールcss/ogawahome.cssしてトップ
+    topBtn.click(function () {
+		$('body,html').animate({
+			scrollTop: 0
+		}, 500);
+		return false;
+    });
+});
+
+//-->
+</script>
+    
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+
+<!-- include Cycle plugin -->
+<script type="text/javascript" src="scripts/js/jquery.cycle.all.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.slideshow').cycle({
+		fx: 'fade',
+		speed: 5000,
+		timeout: 2000,
+		autostop: 0,
+		autostopcount: 1 // choose your transition type, ex: fade, scrollUp, shuffle, etc...
+	});
+});
+</script>
+
+<!-- RSS読み込み -->
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+ 
+// 初期設定
+var disp_entry_count = 8;       //表示させたい記事の数
+ 
+// RSS URL
+var site = new Array();
+ 
+site[0] = { 
+    title:'オガワホームオフィシャルブログ',
+    url:'http://www.lohas-styles.jp/member/blog/?feed=rss2',
+    disp_entry:2        // 取得する記事の数
+};
+ 
+site[1] = { 
+    title:'ソラマドさいたま　スタッフブログ',
+    url:'http://soramado-saitama.com/blog/?feed=rss2',
+    disp_entry:2        // 取得する記事の数
+};
+ 
+site[2] = { 
+    title:'ロハススタイル　見学会・イベント情報',
+    url:'http://info.lohas-styles.jp/feed/',
+    disp_entry:2        // 取得する記事の数
+};
+ 
+site[3] = {
+    title:'オガワホーム　リフォーム館のブログ',
+    url:'http://feedblog.ameba.jp/rss/ameblo/reformkan/rss20.xml',
+    disp_entry:1        // 取得する記事の数
+};
+
+site[4] = {
+    title:'オガワホーム　彩の家 ニュース',
+    url:'http://sainoie.jp/feed/',
+    disp_entry:1        // 取得する記事の数
+};
+ 
+var channel = new Array();
+var entry = new Array();
+var entries = new Array();
+var Feed = "";
+ 
+google.load("feeds", "1");
+function init() {
+     
+    var site_count = 0;
+     
+    for (var i=0; i<site.length; i++){
+     
+        // 読み込むRSSを設定
+        var feed = new google.feeds.Feed(site[i]['url']);
+        feed.setNumEntries(site[i]['disp_entry'])
+        feed.load(function(rss) {
+            if (!rss.error) {
+                 
+                // RSSからサイトの情報を配列に格納
+                channel['title'] = rss.feed.title;
+                channel['link'] = rss.feed.link;
+ 
+                // RSSから記事の情報を配列に格納
+                for (var j=0; j<rss.feed.entries.length; j++){
+                     
+                    var feed_entry = rss.feed.entries[j];
+                    var entry = {
+                        site_title : channel['title'],
+                        site_link : channel['link'],
+                        title : feed_entry.title,
+                        link : feed_entry.link,
+                        content : feed_entry.content,
+                        contentSnippet : feed_entry.contentSnippet,
+                        publishedDate : feed_entry.publishedDate
+                    };
+                     
+                    var date = new Date(entry['publishedDate']);
+                    entry['time'] = date.getTime();
+                    var yy = date.getYear();
+                    var mm = date.getMonth() + 1;
+                    var dd = date.getDate();
+                    if (yy < 2000) { yy += 1900; }
+                    if (mm < 10) { mm = "0" + mm; }
+                    if (dd < 10) { dd = "0" + dd; }
+                    entry['date'] = yy + "-" + mm + "-" + dd;
+                     
+                    entry['img'] = entry['content'].match(/src=\"(.*?)\"/igm);
+                     
+                    if (entry['img'] != null) {
+                        for (var k=0; k<entry['img'].length; k++){
+                            entry['img'][k] = entry['img'][k].replace(/src=/ig, "");
+                            entry['img'][k] = entry['img'][k].replace(/\"/ig, "");
+                        }
+                    }
+					if ( 0 > feed_entry.title.search("PR:")){
+                    	entries.push(entry);
+						}
+                }
+            }
+            site_count++;
+            if (site.length == site_count){ disp(); }
+        });
+    }
+}
+     
+function disp() {
+ 
+    //日付順に並べ替え
+    entries.sort (function (b1, b2) { return b1.time < b2.time ? 1 : -1; } );
+     
+    // 記事をhtmlに整形
+    for (var l=0; l<disp_entry_count; l++){
+        if (entries.length < l+1){ break; }
+         
+        Feed += '<dl class="recent">\n'
+		            + '<dt>\n'
+					+ entries[l]['date']
+					+ '</dt>\n'
+					+ '<dd style="line-height:1.2em">\n'
+                    + '<span style="font-size:1.1em">' + '<a href="'+ entries[l]['link'] + '" target="_blank">' + entries[l]['title'].replace(/　/g,"") + '</a>' + '</span>\n'
+					+ '<br>\n'
+					+ '<a href="' + entries[l]['site_link'] + '" target="_blank">' + '<span style="font-size:10px; color:#B5B5B5">' + entries[l]['site_title'] + '</span>' + '</a>\n'
+					+ '</dd>\n'
+					+ '</dl>';
+    }
+    // 表示するタグに追加
+    $('#topics').append( Feed );
+}
+ 
+google.setOnLoadCallback(init);
+ 
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-4726340-2', 'auto', {'allowLinker': true}); 
+  ga('require', 'linker'); 
+  ga('linker:autoLink', ['soramado-saitama.com' , 'www.lohas-styles.jp' , 'info.lohas-styles.jp' , 'm.lohas-styles.jp' ] );
+  ga('send', 'pageview');
+
+</script>
+</head>
+<body>
+	
+	<!-- Primary Page Layout
+	================================================== -->
+
+	<!-- Delete everything in this .container and get started on your own site! -->
+
+	
+	<div class="container">
+    
+      <div class="seventeen columns box_logo">
+		<a href="index.html" rel="home"><h1 class="arctitle-img-top"><img src="images/logo.png" alt="埼玉 オガワホーム　人と環境に優しい住宅メーカー 草加" width="1000" height="140" longdesc="http://www.ogawahome.co.jp/new/"></h1></a>
+      </div>
+      
+      <div id="org_menu">
+ <ul id="menu">
+	<li><a href="index.html" title="トップページ"><img src="images/nav_top.png" width="120" height="60" alt="トップページ" class="linkimg"></a></li>
+	<li class="topmenu"><a href="reason.html" title="選ばれる理由"><img src="images/nav_reason.png" alt="選ばれる理由" width="120" height="60" class="linkimg"></a></li>
+	<li class="topmenu"><a href="greeting.html" title="社長挨拶"><img src="images/nav_greeting.png" alt="社長挨拶" width="120" height="60" class="linkimg"></a></li>
+	<li class="topmenu"><a href="gaiyo.html" title="会社概要"><img src="images/nav_gaiyo.png" width="120" height="60" alt="会社概要" class="linkimg"></a></li>
+	<li class="topmenu"><a href="access.html" title="アクセス"><img src="images/nav_access.png" width="120" height="60" alt="アクセス" class="linkimg"></a></li>
+	<li class="topmenu"><a href="recruit.html" title="採用情報"><img src="images/nav_recruit.png" width="120" height="60" alt="採用情報" class="linkimg"></a></li>
+	<li class="topmenu"><a href="toiawase/toiawase.html" title="資料請求・お問い合わせ"><img src="images/nav_toiawase.png" width="122" height="60" alt="資料請求・お問い合わせ" class="linkimg"></a></li>
+</ul>   
+</div><!-- org_menu -->
+       
+    
+      <div class="org_slider slideshow shadow"><img src="images/slide_01.jpg"><img src="images/slide_02.jpg"><img src="images/slide_03.jpg"></div> 
+      
+      
+      <!-- begin MainContents -->
+      <div class="seventeen columns">
+		<div class="one-third column">
+         <div class="box_type1"><img src="images/GP2014award.jpg" alt="第3回工務店グランプリ　オガワホームが全国1位になりました！" width="710" height="330" usemap="#Map">
+           <map name="Map">
+             <area shape="rect" coords="354,285,704,310" href="article/20141212.html" alt="第3回工務店グランプリの詳しい様子はこちら">
+             <area shape="rect" coords="7,270,237,324" href="http://www.youtube.com/user/ogawahomecinema"  target="_blank" alt="家づくりの様子はこちらの動画でご覧になれます">
+           </map>
+         </div><br clear="all">
+         <div class="TextShadow">
+           <h2>総合ニュース＆見学会情報</h2>
+         </div>
+         <div>
+				<dl class="recent">
+				<dt>2015-07-15</dt>
+				<dd style="line-height:1.2em">
+				<span style="font-size:1.1em"><a href="article/20150715.html">メディア掲載情報 『日経ホームビルダー』2015年7月号</a></span>
+				<br>
+				<span style="font-size:10px; color:#B5B5B5">メディア掲載情報</span>
+				</dd>
+				</dl>
+         </div>
+
+         <div class="box_type1" id="topics"></div><br clear="all"><!-- RSS読み込みエリア -->
+       
+</div><!-- one-third column -->
+      
+      <!-- begin SideNavi -->
+      <div class="two-thirds column">
+       <ul>
+        <li><a href="http://www.lohas-styles.jp/member/blog/" title="オガワホーム社員ブログ" target="_blank"><img src="images/top_blog1.gif" width="270" height="70" alt="オガワホーム社員ブログ" class="linkimg" ></a></li>
+        <li><a href="http://info.lohas-styles.jp/" title="ロハススタイル見学会・イベント情報" target="_blank"><img src="images/top_blog2.gif" width="270" height="70" alt="ロハススタイル見学会・イベント情報" class="linkimg" ></a></li>
+        <li><a href="http://soramado-saitama.com/blog/" title="ソラマドさいたま　スタッフブログ" target="_blank"><img src="images/top_blog5.gif" width="270" height="70" alt="ソラマドさいたま　スタッフブログ" class="linkimg"></a></li>
+        <li><a href="http://reform.lohas-styles.jp/weblog/" title="リフォーム館スタッフブログ" target="_blank"><img src="images/top_blog3.gif" width="270" height="70" alt="リフォーム館スタッフブログ" class="linkimg" ></a></li>
+       </ul>
+       <ul>
+        <li><a href="times.html" title="スローライフたいむす"><img src="images/slowlifetimes-banner.png" width="270" height="70" alt="スローライフたいむす" class="linkimg" ></a></li>
+       </ul>
+       <ul>
+        <li><a href="kawaraban.html" title="オガワホームかわら版"><img src="images/kawaraban-banner.png" width="270" height="70" alt="オガワホームかわら版" class="linkimg" ></a></li>
+       </ul>
+       <ul>
+        <li><a href="http://www.youtube.com/user/ogawahomecinema" title="YouTubeオガワホームチャンネル"><img src="images/YouTubeCannel-banner.png" width="270" height="70" alt="YouTubeオガワホームチャンネル" class="linkimg" ></a></li>
+       </ul>
+       </div>
+      <br clear="all">
+       
+      </div> <!-- seventeen columns -->
+      
+      <div class="seventeen columns">
+        <div class="TextShadow" style="margin-bottom:25px; clear:both"><h2><a href="reason.html" title="オガワホームが選ばれる理由">オガワホームが選ばれる理由</a></h2>
+          <p>		　　<a href="reason.html"><img src="images/reason_top.jpg" width="900" height="90"></a></p>
+        </div>
+        <div class="TextShadow" style="margin-bottom:25px; clear:both"><h2>グループサイト／家づくりメニュー</h2>
+          <div class="box_type300">
+            <ul>
+              <li><h3>ロハススタイル</h3></li>
+              <li class="box-sn">担当者：<img src="images/staff_yamada.jpg" width="50" height="50">山田(インテリアコーディネータ)</li>
+              <li>ひとこと：自然素材の温もりと質感を活かしながら、居心地のよい空間をコーディネートしています。ずっとこだわってきた「ロハスな家」を体験してみてください。呼吸する家はとても空気が気持ちいいんです。ブログにも時々登場しています。</li>
+              <li style="text-align:center"><a href="http://lohas-styles.jp/" target="_blank"><img src="images/bana_lohas.jpg" width="200" height="130" class="TextShadow"></a><br>
+              <a href="http://lohas-styles.jp/" target="_blank"><img src="images/bana_official.jpg" width="180" height="30" class="TextShadow"></a> </li>
+            </ul>
+          </div>
+          <div class="box_type300">
+            <ul>
+              <li><h3>soramado</h3></li>
+              <li class="box-sn">担当者：<img src="images/staff_kaneko.jpg" width="50" height="50">金子(営業部)</li>
+              <li>ひとこと：家づくりも楽しみながら、それぞれの家族にぴったりの住まいを一緒につくり上げていきます。自分たちらしい暮らしで、毎日をワクワク楽しんで過ごす家族をぜひのぞいてみて下さい。デザインが間取りを無くし、空を与えてくれました。</li>
+              <li style="text-align:center"><a href="http://soramado-saitama.com/" target="_blank"><img src="images/bana_soramado.jpg" width="200" height="130" class="TextShadow"></a><br>
+              <a href="http://soramado-saitama.com/" target="_blank"><img src="images/bana_official.jpg" width="180" height="30" class="TextShadow"></a> </li>
+            </ul>
+          </div>
+          <div class="box_type300">
+            <ul>
+              <li>
+              <h3>with Natural</h3></li>
+              <li class="box-sn">担当者：<img src="images/staff_suzuki.jpg" width="50" height="50">鈴木(営業部長)</li>
+              <li>ひとこと：自然素材と手作り感にこだわった、スローライフを愉しむ住まいです。実際の建物をご案内しますので、ぜひ一度ご覧下さい。住宅観が覆ることを保証します。キッチンも友人を呼んで一緒に楽しむ部屋も、もちろん手作りです。</li>
+              <li style="text-align:center"><img src="images/bana_withnatural.jpg" width="200" height="130" class="TextShadow"><br>
+              <a href="#"><img src="images/bana_official.jpg" width="180" height="30" class="TextShadow"></a> </li>
+            </ul>
+          </div>
+          <div class="box_type300" style="margin-bottom:30px">
+            <ul>
+              <li><h3>彩の家</h3></li>
+              <li class="box-sn">担当者：<img src="images/staff_imai.jpg" width="50" height="50">今井(営業部)</li>
+              <li>ひとこと：太陽光発電と制震装置を標準装備した、災害に強い住まいです。モデルハウス公開中。同じ場所で、お買い得な土地分譲も行っております。そちらもぜひチェックして下さい。エネルギーについては太陽光発電も標準装備。納得の価格です。</li>
+              <li style="text-align:center"><a href="http://sainoie.jp/" target="_blank"><img src="images/bana_sainoie.jpg" width="200" height="130" class="TextShadow"></a><br>
+              <a href="http://sainoie.jp/" target="_blank"><img src="images/bana_official.jpg" width="180" height="30" class="TextShadow"></a> </li>
+            </ul>
+          </div>
+          <div class="box_type300" style="margin-bottom:30px">
+            <ul>
+              <li>
+                <h3>お住まい拝見レポート</h3></li>
+              <li class="box-sn">担当者：<img src="images/staff_nagashima.jpg" width="50" height="50">長島(営業部)</li>
+              <li>ひとこと：お施主様のお住まいにかける想いと、オガワホームの妥協しない品質管理が生み出したお住まいを、シネマストーリーにして上映しています。スタッフとご家族が一緒に家づくりを進めて行く過程がドラマチックに語られています。</li>
+              <li style="text-align:center"><a href="http://lohas-styles.jp/house-report/" target="_blank"><img src="images/bana_hausereport.jpg" width="200" height="130" class="TextShadow"></a><br>
+              <a href="http://lohas-styles.jp/house-report/" target="_blank"><img src="images/bana_contents.jpg" width="180" height="30" class="TextShadow"></a> </li>
+            </ul>
+          </div>
+          <div class="box_type300" style="margin-bottom:30px">
+            <ul>
+              <li><h3>リフォーム館</h3></li>
+              <li class="box-sn">担当者：<img src="images/staff_yamaguchi.jpg" width="50" height="50">山口(アメニティサポート店長)</li>
+              <li>ひとこと：地元草加市で40年以上にわたり注文住宅を建て続けてきた実績とノウハウが、リフォームにも活かされています。提案力と対応力の違いを、ぜひ他社様と比較してみて下さい。ガレージセールなどのイベント情報もチェックしてください。</li>
+              <li style="text-align:center"><a href="http://reform.lohas-styles.jp/" target="_blank"><img src="images/bana_reform.jpg" width="200" height="130" class="TextShadow"></a><br>
+              <a href="http://reform.lohas-styles.jp/" target="_blank"><img src="images/bana_homepage.jpg" width="180" height="30" class="TextShadow"></a> </li>
+            </ul>
+          </div><br clear="all">
+        </div> <!-- /TextShadow -->
+      </div> <!-- /seventeen columns -->
+        
+      <p id="page-top"><a href="#header">PAGE TOP</a></p>
+        
+      </div><!-- container -->  
+      
+      <footer>
+        <div class="box_typeFull">
+          <div class="box_type1000">
+            <div class="box_type140" style="margin-left:20px">
+        <ul>
+          <li><a href="index.html" title="トップページ">トップページ</a></li>
+          <li><a href="reason.html" title="選ばれる理由">選ばれる理由</a></li>
+          <li><a href="greeting.html" title="社長挨拶">社長挨拶</a></li>
+        </ul>
+      </div><!-- box_type140 -->
+      <div class="box_type140">
+        <ul>
+          <li><a href="gaiyo.html" title="会社概要">会社概要</a></li>
+          <li><a href="access.html" title="アクセス">アクセス</a></li>
+          <li><a href="recruit.html" title="採用情報">採用情報</a></li>
+          <li><a href="toiawase/toiawase.html" title="資料請求・お問い合わせ">資料請求・お問い合わせ</a></li>
+        </ul>
+      </div><!-- box_type140 -->
+      <div class="box_type140">
+        <ul>
+          <li><a href="http://www.lohas-styles.jp/" title="ロハススタイル" target="_blank">ロハススタイル</a></li>
+          <li><a href="http://soramado-saitama.com/" title="ソラマドさいたま" target="_blank">soramado</a></li>
+          <li><a href="#" title="with natural" target="_blank">with natural</a></li>
+        </ul>
+      </div><!-- box_type140 -->
+      <div class="box_type170">
+        <ul>
+          <li><a href="http://sainoie.jp/" title="彩の家" target="_blank">彩の家</a></li>
+          <li><a href="http://lohas-styles.jp/house-report/" title="お住まい拝見レポート" target="_blank">お住まい拝見レポート</a></li>
+          <li><a href="http://reform.lohas-styles.jp/" title="リフォーム館" target="_blank">リフォーム館</a></li>
+        </ul>
+      </div><!-- box_type170 -->
+      <div class="box_type300a">
+        <ul>
+          <li><a href="http://www.lohas-styles.jp/member/blog/" title="オガワホームオフィシャルブログ" target="_blank">オガワホームオフィシャルブログ</a></li>
+          <li><a href="http://info.lohas-styles.jp/" title="ロハススタイル見学会・イベント情報" target="_blank">ロハススタイル見学会・イベント情報</a></li>
+          <li><a href="http://soramado-saitama.com/blog/" title="ソラマドさいたまスタッフブログ" target="_blank">ソラマドさいたまスタッフブログ</a></li>
+          <li><a href="http://reform.lohas-styles.jp/weblog/" title="リフォーム館のブログ" target="_blank">リフォーム館のブログ</a></li>
+          <li><a href="times.html" title="スローライフ・たいむす">スローライフ・たいむす</a></li>
+<li><a href="kawaraban.html" title="オガワホームかわら版">オガワホームかわら版</a></li>
+        </ul>
+      </div><br clear="all" />
+          </div><!-- /box_type1000 -->
+        </div>
+		<div class="copyright">
+			<div class="cp-inner">
+				<div class="cp-left">
+					<span>Copyright 2013 Ogawa Homes All Rights Reserved. </span>
+				</div>
+				<div class="cp-right">
+					<span><a href="gaiyo.html" title="会社概要">会社概要</a></span>
+					<span>&nbsp;&nbsp;/&nbsp;&nbsp;</span>
+					<span><a href="privacy.html" title="プライバシーポリシー">プライバシーポリシー</a></span>
+					<span>&nbsp;&nbsp;/&nbsp;&nbsp;</span>
+					<span><a href="toiawase/toiawase.html" title="資料請求・お問い合わせ">資料請求・お問い合わせ</a></span>
+				</div>
+			</div>
+		</div>
+      </footer>
+    
+    
+
+
+<!-- End Document
+================================================== -->
+</body>
+</html>

@@ -1,0 +1,4264 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xml:lang="es" xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<title>futbol360 :: Home de Futbol360 - Todas las estad&iacute;sticas del f&uacute;tbol a tu alcance</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="Keywords" content="argentina, futbol, estadistica, apertura, clausura, river, boca, independiente, racing, san lorenzo, velez, partido, fixture" />
+<meta name="Description" content="Estadisticas de futbol argentino e internacional" />
+<meta name="Robots" content="all" />
+<link href="/css/styles.css" rel="stylesheet" type="text/css" />
+<link href="/css/home2.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript">
+	function showLeagueChoser() {
+		var obj = document.getElementById('leagueChoser');
+		if (obj.style.display == 'none') {
+			obj.style.display = 'block';
+		} else {
+			obj.style.display = 'none';
+		}
+	}
+
+	function setLeagueStatsContent(id_event, event_name, layerName) {
+		document.getElementById('liMatches').style.className = '';
+		document.getElementById('liMatchesNext').style.className = '';
+		document.getElementById('liMain').style.className = '';
+		document.getElementById('liGoals').style.className = '';
+		document.getElementById('liPositions').style.className = '';
+		document.getElementById('statsLeague').innerHTML = document.getElementById('statsLeague'+layerName+id_event).innerHTML;	
+		document.getElementById('li'+layerName).style.className = 'current';		
+
+		id_event_curr = id_event;
+		event_name_curr = event_name;
+		document.getElementById('leagueLabel').innerHTML = event_name; 
+	}
+
+	function getRandomStatsBoxName() {
+		var randomnumber = Math.floor(Math.random()*2);
+		var itemName = '';
+		switch (randomnumber) {
+			case 0:
+				itemName = 'Team';
+				break;
+			case 1:
+				itemName = 'Coach';
+				break;
+			case 2:
+				itemName = 'Referee';
+				break;
+		}
+
+		return itemName;
+	}
+
+	function showRanking(itemName) {
+		document.getElementById('liRankingPlayerGoals').style.className = '';
+		document.getElementById('liRankingPlayerPenalties').style.className = '';
+		document.getElementById('liRankingPlayerAdmonishes').style.className = '';
+		//document.getElementById('liRankingTeamConsecutiveWins').style.className = '';
+		document.getElementById('liRankingCoachEfficacy').style.className = '';
+		document.getElementById('liRankingTopPerformances').style.className = '';
+
+		document.getElementById('liRanking'+itemName).style.className = 'current';
+		document.getElementById('rankingsBox').innerHTML = document.getElementById('rankingsBox'+itemName).innerHTML;
+	}
+	
+	function initPage() {
+		setLeagueStatsContent(397, 'Liga de Fútbol Profesional 2015/16', 'Matches');
+
+		var itemName = 'Player'; // we always want player on the left
+		document.getElementById('statsBox1').innerHTML = document.getElementById('statsBox'+itemName).innerHTML;
+
+		var itemName2 = '';
+		while ((itemName2 = getRandomStatsBoxName()) == itemName) {} 
+
+		document.getElementById('statsBox2').innerHTML = document.getElementById('statsBox'+itemName2).innerHTML;
+
+		document.getElementById('rankingsBox').innerHTML = document.getElementById('rankingsBoxPlayerGoals').innerHTML;
+	}
+	
+	var id_event_curr = 0;
+	var event_name_curr = '';	
+</script>
+</head>
+<body onload="javascript:initPage();">
+<script>
+	function searchAll() {
+		if (document.formSearch.search_pattern.value.lenght < 4) {
+			alert("Debe ingresar al menos 3 caracteres para realizar una b?squeda.");
+		} else {
+			document.formSearch.submit();
+		}
+	}
+</script>
+<link rel="icon" href="/imgs/favicon.ico" type="image/x-icon" />
+<link rel="alternate" type="application/atom+xml"  href="http://www.futbol360.com.ar/rss/angulo.xml" title="Futbol360 Editorial angulo" />
+<div id="header"><a href="/index.php"><img src="/imgs/logoFutbol360.gif" alt="Logo Futbol360" title="Futbol360" width="211" height="50" class="logo" border="0" /></a>
+    <div class="loginFF3Safari">
+        	
+    	<p><a href="/usuarios/ingresar.php">Ingres&aacute;</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/usuarios/registracion.php">Registrate</a></p>
+    	    <form name="formSearch" method="get" action="/buscar/index.php">
+            <input type="text" name="search_pattern" class="input" onfocus="if (this.value == 'Ingres&aacute; tu b&uacute;squeda') this.value = '';" value='Ingres&aacute; tu b&uacute;squeda' />
+            <input type="hidden" name="search_category" value="all" />
+            <input type="button" class="button" onclick="searchAll();" />
+	    </form>
+    </div>
+    <!-- menu -->
+    <ul id="menu">
+      <li class="first"><a href="/index.php">Home</a></li>
+      <li class="two">
+        <!--[if lte IE 6]><a href="#nogo"><table><tr><td><![endif]-->
+        <dl class="dropdown">
+          <dt><a href="#">Argentina<img src="/imgs/arrowMenu.gif" alt="Flecha del menu" width="11" height="11" border="0"></a></dt>	  
+	  <dd><a href="/fixtures/argentina/torneo-primera-division-2015/">Torneo Primera Divisi&oacute;n</a></dd>
+	  <dd><a href="/fixtures/argentina/b-nacional-2015/">B Nacional</a></dd>
+	  <dd><a href="/fixtures/argentina/copa-argentina-2014-15/">Copa Argentina</a></dd>	  
+	  <dd><a href="/fixtures/argentina/supercopa-argentina-2015/">Supercopa Argentina</a></dd>	  
+          <dd class="separator">&nbsp;</dd>
+          <dd><a href="/torneos/argentina/">Ver todos</a></dd>
+        </dl>
+        <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+      </li>
+      <li class="four">
+        <!--[if lte IE 6]><a href="#nogo"><table><tr><td><![endif]-->
+        <dl class="dropdown">
+          <dt><a href="#">Ligas del mundo<img src="/imgs/arrowMenu.gif" alt="Flecha del menu" width="11" height="11" border="0"></a></dt>
+          <dd><a href="/fixtures/espana/liga-de-futbol-profesional-2015-16/">La Liga</a></dd>
+          <dd><a href="/fixtures/italia/serie-a-2015-16/">Serie A</a></dd>
+          <dd><a href="/fixtures/inglaterra/premier-league-2015-16/">Premier League</a></dd>
+          <dd><a href="/fixtures/francia/ligue-de-football-professionnel-2015-16/">Ligue Professionel</a></dd>
+          <dd><a href="/fixtures/alemania/bundesliga-2015-16/">Bundesliga</a></dd>	  
+	  <dd><a href="/fixtures/mexico/mexico-clausura-2016/">M&eacute;xico</a></dd>	  
+	  <dd><a href="/fixtures/brasil/brasileirao-2015/">Brasileirao</a></dd>
+          <dd class="separator">&nbsp;</dd>
+          <dd><a href="/torneos/ligas-del-mundo/">Ver todos</a></dd>
+        </dl>
+        <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+      </li>
+      <li class="one">
+        <!--[if lte IE 6]><a href="#nogo"><table><tr><td><![endif]-->
+        <dl class="dropdown">
+          <dt><a href="#">Copas<img src="/imgs/arrowMenu.gif" alt="Flecha del menu" width="11" height="11" border="0" /></a></dt>
+          <dd><a href="/fixtures/sudamerica/libertadores-2015/">Libertadores</a></dd>
+          <dd><a href="/fixtures/sudamerica/sudamericana-2015/">Sudamericana</a></dd>
+          <dd><a href="/fixtures/europa/champions-league-2015-16/">Champions League</a></dd>
+          <dd><a href="/fixtures/europa/europa-league-2015-16/">Europa League</a></dd>
+          <dd><a href="/fixtures/centroamerica/concacaf-campeones-2015-16/">Concacaf Campeones</a></dd>
+          <dd><a href="/fixtures/sudamerica/recopa-sudamericana-2015/">Recopa Sudamericana</a></dd>                    
+	  <dd><a href="/fixtures/europa/supercopa-de-europa-2015/">Supercopa de Europa</a></dd>
+          <dd><a href="/fixtures/mundial/mundial-de-clubes-2015/">Mundial de Clubes</a></dd>
+          <dd class="separator">&nbsp;</dd>          
+	  <dd><a href="/fixtures/brasil/copa-de-brasil-2012/">Copa de Brasil</a></dd>
+	  <dd><a href="/fixtures/mexico/copa-de-mexico-clausura-2016/">Copa de M&eacute;xico</a></dd>
+	  <dd><a href="/fixtures/espana/copa-del-rey-2015-16/">Copa del Rey</a></dd>
+          <dd><a href="/fixtures/italia/copa-italia-2015-16/">Copa Italia</a></dd>
+          <dd><a href="/fixtures/inglaterra/fa-cup-2015-16/">FA Cup</a></dd>
+          <dd><a href="/fixtures/inglaterra/league-cup-2015-16/">League Cup</a></dd>
+          <dd><a href="/fixtures/francia/coupe-de-la-ligue-2015-16/">Coupe de la Ligue</a></dd>
+          <dd><a href="/fixtures/francia/coupe-de-france-2015-16/">Coupe de France</a></dd>
+	  <dd><a href="/fixtures/alemania/dfb-pokal-2015-16/">DFB-Pokal</a></dd>	   
+          <dd><a href="/fixtures/espana/supercopa-de-espana-2015/">Supercopa de Espa&ntilde;a</a></dd>
+          <dd><a href="/fixtures/italia/supercopa-de-italia-2015/">Supercopa de Italia</a></dd>
+          <dd><a href="/fixtures/francia/trophee-des-champions-2015/">Trophee des Champions</a></dd>
+          <dd><a href="/fixtures/inglaterra/community-shield-2015/">Community Shield</a></dd>
+          <dd><a href="/fixtures/alemania/dfl-supercup-2015/">DFL-Supercup</a></dd>          
+	  <dd class="separator">&nbsp;</dd>
+          <dd><a href="/torneos/copas/">Ver todos</a></dd>
+        </dl>
+        <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+      </li>
+      <li class="three">
+        <!--[if lte IE 6]><a href="#nogo"><table><tr><td><![endif]-->
+        <dl class="dropdown">
+          <dt><a href="#">Selecciones<img src="/imgs/arrowMenu.gif" alt="Flecha del menu" width="11" height="11" border="0"></a></dt>	  
+		<dd><a href="/fixtures/mundial/mundial-brasil-2014/">Copa del Mundo</a></dd>
+		<dd><a href="/fixtures/mundial/clasif-conmebol-rusia-2018/">Eliminatorias CONMEBOL</a></dd>
+		<dd><a href="/fixtures/mundial/clasif-uefa-rusia-2018/">Eliminatorias UEFA</a></dd>
+		<dd><a href="/fixtures/mundial/clasif-concacaf-rusia-2018/">Eliminatorias CONCACAF</a></dd>
+		<dd><a href="/fixtures/mundial/copa-de-las-confederaciones-2013/">Copa Confederaciones</a></dd>
+		<dd><a href="/fixtures/mundial/amistosos-2016/">Amistosos</a></dd>
+		<dd class="separator">&nbsp;</dd>
+		<dd><a href="/fixtures/sudamerica/copa-america-chile-2015/">Copa Am&eacute;rica</a></dd>          
+		<dd><a href="/fixtures/europa/eurocopa-polonia-ucrania-2012/">Eurocopa</a></dd>
+		<dd><a href="/fixtures/sudamerica/copa-de-oro-2015/">Copa de Oro</a></dd>
+		<dd><a href="/fixtures/europa/clasif-euro-francia-2016/">Eliminatorias Eurocopa</a></dd>          	  
+		<dd class="separator">&nbsp;</dd>
+		<dd><a href="/fixtures/mundial/juegos-olimpicos-londres-2012/">Juegos Ol&iacute;mpicos</a></dd>
+		<dd><a href="/fixtures/mundial/mundial-sub-20-nueva-zelanda-2015/">Mundial Sub 20</a></dd>
+		<dd><a href="/fixtures/sudamerica/sudamericano-sub-20-uruguay-2015/">Sudamericano Sub 20</a></dd>
+		<dd><a href="/fixtures/europa/eurocopa-sub-21-republica-checa-2015/">Eurocopa Sub 21</a></dd>		
+		<dd><a href="/fixtures/mundial/mundial-sub-17-chile-2015/">Mundial Sub 17</a></dd>
+		<dd><a href="/fixtures/sudamerica/sudamericano-sub-17-paraguay-2015/">Sudamericano Sub 17</a></dd>
+		<dd class="separator">&nbsp;</dd>		  
+		<dd><a href="/torneos/selecciones/">Ver todos</a></dd>
+        </dl>
+        <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+      </li>      
+      <li class="four"><a href="http://blogfutbol360.blogspot.com/" target="_blank">Blog</a></li>
+    </ul>    
+    <!-- /menu -->
+</div><div id="content">
+<div id="right284">
+	<div class="twitterBox">
+		<a class="twitter-timeline" href="https://twitter.com/futbol360/home" data-widget-id="346078869436129280" width="300" height="260" lang="es-AR" data-tweet-limit="4" data-list-owner-screen-name="futbol360" data-list-slug="home">Tweets de @futbol360/home</a>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	</div>
+	<div class="sabiasQue">
+		<p>... en el Atlético de Madrid el entrenador <b>Diego Simeone</b> obtuvo el 70 por ciento de los puntos en juego</p>
+		<p>&nbsp;</p>
+		<p class="more"><a href="/sabias-que/">M&aacute;s <i>Sab&iacute;as qu&eacute;</i></a></p>
+		<div></div>
+	</div>	
+</div>
+<div id="left603">
+	<div class="newData">
+		<h1>Lo nuevo</h1>
+		<ul>
+      			                <li>
+                	<b><a href="/fixtures/espana/copa-del-rey-2015-16/">Copa del Rey 2015/16</a></b>: Fichas de <b><a href="/partidos/espana/copa-del-rey-2015-16/cuartos-ida/valencia-las-palmas/">Valencia 1 - 1 Las Palmas</a></b>
+                                	y otros <b><a href="/fixtures/espana/copa-del-rey-2015-16/">3 partidos</a></b>
+                                </li>
+      			                <li>
+                	<b><a href="/fixtures/inglaterra/fa-cup-2015-16/">FA Cup 2015/16</a></b>: Fichas de <b><a href="/partidos/inglaterra/fa-cup-2015-16/tercera-ronda-revancha/liverpool-exeter/">Liverpool 3 - 0 Exeter</a></b>
+                                	y otros <b><a href="/fixtures/inglaterra/fa-cup-2015-16/">10 partidos</a></b>
+                                </li>
+      			 
+		</ul>
+		<p class="more"><a href="http://www.futbol360.com.ar/lo-nuevo/">M&aacute;s actualizaciones recientes de nuestra base</a></p>
+	</div>
+	<div class="leagueStats">
+		<div class="top">
+			<h1>
+				Estad&iacute;sticas
+				<div class="comboDiv">
+					<span id="leagueLabel" onclick="javascript:showLeagueChoser();">Cargando...</span>
+					<div id="leagueChoser" style="display:none;">
+						<ul>
+														<li><a href="javascript:setLeagueStatsContent(415, 'México Clausura 2016', 'Matches');showLeagueChoser();">México Clausura 2016</a></li>
+														<li><a href="javascript:setLeagueStatsContent(397, 'Liga de Fútbol Profesional 2015/16', 'Matches');showLeagueChoser();">Liga de Fútbol Profesional 2015/16</a></li>
+														<li><a href="javascript:setLeagueStatsContent(398, 'Serie A 2015/16', 'Matches');showLeagueChoser();">Serie A 2015/16</a></li>
+														<li><a href="javascript:setLeagueStatsContent(390, 'Premier League 2015/16', 'Matches');showLeagueChoser();">Premier League 2015/16</a></li>
+														<li><a href="javascript:setLeagueStatsContent(387, 'Ligue de Football Professionnel 2015/16', 'Matches');showLeagueChoser();">Ligue de Football Professionnel 2015/16</a></li>
+														<li><a href="javascript:setLeagueStatsContent(396, 'Bundesliga 2015/16', 'Matches');showLeagueChoser();">Bundesliga 2015/16</a></li>
+														<li><a href="javascript:setLeagueStatsContent(406, 'Liguilla Pre-Libertadores 2015', 'Matches');showLeagueChoser();">Liguilla Pre-Libertadores 2015</a></li>
+														<li><a href="javascript:setLeagueStatsContent(372, 'Brasileirao 2015', 'Matches');showLeagueChoser();">Brasileirao 2015</a></li>
+													</ul>
+					</div>
+				</div>
+			</h1>
+		</div>
+		<ul class="tabs">
+			<li id="liMatches" class="current">
+				<a href="javascript:setLeagueStatsContent(id_event_curr, event_name_curr, 'Matches');">Ult. partidos</a>
+			</li>
+			<li id="liMatchesNext">
+				<a href="javascript:setLeagueStatsContent(id_event_curr, event_name_curr, 'MatchesNext');">Pr&oacute;x. partidos</a>
+			</li>
+			<li id="liMain">
+				<a href="javascript:setLeagueStatsContent(id_event_curr, event_name_curr, 'Main');">Generales</a>
+			</li>
+			<li id="liGoals">
+				<a href="javascript:setLeagueStatsContent(id_event_curr, event_name_curr, 'Goals');">Goleadores</a>
+			</li>
+			<li id="liPositions">
+				<a href="javascript:setLeagueStatsContent(id_event_curr, event_name_curr, 'Positions');">Posiciones</a>
+			</li>
+		</ul>
+		<div class="clear"></div>
+		<div class="box" id="statsLeague"></div>
+	</div>
+	<div class="fichas">
+		<div class="top">
+			<h1>Las fichas <span>destacadas</span></h1>
+		</div>
+		<div id="statsBox1" class="left"></div>
+		<div id="statsBox2" class="right"></div>
+		<div class="clear"></div>
+	</div>
+	<div class="rankings">
+		<div class="top">
+			<h1>R&aacute;nkings</h3>
+		</div>
+		<ul class="tabs">
+			<li id="liRankingPlayerGoals" class="current">
+				<a href="javascript:showRanking('PlayerGoals');">Goles</a>
+			</li>
+			<li id="liRankingPlayerPenalties">
+				<a href="javascript:showRanking('PlayerPenalties');">Penales</a>
+			</li>
+			<li id="liRankingPlayerAdmonishes">
+				<a href="javascript:showRanking('PlayerAdmonishes');">Amonestaciones</a>
+			</li>
+			<li id="liRankingTopPerformances">
+				<a href="javascript:showRanking('TopPerformances');">Puntajes</a>
+			</li>			
+			<!-- 
+			<li id="liRankingTeamConsecutiveWins">
+				<a href="javascript:showRanking('TeamConsecutiveWins');">Rachas</a>
+			</li>
+			 -->
+			<li id="liRankingCoachEfficacy">
+				<a href="javascript:showRanking('CoachEfficacy');">Eficacia DTs</a>
+			</li>
+		</ul>
+		<div class="clear"></div>
+		<div class="box" id="rankingsBox"></div>
+	</div>
+</div>
+  <div class="clear"></div>
+  <!-- 
+<div class="googleAds" style="clear:both;">
+<script type="text/javascript">
+google_ad_client = "pub-8945266642174145";
+/* 728x90, created 10/1/08 */
+google_ad_slot = "6744499886";
+google_ad_width = 728;
+google_ad_height = 90;
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+ --></div> 
+<div id="footer" align="center">
+    <div class="social">
+		<a href="http://www.facebook.com/pages/Futbol360/227966745598" target="_blank"><img src="/imgs/fbFooter.gif" alt="Facebook link" /></a>
+		<a href="https://twitter.com/@futbol360" target="_blank"><img src="/imgs/twFooter.gif" alt="Twitter link" /></a>
+		<a href="http://www.futbol360.com.ar/rss/"><img src="/imgs/rssFooter.gif" alt="RSS link" /></a>
+	</div>
+	<a href="http://www.futbol360.com.ar/acerca-de-futbol360.php">Acerca de Futbol360</a>
+	&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.futbol360.com.ar/el-metodo-futbol360.php">El m&eacute;todo Futbol360</a>
+	&nbsp;&nbsp;|&nbsp;&nbsp;<a href="mailto:info@futbol360.com.ar">Cont&aacute;ctenos</a>
+	&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://blogfutbol360.blogspot.com/" target="_blank">Blog</a>
+	&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.futbol360.com.ar/politica-privacidad.php">Pol&iacute;tica de privacidad</a>
+</div>
+<!-- HIDDEN DIVS -->
+<!-- STATS LEAGUE MATCHES -->
+<div id="statsLeagueMatches415" style="display:none;"> 
+  <table class="tableStandard"> 
+    <thead> 
+      <tr> 
+        <th colspan="3">Resultado </th> 
+        <th>Fecha (Hora local)</th>
+      </tr> 
+    </thead> 
+    <tbody> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/mexico/puebla/">Puebla</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/mexico/mexico-clausura-2016/2-fecha/puebla-monterrey/" title="Ver ficha del partido"><b>1&#160;-&#160;3</b></a></th> 
+			            <th width="28%"><a href="/equipos/mexico/monterrey/">Monterrey</a></th> 
+            <td width="30%">
+			17/01/2016 17:00			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/mexico/pumas/">Pumas</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/mexico/mexico-clausura-2016/2-fecha/pumas-toluca/" title="Ver ficha del partido"><b>3&#160;-&#160;2</b></a></th> 
+			            <th width="28%"><a href="/equipos/mexico/toluca/">Toluca</a></th> 
+            <td width="30%">
+			17/01/2016 12:00			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/mexico/atlas-m/">Atlas (M)</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/mexico/mexico-clausura-2016/2-fecha/atlas-m-america-mex/" title="Ver ficha del partido"><b>0&#160;-&#160;3</b></a></th> 
+			            <th width="28%"><a href="/equipos/mexico/america-mex./">América (Méx.)</a></th> 
+            <td width="30%">
+			16/01/2016 20:30			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/mexico/pachuca/">Pachuca</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/mexico/mexico-clausura-2016/2-fecha/pachuca-queretaro/" title="Ver ficha del partido"><b>1&#160;-&#160;0</b></a></th> 
+			            <th width="28%"><a href="/equipos/mexico/queretaro/">Querétaro</a></th> 
+            <td width="30%">
+			16/01/2016 20:05			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/mexico/dorados/">Dorados</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/mexico/mexico-clausura-2016/2-fecha/dorados-tijuana/" title="Ver ficha del partido"><b>0&#160;-&#160;1</b></a></th> 
+			            <th width="28%"><a href="/equipos/mexico/tijuana/">Tijuana</a></th> 
+            <td width="30%">
+			16/01/2016 20:00			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/mexico/tigres-uanl/">Tigres UANL</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/mexico/mexico-clausura-2016/2-fecha/tigres-uanl-morelia/" title="Ver ficha del partido"><b>2&#160;-&#160;0</b></a></th> 
+			            <th width="28%"><a href="/equipos/mexico/morelia/">Morelia</a></th> 
+            <td width="30%">
+			16/01/2016 19:00			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/mexico/cruz-azul/">Cruz Azul</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/mexico/mexico-clausura-2016/2-fecha/cruz-azul-chivas/" title="Ver ficha del partido"><b>1&#160;-&#160;1</b></a></th> 
+			            <th width="28%"><a href="/equipos/mexico/chivas/">Chivas</a></th> 
+            <td width="30%">
+			16/01/2016 17:00			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/mexico/santos-laguna/">Santos Laguna</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/mexico/mexico-clausura-2016/2-fecha/santos-laguna-jaguares/" title="Ver ficha del partido"><b>1&#160;-&#160;0</b></a></th> 
+			            <th width="28%"><a href="/equipos/mexico/jaguares/">Jaguares</a></th> 
+            <td width="30%">
+			15/01/2016 21:30			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/mexico/veracruz/">Veracruz</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/mexico/mexico-clausura-2016/2-fecha/veracruz-leon/" title="Ver ficha del partido"><b>1&#160;-&#160;3</b></a></th> 
+			            <th width="28%"><a href="/equipos/mexico/leon/">León</a></th> 
+            <td width="30%">
+			15/01/2016 19:30			
+			</td> 
+          </tr> 
+	      </tbody> 
+  </table> 
+</div>
+<!-- MATCHES NEXT -->
+<div id="statsLeagueMatchesNext415" style="display:none;">
+	<table class="tableStandard"> 
+	<thead> 
+	  <tr> 
+	    <th colspan="3">Resultado</th> 
+	    <th>Fecha (Hora local)</th>
+	  </tr> 
+	</thead> 
+	<tbody> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/mexico/chivas/">Chivas</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/mexico/tigres-uanl/">Tigres UANL</a></th> 
+	    <td width="30%">
+		24/01/2016 17:00		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/mexico/pumas/">Pumas</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/mexico/puebla/">Puebla</a></th> 
+	    <td width="30%">
+		24/01/2016 12:00		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/mexico/jaguares/">Jaguares</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/mexico/veracruz/">Veracruz</a></th> 
+	    <td width="30%">
+		23/01/2016 21:00		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/mexico/morelia/">Morelia</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/mexico/toluca/">Toluca</a></th> 
+	    <td width="30%">
+		23/01/2016 20:30		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/mexico/leon/">León</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/mexico/cruz-azul/">Cruz Azul</a></th> 
+	    <td width="30%">
+		23/01/2016 20:05		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/mexico/monterrey/">Monterrey</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/mexico/atlas-m/">Atlas (M)</a></th> 
+	    <td width="30%">
+		23/01/2016 19:00		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/mexico/america-mex./">América (Méx.)</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/mexico/pachuca/">Pachuca</a></th> 
+	    <td width="30%">
+		23/01/2016 17:00		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/mexico/tijuana/">Tijuana</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/mexico/santos-laguna/">Santos Laguna</a></th> 
+	    <td width="30%">
+		22/01/2016 21:30		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/mexico/queretaro/">Querétaro</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/mexico/dorados/">Dorados</a></th> 
+	    <td width="30%">
+		22/01/2016 19:30		
+		</td> 
+	  </tr> 
+	  	</tbody> 
+	</table> 
+</div>
+<!--  MAIN -->
+<div id="statsLeagueMain415" style="display:none;">
+	<h1><b>Estad&iacute;sticas generales</b></h1>
+	<table class="tableStandard">
+		<tbody>
+			<tr>
+				<td>Partidos jugados</td>
+				<td>18</td>
+			</tr>
+			<tr>
+				<td>Goles convertidos</td>
+				<td>42</td>
+			</tr>
+			<tr>
+				<td>Promedio de goles</td>
+				<td>2.33</td>
+			</tr>
+			<tr>
+				<td>Amonestaciones</td>
+				<td>66</td>
+			</tr>
+			<tr>
+				<td>Promedio de amonestaciones</td>
+				<td>3.67</td>
+			</tr>
+			<tr>
+				<td>Expulsiones</td>
+				<td>5</td>
+			</tr>
+			<tr>
+				<td>Promedio de expulsiones</td>
+				<td>0.28</td>
+			</tr>
+			<tr>
+				<td>Penales convertidos</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>Eficacia en penales</td>
+				<td>50%</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>						
+		</tbody>
+	</table>
+</div>  
+<!-- GOALS -->
+<div id="statsLeagueGoals415" style="display:none;">
+	<table class="tableStandard">
+		<thead>
+			<th>
+				<th>Jugador</th>
+				<th><span class="record"><img src="/imgs/iconMatchGoal.gif" alt="Icono de gol" width="13" height="15"></span></th>				
+			</th>		
+		</thead>
+		<tbody>
+						<tr>
+				<td width="1%">1</td>
+				<td><a href="/jugadores/paraguay/benitez-jorge/">Benítez Jorge</a></td>
+				<td width="9%">2</td>
+			</tr>
+						<tr>
+				<td width="1%">2</td>
+				<td><a href="/jugadores/argentina/bergessio-gonzalo/">Bergessio Gonzalo</a></td>
+				<td width="9%">2</td>
+			</tr>
+						<tr>
+				<td width="1%">3</td>
+				<td><a href="/jugadores/argentina/cano-german/">Cano Germán</a></td>
+				<td width="9%">2</td>
+			</tr>
+						<tr>
+				<td width="1%">4</td>
+				<td><a href="/jugadores/argentina/funes-mori-rogelio/">Funes Mori Rogelio</a></td>
+				<td width="9%">2</td>
+			</tr>
+						<tr>
+				<td width="1%">5</td>
+				<td><a href="/jugadores/uruguay/sanchez-carlos/">Sánchez Carlos</a></td>
+				<td width="9%">2</td>
+			</tr>
+						<tr>
+				<td width="1%">6</td>
+				<td><a href="/jugadores/argentina/sosa-ismael/">Sosa Ismael</a></td>
+				<td width="9%">2</td>
+			</tr>
+						<tr>
+				<td width="1%">7</td>
+				<td><a href="/jugadores/mexico/andrade-edgar/">Andrade Edgar</a></td>
+				<td width="9%">1</td>
+			</tr>
+						<tr>
+				<td width="1%">8</td>
+				<td><a href="/jugadores/mexico/aquino-javier/">Aquino Javier</a></td>
+				<td width="9%">1</td>
+			</tr>
+						<tr>
+				<td width="1%">9</td>
+				<td><a href="/jugadores/mexico/bermudez-christian/">Bermúdez Christian</a></td>
+				<td width="9%">1</td>
+			</tr>
+						<tr>
+				<td width="1%">10</td>
+				<td><a href="/jugadores/peru/cueva-cristian/">Cueva Cristian</a></td>
+				<td width="9%">1</td>
+			</tr>
+					</tbody>
+	</table>
+</div>  
+<!-- POSITIONS -->
+<div id="statsLeaguePositions415" style="display:none;">
+	<table class="tableStandard">
+		<thead>
+			<th>Equipo</th>
+            <th class="center">Pts</th> 
+            <th width="4%" class="center">J</th> 
+            <th width="4%" class="center">G</th> 
+            <th width="4%" class="center">E</th> 
+            <th width="4%" class="center">P</th> 
+            <th width="4%" class="center">Gf</th> 
+            <th width="4%" class="center">Gc</th> 				
+		</thead>
+		<tbody>
+			            <tr> 
+              <td width="20%"><a href="/equipos/mexico/leon/">León</a></th> 
+              <td width="4%" nowrap class="center"><b>6</a></b></th> 
+              <td width="4%" class="center">2</a></td> 
+              <td width="4%" class="center">2</a></td> 
+              <td width="4%" class="center">0</a></td> 
+              <td width="4%" class="center">0</a></td> 
+              <td width="4%" class="center">5</a></td> 
+              <td width="4%" class="center">1</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/mexico/monterrey/">Monterrey</a></th> 
+              <td width="4%" nowrap class="center"><b>6</a></b></th> 
+              <td width="4%" class="center">2</a></td> 
+              <td width="4%" class="center">2</a></td> 
+              <td width="4%" class="center">0</a></td> 
+              <td width="4%" class="center">0</a></td> 
+              <td width="4%" class="center">4</a></td> 
+              <td width="4%" class="center">1</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/mexico/america-mex./">América (Méx.)</a></th> 
+              <td width="4%" nowrap class="center"><b>4</a></b></th> 
+              <td width="4%" class="center">2</a></td> 
+              <td width="4%" class="center">1</a></td> 
+              <td width="4%" class="center">1</a></td> 
+              <td width="4%" class="center">0</a></td> 
+              <td width="4%" class="center">3</a></td> 
+              <td width="4%" class="center">0</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/mexico/pachuca/">Pachuca</a></th> 
+              <td width="4%" nowrap class="center"><b>4</a></b></th> 
+              <td width="4%" class="center">2</a></td> 
+              <td width="4%" class="center">1</a></td> 
+              <td width="4%" class="center">1</a></td> 
+              <td width="4%" class="center">0</a></td> 
+              <td width="4%" class="center">2</a></td> 
+              <td width="4%" class="center">1</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/mexico/tijuana/">Tijuana</a></th> 
+              <td width="4%" nowrap class="center"><b>4</a></b></th> 
+              <td width="4%" class="center">2</a></td> 
+              <td width="4%" class="center">1</a></td> 
+              <td width="4%" class="center">1</a></td> 
+              <td width="4%" class="center">0</a></td> 
+              <td width="4%" class="center">2</a></td> 
+              <td width="4%" class="center">1</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/mexico/tigres-uanl/">Tigres UANL</a></th> 
+              <td width="4%" nowrap class="center"><b>3</a></b></th> 
+              <td width="4%" class="center">2</a></td> 
+              <td width="4%" class="center">1</a></td> 
+              <td width="4%" class="center">0</a></td> 
+              <td width="4%" class="center">1</a></td> 
+              <td width="4%" class="center">2</a></td> 
+              <td width="4%" class="center">1</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/mexico/pumas/">Pumas</a></th> 
+              <td width="4%" nowrap class="center"><b>3</a></b></th> 
+              <td width="4%" class="center">2</a></td> 
+              <td width="4%" class="center">1</a></td> 
+              <td width="4%" class="center">0</a></td> 
+              <td width="4%" class="center">1</a></td> 
+              <td width="4%" class="center">3</a></td> 
+              <td width="4%" class="center">3</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/mexico/toluca/">Toluca</a></th> 
+              <td width="4%" nowrap class="center"><b>3</a></b></th> 
+              <td width="4%" class="center">2</a></td> 
+              <td width="4%" class="center">1</a></td> 
+              <td width="4%" class="center">0</a></td> 
+              <td width="4%" class="center">1</a></td> 
+              <td width="4%" class="center">3</a></td> 
+              <td width="4%" class="center">3</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/mexico/jaguares/">Jaguares</a></th> 
+              <td width="4%" nowrap class="center"><b>3</a></b></th> 
+              <td width="4%" class="center">2</a></td> 
+              <td width="4%" class="center">1</a></td> 
+              <td width="4%" class="center">0</a></td> 
+              <td width="4%" class="center">1</a></td> 
+              <td width="4%" class="center">1</a></td> 
+              <td width="4%" class="center">1</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/mexico/atlas-m/">Atlas (M)</a></th> 
+              <td width="4%" nowrap class="center"><b>3</a></b></th> 
+              <td width="4%" class="center">2</a></td> 
+              <td width="4%" class="center">1</a></td> 
+              <td width="4%" class="center">0</a></td> 
+              <td width="4%" class="center">1</a></td> 
+              <td width="4%" class="center">3</a></td> 
+              <td width="4%" class="center">4</a></td>             
+            </tr> 
+					</tbody>
+	</table>
+</div> 
+<div id="statsLeagueMatches397" style="display:none;"> 
+  <table class="tableStandard"> 
+    <thead> 
+      <tr> 
+        <th colspan="3">Resultado </th> 
+        <th>Fecha (Hora local)</th>
+      </tr> 
+    </thead> 
+    <tbody> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/espana/eibar/">Eibar</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/espana/liga-de-futbol-profesional-2015-16/20-fecha/eibar-granada-cf/" title="Ver ficha del partido"><b>5&#160;-&#160;1</b></a></th> 
+			            <th width="28%"><a href="/equipos/espana/granada-c.f./">Granada C.F.</a></th> 
+            <td width="30%">
+			18/01/2016 20:30			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/espana/barcelona/">Barcelona</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/espana/liga-de-futbol-profesional-2015-16/20-fecha/barcelona-athletic-bilbao/" title="Ver ficha del partido"><b>6&#160;-&#160;0</b></a></th> 
+			            <th width="28%"><a href="/equipos/espana/athletic-bilbao/">Athletic Bilbao</a></th> 
+            <td width="30%">
+			17/01/2016 20:30			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/espana/las-palmas/">Las Palmas</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/espana/liga-de-futbol-profesional-2015-16/20-fecha/las-palmas-atl-de-madrid/" title="Ver ficha del partido"><b>0&#160;-&#160;3</b></a></th> 
+			            <th width="28%"><a href="/equipos/espana/atl.-de-madrid/">Atl. de Madrid</a></th> 
+            <td width="30%">
+			17/01/2016 18:15			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/espana/getafe/">Getafe</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/espana/liga-de-futbol-profesional-2015-16/20-fecha/getafe-espanyol/" title="Ver ficha del partido"><b>3&#160;-&#160;1</b></a></th> 
+			            <th width="28%"><a href="/equipos/espana/espanyol/">Espanyol</a></th> 
+            <td width="30%">
+			17/01/2016 18:15			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/espana/real-madrid/">Real Madrid</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/espana/liga-de-futbol-profesional-2015-16/20-fecha/real-madrid-sporting-gijon/" title="Ver ficha del partido"><b>5&#160;-&#160;1</b></a></th> 
+			            <th width="28%"><a href="/equipos/espana/sporting-gijon/">Sporting Gijón</a></th> 
+            <td width="30%">
+			17/01/2016 16:00			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/espana/valencia/">Valencia</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/espana/liga-de-futbol-profesional-2015-16/20-fecha/valencia-rayo-vallecano/" title="Ver ficha del partido"><b>2&#160;-&#160;2</b></a></th> 
+			            <th width="28%"><a href="/equipos/espana/rayo-vallecano/">Rayo Vallecano</a></th> 
+            <td width="30%">
+			17/01/2016 12:00			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/espana/real-sociedad/">Real Sociedad</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/espana/liga-de-futbol-profesional-2015-16/20-fecha/real-sociedad-la-coruna/" title="Ver ficha del partido"><b>1&#160;-&#160;1</b></a></th> 
+			            <th width="28%"><a href="/equipos/espana/la-coruna/">La Coruña</a></th> 
+            <td width="30%">
+			16/01/2016 22:05			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/espana/celta/">Celta</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/espana/liga-de-futbol-profesional-2015-16/20-fecha/celta-levante/" title="Ver ficha del partido"><b>4&#160;-&#160;3</b></a></th> 
+			            <th width="28%"><a href="/equipos/espana/levante/">Levante</a></th> 
+            <td width="30%">
+			16/01/2016 18:15			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/espana/villarreal/">Villarreal</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/espana/liga-de-futbol-profesional-2015-16/20-fecha/villarreal-betis/" title="Ver ficha del partido"><b>0&#160;-&#160;0</b></a></th> 
+			            <th width="28%"><a href="/equipos/espana/betis/">Betis</a></th> 
+            <td width="30%">
+			16/01/2016 18:15			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/espana/sevilla/">Sevilla</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/espana/liga-de-futbol-profesional-2015-16/20-fecha/sevilla-malaga/" title="Ver ficha del partido"><b>2&#160;-&#160;1</b></a></th> 
+			            <th width="28%"><a href="/equipos/espana/malaga/">Málaga</a></th> 
+            <td width="30%">
+			16/01/2016 16:00			
+			</td> 
+          </tr> 
+	      </tbody> 
+  </table> 
+</div>
+<!-- MATCHES NEXT -->
+<div id="statsLeagueMatchesNext397" style="display:none;">
+	<table class="tableStandard"> 
+	<thead> 
+	  <tr> 
+	    <th colspan="3">Resultado</th> 
+	    <th>Fecha (Hora local)</th>
+	  </tr> 
+	</thead> 
+	<tbody> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/espana/levante/">Levante</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/espana/las-palmas/">Las Palmas</a></th> 
+	    <td width="30%">
+		25/01/2016 20:30		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/espana/betis/">Betis</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/espana/real-madrid/">Real Madrid</a></th> 
+	    <td width="30%">
+		24/01/2016 20:30		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/espana/espanyol/">Espanyol</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/espana/villarreal/">Villarreal</a></th> 
+	    <td width="30%">
+		24/01/2016 18:15		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/espana/atl.-de-madrid/">Atl. de Madrid</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/espana/sevilla/">Sevilla</a></th> 
+	    <td width="30%">
+		24/01/2016 16:00		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/espana/athletic-bilbao/">Athletic Bilbao</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/espana/eibar/">Eibar</a></th> 
+	    <td width="30%">
+		24/01/2016 12:00		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/espana/rayo-vallecano/">Rayo Vallecano</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/espana/celta/">Celta</a></th> 
+	    <td width="30%">
+		23/01/2016 22:05		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/espana/granada-c.f./">Granada C.F.</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/espana/getafe/">Getafe</a></th> 
+	    <td width="30%">
+		23/01/2016 20:30		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/espana/la-coruna/">La Coruña</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/espana/valencia/">Valencia</a></th> 
+	    <td width="30%">
+		23/01/2016 18:15		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/espana/malaga/">Málaga</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/espana/barcelona/">Barcelona</a></th> 
+	    <td width="30%">
+		23/01/2016 16:00		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/espana/sporting-gijon/">Sporting Gijón</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/espana/real-sociedad/">Real Sociedad</a></th> 
+	    <td width="30%">
+		22/01/2016 20:30		
+		</td> 
+	  </tr> 
+	  	</tbody> 
+	</table> 
+</div>
+<!--  MAIN -->
+<div id="statsLeagueMain397" style="display:none;">
+	<h1><b>Estad&iacute;sticas generales</b></h1>
+	<table class="tableStandard">
+		<tbody>
+			<tr>
+				<td>Partidos jugados</td>
+				<td>199</td>
+			</tr>
+			<tr>
+				<td>Goles convertidos</td>
+				<td>524</td>
+			</tr>
+			<tr>
+				<td>Promedio de goles</td>
+				<td>2.63</td>
+			</tr>
+			<tr>
+				<td>Amonestaciones</td>
+				<td>1074</td>
+			</tr>
+			<tr>
+				<td>Promedio de amonestaciones</td>
+				<td>5.40</td>
+			</tr>
+			<tr>
+				<td>Expulsiones</td>
+				<td>60</td>
+			</tr>
+			<tr>
+				<td>Promedio de expulsiones</td>
+				<td>0.30</td>
+			</tr>
+			<tr>
+				<td>Penales convertidos</td>
+				<td>37</td>
+			</tr>
+			<tr>
+				<td>Eficacia en penales</td>
+				<td>69%</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>						
+		</tbody>
+	</table>
+</div>  
+<!-- GOALS -->
+<div id="statsLeagueGoals397" style="display:none;">
+	<table class="tableStandard">
+		<thead>
+			<th>
+				<th>Jugador</th>
+				<th><span class="record"><img src="/imgs/iconMatchGoal.gif" alt="Icono de gol" width="13" height="15"></span></th>				
+			</th>		
+		</thead>
+		<tbody>
+						<tr>
+				<td width="1%">1</td>
+				<td><a href="/jugadores/uruguay/suarez-luis/">Suárez Luis</a></td>
+				<td width="9%">18</td>
+			</tr>
+						<tr>
+				<td width="1%">2</td>
+				<td><a href="/jugadores/francia/benzema-karim/">Benzema Karim</a></td>
+				<td width="9%">16</td>
+			</tr>
+						<tr>
+				<td width="1%">3</td>
+				<td><a href="/jugadores/portugal/cristiano-ronaldo/">Cristiano Ronaldo</a></td>
+				<td width="9%">16</td>
+			</tr>
+						<tr>
+				<td width="1%">4</td>
+				<td><a href="/jugadores/brasil/neymar/">Neymar</a></td>
+				<td width="9%">16</td>
+			</tr>
+						<tr>
+				<td width="1%">5</td>
+				<td><a href="/jugadores/gales/bale-gareth/">Bale Gareth</a></td>
+				<td width="9%">13</td>
+			</tr>
+						<tr>
+				<td width="1%">6</td>
+				<td><a href="/jugadores/espana/agirretxe/">Agirretxe</a></td>
+				<td width="9%">12</td>
+			</tr>
+						<tr>
+				<td width="1%">7</td>
+				<td><a href="/jugadores/espana/borja-30211/">Borja</a></td>
+				<td width="9%">12</td>
+			</tr>
+						<tr>
+				<td width="1%">8</td>
+				<td><a href="/jugadores/francia/griezmann-antoine/">Griezmann Antoine</a></td>
+				<td width="9%">12</td>
+			</tr>
+						<tr>
+				<td width="1%">9</td>
+				<td><a href="/jugadores/espana/lucas/">Lucas</a></td>
+				<td width="9%">12</td>
+			</tr>
+						<tr>
+				<td width="1%">10</td>
+				<td><a href="/jugadores/espana/aduriz-aritz/">Aduriz Aritz</a></td>
+				<td width="9%">11</td>
+			</tr>
+					</tbody>
+	</table>
+</div>  
+<!-- POSITIONS -->
+<div id="statsLeaguePositions397" style="display:none;">
+	<table class="tableStandard">
+		<thead>
+			<th>Equipo</th>
+            <th class="center">Pts</th> 
+            <th width="4%" class="center">J</th> 
+            <th width="4%" class="center">G</th> 
+            <th width="4%" class="center">E</th> 
+            <th width="4%" class="center">P</th> 
+            <th width="4%" class="center">Gf</th> 
+            <th width="4%" class="center">Gc</th> 				
+		</thead>
+		<tbody>
+			            <tr> 
+              <td width="20%"><a href="/equipos/espana/atl.-de-madrid/">Atl. de Madrid</a></th> 
+              <td width="4%" nowrap class="center"><b>47</a></b></th> 
+              <td width="4%" class="center">20</a></td> 
+              <td width="4%" class="center">15</a></td> 
+              <td width="4%" class="center">2</a></td> 
+              <td width="4%" class="center">3</a></td> 
+              <td width="4%" class="center">30</a></td> 
+              <td width="4%" class="center">8</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/espana/barcelona/">Barcelona</a></th> 
+              <td width="4%" nowrap class="center"><b>45</a></b></th> 
+              <td width="4%" class="center">19</a></td> 
+              <td width="4%" class="center">14</a></td> 
+              <td width="4%" class="center">3</a></td> 
+              <td width="4%" class="center">2</a></td> 
+              <td width="4%" class="center">50</a></td> 
+              <td width="4%" class="center">15</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/espana/real-madrid/">Real Madrid</a></th> 
+              <td width="4%" nowrap class="center"><b>43</a></b></th> 
+              <td width="4%" class="center">20</a></td> 
+              <td width="4%" class="center">13</a></td> 
+              <td width="4%" class="center">4</a></td> 
+              <td width="4%" class="center">3</a></td> 
+              <td width="4%" class="center">57</a></td> 
+              <td width="4%" class="center">19</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/espana/villarreal/">Villarreal</a></th> 
+              <td width="4%" nowrap class="center"><b>40</a></b></th> 
+              <td width="4%" class="center">20</a></td> 
+              <td width="4%" class="center">12</a></td> 
+              <td width="4%" class="center">4</a></td> 
+              <td width="4%" class="center">4</a></td> 
+              <td width="4%" class="center">26</a></td> 
+              <td width="4%" class="center">16</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/espana/celta/">Celta</a></th> 
+              <td width="4%" nowrap class="center"><b>34</a></b></th> 
+              <td width="4%" class="center">20</a></td> 
+              <td width="4%" class="center">10</a></td> 
+              <td width="4%" class="center">4</a></td> 
+              <td width="4%" class="center">6</a></td> 
+              <td width="4%" class="center">32</a></td> 
+              <td width="4%" class="center">30</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/espana/eibar/">Eibar</a></th> 
+              <td width="4%" nowrap class="center"><b>33</a></b></th> 
+              <td width="4%" class="center">20</a></td> 
+              <td width="4%" class="center">9</a></td> 
+              <td width="4%" class="center">6</a></td> 
+              <td width="4%" class="center">5</a></td> 
+              <td width="4%" class="center">32</a></td> 
+              <td width="4%" class="center">21</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/espana/sevilla/">Sevilla</a></th> 
+              <td width="4%" nowrap class="center"><b>32</a></b></th> 
+              <td width="4%" class="center">20</a></td> 
+              <td width="4%" class="center">9</a></td> 
+              <td width="4%" class="center">5</a></td> 
+              <td width="4%" class="center">6</a></td> 
+              <td width="4%" class="center">28</a></td> 
+              <td width="4%" class="center">22</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/espana/la-coruna/">La Coruña</a></th> 
+              <td width="4%" nowrap class="center"><b>28</a></b></th> 
+              <td width="4%" class="center">20</a></td> 
+              <td width="4%" class="center">6</a></td> 
+              <td width="4%" class="center">10</a></td> 
+              <td width="4%" class="center">4</a></td> 
+              <td width="4%" class="center">27</a></td> 
+              <td width="4%" class="center">24</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/espana/athletic-bilbao/">Athletic Bilbao</a></th> 
+              <td width="4%" nowrap class="center"><b>28</a></b></th> 
+              <td width="4%" class="center">20</a></td> 
+              <td width="4%" class="center">8</a></td> 
+              <td width="4%" class="center">4</a></td> 
+              <td width="4%" class="center">8</a></td> 
+              <td width="4%" class="center">27</a></td> 
+              <td width="4%" class="center">28</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/espana/getafe/">Getafe</a></th> 
+              <td width="4%" nowrap class="center"><b>26</a></b></th> 
+              <td width="4%" class="center">20</a></td> 
+              <td width="4%" class="center">7</a></td> 
+              <td width="4%" class="center">5</a></td> 
+              <td width="4%" class="center">8</a></td> 
+              <td width="4%" class="center">24</a></td> 
+              <td width="4%" class="center">28</a></td>             
+            </tr> 
+					</tbody>
+	</table>
+</div> 
+<div id="statsLeagueMatches398" style="display:none;"> 
+  <table class="tableStandard"> 
+    <thead> 
+      <tr> 
+        <th colspan="3">Resultado </th> 
+        <th>Fecha </th>
+      </tr> 
+    </thead> 
+    <tbody> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/italia/milan/">Milan</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/italia/serie-a-2015-16/20-fecha/milan-fiorentina/" title="Ver ficha del partido"><b>2&#160;-&#160;0</b></a></th> 
+			            <th width="28%"><a href="/equipos/italia/fiorentina/">Fiorentina</a></th> 
+            <td width="30%">
+			17/01/2016			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/italia/bologna/">Bologna</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/italia/serie-a-2015-16/20-fecha/bologna-lazio/" title="Ver ficha del partido"><b>2&#160;-&#160;2</b></a></th> 
+			            <th width="28%"><a href="/equipos/italia/lazio/">Lazio</a></th> 
+            <td width="30%">
+			17/01/2016			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/italia/genoa/">Genoa</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/italia/serie-a-2015-16/20-fecha/genoa-palermo/" title="Ver ficha del partido"><b>4&#160;-&#160;0</b></a></th> 
+			            <th width="28%"><a href="/equipos/italia/palermo/">Palermo</a></th> 
+            <td width="30%">
+			17/01/2016			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/italia/chievo-verona/">Chievo Verona</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/italia/serie-a-2015-16/20-fecha/chievo-verona-empoli/" title="Ver ficha del partido"><b>1&#160;-&#160;1</b></a></th> 
+			            <th width="28%"><a href="/equipos/italia/empoli/">Empoli</a></th> 
+            <td width="30%">
+			17/01/2016			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/italia/udinese/">Udinese</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/italia/serie-a-2015-16/20-fecha/udinese-juventus/" title="Ver ficha del partido"><b>0&#160;-&#160;4</b></a></th> 
+			            <th width="28%"><a href="/equipos/italia/juventus/">Juventus</a></th> 
+            <td width="30%">
+			17/01/2016			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/italia/roma/">Roma</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/italia/serie-a-2015-16/20-fecha/roma-hellas-verona/" title="Ver ficha del partido"><b>1&#160;-&#160;1</b></a></th> 
+			            <th width="28%"><a href="/equipos/italia/hellas-verona/">Hellas Verona</a></th> 
+            <td width="30%">
+			17/01/2016			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/italia/carpi/">Carpi</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/italia/serie-a-2015-16/20-fecha/carpi-sampdoria/" title="Ver ficha del partido"><b>2&#160;-&#160;1</b></a></th> 
+			            <th width="28%"><a href="/equipos/italia/sampdoria/">Sampdoria</a></th> 
+            <td width="30%">
+			17/01/2016			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/italia/torino/">Torino</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/italia/serie-a-2015-16/20-fecha/torino-frosinone/" title="Ver ficha del partido"><b>4&#160;-&#160;2</b></a></th> 
+			            <th width="28%"><a href="/equipos/italia/frosinone/">Frosinone</a></th> 
+            <td width="30%">
+			16/01/2016			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/italia/atalanta/">Atalanta</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/italia/serie-a-2015-16/20-fecha/atalanta-inter/" title="Ver ficha del partido"><b>1&#160;-&#160;1</b></a></th> 
+			            <th width="28%"><a href="/equipos/italia/inter/">Inter</a></th> 
+            <td width="30%">
+			16/01/2016			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/italia/napoli/">Napoli</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/italia/serie-a-2015-16/20-fecha/napoli-sassuolo/" title="Ver ficha del partido"><b>3&#160;-&#160;1</b></a></th> 
+			            <th width="28%"><a href="/equipos/italia/sassuolo/">Sassuolo</a></th> 
+            <td width="30%">
+			16/01/2016			
+			</td> 
+          </tr> 
+	      </tbody> 
+  </table> 
+</div>
+<!-- MATCHES NEXT -->
+<div id="statsLeagueMatchesNext398" style="display:none;">
+	<table class="tableStandard"> 
+	<thead> 
+	  <tr> 
+	    <th colspan="3">Resultado</th> 
+	    <th>Fecha (Hora local)</th>
+	  </tr> 
+	</thead> 
+	<tbody> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/italia/juventus/">Juventus</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/italia/roma/">Roma</a></th> 
+	    <td width="30%">
+		24/01/2016 20:45		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/italia/inter/">Inter</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/italia/carpi/">Carpi</a></th> 
+	    <td width="30%">
+		24/01/2016 15:00		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/italia/hellas-verona/">Hellas Verona</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/italia/genoa/">Genoa</a></th> 
+	    <td width="30%">
+		24/01/2016 15:00		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/italia/lazio/">Lazio</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/italia/chievo-verona/">Chievo Verona</a></th> 
+	    <td width="30%">
+		24/01/2016 15:00		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/italia/palermo/">Palermo</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/italia/udinese/">Udinese</a></th> 
+	    <td width="30%">
+		24/01/2016 15:00		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/italia/sampdoria/">Sampdoria</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/italia/napoli/">Napoli</a></th> 
+	    <td width="30%">
+		24/01/2016 15:00		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/italia/sassuolo/">Sassuolo</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/italia/bologna/">Bologna</a></th> 
+	    <td width="30%">
+		24/01/2016 15:00		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/italia/fiorentina/">Fiorentina</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/italia/torino/">Torino</a></th> 
+	    <td width="30%">
+		24/01/2016 12:30		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/italia/empoli/">Empoli</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/italia/milan/">Milan</a></th> 
+	    <td width="30%">
+		23/01/2016 20:45		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/italia/frosinone/">Frosinone</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/italia/atalanta/">Atalanta</a></th> 
+	    <td width="30%">
+		23/01/2016 18:00		
+		</td> 
+	  </tr> 
+	  	</tbody> 
+	</table> 
+</div>
+<!--  MAIN -->
+<div id="statsLeagueMain398" style="display:none;">
+	<h1><b>Estad&iacute;sticas generales</b></h1>
+	<table class="tableStandard">
+		<tbody>
+			<tr>
+				<td>Partidos jugados</td>
+				<td>200</td>
+			</tr>
+			<tr>
+				<td>Goles convertidos</td>
+				<td>518</td>
+			</tr>
+			<tr>
+				<td>Promedio de goles</td>
+				<td>2.59</td>
+			</tr>
+			<tr>
+				<td>Amonestaciones</td>
+				<td>985</td>
+			</tr>
+			<tr>
+				<td>Promedio de amonestaciones</td>
+				<td>4.93</td>
+			</tr>
+			<tr>
+				<td>Expulsiones</td>
+				<td>67</td>
+			</tr>
+			<tr>
+				<td>Promedio de expulsiones</td>
+				<td>0.34</td>
+			</tr>
+			<tr>
+				<td>Penales convertidos</td>
+				<td>43</td>
+			</tr>
+			<tr>
+				<td>Eficacia en penales</td>
+				<td>81%</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>						
+		</tbody>
+	</table>
+</div>  
+<!-- GOALS -->
+<div id="statsLeagueGoals398" style="display:none;">
+	<table class="tableStandard">
+		<thead>
+			<th>
+				<th>Jugador</th>
+				<th><span class="record"><img src="/imgs/iconMatchGoal.gif" alt="Icono de gol" width="13" height="15"></span></th>				
+			</th>		
+		</thead>
+		<tbody>
+						<tr>
+				<td width="1%">1</td>
+				<td><a href="/jugadores/argentina/higuain-gonzalo/">Higuaín Gonzalo</a></td>
+				<td width="9%">20</td>
+			</tr>
+						<tr>
+				<td width="1%">2</td>
+				<td><a href="/jugadores/argentina/dybala-paulo/">Dybala Paulo</a></td>
+				<td width="9%">11</td>
+			</tr>
+						<tr>
+				<td width="1%">3</td>
+				<td><a href="/jugadores/italia/eder-martins/">Eder Martins</a></td>
+				<td width="9%">11</td>
+			</tr>
+						<tr>
+				<td width="1%">4</td>
+				<td><a href="/jugadores/croacia/kalinic-nikola/">Kalinic Nikola</a></td>
+				<td width="9%">10</td>
+			</tr>
+						<tr>
+				<td width="1%">5</td>
+				<td><a href="/jugadores/italia/pavoletti-leonardo/">Pavoletti Leonardo</a></td>
+				<td width="9%">10</td>
+			</tr>
+						<tr>
+				<td width="1%">6</td>
+				<td><a href="/jugadores/colombia/bacca-carlos/">Bacca Carlos</a></td>
+				<td width="9%">9</td>
+			</tr>
+						<tr>
+				<td width="1%">7</td>
+				<td><a href="/jugadores/eslovenia/ilicic-josip/">Ilicic Josip</a></td>
+				<td width="9%">9</td>
+			</tr>
+						<tr>
+				<td width="1%">8</td>
+				<td><a href="/jugadores/argentina/icardi-mauro/">Icardi Mauro</a></td>
+				<td width="9%">8</td>
+			</tr>
+						<tr>
+				<td width="1%">9</td>
+				<td><a href="/jugadores/italia/insigne-lorenzo/">Insigne Lorenzo</a></td>
+				<td width="9%">8</td>
+			</tr>
+						<tr>
+				<td width="1%">10</td>
+				<td><a href="/jugadores/italia/maccarone-massimo/">Maccarone Massimo</a></td>
+				<td width="9%">8</td>
+			</tr>
+					</tbody>
+	</table>
+</div>  
+<!-- POSITIONS -->
+<div id="statsLeaguePositions398" style="display:none;">
+	<table class="tableStandard">
+		<thead>
+			<th>Equipo</th>
+            <th class="center">Pts</th> 
+            <th width="4%" class="center">J</th> 
+            <th width="4%" class="center">G</th> 
+            <th width="4%" class="center">E</th> 
+            <th width="4%" class="center">P</th> 
+            <th width="4%" class="center">Gf</th> 
+            <th width="4%" class="center">Gc</th> 				
+		</thead>
+		<tbody>
+			            <tr> 
+              <td width="20%"><a href="/equipos/italia/napoli/">Napoli</a></th> 
+              <td width="4%" nowrap class="center"><b>44</a></b></th> 
+              <td width="4%" class="center">20</a></td> 
+              <td width="4%" class="center">13</a></td> 
+              <td width="4%" class="center">5</a></td> 
+              <td width="4%" class="center">2</a></td> 
+              <td width="4%" class="center">41</a></td> 
+              <td width="4%" class="center">16</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/italia/juventus/">Juventus</a></th> 
+              <td width="4%" nowrap class="center"><b>42</a></b></th> 
+              <td width="4%" class="center">20</a></td> 
+              <td width="4%" class="center">13</a></td> 
+              <td width="4%" class="center">3</a></td> 
+              <td width="4%" class="center">4</a></td> 
+              <td width="4%" class="center">37</a></td> 
+              <td width="4%" class="center">15</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/italia/inter/">Inter</a></th> 
+              <td width="4%" nowrap class="center"><b>40</a></b></th> 
+              <td width="4%" class="center">20</a></td> 
+              <td width="4%" class="center">12</a></td> 
+              <td width="4%" class="center">4</a></td> 
+              <td width="4%" class="center">4</a></td> 
+              <td width="4%" class="center">25</a></td> 
+              <td width="4%" class="center">13</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/italia/fiorentina/">Fiorentina</a></th> 
+              <td width="4%" nowrap class="center"><b>38</a></b></th> 
+              <td width="4%" class="center">20</a></td> 
+              <td width="4%" class="center">12</a></td> 
+              <td width="4%" class="center">2</a></td> 
+              <td width="4%" class="center">6</a></td> 
+              <td width="4%" class="center">37</a></td> 
+              <td width="4%" class="center">21</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/italia/roma/">Roma</a></th> 
+              <td width="4%" nowrap class="center"><b>35</a></b></th> 
+              <td width="4%" class="center">20</a></td> 
+              <td width="4%" class="center">9</a></td> 
+              <td width="4%" class="center">8</a></td> 
+              <td width="4%" class="center">3</a></td> 
+              <td width="4%" class="center">37</a></td> 
+              <td width="4%" class="center">23</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/italia/milan/">Milan</a></th> 
+              <td width="4%" nowrap class="center"><b>32</a></b></th> 
+              <td width="4%" class="center">20</a></td> 
+              <td width="4%" class="center">9</a></td> 
+              <td width="4%" class="center">5</a></td> 
+              <td width="4%" class="center">6</a></td> 
+              <td width="4%" class="center">27</a></td> 
+              <td width="4%" class="center">23</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/italia/sassuolo/">Sassuolo</a></th> 
+              <td width="4%" nowrap class="center"><b>32</a></b></th> 
+              <td width="4%" class="center">20</a></td> 
+              <td width="4%" class="center">8</a></td> 
+              <td width="4%" class="center">8</a></td> 
+              <td width="4%" class="center">4</a></td> 
+              <td width="4%" class="center">25</a></td> 
+              <td width="4%" class="center">21</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/italia/empoli/">Empoli</a></th> 
+              <td width="4%" nowrap class="center"><b>31</a></b></th> 
+              <td width="4%" class="center">20</a></td> 
+              <td width="4%" class="center">9</a></td> 
+              <td width="4%" class="center">4</a></td> 
+              <td width="4%" class="center">7</a></td> 
+              <td width="4%" class="center">25</a></td> 
+              <td width="4%" class="center">24</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/italia/lazio/">Lazio</a></th> 
+              <td width="4%" nowrap class="center"><b>28</a></b></th> 
+              <td width="4%" class="center">20</a></td> 
+              <td width="4%" class="center">8</a></td> 
+              <td width="4%" class="center">4</a></td> 
+              <td width="4%" class="center">8</a></td> 
+              <td width="4%" class="center">25</a></td> 
+              <td width="4%" class="center">29</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/italia/chievo-verona/">Chievo Verona</a></th> 
+              <td width="4%" nowrap class="center"><b>27</a></b></th> 
+              <td width="4%" class="center">20</a></td> 
+              <td width="4%" class="center">7</a></td> 
+              <td width="4%" class="center">6</a></td> 
+              <td width="4%" class="center">7</a></td> 
+              <td width="4%" class="center">26</a></td> 
+              <td width="4%" class="center">22</a></td>             
+            </tr> 
+					</tbody>
+	</table>
+</div> 
+<div id="statsLeagueMatches390" style="display:none;"> 
+  <table class="tableStandard"> 
+    <thead> 
+      <tr> 
+        <th colspan="3">Resultado </th> 
+        <th>Fecha (Hora local)</th>
+      </tr> 
+    </thead> 
+    <tbody> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/gales/swansea/">Swansea</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/inglaterra/premier-league-2015-16/22-fecha/swansea-watford/" title="Ver ficha del partido"><b>1&#160;-&#160;0</b></a></th> 
+			            <th width="28%"><a href="/equipos/inglaterra/watford/">Watford</a></th> 
+            <td width="30%">
+			18/01/2016 20:00			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/inglaterra/stoke-city/">Stoke City</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/inglaterra/premier-league-2015-16/22-fecha/stoke-city-arsenal-fc/" title="Ver ficha del partido"><b>0&#160;-&#160;0</b></a></th> 
+			            <th width="28%"><a href="/equipos/inglaterra/arsenal-fc/">Arsenal FC</a></th> 
+            <td width="30%">
+			17/01/2016 16:15			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/inglaterra/liverpool/">Liverpool</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/inglaterra/premier-league-2015-16/22-fecha/liverpool-manchester-utd/" title="Ver ficha del partido"><b>0&#160;-&#160;1</b></a></th> 
+			            <th width="28%"><a href="/equipos/inglaterra/manchester-utd./">Manchester Utd.</a></th> 
+            <td width="30%">
+			17/01/2016 14:05			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/inglaterra/aston-villa/">Aston Villa</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/inglaterra/premier-league-2015-16/22-fecha/aston-villa-leicester-city/" title="Ver ficha del partido"><b>1&#160;-&#160;1</b></a></th> 
+			            <th width="28%"><a href="/equipos/inglaterra/leicester-city/">Leicester City</a></th> 
+            <td width="30%">
+			16/01/2016 17:30			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/inglaterra/southampton/">Southampton</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/inglaterra/premier-league-2015-16/22-fecha/southampton-west-bromwich/" title="Ver ficha del partido"><b>3&#160;-&#160;0</b></a></th> 
+			            <th width="28%"><a href="/equipos/inglaterra/west-bromwich/">West Bromwich</a></th> 
+            <td width="30%">
+			16/01/2016 15:00			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/inglaterra/bournemouth/">Bournemouth</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/inglaterra/premier-league-2015-16/22-fecha/bournemouth-norwich/" title="Ver ficha del partido"><b>3&#160;-&#160;0</b></a></th> 
+			            <th width="28%"><a href="/equipos/inglaterra/norwich/">Norwich</a></th> 
+            <td width="30%">
+			16/01/2016 15:00			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/inglaterra/manchester-city/">Manchester City</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/inglaterra/premier-league-2015-16/22-fecha/manchester-city-crystal-palace/" title="Ver ficha del partido"><b>4&#160;-&#160;0</b></a></th> 
+			            <th width="28%"><a href="/equipos/inglaterra/crystal-palace/">Crystal Palace</a></th> 
+            <td width="30%">
+			16/01/2016 15:00			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/inglaterra/newcastle/">Newcastle</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/inglaterra/premier-league-2015-16/22-fecha/newcastle-west-ham/" title="Ver ficha del partido"><b>2&#160;-&#160;1</b></a></th> 
+			            <th width="28%"><a href="/equipos/inglaterra/west-ham/">West Ham</a></th> 
+            <td width="30%">
+			16/01/2016 15:00			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/inglaterra/chelsea/">Chelsea</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/inglaterra/premier-league-2015-16/22-fecha/chelsea-everton/" title="Ver ficha del partido"><b>3&#160;-&#160;3</b></a></th> 
+			            <th width="28%"><a href="/equipos/inglaterra/everton/">Everton</a></th> 
+            <td width="30%">
+			16/01/2016 15:00			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/inglaterra/tottenham/">Tottenham</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/inglaterra/premier-league-2015-16/22-fecha/tottenham-sunderland/" title="Ver ficha del partido"><b>4&#160;-&#160;1</b></a></th> 
+			            <th width="28%"><a href="/equipos/inglaterra/sunderland/">Sunderland</a></th> 
+            <td width="30%">
+			16/01/2016 12:45			
+			</td> 
+          </tr> 
+	      </tbody> 
+  </table> 
+</div>
+<!-- MATCHES NEXT -->
+<div id="statsLeagueMatchesNext390" style="display:none;">
+	<table class="tableStandard"> 
+	<thead> 
+	  <tr> 
+	    <th colspan="3">Resultado</th> 
+	    <th>Fecha (Hora local)</th>
+	  </tr> 
+	</thead> 
+	<tbody> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/inglaterra/arsenal-fc/">Arsenal FC</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/inglaterra/chelsea/">Chelsea</a></th> 
+	    <td width="30%">
+		24/01/2016 16:00		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/inglaterra/everton/">Everton</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/gales/swansea/">Swansea</a></th> 
+	    <td width="30%">
+		24/01/2016 13:30		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/inglaterra/west-ham/">West Ham</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/inglaterra/manchester-city/">Manchester City</a></th> 
+	    <td width="30%">
+		23/01/2016 17:30		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/inglaterra/crystal-palace/">Crystal Palace</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/inglaterra/tottenham/">Tottenham</a></th> 
+	    <td width="30%">
+		23/01/2016 15:00		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/inglaterra/leicester-city/">Leicester City</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/inglaterra/stoke-city/">Stoke City</a></th> 
+	    <td width="30%">
+		23/01/2016 15:00		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/inglaterra/west-bromwich/">West Bromwich</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/inglaterra/aston-villa/">Aston Villa</a></th> 
+	    <td width="30%">
+		23/01/2016 15:00		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/inglaterra/watford/">Watford</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/inglaterra/newcastle/">Newcastle</a></th> 
+	    <td width="30%">
+		23/01/2016 15:00		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/inglaterra/manchester-utd./">Manchester Utd.</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/inglaterra/southampton/">Southampton</a></th> 
+	    <td width="30%">
+		23/01/2016 15:00		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/inglaterra/sunderland/">Sunderland</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/inglaterra/bournemouth/">Bournemouth</a></th> 
+	    <td width="30%">
+		23/01/2016 15:00		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/inglaterra/norwich/">Norwich</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/inglaterra/liverpool/">Liverpool</a></th> 
+	    <td width="30%">
+		23/01/2016 12:45		
+		</td> 
+	  </tr> 
+	  	</tbody> 
+	</table> 
+</div>
+<!--  MAIN -->
+<div id="statsLeagueMain390" style="display:none;">
+	<h1><b>Estad&iacute;sticas generales</b></h1>
+	<table class="tableStandard">
+		<tbody>
+			<tr>
+				<td>Partidos jugados</td>
+				<td>220</td>
+			</tr>
+			<tr>
+				<td>Goles convertidos</td>
+				<td>578</td>
+			</tr>
+			<tr>
+				<td>Promedio de goles</td>
+				<td>2.63</td>
+			</tr>
+			<tr>
+				<td>Amonestaciones</td>
+				<td>720</td>
+			</tr>
+			<tr>
+				<td>Promedio de amonestaciones</td>
+				<td>3.27</td>
+			</tr>
+			<tr>
+				<td>Expulsiones</td>
+				<td>35</td>
+			</tr>
+			<tr>
+				<td>Promedio de expulsiones</td>
+				<td>0.16</td>
+			</tr>
+			<tr>
+				<td>Penales convertidos</td>
+				<td>44</td>
+			</tr>
+			<tr>
+				<td>Eficacia en penales</td>
+				<td>85%</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>						
+		</tbody>
+	</table>
+</div>  
+<!-- GOALS -->
+<div id="statsLeagueGoals390" style="display:none;">
+	<table class="tableStandard">
+		<thead>
+			<th>
+				<th>Jugador</th>
+				<th><span class="record"><img src="/imgs/iconMatchGoal.gif" alt="Icono de gol" width="13" height="15"></span></th>				
+			</th>		
+		</thead>
+		<tbody>
+						<tr>
+				<td width="1%">1</td>
+				<td><a href="/jugadores/belgica/lukaku-romelu/">Lukaku Romelu</a></td>
+				<td width="9%">15</td>
+			</tr>
+						<tr>
+				<td width="1%">2</td>
+				<td><a href="/jugadores/inglaterra/vardy-jamie/">Vardy Jamie</a></td>
+				<td width="9%">15</td>
+			</tr>
+						<tr>
+				<td width="1%">3</td>
+				<td><a href="/jugadores/nigeria/ighalo-odion/">Ighalo Odion</a></td>
+				<td width="9%">14</td>
+			</tr>
+						<tr>
+				<td width="1%">4</td>
+				<td><a href="/jugadores/argelia/mahrez-riyad/">Mahrez Riyad</a></td>
+				<td width="9%">13</td>
+			</tr>
+						<tr>
+				<td width="1%">5</td>
+				<td><a href="/jugadores/francia/giroud-olivier/">Giroud Olivier</a></td>
+				<td width="9%">12</td>
+			</tr>
+						<tr>
+				<td width="1%">6</td>
+				<td><a href="/jugadores/inglaterra/kane-harry/">Kane Harry</a></td>
+				<td width="9%">12</td>
+			</tr>
+						<tr>
+				<td width="1%">7</td>
+				<td><a href="/jugadores/argentina/aguero-sergio/">Aguero Sergio</a></td>
+				<td width="9%">10</td>
+			</tr>
+						<tr>
+				<td width="1%">8</td>
+				<td><a href="/jugadores/inglaterra/defoe-jermain/">Defoe Jermain</a></td>
+				<td width="9%">9</td>
+			</tr>
+						<tr>
+				<td width="1%">9</td>
+				<td><a href="/jugadores/holanda/wijnaldum-georginio/">Wijnaldum Georginio</a></td>
+				<td width="9%">9</td>
+			</tr>
+						<tr>
+				<td width="1%">10</td>
+				<td><a href="/jugadores/austria/arnautovic-marko/">Arnautovic Marko</a></td>
+				<td width="9%">7</td>
+			</tr>
+					</tbody>
+	</table>
+</div>  
+<!-- POSITIONS -->
+<div id="statsLeaguePositions390" style="display:none;">
+	<table class="tableStandard">
+		<thead>
+			<th>Equipo</th>
+            <th class="center">Pts</th> 
+            <th width="4%" class="center">J</th> 
+            <th width="4%" class="center">G</th> 
+            <th width="4%" class="center">E</th> 
+            <th width="4%" class="center">P</th> 
+            <th width="4%" class="center">Gf</th> 
+            <th width="4%" class="center">Gc</th> 				
+		</thead>
+		<tbody>
+			            <tr> 
+              <td width="20%"><a href="/equipos/inglaterra/arsenal-fc/">Arsenal FC</a></th> 
+              <td width="4%" nowrap class="center"><b>44</a></b></th> 
+              <td width="4%" class="center">22</a></td> 
+              <td width="4%" class="center">13</a></td> 
+              <td width="4%" class="center">5</a></td> 
+              <td width="4%" class="center">4</a></td> 
+              <td width="4%" class="center">37</a></td> 
+              <td width="4%" class="center">21</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/inglaterra/leicester-city/">Leicester City</a></th> 
+              <td width="4%" nowrap class="center"><b>44</a></b></th> 
+              <td width="4%" class="center">22</a></td> 
+              <td width="4%" class="center">12</a></td> 
+              <td width="4%" class="center">8</a></td> 
+              <td width="4%" class="center">2</a></td> 
+              <td width="4%" class="center">39</a></td> 
+              <td width="4%" class="center">26</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/inglaterra/manchester-city/">Manchester City</a></th> 
+              <td width="4%" nowrap class="center"><b>43</a></b></th> 
+              <td width="4%" class="center">22</a></td> 
+              <td width="4%" class="center">13</a></td> 
+              <td width="4%" class="center">4</a></td> 
+              <td width="4%" class="center">5</a></td> 
+              <td width="4%" class="center">43</a></td> 
+              <td width="4%" class="center">21</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/inglaterra/tottenham/">Tottenham</a></th> 
+              <td width="4%" nowrap class="center"><b>39</a></b></th> 
+              <td width="4%" class="center">22</a></td> 
+              <td width="4%" class="center">10</a></td> 
+              <td width="4%" class="center">9</a></td> 
+              <td width="4%" class="center">3</a></td> 
+              <td width="4%" class="center">38</a></td> 
+              <td width="4%" class="center">18</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/inglaterra/manchester-utd./">Manchester Utd.</a></th> 
+              <td width="4%" nowrap class="center"><b>37</a></b></th> 
+              <td width="4%" class="center">22</a></td> 
+              <td width="4%" class="center">10</a></td> 
+              <td width="4%" class="center">7</a></td> 
+              <td width="4%" class="center">5</a></td> 
+              <td width="4%" class="center">28</a></td> 
+              <td width="4%" class="center">20</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/inglaterra/west-ham/">West Ham</a></th> 
+              <td width="4%" nowrap class="center"><b>35</a></b></th> 
+              <td width="4%" class="center">22</a></td> 
+              <td width="4%" class="center">9</a></td> 
+              <td width="4%" class="center">8</a></td> 
+              <td width="4%" class="center">5</a></td> 
+              <td width="4%" class="center">34</a></td> 
+              <td width="4%" class="center">26</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/inglaterra/stoke-city/">Stoke City</a></th> 
+              <td width="4%" nowrap class="center"><b>33</a></b></th> 
+              <td width="4%" class="center">22</a></td> 
+              <td width="4%" class="center">9</a></td> 
+              <td width="4%" class="center">6</a></td> 
+              <td width="4%" class="center">7</a></td> 
+              <td width="4%" class="center">24</a></td> 
+              <td width="4%" class="center">22</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/inglaterra/crystal-palace/">Crystal Palace</a></th> 
+              <td width="4%" nowrap class="center"><b>31</a></b></th> 
+              <td width="4%" class="center">22</a></td> 
+              <td width="4%" class="center">9</a></td> 
+              <td width="4%" class="center">4</a></td> 
+              <td width="4%" class="center">9</a></td> 
+              <td width="4%" class="center">23</a></td> 
+              <td width="4%" class="center">24</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/inglaterra/liverpool/">Liverpool</a></th> 
+              <td width="4%" nowrap class="center"><b>31</a></b></th> 
+              <td width="4%" class="center">22</a></td> 
+              <td width="4%" class="center">8</a></td> 
+              <td width="4%" class="center">7</a></td> 
+              <td width="4%" class="center">7</a></td> 
+              <td width="4%" class="center">25</a></td> 
+              <td width="4%" class="center">28</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/inglaterra/southampton/">Southampton</a></th> 
+              <td width="4%" nowrap class="center"><b>30</a></b></th> 
+              <td width="4%" class="center">22</a></td> 
+              <td width="4%" class="center">8</a></td> 
+              <td width="4%" class="center">6</a></td> 
+              <td width="4%" class="center">8</a></td> 
+              <td width="4%" class="center">31</a></td> 
+              <td width="4%" class="center">24</a></td>             
+            </tr> 
+					</tbody>
+	</table>
+</div> 
+<div id="statsLeagueMatches387" style="display:none;"> 
+  <table class="tableStandard"> 
+    <thead> 
+      <tr> 
+        <th colspan="3">Resultado </th> 
+        <th>Fecha (Hora local)</th>
+      </tr> 
+    </thead> 
+    <tbody> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/francia/saint-ettiene/">Saint Ettiene</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/francia/ligue-de-football-professionnel-2015-16/21-fecha/saint-ettiene-lyon/" title="Ver ficha del partido"><b>1&#160;-&#160;0</b></a></th> 
+			            <th width="28%"><a href="/equipos/francia/lyon/">Lyon</a></th> 
+            <td width="30%">
+			17/01/2016 21:00			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/francia/caen/">Caen</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/francia/ligue-de-football-professionnel-2015-16/21-fecha/caen-olympique/" title="Ver ficha del partido"><b>1&#160;-&#160;3</b></a></th> 
+			            <th width="28%"><a href="/equipos/francia/olympique/">Olympique</a></th> 
+            <td width="30%">
+			17/01/2016 17:00			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/francia/lorient/">Lorient</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/francia/ligue-de-football-professionnel-2015-16/21-fecha/lorient-monaco/" title="Ver ficha del partido"><b>0&#160;-&#160;2</b></a></th> 
+			            <th width="28%"><a href="/equipos/francia/monaco/">Monaco</a></th> 
+            <td width="30%">
+			17/01/2016 14:00			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/francia/guingamp/">Guingamp</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/francia/ligue-de-football-professionnel-2015-16/21-fecha/guingamp-nantes/" title="Ver ficha del partido"><b>2&#160;-&#160;2</b></a></th> 
+			            <th width="28%"><a href="/equipos/francia/nantes/">Nantes</a></th> 
+            <td width="30%">
+			16/01/2016 20:00			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/francia/bastia/">Bastia</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/francia/ligue-de-football-professionnel-2015-16/21-fecha/bastia-montpellier/" title="Ver ficha del partido"><b>1&#160;-&#160;0</b></a></th> 
+			            <th width="28%"><a href="/equipos/francia/montpellier/">Montpellier</a></th> 
+            <td width="30%">
+			16/01/2016 20:00			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/francia/bordeaux/">Bordeaux</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/francia/ligue-de-football-professionnel-2015-16/21-fecha/bordeaux-lille/" title="Ver ficha del partido"><b>1&#160;-&#160;0</b></a></th> 
+			            <th width="28%"><a href="/equipos/francia/lille/">Lille</a></th> 
+            <td width="30%">
+			16/01/2016 20:00			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/francia/troyes/">Troyes</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/francia/ligue-de-football-professionnel-2015-16/21-fecha/troyes-rennes/" title="Ver ficha del partido"><b>2&#160;-&#160;4</b></a></th> 
+			            <th width="28%"><a href="/equipos/francia/rennes/">Rennes</a></th> 
+            <td width="30%">
+			16/01/2016 20:00			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/francia/gfco-ajaccio/">GFCO Ajaccio</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/francia/ligue-de-football-professionnel-2015-16/21-fecha/gfco-ajaccio-reims/" title="Ver ficha del partido"><b>2&#160;-&#160;2</b></a></th> 
+			            <th width="28%"><a href="/equipos/francia/reims/">Reims</a></th> 
+            <td width="30%">
+			16/01/2016 20:00			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/francia/toulouse/">Toulouse</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/francia/ligue-de-football-professionnel-2015-16/21-fecha/toulouse-psg/" title="Ver ficha del partido"><b>0&#160;-&#160;1</b></a></th> 
+			            <th width="28%"><a href="/equipos/francia/psg/">PSG</a></th> 
+            <td width="30%">
+			16/01/2016 17:00			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/francia/niza/">Niza</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/francia/ligue-de-football-professionnel-2015-16/21-fecha/niza-angers/" title="Ver ficha del partido"><b>2&#160;-&#160;1</b></a></th> 
+			            <th width="28%"><a href="/equipos/francia/angers/">Angers</a></th> 
+            <td width="30%">
+			15/01/2016 20:30			
+			</td> 
+          </tr> 
+	      </tbody> 
+  </table> 
+</div>
+<!-- MATCHES NEXT -->
+<div id="statsLeagueMatchesNext387" style="display:none;">
+	<table class="tableStandard"> 
+	<thead> 
+	  <tr> 
+	    <th colspan="3">Resultado</th> 
+	    <th>Fecha (Hora local)</th>
+	  </tr> 
+	</thead> 
+	<tbody> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/francia/lyon/">Lyon</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/francia/olympique/">Olympique</a></th> 
+	    <td width="30%">
+		24/01/2016 21:00		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/francia/reims/">Reims</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/francia/saint-ettiene/">Saint Ettiene</a></th> 
+	    <td width="30%">
+		24/01/2016 17:00		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/francia/monaco/">Monaco</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/francia/toulouse/">Toulouse</a></th> 
+	    <td width="30%">
+		24/01/2016 14:00		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/francia/guingamp/">Guingamp</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/francia/bastia/">Bastia</a></th> 
+	    <td width="30%">
+		23/01/2016 20:00		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/francia/niza/">Niza</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/francia/lorient/">Lorient</a></th> 
+	    <td width="30%">
+		23/01/2016 20:00		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/francia/lille/">Lille</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/francia/troyes/">Troyes</a></th> 
+	    <td width="30%">
+		23/01/2016 20:00		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/francia/nantes/">Nantes</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/francia/bordeaux/">Bordeaux</a></th> 
+	    <td width="30%">
+		23/01/2016 20:00		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/francia/montpellier/">Montpellier</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/francia/caen/">Caen</a></th> 
+	    <td width="30%">
+		23/01/2016 20:00		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/francia/psg/">PSG</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/francia/angers/">Angers</a></th> 
+	    <td width="30%">
+		23/01/2016 17:00		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/francia/rennes/">Rennes</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/francia/gfco-ajaccio/">GFCO Ajaccio</a></th> 
+	    <td width="30%">
+		22/01/2016 20:30		
+		</td> 
+	  </tr> 
+	  	</tbody> 
+	</table> 
+</div>
+<!--  MAIN -->
+<div id="statsLeagueMain387" style="display:none;">
+	<h1><b>Estad&iacute;sticas generales</b></h1>
+	<table class="tableStandard">
+		<tbody>
+			<tr>
+				<td>Partidos jugados</td>
+				<td>210</td>
+			</tr>
+			<tr>
+				<td>Goles convertidos</td>
+				<td>503</td>
+			</tr>
+			<tr>
+				<td>Promedio de goles</td>
+				<td>2.40</td>
+			</tr>
+			<tr>
+				<td>Amonestaciones</td>
+				<td>822</td>
+			</tr>
+			<tr>
+				<td>Promedio de amonestaciones</td>
+				<td>3.91</td>
+			</tr>
+			<tr>
+				<td>Expulsiones</td>
+				<td>72</td>
+			</tr>
+			<tr>
+				<td>Promedio de expulsiones</td>
+				<td>0.34</td>
+			</tr>
+			<tr>
+				<td>Penales convertidos</td>
+				<td>36</td>
+			</tr>
+			<tr>
+				<td>Eficacia en penales</td>
+				<td>68%</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>						
+		</tbody>
+	</table>
+</div>  
+<!-- GOALS -->
+<div id="statsLeagueGoals387" style="display:none;">
+	<table class="tableStandard">
+		<thead>
+			<th>
+				<th>Jugador</th>
+				<th><span class="record"><img src="/imgs/iconMatchGoal.gif" alt="Icono de gol" width="13" height="15"></span></th>				
+			</th>		
+		</thead>
+		<tbody>
+						<tr>
+				<td width="1%">1</td>
+				<td><a href="/jugadores/suecia/ibrahimovic-zlatan/">Ibrahimovic Zlatan</a></td>
+				<td width="9%">16</td>
+			</tr>
+						<tr>
+				<td width="1%">2</td>
+				<td><a href="/jugadores/congo/batshuayi-michy/">Batshuayi Michy</a></td>
+				<td width="9%">12</td>
+			</tr>
+						<tr>
+				<td width="1%">3</td>
+				<td><a href="/jugadores/camerun/moukandjo-benjamin/">Moukandjo Benjamin</a></td>
+				<td width="9%">11</td>
+			</tr>
+						<tr>
+				<td width="1%">4</td>
+				<td><a href="/jugadores/uruguay/cavani-edison/">Cavani Edison</a></td>
+				<td width="9%">10</td>
+			</tr>
+						<tr>
+				<td width="1%">5</td>
+				<td><a href="/jugadores/francia/ben-arfa-hatem/">Ben Arfa Hatem</a></td>
+				<td width="9%">9</td>
+			</tr>
+						<tr>
+				<td width="1%">6</td>
+				<td><a href="/jugadores/francia/ben-yedder-wissam/">Ben Yedder Wissam</a></td>
+				<td width="9%">7</td>
+			</tr>
+						<tr>
+				<td width="1%">7</td>
+				<td><a href="/jugadores/francia/germain-valere/">Germain Valere</a></td>
+				<td width="9%">7</td>
+			</tr>
+						<tr>
+				<td width="1%">8</td>
+				<td><a href="/jugadores/francia/lacazette-alexandre/">Lacazette Alexandre</a></td>
+				<td width="9%">7</td>
+			</tr>
+						<tr>
+				<td width="1%">9</td>
+				<td><a href="/jugadores/dinamarca/braithwaite-martin/">Braithwaite Martin</a></td>
+				<td width="9%">6</td>
+			</tr>
+						<tr>
+				<td width="1%">10</td>
+				<td><a href="/jugadores/francia/de-preville-nicolas/">De Preville Nicolas</a></td>
+				<td width="9%">6</td>
+			</tr>
+					</tbody>
+	</table>
+</div>  
+<!-- POSITIONS -->
+<div id="statsLeaguePositions387" style="display:none;">
+	<table class="tableStandard">
+		<thead>
+			<th>Equipo</th>
+            <th class="center">Pts</th> 
+            <th width="4%" class="center">J</th> 
+            <th width="4%" class="center">G</th> 
+            <th width="4%" class="center">E</th> 
+            <th width="4%" class="center">P</th> 
+            <th width="4%" class="center">Gf</th> 
+            <th width="4%" class="center">Gc</th> 				
+		</thead>
+		<tbody>
+			            <tr> 
+              <td width="20%"><a href="/equipos/francia/psg/">PSG</a></th> 
+              <td width="4%" nowrap class="center"><b>57</a></b></th> 
+              <td width="4%" class="center">21</a></td> 
+              <td width="4%" class="center">18</a></td> 
+              <td width="4%" class="center">3</a></td> 
+              <td width="4%" class="center">0</a></td> 
+              <td width="4%" class="center">51</a></td> 
+              <td width="4%" class="center">9</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/francia/monaco/">Monaco</a></th> 
+              <td width="4%" nowrap class="center"><b>36</a></b></th> 
+              <td width="4%" class="center">21</a></td> 
+              <td width="4%" class="center">9</a></td> 
+              <td width="4%" class="center">9</a></td> 
+              <td width="4%" class="center">3</a></td> 
+              <td width="4%" class="center">29</a></td> 
+              <td width="4%" class="center">25</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/francia/angers/">Angers</a></th> 
+              <td width="4%" nowrap class="center"><b>34</a></b></th> 
+              <td width="4%" class="center">21</a></td> 
+              <td width="4%" class="center">9</a></td> 
+              <td width="4%" class="center">7</a></td> 
+              <td width="4%" class="center">5</a></td> 
+              <td width="4%" class="center">20</a></td> 
+              <td width="4%" class="center">13</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/francia/niza/">Niza</a></th> 
+              <td width="4%" nowrap class="center"><b>33</a></b></th> 
+              <td width="4%" class="center">21</a></td> 
+              <td width="4%" class="center">9</a></td> 
+              <td width="4%" class="center">6</a></td> 
+              <td width="4%" class="center">6</a></td> 
+              <td width="4%" class="center">35</a></td> 
+              <td width="4%" class="center">25</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/francia/saint-ettiene/">Saint Ettiene</a></th> 
+              <td width="4%" nowrap class="center"><b>32</a></b></th> 
+              <td width="4%" class="center">21</a></td> 
+              <td width="4%" class="center">10</a></td> 
+              <td width="4%" class="center">2</a></td> 
+              <td width="4%" class="center">9</a></td> 
+              <td width="4%" class="center">24</a></td> 
+              <td width="4%" class="center">24</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/francia/rennes/">Rennes</a></th> 
+              <td width="4%" nowrap class="center"><b>31</a></b></th> 
+              <td width="4%" class="center">21</a></td> 
+              <td width="4%" class="center">7</a></td> 
+              <td width="4%" class="center">10</a></td> 
+              <td width="4%" class="center">4</a></td> 
+              <td width="4%" class="center">31</a></td> 
+              <td width="4%" class="center">25</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/francia/caen/">Caen</a></th> 
+              <td width="4%" nowrap class="center"><b>30</a></b></th> 
+              <td width="4%" class="center">21</a></td> 
+              <td width="4%" class="center">9</a></td> 
+              <td width="4%" class="center">3</a></td> 
+              <td width="4%" class="center">9</a></td> 
+              <td width="4%" class="center">22</a></td> 
+              <td width="4%" class="center">27</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/francia/olympique/">Olympique</a></th> 
+              <td width="4%" nowrap class="center"><b>29</a></b></th> 
+              <td width="4%" class="center">21</a></td> 
+              <td width="4%" class="center">7</a></td> 
+              <td width="4%" class="center">8</a></td> 
+              <td width="4%" class="center">6</a></td> 
+              <td width="4%" class="center">31</a></td> 
+              <td width="4%" class="center">22</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/francia/lyon/">Lyon</a></th> 
+              <td width="4%" nowrap class="center"><b>29</a></b></th> 
+              <td width="4%" class="center">21</a></td> 
+              <td width="4%" class="center">8</a></td> 
+              <td width="4%" class="center">5</a></td> 
+              <td width="4%" class="center">8</a></td> 
+              <td width="4%" class="center">27</a></td> 
+              <td width="4%" class="center">25</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/francia/bordeaux/">Bordeaux</a></th> 
+              <td width="4%" nowrap class="center"><b>29</a></b></th> 
+              <td width="4%" class="center">21</a></td> 
+              <td width="4%" class="center">7</a></td> 
+              <td width="4%" class="center">8</a></td> 
+              <td width="4%" class="center">6</a></td> 
+              <td width="4%" class="center">25</a></td> 
+              <td width="4%" class="center">28</a></td>             
+            </tr> 
+					</tbody>
+	</table>
+</div> 
+<div id="statsLeagueMatches396" style="display:none;"> 
+  <table class="tableStandard"> 
+    <thead> 
+      <tr> 
+        <th colspan="3">Resultado </th> 
+        <th>Fecha (Hora local)</th>
+      </tr> 
+    </thead> 
+    <tbody> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/alemania/borussia-moen./">Borussia Moen.</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/alemania/bundesliga-2015-16/17-fecha/borussia-moen-darmstadt/" title="Ver ficha del partido"><b>3&#160;-&#160;2</b></a></th> 
+			            <th width="28%"><a href="/equipos/alemania/darmstadt/">Darmstadt</a></th> 
+            <td width="30%">
+			20/12/2015 17:30			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/alemania/hertha/">Hertha</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/alemania/bundesliga-2015-16/17-fecha/hertha-mainz-05/" title="Ver ficha del partido"><b>2&#160;-&#160;0</b></a></th> 
+			            <th width="28%"><a href="/equipos/alemania/mainz-05/">Mainz 05</a></th> 
+            <td width="30%">
+			20/12/2015 15:30			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/alemania/stuttgart/">Stuttgart</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/alemania/bundesliga-2015-16/17-fecha/stuttgart-wolfsburgo/" title="Ver ficha del partido"><b>3&#160;-&#160;1</b></a></th> 
+			            <th width="28%"><a href="/equipos/alemania/wolfsburgo/">Wolfsburgo</a></th> 
+            <td width="30%">
+			19/12/2015 18:30			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/alemania/hamburgo/">Hamburgo</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/alemania/bundesliga-2015-16/17-fecha/hamburgo-augsburg/" title="Ver ficha del partido"><b>0&#160;-&#160;1</b></a></th> 
+			            <th width="28%"><a href="/equipos/alemania/augsburg/">Augsburg</a></th> 
+            <td width="30%">
+			19/12/2015 15:30			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/alemania/hannover/">Hannover</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/alemania/bundesliga-2015-16/17-fecha/hannover-bayern-munich/" title="Ver ficha del partido"><b>0&#160;-&#160;1</b></a></th> 
+			            <th width="28%"><a href="/equipos/alemania/bayern-munich/">Bayern Munich</a></th> 
+            <td width="30%">
+			19/12/2015 15:30			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/alemania/eintracht-fran./">Eintracht Fran.</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/alemania/bundesliga-2015-16/17-fecha/eintracht-fran-werder-bremen/" title="Ver ficha del partido"><b>2&#160;-&#160;1</b></a></th> 
+			            <th width="28%"><a href="/equipos/alemania/werder-bremen/">Werder Bremen</a></th> 
+            <td width="30%">
+			19/12/2015 15:30			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/alemania/koln/">Koln</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/alemania/bundesliga-2015-16/17-fecha/koln-borussia-dort/" title="Ver ficha del partido"><b>2&#160;-&#160;1</b></a></th> 
+			            <th width="28%"><a href="/equipos/alemania/borussia-dort./">Borussia Dort.</a></th> 
+            <td width="30%">
+			19/12/2015 15:30			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/alemania/ingolstadt/">Ingolstadt</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/alemania/bundesliga-2015-16/17-fecha/ingolstadt-bayer-leverk/" title="Ver ficha del partido"><b>0&#160;-&#160;1</b></a></th> 
+			            <th width="28%"><a href="/equipos/alemania/bayer-leverk./">Bayer Leverk.</a></th> 
+            <td width="30%">
+			19/12/2015 15:30			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/alemania/schalke-04/">Schalke 04</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/alemania/bundesliga-2015-16/17-fecha/schalke-04-hoffenheim/" title="Ver ficha del partido"><b>1&#160;-&#160;0</b></a></th> 
+			            <th width="28%"><a href="/equipos/alemania/hoffenheim/">Hoffenheim</a></th> 
+            <td width="30%">
+			18/12/2015 20:30			
+			</td> 
+          </tr> 
+	      </tbody> 
+  </table> 
+</div>
+<!-- MATCHES NEXT -->
+<div id="statsLeagueMatchesNext396" style="display:none;">
+	<table class="tableStandard"> 
+	<thead> 
+	  <tr> 
+	    <th colspan="3">Resultado</th> 
+	    <th>Fecha (Hora local)</th>
+	  </tr> 
+	</thead> 
+	<tbody> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/alemania/schalke-04/">Schalke 04</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/alemania/werder-bremen/">Werder Bremen</a></th> 
+	    <td width="30%">
+		24/01/2016 17:30		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/alemania/eintracht-fran./">Eintracht Fran.</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/alemania/wolfsburgo/">Wolfsburgo</a></th> 
+	    <td width="30%">
+		24/01/2016 15:30		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/alemania/borussia-moen./">Borussia Moen.</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/alemania/borussia-dort./">Borussia Dort.</a></th> 
+	    <td width="30%">
+		23/01/2016 18:30		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/alemania/hertha/">Hertha</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/alemania/augsburg/">Augsburg</a></th> 
+	    <td width="30%">
+		23/01/2016 15:30		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/alemania/hannover/">Hannover</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/alemania/darmstadt/">Darmstadt</a></th> 
+	    <td width="30%">
+		23/01/2016 15:30		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/alemania/koln/">Koln</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/alemania/stuttgart/">Stuttgart</a></th> 
+	    <td width="30%">
+		23/01/2016 15:30		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/alemania/hoffenheim/">Hoffenheim</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/alemania/bayer-leverk./">Bayer Leverk.</a></th> 
+	    <td width="30%">
+		23/01/2016 15:30		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/alemania/ingolstadt/">Ingolstadt</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/alemania/mainz-05/">Mainz 05</a></th> 
+	    <td width="30%">
+		23/01/2016 15:30		
+		</td> 
+	  </tr> 
+	  	  <tr> 
+	    <th width="28%"><a href="/equipos/alemania/hamburgo/">Hamburgo</a></th>
+				<th width="1%" nowrap align="center" class="score"><b>?&#160;-&#160;?</b></th> 
+			    <th width="28%"><a href="/equipos/alemania/bayern-munich/">Bayern Munich</a></th> 
+	    <td width="30%">
+		22/01/2016 20:30		
+		</td> 
+	  </tr> 
+	  	</tbody> 
+	</table> 
+</div>
+<!--  MAIN -->
+<div id="statsLeagueMain396" style="display:none;">
+	<h1><b>Estad&iacute;sticas generales</b></h1>
+	<table class="tableStandard">
+		<tbody>
+			<tr>
+				<td>Partidos jugados</td>
+				<td>153</td>
+			</tr>
+			<tr>
+				<td>Goles convertidos</td>
+				<td>431</td>
+			</tr>
+			<tr>
+				<td>Promedio de goles</td>
+				<td>2.82</td>
+			</tr>
+			<tr>
+				<td>Amonestaciones</td>
+				<td>577</td>
+			</tr>
+			<tr>
+				<td>Promedio de amonestaciones</td>
+				<td>3.77</td>
+			</tr>
+			<tr>
+				<td>Expulsiones</td>
+				<td>22</td>
+			</tr>
+			<tr>
+				<td>Promedio de expulsiones</td>
+				<td>0.14</td>
+			</tr>
+			<tr>
+				<td>Penales convertidos</td>
+				<td>40</td>
+			</tr>
+			<tr>
+				<td>Eficacia en penales</td>
+				<td>75%</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>						
+		</tbody>
+	</table>
+</div>  
+<!-- GOALS -->
+<div id="statsLeagueGoals396" style="display:none;">
+	<table class="tableStandard">
+		<thead>
+			<th>
+				<th>Jugador</th>
+				<th><span class="record"><img src="/imgs/iconMatchGoal.gif" alt="Icono de gol" width="13" height="15"></span></th>				
+			</th>		
+		</thead>
+		<tbody>
+						<tr>
+				<td width="1%">1</td>
+				<td><a href="/jugadores/gabon/aubameyang-pierre/">Aubameyang Pierre</a></td>
+				<td width="9%">18</td>
+			</tr>
+						<tr>
+				<td width="1%">2</td>
+				<td><a href="/jugadores/polonia/lewandowski-robert/">Lewandowski Robert</a></td>
+				<td width="9%">15</td>
+			</tr>
+						<tr>
+				<td width="1%">3</td>
+				<td><a href="/jugadores/alemania/muller-thomas/">Muller Thomas</a></td>
+				<td width="9%">14</td>
+			</tr>
+						<tr>
+				<td width="1%">4</td>
+				<td><a href="/jugadores/mexico/hernandez-javier/">Hernández Javier</a></td>
+				<td width="9%">11</td>
+			</tr>
+						<tr>
+				<td width="1%">5</td>
+				<td><a href="/jugadores/costa-de-marfil/kalou-salomon/">Kalou Salomon</a></td>
+				<td width="9%">9</td>
+			</tr>
+						<tr>
+				<td width="1%">6</td>
+				<td><a href="/jugadores/turquia/malli-yunus/">Malli Yunus</a></td>
+				<td width="9%">8</td>
+			</tr>
+						<tr>
+				<td width="1%">7</td>
+				<td><a href="/jugadores/alemania/reus-marco/">Reus Marco</a></td>
+				<td width="9%">8</td>
+			</tr>
+						<tr>
+				<td width="1%">8</td>
+				<td><a href="/jugadores/alemania/didavi-daniel/">Didavi Daniel</a></td>
+				<td width="9%">7</td>
+			</tr>
+						<tr>
+				<td width="1%">9</td>
+				<td><a href="/jugadores/holanda/dost-bas/">Dost Bas</a></td>
+				<td width="9%">7</td>
+			</tr>
+						<tr>
+				<td width="1%">10</td>
+				<td><a href="/jugadores/alemania/meier-alexander/">Meier Alexander</a></td>
+				<td width="9%">7</td>
+			</tr>
+					</tbody>
+	</table>
+</div>  
+<!-- POSITIONS -->
+<div id="statsLeaguePositions396" style="display:none;">
+	<table class="tableStandard">
+		<thead>
+			<th>Equipo</th>
+            <th class="center">Pts</th> 
+            <th width="4%" class="center">J</th> 
+            <th width="4%" class="center">G</th> 
+            <th width="4%" class="center">E</th> 
+            <th width="4%" class="center">P</th> 
+            <th width="4%" class="center">Gf</th> 
+            <th width="4%" class="center">Gc</th> 				
+		</thead>
+		<tbody>
+			            <tr> 
+              <td width="20%"><a href="/equipos/alemania/bayern-munich/">Bayern Munich</a></th> 
+              <td width="4%" nowrap class="center"><b>46</a></b></th> 
+              <td width="4%" class="center">17</a></td> 
+              <td width="4%" class="center">15</a></td> 
+              <td width="4%" class="center">1</a></td> 
+              <td width="4%" class="center">1</a></td> 
+              <td width="4%" class="center">46</a></td> 
+              <td width="4%" class="center">8</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/alemania/borussia-dort./">Borussia Dort.</a></th> 
+              <td width="4%" nowrap class="center"><b>38</a></b></th> 
+              <td width="4%" class="center">17</a></td> 
+              <td width="4%" class="center">12</a></td> 
+              <td width="4%" class="center">2</a></td> 
+              <td width="4%" class="center">3</a></td> 
+              <td width="4%" class="center">47</a></td> 
+              <td width="4%" class="center">23</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/alemania/hertha/">Hertha</a></th> 
+              <td width="4%" nowrap class="center"><b>32</a></b></th> 
+              <td width="4%" class="center">17</a></td> 
+              <td width="4%" class="center">10</a></td> 
+              <td width="4%" class="center">2</a></td> 
+              <td width="4%" class="center">5</a></td> 
+              <td width="4%" class="center">26</a></td> 
+              <td width="4%" class="center">18</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/alemania/borussia-moen./">Borussia Moen.</a></th> 
+              <td width="4%" nowrap class="center"><b>29</a></b></th> 
+              <td width="4%" class="center">17</a></td> 
+              <td width="4%" class="center">9</a></td> 
+              <td width="4%" class="center">2</a></td> 
+              <td width="4%" class="center">6</a></td> 
+              <td width="4%" class="center">34</a></td> 
+              <td width="4%" class="center">30</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/alemania/bayer-leverk./">Bayer Leverk.</a></th> 
+              <td width="4%" nowrap class="center"><b>27</a></b></th> 
+              <td width="4%" class="center">17</a></td> 
+              <td width="4%" class="center">8</a></td> 
+              <td width="4%" class="center">3</a></td> 
+              <td width="4%" class="center">6</a></td> 
+              <td width="4%" class="center">25</a></td> 
+              <td width="4%" class="center">20</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/alemania/schalke-04/">Schalke 04</a></th> 
+              <td width="4%" nowrap class="center"><b>27</a></b></th> 
+              <td width="4%" class="center">17</a></td> 
+              <td width="4%" class="center">8</a></td> 
+              <td width="4%" class="center">3</a></td> 
+              <td width="4%" class="center">6</a></td> 
+              <td width="4%" class="center">23</a></td> 
+              <td width="4%" class="center">23</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/alemania/wolfsburgo/">Wolfsburgo</a></th> 
+              <td width="4%" nowrap class="center"><b>26</a></b></th> 
+              <td width="4%" class="center">17</a></td> 
+              <td width="4%" class="center">7</a></td> 
+              <td width="4%" class="center">5</a></td> 
+              <td width="4%" class="center">5</a></td> 
+              <td width="4%" class="center">26</a></td> 
+              <td width="4%" class="center">21</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/alemania/mainz-05/">Mainz 05</a></th> 
+              <td width="4%" nowrap class="center"><b>24</a></b></th> 
+              <td width="4%" class="center">17</a></td> 
+              <td width="4%" class="center">7</a></td> 
+              <td width="4%" class="center">3</a></td> 
+              <td width="4%" class="center">7</a></td> 
+              <td width="4%" class="center">23</a></td> 
+              <td width="4%" class="center">23</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/alemania/koln/">Koln</a></th> 
+              <td width="4%" nowrap class="center"><b>24</a></b></th> 
+              <td width="4%" class="center">17</a></td> 
+              <td width="4%" class="center">6</a></td> 
+              <td width="4%" class="center">6</a></td> 
+              <td width="4%" class="center">5</a></td> 
+              <td width="4%" class="center">18</a></td> 
+              <td width="4%" class="center">21</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/alemania/hamburgo/">Hamburgo</a></th> 
+              <td width="4%" nowrap class="center"><b>22</a></b></th> 
+              <td width="4%" class="center">17</a></td> 
+              <td width="4%" class="center">6</a></td> 
+              <td width="4%" class="center">4</a></td> 
+              <td width="4%" class="center">7</a></td> 
+              <td width="4%" class="center">19</a></td> 
+              <td width="4%" class="center">23</a></td>             
+            </tr> 
+					</tbody>
+	</table>
+</div> 
+<div id="statsLeagueMatches406" style="display:none;"> 
+  <table class="tableStandard"> 
+    <thead> 
+      <tr> 
+        <th colspan="3">Resultado </th> 
+        <th>Fecha (Hora local)</th>
+      </tr> 
+    </thead> 
+    <tbody> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/argentina/racing/">Racing</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/argentina/liguilla-pre-libertadores-2015/final-vuelta/racing-independiente/" title="Ver ficha del partido"><b>1&#160;-&#160;2</b></a></th> 
+			            <th width="28%"><a href="/equipos/argentina/independiente/">Independiente</a></th> 
+            <td width="30%">
+			06/12/2015 18:15			
+			</td> 
+          </tr> 
+	      </tbody> 
+  </table> 
+</div>
+<!-- MATCHES NEXT -->
+<div id="statsLeagueMatchesNext406" style="display:none;">
+	<table class="tableStandard"> 
+	<thead> 
+	  <tr> 
+	    <th colspan="3">Resultado</th> 
+	    <th>Fecha </th>
+	  </tr> 
+	</thead> 
+	<tbody> 
+	  	  <tr><td colspan="4">Este liga ya se encuentra en su &uacute;ltima fecha.</td></tr>
+	  	</tbody> 
+	</table> 
+</div>
+<!--  MAIN -->
+<div id="statsLeagueMain406" style="display:none;">
+	<h1><b>Estad&iacute;sticas generales</b></h1>
+	<table class="tableStandard">
+		<tbody>
+			<tr>
+				<td>Partidos jugados</td>
+				<td>4</td>
+			</tr>
+			<tr>
+				<td>Goles convertidos</td>
+				<td>13</td>
+			</tr>
+			<tr>
+				<td>Promedio de goles</td>
+				<td>3.25</td>
+			</tr>
+			<tr>
+				<td>Amonestaciones</td>
+				<td>24</td>
+			</tr>
+			<tr>
+				<td>Promedio de amonestaciones</td>
+				<td>6</td>
+			</tr>
+			<tr>
+				<td>Expulsiones</td>
+				<td>6</td>
+			</tr>
+			<tr>
+				<td>Promedio de expulsiones</td>
+				<td>1.50</td>
+			</tr>
+			<tr>
+				<td>Penales convertidos</td>
+				<td>0</td>
+			</tr>
+			<tr>
+				<td>Eficacia en penales</td>
+				<td><br />
+<b>Warning</b>:  Division by zero in <b>/home/futbo4/public_html/home2.php</b> on line <b>342</b><br />
+0%</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>						
+		</tbody>
+	</table>
+</div>  
+<!-- GOALS -->
+<div id="statsLeagueGoals406" style="display:none;">
+	<table class="tableStandard">
+		<thead>
+			<th>
+				<th>Jugador</th>
+				<th><span class="record"><img src="/imgs/iconMatchGoal.gif" alt="Icono de gol" width="13" height="15"></span></th>				
+			</th>		
+		</thead>
+		<tbody>
+						<tr>
+				<td width="1%">1</td>
+				<td><a href="/jugadores/argentina/lollo-luciano/">Lollo Luciano</a></td>
+				<td width="9%">2</td>
+			</tr>
+						<tr>
+				<td width="1%">2</td>
+				<td><a href="/jugadores/uruguay/rodriguez-cristian-2508/">Rodríguez Cristian</a></td>
+				<td width="9%">2</td>
+			</tr>
+						<tr>
+				<td width="1%">3</td>
+				<td><a href="/jugadores/uruguay/vera-diego/">Vera Diego</a></td>
+				<td width="9%">2</td>
+			</tr>
+						<tr>
+				<td width="1%">4</td>
+				<td><a href="/jugadores/argentina/acuna-marcos/">Acuña Marcos</a></td>
+				<td width="9%">1</td>
+			</tr>
+						<tr>
+				<td width="1%">5</td>
+				<td><a href="/jugadores/argentina/benitez-martin/">Benítez Martín</a></td>
+				<td width="9%">1</td>
+			</tr>
+						<tr>
+				<td width="1%">6</td>
+				<td><a href="/jugadores/argentina/bou-gustavo/">Bou Gustavo</a></td>
+				<td width="9%">1</td>
+			</tr>
+						<tr>
+				<td width="1%">7</td>
+				<td><a href="/jugadores/argentina/lucero-martin/">Lucero Martín</a></td>
+				<td width="9%">1</td>
+			</tr>
+						<tr>
+				<td width="1%">8</td>
+				<td><a href="/jugadores/argentina/marquez-fernando/">Márquez Fernando</a></td>
+				<td width="9%">1</td>
+			</tr>
+						<tr>
+				<td width="1%">9</td>
+				<td><a href="/jugadores/argentina/mendoza-diego/">Mendoza Diego</a></td>
+				<td width="9%">1</td>
+			</tr>
+						<tr>
+				<td width="1%">10</td>
+				<td><a href="/jugadores/paraguay/romero-oscar/">Romero Oscar</a></td>
+				<td width="9%">1</td>
+			</tr>
+					</tbody>
+	</table>
+</div>  
+<!-- POSITIONS -->
+<div id="statsLeaguePositions406" style="display:none;">
+	<table class="tableStandard">
+		<thead>
+			<th>Equipo</th>
+            <th class="center">Pts</th> 
+            <th width="4%" class="center">J</th> 
+            <th width="4%" class="center">G</th> 
+            <th width="4%" class="center">E</th> 
+            <th width="4%" class="center">P</th> 
+            <th width="4%" class="center">Gf</th> 
+            <th width="4%" class="center">Gc</th> 				
+		</thead>
+		<tbody>
+			            <tr> 
+              <td width="20%"><a href="/equipos/argentina/independiente/">Independiente</a></th> 
+              <td width="4%" nowrap class="center"><b>6</a></b></th> 
+              <td width="4%" class="center">3</a></td> 
+              <td width="4%" class="center">2</a></td> 
+              <td width="4%" class="center">0</a></td> 
+              <td width="4%" class="center">1</a></td> 
+              <td width="4%" class="center">6</a></td> 
+              <td width="4%" class="center">4</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/argentina/racing/">Racing</a></th> 
+              <td width="4%" nowrap class="center"><b>6</a></b></th> 
+              <td width="4%" class="center">3</a></td> 
+              <td width="4%" class="center">2</a></td> 
+              <td width="4%" class="center">0</a></td> 
+              <td width="4%" class="center">1</a></td> 
+              <td width="4%" class="center">5</a></td> 
+              <td width="4%" class="center">3</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/argentina/estudiantes/">Estudiantes</a></th> 
+              <td width="4%" nowrap class="center"><b>0</a></b></th> 
+              <td width="4%" class="center">1</a></td> 
+              <td width="4%" class="center">0</a></td> 
+              <td width="4%" class="center">0</a></td> 
+              <td width="4%" class="center">1</a></td> 
+              <td width="4%" class="center">1</a></td> 
+              <td width="4%" class="center">2</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/argentina/belgrano/">Belgrano</a></th> 
+              <td width="4%" nowrap class="center"><b>0</a></b></th> 
+              <td width="4%" class="center">1</a></td> 
+              <td width="4%" class="center">0</a></td> 
+              <td width="4%" class="center">0</a></td> 
+              <td width="4%" class="center">1</a></td> 
+              <td width="4%" class="center">1</a></td> 
+              <td width="4%" class="center">4</a></td>             
+            </tr> 
+					</tbody>
+	</table>
+</div> 
+<div id="statsLeagueMatches372" style="display:none;"> 
+  <table class="tableStandard"> 
+    <thead> 
+      <tr> 
+        <th colspan="3">Resultado </th> 
+        <th>Fecha (Hora local)</th>
+      </tr> 
+    </thead> 
+    <tbody> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/brasil/flamengo/">Flamengo</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/brasil/brasileirao-2015/38-fecha/flamengo-palmeiras/" title="Ver ficha del partido"><b>1&#160;-&#160;2</b></a></th> 
+			            <th width="28%"><a href="/equipos/brasil/palmeiras/">Palmeiras</a></th> 
+            <td width="30%">
+			06/12/2015 17:00			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/brasil/ponte-preta/">Ponte Preta</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/brasil/brasileirao-2015/38-fecha/ponte-preta-sport-recife/" title="Ver ficha del partido"><b>0&#160;-&#160;1</b></a></th> 
+			            <th width="28%"><a href="/equipos/brasil/sport-recife/">Sport Recife</a></th> 
+            <td width="30%">
+			06/12/2015 17:00			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/brasil/a.-mineiro/">A. Mineiro</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/brasil/brasileirao-2015/38-fecha/a-mineiro-chapecoense/" title="Ver ficha del partido"><b>3&#160;-&#160;0</b></a></th> 
+			            <th width="28%"><a href="/equipos/brasil/chapecoense/">Chapecoense</a></th> 
+            <td width="30%">
+			06/12/2015 17:00			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/brasil/figueirense/">Figueirense</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/brasil/brasileirao-2015/38-fecha/figueirense-fluminense/" title="Ver ficha del partido"><b>1&#160;-&#160;0</b></a></th> 
+			            <th width="28%"><a href="/equipos/brasil/fluminense/">Fluminense</a></th> 
+            <td width="30%">
+			06/12/2015 17:00			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/brasil/goias/">Goias</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/brasil/brasileirao-2015/38-fecha/goias-san-pablo/" title="Ver ficha del partido"><b>0&#160;-&#160;1</b></a></th> 
+			            <th width="28%"><a href="/equipos/brasil/san-pablo/">San Pablo</a></th> 
+            <td width="30%">
+			06/12/2015 17:00			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/brasil/internacional/">Internacional</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/brasil/brasileirao-2015/38-fecha/internacional-cruzeiro/" title="Ver ficha del partido"><b>2&#160;-&#160;0</b></a></th> 
+			            <th width="28%"><a href="/equipos/brasil/cruzeiro/">Cruzeiro</a></th> 
+            <td width="30%">
+			06/12/2015 17:00			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/brasil/corinthians/">Corinthians</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/brasil/brasileirao-2015/38-fecha/corinthians-avai/" title="Ver ficha del partido"><b>1&#160;-&#160;1</b></a></th> 
+			            <th width="28%"><a href="/equipos/brasil/avai/">Avaí</a></th> 
+            <td width="30%">
+			06/12/2015 17:00			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/brasil/coritiba/">Coritiba</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/brasil/brasileirao-2015/38-fecha/coritiba-vasco-da-gama/" title="Ver ficha del partido"><b>0&#160;-&#160;0</b></a></th> 
+			            <th width="28%"><a href="/equipos/brasil/vasco-da-gama/">Vasco da Gama</a></th> 
+            <td width="30%">
+			06/12/2015 17:00			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/brasil/santos/">Santos</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/brasil/brasileirao-2015/38-fecha/santos-paranaense/" title="Ver ficha del partido"><b>5&#160;-&#160;1</b></a></th> 
+			            <th width="28%"><a href="/equipos/brasil/paranaense/">Paranaense</a></th> 
+            <td width="30%">
+			06/12/2015 17:00			
+			</td> 
+          </tr> 
+	            <tr> 
+            <th width="28%"><a href="/equipos/brasil/joinville/">Joinville</a></th>
+			            <th width="1%" nowrap align="center" class="score"><a href="/partidos/brasil/brasileirao-2015/38-fecha/joinville-gremio/" title="Ver ficha del partido"><b>0&#160;-&#160;2</b></a></th> 
+			            <th width="28%"><a href="/equipos/brasil/gremio/">Gremio</a></th> 
+            <td width="30%">
+			06/12/2015 17:00			
+			</td> 
+          </tr> 
+	      </tbody> 
+  </table> 
+</div>
+<!-- MATCHES NEXT -->
+<div id="statsLeagueMatchesNext372" style="display:none;">
+	<table class="tableStandard"> 
+	<thead> 
+	  <tr> 
+	    <th colspan="3">Resultado</th> 
+	    <th>Fecha </th>
+	  </tr> 
+	</thead> 
+	<tbody> 
+	  	  <tr><td colspan="4">Este liga ya se encuentra en su &uacute;ltima fecha.</td></tr>
+	  	</tbody> 
+	</table> 
+</div>
+<!--  MAIN -->
+<div id="statsLeagueMain372" style="display:none;">
+	<h1><b>Estad&iacute;sticas generales</b></h1>
+	<table class="tableStandard">
+		<tbody>
+			<tr>
+				<td>Partidos jugados</td>
+				<td>380</td>
+			</tr>
+			<tr>
+				<td>Goles convertidos</td>
+				<td>897</td>
+			</tr>
+			<tr>
+				<td>Promedio de goles</td>
+				<td>2.36</td>
+			</tr>
+			<tr>
+				<td>Amonestaciones</td>
+				<td>1807</td>
+			</tr>
+			<tr>
+				<td>Promedio de amonestaciones</td>
+				<td>4.76</td>
+			</tr>
+			<tr>
+				<td>Expulsiones</td>
+				<td>108</td>
+			</tr>
+			<tr>
+				<td>Promedio de expulsiones</td>
+				<td>0.28</td>
+			</tr>
+			<tr>
+				<td>Penales convertidos</td>
+				<td>73</td>
+			</tr>
+			<tr>
+				<td>Eficacia en penales</td>
+				<td>78%</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>						
+		</tbody>
+	</table>
+</div>  
+<!-- GOALS -->
+<div id="statsLeagueGoals372" style="display:none;">
+	<table class="tableStandard">
+		<thead>
+			<th>
+				<th>Jugador</th>
+				<th><span class="record"><img src="/imgs/iconMatchGoal.gif" alt="Icono de gol" width="13" height="15"></span></th>				
+			</th>		
+		</thead>
+		<tbody>
+						<tr>
+				<td width="1%">1</td>
+				<td><a href="/jugadores/brasil/ricardo-oliveira/">Ricardo Oliveira</a></td>
+				<td width="9%">20</td>
+			</tr>
+						<tr>
+				<td width="1%">2</td>
+				<td><a href="/jugadores/brasil/vagner-love/">Vagner Love</a></td>
+				<td width="9%">14</td>
+			</tr>
+						<tr>
+				<td width="1%">3</td>
+				<td><a href="/jugadores/brasil/andre-34983/">André</a></td>
+				<td width="9%">13</td>
+			</tr>
+						<tr>
+				<td width="1%">4</td>
+				<td><a href="/jugadores/brasil/jadson-19591/">Jadson</a></td>
+				<td width="9%">13</td>
+			</tr>
+						<tr>
+				<td width="1%">5</td>
+				<td><a href="/jugadores/argentina/pratto-lucas/">Pratto Lucas</a></td>
+				<td width="9%">13</td>
+			</tr>
+						<tr>
+				<td width="1%">6</td>
+				<td><a href="/jugadores/brasil/henrique-24303/">Henrique</a></td>
+				<td width="9%">12</td>
+			</tr>
+						<tr>
+				<td width="1%">7</td>
+				<td><a href="/jugadores/brasil/vitinho-44351/">Vitinho</a></td>
+				<td width="9%">11</td>
+			</tr>
+						<tr>
+				<td width="1%">8</td>
+				<td><a href="/jugadores/brasil/william-37165/">William</a></td>
+				<td width="9%">11</td>
+			</tr>
+						<tr>
+				<td width="1%">9</td>
+				<td><a href="/jugadores/brasil/alexandre-pato/">Alexandre Pato</a></td>
+				<td width="9%">10</td>
+			</tr>
+						<tr>
+				<td width="1%">10</td>
+				<td><a href="/jugadores/brasil/andre-lima/">André Lima</a></td>
+				<td width="9%">10</td>
+			</tr>
+					</tbody>
+	</table>
+</div>  
+<!-- POSITIONS -->
+<div id="statsLeaguePositions372" style="display:none;">
+	<table class="tableStandard">
+		<thead>
+			<th>Equipo</th>
+            <th class="center">Pts</th> 
+            <th width="4%" class="center">J</th> 
+            <th width="4%" class="center">G</th> 
+            <th width="4%" class="center">E</th> 
+            <th width="4%" class="center">P</th> 
+            <th width="4%" class="center">Gf</th> 
+            <th width="4%" class="center">Gc</th> 				
+		</thead>
+		<tbody>
+			            <tr> 
+              <td width="20%"><a href="/equipos/brasil/corinthians/">Corinthians</a></th> 
+              <td width="4%" nowrap class="center"><b>81</a></b></th> 
+              <td width="4%" class="center">38</a></td> 
+              <td width="4%" class="center">24</a></td> 
+              <td width="4%" class="center">9</a></td> 
+              <td width="4%" class="center">5</a></td> 
+              <td width="4%" class="center">71</a></td> 
+              <td width="4%" class="center">31</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/brasil/a.-mineiro/">A. Mineiro</a></th> 
+              <td width="4%" nowrap class="center"><b>69</a></b></th> 
+              <td width="4%" class="center">38</a></td> 
+              <td width="4%" class="center">21</a></td> 
+              <td width="4%" class="center">6</a></td> 
+              <td width="4%" class="center">11</a></td> 
+              <td width="4%" class="center">65</a></td> 
+              <td width="4%" class="center">47</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/brasil/gremio/">Gremio</a></th> 
+              <td width="4%" nowrap class="center"><b>68</a></b></th> 
+              <td width="4%" class="center">38</a></td> 
+              <td width="4%" class="center">20</a></td> 
+              <td width="4%" class="center">8</a></td> 
+              <td width="4%" class="center">10</a></td> 
+              <td width="4%" class="center">52</a></td> 
+              <td width="4%" class="center">32</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/brasil/san-pablo/">San Pablo</a></th> 
+              <td width="4%" nowrap class="center"><b>62</a></b></th> 
+              <td width="4%" class="center">38</a></td> 
+              <td width="4%" class="center">18</a></td> 
+              <td width="4%" class="center">8</a></td> 
+              <td width="4%" class="center">12</a></td> 
+              <td width="4%" class="center">53</a></td> 
+              <td width="4%" class="center">47</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/brasil/internacional/">Internacional</a></th> 
+              <td width="4%" nowrap class="center"><b>60</a></b></th> 
+              <td width="4%" class="center">38</a></td> 
+              <td width="4%" class="center">17</a></td> 
+              <td width="4%" class="center">9</a></td> 
+              <td width="4%" class="center">12</a></td> 
+              <td width="4%" class="center">39</a></td> 
+              <td width="4%" class="center">38</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/brasil/sport-recife/">Sport Recife</a></th> 
+              <td width="4%" nowrap class="center"><b>59</a></b></th> 
+              <td width="4%" class="center">38</a></td> 
+              <td width="4%" class="center">15</a></td> 
+              <td width="4%" class="center">14</a></td> 
+              <td width="4%" class="center">9</a></td> 
+              <td width="4%" class="center">53</a></td> 
+              <td width="4%" class="center">38</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/brasil/santos/">Santos</a></th> 
+              <td width="4%" nowrap class="center"><b>58</a></b></th> 
+              <td width="4%" class="center">38</a></td> 
+              <td width="4%" class="center">16</a></td> 
+              <td width="4%" class="center">10</a></td> 
+              <td width="4%" class="center">12</a></td> 
+              <td width="4%" class="center">59</a></td> 
+              <td width="4%" class="center">41</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/brasil/cruzeiro/">Cruzeiro</a></th> 
+              <td width="4%" nowrap class="center"><b>55</a></b></th> 
+              <td width="4%" class="center">38</a></td> 
+              <td width="4%" class="center">15</a></td> 
+              <td width="4%" class="center">10</a></td> 
+              <td width="4%" class="center">13</a></td> 
+              <td width="4%" class="center">44</a></td> 
+              <td width="4%" class="center">35</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/brasil/palmeiras/">Palmeiras</a></th> 
+              <td width="4%" nowrap class="center"><b>53</a></b></th> 
+              <td width="4%" class="center">38</a></td> 
+              <td width="4%" class="center">15</a></td> 
+              <td width="4%" class="center">8</a></td> 
+              <td width="4%" class="center">15</a></td> 
+              <td width="4%" class="center">60</a></td> 
+              <td width="4%" class="center">51</a></td>             
+            </tr> 
+			            <tr> 
+              <td width="20%"><a href="/equipos/brasil/ponte-preta/">Ponte Preta</a></th> 
+              <td width="4%" nowrap class="center"><b>51</a></b></th> 
+              <td width="4%" class="center">38</a></td> 
+              <td width="4%" class="center">13</a></td> 
+              <td width="4%" class="center">12</a></td> 
+              <td width="4%" class="center">13</a></td> 
+              <td width="4%" class="center">41</a></td> 
+              <td width="4%" class="center">40</a></td>             
+            </tr> 
+					</tbody>
+	</table>
+</div> 
+<!-- fichas -->		
+<div id="statsBoxPlayer" class="left" style="display:none;">
+	<div class="top">
+		<h1>Jugador</h1>
+	</div>
+	<div class="leadingBoxGray playerHome">
+		<div class="top">
+			<h1>
+		<a href="/jugadores/argentina/messi-lionel/"><img src="/imgs/jugadores/argentina/playerSmall_1078.jpg" alt="Messi Lionel" width="68" height="68" border="0" class="picPlayer" /></a>
+		<a href="/jugadores/argentina/messi-lionel/">Messi Lionel</a>
+			</h1>
+						<p>Estad&iacute;sticas durante las temporadas 2015/16</p>
+						<div class="clear"></div>
+		</div>
+		<div class="box">
+			<h1>Estad&iacute;sticas generales</h1>
+			<table class="tableStandard">
+				<tbody>
+					<tr>
+					    <td>Partidos jugados</td>
+					    <td>25</td>
+					</tr>
+					<tr>
+					    <td>Goles convertidos</td>
+					    <td>22</td>
+					</tr>
+					<tr>
+					    <td>Amonestaciones</td>
+					    <td>2</td>
+					</tr>
+					<tr>
+					    <td>Expulsiones</td>
+					    <td>0</td>
+					</tr>
+					<tr>
+					    <td>Penales</td>
+					    <td>2</td>
+					</tr>
+					<tr>
+					    <td>Puntaje promedio de medios</td>
+					    <td>7.13</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<a href="/jugadores/argentina/messi-lionel/" class="more">&gt; M&aacute;s estad&iacute;sticas de Messi Lionel</a>
+</div>
+<div id="statsBoxReferee" class="right" style="display:none;">
+	<div class="top">
+		<h1>&Aacute;rbitro</h1>
+	</div>
+	<div class="leadingBoxGray playerHome">
+		<div class="top">
+    <h1>
+					    <a href="/arbitros/argentina/ruscio-roberto/"><img src="/imgs/profileReferee.jpg" alt="" width="68" height="68" border="0" class="picPlayer" /></a>
+	    	    <a href="/arbitros/argentina/ruscio-roberto/">Ruscio Roberto</a>
+			</h1>
+						<p>Estad&iacute;sticas durante las temporadas 2015/16</p>
+						<div class="clear"></div>
+		</div>
+		<div class="box">
+			<h1>Estad&iacute;sticas generales</h1>
+			<table class="tableStandard">
+				<tbody>
+					<tr>
+					    <td>Partidos dirigidos</td>
+					    <td>0</td>
+					</tr>
+					<tr>
+					    <td>R&eacute;cord</td>
+					    <td>0-0-0</td>
+					</tr>
+					<tr>
+					    <td>Goles</td>
+					    <td>0</td>
+					</tr>
+					<tr>
+					    <td>Amonestaciones</td>
+					    <td>0</td>
+					</tr>
+					<tr>
+					    <td>Expulsiones</td>
+					    <td>0</td>
+					</tr>
+					<tr>
+					    <td>Penales</td>
+					    <td>0</td>
+					</tr>							
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<a href="/arbitros/argentina/ruscio-roberto/" class="more">&gt; M&aacute;s estad&iacute;sticas de Ruscio Roberto</a>
+</div>
+<div id="statsBoxCoach" class="right" style="display:none;">
+	<div class="top">
+		<h1>DT</h1>
+	</div>
+	<div class="leadingBoxGray playerHome">
+		<div class="top">
+    <h1>
+					    <a href="/directores-tecnicos/argentina/simeone-diego/"><img src="/imgs/profileCoach.jpg" alt="" width="68" height="68" border="0" class="picPlayer" /></a>
+	    	    <a href="/directores-tecnicos/argentina/simeone-diego/">Simeone Diego</a>
+			</h1>
+						<p>Estad&iacute;sticas durante las temporadas 2015/16</p>
+						<div class="clear"></div>
+		</div>
+		<div class="box">
+			<h1>Estad&iacute;sticas generales</h1>
+			<table class="tableStandard">
+				<tbody>
+					<tr>
+					    <td>Partidos dirigidos</td>
+					    <td>31</td>
+					</tr>
+					<tr>
+					    <td>R&eacute;cord</td>
+					    <td>22-5-4</td>
+					</tr>
+					<tr>
+					    <td>Goles</td>
+					    <td>48</td>
+					</tr>
+					<tr>
+					    <td>Amonestaciones</td>
+					    <td>63</td>
+					</tr>
+					<tr>
+					    <td>Expulsiones</td>
+					    <td>1</td>
+					</tr>
+					<tr>
+					    <td>Penales</td>
+					    <td>1</td>
+					</tr>							
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<a href="/directores-tecnicos/argentina/simeone-diego/" class="more">&gt; M&aacute;s estad&iacute;sticas de Simeone Diego</a>
+</div>
+<div id="statsBoxTeam" class="right" style="display:none;">
+	<div class="top">
+		<h1>Equipo</h1>
+	</div>
+	<div class="leadingBoxGray playerHome">
+		<div class="top">
+    <h1>
+					    <a href="/equipos/argentina/boca/"><img src="/imgs/escudos/escudo_3.gif" alt="" width="68" height="68" border="0" class="picPlayer" /></a>
+	    	    <a href="/equipos/argentina/boca/">Boca</a>
+			</h1>
+						<p>Estad&iacute;sticas durante las temporadas 2015/16</p>
+						<div class="clear"></div>
+		</div>
+		<div class="box">
+			<h1>Estad&iacute;sticas generales</h1>
+			<table class="tableStandard">
+				<tbody>
+					<tr>
+					    <td>Partidos jugados</td>
+					    <td>20</td>
+					</tr>
+					<tr>
+					    <td>R&eacute;cord</td>
+					    <td>16-0-4</td>
+					</tr>
+					<tr>
+					    <td>Goles</td>
+					    <td>36</td>
+					</tr>
+					<tr>
+					    <td>Amonestaciones</td>
+					    <td>32</td>
+					</tr>
+					<tr>
+					    <td>Expulsiones</td>
+					    <td>5</td>
+					</tr>
+					<tr>
+					    <td>Penales</td>
+					    <td>5</td>
+					</tr>							
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<a href="/equipos/argentina/boca/" class="more">&gt; M&aacute;s estad&iacute;sticas de Boca</a>
+</div>
+<!-- RANKINGS -->
+<div class="box" id="rankingsBoxPlayerGoals" style="display:none;">
+	<h1>Jugadores con mayor promedio de gol</h1>
+	<table class="tableStandard">
+				<tbody>
+			<tr>
+				<td width="5%">1</td>
+				<td width="75%"><a href="/jugadores/portugal/cristiano-ronaldo/">Cristiano Ronaldo</a>&nbsp;(Portugal)</td>
+				<td width="20%">0.90</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">2</td>
+				<td width="75%"><a href="/jugadores/argentina/messi-lionel/">Messi Lionel</a>&nbsp;(Argentina)</td>
+				<td width="20%">0.89</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">3</td>
+				<td width="75%"><a href="/jugadores/mexico/hernandez-javier/">Hernández Javier</a>&nbsp;(México)</td>
+				<td width="20%">0.73</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">4</td>
+				<td width="75%"><a href="/jugadores/suecia/ibrahimovic-zlatan/">Ibrahimovic Zlatan</a>&nbsp;(Suecia)</td>
+				<td width="20%">0.72</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">5</td>
+				<td width="75%"><a href="/jugadores/brasil/neymar/">Neymar</a>&nbsp;(Brasil)</td>
+				<td width="20%">0.69</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">6</td>
+				<td width="75%"><a href="/jugadores/croacia/da-silva-eduardo/">Da Silva Eduardo</a>&nbsp;(Croacia)</td>
+				<td width="20%">0.67</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">7</td>
+				<td width="75%"><a href="/jugadores/argentina/aguero-sergio/">Aguero Sergio</a>&nbsp;(Argentina)</td>
+				<td width="20%">0.65</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">8</td>
+				<td width="75%"><a href="/jugadores/francia/benzema-karim/">Benzema Karim</a>&nbsp;(Francia)</td>
+				<td width="20%">0.65</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">9</td>
+				<td width="75%"><a href="/jugadores/argentina/higuain-gonzalo/">Higuaín Gonzalo</a>&nbsp;(Argentina)</td>
+				<td width="20%">0.65</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">10</td>
+				<td width="75%"><a href="/jugadores/holanda/van-persie-robin/">Van Persie Robin</a>&nbsp;(Holanda)</td>
+				<td width="20%">0.65</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">11</td>
+				<td width="75%"><a href="/jugadores/uruguay/suarez-luis/">Suárez Luis</a>&nbsp;(Uruguay)</td>
+				<td width="20%">0.65</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">12</td>
+				<td width="75%"><a href="/jugadores/polonia/lewandowski-robert/">Lewandowski Robert</a>&nbsp;(Polonia)</td>
+				<td width="20%">0.65</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">13</td>
+				<td width="75%"><a href="/jugadores/italia/di-natale-antonio/">Di Natale Antonio</a>&nbsp;(Italia)</td>
+				<td width="20%">0.64</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">14</td>
+				<td width="75%"><a href="/jugadores/holanda/huntelaar-klaas/">Huntelaar Klaas</a>&nbsp;(Holanda)</td>
+				<td width="20%">0.63</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">15</td>
+				<td width="75%"><a href="/jugadores/colombia/garcia-radamel-falcao/">García Radamel Falcao</a>&nbsp;(Colombia)</td>
+				<td width="20%">0.62</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">16</td>
+				<td width="75%"><a href="/jugadores/brasil/luis-fabiano/">Luis Fabiano</a>&nbsp;(Brasil)</td>
+				<td width="20%">0.61</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">17</td>
+				<td width="75%"><a href="/jugadores/alemania/gomez-mario/">Gómez Mario</a>&nbsp;(Alemania)</td>
+				<td width="20%">0.61</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">18</td>
+				<td width="75%"><a href="/jugadores/uruguay/cavani-edison/">Cavani Edison</a>&nbsp;(Uruguay)</td>
+				<td width="20%">0.60</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">19</td>
+				<td width="75%"><a href="/jugadores/inglaterra/sturridge-daniel/">Sturridge Daniel</a>&nbsp;(Inglaterra)</td>
+				<td width="20%">0.60</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">20</td>
+				<td width="75%"><a href="/jugadores/colombia/bacca-carlos/">Bacca Carlos</a>&nbsp;(Colombia)</td>
+				<td width="20%">0.60</td>
+			</tr>
+				</tbody>
+	</table>
+</div>
+<div class="box" id="rankingsBoxPlayerPenalties" style="display:none;">
+	<h1>Jugadores con mejor porcentaje de penales convertidos</h1>
+	<table class="tableStandard">
+		<tbody>
+					<tr>
+				<td width="5%">1</td>
+				<td width="75%"><a href="/jugadores/paraguay/ortigoza-nestor/">Ortigoza Néstor</a>&nbsp;(Paraguay)</td>
+				<td width="20%">97% <small>(28/29)</small></td>
+			</tr>
+					<tr>
+				<td width="5%">2</td>
+				<td width="75%"><a href="/jugadores/brasil/nene-8204/">Nené</a>&nbsp;(Brasil)</td>
+				<td width="20%">93% <small>(28/30)</small></td>
+			</tr>
+					<tr>
+				<td width="5%">3</td>
+				<td width="75%"><a href="/jugadores/italia/balotelli-mario/">Balotelli Mario</a>&nbsp;(Italia)</td>
+				<td width="20%">92% <small>(23/25)</small></td>
+			</tr>
+					<tr>
+				<td width="5%">4</td>
+				<td width="75%"><a href="/jugadores/inglaterra/baines-leighton/">Baines Leighton</a>&nbsp;(Inglaterra)</td>
+				<td width="20%">91% <small>(21/23)</small></td>
+			</tr>
+					<tr>
+				<td width="5%">5</td>
+				<td width="75%"><a href="/jugadores/suecia/ibrahimovic-zlatan/">Ibrahimovic Zlatan</a>&nbsp;(Suecia)</td>
+				<td width="20%">90% <small>(62/69)</small></td>
+			</tr>
+					<tr>
+				<td width="5%">6</td>
+				<td width="75%"><a href="/jugadores/espana/negredo-alvaro/">Negredo Alvaro</a>&nbsp;(España)</td>
+				<td width="20%">90% <small>(26/29)</small></td>
+			</tr>
+					<tr>
+				<td width="5%">7</td>
+				<td width="75%"><a href="/jugadores/portugal/cristiano-ronaldo/">Cristiano Ronaldo</a>&nbsp;(Portugal)</td>
+				<td width="20%">87% <small>(83/95)</small></td>
+			</tr>
+					<tr>
+				<td width="5%">8</td>
+				<td width="75%"><a href="/jugadores/mexico/rodriguez-juan-pablo/">Rodríguez Juan Pablo</a>&nbsp;(México)</td>
+				<td width="20%">87% <small>(26/30)</small></td>
+			</tr>
+					<tr>
+				<td width="5%">9</td>
+				<td width="75%"><a href="/jugadores/argentina/aguero-sergio/">Aguero Sergio</a>&nbsp;(Argentina)</td>
+				<td width="20%">86% <small>(24/28)</small></td>
+			</tr>
+					<tr>
+				<td width="5%">10</td>
+				<td width="75%"><a href="/jugadores/inglaterra/gerrard-steven/">Gerrard Steven</a>&nbsp;(Inglaterra)</td>
+				<td width="20%">86% <small>(42/49)</small></td>
+			</tr>
+					<tr>
+				<td width="5%">11</td>
+				<td width="75%"><a href="/jugadores/belgica/hazard-eden/">Hazard Eden</a>&nbsp;(Bélgica)</td>
+				<td width="20%">86% <small>(30/35)</small></td>
+			</tr>
+					<tr>
+				<td width="5%">12</td>
+				<td width="75%"><a href="/jugadores/holanda/van-persie-robin/">Van Persie Robin</a>&nbsp;(Holanda)</td>
+				<td width="20%">86% <small>(30/35)</small></td>
+			</tr>
+					<tr>
+				<td width="5%">13</td>
+				<td width="75%"><a href="/jugadores/chile/vidal-arturo/">Vidal Arturo</a>&nbsp;(Chile)</td>
+				<td width="20%">86% <small>(24/28)</small></td>
+			</tr>
+					<tr>
+				<td width="5%">14</td>
+				<td width="75%"><a href="/jugadores/inglaterra/lampard-frank/">Lampard Frank</a>&nbsp;(Inglaterra)</td>
+				<td width="20%">85% <small>(46/54)</small></td>
+			</tr>
+					<tr>
+				<td width="5%">15</td>
+				<td width="75%"><a href="/jugadores/colombia/garcia-radamel-falcao/">García Radamel Falcao</a>&nbsp;(Colombia)</td>
+				<td width="20%">85% <small>(28/33)</small></td>
+			</tr>
+					<tr>
+				<td width="5%">16</td>
+				<td width="75%"><a href="/jugadores/italia/rossi-giuseppe/">Rossi Giuseppe</a>&nbsp;(Italia)</td>
+				<td width="20%">85% <small>(34/40)</small></td>
+			</tr>
+					<tr>
+				<td width="5%">17</td>
+				<td width="75%"><a href="/jugadores/espana/soldado-roberto/">Soldado Roberto</a>&nbsp;(España)</td>
+				<td width="20%">84% <small>(21/25)</small></td>
+			</tr>
+					<tr>
+				<td width="5%">18</td>
+				<td width="75%"><a href="/jugadores/italia/totti-francesco/">Totti Francesco</a>&nbsp;(Italia)</td>
+				<td width="20%">84% <small>(46/55)</small></td>
+			</tr>
+					<tr>
+				<td width="5%">19</td>
+				<td width="75%"><a href="/jugadores/espana/arteta-mikel/">Arteta Mikel</a>&nbsp;(España)</td>
+				<td width="20%">84% <small>(21/25)</small></td>
+			</tr>
+					<tr>
+				<td width="5%">20</td>
+				<td width="75%"><a href="/jugadores/argentina/milito-diego/">Milito Diego</a>&nbsp;(Argentina)</td>
+				<td width="20%">83% <small>(38/46)</small></td>
+			</tr>
+				</tbody>
+	</table>
+</div>
+<div class="box" id="rankingsBoxPlayerAdmonishes" style="display:none;">
+	<h1>Jugadores con mayor promedio de amonestaciones</h1>
+	<table class="tableStandard">
+				<tbody>
+			<tr>
+				<td width="5%">1</td>
+				<td width="75%"><a href="/jugadores/argentina/perez-pablo-10125/">Pérez Pablo</a>&nbsp;(Argentina)</td>
+				<td width="20%">0.58</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">2</td>
+				<td width="75%"><a href="/jugadores/argentina/fabbiani-cristian/">Fabbiani Cristian</a>&nbsp;(Argentina)</td>
+				<td width="20%">0.53</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">3</td>
+				<td width="75%"><a href="/jugadores/argentina/perea-emanuel/">Perea Emanuel</a>&nbsp;(Argentina)</td>
+				<td width="20%">0.50</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">4</td>
+				<td width="75%"><a href="/jugadores/argentina/colzera-ariel/">Colzera Ariel</a>&nbsp;(Argentina)</td>
+				<td width="20%">0.50</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">5</td>
+				<td width="75%"><a href="/jugadores/argentina/sanchez-matias-3969/">Sánchez Matías</a>&nbsp;(Argentina)</td>
+				<td width="20%">0.49</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">6</td>
+				<td width="75%"><a href="/jugadores/espana/perez-ruben-26900/">Pérez Rubén</a>&nbsp;(España)</td>
+				<td width="20%">0.49</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">7</td>
+				<td width="75%"><a href="/jugadores/italia/pinzi-giampiero/">Pinzi Giampiero</a>&nbsp;(Italia)</td>
+				<td width="20%">0.47</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">8</td>
+				<td width="75%"><a href="/jugadores/argentina/brana-rodrigo/">Braña Rodrigo</a>&nbsp;(Argentina)</td>
+				<td width="20%">0.45</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">9</td>
+				<td width="75%"><a href="/jugadores/uruguay/brum-roberto/">Brum Roberto</a>&nbsp;(Uruguay)</td>
+				<td width="20%">0.45</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">10</td>
+				<td width="75%"><a href="/jugadores/brasil/wellington-24294/">Wellington</a>&nbsp;(Brasil)</td>
+				<td width="20%">0.45</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">11</td>
+				<td width="75%"><a href="/jugadores/argentina/cubero-fabian/">Cubero Fabián</a>&nbsp;(Argentina)</td>
+				<td width="20%">0.44</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">12</td>
+				<td width="75%"><a href="/jugadores/espana/botia-alberto/">Botía Alberto</a>&nbsp;(España)</td>
+				<td width="20%">0.44</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">13</td>
+				<td width="75%"><a href="/jugadores/argentina/escudero-sergio/">Escudero Sergio</a>&nbsp;(Argentina)</td>
+				<td width="20%">0.44</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">14</td>
+				<td width="75%"><a href="/jugadores/costa-de-marfil/tiote-cheik/">Tioté Cheik</a>&nbsp;(Costa de Marfil)</td>
+				<td width="20%">0.44</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">15</td>
+				<td width="75%"><a href="/jugadores/espana/barral-david/">Barral David</a>&nbsp;(España)</td>
+				<td width="20%">0.43</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">16</td>
+				<td width="75%"><a href="/jugadores/espana/sanchez-victor-18814/">Sánchez Víctor</a>&nbsp;(España)</td>
+				<td width="20%">0.43</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">17</td>
+				<td width="75%"><a href="/jugadores/italia/conti-daniele-8566/">Conti Daniele</a>&nbsp;(Italia)</td>
+				<td width="20%">0.42</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">18</td>
+				<td width="75%"><a href="/jugadores/argentina/rinaudo-fabian/">Rinaudo Fabián</a>&nbsp;(Argentina)</td>
+				<td width="20%">0.42</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">19</td>
+				<td width="75%"><a href="/jugadores/argentina/musto-damian/">Musto Damián</a>&nbsp;(Argentina)</td>
+				<td width="20%">0.42</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">20</td>
+				<td width="75%"><a href="/jugadores/italia/balotelli-mario/">Balotelli Mario</a>&nbsp;(Italia)</td>
+				<td width="20%">0.42</td>
+			</tr>
+				</tbody>
+	</table>
+</div>
+<div class="box" id="rankingsBoxRefereePenalties" style="display:none;">
+	<h1>Arbitros con mayor promedio de penales sancionados</h1>
+	<table class="tableStandard">
+				<tbody>
+			<tr>
+				<td width="5%">1</td>
+				<td width="75%"><a href="/arbitros/espana/rodriguez-santiago-julian/">Rodríguez Santiago Julián</a>&nbsp;(España)</td>
+				<td width="20%">0.39</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">2</td>
+				<td width="75%"><a href="/arbitros/argentina/gimenez-daniel/">Giménez Daniel</a>&nbsp;(Argentina)</td>
+				<td width="20%">0.37</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">3</td>
+				<td width="75%"><a href="/arbitros/colombia/buitrago-jose-hernando/">Buitrago José Hernando</a>&nbsp;(Colombia)</td>
+				<td width="20%">0.36</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">4</td>
+				<td width="75%"><a href="/arbitros/peru/carrillo-victor/">Carrillo Víctor</a>&nbsp;(Perú)</td>
+				<td width="20%">0.35</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">5</td>
+				<td width="75%"><a href="/arbitros/inglaterra/madley-robert/">Madley Robert</a>&nbsp;(Inglaterra)</td>
+				<td width="20%">0.33</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">6</td>
+				<td width="75%"><a href="/arbitros/espana/perez-burrull-alfonso/">Pérez Burrull Alfonso</a>&nbsp;(España)</td>
+				<td width="20%">0.33</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">7</td>
+				<td width="75%"><a href="/arbitros/italia/celi-domenico/">Celi Domenico</a>&nbsp;(Italia)</td>
+				<td width="20%">0.33</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">8</td>
+				<td width="75%"><a href="/arbitros/argentina/marquez-flavio/">Márquez Flavio</a>&nbsp;(Argentina)</td>
+				<td width="20%">0.32</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">9</td>
+				<td width="75%"><a href="/arbitros/italia/gervasoni-andrea/">Gervasoni Andrea</a>&nbsp;(Italia)</td>
+				<td width="20%">0.32</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">10</td>
+				<td width="75%"><a href="/arbitros/argentina/arganaraz-pedro/">Argañaraz Pedro</a>&nbsp;(Argentina)</td>
+				<td width="20%">0.31</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">11</td>
+				<td width="75%"><a href="/arbitros/espana/paradas-romero-jose-luis/">Paradas Romero José Luis</a>&nbsp;(España)</td>
+				<td width="20%">0.31</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">12</td>
+				<td width="75%"><a href="/arbitros/mexico/delgadillo-paul-enrique/">Delgadillo Paul Enrique</a>&nbsp;(México)</td>
+				<td width="20%">0.31</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">13</td>
+				<td width="75%"><a href="/arbitros/italia/tagliavento-paolo/">Tagliavento Paolo</a>&nbsp;(Italia)</td>
+				<td width="20%">0.31</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">14</td>
+				<td width="75%"><a href="/arbitros/francia/turpin-clement/">Turpin Clement</a>&nbsp;(Francia)</td>
+				<td width="20%">0.31</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">15</td>
+				<td width="75%"><a href="/arbitros/italia/rocchi-gianluca/">Rocchi Gianluca</a>&nbsp;(Italia)</td>
+				<td width="20%">0.30</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">16</td>
+				<td width="75%"><a href="/arbitros/croacia/bebek-ivan/">Bebek Ivan</a>&nbsp;(Croacia)</td>
+				<td width="20%">0.30</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">17</td>
+				<td width="75%"><a href="/arbitros/inglaterra/styles-robert/">Styles Robert</a>&nbsp;(Inglaterra)</td>
+				<td width="20%">0.30</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">18</td>
+				<td width="75%"><a href="/arbitros/francia/rainville-nicolas/">Rainville Nicolas</a>&nbsp;(Francia)</td>
+				<td width="20%">0.30</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">19</td>
+				<td width="75%"><a href="/arbitros/italia/ayroldi-nicola/">Ayroldi Nicola</a>&nbsp;(Italia)</td>
+				<td width="20%">0.30</td>
+			</tr>
+				<tbody>
+			<tr>
+				<td width="5%">20</td>
+				<td width="75%"><a href="/arbitros/italia/valeri-paolo/">Valeri Paolo</a>&nbsp;(Italia)</td>
+				<td width="20%">0.29</td>
+			</tr>
+				</tbody>
+	</table>
+</div>
+<div class="box" id="rankingsBoxTeamConsecutiveWins" style="display:none;">
+	<h1>Equipos con mejor racha de partidos consecutivos sin perder</h1>
+	<table class="tableStandard">
+		<tbody>	
+					<tr>
+				<td width="5%">1</td>
+				<td width="75%"><a href="/equipos/espana/real-madrid/">Real Madrid</a>&nbsp;(España)</td>
+				<td width="20%">27<span class='small'> (2009/10)</span></td>
+			</tr>
+					<tr>
+				<td width="5%">2</td>
+				<td width="75%"><a href="/equipos/italia/juventus/">Juventus</a>&nbsp;(Italia)</td>
+				<td width="20%">32<span class='small'> (2011/12)</span></td>
+			</tr>
+					<tr>
+				<td width="5%">3</td>
+				<td width="75%"><a href="/equipos/brasil/corinthians/">Corinthians</a>&nbsp;(Brasil)</td>
+				<td width="20%">30<span class='small'> (2011/12)</span></td>
+			</tr>
+					<tr>
+				<td width="5%">4</td>
+				<td width="75%"><a href="/equipos/inglaterra/manchester-utd./">Manchester Utd.</a>&nbsp;(Inglaterra)</td>
+				<td width="20%">30<span class='small'> (2007/08)</span></td>
+			</tr>
+					<tr>
+				<td width="5%">5</td>
+				<td width="75%"><a href="/equipos/espana/barcelona/">Barcelona</a>&nbsp;(España)</td>
+				<td width="20%">23<span class='small'> (2015/16)</span></td>
+			</tr>
+					<tr>
+				<td width="5%">6</td>
+				<td width="75%"><a href="/equipos/brasil/brasil/">Brasil</a>&nbsp;(Brasil)</td>
+				<td width="20%">23<span class='small'> (2012/13)</span></td>
+			</tr>
+					<tr>
+				<td width="5%">7</td>
+				<td width="75%"><a href="/equipos/brasil/brasil-s-20/">Brasil S-20</a>&nbsp;(Brasil)</td>
+				<td width="20%">22<span class='small'> (2011/12)</span></td>
+			</tr>
+					<tr>
+				<td width="5%">8</td>
+				<td width="75%"><a href="/equipos/argentina/argentina/">Argentina</a>&nbsp;(Argentina)</td>
+				<td width="20%">20<span class='small'> (2012/13)</span></td>
+			</tr>
+				</tbody>
+	</table>
+</div>
+<div class="box" id="rankingsBoxCoachEfficacy" style="display:none;">
+	<h1>Directores T&eacute;cnicos con mayor porcentaje de puntos obtenidos.</h1>
+	<table class="tableStandard">
+		<tbody>	
+					<tr>
+				<td width="5%">1</td>
+				<td width="75%"><a href="/directores-tecnicos/espana/del-bosque-vicente/">Del Bosque Vicente</a>&nbsp;(España)</td>
+				<td width="20%">81.67 %</td>
+			</tr>
+					<tr>
+				<td width="5%">2</td>
+				<td width="75%"><a href="/directores-tecnicos/espana/guardiola-josep/">Guardiola Josep</a>&nbsp;(España)</td>
+				<td width="20%">78.20 %</td>
+			</tr>
+					<tr>
+				<td width="5%">3</td>
+				<td width="75%"><a href="/directores-tecnicos/alemania/low-joachim/">Low Joachim</a>&nbsp;(Alemania)</td>
+				<td width="20%">74.11 %</td>
+			</tr>
+					<tr>
+				<td width="5%">4</td>
+				<td width="75%"><a href="/directores-tecnicos/portugal/mourinho-jose/">Mourinho Jose</a>&nbsp;(Portugal)</td>
+				<td width="20%">71.73 %</td>
+			</tr>
+					<tr>
+				<td width="5%">5</td>
+				<td width="75%"><a href="/directores-tecnicos/francia/blanc-laurent/">Blanc Laurent</a>&nbsp;(Francia)</td>
+				<td width="20%">71.24 %</td>
+			</tr>
+					<tr>
+				<td width="5%">6</td>
+				<td width="75%"><a href="/directores-tecnicos/brasil/dunga/">Dunga</a>&nbsp;(Brasil)</td>
+				<td width="20%">69.81 %</td>
+			</tr>
+					<tr>
+				<td width="5%">7</td>
+				<td width="75%"><a href="/directores-tecnicos/italia/conte-antonio/">Conte Antonio</a>&nbsp;(Italia)</td>
+				<td width="20%">69.52 %</td>
+			</tr>
+					<tr>
+				<td width="5%">8</td>
+				<td width="75%"><a href="/directores-tecnicos/italia/ancelotti-carlo/">Ancelotti Carlo</a>&nbsp;(Italia)</td>
+				<td width="20%">68.90 %</td>
+			</tr>
+					<tr>
+				<td width="5%">9</td>
+				<td width="75%"><a href="/directores-tecnicos/argentina/sabella-alejandro/">Sabella Alejandro</a>&nbsp;(Argentina)</td>
+				<td width="20%">68.36 %</td>
+			</tr>
+					<tr>
+				<td width="5%">10</td>
+				<td width="75%"><a href="/directores-tecnicos/argentina/pekerman-jose/">Pekerman José</a>&nbsp;(Argentina)</td>
+				<td width="20%">66.67 %</td>
+			</tr>
+					<tr>
+				<td width="5%">11</td>
+				<td width="75%"><a href="/directores-tecnicos/italia/mancini-roberto/">Mancini Roberto</a>&nbsp;(Italia)</td>
+				<td width="20%">66.48 %</td>
+			</tr>
+					<tr>
+				<td width="5%">12</td>
+				<td width="75%"><a href="/directores-tecnicos/italia/capello-fabio/">Capello Fabio</a>&nbsp;(Italia)</td>
+				<td width="20%">65.80 %</td>
+			</tr>
+					<tr>
+				<td width="5%">13</td>
+				<td width="75%"><a href="/directores-tecnicos/espana/luis-enrique/">Luis Enrique</a>&nbsp;(España)</td>
+				<td width="20%">65.54 %</td>
+			</tr>
+					<tr>
+				<td width="5%">14</td>
+				<td width="75%"><a href="/directores-tecnicos/francia/wenger-arsenne/">Wenger Arsenne</a>&nbsp;(Francia)</td>
+				<td width="20%">64.76 %</td>
+			</tr>
+					<tr>
+				<td width="5%">15</td>
+				<td width="75%"><a href="/directores-tecnicos/portugal/santos-fernando/">Santos Fernando</a>&nbsp;(Portugal)</td>
+				<td width="20%">63.75 %</td>
+			</tr>
+					<tr>
+				<td width="5%">16</td>
+				<td width="75%"><a href="/directores-tecnicos/croacia/bilic-slaven/">Bilic Slaven</a>&nbsp;(Croacia)</td>
+				<td width="20%">63.74 %</td>
+			</tr>
+					<tr>
+				<td width="5%">17</td>
+				<td width="75%"><a href="/directores-tecnicos/portugal/villas-boas-andre/">Villas-Boas André</a>&nbsp;(Portugal)</td>
+				<td width="20%">63.50 %</td>
+			</tr>
+					<tr>
+				<td width="5%">18</td>
+				<td width="75%"><a href="/directores-tecnicos/alemania/hecking-dieter/">Hecking Dieter</a>&nbsp;(Alemania)</td>
+				<td width="20%">63.25 %</td>
+			</tr>
+					<tr>
+				<td width="5%">19</td>
+				<td width="75%"><a href="/directores-tecnicos/republica-checa/vrba-pavel/">Vrba Pavel</a>&nbsp;(República Checa)</td>
+				<td width="20%">63.24 %</td>
+			</tr>
+					<tr>
+				<td width="5%">20</td>
+				<td width="75%"><a href="/directores-tecnicos/argentina/simeone-diego/">Simeone Diego</a>&nbsp;(Argentina)</td>
+				<td width="20%">63.04 %</td>
+			</tr>
+				</tbody>
+	</table>
+</div>
+<div class="box" id="rankingsBoxTopPerformances" style="display:none;">
+	<h1>Ránking de jugadores según calificaciones Primera División</h1>
+	<table class="tableStandard">
+		<tbody>	
+					<tr>
+				<td width="5%">1</td>
+				<td width="75%"><a href="/jugadores/argentina/ruben-marco/">Ruben Marco</a> <span class="small">(<a href="/equipos/argentina/rosario-central/">Rosario Central</a>) </span></td>
+				<td width="20%">6.51</td>
+			</tr>
+					<tr>
+				<td width="5%">2</td>
+				<td width="75%"><a href="/jugadores/argentina/pinola-javier/">Pinola Javier</a> <span class="small">(<a href="/equipos/argentina/rosario-central/">Rosario Central</a>) </span></td>
+				<td width="20%">6.32</td>
+			</tr>
+					<tr>
+				<td width="5%">3</td>
+				<td width="75%"><a href="/jugadores/argentina/acosta-lautaro/">Acosta Lautaro</a> <span class="small">(<a href="/equipos/argentina/lanus/">Lanús</a>) </span></td>
+				<td width="20%">6.20</td>
+			</tr>
+					<tr>
+				<td width="5%">4</td>
+				<td width="75%"><a href="/jugadores/argentina/benitez-martin/">Benítez Martín</a> <span class="small">(<a href="/equipos/argentina/independiente/">Independiente</a>) </span></td>
+				<td width="20%">6.18</td>
+			</tr>
+					<tr>
+				<td width="5%">5</td>
+				<td width="75%"><a href="/jugadores/argentina/mendez-jesus/">Méndez Jesús</a> <span class="small">(<a href="/equipos/argentina/independiente/">Independiente</a>) </span></td>
+				<td width="20%">6.18</td>
+			</tr>
+					<tr>
+				<td width="5%">6</td>
+				<td width="75%"><a href="/jugadores/argentina/torrico-sebastian/">Torrico Sebastián</a> <span class="small">(<a href="/equipos/argentina/san-lorenzo/">San Lorenzo</a>) </span></td>
+				<td width="20%">6.15</td>
+			</tr>
+					<tr>
+				<td width="5%">7</td>
+				<td width="75%"><a href="/jugadores/argentina/romagnoli-leandro/">Romagnoli Leandro</a> <span class="small">(<a href="/equipos/argentina/san-lorenzo/">San Lorenzo</a>) </span></td>
+				<td width="20%">6.12</td>
+			</tr>
+					<tr>
+				<td width="5%">8</td>
+				<td width="75%"><a href="/jugadores/argentina/brana-rodrigo/">Braña Rodrigo</a> <span class="small">(<a href="/equipos/argentina/quilmes/">Quilmes</a>) </span></td>
+				<td width="20%">6.12</td>
+			</tr>
+					<tr>
+				<td width="5%">9</td>
+				<td width="75%"><a href="/jugadores/argentina/fernandez-ignacio/">Fernández Ignacio</a> <span class="small">(<a href="/equipos/argentina/gimnasia/">Gimnasia</a>) </span></td>
+				<td width="20%">6.11</td>
+			</tr>
+					<tr>
+				<td width="5%">10</td>
+				<td width="75%"><a href="/jugadores/argentina/sanchez-alejandro/">Sánchez Alejandro</a> <span class="small">(<a href="/equipos/argentina/nueva-chicago/">Nueva Chicago</a>) </span></td>
+				<td width="20%">6.10</td>
+			</tr>
+					<tr>
+				<td width="5%">11</td>
+				<td width="75%"><a href="/jugadores/argentina/perez-pablo-10125/">Pérez Pablo</a> <span class="small">(<a href="/equipos/argentina/boca/">Boca</a>) </span></td>
+				<td width="20%">6.08</td>
+			</tr>
+					<tr>
+				<td width="5%">12</td>
+				<td width="75%"><a href="/jugadores/argentina/saja-sebastian/">Saja Sebastián</a> <span class="small">(<a href="/equipos/argentina/racing/">Racing</a>) </span></td>
+				<td width="20%">6.08</td>
+			</tr>
+					<tr>
+				<td width="5%">13</td>
+				<td width="75%"><a href="/jugadores/argentina/ojeda-luis/">Ojeda Luis</a> <span class="small">(<a href="/equipos/argentina/argentinos/">Argentinos</a>) </span></td>
+				<td width="20%">6.07</td>
+			</tr>
+					<tr>
+				<td width="5%">14</td>
+				<td width="75%"><a href="/jugadores/argentina/diaz-daniel-848/">Díaz Daniel</a> <span class="small">(<a href="/equipos/argentina/boca/">Boca</a>) </span></td>
+				<td width="20%">6.06</td>
+			</tr>
+					<tr>
+				<td width="5%">15</td>
+				<td width="75%"><a href="/jugadores/argentina/aguerre-alan/">Aguerre Alan</a> <span class="small">(<a href="/equipos/argentina/velez/">Vélez</a>) </span></td>
+				<td width="20%">6.05</td>
+			</tr>
+					<tr>
+				<td width="5%">16</td>
+				<td width="75%"><a href="/jugadores/argentina/bologna-enrique/">Bologna Enrique</a> <span class="small">(<a href="/equipos/argentina/banfield/">Banfield</a>) </span></td>
+				<td width="20%">6.03</td>
+			</tr>
+					<tr>
+				<td width="5%">17</td>
+				<td width="75%"><a href="/jugadores/colombia/cuero-mauricio/">Cuero Mauricio</a> <span class="small">(<a href="/equipos/argentina/banfield/">Banfield</a>) </span></td>
+				<td width="20%">6.03</td>
+			</tr>
+					<tr>
+				<td width="5%">18</td>
+				<td width="75%"><a href="/jugadores/argentina/zelarayan-lucas/">Zelarayán Lucas</a> <span class="small">(<a href="/equipos/argentina/belgrano/">Belgrano</a>) </span></td>
+				<td width="20%">6.02</td>
+			</tr>
+					<tr>
+				<td width="5%">19</td>
+				<td width="75%"><a href="/jugadores/paraguay/ortigoza-nestor/">Ortigoza Néstor</a> <span class="small">(<a href="/equipos/argentina/san-lorenzo/">San Lorenzo</a>) </span></td>
+				<td width="20%">6.00</td>
+			</tr>
+					<tr>
+				<td width="5%">20</td>
+				<td width="75%"><a href="/jugadores/uruguay/lodeiro-nicolas/">Lodeiro Nicolás</a> <span class="small">(<a href="/equipos/argentina/boca/">Boca</a>) </span></td>
+				<td width="20%">5.99</td>
+			</tr>
+				</tbody>
+	</table>
+</div>
+</body>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-1864018-1";
+urchinTracker();
+</script>
+</html>

@@ -1,0 +1,593 @@
+<!--include virtual="/eCRMagicIncludes/server/ecrScriptTest.asp" -->
+
+			<script language="javascript">
+			 var intWidth , intHeight , intLeft , intTop;
+			
+			 if ('True'=='True')
+			 {
+				intWidth = parseInt('400') ;
+				intHeight =  parseInt('360') + 140;
+			 }
+			 else
+			 {
+				intWidth = parseInt('400') ;
+				intHeight =  parseInt('360') ;	
+			 }
+			 
+			 intLeft = (screen.width - intWidth)/2;
+			 intTop = ((screen.height - intHeight)/2) - 20;
+			
+			 //var retval = window.open("/eCRMagicIncludes/RecentLaunch/popupselected.asp?Image=http://www.abc.com?delete&Popupname=Jeevan Lakshya&Head=Jeevan Lakshya&BGColor=FFFFFF&ContactUs=True&linkto=/content/Information/pi_plandetails.asp?linkid=83&CallerPage=","Ads","scrollbar=0,resizable=no,width=" + intWidth + ", height=" + intHeight + ",left=" + intLeft + ",top=" +  intTop +  " ",true);
+			 var retval = window.open("/eCRMagicIncludes/RecentLaunch/popupselected.asp?IsFlashIncluded=False&Image=/eCRMagicIncludes/Popups/Images/Jeevan-Lakshya_Plan-833_popup.jpg&Popupname=Jeevan Lakshya&Head=Jeevan Lakshya&BGColor=FFFFFF&ContactUs=True&linkto=/content/Information/pi_plandetails.asp?linkid=83&CallerPage=","Ads","scrollbar=0,resizable=no,width=" + intWidth + ", height=" + intHeight + ",left=" + intLeft + ",top=" +  intTop +  " ",true);
+			//opener.location.reload(false); 
+			//self.close();
+			//opener.close();
+			// retval.focus();			
+			</script>
+			
+<html>
+<head>
+<title>Welcome to licharisudha.com</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="/styles/common.css" rel="stylesheet" type="text/css">
+<link href="/styles/content.css" rel="stylesheet" type="text/css">
+
+
+<Script language="javascript">
+//To Declare The HTTP Server To Invoke Server Components
+	var strHttpServer = "http://licharisudha.com"
+/* Modified by Sunil PP ' 10-Feb-2003 */
+
+	//This constant refers to the User database of eCRMagic application, 
+	//used to point to the User Database, since application is connected
+	//with the System Database
+	var gstrUserDBConst = "eCRMagicUserDB538.dbo." 
+	var gstrDBCode = "DB538"
+	var gstrClieCode = "538"
+	var intRowReturn = 5
+</Script>
+<!-- VBScript declarations -->
+<!-- include virtual = "eCRMagicIncludes/Server/StockMarket.asp" -->
+			
+	<!-- include virtual = "/eCRMagicIncludes/Server/DomainExpiry/DomainExpiryCode.asp" -->
+
+<Script language="javascript" src="../../eCRMagicIncludes/Client/general_functions.js"></Script>
+<Script language="javascript" src="../../eCRMagicIncludes/Client/general_validation.js"></Script>
+<script language="JavaScript" src="../../eCRMagicIncludes/Client/login_validation.js"></Script>	
+
+<Script language="javascript" src="/../eCRMagicIncludes/Client/popupwin.js"></Script>
+<script language="javascript" src="/Scripts/ieupdate.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+
+
+
+
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+//-->
+</script>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+
+
+
+<!--
+
+
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+//-->
+
+//-- Added by sachin on 20-March-2008
+	function validate()
+	{
+		//alert ("Validating")
+		var strRetVal;
+		//var lngNonRegiUserCode ;		
+		//for Name
+		strRetVal = CheckAlphabetsNumeric(frmdefault.txtName, "Name", " ","?", "_", ".", "-", "/", "'", ",", "(", ")", "[", "]");
+		if (strRetVal != "")
+		{
+			alert(strRetVal);
+			SetFocus(frmdefault.txtName);
+			return false;
+		}
+		
+		if (frmdefault.txtName.value == "" )
+		{
+			alert("Name cannot be blank .\nPlease re-enter your data.");
+			SetFocus(frmdefault.txtName);
+			return false;
+		}
+		
+		if (frmdefault.txtName.value == "-Your Name-" )
+		{
+			alert("Please enter your name .\nPlease re-enter your data.");
+			SetFocus(frmdefault.txtName);
+			return false;
+		}
+
+		if (frmdefault.txtRemark.value == "")
+		{
+			alert("Messgae cannot be blank .\nPlease re-enter your data.");
+			SetFocus(frmdefault.txtRemark);
+			return false;
+		}
+		
+		if (frmdefault.txtRemark.value == "-Your Message / Policy No-")
+		{
+			alert("Please write your Message/Policy no.\nPlease re-enter your data.");
+			SetFocus(frmdefault.txtRemark);
+			return false;
+		}	
+		
+		if (frmdefault.txtMobile.value == "-Your Mobile No-" )
+		{
+			alert("Please enter your mobile number.\nPlease re-enter your data.");
+			SetFocus(frmdefault.txtMobile);
+			return false;
+		}
+		
+		if (frmdefault.txtMobile.value == "")
+		{
+			alert("Mobile No cannot be blank .\nPlease re-enter your data.");
+			SetFocus(frmdefault.txtMobile);
+			return false;
+		}			
+		
+		if (frmdefault.txtEmail.value == "")
+		{
+			alert("Email Id cannot be blank .\nPlease re-enter your data.");
+			SetFocus(frmdefault.txtEmail);
+			return false;
+		}
+		
+		if (frmdefault.txtEmail.value == "-Your Email-")
+		{
+			alert("Please enter your email .\nPlease re-enter your data.");
+			SetFocus(frmdefault.txtEmail);
+			return false;
+		}
+
+		strRetVal=CheckEmailAddress(frmdefault.txtEmail ,"Email Address")  
+		if (strRetVal !="")
+		{
+			alert(strRetVal);
+			document.frmdefault.txtEmail.focus();
+			return false;
+		}
+						
+		return true;	
+	}
+
+function fnsubmitemail()
+{
+	//alert("hi")
+	if (validate() != false) 
+	{	
+		//alert("Saving")
+		frmdefault.method = "post";
+		frmdefault.action = "/content/include/SendMail_Askme.asp";
+		frmdefault.submit();		
+	}
+	else
+	{
+		return false;
+	}	
+}
+//-->
+</script>
+
+<script src="Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
+</head>
+
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" >
+<table width="990" border="0" align="center" cellpadding="0" cellspacing="0" style="background:url(/images/mainbox_bg.jpg) no-repeat">
+  <tr>
+    <td align="center" valign="top"><table width="855" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="left" valign="top"><table width="855" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="585" align="left" valign="top"><img src="/images/top_left.jpg" alt="" width="585" height="67"></td>
+            <td align="left" valign="top"><table width="270" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="79" align="left" valign="top"><a href="/default.asp"><img src="/images/homeicon.jpg" alt="Home" width="79" height="67" border="0"></a></td>
+                <td width="85" align="left" valign="top"><a href="/content/profile/sitemap.asp"><img src="/images/setmapicon.jpg" alt="Site Map" width="85" height="67" border="0"></a></td>
+                <td align="left" valign="top"><a href="/content/profile/contactus.asp"><img src="/images/contactusicon.jpg" alt="Contact Us" width="106" height="67" border="0"></a></td>
+              </tr>
+            </table></td>
+          </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td align="left" valign="top"><table width="855" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="453" align="left" valign="top"><link href="/styles/common.css" rel="stylesheet" type="text/css">
+<a href="/default.asp"><img src="/images/ecrmagic_client_logo.gif" alt="" width="453" height="137" border="0"></a></td>
+            <td align="left" valign="top"><table width="171" border="0" cellspacing="0" cellpadding="0"> <tr> <td align="left" valign="top">
+ <script language="javascript">
+function funcClick()
+{
+	document.getElementById("txtLogiName").value =""
+	
+}
+function funcClickPass()
+{
+	document.getElementById("txtPassword").value =""
+	
+}
+function funcMemId()
+{
+	if  (document.getElementById("txtLogiName").value =="")
+	{
+		document.getElementById("txtLogiName").value= "User Name"
+	}
+	
+}
+function funcMemPass()
+{
+	if  (document.getElementById("txtPassword").value =="")
+	{
+		document.getElementById("txtPassword").value= "Passward"
+	}
+	
+}
+
+function dss_addLoadEvent(fn) {
+  if(typeof(fn)!="function")return;
+  var tempFunc=window.onload;
+  window.onload=function() {
+    if(typeof(tempFunc)=="function")tempFunc();
+    fn();
+  }
+}
+
+// Example 2 (JS part 1)
+function changeInputType(
+  oldElm, // a reference to the input element
+  iType, // value of the type property: 'text' or 'password'
+  iValue, // the default value, set to 'password' in the demo
+  blankValue, // true if the value should be empty, false otherwise
+  noFocus) {  // set to true if the element should not be given focus
+  if(!oldElm || !oldElm.parentNode || (iType.length<4) || 
+    !document.getElementById || !document.createElement) return;
+  var newElm = document.createElement('input');
+  newElm.type = iType;
+  if(oldElm.name) newElm.name = oldElm.name;
+  if(oldElm.id) newElm.id = oldElm.id;
+  if(oldElm.className) newElm.className = oldElm.className;
+  if(oldElm.size) newElm.size = oldElm.size;
+  if(oldElm.tabIndex) newElm.tabIndex = oldElm.tabIndex;
+  if(oldElm.accessKey) newElm.accessKey = oldElm.accessKey;
+  newElm.onfocus = function(){return function(){
+    if(this.hasFocus) return;
+    var newElm = changeInputType(this,'password',iValue,
+      (this.value.toLowerCase()==iValue.toLowerCase())?true:false);
+    if(newElm) newElm.hasFocus=true;
+  }}();
+  newElm.onblur = function(){return function(){
+    if(this.hasFocus)
+    if(this.value=='' || (this.value.toLowerCase()==iValue.toLowerCase())) {
+      changeInputType(this,'text',iValue,false,true);
+    }
+  }}();
+ // hasFocus is to prevent a loop where onfocus is triggered over and over again
+  newElm.hasFocus=false;
+  oldElm.parentNode.replaceChild(newElm,oldElm);
+  if(!blankValue) newElm.value = iValue;
+  if(!noFocus || typeof(noFocus)=='undefined') {
+    window.tempElm = newElm;
+    setTimeout("tempElm.hasFocus=true;tempElm.focus();",1);
+  }
+  return newElm;
+}
+
+// Example 2 (JS part 2)
+dss_addLoadEvent(function(){
+  // Normally I use object detection, however, in this case since I need to 
+  // detect Konqueror and Safari which don't have unique objects,
+  // I will use the user agent string to detect them. Only use this type of 
+  // detection as a last resort.
+  // I'm doing this because example 2 crashes Konqueror and Safari and 
+  // generates errors in IE5/Mac
+
+  var ua = navigator.userAgent.toLowerCase();
+  if(!((ua.indexOf('konqueror')!=-1) && (document.all || 
+    (ua.indexOf('khtml/3.4')!=-1))) && !(((ua.indexOf('safari')!=-1) && 
+    !window.print) || (document.defaultCharset && !window.print))) {
+
+      // Set the third value to the text you want to appear in the field.
+      changeInputType(document.forms[0].txtPassword,'text','Password',false,true);
+  }
+});
+</script>
+
+<link href="/styles/content.css" rel="stylesheet" type="text/css" />
+<table width="402" height="137" border="0" cellspacing="0" cellpadding="0" style="background:url(/images/member_login_bg.jpg) no-repeat">
+  <tr>
+    <td align="center" valign="top"><table width="275" height="80" border="0" align="center" cellpadding="0" cellspacing="0">
+      <form name="frmeCRMagic" id="frmeCRMagic" action="/landingpage.asp" method="post">
+        <tr>
+          <td width="310" class="loginhd">&nbsp;</td>
+          <td width="5" rowspan="7">&nbsp;</td>
+          </tr>
+        <tr>
+          <td align="left">&nbsp;</td>
+        </tr>
+        
+        <tr>
+          <td align="left" height="25"></td>
+        </tr>
+        <tr>
+          <td align="left"><span class="polhldname">User Name</span>&nbsp; 
+            <input name="txtLogiName" type="text" class="txtfieldbox" value="User Name" size="25" onclick="funcClick()"  onblur="funcMemId()"></td>
+          </tr>
+        <tr>
+          <td align="left" height="3px"></td>
+          </tr>
+        <tr>
+          <td align="left" valign="bottom" class="CtntMore"><span class="polhldname">Password&nbsp;&nbsp; </span>
+            <input name="txtPassword" id="txtPassword" type="password" class="txtfieldbox" value="Passward" size="25" onfocus="funcClickPass()" onblur="funcMemPass()"/>
+            <img src="/images/go.jpg" name="Submit" width="37" height="16" id="Submit" style="cursor: hand" onclick="return ValidateFormData(frmeCRMagic,'/landingpage.asp');" type="button" /></td>
+          </tr>
+        <tr>
+          <td align="left" height="5px"></td>
+          </tr>
+        
+        <tr>
+          <td align="left" class="polhldname"><a href="/content/User_registration/forgot_password.asp" class="articles" ><strong>Forgot 
+            Password?</strong></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="/content/User_registration/user_registration.asp" class="articles" ><strong>New User?</strong></a></td>
+        </tr>
+      </form>
+    </table></td>
+  </tr>
+</table>
+ </td>
+  </tr>
+</table></td>
+          </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td align="left" valign="top"><link href="/styles/common.css" rel="stylesheet" type="text/css">
+<table width="855" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="170" align="left" valign="top"><img src="/images/leftlink.jpg" alt="" width="170" height="37" /></td>
+    <td><table width="685" height="37" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td><script src="/content/include/exmplmenu_var.js" type="text/javascript"></script>
+            <script src="/content/include/menu_com.js" type="text/javascript"></script>
+            <noscript>
+              Your browser does not support script
+            </noscript></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</td>
+      </tr>
+      <tr>
+        <td align="left" valign="top"><!--<link href="/styles/common.css" rel="stylesheet" type="text/css">
+<script src="../../Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
+<table width="680" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="left" valign="top" bgcolor="#FFFFFF"><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0" width="729" height="305">
+      <param name="movie" value="/flash/banner.swf" />
+      <param name="quality" value="high" />
+      <param name="wmode" value="transparent" />
+      <embed src="/flash/banner.swf" quality="high" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="729" height="305"></embed>
+    </object></td>
+  </tr>
+</table>-->
+<div align="center"><img src="/images/banner.jpg" alt="" /></div>
+</td>
+      </tr>
+      <tr>
+        <td align="left" valign="top"><table width="855" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="286" align="left" valign="top"><a href="/content/Information/childplan.asp"><img src="/images/child_plan.jpg" alt="" width="286" height="203" border="0" /></a></td>
+    <td width="186" align="left" valign="top"><a href="/Content/information/HealthPlan.asp"><img src="/images/healthbanner.jpg" alt="" width="186" height="203" border="0" /></a></td>
+    <td width="193" align="left" valign="top"><a href="/content/Information/pension_plans.asp"><img src="/images/pen_plan.jpg" alt="" width="193" height="203" border="0" /></a></td>
+    <td align="left" valign="top"><a href="/content/Information/EndowmentPlan.asp"><img src="/images/highrisk.jpg" alt="" width="190" height="203" border="0" /></a></td>
+  </tr>
+</table>
+</td>
+      </tr>
+      <tr>
+        <td align="left" valign="top"><link href="/styles/common.css" rel="stylesheet" type="text/css">
+<script src="../../Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
+<table width="855" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="170" align="left" valign="top"><img src="/images/produc1.jpg" alt="" width="170" height="149" /></td>
+    <td width="132" align="left" valign="top"><a href="/content/Information/pi_insurerinfo.asp?InsuCateCode=1"><img src="/images/lifeinsu.jpg" alt="" width="132" height="149" border="0" /></a></td>
+    <td width="107" align="left" valign="top"><a href="/content/Information/pi_insurerinfo.asp?InsuCateCode=2"><img src="/images/nonlife.jpg" alt="" width="107" height="149" border="0" /></a></td>
+    <td width="103" align="left" valign="top"><a href="/content/miscellaneous/onlinepayment.asp"><img src="/images/mutualfund.jpg" alt="" width="103" height="149" border="0" /></a></td>
+    <td width="108" align="left" valign="top"><a href="/content/Information/companyprofile.asp?InsuCode=27&amp;InsuCateCode=8"><img src="/images/savings.jpg" alt="" width="108" height="149" border="0" /></a></td>
+    <td width="106" align="left" valign="top"><a href="/content/Information/pi_insurerinfo.asp?InsuCateCode=6"><img src="/images/bonds.jpg" alt="" width="106" height="149" border="0" /></a></td>
+    <td width="129" align="left" valign="top"><a href="/content/Information/taxbenefits.asp"><img src="/images/tax.jpg" alt="" width="129" height="149" border="0" /></a></td>
+  </tr>
+</table>
+</td>
+      </tr>
+      <tr>
+        <td align="left" valign="top"><table width="855" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="170" align="left" valign="top"><img src="/images/online_line.jpg" alt="" width="170" height="186" /></td>
+    <td width="131" align="left" valign="top"><a href="/content/tools/insuranceportfolio.asp"><img src="/images/insu_port.jpg" alt="" width="131" height="186" border="0" /></a></td>
+    <td width="107" align="left" valign="top"><a href="/content/Miscellaneous/egreetings.asp"><img src="/images/egreet.jpg" alt="" width="107" height="186" border="0" /></a></td>
+    <td width="104" align="left" valign="top"><a href="/content/miscellaneous/newsletter.asp"><img src="/images/news.jpg" alt="" width="104" height="186" border="0" /></a></td>
+    <td width="108" align="left" valign="top"><a href="/content/Tools/onlinecounselling.asp"><img src="/images/counselling.jpg" alt="" width="108" height="186" border="0" /></a></td>
+    <td width="106" align="left" valign="top"><a href="/content/tools/calculators.asp"><img src="/images/calc.jpg" alt="" width="106" height="186" border="0" /></a></td>
+    <td width="129" align="left" valign="top"><a href="/content/Miscellaneous/forms.asp"><img src="/images/down_form.jpg" alt="" width="129" height="186" border="0" /></a></td>
+  </tr>
+</table>
+</td>
+      </tr>
+      <tr>
+        <td align="left" valign="top"><table width="855" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="230" align="left" valign="top"><table width="230" height="223" border="0" cellspacing="0" cellpadding="0" style="background:url(/images/industry_newsbg.jpg) no-repeat">
+              <tr>
+                <td align="center" valign="middle"><table width="175" border="0" align="center" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td height="20" align="center" valign="middle">&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td height="5" align="center" valign="middle"></td>
+                  </tr>
+                  <tr>
+                    <td align="center" valign="middle"><table width="175" border="0" align="right" cellpadding="0" cellspacing="0">
+                        <tr>
+                          <td><table width="120" height="120" border="0" align="center" cellpadding="0" cellspacing="0">
+                              <tr>
+                                <td><div style="height:100px; overflow:auto; width:200px">
+                                    
+                                    <ul style="padding:0px; margin:0px ;">
+                                      <li  style="list-style: url(/images/arrow.jpeg) outside; padding-left:5px; margin-left:15px; padding-bottom:15px; font:normal 11px tahoma; color:#ffffff; text-decoration:none;"><a href="/Content/information/insurancenews_details.asp?NewsCode=10856" style="font:normal 11px tahoma; color:#ffffff; text-decoration:none;"> Share of Ulips in life insurance premium growth highest in FY15 </a></li>
+                                    </ul>
+                                  
+                                    <ul style="padding:0px; margin:0px ;">
+                                      <li  style="list-style: url(/images/arrow.jpeg) outside; padding-left:5px; margin-left:15px; padding-bottom:15px; font:normal 11px tahoma; color:#ffffff; text-decoration:none;"><a href="/Content/information/insurancenews_details.asp?NewsCode=10855" style="font:normal 11px tahoma; color:#ffffff; text-decoration:none;"> Exide Life launches Star Saver, a savings-cum-insurance plan </a></li>
+                                    </ul>
+                                  
+                                    <ul style="padding:0px; margin:0px ;">
+                                      <li  style="list-style: url(/images/arrow.jpeg) outside; padding-left:5px; margin-left:15px; padding-bottom:15px; font:normal 11px tahoma; color:#ffffff; text-decoration:none;"><a href="/Content/information/insurancenews_details.asp?NewsCode=10854" style="font:normal 11px tahoma; color:#ffffff; text-decoration:none;"> Life insurers see 16% growth in new premiums </a></li>
+                                    </ul>
+                                  
+                                    <ul style="padding:0px; margin:0px ;">
+                                      <li  style="list-style: url(/images/arrow.jpeg) outside; padding-left:5px; margin-left:15px; padding-bottom:15px; font:normal 11px tahoma; color:#ffffff; text-decoration:none;"><a href="/Content/information/insurancenews_details.asp?NewsCode=10853" style="font:normal 11px tahoma; color:#ffffff; text-decoration:none;"> Govt to use technology to drive universal insurance schemes </a></li>
+                                    </ul>
+                                  
+                                    <ul style="padding:0px; margin:0px ;">
+                                      <li  style="list-style: url(/images/arrow.jpeg) outside; padding-left:5px; margin-left:15px; padding-bottom:15px; font:normal 11px tahoma; color:#ffffff; text-decoration:none;"><a href="/Content/information/insurancenews_details.asp?NewsCode=10850" style="font:normal 11px tahoma; color:#ffffff; text-decoration:none;"> Term cover policies to get IRDAI push </a></li>
+                                    </ul>
+                                  
+                                    <ul style="padding:0px; margin:0px ;">
+                                      <li  style="list-style: url(/images/arrow.jpeg) outside; padding-left:5px; margin-left:15px; padding-bottom:15px; font:normal 11px tahoma; color:#ffffff; text-decoration:none;"><a href="/Content/information/insurancenews_details.asp?NewsCode=10849" style="font:normal 11px tahoma; color:#ffffff; text-decoration:none;"> MetLife plans to separate US life-insurance unit </a></li>
+                                    </ul>
+                                  
+                                    <ul style="padding:0px; margin:0px ;">
+                                      <li  style="list-style: url(/images/arrow.jpeg) outside; padding-left:5px; margin-left:15px; padding-bottom:15px; font:normal 11px tahoma; color:#ffffff; text-decoration:none;"><a href="/Content/information/insurancenews_details.asp?NewsCode=10848" style="font:normal 11px tahoma; color:#ffffff; text-decoration:none;"> HDFC Standard Life floats reinsurance arm in Dubai </a></li>
+                                    </ul>
+                                  
+                                </div></td>
+                              </tr>
+                          </table></td>
+                        </tr>
+                        <tr>
+                          <td height="10"></td>
+                        </tr>
+                        
+                        <tr>
+                          <td class="reltitle"><a href="/Content/Information/insurancenews_archives.asp" class="menuctntover">&nbsp;&nbsp;News Archives&nbsp;&nbsp; </a> </td>
+                        </tr>
+                    </table></td>
+                  </tr>
+                </table></td>
+              </tr>
+            </table></td>
+            <td width="625" align="left" valign="top"><table width="625" height="223" border="0" cellspacing="0" cellpadding="0" style="background:url(/images/welcome_text.jpg) no-repeat">
+                <tr>
+                  <td align="left" valign="top"><table width="625" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td height="64" align="left" valign="top">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td align="left" valign="top"><table width="625" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                          <td width="146" align="left" valign="top">&nbsp;</td>
+                          <td align="left" valign="top"><table width="436" border="0" align="center" cellpadding="0" cellspacing="0">
+                            <tr>
+                              <td class="ctntpara"><div align="justify" class="footer_text">Today Mr. D. Harikrishnan is a very entrepreneurship, dynamic and self-confident Life Insurance consultant in India. He, by performance holds the prestigious Chairman’s club membership among the Agent force of LIC since 2008. 4 time continuous qualifier of internationally reputed and prestigious club “Million Dollar Round Table”, USA (MDRT).</div></td>
+                            </tr>
+                            <tr>
+                              <td class="ctntpara" height="5"></td>
+                            </tr>
+                            <tr>
+                              <td class="ctntpara"><div align="right" class="tdstyle3"><a href="/content/profile/aboutus.asp" class="tdstyle3">Read More...</a> </div></td>
+                            </tr>
+                          </table></td>
+                          <td width="40" align="left" valign="top">&nbsp;</td>
+                        </tr>
+                      </table></td>
+                    </tr>
+                    
+                  </table></td>
+                </tr>
+            </table></td>
+          </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td align="left" valign="top"><table width="855" height="57" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+   <td align="left" valign="top"><table width="855" height="100" border="0" align="right" cellpadding="0" cellspacing="0" style="background:url(/images/footer.jpg) no-repeat">
+      <tr>
+        <td height="40" align="left" valign="middle"><table width="855" height="100" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td align="center" valign="top" class="articlelist" height="5"></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td align="center" valign="top" class="articlelist" height="5"></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td width="305" align="center" valign="top" class="articlelist"><div align="center" class="footer_text">
+              <div align="center"><strong>All rights Reserved 2011 </strong>&copy; licharisudha.com</div>
+            </div></td>
+            <td width="550" align="left" valign="top"><table width="550" border="0" align="right" cellpadding="0" cellspacing="0">
+              <tr>
+                <td ><div align="center">
+                    <table width="550" border="0" align="right" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td width="615" align="left" valign="top"><table width="550" border="0" align="right" cellpadding="0" cellspacing="0">
+                            <tr>
+                              <td class="more"><div align="center"><a href="/content/Other/disclaimer.htm" class="style3" onclick="NewWindow(this.href,'name','475','375','yes');return false;"><span class="ctntparahd1">Disclaimer</span></a> </div></td>
+                              <td align="center" valign="middle">| </td>
+                              <td class="more"><div align="center"><a href="/content/Other/privacypol.htm" class="ctntparahd1" onclick="NewWindow(this.href,'name','475','375','yes');return false;"><span class="ctntparahd1">Privacy Policy</span></a></div></td>
+                              <td align="center" valign="middle">| </td>
+                              <td class="more"><div align="center"><a href="/content/profile/contactus.asp"><span class="ctntparahd1">Contact us</span></a></div></td>
+                              <td align="center" valign="middle">| </td>
+                              <td class="more"><div align="center"><a href="/content/tools/search.asp"><span class="ctntparahd1">Site Search</span></a></div></td>
+                              <td align="center" valign="middle">| </td>
+                              <td class="more"><div align="center"><a href="/content/tools/feedbackform.asp"><span class="ctntparahd1">Feedback</span></a></div></td>
+                              <td align="center" valign="middle">| </td>
+                              <td class="more"><div align="center"><a href="/content/profile/sitemap.asp"><span class="ctntparahd1">Sitemap</span></a>&nbsp;</div></td>
+                            </tr>
+                            <tr>
+                              <td colspan="11" class="more" height="15"></td>
+                              </tr>
+                            <tr>
+                              <td colspan="11" class="polhldname" height="5"><div align="center" class="articles">
+                                <div align="right" class="polhldname" >Best with Internet Explorer Browser set to   1024 x 768&nbsp;&nbsp;&nbsp;&nbsp; </div>
+                              </div></td>
+                            </tr>
+                        </table></td>
+                      </tr>
+                    </table>
+                </div></td>
+              </tr>
+            </table></td>
+          </tr> 
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+</table></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</body>
+</html>
+<!--include virtual="/eCRMagicIncludes/server/popup_include.asp" -->

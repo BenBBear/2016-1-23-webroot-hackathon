@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Planowanie inwestycji: jak wybrać fundusz inwestycyjny | Investors.pl</title>
+
+  <link rel="shortcut icon" href="/static/gfx/favicon.ico" />
+
+
+  <link rel="stylesheet" type="text/css" href="/static/css/reset.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="/static/css/print.css" media="print">
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" type="text/css" href="/static/css/ie8.css" media="screen">
+  <![endif]-->
+  <link rel="stylesheet" type="text/css" href="/static/css/jquery-ui-1.10.3.custom.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="/static/css/dropkick.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="/static/css/reveal.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="/static/css/main.css?v=1436783729.0" media="screen">
+
+  <script type="text/javascript" src="/static/js/jquery.js"></script>
+  <script type="text/javascript" src="/static/js/jquery.dropkick-1.0.0.js"></script>
+  <script type="text/javascript" src="/static/js/jquery.reveal.js"></script>
+  <script type="text/javascript" src="/static/js/jquery-ui-1.10.3.custom.min.js"></script>
+  <script type="text/javascript" src="/static/js/highstock/highstock.js"></script>
+  <script type="text/javascript" src="/static/js/exporting.js"></script>
+  <script type="text/javascript" src="/static/js/cookie.min.js"></script>
+  <script type="text/javascript" src="/static/js/jquery.placeholder.min.js"></script>
+  <script type="text/javascript">
+    jQuery(function($){
+      $.datepicker.setDefaults({
+        closeText: "Zamknij",
+        prevText: "Poprzedni",
+        nextText: "Nast\u0119pny",
+        currentText: "Dzi\u015b",
+        monthNames: ["stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca", "lipca", "sierpnia", "wrze\u015bnia", "pa\u017adziernika", "listopada", "grudnia"],
+        monthNamesShort: ["sty", "lut", "mar", "kwi", "maj", "cze", "lip", "sie", "wrz", "pa\u017a", "lis", "gru"],
+        dayNames: ["niedziela", "poniedzia\u0142ek", "wtorek", "\u015broda", "czwartek", "pi\u0105tek", "sobota"],
+        dayNamesShort: ["N", "P", "W", "\u015a", "C", "P", "S"],
+        dayNamesMin: ["N", "P", "W", "\u015a", "C", "P", "S"],
+        weekHeader: "Tydz",
+        dateFormat: 'dd-mm-yy',
+        firstDay: 1,
+        isRTL: false,
+        showMonthAfterYear: false,
+        yearSuffix: ''});
+    });
+    var langStrings = {
+        'nextPerson': "Nast\u0119pna osoba",
+        'prevPerson': "wstecz"
+    };
+  </script>
+  <script type="text/javascript" src="/static/js/main.js?v=1429785581.0"></script>
+  <script type="text/javascript">
+    Highcharts.setOptions({
+      lang: {
+        months: ["stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca", "lipca", "sierpnia", "wrze\u015bnia", "pa\u017adziernika", "listopada", "grudnia"],
+        shortMonths: ["sty", "lut", "mar", "kwi", "maj", "cze", "lip", "sie", "wrz", "pa\u017a", "lis", "gru"],
+        weekdays: ["poniedzia\u0142ek", "wtorek", "\u015broda", "czwartek", "pi\u0105tek", "sobota", "niedziela"],
+        rangeSelectorZoom: "Okres",
+        rangeSelectorFrom: "Od",
+        rangeSelectorTo: "do",
+        thousandsSep: ' ',
+        downloadJPEG: "Pobierz jako obrazek .jpg",
+        downloadPDF: "Pobierz jako dokument .pdf",
+        downloadPNG: "Pobierz jako obrazek .png",
+        downloadSVG: "Pobierz jako obrazek .svg",
+        printChart: "Drukuj wykres",
+        contextButtonTitle: "Menu kontekstowe"
+      }
+    });
+    var highchartsPeriodButtons = [
+      { type: 'month', count: 3, text: "3M" },
+      { type: 'month', count: 6, text: "6M" },
+      { type: 'year', count: 1, text: "1R" },
+      { type: 'year', count: 3, text: "3L" },
+      { type: 'year', count: 5, text: "5L" },
+      { type: 'year', count: 10, text: "10L" },
+      { type: 'all', text: 'MAX' }
+    ];
+    utils.dateRangeButtons = function(buttons){
+      var result = [];
+      if(!!~buttons.indexOf('3months')){ result.push(highchartsPeriodButtons[0]);}
+      if(!!~buttons.indexOf('6months')){ result.push(highchartsPeriodButtons[1]);}
+      if(!!~buttons.indexOf('1year')){ result.push(highchartsPeriodButtons[2]);}
+      if(!!~buttons.indexOf('3years')){ result.push(highchartsPeriodButtons[3]);}
+      if(!!~buttons.indexOf('5years')){ result.push(highchartsPeriodButtons[4]);}
+      if(!!~buttons.indexOf('10years')){ result.push(highchartsPeriodButtons[5]);}
+      result.push(highchartsPeriodButtons[6]);
+
+      return result;
+    };
+    Calc.lang = {
+      investmentChart: "Wykres inwestycji",
+      investmentYear: "Rok inwestycji",
+      year: "Rok",
+      investmentValue: "Warto\u015b\u0107 inwestycji",
+      gain: "Szacowany zysk",
+      investment: "Warto\u015b\u0107 wp\u0142at"
+    }
+  </script>
+  <script type="text/javascript" src="/static/js/charts.js?v=2014010701"></script>
+  <!--[if lte IE 8]>
+  <script src="/static/js/html5.js" type="text/javascript"></script>
+  <script src="/static/js/respond.js" type="text/javascript"></script>
+  <![endif]-->
+
+  <script type="text/javascript" src="//use.typekit.net/gke7apn.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  <meta name="description" content="Investors.pl: Planowanie inwestycji – analiza i wybór funduszu do portfela inwestycyjnego. Sprawdź jak zostać świadomym inwestorem. Zapraszamy!">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <noscript><link rel="stylesheet" type="text/css" href="/static/css/noscript.css" media="screen"></noscript>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-46634494-1', 'investors.pl');
+    ga('send', 'pageview');
+  </script>
+</head>
+<body class="singlepage-wide" data-lang="pl">
+
+<nav class="skiplink" id="top">
+  <ul>
+    <li><a href="#main" accesskey="2" title="Przejdź do zawartości (Accesskey 2)">Przejdź do zawartości</a></li>
+    <li><a href="#nav-global">Przejdź do nawigacji głównej</a></li>
+    <li><a href="#nav-local">Przejdź do nawigacji lokalnej</a></li>
+    <li><a href="#search" accesskey="4" title="Przejdź do wyszukiwarki (Accesskey 4)">Przejdź do wyszukiwarki</a></li>
+    <li><a href="/sitemap" accesskey="3" title="Przejdź do mapy strony (Accesskey 3)">Przejdź do mapy strony</a></li>
+  </ul>
+</nav>
+
+
+  <div id="wrapper">
+    <header id="header">
+      <div class="bg"></div>
+      <div id="logo"><a href="/"><img src="/static/gfx/logo.png" alt="Investors"></a></div>
+
+      <div id="nav-bar" data-toggle-text="Menu">
+        <div class="wrapper">
+          <div class="top">
+
+            <nav id="nav-global">
+              <a href="/fundusze-inwestycyjne/">Fundusze</a>
+
+              <div id="nav-funds">
+                <div class="cols-wr">
+                  <div class="cols">
+                    
+                    
+
+                    <div class="col col-1">
+                      
+                    <section>
+                      <h3>Pieniężne</h3>
+                      <ul>
+                        
+                        <li><a href="/fundusze-inwestycyjne/S7smsq-investor-gotowkowy">Investor Gotówkowy</a></li>
+                        
+                        <li><a href="/fundusze-inwestycyjne/UQjopf-investor-plynna-lokata">Investor Płynna Lokata</a></li>
+                        
+                      </ul>
+                    </section>
+                     
+                      
+                    <section>
+                      <h3>Obligacji</h3>
+                      <ul>
+                        
+                        <li><a href="/fundusze-inwestycyjne/VQvCQX-investor-obligacji">Investor Obligacji</a></li>
+                        
+                        <li><a href="/fundusze-inwestycyjne/PCBfFM-investor-obligacji-korporacyjnych">Investor Obligacji Korporacyjnych</a></li>
+                        
+                        <li><a href="/fundusze-inwestycyjne/yWpzPq-investor-obligacji-rynkow-wschodzacych-plus">Investor Obligacji Rynków Wschodzących Plus</a></li>
+                        
+                      </ul>
+                    </section>
+                     
+                      
+                    <section>
+                      <h3>Mieszane</h3>
+                      <ul>
+                        
+                        <li><a href="/fundusze-inwestycyjne/1BalU6-investor-zabezpieczenia-emerytalnego">Investor Zabezpieczenia Emerytalnego</a></li>
+                        
+                        <li><a href="/fundusze-inwestycyjne/6yEtcY-investor-zrownowazony">Investor Zrównoważony</a></li>
+                        
+                      </ul>
+                    </section>
+                     
+                    </div>
+
+                    <div class="col col-2">
+                      
+                    <section>
+                      <h3>Akcji</h3>
+                      <ul>
+                        
+                        <li><a href="/fundusze-inwestycyjne/ZRJ2Bm-investor-agrobiznes">Investor Agrobiznes</a></li>
+                        
+                        <li><a href="/fundusze-inwestycyjne/ey9bLu-investor-akcji">Investor Akcji</a></li>
+                        
+                        <li><a href="/fundusze-inwestycyjne/345LkL-investor-akcji-duzych-spolek-dywidendowych">Investor Akcji Dużych Spółek Dywidendowych</a></li>
+                        
+                        <li><a href="/fundusze-inwestycyjne/w0oybv-investor-akcji-rynkow-wschodzacych">Investor Akcji Rynków Wschodzących</a></li>
+                        
+                        <li><a href="/fundusze-inwestycyjne/vmS5qm-investor-akcji-spolek-wzrostowych">Investor Akcji Spółek Wzrostowych</a></li>
+                        
+                        <li><a href="/fundusze-inwestycyjne/EvaagI-investor-ameryka-lacinska">Investor Ameryka Łacińska</a></li>
+                        
+                        <li><a href="/fundusze-inwestycyjne/6uPKbI-investor-bric">Investor BRIC</a></li>
+                        
+                        <li><a href="/fundusze-inwestycyjne/rC51Ei-investor-cee-fiz">Investor CEE FIZ</a></li>
+                        
+                        <li><a href="/fundusze-inwestycyjne/HpIBIU-investor-globalny-akcji">Investor Globalny Akcji</a></li>
+                        
+                        <li><a href="/fundusze-inwestycyjne/sctLO4-investor-indie-i-chiny">Investor Indie i Chiny</a></li>
+                        
+                        <li><a href="/fundusze-inwestycyjne/Y7AoAh-investor-infrastruktury-i-informatyki">Investor Infrastruktury i Informatyki</a></li>
+                        
+                        <li><a href="/fundusze-inwestycyjne/fIeFUp-investor-rosja">Investor Rosja</a></li>
+                        
+                        <li><a href="/fundusze-inwestycyjne/PhVYGw-investor-top-25-malych-spolek">Investor Top 25 Małych Spółek</a></li>
+                        
+                        <li><a href="/fundusze-inwestycyjne/DTZY6B-investor-top-50-malych-i-srednich-spolek">Investor Top 50 Małych i Średnich Spółek</a></li>
+                        
+                        <li><a href="/fundusze-inwestycyjne/qnXKPC-investor-turcja">Investor Turcja</a></li>
+                        
+                      </ul>
+                    </section>
+                     
+                      
+                    </div>
+
+                    <div class="col col-3">
+                      
+                    <section>
+                      <h3>Nieruchomości</h3>
+                      <ul>
+                        
+                        <li><a href="/fundusze-inwestycyjne/kF42q1-investor-nieruchomosci-i-budownictwa">Investor Nieruchomości i Budownictwa</a></li>
+                        
+                        <li><a href="/fundusze-inwestycyjne/bFDg5K-investor-property-fiz">Investor Property FIZ</a></li>
+                        
+                      </ul>
+                    </section>
+                     
+                      
+                    <section>
+                      <h3>Surowcowe</h3>
+                      <ul>
+                        
+                        <li><a href="/fundusze-inwestycyjne/RKRRqc-investor-gold-fiz">Investor Gold FIZ</a></li>
+                        
+                        <li><a href="/fundusze-inwestycyjne/yjYPoK-investor-gold-otwarty">Investor Gold Otwarty</a></li>
+                        
+                      </ul>
+                    </section>
+                     
+                      
+                    <section>
+                      <h3>Alternatywne</h3>
+                      <ul>
+                        
+                        <li><a href="/fundusze-inwestycyjne/g77Lef-investor-absolute-return-fiz">Investor Absolute Return FIZ</a></li>
+                        
+                        <li><a href="/fundusze-inwestycyjne/jVRONf-investor-algorytmiczny-fiz">Investor Algorytmiczny FIZ</a></li>
+                        
+                        <li><a href="/fundusze-inwestycyjne/cQFoBW-investor-fiz">Investor FIZ</a></li>
+                        
+                        <li><a href="/fundusze-inwestycyjne/AfCE14-investor-top-hedge-funds-fiz">Investor Top Hedge Funds FIZ</a></li>
+                        
+                      </ul>
+                    </section>
+                     
+                      
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </nav>
+
+            <nav id="nav-header">
+              <div class="wr">
+                <div>
+                  
+                  <a href="/nowy-investor-online/">Nowy Investor Online</a>
+                  
+                  <a href="/zmiany-w-ofercie-investors/nowe-subfundusze-investor-parasol-sfio/">Zmiany w ofercie Investors</a>
+                  
+                  <a href="/czas-funduszy-mieszanych/lider-stabilnego-wzrostu/">Czas funduszy mieszanych</a>
+                  
+                  <a href="/wysoki-potencjal-akcji/fundusze-akcji-uniwersalne/">Wysoki potencjał akcji</a>
+                  
+                  <a href="/nagrody-i-wyroznienia/investors-kolejny-rok-w-gronie-liderow/">Nagrody i wyróżnienia</a>
+                  
+                </div>
+              </div>
+            </nav>
+
+            <form id="search" action="/wyniki-wyszukiwania/">
+              <fieldset>
+                <legend>Wyszukiwarka</legend>
+                <div class="field field-text">
+                  <label for="search-query">Szukaj</label>
+                  <input type="text" id="search-query" name="q">
+                </div>
+                <button>Szukaj</button>
+              </fieldset>
+            </form>
+
+            <a href="https://online.investors.pl/" class="link-service"><span>Investor
+Online</span></a>
+            <div class="clear"></div>
+          </div>
+
+          <div class="right">
+            <nav id="nav-additional">
+              
+  <a href="/fundusze-inwestycyjne/"><img src="/media/Visual/Menu/wykres.png"><span>Wyceny i wykresy</span></a>
+
+  <a href="/informacje-i-dokumenty/dokumenty-funduszy/"><img src="/media/Visual/Menu/dokumenty.png"><span>Informacje i dokumenty</span></a>
+
+  <a href="/kontakt/"><img src="/media/Visual/Menu/kontakt.png"><span>Skontaktuj się z nami</span></a>
+
+            </nav>
+          </div>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </header>
+
+
+<section id="main" class="singlepage-wide">
+  <header class="page-header wide">
+    
+  <nav id="breadcrumbs">
+    <strong>Jesteś tu:</strong>
+    <ol>
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/jak-inwestowac/planowanie-inwestycji/">Jak inwestować</a></li>
+      
+      <li><a href="/jak-inwestowac/planowanie-inwestycji/" class="current">Planowanie inwestycji</a></li>
+      
+      
+    </ol>
+  </nav>
+
+
+    <nav id="nav-page-tools">
+      
+      <a href="#" class="btn-print">Drukuj</a>
+      <a href="/en/" class="btn-lang-eng">ENG</a>
+      <a href="/" class="btn-lang-pl current">PL</a>
+    </nav>
+
+    
+    <h1 class="page-title">Jak inwestować</h1>
+    <nav class="nav-tools">
+        <a href="mailto:?subject=Ciekawa%20strona&body=https://investors.pl/jak-inwestowac/planowanie-inwestycji/" data-href="mailto:?subject=Ciekawe%20fundusze&body=" class="email export">Email</a>
+    </nav>
+    
+    <div class="clear"></div>
+  </header>
+
+  
+<section id="content">
+  <nav class="page-tabs wide static static-3">
+    <div>
+      <ul>
+        
+        <li class="active"><a href="/jak-inwestowac/planowanie-inwestycji/">Planowanie inwestycji</a></li>
+        
+        <li><a href="/jak-inwestowac/abc-inwestora/">ABC inwestora</a></li>
+        
+        <li><a href="/jak-inwestowac/dystrybutorzy/">Dystrybutorzy</a></li>
+        
+      </ul>
+    </div>
+  </nav>
+
+	<article class="art text">
+		
+<h2 class="extra">Przed dokonaniem inwestycji ustal kilka reguł, którymi będziesz się kierował. Pomoże Ci to dokonać świadomego wyboru funduszy do portfela.</h2>
+
+	<div class="p-ico">
+    
+		<img src="/thumb/Visual/Grafiki/180x112px/ico-1.prop_180x112.25eb52c64f.png" alt="Ocena perspektyw rynkowych"/>
+    
+		<h4>Ocena perspektyw rynkowych</h4>
+  		<p><p>Analizując fundusz, poznaj też charakterystykę rynku na którym lokuje 
+środki i ocenę jego perspektyw, choćby w formie śledzenia <a href="http://investors.pl/informacje-i-dokumenty/komentarze-rynkowe/">komentarzy 
+rynkowych</a>. Pamiętaj, że rynki kapitałowe są cykliczne i po okresach 
+wzrostu następują spadki, a potem znowu wzrosty, zatem warto być na 
+bieżąco.</p></p>
+	</div>
+
+	<div class="p-ico">
+    
+		<img src="/thumb/Visual/Grafiki/180x112px/ico-10.prop_180x112.a55a44dc31.png" alt="Historyczne zyski nie są gwarancją na przyszłość"/>
+    
+		<h4>Historyczne zyski nie są gwarancją na przyszłość</h4>
+  		<p><p>Warto patrzeć na osiągnięte w przeszłości <a href="http://investors.pl/fundusze-inwestycyjne/roczne/">wyniki funduszu</a>, szczególnie w
+ perspektywie wielu lat. Nie można jednak ulegać złudzeniu, że powtórzą 
+się tylko te najlepsze. Zastanów się co zrobisz, gdy osiągniesz 
+zakładany poziom zysku, a co gdy pojawi się strata?</p></p>
+	</div>
+
+	<div class="p-ico">
+    
+		<img src="/thumb/Visual/Grafiki/180x112px/ico-9.prop_180x112.5c4d102ec2.png" alt="Opłaty manipulacyjne"/>
+    
+		<h4>Opłaty manipulacyjne</h4>
+  		<p><p>Wybierz najtańszy kanał za pośrednictwem którego będziesz inwestować. Opłaty manipulacyjne już na starcie inwestycji obniżają jej rentowność. Najczęściej transakcje przez internet są zwolnione z opłat, np. w <a target="" title="" href="https://investors.pl/nowy-investor-online/">Investor Online.</a><br></p></p>
+	</div>
+
+	<div class="p-ico">
+    
+		<img src="/thumb/Visual/Grafiki/180x112px/ico-10.prop_180x112.ee775a859b.jpg" alt="Nie ma drogi na skróty bez ryzyka"/>
+    
+		<h4>Nie ma drogi na skróty bez ryzyka</h4>
+  		<p><p>Przyjmij, że stopa zwrotu wolna od ryzyka to taka, którą możesz otrzymać
+ na bonach i obligacjach Skarbu Państwa. W tym wypadku masz stabilny i 
+przewidywalny wzrost wartości kapitału. Dwucyfrowe zyski w skali roku są
+ zawsze obciążone ryzykiem i wahaniami wartości.</p></p>
+	</div>
+
+	<div class="p-ico">
+    
+		<img src="/thumb/Visual/Grafiki/180x112px/ico-6.prop_180x112.5e25c9c44c.png" alt="Horyzont inwestycyjny"/>
+    
+		<h4>Horyzont inwestycyjny</h4>
+  		<p><p>Na ile czasu możesz „zamrozić” pieniądze, które zainwestujesz? To 
+powinien być Twój horyzont inwestycyjny dla funduszy obciążonych 
+ryzykiem istotnych wahań wartości.</p></p>
+	</div>
+
+	<div class="p-ico">
+    
+		<img src="/thumb/Visual/Grafiki/180x112px/ico-2.prop_180x112.e2b3be1d72.png" alt="Krok po kroku, ale systematycznie"/>
+    
+		<h4>Krok po kroku, ale systematycznie</h4>
+  		<p><p>Jeżeli zaczynasz przygodę z inwestowaniem albo nie jesteś pewny swojego 
+wyboru, wpłacaj systematycznie mniejsze kwoty, np. w ramach <a href="http://investors.pl/systematyczne-oszczedzanie/inwestycyjny-system-oszczednosciowy">programu 
+inwestycyjnego</a>. Pozwoli Ci to kupować jednostki funduszu po różnych 
+wycenach, a zatem uśrednisz koszt ich nabycia w długim terminie.</p></p>
+	</div>
+
+	<div class="p-ico">
+    
+		<img src="/thumb/Visual/Grafiki/180x112px/InvestorsTFI/progr.prop_180x112.10cdbc8134.jpg" alt="Dywersyfikacja portfela"/>
+    
+		<h4>Dywersyfikacja portfela</h4>
+  		<p><p>Staraj się w miarę możliwości mieć różne fundusze w portfelu. Chodzi o 
+to, żeby zależność między ich wynikami była niska, co w długim terminie 
+da Ci większą stabilność wyników.</p></p>
+	</div>
+
+	<div class="p-ico">
+    
+		<img src="/thumb/Visual/Grafiki/180x112px/ico-4.prop_180x112.61b7b699d8.png" alt="Kluczowe Informacje dla Inwestorów"/>
+    
+		<h4>Kluczowe Informacje dla Inwestorów</h4>
+  		<p><p>Warto korzystać z wiedzy i opinii znajomych, ale zawsze sprawdź 
+samodzielnie dokument funduszu, czyli <a href="http://investors.pl/informacje-i-dokumenty/dokumenty-funduszy/?f=&amp;n=&amp;t=key_info&amp;y=">Kluczowe Informacje dla Inwestora</a>,
+  opisujący cel i politykę inwestycyjną, poziom ryzyka, pobierane opłaty
+ oraz historyczne wyniki funduszu. Jest to 2-stronicowy dokument prawny,
+ a nie reklamowy.</p></p>
+	</div>
+
+    <div class="clear"></div>
+	</article>
+</section>
+
+</section>
+
+  <div class="clear"></div>
+  </div>
+  <footer id="footer">
+    <div class="wrapper">
+      <div class="l1">
+        
+        
+        <div class="col col-1">
+          <section class="section">
+            <h3>Investors TFI</h3>
+            <ul>
+              
+              <li><a href="/investors-tfi/o-firmie/">O firmie</a></li>
+              
+              <li><a href="/fundusze-inwestycyjne/">Wyceny i stopy zwrotu</a></li>
+              
+              <li><a href="/investors-tfi/zarzadzajacy-funduszami/">Zarządzający funduszami</a></li>
+              
+              <li><a href="/prywatne-fundusze/">Prywatne fundusze</a></li>
+              
+              <li><a href="/programy-pracownicze/">Programy pracownicze</a></li>
+              
+              <li><a href="/bezpieczenstwo/">Bezpieczeństwo</a></li>
+              
+              <li><a href="https://investors.pl/informacje-i-dokumenty/regulaminy/regulamin-korzystania-z-serwisu-internetowego-investors-pl-JXrJgF">Copyright © 2016 Investors TFI S.A.</a></li>
+              
+            </ul>
+          </section>
+        </div>
+        
+        <div class="col col-2">
+          <section class="section">
+            <h3>Jak i w co inwestować</h3>
+            <ul>
+              
+              <li><a href="/jak-inwestowac/dystrybutorzy/">Jak kupić fundusze</a></li>
+              
+              <li><a href="/jak-inwestowac/abc-inwestora/">ABC Inwestora</a></li>
+              
+              <li><a href="/regularnosc-sie-oplaca/inwestycyjny-system-oszczednosciowy/">Systematyczne oszczędzanie</a></li>
+              
+              <li><a href="/regularnosc-sie-oplaca/indywidualne-konto-emerytalne/">Emerytura bez podatku - IKE</a></li>
+              
+              <li><a href="/wysoki-potencjal-akcji/fundusze-akcji-uniwersalne/">Wysoki potencjał akcji</a></li>
+              
+              <li><a href="/fundusze-zlota/">Złoto jako lokata kapitału</a></li>
+              
+              <li><a href="/rynki-wschodzace/turcja/">Potencjał rynków wschodzących</a></li>
+              
+              <li><a href="/plynnosc-i-niskie-ryzyko/fundusze-rynku-pienieznego/">Płynność i niskie ryzyko</a></li>
+              
+            </ul>
+          </section>
+        </div>
+        
+        <div class="col col-3">
+          <section class="section">
+            <h3>Raporty i komentarze</h3>
+            <ul>
+              
+              <li><a href="/informacje-i-dokumenty/komentarze-rynkowe/?n=&amp;s=S0fmib&amp;y=">Podsumowania miesiąca</a></li>
+              
+              <li><a href="/informacje-i-dokumenty/komentarze-rynkowe/?n=&amp;s=nOYmlo&amp;y=">Raporty o rynku złota</a></li>
+              
+              <li><a href="/informacje-i-dokumenty/komentarze-rynkowe/">Bieżące komentarze</a></li>
+              
+              <li><a href="/informacje-i-dokumenty/ogloszenia/?f=&amp;n=&amp;t=remark&amp;y=">Komentarze do wycen FIZ</a></li>
+              
+              <li><a href="/rss/">Powiadomienia</a></li>
+              
+            </ul>
+          </section>
+        </div>
+        
+        <div class="col col-4">
+          <section class="section">
+            <h3>Dokumenty</h3>
+            <ul>
+              
+              <li><a href="/informacje-i-dokumenty/dokumenty-funduszy/?f=&amp;n=&amp;t=fund_card&amp;y=">Karty funduszy</a></li>
+              
+              <li><a href="/informacje-i-dokumenty/dokumenty-funduszy/?f=&amp;n=&amp;t=key_info&amp;y=">Kluczowe informacje</a></li>
+              
+              <li><a href="/informacje-i-dokumenty/dokumenty-funduszy/?f=&amp;n=&amp;t=information_prospectus&amp;y=">Prospekty informacyjne</a></li>
+              
+              <li><a href="/informacje-i-dokumenty/ogloszenia/">Ogłoszenia funduszy</a></li>
+              
+              <li><a href="/informacje-i-dokumenty/dokumenty-funduszy/?f=&amp;n=&amp;t=financial_report&amp;y=">Sprawozdania finansowe</a></li>
+              
+              <li><a href="/informacje-i-dokumenty/materialy-dla-dystrybutorow/">Dla dystrybutorów</a></li>
+              
+            </ul>
+          </section>
+        </div>
+        
+        <div class="col col-5">
+          <nav class="section nav-footer">
+            <ul>
+              
+              	<li><a href="/rss/">RSS</a></li>
+              
+              	<li><a href="/kalkulator-inwestycyjny/">Kalkulator</a></li>
+              
+              	<li><a href="/informacje-i-dokumenty/regulaminy/">Regulaminy</a></li>
+              
+              <li><a href="https://www.facebook.com/InvestorsTFI" class="link-fb">Facebook</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <div class="clear"></div>
+    </div>
+  </footer>
+  <a href="#top" class="skiplink">Przejdź na początek</a>
+  
+  
+  
+    <script type="text/javascript">
+      Highcharts.setOptions({
+        lang : {
+          decimalPoint : ','
+        }
+      });
+    </script>
+  
+  <noscript><p id="js-alert">Aby w pełni korzystać z możliwości jakie daje ta strona należy włączyć w przeglądarce obsługę JavaScript. Jeżeli nie wiesz jak to zrobić, skorzystaj z pomocy jej producenta.</p></noscript>
+
+  <article id="cookie-alert">
+    <div class="wrapper">
+      <p>Informujemy, że korzystamy z informacji w plikach cookies w celu optymalizacji treści dostępnych w naszych serwisach, dostosowania ich do preferencji użytkownika, jak również dla celów reklamowych i statystycznych. Jeżeli nie chcesz, aby te informacje były przechowywane na Twoim urządzeniu, zmień ustawienia przeglądarki internetowej. Dalsze korzystanie z naszych serwisów internetowych bez zmiany ustawień przeglądarki internetowej jest jednoznaczne z wyrażeniem zgody na zapisywanie tych informacji na Twoim urządzeniu. Więcej informacji o plikach cookies <a href="/polityka-cookies/" target="_blank">znajdziesz tutaj</a>. <a href="#close" class="close-alert">Nie pokazuj więcej tego komunikatu</a></p>
+      <a href="#" class="close close-alert">zamknij</a>
+    </div>
+  </article>
+</body>
+</html>

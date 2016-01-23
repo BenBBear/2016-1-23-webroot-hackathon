@@ -1,0 +1,794 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Reall.bg :  Недвижими имоти Варна - Реал</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="imagetoolbar" content="false" />
+<meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
+<meta http-equiv="content-language" content="bg">
+<meta name="description" content="Недвижими имоти, апртаменти, къщи, вили, парцели, магазини, хотели, продажба, под наем, едностайни, двустаини, Варна, Бургас, Шумен" />
+<meta name="keywords" content="имоти, недвижими имоти, имоти варна, недвижими имоти варна" />
+		
+	<link rel="stylesheet" href="/style/reallbg.css?ver=2" type="text/css" media="screen, projection" charset="utf-8" />
+	<!--[if IE 7]><link rel="stylesheet" href="/style/ie7fix.css" type="text/css" media="screen, projection" charset="utf-8" /><![endif]-->
+	<!--[if IE 6]><link rel="stylesheet" href="/style/ie6fix.css" type="text/css" media="screen, projection" charset="utf-8" /><![endif]-->
+	
+	<!--<link rel="stylesheet" href="/style/fileuploader.css" type="text/css" media="screen, projection" charset="utf-8" />-->		
+	
+	<!-- UPLOADER 
+	<link href="https://rawgithub.com/hayageek/jquery-upload-file/master/css/uploadfile.css" rel="stylesheet">
+	-->	
+	<link href="/style/uploadfile.css" rel="stylesheet">
+	<script src="/js/jquery-1.11.0.min.js"></script>	
+	<script src="/js/jquery.uploadfile.js"></script>
+	
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<link rel="stylesheet" href="/style/ui_dialog.css">	
+	
+	<script src="/js/jquery.confirm.js"></script>
+	
+	<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>	
+	
+	<script type="text/javascript" src="/js/fancy/jquery.fancybox.js?v=2.1.5"></script>
+	<link rel="stylesheet" type="text/css" href="/js/fancy/jquery.fancybox.css?v=2.1.5" media="screen" />
+	
+	<script type="text/javascript" src="/js/jquery.validate.js"></script>	
+	
+	<script type="text/javascript" src="/js/swfobject.js"></script>	
+	<script type="text/javascript" src="/js/scripts.js"></script>
+	
+		
+	<script type="text/javascript"><!--//--><![CDATA[//><!--	
+	
+	$(document).ready(function() {	
+		window.selected_line=new Array ();
+		clearLinks();
+				
+		updateTypeSelects();
+		updateRegionSelects();
+		updateLocationSelects();
+	
+		
+		//$("a[rel=fancyimg]").fancybox();		//{autoScale:false}
+		$("a.fancy").fancybox();
+		
+		window.lang='bg';
+		window.read_more='виж повече';
+		window.search_text_count=1;
+		window.search_texts=new Array();		
+		window.search_texts_ids=new Array();
+		window.search_texts[0]='НАЕМА СПЕШНО';
+				window.search_texts_ids[0]='30';
+				window.search_texts[1]='НАЕМА СПЕШНО';
+				window.search_texts_ids[1]='28';
+				window.search_texts[2]='НАЕМА СПЕШНО';
+				window.search_texts_ids[2]='34';
+				window.search_texts[3]='НАЕМА СПЕШНО';
+				window.search_texts_ids[3]='31';
+				window.search_texts[4]='НАЕМА СПЕШНО';
+				window.search_texts_ids[4]='27';
+				window.search_texts[5]='КУПУВА СПЕШНО';
+				window.search_texts_ids[5]='37';
+				window.search_texts[6]='Търся 25-30дка';
+				window.search_texts_ids[6]='45';
+				window.search_texts[7]='КУПУВА СПЕШНО';
+				window.search_texts_ids[7]='38';
+				window.search_texts[8]='Търся апартамент с 2 спални';
+				window.search_texts_ids[8]='26';
+				window.search_texts[9]='Търся апартамент с 4 стаи';
+				window.search_texts_ids[9]='25';
+				window.search_texts[10]='КУПУВА СПЕШНО';
+				window.search_texts_ids[10]='35';
+				window.search_texts[11]='Заменям апартамент с 2 спални';
+				window.search_texts_ids[11]='41';
+				window.search_texts[12]='Купуваме къщи и апартаменти в град Русе';
+				window.search_texts_ids[12]='42';
+				window.search_texts[13]='Търся етаж от къща';
+				window.search_texts_ids[13]='24';
+				window.search_texts[14]='НАЕМА СПЕШНО';
+				window.search_texts_ids[14]='29';
+				window.search_texts[15]='НАЕМА СПЕШНО';
+				window.search_texts_ids[15]='33';
+				window.search_texts[16]='КУПУВА СПЕШНО';
+				window.search_texts_ids[16]='39';
+				window.search_texts[17]='НАЕМА СПЕШНО';
+				window.search_texts_ids[17]='32';
+				window.search_texts[18]='Търся градски парцел ';
+				window.search_texts_ids[18]='23';
+				window.search_texts[19]='Купува земеделски земи област Монтана';
+				window.search_texts_ids[19]='21';
+						
+		var interval = setInterval(function() { textSlide(); }, 7000);
+		//textSlide();
+		
+		
+$('body').click(function(){
+			if(window.flag_visible){
+				showhide(window.flag_visible);
+			}
+		});
+		$('#type_select1').click(function(event){
+			event.stopPropagation();
+			event.preventDefault();
+			showhide('types_drop');
+		});
+		$('#type_select2').click(function(event){
+			event.stopPropagation();
+			event.preventDefault();
+			showhide('types_drop');
+		});
+		$('#stopP').click(function(event){
+			event.stopPropagation();
+		});
+		//onclick="showhide(\'types_drop\'); return false;"
+		
+		$('body').click(function(){
+			if(window.flag_visible){
+				showhide('area_select');
+			}
+		});
+		$('#type_select3').click(function(event){
+			event.stopPropagation();
+			event.preventDefault();
+			showhide('area_select');
+		});
+		$('#type_select4').click(function(event){
+			event.stopPropagation();
+			event.preventDefault();
+			showhide('area_select');
+		});
+		$('#stopP2').click(function(event){
+			event.stopPropagation();
+		});
+		//onclick="showhide(\'area_select\'); return false;"
+		$('body').click(function(){
+			if(window.flag_visible){
+				showhide(window.flag_visible);
+			}
+		});
+		$('#type_select5').click(function(event){
+			event.stopPropagation();
+			event.preventDefault();
+			showhide('location_drop');
+		});
+		$('#type_select6').click(function(event){
+			event.stopPropagation();
+			event.preventDefault();
+			showhide('location_drop');
+		});
+		$('#stopP3').click(function(event){
+			event.stopPropagation();
+		});
+		
+					
+			//centerIt('popup_mess');
+			//$('#popup_mess').css('display','block');
+			});
+	//--><!]]></script>	
+		
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-32720934-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>	
+</head>
+<body>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-52109242-1', 'reall.bg');
+  ga('send', 'pageview');
+
+</script><div id="dialog-confirm" title="Внимание">
+	<p></p>
+</div>
+<div class="mess_popup" id="popup_mess">
+<span></span>
+<br />	
+Въведете кода, който ще получите на SMS тук:<br />
+<form action="/bg/home" method="post" id="code_form">
+	<input type="hidden" name="act" value="govip" />
+	<input type="hidden" name="offer_id" id="pop_offer_id" value="" />
+	<div style="margin-bottom:5px;">
+		<input type="text" name="code" id="pop_code" style="text-align:center; color:black; font-size:16px;width:150px;" />	
+	</div>
+	<div>
+		<a href="javascript:void(0);" onclick="$('#code_form').submit();" style="margin-left:105px;width:70px;float:left;" class="buton">изпрати</a>	
+		<a href="javascript:void(0);" onclick="hideMe($(this).parent().parent().parent());" style="margin-left:215px;" class="buton">отказ</a>	
+	</div>
+</form>
+<br /><br />	
+</div>
+<div class="frame">	
+	
+	<div class="head">
+		<div class="top_right">
+			
+			<div class="social">
+								<a href="http://www.facebook.com/REallGroup" target="_blank"><img src="/images/facebook_icon.png" title="Join us on Facebook" alt="Join us on Facebook" /></a>
+				<a href="#" target="_blank"><img src="/images/tweeter_icon.png" title="Join us on Tweeter" alt="Join us on Tweeter" /></a>
+				<a href="#"  style="margin-right:0px;"><img src="/images/vk_icon.png" title="Join us on VK" alt="Join us on VK" /></a>
+							</div>
+			
+			<div class="langs">
+								&nbsp;&nbsp;<a href="/bg/home.html?location=&amp;area=&amp;type=&amp;location_type=&amp;price_from=&amp;price_to=&amp;listpage=1&amp;id=" style="color:#bb0101;">BG</a>
+				&nbsp;<a href="/en/home.html?location=&amp;area=&amp;type=&amp;location_type=&amp;price_from=&amp;price_to=&amp;listpage=1&amp;id=" >EN</a>
+				&nbsp;<a href="/ru/home.html?location=&amp;area=&amp;type=&amp;location_type=&amp;price_from=&amp;price_to=&amp;listpage=1&amp;id=" >RU</a>
+			</div>
+			
+			<div class="top_phone"><img src="/images/phone.png" alt="reallbg phone" style="float:left;" />&nbsp;0885 603 369</div>
+						<form id="login_form" action="/bg/home.html?act=login&amp;location=&amp;area=&amp;type=&amp;location_type=&amp;price_from=&amp;price_to=&amp;listpage=1&amp;id=" method="post"> 
+				<table style="margin-top:5px;margin-left:55px;">
+					<tr><td><img src="/images/profile_icon.png" alt="username" style="padding:6px;" alt="profile icon" /></td><td><input type="text" name="username" placeholder="Потребител" class="required"  /></td></tr>
+					<tr><td></td><td><input type="password" name="password" id="password" placeholder="Парола" class="required" /></td></tr>
+					<tr><td colspan="2">
+					<a href="javascript:;" onclick="$('#login_form').submit();" style="position:absolute;margin-left:162px;margin-top:6px;"  class="buton">Вход</a>
+					<a href="/bg/registration.html" class="red_hover" style="display:block;line-height:20px;margin-top:2px;color: #858894;"><img src="/images/register_icon.png" style="margin-left:7px;margin-top:4px;float:left;" alt="registration" />&nbsp;&nbsp;Нова регистрация</a>					
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/bg/forgotten_password.html"  class="red_hover" style="color: #858894;">Забравена парола</a>
+					</td></tr>
+				</table>
+			</form>
+			<script>			
+					$(window).ready(function(){		
+						$("#login_form").validate();
+						
+						 $('#password').keypress(function (event) {
+								if (event.keyCode == 10 || event.keyCode == 13) {
+									$('#login_form').submit();
+									event.preventDefault();
+								}
+							});
+					});	
+			</script>
+					</div>
+		
+		<h1 class="absolute_top">Недвижими имоти, апртаменти, къщи, вили, парцели, магазини, хотели, продажба, под наем, едностайни, двустаини, Варна, Бургас, Шумен</h1>
+		
+		<div class="head_inside">			
+			<a href="/bg/home.html" class="logo" title="Недвижими имоти Варна - Реал"></a>			
+			<div class="oferti_count"><span style="color:#bb0101;">1558</span> оферти за имоти</div>			
+			<div class="top_menu" >
+				<ul>
+					<li><a href="/bg/offers.html" title="Недвижими имоти, апртаменти, къщи, вили, парцели, магазини, хотели, продажба, под наем, едностайни, двустаини, Варна, Бургас, Шумен">Имоти</a></li><li><a href="/bg/about_us.html" title="Фирмата - продажба на имоти Варна, апратаменти, къщи, вили и парцели">За фирмата</a></li><li><a href="/bg/users_list.html?user_type=1" title="Агенции">Агенции</a></li><li><a href="/bg/users_list.html?user_type=2" title="Строители">Строители</a></li><li><a href="/bg/contacts.html" title="Контакти">Контакти</a></li>				</ul>			
+			</div>			
+			<div class="undermenu"></div>
+		</div>
+		
+	</div><!-- head -->
+	
+	<div class="clear" style="height:10px;"></div>
+	<div class="search_butons">
+					<a href="javascript:;" id="sales_link" class="sale_rent_btn" style="background-position:left;" onclick="$.ajax({
+						url: '/changetype.php?id=1&lang=bg',
+						success: function(html){							
+							$('#types_drop').html(html);
+							$('#type_select1 a').html('Избери');
+							$('#choose_select').text('Избери');
+							$('#choosen_type').val('sales');
+							updateTypeSelects();
+						}
+					});$(this).css('background-position','left');$('#rentals_link').css('background-position','right');">ПРОДАЖБИ</a> 
+					
+					<a href="javascript:;" id="rentals_link" class="sale_rent_btn" style="background-position:right;" onclick="$.ajax({
+						url: '/changetype.php?id=2&lang=bg',
+						success: function(html){							
+							$('#types_drop').html(html);
+							$('#type_select1 a').text('Избери');
+							$('#choose_select').text('Избери');
+							$('#choosen_type').val('rentals');
+							updateTypeSelects();
+						}
+					});$(this).css('background-position','left');$('#sales_link').css('background-position','right');" >НАЕМИ</a>
+					
+					<a href="/bg/dobavi_obqva.html" class="add_new_btn">ДОБАВИ ОБЯВА</a>
+					
+					<div class="clear"></div>
+			</div>
+<div class="big_panel">	
+	<div class="search_map" id="search_map_holder">
+		<a href="javascript:;" onclick="$('#search_map_holder').css('display','none');" class="close"></a>
+		<div id="search_map">
+			<ul><li>На море</li><li>Планина</li><li>Балнеология</li><li>В града</li><li>На село</li><li>Други</li></ul><ul><li>Студио</li><li>Боксониера</li><li>Апартамент с 1 спалня</li><li>Апартамент с 2 спални</li><li>Апартамент с 3 спални</li><li>Големи апартаменти</li><li>Къща</li><li>Вила</li><li>Офис</li><li>Бизнес имоти</li><li>Парцел</li><li>Проект</li><li>За реиновация</li><li>Елитни имоти</li></ul><ul><li>за живеене</li><li>за бизнес</li><li>нощувки</li></ul><ul><li>Tурция</li><li>Гърция</li><li>Израел</li><li>Испания</li><li>Русия</li><li>Украйна</li><li>Хърватия</li><li>Черна гора</li></ul>		</div>
+			
+						
+			<script type="text/javascript">		
+				// <![CDATA[				
+				var flashvars = {										
+					lang: "bg",
+					type: "",
+					num: ""
+				};					
+				var params = {
+					menu: "false",
+					wmode: "transparent"
+				};			
+				var attributes = {
+				};										
+				swfobject.embedSWF("/flash/map.swf?ver=2", "search_map", "400", "225", "9.0.0", "/expressInstall.swf", flashvars, params, attributes);
+					//--><!]]>
+				// ]]>
+				
+				
+				
+			</script>
+		
+	</div>
+	
+	<div class="search_form">
+		<a href="javascript:void(0);" onclick="$('#search_map_holder').css('display','block');" class="map_btn_form">карта</a>
+		<form action="/bg/offers.html" name="search_form" id="search_form" method="get">
+			
+			<input type="hidden" name="choosen_type" id="choosen_type" value="sales" />
+			<table cellspacing="9">
+				<tr><td colspan="2">&nbsp;<input type="text" name="search_id" value="" placeholder="НОМЕР" style="width:170px;" /></td></tr>
+				
+				<tr><td>
+					<select name="location" id="location_select" onchange="					
+					$.ajax({
+						url: '/changearea.php?id='+this.value+'&lang=bg',
+						success: function(html){							
+							$('#area_select').html(html);						
+							$('#type_select3 a').text('Избери');
+							$('#type_select4 a').text('Избери');
+							updateRegionSelects();
+							$('#choose_select2').text('');
+						}
+					});"><option value="all">РЕГИОН</option><option value="bg_offers" style="background-color:#A9F3AD;font-weight:bold;" >БЪЛГАРИЯ</option><option value="283" >София</option><option value="284" >София област</option><option value="2012" >Банско</option><option value="2014" >Боровец</option><option value="2013" >Пампорово</option><option value="7" >Варна</option><option value="5" >Варна област</option><option value="279" >Бургас</option><option value="280" >Бургас област</option><option value="275" >Добрич</option><option value="276" >Добрич област</option><option value="2048" >Благоевград</option><option value="2049" >Благоевград област</option><option value="1658" >В.Търново</option><option value="1659" >В.Търново  област</option><option value="2018" >Видин</option><option value="2021" >Видин област</option><option value="2020" >Враца</option><option value="2023" >Враца област</option><option value="2056" >Габрово</option><option value="2057" >Габрово област</option><option value="2015" >Девин</option><option value="6275" >Интернационални</option><option value="2040" >Кърджали</option><option value="2041" >Кърджали област</option><option value="2050" >Кюстендил</option><option value="2051" >Кюстендил област</option><option value="2054" >Ловеч</option><option value="2055" >Ловеч област</option><option value="2019" >Монтана</option><option value="2022" >Монтана област</option><option value="2046" >Пазарджик</option><option value="2047" >Пазарджик област</option><option value="2052" >Перник</option><option value="2053" >Перник област</option><option value="2024" >Плевен</option><option value="2025" >Плевен област</option><option value="2042" >Пловдив</option><option value="2043" >Пловдив област</option><option value="2028" >Разград</option><option value="2029" >Разград област</option><option value="277" >Русе</option><option value="278" >Русе област</option><option value="2030" >Силистра</option><option value="2031" >Силистра област</option><option value="2032" >Сливен</option><option value="2033" >Сливен област</option><option value="2044" >Смолян</option><option value="2045" >Смолян област</option><option value="2038" >Стара Загора</option><option value="2039" >Стара Загора област</option><option value="2026" >Търговище</option><option value="2027" >Търговище област</option><option value="2036" >Хасково</option><option value="2037" >Хасково област</option><option value="281" >Шумен</option><option value="282" >Шумен област</option><option value="2034" >Ямбол</option><option value="2035" >Ямбол област</option><option value="nonbg_offers" style="background-color:#A9F3AD;font-weight:bold;" >Интернационални оферти</option><option value="6221"  >Tурция</option><option value="6218"  >Гърция</option><option value="6223"  >Израел</option><option value="6222"  >Испания</option><option value="6242"  >Русия</option><option value="6273"  >Украйна</option><option value="6219"  >Хърватия</option><option value="6220"  >Черна гора</option><option value="6224" style="font-weight:bold;">Други държави</option><option value="6233" >&nbsp;&nbsp;&nbsp;Англия</option><option value="6230" >&nbsp;&nbsp;&nbsp;Бахрейн</option><option value="6272" >&nbsp;&nbsp;&nbsp;Белгия</option><option value="6237" >&nbsp;&nbsp;&nbsp;Германия</option><option value="6229" >&nbsp;&nbsp;&nbsp;Дубай</option><option value="6232" >&nbsp;&nbsp;&nbsp;Италия</option><option value="6238" >&nbsp;&nbsp;&nbsp;Канада</option><option value="6231" >&nbsp;&nbsp;&nbsp;Ливан</option><option value="6239" >&nbsp;&nbsp;&nbsp;Люксембург</option><option value="6243" >&nbsp;&nbsp;&nbsp;Малта</option><option value="6227" >&nbsp;&nbsp;&nbsp;о. Мавриций</option><option value="6240" >&nbsp;&nbsp;&nbsp;Полша</option><option value="6241" >&nbsp;&nbsp;&nbsp;Португалия</option><option value="6228" >&nbsp;&nbsp;&nbsp;САЩ</option><option value="6236" >&nbsp;&nbsp;&nbsp;Словакия</option><option value="6234" >&nbsp;&nbsp;&nbsp;Холандия</option><option value="6235" >&nbsp;&nbsp;&nbsp;Чехия</option></select>
+				</td><td>
+					<div class="stopP2" id="stopP2">
+									<!--[if IE 6]>
+										<div id="type_select3" class="types_select"><a href="javascript:;" id="choose_select2" >РАЙОН</a></div>							
+									<![endif]-->
+									
+							<a href="javascript:;" class="iehide type_select2" id="type_select4" >&nbsp;</a>					
+							<select class="iehide"><option value="" id="choose_select2">РАЙОН</option></select>
+							
+							<div class="types_drop" id="area_select"></div>
+					</div>					
+					
+				</td></tr><tr><td>
+				<div class="stopP" id="stopP">
+					<!--[if IE 6]>
+						<div id="type_select1" class="types_select"><a href="javascript:;" id="choose_select" >ТИП ИМОТ</a></div>							
+					<![endif]-->
+					
+					<a href="javascript:;" class="iehide type_select2" id="type_select2" >&nbsp;</a>					
+					<select class="iehide"><option value="" id="choose_select">ТИП ИМОТ</option></select>
+					
+					<div class="types_drop" id="types_drop"><input type="checkbox" class="checkbox" name="type[13]" id="type_13" value="13"  /> <label for="type_13">Студио</label><br /><input type="checkbox" class="checkbox" name="type[6271]" id="type_6271" value="6271"  /> <label for="type_6271">Боксониера</label><br /><input type="checkbox" class="checkbox" name="type[14]" id="type_14" value="14"  /> <label for="type_14">Апартамент с 1 спалня</label><br /><input type="checkbox" class="checkbox" name="type[15]" id="type_15" value="15"  /> <label for="type_15">Апартамент с 2 спални</label><br /><input type="checkbox" class="checkbox" name="type[6269]" id="type_6269" value="6269"  /> <label for="type_6269">Апартамент с 3 спални</label><br /><input type="checkbox" class="checkbox" name="type[16]" id="type_16" value="16"  /> <label for="type_16">Големи апартаменти</label><br /><input type="checkbox" class="checkbox" name="type[20]" id="type_20" value="20"  /> <label for="type_20">Къща</label><br /><input type="checkbox" class="checkbox" name="type[21]" id="type_21" value="21"  /> <label for="type_21">Вила</label><br /><input type="checkbox" class="checkbox" name="type[22]" id="type_22" value="22"  /> <label for="type_22">Офис</label><br /><input type="checkbox" class="checkbox" name="type[23]" id="type_23" value="23"  /> <label for="type_23">Бизнес имоти</label><br /><input type="checkbox" class="checkbox" name="type[24]" id="type_24" value="24"  /> <label for="type_24">Парцел</label><br /><input type="checkbox" class="checkbox" name="type[1655]" id="type_1655" value="1655"  /> <label for="type_1655">Проект</label><br /><input type="checkbox" class="checkbox" name="type[2011]" id="type_2011" value="2011"  /> <label for="type_2011">За реиновация</label><br /><input type="checkbox" class="checkbox" name="type[6270]" id="type_6270" value="6270"  /> <label for="type_6270">Елитни имоти</label><br /></div>
+					</div>
+					
+					
+					
+				</td><td>
+				<div class="stopP3" id="stopP3">
+					<!--[if IE 6]>
+						<div id="type_select5" class="types_select"><a href="javascript:;" id="choose_select3" >ЛОКАЦИЯ</a></div>							
+					<![endif]-->
+					
+					<a href="javascript:;" class="iehide type_select2" id="type_select6" >&nbsp;</a>					
+					<select class="iehide"><option value="" id="choose_select3">ЛОКАЦИЯ</option></select>
+					
+					<div class="types_drop" id="location_drop"><input type="checkbox" class="checkbox" name="location_type[6263]" id="location_type_6263" value="6263"  /> <label for="location_type_6263">На море</label><br /><input type="checkbox" class="checkbox" name="location_type[6264]" id="location_type_6264" value="6264"  /> <label for="location_type_6264">Планина</label><br /><input type="checkbox" class="checkbox" name="location_type[6265]" id="location_type_6265" value="6265"  /> <label for="location_type_6265">Балнеология</label><br /><input type="checkbox" class="checkbox" name="location_type[6266]" id="location_type_6266" value="6266"  /> <label for="location_type_6266">В града</label><br /><input type="checkbox" class="checkbox" name="location_type[6267]" id="location_type_6267" value="6267"  /> <label for="location_type_6267">На село</label><br /><input type="checkbox" class="checkbox" name="location_type[6268]" id="location_type_6268" value="6268"  /> <label for="location_type_6268">Други</label><br /></div>
+					</div>
+					
+					
+					
+				</td></tr>
+				
+				<tr><td colspan="2" style="vertical-align:middle;">&nbsp;&nbsp;&nbsp;<b>ЦЕНА</b>:&nbsp;&nbsp;&nbsp;&nbsp; 
+				<input type="text" name="price_from" value="" style="width:103px;" placeholder="ОТ" />
+				&nbsp;
+				<input type="text" name="price_to" value="" style="width:103px;" placeholder="ДО" />
+				&nbsp;
+				<select name="valut" style="width:54px;">
+					<option value="lv" >лв</option>
+					<option value="euro" selected>&euro;</option>
+				</select>
+				</td></tr>
+			</table>
+			<a href="javascript:;" onclick="$('form#search_form').submit();" class="search_btn">ТЪРСИ</a>
+					</form>
+	</div>
+	<div class="clear"></div>	
+	<div style="display:none;">
+		<a href="/images/maps/map_varna.jpg" rel="fancyimg" id="map7">/images/maps/map_varna.jpg</a><a href="/images/maps/map_varna_region.jpg" rel="fancyimg" id="map5">/images/maps/map_varna_region.jpg</a><a href="/images/maps/map_burgas.jpg" rel="fancyimg" id="map279">/images/maps/map_burgas.jpg</a><a href="/images/maps/map_burgas_region.jpg" rel="fancyimg" id="map280">/images/maps/map_burgas_region.jpg</a><a href="/images/maps/map_dobrich.jpg" rel="fancyimg" id="map275">/images/maps/map_dobrich.jpg</a><a href="/images/maps/map_dobrich_region.jpg" rel="fancyimg" id="map276">/images/maps/map_dobrich_region.jpg</a><a href="/images/maps/map_turnovo.jpg" rel="fancyimg" id="map1658">/images/maps/map_turnovo.jpg</a><a href="/images/maps/map_turnovo_region.jpg" rel="fancyimg" id="map1659">/images/maps/map_turnovo_region.jpg</a>		
+	</div>
+</div>
+
+<div class="banner_panel">
+	<a href="/bg/reklama.html" style="background-image: url('/images/banners/big_banner.jpg');"></a>
+</div>
+
+<div class="clear"></div>
+<div class="textslider" id="textslider">
+	<a href="/bg/search_offers.html" id="soffer_more">Виж всички обяви</a>	
+	<span id="soffer_search">ТЪРСЯ: </span>
+	<a href="/bg/search_offer.html?id=30" id="soffer">НАЕМА СПЕШНО <span style="color:red;">виж повече</span></a>		
+</div>
+	<div class="clear" style="height:10px;"></div>
+	
+	<!--<h1 style="color:#2A3C65;padding-bottom:5px;">&nbsp;&nbsp;Услуги</h1>-->
+		
+	<div class="left_side">
+	
+	<div class="clear" style="height:3px;"></div>
+		
+		<div class="left_menu_head">Всички обяви на</div>
+				<ul><li><a href="/bg/offers.html?user_type=0&amp;choosen_type=sales&amp;location=&amp;type=&amp;location_type=&amp;area=&amp;price_from=&amp;price_to=&amp;listpage=1&amp;order=&amp;valut=euro"  >Частни лица</a></li><li><a href="/bg/offers.html?user_type=1&amp;choosen_type=sales&amp;location=&amp;type=&amp;location_type=&amp;area=&amp;price_from=&amp;price_to=&amp;listpage=1&amp;order=&amp;valut=euro"  >Агенции</a></li><li><a href="/bg/offers.html?user_type=2&amp;choosen_type=sales&amp;location=&amp;type=&amp;location_type=&amp;area=&amp;price_from=&amp;price_to=&amp;listpage=1&amp;order=&amp;valut=euro"  >Строителни фирми</a></li></ul><div class="left_menu_head" style="margin-top:5px;" >Местоположение</div><ul><li ><a href="/bg/offers.html?location_type=6263"   title="На море">На море</a></li><li ><a href="/bg/offers.html?location_type=6264"   title="Планина">Планина</a></li><li ><a href="/bg/offers.html?location_type=6265"   title="Балнеология">Балнеология</a></li><li ><a href="/bg/offers.html?location_type=6266"   title="В града">В града</a></li><li ><a href="/bg/offers.html?location_type=6267"   title="На село">На село</a></li><li ><a href="/bg/offers.html?location_type=6268"   title="Други">Други</a></li></ul><div class="left_menu_head" style="margin-top:5px;" >Типове</div><ul><li ><a href="/bg/offers.html?type=13"   title="Студио">Студио</a></li><li ><a href="/bg/offers.html?type=6271"   title="Боксониера">Боксониера</a></li><li ><a href="/bg/offers.html?type=14"   title="Апартамент с 1 спалня">Апартамент с 1 спалня</a></li><li ><a href="/bg/offers.html?type=15"   title="Апартамент с 2 спални">Апартамент с 2 спални</a></li><li ><a href="/bg/offers.html?type=6269"   title="Апартамент с 3 спални">Апартамент с 3 спални</a></li><li ><a href="/bg/offers.html?type=16"   title="Големи апартаменти">Големи апартаменти</a></li><li ><a href="/bg/offers.html?type=20"   title="Къща">Къща</a></li><li ><a href="/bg/offers.html?type=21"   title="Вила">Вила</a></li><li ><a href="/bg/offers.html?type=22"   title="Офис">Офис</a></li><li ><a href="/bg/offers.html?type=23"   title="Бизнес имоти">Бизнес имоти</a></li><li ><a href="/bg/offers.html?type=24"   title="Парцел">Парцел</a></li><li ><a href="/bg/offers.html?type=1655"   title="Проект">Проект</a></li><li ><a href="/bg/offers.html?type=2011"   title="За реиновация">За реиновация</a></li><li ><a href="/bg/offers.html?type=6270"   title="Елитни имоти">Елитни имоти</a></li></ul><div class="left_menu_head" style="margin-top:5px;" >Наеми</div><ul><li ><a href="/bg/offers.html?type=27"   title="Под наем за живеене">за живеене</a></li><li ><a href="/bg/offers.html?type=1629"   title="Под наем за бизнес">за бизнес</a></li><li ><a href="/bg/offers.html?type=6274"   title="Под наем - нощувки">нощувки</a></li></ul><div class="left_menu_head" style="margin-top:5px; background-image: url(/images/left_menu_head_big.jpg);height:50px;text-align:left;" >Интернационални оферти</div><ul></ul><ul><li><a href="javascript:void(0)" onclick="switchInter1()" title=""><b>Интернационални</b></a></li><ul id="main_other" style="display:none;"><li><img src="/images/flags/tr.png" alt="" style="float:left;margin:7px;"/><a href="/bg/offers.html?location=6221"  title="">&nbsp;&nbsp;&nbsp;Tурция</a></li><li><img src="/images/flags/gr.png" alt="" style="float:left;margin:7px;"/><a href="/bg/offers.html?location=6218"  title="">&nbsp;&nbsp;&nbsp;Гърция</a></li><li><img src="/images/flags/il.png" alt="" style="float:left;margin:7px;"/><a href="/bg/offers.html?location=6223"  title="">&nbsp;&nbsp;&nbsp;Израел</a></li><li><img src="/images/flags/es.png" alt="" style="float:left;margin:7px;"/><a href="/bg/offers.html?location=6222"  title="">&nbsp;&nbsp;&nbsp;Испания</a></li><li><img src="/images/flags/ru.png" alt="" style="float:left;margin:7px;"/><a href="/bg/offers.html?location=6242"  title="">&nbsp;&nbsp;&nbsp;Русия</a></li><li><img src="/images/flags/ukr.png" alt="" style="float:left;margin:7px;"/><a href="/bg/offers.html?location=6273"  title="">&nbsp;&nbsp;&nbsp;Украйна</a></li><li><img src="/images/flags/py.png" alt="" style="float:left;margin:7px;"/><a href="/bg/offers.html?location=6219"  title="">&nbsp;&nbsp;&nbsp;Хърватия</a></li><li><img src="/images/flags/ma.png" alt="" style="float:left;margin:7px;"/><a href="/bg/offers.html?location=6220"  title="">&nbsp;&nbsp;&nbsp;Черна гора</a></li></ul><div class="clear"></div><li><a href="javascript:void(0)" onclick="switchInter()" title=""><b>Други държави</b></a></li><ul id="inter_other" style="display:none;"><li><a href="/bg/offers.html?location=6233"  title="">&nbsp;&nbsp;&nbsp;Англия</a></li><li><a href="/bg/offers.html?location=6230"  title="">&nbsp;&nbsp;&nbsp;Бахрейн</a></li><li><a href="/bg/offers.html?location=6272"  title="">&nbsp;&nbsp;&nbsp;Белгия</a></li><li><a href="/bg/offers.html?location=6237"  title="">&nbsp;&nbsp;&nbsp;Германия</a></li><li><a href="/bg/offers.html?location=6229"  title="">&nbsp;&nbsp;&nbsp;Дубай</a></li><li><a href="/bg/offers.html?location=6232"  title="">&nbsp;&nbsp;&nbsp;Италия</a></li><li><a href="/bg/offers.html?location=6238"  title="">&nbsp;&nbsp;&nbsp;Канада</a></li><li><a href="/bg/offers.html?location=6231"  title="">&nbsp;&nbsp;&nbsp;Ливан</a></li><li><a href="/bg/offers.html?location=6239"  title="">&nbsp;&nbsp;&nbsp;Люксембург</a></li><li><a href="/bg/offers.html?location=6243"  title="">&nbsp;&nbsp;&nbsp;Малта</a></li><li><a href="/bg/offers.html?location=6227"  title="">&nbsp;&nbsp;&nbsp;о. Мавриций</a></li><li><a href="/bg/offers.html?location=6240"  title="">&nbsp;&nbsp;&nbsp;Полша</a></li><li><a href="/bg/offers.html?location=6241"  title="">&nbsp;&nbsp;&nbsp;Португалия</a></li><li><a href="/bg/offers.html?location=6228"  title="">&nbsp;&nbsp;&nbsp;САЩ</a></li><li><a href="/bg/offers.html?location=6236"  title="">&nbsp;&nbsp;&nbsp;Словакия</a></li><li><a href="/bg/offers.html?location=6234"  title="">&nbsp;&nbsp;&nbsp;Холандия</a></li><li><a href="/bg/offers.html?location=6235"  title="">&nbsp;&nbsp;&nbsp;Чехия</a></li></ul><div class="clear"></div>
+				</ul>			
+			
+	
+	
+	
+	</div><!-- head -->
+	
+	<div class="right_side">
+		
+		<div class="banner"><a href="http://reall.bg" target="_blank" title="http://reall.bg" style="background-image:url('/files/users/images/23_banner.jpg?ver=457');"></a></div><div class="banner" style="margin-right:0px;"><a href="http://reall.bg" target="_blank" title="http://reall.bg" style="background-image:url('/files/users/images/16_banner.jpg?ver=589');"></a></div>
+							<div class="small_panel gray_panel">
+								<div class="flag special_flag"></div>
+								<div class="small_panel_in_offer">		
+									<div class="small_panel_img"><a href="/bg/offer/1635/%D0%A0%D0%B5%D1%81%D1%82%D0%BE%D1%80%D0%B0%D0%BD%D1%82-%D1%81-%D0%B1%D0%B0%D1%81%D0%B5%D0%B9%D0%BD.html" style="background-image:url('/files/offers/images/19703_small_img.jpg');"></a></div>
+									<div class="red_title offer_title" ><a href="/bg/offer/1635/%D0%A0%D0%B5%D1%81%D1%82%D0%BE%D1%80%D0%B0%D0%BD%D1%82-%D1%81-%D0%B1%D0%B0%D1%81%D0%B5%D0%B9%D0%BD.html"><h2>Ресторант с басейн</h2></a></div>
+									<div class="red_title offer_price" >88 000<span class='smalltxt'>&euro;</span></div>					
+									<div style="height:30px;"></div>
+									<div class="small_desc2"><b>Бизнес имоти</b><br /><span style="color:red">ID:1635</span> | Варна | к.к. Златни пясъци | <br />225 кв.м.
+									<div class="small_desc">
+	МЕСТОНАХОЖДЕНИЕ:
+	&ndash; 700 м. от морето,
+	&ndash; 50 м. отглавен път: к.к. Златни Пясъци &ndash; к.к. Албена,
+	&ndash; 100 м. от автобусна спирка,
+	&ndash; 150 м. от центъра, магазини,</div>
+									</div>
+									<a href="/bg/offer/1635/%D0%A0%D0%B5%D1%81%D1%82%D0%BE%D1%80%D0%B0%D0%BD%D1%82-%D1%81-%D0%B1%D0%B0%D1%81%D0%B5%D0%B9%D0%BD.html" class="small_btn" style="margin-top:6px;float:right;">виж повече</a><a href="/bg/offer/1635/%D0%A0%D0%B5%D1%81%D1%82%D0%BE%D1%80%D0%B0%D0%BD%D1%82-%D1%81-%D0%B1%D0%B0%D1%81%D0%B5%D0%B9%D0%BD.html" class="top_offer_btn_blue" style="margin-top:6px;float:left;">Exclusive</a><div class="clear"></div>	
+								</div>
+							</div>
+							
+							<div class="small_panel even gray_panel">
+								<div class="flag special_flag"></div>
+								<div class="small_panel_in_offer">		
+									<div class="small_panel_img"><a href="/bg/offer/2576/%D0%94%D0%B2%D1%83%D1%81%D1%82%D0%B0%D0%B5%D0%BD%2C-%D0%A0%D0%B8%D0%BC%D1%81%D0%BA%D0%B8-%D1%82%D0%B5%D1%80%D0%BC%D0%B8%2C-%D0%93%D1%80%D1%8A%D1%86%D0%BA%D0%B0-%D0%BC%D0%B0%D1%85%D0%B0%D0%BB%D0%B0.html" style="background-image:url('/files/offers/images/35291_small_img.jpg');"></a></div>
+									<div class="red_title offer_title" ><a href="/bg/offer/2576/%D0%94%D0%B2%D1%83%D1%81%D1%82%D0%B0%D0%B5%D0%BD%2C-%D0%A0%D0%B8%D0%BC%D1%81%D0%BA%D0%B8-%D1%82%D0%B5%D1%80%D0%BC%D0%B8%2C-%D0%93%D1%80%D1%8A%D1%86%D0%BA%D0%B0-%D0%BC%D0%B0%D1%85%D0%B0%D0%BB%D0%B0.html"><h2>Двустаен, Римски терми, Гръцка махала</h2></a></div>
+									<div class="red_title offer_price" >69 900<span class='smalltxt'>&euro;</span></div>					
+									<div style="height:30px;"></div>
+									<div class="small_desc2"><b>Апартамент с 1 спалня</b><br /><span style="color:red">ID:2576</span> | Варна | Гръцка махала | <br />ЕТАЖ 4 | 63 кв.м.
+									<div class="small_desc">	Двустаен апартамент, Гръцка махала, с прекрасна гледка към самите римски терми. От апартамента до морето разстоянието е около 2 минути пеша. Обзаведен е луксозно, с</div>
+									</div>
+									<a href="/bg/offer/2576/%D0%94%D0%B2%D1%83%D1%81%D1%82%D0%B0%D0%B5%D0%BD%2C-%D0%A0%D0%B8%D0%BC%D1%81%D0%BA%D0%B8-%D1%82%D0%B5%D1%80%D0%BC%D0%B8%2C-%D0%93%D1%80%D1%8A%D1%86%D0%BA%D0%B0-%D0%BC%D0%B0%D1%85%D0%B0%D0%BB%D0%B0.html" class="small_btn" style="margin-top:6px;float:right;">виж повече</a><a href="/bg/offer/2576/%D0%94%D0%B2%D1%83%D1%81%D1%82%D0%B0%D0%B5%D0%BD%2C-%D0%A0%D0%B8%D0%BC%D1%81%D0%BA%D0%B8-%D1%82%D0%B5%D1%80%D0%BC%D0%B8%2C-%D0%93%D1%80%D1%8A%D1%86%D0%BA%D0%B0-%D0%BC%D0%B0%D1%85%D0%B0%D0%BB%D0%B0.html" class="top_offer_btn_blue" style="margin-top:6px;float:left;">Exclusive</a><div class="clear"></div>	
+								</div>
+							</div>
+							<div class="clear"></div><br />
+				<div class="small_panel gray_panel" onclick="document.location.href='/bg/offer/1408/4-%D0%B5%D1%82%D0%B0%D0%B6%D0%BD%D0%B0-%D0%BA%D1%8A%D1%89%D0%B0.html'">
+					<div class="flag vip_flag"></div>
+					<div class="small_panel_in_offer">								
+						<div class="small_panel_img"><a href="/bg/offer/1408/4-%D0%B5%D1%82%D0%B0%D0%B6%D0%BD%D0%B0-%D0%BA%D1%8A%D1%89%D0%B0.html" style="background-image:url('/files/offers/images/15412_small_img.jpg');"></a></div>
+						
+						<div class="red_title offer_title"><a href="/bg/offer/1408/4-%D0%B5%D1%82%D0%B0%D0%B6%D0%BD%D0%B0-%D0%BA%D1%8A%D1%89%D0%B0.html"><h2>4-етажна къща</h2></a></div>
+						<div class="red_title offer_price" >215 000<span class='smalltxt'>&euro;</span></div>
+						<div style="height:30px;"></div>
+						<div class="small_desc2"><b>Вила</b><br /><span style="color:red">ID:1408</span> | Варна | Аспарухово<br />ЕТАЖ 4 | 500 кв.м.
+						<div class="small_desc">
+	МЕСТОПОЛОЖЕНИЕ:
+	&ndash; 300 м. от плажа,
+	&ndash; 5 км. от центъра на града.
+	От имота се открива панорама на Варненския залив и гората.
+	
+
+	
+	ОПИСАНИЕ:
+	Обзаведена</div>
+						</div>
+						
+						<a href="/bg/offer/1408/4-%D0%B5%D1%82%D0%B0%D0%B6%D0%BD%D0%B0-%D0%BA%D1%8A%D1%89%D0%B0.html" class="small_btn" style="margin-top:6px;float:right;">виж повече</a><div class="clear"></div>	
+					</div>
+				</div>
+				
+				<div class="small_panel even gray_panel" onclick="document.location.href='/bg/offer/1555/%D0%9A%D1%8A%D1%89%D0%B0-%D1%81-%D0%BC%D0%BE%D1%80%D1%81%D0%BA%D0%B0-%D0%BF%D0%B0%D0%BD%D0%BE%D1%80%D0%B0%D0%BC%D0%B0.html'">
+					<div class="flag vip_flag"></div>
+					<div class="small_panel_in_offer">								
+						<div class="small_panel_img"><a href="/bg/offer/1555/%D0%9A%D1%8A%D1%89%D0%B0-%D1%81-%D0%BC%D0%BE%D1%80%D1%81%D0%BA%D0%B0-%D0%BF%D0%B0%D0%BD%D0%BE%D1%80%D0%B0%D0%BC%D0%B0.html" style="background-image:url('/files/offers/images/17999_small_img.jpg');"></a></div>
+						
+						<div class="red_title offer_title"><a href="/bg/offer/1555/%D0%9A%D1%8A%D1%89%D0%B0-%D1%81-%D0%BC%D0%BE%D1%80%D1%81%D0%BA%D0%B0-%D0%BF%D0%B0%D0%BD%D0%BE%D1%80%D0%B0%D0%BC%D0%B0.html"><h2>Къща с морска панорама</h2></a></div>
+						<div class="red_title offer_price" >215 000<span class='smalltxt'>&euro;</span></div>
+						<div style="height:30px;"></div>
+						<div class="small_desc2"><b>Вила</b><br /><span style="color:red">ID:1555</span> | Варна | Бриз<br />ЕТАЖ 2 | 280 кв.м.
+						<div class="small_desc">
+
+
+
+
+	МЕСТОРАСПОЛОЖЕНИЕ:
+	&ndash; 1 км. от морето,
+	&ndash; 3 км. от центъра на града.
+	
+	
+	
+	ОПИСАНИЕ:
+	Нова двуетажна къща.
+	Състои се от:
+	1-и етаж: 
+	&ndash; входно антре,
+	&ndash;</div>
+						</div>
+						
+						<a href="/bg/offer/1555/%D0%9A%D1%8A%D1%89%D0%B0-%D1%81-%D0%BC%D0%BE%D1%80%D1%81%D0%BA%D0%B0-%D0%BF%D0%B0%D0%BD%D0%BE%D1%80%D0%B0%D0%BC%D0%B0.html" class="small_btn" style="margin-top:6px;float:right;">виж повече</a><div class="clear"></div>	
+					</div>
+				</div>
+				
+				<div class="small_panel gray_panel" onclick="document.location.href='/bg/offer/1824/%D0%90%D0%BF%D0%B0%D1%80%D1%82%D0%B0%D0%BC%D0%B5%D0%BD%D1%82-%D1%81-%D0%B4%D0%B2%D0%B5-%D1%81%D0%BF%D0%B0%D0%BB%D0%BD%D0%B8.html'">
+					<div class="flag vip_flag"></div>
+					<div class="small_panel_in_offer">								
+						<div class="small_panel_img"><a href="/bg/offer/1824/%D0%90%D0%BF%D0%B0%D1%80%D1%82%D0%B0%D0%BC%D0%B5%D0%BD%D1%82-%D1%81-%D0%B4%D0%B2%D0%B5-%D1%81%D0%BF%D0%B0%D0%BB%D0%BD%D0%B8.html" style="background-image:url('/files/offers/images/22898_small_img.jpg');"></a></div>
+						
+						<div class="red_title offer_title"><a href="/bg/offer/1824/%D0%90%D0%BF%D0%B0%D1%80%D1%82%D0%B0%D0%BC%D0%B5%D0%BD%D1%82-%D1%81-%D0%B4%D0%B2%D0%B5-%D1%81%D0%BF%D0%B0%D0%BB%D0%BD%D0%B8.html"><h2>Апартамент с две спални</h2></a></div>
+						<div class="red_title offer_price" >61 000<span class='smalltxt'>&euro;</span></div>
+						<div style="height:30px;"></div>
+						<div class="small_desc2"><b>Апартамент с 2 спални</b><br /><span style="color:red">ID:1824</span> | Варна | Колхозен пазар<br />ЕТАЖ 2 | 85 кв.м.
+						<div class="small_desc">
+	МЕСТОПОЛОЖЕНИЕ:
+	&ndash; 1 км. от центъра на град Варна,
+	&ndash; 6 км. от летище.
+
+	
+
+	
+	
+
+	ОПИСАНИЕ: 
+
+	Изключително стилен. 
+	Състои се от:
+	&ndash; входно антре, 
+	&ndash; голям</div>
+						</div>
+						
+						<a href="/bg/offer/1824/%D0%90%D0%BF%D0%B0%D1%80%D1%82%D0%B0%D0%BC%D0%B5%D0%BD%D1%82-%D1%81-%D0%B4%D0%B2%D0%B5-%D1%81%D0%BF%D0%B0%D0%BB%D0%BD%D0%B8.html" class="small_btn" style="margin-top:6px;float:right;">виж повече</a><div class="clear"></div>	
+					</div>
+				</div>
+				
+				<div class="small_panel even gray_panel" onclick="document.location.href='/bg/offer/897/%D0%A1%D1%82%D1%83%D0%B4%D0%B8%D0%BE-%D0%B2-%D0%BA%D0%BE%D0%BC%D0%BF%D0%BB%D0%B5%D0%BA%D1%81-%D0%BD%D0%B0-100-%D0%BC.-%D0%BE%D1%82-%D0%BF%D0%BB%D0%B0%D0%B6%D0%B0..html'">
+					<div class="flag vip_flag"></div>
+					<div class="small_panel_in_offer">								
+						<div class="small_panel_img"><a href="/bg/offer/897/%D0%A1%D1%82%D1%83%D0%B4%D0%B8%D0%BE-%D0%B2-%D0%BA%D0%BE%D0%BC%D0%BF%D0%BB%D0%B5%D0%BA%D1%81-%D0%BD%D0%B0-100-%D0%BC.-%D0%BE%D1%82-%D0%BF%D0%BB%D0%B0%D0%B6%D0%B0..html" style="background-image:url('/files/offers/images/9208_small_img.jpg');"></a></div>
+						
+						<div class="red_title offer_title"><a href="/bg/offer/897/%D0%A1%D1%82%D1%83%D0%B4%D0%B8%D0%BE-%D0%B2-%D0%BA%D0%BE%D0%BC%D0%BF%D0%BB%D0%B5%D0%BA%D1%81-%D0%BD%D0%B0-100-%D0%BC.-%D0%BE%D1%82-%D0%BF%D0%BB%D0%B0%D0%B6%D0%B0..html"><h2>Студио в комплекс на 100 м. от плажа.</h2></a></div>
+						<div class="red_title offer_price" >35 000<span class='smalltxt'>&euro;</span></div>
+						<div style="height:30px;"></div>
+						<div class="small_desc2"><b>Студио</b><br /><span style="color:red">ID:897</span> | Бургас област | к.к. Слънчев бряг<br />36 кв.м.
+						<div class="small_desc">
+	МЕСТОПОЛОЖЕНИЕ:Студиото се намира в комплекс в центъра на курортен комплекс &quot;Слънчев бряг&quot;, на 100 м. от плажа.
+
+	
+
+	ОПИСАНИЕ НА ИМОТА:Студиото е с площ 36,06</div>
+						</div>
+						
+						<a href="/bg/offer/897/%D0%A1%D1%82%D1%83%D0%B4%D0%B8%D0%BE-%D0%B2-%D0%BA%D0%BE%D0%BC%D0%BF%D0%BB%D0%B5%D0%BA%D1%81-%D0%BD%D0%B0-100-%D0%BC.-%D0%BE%D1%82-%D0%BF%D0%BB%D0%B0%D0%B6%D0%B0..html" class="small_btn" style="margin-top:6px;float:right;">виж повече</a><div class="clear"></div>	
+					</div>
+				</div>
+				
+				<div class="small_panel gray_panel" onclick="document.location.href='/bg/offer/3647/%D0%A2%D1%80%D0%B8%D0%B5%D1%82%D0%B0%D0%B6%D0%BD%D0%B0-%D0%92%D0%B8%D0%BB%D0%B0-%D1%81-%D0%91%D0%B0%D1%81%D0%B5%D0%B9%D0%BD.html'">
+					<div class="flag vip_flag"></div>
+					<div class="small_panel_in_offer">								
+						<div class="small_panel_img"><a href="/bg/offer/3647/%D0%A2%D1%80%D0%B8%D0%B5%D1%82%D0%B0%D0%B6%D0%BD%D0%B0-%D0%92%D0%B8%D0%BB%D0%B0-%D1%81-%D0%91%D0%B0%D1%81%D0%B5%D0%B9%D0%BD.html" style="background-image:url('/files/offers/images/29971_small_img.jpg');"></a></div>
+						
+						<div class="red_title offer_title"><a href="/bg/offer/3647/%D0%A2%D1%80%D0%B8%D0%B5%D1%82%D0%B0%D0%B6%D0%BD%D0%B0-%D0%92%D0%B8%D0%BB%D0%B0-%D1%81-%D0%91%D0%B0%D1%81%D0%B5%D0%B9%D0%BD.html"><h2>Триетажна Вила с Басейн</h2></a></div>
+						<div class="red_title offer_price" >53 000<span class='smalltxt'>&euro;</span></div>
+						<div style="height:30px;"></div>
+						<div class="small_desc2"><b>Вила</b><br /><span style="color:red">ID:3647</span> | Варна | м-т Боровец - юг<br />ЕТАЖ 3 | 90 кв.м.
+						<div class="small_desc">
+	МЕСТОПОЛОЖЕНИЕ:Район &quot;Аспарухово&quot;, кв.Галата, местност &quot;Боровец-юг&quot;
+	-15 км. от център на Варна.
+	
+	Поради близостта си до града, плажът и горската природа</div>
+						</div>
+						
+						<a href="/bg/offer/3647/%D0%A2%D1%80%D0%B8%D0%B5%D1%82%D0%B0%D0%B6%D0%BD%D0%B0-%D0%92%D0%B8%D0%BB%D0%B0-%D1%81-%D0%91%D0%B0%D1%81%D0%B5%D0%B9%D0%BD.html" class="small_btn" style="margin-top:6px;float:right;">виж повече</a><div class="clear"></div>	
+					</div>
+				</div>
+				
+				<div class="small_panel even gray_panel" onclick="document.location.href='/bg/offer/1522/%D0%9A%D1%8A%D1%89%D0%B0.html'">
+					<div class="flag vip_flag"></div>
+					<div class="small_panel_in_offer">								
+						<div class="small_panel_img"><a href="/bg/offer/1522/%D0%9A%D1%8A%D1%89%D0%B0.html" style="background-image:url('/files/offers/images/17513_small_img.jpg');"></a></div>
+						
+						<div class="red_title offer_title"><a href="/bg/offer/1522/%D0%9A%D1%8A%D1%89%D0%B0.html"><h2>Къща</h2></a></div>
+						<div class="red_title offer_price" >120 000<span class='smalltxt'>&euro;</span></div>
+						<div style="height:30px;"></div>
+						<div class="small_desc2"><b>Вила</b><br /><span style="color:red">ID:1522</span> | Варна област | с. Здравец<br />ЕТАЖ 2 | 140 кв.м.
+						<div class="small_desc"></div>
+						</div>
+						
+						<a href="/bg/offer/1522/%D0%9A%D1%8A%D1%89%D0%B0.html" class="small_btn" style="margin-top:6px;float:right;">виж повече</a><div class="clear"></div>	
+					</div>
+				</div>
+				
+				<div class="small_panel gray_panel" onclick="document.location.href='/bg/offer/1413/%D0%94%D0%B2%D1%83%D0%B5%D1%82%D0%B0%D0%B6%D0%BD%D0%B0-%D0%BA%D1%8A%D1%89%D0%B0.html'">
+					<div class="flag vip_flag"></div>
+					<div class="small_panel_in_offer">								
+						<div class="small_panel_img"><a href="/bg/offer/1413/%D0%94%D0%B2%D1%83%D0%B5%D1%82%D0%B0%D0%B6%D0%BD%D0%B0-%D0%BA%D1%8A%D1%89%D0%B0.html" style="background-image:url('/files/offers/images/15494_small_img.jpg');"></a></div>
+						
+						<div class="red_title offer_title"><a href="/bg/offer/1413/%D0%94%D0%B2%D1%83%D0%B5%D1%82%D0%B0%D0%B6%D0%BD%D0%B0-%D0%BA%D1%8A%D1%89%D0%B0.html"><h2>Двуетажна къща</h2></a></div>
+						<div class="red_title offer_price" >98 000<span class='smalltxt'>&euro;</span></div>
+						<div style="height:30px;"></div>
+						<div class="small_desc2"><b>Вила</b><br /><span style="color:red">ID:1413</span> | Варна област | м-т Ален мак<br />ЕТАЖ 2 | 90 кв.м.
+						<div class="small_desc">
+	МЕСТОПОЛОЖЕНИЕ:
+	Двуетажна къща в тиха и спокойна местност в близост до к.к. Златни пясъци.
+
+	
+
+	ОПИСАНИЕ: 
+	Първият етаж се състои от хол, кухня, санитарно</div>
+						</div>
+						
+						<a href="/bg/offer/1413/%D0%94%D0%B2%D1%83%D0%B5%D1%82%D0%B0%D0%B6%D0%BD%D0%B0-%D0%BA%D1%8A%D1%89%D0%B0.html" class="small_btn" style="margin-top:6px;float:right;">виж повече</a><div class="clear"></div>	
+					</div>
+				</div>
+				
+				<div class="small_panel even gray_panel" onclick="document.location.href='/bg/offer/127/%D0%9F%D0%B0%D1%80%D1%86%D0%B5%D0%BB%3A-%D1%82%D0%BE%D0%BA%2C-%D0%B2%D0%BE%D0%B4%D0%B0%2C-%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB-%D1%81.-%D0%A7%D0%95%D0%A0%D0%9D%D0%95%D0%92%D0%9E.html'">
+					<div class="flag vip_flag"></div>
+					<div class="small_panel_in_offer">								
+						<div class="small_panel_img"><a href="/bg/offer/127/%D0%9F%D0%B0%D1%80%D1%86%D0%B5%D0%BB%3A-%D1%82%D0%BE%D0%BA%2C-%D0%B2%D0%BE%D0%B4%D0%B0%2C-%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB-%D1%81.-%D0%A7%D0%95%D0%A0%D0%9D%D0%95%D0%92%D0%9E.html" style="background-image:url('/files/offers/images/1503_small_img.jpg');"></a></div>
+						
+						<div class="red_title offer_title"><a href="/bg/offer/127/%D0%9F%D0%B0%D1%80%D1%86%D0%B5%D0%BB%3A-%D1%82%D0%BE%D0%BA%2C-%D0%B2%D0%BE%D0%B4%D0%B0%2C-%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB-%D1%81.-%D0%A7%D0%95%D0%A0%D0%9D%D0%95%D0%92%D0%9E.html"><h2>Парцел: ток, вода, канал-с. ЧЕРНЕВО</h2></a></div>
+						<div class="red_title offer_price" >15 000<span class='smalltxt'>&euro;</span></div>
+						<div style="height:30px;"></div>
+						<div class="small_desc2"><b>Парцел</b><br /><span style="color:red">ID:127</span> | Варна област | с. Чернево<br />2500 кв.м.
+						<div class="small_desc">
+	ИМОТ: ПАРЦЕЛ 
+
+	
+
+	МЕСТОНАХОЖДЕНИЕ: С. Чернево, област Варна 
+
+	Разстояние до летище: 30 км.
+
+	Разстояние до гр. Варна: 35 км.
+
+	
+
+	РЕГИОН: Село Чернево е разположено на</div>
+						</div>
+						
+						<a href="/bg/offer/127/%D0%9F%D0%B0%D1%80%D1%86%D0%B5%D0%BB%3A-%D1%82%D0%BE%D0%BA%2C-%D0%B2%D0%BE%D0%B4%D0%B0%2C-%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB-%D1%81.-%D0%A7%D0%95%D0%A0%D0%9D%D0%95%D0%92%D0%9E.html" class="small_btn" style="margin-top:6px;float:right;">виж повече</a><div class="clear"></div>	
+					</div>
+				</div>
+				
+				<div class="small_panel gray_panel" onclick="document.location.href='/bg/offer/2025/%D0%9A%D1%8A%D1%89%D0%B0-%D1%81%D0%B5%D0%BC%D0%B5%D0%B5%D0%BD-%D1%85%D0%BE%D1%82%D0%B5%D0%BB-%D0%BD%D0%B0--%D0%97%D0%BB%D0%B0%D1%82%D0%BD%D0%B0%D1%82%D0%B0-%D1%80%D0%B8%D0%B1%D0%BA%D0%B0.html'">
+					<div class="flag vip_flag"></div>
+					<div class="small_panel_in_offer">								
+						<div class="small_panel_img"><a href="/bg/offer/2025/%D0%9A%D1%8A%D1%89%D0%B0-%D1%81%D0%B5%D0%BC%D0%B5%D0%B5%D0%BD-%D1%85%D0%BE%D1%82%D0%B5%D0%BB-%D0%BD%D0%B0--%D0%97%D0%BB%D0%B0%D1%82%D0%BD%D0%B0%D1%82%D0%B0-%D1%80%D0%B8%D0%B1%D0%BA%D0%B0.html" style="background-image:url('/files/offers/images/24339_small_img.jpg');"></a></div>
+						
+						<div class="red_title offer_title"><a href="/bg/offer/2025/%D0%9A%D1%8A%D1%89%D0%B0-%D1%81%D0%B5%D0%BC%D0%B5%D0%B5%D0%BD-%D1%85%D0%BE%D1%82%D0%B5%D0%BB-%D0%BD%D0%B0--%D0%97%D0%BB%D0%B0%D1%82%D0%BD%D0%B0%D1%82%D0%B0-%D1%80%D0%B8%D0%B1%D0%BA%D0%B0.html"><h2>Къща/семеен хотел на  Златната рибка</h2></a></div>
+						<div class="red_title offer_price" >143 000<span class='smalltxt'>&euro;</span></div>
+						<div style="height:30px;"></div>
+						<div class="small_desc2"><b>Бизнес имоти</b><br /><span style="color:red">ID:2025</span> | Добрич област | гр. Балчик<br />ЕТАЖ 4 | 750 кв.м.
+						<div class="small_desc">
+	
+
+	
+		
+			
+				
+					
+						
+							
+								В гр. Балчик, област Добрич, до к.к.Албена. 750 m2, на 4 етажа, тухла
+								ПРОДАВА се ИЗГОДНО къща тип семеен хотел,в слънчева вилна зона в</div>
+						</div>
+						
+						<a href="/bg/offer/2025/%D0%9A%D1%8A%D1%89%D0%B0-%D1%81%D0%B5%D0%BC%D0%B5%D0%B5%D0%BD-%D1%85%D0%BE%D1%82%D0%B5%D0%BB-%D0%BD%D0%B0--%D0%97%D0%BB%D0%B0%D1%82%D0%BD%D0%B0%D1%82%D0%B0-%D1%80%D0%B8%D0%B1%D0%BA%D0%B0.html" class="small_btn" style="margin-top:6px;float:right;">виж повече</a><div class="clear"></div>	
+					</div>
+				</div>
+				
+				<div class="small_panel even gray_panel" onclick="document.location.href='/bg/offer/1126/%D0%90%D0%BF%D0%B0%D1%80%D1%82%D0%B0%D0%BC%D0%B5%D0%BD%D1%82%D0%B8-%D1%81-1-%D1%81%D0%BF%D0%B0%D0%BB%D0%BD%D1%8F-%D0%B2-%D0%BA%D0%BE%D0%BC%D0%BF%D0%BB%D0%B5%D0%BA%D1%81-%D1%81-%D0%B1%D0%B0%D1%81%D0%B5%D0%B9%D0%BD.html'">
+					<div class="flag vip_flag"></div>
+					<div class="small_panel_in_offer">								
+						<div class="small_panel_img"><a href="/bg/offer/1126/%D0%90%D0%BF%D0%B0%D1%80%D1%82%D0%B0%D0%BC%D0%B5%D0%BD%D1%82%D0%B8-%D1%81-1-%D1%81%D0%BF%D0%B0%D0%BB%D0%BD%D1%8F-%D0%B2-%D0%BA%D0%BE%D0%BC%D0%BF%D0%BB%D0%B5%D0%BA%D1%81-%D1%81-%D0%B1%D0%B0%D1%81%D0%B5%D0%B9%D0%BD.html" style="background-image:url('/files/offers/images/11665_small_img.jpg');"></a></div>
+						
+						<div class="red_title offer_title"><a href="/bg/offer/1126/%D0%90%D0%BF%D0%B0%D1%80%D1%82%D0%B0%D0%BC%D0%B5%D0%BD%D1%82%D0%B8-%D1%81-1-%D1%81%D0%BF%D0%B0%D0%BB%D0%BD%D1%8F-%D0%B2-%D0%BA%D0%BE%D0%BC%D0%BF%D0%BB%D0%B5%D0%BA%D1%81-%D1%81-%D0%B1%D0%B0%D1%81%D0%B5%D0%B9%D0%BD.html"><h2>Апартаменти с 1 спалня в комплекс с басейн</h2></a></div>
+						<div class="red_title offer_price" >108 750<span class='smalltxt'>&euro;</span></div>
+						<div style="height:30px;"></div>
+						<div class="small_desc2"><b>Апартамент с 1 спалня</b><br /><span style="color:red">ID:1126</span> | Бургас област | к.к. Слънчев бряг<br />64 кв.м.
+						<div class="small_desc">
+	
+
+	МЕСТОПОЛОЖЕНИЕ И ИНФРАСТРУКТУРА:
+	&ndash; VIP зона на Слънчев Бряг,
+	&ndash; Тиха паркова зона на 10 м. до плажа , и на 50м. от Санаториум,
+	&ndash; Развита инфроструктура,</div>
+						</div>
+						
+						<a href="/bg/offer/1126/%D0%90%D0%BF%D0%B0%D1%80%D1%82%D0%B0%D0%BC%D0%B5%D0%BD%D1%82%D0%B8-%D1%81-1-%D1%81%D0%BF%D0%B0%D0%BB%D0%BD%D1%8F-%D0%B2-%D0%BA%D0%BE%D0%BC%D0%BF%D0%BB%D0%B5%D0%BA%D1%81-%D1%81-%D0%B1%D0%B0%D1%81%D0%B5%D0%B9%D0%BD.html" class="small_btn" style="margin-top:6px;float:right;">виж повече</a><div class="clear"></div>	
+					</div>
+				</div>
+				<div class="clear"></div><br />
+							<div class="small_panel gray_panel">
+								<div class="flag open_house_flag"></div>
+								<div class="small_panel_in_offer">		
+									<div class="small_panel_img"><a href="/bg/offer/1949/%D0%9D%D0%BE%D0%B2%D0%B0-%D0%BB%D1%83%D0%BA%D1%81%D0%BE%D0%B7%D0%BD%D0%B0-%D1%81%D0%B3%D1%80%D0%B0%D0%B4%D0%B0-%D0%B2-%D0%B5%D0%BB%D0%B8%D1%82%D0%B5%D0%BD%2C-%D0%BA%D1%80%D0%B0%D0%B9%D0%B1%D1%80%D0%B5%D0%B6%D0%B5%D0%BD-%D1%80%D0%B0%D0%B9%D0%BE%D0%BD-%D0%BD%D0%B0-%D0%92%D0%B0%D1%80%D0%BD%D0%B0.html" style="background-image:url('/files/offers/images/31052_small_img.jpg');"></a></div>
+									<div class="red_title offer_title" ><a href="/bg/offer/1949/%D0%9D%D0%BE%D0%B2%D0%B0-%D0%BB%D1%83%D0%BA%D1%81%D0%BE%D0%B7%D0%BD%D0%B0-%D1%81%D0%B3%D1%80%D0%B0%D0%B4%D0%B0-%D0%B2-%D0%B5%D0%BB%D0%B8%D1%82%D0%B5%D0%BD%2C-%D0%BA%D1%80%D0%B0%D0%B9%D0%B1%D1%80%D0%B5%D0%B6%D0%B5%D0%BD-%D1%80%D0%B0%D0%B9%D0%BE%D0%BD-%D0%BD%D0%B0-%D0%92%D0%B0%D1%80%D0%BD%D0%B0.html"><h2>Нова луксозна сграда в елитен, крайбрежен район на Варна</h2></a></div>
+									<div class="red_title offer_price" >48 500<span class='smalltxt'>&euro;</span></div>					
+									<div style="height:30px;"></div>
+									<div class="small_desc2"><b>Апартамент с 1 спалня</b><br /><span style="color:red">ID:1949</span> | Варна | м-т Св. Никола | <br />ЕТАЖ 1 | 65 кв.м.
+									<div class="small_desc">	МЕСТОПОЛОЖЕНИЕ:
+
+	3 минути пеша до най-близката спирка на градския транспорт;
+
+	5 минути пеша до търговски център Пикадили Парк /предлага супермаркет, който е</div>
+									</div>
+									<a href="/bg/offer/1949/%D0%9D%D0%BE%D0%B2%D0%B0-%D0%BB%D1%83%D0%BA%D1%81%D0%BE%D0%B7%D0%BD%D0%B0-%D1%81%D0%B3%D1%80%D0%B0%D0%B4%D0%B0-%D0%B2-%D0%B5%D0%BB%D0%B8%D1%82%D0%B5%D0%BD%2C-%D0%BA%D1%80%D0%B0%D0%B9%D0%B1%D1%80%D0%B5%D0%B6%D0%B5%D0%BD-%D1%80%D0%B0%D0%B9%D0%BE%D0%BD-%D0%BD%D0%B0-%D0%92%D0%B0%D1%80%D0%BD%D0%B0.html" class="small_btn" style="margin-top:6px;float:right;">виж повече</a><a href="/bg/offer/1949/%D0%9D%D0%BE%D0%B2%D0%B0-%D0%BB%D1%83%D0%BA%D1%81%D0%BE%D0%B7%D0%BD%D0%B0-%D1%81%D0%B3%D1%80%D0%B0%D0%B4%D0%B0-%D0%B2-%D0%B5%D0%BB%D0%B8%D1%82%D0%B5%D0%BD%2C-%D0%BA%D1%80%D0%B0%D0%B9%D0%B1%D1%80%D0%B5%D0%B6%D0%B5%D0%BD-%D1%80%D0%B0%D0%B9%D0%BE%D0%BD-%D0%BD%D0%B0-%D0%92%D0%B0%D1%80%D0%BD%D0%B0.html" class="top_offer_btn" style="margin-top:6px;float:left;">Open house</a><div class="clear"></div>	
+								</div>
+							</div>
+							
+							<div class="small_panel even gray_panel">
+								<div class="flag special_flag"></div>
+								<div class="small_panel_in_offer">		
+									<div class="small_panel_img"><a href="/bg/offer/3778/%D0%94%D0%B2%D1%83%D1%81%D1%82%D0%B0%D0%B5%D0%BD----35000%D0%B5%D0%B2%D1%80%D0%BE%2C-%D1%83%D0%BB.%22%D0%B5%D0%BC%D0%B0%D0%BD%D1%83%D0%B8%D0%BB-%D0%9C%D0%B0%D0%BD%D0%BE%D0%BB%D0%BE%D0%B2%22%2C-%D0%BA%D0%B2.%D0%BB%D0%B5%D0%B2%D1%81%D0%BA%D0%B8%2C-%D0%92%D0%B0%D1%80%D0%BD%D0%B0.html" style="background-image:url('/files/offers/images/35348_small_img.jpg');"></a></div>
+									<div class="red_title offer_title" ><a href="/bg/offer/3778/%D0%94%D0%B2%D1%83%D1%81%D1%82%D0%B0%D0%B5%D0%BD----35000%D0%B5%D0%B2%D1%80%D0%BE%2C-%D1%83%D0%BB.%22%D0%B5%D0%BC%D0%B0%D0%BD%D1%83%D0%B8%D0%BB-%D0%9C%D0%B0%D0%BD%D0%BE%D0%BB%D0%BE%D0%B2%22%2C-%D0%BA%D0%B2.%D0%BB%D0%B5%D0%B2%D1%81%D0%BA%D0%B8%2C-%D0%92%D0%B0%D1%80%D0%BD%D0%B0.html"><h2>Двустаен -  35000евро, ул."емануил Манолов", кв.левски, Варна</h2></a></div>
+									<div class="red_title offer_price" >35 000<span class='smalltxt'>&euro;</span></div>					
+									<div style="height:30px;"></div>
+									<div class="small_desc2"><b>Апартамент с 2 спални</b><br /><span style="color:red">ID:3778</span> | Варна | Левски | <br />61 кв.м.
+									<div class="small_desc">Апартамент за продажба на ул. ” Емануил Манолов” 33, 
+кв. Левски,до Втори корпус на ВИНС
+Сградата има Акт 15
+Завършване: готови бани+ боя по стените
+Свободни за</div>
+									</div>
+									<a href="/bg/offer/3778/%D0%94%D0%B2%D1%83%D1%81%D1%82%D0%B0%D0%B5%D0%BD----35000%D0%B5%D0%B2%D1%80%D0%BE%2C-%D1%83%D0%BB.%22%D0%B5%D0%BC%D0%B0%D0%BD%D1%83%D0%B8%D0%BB-%D0%9C%D0%B0%D0%BD%D0%BE%D0%BB%D0%BE%D0%B2%22%2C-%D0%BA%D0%B2.%D0%BB%D0%B5%D0%B2%D1%81%D0%BA%D0%B8%2C-%D0%92%D0%B0%D1%80%D0%BD%D0%B0.html" class="small_btn" style="margin-top:6px;float:right;">виж повече</a><a href="/bg/offer/3778/%D0%94%D0%B2%D1%83%D1%81%D1%82%D0%B0%D0%B5%D0%BD----35000%D0%B5%D0%B2%D1%80%D0%BE%2C-%D1%83%D0%BB.%22%D0%B5%D0%BC%D0%B0%D0%BD%D1%83%D0%B8%D0%BB-%D0%9C%D0%B0%D0%BD%D0%BE%D0%BB%D0%BE%D0%B2%22%2C-%D0%BA%D0%B2.%D0%BB%D0%B5%D0%B2%D1%81%D0%BA%D0%B8%2C-%D0%92%D0%B0%D1%80%D0%BD%D0%B0.html" class="top_offer_btn_blue" style="margin-top:6px;float:left;">Exclusive</a><div class="clear"></div>	
+								</div>
+							</div>
+							<div class="banner"><a href="http://reall.bg" target="_blank" title="http://reall.bg" style="background-image:url('/files/users/images/0_banner.jpg?ver=404');"></a></div><div class="banner" style="margin-right:0px;"><a href="http://reall.bg" target="_blank" title="http://reall.bg" style="background-image:url('/files/users/images/76_banner.jpg?ver=299');"></a></div>		
+	</div><!-- head -->
+	
+	<div class="clear" style="height:10px;"></div>
+	
+</div><!-- frame -->
+
+
+<div class="bottom">
+	<div class="bottom_inside">		
+		<table>
+		<tr><td style="width:250px;">
+		<a href="/bg/registration.html">регистрация</a><br /><a href="/bg/dobavi_obqva.html">ДОБАВИ ОБЯВА</a>
+			
+			<br /><a href="/bg/offers.html" title="Недвижими имоти, апртаменти, къщи, вили, парцели, магазини, хотели, продажба, под наем, едностайни, двустаини, Варна, Бургас, Шумен">Имоти</a>
+			<br /><a href="/bg/about_us.html" title="Фирмата - продажба на имоти Варна, апратаменти, къщи, вили и парцели">За фирмата</a>
+			<br /><a href="/bg/about_bulgaria.html" title="За България">За България</a>
+			<br /><a href="/bg/services.html" title="Услуги - покупка на жилище,продажба,строителство,обзавеждане,изграждане на басейни / сауни,счетоводни и юридически услуги,коли под наем">Услуги</a><br /><a href="/bg/contacts.html" title="Контакти">Контакти</a>
+			<br /><br />		</td>
+		<td style="width:240px;" class="blue_sublinks">
+			<b>ТИПОВЕ ИМОТИ</b><br />&nbsp;&nbsp;&nbsp;<a href="/bg/offers.html?type=13">Студио</a><br />&nbsp;&nbsp;&nbsp;<a href="/bg/offers.html?type=6271">Боксониера</a><br />&nbsp;&nbsp;&nbsp;<a href="/bg/offers.html?type=14">Апартамент с 1 спалня</a><br />&nbsp;&nbsp;&nbsp;<a href="/bg/offers.html?type=15">Апартамент с 2 спални</a><br />&nbsp;&nbsp;&nbsp;<a href="/bg/offers.html?type=6269">Апартамент с 3 спални</a><br />&nbsp;&nbsp;&nbsp;<a href="/bg/offers.html?type=16">Големи апартаменти</a><br />&nbsp;&nbsp;&nbsp;<a href="/bg/offers.html?type=20">Къща</a><br />&nbsp;&nbsp;&nbsp;<a href="/bg/offers.html?type=21">Вила</a>		</td>
+		<td style="width:240px;" class="blue_sublinks">			
+			<br />&nbsp;&nbsp;&nbsp;<a href="/bg/offers.html?type=23">Бизнес имоти</a><br />&nbsp;&nbsp;&nbsp;<a href="/bg/offers.html?type=24">Парцел</a><br />&nbsp;&nbsp;&nbsp;<a href="/bg/offers.html?type=1655">Проект</a><br />&nbsp;&nbsp;&nbsp;<a href="/bg/offers.html?type=2011">За реиновация</a><br />&nbsp;&nbsp;&nbsp;<a href="/bg/offers.html?type=6270">Елитни имоти</a><br />&nbsp;&nbsp;&nbsp;<a href="/bg/offers.html?type=27">за живеене</a><br />&nbsp;&nbsp;&nbsp;<a href="/bg/offers.html?type=1629">за бизнес</a><br />&nbsp;&nbsp;&nbsp;<a href="/bg/offers.html?type=6274">нощувки</a>		</td>
+		<td style="width:250px;" class="blue_sublinks">
+			<b>МЕСТОПОЛОЖЕНИЯ</b><br />&nbsp;&nbsp;&nbsp;<a href="/bg/offers.html?location_type=6263">На море</a><br />&nbsp;&nbsp;&nbsp;<a href="/bg/offers.html?location_type=6264">Планина</a><br />&nbsp;&nbsp;&nbsp;<a href="/bg/offers.html?location_type=6265">Балнеология</a><br />&nbsp;&nbsp;&nbsp;<a href="/bg/offers.html?location_type=6266">В града</a><br />&nbsp;&nbsp;&nbsp;<a href="/bg/offers.html?location_type=6267">На село</a><br />&nbsp;&nbsp;&nbsp;<a href="/bg/offers.html?location_type=6268">Други</a>		</td>
+		</tr>
+		</table>
+		
+		<div class="logo_bottom"></div>
+		
+		<div style="float:right;"><a href="http://alphavision.bg/" target="_blank" title="Web design by alphavision" style="text-transform: lowercase; color:silver;font-size:10px;">Web design by <span style="color:#ffffff;">alpha</span><span style="color:#d1ff43;">vision</span></a></div>
+		
+				<div style="float:left;">Copyright Reall.bg 
+		
+				</div>
+		<div class="clear"></div>
+	</div>	
+</div>
+</body>
+</html>

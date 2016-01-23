@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<script type="text/javascript">
+		if ((navigator.userAgent.indexOf('iPhone') > 0) || navigator.userAgent.indexOf('Android') > 0) {
+			document.write('<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=1.0, maximum-scale=1.0">');
+		}else{
+			document.write('<meta name="viewport" content="width=960, maximum-scale=1, user-scalable=0">');
+		}
+	</script>
+	
+	<meta name="format-detection" content="telephone=no">
+	<meta name="description" content="新築マンションの企画販売を手掛ける株式会社モリモトの戸建て・土地情報 物件詳細" />
+	<meta name="keywords" content="新築,戸建て,モリモト" />
+	<meta name="robots" content="index,follow" />
+	<title>MORIMOTO 戸建・土地</title>
+	
+	<!-- CSS Load -->
+	<link rel="stylesheet" href="/common/css/common.css">
+	<link rel="stylesheet" href="/top/css/top.css">
+	<!--[if !IE 8]><!-->
+	<!--sp css-->
+	<link href="/common/css/common_sp.css" rel="stylesheet" type="text/css" media="only screen and (min-width: 0px) and (max-width: 767px)">
+	<link href="/top/css/top_sp.css" rel="stylesheet" type="text/css" media="only screen and (min-width: 0px) and (max-width: 767px)">
+	<!--<![endif]-->
+	
+	<!--js-->
+	<script src="/common/js/jquery-1.8.2.min.js" type="text/javascript"></script>
+	<script src="/common/js/jquery.easing.1.3.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/common/js/yuga.js" type="text/javascript" charset="utf-8"></script>
+	
+	<!-- /for bx-slider -->
+	<script type="text/javascript" src="/top/js/bxslider/jquery.bxslider.js" charset="utf-8"></script>
+	<link rel="stylesheet" href="/top/js/bxslider/jquery.bxslider.css">
+	
+	<script type="text/javascript">
+		$(document).ready(function ()  {
+			/*************************
+			 * メインイメージスライダー
+			 ************************/
+			$('.bxslider').bxSlider({
+				mode: 'fade', // horizontal, vartivcal, fadeの3パターン
+				captions: false, // 画像の下部に説明文を表示することができる 画像のtitleタグのテキストを表示
+				auto: true, // 自動遷移を有効にする
+				pager: false, // ページャを表示する
+				controls: false, // コントロールを表示する
+				speed: 2000, // 一回のスライドにかかる時間を指定する（ミリ秒）
+				pause: 10000, // 自動遷移の間隔（停止時間）を指定する（ミリ秒）
+				touchEnabled: false, // スワイプできるようにするか否か（スマートフォン）
+				autoControls: false // 自動遷移のコントロールを表示する autoプロパティがtrueの場合にのみ有効になる
+			}).show();
+			
+			var items = $('.estate-check').find('input');
+			$("#box-allcheck_send input").attr("disabled", "").css({
+				opacity: "0.75",
+				cursor: "default"
+			});
+			/*************************
+			* 全件一括チェックと送信ボタン表示判定
+			*************************/
+			$('#allCheck,.box-allCheck label').click(function(){ //全選択・全解除をクリックしたとき
+				if($(this).is(':checked')) { //全選択・全解除がcheckedだったら
+					$(items).prop('checked', true); //アイテムを全部checkedにする
+					$("#box-allcheck_send input").removeAttr("disabled").css({
+						opacity: "1.0",
+						cursor: "pointer"
+					}); //送信ボタンを表示
+				} else { //全選択・全解除がcheckedじゃなかったら
+					$(items).prop('checked', false); //アイテムを全部checkedはずす
+					$("#box-allcheck_send input").attr("disabled", "").css({
+						opacity: "0.75",
+						cursor: "default"
+					}); //送信ボタンを非表示
+				}
+			});
+			/*************************
+			 * 物件チェック個別の送信ボタン表示判定
+			 *************************/
+				items.click(function(){ // 物件チェックボックスをクリックして
+					if (items.is(':checked')) { // チェック済みの物件がある場合
+						$("#box-allcheck_send input").removeAttr("disabled").css({
+							opacity: "1.0",
+							cursor: "pointer"
+						}); //送信ボタンを表示
+					} else {
+						$("#box-allcheck_send input").removeAttr("disabled").css({
+							opacity: "0.75",
+							cursor: "default"
+						}); //送信ボタンを表示
+					}
+				});
+		});
+	</script>
+	
+	<!--[if lte IE 8]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+<body id="top">
+	<!-- Google Tag Manager -->
+	<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WJGR9X"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-WJGR9X');</script>
+	<!-- End Google Tag Manager -->
+	<header>
+		<h1><a href="https://morimoto-kodate.jp/"><img src="/common/img/header/img/head_logo.png" alt="MORIMOTO戸建て・土地"><span>MORIMOTO戸建て・土地</span></a></h1>
+		<ul>
+			<li><a href="https://morimoto-kodate.jp/index.html">トップ・分譲中一覧</a></li>
+			<li><a href="https://morimoto-kodate.jp/daikanyama_gallery/index.html">代官山 常設モデルルーム</a></li>
+			<li><a href="https://morimoto-kodate.jp/member/index.html">新規会員募集中</a></li>
+		</ul>
+	</header>
+	<div id="contents">
+		<form action="https://morimoto-kodate.jp/form.php" method="POST" />
+		<section id="mainVisualBlock" class="clearfix">
+			<div id="top-img">
+				<ul class="bxslider">
+					<li>
+						<img src="/top/img/slider/main_img.jpg" alt="モリモトグループの戸建て・土地">
+					</li>
+					<li>
+						<a href="http://ac.ebis.ne.jp/tr_set.php?argument=ADS4txPa&ai=a566e567a474a8" target="_blank">
+							<img src="/top/img/slider/kodate_top_main.jpg" alt="「モリモトホーム」ご来場キャンペーン">
+						</a>
+					</li>
+				</ul>
+			</div>
+		</section><!-- /#mainVisualBlock -->
+		
+		<section id="block-pickup">
+        <!--<div id="box-info">
+				<p>※今週は1/13（水）・14（木）を休業日とさせていただきます。</p>
+			</div>-->
+			<!-- /#box-info -->
+			<ul id="pickup-1">
+				<li id ="pickup-1_left"><a href="https://morimoto-kodate.jp/daikanyama_gallery/index.html"><img src="/common/img/design/model_daikanyama.jpg" alt="代官山 常設モデルルーム"></a></li>
+				<li id ="pickup-1_right"><a href="http://ac.ebis.ne.jp/tr_set.php?argument=ADS4txPa&ai=a566e567a474a8" target="_blank"><img src="/common/img/design/kodate_top_bn.jpg" alt="戸建て・土地会員入会・モデルルームご来場キャンペーン"></a></li>
+			</ul>
+			<div id="pickup-2">
+				<h2><img src="/top/img/pickup/head_pickup.png" alt="PICK UP"></h2>
+				<ul>
+					<li class="list-block"><a href="https://morimoto-kodate.jp/toshin_jonan/estate/dh_sangenjaya/index.php" target="_blank"><img src="/top/img/pickup/dh_sangenjaya.jpg" alt="ディアナハウス 三軒茶屋"></a></li>
+					<li class="list-block list-block_right"><a href="https://morimoto-kodate.jp/josai/estate/dh_eifuku/index.php" target="_blank"><img src="/top/img/pickup/pickup_eifuku.jpg" alt="ディアナプレイス永福町"></a></li>
+					<li class="list-block list-block_left"><a href="https://morimoto-kodate.jp/toshin_jonan/estate/dh_minami_magome/index.php" target="_blank"><img src="/top/img/pickup/dh_minamimagome.jpg" alt="ディアナハウス南馬込"></a></li>
+					<li class="list-block_right"><a href="https://morimoto-kodate.jp/toshin_jonan/estate/dh_nakanominamidai_4/index.php" target="_blank"><img src="/top/img/pickup/pickup_dh_nakanominamidai4.jpg" alt="ディアナハウス 中野南台四丁目"></a></li>
+
+					<li class="list-block list-block_bottom"><a href="https://morimoto-kodate.jp/ad/ns_higashirokugo_gt/index.html" target="_blank"><img src="/top/img/pickup/pickup_ns_higashirokugo.jpg" alt="ネクストステージ東六郷ゲーテコート"></a></li>
+					<li class="list-block list-block_right list-block_bottom"><a href="https://morimoto-kodate.jp/josai/estate/dh_fujimidai_2/index.php" target="_blank"><img src="/top/img/pickup/pickup_fujimidai.jpg" alt="ディアナハウス富士見台"></a></li>
+					<li class="list-block list-block_left list-block_bottom"><a href="https://morimoto-kodate.jp/ad/eda/" target="_blank"><img src="/top/img/pickup/dh_eda.jpg" alt="DIANA HOUSE ARCHITECT COURT"></a></li>
+					<li class="list-block_right list-block_bottom"><a href="https://morimoto-kodate.jp/yokohama_kawasaki/estate/ns_arima_5/index.php" target="_blank"><img src="/top/img/pickup/pickup_ns_arima5.jpg" alt="ネクストステージ有馬五丁目"></a></li>
+				</ul>
+			</div>
+			<div class="block-allCheck">
+				<div class="block-allCheck-inner">
+					<p>ご希望物件のチェックボタンをチェックいただき、一括請求ボタンをクリックすることで資料の一括請求が可能です。</p>
+					<!-- <div id="box-allCheck_btn" class="box-allCheck">
+						<input type="checkbox" id="allCheck"><label for="allCheck01">全ての物件をチェック</label>
+					</div>
+					/.box-allCheck -->
+					<div id="box-allcheck_send" class="box-allCheck">
+						<input type="submit" value="チェックした物件を一括資料請求">
+					</div>
+					<!-- /.box-allCheck -->
+				</div>
+				<!-- /.block-allCheck-inner -->
+			</div>
+			<!-- /.block-allCheck -->
+		</section>
+		<!-- /#block-pickup -->
+		<!-- 都心・城南 ここから -->
+		<section id="block-toshin_jonan" class="block-area">
+			<h3>
+				<div class="box-area-head">
+					<a href="https://morimoto-kodate.jp/toshin_jonan/index.html">
+						<img src="/common/img/head_toshin_jonan.png" alt="都心・城南" class="area-head">
+					</a>
+					<a href="https://morimoto-kodate.jp/toshin_jonan/index.html" class="area-detail"><img src="/top/img/area/btn_area_detail.png" alt="詳細を見る"></a>
+					<ul>
+						<li class="area-link-top area-link-left">
+							<a href="https://morimoto-kodate.jp/josai/index.html"><img src="/common/img/area_btn/btn_josai.jpg" alt="城西・その他"></a>
+						</li>
+						<li class="area-link-top">
+							<a href="https://morimoto-kodate.jp/joto_johoku/index.html"><img src="/common/img/area_btn/btn_joto_johoku.jpg" alt="城東・城北"></a>
+						</li>
+						<li class="area-link-bottom area-link-left">
+							<a href="https://morimoto-kodate.jp/yokohama_kawasaki/index.html"><img src="/common/img/area_btn/btn_yokohama_kawasaki.jpg" alt="横浜・川崎"></a>
+						</li>
+						<li class="area-link-bottom">
+							<a href="https://morimoto-kodate.jp/kanagawa/index.html"><img src="/common/img/area_btn/btn_kanagawa.jpg" alt="その他神奈川県"></a>
+						</li>
+					</ul>
+				</div>
+			</h3>
+			<div class="box-area">
+				<div class="box-estate">
+					<a href="https://morimoto-kodate.jp/toshin_jonan/estate/dh_minami_magome/index.php" target="_blank" class="box-estate-img"><img src="/toshin_jonan/estate/estate_thumb/dh_minamimagome.jpg" alt="ディアナハウス南馬込" class="estate-img"></a>
+					<dl>
+						<dt>ディアナハウス
+							<br>南馬込</dt>
+						<dd>
+							<ul>
+								<li class="estate-check">
+									<input type="checkbox" name="estate_id[]" value="00001180">
+									<label for="estate_id[]">一括資料請求</label>
+								</li>
+								<li class="estate-address">東京都大田区南馬込1丁目</li>
+								<li class="estate-message"></li>
+								<li class="estate-btn-box">
+									<a href="https://morimoto-kodate.jp/toshin_jonan/estate/dh_minami_magome/index.php" target="_blank" class="estate-btn_detail"><img src="/top/img/area/btn_estate_detail.jpg" alt="物件詳細"></a>
+									<a href="https://morimoto-kodate.jp/toshin_jonan/estate/dh_minami_magome/index.php#contact-box" target="_blank" class="estate-btn"><img src="/top/img/area/btn_estate_document.jpg" alt="資料請求"></a>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+				<!-- /.box-estate -->
+				<div class="box-estate box-estate_right">
+					<a href="https://morimoto-kodate.jp/toshin_jonan/estate/dh_nakanominamidai_4/index.php" target="_blank" class="box-estate-img"><img src="/toshin_jonan/estate/estate_thumb/dh_nakanominamidai4.jpg" alt="ディアナハウス中野南台四丁目" class="estate-img"></a>
+					<dl>
+						<dt>ディアナハウス
+							<br>中野南台四丁目</dt>
+						<dd>
+							<ul>
+								<li class="estate-check">
+									<input type="checkbox" name="estate_id[]" value="00001194">
+									<label for="estate_id[]">一括資料請求</label>
+								</li>
+								<li class="estate-address">東京都中野区南台4丁目</li>
+								<li class="estate-message"></li>
+								<li class="estate-btn-box">
+									<a href="https://morimoto-kodate.jp/toshin_jonan/estate/dh_nakanominamidai_4/index.php" target="_blank" class="estate-btn_detail"><img src="/top/img/area/btn_estate_detail.jpg" alt="物件詳細"></a>
+									<a href="https://morimoto-kodate.jp/toshin_jonan/estate/dh_nakanominamidai_4/index.php#contact-box" target="_blank" class="estate-btn"><img src="/top/img/area/btn_estate_document.jpg" alt="資料請求"></a>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+				<!-- /.box-estate -->
+				<div class="box-estate">
+					<a href="https://morimoto-kodate.jp/toshin_jonan/estate/dh_sangenjaya/index.php" target="_blank" class="box-estate-img"><img src="/toshin_jonan/estate/estate_thumb/dh_sangenjaya.jpg" alt="ディアナハウス三軒茶屋" class="estate-img"></a>
+					<dl>
+						<dt>ディアナハウス
+							<br>三軒茶屋</dt>
+						<dd>
+							<ul>
+								<li class="estate-check">
+									<input type="checkbox" name="estate_id[]" value="00001177">
+									<label for="estate_id[]">一括資料請求</label>
+								</li>
+								<li class="estate-address">東京都世田谷区三軒茶屋2丁目</li>
+								<li class="estate-message"></li>
+								<li class="estate-btn-box">
+									<a href="https://morimoto-kodate.jp/toshin_jonan/estate/dh_sangenjaya/index.php" target="_blank" class="estate-btn_detail"><img src="/top/img/area/btn_estate_detail.jpg" alt="物件詳細"></a>
+									<a href="https://morimoto-kodate.jp/toshin_jonan/estate/dh_sangenjaya/index.php#contact-box" target="_blank" class="estate-btn"><img src="/top/img/area/btn_estate_document.jpg" alt="資料請求"></a>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+				<!-- /.box-estate -->
+				<div class="box-estate box-estate_right">
+					<a href="https://morimoto-kodate.jp/toshin_jonan/estate/dh_nakaochiai/index.php" target="_blank" class="box-estate-img"><img src="/toshin_jonan/estate/estate_thumb/dh_nakaochiai.jpg" alt="ディアナハウス中落合四丁目" class="estate-img"></a>
+					<dl>
+						<dt>ディアナハウス
+							<br>中落合四丁目</dt>
+						<dd>
+							<ul>
+								<li class="estate-check">
+									<input type="checkbox" name="estate_id[]" value="00001179">
+									<label for="estate_id[]">一括資料請求</label>
+								</li>
+								<li class="estate-address">東京都新宿区中落合4丁目</li>
+								<li class="estate-message"></li>
+								<li class="estate-btn-box">
+									<a href="https://morimoto-kodate.jp/toshin_jonan/estate/dh_nakaochiai/index.php" target="_blank" class="estate-btn_detail"><img src="/top/img/area/btn_estate_detail.jpg" alt="物件詳細"></a>
+									<a href="https://morimoto-kodate.jp/toshin_jonan/estate/dh_nakaochiai/index.php#contact-box" target="_blank" class="estate-btn"><img src="/top/img/area/btn_estate_document.jpg" alt="資料請求"></a>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+				<!-- /.box-estate -->
+				<div class="box-estate">
+					<a href="https://morimoto-kodate.jp/toshin_jonan/estate/dh_higashi_tamagawa_1/index.php" target="_blank" class="box-estate-img"><img src="/toshin_jonan/estate/estate_thumb/dh_higashitamagawa_1.jpg" alt="ディアナハウス東玉川一丁目" class="estate-img"></a>
+					<dl>
+						<dt>ディアナハウス
+							<br>東玉川一丁目</dt>
+						<dd>
+							<ul>
+								<li class="estate-check">
+									<input type="checkbox" name="estate_id[]" value="00001176">
+									<label for="estate_id[]">一括資料請求</label>
+								</li>
+								<li class="estate-address">東京都世田谷区東玉川1丁目</li>
+								<li class="estate-message"></li>
+								<li class="estate-btn-box">
+									<a href="https://morimoto-kodate.jp/toshin_jonan/estate/dh_higashi_tamagawa_1/index.php" target="_blank" class="estate-btn_detail"><img src="/top/img/area/btn_estate_detail.jpg" alt="物件詳細"></a>
+									<a href="https://morimoto-kodate.jp/toshin_jonan/estate/dh_higashi_tamagawa_1/index.php#contact-box" target="_blank" class="estate-btn"><img src="/top/img/area/btn_estate_document.jpg" alt="資料請求"></a>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+				<!-- /.box-estate -->
+				<div class="box-estate box-estate_right">
+					<a href="https://morimoto-kodate.jp/ad/ns_higashirokugo_gt/" target="_blank" class="box-estate-img"><img src="/toshin_jonan/estate/estate_thumb/ns_higashirokugo.jpg" alt="ネクストステージ東六郷ゲーテコート" class="estate-img"></a>
+					<dl>
+						<dt>ネクストステージ
+							<br>東六郷ゲーテコート</dt>
+						<dd>
+							<ul>
+								<li class="estate-check">
+									<input type="checkbox" name="estate_id[]" value="00001198">
+									<label for="estate_id[]">一括資料請求</label>
+								</li>
+								<li class="estate-address">東京都大田区東六郷1</li>
+								<li class="estate-message"></li>
+								<li class="estate-btn-box">
+									<a href="https://morimoto-kodate.jp/ad/ns_higashirokugo_gt/" target="_blank" class="estate-btn_detail"><img src="/top/img/area/btn_estate_detail.jpg" alt="物件詳細"></a>
+									<a href="https://www.morimoto-real.co.jp/kodate/ns_higashirokugo_gt/toiawase.html" target="_blank" class="estate-btn"><img src="/top/img/area/btn_estate_document.jpg" alt="資料請求"></a>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+				<!-- /.box-estate -->
+				<div class="box-estate">
+					<a href="https://morimoto-kodate.jp/toshin_jonan/estate/dp_meguro_takaban/index.php" target="_blank" class="box-estate-img"><img src="/toshin_jonan/estate/estate_thumb/dp_meguro_takaban.jpg" alt="ディアナプレイス目黒鷹番" class="estate-img"></a>
+					<dl>
+						<dt>ディアナプレイス
+							<br>目黒鷹番</dt>
+						<dd>
+							<ul>
+								<li class="estate-check">
+									<input type="checkbox" name="estate_id[]" value="00001170">
+									<label for="estate_id[]">一括資料請求</label>
+								</li>
+								<li class="estate-address">東京都目黒区鷹番2丁目</li>
+								<li class="estate-message"></li>
+								<li class="estate-btn-box">
+									<a href="https://morimoto-kodate.jp/toshin_jonan/estate/dp_meguro_takaban/index.php" target="_blank" class="estate-btn_detail"><img src="/top/img/area/btn_estate_detail.jpg" alt="物件詳細"></a>
+									<a href="https://morimoto-kodate.jp/toshin_jonan/estate/dp_meguro_takaban/index.php#contact-box" target="_blank" class="estate-btn"><img src="/top/img/area/btn_estate_document.jpg" alt="資料請求"></a>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+				<!-- /.box-estate -->
+				<div class="box-estate box-estate_right">
+					<a href="https://morimoto-kodate.jp/toshin_jonan/estate/dp_sendagaya_3/index.php" target="_blank" class="box-estate-img"><img src="/toshin_jonan/estate/estate_thumb/dp_sendagaya_3.jpg" alt="ディアナプレイス千駄ヶ谷三丁目" class="estate-img"></a>
+					<dl>
+						<dt>ディアナプレイス
+							<br>千駄ヶ谷三丁目</dt>
+						<dd>
+							<ul>
+								<li class="estate-check">
+									<input type="checkbox" name="estate_id[]" value="00001175">
+									<label for="estate_id[]">一括資料請求</label>
+								</li>
+								<li class="estate-address">東京都渋谷区千駄ヶ谷3丁目</li>
+								<li class="estate-message"></li>
+								<li class="estate-btn-box">
+									<a href="https://morimoto-kodate.jp/toshin_jonan/estate/dp_sendagaya_3/index.php" target="_blank" class="estate-btn_detail"><img src="/top/img/area/btn_estate_detail.jpg" alt="物件詳細"></a>
+									<a href="https://morimoto-kodate.jp/toshin_jonan/estate/dp_sendagaya_3/index.php#contact-box" target="_blank" class="estate-btn"><img src="/top/img/area/btn_estate_document.jpg" alt="資料請求"></a>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+				<!-- /.box-estate -->
+				<div class="box-estate">
+					<a href="https://morimoto-kodate.jp/toshin_jonan/estate/dp_daita_6/index.php" target="_blank" class="box-estate-img"><img src="/toshin_jonan/estate/estate_thumb/dp_shimokita.jpg" alt="ディアナプレイス下北沢" class="estate-img"></a>
+					<dl>
+						<dt>ディアナプレイス
+							<br>下北沢</dt>
+						<dd>
+							<ul>
+								<li class="estate-check">
+									<input type="checkbox" name="estate_id[]" value="00001178">
+									<label for="estate_id[]">一括資料請求</label>
+								</li>
+								<li class="estate-address">東京都世田谷区代田6丁目</li>
+								<li class="estate-message"></li>
+								<li class="estate-btn-box">
+									<a href="https://morimoto-kodate.jp/toshin_jonan/estate/dp_daita_6/index.php" target="_blank" class="estate-btn_detail"><img src="/top/img/area/btn_estate_detail.jpg" alt="物件詳細"></a>
+									<a href="https://morimoto-kodate.jp/toshin_jonan/estate/dp_daita_6/index.php#contact-box" target="_blank" class="estate-btn"><img src="/top/img/area/btn_estate_document.jpg" alt="資料請求"></a>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+				<!-- /.box-estate -->
+			</div>
+			<!-- /.box-area -->
+		</section>
+		<!-- /#block-toshin_jonan -->
+		<!-- 都心・城南 ここまで -->
+		
+		<!-- 城西・その他 ここから -->
+		<section id="block-josai" class="block-area">
+			<h3>
+				<div class="box-area-head">
+					<a href="https://morimoto-kodate.jp/josai/index.html">
+						<img src="/common/img/head_josai.png" alt="城西・その他" class="area-head">
+					</a>
+					<a href="https://morimoto-kodate.jp/josai/index.html" class="area-detail"><img src="/top/img/area/btn_area_detail.png" alt="詳細を見る"></a>
+					<ul>
+						<li class="area-link-top area-link-left">
+							<a href="https://morimoto-kodate.jp/toshin_jonan/index.html"><img src="/common/img/area_btn/btn_toshin_jonan.jpg" alt="都心・城南"></a>
+						</li>
+						<li class="area-link-top">
+							<a href="https://morimoto-kodate.jp/joto_johoku/index.html"><img src="/common/img/area_btn/btn_joto_johoku.jpg" alt="城東・城北"></a>
+						</li>
+						<li class="area-link-bottom area-link-left">
+							<a href="https://morimoto-kodate.jp/yokohama_kawasaki/index.html"><img src="/common/img/area_btn/btn_yokohama_kawasaki.jpg" alt="横浜・川崎"></a>
+						</li>
+						<li class="area-link-bottom">
+							<a href="https://morimoto-kodate.jp/kanagawa/index.html"><img src="/common/img/area_btn/btn_kanagawa.jpg" alt="その他神奈川県"></a>
+						</li>
+					</ul>
+				</div>
+			</h3>
+			<div class="box-area">
+				<div class="box-estate">
+					<a href="https://morimoto-kodate.jp/josai/estate/dh_eifuku/index.php" target="_blank" class="box-estate-img"><img src="/josai/estate/estate_thumb/dh_eifuku.jpg" alt="ディアナハウス永福町" class="estate-img"></a>
+					<dl>
+						<dt>ディアナハウス
+							<br>永福町</dt>
+						<dd>
+							<ul>
+								<li class="estate-check">
+									<input type="checkbox" name="estate_id[]" value="00001196">
+									<label for="estate_id[]">一括資料請求</label>
+								</li>
+								<li class="estate-address">東京都杉並区永福2丁目</li>
+								<li class="estate-message">
+									</li>
+								<li class="estate-btn-box">
+									<a href="https://morimoto-kodate.jp/josai/estate/dh_eifuku/index.php" target="_blank" class="estate-btn_detail"><img src="/top/img/area/btn_estate_detail.jpg" alt="物件詳細"></a>
+									<a href="https://morimoto-kodate.jp/josai/estate/dh_eifuku/index.php#contact-box" target="_blank" class="estate-btn"><img src="/top/img/area/btn_estate_document.jpg" alt="資料請求"></a>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+				<!-- /.box-estate -->
+				<div class="box-estate box-estate_right">
+					<a href="https://morimoto-kodate.jp/josai/estate/dp_takaido_nishi/index.php" target="_blank" class="box-estate-img"><img src="/josai/estate/estate_thumb/dp_takaidonishi.jpg" alt="ディアナプレイス高井戸西" class="estate-img"></a>
+					<dl>
+						<dt>ディアナプレイス
+							<br>高井戸西</dt>
+						<dd>
+							<ul>
+								<li class="estate-check">
+									<input type="checkbox" name="estate_id[]" value="00001197">
+									<label for="estate_id[]">一括資料請求</label>
+								</li>
+								<li class="estate-address">東京都杉並区高井戸西3</li>
+								<li class="estate-message">
+									</li>
+								<li class="estate-btn-box">
+									<a href="https://morimoto-kodate.jp/josai/estate/dp_takaido_nishi/index.php" target="_blank" class="estate-btn_detail"><img src="/top/img/area/btn_estate_detail.jpg" alt="物件詳細"></a>
+									<a href="https://morimoto-kodate.jp/josai/estate/dp_takaido_nishi/index.php#contact-box" target="_blank" class="estate-btn"><img src="/top/img/area/btn_estate_document.jpg" alt="資料請求"></a>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+				<!-- /.box-estate -->
+				<div class="box-estate">
+					<a href="https://morimoto-kodate.jp/josai/estate/dh_fujimidai_2/index.php" target="_blank" class="box-estate-img"><img src="/josai/estate/estate_thumb/dh_fujimidai_2.jpg" alt="ディアナハウス富士見台" class="estate-img"></a>
+					<dl>
+						<dt>ディアナハウス
+							<br>富士見台</dt>
+						<dd>
+							<ul>
+								<li class="estate-check">
+									<input type="checkbox" name="estate_id[]" value="00001182">
+									<label for="estate_id[]">一括資料請求</label>
+								</li>
+								<li class="estate-address">東京都練馬区富士見台2丁目</li>
+								<li class="estate-message"></li>
+								<li class="estate-btn-box">
+									<a href="https://morimoto-kodate.jp/josai/estate/dh_fujimidai_2/index.php" target="_blank" class="estate-btn_detail"><img src="/top/img/area/btn_estate_detail.jpg" alt="物件詳細"></a>
+									<a href="https://morimoto-kodate.jp/josai/estate/dh_fujimidai_2/index.php#contact-box" target="_blank" class="estate-btn"><img src="/top/img/area/btn_estate_document.jpg" alt="資料請求"></a>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+				<!-- /.box-estate -->
+				<div class="box-estate box-estate_right">
+					<a href="https://morimoto-kodate.jp/josai/estate/dp_shakuji/index.php" target="_blank" class="box-estate-img"><img src="/josai/estate/estate_thumb/dp_shakuji.jpg" alt="ディアナプレイス石神井町6丁目" class="estate-img"></a>
+					<dl>
+						<dt>ディアナプレイス
+							<br>石神井町6丁目</dt>
+						<dd>
+							<ul>
+								<li class="estate-check">
+									<input type="checkbox" name="estate_id[]" value="00001183">
+									<label for="estate_id[]">一括資料請求</label>
+								</li>
+								<li class="estate-address">東京都練馬区石神井町6丁目</li>
+								<li class="estate-message"></li>
+								<li class="estate-btn-box">
+									<a href="https://morimoto-kodate.jp/josai/estate/dp_shakuji/index.php" target="_blank" class="estate-btn_detail"><img src="/top/img/area/btn_estate_detail.jpg" alt="物件詳細"></a>
+									<a href="https://morimoto-kodate.jp/josai/estate/dp_shakuji/index.php#contact-box" target="_blank" class="estate-btn"><img src="/top/img/area/btn_estate_document.jpg" alt="資料請求"></a>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+				<!-- /.box-estate -->
+				<div class="box-estate">
+					<a href="https://morimoto-kodate.jp/josai/estate/dh_kamishakuji_2/index.php" target="_blank" class="box-estate-img"><img src="/josai/estate/estate_thumb/ns_kamishokuji_2.jpg" alt="ディアナハウス上石神井二丁目" class="estate-img"></a>
+					<dl>
+						<dt>ディアナハウス
+							<br>上石神井二丁目</dt>
+						<dd>
+							<ul>
+								<li class="estate-check">
+									<input type="checkbox" name="estate_id[]" value="00001184">
+									<label for="estate_id[]">一括資料請求</label>
+								</li>
+								<li class="estate-address">東京都練馬区上石神井2丁目</li>
+								<li class="estate-message"></li>
+								<li class="estate-btn-box">
+									<a href="https://morimoto-kodate.jp/josai/estate/dh_kamishakuji_2/index.php" target="_blank" class="estate-btn_detail"><img src="/top/img/area/btn_estate_detail.jpg" alt="物件詳細"></a>
+									<a href="https://morimoto-kodate.jp/josai/estate/dh_kamishakuji_2/index.php#contact-box" target="_blank" class="estate-btn"><img src="/top/img/area/btn_estate_document.jpg" alt="資料請求"></a>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+				<!-- /.box-estate -->
+				<div class="box-estate box-estate_right">
+					<a href="https://morimoto-kodate.jp/josai/estate/ns_kokuryo_4/index.php" target="_blank" class="box-estate-img"><img src="/josai/estate/estate_thumb/ns_kokuryo_4.jpg" alt="ネクストステージ国領町四丁目" class="estate-img"></a>
+					<dl>
+						<dt>ネクストステージ
+							<br>国領町四丁目</dt>
+						<dd>
+							<ul>
+								<li class="estate-check">
+									<input type="checkbox" name="estate_id[]" value="00001185">
+									<label for="estate_id[]">一括資料請求</label>
+								</li>
+								<li class="estate-address">東京都調布市国領町4丁目</li>
+								<li class="estate-message"></li>
+								<li class="estate-btn-box">
+									<a href="https://morimoto-kodate.jp/josai/estate/ns_kokuryo_4/index.php" target="_blank" class="estate-btn_detail"><img src="/top/img/area/btn_estate_detail.jpg" alt="物件詳細"></a>
+									<a href="https://morimoto-kodate.jp/josai/estate/ns_kokuryo_4/index.php#contact-box" target="_blank" class="estate-btn"><img src="/top/img/area/btn_estate_document.jpg" alt="資料請求"></a>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+				<!-- /.box-estate -->
+				<div class="box-estate">
+					<a href="https://morimoto-kodate.jp/josai/estate/ns_machidaogawa/index.php" target="_blank" class="box-estate-img"><img src="/josai/estate/estate_thumb/ns_machidaogawa.jpg" alt="ネクストステージ町田小川" class="estate-img"></a>
+					<dl>
+						<dt>ネクストステージ
+							<br>町田小川</dt>
+						<dd>
+							<ul>
+								<li class="estate-check">
+									<input type="checkbox" name="estate_id[]" value="00001202">
+									<label for="estate_id[]">一括資料請求</label>
+								</li>
+								<li class="estate-address">東京都町田市小川2丁目</li>
+								<li class="estate-message"></li>
+								<li class="estate-btn-box">
+									<a href="https://morimoto-kodate.jp/josai/estate/ns_machidaogawa/index.php" target="_blank" class="estate-btn_detail"><img src="/top/img/area/btn_estate_detail.jpg" alt="物件詳細"></a>
+									<a href="https://morimoto-kodate.jp/josai/estate/ns_machidaogawa/index.php#contact-box" target="_blank" class="estate-btn"><img src="/top/img/area/btn_estate_document.jpg" alt="資料請求"></a>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+				<!-- /.box-estate -->
+			</div>
+			<!-- /.box-area -->
+		</section>
+		<!-- /#block-josai -->
+		<!-- 城西・その他 ここまで -->
+		
+		<!-- 城東・城北 ここから -->
+		<section id="block-joto_johoku" class="block-area">
+			<h3>
+				<div class="box-area-head">
+					<a href="https://morimoto-kodate.jp/joto_johoku/index.html">
+						<img src="/common/img/head_joto_johoku.png" alt="城東・城北" class="area-head">
+					</a>
+					<a href="https://morimoto-kodate.jp/joto_johoku/index.html" class="area-detail"><img src="/top/img/area/btn_area_detail.png" alt="詳細を見る"></a>
+					<ul>
+						<li class="area-link-top area-link-left">
+							<a href="https://morimoto-kodate.jp/toshin_jonan/index.html"><img src="/common/img/area_btn/btn_toshin_jonan.jpg" alt="都心・城南"></a>
+						</li>
+						<li class="area-link-top">
+							<a href="https://morimoto-kodate.jp/josai/index.html"><img src="/common/img/area_btn/btn_josai.jpg" alt="城西・その他"></a>
+						</li>
+						<li class="area-link-bottom area-link-left">
+							<a href="https://morimoto-kodate.jp/yokohama_kawasaki/index.html"><img src="/common/img/area_btn/btn_yokohama_kawasaki.jpg" alt="横浜・川崎"></a>
+						</li>
+						<li class="area-link-bottom">
+							<a href="https://morimoto-kodate.jp/kanagawa/index.html"><img src="/common/img/area_btn/btn_kanagawa.jpg" alt="その他神奈川県"></a>
+						</li>
+					</ul>
+				</div>
+			</h3>
+			<div class="box-area">
+				<div class="box-estate">
+					<a href="https://morimoto-kodate.jp/joto_johoku/estate/ns_yotsugi/index.php" target="_blank" class="box-estate-img"><img src="/joto_johoku/estate/estate_thumb/ns_yotsugi.jpg" alt="ネクストステージ四ツ木" class="estate-img"></a>
+					<dl>
+						<dt>ネクストステージ
+							<br>四ツ木</dt>
+						<dd>
+							<ul>
+								<li class="estate-check">
+									<input type="checkbox" name="estate_id[]" value="00001186">
+									<label for="estate_id[]">一括資料請求</label>
+								</li>
+								<li class="estate-address">東京都葛飾区四つ木4丁目</li>
+								<li class="estate-message"></li>
+								<li class="estate-btn-box">
+									<a href="https://morimoto-kodate.jp/joto_johoku/estate/ns_yotsugi/index.php" target="_blank" class="estate-btn_detail"><img src="/top/img/area/btn_estate_detail.jpg" alt="物件詳細"></a>
+									<a href="https://morimoto-kodate.jp/joto_johoku/estate/ns_yotsugi/index.php#contact-box" target="_blank" class="estate-btn"><img src="/top/img/area/btn_estate_document.jpg" alt="資料請求"></a>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+				<!-- /.box-estate -->
+				<div class="box-estate box-estate_right">
+					<a href="https://morimoto-kodate.jp/joto_johoku/estate/ns_oogi1/index.php" target="_blank" class="box-estate-img"><img src="/joto_johoku/estate/estate_thumb/ns_oogi1.jpg" alt="ネクストステージ扇一丁目" class="estate-img"></a>
+					<dl>
+						<dt>ネクストステージ
+							<br>扇一丁目</dt>
+						<dd>
+							<ul>
+								<li class="estate-check">
+									<input type="checkbox" name="estate_id[]" value="00001200">
+									<label for="estate_id[]">一括資料請求</label>
+								</li>
+								<li class="estate-address">東京都足立区扇1丁目</li>
+								<li class="estate-message"></li>
+								<li class="estate-btn-box">
+									<a href="https://morimoto-kodate.jp/joto_johoku/estate/ns_oogi1/index.php" target="_blank" class="estate-btn_detail"><img src="/top/img/area/btn_estate_detail.jpg" alt="物件詳細"></a>
+									<a href="https://morimoto-kodate.jp/joto_johoku/estate/ns_oogi1/index.php#contact-box" target="_blank" class="estate-btn"><img src="/top/img/area/btn_estate_document.jpg" alt="資料請求"></a>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+				<!-- /.box-estate -->
+			</div>
+			<!-- /.box-area -->
+		</section>
+		<!-- /#block-josai -->
+		<!-- 城東・城北 ここまで -->
+		
+		<!-- 横浜・川崎 ここから -->
+		<section id="block-yokohama_kawasaki" class="block-area">
+			<h3>
+				<div class="box-area-head">
+					<a href="https://morimoto-kodate.jp/yokohama_kawasaki/index.html">
+						<img src="/common/img/head_yokohama_kawasaki.png" alt="横浜・川崎" class="area-head">
+					</a>
+					<a href="https://morimoto-kodate.jp/yokohama_kawasaki/index.html" class="area-detail"><img src="/top/img/area/btn_area_detail.png" alt="詳細を見る"></a>
+					<ul>
+						<li class="area-link-top area-link-left">
+							<a href="https://morimoto-kodate.jp/toshin_jonan/index.html"><img src="/common/img/area_btn/btn_toshin_jonan.jpg" alt="都心・城南"></a>
+						</li>
+						<li class="area-link-top">
+							<a href="https://morimoto-kodate.jp/josai/index.html"><img src="/common/img/area_btn/btn_josai.jpg" alt="城西・その他"></a>
+						</li>
+						<li class="area-link-bottom area-link-left">
+							<a href="https://morimoto-kodate.jp/joto_johoku/index.html"><img src="/common/img/area_btn/btn_joto_johoku.jpg" alt="城東・城北"></a>
+						</li>
+						<li class="area-link-bottom">
+							<a href="https://morimoto-kodate.jp/kanagawa/index.html"><img src="/common/img/area_btn/btn_kanagawa.jpg" alt="その他神奈川県"></a>
+						</li>
+					</ul>
+				</div>
+			</h3>
+			<div class="box-area">
+				<div class="box-estate">
+					<a href="https://morimoto-kodate.jp/ad/eda/" target="_blank" class="box-estate-img"><img src="/yokohama_kawasaki/estate/estate_thumb/dh_archtect_coat.jpg" alt="ディアナハウスアーキテクトコート" class="estate-img"></a>
+					<dl>
+						<dt>ディアナハウス
+							<br>アーキテクトコート</dt>
+						<dd>
+							<ul>
+								<li class="estate-check">
+									<input type="checkbox" name="estate_id[]" value="00001166">
+									<label for="estate_id[]">一括資料請求</label>
+								</li>
+								<li class="estate-address">神奈川県横浜市都筑区荏田南3丁目</li>
+								<li class="estate-message"></li>
+								<li class="estate-btn-box">
+									<a href="https://morimoto-kodate.jp/ad/eda/" target="_blank" class="estate-btn_detail"><img src="/top/img/area/btn_estate_detail.jpg" alt="物件詳細"></a>
+									<a href="https://www.morimoto-real.co.jp/kodate/eda/toiawase02.html" target="_blank" class="estate-btn"><img src="/top/img/area/btn_estate_document.jpg" alt="資料請求"></a>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+				<!-- /.box-estate -->
+				<div class="box-estate box-estate_right">
+					<a href="https://morimoto-kodate.jp/ad/aobadai/" target="_blank" class="box-estate-img"><img src="/yokohama_kawasaki/estate/estate_thumb/ns_aobadai.jpg" alt="ネクストステージ青葉台エスプリの丘" class="estate-img"></a>
+					<dl>
+						<dt>ネクストステージ
+							<br>青葉台エスプリの丘</dt>
+						<dd>
+							<ul>
+								<li class="estate-check">
+									<input type="checkbox" name="estate_id[]" value="00001169">
+									<label for="estate_id[]">一括資料請求</label>
+								</li>
+								<li class="estate-address">横浜市青葉区鴨志田町</li>
+								<li class="estate-message"></li>
+								<li class="estate-btn-box">
+									<a href="https://morimoto-kodate.jp/ad/aobadai/" target="_blank" class="estate-btn_detail"><img src="/top/img/area/btn_estate_detail.jpg" alt="物件詳細"></a>
+									<a href="https://www.morimoto-real.co.jp/kodate/aobadai/toiawase.html" target="_blank" class="estate-btn"><img src="/top/img/area/btn_estate_document.jpg" alt="資料請求"></a>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+				<!-- /.box-estate -->
+				<div class="box-estate">
+					<a href="https://morimoto-kodate.jp/ad/nakatahigashi2/" target="_blank" class="box-estate-img"><img src="/yokohama_kawasaki/estate/estate_thumb/ns_nakatahigashi2.jpg" alt="ネクストステージ中田東ゲーテコート" class="estate-img"></a>
+					<dl>
+						<dt>ネクストステージ
+							<br>中田東ゲーテコート</dt>
+						<dd>
+							<ul>
+								<li class="estate-check">
+									<input type="checkbox" name="estate_id[]" value="00001168">
+									<label for="estate_id[]">一括資料請求</label>
+								</li>
+								<li class="estate-address">神奈川県横浜市泉区中田東4丁目</li>
+								<li class="estate-message"></li>
+								<li class="estate-btn-box">
+									<a href="https://morimoto-kodate.jp/ad/nakatahigashi2/" target="_blank" class="estate-btn_detail"><img src="/top/img/area/btn_estate_detail.jpg" alt="物件詳細"></a>
+									<a href="https://www.morimoto-real.co.jp/kodate/nakatahigashi2/toiawase.html" target="_blank" class="estate-btn"><img src="/top/img/area/btn_estate_document.jpg" alt="資料請求"></a>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+				<!-- /.box-estate -->
+				<div class="box-estate box-estate_right">
+					<a href="https://morimoto-kodate.jp/yokohama_kawasaki/estate/dh_azamino_1/index.php" target="_blank" class="box-estate-img"><img src="/yokohama_kawasaki/estate/estate_thumb/dh_azamino_1.jpg" alt="ディアナハウスあざみ野一丁目" class="estate-img"></a>
+					<dl>
+						<dt>ディアナハウス
+							<br>あざみ野一丁目</dt>
+						<dd>
+							<ul>
+								<li class="estate-check">
+									<input type="checkbox" name="estate_id[]" value="00001188">
+									<label for="estate_id[]">一括資料請求</label>
+								</li>
+								<li class="estate-address">神奈川県横浜市青葉区あざみ野1丁目</li>
+								<li class="estate-message"></li>
+								<li class="estate-btn-box">
+									<a href="https://morimoto-kodate.jp/yokohama_kawasaki/estate/dh_azamino_1/index.php" target="_blank" class="estate-btn_detail"><img src="/top/img/area/btn_estate_detail.jpg" alt="物件詳細"></a>
+									<a href="https://morimoto-kodate.jp/yokohama_kawasaki/estate/dh_azamino_1/index.php#contact-box" target="_blank" class="estate-btn"><img src="/top/img/area/btn_estate_document.jpg" alt="資料請求"></a>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+				<!-- /.box-estate -->
+				<div class="box-estate">
+					<a href="https://morimoto-kodate.jp/yokohama_kawasaki/estate/ns_arima_5/index.php" target="_blank" class="box-estate-img"><img src="/yokohama_kawasaki/estate/estate_thumb/ns_arima_5.jpg" alt="ネクストステージ有馬五丁目" class="estate-img"></a>
+					<dl>
+						<dt>ネクストステージ
+							<br>有馬五丁目</dt>
+						<dd>
+							<ul>
+								<li class="estate-check">
+									<input type="checkbox" name="estate_id[]" value="00001192">
+									<label for="estate_id[]">一括資料請求</label>
+								</li>
+								<li class="estate-address">神奈川県川崎市宮前区有馬五丁目</li>
+								<li class="estate-message"></li>
+								<li class="estate-btn-box">
+									<a href="https://morimoto-kodate.jp/yokohama_kawasaki/estate/ns_arima_5/index.php" target="_blank" class="estate-btn_detail"><img src="/top/img/area/btn_estate_detail.jpg" alt="物件詳細"></a>
+									<a href="https://morimoto-kodate.jp/yokohama_kawasaki/estate/ns_arima_5/index.php#contact-box" target="_blank" class="estate-btn"><img src="/top/img/area/btn_estate_document.jpg" alt="資料請求"></a>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+				<!-- /.box-estate -->
+				<div class="box-estate box-estate_right">
+					<a href="https://morimoto-kodate.jp/yokohama_kawasaki/estate/ns_arima_3/index.php" target="_blank" class="box-estate-img"><img src="/yokohama_kawasaki/estate/estate_thumb/ns_arima_3.jpg" alt="ネクストステージ有馬三丁目" class="estate-img"></a>
+					<dl>
+						<dt>ネクストステージ
+							<br>有馬三丁目</dt>
+						<dd>
+							<ul>
+								<li class="estate-check">
+									<input type="checkbox" name="estate_id[]" value="00001189">
+									<label for="estate_id[]">一括資料請求</label>
+								</li>
+								<li class="estate-address">神奈川県川崎市宮前区有馬3丁目</li>
+								<li class="estate-message"></li>
+								<li class="estate-btn-box">
+									<a href="https://morimoto-kodate.jp/yokohama_kawasaki/estate/ns_arima_3/index.php" target="_blank" class="estate-btn_detail"><img src="/top/img/area/btn_estate_detail.jpg" alt="物件詳細"></a>
+									<a href="https://morimoto-kodate.jp/yokohama_kawasaki/estate/ns_arima_3/index.php#contact-box" target="_blank" class="estate-btn"><img src="/top/img/area/btn_estate_document.jpg" alt="資料請求"></a>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+				<!-- /.box-estate -->
+				<div class="box-estate">
+					<a href="https://morimoto-kodate.jp/yokohama_kawasaki/estate/ns_totsuka_gumisawa/index.php" target="_blank" class="box-estate-img"><img src="/yokohama_kawasaki/estate/estate_thumb/ns_totsuka_gumisawa.jpg" alt="ネクストステージ踊場ゲーテコート" class="estate-img"></a>
+					<dl>
+						<dt>ネクストステージ
+							<br>踊場ゲーテコート</dt>
+						<dd>
+							<ul>
+								<li class="estate-check">
+									<input type="checkbox" name="estate_id[]" value="00001191">
+									<label for="estate_id[]">一括資料請求</label>
+								</li>
+								<li class="estate-address">横浜市戸塚区汲沢1丁目</li>
+								<li class="estate-message"></li>
+								<li class="estate-btn-box">
+									<a href="https://morimoto-kodate.jp/yokohama_kawasaki/estate/ns_totsuka_gumisawa/index.php" target="_blank" class="estate-btn_detail"><img src="/top/img/area/btn_estate_detail.jpg" alt="物件詳細"></a>
+									<a href="https://morimoto-kodate.jp/yokohama_kawasaki/estate/ns_totsuka_gumisawa/index.php#contact-box" target="_blank" class="estate-btn"><img src="/top/img/area/btn_estate_document.jpg" alt="資料請求"></a>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+				<!-- /.box-estate -->
+				<div class="box-estate box-estate_right">
+					<a href="https://morimoto-kodate.jp/yokohama_kawasaki/estate/ns_shinoharadai/index.php" target="_blank" class="box-estate-img"><img src="/yokohama_kawasaki/estate/estate_thumb/ns_shinoharadai.jpg" alt="ネクストステージ篠原台" class="estate-img"></a>
+					<dl>
+						<dt>ネクストステージ
+							<br>篠原台</dt>
+						<dd>
+							<ul>
+								<li class="estate-check">
+									<input type="checkbox" name="estate_id[]" value="00001190">
+									<label for="estate_id[]">一括資料請求</label>
+								</li>
+								<li class="estate-address">神奈川県横浜市港北区篠原台町</li>
+								<li class="estate-message"></li>
+								<li class="estate-btn-box">
+									<a href="https://morimoto-kodate.jp/yokohama_kawasaki/estate/ns_shinoharadai/index.php" target="_blank" class="estate-btn_detail"><img src="/top/img/area/btn_estate_detail.jpg" alt="物件詳細"></a>
+									<a href="https://morimoto-kodate.jp/yokohama_kawasaki/estate/ns_shinoharadai/index.php#contact-box" target="_blank" class="estate-btn"><img src="/top/img/area/btn_estate_document.jpg" alt="資料請求"></a>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+				<!-- /.box-estate -->
+			</div>
+			<!-- /.box-area -->
+		</section>
+		<!-- /#block-josai -->
+		<!-- 横浜・川崎 ここまで -->
+		
+		<!-- その他神奈川 ここから -->
+		<section id="block-kanagawa" class="block-area">
+			<h3>
+				<div class="box-area-head">
+					<a href="https://morimoto-kodate.jp/kanagawa/index.html">
+						<img src="/common/img/head_kanagawa.png" alt="その他神奈川" class="area-head">
+					</a>
+					<a href="https://morimoto-kodate.jp/kanagawa/index.html" class="area-detail"><img src="/top/img/area/btn_area_detail.png" alt="詳細を見る"></a>
+					<ul>
+						<li class="area-link-top area-link-left">
+							<a href="https://morimoto-kodate.jp/toshin_jonan/index.html"><img src="/common/img/area_btn/btn_toshin_jonan.jpg" alt="都心・城南"></a>
+						</li>
+						<li class="area-link-top">
+							<a href="https://morimoto-kodate.jp/josai/index.html"><img src="/common/img/area_btn/btn_josai.jpg" alt="城西・その他"></a>
+						</li>
+						<li class="area-link-bottom area-link-left">
+							<a href="https://morimoto-kodate.jp/joto_johoku/index.html"><img src="/common/img/area_btn/btn_joto_johoku.jpg" alt="城東・城北"></a>
+						</li>
+						<li class="area-link-bottom">
+							<a href="https://morimoto-kodate.jp/yokohama_kawasaki/index.html"><img src="/common/img/area_btn/btn_yokohama_kawasaki.jpg" alt="横浜・川崎"></a>
+						</li>
+					</ul>
+				</div>
+				<!-- /.box-area-head -->
+			</h3>
+			<div class="box-area">
+				<div class="box-estate">
+					<a href="https://morimoto-kodate.jp/kanagawa/estate/ns_koshigoe/index.php" target="_blank" class="box-estate-img"><img src="/kanagawa/estate/estate_thumb/ns_koshigoe.jpg" alt="ネクストステージ鎌倉腰越" class="estate-img"></a>
+					<dl>
+						<dt>ネクストステージ
+							<br>鎌倉腰越</dt>
+						<dd>
+							<ul>
+								<li class="estate-check">
+									<input type="checkbox" name="estate_id[]" value="00001193">
+									<label for="estate_id[]">一括資料請求</label>
+								</li>
+								<li class="estate-address">神奈川県鎌倉市腰越3丁目</li>
+								<li class="estate-message"></li>
+								<li class="estate-btn-box">
+									<a href="https://morimoto-kodate.jp/kanagawa/estate/ns_koshigoe/index.php" target="_blank" class="estate-btn_detail"><img src="/top/img/area/btn_estate_detail.jpg" alt="物件詳細"></a>
+									<a href="https://morimoto-kodate.jp/kanagawa/estate/ns_koshigoe/index.php#contact-box" target="_blank" class="estate-btn"><img src="/top/img/area/btn_estate_document.jpg" alt="資料請求"></a>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+				<!-- /.box-estate -->
+			</div>
+			<!-- /.box-area -->
+		</section>
+		<!-- /#block-josai -->
+		<!-- その他神奈川 ここまで -->
+		<!-- blick-design非表示1 
+		<section id="block-design">
+			<ul class="design-box_brand">
+				<li class="list-block"><a href="#"><img src="/common/img/design/concept_diana_h.jpg" alt="ディアナハウスコンセプト"></a></li>
+				<li><a href="#"><img src="/common/img/design/concept_next_stage.jpg" alt="ネクストステージコンセプト"></a></li>
+			</ul> -->
+			<!-- /.design-box_brand -->
+			<!-- blick-design非表示2
+			<h4><img src="/common/img/design/head_designer.png" alt="DESIGNER"><span>DESIGNER</span></h4>
+			<ul class="design-box_designer">
+				<li class="list-block"><a href="#"><img src="/common/img/design/designer_imai.jpg" alt="今井 敦"></a></li>
+				<li class="list-block"><a href="#"><img src="/common/img/design/designer_nanjo.jpg" alt="南條 洋雄"></a></li>
+				<li><a href="#"><img src="/common/img/design/designer_takeshita.jpg" alt="竹下 学"></a></li>
+			</ul>
+		</section>-->
+		<!-- /#block-design -->
+	</div>
+	<!-- /#contents -->
+	<footer>
+		<div id="img_pagetop" class="clearfix">
+			<a href="#top">
+				<img src="/common/img/pagetop.png" alt="pagetop"/>
+			</a>
+		</div>
+		<ul>
+			<li><a href="http://www.morimoto-real.co.jp/" target="_blank">MORIMOTO Corporate Site</a></li>
+			<li><a href="http://www.morimoto-real.co.jp/corporate/" target="_blank">会社案内</a></li>
+			<li><a href="http://www.morimoto-real.co.jp/privacy/sougou.html" target="_blank">個人情報保護方針</a></li>
+			<li><a href="https://www.morimoto-real.co.jp/toiawase/sonota.html" target="_blank">お問合せ</a></li>
+			<li><a href="http://www.morimoto-real.co.jp/group/" target="_blank">モリモトグループ</a></li>
+		</ul>
+		<p class="foot-infoCenter">株式会社モリモトインフォメーションセンター</p>
+		<a href="tel:0120-055-512" class="footer-tel"><img src="/common/img/footer/img/tel.png" alt=""></a>
+		<p>【戸建NET課】受付時間 am10:00～pm7:00</p>
+		<address>&copy; MORIMOTO Co.,Ltd.</address>
+	</footer>
+<!-- Yahoo Tag Manager-->
+<script type="text/javascript">
+	(function () {
+		var tagjs = document.createElement("script");
+		var s = document.getElementsByTagName("script")[0];
+		tagjs.async = true;
+		tagjs.src = "//s.yjtag.jp/tag.js#site=GvodBmg";
+		s.parentNode.insertBefore(tagjs, s);
+	}());
+</script>
+<noscript>
+	<iframe src="//b.yjtag.jp/iframe?c=GvodBmg" width="1" height="1" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+</noscript>
+<!-- End Yahoo Tag Manager-->
+</body>
+</html>

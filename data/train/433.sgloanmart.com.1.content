@@ -1,0 +1,682 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="style/style.css" />
+   <link rel="shortcut icon" href="images/favicon.ico" >
+   <link rel="icon" type="image/gif" href="images/animated_favicon1.gif" >
+
+<title>Loan Mart Official Website</title>
+<script src="js/jquery-1.4.2.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+function toggleMe(a){
+var e=document.getElementById(a);
+if(!e)return true;
+if(e.style.display=="none"){
+e.style.display="block"
+
+}
+else{
+e.style.display="none"
+
+}
+return true;
+}
+        function ChangeImage(imgID)
+         {
+                 var imgURL = document.getElementById(imgID).src.split('/');
+                 if(imgURL[imgURL.length - 1] == 'collapse.png')
+                 {
+                         document.getElementById(imgID).src = "expand.png"; 
+                 }
+                 else
+                 {
+                         document.getElementById(imgID).src = 'collapse.png';
+                 }
+                 var cnt = 1;
+                 while(cnt <= 3)
+                 {
+                         var imgIdRec = "imgAcc" + cnt;
+                         if(document.getElementById(imgIdRec)!= 'null' && imgIdRec != imgID)
+                         {
+                                 var imgURL = document.getElementById(imgIdRec).src.split('/');
+                                 document.getElementById(imgIdRec).src = "expand.png"; 
+                         }
+                        cnt = cnt + 1;
+                 }
+         }
+ 
+</script>
+
+
+<script type="text/javascript">
+function format(input){
+var num = input.value.replace(/\,/g,'');
+if(!isNaN(num)){
+if(num.indexOf('.') > -1){ 
+num = num.split('.');
+num[0] = num[0].toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1,').split('').reverse().join('').replace(/^[\,]/,'');
+if(num[1].length > 2){ 
+alert('You may only enter two decimals!');
+num[1] = num[1].substring(0,num[1].length-1);
+} input.value = num[0]+'.'+num[1]; 
+} else{ input.value = num.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1,').split('').reverse().join('').replace(/^[\,]/,'') };
+}
+else{ alert('You may enter only numbers in this field!');
+input.value = input.value.substring(0,input.value.length-1);
+}
+}
+</script>
+
+</head>
+
+<body style="height:700px">
+<style type="text/css">
+.main_nav a{
+	font-family: Abel, sans-serif;
+	font-size:14px;
+	color:#FFF;
+	text-decoration:none;
+	font-weight:bold;
+}
+.main_nav a:hover{
+	font-family: Abel, sans-serif;
+	font-size:14px;
+	color:#000;
+	text-decoration:none;
+	font-weight:bold;
+}
+
+img{
+	border:none;
+}
+
+</style>
+
+<table width="100%" bgcolor="#fe5a00">
+<tr>
+<td>
+
+<table width="950px" height="70px" align="center" class="main_nav">
+<tr>
+<td><a href="http://www.sgloanmart.com"><img width="265px" height="80px" src="http://www.sgloanmart.com/images/logo.png"/></a></td>
+<td align="center" width="700px" valign="bottom">
+<a title="home" href="http://www.sgloanmart.com/index.php">HOME</a>
+&nbsp;&nbsp;<a title="calculators" href="http://www.sgloanmart.com/loanmartcalculator/index.php">CALCULATORS</a>
+&nbsp;&nbsp;<a title="mortgage dictionary" href="http://www.sgloanmart.com/mortgage_dictionary.php">MORTGAGE DICTIONARY</a>
+&nbsp;&nbsp;<a title="resources" href="http://www.sgloanmart.com/resources.php">RESOURCES</a>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table><table width="950px" align="center">
+<tr>
+<td><img src="images/banks.jpg"/></td>
+</tr>
+</table>
+<!--content-->
+<table width="950px" height="800px" align="center">
+<tr>
+<!-- col1 -->
+<td width="250px" valign="top"  class="round" bgcolor="#e1e1e1">
+<form action="/index.php" method="post">
+<table width="250px" height="300px" align="center" background="images/contact_us.png">
+<tr>
+<td valign="top">
+
+<table>
+<tr>
+<td colspan="3" height="20px"></td>
+</tr>
+<tr>
+<td colspan="3" height="20px" class="contact_title" valign="top">&nbsp;&nbsp;&nbsp;CONTACT US NOW</td>
+</tr>
+<tr>
+<td colspan="3" height="30px" class="contact_2" valign="top" align="center"><img src="images/hotline.png"/></td>
+</tr>
+<tr>
+<td align="center" colspan="3" height="10px"></td>
+</tr>
+<tr>
+<td width="70px" align="right" class="contact_font">Name</td>
+<td width="150px"><input type="text" style="width:150px" name="name"/></td>
+<td></td>
+</tr>
+<tr>
+<td width="70px" align="right" class="contact_font">Email</td>
+<td width="150px"><input type="text" style="width:150px" name="email"/></td>
+<td></td>
+</tr>
+<tr>
+<td width="70px" align="right" class="contact_font">Mobile</td>
+<td width="150px"><input type="text" style="width:150px" name="mobile"/></td>
+<td></td>
+</tr>
+<tr>
+<td width="70px" align="right" class="contact_font">Subjects</td>
+<td width="150px"><input type="text" style="width:150px" name="subjects"/></td>
+<td></td>
+</tr>
+<tr>
+<td width="70px" align="right" class="contact_font"></td>
+<td align="right"><input class="send_button" type="submit" name="send" value="Send"></td>
+<td></td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+</form>
+
+<table width="250px" height="150px" cellpadding="5px">
+<tr>
+<td class="hiw_title" colspan="3" align="center" bgcolor="#fe5a00" style="color:#FFF;">HOW IT WORKS</td>
+</tr>
+<tr>
+<td class="hiw_text">
+To find an ideal mortgage deal is made easy now!  With sgLoanMart, it is just one click away. Simply fill up 4 lines, and you will have <a href="index.php">all offers</a> at the next click. 
+<br /><br />
+Want to find out more? Contact us, our mortgage consultant will be at your services. That is how easy it is. 
+<br /><br />
+Or Just want to work out some figures first by yourself? Use our <a href="/loanmartcalculator">calculators</a>, whether you want to know <a href="/loanmartcalculator/lac.php">max loan</a> that you can borrow, how much is the <a href="/loanmartcalculator/mic.php">monthly installment</a>, or <a href="/loanmartcalculator/rc.php">refinancing savings</a>!
+</td>
+</tr>
+</table>
+
+<!-- Testimonial -->
+<table width="250px" height="300px" align="center" background="images/contact_us.png">
+<tr>
+<td colspan="2" height="30px"></td>
+</tr>
+<tr>
+<td width="10px"></td>
+<td height="30px" valign="top" class="testimonial_title">TESTIMONIAL</td>
+</tr>
+<tr>
+<td colspan="2" valign="top" align="center">
+
+<marquee behavior="scroll" direction="up" scrolldelay="90" height="200px">
+<table width="200px" height="200px">
+<tr><td valign="top">
+<table width="200px">
+<tr>
+<td height="80px" class="testimonial_font" align="center"><img src="images/open_quote.png"/>The consultants here turn all stones for me to find the most suitable house loan packages for me! I have been using their services several times in the past 6 years and satisfied services are always delivered to me without fail. I will continue to work with consultants here.  <img src="images/close_quote.png"/></td>
+</tr>
+<tr>
+<td height="20px" align="right" class="testimonial_font" style="font-weight:bold;"><img src="images/testimonial_line.png"/>Ms. Chua (custom since 2006)</td>
+</tr>
+</table>
+<br />
+<br />
+<table width="200px">
+<tr>
+<td height="80px" class="testimonial_font" align="center"><img src="images/open_quote.png"/>If I want to find out the best rate in town, I just call the consultants in SgLoanMart or surf their website. It saves me all the trouble to call each and every bank to find out their rates. The consultants are very knowledgeable and patient and they always prepare a comprehensive report for me to make an informed decision.  I am very comfortable to let them handling my housing loans.  <img src="images/close_quote.png"/></td>
+</tr>
+<tr>
+<td height="20px" align="right" class="testimonial_font" style="font-weight:bold;"><img src="images/testimonial_line.png"/>Mr. Koh (customer since 2007)</td>
+</tr>
+</table>
+<br />
+<br />
+<table width="200px">
+<tr>
+<td height="80px" class="testimonial_font" align="center"><img src="images/open_quote.png"/>The consultants here are very friendly and patient … I have requested more than 100 valuations of private properties before I decided to buy my current house.  They are professional and really costumer oriented.  <img src="images/close_quote.png"/></td>
+</tr>
+<tr>
+<td height="20px" align="right" class="testimonial_font" style="font-weight:bold;"><img src="images/testimonial_line.png"/>Mr. Sri. (customer since 2011) </td>
+</tr>
+</table>
+<br />
+<br />
+</td></tr>
+</table>
+</marquee>
+</td>
+</tr>
+</table>
+<!-- Testimonial -->
+<br /><!-- SIBOR/SOR TABLE -->
+<table width="250px" height="150px" class="sibor_table_font">
+<tr>
+<td colspan="3" align="center" bgcolor="#fe5a00" style="color:#FFF;">Daily SIBOR/SOR ( 23 January 2016 )</td>
+</tr>
+<tr>
+<td align="center"><a href="graph.php"><img src="images/graph.png"/></a></td>
+<td align="center">SIBOR</td>
+<td align="center">SOR</td>
+</tr>
+<tr>
+<td align="center" width="80px">1 MTH</td>
+<td align="center" width="85px">0.95%</td>
+<td align="center" width="85px">-%</td>
+</tr>
+<tr>
+<td align="center" width="80px">3 MTH</td>
+<td align="center" width="85px">1.07%</td>
+<td align="center" width="85px">1.41%</td>
+</tr>
+<tr>
+<td align="center" width="80px">12 MTH</td>
+<td align="center" width="85px">1.25%</td>
+<td align="center" width="85px">-%</td>
+</tr>
+</table>
+<!-- SIBOR/SOR TABLE -->
+</td>
+<!-- col1 -->
+<!-- col2 -->
+<td valign="top">
+<!--Search Form-->
+<table width="700px" bgcolor="#fe5a00" height="30px">
+<tr>
+<td align="center" class="search_title">
+SEARCH PACKAGE NOW
+</td>
+<tr>
+</table>
+<br />
+<form action="/index.php" method="post" onsubmit="this.loan_amt.value=this.loan_amt.value.replace(/\,/g,'')">
+<table width="500px" align="center" class="search_form" style="border-collapse:collapse; border:1px;">
+<tr>
+<td class="error" colspan="2" align="center"></td>
+</tr>
+<tr>
+<td width="150px" height="30px" align="right">Property Type:</td>
+<td width="200px">
+<select style="width:200px; font-size:16px; height:30px" name="property_type">
+  <option style="text-align:center" value="">--Select--</option>
+  <option value="HDB">HDB</option>
+  <option value="Private">Private</option>
+  <option value="Commercial(Company)">Commercial(Company)</option>
+  <option value="Commercial(Personal)">Commercial(Personal)</option>
+</select>
+</td>
+</tr>
+<tr>
+<td width="150px" height="30px" align="right">Property Status:</td>
+<td width="200px">
+<select style="width:200px;font-size:16px" name="property_status">
+  <option  style="text-align:center" value="">--Select--</option>
+  <option value="Complete">Complete</option>
+  <option value="Uncomplete">Uncomplete</option>
+</select>
+</td>
+</tr>
+<tr>
+<td width="150px" height="30px" align="right">Loan Amt (SGD)*:</td>
+<td width="200px">
+<input type="text" style="width:150px;font-size:16px" onkeyup="format(this)" onchange="format(this)"
+onblur="if(this.value.indexOf('.')==-1)this.value=this.value" name="loan_amt">
+</td>
+</tr>
+<tr>
+<td width="150px" height="30px" align="right">Loan Tenure:*</td>
+<td width="200px">
+<input type="text" style="width:150px;font-size:16px" name="loan_tenure"/>
+</td>
+</tr>
+<tr>
+<td width="150px"  height="30px" align="right"></td>
+<td width="200px">
+<input type="submit" class="search_button" name="search" value="Search" />
+</td>
+</tr>
+</table>
+</form>
+<!--Search Form-->
+<br />
+<table width="700px" bgcolor="#fe5a00" height="30px">
+<tr>
+<td align="center" class="search_title">
+ABOUT US
+</td>
+<tr>
+</table>
+<table width="700px" class="about_us">
+<tr>
+<td width="500px" valign="top">
+SGLoanMart.com is established by veteran mortgage brokers who are members of first batch of such brokers in Singapore. Highly experienced, client centred and service oriented, our mortgage brokers have served thousands of clients and many are repeating customers with great satisfaction of our professional services. 
+<br /><br />
+We believe in clientâ€™s interest comes first. We listen and understand our clients, tailor-make independent and comprehensive comparison for our clients catering different needs and requirements. 
+<br /><br />
+Working with only experienced bankers and lawyers, supported by all major banks and financial institutes, our clients are rest assure that their housing loan needs are in good hands with SgLoanMart.com
+<br /><br />
+Our mortgage consultant has been featured in Channel 8 and Channel U to provide general views on topics related to mortgage.
+<br /><br />
+Contact us today!
+</td>
+<td width="200px" valign="top">
+<img src="images/about_us_1.png"/>
+<br /><br />
+<img src="images/about_us_2.png"/>
+</td>
+</tr>
+</table>
+<!-- News Update-->
+<table width="700px" bgcolor="#fe5a00" height="30px">
+<tr>
+<td align="center" class="search_title">
+NEWS UPDATE
+</td>
+<tr>
+</table>
+
+<table width="700px" height="30px" class="news">
+<tr>
+<td width="100px" align="center">
+12 Sep</td>
+<td width="500px" class="title_link">
+<a onclick="return toggleMe('33')">More failing to repay mortgage on time (ST, 19/07/2014, C12)</a>
+</td>
+<td width="100px" align="center">
+<img style="cursor:pointer;"  onclick="return toggleMe('33')" src="images/more_info.png"/>
+</td>
+</tr>
+
+<tr>
+<td colspan="3">
+<div id="33" style="display:none; width:700px">
+<table align="center" width="700px">
+<tr><td width="100px"></td><td>Figures from Credit Bureau of Singapore 
+No. of delinquent (overdue 30 days) mortgage: 4,186 in May 2014, up 20% from 3,340 in May 2013. Percentage of delinquent borrowers comprises 0.82% up from 0.7% in same month last year for private property loans.</td></tr><tr><td width="100px"></td><td>Defaults (overdue 90 days: banks wrote off 6 mortgages for 1st five months of the year, and same period of last year the default is 5. </td></tr><tr><td width="100px"></td><td>Possible reasons to blame: 1) unemployment increased from 1.8% in Dec 2013 to 2% in March 2014 2) property market correction. No. of TOP unit is 13,150 in 2013 and the number is expect to be increased to 17,000, and landlord shall expect more picky tenant</td></tr><tr><td width="100px"></td><td>No. of mortgagee sales: 42 units April - June 2014, and the highest was 63 July-Sept 2009</td></tr></table>
+</div>
+</td>
+</tr>
+
+
+<tr>
+<td colspan="3" align="center"><img src="images/news_line.png"/></td>
+</tr>
+<tr>
+<td width="100px" align="center">
+12 Mar</td>
+<td width="500px" class="title_link">
+<a onclick="return toggleMe('32')">Valuation Report to be carried out after Option granted</a>
+</td>
+<td width="100px" align="center">
+<img style="cursor:pointer;"  onclick="return toggleMe('32')" src="images/more_info.png"/>
+</td>
+</tr>
+
+<tr>
+<td colspan="3">
+<div id="32" style="display:none; width:700px">
+<table align="center" width="700px">
+<tr><td width="100px"></td><td>HDB has revised the process of HDB resale cases</td></tr><tr><td width="100px"></td><td>The new process:-
+step 1: option to purchase granted by sellers, after price agreed
+step 2: with Option to Purchase, sellers able to request a valuation report from HDB 
+</td></tr></table>
+</div>
+</td>
+</tr>
+
+
+<tr>
+<td colspan="3" align="center"><img src="images/news_line.png"/></td>
+</tr>
+<tr>
+<td width="100px" align="center">
+12 Mar</td>
+<td width="500px" class="title_link">
+<a onclick="return toggleMe('31')">Valuation Report to be carried out after Option granted</a>
+</td>
+<td width="100px" align="center">
+<img style="cursor:pointer;"  onclick="return toggleMe('31')" src="images/more_info.png"/>
+</td>
+</tr>
+
+<tr>
+<td colspan="3">
+<div id="31" style="display:none; width:700px">
+<table align="center" width="700px">
+<tr><td width="100px"></td><td>HDB has revised the process of HDB resale cases</td></tr><tr><td width="100px"></td><td>The new process:-
+step 1: option to purchase granted by sellers, after price agreed
+step 2: with Option to Purchase, sellers able to request a valuation report from HDB 
+</td></tr></table>
+</div>
+</td>
+</tr>
+
+
+<tr>
+<td colspan="3" align="center"><img src="images/news_line.png"/></td>
+</tr>
+<tr>
+<td width="100px" align="center">
+19 Jan</td>
+<td width="500px" class="title_link">
+<a onclick="return toggleMe('29')">Ex-banker on borrowed time to share insights</a>
+</td>
+<td width="100px" align="center">
+<img style="cursor:pointer;"  onclick="return toggleMe('29')" src="images/more_info.png"/>
+</td>
+</tr>
+
+<tr>
+<td colspan="3">
+<div id="29" style="display:none; width:700px">
+<table align="center" width="700px">
+<tr><td width="100px"></td><td>Mr. Edwin Lim, his book "the Ultimate banker".</td></tr><tr><td width="100px"></td><td>ST 19/1/2013 B14</td></tr></table>
+</div>
+</td>
+</tr>
+
+
+<tr>
+<td colspan="3" align="center"><img src="images/news_line.png"/></td>
+</tr>
+<tr>
+<td width="100px" align="center">
+19 Jan</td>
+<td width="500px" class="title_link">
+<a onclick="return toggleMe('28')">speculators may turn to commercial property</a>
+</td>
+<td width="100px" align="center">
+<img style="cursor:pointer;"  onclick="return toggleMe('28')" src="images/more_info.png"/>
+</td>
+</tr>
+
+<tr>
+<td colspan="3">
+<div id="28" style="display:none; width:700px">
+<table align="center" width="700px">
+<tr><td width="100px"></td><td>Analysts expect heightened interest after curbs on industrial sector</td></tr><tr><td width="100px"></td><td>ST 19/1/2013 C1</td></tr></table>
+</div>
+</td>
+</tr>
+
+
+<tr>
+<td colspan="3" align="center"><img src="images/news_line.png"/></td>
+</tr>
+<tr>
+<td width="100px" align="center">
+18 Jan</td>
+<td width="500px" class="title_link">
+<a onclick="return toggleMe('27')">MRT network size to double by 2030</a>
+</td>
+<td width="100px" align="center">
+<img style="cursor:pointer;"  onclick="return toggleMe('27')" src="images/more_info.png"/>
+</td>
+</tr>
+
+<tr>
+<td colspan="3">
+<div id="27" style="display:none; width:700px">
+<table align="center" width="700px">
+<tr><td width="100px"></td><td>80% homes here will be within 10 mintues walk of a station by then </td></tr><tr><td width="100px"></td><td>ST, 18 Jan 2013 Headline News
+</td></tr></table>
+</div>
+</td>
+</tr>
+
+
+<tr>
+<td colspan="3" align="center"><img src="images/news_line.png"/></td>
+</tr>
+<tr>
+<td width="100px" align="center">
+17 Jan</td>
+<td width="500px" class="title_link">
+<a onclick="return toggleMe('26')">Cooling Measures (effective 12/1/2013) - SPR with HDB</a>
+</td>
+<td width="100px" align="center">
+<img style="cursor:pointer;"  onclick="return toggleMe('26')" src="images/more_info.png"/>
+</td>
+</tr>
+
+<tr>
+<td colspan="3">
+<div id="26" style="display:none; width:700px">
+<table align="center" width="700px">
+<tr><td width="100px"></td><td>1) to sell HDB in 6 months if to buy private property 
+2) not allowed to let out whole unit</td></tr></table>
+</div>
+</td>
+</tr>
+
+
+<tr>
+<td colspan="3" align="center"><img src="images/news_line.png"/></td>
+</tr>
+<tr>
+<td width="100px" align="center">
+17 Jan</td>
+<td width="500px" class="title_link">
+<a onclick="return toggleMe('25')">Coolings Measures (effective 12/1/2013) - cash down payment</a>
+</td>
+<td width="100px" align="center">
+<img style="cursor:pointer;"  onclick="return toggleMe('25')" src="images/more_info.png"/>
+</td>
+</tr>
+
+<tr>
+<td colspan="3">
+<div id="25" style="display:none; width:700px">
+<table align="center" width="700px">
+<tr><td width="100px"></td><td>1st loan: 5% (or 10% if loan is 60%) 
+2nd loan onwards: 25% </td></tr></table>
+</div>
+</td>
+</tr>
+
+
+<tr>
+<td colspan="3" align="center"><img src="images/news_line.png"/></td>
+</tr>
+<tr>
+<td width="100px" align="center">
+17 Jan</td>
+<td width="500px" class="title_link">
+<a onclick="return toggleMe('24')">Coolings Measures (effective 12/1/2013) - DSR</a>
+</td>
+<td width="100px" align="center">
+<img style="cursor:pointer;"  onclick="return toggleMe('24')" src="images/more_info.png"/>
+</td>
+</tr>
+
+<tr>
+<td colspan="3">
+<div id="24" style="display:none; width:700px">
+<table align="center" width="700px">
+<tr><td width="100px"></td><td>HDB DSR 
+1) bank loan: 30% 
+2) HDB loan: 35% </td></tr></table>
+</div>
+</td>
+</tr>
+
+
+<tr>
+<td colspan="3" align="center"><img src="images/news_line.png"/></td>
+</tr>
+<tr>
+<td width="100px" align="center">
+17 Jan</td>
+<td width="500px" class="title_link">
+<a onclick="return toggleMe('23')">Coolings Measures (effective 12/1/2013) - LTV</a>
+</td>
+<td width="100px" align="center">
+<img style="cursor:pointer;"  onclick="return toggleMe('23')" src="images/more_info.png"/>
+</td>
+</tr>
+
+<tr>
+<td colspan="3">
+<div id="23" style="display:none; width:700px">
+<table align="center" width="700px">
+<tr><td width="100px"></td><td>Loan to Valuation
+1st loan: 80% (or 60%, if tenure more than 30yrs/65yrs old)
+2nd loan: 50% (or 40%, if tenure more than 30yrs/65yrs old)
+3rd loan: 40% (or 30%, if tenure more than 30yrs/65yrs old)</td></tr></table>
+</div>
+</td>
+</tr>
+
+
+<tr>
+<td colspan="3" align="center"><img src="images/news_line.png"/></td>
+</tr>
+<tr>
+<td width="100px" align="center">
+17 Jan</td>
+<td width="500px" class="title_link">
+<a onclick="return toggleMe('21')">Some buyers "taking advantage of ECs to profit"</a>
+</td>
+<td width="100px" align="center">
+<img style="cursor:pointer;"  onclick="return toggleMe('21')" src="images/more_info.png"/>
+</td>
+</tr>
+
+<tr>
+<td colspan="3">
+<div id="21" style="display:none; width:700px">
+<table align="center" width="700px">
+<tr><td width="100px"></td><td>Khaw: Some rent out dual-key units at once, others can afford private</td></tr><tr><td width="100px"></td><td>ST Jan 15,2013 B5
+</td></tr></table>
+</div>
+</td>
+</tr>
+
+
+<tr>
+<td colspan="3" align="center"><img src="images/news_line.png"/></td>
+</tr>
+</table>
+
+
+<!-- News Update-->
+
+
+
+</td>
+<!-- col2 -->
+</tr>
+</table>
+<style type="text/css">
+.font{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#000;
+}
+</style>
+<table class="font" width="950px" align="center">
+<tr>
+<td colspan="2"><hr style="width:950px; border: 1px dotted #999999;"/></td>
+</tr>
+<tr>
+<td align="left">&copy; Copyright 2012 SGLoanMart.com</td>
+<td align="right">
+Housing Loan Advisor Pte Ltd<br />
+Tel: 6809 2248&nbsp;&nbsp;&nbsp;
+Fax: 6449 9927&nbsp;&nbsp;&nbsp;
+Email: <a href="mailto:info@sgloanmart.com">info@sgloanmart.com</a><br />
+Level 34, 77 Robinson Road, Singapore 068896
+</td>
+</tr>
+</table></body>
+</html>

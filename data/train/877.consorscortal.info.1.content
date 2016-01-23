@@ -1,0 +1,337 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head><script type="text/javascript">
+<!--
+function NpsPxRatio()
+{
+var outer = document.createElement('DIV');
+var inner = document.createElement('DIV');
+inner.style.height = '1000em';
+inner.style.width = '1000ex';
+inner.style.fontSize = '10pt';
+outer.style.height = '0';
+outer.style.overflow = 'hidden';
+outer.appendChild(inner);
+document.body.appendChild(outer);
+this.EM_TO_PX = inner.offsetHeight / 1000;
+this.EX_TO_PX = inner.offsetWidth / 1000;
+document.body.removeChild(outer);
+}
+function npsWindowOpen(uri, windowName, decorate) {
+if (windowName=='_self') {
+self.location = uri;
+return self;
+} else if (windowName=='_parent') {
+parent.location = uri;
+return parent;
+} else {
+var w = window.open(uri, windowName, decorate);
+try {
+w.opener = self;
+} catch (e) {
+}
+return w;
+}
+}
+function npsWindowClose(button) {
+window.close();
+return true;
+}
+function npsGetParentWindow(frame)
+{
+var f = frame;
+if (f == null) {
+return null;
+}
+while (f.parent != f && f.name.indexOf('com_infopark_libs_htmlgui_root_frame') != 0) {
+try {
+f.parent.location.href;
+} catch (e) {
+break;
+}
+f = f.parent;
+}
+return f;
+}
+function ow(uri, windowName, windowType) {
+npsOpenWindowWithReturn(uri, windowName, windowType);
+}
+function npsOpenWindowWithReturn(uri, windowName, windowType) {
+var openedWindow;
+var parentWindow = npsGetParentWindow(self);
+if (windowName!='_parent' && windowName!='_self' && parentWindow != self) {
+openedWindow = parentWindow.ow(uri, windowName, windowType);
+return openedWindow;
+}
+var decorate = '';
+var width = 0;
+var height = 0;
+if (windowName=='_npsOp' && typeof npsGetOpenerName == 'function') {
+windowName = npsGetOpenerName(self);
+} else if (windowName=='_npsNa' && typeof npsGetParentWindow == 'function') {
+npsGetParentWindow(self).location = uri;
+return null;
+}
+if (windowType != 'n') {
+var exWidth = 0;
+var emWidth = 64;
+var emHeight = 51.2;
+switch (windowType) {
+case 'uds': emWidth = 55.5; emHeight = 32.5; break;
+case 'udt': exWidth = 65; emHeight = 15.36; break;
+};
+decorate = 'dependent=yes, resizable=yes, scrollbars=yes, location=no, menubar=no, status=no, toolbar=no';
+if (windowType != 'udp') {
+var ratio = new NpsPxRatio(); width = (exWidth != 0) ? (exWidth * ratio.EX_TO_PX) : (emWidth * ratio.EM_TO_PX); height = emHeight * ratio.EM_TO_PX; decorate += ', width=' + width;
+decorate += ', height=' + height;
+}
+}
+var w;
+if (typeof npsPostSelection == 'function') {
+w = npsPostSelection(uri, windowName, decorate);
+} else {
+w = npsWindowOpen(uri, windowName, decorate);
+}
+w.focus();
+return w;
+}
+// -->
+</script>
+<script type="text/javascript" src="/default/NPS/javascripts/nps_js_editmarker.js"></script>
+<link rel="stylesheet" type="text/css" href="/default/NPS/p/Stylesheet?file=previewStyle.css&amp;theme=default&amp;tct=1421411163241">
+<script type="text/javascript">
+<!--
+function NpsPxRatio()
+{
+var outer = document.createElement('DIV');
+var inner = document.createElement('DIV');
+inner.style.height = '1000em';
+inner.style.width = '1000ex';
+inner.style.fontSize = '10pt';
+outer.style.height = '0';
+outer.style.overflow = 'hidden';
+outer.appendChild(inner);
+document.body.appendChild(outer);
+this.EM_TO_PX = inner.offsetHeight / 1000;
+this.EX_TO_PX = inner.offsetWidth / 1000;
+document.body.removeChild(outer);
+}
+function npsWindowOpen(uri, windowName, decorate) {
+if (windowName=='_self') {
+self.location = uri;
+return self;
+} else if (windowName=='_parent') {
+parent.location = uri;
+return parent;
+} else {
+var w = window.open(uri, windowName, decorate);
+try {
+w.opener = self;
+} catch (e) {
+}
+return w;
+}
+}
+function npsWindowClose(button) {
+window.close();
+return true;
+}
+function npsGetParentWindow(frame)
+{
+var f = frame;
+if (f == null) {
+return null;
+}
+while (f.parent != f && f.name.indexOf('com_infopark_libs_htmlgui_root_frame') != 0) {
+try {
+f.parent.location.href;
+} catch (e) {
+break;
+}
+f = f.parent;
+}
+return f;
+}
+function ow(uri, windowName, windowType) {
+npsOpenWindowWithReturn(uri, windowName, windowType);
+}
+function npsOpenWindowWithReturn(uri, windowName, windowType) {
+var openedWindow;
+var parentWindow = npsGetParentWindow(self);
+if (windowName!='_parent' && windowName!='_self' && parentWindow != self) {
+openedWindow = parentWindow.ow(uri, windowName, windowType);
+return openedWindow;
+}
+var decorate = '';
+var width = 0;
+var height = 0;
+if (windowName=='_npsOp' && typeof npsGetOpenerName == 'function') {
+windowName = npsGetOpenerName(self);
+} else if (windowName=='_npsNa' && typeof npsGetParentWindow == 'function') {
+npsGetParentWindow(self).location = uri;
+return null;
+}
+if (windowType != 'n') {
+var exWidth = 0;
+var emWidth = 64;
+var emHeight = 51.2;
+switch (windowType) {
+case 'uds': emWidth = 55.5; emHeight = 32.5; break;
+case 'udt': exWidth = 65; emHeight = 15.36; break;
+};
+decorate = 'dependent=yes, resizable=yes, scrollbars=yes, location=no, menubar=no, status=no, toolbar=no';
+if (windowType != 'udp') {
+var ratio = new NpsPxRatio(); width = (exWidth != 0) ? (exWidth * ratio.EX_TO_PX) : (emWidth * ratio.EM_TO_PX); height = emHeight * ratio.EM_TO_PX; decorate += ', width=' + width;
+decorate += ', height=' + height;
+}
+}
+var w;
+if (typeof npsPostSelection == 'function') {
+w = npsPostSelection(uri, windowName, decorate);
+} else {
+w = npsWindowOpen(uri, windowName, decorate);
+}
+w.focus();
+return w;
+}
+// -->
+</script>
+<script src="/default/NPS/javascripts/nps_js_editmarker.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="/default/NPS/p/Stylesheet?file=previewStyle.css&amp;theme=default&amp;tct=1418301460681">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+<title>BNP Paribas Personal Investors - Home page</title>
+<meta content="BNP Paribas Personal Investors : Home page" name="description" />
+<link rel="icon" href="bnpparibas.ico" />
+<link rel="stylesheet" type="text/css" href="style/styles.css" />
+<link rel="stylesheet" type="text/css" href="style/print.css" media="print" />
+<link rel="stylesheet" href="style/global.css">
+<!--[if IE 7]>
+<link rel="stylesheet" type="text/css" media="screen" href="style/ie7.css" />
+<![endif]-->
+<!--[if lte IE 6]>
+<link rel="stylesheet" type="text/css" media="screen" href="style/ie6.css" />
+<![endif]-->
+<script src="js/swfobject.js" type="text/javascript"></script><!-- integration du flash -->
+<script src="js/cookie.js" type="text/javascript"></script><!-- gestion de cookie pour la taille de texte -->
+<script src="js/jquery_scroll_pack.js" type="text/javascript"></script><!-- lien progressif haut de page -->
+<!--<script type="text/javascript" src="js/jquery.easing.js"></script> effet de rebond -->
+<script src="js/jquery_superbox.js" type="text/javascript"></script><!-- lightbox -->
+<script src="js/jquery_curvycorners_min.js" type="text/javascript"></script><!-- corner -->
+<script src="js/jquery_anythingslider.js" type="text/javascript"></script><!-- carousel dates clefs -->
+<script src="js/init.js" type="text/javascript"></script>
+<script src="Scripts/swfobject_modified.js" type="text/javascript"></script>
+<script src="js/jquery-1_5_1_min.js" type="text/javascript"></script>
+<script src="js/jquery_easing_1_3.js" type="text/javascript"></script>
+<script src="js/slides_min_jquery.js"></script>
+<script>
+/*$(function(){
+$('#slides').slides({
+preload: true,
+preloadImage: 'img/diaporama/loading.gif',
+play: 5000,
+pause: 2500,
+hoverPause: true,
+animationStart: function(current){
+$('.caption').animate({
+left:-1500
+},100);
+if (window.console && console.log) {
+// example return of current slide number
+console.log('animationStart on slide: ', current);
+};
+},
+animationComplete: function(current){
+$('.caption').animate({
+left:0
+},300);
+if (window.console && console.log) {
+// example return of current slide number
+console.log('animationComplete on slide: ', current);
+};
+}
+});
+});*/
+</script>
+<script>
+$(document).ready(function() {
+//if mouse over and mouse out
+$('.eff').hover(
+function () {
+value = $(this).find('img').outerHeight() * -1;
+//for left/right if you have different width and height,
+//commented out because we are using up/down in this example
+//value = $(this).find('img').outerWidth() * -1);
+//animate the image
+// you can change the sliding direction by changing bottom to left, right or top
+// if you changed this, you will have to change the position of the hover out as well
+$(this).find('img').stop().animate({bottom: value} ,{duration:500, easing: 'easeOutBounce'});
+},
+function () {
+//reset the image
+// the position property (bottom), it must be same with the on in the mouseover
+$(this).find('img').stop().animate({bottom:-6} ,{duration:500, easing: 'easeOutBounce'});
+});
+//if user clicked on the thumbnail
+$('.eff').click(function () {
+//grab and execute the first link in the thumbnail
+window.location = $(this).find('a:first').attr('href');
+});
+});
+</script>
+</head>
+<body>
+<div id="conteneur-principal">
+<div id="header">
+<ul class="barre">
+<li></li>
+</ul>
+<div class="bandeau clear-fix">
+<a title="Home page BNP Paribas Personal Investors" href="index1.html"><img height="55" alt="Logo BNP Paribas Personal Investors" width="211" src="img/logo-BNPP-Personal-Investors.jpg" /><span class="cache">BNP Paribas <span xml:lang="en">Wealth Management</span></span></a>
+</div>
+</div>
+<div id="banniere">
+<div id="container">
+<div id="example">
+<div id="slides">
+<div style="display:block" class="slides_container">
+<div class="slide">
+<img height="286" alt="Slide 1" width="904" src="img/diaporama/image-ABOUTUS.jpg">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="conteneur-contenu">
+<div style="min-height: 320px;" class="home">
+<p>We sincerely apologize for the inconvenience.<br />Our site is currently undergoing scheduled maintenance and upgrades<br /><br />Thank you for your patience</p>
+</div>
+</div>
+</div>
+<div id="footer">
+<ul>
+<li><a class="dernier" href="index1.html"> ｩ BNP Paribas Personal Investors - 2014</a></li>
+<!--<li><a href="contact.html">Contacts</a></li>
+<li><a href="plan-site.html">Site map</a></li>
+<li><a href="Legal-information.html" class="dernier">Legal information</a></li>-->
+</ul>
+</div>
+</div>
+<span id=nps_js_editmarker_container></span><script type="text/javascript">npsEditMarkerOldWindowOnload = window.onload;
+window.onload = function() {
+if (typeof(npsEditMarkerOldWindowOnload) == 'function') {
+npsEditMarkerOldWindowOnload();
+}
+nps.editMarker.init();
+};
+</script>
+<span id=nps_js_editmarker_container></span><script type="text/javascript">npsEditMarkerOldWindowOnload = window.onload;
+window.onload = function() {
+if (typeof(npsEditMarkerOldWindowOnload) == 'function') {
+npsEditMarkerOldWindowOnload();
+}
+nps.editMarker.init();
+};
+</script>
+</body>
+</html>

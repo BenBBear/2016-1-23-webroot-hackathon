@@ -1,0 +1,501 @@
+
+<!doctype html>
+<!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head id="Head1">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info = {"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"65a1cfd223","applicationID":"2190386","transactionName":"b1JUYkBXX0BQUUFYClYYcllGeFRHcl1bRRdXW1pTQBl5XFxXGngLXFJO","queueTime":0,"applicationTime":408,"ttGuid":"23F08FF2216DDCA","agent":"js-agent.newrelic.com/nr-768.min.js"}</script><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VgAHWFNQGwEBXVFRDwc="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=s(e),f=c.length,u=i(a,o,r),d=0;f>d;d++)c[d].apply(u,n);return u}function a(t,e){f[t]=s(t).concat(e)}function s(t){return f[t]||[]}function c(){return n(e)}var f={};return{on:a,emit:e,create:c,listeners:s,_events:f}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],3:[function(t){function e(t){try{i.console&&console.log(t)}catch(e){}}var n,r=t("ee"),o=t(1),i={};try{n=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(i.console=!0,-1!==n.indexOf("dev")&&(i.dev=!0),-1!==n.indexOf("nr_dev")&&(i.nrDev=!0))}catch(a){}i.nrDev&&r.on("internal-error",function(t){e(t.stack)}),i.dev&&r.on("fn-err",function(t,n,r){e(r.stack)}),i.dev&&(e("NR AGENT IN DEVELOPMENT MODE"),e("flags: "+o(i,function(t){return t}).join(", ")))},{1:20,ee:"QJf3ax"}],4:[function(t){function e(t,e,n,i,s){try{c?c-=1:r("err",[s||new UncaughtException(t,e,n)])}catch(f){try{r("ierr",[f,(new Date).getTime(),!0])}catch(u){}}return"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(6),i=t("ee"),a=window.onerror,s=!1,c=0;t("loader").features.err=!0,t(3),window.onerror=e;try{throw new Error}catch(f){"stack"in f&&(t(4),t(5),"addEventListener"in window&&t(1),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)&&t(2),s=!0)}i.on("fn-start",function(){s&&(c+=1)}),i.on("fn-err",function(t,e,r){s&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&&!this.thrown&&c>0&&(c-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:5,2:8,3:3,4:7,5:6,6:21,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],5:[function(t,e){function n(t){i.inPlace(t,["addEventListener","removeEventListener"],"-",r)}function r(t){return t[1]}var o=t("ee").create(),i=t(1)(o),a=t("gos");if(e.exports=o,n(window),"getPrototypeOf"in Object){for(var s=document;s&&!s.hasOwnProperty("addEventListener");)s=Object.getPrototypeOf(s);s&&n(s);for(var c=XMLHttpRequest.prototype;c&&!c.hasOwnProperty("addEventListener");)c=Object.getPrototypeOf(c);c&&n(c)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&n(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t,e){function n(){return s}if(t[1]){var r=t[1];if("function"==typeof r){var s=a(r,"nr@wrapped",function(){return i(r,"fn-",n,r.name||"anonymous")});this.wrapped=t[1]=s,o.emit("initEventContext",[t,e],this.wrapped)}else"function"==typeof r.handleEvent&&i.inPlace(r,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:22,ee:"QJf3ax",gos:"7eSDFh"}],6:[function(t,e){var n=t("ee").create(),r=t(1)(n);e.exports=n,r.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=r(t[0],"fn-")})},{1:22,ee:"QJf3ax"}],7:[function(t,e){function n(t,e,n){t[0]=i(t[0],"fn-",null,n)}function r(t,e,n){function r(){return a}this.ctx={};var a={"nr@context":this.ctx};o.emit("initTimerContext",[t,n],a),t[0]=i(t[0],"fn-",r,n)}var o=t("ee").create(),i=t(1)(o);e.exports=o,i.inPlace(window,["setTimeout","setImmediate"],"setTimer-"),i.inPlace(window,["setInterval"],"setInterval-"),i.inPlace(window,["clearTimeout","clearImmediate"],"clearTimeout-"),o.on("setInterval-start",n),o.on("setTimer-start",r)},{1:22,ee:"QJf3ax"}],8:[function(t,e){function n(){f.inPlace(this,p,"fn-",o)}function r(t,e){f.inPlace(e,["onreadystatechange"],"fn-")}function o(t,e){return e}function i(t,e){for(var n in t)e[n]=t[n];return e}var a=t("ee").create(),s=t(1),c=t(2),f=c(a),u=c(s),d=window.XMLHttpRequest,p=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];e.exports=a,window.XMLHttpRequest=function(t){var e=new d(t);try{a.emit("new-xhr",[],e),e.hasOwnProperty("addEventListener")&&u.inPlace(e,["addEventListener","removeEventListener"],"-",o),e.addEventListener("readystatechange",n,!1)}catch(r){try{a.emit("internal-error",[r])}catch(i){}}return e},i(d,XMLHttpRequest),XMLHttpRequest.prototype=d.prototype,f.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",o),a.on("send-xhr-start",r),a.on("open-xhr-start",r)},{1:5,2:22,ee:"QJf3ax"}],9:[function(t){function e(t){var e=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;c>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!e.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){e.status=t.status;var a=t.responseType,f="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,u=n(f);if(u&&(r.rxSize=u),this.sameOrigin){var d=t.getResponseHeader("X-NewRelic-App-Data");d&&(e.cat=d.split(", ").pop())}}else e.status=0;r.cbTime=this.cbTime,o("xhr",[e,r,this.startTime])}}}function n(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}if(window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)){t("loader").features.xhr=!0;var o=t("handle"),i=t(2),a=t("ee"),s=["load","error","abort","timeout"],c=s.length,f=t(1),u=window.XMLHttpRequest;t(4),t(3),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=e,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,e){var r=this.metrics,o=t[0],i=this;if(r&&o){var f=n(o);f&&(r.txSize=f)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof e.onload))&&i.end(e)}catch(n){try{a.emit("internal-error",[n])}catch(r){}}};for(var u=0;c>u;u++)e.addEventListener(s[u],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof u&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof u&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof u&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{1:"XL7HBI",2:10,3:8,4:5,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],10:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],11:[function(t,e){function n(t){return function(){r(t,[(new Date).getTime()].concat(i(arguments)))}}var r=t("handle"),o=t(1),i=t(2);"undefined"==typeof window.newrelic&&(newrelic=window.NREUM);var a=["setPageViewName","addPageAction","setCustomAttribute","finished","addToTrace","inlineHit","noticeError"];o(a,function(t,e){window.NREUM[e]=n("api-"+e)}),e.exports=window.NREUM},{1:20,2:21,handle:"D5DuLP"}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):void(r.q&&(r.q[t]||(r.q[t]=[]),r.q[t].push(e)))}var r=t("ee").create();e.exports=n,n.ee=r,r.q={}},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],G9z0Bl:[function(t,e){function n(){var t=p.info=NREUM.info,e=f.getElementsByTagName("script")[0];if(t&&t.licenseKey&&t.applicationID&&e){s(d,function(e,n){e in t||(t[e]=n)});var n="https"===u.split(":")[0]||t.sslForHttp;p.proto=n?"https://":"http://",a("mark",["onload",i()]);var r=f.createElement("script");r.src=p.proto+t.agent,e.parentNode.insertBefore(r,e)}}function r(){"complete"===f.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=t(1),c=window,f=c.document;t(2);var u=(""+location).split("?")[0],d={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-768.min.js"},p=e.exports={offset:i(),origin:u,features:{}};f.addEventListener?(f.addEventListener("DOMContentLoaded",o,!1),c.addEventListener("load",n,!1)):(f.attachEvent("onreadystatechange",r),c.attachEvent("onload",n)),a("mark",["firstbyte",i()])},{1:20,2:11,handle:"D5DuLP"}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],20:[function(t,e){function n(t,e){var n=[],o="",i=0;for(o in t)r.call(t,o)&&(n[i]=e(o,t[o]),i+=1);return n}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],21:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],22:[function(t,e){function n(t){return!(t&&"function"==typeof t&&t.apply&&!t[i])}var r=t("ee"),o=t(1),i="nr@original",a=Object.prototype.hasOwnProperty;e.exports=function(t){function e(t,e,r,a){function nrWrapper(){var n,i,s,f;try{i=this,n=o(arguments),s=r&&r(n,i)||{}}catch(d){u([d,"",[n,i,a],s])}c(e+"start",[n,i,a],s);try{return f=t.apply(i,n)}catch(p){throw c(e+"err",[n,i,p],s),p}finally{c(e+"end",[n,i,f],s)}}return n(t)?t:(e||(e=""),nrWrapper[i]=t,f(t,nrWrapper),nrWrapper)}function s(t,r,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<r.length;c++)s=r[c],a=t[s],n(a)||(t[s]=e(a,f?s+o:o,i,s))}function c(e,n,r){try{t.emit(e,n,r)}catch(o){u([o,e,n,r])}}function f(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){u([r])}for(var o in t)a.call(t,o)&&(e[o]=t[o]);return e}function u(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=r),e.inPlace=s,e.flag=i,e}},{1:21,ee:"QJf3ax"}]},{},["G9z0Bl",4,9]);</script>
+    
+    
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width" />
+    
+    <title>Home | William Casterlin, CFP®</title>
+    <meta name="robots" content="index, follow"/>
+    
+
+    <link rel="stylesheet" href="http://static.contentres.com/site/templates/global/css/boilerplate.css?v=2.20.5">
+    <link rel="stylesheet" href="http://static.contentres.com/site/templates/global/css/global.css?v=2.20.5">
+    <link rel="stylesheet" href="http://static.contentres.com/site/templates/global/css/print.css?v=2.20.5" media="print">
+    <link rel="stylesheet" href="http://static.contentres.com/site/templates/global/js/fancybox/jquery.fancybox-1.3.4.css">
+    <link rel="stylesheet" href="http://static.contentres.com/site/templates/001/css/1.css?v=2.20.5" type="text/css">
+    <link rel="stylesheet" href="http://static.contentres.com/site/templates/001/css/1a.css?v=2.20.5" type="text/css">    
+    
+    <link rel="stylesheet" href="http://static.contentres.com/site/templates/001/css/1ac.css?v=2.20.5" type="text/css">
+    <link rel="stylesheet" href="http://www.truenorthfp.com/css/custom/customtheme.css?r=1419096476" type="text/css">
+    <link rel="stylesheet" media="(max-width: 480px)" href="http://static.contentres.com/site/templates/001/css/1m.css?v=2.20.5" type="text/css">
+    <link rel="stylesheet" href="http://static.contentres.com/site/templates/001/css/1m1.css?v=2.20.5" type="text/css">
+    
+    <link rel="stylesheet"  href="http://static.contentres.com/site/templates/global/css/print.css?v=2.20.5" type="text/css" media="print">
+    <script src="http://static.contentres.com/site/templates/global/js/modernizr-1.7.min.js"></script>
+    <script type="text/javascript" src="/scripts/MicrosoftAjax.js"></script>
+    <script type="text/javascript" src="/scripts/MicrosoftMVCAjax.js"></script>
+    <script type="text/javascript" src="/scripts/MicrosoftMVCValidation.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script src="http://static.contentres.com/site/templates/global/js/fancybox/jquery.fancybox-1.3.4.js"></script>
+    <script src="http://static.contentres.com/site/templates/shared/scripts/sharednavigation.js"></script>
+    
+</head>
+<body class="homepage">
+  <script>var addthis_config = { "data_track_clickback": true, services_compact: 'email, facebook, twitter, more', services_exclude: 'print' }</script>
+  <script src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4dac6baa77f4cfd0"></script>
+  
+
+<header class="header">
+  <section class="container">
+    <section class="contact">
+        <p>327 Eisenhower Drive<br>
+        Suite 105<br>
+        Savannah, GA 31406
+        
+        </p>
+        <section class="socialMedia20x20">
+        
+            <a class="twitter-link" href="https://twitter.com/wcasterlin" target="_blank"><img src="http://static.contentres.com/site/templates/global/img/clear.gif" class="twitter" alt="Twitter"></a>
+        
+            <a class="linkedIn-link" href="http://www.linkedin.com/in/williamcasterlin/" target="_blank"><img src="http://static.contentres.com/site/templates/global/img/clear.gif" class="linkedIn" alt="LinkedIn"></a>
+        
+                   <a class="facebook-link" href="https://www.facebook.com/truenorthfp" target="_blank"><img src="http://static.contentres.com/site/templates/global/img/clear.gif" class="facebook" alt="Facebook"></a>
+               
+        </section>
+    </section>
+    
+    <div class="agentLogo"><a href="http://www.truenorthfp.com/"><img src="http://static.contentres.com/media/images/a178e508-c4c5-4d47-bb7a-b9e2aa6b1382.png" id="agentLogo" alt="Logo"></a></div>
+    
+    <h3>William Casterlin, CFP<sup><sup>&#174;</sup></sup></h3>
+    <h4>(912) 228-3006</h4>
+    <div class="rule2">&#160;</div>
+  </section>
+</header>
+  <nav id="main">
+    <section class="container">
+      <a href="http://www.truenorthfp.com/"><img src="http://static.contentres.com/site/templates/global/img/clear.gif" id="homeButton" alt="Home"></a>
+      <a href="javascript:void(0)" id="navButton"><img src="http://static.contentres.com/site/templates/global/img/clear.gif" alt="Navigation">MENU</a>
+        
+      <ul><li class="first"><a href="http://www.truenorthfp.com/about" >About</a><a href="javascript:void(0)"><span class="subnavButton" alt="Navigation">&nbsp;</span></a><ul><li><a href="http://www.truenorthfp.com/p/our-mission" >Our Mission</a></li><li><a href="http://www.truenorthfp.com/p/links" >Links</a></li><li><a href="http://www.truenorthfp.com/blog" >Blog</a></li></ul></li><li><a href="http://www.truenorthfp.com/resource-center" >Resource Center</a><a href="javascript:void(0)"><span class="subnavButton" alt="Navigation">&nbsp;</span></a><ul><li><a href="http://www.truenorthfp.com/p/investment" >Investment</a></li><li><a href="http://www.truenorthfp.com/p/retirement" >Retirement</a></li><li><a href="http://www.truenorthfp.com/p/estate-planning" >Estate Planning</a></li><li><a href="http://www.truenorthfp.com/p/tax" >Tax</a></li><li><a href="http://www.truenorthfp.com/p/money" >Money</a></li><li><a href="http://www.truenorthfp.com/p/lifestyle" >Lifestyle</a></li><li><a href="http://www.truenorthfp.com/p/insurance" >Insurance</a></li></ul></li><li><a href="http://www.truenorthfp.com/tools" >Tools</a><a href="javascript:void(0)"><span class="subnavButton" alt="Navigation">&nbsp;</span></a><ul><li><a href="http://www.truenorthfp.com/tools/glossary" >Glossary</a></li><li><a href="http://www.truenorthfp.com/tools/tax-resources" >Tax Resources</a></li></ul></li><li><a href="http://www.truenorthfp.com/p/account-access" >Account Access</a></li><li class="last"><a href="http://www.truenorthfp.com/contact" >Contact</a></li></ul>
+    </section>
+  </nav>
+  
+  
+<section id="hero">
+  <section class="container">
+    
+        <a  href="http://www.truenorthfp.com/resource-center/retirement/social-security-by-the-numbers"  id="hero1" class="asset-126 selected" target="_self"><img src="http://static.contentres.com/site/templates/global/img/clear.gif" class="hero" style="background-image: url(http://static.contentres.com/site/templates/global/img/assets/126-hero.jpg)" alt="Social Security: By the Numbers"/></a>
+    
+        <a  href="http://www.truenorthfp.com/resource-center/retirement/social-security-by-the-numbers"  id="hero2" class="asset-126" target="_self"><img src="http://static.contentres.com/site/templates/global/img/clear.gif" class="hero" style="background-image: url(http://static.contentres.com/site/templates/global/img/assets/126-hero.jpg)" alt="Social Security: By the Numbers"/></a>
+    
+        <a  href="http://www.truenorthfp.com/resource-center/retirement/social-security-by-the-numbers"  id="hero3" class="asset-126" target="_self"><img src="http://static.contentres.com/site/templates/global/img/clear.gif" class="hero" style="background-image: url(http://static.contentres.com/site/templates/global/img/assets/126-hero.jpg)" alt="Social Security: By the Numbers"/></a>
+    
+        <a  href="http://www.truenorthfp.com/resource-center/lifestyle/to-buy-or-not-to-buy"  id="hero4" class="asset-147" target="_self"><img src="http://static.contentres.com/site/templates/global/img/clear.gif" class="hero" style="background-image: url(http://static.contentres.com/site/templates/global/img/assets/147-hero.jpg)" alt="To Buy or Not to Buy"/></a>
+    
+        <a  href="http://www.truenorthfp.com/resource-center/lifestyle/to-buy-or-not-to-buy"  id="hero5" class="asset-147" target="_self"><img src="http://static.contentres.com/site/templates/global/img/clear.gif" class="hero" style="background-image: url(http://static.contentres.com/site/templates/global/img/assets/147-hero.jpg)" alt="To Buy or Not to Buy"/></a>
+    
+        <a  href="http://www.truenorthfp.com/resource-center/retirement/rightsizing-for-retirement"  id="hero6" class="asset-104" target="_self"><img src="http://static.contentres.com/site/templates/global/img/clear.gif" class="hero" style="background-image: url(http://static.contentres.com/site/templates/global/img/assets/104-hero.jpg)" alt="Rightsizing for Retirement"/></a>
+    
+        <a  href="http://www.truenorthfp.com/resource-center/retirement/rightsizing-for-retirement"  id="hero7" class="asset-104" target="_self"><img src="http://static.contentres.com/site/templates/global/img/clear.gif" class="hero" style="background-image: url(http://static.contentres.com/site/templates/global/img/assets/104-hero.jpg)" alt="Rightsizing for Retirement"/></a>
+    
+        <a  href="http://www.truenorthfp.com/resource-center/tax/making-your-tax-bracket-work-for-you"  id="hero8" class="asset-105" target="_self"><img src="http://static.contentres.com/site/templates/global/img/clear.gif" class="hero" style="background-image: url(http://static.contentres.com/site/templates/global/img/assets/105-hero.jpg)" alt="Making Your Tax Bracket Work"/></a>
+    
+        <a  href="http://www.truenorthfp.com/resource-center/tax/making-your-tax-bracket-work-for-you"  id="hero9" class="asset-105" target="_self"><img src="http://static.contentres.com/site/templates/global/img/clear.gif" class="hero" style="background-image: url(http://static.contentres.com/site/templates/global/img/assets/105-hero.jpg)" alt="Making Your Tax Bracket Work"/></a>
+    
+    <a href="#" id="previousHero" class="backArrow"></a>
+    <a href="#" id="nextHero" class="forwardArrow"></a>
+    <aside>
+    
+    <div id="hero1_wrapper" class="wrapper asset-126 selected">
+        <h2>Social Security: By the Numbers</h2>
+        <p>Here are five facts about Social Security that might surprise you.</p>
+        
+        <p><a href="http://www.truenorthfp.com/resource-center/retirement/social-security-by-the-numbers" target="_self">Learn More</a> <a href="http://www.truenorthfp.com/resource-center/retirement/social-security-by-the-numbers" target="_self"><img src="http://static.contentres.com/site/templates/global/img/clear.gif" class="arrowLink" alt="arrow"></a></p>
+        
+    </div>
+    
+    <div id="hero2_wrapper" class="wrapper asset-126">
+        <h2>Social Security: By the Numbers</h2>
+        <p>Here are five facts about Social Security that might surprise you.</p>
+        
+        <p><a href="http://www.truenorthfp.com/resource-center/retirement/social-security-by-the-numbers" target="_self">Learn More</a> <a href="http://www.truenorthfp.com/resource-center/retirement/social-security-by-the-numbers" target="_self"><img src="http://static.contentres.com/site/templates/global/img/clear.gif" class="arrowLink" alt="arrow"></a></p>
+        
+    </div>
+    
+    <div id="hero3_wrapper" class="wrapper asset-126">
+        <h2>Social Security: By the Numbers</h2>
+        <p>Here are five facts about Social Security that might surprise you.</p>
+        
+        <p><a href="http://www.truenorthfp.com/resource-center/retirement/social-security-by-the-numbers" target="_self">Learn More</a> <a href="http://www.truenorthfp.com/resource-center/retirement/social-security-by-the-numbers" target="_self"><img src="http://static.contentres.com/site/templates/global/img/clear.gif" class="arrowLink" alt="arrow"></a></p>
+        
+    </div>
+    
+    <div id="hero4_wrapper" class="wrapper asset-147">
+        <h2>To Buy or Not to Buy</h2>
+        <p>The decision whether to buy or rent a home may have long-term implications.</p>
+        
+        <p><a href="http://www.truenorthfp.com/resource-center/lifestyle/to-buy-or-not-to-buy" target="_self">Learn More</a> <a href="http://www.truenorthfp.com/resource-center/lifestyle/to-buy-or-not-to-buy" target="_self"><img src="http://static.contentres.com/site/templates/global/img/clear.gif" class="arrowLink" alt="arrow"></a></p>
+        
+    </div>
+    
+    <div id="hero5_wrapper" class="wrapper asset-147">
+        <h2>To Buy or Not to Buy</h2>
+        <p>The decision whether to buy or rent a home may have long-term implications.</p>
+        
+        <p><a href="http://www.truenorthfp.com/resource-center/lifestyle/to-buy-or-not-to-buy" target="_self">Learn More</a> <a href="http://www.truenorthfp.com/resource-center/lifestyle/to-buy-or-not-to-buy" target="_self"><img src="http://static.contentres.com/site/templates/global/img/clear.gif" class="arrowLink" alt="arrow"></a></p>
+        
+    </div>
+    
+    <div id="hero6_wrapper" class="wrapper asset-104">
+        <h2>Rightsizing for Retirement</h2>
+        <p>What does your home really cost?</p>
+        
+        <p><a href="http://www.truenorthfp.com/resource-center/retirement/rightsizing-for-retirement" target="_self">Learn More</a> <a href="http://www.truenorthfp.com/resource-center/retirement/rightsizing-for-retirement" target="_self"><img src="http://static.contentres.com/site/templates/global/img/clear.gif" class="arrowLink" alt="arrow"></a></p>
+        
+    </div>
+    
+    <div id="hero7_wrapper" class="wrapper asset-104">
+        <h2>Rightsizing for Retirement</h2>
+        <p>What does your home really cost?</p>
+        
+        <p><a href="http://www.truenorthfp.com/resource-center/retirement/rightsizing-for-retirement" target="_self">Learn More</a> <a href="http://www.truenorthfp.com/resource-center/retirement/rightsizing-for-retirement" target="_self"><img src="http://static.contentres.com/site/templates/global/img/clear.gif" class="arrowLink" alt="arrow"></a></p>
+        
+    </div>
+    
+    <div id="hero8_wrapper" class="wrapper asset-105">
+        <h2>Making Your Tax Bracket Work</h2>
+        <p>Have you explored all of your choices when it comes to managing your taxable income?</p>
+        
+        <p><a href="http://www.truenorthfp.com/resource-center/tax/making-your-tax-bracket-work-for-you" target="_self">Learn More</a> <a href="http://www.truenorthfp.com/resource-center/tax/making-your-tax-bracket-work-for-you" target="_self"><img src="http://static.contentres.com/site/templates/global/img/clear.gif" class="arrowLink" alt="arrow"></a></p>
+        
+    </div>
+    
+    <div id="hero9_wrapper" class="wrapper asset-105">
+        <h2>Making Your Tax Bracket Work</h2>
+        <p>Have you explored all of your choices when it comes to managing your taxable income?</p>
+        
+        <p><a href="http://www.truenorthfp.com/resource-center/tax/making-your-tax-bracket-work-for-you" target="_self">Learn More</a> <a href="http://www.truenorthfp.com/resource-center/tax/making-your-tax-bracket-work-for-you" target="_self"><img src="http://static.contentres.com/site/templates/global/img/clear.gif" class="arrowLink" alt="arrow"></a></p>
+        
+    </div>
+    
+    </aside>  
+  </section>
+</section>
+
+  <section id="content">
+    <section class="container">
+      
+          
+          
+    <article>
+        
+
+
+
+<section id="" class="section_boxes">
+    <div class="row">
+
+        <div class="">
+            
+
+            <div id="section1" class="row section section_FullWidth ">
+                
+
+                
+                <div class="col-xs-12 col-sm-12 col-md-12"><p>True North is a nautical term. It identifies the correction a sailor must apply to keep a ship on its charted course. Without this correction, the ship would drift progressively off course with, eventually, no hope of reaching its destination. We believe the same level of attention is necessary to maintain your financial course. </p><p>Whatever your destination, our purpose is to help you develop a plan to get there. We don&#8217;t believe you arrive anywhere worth being by accident. </p><h3>We have a time-tested approach.</h3><p>We&#8217;ve found that understanding what is most important to our clients, coupled with a deliberate and disciplined <u>financial plan</u>, is an effective way to help them&#160;pursue their goals. As their Personal Financial Advisors, we invest the time to understand where they want to go before recommending how to get there. Along the way, we keep our clients on course, applying corrections when necessary, all the while maintaining a disciplined approach to help them move toward their destination. </p><h3>We&#8217;d welcome the chance to speak.</h3><p>If you haven&#8217;t yet charted your journey (or if you have, but you&#8217;re not sure you&#8217;re still on course), we&#8217;d welcome the opportunity to discuss the journey with you. Our initial consultation is always complimentary, confidential and without obligation. Call or <a href="http://wcasterlin@truenorthfp.com" target="_blank">email</a> us today to schedule a consultation: (912) 228-3006. Don't wait to see where your money can take you. Let True North help guide you toward your financial destination.*</p><p><em><sup>*No strategy ensures a profit or protects against loss. </sup></em></p></div>
+                <div class="clear"></div>
+                
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<section id="suggested">
+  
+
+    <h2>Helpful Content</h2>
+    
+<section class="content left asset-120">
+  <a href="http://www.truenorthfp.com/resource-center/insurance/keep-your-umbrella-handy"><img src="http://static.contentres.com/site/templates/global/img/clear.gif" alt="Keep Your Umbrella Handy" style="background-image: url(http://static.contentres.com/site/templates/global/img/assets/120-thumb.jpg)"></a>
+  <h3><a href="http://www.truenorthfp.com/resource-center/insurance/keep-your-umbrella-handy">Keep Your Umbrella Handy</a></h3>
+  <p>Umbrella liability can be a fairly inexpensive way to help shelter current assets and future income from the unexpected.</p>
+</section>
+<section class="content asset-308">
+  <a href="http://www.truenorthfp.com/resource-center/retirement/social-security-the-64000-dollar-question"><img src="http://static.contentres.com/site/templates/global/img/clear.gif" alt="Social Security: The \$64,000 Question" style="background-image: url(http://static.contentres.com/site/templates/global/img/assets/308-thumb.jpg)"></a>
+  <h3><a href="http://www.truenorthfp.com/resource-center/retirement/social-security-the-64000-dollar-question">Social Security: The \$64,000 Question</a></h3>
+  <p>One of the most common questions people ask about Social Security is when they should start taking benefits.</p>
+</section>
+<section class="content asset-134">
+  <a href="http://www.truenorthfp.com/resource-center/lifestyle/countdown-to-college"><img src="http://static.contentres.com/site/templates/global/img/clear.gif" alt="Countdown to College" style="background-image: url(http://static.contentres.com/site/templates/global/img/assets/134-thumb.jpg)"></a>
+  <h3><a href="http://www.truenorthfp.com/resource-center/lifestyle/countdown-to-college">Countdown to College</a></h3>
+  <p>Preparing for college means setting goals, staying focused, and tackling a few key milestones along the way.</p>
+</section>
+</section>
+            <div class="rule">&#160;</div>
+            
+<section id="additional">
+    <div class="wrapper">
+    <nav>
+        <ul>
+        
+        <li><a href="#" id="tab1" class="tab1 selected">Articles</a></li>
+        
+        <li><a href="#" id="tab2" class="tab2">Calculators</a></li>
+        
+        <li><a href="#" id="tab3" class="tab3">Presentations</a></li>
+        
+        <li><a href="#" id="tab4" class="tab4">Videos</a></li>
+        
+        </ul>
+    </nav>
+    
+    <div id="tab1_content" class="matterContent selected">
+        
+
+<section class="content left asset-263">
+<h4><a href="http://www.truenorthfp.com/resource-center/retirement/volunteering-in-retirement">Volunteering in Retirement</a></h4>
+<p>For many, retirement includes contributing their time and talents to an organization in need.</p>
+</section>
+
+<section class="content asset-327">
+<h4><a href="http://www.truenorthfp.com/resource-center/insurance/insuring-your-business-against-cyber-liability">Insuring Your Business Against Cyber Liability</a></h4>
+<p>90% of small businesses in the U.S. don't protect their data from cyber attacks. Is your business at risk?</p>
+</section>
+
+<section class="content left asset-352">
+<h4><a href="http://www.truenorthfp.com/resource-center/retirement/does-your-portfolio-fit-your-retirement-lifestyle">Does Your Portfolio Fit Your Retirement Lifestyle?</a></h4>
+<p>Lifestyle considerations in creating your retirement portfolio.</p>
+</section>
+
+<section class="content asset-312">
+<h4><a href="http://www.truenorthfp.com/resource-center/lifestyle/avoiding-cognitive-decline">Avoiding Cognitive Decline</a></h4>
+<p>Try these activities to keep your brain sharp.</p>
+</section>
+
+<section class="content left asset-071">
+<h4><a href="http://www.truenorthfp.com/resource-center/insurance/assess-life-insurance-needs">Assess Life Insurance Needs</a></h4>
+<p>How to help determine life insurance needs to provide for your family after you pass away.</p>
+</section>
+
+<section class="content asset-326">
+<h4><a href="http://www.truenorthfp.com/resource-center/insurance/the-abcs-of-auto-insurance">The ABC’s of Auto Insurance</a></h4>
+<p>What kind of auto insurance should you have? Do you know?</p>
+</section>
+        <h4 class="viewAll"><a href="http://www.truenorthfp.com/resource-center/articles">View all articles</a> <a href="http://www.truenorthfp.com/resource-center/articles"><img src="http://static.contentres.com/site/templates/global/img/clear.gif" class="arrowLink" alt="arrow"></a></h4>
+    </div>
+    
+    <div id="tab2_content" class="matterContent">
+        
+
+<section class="content left asset-038">
+<h4><a href="http://www.truenorthfp.com/resource-center/lifestyle/should-i-buy-or-lease-an-auto">Should I Buy or Lease an Auto?</a></h4>
+<p>This calculator compares the financial impact of leasing versus buying an automobile.</p>
+</section>
+
+<section class="content asset-043">
+<h4><a href="http://www.truenorthfp.com/resource-center/money/historical-inflation">Historical Inflation</a></h4>
+<p>This calculator shows how inflation over the years has impacted purchasing power.</p>
+</section>
+
+<section class="content left asset-037">
+<h4><a href="http://www.truenorthfp.com/resource-center/lifestyle/bi-weekly-payments">Bi-Weekly Payments</a></h4>
+<p>This calculator estimates the savings from paying a mortgage bi-weekly instead of monthly.</p>
+</section>
+
+<section class="content asset-032">
+<h4><a href="http://www.truenorthfp.com/resource-center/investment/impact-of-taxes-and-inflation">Impact of Taxes and Inflation</a></h4>
+<p>Estimate the potential impact taxes and inflation can have on the purchasing power of an investment.</p>
+</section>
+
+<section class="content left asset-053">
+<h4><a href="http://www.truenorthfp.com/resource-center/retirement/self-employed-retirement-plans">Self-Employed Retirement Plans</a></h4>
+<p>Estimate the maximum contribution amount for a Self-Employed 401(k), SIMPLE IRA, or SEP.</p>
+</section>
+
+<section class="content asset-077">
+<h4><a href="http://www.truenorthfp.com/resource-center/retirement/annuity-comparison">Annuity Comparison</a></h4>
+<p>This calculator compares a hypothetical fixed annuity with an account where the interest is taxed each year.</p>
+</section>
+        <h4 class="viewAll"><a href="http://www.truenorthfp.com/resource-center/calculators">View all calculators</a> <a href="http://www.truenorthfp.com/resource-center/calculators"><img src="http://static.contentres.com/site/templates/global/img/clear.gif" class="arrowLink" alt="arrow"></a></h4>
+    </div>
+    
+    <div id="tab3_content" class="matterContent">
+        
+
+<section class="content left asset-090">
+<h4><a href="http://www.truenorthfp.com/resource-center/insurance/long-term-care-protection-strategies">Long-Term-Care Protection Strategies</a></h4>
+<p>The chances of needing long-term care, its cost, and strategies for covering that cost.</p>
+</section>
+
+<section class="content asset-091">
+<h4><a href="http://www.truenorthfp.com/resource-center/lifestyle/managing-your-lifestyle">Managing Your Lifestyle</a></h4>
+<p>Using smart management to get more of what you want and free up assets to invest.</p>
+</section>
+
+<section class="content left asset-089">
+<h4><a href="http://www.truenorthfp.com/resource-center/insurance/protecting-those-who-matter-most">Protecting Those Who Matter Most</a></h4>
+<p>The importance of life insurance, how it works, and how much coverage you need. </p>
+</section>
+
+<section class="content asset-088">
+<h4><a href="http://www.truenorthfp.com/resource-center/retirement/investment-strategies-for-retirement">Investment Strategies for Retirement</a></h4>
+<p>Investment tools and strategies that can enable you to pursue your retirement goals.</p>
+</section>
+
+<section class="content left asset-110">
+<h4><a href="http://www.truenorthfp.com/resource-center/retirement/an-inside-look-at-retirement-living">An Inside Look at Retirement Living</a></h4>
+<p>A number of questions and concerns need to be addressed to help you better prepare for retirement living.</p>
+</section>
+
+<section class="content asset-092">
+<h4><a href="http://www.truenorthfp.com/resource-center/tax/tax-management-strategies">Tax Management Strategies</a></h4>
+<p>Learn more about taxes, tax-favored investing, and tax strategies. </p>
+</section>
+        <h4 class="viewAll"><a href="http://www.truenorthfp.com/resource-center/presentations">View all presentations</a> <a href="http://www.truenorthfp.com/resource-center/presentations"><img src="http://static.contentres.com/site/templates/global/img/clear.gif" class="arrowLink" alt="arrow"></a></h4>
+    </div>
+    
+    <div id="tab4_content" class="matterContent">
+        
+
+<section class="content left asset-295">
+<h4><a href="http://www.truenorthfp.com/resource-center/retirement/how-to-retire-early">How to Retire Early</a></h4>
+<p>Retiring early sounds like a dream come true, but it’s important to take a look at the cold, hard facts.</p>
+</section>
+
+<section class="content asset-347">
+<h4><a href="http://www.truenorthfp.com/resource-center/investment/jane-bond-scaling-the-ladder">Jane Bond: Scaling the Ladder</a></h4>
+<p>Agent Jane Bond is on the case, covering how bond laddering works.</p>
+</section>
+
+<section class="content left asset-174">
+<h4><a href="http://www.truenorthfp.com/resource-center/retirement/ready-for-retirement">Ready for Retirement?</a></h4>
+<p>Are you ready for retirement? Here are five words you should consider.</p>
+</section>
+
+<section class="content asset-273">
+<h4><a href="http://www.truenorthfp.com/resource-center/investment/inflation-and-your-portfolio">Inflation and Your Portfolio</a></h4>
+<p>Even low inflation rates can pose a threat to investment
+returns.</p>
+</section>
+
+<section class="content left asset-093">
+<h4><a href="http://www.truenorthfp.com/resource-center/tax/the-fact-about-income-tax">The Facts About Income Tax</a></h4>
+<p>Millions faithfully file their 1040 forms each April. But some things about federal income taxes may surprise you.</p>
+</section>
+
+<section class="content asset-153">
+<h4><a href="http://www.truenorthfp.com/resource-center/retirement/women-and-retirement">Women and Retirement</a></h4>
+<p>Women are great at multi-tasking. But many drop the ball when preparing for retirement.</p>
+</section>
+        <h4 class="viewAll"><a href="http://www.truenorthfp.com/resource-center/videos">View all videos</a> <a href="http://www.truenorthfp.com/resource-center/videos"><img src="http://static.contentres.com/site/templates/global/img/clear.gif" class="arrowLink" alt="arrow"></a></h4>
+    </div>
+    
+    </div>
+</section>   
+    </article>
+    <aside>
+          
+<div class="rule">&#160;</div>
+<section class="experience">
+<div class="wrapper">
+    <h2><a href="http://www.truenorthfp.com/about/">Experience Matters</a></h2>
+    <p><p>Knowledge is power. It&#8217;s also the foundation for intelligent, well-considered decisions. When you have retirement in sight, sound decisions are vital in helping you pursue your goals and avoid costly mistakes that can affect your future. </p><p>As a financial professional, I am committed to helping people just like you with their retirement assets. Once I understand your risk tolerance, time horizon and goals, I&#8217;ll work diligently to develop a program that carefully balances inves... <a href="http://www.truenorthfp.com/about/" class="ellipsis">Learn More</a></p>
+</div>
+</section>
+
+<div class="rule">&nbsp;</div>
+<section class="sidebarWidget">
+    <div class="wrapper">
+        <h2>Weekly Market Commentary</h2><p>Each week, the LPL Financial Research Team assembles thoughtful insight on market and economic news.</p><p><a href="http://public.faulknermediagroup.com.s3.amazonaws.com/LPL/LPLResearch/Weekly_Market_Commentary.pdf" target="_blank"><img alt="" src="http://static.contentres.com/media/images/d15f79cf-bc67-427f-a50a-5dd1c4b1462e.png" class="inline-image" data-id="567108d1-1b93-4d11-9365-d1591560fed1" /></a><a href="http://public.faulknermediagroup.com.s3.amazonaws.com/LPL/LPLResearch/Weekly_Market_Commentary.pdf" target="_blank">Download Market Commentary</a></p><p><a href="http://public.faulknermediagroup.com.s3.amazonaws.com/LPL/LPLResearch/Weekly_Economic_Commentary.pdf" target="_blank"><img alt="" src="http://static.contentres.com/media/images/d15f79cf-bc67-427f-a50a-5dd1c4b1462e.png" class="inline-image" data-id="567108d1-1b93-4d11-9365-d1591560fed1" /></a><a href="http://public.faulknermediagroup.com.s3.amazonaws.com/LPL/LPLResearch/Weekly_Economic_Commentary.pdf" target="_blank">Download Economic Commentary</a></p>
+    </div>
+</section>
+    </aside>
+
+      <div class="clear"></div>
+    </section>
+    <div class="clear"></div>
+  </section>
+  <footer>
+    <section class="container">
+      <section class="note">
+        
+<p class="globalDisclosure">The content is developed from sources believed to be providing accurate information. The information in this material is not intended as tax or legal advice. Please consult legal or tax professionals for specific information regarding your individual situation. Some of this material was developed and produced by FMG, LLC, to provide information on a topic that may be of interest. FMG, LLC, is not affiliated with the named representative, broker-dealer, state- or SEC-registered investment advisory firm. The opinions expressed and material provided are for general information, and should not be considered a solicitation for the purchase or sale of any security.</p>
+        <p class="globalCopyright">Copyright 2016 FMG Suite.</p>
+        <p class="globalDisclaimer"><p>Securities offered through <a href="http://www.lpl.com" target="_blank">LPL Financial</a>, member <a href="http://www.finra.org" target="_blank">FINRA </a>&#38; <a href="http://www.sipc.org" target="_blank">SIPC</a>.</p><p>Investment advice offered through Independent Financial Partners, a registered investment advisor. Independent Financial Partners and True North Financial Planning are separate entities from LPL.</p><p>The LPL Financial representative associated with this website may discuss and/or transact securities business only with residents of the following states: Alabama, Florida, Georgia, North Carolina, Pennsylvania, South Carolina, and Virginia.</p></p>
+      </section>
+      <aside>
+        <div class="wrapper">
+          <section class="contact">
+            <h4>Contact</h4>
+            <table class="delmar001-contact-information">
+            <tr class="delmar001-phone"><td>Office:&nbsp;</td><td>(912) 228-3006</td></tr>
+            <tr class="delmar001-fax"><td>Fax:</td><td>(912) 201-3756</td></tr>
+            </table>
+            <p class="delmar001-address_block"><span class="delmar001-address1">327 Eisenhower Drive</span>
+            
+            <br><span class="delmar001-address2">Suite 105</span>
+            
+            <br><span class="delmar001-city">Savannah,</span> <span class="delmar001-region">GA</span> <span class="delmar001-postalcode">31406</span>
+                        
+            </p>
+            
+            <p><a href="mailto:wcasterlin@truenorthfp.com">wcasterlin@truenorthfp.com</a></p>
+            
+            <section class="socialMedia">
+            
+                <a href="https://www.facebook.com/truenorthfp" target="_blank"><img src="http://static.contentres.com/site/templates/global/img/clear.gif" class="facebook" alt="Facebook"></a>
+            
+                <a href="https://twitter.com/wcasterlin" target="_blank"><img src="http://static.contentres.com/site/templates/global/img/clear.gif" class="twitter" alt="Twitter"></a>
+            
+                <a href="http://www.linkedin.com/in/williamcasterlin/" target="_blank"><img src="http://static.contentres.com/site/templates/global/img/clear.gif" class="linkedIn" alt="LinkedIn"></a>
+            
+            </section>
+          </section>
+          <section class="quickLinks">
+            <h4>Quick Links</h4>
+            <ul><li><a href="http://www.truenorthfp.com/resource-center/retirement" >Retirement</a></li><li><a href="http://www.truenorthfp.com/resource-center/investment" >Investment</a></li><li><a href="http://www.truenorthfp.com/resource-center/estate" >Estate</a></li><li><a href="http://www.truenorthfp.com/resource-center/insurance" >Insurance</a></li><li><a href="http://www.truenorthfp.com/resource-center/tax" >Tax</a></li><li><a href="http://www.truenorthfp.com/resource-center/money" >Money</a></li><li><a href="http://www.truenorthfp.com/resource-center/lifestyle" >Lifestyle</a></li><li><a href="http://www.truenorthfp.com/resource-center/articles" >All Articles</a></li><li><a href="http://www.truenorthfp.com/resource-center/videos" >All Videos</a></li><li><a href="http://www.truenorthfp.com/resource-center/calculators" >All Calculators</a></li><li><a href="http://www.truenorthfp.com/resource-center/presentations" >All Presentations</a></li></ul>
+          </section>
+        </div>  
+      </aside>
+      <div class="rule2">&#160;</div>
+    </section>
+  </footer>
+
+    
+    
+  <script type="text/javascript" src="http://static.contentres.com/site/templates/global/js/global.js?v=2.20.5"></script>
+  <script type="text/javascript" src="http://static.contentres.com/site/templates/global/js/contact.js?v=2.20.5"></script>
+  <!--[if gt IE 8]><!-->
+  <script type="text/javascript" src="http://static.contentres.com/site/templates/global/js/dygraph.combined.min.js?v=2.20.5"></script>
+  <script type="text/javascript" src="http://static.contentres.com/site/templates/global/js/index.market.js?v=2.20.5"></script>
+  <!--<![endif]-->
+  <!--[if lt IE 9]>
+  <script language="javascript" type="text/javascript" src="http://static.contentres.com/site/templates/global/js/excanvas.min.js?v=2.20.5")></script>
+  <script language="javascript" type="text/javascript" src="http://static.contentres.com/site/templates/global/js/jquery.flot.js?v=2.20.5")></script>
+  <script language="javascript" type="text/javascript" src="http://static.contentres.com/site/templates/global/js/index.market.ie.js?v=2.20.5")></script>
+  <![endif]-->
+  
+  <script src="http://static.contentres.com/site/templates/global/js/index.js?v=2.20.5"></script>
+  
+  
+
+<script type="text/javascript">    var FMG = { "RootLocation": "http://www.truenorthfp.com/", "SecureLocation": "https://www.fmgwebsites.com/40df7153-d514-477d-8909-d24db9e7be62/", 
+    "LeavingSiteDisclaimer" : null
+};</script>
+
+
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-45862131-1']);
+    _gaq.push(['_trackPageview']);
+    _gaq.push(['g._setAccount', 'UA-24680519-10']);
+    _gaq.push(['g._setDomainName', 'none']);
+    _gaq.push(['g._trackPageview']);
+  
+     (function () {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+
+</body>
+</html>

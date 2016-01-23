@@ -1,0 +1,806 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="ja">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<meta http-equiv="Content-Script-Type" content="text/javascript">
+		<meta name="description" content="新感覚競馬予想サイトのHAPPY!競馬.netです！万馬券的中の精度をあげるべく、日々独自予想プログラムを改良しております。万馬券GETでHAPPYに！">
+		<meta name="keywords" content="競馬, 競馬予想, 競馬予想サイト, 万馬券,的中率, 投資,馬連,三連複,的中,大穴,よく当る,重賞,高額,高配当,ハッピー, ハッピー競馬,新感覚, happy-keiba.net, ">
+		<title>HAPPY!競馬.net 万馬券の的中率がスゴイ！</title>
+		<link href="pc/css/h-k001.css" type="text/css" rel="stylesheet" media="all">
+		<link href="pc/css/topics.css" type="text/css" rel="stylesheet" media="all">
+
+		<csscriptdict import="">
+			<script type="text/javascript" src="GeneratedItems/CSScriptLib.js"></script>
+		</csscriptdict>
+		<csactiondict>
+			<script type="text/javascript"><!--
+var preloadFlag = false;
+function preloadImages() {
+	if (document.images) {
+		pre_navi_green002 = newImage('pc/img/botan/green/navi_green002.gif');
+		pre_navi_orange002 = newImage('pc/img/botan/orange/navi_orange002.gif');
+		pre_navi_purple005 = newImage('pc/img/botan/purple/navi_purple005.gif');
+		pre_navi_blue002 = newImage('pc/img/botan/blue/navi_blue002.gif');
+		preloadFlag = true;
+	}
+}
+
+// --></script>
+		</csactiondict>
+
+	</head>
+
+	<body onload="preloadImages();" bgcolor="#ffffff">
+		<div align="center">
+			<table width="120" border="0" cellspacing="0" cellpadding="0">
+				<tr height="200">
+					<td width="5" height="200"><img src="pc/img/l_l_img.jpg" alt="" height="200" width="5" border="0"></td>
+					<td colspan="2" width="702" height="200"><img src="pc/img/top_logo.jpg" alt="HAPPY!競馬.net" height="200" width="700" usemap="#top_logo" border="0"></td>
+					<td width="6" height="200"><img src="pc/img/r_l_img.jpg" alt="" height="200" width="5" border="0"></td>
+				</tr>
+				<tr>
+					<td width="5" background="pc/img/l_s_img.jpg"></td>
+					<td class="pankuzu" width="580"></td>
+					<td width="120"><img src="pc/img/tomei.gif" alt="" height="10" width="32" border="0"><img src="pc/img/tomei.gif" alt="" height="10" width="70" border="0"></td>
+					<td width="6" background="pc/img/r_s_img.jpg"></td>
+				</tr>
+				<tr height="26">
+					<td width="5" height="26" background="pc/img/l_s_img.jpg"></td>
+					<td colspan="2" width="700" height="26">
+						<table width="700" border="0" cellspacing="0" cellpadding="0">
+							<tr height="26">
+								<td width="70" height="26"></td>
+								<td class="bachgrund" width="115" height="26"><img src="pc/img/botan/red/navi_red001.gif" alt="HAPPY競馬とは" height="26" width="115" border="0"></td>
+								<td width="110" height="26"><a onmouseover="changeImages('navi_blue001','pc/img/botan/blue/navi_blue002.gif');return true" onmouseout="changeImages('navi_blue001','pc/img/botan/blue/navi_blue001.gif');return true" href="pc/results.html"><img id="navi_blue001" src="pc/img/botan/blue/navi_blue001.gif" alt="的中実績" name="navi_blue001" height="26" width="110" border="0"></a></td>
+								<td width="110" height="26"><a onmouseover="changeImages('navi_purple001','pc/img/botan/purple/navi_purple002.gif');return true" onmouseout="changeImages('navi_purple001','pc/img/botan/purple/navi_purple001.gif');return true" href="pc/lecture.html"><img id="navi_purple001" src="pc/img/botan/purple/navi_purple001.gif" alt="はじめての競馬" name="navi_purple001" height="26" width="110" border="0"></a></td>
+								<td width="110" height="26"><a onmouseover="changeImages('navi_green001','pc/img/botan/green/navi_green002.gif');return true" onmouseout="changeImages('navi_green001','pc/img/botan/green/navi_green001.gif');return true" href="pc/member.html"><img id="navi_green001" src="pc/img/botan/green/navi_green001.gif" alt="会員専用ページ" name="navi_green001" height="26" width="110" border="0"></a></td>
+								<td width="115" height="26"><a onmouseover="changeImages('navi_orange001','pc/img/botan/orange/navi_orange002.gif');return true" onmouseout="changeImages('navi_orange001','pc/img/botan/orange/navi_orange001.gif');return true" href="pc/inquiry.html"><img id="navi_orange001" src="pc/img/botan/orange/navi_orange001.gif" alt="Ｑ＆Ａ" name="navi_orange001" height="26" width="115" border="0"></a></td>
+								<td width="70" height="26"></td>
+							</tr>
+						</table>
+					</td>
+					<td width="6" height="26" background="pc/img/r_s_img.jpg"></td>
+				</tr>
+				<tr height="30">
+					<td width="5" height="30" background="pc/img/l_s_img.jpg"></td>
+					<td colspan="2" width="702" height="30"><img src="pc/img/botan/navi_lo_logo001.gif" alt="" height="30" width="700" usemap="#navi_lo_logo001" border="0"><map name="navi_lo_logo001"><area shape="rect" coords="129,6,225,24" href="pc/topics2010.html" alt="TOPICS一覧"><area onclick="window.open('pc/sample/sample.html', 'form_csr', 'width=550,height=600,scrollbars=yes,resizable=yes,left=0,top=0')" shape="rect" coords="480,7,566,24" href="javascript:void(0)" alt="予想情報サンプルはこちら"><area shape="rect" coords="354,7,463,24" href="pc/site_grounds.html#site_grounds02anchor" alt="独自のプログラムについて"><area shape="rect" coords="249,7,338,24" href="pc/site_grounds.html#site_grounds01anchor" alt="サイトの見方"></map></td>
+					<td width="6" height="30" background="pc/img/r_s_img.jpg"></td>
+				</tr>
+				<tr>
+					<td width="5" background="pc/img/l_s_img.jpg"></td>
+					<td width="580"></td>
+					<td width="120"><img src="pc/img/tomei.gif" alt="" height="10" width="32" border="0"></td>
+					<td width="6" background="pc/img/r_s_img.jpg"></td>
+				</tr>
+				<tr height="5">
+					<td width="5" height="5" background="pc/img/l_s_img.jpg"></td>
+					<td width="580" height="5"></td>
+					<td width="120" height="5">
+						<div align="center">
+							<p class="faq"></p>
+						</div>
+					</td>
+					<td width="6" height="5" background="pc/img/r_s_img.jpg"></td>
+				</tr>
+				<tr>
+					<td width="5" background="pc/img/l_s_img.jpg"></td>
+					<td valign="top" width="580">
+						<table width="580" border="0" cellspacing="0" cellpadding="0">
+							<tr height="2">
+								<td width="4" height="2"></td>
+								<td bgcolor="#006600" width="2" height="2"></td>
+								<td bgcolor="#006600" width="568" height="2"></td>
+								<td bgcolor="#006600" width="2" height="2"></td>
+								<td width="4" height="2"></td>
+							</tr>
+							<tr height="161">
+								<td width="4" height="161"></td>
+								<td bgcolor="#006600" width="2" height="161"></td>
+								<td width="568" height="161"><img src="pc/img/info01.gif" alt="万馬券48週連続的中!!!毎週万馬券も制覇！最高額はナント三連単で3,163,040円!!!綿密なデータ解析に基づく予想情報を今すぐ体感して下さい！" height="161" width="568" border="0"></td>
+								<td bgcolor="#006600" width="2" height="161"></td>
+								<td width="4" height="161"></td>
+							</tr>
+							<tr height="2">
+								<td width="4" height="2"></td>
+								<td bgcolor="#006600" width="2" height="2"></td>
+								<td bgcolor="#006600" width="568" height="2"></td>
+								<td bgcolor="#006600" width="2" height="2"></td>
+								<td width="4" height="2"></td>
+							</tr>
+							<tr>
+								<td width="4"></td>
+								<td width="2"></td>
+								<td width="568"><img src="pc/img/tomei.gif" alt="" height="10" width="32" border="0"></td>
+								<td width="2"></td>
+								<td width="4"></td>
+							</tr>
+							<tr>
+								<td width="4"></td>
+								<td colspan="3" width="572">
+									<table width="572" border="0" cellspacing="0" cellpadding="0">
+										<tr>
+											<td rowspan="2" valign="top" width="180">
+												<div align="center">
+													<table border="1" cellspacing="2" cellpadding="0" bgcolor="#006600">
+														<tr>
+															<td align="center" bgcolor="white" width="170"><img src="pc/img/keitai_pr_logo.jpg" alt="会員登録はHAPPY!競馬QRコードからケータイでご利用ください！" height="300" width="170" border="0"></td>
+														</tr>
+														<tr>
+															<td width="170">
+																<div align="center">
+																	<form style="margin-top:0em; margin-bottom:0em" name="form1">
+																		<input type="text" name="tokei" size="21">
+																	</form>
+																	<script type="text/javascript">
+<!--
+function tokei() {
+  d = new Date();
+  year = d.getYear(); if (year < 2000) { year += 1900; }
+  mon = d.getMonth() + 1; if (mon < 10) { mon = "0" + mon; }
+  date = d.getDate(); if (date < 10) { date = "0" + date; }
+  hour = d.getHours(); if (hour < 10) { hour = "0" + hour; }
+  min = d.getMinutes(); if (min < 10) { min = "0" + min; }
+  document.form1.tokei.value =
+     " " + year + "/" + mon + "/" + date +
+     " "+ hour + ":" + min;
+  setTimeout("tokei()", 1000);
+}
+tokei();
+// -->
+</script>
+																</div>
+															</td>
+														</tr>
+													</table>
+													<table width="170" border="0" cellspacing="0" cellpadding="0">
+														<tr>
+															<td class="color_02" width="170">
+																<div align="center">
+																	<font color="red"><b>毎週金・土17時前後に<a name="Anchor-24618" id="Anchor-24618"></a><br>
+																			予想情報をアップ！</b></font></div>
+															</td>
+														</tr>
+													</table>
+													<table width="170" border="1" cellspacing="2" cellpadding="0" bgcolor="#006600">
+														<tr>
+															<td class="color_TOP02" width="170">
+																<div align="center">
+																	<a title="新しいウインドウが開きます。" onclick="window.open('pc/rules.html', 'form_csr', 'width=600,height=600,scrollbars=yes,menubar=yes,resizable=yes,left=0,top=0')" href="javascript:void(0);"><font color="#cc0000"><b>携帯サイトご利用案内</b></font></a></div>
+															</td>
+														</tr>
+													</table>
+													<p><!-- Webpac Code Start -->
+														<script charset="utf-8" type="text/javascript" src="http://webpac.jp/packages/parts/984/telop.js"></script>
+													</p>
+													<noscript>
+														<a title="競馬 - Webpac" href="http://webpac.jp/packages/read/pid=984"><img src="http://webpac.jp/img/webpac_append.gif" alt="競馬 - Webpac" /></a>
+													</noscript>
+													<div style="font-size:10px;">
+															Created by <a style="font-size:12px;" title="Webpac" href="http://webpac.jp/helps/blogparts_create">Webpac</a></div>
+													<!-- Webpac Code End --></div>
+											</td>
+											<td width="4"></td>
+											<td valign="top" width="388">
+												<table width="388" border="0" cellspacing="0" cellpadding="0">
+													<tr height="37">
+														<td class="topics" colspan="4" valign="top" height="37">
+															<div align="right">
+																<p class="faq"><a href="pc/results.html">最新的中情報はこちらから！</a></p>
+															</div>
+														</td>
+													</tr>
+													<tr>
+														<td width="2">
+															<div align="center"></div>
+														</td>
+														<td width="40">
+															<div align="center">
+																<img src="pc/img/tomei.gif" alt="" height="10" width="32" border="0"></div>
+														</td>
+														<td width="2">
+															<div align="center"></div>
+														</td>
+														<td>
+															<div align="center"></div>
+														</td>
+													</tr>
+													<tr>
+														<td width="2">
+															<div align="center"></div>
+														</td>
+														<td colspan="3" valign="top">
+															<div align="center">
+																<h3><b><font color="red">携帯サイト</font>で<font color="#00cc00">全レース予想</font>！<br>
+																		お申込は←QRコードから!!!</b></h3>
+																<h5><font color="#003333">会員ご希望の方は、携帯サイトをご利用ください。<br>
+																		お申込は左のQRコードよりアクセスをお願いします。</font></h5>
+																<h4><a title="新しいウインドウが開きます。" onclick="window.open('pc/rules.html', 'form_csr', 'width=600,height=600,scrollbars=yes,menubar=yes,resizable=yes,left=0,top=0')" href="javascript:void(0);">携帯サイトご利用詳細はこちら</a></h4>
+																<h2><span><font color="red">４８週連続</font></span><b><font color="#ff9933">万馬券</font>的中！<font color="#003399"><br>
+																		</font></b><font color="#0000cc">新記録樹立!!!</font><font color="#003399">
+																</font></h2>
+																<font color="#006600"><span class="faq">2009/4/11〜2010/3/14まで連続的中！</span></font>
+																<p><font color="#ff9933"><b>現在</b></font><b>９</b><font color="#ff9933"><b>週連続万馬券的中！</b></font><b>（2010/12/4〜）</b></p>
+																<p></p>
+															</div>
+														</td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="pankuzu" colspan="3" valign="top">
+															<div align="center">
+																<font color="red"><b>8週</b></font>連続万馬券的中！（2007/7/28〜9/16）</div>
+														</td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td colspan="3" valign="top">
+															<div align="center">
+																<span class="faq">　</span><font color="#009933"><b>15週</b></font>連続万馬券<span class="pankuzu">的中！<font color="#ff0000"><b>　</b></font>（2007/4/8〜7/15）</span></div>
+														</td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td colspan="3" valign="top">
+															<div align="center">
+																<b><font color="red">33週</font></b>連続万馬券的中！<span class="pankuzu">（2007/11/4〜2008/6/22）</span></div>
+														</td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td colspan="3" valign="top">
+															<div align="center">
+																<h3><font color="red"><b>3５週連続</b></font><font color="#003333"><b><span class="pankuzu">万馬券的中！</span></b></font><font color="red"><b><br>
+																		</b></font><span class="pankuzu">（2010/3/27〜2010/11/21）</span></h3>
+																<h3><span class="pankuzu"><font size="+2" color="#ff00cc">３８週連続</font><font color="#003333">万馬券的中!!!</font><br>
+																		（2008/7/12〜2009/3/29）<br>
+																	</span></h3>
+															</div>
+														</td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP02" width="40">11.02.05</td>
+														<td width="2"></td>
+														<td class="color_TOP02">金蹄S<b><font color="red"><a href="pc/results.html#0205">馬単万馬券的中！</a></font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP01" width="40">11.01.30</td>
+														<td width="2"></td>
+														<td class="color_TOP01"><a href="pc/2011/jan.html#results_anchor01">京都第8三連単、小倉第5馬単</a><b><font color="red">万馬券的中！</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP02" width="40">11.01.29</td>
+														<td width="2"></td>
+														<td class="color_TOP02"><a href="pc/2011/jan.html#0129">シルクロードS馬単</a><b><font color="red">万馬券的中！</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP01" width="40">11.01.23</td>
+														<td width="2"></td>
+														<td class="color_TOP01"><a href="pc/2011/jan.html#0123">アメリカJC三連単、伏見S馬単、巌流島特別三連複 ･単</a><b><font color="red">万馬券的中！</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP02" width="40">11.01.22</td>
+														<td width="2"></td>
+														<td class="color_TOP02"><a href="pc/2011/jan.html#0122">京都第1三連単</a><b><font color="red">万馬券的中！</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP01" width="40">11.01.16</td>
+														<td width="2"></td>
+														<td class="color_TOP01"><a href="pc/2011/jan.html#0116">京都第12馬連・単</a><b><font color="red">万馬券的中！</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP02" width="40">11.01.15</td>
+														<td width="2"></td>
+														<td class="color_TOP02"><a href="pc/2011/jan.html#0115">中山第5馬単</a><b><font color="red">万馬券的中！</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP01" width="40">11.01.10</td>
+														<td width="2"></td>
+														<td class="color_TOP01"><a href="pc/2011/jan.html#0110">京都第5三連単、北大路特別</a><b><font color="red">十万馬券的中!!!</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP02" width="40">11.01.09</td>
+														<td width="2"></td>
+														<td class="color_TOP02"><a href="pc/2011/jan.html#0109">迎春S三連単、京都第1三連複 ･単、京都第2三連単</a><b><font color="red">万馬券的中!!!</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP01" width="40">11.01.08</td>
+														<td width="2"></td>
+														<td class="color_TOP01"><a href="pc/2011/jan.html#0108">京都第6ワイド、小倉第8馬単</a><b><font color="red">万馬券的中!!!</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP02" width="40">10.12.26</td>
+														<td width="2"></td>
+														<td class="color_TOP02"><a href="pc/2010/dec.html#results_anchor01">フェアウェルS</a><b><font color="red">十万馬券的中!!!</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP01" width="40">10.12.19</td>
+														<td width="2"></td>
+														<td class="color_TOP01"><a href="pc/2010/dec.html#1219">中山第8レース・阪神第7レース三連単、クリスマスキャロル賞馬単、小倉第8レース馬連単、三連複単</a><b><font color="red">万馬券的中！</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP02" width="40">10.12.18</td>
+														<td width="2"></td>
+														<td class="color_TOP02"><a href="pc/2010/dec.html#1218">小倉第7レース馬連・単、豊明特別三連複・単</a><b><font color="red">万馬券的中！</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP01" width="40">10.12.12</td>
+														<td width="2"></td>
+														<td class="color_TOP01"><a href="pc/2010/dec.html#1212">小倉第7レース三連単</a><b><font color="red">万馬券的中！</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP02" width="40">10.12.05</td>
+														<td width="2"></td>
+														<td class="color_TOP02"><a href="pc/2010/dec.html#1205">岩国特別三連単</a><b><font color="red">万馬券的中！</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP01" width="40">10.12.04</td>
+														<td width="2"></td>
+														<td class="color_TOP01"><a href="pc/2010/dec.html#1204">中山第3レース馬単、ステイヤーズS三連単、小倉耶馬渓特別馬単</a><b><font color="red">万馬券的中！</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP02" width="40">10.11.21</td>
+														<td width="2"></td>
+														<td class="color_TOP02"><a href="pc/2010/nov.html#1121">東京第12レース馬連、もちの木賞馬単</a><b><font color="red">万馬券的中！</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP01" width="40">10.11.14</td>
+														<td width="2"></td>
+														<td class="color_TOP01"><a href="pc/2010/nov.html#1114">京都第1レース三連単、ドンカスターC馬単、福島第レース馬連・三連複・単</a><b><font color="red">万馬券的中！</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP02" width="40">10.11.07</td>
+														<td width="2"></td>
+														<td class="color_TOP02"><a href="pc/2010/nov.html#1107">東京第1レース馬連・単、アルゼンチン共和国杯三連複・単、京洛S馬連・単、福島第5レース三連単</a><b><font color="red">万馬券的中！</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP01" width="40">10.10.17</td>
+														<td width="2"></td>
+														<td class="color_TOP01"><a href="pc/2010/oct.html#1017">京都壬生特別</a><font color="red">馬単<b>万馬券的中！</b></font></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP03" width="40"><a href="pc/2010/oct.html#1003" class="topic01">10.10.03</a></td>
+														<td width="2"></td>
+														<td class="color_TOP03"><a href="pc/2010/oct.html#1003" class="topic01">中山第8レース100万馬券的中！<br>
+																過去最高額万馬券出ました!!!</a></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP02" width="40">10.09.26</td>
+														<td width="2"></td>
+														<td class="color_TOP02"><a href="pc/2010/sep.html#0926">中山外房特別・阪神第7レース・札幌第8レース</a><font color="red">馬単</font><b><font color="red">万馬券的中！</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP01" width="40">10.08.29</td>
+														<td width="2"></td>
+														<td class="color_TOP01"><a href="pc/2010/aug.html#results_anchor01">新潟第6レース</a><font color="red">ワイド</font>、<a href="pc/2010/aug.html#results_anchor01">小倉第5レース</a><font color="red">馬単・三連単</font>、<a href="pc/2010/aug.html#results_anchor01">小倉不知火特別</a><font color="red">三連単</font>、<a href="pc/2010/aug.html#results_anchor01">阿蘇S</a><font color="red">馬連・単</font>、<a href="pc/2010/aug.html#results_anchor01">別府特別</a><font color="red">三連単</font><b><font color="red">万馬券的中！</font>小倉２週連続全レース的中!!!</b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP02" width="40">10.07.25</td>
+														<td width="2"></td>
+														<td class="color_TOP02"><a href="pc/2010/jul.html#0725">新潟第3レース</a><font color="red">馬単</font>、<a href="pc/2010/jul.html#0725">新潟第8レース</a><font color="red">馬単・三連単</font>、<a href="pc/2010/jul.html#0725">函館横津岳特別</a><font color="red">馬連   ･単</font>、<a href="pc/2010/jul.html#0725">函館第11レース</a><font color="red">三連単</font><b><font color="red">万馬券的中！</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP01" width="40">10.06.27</td>
+														<td width="2"></td>
+														<td class="color_TOP01"><a href="pc/2010/jun.html#0627">福島テレビオープン</a><b><font color="red">馬連・単</font></b>、<a href="pc/2010/jun.html#0627">阪神第7レース</a><b><font color="red">ワイド</font></b>、<a href="pc/2010/jun.html#0627">函館第6レース</a><b><font color="red">三連単</font></b>、<a href="pc/2010/jun.html#0627">第12レース</a><b><font color="red">馬単・三連単万馬券的中！</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP02" width="40">10.05.16</td>
+														<td width="2"></td>
+														<td class="color_TOP02"><a href="pc/2010/may.html#0516">東京第7レース、新潟石打特別</a><b><font color="red">三連単</font></b>、<a href="pc/2010/may.html#0516">東京ロイヤルプレミアム</a><b><font color="red">馬連単万馬券的中！</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP01" width="40">10.04.18</td>
+														<td width="2"></td>
+														<td class="color_TOP01"><a href="pc/2010/apr.html#0418">中山狩野山特別</a><b><font color="red">三連単</font></b>、<a href="pc/2010/apr.html#0418">福島第1レース</a><b><font color="red">馬連・単</font></b>、<a href="pc/2010/apr.html#0418">第4・８レース</a><b><font color="red">三連単万馬券的中！</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP02" width="40">10.03.14</td>
+														<td width="2"></td>
+														<td class="color_TOP02"><a href="pc/2010/mar.html#0314">中京第3レース</a><b><font color="red">馬単・三連単万馬券的中！</font></b>
+															<p><b><font color="#ff6600">【48週連続万馬券最高記録!!!】</font></b></p>
+														</td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP01" width="40">10.02.06</td>
+														<td width="2"></td>
+														<td class="color_TOP01"><a href="pc/2010/feb.html#0206">東京第9レース三連単、金蹄S馬連・単、小倉大賞典馬単</a><b><font color="red">万馬券的中！</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP02" width="40">10.01.09</td>
+														<td width="2"></td>
+														<td class="color_TOP02"><a href="pc/2010/jan.html#0109">中山第12レース</a><b><font color="red">三連単万馬券的中！</font></b><br>
+															<font color="#009900"><b>39週連続万馬券的中！新記録樹立!</b></font></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP01" width="40">09.12.27</td>
+														<td width="2"></td>
+														<td class="color_TOP01"><a href="pc/2009/dec.html#1227"><b>有馬記念</b>・中京第2レース</a><b><font color="red">三連単万馬券的中！</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP02" width="40">09.10.31</td>
+														<td width="2"></td>
+														<td class="color_TOP02"><a href="pc/2009/oct.html#1031">京都第7レース三連複</a><b><font color="red">万馬券</font></b>・<a href="pc/results.html#1212">三連単</a><font color="#ff6600"><b>十万馬券的中！</b></font></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP01" width="40">09.07.11</td>
+														<td width="2"></td>
+														<td class="color_TOP01"><a href="pc/2009/jul.html#0711">福島・阪神第6レース馬単、札幌第6レース馬連・単</a><b><font color="red">万馬券的中！</font><font color="#009900">札幌全レース的中!!!</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP02" width="40">09.07.05</td>
+														<td width="2"></td>
+														<td class="color_TOP02"><a href="pc/2009/jul.html#0705">阪神第2レース馬単、生田特別三連複・単</a><b><font color="red">万馬券的中！三連単は十万馬券!!!</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP01" width="40">09.06.28</td>
+														<td width="2"></td>
+														<td class="color_TOP01"><a href="pc/2009/jun.html#0628">阪神垂水S、札幌第3レース馬単</a><b><font color="red">万馬券的中！<br>
+																</font><font color="#ff6600">宝塚記念も的中!!!</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP02" width="40">09.05.10</td>
+														<td width="2"></td>
+														<td class="color_TOP02"><a href="pc/2009/may.html#0510">東京第7・京都第1、5レース三連単</a><b><font color="red">万馬券的中！</font></b><br>
+															<a href="pc/results.html#0517">新潟第9レース馬連単、三連複単</a><b><font color="red">万馬券的中！<br>
+																</font><font color="#009900">三連複は十万馬券!!!</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP01" width="40">09.02.21</td>
+														<td width="2"></td>
+														<td class="color_TOP01"><a href="pc/2009/feb.html#0221">東京第12レース、京都春日S・河原町S、小倉第1レース</a><b><font color="red">万馬券的中！</font>十万馬券も出ました!!!<br>
+																<font color="#ff6600">33週連続万馬券的中！</font><font color="#003399">タイ記録達成!!!</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP02" width="40">09.01.31</td>
+														<td width="2"></td>
+														<td class="color_TOP02"><a href="pc/2009/jan.html#0131">東京第12レース</a><b><font color="red">10万馬券的中!!!</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP01" width="40">09.01.15</td>
+														<td width="2"></td>
+														<td class="color_TOP01"><b><font size="3">PCサイトでの新規会員募集を</font><font size="3" color="red">終了</font><font size="3">します。<br>
+																</font><font size="3" color="#006600">携帯サイト</font><font size="3">で全レース予想を提供します。</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP02" width="40">09.01.05</td>
+														<td width="2"></td>
+														<td class="color_TOP02"><a href="pc/2009/jan.html#0105">中山ジュニアC三連単、第12レース馬単・三連複・単</a><b><font color="red">万馬券的中！</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP01" width="40">08.12.28</td>
+														<td width="2"></td>
+														<td class="color_TOP01"><a href="pc/2008/dec.html#1228">阪神オリオンS馬単、2008ファイナルS三連複・単</a><b><font color="red">万馬券的中！</font><font color="#ff9900">25週連続万馬券!!!</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP02" width="40">08.12.06</td>
+														<td width="2"></td>
+														<td class="color_TOP02"><a href="pc/2008/dec.html#1206">中山ステイヤーズS三連単、市川S馬単、阪神第2レース馬単</a><b><font color="red">万馬券的中！</font></b>　<font color="#3300cc"><b>3週連続十万馬券的中!!!</b></font></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP01" width="40">08.11.23</td>
+														<td width="2"></td>
+														<td class="color_TOP01"><a href="pc/2008/nov.html#1123">霜月S万馬券的中！</a><b><font color="#3300cc">三連単は十万馬券!!!<br>
+																</font></b>京都第7レース<b><font color="red">馬単万馬券的中！</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP02" width="40">08.11.22</td>
+														<td width="2"></td>
+														<td class="color_TOP02"><a href="pc/2008/nov.html#1122">東スポ杯2歳S馬単・三連単</a><b><font color="red">万馬券的中！</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP01" width="40">08.10.26</td>
+														<td width="2"></td>
+														<td class="color_TOP01">GI制覇！<a href="pc/results.html#Anchor-37102"><b>菊花賞</b></a><b><font color="red">馬連・単万馬券的中!!!<br>
+																</font></b><a href="pc/results.html#1026">神無月S</a><font color="red">三連単万馬券的中！</font></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP02" width="40">08.09.21</td>
+														<td width="2"></td>
+														<td class="color_TOP02"><a href="pc/2008/sep.html#0921">阪神仲秋特別</a><font color="#ff6600"><b>十万馬券的中!!!</b></font></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP01" width="40">08.09.15</td>
+														<td width="2"></td>
+														<td class="color_TOP01"><a href="pc/2008/sep.html#0915">鳥取特別万馬券的中！</a><font color="red"><b>3日連続万馬券でました！</b></font><br>
+															<font color="#009900"><b>阪神は予想全レースが見事的中！</b></font></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP02" width="40">08.08.31</td>
+														<td width="2"></td>
+														<td class="color_TOP02"><a href="pc/2008/aug.html#0831">新潟第8レース馬単、小倉第7・札幌第2レース三連単</a><b><font color="red">万馬券的中！</font><font color="#ff6600"><a href="pc/2008/aug.html#klc">キーンランドカップ</a>は50万馬券でました!!!</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP01" width="40">08.08.02</td>
+														<td width="2"></td>
+														<td class="color_TOP01"><a href="pc/2008/aug.html#0802">新潟第8レース馬単、小倉第6レース三連単、函館第4レース馬連・単、函館第5レース三連単</a><font color="red"><b>万馬券的中！</b></font><br>
+															<b><font color="#ff6600">宮崎ステークスでは十万馬券的中!!! ３週連続十万馬券見事的中!!!</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP02" width="40">08.07.27</td>
+														<td width="2"></td>
+														<td class="color_TOP02"><a href="pc/2008/jul.html#0727">新潟第3レース</a><b><font color="red">十万馬券的中！<br>
+																</font></b><a href="pc/2008/jul.html#0727">函館第3レース</a><b><font color="red">馬単万馬券的中！</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP01" width="40">08.07.19</td>
+														<td width="2"></td>
+														<td class="color_TOP01"><a href="pc/2008/jul.html#0719">新潟第8レース三連単、小倉第6レース三連単、有田特別三連複・単、函館第8レース馬連・単</a><b><font color="red">万馬券的中!!! </font><font color="#ff6600">有田特別では十万馬券的中!!!</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP02" width="40">08.06.06</td>
+														<td width="2"></td>
+														<td class="color_TOP02"><b><font color="#ff6600">３０週連続万馬券的中を記念して、６月いっぱいPC版サイトを無料情報公開！この機会を是非お見逃しなく！</font></b></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP01" width="40">08.03.02</td>
+														<td width="2"></td>
+														<td class="color_TOP01"><a href="pc/2008/mar.html#0302">中山記念（GII)</a>見事的中！</td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP02" width="40">08.01.12</td>
+														<td width="2"></td>
+														<td class="color_TOP02"><a href="pc/2008/jan.html#0112">中山東雲賞</a><font color="#ff6600"><b>馬連・単、三連複・単</b></font>見事的中！<br>
+															三連単なんと<font color="red"><b>637,060円!!!　<br>
+																</b></font>京都第1レース<font color="red">ワイド万馬券的中！</font></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP01" width="40">07.12.02</td>
+														<td width="2"></td>
+														<td class="color_TOP01"><a href="pc/2007/dec.html#1202">阪神ジュベナイルフィリーズ（GI)三連単65,920円<br>
+																中京第8レース馬単11,240円</a><font color="red">万馬券見事的中！</font></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP02" width="40">07.11.10</td>
+														<td width="2"></td>
+														<td class="color_TOP02"><a href="pc/2007/nov.html#1110">ついに出ました<b>10万馬券!!!<br>
+																</b>京都第7レース見事的中！</a></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP01" width="40">07.08.05</td>
+														<td width="2"></td>
+														<td class="color_TOP01"><font color="red"><b>的中率過去最高の90％超!!!</b></font></td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP02" width="40">07.07.01</td>
+														<td width="2"></td>
+														<td class="color_TOP02"><font color="#0033ff"><b>函館予想全レース的中!!!<br>
+																</b></font>阪神阪神第6レースで馬連・単万馬券的中！</td>
+													</tr>
+													<tr>
+														<td width="2"></td>
+														<td class="color_TOP01" width="40">07.06.24</td>
+														<td width="2"></td>
+														<td class="color_TOP01">
+															<p><font color="blue"><b>福島6レース三連複</b></font><font color="red"><b>147,970円</b></font><font color="blue"><b>的中！</b></font></p>
+														</td>
+													</tr>
+													<tr height="30">
+														<td width="2" height="30"></td>
+														<td width="40" height="30"></td>
+														<td width="2" height="30"></td>
+														<td valign="bottom" height="30">
+															<div align="right">
+																<a href="pc/topics2010.html">その他のTOPICSはこちらから</a></div>
+														</td>
+													</tr>
+													<tr height="10">
+														<td width="2" height="10"></td>
+														<td width="40" height="10"></td>
+														<td width="2" height="10"></td>
+														<td height="10"></td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+										<tr>
+											<td width="4"></td>
+											<td valign="top" width="388">
+												<table width="388" border="1" cellspacing="2" cellpadding="0" bgcolor="#006600">
+													<tr>
+														<td align="center" bgcolor="white" width="378">2011年もHAPPY！競馬.net！</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									</table>
+								</td>
+								<td width="4"></td>
+							</tr>
+							<tr height="20">
+								<td width="4" height="20"></td>
+								<td width="2" height="20"></td>
+								<td width="568" height="20"></td>
+								<td width="2" height="20"></td>
+								<td width="4" height="20"></td>
+							</tr>
+						</table>
+					</td>
+					<td valign="top" width="120">
+						<table width="120" border="0" cellspacing="0" cellpadding="0">
+							<tr height="25">
+								<td align="center" width="120" height="25"><a title="新しいウインドウが開きます。" onclick="window.open('pc/pc_member/cntrl.cgi/CNTRL=LOGIN/member_top.html', 'form_csr', 'width=550,height=600,scrollbars=yes,resizable=yes,left=0,top=0')" href="javascript:void(0);"><input style="width: 70px" type="submit" value="ログイン"></a></td>
+							</tr>
+							<tr height="5">
+								<td width="120" height="5"><img src="pc/img/tomei.gif" alt="" height="10" width="32" border="0"></td>
+							</tr>
+							<tr>
+								<td width="120"><a href="javascript:window.external.addfavorite('http://www.happy-keiba.net/','HAPPY!競馬.net')"><img src="pc/img/okini_logo.gif" alt="お気に入りに追加" height="38" width="120" border="0"></a></td>
+							</tr>
+							<tr height="10">
+								<td width="120" height="10"><img src="pc/img/tomei.gif" alt="" height="10" width="32" border="0"></td>
+							</tr>
+							<tr>
+								<td bgcolor="black" width="120">
+									<div align="center">
+										<a href="http://jra.jp/" target="_blank"><img src="pc/img/bannar/link_03.gif" alt="JRAホームページへ" height="34" width="111" border="0"></a></div>
+								</td>
+							</tr>
+							<tr>
+								<td width="120"><img src="pc/img/tomei.gif" alt="" height="10" width="32" border="0"></td>
+							</tr>
+							<tr>
+								<td>
+									<iframe src="http://ad.jp.ap.valuecommerce.com/servlet/htmlbanner?sid=2352931&pid=878059045" frameborder="0" allowtransparency="true" marginwidth="0" marginheight="0" scrolling="no" height="60" width="120">
+										<script language="javascript" src="http://ad.jp.ap.valuecommerce.com/servlet/jsbanner? sid=2352931&pid=878059045"></script>
+										<noscript>
+											<a href="http://ck.jp.ap.valuecommerce.com/servlet/referral? sid=2352931&pid=878059045" target="_blank"><img src="http://ad.jp.ap.valuecommerce.com/servlet/gifbanner? sid=2352931&pid=878059045" height="60" width="120" border="0"></a>
+										</noscript>
+									</iframe>
+								</td>
+							</tr>
+							<tr>
+								<td><img src="pc/img/tomei.gif" alt="" height="10" width="32" border="0"></td>
+							</tr>
+							<tr>
+								<td><a href="http://www.keiba-s.com/?key=ksp10513" target="_blank"><img title="競馬ランキング&amp;競馬情報検索エンジン 競馬サーチ.com" src="http://www.keiba-s.com/pc/img/4.gif" alt="競馬ランキング&amp;競馬情報検索エンジン 競馬サーチ.com" border="0"></a></td>
+							</tr>
+							<tr>
+								<td><img src="pc/img/tomei.gif" alt="" height="10" width="32" border="0"></td>
+							</tr>
+							<tr>
+								<td>
+									<div align="center">
+										<a href="http://rental-ranking.com/in.cgi?r=0376&c=1&id=9885_1" target="_blank"><img src="pc/img/Scan10027.jpg" alt="競馬ランキングサイト-WIN KEIBA" border="0"> </a></div>
+								</td>
+							</tr>
+							<tr>
+								<td><img src="pc/img/tomei.gif" alt="" height="10" width="32" border="0"></td>
+							</tr>
+							<tr>
+								<td align="center"><a href="http://www.gamble-ranking.com/ranklink.cgi?id=10513" target="_blank"><img src="http://www.gamble-ranking.com/img/banner_mini_a.gif" border="0"> </a></td>
+							</tr>
+							<tr>
+								<td><img src="pc/img/tomei.gif" alt="" height="10" width="32" border="0"></td>
+							</tr>
+							<tr>
+								<td class="color_TOP01">
+									<div align="center">
+										<a href="http://ck.jp.ap.valuecommerce.com/servlet/referral?sid=2353427&pid=876178728" target="_blank"><img src="http://ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=2353427&pid=876178728" height="1" width="1" border="0">ショッピングはYahoo!ショッピング!</a></div>
+								</td>
+							</tr>
+						</table>
+					</td>
+					<td width="6" background="pc/img/r_s_img.jpg"></td>
+				</tr>
+				<tr>
+					<td width="5" background="pc/img/l_s_img.jpg"></td>
+					<td colspan="2" valign="top" width="700">
+						<blockquote>
+							<p class="pankuzu"><font color="red">注意事項：20歳未満の方の馬券購入は法律で禁止されております。<br>
+									また、当サイトの各種情報は、お客様の自己責任においてご利用下さいますようお願いいたします。</font></p>
+						</blockquote>
+					</td>
+					<td width="6" background="pc/img/r_s_img.jpg"></td>
+				</tr>
+				<tr>
+					<td width="5" background="pc/img/l_s_img.jpg"></td>
+					<td colspan="2" align="right" width="702">
+						<table border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<td width="15"><img src="pc/img/tomei.gif" alt="" height="10" width="15" border="0"></td>
+								<td width="60">
+									<p class="pankuzu"><a href="pc/rules.html" target="_blank"><img src="pc/img/regulations.gif" alt="" height="15" width="82" border="0"></a></p>
+								</td>
+								<td width="15"><img src="pc/img/tomei.gif" alt="" height="10" width="15" border="0"></td>
+								<td width="60">
+									<p class="pankuzu"><a href="http://www.i-t-p.jp/company.html" target="_blank"><img src="pc/img/profile.gif" alt="" height="15" width="82" border="0"></a></p>
+								</td>
+								<td width="15"><img src="pc/img/tomei.gif" alt="" height="10" width="15" border="0"></td>
+								<td>
+									<p class="pankuzu"><a href="http://www.i-t-p.jp/siteinfo.html" target="_blank"><img src="pc/img/policy.gif" alt="" height="15" width="173" border="0"></a></p>
+								</td>
+								<td><img src="pc/img/tomei.gif" alt="" height="9" width="4" border="0"></td>
+							</tr>
+						</table>
+					</td>
+					<td width="6" background="pc/img/r_s_img.jpg"></td>
+				</tr>
+				<tr>
+					<td width="5" background="pc/img/l_s_img.jpg"></td>
+					<td colspan="2" width="702"><img src="pc/img/all_right_logo.gif" alt="" height="25" width="700" border="0"></td>
+					<td width="6" background="pc/img/r_s_img.jpg"></td>
+				</tr>
+			</table>
+			<p></p>
+			<img src="../lime/lime.cgi?01" height="1" width="1"> 
+			<script language="JavaScript">
+<!--
+document.write('<img src="acclog/acclog.cgi?type=write&file=mys&jsref=' + document.referrer + '&scw=' + screen.width + '&sch=' + screen.height + '&scd=' + screen.colorDepth + '&cpu=' +navigator.cpuClass + '&cok=' +navigator.cookieEnabled+ '">');
+//-->
+</script>
+			<noscript>
+				<img src="acclog/acclog.cgi?type=write&file=mys">
+			</noscript>
+			<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+			<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-4561211-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+		</div>
+	</body>
+
+</html>

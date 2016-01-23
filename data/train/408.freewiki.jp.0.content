@@ -1,0 +1,426 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<base href="http://www.freewiki.jp/" />
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-JP" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="copyright" content="Copyright Netowl Corporation" />
+<meta name="robots" content="INDEX,FOLLOW" />
+<meta name="keywords" content="PukiWiki,無料,クラウド" />
+<meta name="description" content="PukiWikiの無料レンタルサービス。" />
+<link rel="stylesheet" title="import" href="http://www.freewiki.jp/css/base.css?date=20151225024537" type="text/css" media="all" />
+<link rel="stylesheet" title="import" href="http://www.freewiki.jp/css/layout.css?date=20150916003204" type="text/css" media="all" />
+<link rel="stylesheet" title="import" href="http://www.freewiki.jp/css/jquery.lightbox-0.5.css" type="text/css" media="all" />
+<link rel="shortcut icon" href="http://www.freewiki.jp/images/favicon.ico">
+
+
+<script type="text/javascript">
+//<![CDATA[
+window.onload = function() {
+	var linkObj = document.getElementById('page_top_button');
+	var pageUrl = location.href ;
+	var urlLastStr = pageUrl.charAt(pageUrl.length-1) ;
+	if(urlLastStr != "p" && urlLastStr != "r") {
+		pageUrl = pageUrl + "index.php#page_header";	
+	} else if(urlLastStr == "r") {
+		pageUrl	= pageUrl ;
+	} else {
+		pageUrl = pageUrl + "#page_header" ;
+	}
+	
+	linkObj.innerHTML = '<a href="' + pageUrl + '" id="to_top_link"><img src="images/common/footer_pagetop_button_off.png" alt="ページトップへ戻る" /></a>'
+}
+//]]>
+</script>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.rollover.js"></script>
+<script type="text/javascript" src="js/jquery.lightbox-0.5.js"></script>
+
+<script type="text/javascript" src="js/smartRollover.js"></script>
+<script type="text/javascript" src="js/smooth.pack.js"></script>
+<script type="text/javascript" src="js/viewCurrent.js"></script>
+<script type="text/javascript" src="js/google.js"></script>
+
+<script type="text/javascript">
+//<![CDATA[
+$(function() {
+	var nowPage = getNowPage();
+	$(".rollover a img").rollover({current : nowPage['global']});	
+});
+//]]>
+</script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+$(function() {
+$('.skin_design_list li a').lightBox();
+});
+//]]>
+</script>
+
+
+<title>PukiWiki無料レンタルサービス！freewiki</title>
+<meta name="google-site-verification" content="CJ2meoakgn7fhN8tycGip0gL_1pPXYVe4IXAUVKKEbY" />
+</head>
+
+<body id="index_page">
+
+
+     
+    	<div id="header">
+            <h1 id="h1_1"><a id="page_header" name="page_header"><strong>PukiWikiの無料レンタルサービス！</strong></a></h1>        
+            <div id="header_logo">
+	<a href="http://www.freewiki.jp/" id="logo" name="logo"><img src="images/common/header_logo.png" alt="PukiWiki無料レンタルサービス freeWiki" /></a>
+</div>
+
+<h2>PukiWiki無料レンタルサービス</h2>
+
+<ul id="main_navi"><!--
+	--><li class="rollover"><a href="index.php" id="side_navi_top"><img src="images/common/main_navi_home.png" alt="PukiWiki無料レンタルサービス freeWiki" /></a></li><!--
+    --><li class="rollover"><a href="service/design_list.php" id="side_navi_design"><img  src="images/common/main_navi_design.png" alt="デザイン一覧" /></a></li><!--
+    --><li class="rollover"><a href="support/" id="side_navi_support"><img src="images/common/main_navi_support.png" alt="サポート" /></a></li><!--
+    --><li class="rollover"><a href="news/" id="side_navi_news"><img src="images/common/main_navi_news.png" alt="お知らせ" /></a></li><!--
+--></ul>
+<div id="login_button">
+	<a href="https://secure.netowl.jp/freewiki/" target="_blank" rel="nofollow"><img src="images/common/login_button.png" alt="ユーザーログイン" /></a>
+</div>
+<!-- /login_button -->
+
+
+<div class="notice">
+    <p><b>【重要なお知らせ】本サービスは、2016年6月30日(木)をもって、サービスの提供を終了いたします。</b><br />
+    <a href="http://www.freewiki.jp/news_detail.php?view_id=1346">【重要】『アクセス解析』『メールフォーム』『freeWiki』『ShopStar』サービス終了についてのご案内</a>&nbsp;(2015/12/25)
+</div>
+<!-- /notice END -->           
+                 
+        </div>
+        <!-- /header -->  
+        
+
+        
+        <div id="contents_wrapper">
+        
+        	<div id="top_img">
+            	<img src="images/contents/index/top_img.png" alt="共同編集が可能なウェブページ制作アプリケーション！" class="mb20" />
+            </div>
+            <!-- /top_img -->
+        
+        	<div id="main">
+                
+                <div id="top_feature_list">
+                	<h3><img src="images/contents/index/top_feature_title.png" alt="簡単・快適！" /></h3>
+                	<ul>
+                    	<li>
+                        	<h4><img src="images/contents/index/top_feature_list_title_01.png" alt="簡単なスタートステップ" /></h4>
+                            <img src="images/contents/index/top_feature_list_img_01.png" alt="簡単なスタートステップ" class="right ml10 mb5" />
+                            <p>インストールするのに必要なのは、簡単なフォームを埋めることだけ！レンタルサーバーのご契約や、専門的な知識などは一切不要で、簡単にご利用いただくことが可能です。</p>
+                        </li> 
+                        <li class="list_right">
+                        	<h4><img src="images/contents/index/top_feature_list_title_02.png" alt="専用画面でラクラク設定！" /></h4>
+                            <img src="images/contents/index/top_feature_list_img_02.png" alt="専用画面でラクラク設定！" class="right ml10 mb5" />
+                            <p>通常.iniファイルを直接修正する必要がある設定等も、専用の画面から簡単に設定変更を行うことが可能です。また、直接ファイルを編集することもできます。</p>
+                        </li>
+                        <li>
+                        	<h4><img src="images/contents/index/top_feature_list_title_03.png" alt="独自ドメインがご利用可能！" /></h4>
+                            <img src="images/contents/index/top_feature_list_img_03.png" alt="独自ドメインがご利用可能！" class="right ml10 mb5" />
+                            <p>freeWikiのPukiWikiなら、すでにお持ちの独自ドメインの利用にも対応！サービス固有のドメインではなく、用途や好みに合わせて、思い通りのドメインで運用が可能です。</p>
+                        </li> 
+                        <li class="list_right">
+                        	<h4><img src="images/contents/index/top_feature_list_title_04.png" alt="使いやすいスキンデザイン" /></h4>
+                            <img src="images/contents/index/top_feature_list_img_04.png" alt="使いやすいスキンデザイン" class="right ml10 mb5" />
+                            <p>freeWikiでは、PukiWiki用のオリジナルスキンデザインをご用意！シンプルながら、使いやすいデザインを備えています。また、選択するだけでいつでも手軽に変更が可能です！</p>
+                        </li>
+                        <li class="list_end">
+                        	<h4><img src="images/contents/index/top_feature_list_title_05.png" alt="FTP接続に対応" /></h4>
+                            <img src="images/contents/index/top_feature_list_img_05.png" alt="FTP接続に対応" class="right ml10 mb5" />
+                            <p>freeWikiのPukiWikiなら、サーバーへのFTP接続が可能！データのバックアップを取ったり、ファイルの直接アップロードが出来る等、便利な使い方が可能です。</p>
+                        </li> 
+                    </ul>
+                    
+                    <dl id="service_image_list">
+                    	<dt>ご利用イメージ</dt>
+                        <dd>
+                        	<ul class="skin_design_list">
+                            	<li><a href="images/contents/service/skin_simple_bluegreen_preview.png"><img src="images/contents/index/service_image_list_01.png" /></a></li>
+                                <li><a href="images/contents/service/skin_smart_yellow_preview.png"><img src="images/contents/index/service_image_list_02.png" /></a></li>
+                                <li><a href="images/contents/service/skin_graf_abstract_preview.png"><img src="images/contents/index/service_image_list_03.png" /></a></li>
+                                <li><a href="images/contents/service/skin_graf_netowl_preview.png"><img src="images/contents/index/service_image_list_04.png" /></a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    
+                    <div class="mb25 text-right"><a href="service/design_list.php">&gt;デザイン一覧</a></div>
+                </div>
+                <!-- /top_feature_list -->
+                
+                
+                <div id="top_function_list">
+                
+                	<h5>[機能一覧]</h5>
+                    <div class="inner">
+                        <table cellspacing="0">
+                            <tr>
+                            	<th scope="col" class="func_name">項目名</th>                                
+                                <th scope="col" class="func_contents">内容</th>
+                                <th scope="col" class="func_explanation">説明</th>
+                            </tr>
+                            <tr>
+                            	<th scope="row" class="sub_th">作成可能数</th>
+                                <td>5件</td>
+                                <td class="txt-left">PukiWikiを最大で左記件数まで作成可能です。</td>                                
+                            </tr>                          
+                            <tr>
+                            	<th scope="row" class="sub_th">独自ドメイン利用</th>
+                                <td>○</td>
+                                <td class="txt-left">サイトアドレスに独自ドメインが利用可能です。</td>
+                            </tr>
+                            <tr>
+                            	<th scope="row" class="sub_th">サブドメイン利用</th>
+                                <td>○</td>
+                                <td class="txt-left">サイトアドレスに、お持ちのドメインのサブドメインが設定可能です。</td>
+                            </tr>
+                            <tr>
+                            	<th scope="row" class="sub_th">FTP(※1)</th>
+                                <td>○</td>
+                                <td class="txt-left">
+                                    FTP接続を行うことが可能です。<br />
+                                    ※FTP over SSLに対応しています。
+                                </td>                                
+                            </tr>  
+                            <tr>
+                            	<th scope="row" class="sub_th">メール配信数(※2)</th>
+                                <td>100通/日</td>
+                                <td class="txt-left">左記件数までアプリからのメール送信が可能です。</td>                                
+                            </tr>
+                        </table>
+                        
+						<div style="padding : 8px 10px ; border : 1px solid #b3b3b3 ; margin-bottom : 15px ;">
+                        	<p class="assist" style="margin-bottom : 0 ; padding-left : 2.5em ; text-indent : -2.5em ;">(※1)セキュリティ上、国外ネットワーク環境からのFTP接続を遮断しています。</p>
+                        	<p class="assist" style="margin-bottom : 0 ; padding-left : 2.5em ; text-indent : -2.5em ;">(※2)記載値を超えるメール送信は制限されます。</p>
+                        </div>
+                        
+                        
+                        <p>以下は、「<a href="upgrade.php" target="_blank">プレミアムプラン</a>」と内容が異なる機能です。</p>
+                        
+                        <table cellspacing="0">
+                        	<thead>
+                            	<tr>
+                                	<th scope="col" class="func_name">項目名</th>                                
+                                    <th scope="col" class="func_contents">通常</th>
+                                    <th scope="col" class="func_contents premium_item"><a href="upgrade.php" target="_blank">プレミアム<br />プラン</a></th>
+                                    <th scope="col" class="func_explanation">説明</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            	<tr>
+                                    <th scope="row" class="sub_th">ストレージ容量</th>
+                                    <td>1GB</td>
+                                    <td class="premium_item">10GB</td>
+                                    <td class="txt-left">ご利用可能なディスク容量です。</td>
+                                </tr>
+                            	<tr>
+                                    <th scope="row" class="sub_th">広告表示</th>
+                                    <td>あり</td>
+                                    <td class="premium_item">なし</td>
+                                    <td class="txt-left">ウィキ各ページに表示される広告です。(<a href="support/man/man_about_ad.php">詳細</a>)</td>
+                                </tr>
+                                 <tr>
+                                    <th scope="row" class="sub_th">ネットオウルのドメイン</th>
+                                    <td>-</td>
+                                    <td class="premium_item">利用可</td>
+                                    <td class="txt-left">任意の文字列を組み合わせて使う、ネットオウル独自のドメインです。</td>                                
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                    </div>
+                    <!-- /inner -->
+                
+                </div>
+                <!-- /top_function_list -->
+               
+                
+                <div id="top_news">
+                    <h3><img src="images/contents/index/main_news_title.png" alt="NEWS ニュース" /></h3>
+                    <div class="inner">   
+                        <dl>
+<dt class="diff_back">1月14日</dt>
+<dd class="diff_back"><a href="news_detail.php?view_id=1363">『ネットオウル』PHP5 の2倍以上の実行速度を誇る「PHP7」導入のお知らせ</a></dd>
+<dt>1月12日</dt>
+<dd><a href="news_detail.php?view_id=1361">『ミニバード』『ファイアバード』サーバー初期設定費用無料キャンペーンのお知らせ</a></dd>
+<dt class="diff_back">1月7日</dt>
+<dd class="diff_back"><a href="news_detail.php?view_id=1353">『ネットオウル』各レンタルサーバーサービスにおけるPHP5.5 / 5.4 / 5.3アップデート実施のお知らせ</a></dd>
+<dt>1月6日</dt>
+<dd><a href="news_detail.php?view_id=1352">『スタードメイン』.mobiが税抜580円！.meが税抜880円！ドメイン激安キャンペーンのお知らせ</a></dd>
+<dt class="diff_back">12月25日</dt>
+<dd class="diff_back"><a href="news_detail.php?view_id=1346">【重要】『アクセス解析』『メールフォーム』『freeWiki』『ShopStar』サービス終了についてのご案内</a></dd>
+</dl>                    </div>
+                    <!-- /inner -->
+                    
+                    <div class="button_box">
+                        <ul class="sub_link_buttons">
+                            <li><a href="news/">&gt;&nbsp;ニュース一覧</a></li>
+                            <li><a href="news/mainte.php">&gt;&nbsp;障害・メンテナンス情報</a></li>
+                        </ul>
+                    </div>
+                    <!-- /button_box -->
+                    
+                </div>
+                <!-- /top_news -->
+                
+
+            </div>
+            
+            
+            <div id="sub">            
+            	<div id="upper_plan_banner">
+    <a href="http://www.freewiki.jp/upgrade.php" target="_blank"><img src="images/common/sub_contents_upper_plan_banner.png" alt="プレミアムプランのご案内" /></a>
+</div>
+<!-- /upper_plan_banner -->
+<div id="sub_related" class="sub_section">
+
+	<h4>使い方に困ったことがあったら</h4>
+    <ul>
+        <li><a href="support/">サポートマニュアル</a></li>
+        <li><a href="support/index.php#faq_section">よくある質問</a></li>
+    </ul>
+    <div class="sub_banner">
+        <a href="https://secure.netowl.jp/bbs/" target="_blank" title="困ったらここで質問！Q＆A掲示板" rel="nofollow"><img src="images/common/side_qabbs_banner.png" alt="困ったらここで質問！Q＆A掲示板" /></a>
+    </div>
+    
+</div>
+<!-- /sub_related -->
+
+<div id="related_service" class="sub_section">
+                    
+    <h4>関連サービス</h4>
+    <ul>                          
+        <li>
+            <a href="http://www.star-domain.jp/" rel="nofollow"><img src="images/common/stardomain_banner.png" alt="ドメインサービス　スタードメイン" /></a>
+            <p>StarDomain(スタードメイン)<br />
+            40種類以上のドメインを取り揃えた格安のドメイン取得サービス</p>
+            <p>
+            <img src="images/common/campaign_marker.png" alt="キャンペーン実施中！" class="mt10 mb5" /><br />
+            <strong style="color : #f76e24 ;">今なら.mobi、.infoなどが580円(税抜)で取得可能！</strong>
+            </p>
+        </li>
+        <li>
+        	<a href="http://www.wpblog.jp/" rel="nofollow"><img src="images/common/sub_banner_wpblog.png" alt="WordPress無料レンタルサービス WPblog" /></a>
+            <p>WPblog(ダブリューピーブログ)<br />
+            定番のブログアプリ「WordPress」が無料で利用可能！
+            </p>
+        </li>
+    </ul>
+
+</div>
+<!-- /related_service -->            </div>
+            <!-- /sub -->              
+            
+            
+        </div>
+        <!-- /contents_wrapper -->
+        
+        <div id="footer">
+        	<div class="inner">
+	<div id="footer_sitemap">
+	
+    <div id="sitemap_inner">
+        <dl>
+            <dt>サービスについて</dt>
+            <dd>
+                <ul>
+                    <li><a href="index.php" title="PukiWikiの無料レンタルサービス freeWiki">freeWikiについて</a></li>
+                    <li><a href="service/design_list.php" title="デザイン一覧">デザイン一覧</a></li>
+                    <li><a href="http://www.netowl.jp/rule/freewiki.php" title="ご利用規約" target="_blank" rel="nofollow">ご利用規約</a></li>
+                </ul>
+            </dd>
+        </dl>        
+        <dl>
+            <dt>サポート</dt>
+            <dd>
+                <ul>
+                    <li><a href="support/" title="マニュアル/よくある質問">マニュアル/よくある質問</a></li>
+                </ul>
+            </dd>
+        </dl>
+        
+        <dl>
+            <dt>お知らせ</dt>
+            <dd>
+                <ul>
+                    <li><a href="news/" title="お知らせ">お知らせ</a></li>
+                    <li><a href="news/mainte.php" title="障害・メンテナンス情報">障害・メンテナンス情報</a></li>
+                </ul>
+            </dd>
+        </dl>
+        
+        <div id="page_top_button">
+    		<a href="#" id="to_top_link"><img src="images/common/footer_pagetop_button_off.png" alt="ページトップへ戻る" /></a>
+        </div>
+        <!-- /page_top_button -->
+        
+    </div>
+    <!-- /sitemap_inner -->
+    
+</div>
+<!-- /footer_sitemap -->
+	<div id="copyright">        
+        <address><a href="http://www.netowl.jp/" target="_blank" rel="nofollow"><img src="images/common/footer_logo.png" alt="ネットオウル株式会社" />&copy; 2012-2016 netowl,Inc.</a></address>
+    </div>
+    <!-- /copyright -->    
+    
+    <div id="footer_service_list" class="robots-nocontent">
+    <dl>
+        <dt>レンタルサーバー：</dt>
+        <dd>
+            <ul>
+                <li><a href="http://www.webcrow.jp/" rel="nofollow" target="_blank"><img src="images/common/footer_service_list_icon_webcrow.png" alt="ウェブクロウ" />無料ホームページ</a></li>
+                <li><a href="http://www.minibird.jp/" rel="nofollow" target="_blank"><img src="images/common/footer_service_list_icon_minibird.png" alt="ミニバード" />格安レンタルサーバー</a></li>
+                <li><a href="http://www.firebird.jp/" rel="nofollow" target="_blank"><img src="images/common/footer_service_list_icon_firebird.png" alt="ファイアバード" />高機能レンタルサーバー</a></li>
+                <li><a href="http://www.clouver.jp/" rel="nofollow" target="_blank"><img src="images/common/footer_service_list_icon_clouver.png" alt="クローバー" />無制限レンタルサーバー</a></li>
+            </ul>
+        </dd>
+        <dt>ドメイン・SSL証明書：</dt>
+        <dd>
+            <ul>
+                <li><a href="http://www.star-domain.jp/" rel="nofollow" target="_blank"><img src="images/common/footer_service_list_icon_stardomain.png" alt="スタードメイン" />格安ドメインサービス</a></li>
+                <li><a href="http://www.sslbox.jp/" rel="nofollow" target="_blank"><img src="images/common/footer_service_list_icon_sslbox.png" alt="SSLボックス" />格安SSL証明書</a></li>
+            </ul>
+        </dd>
+        <dt>ウェブアプリ：</dt>
+        <dd>
+            <ul>
+                <li><a href="http://www.wpblog.jp/" rel="nofollow" target="_blank"><img src="images/common/footer_service_list_icon_wpblog.png" alt="WPblog" />WordPress無料レンタルサービス</a></li>
+                <li><a href="http://www.freewiki.jp/" rel="nofollow" target="_blank"><img src="images/common/footer_service_list_icon_freewiki.png" alt="freeWiki" />PukiWiki無料レンタルサービス</a></li>
+                <li><a href="http://analyzer.netowl.jp/" rel="nofollow" target="_blank"><img src="images/common/footer_service_list_icon_analyzer.png" alt="アクセス解析" />無料アクセス解析</a></li>
+                <li><a href="http://mailform.netowl.jp/" rel="nofollow" target="_blank"><img src="images/common/footer_service_list_icon_mailform.png" alt="メールフォーム" />無料メールフォーム</a></li>
+            </ul>
+        </dd>
+        <dt>ネットショップ：</dt> 
+        <dd>
+        	<ul>
+            	<li><a href="https://www.shop-star.jp/" rel="nofollow"><img src="images/common/footer_service_list_icon_shopstar.png" alt="ShopStar(ショップスター)" />無料ネットショップサービス</a></li>
+            </ul>
+        </dd>
+        <dt>スマートフォンアプリ：</dt>
+        <dd>
+            <ul>
+                <li><a href="http://www.imgtalk.jp/" rel="nofollow" target="_blank"><img src="images/common/footer_service_list_icon_imgtalk.png" alt="imgトーク" />無料トークアプリ</a></li>
+            </ul>
+        </dd>
+    </dl>
+</div>
+<!-- /footer_service_list -->
+</div>
+<!-- /inner -->
+        </div>
+        <!-- /footer -->
+        
+    </div>
+    <!-- /base_wrapper -->
+    
+</body>
+</html>

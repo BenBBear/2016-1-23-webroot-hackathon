@@ -1,0 +1,476 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta name="keywords" content="北京正德国际投资集团,正德国际投资集团,北京正德集团,正德集团,正德,集团,文化,矿业,农业,房地产,物流,北京正德书画院,正德书画院,书画院" />
+        <meta name="description" content="北京正德国际投资集团是经有关部门批准设立的大型国际投资集团。北京正德国际投资集团是一家综合性的国际投资集团，在全国拥有20多家分公司，业务领域涉及房地产、农业、矿业、建筑、物流、园林、旅游、广告印刷、文化产业等九大行业。“正德厚生，臻于至善，德正商立，功成业满”是我们北京正德集团的立业之本，是我们北京正德集团做人 、做事的价值观。 " />
+        <title>北京正德国际投资集团</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="/template/default/style.css" rel="stylesheet" type="text/css" />
+        <style type="text/css">
+    #msg_win{
+	position:absolute;
+	right:1px;
+	display:none;
+	overflow:hidden;
+	z-index:99;
+	border:1px solid #c00;
+	background:#F9EFFC;
+	width:240px;
+	font-size:12px;
+	margin:0px;
+	top: 23px;
+}
+    #msg_win .icos{position:absolute;top:2px;*top:0px;right:2px;z-index:9;}
+    .icos a{float:left;color:#FFFFFF;margin:1px;text-align:center;font-weight:bold;width:14px;height:22px;line-height:22px;padding:1px;text-decoration:none;font-family:webdings;}
+    .icos a:hover{color:#FFCC00;}
+    #msg_title{background:#914D15;border-bottom:1px solid #710B97;border-top:1px solid #FFF;border-left:1px solid #FFF; border-right:1px solid #FFF;color:#FFFFFF;height:25px;line-height:25px;text-indent:5px;font-weight:bold;}
+    #msg_content{margin:5px;margin-right:0;width:230px;height:205px;overflow:hidden;}
+    </style>
+
+        <script type="text/javascript" src="/js/jquery.js"></script>
+        <script type="text/javascript">
+            var this_id = 0;
+
+            function chang_img(id,img){
+                $("#"+id).attr('src','/template/default/images/'+img);
+            }
+
+            $(function(){
+                var i = 0;
+                var scrtime;
+                scrtime = setInterval(function(){
+                    i++;
+                    if(i>5) i=0;
+                    $('#main_banner').animate({opacity:0}, 'slow');
+                    setTimeout(function(){
+                        $('#main_banner').css('background-image','url(/template/default/images/banner_0'+i+'back.jpg)');
+                        $("#main_banner_box img").attr("src",'/template/default/images/banner_0'+i+'.jpg');
+                        switch(i){
+                            case 0:
+                                $("#main_banner_box a").attr('href','/shy/zhuanti/shy_zt.html');
+                                break;
+                            case 1:
+                                $("#main_banner_box a").attr('href','/');
+                                break;
+                            case 2:
+                                $("#main_banner_box a").attr('href','http://www.zendc.cn/');
+                                break;
+                            case 3:
+                                $("#main_banner_box a").attr('href','/company/list-3.html');
+                                break;
+                            case 4:
+                                $("#main_banner_box a").attr('href','/company/list-2.html');
+                                break;
+							case 5:
+                                $("#main_banner_box a").attr('href','/company/list-1.html');
+                                break;
+                        }
+                        $('#main_banner').animate({opacity:1}, 'slow');
+                    },500
+                );
+                },5000);
+            });
+        </script>
+    </head>
+    <body>
+    <div id="msg_win" style="display:block; visibility:visible;opacity:1;">
+    <div class="icos"><a id="msg_min" title="最小化" href="javascript:void 0">_</a><a id="msg_close" title="关闭" href="javascript:void 0">×</a></div>
+    <div id="msg_title">声 明：</div>
+    <div id="msg_content">&nbsp;&nbsp;&nbsp;&nbsp;近日有一些不法分子以正德集团旗下的中兴正德国际投资担保有限公司以短信、电话的方式向社会撒播办理信用卡的业务以此来骗取钱财。本公司从来没有此类业务也从来没有授权某个机构和个人办理此业务。请您到银行按照国家规定程序办理信用卡，不要轻信谣言。中兴正德国际投资担保有限公司现在还在前期运作阶段具体业务从未以网页或者相关链接发布过，请大家不要上当受骗，不要相信此类短信和电话。请保管好您的钱财！</div>
+    </div>
+    <script language="javascript">
+    var Message={
+    set: function() {//最小化与恢复状态切换
+    var set=this.minbtn.status == 1?[0,1,'block',this.char[0],'最小化']:[1,0,'none',this.char[1],'恢复'];
+    this.minbtn.status=set[0];
+    this.win.style.borderBottomWidth=set[1];
+    this.content.style.display =set[2];
+    this.minbtn.innerHTML =set[3]
+    this.minbtn.title = set[4];
+    this.win.style.top = this.getY().top;
+    },
+    close: function() {//关闭
+    this.win.style.display = 'none';
+    window.onscroll = null;
+    },
+    setOpacity: function(x) {//设置透明度
+    var v = x >= 100 ? '': 'Alpha(opacity=' + x + ')';
+    this.win.style.visibility = x<=0?'hidden':'visible';//IE有绝对或相对定位内容不随父透明度变化的bug
+    this.win.style.filter = v;
+    this.win.style.opacity = x / 100;
+    },
+    show: function() {//渐显
+    clearInterval(this.timer2);
+    var me = this,fx = this.fx(0, 100, 0.1),t = 0;
+    this.timer2 = setInterval(function() {
+    t = fx();
+    me.setOpacity(t[0]);
+    if (t[1] == 0) {clearInterval(me.timer2)	}
+    },6);//10 to 6
+    },
+    fx: function(a, b, c) {//缓冲计算
+    var cMath = Math[(a - b) > 0 ? "floor": "ceil"],c = c || 0.1;
+    return function() {return [a += cMath((b - a) * c), a - b]}
+    },
+    getY: function() {//计算移动坐标
+    var d = document,b = document.body,	e = document.documentElement;
+    var s = Math.max(b.scrollTop, e.scrollTop);
+    var h = /BackCompat/i.test(document.compatMode)?b.clientHeight:e.clientHeight;
+    var h2 = this.win.offsetHeight;
+    return {foot: s + h + h2 + 2+'px',top: s + h - h2 - 2+'px'}
+    },
+    moveTo: function(y) {//移动动画
+    clearInterval(this.timer);
+    var me = this,a = parseInt(this.win.style.top)||0;
+    var fx = this.fx(a, parseInt(y));
+    var t = 0 ;
+    this.timer = setInterval(function() {
+    t = fx();
+    me.win.style.top = t[0]+'px';
+    if (t[1] == 0) {
+    clearInterval(me.timer);
+    me.bind();
+    }
+    },6);//10 to 6
+    },
+    bind:function (){//绑定窗口滚动条与大小变化事件
+    var me=this,st,rt;
+    window.onscroll = function() {
+    clearTimeout(st);
+    clearTimeout(me.timer2);
+    me.setOpacity(0);
+    st = setTimeout(function() {
+    me.win.style.top = me.getY().top;
+    me.show();
+    },100);//600 mod 100
+    };
+    window.onresize = function (){
+    clearTimeout(rt);
+    rt = setTimeout(function() {me.win.style.top = me.getY().top},100);
+    }
+    },
+    init: function() {//创建HTML
+    function $(id) {return document.getElementById(id)};
+    this.win=$('msg_win');
+    var set={minbtn: 'msg_min',closebtn: 'msg_close',title: 'msg_title',content: 'msg_content'};
+    for (var Id in set) {this[Id] = $(set[Id])};
+    var me = this;
+    this.minbtn.onclick = function() {me.set();this.blur()};
+    this.closebtn.onclick = function() {me.close()};
+    this.char=navigator.userAgent.toLowerCase().indexOf('firefox')+1?['_','::','×']:['0','2','r'];//FF不支持webdings字体
+    this.minbtn.innerHTML=this.char[0];
+    this.closebtn.innerHTML=this.char[2];
+    setTimeout(function() {//初始化最先位置
+    me.win.style.display = 'block';
+    me.win.style.top = me.getY().foot;
+    me.moveTo(me.getY().top);
+    },0);
+    return this;
+    }
+    };
+    Message.init();
+    </script>
+        <div id="head">
+    <script type="text/javascript">
+        $(function () {
+            $("#nav_img"+this_id).attr('src','/template/default/images/nav_redimg0'+this_id+'.jpg');
+            $("#hesd_submenu0"+this_id).show();
+        });
+        function mover(id,num,img,all,show_id,out_id){
+            if(num!=out_id) $("#"+id+num).attr('src','/template/default/images/'+img+num+'.jpg');
+            if(all && show_id){
+                for(k=0;k<=all;k++){
+                    var con=document.getElementById(show_id+k);
+                    con.style.display=k==num?"block":"none";
+                }
+            }
+        }
+
+        function AddFavorite(sURL, sTitle) {
+            try {   
+                window.external.addFavorite(sURL, sTitle);
+            } catch (e) {
+                try {
+                    window.sidebar.addPanel(sTitle, sURL, "");
+                } catch (e) {
+                    alert("加入收藏失败，请使用Ctrl+D进行添加");
+                }
+            }
+        }
+    </script>
+    <div id="head_content">
+        <div id="head_top">
+            <ul>
+                <li class="top_welcome_l"></li>
+                <li class="top_welcome_c">欢迎您光临北京正德国际投资集团网站！　<a href="mailto:vip@zhengdejituan.com">联系我们</a> | <a href="javascript:;" onclick="AddFavorite(window.location,document.title);">加入收藏</a></li>
+                <li class="top_welcome_r"></li>
+            </ul>
+        </div>
+
+        <div id="head_bottom">
+            <div id="head_logo"><a href="http://www.zhengdejituan.com/"><img src="/template/default/images/logo_img.jpg" width="350" height="66" alt="北京正德国际投资集团" /></a></div>
+            <div id="head_nav">
+                <ul>
+                    <li class="head_nav_row00" onmouseover="mover('nav_img',0,'nav_redimg0',6,'hesd_submenu0',this_id);" onmouseout="mover('nav_img',0,'nav_img0',6,'hesd_submenu0',this_id);"><a href="/"><img src="/template/default/images/nav_img00.jpg" name="nav_img0" width="35" height="14" alt="首页" id="nav_img0" /></a></li>
+                    <li class="head_nav_row01"></li>
+                    <li class="head_nav_row02" onmouseover="mover('nav_img',1,'nav_redimg0',6,'hesd_submenu0',this_id);" onmouseout="mover('nav_img',1,'nav_img0',6,'hesd_submenu0',this_id);"><a href="/goin/info-1.html"><img src="/template/default/images/nav_img01.jpg" name="nav_img1" width="58" height="14" alt="走进正德" id="nav_img1" /></a></li>
+                    <li class="head_nav_row01"></li>
+                    <li class="head_nav_row02" onmouseover="mover('nav_img',2,'nav_redimg0',6,'hesd_submenu0',this_id);" onmouseout="mover('nav_img',2,'nav_img0',6,'hesd_submenu0',this_id);"><a href="/news/"><img src="/template/default/images/nav_img02.jpg" name="nav_img2" width="57" height="14" alt="正德新闻" id="nav_img2" /></a></li>
+                    <li class="head_nav_row01"></li>
+                    <li class="head_nav_row02" onmouseover="mover('nav_img',3,'nav_redimg0',6,'hesd_submenu0',this_id);" onmouseout="mover('nav_img',3,'nav_img0',6,'hesd_submenu0',this_id);"><a href="/company/"><img src="/template/default/images/nav_img03.jpg" name="nav_img3" width="58" height="14" alt="旗下企业" id="nav_img3" /></a></li>
+                    <li class="head_nav_row01"></li>
+                    <li class="head_nav_row02" onmouseover="mover('nav_img',4,'nav_redimg0',6,'hesd_submenu0',this_id);" onmouseout="mover('nav_img',4,'nav_img0',6,'hesd_submenu0',this_id);"><a href="/honor/"><img src="/template/default/images/nav_img04.jpg" name="nav_img4" width="59" height="14" alt="正德荣誉" id="nav_img4" /></a></li>
+                    <li class="head_nav_row01"></li>
+                    <li class="head_nav_row02" onmouseover="mover('nav_img',5,'nav_redimg0',6,'hesd_submenu0',this_id);" onmouseout="mover('nav_img',5,'nav_img0',6,'hesd_submenu0',this_id);"><a href="/collect/info-1.html"><img src="/template/default/images/nav_img05.jpg" name="nav_img5" width="59" height="14" alt="正德收藏" id="nav_img5" /></a></li>
+                    <li class="head_nav_row01"></li>
+                    <li class="head_nav_row03" onmouseover="mover('nav_img',6,'nav_redimg0',6,'hesd_submenu0',this_id);" onmouseout="mover('nav_img',6,'nav_img0',6,'hesd_submenu0',this_id);"><a href="/shy/" target="_blank"><img src="/template/default/images/nav_img06.jpg" name="nav_img6" width="73" height="14" alt="正德书画院" id="nav_img6" /></a></li>
+                </ul>
+            </div>
+
+            <div id="hesd_submenu00"></div>
+
+            <div id="hesd_submenu01">
+                <ul>
+                    <li class="submenu_top"></li>
+                    <li class="submenu_left"></li>
+                    <li class="submenu_row"></li>
+                    <li class="submenu_back">
+                                                <a href="/goin/info-1.html">集团简介</a>
+                        |
+                                                <a href="/goin/info-2.html">组织结构</a>
+                        |
+                                                <a href="/goin/info-3.html">董事长致辞</a>
+                        |
+                                                <a href="/goin/info-5.html">企业文化</a>
+                        |
+                                                <a href="/note/">正德风</a>
+                    </li>
+                    <li class="submenu_row"></li>
+                    <li class="submenu_right"></li>
+                </ul>
+            </div>
+
+            <div id="hesd_submenu02">
+                <ul>
+                    <li class="submenu_top"></li>
+                    <li class="submenu_left"></li>
+                    <li class="submenu_row"></li>
+                    <li class="submenu_back">
+                                                <a href="/news/list-1.html">企业新闻</a>
+                                                |
+                                                                        <a href="/news/list-2.html">媒体报道</a>
+                                                |
+                                                                        <a href="/news/list-4.html">加入正德</a>
+                                                                    </li>
+                    <li class="submenu_row"></li>
+                    <li class="submenu_right"></li>
+                </ul>
+            </div>
+
+            <div id="hesd_submenu03">
+                <ul>
+                    <li class="submenu_top"></li>
+                    <li class="submenu_left"></li>
+                    <li class="submenu_row"></li>
+                    <li class="submenu_back">
+                                                <a href="/company/list-4.html">文化</a>
+                                                |
+                                                                        <a href="/company/list-13.html">教育</a>
+                                                |
+                                                                        <a href="/company/list-1.html">矿业</a>
+                                                |
+                                                                        <a href="/company/list-14.html">化工</a>
+                                                |
+                                                                        <a href="/company/list-3.html">农科贸</a>
+                                                |
+                                                                        <a href="/company/list-5.html">金融</a>
+                                                |
+                                                                        <a href="/company/list-7.html">旅游</a>
+                                                |
+                                                                        <a href="/company/list-2.html">地产</a>
+                                                |
+                                                                        <a href="/company/list-6.html">园林绿化</a>
+                                                |
+                                                                        <a href="/company/list-9.html">物流</a>
+                                                                       
+                    </li>
+                    <li class="submenu_row"></li>
+                    <li class="submenu_right"></li>
+                </ul>
+            </div>
+
+            <div id="hesd_submenu04"></div>
+
+            <div id="hesd_submenu05">
+                <ul>
+                    <li id="submenu_top05"></li>
+                    <li class="submenu_left"></li>
+                    <li class="submenu_row"></li>
+                    <li class="submenu_back">
+                                                <a href="/collect/info-1.html">精品玉石</a>
+                                                |
+                                                                        <a href="/collect/info-2.html">奇石收藏</a>
+                                                |
+                                                                        <a href="/collect/info-3.html">名贵红木</a>
+                                                |
+                                                                        <a href="/collect/info-4.html">砚石根雕</a>
+                                                |
+                                                                        <a href="/collect/info-5.html">名人字画</a>
+                                                                    </li>
+                    <li class="submenu_row"></li>
+                    <li class="submenu_right"></li>
+                </ul>
+            </div>
+
+            <div id="hesd_submenu06">
+                <ul>
+                    <li id="submenu_top06"></li>
+                    <li class="submenu_left"></li>
+                    <li class="submenu_row"></li>
+                    <li class="submenu_back"><a href="/shy/jj/" target="_blank">书画院简介</a> | <a href="/shy/news/" target="_blank">书画院动态</a> | <a href="/shy/group/info-4.html" target="_blank">组织机构</a> | <a href="/shy/master/" target="_blank">名家风范</a> | <a href="/shy/collect/" target="_blank">收藏作品</a> | <a href="/shy/activity/" target="_blank">展览活动</a></li>
+                    <li class="submenu_row"></li>
+                    <li class="submenu_right"></li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+</div>        <div id="main">
+            <div id="main_banner">
+                <div id="main_banner_box"><a href="/shy/zhuanti/shy_zt.html"><img src="/template/default/images/banner_00.jpg" width="1000" height="350" alt="北京正德书画院" /></a></div>
+            </div>
+
+            <div id="main_content">
+                <div id="main_content_box">
+                    <div id="main_left">
+                        <div class="sidebar_title">
+                            <ul>
+                                <li class="sidebar_tt_row01"><a href="shy/" target="_blank"><img src="/template/default/images/titleimg01.jpg" width="73" height="14" alt="正德书画院" /></a></li>
+                                <li class="sidebar_tt_row02"><a href="shy/" target="_blank">更多&gt;&gt;</a></li>
+                            </ul>
+                        </div>
+                        <div class="sidebar_box">
+                            <div id="YSlide">
+                                <p class="YSample"><a href="shy/" title="北京正德书画院揭牌" target="_blank"><img src="/template/default/images/arti_pic04.jpg" alt="“正德之春”书画展览联谊会" /></a><strong>“正德之春”书画展览联谊会</strong></p>
+                                <p class="YSample"><a href="shy/" title="书画家给北京正德书画院赠送书画" target="_blank"><img src="/template/default/images/arti_pic05.jpg" alt="岚桥大酒店会展中心东海厅" /></a><strong>岚桥大酒店会展中心东海厅</strong></p>
+                                <p class="YSample"><a href="shy/" title="北京正德书画院揭牌仪式嘉宾合影" target="_blank"><img src="/template/default/images/art_pic03.jpg" alt="北京正德书画院揭牌仪式嘉宾合影" /></a><strong>仪式嘉宾合影</strong></p>
+                                <p id="YSIndex"><a href="javascript:;" class="current">1</a><a href="javascript:;">2</a><a href="javascript:;">3</a></p>
+                            </div>
+                            <script language="javascript" type="text/javascript" src="js/yao.js"></script>
+                            <script language="javascript" type="text/javascript">
+                                <!--
+                                YAO.YTabs({
+                                    tabs: YAO.getEl('YSIndex').getElementsByTagName('a'),
+                                    contents: YAO.getElByClassName('YSample', 'p', 'YSlide'),
+                                    defaultIndex: 1,
+                                    auto: true,
+                                    fadeUp: true
+                                });
+                                //-->
+                            </script>
+                        </div>
+
+                        <div class="sidebar_title">
+                            <ul>
+                                <li class="sidebar_tt_row01"><img src="/template/default/images/titleimg02.jpg" width="58" height="14" alt="正德集团收藏" /></li>
+                                <li class="sidebar_tt_row02"></li>
+                            </ul>
+                        </div>
+                        <div class="sidebar_box">
+                            <div id="collection_img"><img id="img_id" src="/template/default/images/collection_img.jpg" width="218" height="118" alt="正德集团收藏" /></div>
+                            <ul id="sidebar_collection">
+                                <li id="sidebar_sc_row01" onmouseover="chang_img('img_id','collection_img.jpg');"><a href="collect/info-1.html">和田玉</a></li>
+                                <li id="sidebar_sc_row01" onmouseover="chang_img('img_id','collection_img.jpg');"><a href="collect/info-5.html">字　画</a></li>
+                                <li id="sidebar_sc_row01" onmouseover="chang_img('img_id','collection_img.jpg');"><a href="collect/info-4.html">根　雕</a></li>
+                                <li id="sidebar_sc_row01" onmouseover="chang_img('img_id','collection_img.jpg');"><a href="collect/info-2.html">奇　石</a></li>
+                                <li onmouseover="chang_img('img_id','collection_img.jpg');"><a href="collect/info-3.html">红　木</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div id="main_center">
+                        <div class="main_c_title">
+                            <ul>
+                                <li class="main_ctt_row01"><a href="news/"><img src="/template/default/images/news_titleimg.jpg" width="58" height="14" alt="正德集团新闻公告" /></a></li>
+                                <li class="main_ctt_row02"><a href="news/">更多&gt;&gt;</a></li>
+                            </ul>
+                        </div>
+                        <div class="main_news_box">
+                            <ul>
+                                                                <li><span class="main_news_row00">[<a href="news/list-1.html">企业新闻</a>]</span><span class="main_news_row01"><a href="news/info-39.html" title="热烈祝贺北京正德书画院院长赵哲女书对联集出版">热烈祝贺北京正德书画院院长赵哲女书对..</a></span><span class="main_news_row02">2015-01-16</span></li>
+                                                                <li><span class="main_news_row00">[<a href="news/list-1.html">企业新闻</a>]</span><span class="main_news_row01"><a href="news/info-38.html" title="热烈庆祝北京正德珠宝玉器公司开业">热烈庆祝北京正德珠宝玉器公司开业</a></span><span class="main_news_row02">2014-10-23</span></li>
+                                                                <li><span class="main_news_row00">[<a href="news/list-1.html">企业新闻</a>]</span><span class="main_news_row01"><a href="news/info-37.html" title="热烈祝贺北京正德国际投资集团被评为中国质量万里行促进会常务理事单位">热烈祝贺北京正德国际投资集团被评为中..</a></span><span class="main_news_row02">2014-05-21</span></li>
+                                                                <li><span class="main_news_row00">[<a href="news/list-1.html">企业新闻</a>]</span><span class="main_news_row01"><a href="news/info-36.html" title="我集团公司孔祥伟常务副总裁荣誉当选为中华全国工商联会农业产业商会副会长">我集团公司孔祥伟常务副总裁荣誉当选为..</a></span><span class="main_news_row02">2013-11-22</span></li>
+                                                                <li><span class="main_news_row00">[<a href="news/list-1.html">企业新闻</a>]</span><span class="main_news_row01"><a href="news/info-32.html" title="集团临沭正德农业科技园暨沭河湾国际旅游度假区项目奠基仪式隆重举行">集团临沭正德农业科技园暨沭河湾国际旅..</a></span><span class="main_news_row02">2013-09-22</span></li>
+                                                            </ul>
+                        </div>
+
+                        <div class="main_c_title">
+                            <ul>
+                                <li class="main_ctt_row01"><a href="news/list-2.html"><img src="/template/default/images/artnews_titleimg.jpg" width="73" height="14" alt="正德书画院动态" /></a></li>
+                                <li class="main_ctt_row02"><a href="news/list-2.html">更多&gt;&gt;</a></li>
+                            </ul>
+                        </div>
+                        <div class="main_media_box">
+                            <ul>
+                                                                <li class="main_media_row01">
+                                    <a href="news/info-34.html" target="_blank"><img src="upload/news/1310251909037077hh8u.jpg" width="112" height="72" alt="临沭正德农业科技园暨沭河湾国际旅游度假区项目奠基仪式举行" /></a>
+                                    <br />
+                                    <a href="news/info-34.html" title="临沭正德农业科技园暨沭河湾国际旅游度假区项目奠基仪式举行" target="_blank">临沭正德农业科技园暨沭河湾国际旅游度..</a>
+                                </li>
+                                                                <li class="main_media_row02">
+                                    <a href="news/info-25.html" target="_blank"><img src="upload/news/1212281248209156axli.jpg" width="112" height="72" alt="正德广场主体竣工！" /></a>
+                                    <br />
+                                    <a href="news/info-25.html" title="正德广场主体竣工！" target="_blank">正德广场主体竣工！</a>
+                                </li>
+                                                                <li class="main_media_row01">
+                                    <a href="news/info-23.html" target="_blank"><img src="upload/news/121109122546847728gd.jpg" width="112" height="72" alt="金德利：塑造生态可持续发展的百年品牌" /></a>
+                                    <br />
+                                    <a href="news/info-23.html" title="金德利：塑造生态可持续发展的百年品牌" target="_blank">金德利：塑造生态可持续发展的百年品牌</a>
+                                </li>
+                                                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div id="main_right">
+                        <div class="sidebar_title">
+                            <ul>
+                                <li class="sidebar_tt_row01"><a href="company/"><img src="/template/default/images/titleimg03.jpg" width="88" height="14" alt="正德集团旗下企业" /></a></li>
+                                <li class="sidebar_tt_row02"><a href="company/">更多&gt;&gt;</a></li>
+                            </ul>
+                        </div>
+                        <div id="sidebar_rbox">
+                            <ul>
+                                <li class="sidebar_rbox_img" onmouseover="mover('right_menuimg',1,'right_menuimg_on0');" onmouseout="mover('right_menuimg',1,'right_menuimg0');"><a href="company/list-4.html"><img src="/template/default/images/right_menuimg01.jpg" alt="正德集团-文化艺术" name="right_menuimg1" width="280" height="46" border="0" id="right_menuimg1" /></a></li>
+                                <li class="sidebar_rbox_img" onmouseover="mover('right_menuimg',2,'right_menuimg_on0');" onmouseout="mover('right_menuimg',2,'right_menuimg0');"><a href="company/list-3.html"><img src="/template/default/images/right_menuimg02.jpg" alt="正德集团-农业开发" name="right_menuimg2" width="280" height="46" border="0" id="right_menuimg2" /></a></li>
+                                <li class="sidebar_rbox_img" onmouseover="mover('right_menuimg',3,'right_menuimg_on0');" onmouseout="mover('right_menuimg',3,'right_menuimg0');"><a href="company/list-2.html"><img src="/template/default/images/right_menuimg03.jpg" alt="正德集团-地产行业" name="right_menuimg3" width="280" height="46" border="0" id="right_menuimg3" /></a></li>
+                                <li onmouseover="mover('right_menuimg',4,'right_menuimg_on0');" onmouseout="mover('right_menuimg',4,'right_menuimg0');"><a href="company/list-1.html"><img src="/template/default/images/right_menuimg04.jpg" alt="正德集团-矿业开采" name="right_menuimg4" width="280" height="46" border="0" id="right_menuimg4" /></a></li>
+                            </ul>
+                        </div>
+
+                        <div id="sidebar_contact">
+                            <ul>
+                                <li id="contact_row01"></li>
+                                <li id="contact_row02"><img src="/template/default/images/tele_img.jpg" width="35" height="25" alt="正德集团-联系电话" /><span>010-66086636 &nbsp;&nbsp;010-60299897</span></li>
+                                <li id="contact_row02"><img src="/template/default/images/fax_img.jpg" width="35" height="25" alt="正德集团-传真" /><span>010-66086636</span></li>
+                                <li id="contact_row02"><img src="/template/default/images/yj.jpg" width="35" height="25" alt="正德集团-邮箱" /><span>vip@zhengdejituan.com</span></li>
+                                <li id="contact_row03"><img src="/template/default/images/dz.jpg" width="35" height="25" alt="正德集团-地址" /><span>北京市人民大会堂西路西交民巷56号</span></li>
+                                <li id="contact_row04"></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+    <div id="footer_content">
+        Copyright &copy; 2011-2014 北京正德国际投资集团 All Rights Reserved <br />京ICP备10208797号-1
+        <div class="show_no"><script src="http://s14.cnzz.com/stat.php?id=3384669&web_id=3384669" language="JavaScript"></script></div>
+    </div>
+</div>    </body>
+</html>

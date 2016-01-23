@@ -1,0 +1,1399 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta name="GENERATOR" content="JustSystems Homepage Builder Version 19.0.9.0 for Windows">
+<META name="IBM:HPB-Input-Mode" content="mode/flm; pagewidth=1467; pageheight=1759">
+<TITLE>さくらパーク日戸ホームページ(toppage)</TITLE>
+<SCRIPT>
+<!--HPB_SCRIPT_INFO_40
+//HPB_VFX_EVT Element:BODY Event:OnLoad Handler:HpbVfxinit('Layer26','HpbVfx0101','D120',1000,1000,1); 
+//HPB_VFX_PAR Element:BODY Event:OnLoad LayerID:Layer26 Entry:HpbVfx0101 Param:D120 1stDelay:1000 NxtDelay:1000 Loop:1 
+//-->
+</SCRIPT><SCRIPT language="JavaScript">
+<!--HPB_SCRIPT_VFX_40
+//
+//  Licensed Materials - Property of IBM
+//  5724I83
+//  (C) Copyright IBM Corp. 1995, 2008 All Rights Reserved.
+//
+var layerId       =  0; var func          =  1; var effectPattern =  2; 
+var startTime     =  3; var nextLayerIdx  =  4; var nextStartTime =  5; 
+var intervalTime  =  6; var repeat        =  7; var endVisibility =  8;
+var posX          =  9; var posY          = 10; var posStartX     = 11;
+var posStartY     = 12; var posEndX       = 13; var posEndY       = 14;
+var stepX         = 15; var stepY         = 16; var frame         = 17;
+var accelerationX = 18; var accelerationY = 19; var angle         = 20;
+var fixedX        = 21; var fixedY        = 22; 
+
+var appVer = parseInt(navigator.appVersion);
+var isNC=false,isN6=false,isIE=false;
+if (document.all && appVer >= 4) isIE=true; else
+  if (document.getElementById && appVer > 4) isN6=true; else
+    if (document.layers && appVer >= 4) isNC=true;
+var elt;
+elt = new Array;
+var layerobj;
+layerobj = new Array;
+var lastobj;
+
+function HpbVfxinit() {
+  var w_str;
+  if (isNC||isN6||isIE) {
+    var n_div = arguments.length / 6;
+    for (var div = 0; div < n_div; div++) {
+      var args = 6 * div;
+      var arg1 = arguments[args];
+      var arg2 = arguments[args+1];
+      var arg3 = arguments[args+2];
+      var arg4 = arguments[args+3];
+      var arg5 = arguments[args+4];
+      var arg6 = arguments[args+5];
+      elt[div] = new Array(arg1,arg2,arg3,arg4,-1,arg5,0,arg6,true,-32767,-32767,-32767,-32767,-32767,-32767,-32767,-32767,40,1.0,1.0,0,-1,-1);
+  } }
+
+  if (isNC) {
+    for (i=0; i < elt.length; i++) {
+      w_str = "document." + elt[i][layerId];
+      layerobj[i] = eval(w_str);
+      if (layerobj[i]) {
+        layerobj[i].init = false;
+        layerobj[i].innerH = window.innerHeight;
+        layerobj[i].innerW = window.innerWidth;
+        layerobj[i].pos_x = layerobj[i].left;
+        layerobj[i].pos_y = layerobj[i].top;
+        layerobj[i].pos_w = layerobj[i].clip.width;
+        layerobj[i].pos_h = layerobj[i].clip.height;
+  } } }
+  if (isN6) {
+    for (i=0; i < elt.length; i++) {
+      layerobj[i] = document.getElementById(elt[i][layerId]);
+      if (layerobj[i]) {
+        layerobj[i].init = false;
+        layerobj[i].innerH = window.innerHeight;
+        layerobj[i].innerW = window.innerWidth;
+        layerobj[i].pos_x = parseInt(layerobj[i].style.left);
+        layerobj[i].pos_y = parseInt(layerobj[i].style.top);
+        layerobj[i].pos_w = parseInt(layerobj[i].style.width);
+        layerobj[i].pos_h = parseInt(layerobj[i].style.height);
+  } } }
+  if (isIE) {
+    for (i=0; i < elt.length; i++) {
+      w_str = "document.all.item(\"" + elt[i][layerId] + "\")";
+      if (eval(w_str)) {
+        w_str = "document.all.item(\"" + elt[i][layerId] + "\").style";
+        layerobj[i] = eval(w_str);
+        if (layerobj[i]) {
+          layerobj[i].init = false;
+          layerobj[i].innerH = document.body.clientHeight;
+          layerobj[i].innerW = document.body.clientWidth;
+          layerobj[i].pos_x = layerobj[i].pixelLeft;
+          layerobj[i].pos_y = layerobj[i].pixelTop;
+          layerobj[i].pos_w = layerobj[i].pixelWidth;
+          layerobj[i].pos_h = layerobj[i].pixelHeight;
+  } } } }
+
+  if (isNC||isN6||isIE) {
+    for (i=0; i < elt.length; i++) {
+      if (layerobj[i]) {
+        if (elt[i][posX] == -32767) elt[i][posX] = layerobj[i].pos_x;
+        if (elt[i][posY] == -32767) elt[i][posY] = layerobj[i].pos_y;
+        if (elt[i][effectPattern].charAt(0) == "A") {
+          if (elt[i][posX] != -32767) elt[i][posEndX] = elt[i][posX];
+          if (elt[i][posY] != -32767) elt[i][posEndY] = elt[i][posY];
+          if (elt[i][effectPattern].charAt(1) == "1") {
+            elt[i][posStartX] = layerobj[i].pos_w * -1;
+            if (elt[i][posY] != -32767) elt[i][posStartY] = elt[i][posY];
+          }
+          if (elt[i][effectPattern].charAt(1) == "3") {
+            if (elt[i][posX] != -32767) elt[i][posStartX] = elt[i][posX];
+            elt[i][posStartY] = layerobj[i].pos_h * -1;
+          }
+          if (elt[i][effectPattern].charAt(1) == "5") {
+            elt[i][posStartX] = layerobj[i].pos_w * -1;
+            elt[i][posStartY] = layerobj[i].pos_h * -1;
+          }
+          if (elt[i][effectPattern].charAt(1) == "8") {
+            elt[i][posStartX] = layerobj[i].pos_w * -1;
+            elt[i][posStartY] = layerobj[i].innerH;
+        } }
+        if (elt[i][effectPattern].charAt(0) == "B") {
+          if (elt[i][posX] != -32767) elt[i][posStartX] = elt[i][posX];
+          if (elt[i][posY] != -32767) elt[i][posStartY] = elt[i][posY];
+          if (elt[i][effectPattern].charAt(1) == "2") {
+            elt[i][posEndX] = layerobj[i].pos_w * -1;
+            if (elt[i][posY] != -32767) elt[i][posEndY] = elt[i][posY];
+          }
+          if (elt[i][effectPattern].charAt(1) == "4") {
+            if (elt[i][posX] != -32767) elt[i][posEndX] = elt[i][posX];
+            elt[i][posEndY] = layerobj[i].pos_h * -1;
+          }
+          if (elt[i][effectPattern].charAt(1) == "6") {
+            elt[i][posEndX] = layerobj[i].pos_w * -1;
+            elt[i][posEndY] = layerobj[i].pos_h * -1;
+          }
+          if (elt[i][effectPattern].charAt(1) == "7") {
+            elt[i][posEndX] = layerobj[i].pos_w * -1;
+            elt[i][posEndY] = layerobj[i].innerH;
+        } }
+        if (elt[i][effectPattern].charAt(0) == "C") {
+          if (elt[i][effectPattern].charAt(1) == "2") {
+            elt[i][posStartX] = layerobj[i].innerW;
+            elt[i][posEndX] = layerobj[i].pos_w * -1;
+            if (elt[i][posY] != -32767) {
+              elt[i][posStartY] = elt[i][posY];
+              elt[i][posEndY] = elt[i][posY];
+            }
+          }
+          if (elt[i][effectPattern].charAt(1) == "1") {
+            elt[i][posStartX] = layerobj[i].pos_w * -1;
+            elt[i][posEndX] = layerobj[i].innerW;
+            if (elt[i][posY] != -32767) {
+              elt[i][posStartY] = elt[i][posY];
+              elt[i][posEndY] = elt[i][posY];
+            }
+          }
+          if (elt[i][effectPattern].charAt(1) == "3") {
+            if (elt[i][posX] != -32767) {
+              elt[i][posStartX] = elt[i][posX];
+              elt[i][posEndX] = elt[i][posX];
+            }
+            elt[i][posStartY] = layerobj[i].pos_h * -1;
+            elt[i][posEndY] = layerobj[i].innerH;
+          }
+          if (elt[i][effectPattern].charAt(1) == "4") {
+            if (elt[i][posX] != -32767) {
+              elt[i][posStartX] = elt[i][posX];
+              elt[i][posEndX] = elt[i][posX];
+            }
+            elt[i][posStartY] = layerobj[i].innerH;
+            elt[i][posEndY] = layerobj[i].pos_h * -1;
+          }
+          if (elt[i][effectPattern].charAt(1) == "7") {
+            elt[i][posStartX] = layerobj[i].innerW;
+            elt[i][posStartY] = layerobj[i].pos_h * -1;
+            elt[i][posEndX] = layerobj[i].pos_w * -1;
+            elt[i][posEndY] = layerobj[i].innerH;
+          }
+          if (elt[i][effectPattern].charAt(1) == "5") {
+            elt[i][posStartX] = layerobj[i].pos_w * -1;
+            elt[i][posStartY] = layerobj[i].pos_h * -1;
+            elt[i][posEndX] = layerobj[i].innerW;
+            elt[i][posEndY] = layerobj[i].innerH;
+          }
+          if (elt[i][effectPattern].charAt(1) == "6") {
+            elt[i][posStartX] = layerobj[i].innerW;
+            elt[i][posStartY] = layerobj[i].innerH;
+            elt[i][posEndX] = layerobj[i].pos_w * -1;
+            elt[i][posEndY] = layerobj[i].pos_h * -1;
+          }
+          if (elt[i][effectPattern].charAt(1) == "8") {
+            elt[i][posStartX] = layerobj[i].pos_w * -1;
+            elt[i][posStartY] = layerobj[i].innerH;
+            elt[i][posEndX] = layerobj[i].innerW;
+            elt[i][posEndY] = layerobj[i].pos_h * -1;
+        } }
+        if (elt[i][effectPattern].charAt(0) == "D") {
+          if (elt[i][effectPattern].charAt(1) == "1") {
+            elt[i][stepX] = 4;  elt[i][stepY] = 0;
+          }
+          if (elt[i][effectPattern].charAt(1) == "3") {
+            elt[i][stepX] = 0;  elt[i][stepY] = 4;
+        } }
+        if (elt[i][effectPattern].charAt(0) == "F") {
+          if (elt[i][effectPattern].charAt(1) == "4") {
+            if (elt[i][posX] != -32767) {
+              elt[i][posStartX] = elt[i][posX];
+              elt[i][posEndX] = elt[i][posX] + layerobj[i].pos_w;
+            }
+            if (elt[i][posY] != -32767) {
+              elt[i][posStartY] = elt[i][posY];
+              if (elt[i][effectPattern].charAt(3) == "1") elt[i][posEndY] = elt[i][posY] + 80;
+              if (elt[i][effectPattern].charAt(3) == "2") elt[i][posEndY] = elt[i][posY] + 160;
+              if (elt[i][effectPattern].charAt(3) == "3") elt[i][posEndY] = elt[i][posY] + 320;
+            }
+            elt[i][stepX] = 0;  elt[i][stepY] = 4;
+          }
+          if (elt[i][effectPattern].charAt(1) == "2") {
+            if (elt[i][posX] != -32767) {
+              elt[i][posStartX] = elt[i][posX];
+              if (elt[i][effectPattern].charAt(3) == "1") elt[i][posEndX] = elt[i][posX] + 80;
+              if (elt[i][effectPattern].charAt(3) == "2") elt[i][posEndX] = elt[i][posX] + 160;
+              if (elt[i][effectPattern].charAt(3) == "3") elt[i][posEndX] = elt[i][posX] + 320;
+            }
+            if (elt[i][posY] != -32767) {
+              elt[i][posStartY] = elt[i][posY];
+              elt[i][posEndY] = elt[i][posY] + layerobj[i].pos_h;
+            }
+            elt[i][stepX] = 4;  elt[i][stepY] = 0;
+        } }
+        if (elt[i][effectPattern].charAt(0) == "G") {
+          if (elt[i][effectPattern].charAt(1) == "2") {
+            elt[i][posStartX] = 0;
+            if (elt[i][effectPattern].charAt(3) == "1") elt[i][posStartY] = 80;
+            if (elt[i][effectPattern].charAt(3) == "2") elt[i][posStartY] = 160;
+            if (elt[i][effectPattern].charAt(3) == "3") elt[i][posStartY] = 320;
+            elt[i][posEndX] = 1;  elt[i][posEndY] = 1;
+        } }
+        if (elt[i][effectPattern].charAt(0) == "H") {
+          if (elt[i][effectPattern].charAt(3) == "1") {
+            elt[i][stepX] = 8;  elt[i][stepY] = 8;
+          }
+          if (elt[i][effectPattern].charAt(3) == "2") {
+            elt[i][stepX] = 16;  elt[i][stepY] = 16;
+          }
+          if (elt[i][effectPattern].charAt(3) == "3") {
+            elt[i][stepX] = 32;  elt[i][stepY] = 32;
+          }
+          if (elt[i][effectPattern].charAt(1) == "2") {
+            elt[i][stepX] = 0;  elt[i][fixedX] = true;  elt[i][fixedY] = true;
+          }
+          if (elt[i][effectPattern].charAt(1) == "1") {
+            elt[i][stepY] = 0;  elt[i][fixedX] = true;  elt[i][fixedY] = true;
+          }
+          if (elt[i][effectPattern].charAt(1) == "3") {
+            elt[i][fixedX] = false;  elt[i][fixedY] = false;
+        } }
+        if (elt[i][effectPattern].charAt(0) == "I") {
+          if (elt[i][effectPattern].charAt(3) == "1") {
+            elt[i][posStartX] = 40;  elt[i][posStartY] = 40;
+          }
+          if (elt[i][effectPattern].charAt(3) == "2") {
+            elt[i][posStartX] = 80;  elt[i][posStartY] = 80;
+          }
+          if (elt[i][effectPattern].charAt(3) == "3") {
+            elt[i][posStartX] = 160;  elt[i][posStartY] = 160;
+          }
+          elt[i][posEndX] = 1;  elt[i][posEndY] = 1;  elt[i][stepX] = -32767;
+          if (elt[i][effectPattern].charAt(1) == "1") {
+            elt[i][posY] += elt[i][posStartY];
+            elt[i][stepY] = Math.PI * 3 / 2;
+            elt[i][frame] = 40;
+          }
+          if (elt[i][effectPattern].charAt(1) == "2") {
+            elt[i][posY] -= elt[i][posStartY];
+            elt[i][stepY] = Math.PI * 1 / 2;
+            elt[i][frame] = 40;
+          }
+          if (elt[i][effectPattern].charAt(1) == "3") {
+            elt[i][posX] -= elt[i][posStartX];
+            elt[i][stepY] = Math.PI * 0 / 2;
+            elt[i][frame] = 40;
+          }
+          if (elt[i][effectPattern].charAt(1) == "4") {
+            elt[i][posX] += elt[i][posStartX];
+            elt[i][stepY] = Math.PI * 2 / 2;
+            elt[i][frame] = 40;
+          }
+          if (elt[i][effectPattern].charAt(1) == "5") {
+            elt[i][posY] += elt[i][posStartY];
+            elt[i][stepY] = Math.PI * 3 / 2;
+            elt[i][frame] = -40;
+          }
+          if (elt[i][effectPattern].charAt(1) == "6") {
+            elt[i][posY] -= elt[i][posStartY];
+            elt[i][stepY] = Math.PI * 1 / 2;
+            elt[i][frame] = -40;
+          }
+          if (elt[i][effectPattern].charAt(1) == "7") {
+            elt[i][posX] -= elt[i][posStartX];
+            elt[i][stepY] = Math.PI * 0 / 2;
+            elt[i][frame] = -40;
+          }
+          if (elt[i][effectPattern].charAt(1) == "8") {
+            elt[i][posX] += elt[i][posStartX];
+            elt[i][stepY] = Math.PI * 2 / 2;
+            elt[i][frame] = -40;
+        } }
+        if (elt[i][effectPattern].charAt(0) == "J") {
+          if (elt[i][effectPattern].charAt(3) == "1") {
+            elt[i][posStartX] = 0;  elt[i][posStartY] = 80;
+          }
+          if (elt[i][effectPattern].charAt(3) == "2") {
+            elt[i][posStartX] = 0;  elt[i][posStartY] = 160;
+          }
+          if (elt[i][effectPattern].charAt(3) == "3") {
+            elt[i][posStartX] = 0;  elt[i][posStartY] = 320;
+          }
+          elt[i][posEndX] = 1;  elt[i][posEndY] = 1;
+          elt[i][stepX] = -32767;  elt[i][stepY] = 0;
+          if (elt[i][effectPattern].charAt(1) == "2") {
+            elt[i][accelerationY] = 0.99;  elt[i][frame] = 40;
+        } }
+        if (elt[i][effectPattern].charAt(0) == "K") {
+          if (elt[i][effectPattern].charAt(3) == "1") {
+            elt[i][posStartX] = 40;  elt[i][posStartY] = 40;
+          }
+          if (elt[i][effectPattern].charAt(3) == "2") {
+            elt[i][posStartX] = 80;  elt[i][posStartY] = 80;
+          }
+          if (elt[i][effectPattern].charAt(3) == "3") {
+            elt[i][posStartX] = 160;  elt[i][posStartY] = 160;
+          }
+          elt[i][stepX] = -32767;  elt[i][stepY] = 0;
+          if (elt[i][effectPattern].charAt(1) == "1") {
+            elt[i][posEndX] = 13;  elt[i][posEndY] = 12;  elt[i][frame] = 160;
+          }
+          if (elt[i][effectPattern].charAt(1) == "2") {
+            elt[i][posEndX] = 7;  elt[i][posEndY] = 2;  elt[i][frame] = 160;
+          }
+          if (elt[i][effectPattern].charAt(1) == "3") {
+            elt[i][posEndX] = 11;  elt[i][posEndY] = 4;  elt[i][frame] = 160;
+          }
+          if (elt[i][effectPattern].charAt(1) == "4") {
+            elt[i][posEndX] = 7;  elt[i][posEndY] = 4;  elt[i][frame] = 160;
+        } }
+        if (elt[i][effectPattern].charAt(2) == "1") elt[i][intervalTime] = 200;
+        if (elt[i][effectPattern].charAt(2) == "2") elt[i][intervalTime] = 100;
+        if (elt[i][effectPattern].charAt(2) == "3") elt[i][intervalTime] = 50;
+        if ( elt[i][startTime] >= 0 ) setTimeout( "HpbVfxtimer(" + i + ")", elt[i][startTime] );
+} } } }
+
+function HpbVfxtimer(tid) {
+  if (isNC||isN6||isIE) {
+    if (layerobj[tid]) {
+      var func_str;
+      func_str = elt[tid][func] + "( tid, elt[tid], layerobj[tid] )";
+      eval(func_str);
+} } }
+
+function HpbVfxshowobj(obj) {
+  if (obj) {
+    if (isNC) obj.visibility = "show";
+    if (isN6) obj.style.visibility = "visible";
+    if (isIE) obj.visibility = "visible";
+    lastobj = obj;
+} }
+
+function HpbVfxhideobj(obj) {
+  if (obj) {
+    if (isNC) obj.visibility = "hide";
+    if (isN6) obj.style.visibility = "hidden";
+    if (isIE) obj.visibility = "hidden";
+} }
+
+function HpbVfxmoveobj(obj,x,y) {
+  if (obj) {
+    if (isNC) {obj.left=x;obj.top=y;}
+    if (isN6) {obj.style.left=x+"px";obj.style.top=y+"px";}
+    if (isIE) {obj.left=x;obj.top=y;}
+} }
+
+function HpbVfxclipobj(obj,t,r,b,l) {
+  if (obj) {
+    if (isNC) {obj.clip.left=l;obj.clip.top=t;obj.clip.right=r;obj.clip.bottom=b;}
+    if (isN6) obj.style.clip = "rect(" + t + "px," + (r-l) + "px," + (b-t) + "px," + l + "px)";
+    if (isIE) obj.clip = "rect(" + t + "," + r + "," + b + "," + l + ")";
+} }
+
+function HpbVfx0001(tid,et,ob) {
+  var x;  var y;
+  if (ob) {
+    if (ob.init == false) {
+      if (et[stepX] != -32767) ob.stepX = et[stepX] * Math.cos(et[angle]);
+      else ob.stepX = (et[posEndX] - et[posStartX]) / et[frame];
+      if (et[stepY] != -32767) ob.stepY = et[stepY] * Math.sin(et[angle]);
+      else ob.stepY = (et[posEndY] - et[posStartY]) / et[frame];
+      if (ob.stepX > 0 && ob.stepX < 1) ob.stepX = 1;
+      if (ob.stepX < 0 && ob.stepX > -1) ob.stepX = -1;
+      if (ob.stepY > 0 && ob.stepY < 1) ob.stepY = 1;
+      if (ob.stepY < 0 && ob.stepY > -1) ob.stepY = -1;
+      if (et[posStartX] != -32767) ob.x = et[posStartX];
+      else if (ob.stepX > 0) ob.x = 0 - ob.pos_w; else ob.x = ob.innerW - ob.pos_w;
+      if (et[posStartY] != -32767) ob.y = et[posStartY];
+      else if (ob.stepY > 0) ob.y = 0 - ob.pos_h; else ob.y = ob.innerH - ob.pos_h;
+      if (et[posEndX] != -32767) ob.posEndX = et[posEndX];
+      else if (ob.stepX > 0) ob.posEndX = ob.innerW - ob.pos_w; else ob.posEndX = 0 - ob.pos_w;
+      if (et[posEndY] != -32767) ob.posEndY = et[posEndY];
+      else if (ob.stepY > 0) ob.posEndY = ob.innerH - ob.pos_h; else ob.posEndY = 0 - ob.pos_h;
+      HpbVfxshowobj(ob);
+      ob.init = true;  ob.frame = 0;
+    }
+    ob.stepX = ob.stepX * et[accelerationX];
+    if (ob.stepX > 0 && ob.stepX < 1) ob.stepX = 1;
+    if (ob.stepX < 0 && ob.stepX > -1) ob.stepX = -1;
+    ob.stepY = ob.stepY * et[accelerationY];
+    if (ob.stepY > 0 && ob.stepY < 1) ob.stepY = 1;
+    if (ob.stepY < 0 && ob.stepY > -1) ob.stepY = -1;
+    ob.x += ob.stepX;  ob.y += ob.stepY;
+    var endX;  var endY;
+    endX = false;  endY = false;
+    if (ob.stepX > 0) if (ob.x >= ob.posEndX) {endX = true;  ob.x = ob.posEndX;}
+    if (ob.stepX < 0) if (ob.x <= ob.posEndX) {endX = true;  ob.x = ob.posEndX;}
+    if (ob.stepX == 0) endX = true;
+    if (ob.stepY > 0) if (ob.y >= ob.posEndY) {endY = true;  ob.y = ob.posEndY;}
+    if (ob.stepY < 0) if (ob.y <= ob.posEndY) {endY = true;  ob.y = ob.posEndY;}
+    if (ob.stepY == 0) endY = true;
+    HpbVfxmoveobj(ob,Math.round( ob.x ),Math.round(ob.y));
+    if (endX == true && endY == true) {
+      if (et[endVisibility] == false) HpbVfxhideobj(ob);
+      ob.init = false;
+      if (et[repeat] == true) setTimeout("HpbVfxtimer(" + tid + ")",et[startTime]);
+      else if (et[nextLayerIdx] >= 0) setTimeout("HpbVfxtimer(" + et[nextLayerIdx] + ")",et[nextStartTime]);
+    } else setTimeout("HpbVfxtimer(" + tid + ")",et[intervalTime]);
+} }
+
+function HpbVfx0101(tid,et,ob) {
+  var cl;  var cr;  var ct;  var cb;  var tm;  var x;  var y;
+  if (ob) {
+    if (ob.init == false) {
+      if (et[stepX] != -32767) ob.cs_x = et[stepX]; else ob.cs_x = ob.pos_w / et[frame];
+      if (et[stepY] != -32767) ob.cs_y = et[stepY]; else ob.cs_y = ob.pos_h / et[frame];
+      ob.c_x = 0;  ob.c_y = 0;
+      HpbVfxshowobj(ob);
+      ob.init = true;
+    }
+    tm = false;
+    cl = 0;  cr = ob.pos_w;  ct = 0;  cb = ob.pos_h;
+    x = ob.pos_x;  y = ob.pos_y;
+    if (et[fixedX] == false) {
+      if (ob.cs_x > 0) {
+        ob.c_x += ob.cs_x;
+        if (cr > ob.c_x) {
+          cl = cr - ob.c_x;  tm = true;  x = ob.pos_x - ob.pos_w + ob.c_x;
+      } }
+      if (ob.cs_x < 0) {
+        ob.c_x += ob.cs_x;  cr = ob.c_x * -1;
+        if (cr < ob.pos_w) {
+          tm = true;  x = ob.pos_x + ob.pos_w + ob.c_x;
+        } else cr = ob.pos_w;
+      }
+    } else {
+      if (ob.cs_x > 0) {
+        ob.c_x += ob.cs_x;
+        if (cr > ob.c_x) {cr = ob.c_x;  tm = true;}
+      }
+      if (ob.cs_x < 0) {
+        ob.c_x += ob.cs_x;  cl = ob.c_x * -1;
+        if (cl < ob.pos_w) {tm = true;  cl = ob.pos_w - cl;} else cl = 0;
+    } }
+    if (et[fixedY] == false) {
+      if (ob.cs_y > 0) {
+        ob.c_y += ob.cs_y;
+        if (cb > ob.c_y) {ct = cb - ob.c_y;  tm = true;  y = ob.pos_y - ob.pos_h + ob.c_y;}
+      }
+      if (ob.cs_y < 0) {
+        ob.c_y += ob.cs_y;  cb = ob.c_y * -1;
+        if ( cb < ob.pos_h ) {tm = true;  y = ob.pos_y + ob.pos_h + ob.c_y;} else cb = ob.pos_h;
+      }
+    } else {
+      if (ob.cs_y > 0) {
+        ob.c_y += ob.cs_y;
+        if (cb > ob.c_y) {cb = ob.c_y;  tm = true;}
+      }
+      if (ob.cs_y < 0) {
+        ob.c_y += ob.cs_y;  ct = ob.c_y * -1;
+        if (ct < ob.pos_h) {tm = true;  ct = ob.pos_h - ct;} else ct = 0;
+    } }
+    HpbVfxclipobj(ob,ct,cr,cb,cl);
+    HpbVfxmoveobj(ob,x,y);
+    if (tm) setTimeout("HpbVfxtimer(" + tid + ")",et[intervalTime]);
+    else {
+      if (et[endVisibility] == false) HpbVfxhideobj(ob);
+      ob.init = false;
+      if (et[repeat] == true) setTimeout("HpbVfxtimer(" + tid + ")",et[startTime]);
+      else if (et[nextLayerIdx] >= 0) setTimeout("HpbVfxtimer(" + et[nextLayerIdx] + ")",et[nextStartTime]);
+} } }
+
+function HpbVfx0201(tid,et,ob) {
+  var cl;  var cr;  var ct;  var cb;  var tm;  var x;  var y;
+  if (ob) {
+    if (ob.init == false) {
+      if (et[stepX] != -32767) ob.cs_x = et[stepX]; else ob.cs_x = ob.pos_w / et[frame];
+      if (et[stepY] != -32767) ob.cs_y = et[stepY]; else ob.cs_y = ob.pos_h / et[frame];
+      ob.c_w = et[posEndX] - et[posStartX];  ob.c_h = et[posEndY] - et[posStartY];
+      ob.c_x = 0;  ob.c_y = 0;
+      HpbVfxshowobj(ob);
+      ob.init = true;
+    }
+    tm = false;
+    cl = 0;  cr = ob.pos_w;  ct = 0;  cb = ob.pos_h;
+    x = et[posStartX];  y = et[posStartY];
+    if (ob.cs_x > 0) {
+      ob.c_x += ob.cs_x;
+      if (ob.c_x < (ob.pos_w - ob.c_w)) {
+        cl = ob.c_x;  cr = cl + ob.c_w;
+        tm = true;
+      } else cl = ob.pos_w - ob.c_w;
+    }
+    if (ob.cs_x < 0) {
+      ob.c_x += ob.cs_x;  cr = ob.pos_w + ob.c_x;
+      if (cr > ob.c_w) {cl = cr - ob.c_w;  tm = true;}
+      else cr = ob.c_w;
+    }
+    if (ob.cs_y > 0) {
+      ob.c_y += ob.cs_y;
+      if (ob.c_y < (ob.pos_h - ob.c_h)) {
+        ct = ob.c_y;  cb = ct + ob.c_h;
+        tm = true;
+      } else ct = ob.pos_h - ob.c_h;
+    }
+    if (ob.cs_y < 0) {
+      ob.c_y += ob.cs_y;  cb = ob.pos_h + ob.c_y;
+      if (cb > ob.c_h) {ct = cb - ob.c_h;  tm = true;}
+      else cb = ob.c_h;
+    }
+    HpbVfxclipobj(ob,ct,cr,cb,cl);
+    x -= cl;  y -= ct;
+    HpbVfxmoveobj(ob,x,y);
+    if (tm) setTimeout( "HpbVfxtimer(" + tid + ")",et[intervalTime]);
+    else {
+      if (et[endVisibility] == false) HpbVfxhideobj(ob);
+      ob.init = false;
+      if (et[repeat] == true) setTimeout("HpbVfxtimer(" + tid + ")",et[startTime]);
+      else if (et[nextLayerIdx] >= 0) setTimeout("HpbVfxtimer(" + et[nextLayerIdx] + ")",et[nextStartTime]);
+} } }
+
+function HpbVfx0301(tid,et,ob) {
+  var x;  var y;  var tx;  var ty;
+  if (ob) {
+    if (ob.init == false) {
+      if (et[stepX] != -32767) ob.step = et[stepX]; else ob.step = (Math.PI * 2) / et[frame];
+      ob.boundX = et[posStartX];  ob.boundY = et[posStartY];
+      ob.angle = 0.0;
+      HpbVfxshowobj(ob);
+      ob.init = true;
+    }
+    tx = Math.cos(ob.angle * et[posEndX]) * ob.boundX;  ty = Math.sin(ob.angle * et[posEndY]) * ob.boundY;
+    if (et[fixedX] != 0) tx = Math.abs(tx) * et[fixedX];
+    if (et[fixedY] != 0) ty = Math.abs(ty) * et[fixedY];
+    x = et[posX];  y = et[posY];
+    x += tx * Math.cos(et[angle]);  y += tx * Math.sin(et[angle]);
+    x += ty * Math.cos(et[angle] + (Math.PI / 2));  y += ty * Math.sin(et[angle] + (Math.PI / 2));
+    HpbVfxmoveobj(ob,Math.round(x),Math.round(y));
+    if (et[accelerationX] != 1.0 || et[accelerationY] != 1.0) {
+      ob.boundX *= et[accelerationX];  ob.boundY *= et[accelerationY];
+      if (ob.boundX < 4  && ob.boundY < 4) {
+        ob.init = false;
+        if (et[repeat] == true) setTimeout("HpbVfxtimer(" + tid + ")",et[startTime]);
+        else if (et[nextLayerIdx] >= 0) setTimeout("HpbVfxtimer(" + et[nextLayerIdx] + ")",et[nextStartTime]);
+      } else {
+        ob.angle += ob.step;
+        setTimeout("HpbVfxtimer(" + tid + ")",et[intervalTime]);
+      }
+    } else {
+      if (ob.angle >= (2 * Math.PI)) {
+        ob.init = false;
+        if (et[repeat] == true) setTimeout("HpbVfxtimer(" + tid + ")",et[startTime]);
+        else if (et[nextLayerIdx] >= 0) setTimeout("HpbVfxtimer(" + et[nextLayerIdx] + ")",et[nextStartTime]);
+      } else {
+        ob.angle += ob.step;
+        setTimeout("HpbVfxtimer(" + tid + ")",et[intervalTime]);
+} } } }
+
+function HpbVfx0311(tid,et,ob) {
+  var x;  var y;  var ws;
+  if (ob) {
+    if (ob.init == false) {ob.setp = 0;  HpbVfxshowobj(ob);  ob.init = true;}
+    x = et[posX];  y = et[posY];
+    if (et[fixedX] == true) ws = ob.setp;
+    else {
+      ws = Math.round(Math.random() * 4);
+      if (ws > 3) ws = 0;
+    }
+    if (ws == 1) x += et[stepX];
+    if (ws == 3) x -= et[stepX];
+    if (et[fixedY] == true) ws = ob.setp;
+    else {
+      ws = Math.round(Math.random() * 4);
+      if (ws > 3) ws = 0;
+    }
+    if (ws == 1) y += et[stepY];
+    if (ws == 3) y -= et[stepY];
+    HpbVfxmoveobj(ob,Math.round(x),Math.round(y));
+    ob.setp ++;
+    if (ob.setp >= 4) {
+      ob.init = false;
+      if (et[repeat] == true) setTimeout("HpbVfxtimer(" + tid + ")",et[startTime]);
+      else if (et[nextLayerIdx] >= 0) setTimeout("HpbVfxtimer(" + et[nextLayerIdx] + ")",et[nextStartTime]);
+    } else setTimeout("HpbVfxtimer(" + tid + ")",et[intervalTime]);
+} }
+
+function HpbVfx0401(tid,et,ob) {
+  var x;  var y;  var tx;  var ty;
+  if (ob) {
+    if (ob.init == false) {
+      if (et[stepX] != -32767) ob.step = et[stepX]; else ob.step = (Math.PI * 2) / et[frame];
+      ob.angle = 0.0;
+      HpbVfxshowobj(ob);
+      ob.init = true;
+    }
+    tx = Math.cos((ob.angle * et[posEndX]) + et[stepY]) * et[posStartX];
+    ty = Math.sin((ob.angle * et[posEndY]) + et[stepY]) * et[posStartY];
+    x = et[posX];  y = et[posY];
+    x += tx * Math.cos(et[angle]);  y += tx * Math.sin(et[angle]);
+    x += ty * Math.cos(et[angle] + (Math.PI / 2));  y += ty * Math.sin(et[angle] + (Math.PI / 2));
+    HpbVfxmoveobj(ob,Math.round(x),Math.round(y));
+    if (Math.abs(ob.angle) >= (2 * Math.PI)) {
+      ob.init = false;
+      if (et[repeat] == true) setTimeout("HpbVfxtimer(" + tid + ")",et[startTime]);
+      else if (et[nextLayerIdx] >= 0) setTimeout("HpbVfxtimer(" + et[nextLayerIdx] + ")",et[nextStartTime]);
+    } else {
+      ob.angle += ob.step;
+      setTimeout("HpbVfxtimer(" + tid + ")",et[intervalTime]);
+} } }
+
+function HpbVfx0501(tid,et,ob) {
+  if (ob) {
+    if (ob.init == false) {HpbVfxshowobj(ob);  ob.init = true;}
+    var px;  var py;
+    if (isNC) {px = window.pageXOffset;  py = window.pageYOffset;}
+    if (isN6) {px = window.pageXOffset;  py = window.pageYOffset;}
+    if (isIE) {px = document.body.scrollLeft;  py = document.body.scrollTop;}
+    HpbVfxmoveobj(ob,Math.round(px + et[posX]),Math.round(py + et[posY]));
+    setTimeout("HpbVfxtimer(" + tid + ")",et[intervalTime]);
+} }
+//-->
+</SCRIPT><SCRIPT language="JavaScript1.1">
+<!--
+// 左のウィンドウからアイテムをドラッグして
+// ここにドロップするか、マウスの右ボタン
+// でポップアップ メニューを出して「スクリプト
+// に挿入」を選択して、現在のカーソル位置に
+// コードを挿入します。
+
+//-->
+</SCRIPT>
+</HEAD>
+<body background="w6b.gif" onload="HpbVfxinit('Layer26','HpbVfx0101','D120',1000,1000,1);">
+<div style="top : 1052px;left : 762px;
+	position : absolute;
+
+	z-index : 41;
+" id="Layer45"></div>
+<div style="top : -11px;left : -9px;
+	position : absolute;
+
+	z-index : -3;
+" id="Layer1"><IMG src="toplogo.jpg" width="906" height="120" border="0"></div>
+<div style="width : 195px;top : 7px;left : 912px;
+	position : absolute;
+
+	z-index : 21;
+
+	
+
+	visibility : visible;
+
+	height : 61px;
+" id="Layer27">
+  <P align="left"><B>　<FONT face="HGP教科書体" size="+1">大地震で被災された皆様の１日も早い復旧復興を願っております。</FONT></B></P>
+</div>
+<div style="top : 50px;left : 50px;
+	position : absolute;
+
+	z-index : 32;
+" id="Layer55"></div>
+<div style="top : 50px;left : 214px;
+	position : absolute;
+	z-index : 77;
+" id="Layer77"></div>
+<div style="width : 250px;top : 2182px;left : 1193px;
+	position : absolute;
+	z-index : 58;
+	height : 247px;
+" id="Layer65">
+  <p>4月20日(日)午前9時から、市役所玉山総合事務所小原事務長、吉田修司市協会長、竹田浩久市議会議員、佐藤千賀夫市議会議員、伊藤栄爾盛岡ひのとPGクラブ会長、廣田美津夫日戸牧野農協長のご協力をいただき公認コース認定板の除幕式を行うことができました。オープン以来７年目での公認コース取得に約５０人の参加者の皆様ととに喜びを分かち合うことができました。<br>
+  　今まで応援してくださった皆様に心から感謝と御礼を申し上げます。</p>
+</div>
+<div style="top : 50px;left : 214px;
+	position : absolute;
+	z-index : 78;
+" id="Layer79"></div>
+<div style="top : 81px;left : 947px;
+	position : absolute;
+
+	z-index : 49;
+" id="Layer67"><A href="ParkGolfSenryuu.html"><IMG src="balloon111.gif" width="137" height="137" border="0" alt="楽しい パークゴルフ 川柳は ここをクリック  "></A></div>
+<div style="top : 615px;left : 18px;
+	position : absolute;
+
+	z-index : 9;
+
+	width : 141px;
+	height : 17px;
+" id="Layer14"><a href="subpage1.html">ご利用時間・利用料など</a></div>
+<div style="top : 99px;left : 1px;
+	position : absolute;
+
+	z-index : -2;
+" id="Layer3"><IMG src="himekamiforiwatesan1.jpg" border="0" width="895" height="434"></div>
+<div style="width : 195px;top : 100px;left : 389px;
+	position : absolute;
+
+	z-index : 52;
+" id="Layer71">
+<P></P>
+</div>
+<div style="width : 63px;top : 108px;left : 837px;
+	position : absolute;
+	z-index : 81;
+	height : 236px;
+" id="Layer48">
+  <p><font size="+4" face="AR P花文字梅U" color="#ffff00">謹賀新年</font></p>
+</div>
+<div style="width : 866px;top : 2754px;left : 276px;
+	position : absolute;
+
+	z-index : 48;
+
+	height : 269px;
+" id="Layer39">
+  <P><BR>
+  <B><FONT size="+1">　　　シーズン会員会費　クローズの１１月中旬まで有効　６，０００円<BR>
+  　　　　　　シーズン会員になりますと、１日利用料は１００円となります。</FONT><BR>
+  </B>　　　　　　　　　　　※　お申込当日からシーズン会員としてご利用いただけます。<BR>
+  <B>　　　＜参考＞</B><BR>
+  　　一般利用料　　　　　　　　　１日利用料　　　　 ８００円<BR>
+  　　　　　　　　　　　　　　　　　　セット利用料　　１，０００円（用具レンタル込み）<BR>
+  　　　　　　　　　　　　　　　　　　用具レンタル　　　 ３００円<BR>
+  　　 中高生　　　　 　　　　　　　１日利用料　　　　 ３００円<BR>
+  　　　　　　　　　　　　　　　　　　セット利用料　　　　５００円<br>
+  　　 小学生は無料です。<BR>
+  　　　　　　営業時間は　午前９時～午後６時（８月１６日から午後５時、９月２０日から午後４時）です。</P>
+</div>
+<div style="width : 908px;top : 2758px;left : 250px;
+	position : absolute;
+
+	z-index : -4;
+
+	height : 287px;
+
+	background-color : #f4b0c1;
+
+	visibility : visible;
+" id="Layer42"></div>
+<div style="top : 50px;left : 50px;
+	position : absolute;
+
+	z-index : 42;
+
+	width : 41px;
+	height : 18px;
+" id="Layer57">
+<P></P>
+</div>
+<div style="top : 50px;left : 50px;
+	position : absolute;
+
+	z-index : 47;
+" id="Layer63"></div>
+<div style="top : 50px;left : 50px;
+	position : absolute;
+
+	z-index : 50;
+" id="Layer68"></div>
+<div style="top : 50px;left : 50px;
+	position : absolute;
+
+	z-index : 51;
+" id="Layer36"></div>
+<div style="top : 559px;left : 50px;
+	position : absolute;
+
+	z-index : 45;
+" id="Layer60"></div>
+<div style="width : 415px;top : 125px;left : 24px;
+	position : absolute;
+
+	z-index : 31;
+
+	height : 87px;
+" id="Layer53">
+<P><FONT size="+2" face="AR宋朝体M" color="#ffff00"><B>お仲間・ご家族皆んなで<BR>
+パークゴルフを楽しみませんか？</B></FONT><BR>
+<FONT size="+1"><FONT size="+2" face="AR宋朝体M" color="#ffff00"><B>パークゴルフは誰でも気軽に楽しめるスポーツです。</B></FONT></FONT></P>
+</div>
+<div style="top : 850px;left : 300px;
+	position : absolute;
+
+	z-index : 25;
+" id="Layer30"><IMG src="a_ilst001.gif" width="64" height="64" border="0"></div>
+<div style="top : 130px;left : 1188px;
+	position : absolute;
+	z-index : 71;
+" id="Layer89"><img src="balloon1.gif" width="169" height="97" border="0" alt="見てね！ "></div>
+<div style="width : 20px;top : 137px;left : 802px;
+	position : absolute;
+	z-index : 82;
+	height : 304px;
+" id="Layer80">
+  <p><font color="#ffff00">本年もよろしくお願い申し上げます。</font></p>
+</div>
+<div style="width : 192px;top : 1633px;left : 10px;
+	position : absolute;
+
+	z-index : 40;
+
+	background-color : orange;
+
+	visibility : visible;
+
+	height : 566px;
+" id="Layer51">
+  <P><FONT size="-1"><BR>
+  　</FONT><B><I>～つぶやき～</I></B><FONT size="-1"><br>
+  　</FONT>　お互いに冬場の健康の維持増進に心掛けましょう。<br>
+  　暮れの２６日から２９日まで、我が家のルーツをたどる旅を、妻と孫二人(小５男と小１女）で淡路島の南あわじ市に行って来ました。<br>
+  　同じ苗字の方と会えるかどうか心配でしたが、なんと！同じ姓の方が５件もあって、その内のお二方にお会いすることができて、長年の念願が叶い有意義な旅となりました。<br>
+  　そのお宅は、わかる範囲で４２代目ということでした。淡路は歴史が古いことがわかり、小生の祖先も、この地から「流れ流れて日戸に住み着いたのかな～」と歴史を感じました。<br>
+  　暖かく迎えていただいた淡路の皆さんに感謝しています。<br>
+  　淡路島の気候は温暖で、玉葱の産地、他にも色々な野菜が年間通じて栽培できる地域で、うらやましく感じました。住みたくもなりました<br>
+  <BR>
+  　　管理者：豆雷電<br>
+  <br>
+  <br>
+  </P>
+</div>
+<div style="width : 1106px;top : 934px;left : 278px;
+	position : absolute;
+	z-index : 56;
+	height : 171px;
+" id="Layer56">
+  <p><font size="+2">　</font><font size="+1" color="#000000">明けましておめでとうございます。パークゴルフ愛好者の皆様におかれましては、ご健勝で新年をお迎えのこととお慶び申し上げます。<br>
+  　今年は「丙申」ものの本によれば「これまで日の目を見なかったことが形となって現れ、これまでの頑張りが形になっていく年」だとか、<br>
+  「スコアアップ」が期待できそうです！？<br>
+  　さくらパーク日戸パークゴルフ場は冬眠に入っていますが、早く春になって、また賑やかな季節が来ることを待ちに待っています。<br>
+  </font>　<font size="+1">パークゴルフ愛好者の皆さんは、シーズン到来まで他のスポーツで健康を維持していただいて、またお元気でお会いできることをおまちしております。<br>
+  </font><br>
+  </p>
+  　
+</div>
+<div style="top : 861px;left : 387px;
+	position : absolute;
+
+	z-index : 23;
+
+	width : 346px;
+
+	height : 34px;
+
+	background-color : orange;
+
+	visibility : hidden;
+" id="Layer26">
+  <DIV>
+    <table border="0" cellspacing="0" cellpadding="0" id="HPB_LPT_TBOX_01" class="hpb-subh01" height="34" width="346">
+      <TBODY>
+        <TR>
+          <td height="21" valign="top" id="HPB_LP_T0" class="hpb-subh01-cell1" style="background-color : orange;text-align : center;" width="338"><font size="+2">２０１６年正月の情報</font></td>
+        </TR>
+      </TBODY>
+    </table>
+  </DIV>
+</div>
+<div style="width : 579px;top : 1159px;left : 754px;
+	position : absolute;
+	z-index : 66;
+	height : 28px;
+" id="Layer83">
+  <p><font size="+2" color="#240b9d"><b>第１４回さくらパーク日戸パークゴルフ大会</b></font><font size="-1">
+</font></p>
+</div>
+<div style="width : 1184px;height : 211px;top : 3540px;left : 43px;
+	position : absolute;
+
+	z-index : 6;
+
+	visibility : visible;
+
+	background-color : #e1e1e1;
+" id="Layer9">　さくらパーク日戸は、石川啄木生誕の地「常光寺」がある岩手県盛岡市玉山区日戸にあります。<BR>
+　さくらパーク日戸パークゴルフ場は、盛岡市街から東に約１８Ｋｍ標高４５０ｍの位置にあり、盛岡市街が一望できるほか、岩手山、八幡平、そして晴れた日には鳥海山も見える自然景観豊かなパークゴルフ場です。<BR>
+　近くには、一万本のオオヤマザクラの桜の名所、石川啄木生誕の地「常光寺」、日本一深い「岩洞第一地下発電所」などがあります。<BR>
+　初夏から秋にかけては延長約５Ｋｍに及ぶ沿道両側に「マリーゴールド」のフラワーロード（今年も７月２０日に自治会員全員で植えました。）が訪れる皆様を歓迎し、心を和ませてくれることと思います。<BR>
+　さくらパーク日戸の大自然の中で美味しい空気をお腹いっぱいに吸いながら、起伏に富んだコースでパークゴルフをお楽しみください。貴方はきっと今以上に健康になりハツラツとした日々をおくっていただけることと思います。<BR>
+　全コース（４コース）を１周すると約２時間で約８,０００歩歩きます。用具も貸出しておりますので、運動のできる服装でお気軽にお越しください</div>
+<div style="width : 321px;top : 226px;left : 1268px;
+	position : absolute;
+	z-index : 69;
+	height : 23px;
+" id="Layer86">
+  <p><b><font color="#cc0000">さくらパーク日戸の紅葉です</font></b></p>
+</div>
+<div style="width : 707px;top : 1217px;left : 759px;
+	position : absolute;
+	z-index : 76;
+	height : 39px;
+" id="Layer66">
+  <p><font size="+1" color="#240b9d">１０月４日(日)　前日の雨も上がって、皆さん楽しく、盛会に開催できました</font></p>
+  </div>
+<div style="width : 916px;top : 3202px;left : 195px;
+	position : absolute;
+
+	z-index : 22;
+
+	height : 105px;
+
+	background-color : #99ff33;
+
+	visibility : visible;
+" id="Layer28">
+  <P><FONT size="+2">　</FONT><FONT color="#000000" size="-1"><FONT size="+0" face="HG正楷書体-PRO">さくらパーク日戸パークゴルフ場をご利用いただいている会員の有志の方々が主体となり、<FONT color="#000000" size="-1"><FONT size="+0" face="HG正楷書体-PRO">平成２４年５月５日「子供の日」に<FONT color="#000000" size="-1"><FONT size="+0" face="HG正楷書体-PRO">設立総会を開催し、<B><FONT face="HG丸ｺﾞｼｯｸM-PRO" color="#0000ff">盛岡ひのとパークゴルフクラブ</FONT></B></FONT></FONT></FONT></FONT>が誕生しました。</FONT><FONT size="+0" face="HG正楷書体-PRO" color="#0000ff"><B>クラブ</B></FONT><FONT size="+0" face="HG正楷書体-PRO">は原則毎月第１土曜日９時３０分から（９時１５分まで集合）クラブ大会（月例会）を開催しています。誰でも参加でき、参加料は無料です。奮ってご参加ください。<BR>
+  　大会、講習会などの情報を随時提供いたしますので、時々HomePageへ訪れてみてください。<BR>
+  </FONT></FONT></P>
+</div>
+<div style="width : 128px;top : 693px;left : 25px;
+	position : absolute;
+
+	z-index : 11;
+" id="Layer15">
+  <P><A href="subpage2.html">トピックス</A></P>
+</div>
+<div style="top : 4138px;left : 721px;
+	position : absolute;
+
+	z-index : 17;
+" id="Layer11"><A href="mailto:info@hinoto.xsrv.jp"><IMG src="bu01ml.gif" width="64" height="64" border="0"></A></div>
+<div style="top : 749px;left : 20px;
+	position : absolute;
+
+	z-index : 12;
+
+	width : 121px;
+	height : 23px;
+" id="Layer16"><A href="subpage3.html">アクセスのご案内</A></div>
+<div style="width : 677px;top : 4154px;left : 67px;
+	position : absolute;
+
+	z-index : 8;
+
+	height : 31px;
+" id="Layer12">
+  <P><FONT color="#000066"><B>お問い合わせ・ご意見はＥメールでこちらからお願いいたします。→</B></FONT></P>
+</div>
+<div style="top : 2248px;left : 248px;
+	position : absolute;
+	z-index : 57;
+" id="Layer37"><img src="JomakuH260420.jpg" width="875" height="340" border="0"></div>
+<div style="width : 309px;top : 620px;left : 404px;
+	position : absolute;
+
+	z-index : 4;
+
+	height : 59px;
+
+	background-color : #99ff33;
+" id="Layer6">
+  <P><B><FONT size="+1" color="#000066"><font size="-2"><br>
+  </font>　　＜４コース３６ホール</FONT>＞<br>
+  </B></P>
+</div>
+<div style="width : 1306px;top : 4044px;left : 53px;
+	position : absolute;
+
+	z-index : 7;
+
+	height : 77px;
+" id="Layer10">
+  <P><FONT size="-2">　</FONT>運営主体 ： 合同会社 ひ の と　　ＴＥＬ　０９０－９７４５－８６５４　(平成２６年は無休で営業いたします。）<B>　荒天の場合は臨時休業します。</B><FONT size="+1"><BR>
+  　　　　　　　　</FONT>〒０２０－０２０１　岩手県盛岡市玉山区日戸字新田１３－５２<FONT size="+1">　　　　　　　</FONT><FONT size="+1"><BR>
+  　　HomePage http://www.hinoto.co.jp/　　　 Email　info@hinoto.xsrv.jp　　</FONT></P>
+</div>
+<div style="top : 2075px;left : 250px;
+	position : absolute;
+
+	z-index : 54;
+
+	width : 882px;
+	height : 120px;
+" id="Layer34">
+  <P><FONT size="+3">　　　　　　　</FONT><font size="+2"></font><font size="+2" color="#ff0000">♪～ＮＰＧＡ公認コースに認定～</font><font size="-1"><BR>
+  　</font>私たちの「さくらパーク日戸パークゴルフ場」が、発足以来夢に見ていた日本パークゴルフ協会の「公認コースＮＯ．３８０」に認定されました。役員はもちろんのこと利用者の皆様にも「おめでとう」と喜んでいただいております。これからも、より以上にご利用者の皆様に喜んでプレイしていただけるコースを目指して頑張りますので、より多くのご来場を社員一同お待ちしております。</P>
+</div>
+<div style="top : 3341px;left : 222px;
+	position : absolute;
+
+	z-index : 35;
+" id="Layer24"><A href="subpageHinotoClubH24Score.html"><IMG src="logo11121111.gif" width="475" height="39" border="0" alt="ひのとパークゴルフクラブ大会（月例会）の第１回からの成績　→" style="background-color : aqua;"></A></div>
+<div style="top : 3341px;left : 705px;
+	position : absolute;
+
+	z-index : 37;
+" id="Layer31"><A href="subpageHinotoClubH24Score.html"><IMG src="button13.gif" width="92" height="34" border="0" alt="クラブ大会 成績 "></A></div>
+<div style="top : 273px;left : 1258px;
+	position : absolute;
+	z-index : 68;
+" id="Layer85"><a href="SPHinoto-Aki-H26.html"><img src="SPHinoto-aki21.jpg" border="0" width="228" height="121"></a></div>
+<div style="width : 959px;top : 685px;left : 195px;
+	position : absolute;
+
+	z-index : 20;
+
+	height : 136px;
+" id="Layer25">
+  <P>　さくらパーク日戸パークゴルフ場は、岩手県盛岡市玉山区日戸の岩洞第１発電所（<font size="+1" color="#0000ff"><b>０１９－６８５－２０３１～<U>カーナビでの設定</U></b></font>）の向かい側にあります。とにかく景色が最高です。<BR>
+  　パークゴルフは、楽しいスポーツです。さくらパークひのとパークゴルフ場は４コース全部回っても慣れた人で約２時間　２コースだったら１時間、ご夫婦・親子・友人、職場のお仲間と、またお一人からでもお気軽に楽しめます。<BR>
+  　ご家族（お子様連れ、ご夫婦、親子など）でのご利用が増えてきています。「パークゴルフはファミリースポーツ」として普及してきているな～と、うれしくなります。</P>
+</div>
+<div style="top : 284px;left : 50px;
+	position : absolute;
+	z-index : 60;
+" id="Layer70"></div>
+<div style="top : 1163px;left : 297px;
+	position : absolute;
+	z-index : 80;
+" id="Layer61"><img src="14thSPHinotoCapWiners.jpg" border="0" width="405" height="287"></div>
+<div style="width : 759px;top : 1271px;left : 761px;
+	position : absolute;
+	z-index : 67;
+	height : 179px;
+" id="Layer84">
+  <p>　<font size="+1">　今回で１４回目（７年）となる、弊社主催の大会を、５７人の参加により開催できました。<br>
+  　　前日の雨で心配されましたが、朝には肌寒かったものの晴れて、参加者の皆んは、和やかな内にも闘志を秘めてのプレイで、スコアも伸びたようでした。<br>
+  　　男性はスコア１００で、古山正明さんがパークを始めて４年目で悲願の優勝を果たしました。（ご本人のコメントです）<br>
+  　　女性は、藤原洋子さんが本大会８度目の優勝の栄をみごと勝ち取りました。<br>
+  　　入賞者の皆さん、おめでとうございます。<br>
+  </font></p>
+</div>
+<div style="width : 168px;top : 330px;left : 1306px;
+	position : absolute;
+	z-index : 70;
+	height : 57px;
+" id="Layer87">
+  <p><font color="#ffff00" size="-2">この写真をクリックすると<br>
+  サクラパーク日戸の<br>
+  紅葉風景を見れます。</font></p>
+</div>
+<div style="top : 808px;left : 19px;
+	position : absolute;
+
+	z-index : 14;
+
+	width : 120px;
+	height : 23px;
+" id="Layer18"><A href="subpage4.html">コースのご案内</A></div>
+<div style="top : 284px;left : 50px;
+	position : absolute;
+	z-index : 61;
+" id="Layer73"></div>
+<div style="top : 345px;left : 121px;
+	position : absolute;
+	z-index : 59;
+" id="Layer69"></div>
+<div style="top : 400px;left : 995px;
+	position : absolute;
+	z-index : 74;
+	visibility : visible;
+" id="Layer74"><img src="balloon1211.gif" width="145" height="112" border="0" alt=" 　ご家族での 　　パークは 　　楽しいですよ"></div>
+<div style="top : 883px;left : 21px;
+	position : absolute;
+
+	z-index : 15;
+
+	width : 120px;
+	height : 24px;
+" id="Layer19"><A href="subpage5.html">イベント情報</A></div>
+<div style="width : 552px;top : 585px;left : 353px;
+	position : absolute;
+
+	z-index : 19;
+
+	height : 22px;
+" id="Layer7">
+  <P><FONT face="HG正楷書体-PRO" color="#0000ff" size="+1"><B>健康な身体は気軽にできるパークゴルフで</B></FONT></P>
+</div>
+<div style="top : 1315px;left : 19px;
+	position : absolute;
+
+	z-index : 16;
+
+	width : 178px;
+	height : 24px;
+" id="Layer20"><A href="subpage7.html">日戸集落のご紹介</A></div>
+<div style="width : 124px;top : 416px;left : 17px;
+	position : absolute;
+
+	z-index : 46;
+
+	height : 75px;
+
+	background-color : #ff8080;
+
+	visibility : visible;
+" id="Layer62" align="center">　<font size="-1"><A href="gestpageH2410for.html"><font size="-2">お客様の声の<BR>
+　　ページへ<BR>
+　ここをクリック<br>
+</font></A>H25.7.24</font><font size="-2">更新</font></div>
+<div style="width : 335px;top : 430px;left : 312px;
+	position : absolute;
+	z-index : 75;
+	height : 82px;
+" id="Layer41">
+  <p><font color="#ffffff"><b>平成２７年は１1月15日をもって営業は終了させていただきました。<br>
+  </b><b>本年は４月下旬オープン予定でございます。ご来場をお待ち申し上げております。</b></font></p>
+</div>
+<div style="width : 313px;top : 3851px;left : 424px;
+	position : absolute;
+
+	z-index : 18;
+" id="Layer23"><font color="#990033" size="+2"><B>○　「パークゴルフ」って何？</B></font></div>
+<div style="width : 136px;top : 951px;left : 20px;
+	position : absolute;
+	z-index : 63;
+" id="Layer33">
+  <p><font color="#0000cc"><b><a href="KanmuriTaikaiScore.html">冠大会の結果<br>
+  Ｈ２６～</a></b></font></p>
+</div>
+<div style="width : 708px;top : 3119px;left : 281px;
+	position : absolute;
+
+	z-index : 33;
+
+	height : 20px;
+" id="Layer54">
+  <P>　<FONT size="+2">「<A href="subpage203.html"><B><FONT face="HG丸ｺﾞｼｯｸM-PRO" color="#0000ff" size="+2">盛岡ひのとパークゴルフクラブ</FONT></B></A>」　の情報<I>！！</I></FONT></P>
+</div>
+<div style="width : 191px;top : 3470px;left : 674px;
+	position : absolute;
+
+	z-index : 27;
+" id="Layer44">
+  <P>詳しくは　<B><FONT color="#ffa500"><A href="subpage7.html">こちらをクリック</A></FONT></B></P>
+</div>
+<div style="width : 489px;top : 3452px;left : 108px;
+	position : absolute;
+
+	z-index : 26;
+
+	height : 54px;
+
+	background-color : olive;
+
+	visibility : visible;
+" id="Layer43"><FONT size="-1"><B>　</B></FONT><B><br>
+　　　「石川啄木生誕の寺“常光寺”の老杉」惜しまれながら伐採<BR>
+</B></div>
+<div style="width : 146px;top : 644px;left : 1271px;
+	position : absolute;
+	z-index : 64;
+" id="Layer78">
+  <p>H26.9.15桜２番ホール</p>
+</div>
+<div style="top : 1393px;left : 19px;
+	position : absolute;
+
+	z-index : 1;
+
+	width : 204px;
+	height : 22px;
+" id="Layer5">
+  <P><A href="subpage8.html"><FONT color="#0000ff">個人情報の取り扱い</FONT></A></P>
+</div>
+<div style="top : 895px;left : 832px;
+	position : absolute;
+	z-index : 79;
+" id="Layer64"></div>
+<div style="top : 1468px;left : 21px;
+	position : absolute;
+
+	z-index : 34;
+
+	width : 134px;
+	height : 22px;
+" id="Layer22"><A href="subpage201PageKousin.html">更新履歴</A></div>
+<div style="width : 159px;top : 1145px;left : 7px;
+	position : absolute;
+	z-index : 62;
+	background-color : #009999;
+	visibility : visible;
+	height : 57px;
+" id="Layer76">
+  <p><a href="H2605-1thmanthcappage.html"><font color="#ffff00"><b>当ゴルフ場主催<br>
+  月例会成績<br>
+  Ｈ２６～</b></font></a></p>
+</div>
+<div style="width : 499px;top : 540px;left : 173px;
+	position : absolute;
+
+	z-index : 3;
+
+	height : 38px;
+" id="Layer4">
+<P><B><font size="+2" color="#990099">さくらパーク日戸　</font><font color="#990033" size="+2">パークゴルフ場</font></B></P>
+</div>
+<div style="width : 288px;top : 540px;left : 665px;
+	position : absolute;
+
+	z-index : 28;
+
+	height : 20px;
+" id="Layer47"><FONT size="-1">＜正面は岩手のシンボル岩手山＞</FONT></div>
+<div style="width : 786px;top : 3165px;left : 202px;
+	position : absolute;
+
+	z-index : 55;
+" id="Layer46">
+  <P>今年も、毎週火曜日と木曜日は練習会を行います。午前９時１５分集合です。どなたでも気楽に参加できます。</P>
+</div>
+<div style="top : 448px;left : 1128px;
+	position : absolute;
+	z-index : 65;
+" id="Layer75"><img src="oyakodepark2609151.jpg" border="0" width="319" height="189"></div>
+<div style="width : 222px;top : 480px;left : 678px;
+	position : absolute;
+
+	z-index : 53;
+
+	height : 51px;
+
+	background-color : lime;
+
+	visibility : visible;
+" id="Layer72">
+  <p align="center">　ＮＰＧＡ公認第３８０号<br>
+  会員番号第1010号 </p>
+</div>
+<div style="width : 990px;height : 97px;top : 3885px;left : 61px;
+	position : absolute;
+
+	z-index : 5;
+
+	visibility : visible;
+
+	background-color : lime;
+" id="Layer8"><font size="2" face="AR P明朝体L">　　　</font><font face="AR P明朝体L">　パ</font><font size="+1" face="AR P明朝体L">ークゴルフは、昭和５８年に北海道の幕別町の公園で誕生しました。平成４年頃から全国各地に、<BR>
+　外国にも普及の輪が広がっています。特徴としては、①公園で手軽にできる。②ルールは簡単、子供<BR>
+　・孫と３世代で楽しめるスポーツ。③用具は、クラブ（球を打つ棒）とボールが１個あればできます。<BR>
+　④少ない打数でカップ（穴）に入れるかを競い合うスポーツです。</font></div>
+<div style="width : 1028px;top : 2595px;left : 222px;
+	position : absolute;
+
+	z-index : 24;
+
+	height : 96px;
+
+	
+
+	visibility : visible;
+" id="Layer29">
+  <p style="background-color : white;" align="left"><FONT face="AR P丸ゴシック体M"><br>
+  　さくらパーク日戸パークゴルフ場は、晴れた日の岩手山に向かってのスイングは気持ちが良いですよ！<BR>
+  　昨年から、コースの一部を変更しました。コース案内図は、下のＰＤＦファイルをクリックすると見られます。<BR>
+  <BR>
+  </FONT>　　　　　　　　　　　　　　　　　<FONT face="HGP創英角ﾎﾟｯﾌﾟ体" color="#00cc00"><B><U><A href="H25SakuraParkHinotoPerkGolfMap3.pdf">さくらパーク日戸パークゴルフ場案内図PDF</A></U></B><BR>
+  </FONT></p>
+</div>
+<div style="width : 758px;top : 3797px;left : 199px;
+	position : absolute;
+
+	z-index : 13;
+
+	height : 34px;
+" id="Layer17">
+  <P><FONT size="2" color="#ff0066"><FONT color="#000099" size="+1"><B>すばらしい展望、景観を一度ご覧ください。お待ちしております。</B></FONT></FONT></P>
+</div>
+<div style="width : 442px;top : 844px;left : 1132px;
+	position : absolute;
+
+	z-index : 44;
+	height : 66px;
+	visibility : visible;
+	background-color : #8af9bc;
+" id="Layer59">
+  <p align="left"><font color="#0000ff"><b>　　　　</b></font><font size="-1"><a href="subpage2.html"><font size="+0" color="#0000ff"><b>ＪＡ新岩手女性部玉山支部健康講座</b></font><font size="+0"><br>
+  　２１人参加で6月20日(土)開催、皆さん楽しかったと好評でした。<br>
+  　詳しくは、ここをクリックしてみてください。</font></a></font></p>
+</div>
+<div style="width : 99px;top : 513px;left : 846px;
+	position : absolute;
+
+	z-index : 43;
+" id="Layer58"></div>
+<div style="width : 458px;top : 1470px;left : 303px;
+	position : absolute;
+	z-index : 72;
+	height : 44px;
+" id="Layer32">
+  <p><b><font size="+1">第１４回さくらパーク日戸パークゴルフ大会<br>
+  　　　　　上位入賞者の皆さん</font></b></p>
+</div>
+<div style="width : 163px;top : 1245px;left : 13px;
+	position : absolute;
+
+	z-index : 36;
+	background-color : #fed3f5;
+	visibility : visible;
+	height : 42px;
+" id="Layer21">
+  <P><U><A href="subpage203.html"><FONT color="#0000ff">ひのとＰＧクラブ</FONT></A></U></P>
+</div>
+<div style="width : 147px;top : 1046px;left : 13px;
+	position : absolute;
+
+	z-index : 38;
+
+	background-color : #ffff00;
+
+	visibility : visible;
+
+	height : 47px;
+" id="Layer49">
+  <P><A href="subSPGemu1thtoScoreTop.html"><B><U>さくらパーク日戸大会成績（第１回～　）</U></B></A></P>
+</div>
+<div style="top : 956px;left : 50px;
+	position : absolute;
+
+	z-index : 39;
+" id="Layer50"></div>
+<div style="top : 757px;left : 246px;
+	position : absolute;
+
+	z-index : 30;
+" id="Layer38"></div>
+<div style="top : 801px;left : 263px;
+	position : absolute;
+
+	z-index : 29;
+" id="Layer52"></div>
+<div style="top : 8px;left : 8px;
+	position : absolute;
+
+	z-index : 1;
+
+	background-color : #fadce3;
+
+	visibility : visible;
+" id="Layer5">
+<DIV style="top : 1714px;left : 545px;
+	position : absolute;
+
+	z-index : 28;
+" id="Layer40"></DIV>
+</div>
+<div style="width : 1429px;top : 1588px;left : 234px;
+	position : absolute;
+	z-index : 73;
+	height : 371px;
+	background-color : #80ff80;
+	visibility : visible;
+" id="Layer35">
+  <p><font size="+3"><br>
+  　今後の予定　　　４月下旬オープンの予定です。<br>
+  </font><font size="+1"><br>
+  <br>
+  <br>
+  　　　　　</font><font size="+3">オープンの予定等等　詳しいことは、Eメールでお問い合わせください。</font><font size="+2"><br>
+  　</font></p>
+</div>
+<div style="width : 153px;height : 1315px;top : 531px;left : 4px;
+	position : absolute;
+
+	background-color : #80ff80;
+
+	z-index : -1;
+
+	visibility : visible;
+" id="Layer2"></div>
+<div style="width : 134px;top : 549px;left : 23px;
+	position : absolute;
+
+	z-index : 10;
+	height : 27px;
+" id="Layer13">
+  <P><b><font color="#0000cc">各ページへ<br>
+  リンク</font>　⇓</b></P>
+</div>
+</body>
+</HTML>

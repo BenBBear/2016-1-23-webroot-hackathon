@@ -1,0 +1,804 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja-JP" xml:lang="ja-JP">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<title>乗馬予約ナビゲーションサイト「じょばなび」</title>
+<meta name="Keywords" content="乗馬,馬術,乗馬体験,外乗,乗馬ライセンス,乗馬クラブ,ホースセラピー,外馬,馬場,障害,クロスカントリー,ジムカーナ,ウエスタン,ブリティッシュ,予約,レッスン,ログ" />
+<meta name="description" content="乗馬体験や乗馬ライセンス取得、外乗（ホーストレッキング）、本格的な馬術レッスン、乗馬ツアーなど、乗馬が初めての方から経験者まで楽しめる情報が満載の乗馬情報検索予約サイト。全国様々な乗馬メニューをお得に簡単検索・予約！" />
+<script src="/js/jquery.js" type="text/javascript"></script>
+<script src="/js/widget.js" type="text/javascript"></script>
+<script src="/js/common.js" type="text/javascript"></script>
+<link href="/css/common_jobanavi.css" rel="stylesheet" type="text/css" />
+<link href="/css/top.css" rel="stylesheet" type="text/css" />
+<link rel="icon" href="http://jobanavi.jp/favicon.ico" type="image/x-icon" />
+<link rel="Shortcut Icon" id="favicon" href="http://jobanavi.jp/favicon.ico" type="image/x-icon" />
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-59670431-17', 'auto');
+  ga('send', 'pageview');
+
+</script></head>
+<body>
+<div id="wrapper">
+  <div id="headerWrap">
+		<div id="header" class="contents">
+			<div id="userInfo" class="clearfix">
+				<h1 class="fs10 caption">乗馬予約ナビゲーションサイト「じょばなび」</h1>
+				<ul class="fR caption"><li>ようこそ<a href="#"></a></li><li><a href="#"></a></li><li class="last"><a href="#"></a></li></ul>
+			</div>
+			<!-- /#userInfo -->
+			<div class="clearfix bgLogo">
+				<h1 class="logo fL"><a href="/"><img src="/common/headfoot/logo_head.gif" alt="乗馬予約ナビゲーションサイト「じょばなび」" width="180" height="50" /></a></h1>
+                <ul id="globalNavi" class="fR clearfix"><li><a href="/site_reservations/searchPlanTimes"><img class="hover" src="/common/headfoot/bt_reserve.gif" alt="じょばなび予約" width="161" height="46" border="0" /></a></li><li><a href="/site_member_diaries/showPrivateDiary"><img class="hover" src="/common/headfoot/bt_diary.gif" alt="じょばなび日記" width="163" height="46" /></a></li><!--<li><a href="/site_member_orders/showProductList"><img class="hover" src="/common/headfoot/bt_shop.gif" alt="じょなばびショップ" width="180" height="46" border="0" /></a></li>--></ul>
+			</div>
+		</div>
+		<!-- /#header -->
+	</div>
+	<!-- /#headerWrap -->
+	<script type="text/javascript">
+		<!--//
+		$.ajax({
+		type: "POST",
+		url: "/site_members/headTop/?",
+		data: postData,
+		cache: false,
+			success: function(msg){
+			   $("#headerWrap")[0].innerHTML = msg
+			   
+			}
+		});
+		//-->
+	</script>
+  <div id="searchArea">
+    <div class="box_inner clearfix"> <img class="fL" src="/img_top/im_topvisual.jpg" alt="" width="630" height="303" />
+      <div class="bg_searchR fR center">
+        <p class="mb5"><a href="/site_reservations/searchPlanTimes"><img class="hover" src="/img_top/bt_search.jpg" alt="乗馬プランを検索する" width="214" height="88" /></a></p>
+        <p><a href="/site_reservations/showFavaritePlanTime"><img class="hover" src="/img_top/bt_mylist.jpg" alt="検討リストを見る" width="214" height="46" /></a></p>
+      </div>
+    </div>
+  </div>
+  <!-- /#searchArea -->
+  <div id="contents" class="clearfix mb20">
+    <div id="mainArea" class="fR">
+      <div id="columnL" class="fL">
+        <p class="mb20"><a href="/etc/about.html#point"><img src="/img_top/bnr/bnr_point.jpg" alt="じょばなびポイント利用スタート！ポイント貯めて予約やショッピングで10%オフ！" width="380" height="95" /></a></p>
+
+
+<div class="news">
+<h2><img src="/img_top/ti_news.gif" alt="じょばなびニュース" width="380" height="32"></h2>
+<div class="box clearfix">
+		<table>
+		<tr>
+		<td>
+		<a href="http://jobanavi.jp/site_reservations/showPlanDetail/  906127" target="_blank">
+		<img src="/site_reservations/getImageClubMember/66/plan_img/plan_397.jpg?1376559552" alt="【フランス】カドルノワール公演観覧ツアー" width="120" height="120" ></a></td>
+		
+		<td><p class="fs10">2013/08/15<span>　乗馬ファン必見！</span></p>
+		<h3><a href="http://jobanavi.jp/site_reservations/showPlanDetail/906127" target="_blank">
+		【フランス】カドルノワール公演観覧ツアー</a></h3>
+		<p>ロワール地方での外乗とカドルノワール・ド・<WBR>ソミュール特別公演観覧など充実した6日間格安ツアーを募集中！<WBR><br /></p>
+		<p>（Club ANFAA）</p>
+		
+		<p class="tRight"><a href="http://jobanavi.jp/site_reservations/showPlanDetail/906127
+" target="_blank"><img src="/img_top/bt_news_details.gif" alt="詳細を見る" width="74" height="11"></a></p>
+		</td></tr>
+		</table>
+				<table>
+		<tr>
+		<td>
+		<a href="http://jobanavi.jp/site_reservations/showPlanDetail/  906125" target="_blank">
+		<img src="/site_reservations/getImageClubMember/42/plan_img/plan_396.jpg?1376561816" alt="仕事帰りに本格中華料理を食べながら" width="120" height="120" ></a></td>
+		
+		<td><p class="fs10">2013/08/15<span>　9月18日(水)開催</span></p>
+		<h3><a href="http://jobanavi.jp/site_reservations/showPlanDetail/906125" target="_blank">
+		仕事帰りに本格中華料理を食べながら</a></h3>
+		<p>今回のテーマ「ナチュラルホースケア」（講師：ジェレミー・<WBR>フォード氏 ＆ ジェニー・クリングリー氏）<br /></p>
+		<p>（会場：中国料理新橋亭 新館[東京都港区新橋]）</p>
+		
+		<p class="tRight"><a href="http://jobanavi.jp/site_reservations/showPlanDetail/906125
+" target="_blank"><img src="/img_top/bt_news_details.gif" alt="詳細を見る" width="74" height="11"></a></p>
+		</td></tr>
+		</table>
+				<table>
+		<tr>
+		<td>
+		<a href="http://jobanavi.jp/site_reservations/showPlanDetail/  676503" target="_blank">
+		<img src="/site_reservations/getImageClubMember/86/plan_img/plan_389.jpg?1376562115" alt="阿蘇に行くならココがオススメ！" width="120" height="120" ></a></td>
+		
+		<td><p class="fs10">2013/08/01<span>　じょばなび新登場</span></p>
+		<h3><a href="http://jobanavi.jp/site_reservations/showPlanDetail/676503" target="_blank">
+		阿蘇に行くならココがオススメ！</a></h3>
+		<p>【熊本県阿蘇市】阿蘇の雄大な自然の中で乗馬を満喫！<WBR>外乗が初めての方もベテランの方も大満足♪<br /></p>
+		<p>（阿蘇うま牧場）</p>
+		
+		<p class="tRight"><a href="http://jobanavi.jp/site_reservations/showPlanDetail/676503
+" target="_blank"><img src="/img_top/bt_news_details.gif" alt="詳細を見る" width="74" height="11"></a></p>
+		</td></tr>
+		</table>
+				<table>
+		<tr>
+		<td>
+		<a href="http://jobanavi.jp/site_reservations/showPlanDetail/  905147" target="_blank">
+		<img src="/site_reservations/getImageClubMember/84/plan_img/plan_377.jpg?1358506109" alt="易しく解りやすいレッスンが大好評！" width="120" height="120" ></a></td>
+		
+		<td><p class="fs10">2013/01/21<span>　じょばなび新登場</span></p>
+		<h3><a href="http://jobanavi.jp/site_reservations/showPlanDetail/905147" target="_blank">
+		易しく解りやすいレッスンが大好評！</a></h3>
+		<p>【埼玉県日高市】<WBR>センタードライディングを基本としたマンツーマンレッスン！<WBR>きっとたくさんの新しい発見が♪<br /></p>
+		<p>（つばさ乗馬苑）</p>
+		
+		<p class="tRight"><a href="http://jobanavi.jp/site_reservations/showPlanDetail/905147
+" target="_blank"><img src="/img_top/bt_news_details.gif" alt="詳細を見る" width="74" height="11"></a></p>
+		</td></tr>
+		</table>
+				<table>
+		<tr>
+		<td>
+		<a href="http://jobanavi.jp/site_reservations/showPlanDetail/  902750" target="_blank">
+		<img src="/site_reservations/getImageClubMember/83/plan_img/plan_372.jpg?1356091981" alt="遠方にお住まいの方はとってもお得♪" width="120" height="120" ></a></td>
+		
+		<td><p class="fs10">2012/12/25<span>　じょばなび新登場</span></p>
+		<h3><a href="http://jobanavi.jp/site_reservations/showPlanDetail/902750" target="_blank">
+		遠方にお住まいの方はとってもお得♪</a></h3>
+		<p>【静岡県磐田市】月会費不要で乗馬クラブ会員に！ 交通アクセスも最高。あなたと馬との特別な時間が生まれます。<br /></p>
+		<p>（磐田若葉乗馬クラブ）</p>
+		
+		<p class="tRight"><a href="http://jobanavi.jp/site_reservations/showPlanDetail/902750
+" target="_blank"><img src="/img_top/bt_news_details.gif" alt="詳細を見る" width="74" height="11"></a></p>
+		</td></tr>
+		</table>
+				<table>
+		<tr>
+		<td>
+		<a href="http://jobanavi.jp/site_reservations/showPlanDetail/  898834" target="_blank">
+		<img src="/site_reservations/getImageClubMember/82/plan_img/plan_367.jpg?1353589908" alt="気軽に本格ウエスタン乗馬を体験" width="120" height="120" ></a></td>
+		
+		<td><p class="fs10">2012/11/26<span>　じょばなび新登場</span></p>
+		<h3><a href="http://jobanavi.jp/site_reservations/showPlanDetail/898834" target="_blank">
+		気軽に本格ウエスタン乗馬を体験</a></h3>
+		<p>【埼玉県鳩山町】馬も人も幸せな時間を共有。<WBR>馬と築く信頼関係の素晴らしさを感じてみませんか？<br /></p>
+		<p>（BIG・HEART WESTERN HORSE CLUB）</p>
+		
+		<p class="tRight"><a href="http://jobanavi.jp/site_reservations/showPlanDetail/898834
+" target="_blank"><img src="/img_top/bt_news_details.gif" alt="詳細を見る" width="74" height="11"></a></p>
+		</td></tr>
+		</table>
+				<table>
+		<tr>
+		<td>
+		<a href="http://jobanavi.jp/site_reservations/showPlanDetail/  894770" target="_blank">
+		<img src="/site_reservations/getImageClubMember/81/plan_img/plan_364.jpg?1353590522" alt="全身で馬のパワーを感じる！" width="120" height="120" ></a></td>
+		
+		<td><p class="fs10">2012/11/26<span>　じょばなび新登場</span></p>
+		<h3><a href="http://jobanavi.jp/site_reservations/showPlanDetail/894770" target="_blank">
+		全身で馬のパワーを感じる！</a></h3>
+		<p>【埼玉県鳩山町】<WBR>初めて乗馬される方から競技会を目指す方までレベルに合わせて幅<WBR>広く丁寧に対応♪<br /></p>
+		<p>（STABLE HORSE POWER）</p>
+		
+		<p class="tRight"><a href="http://jobanavi.jp/site_reservations/showPlanDetail/894770" target="_blank"><img src="/img_top/bt_news_details.gif" alt="詳細を見る" width="74" height="11"></a></p>
+		</td></tr>
+		</table>
+				</div>
+		</div>
+
+
+
+        <!-- /#news -->
+        <div id="infomation" class="mt20">
+          <h2 class="mb15"><img src="/img_top/ti_info.gif" alt="お知らせ" width="380" height="32" /></h2>
+          <div class="area">
+
+          <div class="box">
+              <div class="clearfix mb10">
+                <p class="date fs11">2014-03-01</p>
+                <h3 class="fs12"><span class="bold">乗馬用品オンラインショップ一時休止のお知らせ </span></h3>
+              </div>
+              <p class="fs11 mb10">いつもじょばなびをご利用いただき誠にありがとうございます。<br />
+              サイトリニューアルによるシステム改修を実施するため、誠に勝手ながら乗馬用品オンラインショップを一時休止させていただきます。<br />
+               <br />
+              休止期間：2014年3月1日（土）0時～未定<br />
+               <br />
+              乗馬予約や日記機能につきましては、今まで通りご利用いただけます。<br />
+              ご迷惑をおかけいたしますが、ご了承頂きます様お願い致します。</p>
+            </div>
+          
+          <div class="box">
+              <div class="clearfix mb10">
+                <p class="date fs11">2013-04-13</p>
+                <h3 class="fs12"><span class="bold">じょばなび事務局移転のお知らせ</span></h3>
+              </div>
+              <p class="fs11 mb10">じょばなび運営会社「株式会社トレッキングワールド」の移転に伴い、じょばなび事務局も4月10日(水)より移転いたしました。
+              今後は東京・千葉で分担して業務を行う予定です。<br />
+              移転先は<a href="http://jobanavi.jp/etc/company.html">こちら</a>をご覧ください。<br />
+              メールアドレス（info@jobanavi.jp）は従来と変わらずご使用いただけます。<br />
+              今後ともよろしくお願いいたします。</p>
+            </div>
+          
+          <div class="box">
+              <div class="clearfix mb10">
+                <p class="date fs11">2013-02-19</p>
+                <h3 class="fs12"><span class="bold">じょばなびサイトメンテナンスのお知らせ</span></h3>
+              </div>
+              <p class="fs11 mb10">2月21日(木)、サーバ移転に伴うメンテナンスを行います。<br />
+              実施の日程は下記の通りとなります。</p>
+              <p class="fs11 mb10">■メンテナンス実施日時■<br />
+              　2月21日(木) 午後13:00～18:00</p>
+              <p class="fs11 mb10">■メンテナンスによる影響■<br />
+              　マイページを含む「じょばなび」サイトの閲覧・使用ができなくなります。</p>
+              <p class="fs11 mb10">ご迷惑をおかけいたしますが、ご理解とご協力のほど、よろしくお願い致します。</p>
+            </div>
+          
+          <div class="box">
+              <div class="clearfix mb10">
+                <p class="date fs11">2012-10-25</p>
+                <h3 class="fs12"><span class="bold">「オリエンタルソフィー」にじょばなび会員優待ページ登場のお知らせ</span></h3>
+              </div>
+              <p class="fs11 mb10">提携馬具ショップ<a href="http://japan-satochi.com/" target="_blank">「オリエンタルソフィー」</a>に、じょばなび会員優待ページが登場しました！
+ご購入でじょばなびポイントプレゼント等、お得な特典もありますので、この機会に是非ご利用ください！</p><br />
+            <p><a href="http://japan-satochi.com/?mode=srh&cid=&keyword=%A4%B8%A4%E7%A4%D0%A4%CA%A4%D3"  target="_blank">じょばなび会員優待ページへGO！</a><p><br />
+              <p class="fs11 mb10">詳しくは<a href="http://jobanavi.jp/etc/about.html#ORIENTAL">「オリエンタルソフィー」じょばなび会員特典について</a>をご覧ください。</p>
+            </div>
+            
+                <div class="box">
+              <div class="clearfix mb10">
+                <p class="date fs11">2012-09-05</p>
+                <h3 class="fs12"><span class="bold">じょばなびショップ決済サービス計画停止のお知らせ</span></h3>
+              </div>
+              <p class="fs11 mb10">10月22日(月)午前4:00～7:00の時間帯で、決済システムのメンテナンスを行います。<br />
+              伴いまして、この時間帯はじょばなびショップの決済サービスも一時的に使用できなくなります。<br />
+              ご迷惑をおかけいたしますが、ご協力をお願い致します。</p>
+            </div>
+            
+          	<div class="box">
+              <div class="clearfix mb10">
+                <p class="date fs11">2012-03-08</p>
+                <h3 class="fs12"><span class="bold">大人気イラストレーター おがわじゅり先生が、「じょばなび」にイラストを描き下ろしてくださいました。</span></h3>
+              </div>
+              <p class="fs11 mb10">馬の名前もおがわ先生からいただきました。「トレッキー」です。<br />
+              「じょばなび」の旗をくわえたカワイイ栗毛のお馬さんで、早速サイトに使用しております。<br/>
+              今後は「じょばなび」のイメージキャラクターとして活躍していきますので、皆様、どうぞ「トレッキー」をよろしくお願いします！</p>
+							<p class="fs11 mb10">おがわ先生、ありがとうございました。</p>
+            </div>
+          	
+<!--          	<div class="box">
+              <div class="clearfix mb10">
+                <p class="date fs11">2012-01-30</p>
+                <h3 class="fs12"><span class="bold">個人情報保護のためにできるだけ新しいPC環境をご利用ください</span></h3>
+              </div>
+              <p class="fs11 mb10">じょばなびでは当サイトでのプラン予約やお買い物の際、お客様の個人情報暗号化のためにSSLという技術を用いています。暗号化の不正解読技術の高度化により、古いPC環境やブラウザでは暗号化の安全性低下の恐れがあります。
+個人情報保護のためには、下記条件に該当するブラウザ環境を推奨いたします。</p>
+<p class="fs11 mb10">・Internet Explorer（Windows版）5.01以降 ・Firefox 1.0.0以降
+ ・Google Chrome 1.0以降 ・Safari 2.0以降 ・Opera 9.5以降</p>
+<p class="fs11 mb10">※当条件より古いPC環境の方は、できるだけ新しい環境をご利用することをお薦めいたします。</p>
+            </div>
+            -->
+            
+            <div class="box">
+              <div class="clearfix mb10">
+                <p class="date fs11">2011-08-23</p>
+                <h3 class="fs12"><span class="bold">ポイント5倍！サマーセールのお知らせ</span></h3>
+              </div>
+              <p class="fs11 mb10"><a href="/etc/campaign.html">このたび馬具オンラインショップ「オリエンタルソフィー」さんと提携し「オリエンタルソフィー」商品を購入して連絡いただくと、じょばなびポイントを取得できます。</a></p>
+            </div>
+            
+            <div class="box">
+              <div class="clearfix mb10">
+                <p class="date fs11">2011-05-25</p>
+                <h3 class="fs12"><span class="bold">ロケーションサービス申込フォーム不具合のおしらせ</span></h3>
+              </div>
+              <p class="fs11 mb10">本日20:30～21:00頃サーバ障害のため、<a href="/location_services/locationServiceRegist">ロケーションサービス</a>が正常に機能しない症状が発生しておりました。 </p>
+              <p class="fs11 mb10">同時間帯にお問合せをされた方は、恐れ入りますがあらためて<a href="/location_services/locationServiceRegist">お問合せ</a>をお願いたします。</p>              
+            </div>
+            
+            <div class="box">
+              <div class="clearfix mb10">
+                <p class="date fs11">2011-04-19</p>
+                <h3 class="fs12"><span class="bold">乗馬に関する相談事を「じょばなび」で受付開始</span></h3>
+              </div>
+              <p class="fs11 mb10">【個人の方】
+                乗馬クラブ選びに迷っている／馬の仕事をさがしている／乗馬の技術UPに悩んでいる／インストラクターにいまさら聞けない悩みがある／馬を購入したいが、どうしていいかわからない／自分の馬を持っているが、馬に合った乗馬クラブを探したい／よく利用するクラブがあるので、じょばなびに掲載してほしい／じょばなびに、こんな機能があったらうれしい</p>
+              <p class="fs11 mb10">【乗馬クラブの方】
+                乗馬プランをじょばなびに掲載したい／馬を買いたい／馬を売りたい／求人募集している</p>
+              <p class="fs11 mb10">【法人の方】
+                社員教育や福利厚生で乗馬を利用したい／学校授業に乗馬を取り入れたい／社内イベントで乗馬を利用したい／撮影に馬を利用したいなどなど・・・</p>
+              <p class="fs11">じょばなびでは随時、皆様のお悩みを<a href="mailto:info@jobanavi.jp?subject=[joba_qa]">info@jobanavi.jp</a>で受け付けております。お気軽にご相談ください。</p>
+            </div>
+            
+            <div class="box">
+              <div class="clearfix mb10">
+                <p class="date fs11">2011-04-05</p>
+                <h3 class="fs12"><span class="bold"><a href="/location_services/locationServiceRegist">ロケーションサービス</a>を開始</span></h3>
+              </div>
+              <p class="fs11">映像製作者の方を対象に、馬を専門としたロケ地に関する情報提供、施設使用依頼の橋渡し、撮影支援する窓口を開設しました。<a href="/location_services/locationServiceRegist/#location_form">専用問合せフォーム</a>からお問合せください。</p>
+            </div>
+            
+            <div class="box">
+              <div class="clearfix mb10">
+                <p class="date fs11">2011-03-13</p>
+                <h3 class="fs12"><span class="bold">東北地方太平洋沖地震による影響について</span></h3>
+              </div>
+              <p class="fs11">2011年3月11日に発生した、東北地方太平洋沖地震におきまして、被災されました皆様にお見舞い申し上げるとともに、お亡くなりになられた多くの方々のご冥福を心よりお祈りいたします。また、被災地の一日も早い復興をお祈り申し上げます。<br />
+                「じょばなび」の役割は情報の提供と、乗馬を通じて皆様を楽しく元気づけること・・・それが私たちにできる支援だと思っております。利用者皆様方の情報交換、コミュニケーションの場、安らぎの場として少しでもお力になりたくて、サービスの継続をさせて頂いております。</p>
+            </div>
+          </div>
+        </div>
+        <!-- /#infomation -->
+        <div id="newdiary" class="mt20">
+          <h2><img src="/img_top/ti_newdiary.gif" alt="最新の公開日記" width="380" height="40" /></h2>
+          <div class="box">
+							<p class="date fs11">2015-07-19</p>
+		<h3 class="fs12 normal"><a href="/site_member_diaries/redPubilcDiary/1707/1/904">
+		初めての外乗<span class="fs11">(ベリー さん)
+		</span></a></h3>
+
+		<p class="date fs11">2015-07-09</p>
+		<h3 class="fs12 normal"><a href="/site_member_diaries/redPubilcDiary/1707/1/900">
+		熱中症注意報<span class="fs11">(ベリー さん)
+		</span></a></h3>
+
+		<p class="date fs11">2015-07-05</p>
+		<h3 class="fs12 normal"><a href="/site_member_diaries/redPubilcDiary/1438/1/899">
+		【競技会】 初めての遠征試合＠御殿場<span class="fs11">(mana-mode さん)
+		</span></a></h3>
+
+		<p class="date fs11">2015-06-24</p>
+		<h3 class="fs12 normal"><a href="/site_member_diaries/redPubilcDiary/1707/1/898">
+		ストレス解消<span class="fs11">(ベリー さん)
+		</span></a></h3>
+
+		<p class="date fs11">2015-06-14</p>
+		<h3 class="fs12 normal"><a href="/site_member_diaries/redPubilcDiary/1707/1/896">
+		キュロットを買った<span class="fs11">(ベリー さん)
+		</span></a></h3>
+
+		<p class="date fs11">2015-06-06</p>
+		<h3 class="fs12 normal"><a href="/site_member_diaries/redPubilcDiary/1707/1/893">
+		初めてお馬さんを洗った<span class="fs11">(ベリー さん)
+		</span></a></h3>
+
+		<p class="date fs11">2015-05-24</p>
+		<h3 class="fs12 normal"><a href="/site_member_diaries/redPubilcDiary/1707/2/886">
+		2週間ぶり<span class="fs11">(ベリー さん)
+		</span></a></h3>
+
+		<p class="date fs11">2015-05-10</p>
+		<h3 class="fs12 normal"><a href="/site_member_diaries/redPubilcDiary/1707/2/875">
+		半年ぶりの乗馬<span class="fs11">(ベリー さん)
+		</span></a></h3>
+
+		<p class="date fs11">2015-03-22</p>
+		<h3 class="fs12 normal"><a href="/site_member_diaries/redPubilcDiary/1609/1/853">
+		３か月ぶりに乗馬(*^^*)<span class="fs11">(リラックマ さん)
+		</span></a></h3>
+
+		<p class="date fs11">2015-03-01</p>
+		<h3 class="fs12 normal"><a href="/site_member_diaries/redPubilcDiary/1438/1/849">
+		【認定試験】 馬場二級 合格<span class="fs11">(mana-mode さん)
+		</span></a></h3>
+
+		<p class="date fs11">2015-02-20</p>
+		<h3 class="fs12 normal"><a href="/site_member_diaries/redPubilcDiary/1438/1/848">
+		【競技会】那須トレ  フレンドシップホースショー<span class="fs11">(mana-mode さん)
+		</span></a></h3>
+
+		<p class="date fs11">2015-02-20</p>
+		<h3 class="fs12 normal"><a href="/site_member_diaries/redPubilcDiary/1438/1/847">
+		【186-194鞍目】那須トレ  大会前強化練習<span class="fs11">(mana-mode さん)
+		</span></a></h3>
+
+		<p class="date fs11">2015-02-07</p>
+		<h3 class="fs12 normal"><a href="/site_member_diaries/redPubilcDiary/1438/1/846">
+		【認定試験】八王子  馬場2級 認定試験<span class="fs11">(mana-mode さん)
+		</span></a></h3>
+
+		<p class="date fs11">2015-01-28</p>
+		<h3 class="fs12 normal"><a href="/site_member_diaries/redPubilcDiary/1723/1/816">
+		経路練習<span class="fs11">(ほりさん さん)
+		</span></a></h3>
+
+		<p class="date fs11">2015-01-18</p>
+		<h3 class="fs12 normal"><a href="/site_member_diaries/redPubilcDiary/1707/2/800">
+		2か月半ぶり<span class="fs11">(ベリー さん)
+		</span></a></h3>
+
+		<p class="date fs11">2015-01-14</p>
+		<h3 class="fs12 normal"><a href="/site_member_diaries/redPubilcDiary/1709/1/806">
+		人生２度目。<span class="fs11">(maguro3 さん)
+		</span></a></h3>
+
+		<p class="date fs11">2015-01-14</p>
+		<h3 class="fs12 normal"><a href="/site_member_diaries/redPubilcDiary/1438/2/804">
+		【168-169鞍目】八王子  馬場二級に向けて<span class="fs11">(mana-mode さん)
+		</span></a></h3>
+
+		<p class="date fs11">2015-01-10</p>
+		<h3 class="fs12 normal"><a href="/site_member_diaries/redPubilcDiary/1707/2/793">
+		ドクターストップが解けた<span class="fs11">(ベリー さん)
+		</span></a></h3>
+
+		<p class="date fs11">2014-12-27</p>
+		<h3 class="fs12 normal"><a href="/site_member_diaries/redPubilcDiary/1650/1/777">
+		約1カ月ぶりに<span class="fs11">(にわとり さん)
+		</span></a></h3>
+
+		<p class="date fs11">2014-12-21</p>
+		<h3 class="fs12 normal"><a href="/site_member_diaries/redPubilcDiary/1438/2/774">
+		障害飛越  試合デビュー☆★ ＆ 障害3級合格♪<span class="fs11">(mana-mode さん)
+		</span></a></h3>
+
+		<p class="date fs11">2014-12-15</p>
+		<h3 class="fs12 normal"><a href="/site_member_diaries/redPubilcDiary/1438/2/803">
+		【149-167鞍目】那須トレ 試合直前 強化合宿<span class="fs11">(mana-mode さん)
+		</span></a></h3>
+
+		<p class="date fs11">2014-12-13</p>
+		<h3 class="fs12 normal"><a href="/site_member_diaries/redPubilcDiary/1152/1/773">
+		2試合目<span class="fs11">(こおり さん)
+		</span></a></h3>
+
+		<p class="date fs11">2014-12-03</p>
+		<h3 class="fs12 normal"><a href="/site_member_diaries/redPubilcDiary/1438/2/770">
+		【145-146鞍目】八王子  1日4人落馬ヽ(´o｀；（一人は私♪）<span class="fs11">(mana-mode さん)
+		</span></a></h3>
+
+		<p class="date fs11">2014-11-30</p>
+		<h3 class="fs12 normal"><a href="/site_member_diaries/redPubilcDiary/1438/2/767">
+		【143-144鞍目】那須トレ ビジター    裸馬でもジャンプ！！<span class="fs11">(mana-mode さん)
+		</span></a></h3>
+
+		<p class="date fs11">2014-11-21</p>
+		<h3 class="fs12 normal"><a href="/site_member_diaries/redPubilcDiary/1438/3/766">
+		【141-142鞍目】つくばギャラクシー ビジター<span class="fs11">(mana-mode さん)
+		</span></a></h3>
+
+		<p class="date fs11">2014-11-17</p>
+		<h3 class="fs12 normal"><a href="/site_member_diaries/redPubilcDiary/1438/3/760">
+		【137-138鞍目】八王子   初の障害練習<span class="fs11">(mana-mode さん)
+		</span></a></h3>
+
+		<p class="date fs11">2014-11-16</p>
+		<h3 class="fs12 normal"><a href="/site_member_diaries/redPubilcDiary/1609/1/756">
+		もう少し乗りたかったなぁ…<span class="fs11">(リラックマ さん)
+		</span></a></h3>
+
+		<p class="date fs11">2014-11-15</p>
+		<h3 class="fs12 normal"><a href="/site_member_diaries/redPubilcDiary/1152/1/758">
+		初めての試合<span class="fs11">(こおり さん)
+		</span></a></h3>
+
+		<p class="date fs11">2014-11-14</p>
+		<h3 class="fs12 normal"><a href="/site_member_diaries/redPubilcDiary/1438/3/759">
+		【135-136鞍目】八王子     愛馬の死………<span class="fs11">(mana-mode さん)
+		</span></a></h3>
+
+		<p class="date fs11">2014-11-10</p>
+		<h3 class="fs12 normal"><a href="/site_member_diaries/redPubilcDiary/1438/3/752">
+		馬場3級合格☆<span class="fs11">(mana-mode さん)
+		</span></a></h3>
+
+          </div>
+        </div>
+        <!-- /#newdiary --> 
+      </div>
+      <!-- /#columnL -->
+      <div id="columnR" class="fR">
+        <div id="bnrArea">
+          <p class="mb10"><a href="http://www.aik.ac.jp/horse/" target="_blank"><img src="/img_top/bnr/bnr_chiba.jpg" alt="ホースプロコース誕生 ちば愛犬動物フラワー学園" width="240" height="81" /></a></p>
+          <p><a href="http://japan-satochi.com/" target="_blank"><img src="/img_top/bnr/bnr_oriental.jpg" alt="オリエンタルソフィー" width="240" height="51" /></a></p>
+          <center><p class="fs10 mb10"><a href="/etc/about.html#ORIENTAL"><!--another link→<a href="/etc/about.html#ORIENTAL" target="_blank">-->オリエンタルソフィーご利用で２つの特典！</a></p></center>
+          <p><a href="http://www.green-way.jp/" target="_blank"><img src="/img_top/bnr/bnr_GREENWAY.jpg" alt="GREENWAY" width="240" height="51" /></a></p>
+          <p class="fs10 mb10"><a href="http://www.green-way.jp/" target="_blank">馬グッズとホースケア用品のオンラインショップGREEN WAY -グリーンウェイ-</a></p>
+          <p class="mb10"><a href="http://marius-net.com" target="_blank"><img src="/img_top/bnr/bt_marius.gif" alt="乗馬用品 マリウスコレクション" width="240" height="49" /></a></p>
+          <p class="mb10"><a href="http://www.jobalife.jp/" target="_blank"><img src="/img_top/bnr/bnr_jobalife.gif" alt="乗馬ライフ" width="240" height="64" /></a></p>
+          <p class="mb10"><a href="mailto:info@jobanavi.jp"><img src="/img_top/bnr/ad_club.gif" alt="参加クラブ募集中！" width="240" height="85" /></a></p>
+          <p class="mb10"><a href="mailto:info@jobanavi.jp"><img src="/img_top/bnr/bt_ad.gif" alt="じょばなびに広告を掲載しませんか？" width="240" height="85" /></a></p>
+        </div>
+		<!-- saved from url=(0022)http://internet.e-mail -->
+<div id="recommend" class="mt20">
+	<h2 class="mb10"><img src="/img_top/ti_recommend.gif" alt="[じょばなび厳選]目的別おすすめ施設" width="240" height="58" /></h2>
+
+
+	<div class="box">
+		<h3>初めての方にオススメ乗馬体験！</h3>
+		<div class="clearfix"> <a href="http://jobanavi.jp/site_reservations/showPlanDetail/718343"><img src="/site_reservations/getImageClubMember/17/plan_img/plan_62.jpeg?1318488989" alt="ホースパークギャラクシー(茨城)" width="90" height="58" class="fL" /></a>
+			<div class="fR box_inner">
+				<h4><a href="http://jobanavi.jp/site_reservations/showPlanDetail/718343">ホースパークギャラクシー(茨城)</a></h4>
+				<p class="fs10">森に囲まれた広々とした空間での乗馬は最高！都心からのアクセスも便利です。</p>
+				<p class="tRight mt10"><a href="http://jobanavi.jp/site_reservations/showPlanDetail/718343"><img src="/img_top/bt_recommend_details.gif" alt="詳細を見る" width="74" height="11" /></a></p>
+			</div>
+		</div>
+
+
+		<div class="clearfix"> <a href="http://jobanavi.jp/site_reservations/showPlanDetail/757187"><img src="/site_reservations/getImageClubMember/35/plan_img/plan_127.jpg?1318489076" alt="アスール乗馬クラブ(神奈川)" width="90" height="58" class="fL" /></a>
+			<div class="fR box_inner">
+				<h4><a href="http://jobanavi.jp/site_reservations/showPlanDetail/757187">アスール乗馬クラブ(神奈川)</a></h4>
+				<p class="fs10">丁寧なレッスンが好評！女性の方は憧れの乗馬正装姿での記念写真プレゼント！</p>
+				<p class="tRight mt10"><a href="http://jobanavi.jp/site_reservations/showPlanDetail/757187"><img src="/img_top/bt_recommend_details.gif" alt="詳細を見る" width="74" height="11" /></a></p>
+			</div>
+		</div>
+
+
+		<div class="clearfix"> <a href="http://jobanavi.jp/site_reservations/showPlanDetail/812921"><img src="/site_reservations/getImageClubMember/68/plan_img/plan_262.jpg?1335005108" alt="四街道グリーンヒル乗馬クラブ(千葉)" width="90" height="58" class="fL" /></a>
+			<div class="fR box_inner">
+				<h4><a href="http://jobanavi.jp/site_reservations/showPlanDetail/812921">四街道グリーンヒル乗馬クラブ(千葉)</a></h4>
+				<p class="fs10">都内からの無料送迎が便利！２日間乗馬体験コースがなんと83％OFF！</p>
+				<p class="tRight mt10"><a href="http://jobanavi.jp/site_reservations/showPlanDetail/812921"><img src="/img_top/bt_recommend_details.gif" alt="詳細を見る" width="74" height="11" /></a></p>
+			</div>
+		</div>
+	</div>
+	<!-- /.box -->
+
+
+	<div class="box">
+		<h3>初めての方でも安心の外乗！</h3>
+		<div class="clearfix"> <a href="http://jobanavi.jp/site_reservations/showPlanDetail/712310"><img src="/site_reservations/getImageClubMember/16/plan_img/plan_142.jpg?1335008097" alt="ノースランドライディングクラブ(山梨)" width="90" height="58" class="fL" /></a>
+			<div class="fR box_inner">
+				<h4><a href="http://jobanavi.jp/site_reservations/showPlanDetail/712310">ノースランドライディングクラブ(山梨)</a></h4>
+				<p class="fs10">乗馬レッスンとランチもセットになった、お得なホーストレッキング！</p>
+				<p class="tRight mt10"><a href="http://jobanavi.jp/site_reservations/showPlanDetail/712310"><img src="/img_top/bt_recommend_details.gif" alt="詳細を見る" width="74" height="11" /></a></p>
+			</div>
+		</div>
+
+
+		<div class="clearfix"> <a href="http://jobanavi.jp/site_reservations/showPlanDetail/800656"><img src="/site_reservations/getImageClubMember/53/plan_img/plan_187.jpg?1335180292" alt="カナディアンキャンプ北海道 乗馬クラブリーフ(苫小牧)" width="90" height="58" class="fL" /></a>
+			<div class="fR box_inner">
+				<h4><a href="http://jobanavi.jp/site_reservations/showPlanDetail/800656">カナディアンキャンプ北海道 乗馬クラブリーフ(苫小牧)</a></h4>
+				<p class="fs10">新千歳空港から車で約20分！せっかく北海道に行くなら大自然を満喫！</p>
+				<p class="tRight mt10"><a href="http://jobanavi.jp/site_reservations/showPlanDetail/800656"><img src="/img_top/bt_recommend_details.gif" alt="詳細を見る" width="74" height="11" /></a></p>
+			</div>
+		</div>
+
+
+<!--
+		<div class="clearfix"> <a href="http://jobanavi.jp/site_reservations/showPlanDetail/248309"><img src="/site_reservations/getImageClubMember/18/plan_img/plan_65.jpg?1335010955" alt="大和ホースパーク(茨城)" width="90" height="58" class="fL" /></a>
+			<div class="fR box_inner">
+				<h4><a href="http:jobanavi.jp/site_reservations/showPlanDetail/248309">大和ホースパーク(茨城)</a></h4>
+				<p class="fs10">トムソーヤの冒険をイメージした里山を探検する人気コースがオススメ♪</p>
+				<p class="tRight mt10"><a href="http://jobanavi.jp/site_reservations/showPlanDetail/248309"><img src="/img_top/bt_recommend_details.gif" alt="詳細を見る" width="74" height="11" /></a></p>
+-->
+
+
+		<div class="clearfix"> <a href="http://jobanavi.jp/site_reservations/showPlanDetail/763761"><img src="/site_reservations/getImageClubMember/40/plan_img/plan_140.jpg?1336734458" alt="MIKIホーストレック(兵庫)" width="90" height="58" class="fL" /></a>
+			<div class="fR box_inner">
+				<h4><a href="http://jobanavi.jp/site_reservations/showPlanDetail/763761">MIKIホーストレック(兵庫)</a></h4>
+				<p class="fs10">四季が織り成す自然の空気を心ゆくまで馬と一緒に満喫ください。</p>
+				<p class="tRight mt10"><a href="http://jobanavi.jp/site_reservations/showPlanDetail/763761"><img src="/img_top/bt_recommend_details.gif" alt="詳細を見る" width="74" height="11" /></a></p>
+			</div>
+		</div>
+	</div>
+	<!-- /.box -->
+
+
+	<div class="box btm">
+		<h3>上級者必見の外乗！</h3>
+		<div class="clearfix"> <a href="http://jobanavi.jp/site_reservations/showPlanDetail/750220"><img src="/site_reservations/getImageClubMember/33/plan_img/plan_116.jpg?1335011192" alt="サンシャインステーブルス(千葉)" width="90" height="58" class="fL" /></a>
+			<div class="fR box_inner">
+				<h4><a href="http://jobanavi.jp/site_reservations/showPlanDetail/750220">サンシャインステーブルス(千葉)</a></h4>
+				<p class="fs10">本格トレイル志向の方必見！長～い九十九里のビーチを思う存分駆け抜けてみませんか？</p>
+				<p class="tRight mt10"><a href="http://jobanavi.jp/site_reservations/showPlanDetail/750220"><img src="/img_top/bt_recommend_details.gif" alt="詳細を見る" width="74" height="11" /></a></p>
+			</div>
+		</div>
+
+
+		<div class="clearfix"> <a href="http://jobanavi.jp/site_reservations/showPlanDetail/693700"><img src="/site_reservations/getImageClubMember/12/plan_img/plan_36.jpg?1318490746" alt="パディーフィールド(山梨)" width="90" height="58" class="fL" /></a>
+			<div class="fR box_inner">
+				<h4><a href="http://jobanavi.jp/site_reservations/showPlanDetail/693700">パディーフィールド(山梨)</a></h4>
+				<p class="fs10">富士五湖を見下ろす高台や樹海林道など富士山周辺を存分に楽しめるコースが人気！</p>
+				<p class="tRight mt10"><a href="http://jobanavi.jp/site_reservations/showPlanDetail/693700"><img src="/img_top/bt_recommend_details.gif" alt="詳細を見る" width="74" height="11" /></a></p>
+			</div>
+		</div>
+
+
+		<div class="clearfix"> <a href="http://jobanavi.jp/site_reservations/showPlanDetail/822909"><img src="/site_reservations/getImageClubMember/12/plan_img/plan_36.jpg?1318490746" alt="網走原生牧場観光センター(網走)" width="90" height="58" class="fL" /></a>
+			<div class="fR box_inner">
+				<h4><a href="http://jobanavi.jp/site_reservations/showPlanDetail/822909">網走原生牧場観光センター(網走)</a></h4>
+				<p class="fs10">海、川、湖、森林が１度に全て楽しめるホーストレッキングは日本でここだけ！！</p>
+				<p class="tRight mt10"><a href="http://jobanavi.jp/site_reservations/showPlanDetail/822909"><img src="/img_top/bt_recommend_details.gif" alt="詳細を見る" width="74" height="11" /></a></p>
+			</div>
+		</div>
+	</div>
+	<!-- /.box -->
+
+
+	<div class="box btm">
+		<h3>スキルアップにオススメ！</h3>
+		<div class="clearfix"> <a href="http://jobanavi.jp/site_reservations/showPlanDetail/761815"><img src="/site_reservations/getImageClubMember/38/plan_img/plan_132.jpg?1318491014" alt="守谷乗馬クラブ(茨城)" width="90" height="58" class="fL" /></a>
+			<div class="fR box_inner">
+				<h4><a href="http://jobanavi.jp/site_reservations/showPlanDetail/761815">守谷乗馬クラブ(茨城)</a></h4>
+				<p class="fs10">障害馬術も馬場馬術もお任せ！マンツーマンレッスンでスキルアップに最適です。</p>
+				<p class="tRight mt10"><a href="http://jobanavi.jp/site_reservations/showPlanDetail/761815"><img src="/img_top/bt_recommend_details.gif" alt="詳細を見る" width="74" height="11" /></a></p>
+			</div>
+		</div>
+
+
+		<div class="clearfix"> <a href="http://jobanavi.jp/site_reservations/showPlanDetail/689220"><img src="
+/site_reservations/getImageClubMember/10/plan_img/plan_126.gif?1318491068" alt="富里ホースパーク(千葉)" width="90" height="58" class="fL" /></a>
+			<div class="fR box_inner">
+				<h4><a href="http://jobanavi.jp/site_reservations/showPlanDetail/689220">富里ホースパーク(千葉)</a></h4>
+				<p class="fs10">欧州馬術の本格障害レッスンと併設レストランのランチがセットになったコースは必見！</p>
+				<p class="tRight mt10"><a href="http://jobanavi.jp/site_reservations/showPlanDetail/689220"><img src="/img_top/bt_recommend_details.gif" alt="詳細を見る" width="74" height="11" /></a></p>
+			</div>
+		</div>
+
+
+		<div class="clearfix"> <a href="http://jobanavi.jp/site_reservations/showPlanDetail/747366"><img src="/site_reservations/getImageClubMember/31/plan_img/plan_111.jpg?1335013369" alt="乗馬クラブアイル(埼玉)" width="90" height="58" class="fL" /></a>
+			<div class="fR box_inner">
+				<h4><a href="http://jobanavi.jp/site_reservations/showPlanDetail/747366">乗馬クラブアイル(埼玉)</a></h4>
+				<p class="fs10">今さら聞けない色んな疑問、質問、お悩みにお答えするクリニックが大評判！</p>
+				<p class="tRight mt10"><a href="http://jobanavi.jp/site_reservations/showPlanDetail/747366"><img src="/img_top/bt_recommend_details.gif" alt="詳細を見る" width="74" height="11" /></a></p>
+			</div>
+		</div>
+	</div>
+	<!-- /.box --> 
+
+
+	<div class="box btm">
+		<h3>ライセンス取得にチャレンジ！</h3>
+		<div class="clearfix"> <a href="http://jobanavi.jp/site_reservations/showPlanDetail/784413"><img src="site_reservations/getImageClubMember/74/plan_img/plan_291.jpg?1376567514" alt="ライディングクラブ ウインズ(茨城)" width="90" height="58" class="fL" /></a>
+			<div class="fR box_inner">
+				<h4><a href="http://jobanavi.jp/site_reservations/showPlanDetail/784413">ホースライディングクラブ バランス(千葉)</a></h4>
+                <p class="fs10">乗馬が初めての方でも乗馬ライセンス5級を取得！<BR>都内より無料送迎サービスでとっても便利♪</p>
+				<p class="tRight mt10"><a href="http://jobanavi.jp/site_reservations/showPlanDetail/784413"><img src="/img_top/bt_recommend_details.gif" alt="詳細を見る" width="74" height="11" /></a></p>
+			</div>
+		</div>
+
+
+
+		<div class="clearfix"> <a href="http://jobanavi.jp/site_reservations/showPlanDetail/725284"><img src="/site_reservations/getImageClubMember/21/plan_img/plan_123.jpg?1318491198" alt="千葉ライディングパーク(千葉)" width="90" height="58" class="fL" /></a>
+			<div class="fR box_inner">
+				<h4><a href="http://jobanavi.jp/site_reservations/showPlanDetail/725284">千葉ライディングパーク(千葉)</a></h4>
+				<p class="fs10">乗馬5級ライセンス取得コースと野外乗馬がセットになったお得なプランが67％OFF！</p>
+				<p class="tRight mt10"><a href="http://jobanavi.jp/site_reservations/showPlanDetail/725284"><img src="/img_top/bt_recommend_details.gif" alt="詳細を見る" width="74" height="11" /></a></p>
+			</div>
+		</div>
+
+
+		<div class="clearfix"> <a href="http://jobanavi.jp/site_reservations/showPlanDetail/808654"><img src="/site_reservations/getImageClubMember/55/plan_img/plan_192.jpg?1335013885" alt="エクウスライディングファーム(神奈川)" width="90" height="58" class="fL" /></a>
+			<div class="fR box_inner">
+				<h4><a href="http://jobanavi.jp/site_reservations/showPlanDetail/808654">エクウスライディングファーム(神奈川)</a></h4>
+				<p class="fs10">3日間の短期集中レッスンで、乗馬が初めての方でも手軽に5級ライセンス取得♪</p>
+				<p class="tRight mt10"><a href="http://jobanavi.jp/site_reservations/showPlanDetail/808654"><img src="/img_top/bt_recommend_details.gif" alt="詳細を見る" width="74" height="11" /></a></p>
+			</div>
+		</div>
+	</div>
+	<!-- /.box -->
+
+
+<!--
+	<div class="box btm">
+		<h3>お子様にオススメ！</h3>
+		<div class="clearfix"> <a href="http://jobanavi.jp/site_reservations/showPlanDetail/229942"><img src="/site_reservations/getImageClubMember/14/plan_img/plan_43.jpg?1318491269" alt="ウィルスタッド(埼玉)" width="90" height="58" class="fL" /></a>
+			<div class="fR box_inner">
+				<h4><a href="http://jobanavi.jp/site_reservations/showPlanDetail/229942">ウィルスタッド(埼玉)</a></h4>
+				<p class="fs10">3歳～中学生までを対象に「こども乗馬教室」を開催！身体能力はもちろん、豊かな心を育むことができます。</p>
+				<p class="tRight mt10"><a href="http://jobanavi.jp/site_reservations/showPlanDetail/229942"><img src="/img_top/bt_recommend_details.gif" alt="詳細を見る" width="74" height="11" /></a></p>
+			</div>
+		</div>
+
+
+		<div class="clearfix"> <a href="http://jobanavi.jp/site_reservations/showPlanDetail/266916"><img src="/site_reservations/getImageClubMember/23/plan_img/plan_83.jpg?1318491295" alt="パロミノ・ポニークラブ(静岡)" width="90" height="58" class="fL" /></a>
+			<div class="fR box_inner">
+				<h4><a href="http://jobanavi.jp/site_reservations/showPlanDetail/266916">パロミノ・ポニークラブ(静岡)</a></h4>
+				<p class="fs10">小学生を対象としたポニースクール。馬に乗るだけでなく、馬の手入れの仕方なども勉強することができます。</p>
+				<p class="tRight mt10"><a href="http://jobanavi.jp/site_reservations/showPlanDetail/266916"><img src="/img_top/bt_recommend_details.gif" alt="詳細を見る" width="74" height="11" /></a></p>
+			</div>
+		</div>
+	</div>
+	<!-- /.box -->
+
+<!--
+	<div class="box btm">
+		<h3>新感覚乗馬に挑戦！</h3>
+		<div class="clearfix"> <a href="http://jobanavi.jp/site_reservations/showPlanDetail/275496"><img src="/site_reservations/getImageClubMember/25/plan_img/plan_89.jpg?1318492725" alt="グリーンフィールドE.T.(神奈川)" width="90" height="58" class="fL" /></a>
+			<div class="fR box_inner">
+				<h4><a href="http://jobanavi.jp/site_reservations/showPlanDetail/275496">グリーンフィールドE.T.(神奈川)</a></h4>
+				<p class="fs10">サイドサドル（横鞍）に乗ってみましょう！気分はまるで映画のヒロイン♪</p>
+				<p class="tRight mt10"><a href="http://jobanavi.jp/site_reservations/showPlanDetail/275496"><img src="/img_top/bt_recommend_details.gif" alt="詳細を見る" width="74" height="11" /></a></p>
+			</div>
+		</div>
+
+
+		<div class="clearfix"> <a href="http://jobanavi.jp/site_reservations/showPlanDetail/248320"><img src="/site_reservations/getImageClubMember/18/plan_img/plan_96.jpg?1318492875" alt="大和ホースパーク(茨城)" width="90" height="58" class="fL" /></a>
+			<div class="fR box_inner">
+				<h4><a href="http://jobanavi.jp/site_reservations/showPlanDetail/248320">大和ホースパーク(茨城)</a></h4>
+				<p class="fs10">初めての方でもチャレンジできる1泊2日の流鏑馬講習会です。</p>
+				<p class="tRight mt10"><a href="http://jobanavi.jp/site_reservations/showPlanDetail/248320"><img src="/img_top/bt_recommend_details.gif" alt="詳細を見る" width="74" height="11" /></a></p>
+			</div>
+		</div>
+	</div>
+	<!-- /.box -->
+
+
+ </div>
+        <!-- /#recommend --> 
+      </div>
+      <!-- /#columnR --> 
+    </div>
+    <!-- /#mainArea -->
+    <div id="sideArea" class="fL">
+      <!--<p><img src="/common/item/ti_regist.gif" alt="今なら入会金・年会費無料です！" width="220" height="43" /></p>-->
+<a href="/site_members/registSiteMember"><img src="/img_top/bnr_500point2.gif" alt="[サイトオープン記念]会員登録で500ポイント無料進呈！" width="220" height="98" /></a>
+			<div id="regist">
+				<p><a href="/site_members/registSiteMember"><img src="/common/item/bt_regist.jpg" alt="新規会員登録をする" width="200" height="55" border="0" class="hover" /></a></p>
+				<p class="fs11 mt5">簡単な登録で、予約機能や日記機能がご利用いただけます！</p>
+			</div>
+			<!-- /.regist -->
+			<div id="login" class="mb20">
+				<p><img src="/common/item/ti_login.gif" alt="会員の方はこちら" width="87" height="11" border="0" /></p>
+				<p><a href="/site_members/showLoginPage"><img src="/common/item/bt_login.jpg" alt="ログインする" width="200" height="44" border="0" class="hover" /></a></p>
+			</div>
+			<!-- /.login -->      <div id="beginner" class="mb20">
+				<h2><img src="/common/item/ti_beginner.gif" alt="はじめての方へ" width="220" height="52" /></h2>
+				<div>
+					<p class="caption fs11">「じょばなび」は全国の乗馬施設の検索／予約ができるWebサイトです。<br />
+						全国の様々な乗馬施設・プランの中から、自分にあった乗馬を楽しんでいただけます。<br />
+						乗馬予約、乗馬日記を書くには<a href="/site_members/registSiteMember">新規会員登録</a>が必要です。</p>
+				</div>
+			</div>
+			<!-- /#beginner -->
+			<div id="usage" class="mb20">
+				<h2 class="mb10"><img src="/common/item/ti_usage.gif" alt="このサイトの使い方" width="220" height="24" /></h2>
+				<ul>
+					<li class="fs12"><a href="/etc/about.html" class="moreR">はじめての方へ</a></li>
+					<li class="fs12"><a href="/etc/about.html#flow" class="moreR">予約申込みの流れ</a></li>
+                    <li class="fs12"><a href="/etc/about.html#point" class="moreR">じょばなびポイントについて</a></li>
+					<li class="fs12"><a href="/etc/horse_riding.html" class="moreR">乗馬について</a></li>
+				</ul>
+			</div>
+			<!-- /#usage -->		<a href="/location_services/locationServiceRegist"><img src="/img_top/bnr/bnr_location.jpg" alt="じょばなびロケーションサービス" width="220" height="90" class="mb20 SideBnr" /></a>
+      <script>
+new TWTR.Widget({
+ version: 2,
+ type: 'profile',
+ rpp: 29,
+ interval: 18000,
+ width: 220,
+ height: 450,
+ theme: {
+   shell: {
+     background: '#90d605',
+     color: '#ffffff'
+   },
+   tweets: {
+     background: '#ffffff',
+     color: '#464646',
+     links: '#4bb207'
+   }
+ },
+ features: {
+   scrollbar: true,
+   loop: true,
+   live: true,
+   hashtags: true,
+   timestamp: true,
+   avatars: false,
+   behavior: 'default'
+ }
+}).render().setUser('jobanavi_jp').start();
+</script> 
+    </div>
+    <!-- /#sideArea --> 
+  </div>
+  <!-- /.contents -->
+  <p class="tRight pagetop"><a href="javascript:void(0);" onclick="SmoothScroll('wrapper'); return false;"><img class="hover" src="/common/headfoot/bt_totop.gif" alt="ページの先頭へ" width="84" height="16" /></a></p>
+<div id="footer">
+		<ul class="mb10">
+			<li><a href="/etc/company.html">運営会社</a></li>
+			<li><a href="/etc/discription.html">特定商取引法に基づく表記</a></li>
+			<li><a href="/etc/regulation.html">じょばなび会員規約</a></li>
+			<li><a href="/etc/privacy.html">プライバシーポリシー</a></li>
+			<li><a href="/etc/faq.html">よくあるご質問</a></li>
+			<li><a href="mailto:info@jobanavi.jp">お問い合わせ</a></li>
+		</ul>
+		<p class="fs11">Copyright &copy; 2016 Trekking World All Right Reserved.</p>
+	</div>
+<!-- /#footer --></div>
+<!-- /#wrapper -->
+</body>
+</html>

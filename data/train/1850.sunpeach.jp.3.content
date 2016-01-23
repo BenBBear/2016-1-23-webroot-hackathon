@@ -1,0 +1,917 @@
+<!-- saved from url=(0022)http://internet.e-mail -->
+<!-- saved from url=(0022)http://internet.e-mail -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="ja">
+
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=shift_jis">
+		<title>岡山/ホテル　サンピーチOKAYAMA　《オフィシャルホームページ》</title>
+		<meta name="author" content="サンピーチ岡山">
+		<meta name="description" content="ビジネスやレジャーに便利な岡山のホテルです。岡山駅前という恵まれた環境のホテル、 でもそれだけではありません！皆様により満足して頂けるようスタッフが誠心誠意をもって対応いたします。お客様の笑顔が私たちサン・ピーチの喜び。
+">
+		<meta name="keywords"content="ホテル,JR,岡山,岡山市,岡山駅,宿泊,ビジネスホテル,シティホテル,共済,おかやま">
+		<script language="Javascript" src="https://asp.hotel-story.ne.jp/ver3d/input_control.js">
+  </script>
+		<script language="Javascript"><!--
+			function popJump(selOBJ)
+			{
+			location.href = selOBJ.options[selOBJ.selectedIndex].value;
+			}
+  
+    var hWin = null;
+    var wParam = 'resizable=no,toolbar=no,scrollbars=auto,directories=no,status=no,location=no,menubar=no'
+  
+    // 画面初期化
+    function Initform() {
+
+/*
+		
+      if (document.frmKensaku.hidPULLDOWN.value == '0') {
+        document.frmKensaku.txtARRYMD.focus();
+        document.frmKensaku.txtARRYMD.select();
+      }
+      	
+*/
+    }
+    
+    // サブウインドウを閉じる
+    function CloseSubWindow() {
+    
+      // サブウインドウのインスタンスがあれば
+      if (hWin != null) {
+        hWin.close();
+        hWin = null;
+      }
+      
+    }
+    
+    // カレンダーを開く
+    function OpenCalendar(wpath) {
+    
+      // 一旦サブウインドウを閉じておく
+      CloseSubWindow();
+      
+      hWin = window.open(wpath + 'ASPY0101.asp', 'ASPY0101', wParam + ',left=10,top=260,width=500,height=380');
+      hWin.focus();
+      
+    }
+    
+    // 日付セット
+    function SetArrYmd(warrymd) {
+    
+      var warrArray = new Array;
+      var warrY;
+      var warrM;
+      var warrD;
+      var cnt;
+      
+      // 送られてきた日付をセット
+      if (document.frmKensaku.hidPULLDOWN.value == '0') {
+        document.ffrmKensaku.txtARRYMD.value = warrymd;
+        document.frmKensaku.txtARRYMD.focus();
+        document.frmKensaku.txtARRYMD.select();
+        
+      } else {
+        warrArray = warrymd.split('/');
+        
+        warrY = warrArray[0];
+        warrM = Number(warrArray[1]);
+        warrD = Number(warrArray[2]);
+        
+        for (cnt = 0; cnt < document.frmKensaku.cmbARRY.options.length; cnt++) {
+          if (document.frmKensaku.cmbARRY.options[cnt].value == warrY) {
+            document.frmKensaku.cmbARRY.selectedIndex = cnt;
+            break;
+          }
+        }
+        
+        document.frmKensaku.cmbARRM.selectedIndex = warrM - 1;
+        document.frmKensaku.cmbARRD.selectedIndex = warrD - 1;
+        
+      }
+      
+      // サブウインドウを閉じる
+      CloseSubWindow();
+      
+    }
+    
+    // ルーム＆日付選択
+    function PostASPY0110(wpath, wtype, wdate) {
+    
+      
+      // 日付設定
+      SetArrYmd(wdate);
+      
+      // 検索条件チェック
+      if(PostASPY('', '0110', '')) {
+
+	      // ルーム設定
+	      document.frmKensaku.hidROOMTYPE.value = wtype;
+
+      
+        // ポスト
+//        document.frmKensaku.action = wpath + 'ASPY0110.asp';
+        document.frmKensaku.action = wpath + 'ASPY0111.asp?hidk=&LB01=server1';
+        document.frmKensaku.submit();
+        
+      }
+      
+    }
+    
+    // 空室検索
+    function PostASPY(wpath, waspnumber, sessionid) {
+    
+      var tmpText;
+      var sIndex;
+      var cnt;
+      
+      // テキストボックス
+      if (document.frmKensaku.hidPULLDOWN.value == '0') {
+        // 宿泊日チェック
+        if (CheckYMD(document.frmKensaku.txtARRYMD) == false) {
+          return false;
+        }
+        
+        // 泊数チェック
+        if (document.frmKensaku.txtHAKSU.value == '') {
+          alert('泊数を入力してください');
+          document.frmKensaku.txtHAKSU.focus();
+          document.frmKensaku.txtHAKSU.select();
+          return false;
+        }
+        if (CheckNum(document.frmKensaku.txtHAKSU) == false) {
+          return false;
+        }
+        
+        // 人数チェック
+        if (document.frmKensaku.txtADULT.value == '' || document.frmKensaku.txtADULT.value == '0') {
+          alert('大人人数を入力してください');
+          document.frmKensaku.txtADULT.focus();
+          document.frmKensaku.txtADULT.select();
+          return false;
+        }
+        if (CheckNum(document.frmKensaku.txtADULT) == false) {
+          return false;
+        }
+        
+        if (document.frmKensaku.hidCHILDoption.value != '0') {
+        
+          for (cnt = 0; cnt < Number(document.frmKensaku.hidCHILDoption.value); cnt++) {
+            if (CheckNum(document.frmKensaku.txtCHILD[cnt]) == false) {
+              return false;
+            }
+          }
+          
+        }
+        
+        // 室数チェック
+        if (CheckNum(document.frmKensaku.txtSUMROOM) == false) {
+          return false;
+        }
+        
+        // 1室人数チェック
+        if (document.frmKensaku.hidPERSONselect.value == '1') {
+          if (CheckNum(document.frmKensaku.txtPERSON) == false) {
+            return false;
+          }
+        }
+        
+        // データ格納
+        document.frmKensaku.hidARRYMD.value = document.frmKensaku.txtARRYMD.value;
+        document.frmKensaku.hidHAKSU.value = document.frmKensaku.txtHAKSU.value;
+        document.frmKensaku.hidADULT.value = document.frmKensaku.txtADULT.value;
+        document.frmKensaku.hidSUMROOM.value = document.frmKensaku.txtSUMROOM.value;
+        
+        if (document.frmKensaku.hidPERSONselect.value == '1') {
+          document.frmKensaku.hidPERSON.value = document.frmKensaku.txtPERSON.value;
+        }
+        
+        if (document.frmKensaku.hidCHILDoption.value != '0') {
+        
+          for (cnt = 0; cnt < Number(document.frmKensaku.hidCHILDoption.value); cnt++) {
+            document.frmKensaku.hidCHILD[cnt].value = document.frmKensaku.txtCHILD[cnt].value;
+          }
+          
+        }
+        
+      // コンボボックス
+      } else {
+        // 宿泊日チェック
+        if (CheckComboYMD(document.frmKensaku.cmbARRY, document.frmKensaku.cmbARRM, document.frmKensaku.cmbARRD) == false) {
+          return false;
+        }
+        
+        // データ格納
+        sIndex = document.frmKensaku.cmbARRY.selectedIndex;
+        tmpText = document.frmKensaku.cmbARRY.options[sIndex].value;
+        sIndex = document.frmKensaku.cmbARRM.selectedIndex;
+        tmpText = tmpText + '/' + document.frmKensaku.cmbARRM.options[sIndex].value;
+        sIndex = document.frmKensaku.cmbARRD.selectedIndex;
+        tmpText = tmpText + '/' + document.frmKensaku.cmbARRD.options[sIndex].value;
+        document.frmKensaku.hidARRYMD.value = tmpText
+        sIndex = document.frmKensaku.cmbHAKS.selectedIndex;
+        document.frmKensaku.hidHAKSU.value = document.frmKensaku.cmbHAKS.options[sIndex].value;
+
+        sIndex = document.frmKensaku.cmbADULT.selectedIndex;
+        document.frmKensaku.hidADULT.value = document.frmKensaku.cmbADULT.options[sIndex].value;
+
+        sIndex = document.frmKensaku.cmbSUMROOM.selectedIndex;
+        document.frmKensaku.hidSUMROOM.value = document.frmKensaku.cmbSUMROOM.options[sIndex].value;
+        
+        if (document.frmKensaku.hidPERSONselect.value == '1') {
+          sIndex = document.frmKensaku.cmbPERSON.selectedIndex;
+          document.frmKensaku.hidPERSON.value = document.frmKensaku.cmbPERSON.options[sIndex].value;
+        }
+        
+        if (document.frmKensaku.hidCHILDoption.value != '0') {
+        
+          for (cnt = 0; cnt < Number(document.frmKensaku.hidCHILDoption.value); cnt++) {
+            sIndex = document.frmKensaku.cmbCHILD[cnt].selectedIndex;
+            document.frmKensaku.hidCHILD[cnt].value = document.frmKensaku.cmbCHILD[cnt].options[sIndex].value;
+          }
+          
+        }
+        
+	    // 常にコンボボックス
+	    switch (document.frmKensaku.hidROOMselect.value) {
+	    
+	    case '1':
+	      sIndex = document.frmKensaku.cmbrOOMTYPE.selectedIndex;
+	      document.frmKensaku.hidROOMTYPE.value = document.frmKensaku.cmbrOOMTYPE.options[sIndex].value;
+	      break;
+	      
+	    case '2':
+	      sIndex = document.frmKensaku.cmbSEARCHTYPE.selectedIndex;
+	      document.frmKensaku.hidSEARCHTYPE.value = document.frmKensaku.cmbSEARCHTYPE.options[sIndex].value;
+	      break;
+
+		default:
+			document.frmKensaku.hidROOMTYPE.value = '';
+			document.frmKensaku.hidSEARCHTYPE.value = '';
+			break;
+
+	    }
+
+      }
+      
+      // サブウインドウを閉じる
+      CloseSubWindow();
+      
+      // ポスト
+      document.frmKensaku.action = wpath + 'ASPY' + waspnumber + '.asp?a=a&LB01=server1';
+      document.frmKensaku.method = 'POST';
+      
+      return true;
+      
+    }
+    
+    // 戻る
+    function BackPrevPage() {
+    
+      history.back();
+      
+    }
+
+    // 戻る
+    function GetASP(wpath, waspback) {
+    
+      document.frmBack.action = wpath + waspback + '.asp?a=a&LB01=server1';
+      document.frmBack.method = 'GET';
+      document.frmBack.submit();
+    }
+
+
+	function Open_Window(theUrl, theWidth, theHeight) {
+	  ret = window.open(theUrl, 'newwindow', 'resizable=yes,toolbar=no,scrollbars=no,directories=no,status=no,location=no,menubar=no,left=400,top=300,width=' + theWidth + ',height=' + theHeight);
+	}
+    
+//    function OpenCalendar(hcod1,hcod2,ptyp,ppsn,ppln,pac,wpath) {
+    function OpenCalendar(hcod1,hcod2,ptyp,ppsn,ppln,pac,wpath,waspback,defaultdate,dspmonth) {
+
+    
+      // ポスト
+//      document.frmKensaku.action = wpath + 'aspp0205.asp?hcod1=' + hcod1 + '&hcod2=' + hcod2 + '&ptyp=' + ptyp + '&ppsn=' + ppsn + '&ppln=' + ppln + '&pac=' + pac;
+//      document.frmKensaku.method = 'POST';
+//      document.frmKensaku.target = '_blank';
+//      document.frmKensaku.submit();
+ret = window.open(wpath + 'aspp0205.asp?hcod1=' + hcod1 + '&hcod2=' + hcod2 + '&ptyp=' + ptyp + '&ppsn=' + ppsn + '&ppln=' + ppln + '&pac=' + pac + '&waspback=' + waspback + '&dDate=' + defaultdate + '&dspdate=' + dspmonth, 'newwindow', 'resizable=yes,toolbar=no,scrollbars=no,directories=no,status=no,location=no,menubar=no,left=400,top=300,width=' + 500 + ',height=' + 350);
+    
+    }
+    
+
+	function setAdultvalue(wnunmber){
+
+        //document.frmKensaku.cmbADULT.selectedIndex = wnunmber - 1;
+        document.frmKensaku.cmbADULT.value = wnunmber;
+        document.frmKensaku.hidcalADULT.value = wnunmber;
+
+	}
+
+	function setHeight(){
+
+		var objcalendarright
+		var objcalendarleft
+
+		objcalendarright = document.getElementById("calendarright");
+		objcalendarleft = document.getElementById("calendarleft");
+
+		objcalendarright.style.height = objcalendarleft.clientHeight;
+
+
+//		alert(document.getElementById("calendarright").clientHeight);
+//		alert(document.getElementById("calendarleft").clientHeight);
+	}
+
+	function setAlpha(){
+		//アルファ処理
+		var objcalendarleft
+		var objwaiticon
+
+		objcalendarleft = document.getElementById("calendarleft");
+		objwaiticon = document.getElementById("waiticon");
+
+		objcalendarleft.style.filter ="Alpha(opacity=90);";
+		objcalendarleft.style.filter ="Alpha(opacity=80);";
+		objcalendarleft.style.filter ="Alpha(opacity=70);";
+		objcalendarleft.style.filter ="Alpha(opacity=50);";
+
+		objwaiticon.style.top = "-170px";
+		objwaiticon.style.left = "170px";
+
+		objwaiticon.style.width = "220px";
+		objwaiticon.style.height = "19px";
+
+		objwaiticon.style.display = "inline";
+
+	}
+
+	function setBold(selecttedindex){
+
+/*
+		var objcalroomtype
+		objcalroomtype = document.getElementById("calroomtype");
+//		objcalroomtype.className="cal-empty-ctr"; 
+		objcalroomtype.className="cal-empty"; 
+
+		//色を戻す
+		for(i = 0; i < document.all.item("calroomtype").length; i++){
+			document.all.item("calroomtype",i).className="cal-empty"; 
+		}
+		//色をつける
+		document.all.item("calroomtype",selecttedindex).className="cal-empty-ctr"; 
+*/	
+
+		var objcalroomtype
+		objcalroomtype = document.getElementsByName("calroomtype")
+
+//		alert(objcalroomtype.length);
+
+		//色を戻す
+		for(i = 0; i < objcalroomtype.length; i++){
+//			objcalroomtype(i).className="cal-empty"; 
+			objcalroomtype[i].className="cal-empty"; 
+		}
+		//色をつける
+//		objcalroomtype(selecttedindex).className="cal-empty-ctr"; 
+		objcalroomtype[selecttedindex].className="cal-empty-ctr"; 
+
+	}
+
+
+	function imgChange(imgno,ming){
+
+		var bairitu;
+		var objsub = document.getElementById('img'+imgno);
+		var objmain = document.getElementById('mainimg' + ming);
+		var objalt = document.getElementById('photoalt' + ming);
+
+		objmain.src = objsub.src
+
+		objmain.alt = objsub.alt;
+
+		if ( objalt ) {
+			objalt.innerHTML = objsub.alt;
+		}
+
+	}
+
+
+  //--></script>
+		<link href="css/common.css" rel="stylesheet" type="text/css" media="all">
+		<link href="css/styles.css" rel="stylesheet" type="text/css" media="all">
+		<csscriptdict import>
+			<script type="text/javascript" src="GeneratedItems/CSScriptLib.js"></script>
+		</csscriptdict>
+	<csactiondict>
+<script type="text/javascript"><!--
+var preloadFlag = false;
+function preloadImages() {
+	if (document.images) {
+		pre_navi_ov_02 = newImage('commonness_images/navi_ov_02.jpg');
+		pre_navi_ov_03 = newImage('commonness_images/navi_ov_03.jpg');
+		pre_navi_ov_04 = newImage('commonness_images/navi_ov_04.jpg');
+		pre_navi_ov_05 = newImage('commonness_images/navi_ov_05.jpg');
+		pre_navi_ov_06 = newImage('commonness_images/navi_ov_06.jpg');
+		pre_navi_ov_07 = newImage('commonness_images/navi_ov_07.jpg');
+		pre_navi_ov_08 = newImage('commonness_images/navi_ov_08.jpg');
+		pre_navi_ov_09 = newImage('commonness_images/navi_ov_09.jpg');
+		preloadFlag = true;
+	}
+}
+
+// --></script>
+	</csactiondict>
+	    <style type="text/css">
+<!--
+.style2 {color: #FF0000}
+.style4 {color: #FF0000; font-weight: bold; }
+-->
+        </style>
+	</head>
+
+	<body onload="preloadImages();" bgcolor="#ffffff" leftmargin="0" marginheight="0" marginwidth="0" topmargin="0">
+		<div align="center">
+			<table width="800" border="0" cellspacing="0" cellpadding="0">
+				<tr height="60">
+					<td class="header" align="right" valign="middle" height="60">
+						<table width="790" border="0" cellspacing="5" cellpadding="0">
+							<tr>
+								<td rowspan="2" align="left"><a href="index.html" target="_top"><img src="commonness_images/spacer.gif" alt="サン・ピーチOKAYAMA" height="45" width="350" border="0"></a></td>
+								<td align="right" width="423">
+									<table border="0" cellspacing="0" cellpadding="0">
+										<tr>
+											<td class="headmenu">&nbsp;</td>
+											<td>&nbsp;</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td align="right" width="423">
+									<table border="0" cellspacing="0" cellpadding="0">
+										<tr>
+											<td class="headmenubutton"><a href="mailto:info@sunpeach.jp" target="_blank"><img src="commonness_images/headmenu1.gif" alt="" height="15" width="15" border="0"></a></td>
+											<td class="headmenu"><a href="mailto:info@sunpeach.jp" target="_blank">お問い合わせ</a></td>
+											<td class="headmenubutton"><a href="privacy.html" target="_top"><img src="commonness_images/headmenu2.gif" alt="" height="15" width="15" border="0"></a></td>
+											<td class="headmenu"><a href="privacy.html" target="_top">プライバシーポリシー</a></td>
+											<td class="headmenubutton"><a href="employment.html" target="_top"><img src="commonness_images/headmenu3.gif" alt="" height="15" width="15" border="0"></a></td>
+											<td class="headmenu"><a href="employment.html" target="_top">採用情報</a></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+			<table width="800" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="navi">
+						<table width="800" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<td class="navi">
+									<table width="800" border="0" cellspacing="0" cellpadding="0">
+										<tr>
+											<td><a href="index.html" target="_top"><img id="navi_01" src="commonness_images/navi-access_01.jpg" alt="HOME" name="navi_01" height="30" width="92" border="0"></a></td>
+											<td><a onmouseover="changeImages('navi_02','commonness_images/navi_ov_02.jpg');return true" onmouseout="changeImages('navi_02','commonness_images/navi_02.jpg');return true" href="floor.html" target="_top"><img id="navi_02" src="commonness_images/navi_02.jpg" alt="ホテル案内" name="navi_02" height="30" width="88" border="0"></a></td>
+											<td><a onmouseover="changeImages('navi_03','commonness_images/navi_ov_03.jpg');return true" onmouseout="changeImages('navi_03','commonness_images/navi_03.jpg');return true" href="guest.html" target="_top"><img id="navi_03" src="commonness_images/navi_03.jpg" alt="宿泊" name="navi_03" height="30" width="88" border="0"></a></td>
+											<td><a onmouseover="changeImages('navi_04','commonness_images/navi_ov_04.jpg');return true" onmouseout="changeImages('navi_04','commonness_images/navi_04.jpg');return true" href="wedding.html" target="_top"><img id="navi_04" src="commonness_images/navi_04.jpg" alt="ウェディング" name="navi_04" height="30" width="88" border="0"></a></td>
+											<td><a onmouseover="changeImages('navi_05','commonness_images/navi_ov_05.jpg');return true" onmouseout="changeImages('navi_05','commonness_images/navi_05.jpg');return true" href="event.html" target="_top"><img id="navi_05" src="commonness_images/navi_05.jpg" alt="宴会" name="navi_05" height="30" width="88" border="0"></a></td>
+											<td><a onmouseover="changeImages('navi_06','commonness_images/navi_ov_06.jpg');return true" onmouseout="changeImages('navi_06','commonness_images/navi_06.jpg');return true" href="conference.html" target="_top"><img id="navi_06" src="commonness_images/navi_06.jpg" alt="会議" name="navi_06" height="30" width="88" border="0"></a></td>
+											<td><a onmouseover="changeImages('navi_07','commonness_images/navi_ov_07.jpg');return true" onmouseout="changeImages('navi_07','commonness_images/navi_07.jpg');return true" href="restaurant.html" target="_top"><img id="navi_07" src="commonness_images/navi_07.jpg" alt="レストラン" name="navi_07" height="30" width="88" border="0"></a></td>
+											<td><a onmouseover="changeImages('navi_08','commonness_images/navi_ov_08.jpg');return true" onmouseout="changeImages('navi_08','commonness_images/navi_08.jpg');return true" href="access.html" target="_top"><img id="navi_08" src="commonness_images/navi_08.jpg" alt="アクセス" name="navi_08" height="30" width="88" border="0"></a></td>
+											<td><a href="https://asp.hotel-story.ne.jp/ver3d/di/?hcod1=02610&hcod2=001&seek=on&def=seek" target="_blank" onmouseover="changeImages('navi_09','commonness_images/navi_ov_09.jpg');return true" onmouseout="changeImages('navi_09','commonness_images/navi_09.jpg');return true"><img id="navi_09" src="commonness_images/navi_09.jpg" alt="ネット予約" name="navi_09" height="30" width="92" border="0"></a></td>
+										</tr>
+										<tr height="20">
+											<td class="navi_text" colspan="9" bgcolor="#333333" height="20" background="commonness_images/navi_10.jpg">TOP</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+			<div id="mainbox">
+				<table width="800" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td class="contents">
+							<table width="800" border="0" cellspacing="10" cellpadding="0">
+								<tr>
+									<td valign="top" bgcolor="#cccccc" width="520"><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" height="260" width="520">
+											<param name="movie" value="images/tp_move.swf">
+											<param name="quality" value="best">
+											<param name="play" value="true">
+											<embed height="260" pluginspage="http://www.macromedia.com/go/getflashplayer" src="images/tp_move.swf" type="application/x-shockwave-flash" width="520" quality="best" play="true">
+
+										</object></td>
+									<td align="center" valign="top" bgcolor="#ffe4c0" width="250">
+										<table width="250" border="0" cellspacing="0" cellpadding="3">
+											<tr>
+												<td class="txt12px" align="center" bgcolor="#ff6666"><font color="white"><b>Quick予約でカンタンお部屋探し</b></font></td>
+											</tr>
+										</table>
+										<table width="220" border="0" cellspacing="0" cellpadding="0">
+											<tr>
+												<td width="15"><img src="images/tp_quick.gif" alt="" height="15" width="15" border="0" vspace="5"></td>
+												<td class="quick_l">ご利用の方をお選びください。</td>
+											</tr>
+											<tr>
+												<td colspan="2">
+													<form id="selectjump" method="get" name="selectjump">
+														<select onchange="popJump(this)">
+															<option selected value="http://www.sunpeach.jp/index.html">全国市町村職員共済組合会員の方</option>
+															<option value="http://www.sunpeach.jp/index2.html">一般の方</option>
+														</select>
+													</form>
+												</td>
+											</tr>
+										</table>
+										<table width="220" border="0" cellspacing="0" cellpadding="0">
+											<tr>
+												<td class="yoyaku" align="center" valign="top">
+													<form name="frmKensaku" onsubmit="return PostASPY('https://asp.hotel-story.ne.jp/ver3d/', '0110', '');">
+														<script language="Javascript">
+	<!--
+  
+    // 人数チェック
+    function cngperson() {
+	
+		      if (document.frmKensaku.cmbADULT.value == '0' && document.frmKensaku.cmbCHILD[2].value == '0') {
+			alert('大人、もしくはシニアの人数が１人以上になるように設定してください。');
+		//	document.frmKensaku.cmbADULT.value = '1'
+	
+	return;
+      }else{
+	if (PostASPY('https://asp.hotel-story.ne.jp/ver3d/', '0110', '') ) {
+            document.frmKensaku.submit();
+	}else{
+		//条件がおかしい等、エラーが出た場合はこっち
+	}
+      }
+    }
+    
+
+function test(){
+	alert('test');
+}
+
+
+	function changePsn(){
+		//部屋数変更したときに人数を変える
+		objBak = document.frmBack;
+		objSearch = document.frmKensaku;
+
+		try{
+			for(i=0; i<100; i++){
+				adpsn = objSearch.cmbADULT[i].value;
+			}
+		}catch(e){
+//			alert(adpsn);
+		}
+
+		
+
+			try{
+				for(i=0; i<100; i++){
+					chpsn0  =  Number(objSearch.cmbCHILD[0][i].value);
+				}
+			}catch(e){
+//				alert(chpsn0);
+			}
+
+		
+
+			try{
+				for(i=0; i<100; i++){
+					chpsn1  =  Number(objSearch.cmbCHILD[1][i].value);
+				}
+			}catch(e){
+//				alert(chpsn1);
+			}
+
+		
+
+		try{
+
+			//人数確認
+			if(Number(objBak.hidADULT.value) != Number(objSearch.cmbADULT.value) / Number(objSearch.preSUMROOM.value)){
+				return false;
+			}
+
+			
+				//人数確認
+				if(Number(objBak.hidCHILD[0].value) != Number(objSearch.cmbCHILD[0].value) / Number(objSearch.preSUMROOM.value)){
+					return false;
+				}
+			
+				//人数確認
+				if(Number(objBak.hidCHILD[1].value) != Number(objSearch.cmbCHILD[1].value) / Number(objSearch.preSUMROOM.value)){
+					return false;
+				}
+			
+
+			//人数変更
+			if(Number(objBak.hidADULT.value) * Number(objSearch.cmbSUMROOM.value) > Number(adpsn)){
+				objSearch.cmbADULT.value = Number(adpsn);
+			}else{
+				objSearch.cmbADULT.value = Number(objBak.hidADULT.value) * Number(objSearch.cmbSUMROOM.value);
+			}
+			
+				if(Number(objBak.hidCHILD[0].value) * Number(objSearch.cmbSUMROOM.value) > Number(chpsn0)){
+					objSearch.cmbCHILD[0].value = Number(chpsn0);
+				}else{
+					objSearch.cmbCHILD[0].value = Number(objBak.hidCHILD[0].value) * Number(objSearch.cmbSUMROOM.value);
+				}
+			
+				if(Number(objBak.hidCHILD[1].value) * Number(objSearch.cmbSUMROOM.value) > Number(chpsn1)){
+					objSearch.cmbCHILD[1].value = Number(chpsn1);
+				}else{
+					objSearch.cmbCHILD[1].value = Number(objBak.hidCHILD[1].value) * Number(objSearch.cmbSUMROOM.value);
+				}
+			
+			objSearch.preSUMROOM.value = Number(objSearch.cmbSUMROOM.value);
+		}catch(e){
+
+		}
+
+
+	}
+
+	//-->
+</script>
+														<table id="search" cellspacing="0" cellpadding="0" summary="空室・料金の検索">
+															<tr>
+																<td class="quick_l">ご宿泊日　<select name="cmbARRY">
+																		<option value="2016" selected>2016</option>
+																		<option value="2017">2017 </option>
+																	</select> 年</td>
+															</tr>
+															<tr>
+																<td class="quick_underline"><select name="cmbARRM">
+																		<option value="1">1</option>
+																		<option value="2">2</option>
+																		<option value="3">3</option>
+																		<option value="4">4</option>
+																		<option value="5">5</option>
+																		<option value="6">6</option>
+																		<option value="7">7</option>
+																		<option value="8">8</option>
+																		<option value="9">9</option>
+																		<option value="10">10</option>
+																		<option value="11">11</option>
+																		<option value="12">12 </option>
+																	</select>月 <select name="cmbARRD">
+																		<option value="1">1</option>
+																		<option value="2">2</option>
+																		<option value="3">3</option>
+																		<option value="4">4</option>
+																		<option value="5">5</option>
+																		<option value="6">6</option>
+																		<option value="7">7</option>
+																		<option value="8">8</option>
+																		<option value="9">9</option>
+																		<option value="10">10</option>
+																		<option value="11">11</option>
+																		<option value="12">12</option>
+																		<option value="13">13</option>
+																		<option value="14">14</option>
+																		<option value="15">15</option>
+																		<option value="16">16</option>
+																		<option value="17">17</option>
+																		<option value="18">18</option>
+																		<option value="19">19</option>
+																		<option value="20">20</option>
+																		<option value="21">21</option>
+																		<option value="22">22</option>
+																		<option value="23">23</option>
+																		<option value="24">24</option>
+																		<option value="25">25</option>
+																		<option value="26">26</option>
+																		<option value="27">27</option>
+																		<option value="28">28</option>
+																		<option value="29">29</option>
+																		<option value="30">30</option>
+																		<option value="31">31 </option>
+																	</select>日〜 <select name="cmbHAKS">
+																		<option value="1" selected>1</option>
+																		<option value="2">2</option>
+																		<option value="3">3 </option>
+																	</select>泊</td>
+															</tr>
+															<tr>
+																<td class="quick_l">大人 <select name="cmbADULT">
+																		<option value="1" selected>1</option>
+																		<option value="2">2</option>
+																		<option value="3">3</option>
+																		<option value="4">4</option>
+																		<option value="5">5</option>
+																		<option value="6">6</option>
+																		<option value="7">7</option>
+																		<option value="8">8</option>
+																		<option value="9">9</option>
+																		<option value="10">10 </option>
+																	</select>名様</td>
+															</tr>
+															<tr>
+																<td class="quick_l">小人A <select name="cmbCHILD">
+																		<option value="0" selected>0</option>
+																		<option value="1">1</option>
+																		<option value="2">2</option>
+																		<option value="3">3</option>
+																	</select>名様/小人B <select name="cmbCHILD">
+																		<option value="0" selected>0</option>
+																		<option value="1">1</option>
+																		<option value="2">2</option>
+																		<option value="3">3</option>
+																	</select>名様</td>
+															</tr>
+															<tr>
+																<td class="quick_l"><input type="hidden" name="preSUMROOM" value="1"> <select name="cmbSUMROOM" onchange="changePsn()">
+																		<option value="1" selected>1室</option>
+																		<option value="2">2室</option>
+																		<option value="3">3室</option>
+																		<option value="4">4室</option>
+																		<option value="5">5室</option>
+																		<option value="6">6室</option>
+																		<option value="7">7室</option>
+																		<option value="8">8室</option>
+																		<option value="9">9室</option>
+																		<option value="10">10室 </option>
+																	</select></td>
+															</tr>
+															<tr>
+																<td align="center"><input class="quick_button" type="submit" name="btnSUBMIT" value="上記の条件で空室を表示する" title="このボタンを押して検索します"></td>
+															</tr>
+															<input type="hidden" name="hidASPBACK" value="ASPP0200"> <input type="hidden" name="hidPULLDOWN" value="1"> <input type="hidden" name="hidPERSONselect" value="0"> <input type="hidden" name="hidROOMselect" value="0"> <input type="hidden" name="hidPACKAGEselect" value="0"> <input type="hidden" name="hidCALENDAR" value="0"> <input type="hidden" name="hidDSP" value=""> <input type="hidden" name="hidDEFAULT" value="2008/06/05"> <input type="hidden" name="txtCHILD" value="dummy"> <input type="hidden" name="hidCHILDoption" value="2"> <input type="hidden" name="hidPLAN" value="45420"> <input type="hidden" name="hidCOD1" value="02610"> <input type="hidden" name="hidCOD2" value="001"> <input type="hidden" name="hidNO1" value=""> <input type="hidden" name="hidARRYMD" value=""> <input type="hidden" name="hidHAKSU" value=""> <input type="hidden" name="hidPERSON" value=""> <input type="hidden" name="hidSUMROOM" value=""> <input type="hidden" name="hidSEARCHTYPE" value=""> <input type="hidden" name="hidROOMTYPE" value=""> <input type="hidden" name="hidPACKAGE" value=""> <input type="hidden" name="hidADULT" value=""> <input type="hidden" name="hidCHILD" value=""> <input type="hidden" name="hidCHILD" value=""> <input type="hidden" name="hidCHILD" value=""> <input type="hidden" name="hidCHILD" value=""> <input type="hidden" name="hidCHILD" value="dummy"> <input type="hidden" name="cmbCHILD" value="dummy"> <input type="hidden" name="hidcalADULT" value=""> <input type="hidden" name="seekmode" value=""> <input type="hidden" name="c2plan" value="">
+														</table>
+													</form>
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+							<div align="center" class="info">　　　　　　　　　　ホテルサンピーチ岡山は、岡山駅より徒歩５分。岡山でのビジネスはもちろん、岡山観光の拠点としても便利なホテルです。 </div>
+							<table width="790" border="0" cellspacing="10" cellpadding="0">
+								<tr>
+									<td align="center" valign="top"><a href="https://asp.hotel-story.ne.jp/ver3d/di/?hcod1=02610&hcod2=001&seek=on&def=seek"><img src="images/tp_youjou.jpg" alt="ビジネスでも・レジャーでもうれしい浴場付きホテルです" width="250" height="120" border="0"></a></td>
+									<td align="center" valign="top"><a href="https://asp.hotel-story.ne.jp/ver3d/di/?hcod1=02610&hcod2=001&seek=on&def=seek"><img src="images/tp_tw.jpg" alt="ビジネスでも・レジャーでもうれしい浴場付きホテルです" width="250" height="120" border="0"></a></td>
+									<td width="250" align="center" valign="top"><table width="250" border="0" cellspacing="0" cellpadding="0">
+									  <tr>
+									    <td width="250" height="36" colspan="2"><img src="images/tp_info_recommend.gif" alt="お勧め情報　infomation" height="35" width="250" border="0"></td>
+								      </tr>
+									  <tr>
+									    <td width="12"><img src="images/tp_info_icon.gif" alt="" height="12" width="12" border="0"></td>
+									    <td class="info" align="left" valign="top" width="238"><a href="event.html" target="_blank"><span class="style4">NEW！</span>歓送迎会プラン</a></td>
+								      </tr>
+									  <tr>
+									    <td width="12"><img src="images/tp_info_icon.gif" alt="" height="12" width="12" border="0"></td>
+									    <td class="info" align="left" valign="top" width="238"><a href="PDF/2015_res_boushinnen.pdf" target="_blank"><span class="style2"><strong>注目！</strong></span>レストランで忘年会・新年会</a></td>
+								      </tr>
+									  <tr>
+									    <td width="12"><img src="images/tp_info_icon.gif" alt="" height="12" width="12" border="0"></td>
+									    <td class="info" align="left" valign="top" width="238"><a href="PDF/2015skyhall_wedding.pdf" target="_blank">スカイホール　WEDDING</a></td>
+								      </tr>
+									  <tr>
+									    <td width="12"><img src="images/tp_info_icon.gif" alt="" height="12" width="12" border="0"></td>
+									    <td class="info" align="left" valign="top" width="238"><a href="PDF/2015meeting_stay.pdf" target="_blank">宿泊研修会プラン</a></td>
+								      </tr>
+									  <tr>
+									    <td width="12" height="16"><img src="images/tp_info_icon.gif" alt="" height="12" width="12" border="0"></td>
+									    <td class="info" align="left" valign="top" width="238"><a href="event.html" target="_top"><span class="style2"></span></a><a href="event.html">BASIC PARTY PLAN</a></td>
+								      </tr>
+								    </table></td>
+								</tr>
+								<tr>
+								  <td width="250" height="83" align="center" valign="top">
+										<table width="250" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                            <td colspan="2" width="250"><img src="images/tp_info_feast.gif" alt="宴会プラン　Feast plan" height="35" width="250" border="0"></td>
+                                          </tr>
+                                          <tr>
+                                            <td width="12"><img src="images/tp_info_icon.gif" alt="" height="12" width="12" border="0"></td>
+                                            <td class="info" align="left" valign="top" width="238"><a href="event.html" target="_blank"><span class="style4">　NEW！</span>歓送迎会プラン</a></td>
+                                          </tr>
+                                          <tr>
+                                            <td width="12"><img src="images/tp_info_icon.gif" alt="" height="12" width="12" border="0"></td>
+                                            <td class="info" align="left" valign="top" width="238">　<a href="event.html" class="style5">BASIC PARTY PLAN</a></td>
+                                          </tr>
+                                          <tr>
+                                            <td width="12"><img src="images/tp_info_icon.gif" alt="" height="12" width="12" border="0"></td>
+                                            <td class="info" align="left" valign="top" width="238"><a href="event.html" target="_top">　同窓会プランが新しくなりました！</a></td>
+                                          </tr>
+                                        </table></td>
+									<td width="250" align="center" valign="top">
+										<table width="250" border="0" cellspacing="0" cellpadding="0">
+                                          <tr>
+                                            <td colspan="2" width="250"><img src="images/tp_info_staying.gif" alt="宿泊プラン　Accommodation plan" height="35" width="250" border="0"></td>
+                                          </tr>
+                                          <tr>
+                                            <td width="12"><img src="images/tp_info_icon.gif" alt="" height="12" width="12" border="0"></td>
+                                            <td class="info" align="left" valign="top" width="238"><a href="https://asp.hotel-story.ne.jp/ver3d/di/?hcod1=02610&hcod2=001&seek=on&def=seek" target="_top">　お得な宿泊プラン一覧</a></td>
+                                          </tr>
+                                          <tr>
+                                            <td width="12"><img src="images/tp_info_icon.gif" alt="" height="12" width="12" border="0"></td>
+                                            <td class="info" align="left" valign="top" width="238">　<a href="PDF/2015meeting_stay.pdf" target="_blank">宿泊研修会プラン</a></td>
+                                          </tr>
+                                          <tr>
+                                            <td width="12"><img src="images/tp_info_icon.gif" alt="" height="12" width="12" border="0"></td>
+                                            <td class="info" align="left" valign="top" width="238"><a href="guest.html#golf" target="_top">　お得なゴルフパック</a></td>
+                                          </tr>
+                                        </table></td>
+									<td align="center" valign="top"><table width="250" border="0" cellspacing="0" cellpadding="0">
+									  <tr>
+									    <td colspan="2" width="250"><img src="images/tp_info_restaurant.gif" alt="レストラン案内　Restaurant guide" height="35" width="250" border="0"></td>
+								      </tr>
+									  <tr>
+									    <td width="12" height="17"><img src="images/tp_info_icon.gif" alt="" height="12" width="12" border="0"></td>
+									    <td class="info" align="left" valign="top" width="238"><a href="PDF/2015_res_boushinnen.pdf" target="_blank">　レストランで忘年会・新年会</a></td>
+								      </tr>
+									  <tr>
+									    <td width="12"><img src="images/tp_info_icon.gif" alt="" height="12" width="12" border="0"></td>
+									    <td class="info" align="left" valign="top" width="238"><a href="restaurant.html" target="_top">　</a><a href="restaurant.html" target="_top">土・日はランチバイキング</a></td>
+								      </tr>
+									  <tr>
+									    <td width="12"><img src="images/tp_info_icon.gif" alt="" height="12" width="12" border="0"></td>
+									    <td class="info" align="left" valign="top" width="238"><a href="PDF/20152016resinfo.pdf" target="_blank">　年末・年始レストラン営業のご案内</a></td>
+								      </tr>
+								    </table></td>
+								</tr>
+							</table>
+							<table width="790" border="0" cellspacing="0" cellpadding="0" height="109">
+                              <tr>
+                                <td width="9" rowspan="5"></td>
+                                <td colspan="2" ><div align="center"></div>
+                                    <div align="center"></div>                                  
+                                    <div align="center"></div>                                    <div align="center"></div></td>
+                                <td width="10" rowspan="5"></td>
+                              </tr>
+                              <tr>
+                                <td width="386" ><div align="center"></div>                                  
+                                <div align="right"></div>                                </td>
+                               <td width="385" ><div align="center"></div>                                 </td>
+                              </tr>
+                              <tr>
+                                <td ><a href="event.html"><img src="images/tp_kansougei2015.jpg" alt="BEERFESTA2015" width="385" height="81" border="0"></a></td>
+                                <td width="385" ><img src="images/tp_rent.jpg" alt="BEERFESTA2015" width="385" height="81" border="0"></td>
+                              </tr>
+                              <tr>
+                                <td >&nbsp;</td>
+                                <td width="385" >&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td ><a href="PDF/2012papamamawed.pdf" target="_blank"><img src="images/tp_pamawed.jpg" alt="パパママ婚" width="385" height="81" border="0"></a></td>
+                                <td width="385" ><a href="http://www.city.okayama.jp/shoubou/yobou/yobou_00368.html" target="_blank"><img src="images/tp_shoubou.jpg" alt="表示マーク" width="385" height="81" border="0"></a></td>
+                              </tr>
+                            </table>
+							<table border="0" cellspacing="10" cellpadding="0">
+								<tr>
+									<td colspan="4"><img src="images/tp_recommendation.gif" alt="Recommendation Web site" height="21" width="777" border="0"></td>
+								</tr>
+								<tr>
+									<td width="189"><a href="http://www.mamakari.net/" target="_blank"><img src="images/tp_icon_mamakari.gif" alt="岡山コンベンションセンター" height="40" width="187" border="0"></a></td>
+									<td width="189"><a href="http://www.okayama-kanko.net/" target="_blank"><img src="images/tp_icon_okayamakanko.gif" alt="おかやま観光コンシェルジュ" height="40" width="187" border="0"></a></td>
+									<td width="189"><a href="http://www.convex-okayama.co.jp/" target="_blank"><img src="images/tp_icon_convex.gif" alt="CONVEX岡山" height="40" width="187" border="0"></a></td>
+									<td width="187"><a href="http://www.forlover.jp/index.htm" target="_blank"><img src="images/tp_icon_forlover.gif" alt="For Lover wedding produce" height="40" width="187" border="0"></a></td>
+								</tr>
+						  </table>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<table width="800" border="0" cellspacing="0" cellpadding="0">
+				<tr height="20">
+					<td class="footernavi" align="left" bgcolor="#cccccc" height="20">NAVI &gt;&gt; <a href="index.html" target="_top">HOME</a>｜<a href="floor.html" target="_top">ホテル案内</a>｜<a href="guest.html" target="_top">宿泊</a>｜<a href="wedding.html" target="_top">ウェディング</a>｜<a href="event.html" target="_top">宴会</a>｜<a href="conference.html" target="_top">会議</a>｜<a href="reservation.html" target="_top">レストラン</a>｜<a href="access.html" target="_top">アクセス</a>｜<a href="privacy.html" target="_top">プライバシーポリシー</a>｜<a href="employment.html" target="_top">採用情報</a></td>
+				</tr>
+				<tr height="30">
+					<td align="center" bgcolor="#666666" height="30">
+						<table width="780" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<td align="left"><a href="http://www.greenhouse.co.jp/index.html" target="_blank"><span class="footer">運営会社　グリーンホスピタリティーマネジメント</span></a></td>
+								<td class="footer" align="right">当サイト内の見出し、記事、画像の無断転載を禁じます。(C)サンピーチOKAYAMA 2003 All Right Reserved.</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<script type="text/javascript">
+<!--
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+-->
+</script>
+		<script type="text/javascript">
+<!--
+var pageTracker = _gat._getTracker("UA-5886292-4");
+pageTracker._trackPageview();
+-->
+</script>
+	</body>
+
+</html>
+
+
+

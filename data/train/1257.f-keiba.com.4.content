@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<title>船橋ケイバ</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="description" content="船橋競馬場公式サイト。船橋初のナイター競馬「ハートビートナイター」は12月まで開催中。" />
+<meta name="keywords" content="ハートビートナイター,船橋競馬場,競馬,南関東4競馬場,地方競馬,千葉, 船橋,ケイバ,場外馬券発売所エフケイバ,J-PLACE船橋" />
+
+<script type="text/javascript" src="./js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="./js/common.js"></script>
+<script type="text/javascript" src="./js/getkaisaixml.js"></script>
+<script type="text/javascript" src="./js/dateformat.js"></script>
+<script type="text/javascript" src="./js/globaldefine.js"></script>
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript">google.load("feeds", "1");</script>
+<script type="text/javascript" src="./js/jquery.jfeedmixer.js"></script>
+<script type="text/javascript" src="./js/gae_xhrequest.js"></script>
+<script type="text/javascript" src="./js/infolocal.js"></script>
+<link rel="stylesheet" type="text/css" href="./css/common.css">
+<link rel="stylesheet" type="text/css" href="./css/layout.css">
+<link rel="stylesheet" type="text/css" href="./css/parts.css">
+<link rel="stylesheet" type="text/css" href="./css/top.css">
+
+<!--[if lte IE 8.0]>
+<link rel="stylesheet" type="text/css" href="./css/old_ie.css">
+<script type="text/javascript" src="./js/old_ie.js"></script>
+<script type="text/javascript" src="./js/jquery-1.8.3.js"></script>
+<![endif]-->
+<script type="text/javascript" src="./js/top.js"></script>
+<script type="text/javascript" src="./js/schedule.js"></script>
+<script>
+$(function() {
+	$("#tickerArea li").newsTicker({type:"normal", speed:100});
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+  var obj_pickup = $('#slidePickup').bxSlider({
+    auto:true,
+    minSlides: 3,
+    maxSlides: 3,
+    slideWidth: 220,
+    slideMargin: 9,
+    speed:1500,
+    pause:5000,
+    autoHover:true,
+    onSlideAfter: function () { obj_pickup.startAuto(); }
+  });
+  var obj_banner = $('#slideBanner').bxSlider({
+    pager: false,
+    auto:true,
+    minSlides: 3,
+    maxSlides: 3,
+    slideWidth: 226,
+    slideMargin: 10,
+    speed:1500,
+    pause:5000,
+    autoHover:true,
+    onSlideAfter: function () { obj_banner.startAuto(); }
+  });
+ //スライダー部分にマウスオーバーしたときの処理（Next, Prev を表示）
+  $('.bx-wrapper .bx-viewport').hover(function() {
+    $('.bx-wrapper .bx-controls-direction a').css('display', 'block');
+  }, function() {
+    $('.bx-wrapper .bx-controls-direction a').css('display', 'none');
+  });
+  //Next, Prev にマウスオーバーした際にそれらがちらつかないように
+  $('.bx-wrapper .bx-controls-direction a').hover(function() {
+    $('.bx-wrapper .bx-controls-direction a').css('display', 'block');
+  }, function() {});
+});
+</script>
+</head>
+<body>
+<div id="page">
+  <header> 
+    <!--▼船橋競馬PC緊急メッセージ表示エリア▼--> 
+    <!--▲船橋競馬PC緊急メッセージ表示エリア▲--> 
+    	<div id="header" class="clearfix">
+		<div class="inner960">
+			<h1 id="headerLogo"><a href="/">船橋ケイバ　ハートビートナイター</a></h1>
+			<p id="siteSummary">千葉県競馬組合主催、東京湾に臨む競馬場</p>
+<!--			<p id="siteSummary">ドキドキがいっぱいの「ハートビートナイター」開催中</p>            -->
+			<div id="headerAssist">
+				<ul id="fontsizeController">
+					<li id="btnSizeMid" class="current">標準</li>
+					<li id="btnSizeBig">拡大</li>
+				</ul>
+				<form id="cse-search-box" action="/search/index.html">
+					<input type="hidden" name="cx" value="012932477709018448310:5mlxg_0qbew">
+					<input type="hidden" name="ie" value="UTF-8">
+					<button class="submit"></button>
+					<input type="text" name="q" placeholder="Search">
+				</form>
+			</div><!-- #headerAssist -->
+		</div><!-- .inner960 -->
+	</div><!-- #header -->
+
+    <div class="wideslider">
+      <ul>
+        <li><a href="./schedule/index.html?year=2016&month=02"><img src="images/index/panel/panel0001.png?ver=20160122"></a></li>
+        <li><a href="https://www.spat4.jp/keiba/pc" target="_blank"><img src="images/index/panel/panelspat4loto.jpg?v=20160121170656"></a></li>
+<!--
+        <li><a href="./schedule/index.html?year=2015&month=04"><img src="images/index/panel/panel0004.jpg?ver=20151211"></a></li>
+        <li><a href="http://keiba.rakuten.co.jp/event/nippontvhai" target="_blank"><img src="images/index/panel/panel0007.jpg"></a></li>
+        <li><a href="http://blog.f-keiba.com/event/2015/09/105-9-d2a8.html"><img src="images/index/panel/panel0006.jpg"></a></li>
+        <li><a href="./race/kanmurirace.html"><img src="images/index/panel/panelkanmuri.png"></a></li>
+-->
+        <li><a href="./j-place/index.html"><img src="images/index/panel/panel0003.jpg"></a></li>
+        <li><a href="http://blog.f-keiba.com/info/2015/10/google-3249.html"><img src="images/index/panel/panel0008.jpg"></a></li>
+
+      </ul>
+    </div>
+    <!-- .wideslider -->
+    
+    <div id="headlineInfo">
+      <div class="inner960">
+        <div id="tickerArea"> 
+          
+<ul class='msg'>
+  <li>2016/2/15(月)～19(金)　船橋ケイバ開催<!--★ハートビートナイター-->【重賞：報知グランプリカップ(SIII)】</li>
+  <!--<li><a href="http://blog.f-keiba.com/event/2016/01/118-22-7c76.html">船橋記念は入場無料！第10回船橋ケイバイベント・プレゼント</a></li>-->
+  <!--<li><a href="http://www.f-keiba.com/race/dirtgrade/index.html">ダートグレード競走特集にクイーン賞を掲載いたしました</a></li>-->
+</ul>
+ 
+        </div>
+      </div>
+      <!-- .inner960 --> 
+    </div>
+    <!-- #info --> 
+    	<div id="globalNav">
+		<ul id="globalNavList">
+			<li id="gnavInformation" class="parent">
+				<a href="http://blog.f-keiba.com/info/">お知らせ</a>
+			</li>
+			<li id="gnavEvent" class="parent">
+				<a href="http://blog.f-keiba.com/event/">イベント＆ファンサービス</a>
+			</li>
+			<li id="gnavSchedule" class="parent">
+				<a href="/schedule/index.html">発売カレンダー</a>
+				<ul id="gnavScheduleList" class="child">
+					<li id="gnavScheduleIndex"><a href="/schedule/index.html">発売カレンダー</a></li>
+					<li id="gnavScheduleTimetable"><a href="/schedule/timetable.html">開門発走時刻</a></li>
+				</ul>
+			</li>
+			<li id="gnavTop" class="parent">
+				<a href="/">船橋ケイバトップページ</a>
+			</li>
+			<li id="gnavRace" class="parent">
+				<a href="/race/index.html">レース情報</a>
+				<ul id="gnavRaceList" class="child">
+					<li id="gnavRaceIndex"><a href="/race/index.html">レース情報</a></li>
+					<li id="gnavRaceDirtgrade"><a href="/race/dirtgrade/index.html">ダートグレード競走特集</a></li>
+					<li id="gnavRaceDiagram"><a href="/race/diagram.html">レース体系</a></li>
+					<li id="gnavRaceKanmurirace"><a href="/race/kanmurirace.html">冠レースの募集について</a></li>
+				</ul>
+			</li>
+			<li id="gnavGuide" class="parent">
+				<a href="/guide/index.html">船橋競馬場ガイド</a>
+				<ul id="gnavGuideList" class="child">
+					<li id="gnavGuideIndex"><a href="/guide/index.html">船橋競馬場ガイド</a></li>
+					<li id="gnavGuideNightrace"><a href="/guide/nightrace.html">ナイター競馬案内</a></li>
+					<li id="gnavGuideCharacter"><a href="/guide/character.html">キャロッタ＆キャロッペ</a></li>
+					<li id="gnavGuidetelephone"><a href="/guide/telephone.html">テレホンガイド</a></li>
+				</ul>
+			</li>
+			<li id="gnavDataroom" class="parent">
+				<a href="/dataroom/index.html">データルーム</a>
+				<ul id="gnavDataroomList" class="child">
+					<li id="gnavDataroomIndex"><a href="/dataroom/index.html">データルーム</a></li>
+					<li id="gnavDataroomJockey"><a href="/dataroom/jockey.html">騎手名鑑</a></li>
+					<li id="gnavDataroomTrainer"><a href="/dataroom/trainer.html">調教師名鑑</a></li>
+					<li id="gnavDataroomHorse"><a href="/dataroom/horse.html">船橋駿馬伝説</a></li>
+					<li id="gnavDataroomRecord"><a href="/dataroom/record.html">コースレコード</a></li>
+				</ul>
+			</li>
+			<li id="gnavAccess" class="parent">
+				<a href="/access/index.html">アクセス</a>
+			</li>
+		</ul>
+	</div> 
+  </header>
+  <!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::main_content-->
+  <div id="main">
+    <div id="raceHeadline">
+      <div class="inner960 clearfix">
+        <div id="honjyoInfo" class="clearfix">
+          <div id="today"> <span id="year"></span><br>
+            <span id="date"></span><br>
+            <span id="week"></span> </div>
+          <div id="kaisaiInfo">
+            <h2></h2>
+            <!--<p class="bold mT10">2015年7月17日,20日,21日</p>-->
+            <p id="nextrace"></p>
+            <ul id="timetable" class="list_hrz">
+              <li>開門時間　--:--</li>
+              <li>第1R発走　--:--</li>
+              <li>最終R発走 --:--</li>
+            </ul>
+            <p id="graderacetitle"></p>
+            <!--<p class="mT10">07.20(祝月)習志野きらっとスプリント(SIII)</p>-->
+          </div>
+          <div id="kaisaiLink">
+            <div class="hikaisaiBtn"> <a id="hikaisaiRepay" href="http://www.nankankeiba.com/repay/00000000000000.do" class="button" target="_blank">本日のレース結果(大井)</a> </div>
+            <div class="kaisaiBtn"> <a href="http://www.nankankeiba.com/program/00000000000000.do" class="button" target="_blank">出走表・オッズ・結果</a> <a href="http://www.nankankeiba.com/liveon/0000000000000000.do" class="button" target="_blank">ライブ中継</a>
+              <ul class="list_hrz">
+                <li><a href="https://www.spat4.jp/keiba/pc" target="_blank"><img src="images/index/bnr_spat4_70.gif" alt="spat4"></a></li>
+                <li><a href="http://keiba.rakuten.co.jp/" target="_blank"><img src="images/index/bnr_rakuten_70.gif" alt="楽天競馬"></a></li>
+                <li id="bnrIpat"><a href="http://www.keiba.go.jp/ipat/index.html" target="_blank"><img src="images/index/bnr_ipat_70.gif" alt="IPAT"></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- honjyoInfo -->
+        <div id="tajyoInfo">
+          <h3>場外発売</h3>
+          <p id="tajyotext"></p>
+          <div id="bg_tajyo"></div>
+        </div>
+        <!-- #tajyoInfo --> 
+      </div>
+      <!-- inner960 --> 
+    </div>
+    <!-- #raceHeadline -->
+    <div class="inner960 clearfix">
+      <div class="w710 fl">
+        <div id="slidePickupArea">
+          <h2>Pickup</h2>
+          <ul id="slidePickup">
+
+            <!--pickup--> 
+            <!--
+            <li> <a href="http://keiba.rakuten.co.jp/event/kashiwakinen?cid=nl_20150430_b" target="_blank"> <img src="images/index/pickup/bnr_rt_kashiwa2015.png" alt="楽天競馬">
+              <h3>楽天競馬かしわ記念購入で10％ポイント還元！</h3>
+              <p>本キャンペーンは5月5日のかしわ記念が対象です。</p>
+              </a> </li>
+--> 
+            <!--//pickup--> 
+
+           <!--pickup-->
+            <li> <a href="http://www.nankankeiba.com/info/campaign/jp-bank/" target="_blank"> <img src="images/index/pickup/bnr_bank.jpg?ver=20160115" alt="SPAT4×ゆうちょ銀行">
+              <h3>SPAT4プレミアムポイント<br />SPAT4×ゆうちょ銀行</h3>
+              <p>ゆうちょ銀行口座で新規ご登録の方全員に1,000円相当分のSPAT4プレミアムポイントをプレゼント!</p>
+              </a> </li>
+            <!--//pickup-->
+
+            <!--pickup-->
+            <li> <a href="http://funakei.com/" target="_blank"> <img src="images/index/pickup/bnr_funakei.jpg" alt="HEART BEAT FUNabashi">
+              <h3>HEART BEAT FUNabashi</h3>
+              <p>船橋ケイバ特設ファンサイト<br>
+                注目レース記事や今月の注目レース予想など、レース情報が満載！</p>
+              </a> </li>
+            <!--//pickup--> 
+
+            <!--pickup-->
+            <li> <a href="http://www.nankankeiba.com/info/spat4loto/" target="_blank"> <img src="images/index/pickup/bnr_spat4loto.gif" alt="SPAT4 LOTO">
+              <h3>SPAT4 LOTO</h3>
+              <p>50円で最大3億円！<br>
+                SPAT4インターネット投票で購入することができます。</p>
+              </a> </li>
+            <!--//pickup--> 
+
+           <!--pickup-->
+            <li> <a href="https://www.spat4pp.jp/spat4/pp?media=pc&fid=Campaign&pkind=campaign&pname=details&p1=CP000086" target="_blank"> <img src="images/index/pickup/bnr_CP000086.jpg" alt="短距離重賞キャンペーン">
+              <h3>SPAT4プレミアムポイント<br />短距離重賞キャンペーン</h3>
+              <p>短距離重賞購入でポイント最大8倍！</p>
+              </a> </li>
+            <!--//pickup-->
+
+           <!--pickup-->
+            <li> <a href="https://www.spat4pp.jp/spat4/pp?media=pc&fid=Campaign&pkind=campaign&pname=details&p1=CP000098" target="_blank"> <img src="images/index/pickup/bnr_CP000098.jpg" alt="冬のステイヤーキャンペーン">
+              <h3>SPAT4プレミアムポイント<br />冬のステイヤーキャンペーン</h3>
+              <p>中長距離重賞購入でポイント最大10倍！</p>
+              </a> </li>
+            <!--//pickup-->
+
+            
+          </ul>
+        </div>
+        <div class="clearfix mB20"> 
+          <!-- Topics -->
+          <div class="box_radius w460 fl">
+            <h2 class="h2_topics">トピックス</h2>
+
+<!--
+            <ul id="topicsList">
+              <li>2015/12/06 (日)<br /><a href="http://blog.f-keiba.com/testinfo/2015/12/post-e20a.html">ダートグレード競走特集にクイーン賞を掲載いたしました</a></li>
+              <li>2015/12/03 (木)<br /><a href="http://blog.f-keiba.com/info/2015/12/12361129pdf-e98a.html">【12月3日更新】第61回クイーン賞競走【12月9日（水）】出走予定馬(PDF)</a></li>
+              <li>2015/12/03 (木)<br /><a href="http://blog.f-keiba.com/info/2015/12/ipat-6162.html">クイーン賞は地方競馬IPATでの発売は行われません</a></li>
+              <li>2015/12/03 (木)<br /><a href="http://blog.f-keiba.com/info/2015/12/127-11-8261.html">船橋ケイバ12/7(月)-11(金)開催リリース</a></li>
+              <li>2015/12/02 (水)<br /><a href="http://blog.f-keiba.com/event/2015/12/127-11-2cfe.html">美しく、熱く。船橋ケイバ12/7（月）-11（金）イベント情報</a></li>
+              <li>2015/11/27 (金)<br /><a href="http://blog.f-keiba.com/info/2015/11/128pdf-7d7f.html">【11月27日更新】総の国（ふさのくに）オープン競走【12月8日（火）】出走予定馬(PDF)</a></li>
+              <li>2015/11/20 (金)<br /><a href="http://blog.f-keiba.com/info/2015/11/post-5393.html">船橋ケイババックヤード見学を含むバスツアーの実施について</a></li>
+              <li>2015/11/19 (木)<br /><a href="http://blog.f-keiba.com/info/2015/11/278-8f9e.html">平成27年度第8回船橋競馬風景</a></li>
+              <li>2015/11/17 (火)<br /><a href="http://blog.f-keiba.com/info/2015/11/100-208f.html">張田 昂 騎手の通算100勝について</a></li>
+              <li>2015/11/13 (金)<br /><a href="http://blog.f-keiba.com/event/2015/11/9-bf78.html">第9回船橋競馬開催イベント情報（速報版）</a></li>
+              <li>2015/11/11 (水)<br /><a href="http://blog.f-keiba.com/info/2015/11/61-siii-ed18.html">第61回 平和賞(SIII)レース結果</a></li>
+              <li>2015/11/11 (水)<br /><a href="http://blog.f-keiba.com/info/2015/11/post-981d.html">仲野光馬騎手の落馬負傷について</a></li>
+              <li>2015/11/10 (火)<br /><a href="http://blog.f-keiba.com/info/2015/11/post-e480.html">平成２８年度南関東地方競馬開催日程について</a></li>
+              <li>2015/11/10 (火)<br /><a href="http://blog.f-keiba.com/event/2015/11/1112-e045.html">11月12日チバザポーク試食イベントでの販売実施について</a></li>
+              <li>2015/11/05 (木)<br /><a href="http://blog.f-keiba.com/info/2015/11/119-13-362a.html">船橋ケイバ11/9(月)-13(金)開催リリース</a></li>
+              <li>2015/11/04 (水)<br /><a href="http://blog.f-keiba.com/info/2015/11/811101112ipat-c498.html">第8回開催（11/10,11,12）における地方競馬IPATの発売について</a></li>
+              <li>2015/11/04 (水)<br /><a href="http://blog.f-keiba.com/event/2015/11/">２歳馬の力。船橋ケイバ11/9（月）-13（金）イベント情報</a></li>
+              <li>2015/11/03 (火)<br /><a href="http://blog.f-keiba.com/info/2015/11/611111pdf-3161.html">【11月3日更新】第61回平和賞競走【11月11日（水）】出走予定馬(PDF)</a></li>
+              <li>2015/10/29 (木)<br /><a href="http://blog.f-keiba.com/event/2015/10/post-7958.html">船橋競馬場「ふれあい広場」の開催結果について</a></li>
+              <li>2015/10/26 (月)<br /><a href="http://blog.f-keiba.com/info/2015/10/100-2f60.html">阿井 正雄 調教師の通算100勝について</a></li>
+              <li>2015/10/23 (金)<br /><a href="http://blog.f-keiba.com/info/2015/10/113jbc-dbef.html">11月3日（祝火）JBC場外発売当日の開門予定時刻及び来場者プレゼントについて</a></li>
+              <li>2015/10/22 (木)<br /><a href="http://blog.f-keiba.com/info/2015/10/google-3249.html">船橋ケイバ場内をGoogleストリートビューに掲載しました!!</a></li>
+              <li>2015/10/21 (水)<br /><a href="http://blog.f-keiba.com/event/2015/10/post-008b.html">船橋競馬場「ふれあい広場」チャリティーオークション、チャリティーバザーの出品リストについて</a></li>
+              <li>2015/10/21 (水)<br /><a href="http://blog.f-keiba.com/info/2015/10/post-6dcf.html">山下貴之調教師の厩舎開業について</a></li>
+              <li>2015/10/20 (火)<br /><a href="http://blog.f-keiba.com/info/2015/10/post-8cbe.html">山本聡紀騎手の期間限定騎乗期間の延長について</a></li>
+              <li>2015/10/20 (火)<br /><a href="http://blog.f-keiba.com/info/2015/10/post-1397.html">塚本弘隆騎手の期間限定騎乗について</a></li>
+              <li>2015/10/15 (木)<br /><a href="http://blog.f-keiba.com/info/2015/10/277-dfd0.html">平成27年度第7回船橋競馬風景</a></li>
+              <li>2015/10/13 (火)<br /><a href="http://blog.f-keiba.com/event/2015/10/post-c3a9.html">船橋競馬場「ふれあい広場」の開催について</a></li>
+            </ul>
+-->
+
+            <ul id="topicsList">
+              読み込み中
+            </ul>
+
+            <ul class="list_tri1_r">
+              <li><a href="http://blog.f-keiba.com/info/">お知らせ一覧</a></li>
+              <li><a href="http://blog.f-keiba.com/event/">イベント・ファンサービス一覧</a></li>
+            </ul>
+          </div>
+          <!-- /Topics --> 
+          <!-- facebook -->
+          <div id="facebookArea" class="box_radius w230 fr">
+            <div class="bg_facebook">
+              <h2 class="h2_facebook">facebook</h2>
+            </div>
+            
+            <!-- ▼facebook▼ -->
+            <div id="fb-root"></div>
+            <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.3";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+            <div class="fb-page" data-href="https://www.facebook.com/funakeifun" data-width="230" data-height="270" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false" data-show-posts="true">
+              <div class="fb-xfbml-parse-ignore">
+                <blockquote cite="https://www.facebook.com/funakeifun"><a href="https://www.facebook.com/funakeifun">HEART BEAT FUNabashi</a></blockquote>
+              </div>
+            </div>
+            
+            <!-- ▲facebook▲ --> 
+            
+            <!-- 2015/06/23 --> 
+            <!--
+            <iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Ffunakeifun&amp;width=220&amp;height=395&amp;colorscheme=light&amp;show_faces=false&amp;header=false&amp;stream=true&amp;show_border=false&amp;appId=1547409465527590" style="border:none; overflow:hidden; width:220px; height:270px;" allowTransparency="true"></iframe>
+            --> 
+          </div>
+          <!-- /facebook --> 
+        </div>
+        <div id="scheduleArea" class="box_radius mB15">
+          <h2 class="h2_schedule">スケジュール</h2>
+          <table class="tb_race">
+            <tr>
+              <th id="nengetsu" class="bg_schedule" colspan="7">&nbsp;</th>
+            </tr>
+            <tr>
+              <th class="center"><img src="/images/schedule/tx_sun.gif" alt="日曜日" title="SUN" /></th>
+              <th class="center"><img src="/images/schedule/tx_mon.gif" alt="月曜日" title="MON" /></th>
+              <th class="center"><img src="/images/schedule/tx_tue.gif" alt="火曜日" title="TUE" /></th>
+              <th class="center"><img src="/images/schedule/tx_wed.gif" alt="水曜日" title="WED" /></th>
+              <th class="center"><img src="/images/schedule/tx_thu.gif" alt="木曜日" title="THU" /></th>
+              <th class="center"><img src="/images/schedule/tx_fri.gif" alt="金曜日" title="FRI" /></th>
+              <th class="center"><img src="/images/schedule/tx_sat.gif" alt="土曜日" title="SAT" /></th>
+            </tr>
+            <tr>
+              <td id="td1">&nbsp;</td>
+              <td id="td2">&nbsp;</td>
+              <td id="td3">&nbsp;</td>
+              <td id="td4">&nbsp;</td>
+              <td id="td5">&nbsp;</td>
+              <td id="td6">&nbsp;</td>
+              <td id="td7">&nbsp;</td>
+            </tr>
+            <tr>
+              <td id="td1_2" class="sch_timetable">&nbsp;</td>
+              <td id="td2_2" class="sch_timetable">&nbsp;</td>
+              <td id="td3_2" class="sch_timetable">&nbsp;</td>
+              <td id="td4_2" class="sch_timetable">&nbsp;</td>
+              <td id="td5_2" class="sch_timetable">&nbsp;</td>
+              <td id="td6_2" class="sch_timetable">&nbsp;</td>
+              <td id="td7_2" class="sch_timetable">&nbsp;</td>
+            </tr>
+            <tr>
+              <td id="td8">&nbsp;</td>
+              <td id="td9">&nbsp;</td>
+              <td id="td10">&nbsp;</td>
+              <td id="td11">&nbsp;</td>
+              <td id="td12">&nbsp;</td>
+              <td id="td13">&nbsp;</td>
+              <td id="td14">&nbsp;</td>
+            </tr>
+            <tr>
+              <td id="td8_2" class="sch_timetable">&nbsp;</td>
+              <td id="td9_2" class="sch_timetable">&nbsp;</td>
+              <td id="td10_2" class="sch_timetable">&nbsp;</td>
+              <td id="td11_2" class="sch_timetable">&nbsp;</td>
+              <td id="td12_2" class="sch_timetable">&nbsp;</td>
+              <td id="td13_2" class="sch_timetable">&nbsp;</td>
+              <td id="td14_2" class="sch_timetable">&nbsp;</td>
+            </tr>
+            <tr>
+              <td id="td15">&nbsp;</td>
+              <td id="td16">&nbsp;</td>
+              <td id="td17">&nbsp;</td>
+              <td id="td18">&nbsp;</td>
+              <td id="td19">&nbsp;</td>
+              <td id="td20">&nbsp;</td>
+              <td id="td21">&nbsp;</td>
+            </tr>
+            <tr>
+              <td id="td15_2" class="sch_timetable">&nbsp;</td>
+              <td id="td16_2" class="sch_timetable">&nbsp;</td>
+              <td id="td17_2" class="sch_timetable">&nbsp;</td>
+              <td id="td18_2" class="sch_timetable">&nbsp;</td>
+              <td id="td19_2" class="sch_timetable">&nbsp;</td>
+              <td id="td20_2" class="sch_timetable">&nbsp;</td>
+              <td id="td21_2" class="sch_timetable">&nbsp;</td>
+            </tr>
+            <tr>
+              <td id="td22">&nbsp;</td>
+              <td id="td23">&nbsp;</td>
+              <td id="td24">&nbsp;</td>
+              <td id="td25">&nbsp;</td>
+              <td id="td26">&nbsp;</td>
+              <td id="td27">&nbsp;</td>
+              <td id="td28">&nbsp;</td>
+            </tr>
+            <tr>
+              <td id="td22_2" class="sch_timetable">&nbsp;</td>
+              <td id="td23_2" class="sch_timetable">&nbsp;</td>
+              <td id="td24_2" class="sch_timetable">&nbsp;</td>
+              <td id="td25_2" class="sch_timetable">&nbsp;</td>
+              <td id="td26_2" class="sch_timetable">&nbsp;</td>
+              <td id="td27_2" class="sch_timetable">&nbsp;</td>
+              <td id="td28_2" class="sch_timetable">&nbsp;</td>
+            </tr>
+            <tr>
+              <td id="td29">&nbsp;</td>
+              <td id="td30">&nbsp;</td>
+              <td id="td31">&nbsp;</td>
+              <td id="td32">&nbsp;</td>
+              <td id="td33">&nbsp;</td>
+              <td id="td34">&nbsp;</td>
+              <td id="td35">&nbsp;</td>
+            </tr>
+            <tr>
+              <td id="td29_2" class="sch_timetable">&nbsp;</td>
+              <td id="td30_2" class="sch_timetable">&nbsp;</td>
+              <td id="td31_2" class="sch_timetable">&nbsp;</td>
+              <td id="td32_2" class="sch_timetable">&nbsp;</td>
+              <td id="td33_2" class="sch_timetable">&nbsp;</td>
+              <td id="td34_2" class="sch_timetable">&nbsp;</td>
+              <td id="td35_2" class="sch_timetable">&nbsp;</td>
+            </tr>
+            <tr id="tr6">
+              <td id="td36">&nbsp;</td>
+              <td id="td37">&nbsp;</td>
+              <td id="td38">&nbsp;</td>
+              <td id="td39">&nbsp;</td>
+              <td id="td40">&nbsp;</td>
+              <td id="td41">&nbsp;</td>
+              <td id="td42">&nbsp;</td>
+            </tr>
+            <tr id="tr6_2">
+              <td id="td36_2" class="sch_timetable">&nbsp;</td>
+              <td id="td37_2" class="sch_timetable">&nbsp;</td>
+              <td id="td38_2" class="sch_timetable">&nbsp;</td>
+              <td id="td39_2" class="sch_timetable">&nbsp;</td>
+              <td id="td40_2" class="sch_timetable">&nbsp;</td>
+              <td id="td41_2" class="sch_timetable">&nbsp;</td>
+              <td id="td42_2" class="sch_timetable">&nbsp;</td>
+            </tr>
+          </table>
+          <div id="schIcon">
+            <ul class="list_hrz tx_12px mB5">
+              <li><img src="/images/schedule/icon_honjyo.gif" alt="船橋競馬場開催用アイコン" /> 船橋競馬場（本場）開催</li>
+              <li><img src="/images/schedule/icon_urawa.png" alt="浦和競馬場（本場）開催用アイコン" /> 浦和競馬場開催</li>
+              <li><img src="/images/schedule/icon_tck.png" alt="大井競馬場開催用アイコン" /> 大井競馬場開催</li>
+              <li><img src="/images/schedule/icon_kawasaki.png" alt="川崎競馬場開催用アイコン" /> 川崎競馬場開催</li>
+              <li><img src="/images/schedule/icon_tv.png" alt="チバテレ放送日用アイコン" /> チバテレ放送日</li>
+            </ul>
+            <ul class="list_hrz tx_12px">
+              <li><img src="/images/schedule/icon_nighter.gif" alt="ナイター用アイコン" /> ナイター開催</li>
+              <li><img src="/images/schedule/icon_hakubo.gif" alt="薄暮用アイコン" /> 薄暮開催</li>
+              <li><img src="/images/schedule/icon_event.png" alt="イベント用アイコン" /> イベント開催</li>
+              <li><img src="/images/schedule/icon_jplace.png" alt="J-PLACE用アイコン" /> J-PLACE発売</li>
+              <li><img src="/images/schedule/icon_sokupat.gif" alt="即PAT用アイコン" /> 即PAT発売</li>
+              <li><img src="/images/schedule/icon_apat.gif" alt="A-PAT用アイコン" /> A-PAT発売</li>
+            </ul>
+          </div>
+          <div id="schLink" class="clearfix">
+            <ul class="list_tri1_r">
+              <li><a href="schedule/index.html">発売カレンダー</a></li>
+              <li><a href="schedule/timetable.html">開門発走時刻</a></li>
+            </ul>
+          </div>
+        </div>
+        <div id="slideBannerArea">
+          <ul id="slideBanner" class="clearfix">
+            <li><a href="http://www.funabashi-keiba.net/" target="_blank"><img src="images/index/bnr_chibatrainer_220.gif" alt="千葉県調教師会" /></a></li>
+            <li><a href="http://www.pref.chiba.lg.jp/" target="_blank"><img src="images/index/bnr_chiba_220.gif" alt="千葉県" /></a></li>
+<!--            <li><a href="https://www.pref.chiba.lg.jp/chikusan/chibazapo-ku/umasagatasai-chibazapo-ku" target="_blank"><img src="images/index/bnr_chibazapo_220.gif" alt="チバザポーク" /></a></li>-->
+            <li><a href="http://www.nankankeiba.com/" target="_blank"><img src="images/index/bnr_nankan4_220.gif" alt="南関東4競馬場" /></a></li>
+            <li><a href="https://www.spat4.jp/keiba/pc" target="_blank"><img src="images/index/bnr_spat4_220.gif" alt="SPAT4" /></a></li>
+            <li><a href="http://www.keiba.go.jp/" target="_blank"><img src="images/index/bnr_nar_220.gif" alt="地方競馬情報サイトKEIBA.GO.JP" /></a></li>
+            <li><a href="http://www.nankan-tv.com/index.html?adtype=banner&p=fb" target="_blank"><img src="images/index/bnr_nankan-tv_220.gif" alt="スカパー！南関東地方競馬チャンネル" /></a></li>
+          </ul>
+        </div>
+        <!-- /sliderBanner --> 
+      </div>
+      <!-- fl 左側領域 -->
+      <div class="fr w230">
+        <ul class=" mB10">
+          <li><a href="race/dirtgrade/index.html"><img src="images/index/bnr_dirtgrade.png" alt="ダートグレード競走特集" width="230" height="100"></a></li>
+          <li><a href="race/diagram.html"><img src="images/index/bnr_diagram.png" alt="レース体系" width="230" height="100"></a></li>
+          <li><a href="race/kanmurirace.html"><img src="images/index/bnr_kanmurirace.png" alt="冠レースの募集について" width="230" height="100"></a></li>
+        </ul>
+        <div id="dararoomLink" class="box_radius mB10">
+          <h2 class="h2_dataroom">データルーム</h2>
+          <ul>
+            <li><a href="dataroom/jockey.html"><img src="images/index/bnr_jockey.png" alt="騎手名鑑" width="220" height="65"></a></li>
+            <li><a href="dataroom/trainer.html"><img src="images/index/bnr_trainer.png" alt="調教師名鑑" width="220" height="65"></a></li>
+            <li><a href="dataroom/horse.html"><img src="images/index/bnr_horse.png" alt="船橋駿馬伝説" width="220" height="65"></a></li>
+            <li><a href="dataroom/record.html"><img src="images/index/bnr_record.png" alt="コースレコード" width="220" height="65"></a></li>
+          </ul>
+        </div>
+        <ul>
+          <li><a href="f-keiba.html"><img src="images/index/bnr_f-keiba.png" alt="場外馬券発売所エフケイバ" width="230" height="65"></a></li>
+          <li><a href="j-place/index.html"><img src="images/index/bnr_j-place.png" alt="J-PLACE船橋" width="230" height="65"></a></li>
+          <li><a href="tv.html"><img src="images/index/bnr_tv.png" alt="テレビ中継" width="230" height="65"></a></li>
+          <li><a href="guide/character.html"><img src="images/index/bnr_character.png" alt="キャロッタ＆キャロッペ" width="230" height="65"></a></li>
+          <li><a href="keiba_guide_B4_new.pdf" target="_blank"><img src="images/index/btn_beginner.png" alt="船橋ケイバの楽しみ方（初心者向け）" /></a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- inner960 --> 
+  </div>
+  <!-- #main --> 
+  <!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::end main_content--> 
+</div>
+<!-- #page --> 
+<!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::footer-->
+<footer> 
+  <div id="footer">
+	<div id="footerContents" class="clearfix">
+		<div class="inner960">
+			<div id="footerAddress">
+				<h2><a href="/">船橋競馬</a></h2>
+				<p>〒273-0013 千葉県船橋市若松1-2-1</p>
+				<h3>交通アクセス</h3>
+				<p>京成線『船橋競馬場』駅徒歩5分<br>
+				JR京葉『南船橋』駅より徒歩10分</p>
+			</div>
+			<div id="footerMap" class="clearfix">
+				<div class="mapBox">
+					<p class="bold"><a href="/">船橋ケイバトップページ</a></p>
+					<p class="bold"><a href="http://blog.f-keiba.com/info/">お知らせ</a></p>
+					<p class="bold"><a href="http://blog.f-keiba.com/event/">イベント＆ファンサービス</a></p>
+					<p class="bold"><a href="/schedule/index.html">発売カレンダー</a></p>
+					<ul>
+						<li><a href="/schedule/timetable.html">開門発走時刻</a></li>
+					</ul>
+					<p class="bold"><a href="/race/index.html">レース情報</a></p>
+					<ul>
+						<li><a href="/race/dirtgrade/index.html">ダートグレード競走特集</a></li>
+						<li><a href="/race/diagram.html">レース体系</a></li>
+						<li><a href="/race/kanmurirace.html">冠レースの募集について</a></li>
+					</ul>
+				</div><!-- .mapBox -->
+				<div class="mapBox">
+					<p class="bold"><a href="/guide/index.html">船橋競馬場ガイド</a></p>
+					<ul>
+						<li><a href="/guide/nightrace.html">ナイター競馬案内</a></li>
+						<li><a href="/guide/character.html">キャロッタ＆キャロッペ</a></li>
+						<li><a href="/guide/telephone.html">テレホンガイド</a></li>
+					</ul>
+					<p class="bold"><a href="/dataroom/index.html">データルーム</a></p>
+					<ul>
+						<li><a href="/dataroom/jockey.html">騎手名鑑</a></li>
+						<li><a href="/dataroom/trainer.html">調教師名鑑</a></li>
+						<li><a href="/dataroom/horse.html">船橋駿馬伝説</a></li>
+						<li><a href="/dataroom/record.html">コースレコード</a></li>
+					</ul>
+				</div><!-- .mapBox -->
+				<div class="mapBox">
+					<ul>
+						<li class="bold"><a href="/access/index.html">アクセス</a></li>
+						<li class="bold"><a href="/f-keiba.html">場外馬券発売所エフケイバ</a></li>
+						<li class="bold"><a href="/j-place/index.html">J-PLACE</a></li>
+						<li class="bold"><a href="/tv.html">テレビ中継</a></li>
+						<li class="bold"><a href="/legal.html">リーガル</a></li>
+						<li class="bold"><a href="/hostorganization.html">千葉県競馬組合について</a></li>
+						<li class="bold"><a href="/forcustomer.html">お願い・ご注意</a></li>
+						<li class="bold"><a href="/contact/index.html">ご意見・お問い合わせ</a></li>
+					</ul>
+				</div><!-- .mapBox -->
+		</div><!-- .footMap -->
+			</div><!-- .inner960 -->
+	</div><!-- #footContents -->
+	<div id="copyright">
+		<p class="inner960"><small>Copyright © 2015 Funabashikeiba. All Rights Reserved.</small></p>
+	</div><!-- .wrap -->
+</div><!-- #footer -->
+<div id="pagetop"><a href="#page">PAGE TOP</a></div><!-- #pagetop -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-5172848-24', 'auto');
+  ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+</script>
+ 
+</footer>
+<!--:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::end footer-->
+</body>
+</html>

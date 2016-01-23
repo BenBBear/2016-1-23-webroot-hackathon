@@ -1,0 +1,528 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>皇冠hg0088</title>
+<meta name="keywords" content="皇冠现金网,新2,hg1386.com,皇冠足球网,皇冠足球网址,hg0046.com,皇冠现金投注网,皇冠现金开户">
+<meta name="description" content="皇冠hg3088现金网,24小时为您提供优质服务!皇冠现金开户-品牌公司，线上娱乐-打造最全、最快、最稳定的运动类亚洲现金网">
+
+<link href="Images/css.css" tppabs="css.css" type="text/css" rel="stylesheet">
+<bgsound loop="-1" src="5577.wma"></bgsound>
+<style type="text/css">
+body {
+	background-image: url(images/bg.jpg);
+	text-align:left;
+	float:left;
+}
+#page-content{
+    width:757px;
+    float:left;
+margin:0 auto;
+ }
+ /*首頁右側*/
+#right{
+    padding-top: 10px;
+	 padding-left: 5px;
+}
+#right a.Game01 {
+    display:block;  
+    background:url(/images/btngame01.jpg) top left no-repeat;
+    height:272px;
+    width:143px;
+    margin:0 7px 0 0;
+    float:left;
+}
+#right a.Game01:hover{
+    background:url(/images/btngame01.jpg) bottom right no-repeat;
+}
+
+#right a.Game02 {
+    display:block;  
+    background:url(/images/btngame02.jpg) top left no-repeat;
+    height:272px;
+    width:143px;
+    margin:0 7px 0 0;
+    float:left;
+}
+#right a.Game02:hover{
+    background:url(/images/btngame02.jpg) bottom right no-repeat;
+}
+
+#right a.Game03 {
+    display:block;  
+    background:url(/images/btngame03.jpg) top left no-repeat;
+    height:272px;
+    width:143px;
+    margin:0 7px 0 0;
+    float:left;
+}
+#right a.Game03:hover{
+background:url(/images/btngame03.jpg) bottom right no-repeat;
+}
+
+#right a.Game04 {
+    display:block;  
+    background:url(/images/btngame04.jpg) top left no-repeat;
+    height:272px;
+    width:143px;
+    margin:0 7px 0 0;
+    float:left;
+}
+#right a.Game04:hover{
+background:url(/images/btngame04.jpg) bottom right no-repeat;
+}
+#right a.Game05 {
+    display:block;  
+    background:url(/images/btngame05.jpg) top left no-repeat;
+    height:272px;
+    width:143px;
+    margin:0 7px 0 0;
+    float:left;
+}
+#right a.Game05:hover{
+background:url(/images/btngame05.jpg) bottom right no-repeat;
+}
+#right .pic01{
+    margin:15px 0 10px 0px;
+    display:block;
+    float:left;
+}
+#right .pic02{
+    margin:15px 0 10px 0px;
+    display:block;
+}
+</style>
+<script language="JAVAScript"> 
+function createXMLHttpRequest(http) {
+	if (window.ActiveXObject) {
+		eval(http+" = new ActiveXObject(\"Microsoft.XMLHTTP\")");
+	}else if(window.XMLHttpRequest) {
+		eval(http+" = new XMLHttpRequest()");
+	}
+}
+//验证推荐人是否有效
+function check_agents(id){
+	createXMLHttpRequest("cHttp");
+	cHttp.onreadystatechange = check_have;
+	cHttp.open("post", "check_id.php", true);
+	cHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded;");
+	agents = document.getElementById("agents").value;
+	cHttp.send("agents="+intr+"&type=intr");
+	function check_have(){
+		if(cHttp.readyState == 4) {
+			  if(cHttp.status == 200) {
+				  var cDoc = cHttp.responseText;
+				  if(cDoc=="1"){
+				  	return ;				  
+				  }else{
+				  	alert("对不起,此推荐人不存在,请重新输入!");
+					document.getElementById("agents").value="";
+					document.getElementById("agents").focus();
+					return false;
+				  }			 
+			  }
+		}			  
+	}		
+}
+<!--
+//去掉空格
+function check_null(string){ 
+var i=string.length;
+var j = 0; 
+var k = 0; 
+var flag = true;
+while (k<i){ 
+if (string.charAt(k)!= " ") 
+j = j+1; 
+k = k+1; 
+} 
+if (j==0){ 
+flag = false;
+} 
+return flag; 
+}
+function isNum(N){   
+//var   Ns=/^\d{8}/;   
+var Ns=/^ckk[A-Za-z0-9]{4,8}$/;   
+if (!Ns.test(N)){   
+    return   false;
+}else{   
+    return   true;   
+}   
+}
+function isMobel(value){   
+if(/^1[0-9]{10,12}$/.test(value)){    
+          return true;   
+}else{   
+           return false;   
+}   
+}
+function VerifyData(){
+	if (document.main.username.value == "") {
+		alert("所需帐号不能为空")
+		document.main.username.focus();
+		return false;
+	}
+
+	if (document.main.username.value.length<6 || document.main.username.value.length>10) {
+		alert("账号需在6-10位之间");
+		document.main.username.focus();
+		return   false; 
+	}
+	if (document.main.password.value == "") {
+		alert("所需密码不能为空")
+		document.main.password.focus();
+		return false;
+	}
+	if (document.main.password.value.length<6 || document.main.password.value.length>10) {
+		alert("密码需在6-10位之间");
+		document.main.password.focus();
+		return   false; 
+	}
+	if (!check_null(document.main.alias.value)) {
+		window.alert("阁下姓名不能为空")
+		document.main.alias.focus();
+		return false;
+	}
+		if (document.main.address.value == "") {
+		alert("提款密码必须填写")
+		document.main.address.focus();
+		return false;
+	}
+	if (document.main.phone.value == "") {
+		alert("手机号码不能为空!");
+		document.main.phone.focus();
+		return false;
+	}
+	if (!isMobel(document.main.phone.value)){
+		alert("手机号码格式不正确!");
+		document.main.phone.focus();
+		return false;
+	}
+	var reg=/^\d+$/g; 
+    if (reg.test(document.main.phone.value)==false){
+		alert("手机号码必须是数字！")
+		document.main.phone.focus();
+		return false;
+	}
+	document.main.submit();
+}
+-->
+</script>
+<script type="text/javascript" src="./Images/component-v2.js" id="lim:component"><link id="invite_style" type="text/css" rel="stylesheet" href="./Images/invite.css"></script></head><body onselectstart="return(false);" oncontextmenu="return(false);" topmargin="0" leftmargin="0">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tbody><tr>
+    <td height="30" background="./Images/top.gif" tppabs="images/top.gif"></td>
+  </tr>
+</tbody></table>
+<table width="978" border="0" cellpadding="0" cellspacing="0" align="center" bgcolor="#242001">
+  <tbody><tr>
+    <td width="978">
+    <table width="99%" border="0" cellspacing="0" cellpadding="0">
+      <tbody><tr>
+        <td><img src="./Images/headerBg.jpg" tppabs="images/headerBg.jpg" width="969" height="126"></td>
+      </tr>
+      <tr>
+        <td height="27" align="center" bgcolor="#242307"><table width="961" border="0" cellpadding="0" cellspacing="1" bgcolor="#35351B">
+           <tbody><tr align="center" bgcolor="#35351B">
+            <td width="12%" height="27" bgcolor="#242307"><span class="style15">EDT：<label id="aa">16:07:14</label><script>setInterval("aa.innerHTML=new Date().toLocaleTimeString();",1000);</script></span></td>
+            <td width="9%" bgcolor="#242307" onmouseover="javascript:this.style.backgroundColor ='#121203'" onmouseout="javascript:this.style.backgroundColor = ''"><span class="style1"><a href="Index.php" target="_self">皇冠首页</a></span></td>
+            <td width="9%" bgcolor="#242307" onmouseover="javascript:this.style.backgroundColor ='#121203'" onmouseout="javascript:this.style.backgroundColor = ''" style=""><span class="style1"><a href="reg.php"><font color="red">立即开户</font></a></span></td>
+            <td width="9%" bgcolor="#242307" onmouseover="javascript:this.style.backgroundColor ='#121203'" onmouseout="javascript:this.style.backgroundColor = ''" style=""><span class="style1"><a href="activity.php">优惠活动</a></span></td>
+            <td width="9%" bgcolor="#242307" onmouseover="javascript:this.style.backgroundColor ='#121203'" onmouseout="javascript:this.style.backgroundColor = ''"><span class="style1"><a href="rule.php">规则说明</a></span></td>
+            <td width="9%" bgcolor="#242307" onmouseover="javascript:this.style.backgroundColor ='#121203'" onmouseout="javascript:this.style.backgroundColor = ''"><span class="style1"><a href="save.php">存款取款</a></span></td>
+            <td width="9%" bgcolor="#242307" onmouseover="javascript:this.style.backgroundColor ='#121203'" onmouseout="javascript:this.style.backgroundColor = ''"><span class="style1"><a href="issue.php">常见问题</a></span></td>
+            <td width="9%" bgcolor="#242307" onmouseover="javascript:this.style.backgroundColor ='#121203'" onmouseout="javascript:this.style.backgroundColor = ''"><span class="style1"><a href="agent.php">代理加盟</a></span></td>
+            <td width="9%" bgcolor="#242307" onmouseover="javascript:this.style.backgroundColor ='#121203'" onmouseout="javascript:this.style.backgroundColor = ''"><span class="style1"><a href="about.php">关于我们</a></span></td>
+          	<td width="10%" bgcolor="#242307" onmouseover="javascript:this.style.backgroundColor ='#121203'" onmouseout="javascript:this.style.backgroundColor = ''"><span class="style1"><a href="http://ht0088.com/" target="_blank">会员登陆</a></span></td>
+          </tr>
+        </tbody></table></td>
+      </tr>
+    </tbody></table>  
+      </div>
+      <div id="wraper" style="background-color: #EFE697; background-image: url('images/pokerSlice2.jpg'); background-repeat: no-repeat; background-attachment: scraoll; background-position: 825px top">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tbody>
+          <tr>
+            <td width="5"><div align="right"></div></td>
+            <td width="181" background="./Images/ggBg.jpg" tppabs="images/ggBg.jpg"><div align="center">
+              <marquee behavior="scroll" direction="up" class="gg" scrollamount="1" onmouseover="this.stop()" onmouseout="this.start()" vspace="1">
+                <p>网站推出"优惠"活动：新会员充值500以上就可获得100%彩金 </p>
+                <p>申请后提款限制：</p>
+                <p>新老会员选择享受存款的30%礼金后，有效投注额需达到存款加礼金的10倍，即（存款+优惠）*10可申请全部提款，例如会员存款1000元，我们送的彩金是300，那您投注额达到13000元，就可全部提款。</p>
+                <p>投注同时享受洗码回水优惠</p>
+                <p>1.所有会员，即日起联系在线客服索取指定银行账号存款至我公司账户的会员，均可享受每笔存款达1%的优惠，优惠会在您存款的时候自动为您添加！</p>
+                <p>2.所有会员均可享受1%的洗码回水优惠，每周的周一中午12时后进行结算，结算后会将洗码回水优惠金额添加至您的会员账号中，可以随时取款或者用于游戏投注. </p>
+                <p>优惠条款细则：</p>
+                <p>1. 洗码回水优惠以单个会员账号的有效投注额进行结算</p>
+                <p>2. 只有有效投注额才能享受优惠（无效投注包括在游戏中下注和局、游戏结果为和局、同一局游戏中下注正、反两种结果:如百家乐游戏同一局下注庄闲） </p>
+                <p>3. 若系统侦测玩家以不正常手段来进行游戏，一经查证属实，会员账号将被永久锁定並取消优惠 </p>
+                <p>4. 如发现玩家使用不正当手段谋取我们的优惠奖励，讯盈国际娱乐城将保留取消该玩家获得促销奖励的权利。</p>
+                <p>如出现争执，以皇冠国际娱乐城的所有决定将是最终决定，会员参加任何优惠活动则被视为认可并同意遵守规则以及皇冠国际娱乐城有关规定，愿意受其约束，本公司保留最终解释权</p>
+                <p></p>
+                <p class="STYLE1">&nbsp;</p>
+                <p class="b1">&nbsp;</p>
+                <p class="p1">&nbsp;</p>
+                </marquee>
+            </div></td>
+            <td width="595" class="bannerArea">
+<object id="scriptmain" 
+codebase="http://download.macromedia.com/pub/shockwave/cabs/
+flash/swflash.cab#version=6,0,29,0" 
+height="247" width="594" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" 
+name="scriptmain">
+                <param name="movie" value="bcastr.swf?bcastr_xml_url=23408d2c-4de8-47eb-b5d2-3ff43ae853e9.xml" />
+                <param name="quality" value="high" />
+                <param name="scale" value="noscale" />
+                <param name="LOOP" value="true" />
+                <param name="menu" value="false" />
+                <param name="wmode" value="transparent" />
+                <embed 
+src="bcastr.swf?bcastr_xml_url=23408d2c-4de8-47eb-b5d2-3ff43ae853e9.xml" 
+width="594" height="247" loop="True" quality="high" 
+pluginspage="http://www.macromedia.com/go/getflashplayer" 
+type="application/x-shockwave-flash" salign="T" name="scriptmain" menu="false" 
+wmode="transparent"></embed>
+              </object>
+</td>
+          </tr>
+        </tbody>
+      </table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:6px">
+          <tbody>
+            <tr>
+              <td width="254"><img src="./Images/livedealer.gif" tppabs="images/livedealer.gif" width="254" height="29"></td>
+              <td width="6"></td>
+              <td width="254"><img src="./Images/casino.gif" tppabs="images/casino.gif" width="254" height="29"></td>
+              <td width="6"></td>
+              <td><img src="./Images/sportsbook.gif" tppabs="images/sportsbook.gif" width="254" height="29"></td>
+            </tr>
+          </tbody>
+        </table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tbody>
+            <tr>
+              <td width="264" height="301" valign="top" background="./Images/liveDealerBg.jpg" tppabs="images/liveDealerBg.jpg"><table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+                <tbody>
+                  <tr>
+                    <td height="180"></td>
+                  </tr>
+                  <tr>
+                    <td height="100" class="game"><span class="game style19">体育竞猜包含足球、篮球、股票指数..等运动赛事；192超高水位，滚球开至90分钟，上半场45分钟派彩...</span></td>
+                  </tr>
+                </tbody>
+              </table></td>
+              <td width="1"></td>
+              <td width="264" valign="top" background="./Images/casinoBg.jpg" tppabs="images/casinoBg.jpg"><div align="center">
+                <table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+                  <tbody>
+                    <tr>
+                      <td height="180"></td>
+                    </tr>
+                    <tr>
+                      <td height="100" class="game"><span class="style19">荷官均受过国际专业训练，所有纸牌及设备经检查符合国际规定，现场视频实时转播，所有游戏绝对的公平公正公开! </span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div></td>
+              <td width="1"><div align="center"></div></td>
+              <td width="264" valign="top" background="./Images/sportBg.jpg" tppabs="images/sportBg.jpg"><div align="center">
+                <table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+                  <tbody>
+                    <tr>
+                      <td height="180"></td>
+                    </tr>
+                    <tr>
+                      <td height="100" class="game"><span class="style19">扑克游戏有斗地主、国际梭哈、28张梭哈、扎金花、斗牛（妞妞）、赖子斗地主、真人对战、公平公正! ...</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div></td>
+            </tr>
+          </tbody>
+        </table></td>
+      <td width="6"></td>
+      <td valign="top" bgcolor="#EFE697" id="sideBar"><script language="JavaScript" type="text/javascript">
+
+		var divheight =100;
+		var speed=11;
+
+		var i=0;
+		var s;
+
+
+		var p=0;
+
+		function big(n){
+			if(document.getElementById("bbb"+n).offsetHeight<11){
+
+			i=0;
+		inc(n);
+		document.getElementById("ico"+n).className="opened";
+
+			}
+				else if(document.getElementById("bbb"+n).offsetHeight>divheight){
+
+				p=divheight;
+
+			inc2(n);
+				document.getElementById("ico"+n).className="";
+				}
+
+
+		}
+		function inc(x){
+
+			i=i+10;
+		document.getElementById("bbb"+x).style.height=i+"px";
+
+				if(i>divheight){
+
+					i=divheight-5;
+
+				}
+					var s=setTimeout("inc("+x+")",speed);
+			if(i==95){
+				window.clearTimeout(s);
+
+			}
+
+		}
+		function inc2(x){
+		if(p>1){
+		p=p-10;
+			document.getElementById("bbb"+x).style.height=p +"px";
+
+		}
+		var s=setTimeout("inc2("+x+")",speed);
+		if(p==0){
+
+				window.clearTimeout(s);
+		}
+		}
+	  </script>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="leftBtn">
+          <tbody>
+            <tr>
+              <td><div class="abslut" style="background:url(./images/btn_kh.gif) no-repeat;" onclick="big(1)" id="botton1"><span id="ico1"></span></div>
+                <div class="bb" id="bbb1">
+                  <div class="intro">开户简单，快捷，安全，在线开户只需1分钟完成.<br>
+                    <a href="reg.php"><img src="./Images/btn_kh_s.gif" tppabs="/images/btn_kh_s.gif" border="0"></a><a href="index.php?go=help_kh" tppabs="/help_kh.php"><img src="./Images/t_khhelp.gif" tppabs="//images/t_khhelp.gif" border="0"></a></div>
+                </div>
+                <div class="abslut" style="background:url(./images/btn_cz.gif) no-repeat;" onclick="big(2)" id="botton2"><span id="ico2"></span></div>
+                <div class="bb" id="bbb2">
+                  <div class="intro">新旧会员充值每次存款2000元起即送10%彩金.<br>
+                    <a href="ck.php"><img src="./Images/btn_cz_s.gif" tppabs="/images/btn_cz_s.gif" border="0"></a><a href="ck.php"><img src="./Images/t_czhelp.gif" tppabs="./images/t_czhelp.gif" border="0"></a></div>
+                </div>
+                <div class="abslut" style="background:url(./images/btn_tk.gif) no-repeat;" onclick="big(3)"><span id="ico3"></span></div>
+                <div class="bb" id="bbb3">
+                  <div class="intro">取款每天一次不限金额,在线提款无须人工操作,5分钟到达指定银行.<br>
+                    <a href="tk.php"><img src="./Images/123456.gif" tppabs="/images/123456.gif" border="0"></a></div>
+                </div>
+                <div class="abslut" style="background:url(./images/btn_sw.gif) no-repeat;" onclick="big(4)"><span id="ico4"></span></div>
+                <div class="bb" id="bbb4">
+                  <div class="intro">请向在线客服索取免费参观账号。<br>
+                    <a href="http://kf1.learnsaas.com/chat/chatClient/chatbox.jsp?companyID=188881&jid=6724700113" target="_blank"><img src="./Images/btn_kf_s.gif" tppabs="/images/btn_kf_s.gif" border="0"></a></div>
+                </div></td>
+            </tr>
+            <tr>
+              <td><a href="http://www.ht0088.com/" target="_blank"><img src="./Images/btn_dl.gif" width="188" border="0"></a></td>
+            </tr>
+          </tbody>
+        </table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tbody>
+            <tr>
+              <td align="center"><table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-bottom:5px;">
+                <tbody>
+                  <tr>
+                    <td align="center" bgcolor="#DC0100"><table width="100" border="0" cellpadding="0" cellspacing="0" bgcolor="#242001">
+                      <tbody>
+                        <tr>
+                          <td width="188" height="200" bgcolor="#4B0D00" style="font-size: 12px"><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="188" height="210">
+                            <param name="movie" value="images/005.swf">
+                            <param name="quality" value="High">
+                            <embed src="images/005.swf" quality="High" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="188" height="210">
+                            </object></td>
+                        </tr>
+                      </tbody>
+                    </table></td>
+                  </tr>
+                  <tr>
+                    <td align="center" bgcolor="#242100"><img src="./Images/vip.jpg" width="188" height="208" border="0"></td>
+                  </tr>
+                </tbody>
+              </table></td>
+            </tr>
+          </tbody>
+        </table></td>
+    </tr>
+  </tbody>
+</table></div>
+        <div id="footer">
+        <div style="width:978px; height:100px">
+          <table width="978" border="0" cellspacing="0" cellpadding="0">
+            <tbody><tr>            </tr>
+            <tr>
+              <td align="center" class="style5"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+               <tbody><tr>
+                 <td height="60" align="center" valign="middle"><p class="style18"> Copyright © 1993-2018 All Rights Reserved 皇冠线上娱乐<br>
+                       <br>
+                    皇冠建议您以IE6.0 1024×768 以上高彩模式浏览本站，如果不能正常浏览本网站请下载安装相应插件：①IE6.0 ②Flash Player</p>
+<p><font size="1"><a href="http://www.ht0088.com" target="_blank"><font color="#242100">hg0088正网开户</font></a><font color="#35351B">&nbsp; 
+</font><a href="http://www.ht0088.com" target="_blank"><font color="#242100">hg0088开户</font></a><font color="#35351B">&nbsp; 
+</font><a href="http://www.ht0088.com"><font color="#242100">皇冠hg0088开户</font></a><font color="#35351B">&nbsp;      
+</font><a href="http://www.ht0088.com"><font color="#242100">hg1088正网开户</font></a><font color="#35351B">&nbsp;      
+</font><a href="http://www.ht0088.com"><font color="#242100">hg1088开户</font></a><font color="#35351B">&nbsp;      
+</font><a href="http://www.ht0088.com"><font color="#242100">皇冠hg1088开户</font></a><font color="#35351B">      
+</font><a href="http://www.ht0088.com"><font color="#242100">hg3088正网开户</font></a><font color="#35351B">&nbsp;      
+</font><a href="http://www.ht0088.com"><font color="#242100">hg3088开户</font></a><font color="#35351B">&nbsp;      
+</font><a href="http://www.ht0088.com"><font color="#242100">皇冠hg3088开户</font></a><a href="http://www.ht0088.com" target="_blank"><font color="#242100"> 
+ra8888正网开户</font></a><font color="#35351B">&nbsp; </font><a href="http://www.ht0088.com" target="_blank"><font color="#242100">ra8888开户</font></a><font color="#35351B">&nbsp;      
+</font><a href="http://www.ht0088.com"><font color="#242100">皇冠ra8888开户</font></a><font color="#35351B">&nbsp;      
+</font><a href="http://www.ht0088.com"><font color="#242100">888crown正网开户</font></a><font color="#35351B">&nbsp;      
+</font><a href="http://www.ht0088.com"><font color="#242100">888crown开户</font></a><font color="#35351B">&nbsp;      
+</font><a href="http://www.ht0088.com"><font color="#242100">皇冠888crown开户</font></a><font color="#35351B">      
+</font><a href="http://www.ht0088.com"><font color="#242100">ra9988正网开户</font></a><font color="#35351B">&nbsp;      
+</font><a href="http://www.ht0088.com"><font color="#242100">ra9988开户</font></a><font color="#35351B">&nbsp; 
+</font><a href="http://www.ht0088.com"><font color="#242100">皇冠ra9988开户 ra6688正网开户</font></a><font color="#35351B">&nbsp; 
+</font><a href="http://www.ht0088.com"><font color="#242100">ra6688开户</font></a><font color="#35351B">&nbsp;      
+</font><a href="http://www.ht0088.com"><font color="#242100">皇冠ra6688开户</font></a><font color="#35351B">&nbsp; 
+</font><a href="http://www.ht0088.com"><font color="#242100">球探网</font></a><font color="#35351B">&nbsp; 
+</font><a href="http://www.ht0088.com"><font color="#242100">007球探比分</font></a><font color="#35351B">&nbsp; 
+</font><a href="http://www.ht0088.com"><font color="#242100">足球比分</font></a><font color="#35351B">&nbsp; 
+</font><a href="http://www.ht0088.com"><font color="#242100">球探比分网</font></a></font></p> 
+                   </td>
+               </tr>
+              </tbody></table></td>
+            </tr>
+          </tbody></table>
+        <p><img src="./Images/ddd.gif" width="969" height="50"> </p>
+        </div>
+    </div></td>
+  </tr>
+</tbody></table>
+
+<script language="JavaScript"> 
+window.onbeforeunload = function()
+{
+  if(event.clientX>document.body.clientWidth&&event.clientY<0||event.altKey)
+  {
+    aler();
+  }
+}
+function aler()
+{
+  alert("为了方便您更好的掌握★皇冠足球投注-现金网★    \n\n      请点击【确定】收藏本站实时更新网址    ");
+  window.external.addFavorite('http://hg0046.com/','★皇冠足球投注-现金网★');
+}
+</script>
+</body></html>
+<!-- Live800在线客服图标:service[浮动型] 开始-->
+<div style='display:none;'><a href='http://www.live800.com'>在线客服系统</a><a href='http://www.beibaotu.com'>出行计划</a></div><script language="javascript" src="http://kf1.learnsaas.com/chat/chatClient/floatButton.js?jid=6724700113&companyID=188881&configID=40970&codeType=custom"></script><div style='display:none;'><a href='http://www.live800.com'>在线客服系统</a><a href='http://www.beibaotu.com'>出行计划</a></div>
+<!-- Live800在线客服图标:service[浮动型] 结束-->
+<!-- Live800默认跟踪代码: 开始-->
+<script language="javascript" src="http://kf1.learnsaas.com/chat/chatClient/monitor.js?jid=6724700113&companyID=188881&configID=40916&codeType=custom"></script>
+<!-- Live800默认跟踪代码: 结束-->

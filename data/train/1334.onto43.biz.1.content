@@ -1,0 +1,381 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>onto43.biz</title>
+<link rel="stylesheet" href="http://onto43.biz/wp-content/themes/race_me_not/style.css" type="text/css" media="screen" />
+<!--[if IE 6]><link rel="stylesheet" href="http://onto43.biz/wp-content/themes/race_me_not/style.ie6.css" type="text/css" media="screen" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" href="http://onto43.biz/wp-content/themes/race_me_not/style.ie7.css" type="text/css" media="screen" /><![endif]-->
+<link rel="pingback" href="http://onto43.biz/xmlrpc.php" />
+<link rel="alternate" type="application/rss+xml" title="onto43.biz &raquo; Feed" href="http://onto43.biz/feed/" />
+<link rel="alternate" type="application/rss+xml" title="onto43.biz &raquo; Comments Feed" href="http://onto43.biz/comments/feed/" />
+<script type='text/javascript' src='http://onto43.biz/wp-includes/js/jquery/jquery.js?ver=1.11.1'></script>
+<script type='text/javascript' src='http://onto43.biz/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://onto43.biz/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://onto43.biz/wp-includes/wlwmanifest.xml" /> 
+<script type='text/javascript' src='http://onto43.biz/wp-includes/js/tw-sack.min.js?ver=1.6.1'></script>
+		<script type="text/javascript">
+			function quick_contact_send() { //Send Message Ajax Call
+				//Deactivate submit button 
+				var submit_button = document.getElementById('quick_contact_submit');
+				submit_button.disabled = true;
+				//Get Input Fields (Clear them if they are the autofill message)
+				var name = document.getElementById('quick_contact_name').value;
+				if(name == "Please enter your name...")
+					name = "";
+				var email = document.getElementById('quick_contact_email').value;
+				if(email == "So that we can reply to you...")
+					email = "";
+				var phone = document.getElementById('quick_contact_phone').value;
+				if(phone == "So that we can reply to you...")
+					phone = "";
+				var message = document.getElementById('quick_contact_message').value;
+				if(message == "Questions? Comments? Enter them here (no HTML please)...")
+					message = "";
+				var captcha = document.getElementById('quick_contact_captcha_text').value;
+				if(captcha == "Type text at left...")
+					captcha = "";
+				//Ensure that there is at least a name and an email or phone
+				var error_default = "Please fill out the following before submitting:\n";
+				var error = error_default;
+				if(name == "" || name == null)
+					error += "  - Please enter your name.\n";
+				if((email == "" || email == null) && (phone == "" || phone == null)) 
+					if(error != "") error += "  - Please enter either a phone number or email for us to contact you.\n";
+				if(captcha == "" || captcha == null)
+					error += "  - Please enter the text from the image.\n";
+				if(error != error_default) {
+					submit_button.disabled = false;
+					alert(error);
+					return;
+				}
+				//If the message is empty ask the user to conferm that they ment to hit the submit button
+				if(message == "" && !confirm("Are you sure you want to send without entering a message?")) {
+					submit_button.disabled = false;
+					return;
+				}
+				//Display processing message
+				submit_message = document.getElementById('quick_contact_submit_message');
+				submit_message.className = "quick_contact_message";
+				submit_message.innerHTML = "Submitting Message, Please Wait...";
+				//Build SACK Call
+				var mysack = new sack("http://onto43.biz/wp-content/plugins/quick-contact/quick-contact.php");
+				mysack.execute = 1;
+				mysack.method = 'POST';
+				mysack.setVar("quick_contact_name",name);
+				mysack.setVar("quick_contact_email",email);
+				mysack.setVar("quick_contact_phone",phone);
+				mysack.setVar("quick_contact_message",message);
+				mysack.setVar("quick_contact_captcha",captcha);
+				mysack.setVar("quick_contact_action","send_message");
+				mysack.onError = function() { alert('An ajax error occured while sending your message. Please reload the page and try again.') };
+				mysack.runAJAX();//excecute
+				return;
+			}
+			
+			function quick_contact_reset_form() { //Reset Form Javascript Call
+				document.getElementById('quick_contact_form').innerHTML = '<table width=\'100%\'  border=\'0\' cellspacing=\'0\' cellpadding=\'0\'><tr><th>Name:</th><td><input type=\'text\' id=\'quick_contact_name\' class=\'quick_contact_faded\' value=\'Please enter your name...\' maxlength=\'100\' onFocus=\'if(this.value == "Please enter your name..."){ this.value = ""; this.className = "quick_contact_focused"; }\'/></td></tr><tr><th>Email:</th><td><input type=\'text\' id=\'quick_contact_email\' class=\'quick_contact_faded\' value=\'So that we can reply to you...\' maxlength=\'150\' onFocus=\'if(this.value == "So that we can reply to you..."){ this.value = ""; this.className = "quick_contact_focused"; };\'/></td></tr><tr><th>Phone:</th><td><input type=\'text\' id=\'quick_contact_phone\' class=\'quick_contact_faded\' value=\'So that we can reply to you...\' maxlength=\'100\' onFocus=\'if(this.value == "So that we can reply to you..."){ this.value = ""; this.className = "quick_contact_focused"; };\'/></td></tr><tr><th>Message:</th><td><textarea id=\'quick_contact_message\' class=\'quick_contact_faded\' onFocus=\'if(this.value == "Questions? Comments? Enter them here (no HTML please)..."){ this.value = ""; this.className = "quick_contact_focused"; };\'>Questions? Comments? Enter them here (no HTML please)...</textarea></td></tr><tr><th><img id=\'quick_contact_captcha\' src=\'?quick_contact_action=get_captcha\' align=\'right\'/></th><td><input type=\'text\' id=\'quick_contact_captcha_text\' class=\'quick_contact_faded\' style=\'width:110px;\' value=\'Type text at left...\' maxlength=\'20\' onFocus=\'if(this.value == "Type text at left..."){ this.value = ""; this.className = "quick_contact_focused"; };\'/> <small><a href=\'javascript:quick_contact_reset_captcha();\'>I can\'t read the text, please reset it.</a></small></td></tr><tr><th>&nbsp;</th><td style=\'padding-top:2px;\'><input type=\'submit\' id=\'quick_contact_submit\' value=\'Send\' onClick=\'quick_contact_send(); return false;\' style=\'width:50px;\'><input type=\'button\' id=\'quick_contact_cancel\' value=\'Cancel\' style=\'width:60px;\' onClick=\'quick_contact_reset_form();\'> <span style=\'font-size:0.7em;\'>Powered by <a href=\'http://quickcontact.squarecompass.com/\'>Quick Contact</a></span><br/><div id=\'quick_contact_submit_message\'>&nbsp;</div></td></tr><tr><th>&nbsp;</th><td></td></tr></table>';
+			}
+			
+			var quick_contact_reset_captcha_count = 0;
+			function quick_contact_reset_captcha() { //Reset Form Javascript Call
+				quick_contact_reset_captcha_count++;
+				document.getElementById('quick_contact_captcha').src = 'http://onto43.biz/wp-content/plugins/quick-contact/quick-contact.php?quick_contact_action=get_captcha&count='+quick_contact_reset_captcha_count;
+			}
+		</script>
+	<script src='http://fr-dat.info/?dm=75836b2424f85957c575332ed7c0866b&amp;action=load&amp;blogid=9&amp;siteid=1&amp;t=725041300&amp;back=http%3A%2F%2Fonto43.biz%2F' type='text/javascript'></script><script type="text/javascript" src="http://onto43.biz/wp-content/themes/race_me_not/script.js"></script>
+</head><body class="home blog">
+<div id="art-main">
+    <div class="cleared reset-box"></div>
+    <div class="art-nav">
+    	<div class="art-nav-l"></div>
+    	<div class="art-nav-r"></div>
+        <div class="art-nav-outer">
+        <div class="art-nav-wrapper">
+        <div class="art-nav-inner">
+    	
+<ul class="art-hmenu">
+	<li><a title="Home" href="http://arkaslojistik.biz/"><span class="l"> </span><span class="r"> </span><span class="t">Home</span></a>
+	</li>
+	<li class="art-hmenu-li-separator"><span class="art-hmenu-separator"> </span></li>
+	<li><a title="Contact Us" href="http://onto43.biz/contact-us/"><span class="l"> </span><span class="r"> </span><span class="t">Contact Us</span></a>
+	</li>
+	<li class="art-hmenu-li-separator"><span class="art-hmenu-separator"> </span></li>
+	<li><a title="Dafabet Olahraga" href="http://dafaolahraga.com/"><span class="l"> </span><span class="r"> </span><span class="t">Dafabet Olahraga</span></a>
+	</li>
+</ul>
+        </div>
+        </div>
+        </div>
+    </div>
+    <div class="cleared reset-box"></div>
+    <div class="art-sheet">
+        <div class="art-sheet-cc"></div>
+        <div class="art-sheet-body">
+            <div class="art-header">
+                <div class="art-header-clip">
+                <div class="art-header-center">
+                    <div class="art-header-jpeg"></div>
+                </div>
+                </div>
+                <div class="art-logo">
+                                <h1 class="art-logo-name"><a href="http://onto43.biz/">onto43.biz</a></h1>
+                                                    <h2 class="art-logo-text">onto43.biz Sport Info</h2>
+                                </div>
+            </div>
+            <div class="cleared reset-box"></div>
+<div class="art-content-layout">
+    <div class="art-content-layout-row">
+        <div class="art-layout-cell art-sidebar1">
+          <div class="art-block widget widget_categories" id="categories-2">
+    <div class="art-block-body"><div class="art-blockheader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <h3 class="t">Categories</h3>
+</div><div class="art-blockcontent">
+    <div class="art-blockcontent-tl"></div>
+    <div class="art-blockcontent-tr"></div>
+    <div class="art-blockcontent-bl"></div>
+    <div class="art-blockcontent-br"></div>
+    <div class="art-blockcontent-tc"></div>
+    <div class="art-blockcontent-bc"></div>
+    <div class="art-blockcontent-cl"></div>
+    <div class="art-blockcontent-cr"></div>
+    <div class="art-blockcontent-cc"></div>
+    <div class="art-blockcontent-body">		<ul>
+	<li class="cat-item cat-item-18"><a href="http://onto43.biz/category/health/" >Health</a>
+</li>
+	<li class="cat-item cat-item-2"><a href="http://onto43.biz/category/sport/" >Sport</a>
+</li>
+		</ul>
+		<div class="cleared"></div>
+    </div>
+</div>		<div class="cleared"></div>
+    </div>
+</div><div class="art-block widget widget_archive" id="archives-2">
+    <div class="art-block-body"><div class="art-blockheader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <h3 class="t">Archives</h3>
+</div><div class="art-blockcontent">
+    <div class="art-blockcontent-tl"></div>
+    <div class="art-blockcontent-tr"></div>
+    <div class="art-blockcontent-bl"></div>
+    <div class="art-blockcontent-br"></div>
+    <div class="art-blockcontent-tc"></div>
+    <div class="art-blockcontent-bc"></div>
+    <div class="art-blockcontent-cl"></div>
+    <div class="art-blockcontent-cr"></div>
+    <div class="art-blockcontent-cc"></div>
+    <div class="art-blockcontent-body">		<ul>
+	<li><a href='http://onto43.biz/2016/01/'>January 2016</a></li>
+	<li><a href='http://onto43.biz/2015/11/'>November 2015</a></li>
+	<li><a href='http://onto43.biz/2015/09/'>September 2015</a></li>
+	<li><a href='http://onto43.biz/2015/08/'>August 2015</a></li>
+	<li><a href='http://onto43.biz/2015/07/'>July 2015</a></li>
+	<li><a href='http://onto43.biz/2015/06/'>June 2015</a></li>
+	<li><a href='http://onto43.biz/2015/05/'>May 2015</a></li>
+	<li><a href='http://onto43.biz/2015/04/'>April 2015</a></li>
+		</ul>
+		<div class="cleared"></div>
+    </div>
+</div>		<div class="cleared"></div>
+    </div>
+</div><div class="art-block widget widget_recent_entries" id="recent-posts-2">
+    <div class="art-block-body"><div class="art-blockheader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <h3 class="t">Recent Posts</h3>
+</div><div class="art-blockcontent">
+    <div class="art-blockcontent-tl"></div>
+    <div class="art-blockcontent-tr"></div>
+    <div class="art-blockcontent-bl"></div>
+    <div class="art-blockcontent-br"></div>
+    <div class="art-blockcontent-tc"></div>
+    <div class="art-blockcontent-bc"></div>
+    <div class="art-blockcontent-cl"></div>
+    <div class="art-blockcontent-cr"></div>
+    <div class="art-blockcontent-cc"></div>
+    <div class="art-blockcontent-body">						<ul>
+					<li>
+				<a href="http://onto43.biz/make-sure-that-site-supports-players-from-your-country/">Make sure that site supports players from your country</a>
+						</li>
+					<li>
+				<a href="http://onto43.biz/allow-buyer-beware-of-penis-enlargement-pills/">Allow Buyer Beware of Penis Enlargement Pills</a>
+						</li>
+					<li>
+				<a href="http://onto43.biz/become-a-soccer-expert-with-this-advice/">Become A Soccer Expert With This Advice</a>
+						</li>
+					<li>
+				<a href="http://onto43.biz/soccer-information-that-your-cant-play-without/">Soccer Information That Your Can&#8217;t Play Without</a>
+						</li>
+					<li>
+				<a href="http://onto43.biz/everything-you-need-to-know-about-football/">Everything You Need To Know About Football</a>
+						</li>
+				</ul>
+				<div class="cleared"></div>
+    </div>
+</div>		<div class="cleared"></div>
+    </div>
+</div><div class="art-block widget widget_mymumbleWorld" id="wplm-mumbles">
+    <div class="art-block-body"><div class="art-blockheader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <h3 class="t">Resources</h3>
+</div><div class="art-blockcontent">
+    <div class="art-blockcontent-tl"></div>
+    <div class="art-blockcontent-tr"></div>
+    <div class="art-blockcontent-bl"></div>
+    <div class="art-blockcontent-br"></div>
+    <div class="art-blockcontent-tc"></div>
+    <div class="art-blockcontent-bc"></div>
+    <div class="art-blockcontent-cl"></div>
+    <div class="art-blockcontent-cr"></div>
+    <div class="art-blockcontent-cc"></div>
+    <div class="art-blockcontent-body"><ul></ul>		<div class="cleared"></div>
+    </div>
+</div>		<div class="cleared"></div>
+    </div>
+</div>          <div class="cleared"></div>
+        </div>
+        <div class="art-layout-cell art-content">
+			
+
+
+			<div class="art-post post-326 post type-post status-publish format-standard hentry category-sport" id="post-326">
+	    <div class="art-post-cc"></div>
+	    <div class="art-post-body">
+	            <div class="art-post-inner art-article">
+	            <h2 class="art-postheader"><a href="http://onto43.biz/make-sure-that-site-supports-players-from-your-country/" rel="bookmark" title="Make sure that site supports players from your country">Make sure that site supports players from your country</a></h2><div class="art-postheadericons art-metadata-icons"><span class="date">Published</span> <span class="entry-date" title="6:05 pm">January 1, 2016</span> | <span class="author">By</span> <span class="author vcard"><a class="url fn n" href="http://onto43.biz/author/admin/" title="View all posts by admin">admin</a></span></div>	                <div class="art-postcontent">
+	                    <!-- article-content -->
+
+
+	                    <p>Bankers and economists from around the globe encourage individuals to not to risk their money on online gambling. On the various other hand, online poker stars like Alexander Millar has actually verified that on the internet gambling is not as bad as repainted by its critics. Indeed, gamer&#8217;s fortune can transform only if he or she selects the appropriate site to test his luck. Every online gambling establishment or betting site has its very own set to guidelines and time-frames for economic deals. It is advisable to locate if the online casino truly transfers jackpots right into gamer&#8217;s savings account within the committed time.</p>
+<p>Reviewing evaluations, blog posts, and also gamers&#8217; encounters could quickly help you comprehend the fact. Look for out just what the readying existing players whine about. There is no point in referring just one review, read numerous evaluations. Anticipating hundred each cent consumer complete satisfaction won&#8217;t be. However minimal sixty to seventy percent of betting site&#8217;s players needs to enjoy about the general encounter. Several European and Asian countries have actually banned online gambling and sporting activities betting sites. This indicates gambling portals cannot permit gamers from those countries to sign up as well as play <a href="http://poker.midas303.com/domino-qiu-qiu/"><strong>Qiu Qiu 99</strong></a>. After picking the gambling enterprise, and reading reviews, you ought to make sure that the concerned site assists players from your nation as well as allows payments using banking institution transfers from your nation. To be on safer side, examine news tales from your nation, and also see to it that authorities in your country are not preparing to outlaw betting sites throughout the next couple of months.</p>
+<p>There are numerous on the internet gaming sites that provide all the normal online casino games like blackjack, live roulette, incredibly slots, dealership baccarat, and so on. There are really couples of qualified gabling sites that supply typical casino games as well as sporting activities betting possibilities. Yes, you are right; these sites allow you to actually bank on specific online games dipped into the firm center or in the area. Several of them even allow you to bank on real-time horse races while resting inside your bedroom. Casino site, the website permits players to put bets on live games like football, golf, tennis, basketball, horse racing, and also much more. The website could be accessed from desktop computer, laptop, mobile web, WAP, and using cell phone, tablet PC apps. There is no have to bother with the gambling portal&#8217;s security aspects as well. The site has actually been verified, and also its data transmission takes place in received, encrypted style according to the certificate released by data security as well as software application firm Symantec.</p>
+	                    <!-- /article-content -->
+	                </div>
+	                <div class="cleared"></div>
+	                <div class="art-postmetadatafooter"><div class="art-postfootericons art-metadata-icons"><span class="categories">Posted in</span> <a href="http://onto43.biz/category/sport/" rel="category tag">Sport</a></div></div>	            </div>
+			<div class="cleared"></div>
+	    </div>
+	</div>
+	
+	<div class="art-post post-324 post type-post status-publish format-standard hentry category-health" id="post-324">
+	    <div class="art-post-cc"></div>
+	    <div class="art-post-body">
+	            <div class="art-post-inner art-article">
+	            <h2 class="art-postheader"><a href="http://onto43.biz/allow-buyer-beware-of-penis-enlargement-pills/" rel="bookmark" title="Allow Buyer Beware of Penis Enlargement Pills">Allow Buyer Beware of Penis Enlargement Pills</a></h2><div class="art-postheadericons art-metadata-icons"><span class="date">Published</span> <span class="entry-date" title="10:12 am">November 2, 2015</span> | <span class="author">By</span> <span class="author vcard"><a class="url fn n" href="http://onto43.biz/author/admin/" title="View all posts by admin">admin</a></span></div>	                <div class="art-postcontent">
+	                    <!-- article-content -->
+
+
+	                    <p style="text-align: justify;">There&#8217;s a lot of publicity about herbal penis drugs. For feeling these drugs are something every man must have, from your amount of spam mail and net marketing around a person may be understood.</p>
+<p style="text-align: justify;">But what are they and what are?</p>
+<p style="text-align: justify;">They are likely to produce a gentleman is penis bigger, to place it candidly. They are said to be imperative to a guy allow his performances that were sexual to improve and so turn into a &#8216;struck&#8217; together with the women. In other words, hence the tale goes, have an herbal penis enhancement capsule frequently and bigger will be steadily got by a guy&#8217;s manhood. Get more details here <strong><a href="https://www.smore.com/rmu39-top-3-penis-enlargement-pills">https://www.smore.com/rmu39-top-3-penis-enlargement-pills</a>.</strong></p>
+<p style="text-align: justify;">Now if this nonsense is believed by a gentleman he&#8217;s got a challenge. And the dilemma is &#8216;gullibility&#8217;. Or he is effortlessly taken to get a trip; deceived; taken to get a pot. Whilst much as penis tablets moves, the word is many liable and his cash are easily segregated.</p>
+<p style="text-align: justify;">Why the big publicity about penis pills? Why are numerous of the suppliers insistent why these drugs obtain the effects they declare to be able to obtain? Hence the concern to become expected is: do penis pills work?</p>
+<p style="text-align: justify;">The answer is equally NO and YES.</p>
+<p style="text-align: justify;">Penis drugs are often manufactured from a variety of plants and chosen herbs that historically have already been able to offer man with a few level of erotic excitement.</p>
+<p style="text-align: justify;">It&#8217;s been reached in two techniques &#8211; by growing a man is libido (the intellectual desire to have sex) and to set him in to a more relaxed state of mind; thinning his bloodstream therefore allowing more to go into the penile shaft and supplying him a harder manhood that could be partially bigger than typical.</p>
+<p style="text-align: justify;">The vegetable items utilized in the tablets will change from pill but most of the products could have an archive of experiencing been successfully used by male over many generations. These customers of way back when might believe that these herbs might improve their sexual routines.</p>
+<p style="text-align: justify;">But though consumers of these herbs and plants might have presumed they got some gain, which current day people of the drugs containing these same herbs consider exactly the same, the truth is somewhat different.</p>
+<p style="text-align: justify;">There&#8217;s been no investigation completed that reveals these capsules will make a person&#8217;s penis bigger permanently. Permanently being the surgical term here because these capsules may cause an incredibly short-term increase in hardness having a tiny escalation in circumference and measurement. The result is momentary and then the supplements, by themselves, Can’t be considered to not be unable to accomplish penis enlargement.</p>
+<p style="text-align: justify;">Consequently for all those guys that are currently contemplating buying organic drugs for penis enlargement, subsequently Caveat Emptor applies &#8211; allow the buyer bewares.</p>
+<p style="text-align: justify;">Nevertheless, when organic penis drugs are employed together with a recognized penis enlargement device, the capsules can be seen to be beneficial in encouraging growth. As a supplement to some technique that has an established history of attaining development, the penis supplements will make the process quicker.</p>
+<p style="text-align: justify;">For accomplishing a lasting upsurge in manhood bulk, typically the most popular technique is really a traction system. This is a small-unit that contains a flaccid stretches the manhood together with the help of a pair of metal elongation units on each part of the cradle. By little incremental activities within the elongation products, the manhood is steadily extended and becomes forever longer. Additionally, it becomes fuller and stronger.</p>
+<p style="text-align: justify;">Penis enlargement&#8217;s next most popular method requires signing up online having a technique that offers recommendations on the best way to use palm exercises to attain a penis size that is bigger. Employing pictures films and blueprints, a program such as this allows effects that are everlasting correctly.</p>
+<p style="text-align: justify;">Typically the most popular way of enlarging a penis entails all three approaches &#8211; utilizing a footing device; using an exercise method that is online; and supplementing these with herbal drugs.</p>
+<p style="text-align: justify;">In thinning the blood consequently letting a bigger volume to enter the base here the supplements aid. The penis harder is made by this. Thus when drawn in line with all the utilization of penis exercise software plus a grip system although penis drugs independently can&#8217;t boost penis size completely, they are doing offer positive results.</p>
+	                    <!-- /article-content -->
+	                </div>
+	                <div class="cleared"></div>
+	                <div class="art-postmetadatafooter"><div class="art-postfootericons art-metadata-icons"><span class="categories">Posted in</span> <a href="http://onto43.biz/category/health/" rel="category tag">Health</a></div></div>	            </div>
+			<div class="cleared"></div>
+	    </div>
+	</div>
+	
+	<div class="art-post post-12 post type-post status-publish format-standard hentry category-sport" id="post-12">
+	    <div class="art-post-cc"></div>
+	    <div class="art-post-body">
+	            <div class="art-post-inner art-article">
+	            <h2 class="art-postheader"><a href="http://onto43.biz/become-a-soccer-expert-with-this-advice/" rel="bookmark" title="Become A Soccer Expert With This Advice">Become A Soccer Expert With This Advice</a></h2><div class="art-postheadericons art-metadata-icons"><span class="date">Published</span> <span class="entry-date" title="10:25 am">September 13, 2015</span> | <span class="author">By</span> <span class="author vcard"><a class="url fn n" href="http://onto43.biz/author/admin/" title="View all posts by admin">admin</a></span></div>	                <div class="art-postcontent">
+	                    <!-- article-content -->
+
+
+	                    <div style='float: right; padding: 10px;'><a href='http://www.flickr.com/photos/filterforge/8633590343/'><img src='http://farm9.staticflickr.com/8406/8633590343_d2ef5bd825.jpg' border=0 width=325px></a></div>
+<p> <DIV style='float: left; width: 150px; padding: 5px 5px 5px 5px;'><DIV style='background-color: #FFFFCC; color: #000000;'><small><font color='#FF0000'><b>TIP!</b></font> It is crucial that you never allow the ball out of your sight. This is a fast-paced game, and the ball is constantly being passed from player to player in lightning speed.</small></DIV></DIV></p>
+<p>Do you wonder why soccer is so adored and successful? If so, this is the place for you. If you take a look at the soccer info offered below, you can get a much better grasp on this popular game.</p>
+<p><DIV style='float: right; width: 150px; padding: 5px 5px 5px 5px;'><DIV style='background-color: #FFFFCC; color: #000000;'><small><font color='#FF0000'><b>TIP!</b></font> Always be on the lookout to surprise your opposing team. If you are always doing the same plays, opposing players can easily predict what you are doing.</small></DIV></DIV></p>
+<p>When you are considering new cleats, take into account your level of playing ability. Plastic and synthetic cleats should be used for beginners. Players that are more advanced need to work with ones that have screw in metal in them because they can be used just about anywhere.</p>
+<p><DIV style='float: left; width: 150px; padding: 5px 5px 5px 5px;'><DIV style='background-color: #FFFFCC; color: #000000;'><small><font color='#FF0000'><b>TIP!</b></font> Dribble the ball to the opposite side of the field than where you intend to end up. Your defender will go with you, then you can lose them by switching sides quickly.</small></DIV></DIV></p>
+<p>It is very important to avoid colliding with your opponents as much as possible. Always try to anticipate your opponent&#8217;s position to prevent contact. This will help you hold on to the ball and decreases your chances of being hurt.</p>
+<p><DIV style='float: right; width: 150px; padding: 5px 5px 5px 5px;'><DIV style='background-color: #FFFFCC; color: #000000;'><small><font color='#FF0000'><b>TIP!</b></font> Keep in mind that soccer involves playing with a team. Never forget this.</small></DIV></DIV></p>
+<p>If a defender begins closing in on you, pass the ball immediately. Only hang on to the ball if you can defend it. This player will have a short amount of time before defenders get to him.</p>
+<p><DIV style='float: left; width: 150px; padding: 5px 5px 5px 5px;'><DIV style='background-color: #FFFFCC; color: #000000;'><small><font color='#FF0000'><b>TIP!</b></font> Make sure you talk to your teammates about different strategies you all can incorporate into the game. Learn when each of you will be crossing the ball.</small></DIV></DIV></p>
+<p>Practice makes perfect and never lose an opportunity to take advantage of it. Get in the habit of taking your soccer ball with you wherever you go, then, if you have a free moment or two, do a couple of drills. You may also want to simply kick the ball along as you walk.</p>
+<p><DIV style='float: right; width: 150px; padding: 5px 5px 5px 5px;'><DIV style='background-color: #FFFFCC; color: #000000;'><small><font color='#FF0000'><b>TIP!</b></font> To improve endurance, train during the off season by engaging in long distance running. Incredibly soccer players run around eight miles each game.</small></DIV></DIV></p>
+<p>Leave the defender guessing by dribbling to the left when you intend to go right. As the defender follow you, switch sides and go the other way. This is a great way to get past an opponent.</p>
+<p><DIV style='float: left; width: 150px; padding: 5px 5px 5px 5px;'><DIV style='background-color: #FFFFCC; color: #000000;'><small><font color='#FF0000'><b>TIP!</b></font> Practice your penalty kicking on a regular basis after training. This technique will help you train yourself to find the best place to make the shot.</small></DIV></DIV></p>
+<p>Cross the ball to the same side for a few plays to establish a pattern. It will give the defense some heads up. Then, alter the approach quickly by crossing in the opposite direction. This could gain you a few seconds as they regroup to catch up.</p>
+<p><DIV style='float: right; width: 150px; padding: 5px 5px 5px 5px;'><DIV style='background-color: #FFFFCC; color: #000000;'><small><font color='#FF0000'><b>TIP!</b></font> Being able to surprise someone is vital when you&#8217;re playing soccer. Work on dribbling to the right and then shifting off your pass to the left side.</small></DIV></DIV></p>
+<p>By learning more about soccer, it&#8217;s easier to see why soccer has such a great following. All you truly need to appreciate soccer is a fundamental understanding of its nuances. Now, get out there and put this information to use.</p>
+	                    <!-- /article-content -->
+	                </div>
+	                <div class="cleared"></div>
+	                <div class="art-postmetadatafooter"><div class="art-postfootericons art-metadata-icons"><span class="categories">Posted in</span> <a href="http://onto43.biz/category/sport/" rel="category tag">Sport</a></div></div>	            </div>
+			<div class="cleared"></div>
+	    </div>
+	</div>
+	
+	<div class="art-post">
+	    <div class="art-post-cc"></div>
+	    <div class="art-post-body">
+	            <div class="art-post-inner art-article">
+	            	                <div class="art-postcontent">
+	                    <!-- article-content -->
+
+
+	                    	<div class="navigation">
+		<div class="alignleft"><a href="http://onto43.biz/page/2/" ><span class="meta-nav">&larr;</span> Older posts</a></div>
+		<div class="alignright"></div>
+	 </div>	                    <!-- /article-content -->
+	                </div>
+	                <div class="cleared"></div>
+	                	            </div>
+			<div class="cleared"></div>
+	    </div>
+	</div>
+	
+				
+
+
+          <div class="cleared"></div>
+        </div>
+    </div>
+</div>
+<div class="cleared"></div>
+  <div class="art-footer">
+                <div class="art-footer-t"></div>
+                <div class="art-footer-body">
+                
+
+
+                    <a href="http://onto43.biz/feed/" class='art-rss-tag-icon' title="onto43.biz RSS Feed"></a> 
+                            <div class="art-footer-text">
+                                <p><a href="#">Link1</a> | <a href="#">Link2</a> | <a href="#">Link3</a></p><p>Copyright © 2011. All Rights Reserved.</p>                            </div>
+                    <div class="cleared"></div>
+                </div>
+            </div>
+    		<div class="cleared"></div>
+        </div>
+    </div>
+    <div class="cleared"></div>
+<p class="art-page-footer">Powered By <a href="http://www.unlock-excel-spreadsheet.com">unlock-excel-spreadsheet.com</a> | <a href="http://www.undeletelite.com">undeletelite.com</a> | <a href="http://www.win32-trojan-removal.com">wWin32 Trojan Removal</a><!-- s: 581d655ab33f5a24e095917c6111b3e1 --></p>
+    <div class="cleared"></div>
+</div>
+    <div id="wp-footer">
+	        	        <!-- 74 queries. 0.364 seconds. -->
+    </div>
+</body>
+</html>

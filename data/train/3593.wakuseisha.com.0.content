@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang= "ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Wakuseisha Inc.</title>
+    <meta name="keywords" content="惑星社">
+    <meta name="description" content="惑星社">
+    <meta name="copyright" content=".UI - licensed by IDEASKETCH">
+    <meta name="viewport" content="" />
+    <meta name="apple-mobile-web-app-title" content="惑星社">
+    <link rel="shortcut icon" type="image/ico" href="/common/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/common/images/apple-touch-icon.png">
+    <!--[if lt IE 9]><script src="./common/script/html5shiv.js"></script><![endif]-->
+	<link rel="stylesheet" type="text/css" href="./common/script/fancybox/jquery.fancybox.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="./common/css/import.css">
+    <script type="text/javascript" src="./common/script/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+//			$("body").animate({opacity: '0'},{duration: 0});
+		});
+	</script>
+	<script>
+		function is_smartphone_init() {
+		    var ua = navigator.userAgent.toLowerCase();
+		    var ret = (ua.indexOf('iphone') > -1 || (ua.indexOf('android') > -1 && ua.indexOf('mobile') > -1));
+		    return(ret);
+		}
+		if( is_smartphone_init() ){
+			// スマートフォンの場合、viewportを設定
+			document.write('<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />');
+		}
+	</script>
+    <script type="text/javascript" src="./common/script/jquery.plugin.js"></script>
+  	<script type="text/javascript" src="./common/script/jPlayer/jquery.jplayer.min.js"></script>
+    <script type="text/javascript" src="./common/script/fancybox/jquery.fancybox.pack.js"></script>
+    <script type="text/javascript" src="./common/script/form/jquery.form.js"></script>
+    <script type="text/javascript" src="./common/script/form/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="./common/script/form/application.js"></script>
+
+<style>
+.fancybox-title{
+	display:none;
+}
+
+.list-multiple h2 {
+    padding: 20px 0 0;
+}
+
+.list-multiple h3.ttl01 {
+    margin: -90px 0 10px;
+}
+
+/*固有*/
+#CONTROL_FRONT{
+	bottom:70px;
+}
+
+@media screen and (max-width: 480px) {
+
+	/*固有*/
+	#CONTROL_FRONT {
+		bottom: 140px;
+	}
+
+	#HEAD h1{
+		padding:8px 12px;
+	}
+
+	#HEAD h1 img{
+		width:auto;
+	}
+
+	#ABOUT .contents {
+	    background-color:#fff!important;
+	}
+	#ABOUT .contents h2 img{
+	    display:none;
+	}
+	#ABOUT .contents p{
+	    color:#000;
+	}
+	#ABOUT .sp_wallpaper{
+		position:absolute;
+	}
+	#ABOUT h1.poster_h1_overlay{
+		margin:0;
+		padding:0;
+		display:block;
+		position:relative;
+		text-align:center;
+		height:320px;
+		z-index:99;
+		margin-bottom:30px;
+	}
+	#ABOUT h1.poster_h1_overlay canvas{
+		margin-left:0;
+		top:0;
+		width:220px;
+		height:auto!important;
+	}
+	#ABOUT h1.poster_h1_overlay > img{
+		top:0;
+		left:50%;
+		margin-left:-113px;
+		position:absolute;
+	}
+	.cmn_btn.lv4{
+		width:auto;
+		font-size:12px;
+	}
+	.cmn_btn.lv4 a{
+		font-size:12px;
+		padding:20px 25px;
+	}
+	.list-multiple h3.ttl01 {
+		margin: -65px 0 10px;
+	}
+	.list-multiple div.item ul {
+		font-weight: normal!important;;
+		margin: 30px 0 0 0!important;;
+		float: none!important;;
+	}
+	.sp_h1{
+		color:#000;
+	}
+}
+</style>
+
+<script>
+// is_tablet
+function isTablet() {
+    var ua = navigator.userAgent.toLowerCase();
+    return (ua.indexOf('ipad') > -1 || (ua.indexOf('android') > -1 && ua.indexOf('mobile') == -1) || ( ua.indexOf('sc-01c') > -1 ) );
+}
+
+$(document).ready(function(){
+
+	$("#ABOUT .contents_vertical_center .contents_inner .cmn_btn.lv4.tablet_block").hide();
+	$("#PRESENTATION .cmn_btn.lv2.video_btn.tablet_block").hide();
+	$("#SPACE .cmn_btn.lv2.video_btn.tablet_block").hide();
+	$("#NETWORK .cmn_btn.lv2.video_btn.tablet_block").hide();
+
+	// タブレットの場合
+	if( isTablet() ){
+		$("#ABOUT .contents_vertical_center .contents_inner .cmn_btn.lv4.tablet_block").show();
+
+		$("#PRESENTATION .cmn_btn.lv2.video_btn").hide();
+		$("#SPACE .cmn_btn.lv2.video_btn").hide();
+		$("#NETWORK .cmn_btn.lv2.video_btn").hide();
+		$("#PRESENTATION .cmn_btn.lv2.video_btn.tablet_block").show();
+		$("#SPACE .cmn_btn.lv2.video_btn.tablet_block").show();
+		$("#NETWORK .cmn_btn.lv2.video_btn.tablet_block").show();
+	}
+	if( is_smartphone_init() || isTablet() ){
+/*
+		$("#ARTICLE_VIDEO").jPlayer({
+			ready: function () {
+				$(this).jPlayer("setMedia", {
+					ogv: "mov/small/top.ogv",
+					m4v: "mov/small/top.mp4",
+					webmv: "mov/small/top.webm",
+					poster: "images/about_bg.jpg"
+				});
+			},
+			preload: "auto",
+			swfPath: "common/script/jPlayer/",
+			supplied: "m4v,ogv,webmv",
+			ended: function (event) {
+				$(this).jPlayer("play");
+			},				
+			size: {
+				width: "100%",
+				height: "100%",
+				cssClass: "jp-video-360p"
+			}
+		});
+*/
+	} else {
+
+		$("#ARTICLE_VIDEO").jPlayer({
+			ready: function () {
+				$(this).jPlayer("setMedia", {
+					ogv: "mov/top.ogv",
+					m4v: "mov/top.mp4",
+					webmv: "mov/top.webm",
+					poster: "images/about_bg.jpg"
+				});
+			},
+			preload: "auto",
+			swfPath: "common/script/jPlayer/",
+			supplied: "m4v,ogv,webmv",
+			ended: function (event) {
+				$(this).jPlayer("play");
+			},				
+			size: {
+				width: "100%",
+				height: "100%",
+				cssClass: "jp-video-360p"
+			}
+		});
+
+	}
+
+});
+</script>
+
+</head>
+
+<body style="filter:alpha(opacity=0); -moz-opacity: 0.0; opacity: 0.0;">
+
+
+<!-- HEAD
+================================================================= -->
+
+<header id="HEAD">
+
+	<h1><img src="wakuseisha_images/logo.png" width="129" alt="惑星社" height="63"></a></h1>
+	<p class="sp_menu"><img src="common/images/sp_menu_icon_dark.gif" width="20" height="17"></p>
+	<p class="sp_menu_close"><img src="common/images/sp_menu_icon_dark.gif" width="20" height="17"></p>
+    <nav>
+        <ul>
+            <li class="navi01">
+            		<a href="#PRESENTATION"><img src="wakuseisha_images/navi02_off.png" alt="私たちの仕事" width="101" height="16"></a>
+							<ul class="submenu">
+								<li class="subnavi01"><a href="#ABOUT"><img src="wakuseisha_images/navi01_off.png" alt="惑星社とは" width="84" height="16"></a></li>
+								<li class="subnavi02"><a href="#PRESENTATION"><img src="wakuseisha_images/subnavi01_off.png" alt="映像 × プレゼンテーション" width="181" height="14"></a></li>
+								<li class="subnavi03"><a href="#SPACE"><img src="wakuseisha_images/subnavi02_off.png" alt="映像 × 空間" width="80" height="14"></a></li>
+								<li class="subnavi04"><a href="#NETWORK"><img src="wakuseisha_images/subnavi03_off.png" alt="映像 × ネットワーク" width="133" height="14"></a></li>
+							</ul>
+					</li>
+            </li>
+            <li class="navi02"><a href="#OUTLINE"><img src="wakuseisha_images/navi03_off.png" alt="会社概要" width="72" height="16"></a></li>
+            <li class="navi03"><a href="#ACCESS"><img src="wakuseisha_images/navi04_off.png" width="62" alt="アクセス" height="16"></a></li>
+            <li class="navi04"><a href="#TOP"><img src="wakuseisha_images/logo.png" width="129" alt="惑星社" height="63"></a></li>
+            <li class="navi05"><a href="#CONTACT"><img src="wakuseisha_images/navi05_off.png" alt="お問い合わせ" width="97" height="16"></a></li>
+            <li class="navi06"><a target="_blank" href="pdf/wakuseisha.pdf"><img src="wakuseisha_images/navi07_off.png" alt="印刷用PDF"></a></li>
+            <li class="navi07"><a href="#"><img src="wakuseisha_images/navi06.png" alt="お知らせ" width="97" height="24"></a>
+							<ul class="submenu2">
+								<li><a href="http://www.facebook.com/pages/有限会社惑星社/149901985075797?fref=ts" target="_blank"><img src="wakuseisha_images/facebook_off.png" alt="facebook" width="61" height="11"></a></li>
+								<li><a href="./recruit.html"><img src="wakuseisha_images/recruit_off.png" alt="採用情報" width="61" height="14"></a></li>
+							</ul>
+					</li>
+        </ul>
+    </nav>
+	<div class="sp_bg"></div>
+</header>
+
+
+<!-- CONTENTS
+================================================================= -->
+
+<div id="WRAP">
+<div id="INNER">
+
+
+<!-- template contents / COVER
+================================================================= -->
+
+<article id="TOP" class="page cover nohead">
+	<canvas id="canvas1" height="820" width="920" style="z-index: -50;" ></canvas>
+
+	<div class="wallpaper top"></div>
+
+   	<section class="contents contents_center">
+       	
+        <div class="contents_inner">
+            <div class="logo"><img src="wakuseisha_images/top_logo.gif" alt="惑星社" width="70" height="90"></div>
+            <h1></h1>
+            <h2><img src="wakuseisha_images/welcome.png" width="263" height="15" alt="Welcome to Wakuseisha Inc."></h2>
+        </div>
+	
+    </section>
+
+    <div id="CONTROL_FRONT"><a href="#ABOUT">&nbsp;</a></div>
+
+</article>
+
+
+
+<!-- template contents / POSTER (CENTER)
+================================================================= -->
+
+
+<article id="ABOUT" class="page poster poster_right sp_bg_hidden">
+
+	<div style="z-index:-51;" class="video_wallpaper">
+		<div id="ARTICLE_VIDEO"></div>
+    	<!--iframe width="100%" height="100%" src="http://www.youtube.com/embed/pQ5STIqA99Q?rel=0&loop=1&playlist=pQ5STIqA99Q&autoplay=1&theme=dark&autohide=1&start=0&controls=0&wmode=transparent&showinfo=0" frameborder="0" allowfullscreen></iframe-->
+	</div>
+	
+	<div class="sp_wallpaper"><img src="wakuseisha_images/about_bg.jpg"></div>
+	
+    <h1 class="poster_h1_overlay">
+    	<canvas id="canvas2" height="335" width="275" style="z-index: 1;" ></canvas>
+    	<img src="wakuseisha_images/about.png" />
+    </h1>
+	
+	
+	
+   	<section class="contents  contents_vertical_center">
+    	
+    	<p class="cmn_btn lv4 sp_block"><a href="mov/small/top.mp4">&#9654;&nbsp;VIDEOを見る</a></p>
+    	
+        <div class="contents_inner">
+        
+            <h2><img src="wakuseisha_images/about_ttl.png" alt="自由な軌跡、イメージを描いていく" width="354" height="21"><span class="sp_inline">自由な軌跡、イメージを描いていく</span></h2>
+            <p>私たち惑星社は、映像制作を起点に各種プレゼンテーションや空間・音響演出などの様々な表現にトライし続ける制作者の集まりです。<br>
+				<br>
+				光を放つ恒星の周りをまわる惑星のように、「本質」を大事にしながら自由な軌跡＝イメージを描いていくことをめざしています。</p>
+				<p class="cmn_btn lv4 tablet_block"><a target="_blank" href="mov/top.mp4">&#9654;&nbsp;VIDEOを見る</a></p>
+        </div>
+	
+    </section>
+    	
+</article>
+
+
+
+<article id="PRESENTATION" class="page list-multiple">
+	<section class="contents_inner">
+		<h2>
+			<canvas id="canvas3" height="500" width="400" style="z-index: -50;" ></canvas>			
+			<img src="wakuseisha_images/presentation.png" alt="映像×プレゼンテーション" width="460" height="429">
+		</h2>
+		<h3 class="ttl01"><img src="wakuseisha_images/presentation_ttl01.png" alt="伝えたいことはひとつ、アイディアは自由に" width="436" height="21"></h3>
+		<p>一見難しいテーマでも、対象をよく見て耳をかたむけていけば、誰もが共感するメッセージがみつかるはず。<br>
+		自由な発想、多彩な表現を駆使するために、まずはお客様の中にある「シンプル」な想いを探していく。<br>
+		「よりよく伝わる」映像づくりをこころがけています。</p>
+		<p class="icon"></p>
+		<div class="clearfix item">
+			<h3 id="PRESENTATION_02">
+				<canvas id="canvas4" height="340" width="240" style="z-index: -50;" ></canvas>
+				<img src="wakuseisha_images/content.png" alt="内容" width="292" height="270">
+			</h3>
+			<ul>
+				<li>企業PR・IR向けビデオ／教育ビデオ</li>
+				<li>セールスプロモーション／各種販促ツール</li>
+				<li>CM／デジタルサイネージ／Web用コンテンツ</li>
+				<li>プレゼンテーションツール／ショープログラム</li>
+				<li>各種外国語版制作</li>
+			</ul>
+		</div>
+		<h3 id="PRESENTATION_03" class="example">
+			<div class="h3_right">
+				<canvas id="canvas5" height="265" width="165" style="z-index: -50;" ></canvas>
+				<img src="wakuseisha_images/example.png" alt="実例" width="165" height="165">
+			</div>
+		</h3>
+		<ul class="example clearfix">
+			<li><img src="wakuseisha_images/presentation_img01.png" alt="" width="183" height="182"><br>
+				<p></p>
+				</li>
+			<li><img src="wakuseisha_images/presentation_img02.png" alt="" width="183" height="182"><br>
+				<p></p>
+				</li>
+			<li><img src="wakuseisha_images/presentation_img03.png" alt="" width="183" height="182"><br>
+				<p></p>
+				</li>
+		</ul>
+		
+		<p class="cmn_btn lv2 video_btn">
+			<a href="#FANCY-INLINE" title="gallery_id_001" class="gallery_link" rel="" >
+				VIDEOを見る
+			</a>
+		</p>
+		
+		<p class="cmn_btn lv2 video_btn tablet_block">
+			<a href="#FANCY-INLINE" title="gallery_id_001" class="gallery_link" rel="" >
+				VIDEOを見る
+			</a>
+			<!--a target="_blank" href="mov/presentation.mp4">VIDEOを見る</a-->
+		</p>
+		
+	</section>
+</article>
+
+<article id="SPACE" class="page list-multiple">
+	<section class="contents_inner">
+		<h2>
+			<canvas id="canvas6" height="500" width="400" style="z-index: -50;" ></canvas>
+			<img src="wakuseisha_images/space.png" alt="映像×空間" width="459" height="429">
+		</h2>
+		<h3 class="ttl01"><img src="wakuseisha_images/space_ttl01.png" alt="音響や光、ショーの全体演出まで" width="329" height="21"></h3>
+		<p>人が集まる場所で、もっとも効果的な映像は？<br>
+			そんな仕事の機会もたくさん頂いています。<br>
+			スクリーンから離れ、音響や光、ショーの全体演出まで企画段階からお手伝いすることも増えてきました。
+			</p>
+		<div class="clearfix item">
+			<h3 id="SPACE_02">
+				<canvas id="canvas7" height="340" width="240" style="z-index: -50;" ></canvas>
+				<img src="wakuseisha_images/content.png" alt="内容" width="292" height="270">
+			</h3>
+			<ul>
+				<li>ミュージアム／博覧会向け大型映像・特殊映像</li>
+				<li>企業PR館／ショールーム用展示映像・情報システム</li>
+				<li>式典／企業プレゼンテーション用ステージ演出映像</li>
+				<li>アミューズメント施設向け音響演出</li>
+			</ul>
+		</div>
+		<h3 id="SPACE_03" class="example">
+			<div class="h3_right">
+				<canvas id="canvas8" height="265" width="165" style="z-index: -50;" ></canvas>
+				<img src="wakuseisha_images/example.png" alt="実例" width="165" height="165">
+			</div>
+		</h3>
+		<ul class="example clearfix">
+			<li>
+				<img src="wakuseisha_images/space_img01.png" alt="" width="183" height="182">
+				<p></p>
+			</li>
+			<li>
+				<img src="wakuseisha_images/space_img02.png" alt="" width="183" height="182">
+				<p></p>
+			</li>
+			<li>
+				<img src="wakuseisha_images/space_img03.png" alt="" width="183" height="182">
+				<p></p>
+			</li>
+		</ul>
+
+
+		<p class="cmn_btn lv2 video_btn">
+			<a href="#FANCY-INLINE" title="gallery_id_002" class="gallery_link" rel="" >
+				VIDEOを見る
+			</a>
+		</p>
+
+		<p class="cmn_btn lv2 video_btn tablet_block">
+			<a href="#FANCY-INLINE" title="gallery_id_002" class="gallery_link" rel="" >
+				VIDEOを見る
+			</a>
+			<!--a target="_blank" href="mov/space.mp4">VIDEOを見る</a-->
+		</p>
+		
+	</section>
+</article>
+
+
+<article id="NETWORK" class="page list-multiple">
+	<section class="contents_inner">
+		<h2>
+			<canvas id="canvas9" height="500" width="400" style="z-index: -50;" ></canvas>
+			<img src="wakuseisha_images/network.png" alt="映像×コミュニケーション" width="459" height="429">
+		</h2>
+		<h3 class="ttl01"><img src="wakuseisha_images/network_ttl01.png" alt="プレゼンテーションやコミュニケーションに係わる業務の企画／制作" width="677" height="21"></h3>
+		<p>各ジャンルのプロフェッショナルとともに<br>
+		プレゼンテーションやコミュニケーションに係わる業務の<br>
+		プランニング＆ディレクションを行っています。</p>
+		<div class="clearfix item">
+			<h3 id="NETWORK_02">
+				<canvas id="canvas10" height="340" width="240" style="z-index: -50;" ></canvas>
+				<img src="wakuseisha_images/content.png" alt="内容" width="292" height="270">
+			</h3>
+			<ul>
+				<li>式典／国際会議等の企画・演出・制作業務</li>
+				<li>企業展示ブース等の企画・演出・運営業務</li>
+				<li>各種印刷ツール、WEBコンテンツ制作</li>
+			</ul>
+		</div>
+		<h3 id="NETWORK_03" class="example">
+			<div class="h3_right">
+				<canvas id="canvas11" height="265" width="165" style="z-index: -50;" ></canvas>
+				<img src="wakuseisha_images/example.png" alt="実例" width="165" height="165">
+			</div>
+		</h3>
+		<ul class="example clearfix">
+			<li>
+				<img src="wakuseisha_images/communication_img01.png" alt="" width="183" height="182">
+				<p></p>
+			</li>
+			<li>
+				<img src="wakuseisha_images/communication_img02.png" alt="" width="183" height="182">
+				<p></p>
+			</li>
+			<li>
+				<img src="wakuseisha_images/communication_img03.png" alt="" width="183" height="182">
+				<p></p>
+			</li>
+		</ul>
+		
+		<p class="cmn_btn lv2 video_btn">
+			<a href="#FANCY-INLINE" title="gallery_id_003" class="gallery_link" rel="" >
+				VIDEOを見る
+			</a>
+		</p>
+		<p class="cmn_btn lv2 video_btn tablet_block">
+			<a href="#FANCY-INLINE" title="gallery_id_003" class="gallery_link" rel="" >
+				VIDEOを見る
+			</a>
+			<!--a target="_blank" href="mov/communication.mp4">VIDEOを見る</a-->
+		</p>
+		
+		
+	</section>
+</article>
+
+
+
+<article id="OUTLINE" class="page article">
+	<div class="page_title">
+    	<h1 class="lv4">
+    		<canvas id="canvas12" height="371" width="321" style="z-index: -50;" ></canvas>
+    		<img src="wakuseisha_images/company.png" alt="会社概要" width="320" height="320">
+    		<span class="sp_h1">会社概要</span>
+    	</h1>
+        <p class="btn"><a target="_blank" href="pdf/wakuseisha.pdf"><img src="wakuseisha_images/outline_btn.gif" alt="会社概要PDFを印刷" width="297" height="60" class="hov"></a></p>
+    </div>
+
+    <div id="OUTLINE_02" class="contents_wrap">
+
+        <section class="contents"> 
+            
+            <dl>
+            
+				<dt>商号</dt>
+				<dd>有限会社惑星社<br>
+				Wakuseisha Inc.</dd>
+				
+				<dt>所在地</dt>
+				<dd>〒107-0052<br>
+				東京都港区赤坂9-1-23 クレース檜坂301 <br>
+				Tel：03-5411-5885 ／ Fax：03-5411-5884</dd>
+				
+				<dt>設立</dt>
+				<dd>平成14年（2002年）2月</dd>
+				
+				<dt>資本金</dt>
+				<dd>500万円</dd>
+				
+				<dt>役員</dt>
+				<dd>代表取締役　齋藤あけみ</dd>
+				<dd>取締役　伊藤達也</dd>
+				<dd>取締役　齋藤勉</dd>
+				
+				<dt>業務内容</dt>
+				<dd>・企業PR、プロモーション、CM、教育、I.R.用ビデオの企画制作<br>
+				・各種デジタルコンテンツの企画制作<br>
+				・展示会、イベントの企画、演出、運営業務<br>
+				・常設館シアター映像／博覧会、エキジビション等の大型映像の制作<br>
+				・セールスプロモーション／PR企画の立案・制作プロデュース<br>
+				・インターネットを利用した各種情報提供サービス</dd>
+				
+				<dt>主要取引先</dt>
+				<dd>株式会社乃村工藝社<br>
+				株式会社野村総合研究所<br>
+				凸版印刷株式会社<br>
+				東洋エンジニアリング株式会社<br>
+				三井海洋開発株式会社<br>
+				一般財団法人日本海事協会<br>
+				宇宙航空研究開発機構（JAXA）<br>
+				株式会社つきプランニング</dd>
+				
+				<dt>取引銀行</dt>
+				<dd>三井住友銀行　赤坂支店<br>
+				三菱東京UFJ銀行　赤坂支店<br>
+				さわやか信用金庫　赤坂支店</dd>
+            </dl>
+            
+        </section>
+    </div><!-- contents_wrap end -->
+
+</article>
+
+
+<article id="ACCESS" class="page article">
+
+	<div class="page_title">
+		<h2>
+    		<span class="sp_h1">アクセス</span>
+			<canvas id="canvas13" height="204" width="204" style="z-index: -50;" ></canvas>
+			<img src="wakuseisha_images/access.png" alt="アクセス" width="202" height="202">
+		</h2>
+    </div>
+
+    <div id="ACCESS_02" class="contents_wrap">
+
+        <section class="contents"> 
+
+			<p>〒107-0052<br>東京都港区赤坂9-1-23 クレース檜坂301<br>Tel：03-5411-5885 ／ Fax：03-5411-5884</p>
+			<p>【最寄駅】<br>
+				東京メトロ千代田線乃木坂駅より徒歩6分<br>
+				都営地下鉄大江戸線 六本木駅、東京メトロ千代田線 赤坂駅より徒歩8分</p>
+             <div id="map_canvas1" style="width:780px; height:350px"></div>
+             <div style="text-align:right;"><a href="http://goo.gl/maps/SpNAl" target="_blank">大きい地図でみる</a></div>
+        </section>
+    </div><!-- contents_wrap end -->
+
+</article>
+
+
+
+<!-- template contents / FORM
+================================================================= -->
+
+
+<article id="CONTACT" class="page form">
+
+    <div class="page_title">
+		<h2>
+    		<span class="sp_h1">お問い合わせ</span>
+			<canvas id="canvas14" height="204" width="204" style="z-index: -50;" ></canvas>
+			<img src="wakuseisha_images/contact.png" alt="お問い合わせ" width="202" height="202">
+		</h2>
+    </div>
+    
+   	<div class="contents_wrap">
+
+        <section class="contents tight">
+    		
+			<p>惑星社へのお問合せは、以下のフォームにご記入願います。<br>
+			お名前、メールアドレス、メッセージを入力して「送信」をクリックしてください。<br>
+    		<span>
+    		※ご返信までに一週間ほどお時間を頂く場合がございます。ご了承ください。<br>
+    		※★マークは必須事項となります。</span></p>
+    		
+    		<form method="post" action="./common/script/form/submit.php" id="contact-us">
+            	
+            	<p><label for="NAME">お名前<span>★</span></label><input type="text" id="NAME" name="NAME" placeholder=""></p>
+                <p><label for="KANA">フリガナ<span>★</span></label><input type="text" id="KANA" name="KANA" placeholder=""></p>
+                <p><label for="MAIL">Ｅメールアドレス（半角数字）<span>★</span></label><input type="text" id="MAIL" name="MAIL" placeholder="example@mail.com"></p>
+                <p>
+                	<label for="CAT">お問い合わせ内容<span>★</span></label>
+                	<textarea type="text" id="TEXT" name="TEXT" placeholder="お問い合わせ内容をご記入下さい"></textarea>
+                </p>
+            	<p>個人情報保護について:このフォームから送信された情報は、当<a href="#">社プライバシーポリシー</a>に基づいて処理されます。お客様の個人情報につきましては、お問合せに対して当社からご連絡する場合にのみ利用させて頂きます。ご同意の上、お問い合わせ下さい。</p>
+            	<div id="FORM_STATUS"></div>
+            	<p class="cmn_btn lv4 btn_submit"><input type="submit" id="SUBMIT" name="submit" value="送信"></p>
+            </form>
+        </section>
+    </div>
+	
+</article>
+
+
+
+<!-- template contents
+================================================================= -->
+
+
+
+
+</div><!-- INNER end -->
+</div><!-- WRAP end -->
+
+
+<!-- template contents
+================================================================= -->
+<div id="CONTROL">
+	<a id="CONTROL_PREV" href="javascript:void(0)">&nbsp;</a>
+    <a id="CONTROL_NEXT" href="javascript:void(0)">&nbsp;</a>
+    <!--a id="CONTROL_GOTO_TOP"  class="cmn_smp" href="#"><span>▲</span>ページの先頭へ</a-->
+</div>
+
+<!-- template contents
+================================================================= -->
+
+<footer id="FOOTER">
+
+    <nav class="cc">
+        <ul class="clearfix">
+            <li>
+            	<dl>
+                    <dt><a href="#ABOUT"><img src="wakuseisha_images/footer_navi01.gif" alt="惑星社とは" width="83" height="16" class="hov"><dt>
+                </dl>
+			</li>
+            <li>
+            	<dl>
+                    <dt><a href="#PRESENTATION"><img src="wakuseisha_images/footer_navi02.gif" alt="私たちの仕事" width="101" height="16" class="hov"></a><dt>
+                    <dd><a href="#PRESENTATION"><img src="wakuseisha_images/footer_sabnavi01.gif" alt="映像 × プレゼンテーション" width="181" height="13" class="hov"></a></dd>
+                    <dd><a href="#SPACE"><img src="wakuseisha_images/footer_sabnavi02.gif" alt="映像 × 空間" width="81" height="13" class="hov"></a></dd>
+                    <dd><a href="#NETWORK"><img src="wakuseisha_images/footer_sabnavi03.gif" alt="映像 × ネットワーク" width="134" height="13" class="hov"></a></dd>
+                </dl>
+			</li>
+            <li>
+            	<dl>
+                    <dt><a href="#OUTLINE"><img src="wakuseisha_images/footer_navi03.gif" alt="会社概要" width="72" height="16" class="hov"></a><dt>
+                </dl>
+			</li>
+            <li>
+            	<dl>
+                    <dt><a href="#ACCESS"><img src="wakuseisha_images/footer_navi04.gif" width="62" alt="アクセス" height="16" class="hov"></a><dt>
+                </dl>
+			</li>
+            <li>
+            	<dl>
+                    <dt><a href="#CONTACT"><img src="wakuseisha_images/footer_navi05.gif" alt="お問い合わせ" width="97" height="16" class="hov"></a><dt>
+                </dl>
+			</li>
+            <li>
+            	<dl>
+                    <dt><a href="#"><img src="wakuseisha_images/footer_navi06.gif" alt="お知らせ" width="96" height="24"><dt>
+                    <dd><a href="http://www.facebook.com/pages/有限会社惑星社/149901985075797?fref=ts" target="_blank"><img src="wakuseisha_images/footer_facebook.gif" alt="facebook" width="60" height="11" class="hov"></a></dd>
+                    <dd><a href="./recruit.html"><img src="wakuseisha_images/footer_recruit.gif" alt="採用情報" width="60" height="14" class="hov"></a></dd>
+                </dl>
+			</li>
+        </ul>
+    </nav>
+    <p id="COPYRIGHT">Copyright &copy; 2013 Wakuseisha Inc. All rights reserved.</p>
+
+</footer>
+
+
+<!--div id="debug">
+	<p class="a"></p>
+	<p class="b"></p>
+	<p class="c"></p>
+	<p class="d"></p>
+<style>
+	#debug{}
+	#debug .a{z-index:9999;position:fixed;width:1px;height:100%;background-color:#f00;top:0;left:24px;}
+	#debug .b{z-index:9999;position:fixed;width:1px;height:100%;background-color:#f00;top:0;left:14px;}
+	#debug .c{z-index:9999;position:fixed;width:1px;height:100%;background-color:#f00;top:0;right:24px;}
+	#debug .d{z-index:9999;position:fixed;width:1px;height:100%;background-color:#f00;top:0;right:14px;}
+</style>
+</div-->
+
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+	/*
+		
+		google map
+		
+	*/
+
+	function set_googlemap_styled( latlng1,latlng2,_canvas_id, _hue, _name ) {
+		// _hue = #80ff00
+
+		var latlng = new google.maps.LatLng(latlng1, latlng2);
+		var mapOptions = {
+		  center: latlng,
+		  zoom: 16,
+		  mapTypeId: google.maps.MapTypeId.ROADMAP,
+		  mapTypeControlOptions: {
+		    mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+		  }
+		};
+
+		// Create an array of styles.
+		var styles = [
+		{
+		  stylers: [
+		    { hue: _hue },
+		    { saturation: -20 }
+		  ]
+		}
+		];
+
+		var styledMap = new google.maps.StyledMapType(styles, {name: "Styled Map"});
+		var map = new google.maps.Map(document.getElementById(_canvas_id), mapOptions);
+
+		// オリジナルアイコンを使う場合
+	    var image = new google.maps.MarkerImage('wakuseisha_images/gmap_logo.png',
+	        new google.maps.Size(64.0, 64.0),
+	        new google.maps.Point(0, 0),
+	        new google.maps.Point(32.0, 32.0)
+	    );
+	    var shadow = new google.maps.MarkerImage("wakuseisha_images/shadow-gmap_logo.png",
+	        new google.maps.Size(97.0, 64.0),
+	        new google.maps.Point(0, 0),
+	        new google.maps.Point(32.0, 32.0)
+	    );
+
+	    var marker = new google.maps.Marker({
+	        position: latlng,
+	        map: map,
+	        icon: image,
+	        shadow:shadow,
+	        title: _name
+	    });
+		map.mapTypes.set('map_style', styledMap);
+		map.setMapTypeId('map_style');
+	}
+	
+	setTimeout(function(){
+		set_googlemap_styled(35.6686468, 139.731809,"map_canvas1","#80ff00","惑星社");
+	}, 1000);
+</script>
+
+<script type="text/javascript" src="./common/script/core.js"></script>
+<script type="text/javascript" src="./common/script/vertical.js"></script>
+<script type="text/javascript" src="./common/script/createjs/easeljs-0.6.1.min.js"></script>
+<script type="text/javascript" src="./common/script/createjs/tweenjs-0.4.1.min.js"></script>
+<script type="text/javascript" src="./common/script/createjs/movieclip-0.6.1.min.js"></script>
+<script type="text/javascript" src="./common/script/interaction.js"></script>
+
+
+<script type="text/javascript">
+
+(function(){
+	var ua = navigator.userAgent.toUpperCase();
+	if(ua.indexOf('IPHONE') != -1 || (ua.indexOf('ANDROID') != -1)){
+	
+	var head_heiht = 45;
+
+	}
+	else {
+		$(function(){
+			$("ul>li.navi01").hover(function(){
+				$("ul:not(:animated)", this).slideDown();},
+			function(){$("ul.submenu",this).slideUp();});
+		});
+		
+		$("ul.submenu").hide();
+		$("ul.submenu2").hide();
+		
+		$("ul>li.navi07").hover(function(){
+			$("ul:not(:animated)", this).slideDown();},
+			function(){$("ul.submenu2",this).slideUp();
+		});
+		
+		$("ul>li.navi02").hover(function(){
+			$("ul:not(:animated)", this).slideDown();},
+			function(){$("ul.submenu",this).slideUp();
+		});
+	}
+}());
+
+
+
+
+
+
+
+</script>
+
+<!--
+=======================================================
+アクセス解析のタグを入れる
+======================================================= -->
+
+<!--GA -->
+
+<div id="FANCY-INLINE" class="gallery" style="display: none;">
+	<div class="clearfix gallery_contents">
+		<div class="caption">
+			<h2 id="GALLERY_WORK_TITLE"></h2>
+			<div class="caption_detail">
+				<div class="information_area">
+					<p id="GALLERY_WORK_CAPTION" class="date"></p>
+					<p id="GALLERY_WORK_CATEGORY" class="pic"></p>
+					<p id="GALLERY_WORK_DISCRIPTION"></p>
+				</div>
+				<div class="credit_area">
+					<img src="wakuseisha_images/footer_logo.png">
+					<p id="GALLERY_WORK_CREDIT" class="eng">
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- スライドエリア -->
+		<div id="SLIDE_AREA">
+			<ul id="SLIDER01">
+				<li>
+				
+		            <div id="jp_container_1" class="jp-video jp-video-360p">
+		                <div class="jp-type-single">
+		                    <div id="VIDEO_PLAYER" class="jp-jplayer" ></div>
+		                    <div class="jp-gui">
+
+		                        <div class="jp-video-play">
+		                            <a href="javascript:;" class="jp-video-play-icon" tabindex="1">play</a>
+		                        </div>
+
+		                        <!--div class="jp-interface">
+		                            <div class="jp-controls-holder">
+		                                <ul class="jp-controls">
+		                                    <li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
+		                                    <li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
+		                                    <li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
+		                                </ul>
+		                            </div>
+		                        </div-->
+		                    </div>
+		                </div>
+		            </div>
+					<!--img id="GALLERY_WORK_IMAGE_01" src="images/gallery01.jpg" width="680" height="480" alt="GALLERY"-->
+				</li>
+			</ul>
+		</div>
+	</div>
+	<p class="details"><a class="sp_details" href="javascript:void(0)">詳細</a></p>
+</div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42791029-1', 'wakuseisha.com');
+  ga('send', 'pageview');
+
+</script>
+
+
+<script>
+
+	function isTablet() {
+	    var ua = navigator.userAgent.toLowerCase();
+	    return (ua.indexOf('ipad') > -1 || (ua.indexOf('android') > -1 && ua.indexOf('mobile') == -1) || ( ua.indexOf('sc-01c') > -1 ) );
+	}
+	function isIPad() {
+	    var ua = navigator.userAgent.toLowerCase();
+	    return (ua.indexOf('ipad') > -1);
+	}
+
+	(function(){
+		// tablet
+		
+		if( isIPad() ){
+		
+			//$("#ARTICLE_VIDEO").jPlayer("destroy");
+			
+			// sp_slide
+/*
+			$("#ABOUT .video_wallpaper").html('<img style="width:100%;" src="mov/small/top.gif">');
+			$("#ABOUT .video_wallpaper").html('<ul class="tablet_slider"><li><img src="wakuseisha_images/reel01.png"></li><li><img src="wakuseisha_images/reel02.png"></li><li><img src="wakuseisha_images/reel03.png"></li><li><img src="wakuseisha_images/reel04.png"></li><li><img src="wakuseisha_images/reel05.png"></li><li><img src="wakuseisha_images/reel06.png"></li><li><img src="wakuseisha_images/reel07.png"></li><li><img src="wakuseisha_images/reel08.png"></li><li><img src="wakuseisha_images/reel09.png"></li><li><img src="wakuseisha_images/reel10.png"></li><li><img src="wakuseisha_images/reel11.png"></li><li><img src="wakuseisha_images/reel12.png"></li><li><img src="wakuseisha_images/reel13.png"></li></ul>');
+*/
+			$("#ABOUT .video_wallpaper").html('<ul class="tablet_slider"><li><img src="wakuseisha_images/reel01.jpg"></li><li><img src="wakuseisha_images/reel02.jpg"></li><li><img src="wakuseisha_images/reel03.jpg"></li><li><img src="wakuseisha_images/reel04.jpg"></li><li><img src="wakuseisha_images/reel05.jpg"></li><li><img src="wakuseisha_images/reel06.jpg"></li><li><img src="wakuseisha_images/reel07.jpg"></li><li><img src="wakuseisha_images/reel08.jpg"></li><li><img src="wakuseisha_images/reel09.jpg"></li><li><img src="wakuseisha_images/reel10.jpg"></li><li><img src="wakuseisha_images/reel11.jpg"></li><li><img src="wakuseisha_images/reel12.jpg"></li><li><img src="wakuseisha_images/reel13.jpg"></li></ul>');
+			$("#ABOUT").css("overflow","hidden");
+		
+			var slide;
+			slide = $('.tablet_slider').bxSlider({
+				mode:"fade",
+				auto: true,
+				controls: false,
+				infiniteLoop: true,
+			    minSlides: 1,
+			    maxSlides: 1,
+			    moveSlides: 1,
+			    slideMargin:0,
+				pause:	2000,
+				speed: 1000,
+				pager:false,
+				touchEnabled: false,
+				onSlideAfter: function () { slide.startAuto(); }
+			});
+
+		}
+
+		// スマートフォン ?
+		if( is_smartphone() ){
+//			$("meta[name=viewport]").attr("content","width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no");
+		}
+		
+
+			var fancy = $(".gallery_link").fancybox({
+				width:'100%',
+				height:'100%',
+				type:'inline',
+				scrolling:"no",
+				centerOnScroll:false,
+				openEffect	: 'none',
+				closeEffect	: 'none',
+				tpl: {
+					next: '<a title="next" class="control_right"><img src="./images/right.png"></a>',
+					prev: '<a title="prev" class="control_left"><img src="./images/left.png"></a>'
+				},
+				beforeShow:function(){
+
+					if( "gallery_id_001" == $(this).attr("title") ){
+
+						if( is_smartphone_init() || isTablet() ){
+							set_gallery_json("images/gallery001.json");	
+							set_jplayer_param( "#VIDEO_PLAYER", "small/presentation","about_bg" );
+						} else {
+							set_gallery_json("images/gallery001.json");	
+							set_jplayer_param( "#VIDEO_PLAYER", "presentation","about_bg" );
+						}
+
+					} else if( "gallery_id_002" == $(this).attr("title") ){
+
+						if( is_smartphone_init() || isTablet() ){
+							set_gallery_json("images/gallery002.json");	
+							set_jplayer_param( "#VIDEO_PLAYER", "small/space","about_bg" );
+						} else {
+							set_gallery_json("images/gallery002.json");	
+							set_jplayer_param( "#VIDEO_PLAYER", "space","about_bg" );
+						}
+
+					} else if( "gallery_id_003" == $(this).attr("title") ){
+
+						if( is_smartphone_init() || isTablet() ){
+							set_gallery_json("images/gallery003.json");	
+							set_jplayer_param( "#VIDEO_PLAYER", "small/communication","about_bg" );
+						} else {
+							set_gallery_json("images/gallery003.json");	
+							set_jplayer_param( "#VIDEO_PLAYER", "communication","about_bg" );
+						}
+					
+					} else{
+					
+						if( is_smartphone_init() || isTablet() ){
+							set_gallery_json("images/gallery001.json");	
+							set_jplayer_param( "#VIDEO_PLAYER", "small/presentation","about_bg" );
+						} else {
+							set_gallery_json("images/gallery001.json");	
+							set_jplayer_param( "#VIDEO_PLAYER", "presentation","about_bg" );
+						}
+					}
+					if( is_smartphone() ){
+						fit_gallery_sp();
+					}else{
+						fit_gallery();
+					}
+
+				},
+				afterShow:function(){
+
+
+				    timer = setTimeout(function() {
+						if( is_smartphone() ){
+							fit_gallery_sp();
+						}else{
+							fit_gallery();
+						}
+				    }, 500);
+
+				}
+			});
+
+			$(".control_right").click(function(){
+				//console.log("control_right");
+				//fancy.next();
+				$.fancybox.next()
+			});
+			$(".control_left").click(function(){
+				//console.log("control_left");
+				//fancy.prev();
+				$.fancybox.prev()
+			});
+
+
+			function set_gallery_json(_url){
+
+				$.ajax({
+					type: "GET",
+					scriptCharset: 'utf-8',
+					dataType:'json',
+					url: _url,
+					success: function(res){
+
+//						console.debug(res.GALLERY_WORK_TITLE);
+//						console.debug(res.GALLERY_WORK_CAPTION);
+//						console.debug(res.GALLERY_WORK_CATEGORY);
+//						console.debug(res.GALLERY_WORK_DISCRIPTION);
+//						console.debug(res.GALLERY_WORK_CREDIT);
+//						console.debug(res.GALLERY_WORK_IMAGE_01);
+						$("h2#GALLERY_WORK_TITLE").html(res.GALLERY_WORK_TITLE);
+						$("p#GALLERY_WORK_CAPTION").html(res.GALLERY_WORK_CAPTION);
+//						$("p#GALLERY_WORK_CATEGORY").html(res.GALLERY_WORK_CATEGORY);
+						$("p#GALLERY_WORK_DISCRIPTION").html(res.GALLERY_WORK_DISCRIPTION);
+//						$("p#GALLERY_WORK_CREDIT").html(res.GALLERY_WORK_CREDIT);
+//						$("img#GALLERY_WORK_IMAGE_01").attr("src",res.GALLERY_WORK_IMAGE_01);
+//						$("#VIDEO_PLAYER").width(res.GALLERY_WORK_IMAGE_01_WIDTH);
+//						$("#VIDEO_PLAYER").height(res.GALLERY_WORK_IMAGE_01_HEIGHT);
+						$("#VIDEO_PLAYER").css("top","0px");
+						$("#VIDEO_PLAYER").css("left","0px");
+
+						if( is_smartphone() ){
+							fit_gallery_sp();
+						}else{
+							fit_gallery();
+						}
+
+					},
+					error:function(){
+						//console.log('Miss..');
+					}
+				});
+			
+			}		
+		
+	}());
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,710 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="X-UA-Compatible" content="IE=9">
+<meta name="description" content="セブン銀行は、ATMサービス、インターネットバンキング、ローンサービスなど、幅広い金融サービスを提供しています。口座開設やご利用方法はセブン銀行公式サイトでご確認いただけます。">
+<meta name="keywords" content="セブン銀行,ATM,口座,開設,ダイレクトバンキング,カード,金利,手数料">
+<meta name="viewport" content="width=device-width,minimum-scale=0.25,maximum-scale=1.6,user-scalable=yes">
+<meta name="format-detection" content="telephone=no">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/7bk_icon_ipad.png">
+<link rel="stylesheet" type="text/css" media="all" href="/shared/css/reset.css">
+<link id="importCSS" rel="stylesheet" type="text/css" media="all" href="/shared/css/importPC.css">
+<link rel="stylesheet" type="text/css" media="print" href="/shared/css/overprint_top.css">
+<script type="text/javascript" src="/shared/js/jquery.js"></script>
+<script type="text/javascript" src="/shared/js/cmn_r.js"></script>
+<!-- local -->
+<script type="text/javascript" src="/shared/js/top.js"></script>
+<!-- /local -->
+<title>セブン銀行</title>
+<!-- 計測 ssi -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-21637608-1']);
+  _gaq.push(['_addIgnoredRef', 'sevenbank']);
+  _gaq.push(['_setDomainName', 'sevenbank.co.jp']);
+  _gaq.push(['_trackPageview']);
+  _gaq.push(['_trackEvent']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' :
+'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0];
+s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<!-- /計測 ssi -->
+</head>
+
+
+<body id="top">
+<!-- Google Tag Manager -->
+<!-- Google universal tag01 20160121 -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-W2W56V"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-W2W56V');</script>
+<!-- //Google universal tag01 20160121 -->
+<!-- End Google Tag Manager -->
+
+<!-- header ssi -->
+<ul id="skiplinkArea"> 
+<li><a href="#globalNaviArea" accesskey="g">グローバルナビゲーションへ</a></li> 
+<li><a href="#mainArea" accesskey="c">本文へ移動</a></li> 
+<li><a href="#footerArea" accesskey="i">サイト情報へ</a></li> 
+</ul> 
+
+
+<div id="headerArea">
+<div id="headerAreaInner" class="clear">
+<div class="logo"><a href="/"><img src="/shared/img/cmn_logo_001.png" alt="セブン銀行" width="202" height="51"></a></div>
+<div class="link clear">
+<p>金融機関コード（銀行コード）：&nbsp;<strong>0034</strong>&nbsp;&nbsp;証券コード：&nbsp;<strong>8410</strong></p>
+<ul class="clear">
+<li class="contact"><a href="/contact/"><span><span>お問合せ</span></span></a></li>
+<li class="recruit"><a href="/recruit/" target="_blank"><span><span>採用情報</span></span></a></li>
+<li class="sitemap"><a href="/support/sitemap.html"><span><span>サイトマップ</span></span></a></li>
+<li class="qa"><a href="http://faqsearch.sevenbank.co.jp/" target="_blank"><span><span>よくあるご質問（FAQ）</span></span></a></li>
+<li class="en"><a href="/english/"><span><span>English</span></span></a></li>
+</ul>
+</div>
+
+<div class="func">
+<div class="form">
+<form name="search_form1" action="http://search.sevenbank.co.jp/" target="searchWindow" onSubmit="siteSearch()">
+<p id="siteSearch"><span><label><input type="text" name="kw" value="" id="searchInput" title="サイト内検索"></label><input type="hidden" name="ie" value="u"><input type="hidden" name="domain" value="all"><input type="image" src="/shared/img/head_btn_004.gif" alt="検索" id="searchSubmit"></span></p>
+</form>
+</div>
+<div id="fontSizeChange">
+<p>文字サイズ</p>
+<ul class="clear">
+<li class="normal"><a href="javascript:void(0);">元に戻す&nbsp;↓</a></li>
+<li class="large"><a href="javascript:void(0);">大きくする&nbsp;↑</a></li>
+</ul>
+</div><!-- /#fontSizeChange -->
+</div>
+    
+<p id="menuBlock"><a id="headerMenu" href="javascript:void(0);" onClick="spGlobalMenu();">メニュー</a></p>
+</div><!-- /#headerAreaInner -->
+<div id="globalNaviArea">
+<ul id="globalNaviAreaInner" class="clear">
+<li class="personal"><a href="/"><img width="179" height="34" alt="個人のお客さま" src="/shared/img/global_btn_001.gif" class="rollover"></a></li>
+<li><a href="/business/"><img src="/shared/img/global_btn_002.gif" alt="法人のお客さま" width="175" height="34" class="rollover"></a></li>
+<li><a href="/ir/"><img src="/shared/img/global_btn_003.gif" alt="株主・投資家のお客さま" width="179" height="34" class="rollover"></a></li>
+<li><a href="/corp/"><img src="/shared/img/global_btn_004.gif" alt="会社情報" width="133" height="34" class="rollover"></a></li>
+</ul>
+</div><!-- /#globalNaviArea -->
+<div id="headerSpMenu">
+<div id="localNaviArea">
+<ul id="localNaviAreaInner" class="clear">
+<li class="top"><a href="/"><span class="Inner"><span class="read">トップページ</span></span></a></li>
+<li class="atm"><a href="/personal/atm/"><span class="Inner"><img src="/shared/img/global_btn_005.gif" alt="ATMを使う" width="120" height="28" class="rollover"><span class="read">ATMを使う</span></span></a></li>
+<li class="account"><a href="/personal/account/"><span class="Inner"><img src="/shared/img/global_btn_006.gif" alt="セブン銀行口座を開く" width="188" height="28" class="rollover"><span class="read">セブン銀行口座を開く</span></span></a></li>
+<li class="netbank"><a href="/personal/netbank/"><span class="Inner"><img src="/shared/img/global_btn_007.gif" alt="セブン銀行口座をお持ちのお客さま" width="258" height="28" class="rollover"><span class="read">セブン銀行口座をお持ちのお客さま</span></span></a></li>
+<li class="support"><a href="/personal/support/"><span class="Inner"><img src="/shared/img/global_btn_008.gif" alt="お客さまサポート" width="148" height="28" class="rollover"><span class="read">お客さまサポート</span></span></a></li>
+<li class="business"><a href="/business/"><span class="Inner"><img width="0" height="0"><span class="read">法人のお客さま（売上金入金サービス）</span></span></a></li>
+</ul>
+<div class="closebtn"><a href="javascript:void(0);" onClick="spGlobalMenuClose();"><img src="/shared/img/head_btn_007.png" alt="メニューを閉じる" width="163" height="39"></a></div>
+</div><!-- /#localNaviArea -->
+</div><!-- /#headerSpMenu -->
+</div><!-- /#headerArea -->
+<!-- /header ssi -->
+
+<div id="topAnimationArea">
+<div class="Inner">
+<div id="topAnimationBlock" class="clear">
+<div class="bnr">
+</div>
+<div class="Block clear">
+<div class="btn">
+</div>
+<div class="activebtn"><img src="/shared/img/index_btn_013.png" alt="" width="213" height="56">
+</div>
+<div class="nowbtn">
+</div>
+</div>
+</div><!-- /#topAnimationBlock -->
+</div>
+</div><!-- /#topAnimationArea -->
+
+
+<!--■■緊急メッセージ表示JS■■ -->
+<script src="/t/html/js/em.js" type="text/javascript" charset="Shift_JIS"></script>
+
+
+<div id="topMainArea">
+<div id="topMainAreaInner" class="fixHeight clear">
+
+
+<div id="topAtmArea">
+<h2><span>ATM</span>を使う</h2>
+<p class="mb5"><a href="http://pkg.navitime.co.jp/sevenbank/" target="_blank" class="btnAtmBlock rolloverLink"><span class="BlockBg01"><span class="BlockBg02"><span class="BlockBg03"><img class="over" src="/shared/img/index_btn_004.gif" alt="全国ATM検索（ATM Locator）" width="164" height="34"><img src="/shared/img/cmn_ico_001.png" alt="" width="13" height="12" class="pl10"></span></span></span></a></p>
+
+<!-- PC表記 -->
+<div class="link mb5 mt5">
+<p class="tRight mb5">
+<a href="http://pkg.navitime.co.jp/sevenbank/?lang=en" target="_blank" class="linkBlock01"><span><span>ATM Locator (English)<img width="13" height="12" class="blank" alt="" src="/shared/img/cmn_ico_002.png"></span></span></a>
+</p>
+</div><!-- //PC表記 -->
+<!-- SP表記 -->
+<div class="textlink">
+<p><a href="http://pkg.navitime.co.jp/sevenbank/?lang=en" target="_blank" class="linkBlock01">ATM Locator (English)<img width="13" height="12" class="blank" alt="" src="/shared/img/cmn_ico_002.png"></a></p>
+</div><!-- //SP表記 -->
+
+<div class="search">
+<h3>フリーワードでATM検索</h3>
+<form name="form_atmserach" action="http://pkg.navitime.co.jp/sevenbank/freeword" method="get" onsubmit="return false;" Accept-charset="UTF-8">
+<input type="hidden" name="search-target" value="name.address_name.search_word">
+<p class="atmSearch"><input id="atmSearchText" type="text" name="word" value="" maxlength="128"><input type="image" src="/shared/img/index_btn_007.gif" id="searchSubmit" onclick="d=document.charset;send=window.open('','send','');document.form_atmserach.target='send';document.charset='UTF-8';document.form_atmserach.submit();document.charset=d;"></p>
+</form>
+<p class="caption">（入力例：「セブン‐イレブン」、「千代田区」、他：郵便番号等）</p>
+</div>
+
+
+<!-- .App Btn -->
+<p><a href="/personal/atm/app/" class="btnAppBlock rolloverLink"><span class="BlockBg01"><span class="BlockBg02"><span class="BlockBg03"><img class="over" src="/shared/img/index_btn_014.png" alt="" width="177" height="46"></span></span></span></a></p>
+<!-- //.App Btn -->
+
+
+<div class="link">
+<div class="clear">
+<p><a href="/personal/atm/"><img class="rollover" src="/shared/img/index_btn_008_02.gif" alt="使えるカード・手数料" width="328" height="62"></a></p>
+<div class="top_shop_total clear">
+<p class="ttl pr10 fLeft"><span>日本全国のATM台数</span></p>
+<p class="num fLeft"></p>
+<script type="text/javascript" src="http://www.sevenbank.co.jp/t/html/js/shop_top.js" charset="Shift_JIS"></script>
+<script type="text/javascript">
+//<![CDATA[
+top_shop_total();
+//]]>;
+</script>
+</div>
+</div>
+
+
+<p class="tRight mt10 mb0">
+<a href="/personal/support/01.html" class="linkBlock01"><span><span>ATMでお困りの時は</span></span></a>
+</p>
+</div>
+<div class="textlink">
+<p><a href="/personal/atm/" class="linkBlock01">ATMで使えるカード・手数料</a></p>
+</div>
+</div>
+<div id="topBankArea">
+<h2><span>セブン銀行口座</span>を使う</h2>
+<div class="Inner clear">
+<div class="account">
+<div class="Block">
+<h3><a href="/personal/account/"><span>口座を開く</span><img src="/shared/img/cmn_ico_003.png" alt="" width="9" height="13"></a></h3>
+<h4>WEBからお申込み</h4>
+
+
+<div class="btnAccountBlock_outline">
+<p class="r_mb15"><script type="text/javascript" src="/shared/disaster/js/iblogon_036.js"></script></p>
+<!-- .btnAccountBlock_loan Btn -->
+<p class="mb0"><a href="/cp/count_topbtn_001.html" target="_blank" class="btnAccountBlock_loan rolloverLink"><span class="BlockBg01"><span class="BlockBg02"><span class="BlockBg03"><img class="over" src="/shared/img/index_btn_015.png" alt="ローンサービスと同時に口座開設" width="175" height="30"></span></span></span></a></p>
+<!-- //.btnAccountBlock_loan Btn -->
+<!-- .btnAccountBlock_soukin Btn -->
+<p class="r_mt5"><a href="/cp/count_topbtn_002.html" class="btnAccountBlock_soukin rolloverLink"><span class="BlockBg01"><span class="BlockBg02"><span class="BlockBg03"><img class="over" src="/shared/img/index_btn_016.png" alt="海外送金サービスと同時に口座開設" width="175" height="30"></span></span></span></a></p>
+<!-- //.btnAccountBlock_soukin Btn -->
+</div><!-- //.btnAccountBlock_outline -->
+
+
+<div class="sp">
+<p><a href="/personal/merit/" class="linkBlock01">セブン銀行口座の特長</a></p>
+</div>
+</div>
+</div>
+<div class="bank">
+<div class="Block">
+<h3><a href="/personal/netbank/"><span>口座をお持ちのお客さま</span><img src="/shared/img/cmn_ico_003.png" alt="" width="9" height="13"></a></h3>
+<h4>WEBでのお取引き</h4>
+<p><script type="text/javascript" src="/shared/disaster/js/iblogon_037.js"></script></p>
+<div class="btn">
+<p><script type="text/javascript" src="/shared/disaster/js/iblogon_038.js"></script></p>
+<p><script type="text/javascript" src="/shared/disaster/js/iblogon_252.js"></script></p>
+</div>
+<div class="sp clear lineBlock01 r_mt15 r_pb15 r_mb15">
+<p>WEBでのお取引きをはじめてご利用の方</p>
+<div><p class="btnBankBlock_SignUP"><span class="BlockBg01"><span class="BlockBg02"><span class="BlockBg03"><script type="text/javascript" src="/shared/disaster/js/iblogon_152.js"></script></span></span></span></p></div>
+<div><p class="btnBankBlock_SignUP"><span class="BlockBg01"><span class="BlockBg02"><span class="BlockBg03"><script type="text/javascript" src="/shared/disaster/js/iblogon_253.js"></script></span></span></span></p></div>
+</div>
+<p class="sp"><a href="/personal/guide/" class="linkBlock01">ダイレクトバンキングご利用ガイド</a></p>
+</div>
+</div>
+</div><!-- /.Inner -->
+
+<div class="btn mt10 spNone clear">
+<p class="mb0 fLeft"><a href="/personal/merit/"><img class="rollover" src="/shared/img/index_btn_019.png" alt="セブン銀行口座の特長" width="244" height="62"></a></p>
+<p class="mb0 fRight"><a href="/personal/guide/"><img class="rollover" src="/shared/img/index_btn_020.png" alt="ダイレクトバンキングご利用ガイド" width="244" height="62"></a></p>
+</div>
+
+<div class="link">
+<ul class="Block clear">
+<li class="mt5 fLeft"><a target="_blank" href="/account/interest.html" class="topbtnBlock02"><span><span>金利一覧(個人のお客さま)<img width="13" height="12" src="/shared/img/cmn_ico_002.png" alt="" class="blank"></span></span></a></li>
+<li class="mt5 fRight"><a href="/personal/netbank/know/fee/" class="topbtnBlock02"><span><span>手数料一覧</span></span></a></li>
+<li class="mt10 fRight"><a href="/personal/support/03.html" class="linkBlock01"><span><span>口座についてお困りの時は</span></span></a></li>
+</ul>
+</div>
+<div class="textlink">
+<ul>
+<li><a href="/account/interest.html" target="_blank" class="linkBlock01">金利<img src="/shared/img/cmn_ico_002.png" alt="" width="13" height="12" class="vMiddle ml5"></a></li>
+<li><a href="/personal/netbank/know/fee/" class="linkBlock01">手数料</a></li>
+</ul>
+</div>
+
+</div>
+</div>
+</div><!-- /#topMainArea -->
+
+<div id="topSpBnrArea">
+</div><!-- /#topSpBnrArea -->
+
+<div id="mainArea" class="clear">
+<div class="clear">
+<div id="contentsArea">
+
+
+<div id="topHayamiArea">
+<h2 class="headingBlock01"><span class="title">商品・サービス</span></h2>
+<!-- ■■ PC表記 ■■ -->
+<div class="spNone mb15">
+<div class="clear fixHeight">
+<div class="box_hayami pr5">
+<div class="imageBlock01">
+<div class="image"><p><img src="/shared/img/index_ttl_001.gif" alt="預金・ローン" width="218" height="39"></p></div>
+</div><!-- /.imageBlock -->
+<ul>
+<li><a href="/personal/netbank/deposit_loan/deposit/" class="linkBlock01">普通預金</a></li>
+<li><a href="/personal/netbank/deposit_loan/teiki/" class="linkBlock01">定期預金</a></li>
+<li><a href="/personal/netbank/deposit_loan/loan/" class="linkBlock01">ローンサービス（カードローン）</a></li>
+</ul>
+</div><!-- /.box_hayami -->
+<div class="box_hayami line_hayami pr5 pl5">
+<div class="imageBlock01">
+<div class="image"><p><img src="/shared/img/index_ttl_002.gif" alt="サービス" width="218" height="39"></p></div>
+</div><!-- /.imageBlock -->
+<ul>
+<li><a href="/personal/netbank/services/furikomi/" class="linkBlock01">お振込み</a></li>
+<li><a href="/soukin/jp/" class="linkBlock01">海外送金サービス</a></li>
+<li><a href="/personal/netbank/services/inpay/" class="linkBlock01">ネット決済サービス</a></li>
+<li><a href="/personal/netbank/services/transfer/" class="linkBlock01">口座振替サービス</a></li>
+<li><a href="/personal/netbank/services/mail/" class="linkBlock01">通知メールサービス</a></li>
+<li><a href="/personal/netbank/services/spninsyo/" class="linkBlock01">スマートフォン認証サービス</a></li>
+</ul>
+</div><!-- /.box_hayami -->
+<div class="box_hayami line_hayami pl5">
+<div class="imageBlock01">
+<div class="image"><p><img src="/shared/img/index_ttl_003.gif" alt="お取引・お手続き" width="218" height="39"></p></div>
+</div><!-- /.imageBlock -->
+<ul>
+<li><a href="/personal/netbank/dealings/web.html" class="linkBlock01">WEBでのお取引き<br>（ダイレクトバンキングサービス）</a></li>
+<li><a href="/personal/netbank/dealings/atm.html" class="linkBlock01">ATMでのお取引き（使えるATM）</a></li>
+<li><a href="/personal/consult/" class="linkBlock01">店舗でのお取引き（店舗サービス）</a></li>
+<li><a href="/personal/netbank/know/summary/tetsuduki.html" class="linkBlock01">各種手続き</a></li>
+</ul>
+</div><!-- /.box_hayami -->
+</div><!-- /.clear -->
+
+<!-- ■2段目■ -->
+<div class="clear fixHeight mt10">
+<div class="box_hayami pr5">
+<div class="imageBlock01">
+<div class="image"><p><img src="/shared/img/index_ttl_004.gif" alt="スマートフォンアプリ" width="218" height="39"></p></div>
+</div><!-- /.imageBlock -->
+<ul>
+<li><a href="/personal/atm/app/" class="linkBlock01">ATMナビ</a></li>
+<li><a href="/soukin/jp/app/" class="linkBlock01">海外送金サービス</a></li>
+</ul>
+</div><!-- /.box_hayami -->
+<p class="topHayamiArea_bnr pr5"><a href="/cp/count_campaign.html"><img src="/shared/img/snav_bnr_002_pc.gif" alt="キャンペーン・イベント情報 お得な情報を今すぐチェック！" width="218" height="80"></a></p><!-- /.topHayamiArea_bnr -->
+<div class="box_hayami line_hayami pl5">
+<div class="bg_support">
+<div class="imageBlock01">
+<div class="image"><p><img src="/shared/img/index_ttl_005.gif" alt="お客さまサポート" width="218" height="39"></p></div>
+</div><!-- /.imageBlock -->
+<ul>
+<li><a href="/personal/support/05.html" class="linkBlock01">セブン銀行キャッシュカードが紛失・盗難にあった場合</a></li>
+<li><a href="/personal/netbank/know/cashcard/ansho.html#shitsunen" class="linkBlock01">暗証番号を忘れた場合</a></li>
+<li><a href="/personal/support/05.html" class="linkBlock01">お客さま情報（住所など）をご変更の場合</a></li>
+</ul>
+</div><!-- /.bg_support -->
+</div><!-- /.box_hayami -->
+</div><!-- /.clear -->
+
+</div><!-- /.spNone -->
+<!-- ■■ //PC表記 ■■ -->
+
+
+<!-- ■■ SP表記 ■■ -->
+<div class="comBlock01 r_mt10 sp">
+<div class="accordionBlock01">
+<h3 class="acHead clear borderB01"><span class="acHeadInner"><span class="ico"><img src="/shared/img/cmn_ico_042.png" alt="" width="74" height="34"></span><span class="title"><span class="titleinner02">預金・ローン</span></span><a class="acLabel" href="javascript:void(0);"><span>くわしく見る</span></a></span></h3>
+<div class="acContents">
+<ul>
+<li><a href="/personal/netbank/deposit_loan/deposit/"><span class="linkBlock01">普通預金</span></a></li>
+<li><a href="/personal/netbank/deposit_loan/teiki/"><span class="linkBlock01">定期預金</span></a></li>
+<li><a href="/personal/netbank/deposit_loan/loan/" class="noBd"><span class="linkBlock01">ローンサービス（カードローン）</span></a></li>
+</ul>
+</div><!-- /.acContents -->
+</div><!-- /.accordionBlock01 -->
+<div class="accordionBlock01">
+<h3 class="acHead clear borderB01"><span class="acHeadInner"><span class="ico"><img src="/shared/img/cmn_ico_043.png" alt="" width="74" height="34"></span><span class="title"><span class="titleinner02">サービス</span></span><a class="acLabel" href="javascript:void(0);"><span>くわしく見る</span></a></span></h3>
+<div class="acContents">
+<ul>
+<li><a href="/personal/netbank/services/furikomi/"><span class="linkBlock01">お振込み</span></a></li>
+<li><a href="/soukin/jp/"><span class="linkBlock01">海外送金サービス</span></a></li>
+<li><a href="/personal/netbank/services/inpay/"><span class="linkBlock01">ネット決済サービス</span></a></li>
+<li><a href="/personal/netbank/services/transfer/"><span class="linkBlock01">口座振替サービス</span></a></li>
+<li><a href="/personal/netbank/services/mail/"><span class="linkBlock01">通知メールサービス</span></a></li>
+<li><a href="/personal/netbank/services/spninsyo/" class="noBd"><span class="linkBlock01">スマートフォン認証サービス</span></a></li>
+</ul>
+</div><!-- /.acContents -->
+</div><!-- /.accordionBlock01 -->
+<div class="accordionBlock01">
+<h3 class="acHead clear borderB01"><span class="acHeadInner"><span class="ico"><img src="/shared/img/cmn_ico_044.png" alt="" width="74" height="34"></span><span class="title"><span class="titleinner02">お取引・お手続き</span></span><a class="acLabel" href="javascript:void(0);"><span>くわしく見る</span></a></span></h3>
+<div class="acContents">
+<ul>
+<li><a href="/personal/netbank/dealings/web.html"><span class="linkBlock01">WEBでのお取引き<br>（ダイレクトバンキングサービス）</span></a></li>
+<li><a href="/personal/netbank/dealings/atm.html"><span class="linkBlock01">ATMでのお取引き（使えるATM）</span></a></li>
+<li><a href="/personal/consult/"><span class="linkBlock01">店舗でのお取引き（店舗サービス）</span></a></li>
+<li><a href="/personal/netbank/know/summary/tetsuduki.html" class="noBd"><span class="linkBlock01">各種手続き</span></a></li>
+</ul>
+</div><!-- /.acContents -->
+</div><!-- /.accordionBlock01 -->
+<div class="accordionBlock01">
+<h3 class="acHead clear borderB01"><span class="acHeadInner"><span class="ico"><img src="/shared/img/cmn_ico_045.png" alt="" width="74" height="34"></span><span class="title"><span class="titleinner02">スマートフォンアプリ</span></span><a class="acLabel" href="javascript:void(0);"><span>くわしく見る</span></a></span></h3>
+<div class="acContents">
+<ul>
+<li><a href="/personal/atm/app/"><span class="linkBlock01">ATMナビ</span></a></li>
+<li><a href="/soukin/jp/app/" class="noBd"><span class="linkBlock01">海外送金サービス</span></a></li>
+</ul>
+</div><!-- /.acContents -->
+</div><!-- /.accordionBlock01 -->
+<div class="accordionBlock01">
+<h3 class="acHead clear"><span class="acHeadInner"><span class="ico"><img src="/shared/img/cmn_ico_046.png" alt="" width="74" height="34"></span><span class="title"><span class="titleinner02">法人のお客さま<br>（売上金入金サービス）</span></span><a class="acLabel" href="javascript:void(0);"><span>くわしく見る</span></a></span></h3>
+<div class="acContents">
+<ul>
+<li><a href="/business/service_deposit/"><span class="linkBlock01">売上金入金サービス</span></a></li>
+</ul>
+</div><!-- /.acContents -->
+</div><!-- /.accordionBlock01 -->
+</div><!-- /.comBlock -->
+<!-- ■■ //SP表記 ■■ -->
+
+<div class="innerContents mt15">
+<p class="tRight mb5"><a href="/personal/services/hayami/" class="linkBlock01">商品・サービス早見表</a></p>
+<p class="tRight r_mt10"><a href="/personal/netbank/know/summary/" class="linkBlock01">商品概要一覧</a></p>
+</div><!-- /.innerContents -->
+
+</div><!-- //#topHayamiArea -->
+
+
+<div id="topSpNaviArea">
+<h2><img src="/shared/img/cmn_ico_010.png" alt="" width="31" height="31" class="mr10">ナビゲーション</h2>
+<a href="/personal/atm/" class="linkBlock03"><span class="linkBlocktext">ATMを使う</span><img src="/shared/img/cmn_ico_011.png" alt="" width="9" height="14"></a>
+<a href="/personal/account/" class="linkBlock03"><span class="linkBlocktext">セブン銀行口座を開く</span><img src="/shared/img/cmn_ico_011.png" alt="" width="9" height="14"></a>
+<a href="/personal/netbank/" class="linkBlock03"><span class="linkBlocktext">セブン銀行口座をお持ちのお客さま</span><img src="/shared/img/cmn_ico_011.png" alt="" width="9" height="14"></a>
+<a href="/personal/support/" class="linkBlock03"><span class="linkBlocktext">お客さまサポート</span><img src="/shared/img/cmn_ico_011.png" alt="" width="9" height="14"></a>
+</div><!-- /#topSpNaviArea -->
+
+
+<div id="topSpNewsnaviArea">
+<a href="javascript:void(0);" class="active">ご注意・お知らせ</a>
+<a href="javascript:void(0);">新着情報</a>
+<a href="javascript:void(0);">ニュースリリース</a>
+</div>
+<div id="topCaptionArea">
+<h2 class="headingBlock01"><span class="title">ご注意・お知らせ</span></h2>
+<div class="innerContents_important">
+<div><strong>【重要なお知らせ】2016年1月13日更新</strong></div>
+</div><!-- /.innerContents_important -->
+
+
+<div class="listBlock02">
+<ul>
+<li class="clear"><a href="/support/info_email.html"><img src="/shared/img/cmn_ico_004.png" alt="" width="18" height="18" class="pr5"><p>セブン銀行を名乗りパスワードなどを盗み取る偽メールにご注意ください（2016年1月13日更新）</p></a></li>
+<li class="clear"><a href="/support/info_pw/"><img src="/shared/img/cmn_ico_004.png" alt="" width="18" height="18" class="pr5"><p>【重要】セブン銀行口座のご利用制限について（2015年3月16日更新）</p></a></li>
+<li class="clear"><a href="/support/info_popup.html"><img src="/shared/img/cmn_ico_004.png" alt="" width="18" height="18" class="pr5"><p>不正にポップアップ画面を表示させてダイレクトバンキングサービスでのお取引きに必要な暗証番号等を盗み取ろうとする犯罪にご注意ください（2015年3月16日更新）</p></a></li>
+<li class="clear"><a href="/support/info_notice01.html"><img src="/shared/img/cmn_ico_004.png" alt="" width="18" height="18" class="pr5"><p>セブン銀行の口座・ローンサービスを悪用した詐欺にご注意ください（2014年3月14日）</p></a></li>
+<li class="clear"><a href="/support/info_skimming.html"><img src="/shared/img/cmn_ico_004.png" alt="" width="18" height="18" class="pr5"><p>ATM利用時のスキミングにご注意ください（2013年6月3日）</p></a></li>
+</ul>
+</div><!-- /.listBlock02 -->
+
+
+<div class="listBlock02 mb15">
+<ul>
+<li class="clear"><a href="/soukin/jp/info/info_mynumber.html"><img src="/shared/img/cmn_ico_005.png" alt="" width="16" height="17"><p>海外送金サービス契約に伴う個人番号（マイナンバー）に関するご提出書類について（2015年12月15日）</p></a></li>
+<li class="clear"><a href="/support/info2015082401.html"><img src="/shared/img/cmn_ico_005.png" alt="" width="16" height="17"><p>当社ダイレクトバンキングサービスのSSL証明書の「SHA-2」方式への変更について（2015年8月24日）</p></a></li>
+<li class="clear"><a href="/support/info_ssl.html"><img src="/shared/img/cmn_ico_005.png" alt="" width="16" height="17"><p>SSL3.0の脆弱性に関する対応について（2014年11月17日）</p></a></li>
+<li class="clear"><a href="/support/info2012113002.html"><img src="/shared/img/cmn_ico_005.png" alt="" width="16" height="17"><p>長い間ご利用になっていない預金に関するご注意（2012年11月30日）</p></a></li>
+</ul>
+</div><!-- /.listBlock02 -->
+
+
+<p class="tRight"><a href="/corp/guide/" class="linkBlock01">セキュリティについて</a></p>
+</div>
+<div class="clear">
+<div id="topNewsArea">
+<h2 class="headingBlock01"><span class="title">新着情報</span></h2>
+<ul>
+<li>2016年1月16日<br>
+<a href="/corp/csr/musicthon_2015.html" target="_blank">「音声ガイダンスキャンペーン知って！広めて！キャンペーン」へのご参加ありがとうございました</a>
+</li>
+<li>2016年1月8日<br>
+2016年3月期第3四半期の決算発表日は、2016年2月5日（金）を予定しております。
+</li>
+<li>2016年1月1日<br>
+<a href="/soukin/jp/campaign/campaign02/">【海外送金サービス】<br>
+新規契約で1,000円プレゼントキャンペーンがスタート！</a>
+</li>
+<li>2015年12月26日<br>
+<a href="/support/info2015122601.html">「ネット口座振替申込サービス」をご利用いただける会社が増えました（オリエントコーポレーション）</a>
+</li>
+<li>2015年12月21日<br>
+<a href="/support/info2015122101.html">年末年始の各種お手続きについて</a>
+</li>
+</ul>
+
+<p class="tRight"><a href="/support/" class="linkBlock01">新着情報一覧</a></p>
+</div>
+<div id="topNewsReleaseArea">
+<h2 class="headingBlock01"><span class="title">ニュースリリース</span></h2>
+<ul>
+<li>2016年1月22日<br>
+<a href="/corp/news/2016/pdf/2016012201.pdf" target="_blank">琉球銀行とのATM利用提携について（PDF／142KB）</a>
+</li>
+<li>2016年1月13日<br>
+<a href="/corp/news/2016/pdf/2016011301.pdf" target="_blank">訪日外客数増加で海外発行カードによるATM利用件数が過去最高を更新!!（PDF／440KB）</a>
+</li>
+<li>2015年12月24日<br>
+<a href="/corp/news/2015/pdf/2015122401.pdf" target="_blank">旭川空港でATMサービス開始（PDF／143KB）</a>
+</li>
+<li>2015年12月17日<br>
+<a href="/corp/news/2015/pdf/2015121701.pdf" target="_blank">セブン銀行ATMが22,000台を突破（PDF／127KB）</a>
+</li>
+<li>2015年12月15日<br>
+<a href="/corp/news/2015/pdf/2015121501.pdf" target="_blank">デビット付きキャッシュカードの発行を決定（PDF／155KB）</a>
+</li>
+</ul>
+
+<p class="tRight"><a href="/corp/news/" class="linkBlock01 mr10">ニュースリリース一覧</a><a href="rss/news.xml"><img src="/shared/img/cmn_ico_006.png" alt="" width="17" height="17" class="pr5"></a><a href="/rss/" class="linkBlock01">RSSについて</a></p>
+</div>
+</div>
+
+</div><!-- /#contentsArea -->
+
+<div id="subnaviArea">
+
+<div class="bnr clear mt0">
+<p><a href="/cp/count_sidebanner001.html"><img src="/shared/img/snav_bnr_warning01.gif" alt="【重要なお知らせ】不正なポップアップ画面にご注意ください" width="213" height="60" class="rollover"></a></p>
+<p class="sp"><a href="/sp/personal/support/05.html"><img src="/shared/img/snav_bnr_lost.gif" alt="セブン銀行キャッシュカードの紛失・盗難時はこちら" width="213" height="60"></a></p>
+<p class="sp"><a href="/personal/netbank/know/cashcard/ansho.html#shitsunen"><img src="/shared/img/snav_bnr_pin01.gif" alt="キャッシュカード暗証番号を忘れた方はこちら" width="213" height="60"></a></p>
+<p class="sp"><a href="/cp/count_campaign.html"><img src="/shared/img/snav_bnr_002.gif" alt="キャンペーン・イベント情報 お得な情報を今すぐチェック！" width="213" height="60"></a></p>
+<p><a href="/cp/count_sidebanner002.html" target="_blank"><img src="/shared/img/snav_bnr_010.gif" alt="採用情報" width="213" height="60"></a></p>
+<p><a href="/cp/count_sidebanner003.html"><img src="/shared/img/snav_bnr_019.jpg" alt="スマートフォンアプリ セブン銀行ATMナビ" height="60" width="213"></a></p>
+<p><a href="/cp/count_sidebanner004.html"><img src="/shared/img/snav_bnr_foreign.gif"alt="International ATMs" height="60" width="213"></a></p>
+<p><a href="/cp/count_sidebanner005.html" target="_blank"><img src="/shared/img/snav_bnr_loansv.jpg" alt="初めての方でも、安心して便利に使える セブン銀行ローンサービス" height="60" width="213"></a></p>
+<p><a href="/cp/count_sidebanner006.html"><img src="/shared/img/snav_bnr_018.jpg" alt="nanacoポイントが貯まる！セブン銀行口座ポイントサービス" height="60" width="213"></a></p>
+<p><a href="/cp/count_sidebanner007.html"><img src="/shared/img/snav_bnr_026.png" alt="スマートフォンアプリ セブン銀行 海外送金サービス" height="60" width="213"></a></p>
+
+
+<p class="spNone mb0"><a href="/cp/count_sidebanner008.html"><img src="/shared/img/snav_bnr_007_02.gif" alt="24時間365日。いつでも届く、どこでも届く。セブン銀行の海外送金サービス" width="213" height="60"></a></p>
+
+<div class="soukinlangBtn spNone mt0">
+<dl>
+<dd>
+<ul class="clear">
+<li><a href="/cp/soukin/sidebanner/pc_jp.html"><img src="/shared/img/snav_btn_soukin01.gif" width="204" height="22" alt="" class="rollover"></a></li>
+<li><a href="/cp/soukin/sidebanner/pc_en.html"><img src="/shared/img/snav_btn_soukin02.gif" width="101" height="22" alt="" class="rollover"></a></li>
+<li><a href="/cp/soukin/sidebanner/pc_cnk.html"><img src="/shared/img/snav_btn_soukin03.gif" width="101" height="22" alt="" class="rollover"></a></li>
+<li><a href="/cp/soukin/sidebanner/pc_ph.html"><img src="/shared/img/snav_btn_soukin04.gif" width="101" height="22" alt="" class="rollover"></a></li>
+<li><a href="/cp/soukin/sidebanner/pc_pt.html"><img src="/shared/img/snav_btn_soukin05.gif" width="101" height="22" alt="" class="rollover"></a></li>
+<li><a href="/cp/soukin/sidebanner/pc_es.html"><img src="/shared/img/snav_btn_soukin06.gif" width="101" height="22" alt="" class="rollover"></a></li>
+<li><a href="/cp/soukin/sidebanner/pc_ti.html"><img src="/shared/img/snav_btn_soukin07.gif" width="101" height="22" alt="" class="rollover"></a></li>
+<li><a href="/cp/soukin/sidebanner/pc_vi.html"><img src="/shared/img/snav_btn_soukin08.gif" width="101" height="22" alt="" class="rollover"></a></li>
+<li><a href="/cp/soukin/sidebanner/pc_id.html"><img src="/shared/img/snav_btn_soukin09.gif" width="101" height="22" alt="" class="rollover"></a></li>
+</ul>
+</dd>
+</dl>
+</div><!-- / .soukinlangBtn -->
+
+
+<p><a href="/cp/count_sidebanner009.html" target="_blank"><img src="/shared/img/snav_bnr_022.gif" alt="セブン銀行口座 海外送金サービス 技能実習生等雇用企業さま向け" width="213" height="60"></a></p>
+<p><a href="/cp/count_sidebanner010.html" target="_blank"><img src="/shared/img/snav_bnr_girlscard.jpg" alt="オリジナルキャッシュカード Girl's Card Project" width="213" height="60"></a></p>
+<p><a href="/cp/count_sidebanner011.html"><img src="/shared/img/snav_bnr_001.gif" alt="セブン銀行の店舗サービス 口座の申込受付 住宅ローンのご相談" width="213" height="60"></a></p>
+<p><a href="/cp/count_sidebanner012.html" target="_blank"><img src="/shared/img/snav_bnr_cm.gif" alt="テレビCM" width="213" height="60"></a></p>
+<p><a href="/cp/count_sidebanner013.html" target="_blank"><img src="/shared/img/snav_bnr_015.gif" alt="YouTube セブン銀行公式チャンネル" width="213" height="60"></a></p>
+<p><a href="/cp/count_sidebanner014.html" target="_blank"><img src="/shared/img/bnr_bonolon.gif" alt="森の戦士 ボノロン （C）NSP 2005,（C）ボノロンといっしょ。2007" width="213" height="60"></a></p>
+<p><a href="/cp/count_sidebanner015.html"><img src="/shared/img/snav_bnr_009.gif" alt="東日本大震災の被災者の皆さまには、心よりお見舞い申し上げます。" width="213" height="60"></a></p>
+<p><a href="/cp/count_sidebanner016.html" target="_blank"><img src="/shared/img/snav_bnr_004.gif" alt="新しい今日がある" width="213" height="60"></a></p>
+</div>
+
+
+<div class="soukin_bnr imageBlock01">
+<div class="image sp">
+  <p class="mb0"><a href="/cp/count_sidebanner008.html"><img src="/shared/img/sp_snav_bnr_soukin01.gif" alt="24時間365日。いつでも届く、どこでも届く。セブン銀行の海外送金サービス" width="632" height="162" class="image"></a></p></div>
+</div><!-- /.imageBlock -->
+
+<div class="soukinGuideNav01 sp">
+<ul class="clear fixHeight">
+<li class="jp mr0"><a href="/cp/soukin/sidebanner/sp_jp.html"><span class="fixHeightChildLink"><span>日本語</span></span></a></li>
+<li class="en"><a href="/cp/soukin/sidebanner/sp_en.html"><span class="fixHeightChildLink"><span>English</span></span></a></li>
+<li class="cnk"><a href="/cp/soukin/sidebanner/sp_cnk.html"><span class="fixHeightChildLink"><span>簡体字</span></span></a></li>
+<li class="ph"><a href="/cp/soukin/sidebanner/sp_ph.html"><span class="fixHeightChildLink"><span>Tagalog</span></span></a></li>
+<li class="pt"><a href="/cp/soukin/sidebanner/sp_pt.html"><span class="fixHeightChildLink"><span>Português</span></span></a></li>
+<li class="es"><a href="/cp/soukin/sidebanner/sp_es.html"><span class="fixHeightChildLink"><span>Español</span></span></a></li>
+<li class="ti"><a href="/cp/soukin/sidebanner/sp_ti.html"><span class="fixHeightChildLink"><span>ภาษาไทย</span></span></a></li>
+<li class="vi"><a href="/cp/soukin/sidebanner/sp_vi.html"><span class="fixHeightChildLink"><span>Tiếng Việt</span></span></a></li>
+<li class="id"><a href="/cp/soukin/sidebanner/sp_id.html"><span class="fixHeightChildLink"><span>Bahasa Indonesia</span></span></a></li>
+</ul>
+</div><!-- /.soukinGuideNav01 -->
+
+<a href="javascript:void(0);" onClick="PCMode();" class="topPCbtnBlock">PCサイト</a>
+</div><!-- /#subnaviArea -->
+</div>
+</div><!-- /#mainArea -->
+
+<!-- footer ssi -->
+<div id="footerArea">
+<div id="footerAreaInner" class="clear">
+<p id="topBackBlock"><a href="#top">ページの先頭に戻る</a></p>
+<div id="footerLogo"><a href="http://www.7andi.com/" target="_blank"><img src="/shared/img/cmn_logo_002.gif" alt="セブン&amp;アイHLDGS." width="130" height="24"></a></div>
+<div id="footerSpLink">
+<a href="/contact/"><span class="linkBlocktext">お問合せ</span></a>
+<a href="/recruit/" target="_blank" class="popup" rel="typeB"><span class="linkBlocktext">採用情報<img src="/shared/img/cmn_ico_002.png" alt="" width="13" height="12"></span></a>
+<a href="/support/sitemap.html"><span class="linkBlocktext">サイトマップ</span></a>
+<a href="http://faqsearch.sevenbank.co.jp/" target="_blank"><span class="linkBlocktext">よくあるご質問（FAQ）<img src="/shared/img/cmn_ico_002.png" alt="" width="13" height="12"></span></a>
+<a href="/english/"><span class="linkBlocktext">English</span></a>
+</div>
+
+<div id="footerLink">
+<ul>
+<li><a href="/ir/stock/kokoku.html" class="linkBlock02">電子公告</a></li>
+<li><a href="/corp/csr/" class="linkBlock02">CSR（企業の社会的責任）について</a></li>
+<li><a href="/corp/guide/" class="linkBlock02">セキュリティについて</a></li>
+</ul>
+<ul>
+<li class="blank"><a href="/policy/rules/" target="_blank" class="linkBlock02">規定集</a></li>
+<li><a href="/support/privacy.html" class="linkBlock02">プライバシーポリシー</a></li>
+<li><a href="/support/antisocial.html" class="linkBlock02">反社会的勢力への対応について</a></li>
+<li><a href="/support/conflict.html" class="linkBlock02">利益相反管理方針</a></li>
+<li><a href="/support/policy.html" class="linkBlock02">勧誘方針</a></li>
+<li><a href="/support/siteinfo.html" class="linkBlock02">このサイトのご利用について</a></li>
+</ul>
+<p id="footerSpLogo"><a href="http://www.7andi.com/" target="_blank"><img src="/shared/img/cmn_logo_002.gif" alt="セブン&amp;アイHLDGS." width="130" height="24"></a></p>
+<p id="copyright">Copyright (c) Seven Bank,Ltd. All Rights Reserved.</p>
+</div>
+</div><!-- /#footerAreaInner -->
+</div><!-- /#footerArea -->
+
+<!-- sem measure ssi -->
+<!-- [SEM_tag] YDN remarkTAG (card_loan) 20140224 -->
+<script type="text/javascript" language="javascript">
+var yahoo_retargeting_id = 'AZPH794N98';
+var yahoo_retargeting_label = '';
+</script>
+<script type="text/javascript" language="javascript" src="//b92.yahoo.co.jp/js/s_retargeting.js"></script>
+<!-- //[SEM_tag] YDN remarkTAG (card_loan) 20140224 -->
+
+<!-- [SEM_tag] GDN remarkTAG (card_loan) 20140224 -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 982304187;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript"  
+src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt=""  
+src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/982304187/?value=0&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+<!-- //[SEM_tag] GDN remarkTAG (card_loan) 20140224 -->
+
+<!-- [SEM_tag] YDN remarkTAG (kouza_kaisetu) 20140224 -->
+<script type="text/javascript" language="javascript">
+var yahoo_retargeting_id = 'EM3V51M26L';
+var yahoo_retargeting_label = '';
+</script>
+<script type="text/javascript" language="javascript" src="//b92.yahoo.co.jp/js/s_retargeting.js"></script>
+<!-- //[SEM_tag] YDN remarkTAG (kouza_kaisetu) 20140224 -->
+
+<!-- [SEM_tag] GDN remarkTAG (kouza_kaisetu) 20140224 -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 990660819;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript"  
+src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt=""  
+src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/990660819/?value=0&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+<!-- //[SEM_tag] GDN remarkTAG (kouza_kaisetu) 20140224 -->
+<!-- /sem measure ssi -->
+
+
+<!-- [YTM_tag] Yahoo universal tag 20141202 -->
+<script type="text/javascript">
+  (function () {
+    var tagjs = document.createElement("script");
+    var s = document.getElementsByTagName("script")[0];
+    tagjs.async = true;
+    tagjs.src = "//s.yjtag.jp/tag.js#site=gkLWWWy,2v55l20";
+    s.parentNode.insertBefore(tagjs, s);
+  }());
+</script>
+<noscript>
+  <iframe src="//b.yjtag.jp/iframe?c=gkLWWWy,2v55l20" width="1" height="1" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+</noscript>
+<!-- //[YTM_tag] Yahoo universal tag 20141202 -->
+
+<!-- /footer ssi -->
+
+<!-- 7CE sem measure ssi -->
+<!-- [SEM_tag] 7CE remarkTAG 20140314 -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 972902762;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/972902762/?value=0&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+<!-- //[SEM_tag] 7CE remarkTAG 20140314 -->
+
+<!-- ADNETWORK by RAO ReTargeting Tag BEGIN [SEM_tag] 7CE 20140314 -->
+<script type="text/javascript">
+document.writeln('<sc'+'ript language="JavaScript" type="text/javascript" charset="utf-8" src="'+location.protocol+'//cdn.c-team.jp/ran/c/7card/7card.js"></sc'+'ript>');
+</script>
+<!-- //ADNETWORK by RAO ReTargeting Tag END [SEM_tag] 7CE 20140314 -->
+<!-- /7CE sem measure ssi -->
+</body>
+</html>

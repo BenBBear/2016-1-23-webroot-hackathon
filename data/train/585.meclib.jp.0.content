@@ -1,0 +1,567 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>HTML5完全対応！デジタルブック簡単作成システムのメクリブ【meclib】</title>
+<meta name="description" content="高機能！簡単作成！格安に電子ブック、デジタルカタログ、デジタルチラシが作成できるシステム。HTML5完全対応でマルチデバイスに対応。デジタルブックの一元管理、ログ解析。その他豊富な機能を標準搭載！制作代行もおこないます。">
+<!-- Facebook OGP -->
+<meta property="og:title" content="デジタルブック作成システムのメクリブ【meclib】">
+<meta property="og:type" content="website">
+<meta property="og:url" content="http://www.digitalbook-meclib.jp/">
+<meta property="og:image" content="http://www.digitalbook-meclib.jp/common/img/fb-logo2.jpg">
+<meta property="og:site_name" content="メクリブ【meclib】">
+<meta property="og:description" content="メクリブ【meclib】なら高機能なデジタルブックを簡単に作成できます">
+<meta property="og:locale" content="ja_JP" />
+<meta name="viewport" content="width=1050px">
+<link rel="apple-touch-icon-precomposed" href="/common/img/apple-touch-icon.png" />
+<link rel="icon" href="/common/img/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="/common/css/import.css">
+<link rel="stylesheet" href="/common/css/index.css">
+<link rel="stylesheet" href="/common/css/colorbox.css">
+<script src="/common/js/jquery.js" type="text/javascript"></script>
+<script src="/common/js/common.js" type="text/javascript"></script>
+<script src="/common/js/jquery.rollover.js" type="text/javascript"></script>
+<!--[if lt IE 9]>
+<script src="/common/js/html5shiv-printshiv.min.js"></script>
+<![endif]-->
+<script src="/common/js/jquery.AutoHeight.js" type="text/javascript"></script>
+<script type="text/javascript">
+jQuery(function($){
+    $('#home #bnrPickup ul li .box').autoHeight({clear:1,column:3});
+   	$('#feature.library #function li').autoHeight({clear:1,column:3});
+    $('#feature.custom #temp li').autoHeight({clear:1,column:3});
+});
+</script>
+<script src="/common/js/jquery.colorbox.js" type="text/javascript"></script>
+<script>
+$(document).ready(function(){
+});
+</script>
+<script src="/common/js/jquery.clingify.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function() {
+	$('.second-clingy').clingify({
+		breakpoint: 127,  // ブレイクポイント（ピクセル）
+		extraClass: '',
+		throttle: 100,
+		// Callback functions:
+		detached: $.noop,
+		locked: $.noop,
+		resized: $.noop
+	});
+});
+</script>
+<script src="/common/js/jquery.bxslider.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function(){
+	var $slider = $('#mainImg .bxslider');
+	$slider.bxSlider({
+		mode: 'fade',
+		auto: true,
+		speed: 1000,
+		onSliderLoad: function(){
+			$slider.children('li').eq(0).find('.zoom').addClass('end');
+		},
+		onSlideAfter: function($slideElement, oldIndex, newIndex) {
+			$slider.children('li').eq(newIndex).find('.zoom').addClass('end');
+			$slider.children('li').eq(oldIndex).find('.zoom').removeClass('end');
+			$slider.startAuto();
+		}
+	});
+});
+</script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#carousel .slider').bxSlider({
+        auto: false,
+        speed: 1000,
+		pager: false,
+		slideWidth: 225,
+        maxSlides: 4, //一度に表示させる数
+        moveSlides: 4, //移動時にずれる数
+		slideMargin:8,
+		controls: true
+        });
+  });
+$(function(){
+    $('#carousel .slider li .txt').autoHeight();
+});
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-50017138-2','auto',{'allowLinker':true});
+  ga('require','displayfeatures');
+  ga('require', 'linker');
+  // Define which domains to autoLink.
+  ga('linker:autoLink', ['www.digitalbook-meclib.jp','www.kotonet.co.jp']);
+  ga('send', 'pageview');
+
+</script> 
+<!-- facebookカスタムオーディエンス ピクセル -->
+<script>(function() {
+  var _fbq = window._fbq || (window._fbq = []);
+  if (!_fbq.loaded) {
+    var fbds = document.createElement('script');
+    fbds.async = true;
+    fbds.src = '//connect.facebook.net/en_US/fbds.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(fbds, s);
+    _fbq.loaded = true;
+  }
+  _fbq.push(['addPixelId', '769545333113764']);
+})();
+window._fbq = window._fbq || [];
+window._fbq.push(['track', 'PixelInitialized', {}]);
+</script>
+<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=769545333113764&amp;ev=PixelInitialized" /></noscript>
+<!-- /facebookカスタムオーディエンス ピクセル -->
+</head>
+<body id="home" class="home">
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.0";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	<div id="wrapper">
+		<header id="hd">
+			<div id="hdIn">
+				<h1><a href="/">デジタルブック電子カタログ作成クラウド型ソフト【meclib】HTML5マルチデバイス対応</a></h1>
+				<p id="hdLogo"><a href="/"><img src="/common/img/header/logo01.gif" alt="デジタルブック電子カタログ作成クラウド型ソフト【meclib】HTML5マルチデバイス対応" width="196" height="51"></a></p>
+				<nav id="gNav">
+					<ul>
+						<li class="feature"><a href="/feature/">meclibの特長</a></li>
+						<li class="product"><a href="/product/">製品情報</a></li>
+						<li class="plan"><a href="/plan/">プラン・価格</a></li>
+						<!--<li class="tips"><a href="/tips/">お役立ち情報</a></li>-->
+						<li class="result"><a href="/result/">導入事例</a></li>
+						<li class="sample"><a href="/sample/">サンプル</a></li>
+					</ul>
+				</nav>
+				<ul id="subNav">
+					<li class="support"><a href="/support/">FAQ</a></li>
+					<li class="inquiry"><a href="https://www.kotonet.co.jp/meclib/inquiry/" target="_blank">お問い合せ</a></li>
+					<li class="request"><a href="https://www.kotonet.co.jp/meclib/request/" target="_blank">資料請求</a></li>
+				</ul>
+				<div id="hdSearch">
+<script>
+(function() {
+var cx = '015916914654919219555:-dc6gta8x-4';
+var gcse = document.createElement('script');
+gcse.type = 'text/javascript';
+gcse.async = true;
+gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+'//www.google.com/cse/cse.js?cx=' + cx;
+var s = document.getElementsByTagName('script')[0];
+s.parentNode.insertBefore(gcse, s);
+})();
+</script>
+<gcse:searchbox-only></gcse:searchbox-only>
+				</div>
+			</div>
+		</header>
+		<!-- /#hd -->
+		<div class="secondNav second-clingy">
+			<div class="secondNavIn">
+				<p><a href="/"><img src="/common/img/header/logo02.png" alt="デジタルブック作成システム meclib" width="114" height="30"></a></p>
+				<ul>
+					<li><a href="/feature/"><img src="/common/img/header/gnav01_n.png" alt="meclibの特長" width="89" height="39"></a></li>
+					<li><a href="/product/"><img src="/common/img/header/gnav02_n.png" alt="製品情報" width="55" height="39"></a></li>
+					<li><a href="/plan/"><img src="/common/img/header/gnav03_n.png" alt="プラン・価格" width="76" height="39"></a></li>
+					<li><a href="/result/"><img src="/common/img/header/gnav04_n.png" alt="導入事例" width="53" height="39"></a></li>
+					<li><a href="/sample/"><img src="/common/img/header/gnav05_n.png" alt="サンプル" width="53" height="39"></a></li>
+					<li class="sub"><a href="/support/"><img src="/common/img/header/gnav06_n.png" alt="FAQ" width="40" height="39"></a></li>
+					<li class="sub"><a href="https://www.kotonet.co.jp/meclib/inquiry/" target="_blank"><img src="/common/img/header/gnav07_n.png" alt="お問い合せ" width="75" height="39"></a></li>
+					<li class="sub"><a href="https://www.kotonet.co.jp/meclib/request/" target="_blank"><img src="/common/img/header/gnav09_n.png" alt="資料請求" width="62" height="39"></a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- /.secondNav -->
+<!-- ▽スライド用 -->
+<div id="mainImg">
+	<!--<ul class="bxslider">
+		<li><a href="/feature/popup/" onclick="ga('send', 'event', 'link', 'click', 'main04_ポップアップ機能で、様々なコンテンツがブックから飛び出す');"><span class="zoom"><img src="/img/txt_mainimg04.png" alt="ポップアップ機能で様々なコンテンツがブックから飛び出す" width="1048" height="500" class="opacityImg"></span></a></li>
+		<li><a href="/feature/" onclick="ga('send', 'event', 'link', 'click', 'main01_meclibに込められたデジタルブックの可能性');"><span class="zoom"><img src="/img/txt_mainimg01.png" alt="meclibに込められたデジタルブックの可能性" width="1000" height="500" class="opacityImg"></span></a></li>
+		<li><a href="/library_lp/" onclick="ga('send', 'event', 'link', 'click', 'main02_電子カタログを作ったら、持ち運べる本棚として管理・公開');"><span class="zoom"><img src="/img/txt_mainimg02.png" alt="電子カタログを作ったら持ち運べる本棚として管理･公開。" width="1057" height="500" class="opacityImg"></span></a></li>
+		<li><a href="/product/appli/" onclick="ga('send', 'event', 'link', 'click', 'main03_meclibのアプリならオフライン環境でもデジタルブックを閲覧できます');"><span class="zoom"><img src="/img/txt_mainimg03.png" alt="meclibのアプリならオフライン環境でもデジタルブックを閲覧できます。" width="1000" height="500" class="opacityImg"></span></a></li>
+	</ul>-->
+</div>
+<div id="mainImg">
+	<div id="mainImgWrap">
+		<div id="mainImgIn" class="cf">
+			<p class="mainImgInL"><a href="/feature/popup/"><img src="/img/mainimg06.png" alt="ポップアップ機能で様々なコンテンツがブックから飛び出す" width="707" height="363" class="opacityImg"></a></p>
+            <div class="mainImgInR">
+                <p><a href="/feature/"><img src="/img/mainimg07.png" alt="meclibの多彩な機能" width="283" height="192" class="opacityImg"></a></p>
+                <p><a href="/product/appli/"><img src="/img/mainimg08.png" alt="無料アプリが標準でついてくる" width="283" height="192" class="opacityImg"></a></p>
+            </div>
+		</div>
+	</div>
+</div>
+<!-- /#mainImg --> 
+<div id="lNav">
+	<ul>
+		<li class="popup"><a href="/feature/popup/" onclick="ga('send', 'event', 'link', 'click', '特長_ポップアップ機能);">ポップアップ機能</a></li>
+		<li class="multi"><a href="/feature/multi/" onclick="ga('send', 'event', 'link', 'click', '特長_マルチデバイス対応');">マルチデバイス<br>対応</a></li>
+		<li class="easy"><a href="/feature/easy/" onclick="ga('send', 'event', 'link', 'click', '特長_簡単作成機能');">簡単作成機能</a></li>
+		<li class="dynamic"><a href="/feature/dynamic/" onclick="ga('send', 'event', 'link', 'click', '特長_動的コンテンツの埋め込み対応');">動的コンテンツの<br>埋め込み対応</a></li>
+		<li class="library"><a href="/feature/library/" onclick="ga('send', 'event', 'link', 'click', '特長_多機能なライブラリ機能');">多機能な<br>ライブラリ機能</a></li>
+		<li class="log"><a href="/feature/log/" onclick="ga('send', 'event', 'link', 'click', '特長_ログ解析');">ログ解析</a></li>
+		<li class="custom"><a href="/feature/custom/" onclick="ga('send', 'event', 'link', 'click', '特長_デザインカスタマイズ');">デザインカスタマイズ</a></li>
+	</ul>
+</div>
+<div id="bnrs">
+	<ul>
+		<li><a href="/comparison/"><img src="/img/bnr_camp04.png" alt="他社サービスとはここが違う！" width="490" height="151" class="opacityImg"></a></li>
+		<li><a href="http://www.kobundo.co.jp/event/event_pd2016_index.html" target="_blank"><img src="/img/bnr_camp05.png" alt="光文堂新春機材展" width="490" height="151" class="opacityImg"></a></li>
+	</ul>
+</div>
+<!-- / #seminar -->
+<section id="news">
+	<div id="newsIn">
+		<div class="newsBox box">
+			<h2><img src="/img/tit_news01.gif" alt="デジタルブックお知らせ・更新情報" width="125" height="14" /></h2>
+			<ul class="btn">
+				<li><a href="/news/#newsList"><img src="/img/btn_list01.gif" alt="一覧" width="63" height="19" class="opacityImg" /></a></li>
+			</ul>
+			<ul class="list">
+				<li><span class="date">2015-12-28</span><a href="http://www.digitalbook-meclib.jp/tips/" target="_self">お役立ち情報更新『「ブックの一括登録」で大量のデジタルブックを作成』</a></li>
+<li><span class="date">2015-12-23</span><a href="http://www.digitalbook-meclib.jp/practical/customize/" target="_self">「カスタマイズ対応について」ページを新規追加しました。</a></li>
+<li><span class="date">2015-12-23</span><a href="http://www.digitalbook-meclib.jp/result/" target="_self">導入事例に「株式会社ジャパングレイス様」「株式会社ウインウイン様」株式会社東海共同印刷様」「株式会社秀和システム様」「有限会社金沢印刷様」「株式会社FLANNEL様」を追加しました。</a></li>
+			</ul>
+		</div>
+		<!-- / .newsBox -->
+		<div class="seminarBox box">
+			<h2><img src="/img/tit_news02.gif" alt="デジタルブックセミナー・展示会" width="110" height="14" /></h2>
+			<ul class="btn">
+				<li><a href="/news/#seminarList"><img src="/img/btn_list01.gif" alt="一覧" width="63" height="19" class="opacityImg" /></a></li>
+			</ul>
+			<ul class="list">
+				<li><span class="date">2015-12-15</span><a href="http://www.digitalbook-meclib.jp/news/#seminarList" target="_self">第52回 光文堂新春機材展　Print Doors 2016に「meclib」を出展いたします。</a></li>
+<li><span class="date">2015-08-28</span><a href="http://www.digitalbook-meclib.jp/news/#seminarList" target="_self">第5回Web＆デジタルマーケティングEXPO【秋】に「meclib」を出展しました。</a></li>
+<li><span class="date">2015-07-07</span><span class="txt">デジタルブック作成システム有効活用セミナーを名古屋エリアで初開催いたします。<br>
+※セミナーは終了いたしました。たくさんのご参加ありがとうございました。</span></li>
+			</ul>
+		</div>
+		<!-- / .seminarBox --> 
+        <div class="seminarBox box">
+			<h2><img src="/img/tit_news03.gif" alt="お役立ち情報" width="87" height="14" /></h2>
+			<ul class="btn">
+				<li><a href="/tipslist/"><img src="/img/btn_list01.gif" alt="一覧" width="63" height="19" class="opacityImg" /></a></li>
+			</ul>
+			<ul class="list">
+				<li><span class="date">2015-12-28</span><a href="http://www.digitalbook-meclib.jp/tips/?p=553" target="_blank">「ブックの一括登録」で大量のデジタルブックを作成</a></li><li><span class="date">2015-12-15</span><a href="http://www.digitalbook-meclib.jp/tips/?p=495" target="_blank">画像･YouTube･地図などをポップアップで表示する</a></li><li><span class="date">2015-11-18</span><a href="http://www.digitalbook-meclib.jp/tips/?p=465" target="_blank">デジタルブックを作成するための登録用PDFの作り方</a></li><li><span class="date">2015-11-09</span><a href="http://www.digitalbook-meclib.jp/tips/?p=332" target="_blank">ブックの版を管理する「版管理」とは</a></li><li><span class="date">2015-10-26</span><a href="http://www.digitalbook-meclib.jp/tips/?p=296" target="_blank">デザインスキンのカスタマイズ#3 〜ヘッダー・フッターの背景画像の変更方法〜</a></li>			</ul>
+		</div>
+		<!-- / .seminarBox --> 
+	</div>
+</section>
+<!-- /#news -->
+<div id="contents">
+	<section id="plan">
+		<h2><img src="/img/tit_plan01.gif" alt="meclibのプラン ラインアップ" width="346" height="23"></h2>
+		<ul>
+			<li><a href="/plan/cloud/" onclick="ga('send', 'event', 'link', 'click', 'プラン_クラウドプラン');"><img src="/img/btn_plan01.jpg" alt="クラウドプラン" width="244" height="187" class="opacityImg"></a></li>
+			<li><a href="/plan/system/" onclick="ga('send', 'event', 'link', 'click', 'プラン_システム販売プラン');"><img src="/img/btn_plan02.jpg" alt="システム販売プラン" width="244" height="187" class="opacityImg"></a></li>
+			<li><a href="/plan/data/" onclick="ga('send', 'event', 'link', 'click', 'プラン_データ作成サービス');"><img src="/img/btn_plan03.jpg" alt="データ作成サービス" width="244" height="187" class="opacityImg"></a></li>
+			<li><a href="/practical/customize/"><img src="/img/btn_plan04.jpg" alt="カスタマイズに対応" width="244" height="187" class="opacityImg"></a></li>
+		</ul>
+	</section>
+	<!-- /#plan -->
+	<div id="bnrPickup">
+		<ul>
+			<li>
+				<a href="/feature/" onclick="ga('send', 'event', 'link', 'click', '中段_meclibだからできること');">
+					<div class="box">
+						<p><img src="/img/tit_pickup01.gif" alt="meclibだからできること" width="241" height="18"></p>
+						<p>ただめくれるだけではないリッチなデジタル<br>
+						ブックmeclibの特長をご紹介します。</p>
+					</div>
+					<p class="bnr"><img src="/img/bnr_pickup01.jpg" alt="meclibだからできること" width="334" height="134"></p>
+				</a>
+			</li>
+			<li class="center">
+				<a href="/library_lp/" onclick="ga('send', 'event', 'link', 'click', '中段_ライブラリ');">
+					<div class="box">
+						<p><img src="/img/tit_pickup02.gif" alt="持ち運べる本棚「ライブラリ」" width="268" height="18"></p>
+						<p>作ったら、持ち運べる本棚として管理・公開。<br>
+						ライブラリ機能を活用しよう！</p>
+					</div>
+					<p class="bnr"><img src="/img/bnr_pickup02.jpg" alt="大量のカタログをまとめて管理" width="332" height="134"></p>
+				</a>
+			</li>
+			<li>
+			<a href="/product/" onclick="ga('send', 'event', 'link', 'click', '中段_製品情報');">
+					<div class="box">
+						<p><img src="/img/tit_pickup03.gif" alt="製品情報" width="102" height="18"></p>
+						<p>機能紹介・動作環境など</p>
+					</div>
+					<p class="bnr"><img src="/img/bnr_pickup03.jpg" alt="製品情報" width="334" height="134"></p>
+				</a>
+			</li>
+			<li>
+				<a href="/product/appli/" onclick="ga('send', 'event', 'link', 'click', '中段_アプリ');">
+					<div class="box">
+						<p><img src="/img/tit_pickup04.gif" alt="アプリ" width="77" height="18"></p>
+						<p>meclibのアプリなら、オフライン環境でも<br>
+						デジタルブックを閲覧できます。</p>
+					</div>
+					<p class="bnr"><img src="/img/bnr_pickup04.jpg" alt="オフライン対応アプリ" width="334" height="134"></p>
+				</a>
+			</li>
+			<li class="center">
+		<a href="/campaign/" onclick="ga('send', 'event', 'link', 'click', '中段_キャンペーン');">
+					<div class="box">
+						<p><img src="/img/tit_pickup05.gif" alt="キャンペーン" width="132" height="18"></p>
+						<p>他社から乗りかえでおトク！</p>
+					</div>
+					<p class="bnr"><img src="/img/bnr_pickup05.jpg" alt="デジタルブックmeclibのりかえ割" width="332" height="134"></p>
+				</a>
+			</li>
+			<li>
+				<a href="/sample/" onclick="ga('send', 'event', 'link', 'click', '中段_サンプル');">
+					<div class="box">
+						<p><img src="/img/tit_pickup06.gif" alt="サンプル" width="99" height="18"></p>
+						<p>meclibで作成したさまざまなデジタル<br>
+						ブックをご覧いただけます。</p>
+					</div>
+					<p class="bnr"><img src="/img/bnr_pickup06.jpg" alt="サンプル" width="334" height="134"></p>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<!-- /#bnrPickup -->
+	<!--<ul class="bnrInfo">
+		<li>
+			<p class="tit"><a href="/result/"><img src="/img/tit_info01.gif" alt="導入事例" width="150" height="150" class="opacityImg"></a></p>
+			<p class="box"><span>NEW</span><a href="/result/">株式会社ジャパングレイス様、株式会社ウインウイン様、株式会社東海共同印刷様、株式会社秀和システム様、有限会社金沢印刷様、株式会社FLANNEL様を追加しました。</a></p>			
+		</li>
+		<li>
+			<p class="tit"><a href="/tips/"><img src="/img/tit_info02.gif" alt="お役立ち情報" width="150" height="150" class="opacityImg"></a></p>
+			<p class="box"><span>NEW</span><a href="http://www.digitalbook-meclib.jp/tips/?p=495" target="_blank">画像･YouTube･地図などをポップアップで表示する</a></p>			
+		</li>
+	</ul>-->
+	<!-- /.bnrInfo -->
+    <div id="carousel">
+    	<h2><img src="/img/tit_carousel.png" width="99" height="23" alt="導入事例"></h2>
+    	<ul class="slider">
+        	<li>
+            	<a href="/result/010/">
+                    <p><img src="/img/img_carousel01.jpg" width="205" height="130" class="opacityImg"></p>
+                    <p class="txt">株式会社すかいらーく</p>
+                </a>
+            </li>
+            <li>
+            	<a href="/result/018/">
+                    <p><img src="/img/img_carousel02.jpg" width="205" height="130" class="opacityImg"></p>
+                    <p class="txt">株式会社秀和システム</p>
+                </a>
+            </li>
+            <li>
+            	<a href="/result/">
+                    <p><img src="/img/img_carousel03.jpg" width="205" height="130" class="opacityImg"></p>
+                    <p class="txt">株式会社ジャパングレイス</p>
+                </a>
+            </li>
+            <li>
+            	<a href="/result/index2.php ">
+                    <p><img src="/img/img_carousel04.jpg" width="205" height="130" class="opacityImg"></p>
+                    <p class="txt">松村工芸株式会社</p>
+                </a>
+            </li>
+            <li>
+            	<a href="/result/index2.php ">
+                    <p><img src="/img/img_carousel05.jpg" width="205" height="130" class="opacityImg"></p>
+                    <p class="txt">株式会社丸久</p>
+                </a>
+            </li>
+            <li>
+            	<a href="/result/006/">
+                    <p><img src="/img/img_carousel06.jpg" width="205" height="130" class="opacityImg"></p>
+                    <p class="txt">株式会社ユニマットプレシャス(リゾート事業</p>
+                </a>
+            </li>
+            <li>
+            	<a href="/result/012/">
+                    <p><img src="/img/img_carousel07.jpg" width="205" height="130" class="opacityImg"></p>
+                    <p class="txt">ニュープリンティング株式会社</p>
+                </a>
+            </li>
+            <li>
+            	<a href="/result/001/">
+                    <p><img src="/img/img_carousel08.jpg" width="205" height="130" class="opacityImg"></p>
+                    <p class="txt">株式会社ロハスメディア</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+	<section id="bnrBox">
+		<ul>
+			<li><a href="/mpvclient/" onclick="ga('send', 'event', 'link', 'click', '下段_MPVをご利用のお客様へ');"><img src="/img/bnr01.png" alt="デジタルブックmecliからMyPAGEViewをご利用のお客様へ" width="235" height="80" class="opacityImg"></a></li>
+			<li><a href="https://www.kotonet.co.jp/meclib/plan/simulation/" onclick="ga('send', 'event', 'link', 'click', '下段_簡単プラン診断');" target="_blank"><img src="/img/bnr05.jpg" alt="簡単プラン診断" width="235" height="80" class="opacityImg"></a></li>
+			<!--<li><a href="http://www.kotonet.co.jp/printtodigital/" onclick="ga('send', 'event', 'link', 'click', '下段_印刷データをWebと連携');" target="_blank"><img src="/img/bnr02.png" alt="印刷データをWebと連携！" width="235" height="80" class="opacityImg"></a></li>-->
+			<li><a href="/support/" onclick="ga('send', 'event', 'link', 'click', '下段_FAQ');"><img src="/img/bnr03.gif" alt="meclibに寄せられる質問をご紹介" width="235" height="80" class="opacityImg"></a></li>
+			<li><a href="https://www.youtube.com/channel/UCYWbUN7cUpsOb8qTtjXAZyQ" onclick="ga('send', 'event', 'link', 'click', '下段_meclibチャンネル');" target="_blank"><img src="/img/bnr04.png" alt="Youtube meclibチャンネル" width="235" height="80" class="opacityImg"></a></li>
+			<!--<li><a href="http://www.digitalbook-meclib.jp/campaign/#sec02" onclick="ga('send', 'event', 'link', 'click', 'TOPbanner-のりかえ割');"><img src="/img/bnr03.png" alt="のりかえ割" width="241" height="90" class="opacityImg"></a></li>-->
+			<!--<li><a href="http://www.digitalbook-meclib.jp/campaign/#sec03"><img src="/img/bnr04.png" alt="My PAGE Viewから乗り換えをご希望の方" width="241" height="90" class="opacityImg"></a></li>-->
+		</ul>
+	</section>
+	<!-- /#bnrBox --> 
+</div>
+<!-- /#contents -->
+
+		<p id="page-top"><a href="#wrapper"><img src="/common/img/footer/btn_pagetop01.png" alt="TOP" width="38" height="52" class="opacityImg"></a></p>
+		<footer id="ft">
+			<div id="ftSitemap">
+				<div id="ftSitemapIn">
+										<p class="txt"><a href="/">マルチデバイス対応デジタルブックの作成・管理・配信はmeclib（メクリブ）</a></p>
+										<div class="map01">
+						<p class="tit"><a href="/feature/">meclibの特長</a></p>
+						<ul>
+							<li><a href="/feature/popup/">ポップアップ機能</a></li>
+							<li><a href="/feature/multi/">マルチデバイス対応でオフラインでも読める</a></li>
+							<li><a href="/feature/easy/">デジタルブック作成はこんなに簡単</a></li>
+							<li><a href="/feature/dynamic/">動的コンテンツの埋め込みに対応</a></li>
+							<li><a href="/feature/library/">多機能なライブラリ機能</a></li>
+							<li><a href="/feature/log/">ログ解析をWebマーケティングに活用</a></li>
+							<li><a href="/feature/custom/">デザインカスタマイズも可能</a></li>
+						</ul>
+					</div>
+					<div class="map02">
+						<p class="tit"><a href="/product/">製品情報</a></p>
+						<ul>
+							<li><a href="/product/#kinou">機能紹介</a></li>
+							<li><a href="/product/appli/">アプリ</a></li>
+							<li><a href="/product/environment/">動作環境</a></li>
+						</ul>
+                        <p class="tit"><a href="/comparison/">meclibは他社サービスとはここが違う！</a></p>
+						<p class="tit"><a href="/campaign/">キャンペーン</a></p>
+						<p class="tit"><a href="/tips/">お役立ち情報</a></p>
+					</div>
+					<div class="map02">
+						<p class="tit"><a href="/plan/">プラン</a></p>
+						<ul>
+							<li><a href="https://www.kotonet.co.jp/meclib/plan/simulation/">簡単プラン診断</a></li>
+							<li><a href="/plan/cloud/">クラウドプラン</a></li>
+							<li><a href="/plan/system/">システム販売プラン</a></li>
+							<li><a href="/plan/data/">データ作成サービス</a></li>
+						</ul>
+						<p class="tit"><a href="/sample/">サンプル</a></p>
+						<p class="tit"><a href="/result/">導入事例</a></p>
+						<p class="tit"><a>活用例</a></p>
+						<ul>
+							<li><a href="/practical/customize/">カスタマイズ対応について</a></li>
+						</ul>
+					</div>
+					<div class="map02">
+						<p class="tit"><a href="/support/">FAQ・よくある質問</a></p>
+						<ul>
+							<li><a href="/support/agree/">ご契約について</a></li>
+							<li><a href="/support/system/">システム条件</a></li>
+							<li><a href="/support/howto/">作成方法</a></li>
+							<li><a href="/support/service/">サービスについて</a></li>
+							<li><a href="/mpvclient/">My PAGE Viewを<br>ご利用のお客様へ</a></li>
+						</ul>
+					</div>
+					<div class="map03">
+						<ul>
+							<li>
+								<p>電話からのお問い合せ</p>
+								<address>東京 TEL.03-5251-0025<br>
+								大阪 TEL.06-6372-5669（代表）</address>
+								<p>電話対応時間 平日9:00～17:00<br>
+								祝日、当社指定定休日を除く</p>
+							</li>
+						</ul>
+						<dl class="privacy">
+							<dt><a href="http://privacymark.jp/" target="_blank"><img src="/common/img/footer/ico_privacy01.jpg" alt="プライバシーマーク" width="68" height="68"></a></dt>
+							<dd><a href="http://www.kotonet.co.jp/about/policy.html" target="_blank">個人情報保護方針</a></dd>
+						</dl>
+					</div>
+					<div class="map04">
+						<p class="tit"><a href="https://www.kotonet.co.jp/meclib/inquiry/" target="_blank">お問い合せ</a></p>
+						<p class="tit"><a href="https://www.kotonet.co.jp/meclib/request/" target="_blank">資料請求</a></p>
+						<p class="tit"><a href="https://www.kotonet.co.jp/meclib/trial/" target="_blank">試用版</a></p>
+					</div>
+				</div>
+			</div>
+			<!-- /#ftSitemap -->
+			<div id="ftBtns">
+				<ul class="bnrs">
+					<li><a href="https://www.kotonet.co.jp/meclib/inquiry/" target="_blank"><img src="/common/img/footer/btn01.png" alt="お問い合せ" width="450" height="50" class="opacityImg"></a></li>
+					<li><a href="https://www.kotonet.co.jp/meclib/request/" target="_blank"><img src="/common/img/footer/btn02.png" alt="資料請求" width="450" height="50" class="opacityImg"></a></li>
+				</ul>
+			</div>
+			<!-- / #ftBtns -->
+			<div id="ftSocial">
+				<div id="ftSocialIn">
+					<ul class="cf">
+						<li class="btn"><a href="https://www.facebook.com/kotobukikikaku" target="_blank"><img src="/common/img/footer/btn03.png" alt="facebook" width="130" height="40" class="opacityImg"></a></li>
+						<li>
+							<a href="https://b.hatena.ne.jp/entry/http://www.digitalbook-meclib.jp/" class="hatena-bookmark-button" data-hatena-bookmark-title="デジタルブックの作成・管理・配信はmeclib（メクリブ）" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="https://b.hatena.ne.jp/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+							<script type="text/javascript" src="https://b.hatena.ne.jp/js/bookmark_button.js" charset="utf-8" async></script>
+						</li>
+						<li>
+							<div class="g-plusone" data-size="medium"></div>
+							<script type="text/javascript">
+							  window.___gcfg = {lang: 'ja'};
+							
+							  (function() {
+								var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+								po.src = 'https://apis.google.com/js/platform.js';
+								var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+							  })();
+							</script>
+						</li>
+						<li class="tw">
+							<a href="https://twitter.com/share" class="twitter-share-button" data-lang="ja">ツイート</a>
+							<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+						</li>
+						<li class="fb"><div class="fb-like" data-href="http://www.digitalbook-meclib.jp/" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div></li>
+					</ul>
+				</div>
+			</div>
+			<!-- /#ftSocial -->
+			<div id="ftInfo">
+				<ul>
+					<li><a href="http://www.kotonet.co.jp/about/policy.html" target="_blank">個人情報保護</a></li>
+					<li><a href="http://www.kotonet.co.jp/profile/summary.html" target="_blank">会社概要</a></li>
+				</ul>
+				<p><small>&copy;KOTOBUKI KIKAKU Co.,Ltd. All Rights Reserved.</small></p>
+			</div>
+			<!-- /#ftInfo -->
+		</footer>
+		<!-- /#ft -->
+	</div>
+	<!-- /#wrapper -->
+	<div id="floatBnr">
+		<p><a href="https://www.kotonet.co.jp/meclib/trial/" onclick="ga('send', 'event', 'link', 'click', 'float_試用版');" target="_blank"><img src="/common/img/btn_float01.png" alt="30日間無料 試用版のお申込み" width="66" height="150"></a></p>
+		<p><a href="/sample/" onclick="ga('send', 'event', 'link', 'click', 'float_サンプル');"><img src="/common/img/btn_float02.png" alt="サンプル" width="66" height="150"></a></p>
+		<p><a href="/tips/" onclick="ga('send', 'event', 'link', 'click', 'float_お役立ち情報');" target="_blank"><img src="/common/img/btn_float03.png" alt="お役立ち情報" width="66" height="153"></a></p>
+	</div>
+	<!-- /#trialBnr -->
+<div style="display:none;">
+<!-- Google Code for TOP&#12506;&#12540;&#12472;&#12450;&#12463;&#12475;&#12473; -->
+<!-- Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. For instructions on adding this tag and more information on the above requirements, read the setup guide: google.com/ads/remarketingsetup -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1071191163;
+var google_conversion_label = "VlAeCMf6hAMQ-6jk_gM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1071191163/?value=1.000000&amp;label=VlAeCMf6hAMQ-6jk_gM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+</div>
+</body>
+</html>

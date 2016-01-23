@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="format-detection" content="address=no">
+		<meta name="apple-mobile-web-app-capable" content="no">
+		<meta name="apple-mobile-web-app-title" content="アイドルうぉーず" />
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="expires" content="-1">
+		<title>アイドルうぉーず</title>
+        <style> 
+
+            @media screen and (max-width: 600px) {
+                .busy {
+                    background: url('/image/busy.jpg');
+                    background-size: 320px 480px;
+                    width: 320px;
+                    height: 480px;
+                    margin: auto;
+                }
+            }
+
+            @media screen and (min-width: 600px) {
+                .busy {
+                    background: url('/image/busy_pc.jpg');
+                    width: 950px;
+                    height: 750px;
+                    margin: auto;
+                }
+            }
+
+            body {
+                margin: 0;
+            }
+
+        </style>
+	</head>
+	<body>
+
+        <script>
+
+            var displayFit = function () {
+                var width = window.innerWidth;
+                if (width > 320 && width < 600) {
+                    var html  = document.getElementsByTagName('html')[0],
+                        body  = document.getElementsByTagName('body')[0],
+                        scale = width / 320;
+                    html.style.width = '320px';
+                    html.style.overflowX = 'hidden';
+                    html.style.webkitTransform = 'scale(' + scale + ', ' + scale + ')';
+                    html.style.mozTransform = 'scale(' + scale + ', ' + scale + ')';
+                    html.style.transform = 'scale(' + scale + ', ' + scale + ')';
+                    html.style.webkitTransformOrigin = 'top left';
+                    html.style.mozTransformOrigin = 'top left';
+                    html.style.transformOrigin = 'top left';
+                }
+            }
+
+            var body  = document.getElementsByTagName('body')[0];
+            body.style.visibility = 'hidden';
+
+            window.addEventListener('DOMContentLoaded', function () {
+                displayFit();
+                body.style.visibility = 'visible';
+            }, false);
+
+            window.addEventListener('load', function () {
+                try {
+                    parent.navibar.hideSide();
+                    parent.navibar.hideHeader();
+                } catch (e) {}
+            }, false);
+
+        </script>
+
+		<div class="busy"></div>
+
+	</body>
+</html>

@@ -1,0 +1,1706 @@
+﻿<!DOCTYPE HTML/>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="keywords" content="浦银安盛基金"/>
+<meta name="description" content="浦银安盛基金"/>
+<title>浦银安盛基金</title>
+<link rel="stylesheet" href="/pyweb/css/screen.css" type="text/css"/>
+<link rel="stylesheet" href="/pyweb/css/style.css" type="text/css"/>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+<link rel="icon" href="favicon.ico" type="image/x-icon"/>
+<script type="text/javascript" src="/pyweb/js/jquery.js"></script>
+<script type="text/javascript" src="/pyweb/js/jquery.easing.js"></script>
+<script type="text/javascript" src="/pyweb/js/jquery.scrollTo.js"></script>
+<script type="text/javascript" src="/pyweb/js/jquery.mousewheel.min.js"></script>
+<script type="text/javascript" src="/pyweb/js/swfobject.js"></script>
+<script type="text/javascript" src="/pyweb/js/jscroll.js"></script>
+<script type="text/javascript" src="/pyweb/js/base.js"></script>
+<script type="text/javascript" src="/pyweb/js/jquery.bgiframe.min.js"></script>
+<script type="text/javascript" src="/pyweb/js/jquery.bxSlider.min.js"></script>
+<script type="text/javascript" src="/pyweb/js/jquery-ui.js"></script>
+<script type="text/javascript" src="/pyweb/js/combobox.js"></script>
+<!--[if IE 6]>
+<script type="text/javascript" src="/pyweb/js/DD_belatedPNG_0.0.8a-min.js"></script>
+<script type="text/javascript">
+	DD_belatedPNG.fix('.png');
+</script>
+<![endif]--> 
+<!-- END CSS JS GLOBALS -->
+<script type="text/javascript">
+//漂浮begin--------------------------------------------
+    var timer = null;
+    var y = 0;
+    var x = 0;
+    var stepX = 1;
+    var stepY = 1;
+    var maxX = 0;
+    var maxY = 0;
+    $(function () {
+        var $el = $(".adv_f");
+        var $con = $("body");
+        maxX = $con.width() - 165;
+        maxY = 500 ;  //($con.height() - 165)/2
+        stepY = maxY*2/maxX;
+        //console.log($el.width());
+        function floatImg() {
+            if((stepX>0 && x>maxX) || (stepX<0 && x<0)) {
+                stepX = -stepX;
+                if(stepX<0) {
+                    stepY = 0;
+                }else {
+                    stepY = maxY*2/maxX;
+                }
+            }
+            if((stepY>0 && y>maxY) || (stepY<0 && y<0)) {
+                stepY = -stepY;
+            }
+            
+            x = x + stepX;
+            y = y + stepY;
+
+            $el.css({
+                "top": y,
+                "left": x
+            });
+            timer = setTimeout(function () {
+                floatImg();
+            },10);
+        }
+
+
+        floatImg();
+
+        $(".adv_f").bind("mouseenter", function () {
+            timer && clearTimeout(timer);
+        });
+        $(".adv_f").bind("mouseleave", function () {
+            floatImg();
+        });
+      
+
+        $(".close").click(function () {
+            $(".adv_f").hide();
+        });
+
+        /*$(".adv_f").bind("mousemove", function () {
+            $(this).stop();
+        });*/
+
+    });
+
+    //    循环移动
+    var s =
+            $(document).ready(function () {
+                //setInterval("bb()",1000);
+            });
+
+//漂浮end--------------------------------------------
+
+
+$(function(){
+	$("#ext-menu").hover(
+		function(){
+			$(this).find(".ico").addClass("ico_hover");
+			$(this).find(".ico").removeClass("ico");
+		},function(){
+			$(this).find(".ico_hover").addClass("ico");
+			$(this).find(".ico_hover").removeClass("ico_hover");
+		}
+	)
+	
+	$("#tabs-jj").tabs({over:1});
+	$(".wrap12192201 .box1").hoverDelay({
+		hoverEvent:function(){
+			$(this).find('.box5').show('fast');
+			$(this).find('.gray').fadeIn('fast');
+		},
+		outEvent:function(){
+			$(this).find('.box5').hide('fast');
+			$(this).find('.gray').fadeOut('fast');
+		}}
+	)
+	/*$('.tabs-con').each(function(i,dom){
+		$(dom).find('tr:odd').not($(".history12230946 tr")).addClass('tr-odd');
+		$(dom).find('tr:even').not($(".history12230946 tr")).addClass('tr-even');
+	})*/
+	$('.wrap12192252,.wrap12182058').find('tr').not($(".history12230946 tr")).hover(
+		function(){
+			$(this).addClass('tr-over');
+		},function(){
+			$(this).removeClass('tr-over');
+		}
+	);
+	var gonow = false;
+	$(".wrap12192252 th a.next-year,.wrap12192252 th a.last-year").click(function(){
+		var ida = $(this).parent().parent().parent();
+		var id = ida.find('.history12231048 .box');
+		if(!gonow){
+			if(id.position().left >= -148){
+				gonow = true;
+				id.animate({
+					left: id.position().left-74
+				}, 1000,"easeInOutQuint",function(){
+					gonow = false;
+					if(id.position().left == -222){
+						ida.find('.next-year').addClass('last-year');
+						ida.find('.next-year').removeClass('next-year');
+					}
+					if(id.position().left == -74){
+						ida.find('.first-year').addClass('pre-year');
+						ida.find('.first-year').removeClass('first-year');
+					}
+				});
+			}
+		}
+	})
+	$(".wrap12192252 th a.first-year,.wrap12192252 th a.last-year").click(function(){
+		var ida = $(this).parent().parent().parent();
+		var id = ida.find('.history12231048 .box');
+		if(!gonow){
+			if(id.position().left <= -74){
+				gonow = true;
+				id.animate({
+					left: id.position().left+74
+				}, 1000,"easeInOutQuint",function(){
+					gonow = false;
+					if(id.position().left == 0){
+						ida.find('.pre-year').addClass('first-year');
+						ida.find('.pre-year').removeClass('pre-year');
+					}
+					if(id.position().left == -148){
+						ida.find('.last-year').addClass('next-year');
+						ida.find('.last-year').removeClass('last-year');
+					}
+				});
+			}
+		}
+	})
+	$(".wrap12192252 th a.next-month,.wrap12192252 th a.last-month").click(function(){
+		var ida = $(this).parent().parent().parent();
+		var id = ida.find('.history12231049 .box');
+		if(!gonow){
+			if(Math.ceil(id.position().left) >= -148){
+				gonow = true;
+				id.animate({
+					left: id.position().left-74
+				}, 1000,"easeInOutQuint",function(){
+					gonow = false;
+					if(Math.ceil(id.position().left) == -222){
+						ida.find('.next-month').addClass('last-month');
+						ida.find('.next-month').removeClass('next-month');
+					}
+					if(Math.ceil(id.position().left) == -74){
+						ida.find('.first-month').addClass('pre-month');
+						ida.find('.first-month').removeClass('first-month');
+					}
+				});
+			}
+		}
+	})
+	$(".wrap12192252 th a.first-month,.wrap12192252 th a.last-month").click(function(){
+		var ida = $(this).parent().parent().parent();
+		var id = ida.find('.history12231049 .box');
+		if(!gonow){
+			if(Math.ceil(id.position().left) <= -74){
+				gonow = true;
+				id.animate({
+					left: id.position().left+74
+				}, 1000,"easeInOutQuint",function(){
+					gonow = false;
+					if(Math.ceil(id.position().left) == 0){
+						var pre = $(".wrap12192252").find('.pre-month');
+						ida.find('.pre-month').addClass('first-month');
+						ida.find('.pre-month').removeClass('pre-month');
+					}
+					if(Math.ceil(id.position().left) == -148){
+						ida.find('.last-month').addClass('next-month');
+						ida.find('.last-month').removeClass('last-month');
+					}
+				});
+			}
+		}
+	})
+	$('.j01050411 ul').bxSlider({
+		auto: true,
+		pause: 4000,
+		pager: false,
+		controls: false,
+		mode:'vertical',
+		easing: 'easeInOutQuint'
+    });
+	$('.j01050412 ul').bxSlider({
+		auto: true,
+		pause: 4000,
+		pager: false,
+		controls: false,
+		mode:'vertical',
+		easing: 'easeInOutQuint'
+    });
+	$('.w01050416 .j1').bxSlider({
+		auto: true,
+		pause: 6000,
+		pager: true,
+		controls: false,
+		easing: 'easeInOutQuint'
+    });
+	$('#home-banner2 ul').bxSlider({
+			auto: true,
+			pause: 6000,
+			pager: false,
+			controls: false,
+			easing: 'easeInOutQuint'
+	});
+	$(".wrap12192201 .next").live("click",function(){
+		var ml = parseFloat($(".wrap12192201 .k1").css("margin-left"));
+		if(ml!=-Math.ceil($(".wrap12192201 .box1").length)*325+3*325){
+			if(!gonow){
+				gonow = true;
+				$(".wrap12192201 .k1").animate({
+					"margin-left":ml-325
+				}, 1000,"easeInOutQuint",function(){
+					$(".wrap12192201 .first").addClass("pre");
+					$(".wrap12192201 .first").removeClass("first");
+					if(ml==-Math.ceil($(".wrap12192201 .box1").length)*325+4*325){
+						$(".wrap12192201 .next").addClass("last");
+						$(".wrap12192201 .next").removeClass("next");
+					}
+					gonow = false;
+				})
+			}
+		}
+	})
+	$(".wrap12192201 .pre").live("click",function(){
+		var ml = parseFloat($(".wrap12192201 .k1").css("margin-left"));
+		if(ml!=0){
+			if(!gonow){
+				gonow = true;
+				$(".wrap12192201 .k1").animate({
+					"margin-left":ml+325
+				}, 1000,"easeInOutQuint",function(){
+					$(".wrap12192201 .last").addClass("next");
+					$(".wrap12192201 .last").removeClass("last");
+					if(ml==-325){
+						$(".wrap12192201 .pre").addClass("first");
+						$(".wrap12192201 .pre").removeClass("pre");
+					}
+					gonow = false;
+				})
+			}
+		}
+	})
+	
+	if($(".wrap12192201 .box1").size() == 3){
+		$(".wrap12192201 .next").addClass("last");
+		$(".wrap12192201 .next").removeClass("next");
+	}
+});
+</script>
+</head>
+
+<body>
+<div><script>
+function headhrefidck(thisvar){
+	for(i=2;i<6;i++){
+		document.getElementById('hreftfbsj'+i).className='';
+	}
+	thisvar.className='sel';
+}
+
+</script>
+<div id="top-nav-wrap">
+	<div class="container">
+        <div id="top-nav">
+            <ul class="quick-menu">
+                <li><a href="/index.html">官网首页</a></li>
+                <li class="pl10 pr10">|</li>
+                <li><a href="http://www.pyaxa-am.com/index.shtml" target="_blank">浦银安盛资管</a></li>
+                <li class="pl10 pr10">|</li>
+                <li class="pr10">客服热线：400-8828-999</li>
+                <li><a href="http://www.py-axa.com/pyweb/gglink/openaccount_link.html" target="_blank" class="quick-menu-kaihu">开户</a></li>
+                <li><a href="https://www.py-axa.com/pyweb/account/user/webinquire.ha" target="_blank" class="quick-menu-chaxun">查询</a></li>
+                <li><a href="https://www.py-axa.com/etrading/etrading.jsp" target="_blank" class="quick-menu-jiaoyi">交易</a></li>
+                <li class="ext-menu sub" id="ext-menu">
+                    <a href="#" class="ico"></a>
+                    <ul class="list">
+                        <li><a href="/web/aboutus/job.html" target="_blank">诚聘英才</a></li>
+                        <li><a href="/web/aboutus/contactus.html" target="_blank">联系我们</a></li>
+                        <li><a href="/web/service/map.html" class="none-b" target="_blank">网站地图</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="header">
+	<div class="container">
+		<a href="/index.html" id="logo" title="浦银安盛基金"><img src="/pyweb/images/logo.png"/></a>
+		<div id="nav">
+            <ul>
+                <li class="sub">			
+                    <a id="headhrefid1" href="/web/fund/fund_index.html">基金产品<span class="ico"></span></a>
+                    <ul>
+                        <li class="u4">
+                        	<b></b>
+                        	<!--img src="../images/jpg01072207.jpg" width="140" height="210" class="x1"-->
+							<div class="x1" id="topmenureaddiv">
+                            	<img src="/resourcemanage/fundx//1389494525251.jpg" width="200" height="145" id="photoarea"/>
+                                <div class="y1"><a href="http://www.py-axa.com/web/fund/fund_pyxxcy.html" id="character2" class="b-sgs">立即查看</a><span id="character">浦银安盛新兴产业混合</span></div>
+                            	<!--div class="y2">3月1日-3月15日正式发售</div-->
+                            	<div class="y2" id="character3">过去一年收益率 65.76%</div>
+								<div class="y2 menu_slide_info"><span id="character4">基金收益率仅供参考</span><br/><span id="character5">数据截至：2016-01-22</span></div>
+                            </div>
+							
+                            <table class="x2">
+                              <tr>
+                                  <th class="none-b y2">混合型</th>
+                                  <td class="none-b"><a href="/web/fund/fund_pyjz.html">浦银价值A</a></td>
+                                  <td class="none-b"><a href="/web/fund/fund_pysh.html">浦银生活</a></td>
+                                  <td class="none-b"><a href="/web/fund/fund_pyhl.html">浦银红利</a></td>
+                                  <td class="none-b"><a href="/web/fund/fund_pyxxcy.html">浦银新兴产业</a></td>
+                                  <td class="none-b"><a href="/web/fund/fund_pyxf.html">浦银消费A</a></td>
+                              </tr>
+                              <tr>
+                                  <th class="none-b"></th>
+                                  <td class="none-b"><a href="/web/fund/fund_pyxf_c.html">浦银消费C</a></td>
+                                  <td class="none-b"><a href="/web/fund/fund_pyxjj.html">浦银新经济</a></td>
+                                  <td class="none-b"><a href="/web/fund/fund_pyss.html">浦银盛世A</a></td>
+                                  <td class="none-b"><a href="/web/fund/fund_pyss_c.html">浦银盛世C</a></td>
+                                  <td class="none-b"><a href="/web/fund/fund_pyzzdl.html">浦银增长</a></td>
+                              </tr>
+                              <tr>
+                                  <th></th>
+                                  <td><a href="/web/fund/fund_pyyljk.html">浦银医疗</a></td>
+                                  <td><a href="/web/fund/fund_pyrz.html">浦银睿智A</a></td>
+                                  <td colspan="4"><a href="/web/fund/fund_pyrz_c.html">浦银睿智C</a></td>
+                              </tr>
+                              <tr>
+                                  <th class="y1">指数型</th>
+                                  <td><a href="/web/fund/fund_py300.html">浦银300</a></td>
+                                  <td colspan="4"><a href="/web/fund/fund_py400.html">浦银400</a></td>
+                              </tr>
+                              <tr>
+                                  <th class="none-b y3">债券型</th>
+                                  <td class="none-b"><a href="/web/fund/fund_pysy_a.html">浦银收益A</a></td>
+                                  <td class="none-b"><a href="/web/fund/fund_pysy_c.html">浦银收益C</a></td>
+                                  <td class="none-b"><a href="/web/fund/fund_pyzl.html">浦银增利（LOF）</a></td>
+                                  <td class="none-b"><a href="/web/fund/fund_pyxf_a.html">浦银幸福A</a></td>
+                                  <td class="none-b"><a href="/web/fund/fund_pyxf_b.html">浦银幸福B</a></td>
+                              </tr>
+                              <tr>
+                                  <th class="none-b"></th>
+                                  <td class="none-b"><a href="/web/fund/fund_py6gy_a.html">浦银6月债A</a></td>
+                                  <td class="none-b"><a href="/web/fund/fund_py6gy_c.html">浦银6月债C</a></td>
+                                  <td class="none-b"><a href="/web/fund/fund_pyjjtl_a.html">浦银添利A</a></td>
+                                  <td class="none-b"><a href="/web/fund/fund_pyjjtl_c.html">浦银添利C</a></td>
+                                  <td class="none-b"><a href="/web/fund/fund_pyyyy_a.html">浦银月月盈A</a></td>
+                              </tr>
+                              <tr>
+                                  <th></th>
+                                  <td colspan="5"><a href="/web/fund/fund_pyyyy_c.html">浦银月月盈C</a></td>
+                              </tr>
+                              <tr>
+                                  <th class="none-b y4">货币型</th>
+                                  <td class="none-b"><a href="/web/fund/fund_pyhb_a.html">浦银货币A</a></td>
+                                  <td class="none-b"><a href="/web/fund/fund_pyhb_b.html">浦银货币B</a></td>
+                                  <td class="none-b"><a href="/web/fund/fund_pyhb_e.html">浦银货币E</a></td>
+                                  <td class="none-b"><a href="/web/fund/fund_pyrry.html">浦银日日盈A</a></td>
+                                  <td class="none-b"><a href="/web/fund/fund_pyrry_b.html">浦银日日盈B</a></td>
+                              </tr>
+                              <tr>
+                                  <th></th>
+                                  <td colspan="5"><a href="/web/fund/fund_pyrry_d.html">浦银日日盈D</a></td>
+                              </tr>
+                            </table>                            
+                        </li>
+                    </ul>
+                </li>
+                <li><a id="headhrefid2" href="/pyweb/zhlc/index.html" class="" onclick="javascript:headhrefidck(this)">专户理财</a></li>
+                <li><a id="headhrefid3" href="/web/service/service-item.html" class="" onclick="javascript:headhrefidck(this)">服务中心</a></li>
+                <li><a id="headhrefid4" href="/web/information/content.html" class="" onclick="javascript:headhrefidck(this)">信息披露</a></li>
+                <li><a id="headhrefid5" href="/web/aboutus/intro.html" class="" onclick="javascript:headhrefidck(this)">关于我们</a></li>
+            </ul>
+        </div>
+	</div>
+</div>
+</div>
+<div id="body">
+	<div class="w01050416">
+        <ul class="j1">
+        	<li style="height:330px;background:url(/pyweb/images/pyrz_sy_20160104.jpg) no-repeat 50% 50%;"><a href="https://www.py-axa.com/etrading/etrading.jsp" target="_blank"></a></li>
+			<li style="height:330px;background:url(/pyweb/images/pyas-3j.jpg) no-repeat 50% 50%;"><a href="http://www.py-axa.com/index.html" target="_blank"></a></li>
+            <li style="height:330px;background:url(/pyweb/images/banner02-02.jpg) no-repeat 50% 50%;"><a href="https://www.py-axa.com/etrading/etrading.jsp" target="_blank"></a></li>
+            <li style="height:330px;background:url(/pyweb/images/xjb_banner_01.jpg) no-repeat 50% 50%;"><a href="http://www.py-axa.com/web/xjb/index.html" target="_blank"></a></li>
+            <!--li style="height:330px;background:url(/pyweb/images/dzzd_banner_01.jpg) no-repeat 50% 50%;"--><!--a href=http://www.py-axa.com/pyweb/hd/dzd/index.html target="_blank"></a></li-->
+        </ul>
+            <div class="u3">
+                <a href="http://www.py-axa.com/pyweb/gglink/openaccount_link.html" target="_blank" class="x1 png">
+                    <span class="y1">网上开户</span>
+                    <span class="y2">三步开户，一分钟搞定</span>
+                </a>
+                <a href="https://www.py-axa.com/etrading/etrading.jsp" target="_blank" class="x2 png">
+                    <span class="y1">网上交易</span>
+                    <span class="y2">享受低至4折的费用优惠</span>
+                </a>
+                <a href="https://www.py-axa.com/pyweb/account/user/webinquire.ha" target="_blank" class="x3 png">
+                    <span class="y1">帐户查询</span>
+                    <span class="y2">持有产品、帐户盈亏、<br/>一目了然</span>
+                </a>
+                <a href="#" class="x4 png">
+                	<img src="/pyweb/images/wx2.jpg"/>
+                    <span class="y1">手机扫一扫</span>
+                    <span class="y2">立即添加官方微信</span>
+                </a>
+            </div>
+    <script type="text/javascript">
+    	$(function(){
+			$(".u3 .x4").hover(function(){
+				$(this).find('img').show();
+			},function(){
+				$(this).find('img').hide();
+			})
+		})
+    </script>
+    </div>
+	<div class="container">
+    	<div class="w01050341">
+        	<div class="clearfix">
+				<!--div class="j1 j01050411" ___execute="yes" ___action="/showrollmsg" ___para="type=0">
+                    <ul id="roll_msg0">
+                        <li id="ulroll_msg"><a href="#" id="roll_title" target="_blank">热烈祝贺浦银安盛基金荣获2012年度“金基金成长公司奖”！</a></li>
+                    </ul>
+                </div-->
+                <div class="j1 j01050412" style="width: 900px; position: relative;">
+                    <ul id="roll_msg1">
+                        
+                    <li id="ulroll_msg"><a href="http://www.py-axa.com/wd/qhsccxjdglzxbf_2015.pdf" id="roll_title" target="_blank">加强证券市场诚信建设 保护投资者切身利益</a></li><li id="ulroll_msg"><a href="http://www.py-axa.com/page/px150616094755858000.html" id="roll_title" target="_blank">“公平在身边”投资者保护专项活动</a></li><li id="ulroll_msg"><a href="http://www.py-axa.com/web/aboutus/contactus.html" id="roll_title" target="_blank">凡拟购买本公司产品，请通过银行、券商等正规渠道及本公司直销机构办理。勿轻信他人，有疑问致电客服热线4008828999（免长途）。</a></li><li id="ulroll_msg"><a href="http://www.py-axa.com/wd/fxq/bhzj_ylxq_2014.pdf" id="roll_title" target="_blank">拒绝高利诱惑 远离非法集资 明辨真伪 杜绝上当 远离非法金融</a></li><li id="ulroll_msg"><a href="http://www.py-axa.com/wd/fxq/bhzj_ylxq_2014.pdf" id="roll_title" target="_blank">增强法制观念 远离网络洗钱陷阱  选择安全可靠的金融机构，保护个人资金和信息安全  勇于举报洗钱活动 维护社会公平正义</a></li><li id="ulroll_msg"><a href="http://www.py-axa.com/page/px150625144111856000.html" id="roll_title" target="_blank">增强风险意识 远离非法集资</a></li></ul>
+                </div>
+            </div>
+        </div>
+    	<div class="g6 mt15">
+        	<a href="/web/fund/fund_pyxxcy.html" target="_blank" target="_blank" class="j1">主打基金</a>
+            <a href="/web/xjb/index.html" target="_blank" class="j2">浦银安盛现金宝</a>
+            <!--a href="/web/service/tea.html" target="_blank" class="j3" style="display:none;">基金经理下午茶</a-->
+            <a href="/web/service/story.html" target="_blank" class="j4">笑侃基金</a>
+            <a href="/web/service/service-calculator.html" target="_blank" class="j5">基金工具</a>
+            <a href="/pyweb/zhlc/index.html" target="_blank" class="j6">专户理财</a>
+            <div class="cl"></div>
+        </div>
+        <div class="wrap12192201 mt15">
+        	<a href="javascript:;" class="first"></a>
+            <a href="javascript:;" class="next"></a>
+        	<div class="title">数读产品</div>
+            <div class="j1">
+            	<div class="k1" id="fundshddiv">
+                    
+                <div class="box1 mr15" id="shddata">
+                        <div class="box2 mr15">
+                                <div class="box3"><span id="character" href="">浦银新兴</span><a href="/web/fund/fund_pyxxcy.html" id="character2">查看&gt;&gt;</a></div>
+                                <div class="box4"><a href="https://www.py-axa.com/etrading/etrading.jsp" class="b-sg" target="_blank" id="character3">申购</a><font id="character4" href="">过去一年收益率(01/22)</font> <span id="character5" href="">65.76%</span></div>
+                                <div class="box5"><span id="character6" href="">基金收益率仅供参考</span></div>
+                        </div>
+                        <div class="gray"></div>
+                        <img src="/resourcemanage/fundx//1389494525251.jpg" id="photoarea" width="310" height="190" class="d-block"/>
+                    </div><div class="box1 mr15" id="shddata">
+                        <div class="box2 mr15">
+                                <div class="box3"><span id="character" href="">浦银生活</span><a href="/web/fund/fund_pysh.html" id="character2">查看&gt;&gt;</a></div>
+                                <div class="box4"><a href="https://www.py-axa.com/etrading/etrading.jsp" class="b-sg" target="_blank" id="character3">申购</a><font id="character4" href="">过去一年收益率(01/22)</font> <span id="character5" href="">62.52%</span></div>
+                                <div class="box5"><span id="character6" href="">基金收益率仅供参考</span></div>
+                        </div>
+                        <div class="gray"></div>
+                        <img src="/resourcemanage/fundx//1389494494598.jpg" id="photoarea" width="310" height="190" class="d-block"/>
+                    </div><div class="box1 mr15" id="shddata">
+                        <div class="box2 mr15">
+                                <div class="box3"><span id="character" href="">现金宝</span><a href="http://www.py-axa.com/web/xjb/index.html" id="character2">查看&gt;&gt;</a></div>
+                                <div class="box4"><a href="https://www.py-axa.com/etrading/etrading.jsp" class="b-sg" target="_blank" id="character3">充值</a><font id="character4" href="">七日年化收益率(01/22)</font> <span id="character5" href="">2.517%</span></div>
+                                <div class="box5"><span id="character6" href="">基金收益率仅供参考</span></div>
+                        </div>
+                        <div class="gray"></div>
+                        <img src="/resourcemanage/fundx//1400234795668.jpg" id="photoarea" width="310" height="190" class="d-block"/>
+                    </div><div class="box1 mr15" id="shddata">
+                        <div class="box2 mr15">
+                                <div class="box3"><span id="character" href="">浦银价值</span><a href="/web/fund/fund_pyjz.html" id="character2">查看&gt;&gt;</a></div>
+                                <div class="box4"><a href="https://www.py-axa.com/etrading/etrading.jsp" class="b-sg" target="_blank" id="character3">申购</a><font id="character4" href="">过去一年收益率(01/22)</font> <span id="character5" href="">1.54%</span></div>
+                                <div class="box5"><span id="character6" href="">基金收益率仅供参考</span></div>
+                        </div>
+                        <div class="gray"></div>
+                        <img src="/resourcemanage/fundx//1389494486856.jpg" id="photoarea" width="310" height="190" class="d-block"/>
+                    </div><div class="box1 mr15" id="shddata">
+                        <div class="box2 mr15">
+                                <div class="box3"><span id="character" href="/web/fund/fund_py300.html">浦银300</span><a href="https://www.py-axa.com/etrading/etrading.jsp" id="character2">查看&gt;&gt;</a></div>
+                                <div class="box4"><a href="" class="b-sg" target="_blank" id="character3">申购</a><font id="character4" href="">过去一年收益率(01/22)</font> <span id="character5" href="">-7.28%</span></div>
+                                <div class="box5"><span id="character6" href="">基金收益率仅供参考</span></div>
+                        </div>
+                        <div class="gray"></div>
+                        <img src="/resourcemanage/fundx//1389494441908.jpg" id="photoarea" width="310" height="190" class="d-block"/>
+                    </div></div>
+             </div>
+        </div>	
+        <div class="wrap12192251 mt15">
+        	<div class="title">旗下基金</div>
+            <div class="wrap12192252" id="tabs-jj">
+            	<a href="https://www.py-axa.com/etrading/etrading.jsp" target="_blank" class="u01131705"><img src="/pyweb/images/png01131655.png" width="240" height="42"/></a>
+            	<ul class="tabs-nav clearfix">
+            		<li><a href="javascript:;" class="sel">热门基金</a></li>
+            		<li><a href="javascript:;">主题基金</a></li>
+                    <li><a href="javascript:;">混合型</a></li>
+                    <li><a href="javascript:;">指数型</a></li>
+                    <li><a href="javascript:;">债券型</a></li>
+                    <li><a href="javascript:;">货币型</a></li>
+                    <li><a href="javascript:;">全部基金</a></li>
+                </ul>
+                <div class="tabs-con">
+                	<table width="100%" id="rmjjhbtable" style="display:none">
+                      <tr>
+                        <th>基金名称</th>
+                        <th>基金代码</th>
+                        <th>日期</th>
+                        <th>万份收益</th>
+                        <th>七日年化收益率</th>
+                        <th>一句话读懂</th>
+                        <th class="homeTblAct">操作</th>
+                        </tr>
+                      
+                    </table>
+                	<table width="100%" id="rmjjtable">
+                      <tr>
+                        <th width="14%" rowspan="2">基金名称</th>
+                        <th width="8%" rowspan="2">基金代码</th>
+                        <th width="8%" rowspan="2">日期</th>
+                        <th width="8%" rowspan="2">基金净值</th>
+                        <th width="8%" rowspan="2">日涨跌</th>
+                        <th width="8%" rowspan="2">累计净值</th>
+                        <th width="13%">近期表现</th>
+                        <th width="20%" colspan="2">年度收益率</th>
+                       <!-- <th rowspan="2">一句话读懂</th>  -->
+                        <th width="13%" rowspan="2" class="homeTblAct">操作</th>
+                        </tr>
+                      <tr>
+                        <th><a href="javascript:;" class="first-month"></a><div class="history12231049 history12231049_th"><div class="box"><span>最近一周</span><span>最近一月</span><span>最近三月</span><span>最近六月</span></div></div><a href="javascript:;" class="next-month"></a></th>
+                        <th class="th_thiyear">今年以来</th>
+                        <th><a href="javascript:;" class="first-year"></a><div class="history12231048 history12231048_th"><div class="box"><span>过去一年</span><span>过去二年</span><span>过去三年</span><span>成立以来</span></div></div><a href="javascript:;" class="next-year"></a></th>
+                      </tr>
+                      
+                    <tr id="rmjjdata">
+                        <td><a href="/web/fund/fund_pyjz.html" id="fundname" target="_blank">浦银价值A</a></td>
+                        <td id="fundcode">519110</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.486</td>
+                        <td id="zjyrzzl">1.36%</td>
+                        <td id="totalnetval">1.666</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">3.25%</span><span id="zjyyzzl">-26.58%</span><span id="zjsyzzl">-12.54%</span><span id="zjlyzzl">-32.51%</span></div></div></td>
+                        <td id="jnylzzl">-26.10%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">1.54%</span><span id="gqlnzzl">59.89%</span><span id="gqsnzzl">115.60%</span><span id="clzjzzl">67.09%</span></div></div></td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pyjz.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="rmjjdata">
+                        <td><a href="/web/fund/fund_pysh.html" id="fundname" target="_blank">浦银生活</a></td>
+                        <td id="fundcode">519113</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.908</td>
+                        <td id="zjyrzzl">1.60%</td>
+                        <td id="totalnetval">1.968</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">4.32%</span><span id="zjyyzzl">-26.19%</span><span id="zjsyzzl">-3.49%</span><span id="zjlyzzl">-16.64%</span></div></div></td>
+                        <td id="jnylzzl">-24.82%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">62.52%</span><span id="gqlnzzl">70.21%</span><span id="gqsnzzl">113.42%</span><span id="clzjzzl">101.23%</span></div></div></td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pysh.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="rmjjdata">
+                        <td><a href="/web/fund/fund_pyxxcy.html" id="fundname" target="_blank">浦银新兴产业</a></td>
+                        <td id="fundcode">519120</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">2.251</td>
+                        <td id="zjyrzzl">1.72%</td>
+                        <td id="totalnetval">2.251</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">4.84%</span><span id="zjyyzzl">-28.65%</span><span id="zjsyzzl">-4.94%</span><span id="zjlyzzl">-11.31%</span></div></div></td>
+                        <td id="jnylzzl">-27.01%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">65.76%</span><span id="gqlnzzl">76.55%</span><span id="gqsnzzl">--</span><span id="clzjzzl">125.10%</span></div></div></td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pyxxcy.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="rmjjdata">
+                        <td><a href="http://www.py-axa.com/web/fund/fund_pyxjj.html" id="fundname" target="_blank">浦银新经济</a></td>
+                        <td id="fundcode">519126</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.264</td>
+                        <td id="zjyrzzl">1.36%</td>
+                        <td id="totalnetval">1.264</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">1.94%</span><span id="zjyyzzl">-24.49%</span><span id="zjsyzzl">-4.02%</span><span id="zjlyzzl">-25.21%</span></div></div></td>
+                        <td id="jnylzzl">-24.22%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">11.96%</span><span id="gqlnzzl">--</span><span id="gqsnzzl">--</span><span id="clzjzzl">26.40%</span></div></div></td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="http://www.py-axa.com/web/fund/fund_pyxjj.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="rmjjdata">
+                        <td><a href="http://www.py-axa.com/web/fund/fund_pyss.html" id="fundname" target="_blank">浦银盛世A</a></td>
+                        <td id="fundcode">519127</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.278</td>
+                        <td id="zjyrzzl">0.00%</td>
+                        <td id="totalnetval">1.278</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">0.00%</span><span id="zjyyzzl">0.08%</span><span id="zjsyzzl">6.15%</span><span id="zjlyzzl">9.98%</span></div></div></td>
+                        <td id="jnylzzl">0.00%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">21.83%</span><span id="gqlnzzl">--</span><span id="gqsnzzl">--</span><span id="clzjzzl">27.80%</span></div></div></td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="http://www.py-axa.com/web/fund/fund_pyss.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="rmjjdata">
+                        <td><a href="http://www.py-axa.com/web/fund/fund_pyzzdl.html" id="fundname" target="_blank">浦银增长</a></td>
+                        <td id="fundcode">519170</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">0.726</td>
+                        <td id="zjyrzzl">1.11%</td>
+                        <td id="totalnetval">0.726</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">2.98%</span><span id="zjyyzzl">-26.52%</span><span id="zjsyzzl">-13.67%</span><span id="zjlyzzl">-28.33%</span></div></div></td>
+                        <td id="jnylzzl">-26.29%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">--</span><span id="gqlnzzl">--</span><span id="gqsnzzl">--</span><span id="clzjzzl">-27.40%</span></div></div></td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="http://www.py-axa.com/web/fund/fund_pyzzdl.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="rmjjdata">
+                        <td><a href="/web/fund/fund_py300.html" id="fundname" target="_blank">浦银300</a></td>
+                        <td id="fundcode">519116</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.045</td>
+                        <td id="zjyrzzl">0.97%</td>
+                        <td id="totalnetval">1.045</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">-0.10%</span><span id="zjyyzzl">-17.72%</span><span id="zjsyzzl">-11.14%</span><span id="zjlyzzl">-22.99%</span></div></div></td>
+                        <td id="jnylzzl">-15.73%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">-7.28%</span><span id="gqlnzzl">43.35%</span><span id="gqsnzzl">26.36%</span><span id="clzjzzl">4.50%</span></div></div></td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_py300.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="rmjjdata">
+                        <td><a href="/web/fund/fund_py400.html" id="fundname" target="_blank">浦银400</a></td>
+                        <td id="fundcode">519117</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.457</td>
+                        <td id="zjyrzzl">1.25%</td>
+                        <td id="totalnetval">1.457</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">0.90%</span><span id="zjyyzzl">-21.71%</span><span id="zjsyzzl">-15.29%</span><span id="zjlyzzl">-26.30%</span></div></div></td>
+                        <td id="jnylzzl">-20.03%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">0.00%</span><span id="gqlnzzl">47.62%</span><span id="gqsnzzl">50.21%</span><span id="clzjzzl">45.70%</span></div></div></td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_py400.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr></table>
+					<div class="t1">基金收益率仅供参考，基金的过往业绩及其净值高低并不预示其未来业绩表现。</div>
+                </div>
+                <div class="tabs-con">
+                	<table width="100%" id="ztjjhbtable" style="display:none">
+                      <tr>
+                        <th>基金名称</th>
+                        <th>基金代码</th>
+                        <th>日期</th>
+                        <th>万份收益</th>
+                        <th>七日年化收益率</th>
+                        <th>一句话读懂</th>
+                        <th class="homeTblAct">操作</th>
+                        </tr>
+                      
+                    </table>
+                	<table width="100%" id="ztjjtable">
+                      <tr>
+                        <th width="14%" rowspan="2">基金名称</th>
+                        <th width="8%" rowspan="2">基金代码</th>
+                        <th width="8%" rowspan="2">日期</th>
+                        <th width="8%" rowspan="2">基金净值</th>
+                        <th width="8%" rowspan="2">日涨跌</th>
+                        <th width="8%" rowspan="2">累计净值</th>
+                        <th width="13%">近期表现</th>
+                        <th width="20%" colspan="2">年度收益率</th>
+                       <!-- <th rowspan="2">一句话读懂</th>  -->
+                        <th width="13%" rowspan="2" class="homeTblAct">操作</th>
+                        </tr>
+                      <tr>
+                        <th><a href="javascript:;" class="first-month"></a><div class="history12231049 history12231049_th"><div class="box"><span>最近一周</span><span>最近一月</span><span>最近三月</span><span>最近六月</span></div></div><a href="javascript:;" class="next-month"></a></th>
+                        <th class="th_thiyear">今年以来</th>
+                        <th><a href="javascript:;" class="first-year"></a><div class="history12231048 history12231048_th"><div class="box"><span>过去一年</span><span>过去二年</span><span>过去三年</span><span>成立以来</span></div></div><a href="javascript:;" class="next-year"></a></th>
+                      </tr>
+                      
+                    <tr id="ztjjdata">
+                        <td><a href="/web/fund/fund_pyxxcy.html" id="fundname" target="_blank">浦银新兴产业</a></td>
+                        <td id="fundcode">519120</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">2.251</td>
+                        <td id="zjyrzzl">1.72%</td>
+                        <td id="totalnetval">2.251</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">4.84%</span><span id="zjyyzzl">-28.65%</span><span id="zjsyzzl">-4.94%</span><span id="zjlyzzl">-11.31%</span></div></div></td>
+                        <td id="jnylzzl">-27.01%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">65.76%</span><span id="gqlnzzl">76.55%</span><span id="gqsnzzl">--</span><span id="clzjzzl">125.10%</span></div></div></td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pyxxcy.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="ztjjdata">
+                        <td><a href="/web/fund/fund_pyxf.html" id="fundname" target="_blank">浦银消费A</a></td>
+                        <td id="fundcode">519125</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.411</td>
+                        <td id="zjyrzzl">1.51%</td>
+                        <td id="totalnetval">1.411</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">4.60%</span><span id="zjyyzzl">-26.97%</span><span id="zjsyzzl">-4.73%</span><span id="zjlyzzl">-21.70%</span></div></div></td>
+                        <td id="jnylzzl">-25.78%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">16.80%</span><span id="gqlnzzl">25.87%</span><span id="gqsnzzl">--</span><span id="clzjzzl">41.10%</span></div></div></td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pyxf.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="ztjjdata">
+                        <td><a href="http://www.py-axa.com/web/fund/fund_pyyljk.html" id="fundname" target="_blank">浦银医疗</a></td>
+                        <td id="fundcode">519171</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">0.748</td>
+                        <td id="zjyrzzl">0.40%</td>
+                        <td id="totalnetval">0.748</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">0.81%</span><span id="zjyyzzl">-20.93%</span><span id="zjsyzzl">-12.41%</span><span id="zjlyzzl">-15.86%</span></div></div></td>
+                        <td id="jnylzzl">-20.17%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">--</span><span id="gqlnzzl">--</span><span id="gqsnzzl">--</span><span id="clzjzzl">-25.20%</span></div></div></td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="http://www.py-axa.com/web/fund/fund_pyyljk.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr></table>
+					<div class="t1">基金收益率仅供参考，基金的过往业绩及其净值高低并不预示其未来业绩表现。</div>
+                </div>
+                <div class="tabs-con">
+                	<table width="100%" id="hhxtable">
+                      <tr>
+                        <th width="14%" rowspan="2">基金名称</th>
+                        <th width="8%" rowspan="2">基金代码</th>
+                        <th width="8%" rowspan="2">日期</th>
+                        <th width="8%" rowspan="2">基金净值</th>
+                        <th width="8%" rowspan="2">日涨跌</th>
+                        <th width="8%" rowspan="2">累计净值</th>
+                        <th width="13%">近期表现</th>
+                        <th width="20%" colspan="2">年度收益率</th>
+                       <!-- <th rowspan="2">一句话读懂</th>  -->
+                        <th width="13%" rowspan="2" class="homeTblAct">操作</th>
+                        </tr>
+                      <tr>
+                        <th><a href="javascript:;" class="first-month"></a><div class="history12231049 history12231049_th"><div class="box"><span>最近一周</span><span>最近一月</span><span>最近三月</span><span>最近六月</span></div></div><a href="javascript:;" class="next-month"></a></th>
+                        <th class="th_thiyear">今年以来</th>
+                        <th><a href="javascript:;" class="first-year"></a><div class="history12231048 history12231048_th"><div class="box"><span>过去一年</span><span>过去二年</span><span>过去三年</span><span>成立以来</span></div></div><a href="javascript:;" class="next-year"></a></th>
+                      </tr>
+                      
+                    <tr id="hhxdata">
+                        <td><a href="/web/fund/fund_pyjz.html" id="fundname" target="_blank">浦银价值A</a></td>
+                        <td id="fundcode">519110</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.486</td>
+                        <td id="zjyrzzl">1.36%</td>
+                        <td id="totalnetval">1.666</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">3.25%</span><span id="zjyyzzl">-26.58%</span><span id="zjsyzzl">-12.54%</span><span id="zjlyzzl">-32.51%</span></div></div></td>
+                        <td id="jnylzzl">-26.10%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">1.54%</span><span id="gqlnzzl">59.89%</span><span id="gqsnzzl">115.60%</span><span id="clzjzzl">67.09%</span></div></div></td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pyjz.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="hhxdata">
+                        <td><a href="/web/fund/fund_pysh.html" id="fundname" target="_blank">浦银生活</a></td>
+                        <td id="fundcode">519113</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.908</td>
+                        <td id="zjyrzzl">1.60%</td>
+                        <td id="totalnetval">1.968</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">4.32%</span><span id="zjyyzzl">-26.19%</span><span id="zjsyzzl">-3.49%</span><span id="zjlyzzl">-16.64%</span></div></div></td>
+                        <td id="jnylzzl">-24.82%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">62.52%</span><span id="gqlnzzl">70.21%</span><span id="gqsnzzl">113.42%</span><span id="clzjzzl">101.23%</span></div></div></td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pysh.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="hhxdata">
+                        <td><a href="/web/fund/fund_pyhl.html" id="fundname" target="_blank">浦银红利</a></td>
+                        <td id="fundcode">519115</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.387</td>
+                        <td id="zjyrzzl">1.76%</td>
+                        <td id="totalnetval">1.387</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">4.44%</span><span id="zjyyzzl">-26.96%</span><span id="zjsyzzl">-5.84%</span><span id="zjlyzzl">-23.79%</span></div></div></td>
+                        <td id="jnylzzl">-25.55%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">15.01%</span><span id="gqlnzzl">31.22%</span><span id="gqsnzzl">66.51%</span><span id="clzjzzl">38.70%</span></div></div></td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pyhl.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="hhxdata">
+                        <td><a href="/web/fund/fund_pyxxcy.html" id="fundname" target="_blank">浦银新兴产业</a></td>
+                        <td id="fundcode">519120</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">2.251</td>
+                        <td id="zjyrzzl">1.72%</td>
+                        <td id="totalnetval">2.251</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">4.84%</span><span id="zjyyzzl">-28.65%</span><span id="zjsyzzl">-4.94%</span><span id="zjlyzzl">-11.31%</span></div></div></td>
+                        <td id="jnylzzl">-27.01%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">65.76%</span><span id="gqlnzzl">76.55%</span><span id="gqsnzzl">--</span><span id="clzjzzl">125.10%</span></div></div></td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pyxxcy.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="hhxdata">
+                        <td><a href="/web/fund/fund_pyxf.html" id="fundname" target="_blank">浦银消费A</a></td>
+                        <td id="fundcode">519125</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.411</td>
+                        <td id="zjyrzzl">1.51%</td>
+                        <td id="totalnetval">1.411</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">4.60%</span><span id="zjyyzzl">-26.97%</span><span id="zjsyzzl">-4.73%</span><span id="zjlyzzl">-21.70%</span></div></div></td>
+                        <td id="jnylzzl">-25.78%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">16.80%</span><span id="gqlnzzl">25.87%</span><span id="gqsnzzl">--</span><span id="clzjzzl">41.10%</span></div></div></td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pyxf.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="hhxdata">
+                        <td><a href="/web/fund/fund_pyxf_c.html" id="fundname" target="_blank">浦银消费C</a></td>
+                        <td id="fundcode">519176</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.411</td>
+                        <td id="zjyrzzl">1.51%</td>
+                        <td id="totalnetval">1.411</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">1.51%</span><span id="zjyyzzl">--</span><span id="zjsyzzl">--</span><span id="zjlyzzl">--</span></div></div></td>
+                        <td id="jnylzzl">1.51%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">--</span><span id="gqlnzzl">--</span><span id="gqsnzzl">--</span><span id="clzjzzl">1.51%</span></div></div></td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pyxf_c.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="hhxdata">
+                        <td><a href="http://www.py-axa.com/web/fund/fund_pyxjj.html" id="fundname" target="_blank">浦银新经济</a></td>
+                        <td id="fundcode">519126</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.264</td>
+                        <td id="zjyrzzl">1.36%</td>
+                        <td id="totalnetval">1.264</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">1.94%</span><span id="zjyyzzl">-24.49%</span><span id="zjsyzzl">-4.02%</span><span id="zjlyzzl">-25.21%</span></div></div></td>
+                        <td id="jnylzzl">-24.22%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">11.96%</span><span id="gqlnzzl">--</span><span id="gqsnzzl">--</span><span id="clzjzzl">26.40%</span></div></div></td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="http://www.py-axa.com/web/fund/fund_pyxjj.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="hhxdata">
+                        <td><a href="http://www.py-axa.com/web/fund/fund_pyss.html" id="fundname" target="_blank">浦银盛世A</a></td>
+                        <td id="fundcode">519127</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.278</td>
+                        <td id="zjyrzzl">0.00%</td>
+                        <td id="totalnetval">1.278</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">0.00%</span><span id="zjyyzzl">0.08%</span><span id="zjsyzzl">6.15%</span><span id="zjlyzzl">9.98%</span></div></div></td>
+                        <td id="jnylzzl">0.00%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">21.83%</span><span id="gqlnzzl">--</span><span id="gqsnzzl">--</span><span id="clzjzzl">27.80%</span></div></div></td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="http://www.py-axa.com/web/fund/fund_pyss.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="hhxdata">
+                        <td><a href="http://www.py-axa.com/web/fund/fund_pyss_c.html" id="fundname" target="_blank">浦银盛世C</a></td>
+                        <td id="fundcode">519177</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.003</td>
+                        <td id="zjyrzzl">0.00%</td>
+                        <td id="totalnetval">1.003</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">0.00%</span><span id="zjyyzzl">0.10%</span><span id="zjsyzzl">--</span><span id="zjlyzzl">--</span></div></div></td>
+                        <td id="jnylzzl">0.00%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">--</span><span id="gqlnzzl">--</span><span id="gqsnzzl">--</span><span id="clzjzzl">0.30%</span></div></div></td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="http://www.py-axa.com/web/fund/fund_pyss_c.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="hhxdata">
+                        <td><a href="http://www.py-axa.com/web/fund/fund_pyzzdl.html" id="fundname" target="_blank">浦银增长</a></td>
+                        <td id="fundcode">519170</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">0.726</td>
+                        <td id="zjyrzzl">1.11%</td>
+                        <td id="totalnetval">0.726</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">2.98%</span><span id="zjyyzzl">-26.52%</span><span id="zjsyzzl">-13.67%</span><span id="zjlyzzl">-28.33%</span></div></div></td>
+                        <td id="jnylzzl">-26.29%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">--</span><span id="gqlnzzl">--</span><span id="gqsnzzl">--</span><span id="clzjzzl">-27.40%</span></div></div></td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="http://www.py-axa.com/web/fund/fund_pyzzdl.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="hhxdata">
+                        <td><a href="http://www.py-axa.com/web/fund/fund_pyyljk.html" id="fundname" target="_blank">浦银医疗</a></td>
+                        <td id="fundcode">519171</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">0.748</td>
+                        <td id="zjyrzzl">0.40%</td>
+                        <td id="totalnetval">0.748</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">0.81%</span><span id="zjyyzzl">-20.93%</span><span id="zjsyzzl">-12.41%</span><span id="zjlyzzl">-15.86%</span></div></div></td>
+                        <td id="jnylzzl">-20.17%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">--</span><span id="gqlnzzl">--</span><span id="gqsnzzl">--</span><span id="clzjzzl">-25.20%</span></div></div></td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="http://www.py-axa.com/web/fund/fund_pyyljk.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr></table>
+					<div class="t1">基金收益率仅供参考，基金的过往业绩及其净值高低并不预示其未来业绩表现。</div>
+                </div>
+                
+                <div class="tabs-con">
+                	<table width="100%" id="zsxtable">
+                      <tr>
+                        <th width="14%" rowspan="2">基金名称</th>
+                        <th width="8%" rowspan="2">基金代码</th>
+                        <th width="8%" rowspan="2">日期</th>
+                        <th width="8%" rowspan="2">基金净值</th>
+                        <th width="8%" rowspan="2">日涨跌</th>
+                        <th width="8%" rowspan="2">累计净值</th>
+                        <th width="13%">近期表现</th>
+                        <th width="20%" colspan="2">年度收益率</th>
+                       <!-- <th rowspan="2">一句话读懂</th>  -->
+                        <th width="13%" rowspan="2" class="homeTblAct">操作</th>
+                        </tr>
+                      <tr>
+                        <th><a href="javascript:;" class="first-month"></a><div class="history12231049 history12231049_th"><div class="box"><span>最近一周</span><span>最近一月</span><span>最近三月</span><span>最近六月</span></div></div><a href="javascript:;" class="next-month"></a></th>
+                        <th class="th_thiyear">今年以来</th>
+                        <th><a href="javascript:;" class="first-year"></a><div class="history12231048 history12231048_th"><div class="box"><span>过去一年</span><span>过去二年</span><span>过去三年</span><span>成立以来</span></div></div><a href="javascript:;" class="next-year"></a></th>
+                      </tr>
+                      
+                    <tr id="zsxdata">
+                        <td><a href="/web/fund/fund_py300.html" id="fundname" target="_blank">浦银300</a></td>
+                        <td id="fundcode">519116</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.045</td>
+                        <td id="zjyrzzl">0.97%</td>
+                        <td id="totalnetval">1.045</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">-0.10%</span><span id="zjyyzzl">-17.72%</span><span id="zjsyzzl">-11.14%</span><span id="zjlyzzl">-22.99%</span></div></div></td>
+                        <td id="jnylzzl">-15.73%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">-7.28%</span><span id="gqlnzzl">43.35%</span><span id="gqsnzzl">26.36%</span><span id="clzjzzl">4.50%</span></div></div></td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_py300.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="zsxdata">
+                        <td><a href="/web/fund/fund_py400.html" id="fundname" target="_blank">浦银400</a></td>
+                        <td id="fundcode">519117</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.457</td>
+                        <td id="zjyrzzl">1.25%</td>
+                        <td id="totalnetval">1.457</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">0.90%</span><span id="zjyyzzl">-21.71%</span><span id="zjsyzzl">-15.29%</span><span id="zjlyzzl">-26.30%</span></div></div></td>
+                        <td id="jnylzzl">-20.03%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">0.00%</span><span id="gqlnzzl">47.62%</span><span id="gqsnzzl">50.21%</span><span id="clzjzzl">45.70%</span></div></div></td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_py400.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr></table>
+					<div class="t1">基金收益率仅供参考，基金的过往业绩及其净值高低并不预示其未来业绩表现。</div>
+                </div>
+                <div class="tabs-con">
+                	<table width="100%" id="zqxtable">
+                      <tr>
+                        <th width="14%" rowspan="2">基金名称</th>
+                        <th width="8%" rowspan="2">基金代码</th>
+                        <th width="8%" rowspan="2">日期</th>
+                        <th width="8%" rowspan="2">基金净值</th>
+                        <th width="8%" rowspan="2">日涨跌</th>
+                        <th width="8%" rowspan="2">累计净值</th>
+                        <th width="13%">近期表现</th>
+                        <th width="20%" colspan="2">年度收益率</th>
+                       <!-- <th rowspan="2">一句话读懂</th>  -->
+                        <th width="13%" rowspan="2" class="homeTblAct">操作</th>
+                        </tr>
+                      <tr>
+                        <th><a href="javascript:;" class="first-month"></a><div class="history12231049 history12231049_th"><div class="box"><span>最近一周</span><span>最近一月</span><span>最近三月</span><span>最近六月</span></div></div><a href="javascript:;" class="next-month"></a></th>
+                        <th class="th_thiyear">今年以来</th>
+                        <th><a href="javascript:;" class="first-year"></a><div class="history12231048 history12231048_th"><div class="box"><span>过去一年</span><span>过去二年</span><span>过去三年</span><span>成立以来</span></div></div><a href="javascript:;" class="next-year"></a></th>
+                      </tr>
+                      
+                    <tr id="zqxdata">
+                        <td><a href="/web/fund/fund_pysy_a.html" id="fundname" target="_blank">浦银收益A</a></td>
+                        <td id="fundcode">519111</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.531</td>
+                        <td id="zjyrzzl">0.07%</td>
+                        <td id="totalnetval">1.541</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">-0.39%</span><span id="zjyyzzl">-0.13%</span><span id="zjsyzzl">2.20%</span><span id="zjlyzzl">3.24%</span></div></div></td>
+                        <td id="jnylzzl">-0.07%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">5.37%</span><span id="gqlnzzl">30.30%</span><span id="gqsnzzl">31.30%</span><span id="clzjzzl">54.58%</span></div></div></td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pysy_a.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="zqxdata">
+                        <td><a href="/web/fund/fund_pysy_c.html" id="fundname" target="_blank">浦银收益C</a></td>
+                        <td id="fundcode">519112</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.492</td>
+                        <td id="zjyrzzl">0.07%</td>
+                        <td id="totalnetval">1.502</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">-0.40%</span><span id="zjyyzzl">-0.13%</span><span id="zjsyzzl">2.12%</span><span id="zjlyzzl">3.04%</span></div></div></td>
+                        <td id="jnylzzl">-0.13%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">4.92%</span><span id="gqlnzzl">29.18%</span><span id="gqsnzzl">29.74%</span><span id="clzjzzl">50.65%</span></div></div></td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pysy_c.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="zqxdata">
+                        <td><a href="/web/fund/fund_pyzl.html" id="fundname" target="_blank">浦银增利（LOF）</a></td>
+                        <td id="fundcode">166401</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.030</td>
+                        <td id="zjyrzzl">0.10%</td>
+                        <td id="totalnetval">1.030</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">0.19%</span><span id="zjyyzzl">0.39%</span><span id="zjsyzzl">2.39%</span><span id="zjlyzzl">3.00%</span></div></div></td>
+                        <td id="jnylzzl">0.49%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">2.90%</span><span id="gqlnzzl">--</span><span id="gqsnzzl">--</span><span id="clzjzzl">3.00%</span></div></div></td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pyzl.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="zqxdata">
+                        <td><a href="/web/fund/fund_pyxf_a.html" id="fundname" target="_blank">浦银幸福A</a></td>
+                        <td id="fundcode">519118</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.037</td>
+                        <td id="zjyrzzl">--</td>
+                        <td id="totalnetval">1.279</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">0.00%</span><span id="zjyyzzl">0.78%</span><span id="zjsyzzl">2.11%</span><span id="zjlyzzl">5.02%</span></div></div></td>
+                        <td id="jnylzzl">0.58%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">11.36%</span><span id="gqlnzzl">25.39%</span><span id="gqsnzzl">27.25%</span><span id="clzjzzl">30.44%</span></div></div></td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pyxf_a.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a title='' class='b-sgg'>基金封闭</a></span></td>
+                      </tr><tr id="zqxdata">
+                        <td><a href="/web/fund/fund_pyxf_b.html" id="fundname" target="_blank">浦银幸福B</a></td>
+                        <td id="fundcode">519119</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.034</td>
+                        <td id="zjyrzzl">--</td>
+                        <td id="totalnetval">1.266</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">0.00%</span><span id="zjyyzzl">0.78%</span><span id="zjsyzzl">2.03%</span><span id="zjlyzzl">4.85%</span></div></div></td>
+                        <td id="jnylzzl">0.58%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">11.00%</span><span id="gqlnzzl">24.56%</span><span id="gqsnzzl">25.91%</span><span id="clzjzzl">28.94%</span></div></div></td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pyxf_b.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a title='' class='b-sgg'>基金封闭</a></span></td>
+                      </tr><tr id="zqxdata">
+                        <td><a href="/web/fund/fund_py6gy_a.html" id="fundname" target="_blank">浦银6月债A</a></td>
+                        <td id="fundcode">519121</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.060</td>
+                        <td id="zjyrzzl">--</td>
+                        <td id="totalnetval">1.145</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">-0.28%</span><span id="zjyyzzl">0.07%</span><span id="zjsyzzl">1.85%</span><span id="zjlyzzl">2.12%</span></div></div></td>
+                        <td id="jnylzzl">0.15%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">8.00%</span><span id="gqlnzzl">20.25%</span><span id="gqsnzzl">--</span><span id="clzjzzl">14.48%</span></div></div></td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_py6gy_a.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a title='' class='b-sgg'>基金封闭</a></span></td>
+                      </tr><tr id="zqxdata">
+                        <td><a href="/web/fund/fund_py6gy_c.html" id="fundname" target="_blank">浦银6月债C</a></td>
+                        <td id="fundcode">519122</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.060</td>
+                        <td id="zjyrzzl">--</td>
+                        <td id="totalnetval">1.138</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">-0.28%</span><span id="zjyyzzl">0.07%</span><span id="zjsyzzl">1.86%</span><span id="zjlyzzl">1.95%</span></div></div></td>
+                        <td id="jnylzzl">0.16%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">7.74%</span><span id="gqlnzzl">19.77%</span><span id="gqsnzzl">--</span><span id="clzjzzl">13.78%</span></div></div></td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_py6gy_c.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a title='' class='b-sgg'>基金封闭</a></span></td>
+                      </tr><tr id="zqxdata">
+                        <td><a href="/web/fund/fund_pyjjtl_a.html" id="fundname" target="_blank">浦银添利A</a></td>
+                        <td id="fundcode">519123</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.235</td>
+                        <td id="zjyrzzl">--</td>
+                        <td id="totalnetval">1.235</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">0.00%</span><span id="zjyyzzl">0.16%</span><span id="zjsyzzl">1.73%</span><span id="zjlyzzl">4.66%</span></div></div></td>
+                        <td id="jnylzzl">0.24%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">3.87%</span><span id="gqlnzzl">25.00%</span><span id="gqsnzzl">--</span><span id="clzjzzl">23.50%</span></div></div></td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pyjjtl_a.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a title='' class='b-sgg'>基金封闭</a></span></td>
+                      </tr><tr id="zqxdata">
+                        <td><a href="/web/fund/fund_pyjjtl_c.html" id="fundname" target="_blank">浦银添利C</a></td>
+                        <td id="fundcode">519124</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.224</td>
+                        <td id="zjyrzzl">--</td>
+                        <td id="totalnetval">1.224</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">0.00%</span><span id="zjyyzzl">0.16%</span><span id="zjsyzzl">1.66%</span><span id="zjlyzzl">4.44%</span></div></div></td>
+                        <td id="jnylzzl">0.16%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">3.47%</span><span id="gqlnzzl">24.14%</span><span id="gqsnzzl">--</span><span id="clzjzzl">22.40%</span></div></div></td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pyjjtl_c.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a title='' class='b-sgg'>基金封闭</a></span></td>
+                      </tr><tr id="zqxdata">
+                        <td><a href="http://www.py-axa.com/web/fund/fund_pyyyy_a.html" id="fundname" target="_blank">浦银月月盈A</a></td>
+                        <td id="fundcode">519128</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.075</td>
+                        <td id="zjyrzzl">--</td>
+                        <td id="totalnetval">1.075</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">0.00%</span><span id="zjyyzzl">0.56%</span><span id="zjsyzzl">2.09%</span><span id="zjlyzzl">4.88%</span></div></div></td>
+                        <td id="jnylzzl">0.56%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">6.44%</span><span id="gqlnzzl">--</span><span id="gqsnzzl">--</span><span id="clzjzzl">7.50%</span></div></div></td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="http://www.py-axa.com/web/fund/fund_pyyyy_a.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a title='' class='b-sgg'>基金封闭</a></span></td>
+                      </tr><tr id="zqxdata">
+                        <td><a href="http://www.py-axa.com/web/fund/fund_pyyyy_c.html" id="fundname" target="_blank">浦银月月盈C</a></td>
+                        <td id="fundcode">519129</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.071</td>
+                        <td id="zjyrzzl">--</td>
+                        <td id="totalnetval">1.071</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">0.00%</span><span id="zjyyzzl">0.56%</span><span id="zjsyzzl">2.00%</span><span id="zjlyzzl">4.69%</span></div></div></td>
+                        <td id="jnylzzl">0.56%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">6.04%</span><span id="gqlnzzl">--</span><span id="gqsnzzl">--</span><span id="clzjzzl">7.10%</span></div></div></td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="http://www.py-axa.com/web/fund/fund_pyyyy_c.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a title='' class='b-sgg'>基金封闭</a></span></td>
+                      </tr></table>
+					<div class="t1">基金收益率仅供参考，基金的过往业绩及其净值高低并不预示其未来业绩表现。</div>
+                </div>
+                <div class="tabs-con">
+                	<table width="100%" id="hbxhbtable">
+                      <tr>
+                        <th>基金名称</th>
+                        <th>基金代码</th>
+                        <th>日期</th>
+                        <th>万份收益</th>
+                        <th>七日年化收益率</th>
+                        <!--  <th>一句话读懂</th> -->
+                        <th class="homeTblAct">操作</th>
+                        </tr>
+                      
+                    <tr id="hbxhbdata">
+                        <td><a href="/web/fund/fund_pyhb_a.html" id="fundname" target="_blank">浦银货币A</a></td>
+                        <td id="fundcode">519509</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">0.6428</td>
+                        <td id="totalnetval">2.171%</td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pyhb_a.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+
+                      </tr><tr id="hbxhbdata">
+                        <td><a href="/web/fund/fund_pyhb_b.html" id="fundname" target="_blank">浦银货币B</a></td>
+                        <td id="fundcode">519510</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">0.7081</td>
+                        <td id="totalnetval">2.412%</td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pyhb_b.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+
+                      </tr><tr id="hbxhbdata">
+                        <td><a href="/web/fund/fund_pyhb_e.html" id="fundname" target="_blank">浦银货币E</a></td>
+                        <td id="fundcode">519516</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">0.6428</td>
+                        <td id="totalnetval">2.173%</td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pyhb_e.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a title='长量基金' class='b-sgg'>特定渠道</a></span></td>
+
+                      </tr><tr id="hbxhbdata">
+                        <td><a href="/web/fund/fund_pyrry.html" id="fundname" target="_blank">浦银日日盈A</a></td>
+                        <td id="fundcode">519566</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">0.7089</td>
+                        <td id="totalnetval">2.517%</td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pyrry.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+
+                      </tr><tr id="hbxhbdata">
+                        <td><a href="/web/fund/fund_pyrry_b.html" id="fundname" target="_blank">浦银日日盈B</a></td>
+                        <td id="fundcode">519567</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">0.7724</td>
+                        <td id="totalnetval">2.764%</td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pyrry_b.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+
+                      </tr><tr id="hbxhbdata">
+                        <td><a href="/web/fund/fund_pyrry_d.html" id="fundname" target="_blank">浦银日日盈D</a></td>
+                        <td id="fundcode">519568</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">0.7071</td>
+                        <td id="totalnetval">2.518%</td>
+                        <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pyrry_d.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a title='浦发银行' class='b-sgg'>特定渠道</a></span></td>
+
+                      </tr></table>
+					<div class="t1">基金收益率仅供参考，基金的过往业绩及其净值高低并不预示其未来业绩表现。</div>
+                </div>
+                <div class="tabs-con">
+                    <table width="100%" id="qbjjhbtable">
+                      <tr>
+                        <th>基金名称</th>
+                        <th>基金代码</th>
+                        <th>日期</th>
+                        <th>万份收益</th>
+                        <th>七日年化收益率</th>
+                        <!--<th>一句话读懂</th> -->
+                        <th class="homeTblAct">操作</th>
+                        </tr>
+                      
+                    <tr id="qbjjhbdata">
+                        <td><a href="/web/fund/fund_pyhb_a.html" id="fundname" target="_blank">浦银货币A</a></td>
+                        <td id="fundcode">519509</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">0.6428</td>
+                        <td id="totalnetval">2.171%</td>
+                        <!--<td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pyhb_a.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="qbjjhbdata">
+                        <td><a href="/web/fund/fund_pyhb_b.html" id="fundname" target="_blank">浦银货币B</a></td>
+                        <td id="fundcode">519510</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">0.7081</td>
+                        <td id="totalnetval">2.412%</td>
+                        <!--<td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pyhb_b.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="qbjjhbdata">
+                        <td><a href="/web/fund/fund_pyhb_e.html" id="fundname" target="_blank">浦银货币E</a></td>
+                        <td id="fundcode">519516</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">0.6428</td>
+                        <td id="totalnetval">2.173%</td>
+                        <!--<td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pyhb_e.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a title='长量基金' class='b-sgg'>特定渠道</a></span></td>
+                      </tr><tr id="qbjjhbdata">
+                        <td><a href="/web/fund/fund_pyrry.html" id="fundname" target="_blank">浦银日日盈A</a></td>
+                        <td id="fundcode">519566</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">0.7089</td>
+                        <td id="totalnetval">2.517%</td>
+                        <!--<td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pyrry.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="qbjjhbdata">
+                        <td><a href="/web/fund/fund_pyrry_b.html" id="fundname" target="_blank">浦银日日盈B</a></td>
+                        <td id="fundcode">519567</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">0.7724</td>
+                        <td id="totalnetval">2.764%</td>
+                        <!--<td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pyrry_b.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="qbjjhbdata">
+                        <td><a href="/web/fund/fund_pyrry_d.html" id="fundname" target="_blank">浦银日日盈D</a></td>
+                        <td id="fundcode">519568</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">0.7071</td>
+                        <td id="totalnetval">2.518%</td>
+                        <!--<td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pyrry_d.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a title='浦发银行' class='b-sgg'>特定渠道</a></span></td>
+                      </tr></table>
+                	<table width="100%" id="qbjjtable">
+                      <tr>
+                        <th width="14%" rowspan="2">基金名称</th>
+                        <th width="8%" rowspan="2">基金代码</th>
+                        <th width="8%" rowspan="2">日期</th>
+                        <th width="8%" rowspan="2">基金净值</th>
+                        <th width="8%" rowspan="2">日涨跌</th>
+                        <th width="8%" rowspan="2">累计净值</th>
+                        <th width="13%">近期表现</th>
+                        <th width="20%" colspan="2">年度收益率</th>
+                       <!-- <th rowspan="2">一句话读懂</th>  -->
+                        <th width="13%" rowspan="2" class="homeTblAct">操作</th>
+                        </tr>
+                      <tr>
+                        <th><a href="javascript:;" class="first-month"></a><div class="history12231049 history12231049_th"><div class="box"><span>最近一周</span><span>最近一月</span><span>最近三月</span><span>最近六月</span></div></div><a href="javascript:;" class="next-month"></a></th>
+                        <th class="th_thiyear">今年以来</th>
+                        <th><a href="javascript:;" class="first-year"></a><div class="history12231048 history12231048_th"><div class="box"><span>过去一年</span><span>过去二年</span><span>过去三年</span><span>成立以来</span></div></div><a href="javascript:;" class="next-year"></a></th>
+                      </tr>
+                      
+                    <tr id="qbjjdata">
+                        <td><a href="/web/fund/fund_pysy_a.html" id="fundname" target="_blank">浦银收益A</a></td>
+                        <td id="fundcode">519111</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.531</td>
+                        <td id="zjyrzzl">0.07%</td>
+                        <td id="totalnetval">1.541</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">-0.39%</span><span id="zjyyzzl">-0.13%</span><span id="zjsyzzl">2.20%</span><span id="zjlyzzl">3.24%</span></div></div></td>
+                        <td id="jnylzzl">-0.07%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">5.37%</span><span id="gqlnzzl">30.30%</span><span id="gqsnzzl">31.30%</span><span id="clzjzzl">54.58%</span></div></div></td>
+                       <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pysy_a.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="qbjjdata">
+                        <td><a href="/web/fund/fund_pysy_c.html" id="fundname" target="_blank">浦银收益C</a></td>
+                        <td id="fundcode">519112</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.492</td>
+                        <td id="zjyrzzl">0.07%</td>
+                        <td id="totalnetval">1.502</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">-0.40%</span><span id="zjyyzzl">-0.13%</span><span id="zjsyzzl">2.12%</span><span id="zjlyzzl">3.04%</span></div></div></td>
+                        <td id="jnylzzl">-0.13%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">4.92%</span><span id="gqlnzzl">29.18%</span><span id="gqsnzzl">29.74%</span><span id="clzjzzl">50.65%</span></div></div></td>
+                       <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pysy_c.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="qbjjdata">
+                        <td><a href="/web/fund/fund_pyzl.html" id="fundname" target="_blank">浦银增利（LOF）</a></td>
+                        <td id="fundcode">166401</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.030</td>
+                        <td id="zjyrzzl">0.10%</td>
+                        <td id="totalnetval">1.030</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">0.19%</span><span id="zjyyzzl">0.39%</span><span id="zjsyzzl">2.39%</span><span id="zjlyzzl">3.00%</span></div></div></td>
+                        <td id="jnylzzl">0.49%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">2.90%</span><span id="gqlnzzl">--</span><span id="gqsnzzl">--</span><span id="clzjzzl">3.00%</span></div></div></td>
+                       <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pyzl.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="qbjjdata">
+                        <td><a href="/web/fund/fund_pyjz.html" id="fundname" target="_blank">浦银价值A</a></td>
+                        <td id="fundcode">519110</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.486</td>
+                        <td id="zjyrzzl">1.36%</td>
+                        <td id="totalnetval">1.666</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">3.25%</span><span id="zjyyzzl">-26.58%</span><span id="zjsyzzl">-12.54%</span><span id="zjlyzzl">-32.51%</span></div></div></td>
+                        <td id="jnylzzl">-26.10%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">1.54%</span><span id="gqlnzzl">59.89%</span><span id="gqsnzzl">115.60%</span><span id="clzjzzl">67.09%</span></div></div></td>
+                       <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pyjz.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="qbjjdata">
+                        <td><a href="/web/fund/fund_pysh.html" id="fundname" target="_blank">浦银生活</a></td>
+                        <td id="fundcode">519113</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.908</td>
+                        <td id="zjyrzzl">1.60%</td>
+                        <td id="totalnetval">1.968</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">4.32%</span><span id="zjyyzzl">-26.19%</span><span id="zjsyzzl">-3.49%</span><span id="zjlyzzl">-16.64%</span></div></div></td>
+                        <td id="jnylzzl">-24.82%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">62.52%</span><span id="gqlnzzl">70.21%</span><span id="gqsnzzl">113.42%</span><span id="clzjzzl">101.23%</span></div></div></td>
+                       <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pysh.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="qbjjdata">
+                        <td><a href="/web/fund/fund_pyhl.html" id="fundname" target="_blank">浦银红利</a></td>
+                        <td id="fundcode">519115</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.387</td>
+                        <td id="zjyrzzl">1.76%</td>
+                        <td id="totalnetval">1.387</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">4.44%</span><span id="zjyyzzl">-26.96%</span><span id="zjsyzzl">-5.84%</span><span id="zjlyzzl">-23.79%</span></div></div></td>
+                        <td id="jnylzzl">-25.55%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">15.01%</span><span id="gqlnzzl">31.22%</span><span id="gqsnzzl">66.51%</span><span id="clzjzzl">38.70%</span></div></div></td>
+                       <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pyhl.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="qbjjdata">
+                        <td><a href="/web/fund/fund_pyxxcy.html" id="fundname" target="_blank">浦银新兴产业</a></td>
+                        <td id="fundcode">519120</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">2.251</td>
+                        <td id="zjyrzzl">1.72%</td>
+                        <td id="totalnetval">2.251</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">4.84%</span><span id="zjyyzzl">-28.65%</span><span id="zjsyzzl">-4.94%</span><span id="zjlyzzl">-11.31%</span></div></div></td>
+                        <td id="jnylzzl">-27.01%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">65.76%</span><span id="gqlnzzl">76.55%</span><span id="gqsnzzl">--</span><span id="clzjzzl">125.10%</span></div></div></td>
+                       <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pyxxcy.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="qbjjdata">
+                        <td><a href="/web/fund/fund_pyxf.html" id="fundname" target="_blank">浦银消费A</a></td>
+                        <td id="fundcode">519125</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.411</td>
+                        <td id="zjyrzzl">1.51%</td>
+                        <td id="totalnetval">1.411</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">4.60%</span><span id="zjyyzzl">-26.97%</span><span id="zjsyzzl">-4.73%</span><span id="zjlyzzl">-21.70%</span></div></div></td>
+                        <td id="jnylzzl">-25.78%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">16.80%</span><span id="gqlnzzl">25.87%</span><span id="gqsnzzl">--</span><span id="clzjzzl">41.10%</span></div></div></td>
+                       <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pyxf.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="qbjjdata">
+                        <td><a href="/web/fund/fund_pyxf_c.html" id="fundname" target="_blank">浦银消费C</a></td>
+                        <td id="fundcode">519176</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.411</td>
+                        <td id="zjyrzzl">1.51%</td>
+                        <td id="totalnetval">1.411</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">1.51%</span><span id="zjyyzzl">--</span><span id="zjsyzzl">--</span><span id="zjlyzzl">--</span></div></div></td>
+                        <td id="jnylzzl">1.51%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">--</span><span id="gqlnzzl">--</span><span id="gqsnzzl">--</span><span id="clzjzzl">1.51%</span></div></div></td>
+                       <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pyxf_c.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="qbjjdata">
+                        <td><a href="http://www.py-axa.com/web/fund/fund_pyxjj.html" id="fundname" target="_blank">浦银新经济</a></td>
+                        <td id="fundcode">519126</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.264</td>
+                        <td id="zjyrzzl">1.36%</td>
+                        <td id="totalnetval">1.264</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">1.94%</span><span id="zjyyzzl">-24.49%</span><span id="zjsyzzl">-4.02%</span><span id="zjlyzzl">-25.21%</span></div></div></td>
+                        <td id="jnylzzl">-24.22%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">11.96%</span><span id="gqlnzzl">--</span><span id="gqsnzzl">--</span><span id="clzjzzl">26.40%</span></div></div></td>
+                       <!--  <td id="describe"></td> -->
+                        <td><a href="http://www.py-axa.com/web/fund/fund_pyxjj.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="qbjjdata">
+                        <td><a href="http://www.py-axa.com/web/fund/fund_pyss.html" id="fundname" target="_blank">浦银盛世A</a></td>
+                        <td id="fundcode">519127</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.278</td>
+                        <td id="zjyrzzl">0.00%</td>
+                        <td id="totalnetval">1.278</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">0.00%</span><span id="zjyyzzl">0.08%</span><span id="zjsyzzl">6.15%</span><span id="zjlyzzl">9.98%</span></div></div></td>
+                        <td id="jnylzzl">0.00%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">21.83%</span><span id="gqlnzzl">--</span><span id="gqsnzzl">--</span><span id="clzjzzl">27.80%</span></div></div></td>
+                       <!--  <td id="describe"></td> -->
+                        <td><a href="http://www.py-axa.com/web/fund/fund_pyss.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="qbjjdata">
+                        <td><a href="http://www.py-axa.com/web/fund/fund_pyss_c.html" id="fundname" target="_blank">浦银盛世C</a></td>
+                        <td id="fundcode">519177</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.003</td>
+                        <td id="zjyrzzl">0.00%</td>
+                        <td id="totalnetval">1.003</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">0.00%</span><span id="zjyyzzl">0.10%</span><span id="zjsyzzl">--</span><span id="zjlyzzl">--</span></div></div></td>
+                        <td id="jnylzzl">0.00%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">--</span><span id="gqlnzzl">--</span><span id="gqsnzzl">--</span><span id="clzjzzl">0.30%</span></div></div></td>
+                       <!--  <td id="describe"></td> -->
+                        <td><a href="http://www.py-axa.com/web/fund/fund_pyss_c.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="qbjjdata">
+                        <td><a href="http://www.py-axa.com/web/fund/fund_pyzzdl.html" id="fundname" target="_blank">浦银增长</a></td>
+                        <td id="fundcode">519170</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">0.726</td>
+                        <td id="zjyrzzl">1.11%</td>
+                        <td id="totalnetval">0.726</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">2.98%</span><span id="zjyyzzl">-26.52%</span><span id="zjsyzzl">-13.67%</span><span id="zjlyzzl">-28.33%</span></div></div></td>
+                        <td id="jnylzzl">-26.29%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">--</span><span id="gqlnzzl">--</span><span id="gqsnzzl">--</span><span id="clzjzzl">-27.40%</span></div></div></td>
+                       <!--  <td id="describe"></td> -->
+                        <td><a href="http://www.py-axa.com/web/fund/fund_pyzzdl.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="qbjjdata">
+                        <td><a href="http://www.py-axa.com/web/fund/fund_pyyljk.html" id="fundname" target="_blank">浦银医疗</a></td>
+                        <td id="fundcode">519171</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">0.748</td>
+                        <td id="zjyrzzl">0.40%</td>
+                        <td id="totalnetval">0.748</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">0.81%</span><span id="zjyyzzl">-20.93%</span><span id="zjsyzzl">-12.41%</span><span id="zjlyzzl">-15.86%</span></div></div></td>
+                        <td id="jnylzzl">-20.17%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">--</span><span id="gqlnzzl">--</span><span id="gqsnzzl">--</span><span id="clzjzzl">-25.20%</span></div></div></td>
+                       <!--  <td id="describe"></td> -->
+                        <td><a href="http://www.py-axa.com/web/fund/fund_pyyljk.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="qbjjdata">
+                        <td><a href="/web/fund/fund_py300.html" id="fundname" target="_blank">浦银300</a></td>
+                        <td id="fundcode">519116</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.045</td>
+                        <td id="zjyrzzl">0.97%</td>
+                        <td id="totalnetval">1.045</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">-0.10%</span><span id="zjyyzzl">-17.72%</span><span id="zjsyzzl">-11.14%</span><span id="zjlyzzl">-22.99%</span></div></div></td>
+                        <td id="jnylzzl">-15.73%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">-7.28%</span><span id="gqlnzzl">43.35%</span><span id="gqsnzzl">26.36%</span><span id="clzjzzl">4.50%</span></div></div></td>
+                       <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_py300.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="qbjjdata">
+                        <td><a href="/web/fund/fund_py400.html" id="fundname" target="_blank">浦银400</a></td>
+                        <td id="fundcode">519117</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.457</td>
+                        <td id="zjyrzzl">1.25%</td>
+                        <td id="totalnetval">1.457</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">0.90%</span><span id="zjyyzzl">-21.71%</span><span id="zjsyzzl">-15.29%</span><span id="zjlyzzl">-26.30%</span></div></div></td>
+                        <td id="jnylzzl">-20.03%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">0.00%</span><span id="gqlnzzl">47.62%</span><span id="gqsnzzl">50.21%</span><span id="clzjzzl">45.70%</span></div></div></td>
+                       <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_py400.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a href='https://www.py-axa.com/etrading/etrading.jsp' target='_blank' title='' class='b-sgs btn_index_sg'>申购</a></span></td>
+                      </tr><tr id="qbjjdata">
+                        <td><a href="/web/fund/fund_pyxf_a.html" id="fundname" target="_blank">浦银幸福A</a></td>
+                        <td id="fundcode">519118</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.037</td>
+                        <td id="zjyrzzl">--</td>
+                        <td id="totalnetval">1.279</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">0.00%</span><span id="zjyyzzl">0.78%</span><span id="zjsyzzl">2.11%</span><span id="zjlyzzl">5.02%</span></div></div></td>
+                        <td id="jnylzzl">0.58%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">11.36%</span><span id="gqlnzzl">25.39%</span><span id="gqsnzzl">27.25%</span><span id="clzjzzl">30.44%</span></div></div></td>
+                       <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pyxf_a.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a title='' class='b-sgg'>基金封闭</a></span></td>
+                      </tr><tr id="qbjjdata">
+                        <td><a href="/web/fund/fund_pyxf_b.html" id="fundname" target="_blank">浦银幸福B</a></td>
+                        <td id="fundcode">519119</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.034</td>
+                        <td id="zjyrzzl">--</td>
+                        <td id="totalnetval">1.266</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">0.00%</span><span id="zjyyzzl">0.78%</span><span id="zjsyzzl">2.03%</span><span id="zjlyzzl">4.85%</span></div></div></td>
+                        <td id="jnylzzl">0.58%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">11.00%</span><span id="gqlnzzl">24.56%</span><span id="gqsnzzl">25.91%</span><span id="clzjzzl">28.94%</span></div></div></td>
+                       <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pyxf_b.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a title='' class='b-sgg'>基金封闭</a></span></td>
+                      </tr><tr id="qbjjdata">
+                        <td><a href="/web/fund/fund_py6gy_a.html" id="fundname" target="_blank">浦银6月债A</a></td>
+                        <td id="fundcode">519121</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.060</td>
+                        <td id="zjyrzzl">--</td>
+                        <td id="totalnetval">1.145</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">-0.28%</span><span id="zjyyzzl">0.07%</span><span id="zjsyzzl">1.85%</span><span id="zjlyzzl">2.12%</span></div></div></td>
+                        <td id="jnylzzl">0.15%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">8.00%</span><span id="gqlnzzl">20.25%</span><span id="gqsnzzl">--</span><span id="clzjzzl">14.48%</span></div></div></td>
+                       <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_py6gy_a.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a title='' class='b-sgg'>基金封闭</a></span></td>
+                      </tr><tr id="qbjjdata">
+                        <td><a href="/web/fund/fund_py6gy_c.html" id="fundname" target="_blank">浦银6月债C</a></td>
+                        <td id="fundcode">519122</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.060</td>
+                        <td id="zjyrzzl">--</td>
+                        <td id="totalnetval">1.138</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">-0.28%</span><span id="zjyyzzl">0.07%</span><span id="zjsyzzl">1.86%</span><span id="zjlyzzl">1.95%</span></div></div></td>
+                        <td id="jnylzzl">0.16%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">7.74%</span><span id="gqlnzzl">19.77%</span><span id="gqsnzzl">--</span><span id="clzjzzl">13.78%</span></div></div></td>
+                       <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_py6gy_c.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a title='' class='b-sgg'>基金封闭</a></span></td>
+                      </tr><tr id="qbjjdata">
+                        <td><a href="/web/fund/fund_pyjjtl_a.html" id="fundname" target="_blank">浦银添利A</a></td>
+                        <td id="fundcode">519123</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.235</td>
+                        <td id="zjyrzzl">--</td>
+                        <td id="totalnetval">1.235</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">0.00%</span><span id="zjyyzzl">0.16%</span><span id="zjsyzzl">1.73%</span><span id="zjlyzzl">4.66%</span></div></div></td>
+                        <td id="jnylzzl">0.24%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">3.87%</span><span id="gqlnzzl">25.00%</span><span id="gqsnzzl">--</span><span id="clzjzzl">23.50%</span></div></div></td>
+                       <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pyjjtl_a.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a title='' class='b-sgg'>基金封闭</a></span></td>
+                      </tr><tr id="qbjjdata">
+                        <td><a href="/web/fund/fund_pyjjtl_c.html" id="fundname" target="_blank">浦银添利C</a></td>
+                        <td id="fundcode">519124</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.224</td>
+                        <td id="zjyrzzl">--</td>
+                        <td id="totalnetval">1.224</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">0.00%</span><span id="zjyyzzl">0.16%</span><span id="zjsyzzl">1.66%</span><span id="zjlyzzl">4.44%</span></div></div></td>
+                        <td id="jnylzzl">0.16%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">3.47%</span><span id="gqlnzzl">24.14%</span><span id="gqsnzzl">--</span><span id="clzjzzl">22.40%</span></div></div></td>
+                       <!--  <td id="describe"></td> -->
+                        <td><a href="/web/fund/fund_pyjjtl_c.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a title='' class='b-sgg'>基金封闭</a></span></td>
+                      </tr><tr id="qbjjdata">
+                        <td><a href="http://www.py-axa.com/web/fund/fund_pyyyy_a.html" id="fundname" target="_blank">浦银月月盈A</a></td>
+                        <td id="fundcode">519128</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.075</td>
+                        <td id="zjyrzzl">--</td>
+                        <td id="totalnetval">1.075</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">0.00%</span><span id="zjyyzzl">0.56%</span><span id="zjsyzzl">2.09%</span><span id="zjlyzzl">4.88%</span></div></div></td>
+                        <td id="jnylzzl">0.56%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">6.44%</span><span id="gqlnzzl">--</span><span id="gqsnzzl">--</span><span id="clzjzzl">7.50%</span></div></div></td>
+                       <!--  <td id="describe"></td> -->
+                        <td><a href="http://www.py-axa.com/web/fund/fund_pyyyy_a.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a title='' class='b-sgg'>基金封闭</a></span></td>
+                      </tr><tr id="qbjjdata">
+                        <td><a href="http://www.py-axa.com/web/fund/fund_pyyyy_c.html" id="fundname" target="_blank">浦银月月盈C</a></td>
+                        <td id="fundcode">519129</td>
+                        <td id="funddate">2016-01-22</td>
+                        <td id="fundvalue">1.071</td>
+                        <td id="zjyrzzl">--</td>
+                        <td id="totalnetval">1.071</td>
+                        <td><div class="history12231049"><div class="box"><span id="zjyzzzl">0.00%</span><span id="zjyyzzl">0.56%</span><span id="zjsyzzl">2.00%</span><span id="zjlyzzl">4.69%</span></div></div></td>
+                        <td id="jnylzzl">0.56%</td>
+                        <td><div class="history12231048"><div class="box"><span id="gqynzzl">6.04%</span><span id="gqlnzzl">--</span><span id="gqsnzzl">--</span><span id="clzjzzl">7.10%</span></div></div></td>
+                       <!--  <td id="describe"></td> -->
+                        <td><a href="http://www.py-axa.com/web/fund/fund_pyyyy_c.html" id="fundlink" class="mr15 b-sg2">查看</a><span id="isShenGou"><a title='' class='b-sgg'>基金封闭</a></span></td>
+                      </tr></table>
+					<div class="t1">基金收益率仅供参考，基金的过往业绩及其净值高低并不预示其未来业绩表现。</div>
+                </div>
+            </div>
+        </div>
+        <div class="g4 mt15" id="home-banner2">
+			<ul>
+				<li><a href="http://ebank.spdb.com.cn/net/www/20140630/pfb.html" target="_blank" title="普发宝"><img src="/pyweb/images/pfb_sy_2014.jpg" width="990" height="150"/></a></li>
+				<li><a href="http://www.py-axa.com/page/px151118183023329000.html" target="_blank" title="点滴在行动 助力反洗钱"><img src="/pyweb/images/tzzjy_djjz_2015.jpg" width="990" height="150"/></a></li>
+			</ul>
+        </div>
+        <div class="g5 mt15" id="home_news">
+        	<div class="clearfix">
+                <div class="u2">
+                    <div class="x1">新闻资讯</div>
+                    <div id="articlediv">
+	                    
+	                <div id="articledata">
+							<a href="/page/px160122183546350000.html" target="_blank" id="aname" title="关于1月22日暂停银联通渠道银行卡基金交易的通知" artpk="px160122183546333000">关于1月22日暂停银联通渠道银行卡基金交易的...</a>
+	                	</div><div id="articledata">
+							<a href="/page/px160122153639445000.html" target="_blank" id="aname" title="关于暂停电子直销平台银联通支付通道开户业务的通知" artpk="px160122153639415000">关于暂停电子直销平台银联通支付通道开户业务的...</a>
+	                	</div><div id="articledata">
+							<a href="/page/px160121172014573000.html" target="_blank" id="aname" title="关于暂停电子直销平台银联通支付通道开户业务的通知" artpk="px160121172014505000">关于暂停电子直销平台银联通支付通道开户业务的...</a>
+	                	</div><div id="articledata">
+							<a href="/page/px160119091638757000.html" target="_blank" id="aname" title="习近平：经济长期向好基本面没有变" artpk="px160119091638695000">习近平：经济长期向好基本面没有变</a>
+	                	</div><div id="articledata">
+							<a href="/page/px160115121913230000.html" target="_blank" id="aname" title="关于暂停电子直销平台银联通支付通道开户业务的通知" artpk="px160115121913210000">关于暂停电子直销平台银联通支付通道开户业务的...</a>
+	                	</div></div>
+                    <a href="/pyweb/home/content.ha?columnpk=px200707021428241000" target="_blank" class="more">更&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;多</a>
+                </div>
+                <div class="u2">
+                    <div class="x2">投资视野</div>
+                    <div id="articlediv">
+	                    
+	                <div id="articledata">
+							<a href="/wd/zb/pyaxaweekly417.pdf" target="_blank" id="aname" title="基金E周报（417期）" artpk="px160118163310303000">基金E周报（417期）</a>
+	                	</div><div id="articledata">
+							<a href="/wd/zb/pyaxaweekly416.pdf" target="_blank" id="aname" title="基金E周报（416期）" artpk="px160111150842266000">基金E周报（416期）</a>
+	                	</div><div id="articledata">
+							<a href="/wd/zb/pyaxaweekly415.pdf" target="_blank" id="aname" title="基金E周报（415期）" artpk="px160104201815379000">基金E周报（415期）</a>
+	                	</div><div id="articledata">
+							<a href="/page/px151228190531410000.html" target="_blank" id="aname" title="视点：险资举牌股风光不在，大盘冲高震荡（414期）" artpk="px151228190531309000">视点：险资举牌股风光不在，大盘冲高震荡（41...</a>
+	                	</div><div id="articledata">
+							<a href="/page/px151221172959799000.html" target="_blank" id="aname" title="视点：地产股一马当先，成交量温和放大（413期）" artpk="px151221172959502000">视点：地产股一马当先，成交量温和放大（413...</a>
+	                	</div></div>
+                    <a href="/pyweb/home/content2.ha?columnpk=px200707020935201000" target="_blank" class="more">更&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;多</a>
+                </div>
+                <div class="u2 none-m">
+                    <div class="x3">信息披露</div>
+                    <div id="articlediv">
+	                    
+	                <div id="articledata">
+							<a href="/wd/jibao/pyyljkjxjb-2015-04.pdf" target="_blank" id="aname" title="浦银安盛医疗健康灵活配置混合型证券投资基金2015年第4季度报告" artpk="px160120192347267000">浦银安盛医疗健康灵活配置混合型证券投资基金2...</a>
+	                	</div><div id="articledata">
+							<a href="/wd/jibao/pyzzdljxjb-2015-04.pdf" target="_blank" id="aname" title="浦银安盛增长动力灵活配置混合型证券投资基金2015年第4季度报告" artpk="px160120192317734000">浦银安盛增长动力灵活配置混合型证券投资基金2...</a>
+	                	</div><div id="articledata">
+							<a href="/wd/jibao/pyyyyjxjb-2015-04.pdf" target="_blank" id="aname" title="浦银安盛月月盈安心养老定期支付债券型证券投资基金2015年第4季度报告" artpk="px160120192248160000">浦银安盛月月盈安心养老定期支付债券型证券投资...</a>
+	                	</div><div id="articledata">
+							<a href="/wd/jibao/pyssjxjxjb-2015-04.pdf" target="_blank" id="aname" title="浦银安盛盛世精选灵活配置混合型证券投资基金2015年第4季度报告" artpk="px160120192219216000">浦银安盛盛世精选灵活配置混合型证券投资基金2...</a>
+	                	</div><div id="articledata">
+							<a href="/wd/jibao/pyxjjjxjb-2015-04.pdf" target="_blank" id="aname" title="浦银安盛新经济结构灵活配置混合型证券投资基金2015年第4季度报告" artpk="px160120192146317000">浦银安盛新经济结构灵活配置混合型证券投资基金...</a>
+	                	</div></div>
+                    <a href="/pyweb/information/content.ha?columnpk=px200707031001041000" target="_blank" class="more">更&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;多</a>
+                </div>
+            </div>
+        </div>
+		
+		
+		<div class="g4 mt15" id="home_fxq">
+		<ul>
+			<li class="fxq1"><a href="http://www.py-axa.com/wd/fxq/jtxqfx_xcc_2013.pdf" target="_blank">保护自己 远离洗钱</a></li>
+			<li class="fxq2"><a href="/pyweb/zjh/shzjh_tzyd_1209_1.ha" target="_blank">《投资有道》系列动画片</a></li>
+			<li class="fxq3"><a href="/pyweb/zjh/shzjh_tzzjy-1.ha" target="_blank">投资者保护公益短片</a></li>
+		</ul>
+        </div>
+		
+	</div>
+</div>
+<div><div id="footer">
+	<div class="u01091000">
+    	<div class="container">
+            <div class="x1 none-m">
+                <div class="y1">开始投资</div>
+                <div class="y2"><a href="/web/service/saleque.html" target="_blank" class="z1">风险测评</a><a href="/web/service/operrule_fund.html" target="_blank">业务规则</a></div>
+                <div class="y2"><a href="/web/service/story.html" target="_blank" class="z1">理财故事</a><a href="/web/service/fxjy.html" target="_blank">风险教育</a></div>
+            </div>
+            <div class="x1">
+                <div class="y1">开户与交易</div>
+                <div class="y2"><a href="/web/service/openaccount.html" target="_blank" class="z1">怎样开户</a><a href="http://www.py-axa.com/pyweb/gglink/openaccount_link.html" target="_blank">网上直销开户</a></div>
+                <div class="y2"><a href="/web/fund/fund_index.html" target="_blank" class="z1">基金产品</a><a href="/web/service/etrade_fl.html" target="_blank">交易费率表</a></div>
+            </div>
+            <div class="x1">
+                <div class="y1">服务中心</div>
+                <div class="y2"><a href="/web/service/content.html" target="_blank" class="z1">服务内容</a><a href="/web/service/tea.html" target="_blank">基金经理下午茶</a></div>
+                <div class="y2"><a href="/web/service/finger.html" target="_blank" class="z1">业务指南</a><a href="/web/service/download.html" target="_blank">下载中心</a></div>
+            </div>
+            <div class="x1">
+                <div class="y1">了解我们</div>
+                <div class="y2"><a href="/web/aboutus/intro.html" target="_blank" class="z1">公司概况</a><a href="/web/aboutus/partner.html" target="_blank">公司股东</a></div>
+                <div class="y2"><a href="/web/aboutus/invest.html" target="_blank" class="z1">投资研究</a><a href="/web/aboutus/innersys.html" target="_blank">内控体系</a></div>
+				<div class="y2"><a href="/web/aboutus/job.html" target="_blank" class="z1">诚聘英才</a><a href="/web/service/qulified.html" target="_blank">销售资质</a></div>
+            </div>
+            <div class="cl"></div>
+        </div>
+    </div>
+	<div class="container">
+        <div class="u01091010"><a href="/wd/tzrqyxz_2014.pdf" target="_blank">投资人权益须知</a>|<a href="/web/service/fxq.html" target="_blank">反洗钱</a>|<a href="/web/service/fsyhl.html" target="_blank">反商业贿赂</a>|<a href="/web/service/wzsm.html" target="_blank">网站声明</a>|<a href="/web/service/map.html" target="_blank">网站地图</a>|<a href="/web/service/yqlj.html" target="_blank">友情链接</a>|<a href="/web/aboutus/contactus.html" target="_blank">联系我们</a></div>
+        <div class="u01091012">
+            本网站所载公开信息的获得尽可能可靠、准确及完整，但不对其精确性及完整性作出保证。 本网站所载研究报告及投资观点并不构成对取阅者实质性的投资建议或浦银安盛公司<br/>
+            最终的投资结果。 投资有风险，请谨慎选择。投资本公司所管理的基金前，应仔细阅读相关的《基金合同》（《基金契约》）及最新《招募说明书》。</div>
+        <div class="u01091016">
+            <span class="x1">客服热线：400-8828-999   021-33079999</span>人工服务时间(工作日)：上午9:00-11:30，下午1:00-5:30<br/> 
+    公司地址：上海市淮海中路381号中环广场38楼  邮编：200020<br/>
+    版权所有：浦银安盛基金管理有限公司|Copyright © 2007 AXA SPDB Investment Managers Co., Ltd<img src="/pyweb/images/png01091017.png" width="16" height="20" class="x2"/>沪ICP备07024549号
+        </div>
+    </div>
+</div>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?0337de00123b4ee27139cbb8f73ba6b6";
+  var snpdq = document.getElementsByTagName("script")[0]; 
+  snpdq.parentNode.insertBefore(hm, snpdq);
+})();
+</script>
+
+<script type="text/javascript"> 
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+var head = document.getElementsByTagName("head")[0] || document.documentElement;
+var script = document.createElement("script");
+script.src = gaJsHost + "google-analytics.com/ga.js"; 
+
+var done = false; // 防止onload，onreadystatechange同时执行
+// 加载完毕后执行，适应所有浏览器
+script.onload = script.onreadystatechange = function() {
+    if (!done && (!this.readyState || this.readyState === "loaded" || this.readyState === "complete")){
+        done = true;
+        try {
+            var pageTracker = _gat._getTracker("UA-6485824-1");
+            pageTracker._trackPageview();
+        } catch(err) {}
+        script.onload = script.onreadystatechange = null;
+    }
+}; 
+head.insertBefore(script,head.firstChild);
+</script></div>
+<!-------------------------------------------------------漂浮“投票窗口”开始-20150601------------------------------------------------>
+<!--div class="adv_f">
+   <div class="adv_r">
+      <a href="" target="_blank"><img src="/pyweb/images/pysh_sy_pf_06.jpg"></a><i class="close"></i>
+      <a class="adv_btn" href="" target="_blank">点击进入</a>  
+   </div>       
+</div-->
+<!-------------------------------------------------------漂浮“投票窗口”结束-20150601------------------------------------------------> 
+
+</body>
+</html>

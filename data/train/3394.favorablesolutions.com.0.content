@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en-US">
+	<head>
+		<style type="text/css">
+			body {
+				padding: 0px;
+				margin: 0px;
+				background-color: #111;
+			}
+			.content {
+				background: #000 url(http://images.secureserver.net/hosting_welcome/coming_soon_bg.jpg) no-repeat right top;
+				width: 950px;
+				height: 933px;
+				margin: 0px auto;
+				padding: 0px;
+				font-family: arial;
+			}
+			#site {
+				width: 90%;
+				height: 40px;
+				font-size: 22px;
+				font-weight: normal;
+				color: white;
+				margin-left: 45px;
+				padding-top: 10px;
+			}
+			.login {
+				width: 500px;
+				height: 77px;
+				margin-left: 245px;
+				margin-top: 395px;
+				font-size: 16px;
+			}
+			#copyright {
+				width: 300px;
+				height: 20px;
+				margin-left: 335px;
+				margin-top: 260px; 
+				color: white;
+				font-size: 12px;
+				text-align: center;	
+			}
+		</style>
+		<script type="text/javascript">
+			function pageLoad() {
+				var hostName = window.location.host.replace(/^www\./, '') ;
+				document.getElementById('site').innerHTML = hostName ;
+				document.getElementById('loginLink').setAttribute('href', 'https://cms.websitetonight.com/login.aspx?domain=' + hostName) ;
+	
+				today = new Date() ;
+				year = today.getFullYear() ;
+				document.getElementById('copyright').innerHTML = "Copyright &copy; 2003 - " + year  + ".&nbsp;&nbsp;All rights reserved." ;
+			}
+			window.onload = pageLoad ;
+		</script>
+	</head>
+	<body>
+		<div class='content'>
+			<div id="site"></div>
+			<div class="login">
+				<p><b>Are you the owner?</b><br/>Log in to create and publish your site</p>
+				<p style="margin-left:140px;margin-top:25px;"><a id="loginLink" href=""><img src="http://images.secureserver.net/hosting_welcome/coming_soon_login.jpg" border="0"></a></p>
+			</div>
+			<div id="copyright"></div>
+		</div>
+	</body>
+</html>

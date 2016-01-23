@@ -1,0 +1,395 @@
+<!DOCTYPE html><!--[if lt IE 9]><html class="ie ielt9" data-ng-app="togl"><![endif]-->
+<!--[if IE 9]><html class="ie ie9" data-ng-app="togl"><![endif]-->
+<!--[if gt IE 9]><!--><html lang="en" data-ng-app="togl"><!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+
+	<title>Custom Social, Mobile, and Casual Game Development | TopLine Game Labs</title>
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<!-- Descriptive MetaData -->
+	<meta name="description" content="A Los Angeles-based company developing social games and apps for desktop, tablet and mobile devices to power fan and brand engagement." />
+	<meta name="keywords" content="top line,top line games,top line gaming,top line game labs,topline games,topline gaming,daily mvp,causal game,causal games" />
+
+	<!-- Robots -->
+	<meta name="robots" content="index, follow" />
+
+	<!-- Mobile -->
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<meta name="format-detection" content="telephone=yes" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<!-- Document Base -->
+	<base href="/" />
+
+	<!-- DNS Prefetching -->
+	<link rel="dns-prefetch" href="//ajax.googleapis.com" />
+	<link rel="dns-prefetch" href="//ajax.aspnetcdn.com" />
+	<link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
+	<link rel="dns-prefetch" href="//d21r9tryzqawt3.cloudfront.net/production/" />
+	
+	<!-- Favicon -->
+	<link type="image/x-icon" rel="icon" href="//d21r9tryzqawt3.cloudfront.net/production/img/favicon.ico?v=cb9f683b21783f4e6a980a6898ce363d" />
+	<!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144x144-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" href="apple-touch-icon-57x57-precomposed.png">-->
+	<link rel="shortcut icon" href="//d21r9tryzqawt3.cloudfront.net/production/img/favicon.ico?v=cb9f683b21783f4e6a980a6898ce363d">
+
+	<!-- Global Styles -->
+	
+	<link type="text/css" rel="stylesheet" href="//d21r9tryzqawt3.cloudfront.net/production/css/app/fonts.css?v=51ea5ca451ebfcdc9d7a9abf11c818c6" />
+	
+	<link type="text/css" rel="stylesheet" href="//d21r9tryzqawt3.cloudfront.net/production/css/app/main.css?v=5b35b0ebcd2a2ad62a710dd58cd605c4" />
+	
+	<link type="text/css" rel="stylesheet" href="//d21r9tryzqawt3.cloudfront.net/production/css/app/images.css?v=b64fd01f9c74ca3bd6a53c66b9596c0b" />
+
+	<!-- Globals -->
+	<script type="text/javascript">
+	window.app = {
+		"config": {"env":"production","assetPath":"//d21r9tryzqawt3.cloudfront.net/production/","rootPath":"/","ga_id":"UA-41993961-1"},
+		"dictionary": "dictionary"
+	};
+	</script>
+</head>
+<body data-ng-controller="MainCtrl" data-ng-class="{ 'angular-initalized': isAngularInitialized }" data-ng-click="closeNav($event)">
+
+<!--[if lt IE 9]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div class="page-content">
+
+	<!-- Header / Nav -->
+	<header class="container-fluid navbar navbar-fixed-top" role="banner">
+		<div class="container">
+
+			<button type="button" class="navbar-toggle visible-xs visible-sm" data-ng-click="toggleNav($event)">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-menu"></span>
+			</button>
+
+			<a data-ui-sref="home" class="navbar-brand" title="TopLine Game Labs">
+				TopLine Game Labs
+			</a>
+
+			<nav class="navbar hidden-xs hidden-sm" role="navigation">
+				<ul class="nav nav-tabs" data-togl-scroll-nav data-scroll-offset-selector="body > .page-content:first">
+					<li data-ng-class="{ active: (activeStateName == 'brands') }"><a data-ui-sref="brands">Brands</a></li>
+					<li data-ng-class="{ active: (activeStateName == 'vision') }"><a data-ui-sref="vision">Vision</a></li>
+					<li data-ng-class="{ active: (activeStateName == 'about') }"><a data-ui-sref="about">About Us</a></li>
+					<li data-ng-class="{ active: (activeStateName == 'careers') }"><a data-ui-sref="careers">Careers</a></li>
+					<li data-ng-class="{ active: (activeStateName == 'contact') }"><a data-ui-sref="contact">Contact Us</a></li>
+					<li class="social">
+						<ul class="list-inline">
+							<li><a href="https://twitter.com/TopLineGameLabs" target="_blank"><span class="icon-twitter"></span></a></li>
+							<li><a href="https://facebook.com/TopLineGameLabs" target="_blank"><span class="icon-facebook"></span></a></li>
+							<li><a href="http://linkedin.com/company/3211358" target="_blank"><span class="icon-linkedin"></span></a></li>
+						</ul>
+					</li>
+				</ul>
+			</nav>
+			<nav class="navbar collapse hidden-md hidden-lg" role="navigation" data-collapse="isNavCollapsed">
+				<ul class="nav" data-togl-scroll-nav data-scroll-offset-selector="body > .page-content:first">
+					<li data-ng-class="{ active: (activeStateName == 'brands') }"><a data-ui-sref="brands">Brands</a></li>
+					<li data-ng-class="{ active: (activeStateName == 'vision') }"><a data-ui-sref="vision">Vision</a></li>
+					<li data-ng-class="{ active: (activeStateName == 'about') }"><a data-ui-sref="about">About Us</a></li>
+					<li data-ng-class="{ active: (activeStateName == 'careers') }"><a data-ui-sref="careers">Careers</a></li>
+					<li data-ng-class="{ active: (activeStateName == 'contact') }"><a data-ui-sref="contact">Contact Us</a></li>
+					<li class="social"><a href="https://twitter.com/TopLineGameLabs" target="_blank"><span class="icon-twitter"></span></a></li>
+					<li class="social"><a href="https://facebook.com/TopLineGameLabs" target="_blank"><span class="icon-facebook"></span></a></li>
+					<li class="social"><a href="http://linkedin.com/company/3211358" target="_blank"><span class="icon-linkedin"></span></a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<main role="main" class="container-fluid">
+		<div id="hero" data-ng-class="{ active: (activeStateName == 'home') }" style="background-image:url('//d21r9tryzqawt3.cloudfront.net/production/img/content/MainImage@2x.jpg?v=7ffbeabeb77256edaa4735b6aba76e91');">
+			<header>
+				<div class="container">
+					<h2>Architecting social games and apps to power fan and brand engagement.</h2>
+				</div>
+			</header>
+		</div>
+		<div id="brands" data-ng-class="{ active: (activeStateName == 'brands') }">
+			<div class="container">
+				<header>
+					<h1>Our Brands</h1>
+				</header>
+				<div class="content">
+					<p>
+						From fantasy sports to news, finance, and entertainment, we deliver a revolutionary
+						social gaming experience in your hand, on your desk, and in your living room.
+					</p>
+
+					<ul class="list-inline">
+						<li>
+							<a href="http://hastrk1.com/serve?action=click&amp;publisher_id=47096&amp;site_id=45598&amp;offer_id=284830&amp;sub_site=website&amp;sub_adgroup=OUR%20BRANDS&amp;sub_ad=DailyMVP%20logo&amp;destination_id=56664" target="_blank"><img src="//d21r9tryzqawt3.cloudfront.net/production/img/content/DailyMVP-Logo-wShadow@2x.png?v=ecc231641b70f7c9a2f29d7fe89b6e51" alt="DailyMVP" /></a>
+							<br class="visible-xs" />
+							<div>
+								<header>
+									<h4>DailyMVP</h4>
+									<h5>Daily &amp; Weekly Fantasy Sports</h5>
+								</header>
+								<div class="content">
+									<ul class="list-inline">
+										<li><a href="http://hastrk1.com/serve?action=click&amp;publisher_id=47096&amp;site_id=45598&amp;offer_id=284830&amp;sub_site=website&amp;sub_adgroup=OUR%20BRANDS&amp;sub_ad=DailyMVP%20app&amp;destination_id=56666" target="_blank">DailyMVP app</a></li>
+										<li><a href="http://hastrk1.com/serve?action=click&amp;publisher_id=47096&amp;site_id=45598&amp;offer_id=284830&amp;sub_site=website&amp;sub_adgroup=OUR%20BRANDS&amp;sub_ad=DailyMVP.com&amp;destination_id=56664" target="_blank">DailyMVP.com</a></li>
+									</ul>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+
+				<header class="partnerships">
+					<h1>Partnerships</h1>
+				</header>
+				<div class="content">
+					<p>
+						In addition to developing its own games, TopLine works closely with partners to deliver
+						unmatched brand experiences on any screen. We're ready to help you grow, retain, and engage
+						audiences with beautiful games and apps.
+					</p>
+				</div>
+			</div>
+		</div>
+		<div id="vision" data-ng-class="{ active: (activeStateName == 'vision') }">
+			<div class="container">
+				<header>
+					<h1>Vision</h1>
+				</header>
+				<div class="content">
+					<p>
+						Our product development process emphasizes optimized functionality, intuitive design,
+						and robust system features to deliver a user experience that appeals to both casual
+						and competitive audiences while providing a custom user experience.
+					</p>
+
+					<ul class="list-unstyled">
+						<li class="optimization">
+							<header>
+								<h4>Optimization</h4>
+							</header>
+							<div class="content">
+								<p>
+									Leveraging integrated cloud-based platforms provides timely
+									and cost-effective hardware &amp; software infrastructure
+									development and deployment for any screen: mobile, tablet, and desktop
+								</p>
+							</div>
+						</li>
+						<li class="design">
+							<header>
+								<h4>World-Class Design</h4>
+							</header>
+							<div class="content">
+								<p>
+									Engaging, visually stunning and delightful to use - our products are
+									designed with a user-centered approach that incorporates multiple design
+									iterations, prototyping, and rigorous user testing to ensure a superior
+									user experience on all devices
+								</p>
+							</div>
+						</li>
+						<li class="metrics">
+							<header>
+								<h4>Analytics</h4>
+							</header>
+							<div class="content">
+								<p>
+									All products and systems are instrumented to capture and leverage real-time
+									data analytics (qualitative &amp; quantitative), providing a feedback loop
+									that allows for rapid iteration across all areas of development
+								</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div id="about" data-ng-class="{ active: (activeStateName == 'about') }">
+			<div class="container">
+				<header>
+					<h1>About Us</h1>
+				</header>
+				<div class="content">
+					<p>
+						TopLine Game Labs, LLC, is a Los Angeles-based technology company with unparalleled product
+						and engineering teams. We have over 30 years of combined experience developing products at
+						leading companies like Yahoo, Apple, DreamWorks Animation, Electronic Arts, and Salesforce.
+					</p>
+
+					<!--
+					<ul class="list-inline">
+						<li>
+							<div class="photo">
+								<img src="//d21r9tryzqawt3.cloudfront.net/production/img/content/photo.jpg" />
+							</div>
+							<div class="name">David Geller</div>
+							<div class="title">CEO</div>
+						</li>
+						<li>
+							<div class="photo">
+								<img src="//d21r9tryzqawt3.cloudfront.net/production/img/content/photo.jpg" />
+							</div>
+							<div class="name"></div>
+							<div class="title">CTO</div>
+						</li>
+						<li>
+							<div class="photo">
+								<img src="//d21r9tryzqawt3.cloudfront.net/production/img/content/photo.jpg" />
+							</div>
+							<div class="name">Edwin Pankau</div>
+							<div class="title">VP, Product</div>
+						</li>
+						<li>
+							<div class="photo">
+								<img src="//d21r9tryzqawt3.cloudfront.net/production/img/content/photo.jpg" />
+							</div>
+							<div class="name">Josh Small</div>
+							<div class="title">Head of Operations</div>
+						</li>
+						<li>
+							<div class="photo">
+								<img src="//d21r9tryzqawt3.cloudfront.net/production/img/content/photo.jpg" />
+							</div>
+							<div class="name">Katie Freshwater</div>
+							<div class="title">Head of Marketing</div>
+						</li>
+						<li>
+							<div class="photo">
+								<img src="//d21r9tryzqawt3.cloudfront.net/production/img/content/photo.jpg" />
+							</div>
+							<div class="name">Dean Nakabayashi</div>
+							<div class="title">Creative Director</div>
+						</li>
+					</ul>-->
+				</div>
+			</div>
+		</div>
+		<div id="careers" data-ng-class="{ active: (activeStateName == 'careers') }">
+			<div class="container">
+				<header>
+					<h1>Careers</h1>
+				</header>
+				<div class="content">
+					<p>
+						Named one of LA’s hottest new startups by Inc.com, TopLine is growing quickly and looking for
+						motivated individuals to join our team. See our open positions:
+					</p>
+
+					<ul class="list-unstyled">
+						<li><a href="//s3-us-west-2.amazonaws.com/topline-docs-public/careers/UA_Job_Description.pdf" target="_blank">Director of User Acquisition</a></li>
+						<li><a href="//s3-us-west-2.amazonaws.com/topline-docs-public/careers/Senior_BE_Job_Description.pdf" target="_blank">Senior Backend Engineer</a></li>
+						<li><a href="//s3-us-west-2.amazonaws.com/topline-docs-public/careers/QE_Job_Description.pdf" target="_blank">Senior Quality Engineer</a></li>
+						<li><a href="//s3-us-west-2.amazonaws.com/topline-docs-public/careers/Frontend_Job_Description.pdf" target="_blank">Frontend Engineer</a></li>
+						<li><a href="//s3-us-west-2.amazonaws.com/topline-docs-public/careers/Data_Visualization_Job_Description.pdf" target="_blank">Data Visualization Expert</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div id="contact" data-ng-class="{ active: (activeStateName == 'contact') }">
+			<div class="container">
+				<header>
+					<h1>Contact Us</h1>
+				</header>
+				<div class="content">
+					<p>
+						Want to learn how we can power your brand engagement? Or, interested in joining our team?<br />
+						Drop us a line at <a href="mailto:contact@toplinegamelabs.com">contact@toplinegamelabs.com</a>
+						so we can learn a little more about you!
+					</p>
+
+					<p>
+						Also, sign up for our mailing list:
+					</p>
+
+					<div data-togl-notification data-msg-id="inline"></div>
+
+					<form name="signupForm" role="form" novalidate data-ng-submit="signup()" data-ng-hide="successfullySignedUp">
+						<fieldset>
+							<div class="form-group">
+								<input type="email" name="email" data-placeholder="Keep in touch with TopLine Game Labs" autocapitalize="none" autocorrect="off" required data-ng-trim data-ng-model="signupModel.email" />
+								<input type="submit" value="Sign Up" class="btn btn-lg btn-primary" disabled data-ng-disabled="!(signupForm.email.$dirty &amp;&amp; signupForm.email.$valid)" />
+								<div class="message error">
+									<div data-togl-replace data-ng-if="signupForm.email.$error.required">dictionary.validation.email.required</div>
+									<div data-togl-replace data-ng-if="signupForm.email.$error.email">dictionary.validation.email.invalid</div>
+									<div data-togl-replace data-ng-if="signupForm.email.$error.server">{{serverErrors.email}}</div>
+								</div>
+							</div>
+						</fieldet>
+					</form>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<footer class="container">
+		<nav role="navigation">
+			<a class="social-link" href="https://twitter.com/TopLineGameLabs" target="_blank">
+				<span class="icon-twitter"></span>
+			</a>
+			<a class="social-link" href="https://facebook.com/TopLineGameLabs" target="_blank">
+				<span class="icon-facebook"></span>
+			</a>
+			<a class="social-link" href="http://linkedin.com/company/3211358" target="_blank">
+				<span class="icon-linkedin"></span>
+			</a>
+
+			<br class="visible-xs" />
+
+			<a data-ng-click="openModal('privacy')">Privacy Policy</a>
+
+			<br class="visible-xs" />
+
+			<span class="copyright">
+				&copy; 2016 TopLine Game Labs, LLC.<br class="visible-xs" /> All rights reserved.
+			</span>
+		</nav>
+	</footer>
+</div>
+
+<div data-togl-busy-overlay></div>
+
+<div id="global-notification" data-togl-notification data-msg-id="global"></div>
+
+
+
+<!-- Analytics -->
+
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-41993961-1', 'toplinegamelabs.com');
+</script>
+
+
+<!-- Modernizr -->
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+<script type="text/javascript">;(window.Modernizr)||document.write('\x3Cscript type="text/javascript" src="//d21r9tryzqawt3.cloudfront.net/production/js/vendor/modernizr/modernizr.js?v=bf2f96e6233de3d8c0346085ac28248a">\x3C/script>')</script>
+
+<!-- jQuery -->
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript">;(window.jQuery)||document.write('\x3Cscript type="text/javascript" src="//d21r9tryzqawt3.cloudfront.net/production/js/vendor/jquery/dist/jquery.min.js">\x3C/script>')</script>
+
+<!-- Angular -->
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+<script type="text/javascript">;(window.angular)||document.write('\x3Cscript type="text/javascript" src="//d21r9tryzqawt3.cloudfront.net/production/js/vendor/angular/angular.min.js?v=ff4e9f192563f2d37e04428c841b6539">\x3C/script>')</script>
+
+<!-- App Scripts -->
+
+<script type="text/javascript" src="//d21r9tryzqawt3.cloudfront.net/production/js/app/main.js?v=cabd98919052d704714692444d2c9237"></script>
+
+</body>
+</html>

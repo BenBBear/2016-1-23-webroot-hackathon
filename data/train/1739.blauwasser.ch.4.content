@@ -1,0 +1,282 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Blauwasser</title>
+<link rel="shortcut icon" href="http://www.blauwasser.ch/grafiken/blau.ico" type="image/x-icon" />
+<link href="Segeln.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+body {
+	background-color: #6699CC;
+}
+#Layer3 {
+	position:absolute;
+	left:324px;
+	top:603px;
+	width:163px;
+	height:149px;
+	z-index:3;
+}
+.Stil1 {font-size: xx-large}
+-->
+</style>
+<script type="text/javascript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_timelinePlay(tmLnName, myID) { //v1.2
+  //Copyright 1997 Macromedia, Inc. All rights reserved.
+  var i,j,tmLn,props,keyFrm,sprite,numKeyFr,firstKeyFr,propNum,theObj,firstTime=false;
+  if (document.MM_Time == null) MM_initTimelines(); //if *very* 1st time
+  tmLn = document.MM_Time[tmLnName];
+  if (myID == null) { myID = ++tmLn.ID; firstTime=true;}//if new call, incr ID
+  if (myID == tmLn.ID) { //if Im newest
+    setTimeout('MM_timelinePlay("'+tmLnName+'",'+myID+')',tmLn.delay);
+    fNew = ++tmLn.curFrame;
+    for (i=0; i<tmLn.length; i++) {
+      sprite = tmLn[i];
+      if (sprite.charAt(0) == 's') {
+        if (sprite.obj) {
+          numKeyFr = sprite.keyFrames.length; firstKeyFr = sprite.keyFrames[0];
+          if (fNew >= firstKeyFr && fNew <= sprite.keyFrames[numKeyFr-1]) {//in range
+            keyFrm=1;
+            for (j=0; j<sprite.values.length; j++) {
+              props = sprite.values[j]; 
+              if (numKeyFr != props.length) {
+                if (props.prop2 == null) sprite.obj[props.prop] = props[fNew-firstKeyFr];
+                else        sprite.obj[props.prop2][props.prop] = props[fNew-firstKeyFr];
+              } else {
+                while (keyFrm<numKeyFr && fNew>=sprite.keyFrames[keyFrm]) keyFrm++;
+                if (firstTime || fNew==sprite.keyFrames[keyFrm-1]) {
+                  if (props.prop2 == null) sprite.obj[props.prop] = props[keyFrm-1];
+                  else        sprite.obj[props.prop2][props.prop] = props[keyFrm-1];
+        } } } } }
+      } else if (sprite.charAt(0)=='b' && fNew == sprite.frame) eval(sprite.value);
+      if (fNew > tmLn.lastFrame) tmLn.ID = 0;
+  } }
+}
+
+function MM_timelineGoto(tmLnName, fNew, numGotos) { //v2.0
+  //Copyright 1997 Macromedia, Inc. All rights reserved.
+  var i,j,tmLn,props,keyFrm,sprite,numKeyFr,firstKeyFr,lastKeyFr,propNum,theObj;
+  if (document.MM_Time == null) MM_initTimelines(); //if *very* 1st time
+  tmLn = document.MM_Time[tmLnName];
+  if (numGotos != null)
+    if (tmLn.gotoCount == null) tmLn.gotoCount = 1;
+    else if (tmLn.gotoCount++ >= numGotos) {tmLn.gotoCount=0; return}
+  jmpFwd = (fNew > tmLn.curFrame);
+  for (i = 0; i < tmLn.length; i++) {
+    sprite = (jmpFwd)? tmLn[i] : tmLn[(tmLn.length-1)-i]; //count bkwds if jumping back
+    if (sprite.charAt(0) == "s") {
+      numKeyFr = sprite.keyFrames.length;
+      firstKeyFr = sprite.keyFrames[0];
+      lastKeyFr = sprite.keyFrames[numKeyFr - 1];
+      if ((jmpFwd && fNew<firstKeyFr) || (!jmpFwd && lastKeyFr<fNew)) continue; //skip if untouchd
+      for (keyFrm=1; keyFrm<numKeyFr && fNew>=sprite.keyFrames[keyFrm]; keyFrm++);
+      for (j=0; j<sprite.values.length; j++) {
+        props = sprite.values[j];
+        if (numKeyFr == props.length) propNum = keyFrm-1 //keyframes only
+        else propNum = Math.min(Math.max(0,fNew-firstKeyFr),props.length-1); //or keep in legal range
+        if (sprite.obj != null) {
+          if (props.prop2 == null) sprite.obj[props.prop] = props[propNum];
+          else        sprite.obj[props.prop2][props.prop] = props[propNum];
+      } }
+    } else if (sprite.charAt(0)=='b' && fNew == sprite.frame) eval(sprite.value);
+  }
+  tmLn.curFrame = fNew;
+  if (tmLn.ID == 0) eval('MM_timelinePlay(tmLnName)');
+}
+
+//-->
+
+function DWUSER_scrollbarStyler() {
+	// This is a stand in JavaScript function that interacts with the Dreamweaver Behavior Menu.
+	// Do NOT remove this function
+}
+
+function MM_initTimelines() { //v4.0
+    //MM_initTimelines() Copyright 1997 Macromedia, Inc. All rights reserved.
+    var ns = navigator.appName == "Netscape";
+    var ns4 = (ns && parseInt(navigator.appVersion) == 4);
+    var ns5 = (ns && parseInt(navigator.appVersion) > 4);
+    var macIE5 = (navigator.platform ? (navigator.platform == "MacPPC") : false) && (navigator.appName == "Microsoft Internet Explorer") && (parseInt(navigator.appVersion) >= 4);
+    document.MM_Time = new Array(2);
+    document.MM_Time[0] = new Array(2);
+    document.MM_Time["Timeline1"] = document.MM_Time[0];
+    document.MM_Time[0].MM_Name = "Timeline1";
+    document.MM_Time[0].fps = 7;
+    document.MM_Time[0][0] = new String("sprite");
+    document.MM_Time[0][0].slot = 1;
+    if (ns4)
+        document.MM_Time[0][0].obj = document["Layer1"];
+    else if (ns5)
+        document.MM_Time[0][0].obj = document.getElementById("Layer1");
+    else
+        document.MM_Time[0][0].obj = document.all ? document.all["Layer1"] : null;
+    document.MM_Time[0][0].keyFrames = new Array(1, 70);
+    document.MM_Time[0][0].values = new Array(2);
+    if (ns5 || macIE5)
+        document.MM_Time[0][0].values[0] = new Array("-6px", "13px", "31px", "50px", "69px", "87px", "106px", "125px", "143px", "162px", "181px", "199px", "218px", "237px", "255px", "274px", "293px", "311px", "330px", "349px", "367px", "386px", "405px", "423px", "442px", "461px", "479px", "498px", "517px", "535px", "554px", "573px", "591px", "610px", "629px", "647px", "666px", "685px", "703px", "722px", "741px", "759px", "778px", "797px", "815px", "834px", "853px", "871px", "890px", "909px", "927px", "946px", "965px", "983px", "1002px", "1021px", "1039px", "1058px", "1077px", "1095px", "1114px", "1133px", "1151px", "1170px", "1189px", "1207px", "1226px", "1245px", "1263px", "1282px");
+    else
+        document.MM_Time[0][0].values[0] = new Array(-6,13,31,50,69,87,106,125,143,162,181,199,218,237,255,274,293,311,330,349,367,386,405,423,442,461,479,498,517,535,554,573,591,610,629,647,666,685,703,722,741,759,778,797,815,834,853,871,890,909,927,946,965,983,1002,1021,1039,1058,1077,1095,1114,1133,1151,1170,1189,1207,1226,1245,1263,1282);
+    document.MM_Time[0][0].values[0].prop = "left";
+    if (ns5 || macIE5)
+        document.MM_Time[0][0].values[1] = new Array("59px", "59px", "59px", "58px", "58px", "58px", "58px", "58px", "57px", "57px", "57px", "57px", "57px", "57px", "56px", "56px", "56px", "56px", "56px", "55px", "55px", "55px", "55px", "55px", "54px", "54px", "54px", "54px", "54px", "54px", "53px", "53px", "53px", "53px", "53px", "52px", "52px", "52px", "52px", "52px", "51px", "51px", "51px", "51px", "51px", "51px", "50px", "50px", "50px", "50px", "50px", "49px", "49px", "49px", "49px", "49px", "48px", "48px", "48px", "48px", "48px", "48px", "47px", "47px", "47px", "47px", "47px", "46px", "46px", "46px");
+    else
+        document.MM_Time[0][0].values[1] = new Array(59,59,59,58,58,58,58,58,57,57,57,57,57,57,56,56,56,56,56,55,55,55,55,55,54,54,54,54,54,54,53,53,53,53,53,52,52,52,52,52,51,51,51,51,51,51,50,50,50,50,50,49,49,49,49,49,48,48,48,48,48,48,47,47,47,47,47,46,46,46);
+    document.MM_Time[0][0].values[1].prop = "top";
+    if (!ns4) {
+        document.MM_Time[0][0].values[0].prop2 = "style";
+        document.MM_Time[0][0].values[1].prop2 = "style";
+    }
+    document.MM_Time[0][1] = new String("behavior");
+    document.MM_Time[0][1].frame = 71;
+    document.MM_Time[0][1].value = "MM_timelineGoto('Timeline1','1')";
+    document.MM_Time[0].lastFrame = 71;
+    document.MM_Time[1] = new Array(2);
+    document.MM_Time["Timeline2"] = document.MM_Time[1];
+    document.MM_Time[1].MM_Name = "Timeline2";
+    document.MM_Time[1].fps = 5;
+    document.MM_Time[1][0] = new String("sprite");
+    document.MM_Time[1][0].slot = 1;
+    if (ns4)
+        document.MM_Time[1][0].obj = document["Layer2"];
+    else if (ns5)
+        document.MM_Time[1][0].obj = document.getElementById("Layer2");
+    else
+        document.MM_Time[1][0].obj = document.all ? document.all["Layer2"] : null;
+    document.MM_Time[1][0].keyFrames = new Array(1, 70, 99);
+    document.MM_Time[1][0].values = new Array(2);
+    if (ns5 || macIE5)
+        document.MM_Time[1][0].values[0] = new Array("-26px", "-17px", "-9px", "0px", "8px", "16px", "24px", "32px", "41px", "49px", "57px", "65px", "73px", "81px", "89px", "97px", "105px", "113px", "121px", "129px", "137px", "146px", "154px", "162px", "170px", "178px", "186px", "195px", "203px", "211px", "219px", "228px", "236px", "244px", "253px", "261px", "269px", "278px", "286px", "295px", "304px", "312px", "321px", "330px", "339px", "348px", "357px", "367px", "376px", "385px", "395px", "404px", "414px", "424px", "433px", "443px", "453px", "463px", "474px", "484px", "494px", "505px", "515px", "526px", "537px", "547px", "558px", "569px", "580px", "591px", "619px", "648px", "676px", "705px", "734px", "762px", "791px", "820px", "850px", "879px", "908px", "938px", "968px", "998px", "1028px", "1058px", "1088px", "1118px", "1148px", "1177px", "1207px", "1237px", "1267px", "1296px", "1326px", "1356px", "1386px", "1416px", "1446px");
+    else
+        document.MM_Time[1][0].values[0] = new Array(-26,-17,-9,0,8,16,24,32,41,49,57,65,73,81,89,97,105,113,121,129,137,146,154,162,170,178,186,195,203,211,219,228,236,244,253,261,269,278,286,295,304,312,321,330,339,348,357,367,376,385,395,404,414,424,433,443,453,463,474,484,494,505,515,526,537,547,558,569,580,591,619,648,676,705,734,762,791,820,850,879,908,938,968,998,1028,1058,1088,1118,1148,1177,1207,1237,1267,1296,1326,1356,1386,1416,1446);
+    document.MM_Time[1][0].values[0].prop = "left";
+    if (ns5 || macIE5)
+        document.MM_Time[1][0].values[1] = new Array("178px", "182px", "186px", "190px", "194px", "199px", "204px", "208px", "213px", "218px", "223px", "227px", "232px", "237px", "242px", "247px", "252px", "256px", "261px", "266px", "271px", "275px", "280px", "285px", "290px", "294px", "299px", "303px", "308px", "313px", "317px", "321px", "326px", "330px", "334px", "339px", "343px", "347px", "351px", "355px", "359px", "363px", "367px", "371px", "374px", "378px", "382px", "385px", "389px", "392px", "395px", "399px", "402px", "405px", "407px", "410px", "413px", "415px", "417px", "420px", "421px", "423px", "425px", "426px", "427px", "428px", "429px", "429px", "429px", "429px", "427px", "424px", "419px", "413px", "407px", "399px", "391px", "382px", "373px", "363px", "353px", "342px", "331px", "319px", "307px", "295px", "283px", "270px", "257px", "244px", "232px", "219px", "206px", "192px", "179px", "167px", "154px", "141px", "130px");
+    else
+        document.MM_Time[1][0].values[1] = new Array(178,182,186,190,194,199,204,208,213,218,223,227,232,237,242,247,252,256,261,266,271,275,280,285,290,294,299,303,308,313,317,321,326,330,334,339,343,347,351,355,359,363,367,371,374,378,382,385,389,392,395,399,402,405,407,410,413,415,417,420,421,423,425,426,427,428,429,429,429,429,427,424,419,413,407,399,391,382,373,363,353,342,331,319,307,295,283,270,257,244,232,219,206,192,179,167,154,141,130);
+    document.MM_Time[1][0].values[1].prop = "top";
+    if (!ns4) {
+        document.MM_Time[1][0].values[0].prop2 = "style";
+        document.MM_Time[1][0].values[1].prop2 = "style";
+    }
+    document.MM_Time[1][1] = new String("behavior");
+    document.MM_Time[1][1].frame = 100;
+    document.MM_Time[1][1].value = "MM_timelineGoto('Timeline2','1')";
+    document.MM_Time[1].lastFrame = 100;
+    for (i=0; i<document.MM_Time.length; i++) {
+        document.MM_Time[i].ID = null;
+        document.MM_Time[i].curFrame = 0;
+        document.MM_Time[i].delay = 1000/document.MM_Time[i].fps;
+    }
+}
+//-->
+</script>
+<style type="text/css">
+<!--
+/* ScrollbarStyler - DO NOT MODIFY THIS CSS!!! */
+html,textarea{scrollbar-track-color: #ABC7E3; scrollbar-face-color: #6699CC; scrollbar-highlight-color: #ABC7E3; scrollbar-3dlight-color: #304860; scrollbar-shadow-color: #486D91; scrollbar-darkshadow-color: #000000; scrollbar-arrow-color: #FFFFFF;}
+-->
+</style>
+</head>
+
+<body onload="MM_timelinePlay('Timeline1');MM_timelinePlay('Timeline2');DWUSER_scrollbarStyler('#ABC7E3', '#6699CC', '#ABC7E3', '#304860', '#486D91', '#000000', '#FFFFFF', 'undefined')">
+
+<div id="Layer1" style="position:absolute; left:-6px; top:59px; width:58px; height:46px; z-index:1"><img src="grafiken/birdTran.gif" width="70" height="70" /></div>
+<div id="Layer2" style="position:absolute; left:-26px; top:178px; width:73px; height:54px; z-index:2"><img src="grafiken/birdTran.gif" width="70" height="70" /></div>
+
+
+
+
+
+
+<div id="Layer3"><img src="grafiken/delfingross.gif" width="150" height="150" /></div>
+<table width="1200" border="0" cellpadding="5" cellspacing="5" onstart="MM_timelinePlay('Timeline1');MM_timelinePlay('Timeline2')">
+  <!--DWLayoutTable-->
+  <tr>
+    <td height="42" colspan="2"><div align="center" class="titel Stil1">
+      <div align="center">Blauwassersegeln mit meiner Crew </div>
+    </div></td>
+  </tr>
+  <tr>
+    <td width="200" height="585" align="left" valign="top"><table width="120" border="0" cellspacing="5" cellpadding="5">
+     <tr>
+       <td><a href="Brasilien/idex.html" target="_self"><img src="grafiken/Brasilien.gif" alt="Brasilien" width="105" height="25" /></a></td>
+     </tr>
+     <tr>
+       <td><a href="Cuba2014/index.html" target="_top"><img src="Cuba2014/Bilder/cuba2014.gif" alt="Cuba 2014" width="105" height="25" border="0"  /></a></td>
+     </tr>
+     <tr>
+        <td><a href="KohChang2013/index.html" target="_self"><img src="grafiken/kohchang.gif" alt="Koh Chang" width="105" height="25" border="0" /></a></td>
+      </tr>
+      <tr>
+        <td><a href="Tobago2012/index.html" target="_self"><img src="grafiken/buttonToabgo.gif" alt="Tobago 2012" width="105" height="25" border="0" /></a></td>
+      </tr>
+      <tr>
+        <td><a href="May-Thai2/index.html" target="_self"><img src="grafiken/button_May-Thai_2011.gif" alt="May-Thai 2" width="105" height="25" border="0" /></a></td>
+      </tr>
+      <tr>
+        <td><a href="Australien/index.html" target="_self"><img src="grafiken/buttonAus10.gif" alt="Australien" width="105" height="25" border="0" /></a></td>
+      </tr>
+      <tr>
+        <td><a href="malaysia/index.html" target="_self"><img src="grafiken/button_Malaysia09.gif" alt="aktueller T&ouml;rn" width="105" height="25" border="0" /></a></td>
+      </tr>
+      <tr>
+        <td><a href="Thailand08/index.html" target="_self"><img src="grafiken/buttonThai08.gif" width="105" height="25" border="0" /></a></td>
+      </tr>
+      <tr>
+        <td><a href="Los-Roques2007/index.html" target="_self"><img src="grafiken/buttonVenez07.gif" width="105" height="25" border="0" /></a></td>
+      </tr>
+      <tr>
+        <td><a href="Karibik06/Karibik06.html" target="_self"><img src="grafiken/ButtonKaribik06.gif" width="105" height="25" border="0" /></a></td>
+      </tr>
+      <tr>
+        <td><a href="Mexico2005/index.html" target="_self"><img src="grafiken/buttonMex05.gif" width="105" height="25" border="0" /></a></td>
+      </tr>
+      <tr>
+        <td><a href="Karibik04/index.html" target="_self"><img src="grafiken/buttonKar04.gif" alt="Karibik 2004" width="105" height="25" border="0" /></a></td>
+      </tr>
+      <tr>
+        <td><a href="karib03/index.html" target="_self"><img src="grafiken/buttonKar03.gif" width="105" height="25" border="0" /></a></td>
+      </tr>
+      <tr>
+        <td><a href="leeward/Leeward.html"><img src="grafiken/buttonLeewa.gif" width="105" height="25" border="0" /></a></td>
+      </tr>
+      <tr>
+        <td><a href="windward/Winward.html" target="_self"><img src="grafiken/buttonWindwa.gif" width="105" height="25" border="0" /></a></td>
+      </tr>
+      <tr>
+        <td><a href="Seychellen/index.htm" target="_self"><img src="grafiken/buttonSey.gif" width="105" height="25" border="0" /></a></td>
+      </tr>
+      <tr>
+        <td><a href="venezuela/venezuela.html" target="_self"><img src="grafiken/buttonVenez.gif" width="105" height="25" border="0" /></a></td>
+      </tr>
+      <tr>
+        <td><a href="cuba/Cuba.html" target="_self"><img src="grafiken/buttonCuba.gif" width="105" height="25" border="0" /></a></td>
+      </tr>
+      <tr>
+        <td><a href="Neuseeland/neuseeland.html"><img src="grafiken/buttonNeusee.gif" width="105" height="25" border="0" /></a></td>
+      </tr>
+      <tr>
+        <td><img src="grafiken/leucht02.gif" width="100" height="99" /></td>
+      </tr>
+    </table>
+    </td><td width="965"><table width="1200" height="835" border="0" cellpadding="5" cellspacing="5">
+      <tr>
+        <td background="grafiken/framebild1.jpg"></td>
+      </tr>
+    </table></td>
+</tr></table>   
+    <td width="965">
+	
+</td><tr>
+
+</tr></body></html>

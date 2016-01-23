@@ -1,0 +1,1569 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>我屋88.com - 澳大利亚首选房产专栏网站 | 阿德莱德房产 | 墨尔本房产 |  布里斯本房产 | 悉尼房产 | 珀斯房产</title>
+    <meta name="keywords" content="澳洲房地产, 澳大利亚房地产, 房子买卖, 房产仲介, 房产介绍, 公寓贩售, 澳大利亚房子, 租房介绍, 阿德莱德房产, 墨尔本房产, 珀斯房产, 布里斯本房产, 悉尼房产"/>
+    <meta name="description" content="澳洲房地产交易门户网站, 介绍最新各州房地产买卖, 出租，市场走势, 新闻等."/>
+    <meta name="google-site-verification" content="oaZ3bteXZpNxT4kMRnhNxi6mW9jt5HQnEObSjL11tN8" />
+    <link href='css/google.fonts.css' rel='stylesheet' type='text/css' />
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    
+	<link href="wcss/select2.css" rel="stylesheet" type="text/css" />
+
+    <link href="css/default.css" rel="stylesheet" type="text/css" media="screen" />
+    
+    <!-- Javascript -->
+	<script src="wjavascripts/jquery-1.9.0.min.js" type="text/javascript"></script>
+    <script src="wjavascripts/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+    <script src="JavaScripts/jquery-ui-1.8.20.custom.min.js" type="text/javascript"></script>
+	<script src="JavaScripts/jquery.ui.core.min.js" type="text/javascript"></script>
+	<script src="JavaScripts/jquery.ui.widget.min.js" type="text/javascript"></script>
+	<script src="JavaScripts/jquery.imgpreview.js" type="text/javascript"></script>
+	<script src="JavaScripts/jquery.notice.js" type="text/javascript"></script>
+	<script src="JavaScripts/jquery.cycle.pack.js" type="text/javascript"></script>
+    <script src="wjavascripts/jquery.cookie.js" type="text/javascript"></script>
+    <script src="wjavascripts/select2.js" type="text/javascript"></script>
+    <script src="JavaScripts/owl.carousel.min.js" type="text/javascript"></script>
+	<!-- Add by FaceOZ -->
+	<link href="wcss/wcss.css" rel="stylesheet" type="text/css" />
+	<link href="wcss/en.css" rel="stylesheet" type="text/css" />
+	<link href="wcss/multiple-select.css" rel="stylesheet" type="text/css" />
+    <link href="Css/owl.carousel.css" rel="Stylesheet" type="text/css" />
+
+    <script src="wjavascripts/common.js" type="text/javascript"></script>
+	<script src="wjavascripts/lang-chs.js" type="text/javascript"></script>
+    <script src="wjavascripts/jquery.multiple.select.js" type="text/javascript"></script>
+	<script src="wjavascripts/wowu.js" type="text/javascript"></script>
+	<!-- End  -->
+	<!-- Custom template functions -->
+	<script src="JavaScripts/custom.js" type="text/javascript"></script>
+	
+	<!-- Internet Explorer Fixes --> 
+	<!--[if IE]>
+	<link rel="stylesheet" type="text/css" media="all" href="css/ie.css"/>
+	<![endif]-->
+	<!--Upgrade MSIE5.5-7 to be compatible with MSIE8: http://ie7-js.googlecode.com/svn/version/2.1(beta3)/IE8.js -->
+	<!--[if lt IE 8]>
+	<script src="JavaScripts/IE8.js"></script>
+	<![endif]-->
+	
+	
+<script type="text/javascript">
+        //<![CDATA[
+        var statePlaceHolderText = "CHOOSE A STATE";
+        var selectAllTextValue = "Show All";
+            
+        statePlaceHolderText = "选择州属";
+        selectAllTextValue = "全部";
+           
+        $(document).ready(function () {
+            // Carousel slider
+            $('.carousel ul').cycle({
+                prev: '.previous',
+                next: '.next',
+                timeout: 6000,
+                pause: 1
+            });
+
+            // Template setup
+            Site.setup();
+        });
+
+        //]]>
+
+        function ddlSuburbs_onClick() {
+            var listBox = document.getElementById('ctl00_ddlSuburbs');
+            addNewItemToSearchBox(listBox.selectedIndex, listBox.options[listBox.selectedIndex].text);
+            $("input[id^=ctl00_cblAreas_]").attr("checked", false);
+            $(".select2-search-choice-close").click(function () { 
+                if ($(".select2-search-choice").length == 0) {
+                    $("input[id^=ctl00_cblAreas_]").attr("checked", true);
+                }
+            });
+            return false;
+        }
+
+        function addNewItemToSearchBox(idx,newItemText) {
+            var selectedItems = $("textarea.searchInput").select2("val"); 
+            if (idx == 0)
+            { selectedItems = []; }
+            else
+            {
+//                var listBox = document.getElementById('ctl00_ddlSuburbs');
+//                if (selectedItems.length == 1)
+//                {  
+//                    var listBox = document.getElementById('ctl00_ddlSuburbs');
+//                    if (selectedItems[0] == listBox.options[0].text)
+//                    {
+//                        selectedItems.pop();
+//                    }
+//                } 
+                if (selectedItems[0] == "SHOW ALL" || selectedItems[0] == "全部")
+                { selectedItems.shift();}
+            }
+            selectedItems.push(newItemText);   // I used "WA" here to test.
+            $("textarea.searchInput").select2("val", selectedItems);
+        }
+
+        $(function () {
+            $("#tabs").tabs();
+        });
+        function pageLoad(sender, args) {
+            if (args.get_isPartialLoad()) {
+                $("#tabs").tabs();
+            } 
+        }
+        /* New code @ FaceOZ */
+        function clientClick() {
+            //$("#ctl00_txbSuburb").val($('#searchInput').val()); 
+           // $("#ctl00_HiddenField1").val($(".listing-AgentNames span").html()); 
+            return false;
+        }
+
+        $(function () {
+            $.init({
+                flag: 'index',
+                Account: $.GP('usr'),
+                Session: $.GP('session')
+            });
+
+        });
+
+        function BindDropDownLists() { 
+            $('.listing-property-types').multipleSelect({
+                selectAllText: selectAllTextValue,
+                allSelected: selectAllTextValue,
+                countSelected: false,
+                onCheckAll: function () { 
+                    if ($("[name='selectAllctl00$lbPropertyTypes']:checked").length > 0) { 
+                         $("input[name='selectItemctl00$lbPropertyTypes']").attr("checked", false);
+                        $('.listing-property-types li').removeClass('selected');
+                    }
+                },
+                onUncheckAll: function () {
+                    if ($("[name='selectAllctl00$lbPropertyTypes']:checked").length == 0) {
+                        $("input[name='selectItemctl00$lbPropertyTypes']").attr("checked", false);
+                        $('.listing-property-types span').removeClass('placeholder').html(selectAllTextValue);
+                    }
+                }
+            });
+            $('.listing-AgentNames').multipleSelect({
+                selectAllText: selectAllTextValue,
+                allSelected: selectAllTextValue,
+                countSelected: false
+            });
+            //single selection
+            $(".listing-noofbedrooms").multipleSelect({
+                single: true
+            });
+            $(".listing-min-price").multipleSelect({
+                single: true
+            });
+            $(".listing-max-price").multipleSelect({
+                single: true
+            });
+
+            $(".listing-states").multipleSelect({
+                placeholder: statePlaceHolderText,
+                single: true
+            });
+
+            //Bind the search area control
+            //=================
+            $("textarea.searchInput").select2({
+                tags: true,
+                tokenSeparators: [","],
+                initSelection: function (element, callback) {
+                    callback($.map($(element).val().split(','), function (id) {
+                        return { id: id, text: id };
+                    }));
+                },
+                createSearchChoice: function (term, data) {
+                    if ($(data).filter(function () {
+                      return this.text.localeCompare(term) === 0;
+                    }).length === 0) {
+                        return {
+                            id: term,
+                            text: term
+                        };
+                    }
+                },
+                multiple: true,
+                minimumInputLength: 1,
+                ajax: {
+                    url: $CONFIG.AutoFillAPI,
+                    dataType: "json",
+                    data: function (term, page) {
+                        return {
+                            q: term, //search term
+                            page: page, // page number
+                            state: $('.listing-states').val(),
+                            mode: 'GetAllSuburbsV2',
+                            keyword: term
+                        };
+                    },
+                    results: function (data, page) {
+                        return {
+                            results: data
+                        };
+                    }
+                }
+
+            });
+
+            //=================
+        }
+
+        $(document).ready(function () {
+            BindDropDownLists();
+            //Handle the asp.net updatepanel
+            var prm = Sys.WebForms.PageRequestManager.getInstance();
+            prm.add_endRequest(function () {
+                BindDropDownLists();
+            }); 
+        });
+   
+        /* End Of New Code */
+        //]]>
+
+
+    </script>
+</head> 
+<body class="full-width page" onload ="bindcheck()"  >
+<form name="aspnetForm" method="post" action="/default.aspx?p=1" id="aspnetForm">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUENTM4MQ9kFgJmD2QWAmYQZGQWDgICD2QWBGYPDxYEHghDc3NDbGFzcwUDYnRuHgRfIVNCAgJkZAICDw8WBB8ABQVidG5fbh8BAgJkZAIED2QWBgIBDw8WCB4EVGV4dAUM5L2P5a6F5Zyw5LqnHgtOYXZpZ2F0ZVVybAUVaHR0cDovL2NuLndvd3U4OC5jb20vHwAFEWN1cnJlbnRfcGFnZV9pdGVtHwECAmRkAgMPDxYEHwIFDOWVhuS4muWcsOS6px8DBSRodHRwOi8vY24ud293dTg4LmNvbS9jb21tZXJjaWFsLmFzcHhkZAIFDw8WBB8CBQzmiL/lsYvnp5/otYEfAwUeaHR0cDovL2NuLndvd3U4OC5jb20vcmVudC5hc3B4ZGQCBQ9kFgJmD2QWCAIBDxQrAAIPFgIeCEltYWdlVXJsBRwvaW1hZ2VzL2F1c3RyYWxpYS1tYXAtY24ucG5nZGRkAgcPEGRkFCsBAGQCCA8QZGQWAGQCDQ8QZGQWAGQCBw8PFgQfAgUT55m96YeR5oi/5LqnIOWIl+ihqB8DBUFMaXN0aW5nLmFzcHg/cD0xMjkmc3RhdGU9NjYmcGxhdGludW1Qcm9wZXJ0aWVzPXBsYXRpbnVtUHJvcGVydGllc2RkAggPZBYCZg9kFgQCAw8PFgIeB1Zpc2libGVoZBYCAgMPFCsAAmRkZAIFDw8WAh8FaGQWBAIBDw8WCB8CBQnmm7TlpJouLi4eCUZvcmVDb2xvcgqkAR8DBTVMaXN0aW5nLmFzcHg/cD0xMjkmc3RhdGU9NjYmaG90UHJvcGVyaWVzPWhvdFByb3Blcmllcx8BAgRkZAICDxQrAAJkZGQCCg9kFgJmDxYCHgtfIUl0ZW1Db3VudAIFFgpmD2QWAgIBDw8WCB8CBQzljZfmvrPmiL/kuqceB1Rvb2xUaXAFEkdvIHRvIOWNl+a+s+aIv+S6px8DBTtodHRwOi8vY24ud293dTg4LmNvbS9MaXN0aW5nLmFzcHg/cD0xMjkmc3RhdGU9NjYmcz1TSE9XIEFMTB4GVGFyZ2V0BQZfYmxhbmtkZAIBD2QWAgIBDw8WCB8CBRLpmL/lvrfojrHlvrflhazlr5MfCAUYR28gdG8g6Zi/5b636I6x5b635YWs5a+THwMFRGh0dHA6Ly9jbi53b3d1ODguY29tL0xpc3RpbmcuYXNweD9wPTEyOSZzdGF0ZT02NiZzPXNob3clMjBhbGwmdHlwZT0zHwkFBl9ibGFua2RkAgIPZBYCAgEPDxYIHwIFDOWNl+a+s+Wcn+WcsB8IBRJHbyB0byDljZfmvrPlnJ/lnLAfAwVEaHR0cDovL2NuLndvd3U4OC5jb20vTGlzdGluZy5hc3B4P3A9MTI5JnN0YXRlPTY2JnM9c2hvdyUyMGFsbCZ0eXBlPTcfCQUGX2JsYW5rZGQCAw9kFgICAQ8PFgYfAgUG55m75YWlHwgFDEdvIHRvIOeZu+WFpR8DBSovMjBjNzNlZDMtZDk0NC00NzBiLWI0ZjMtYWViOWM5N2Y0Mjc3LmFzcHhkZAIED2QWAgIBDw8WBh8CBQzogZTnu5zmiJHku6wfCAUSR28gdG8g6IGU57uc5oiR5LusHwMFKi9hZTIwOTNiZi02NzY1LTRiOWMtYWI5Zi1iMTVhNTVjOWNjODQuYXNweGRkAgsPDxYCHwVoZGQYAwUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgMFEGN0bDAwJGNibEFyZWFzJDAFEGN0bDAwJGNiQnJhbmROZXcFFWN0bDAwJGxiUHJvcGVydHlUeXBlcwUbY3RsMDAkbHZSZWNvbW1lbmRQcm9wZXJ0aWVzD2dkBRljdGwwMCRsdlByZW1pZXJQcm9wZXJ0aWVzD2dkBvHcIvlWWpLT1wBQqLWfJ4/4d4E=" />
+</div>
+
+
+<script src="/ScriptResource.axd?d=Ly6zS8dDvQayUteHNS6RFiL6lRhGBaBt2FRahkjJjK1HHzPZqIjrRIf_sg-bM7-Q45NlmSsKruwrhriGr5WQfNrz7NcQds36KAdHrQI-FgnLh4N8IDxvj8Tf2lEJVIuOzLyQNNc6U3FKsoYaCvx8iVk0ERUXOPyh9T0IMvZPYxaMccpp0&amp;t=2e2045e2" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side framework failed to load.');
+//]]>
+</script>
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="CA0B0334" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWTQLc89m4AQKUqazYAQKU/vOqAgLl97ftDQLTgN7ECQKynKXRBQKV07eMCwKUju3/DgLU9ufAAQLV9ufAAQLW9ufAAQLX9ufAAQLQ9ufAAQLR9ufAAQLS9ufAAQLD9ufAAQLjhc/uDALolufxBwLskafOBwLskZv3BwLNlqfOBwLNlpv3BwKulqfOBwKulpv3BwKPl6fOBwKPl5v3BwLolqfOBwLolpv3BwLJl6fOBwLJl5v3BwKql6fOBwKql5v3BwK7kJv3BwKUkKfOBwKUkJv3BwLOrY/KBgK3r7PsAQLOrePzBgK3r6cVAq+ij8oGAq+i4/MGAoiij8oGAumij8oGAsqij8oGAs6tz1ICi/KqRgKA4YLZCwKE5sLmCwKE5v7fCwKl4cLmCwKl4f7fCwLG4cLmCwLG4f7fCwLn4MLmCwLn4P7fCwKA4cLmCwKA4f7fCwKh4MLmCwKh4P7fCwLC4MLmCwLC4P7fCwLT5/7fCwL858LmCwL85/7fCwKm2uriCgLf2NbEDQKm2obbCgLf2MK9DALH1eriCgLH1YbbCgLg1eriCgKB1eriCgKi1eriCgKm2qr6DAL024TWDQLS09ydCwLQwK7BBxgETGygMh4sJiAKm4ywEuyXzD6i" />
+</div>
+    
+         <div id="ctl00_uid">
+	
+                 
+</div>
+    <div class="container container_12">
+	    <!-- Header -->
+	    <div class="grid_12">
+		    <!-- Logo container -->
+		    <div id="logo"></div>
+    		
+		    <!-- Aside menu -->
+		    <div id="topmenu" class="tr">
+		         <input type="button" name="ctl00$langSites$hplChinese" value="中文网" onclick="javascript:__doPostBack('ctl00$langSites$hplChinese','')" id="ctl00_langSites_hplChinese" class="btn" />
+    <span>&nbsp; | &nbsp;</span>
+<input type="button" name="ctl00$langSites$hplEnglish" value="English" onclick="javascript:__doPostBack('ctl00$langSites$hplEnglish','')" id="ctl00_langSites_hplEnglish" class="btn_n" />
+		    </div><br />
+		    <!-- End of Aside menu -->
+    		
+		    <!-- Main navigation -->  
+		    <input type="submit" name="ctl00$Button1" value="Button" id="ctl00_Button1" AutoPostBack="false" style="display:none" />
+		    <div id="navigation" class="radius">
+			   
+<ul id="nav">
+    <li id="nav-home"><a id="ctl00_mainNav_hplHome" title="Residential" class="current_page_item" href="http://cn.wowu88.com/">住宅地产</a></li>
+    <li id="nav-commercial" class=""><a id="ctl00_mainNav_hplCommercial" title="Commercial" href="http://cn.wowu88.com/commercial.aspx">商业地产</a></li>
+    <li id="nav-rent" class=""><a id="ctl00_mainNav_hplRent" title="Rent" href="http://cn.wowu88.com/rent.aspx">房屋租赁</a></li>
+</ul>
+
+ 
+		    </div>
+		    <!-- End of Main navigation -->
+    		
+	    </div>
+	    <!-- End of Header -->
+    	
+    	 <div id="ctl00_udpMap">
+	 
+	    <!-- Top destinations -->
+	    <div class='grid_4'>
+		    <div class="box radius fixheight">
+			    <div class="padded">
+				    <h2 class="headline radius"><span id="ctl00_lbChooseState"><b>选择</b>州属</span></h2>
+				    <div id="top-destination-panel" class="radius">
+    				            <img id="ctl00_imgMap" class="map" src="/images/australia-map-cn.png" usemap="#ImageMapctl00_imgMap" style="border-width:0px;" /><map name="ImageMapctl00_imgMap" id="ImageMapctl00_imgMap">
+		<area shape="poly" coords="98,98 170,96 169,182 100,138 " href="javascript:__doPostBack('ctl00$imgMap','0')" title="South Australia" alt="South Australia" />
+	</map>
+                                
+                                
+                                <input type="hidden" name="ctl00$hdState" id="ctl00_hdState" /><br />
+                                
+                                
+                            
+                                  <div id="tabs">
+	                                <ul>
+		                                <li><a href="#tabs-1" id="aBySuburbs"><span id="ctl00_lbBySuburbs">郊区搜索</span></a></li>
+		                                <li><a href="#tabs-2" id="aByAreas"><span id="ctl00_lbByAreas">区域搜索</span></a></li>
+	                                </ul>
+	                                <div id="tabs-1">
+                    	                     
+                                             
+    				                         
+	                                </div>
+	                                <div id="tabs-2" class="areastab">
+	                                     
+                                         
+	                                </div>
+	                              </div> 
+                               
+                        <div class="clear">&nbsp;</div>
+				    </div>
+			    </div>
+		    </div>
+	    </div>
+	    <!-- End of Top destinations -->
+
+	    <!-- Search form -->
+	    <div class='grid_4'>
+		    <div class="box radius fixheight page-content-container-overfollow-visible">
+			    <div class="padded page-content-container">
+				    <h2 class="headline radius"><span id="ctl00_lbSearchProperties">搜索房产</span></h2>
+    				    
+    				    
+					    <fieldset class="radius">
+					         <p><i><span id="ctl00_lbSearchGuide">请点击左边地图上的任何一州</span></i></p>
+						    
+						     <p>
+							   <span id="ctl00_lbState"><b>选择</b>州属</span> <br />
+							        <select name="ctl00$ddlStates" id="ctl00_ddlStates" class="listing-states single-dropdown">
+
+	</select>
+						    </p>
+						    
+						    <p><span id="ctl00_lbEnterSuburbs">请输入郊区名称</span>
+                            <!-- New code @ FaceOZ  -->
+							    <div class='inputboxgroup autoheight' id='searchArea' >
+	   	 								<div class='inputTextdiv wrap' style='width:270px;'>
+                                            <textarea name="ctl00$txbSuburb" rows="2" cols="20" id="ctl00_txbSuburb" class="searchInput" autocomplete="off" code="hello" style="border-style:None;"></textarea>
+	   	 								</div>
+	   	 						</div>
+							<!-- End Of New Code -->
+							    
+							    
+						        <p>
+                                </p>
+                                <p>
+                                    <span class="longcheckbox"><input id="ctl00_cbBrandNew" type="checkbox" name="ctl00$cbBrandNew" /><label for="ctl00_cbBrandNew">搜索新房</label></span>
+                                </p>
+                                <p class="fl">
+                                    <span id="ctl00_lbPropertyType">房产类别</span>
+                                    <br />
+                                    <select size="4" name="ctl00$lbPropertyTypes" multiple="multiple" id="ctl00_lbPropertyTypes" class="listing-property-types" style="width:115px;">
+
+	</select>
+                                </p>
+                                <p class="fr">
+                                    <span id="ctl00_lbBedrooms">房间数量</span>
+                                    <br />
+                                    <select name="ctl00$ddlNoOfBedrooms" id="ctl00_ddlNoOfBedrooms" class="listing-noofbedrooms single-dropdown" style="width:115px;">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+
+	</select>
+                                </p>
+                                <div class="clear">
+                                </div>
+                                <p class="fl">
+                                    <span id="ctl00_lbMinPrice">价格下限</span>
+                                    <br />
+                                    <select name="ctl00$ddlMinPrice" id="ctl00_ddlMinPrice" class="listing-min-price single-dropdown" style="width:115px;">
+		<option value="">无限</option>
+		<option value="50000">50,000</option>
+		<option value="100000">100,000</option>
+		<option value="150000">150,000</option>
+		<option value="200000">200,000</option>
+		<option value="250000">250,000</option>
+		<option value="300000">300,000</option>
+		<option value="350000">350,000</option>
+		<option value="400000">400,000</option>
+		<option value="450000">450,000</option>
+		<option value="500000">500,000</option>
+		<option value="550000">550,000</option>
+		<option value="600000">600,000</option>
+		<option value="650000">650,000</option>
+		<option value="700000">700,000</option>
+		<option value="750000">750,000</option>
+		<option value="850000">850,000</option>
+		<option value="900000">900,000</option>
+		<option value="950000">950,000</option>
+		<option value="1000000">1,000,000</option>
+		<option value="1250000">1,250,000</option>
+		<option value="1500000">1,500,000</option>
+		<option value="1750000">1,750,000</option>
+		<option value="2000000">2,000,000</option>
+		<option value="2500000">2,500,000</option>
+		<option value="3000000">3,000,000</option>
+		<option value="4000000">4,000,000</option>
+		<option value="5000000">5,000,000</option>
+		<option value="10000000">10,000,000</option>
+
+	</select>
+                                </p>
+                                <p class="fr">
+                                    <span id="ctl00_lbMaxPrice">价格上限</span>
+                                    <br />
+                                    <select name="ctl00$ddlMaxPrice" id="ctl00_ddlMaxPrice" class="listing-max-price single-dropdown" style="width:115px;">
+		<option value="">无限</option>
+		<option value="50000">50,000</option>
+		<option value="100000">100,000</option>
+		<option value="150000">150,000</option>
+		<option value="200000">200,000</option>
+		<option value="250000">250,000</option>
+		<option value="300000">300,000</option>
+		<option value="350000">350,000</option>
+		<option value="400000">400,000</option>
+		<option value="450000">450,000</option>
+		<option value="500000">500,000</option>
+		<option value="550000">550,000</option>
+		<option value="600000">600,000</option>
+		<option value="650000">650,000</option>
+		<option value="700000">700,000</option>
+		<option value="750000">750,000</option>
+		<option value="850000">850,000</option>
+		<option value="900000">900,000</option>
+		<option value="950000">950,000</option>
+		<option value="1000000">1,000,000</option>
+		<option value="1250000">1,250,000</option>
+		<option value="1500000">1,500,000</option>
+		<option value="1750000">1,750,000</option>
+		<option value="2000000">2,000,000</option>
+		<option value="2500000">2,500,000</option>
+		<option value="3000000">3,000,000</option>
+		<option value="4000000">4,000,000</option>
+		<option value="5000000">5,000,000</option>
+		<option value="10000000">10,000,000</option>
+
+	</select>
+                                </p>
+                                <div class="clear">
+                                </div> 
+           
+                      
+                 <p> <span id="ctl00_Label1">房产编号搜索:</span>  <br/>
+                            <input name="ctl00$txbPropertyID" type="text" id="ctl00_txbPropertyID" class="long" /><br/> 
+                                  </p>   
+
+                                    <p>
+                                </p>
+                                <p>
+                                    <input type="submit" name="ctl00$btnSubmit" value="搜索 " onclick="clientClick();WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$btnSubmit&quot;, &quot;&quot;, true, &quot;1&quot;, &quot;&quot;, false, false))" id="ctl00_btnSubmit" class="btn btn-custom radius fr" />
+                                    <div id="ctl00_udpProgress" style="display:none;">
+		
+                                            <span class="search-loading-image">
+                                            <img src="Images/ajax-loader.gif" alt="loading..." />
+                                            </span>
+                                        
+	</div>  
+                                      &nbsp;
+                                    <input type="hidden" name="ctl00$HiddenField1" id="ctl00_HiddenField1" />
+                                    <p>
+                                    </p>
+                               
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                    <p>
+                                    </p>
+                                </p>
+                                   
+                                    </p>
+						    
+					    </fieldset>
+    			
+			    </div>
+		    </div>
+	    </div>
+	    <!-- End of Search form -->
+	    
+	    
+</div>
+    	
+	    <!-- Carousel -->
+	    <div class='grid_4'>
+		    <div class="carousel test">
+			    <a class="previous" href="#">&lt;</a>
+			    
+			    <a class="next" href="#">&gt;</a>
+		    </div>
+            
+           <div style=" text-align:center"> <a id="ctl00_platinumProperties" href="Listing.aspx?p=129&amp;state=66&amp;platinumProperties=platinumProperties">白金房产 列表</a> </div>
+	    </div>
+	    <!-- End of Carousel -->
+    	
+        
+    	
+	    <div class="grid_12">&nbsp;</div>
+        <div id="ctl00_upFeaturedProperties">
+	
+            <div id="ctl00_upLoading" style="display:none;">
+		
+                                       <span class="featured-properties-loading"></span>
+                                    
+	</div>
+    	<!-- Premier Properties -->
+        <!--
+        
+        -->
+        <!-- Recommend Properties -->
+        
+
+         
+</div>
+
+	    <!-- Info boxes -->
+	    
+	    <!-- End of Info boxes -->
+
+	    <p>&nbsp;</p>
+	    <div class="clear">&nbsp;</div>
+    	
+    </div>
+
+
+    <!-- Footer -->
+    <div id="footer">
+	    <div class="container_12 padded">
+		    <div>
+			    Copyright &copy; 2011-2016 我屋88.com | 
+       &nbsp;<a id="ctl00_footerNav_rptFooterNav_ctl00_hplLink" title="Go to 南澳房产" href="http://cn.wowu88.com/Listing.aspx?p=129&amp;state=66&amp;s=SHOW ALL" target="_blank">南澳房产</a> &nbsp; | 
+       &nbsp;<a id="ctl00_footerNav_rptFooterNav_ctl01_hplLink" title="Go to 阿德莱德公寓" href="http://cn.wowu88.com/Listing.aspx?p=129&amp;state=66&amp;s=show%20all&amp;type=3" target="_blank">阿德莱德公寓</a> &nbsp; | 
+       &nbsp;<a id="ctl00_footerNav_rptFooterNav_ctl02_hplLink" title="Go to 南澳土地" href="http://cn.wowu88.com/Listing.aspx?p=129&amp;state=66&amp;s=show%20all&amp;type=7" target="_blank">南澳土地</a> &nbsp; | 
+       &nbsp;<a id="ctl00_footerNav_rptFooterNav_ctl03_hplLink" title="Go to 登入" href="/20c73ed3-d944-470b-b4f3-aeb9c97f4277.aspx">登入</a> &nbsp; | 
+       &nbsp;<a id="ctl00_footerNav_rptFooterNav_ctl04_hplLink" title="Go to 联络我们" href="/ae2093bf-6765-4b9c-ab9f-b15a55c9cc84.aspx">联络我们</a> &nbsp; |  
+			    
+		    </div>
+    		
+		    <div class="clear">&nbsp;</div>
+	    </div>
+    </div>
+    <!-- End of Footer -->
+  
+    <!-- Scroll to top link -->
+    <a href="#" id="totop" class="radius" title="back to top"><img src="images/top.png" alt="back to top" /></a>
+    <!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=7009822; 
+var sc_invisible=1; 
+var sc_security="b643d546"; 
+</script>
+<script type="text/javascript"
+src="http://www.statcounter.com/counter/counter_xhtml.js"></script>
+<noscript><div class="statcounter"><a title="weebly
+reliable statistics" href="http://statcounter.com/weebly/"
+class="statcounter"><img class="statcounter"
+src="http://c.statcounter.com/7009822/0/b643d546/1/"
+alt="weebly reliable statistics" /></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-32004679-1']);
+  _gaq.push(['_setDomainName', 'wowu88.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+Sys.Application.initialize();
+//]]>
+</script>
+</form>  
+</body>  
+<script type="text/javascript">
+    function bindcheck() {
+        $("input[type=checkbox]").click(function () {
+            if ($("[name='selectItemctl00$lbPropertyTypes']:checked").length == 0) {
+                $('.listing-property-types span').removeClass('placeholder').html(selectAllTextValue);
+            }
+        });
+        if ($(".select2-search-choice").length == 0) {
+            var listBox = document.getElementById('ctl00_ddlSuburbs');
+            addNewItemToSearchBox(0, listBox.options[0].text);
+            $(".select2-search-choice-close").click(function () {
+                if ($(".select2-search-choice").length == 0) {
+                    $("input[id^=ctl00_cblAreas_]").attr("checked", true);
+                }
+            });
+        }
+        $(".select2-search-choice-close").click(function () {
+            if ($(".select2-search-choice").length == 0) {
+                $("input[id^=ctl00_cblAreas_]").attr("checked", true);
+            }
+        });
+        if ($('.listing-property-types span').html() == "") {
+            $('.listing-property-types span').removeClass('placeholder').html(selectAllTextValue);
+        }
+        $("#ctl00_cblAreas_0").click(function () {
+            if (document.getElementById('ctl00_cblAreas_0').checked == false) {
+                $("input[id^=ctl00_cblAreas_]").attr("checked", false);
+            }
+            else {
+                $("input[id^=ctl00_cblAreas_]").attr("checked", true);
+            }
+        });
+        $("input[id^=ctl00_cblAreas_]").click(function () {
+            if ($("[id^='ctl00_cblAreas_']:checked").length > 0) {
+                $("textarea.searchInput").select2("val", null);
+            }
+            else {
+                var listBox = document.getElementById('ctl00_ddlSuburbs');
+                addNewItemToSearchBox(0, listBox.options[0].text);
+                $(".select2-search-choice-close").click(function () {
+                    if ($(".select2-search-choice").length == 0) {
+                        $("input[id^=ctl00_cblAreas_]").attr("checked", true);
+                    }
+                });
+            }
+            if ($("[id^='ctl00_cblAreas_']:checked").length < 9 && $("[id='ctl00_cblAreas_0']:checked").length == 1)
+            { $("input[id=ctl00_cblAreas_0]").attr("checked", false); }
+            if ($("[id^='ctl00_cblAreas_']:checked").length == 8 && $("[id='ctl00_cblAreas_0']:checked").length == 0)
+            { $("input[id=ctl00_cblAreas_0]").attr("checked", true); }
+        });
+        if ($("[id^='ctl00_cblAreas_']:checked").length > 0) {
+            $("textarea.searchInput").select2("val", null);
+        }
+
+        $("#aBySuburbs").click(function () {
+            $("#s2id_autogen1").attr("disabled", false);
+            if ($(".select2-search-choice").length == 0) {
+                var listBox = document.getElementById('ctl00_ddlSuburbs');
+                addNewItemToSearchBox(0, listBox.options[0].text);
+                $(".select2-search-choice-close").click(function () {
+                    if ($(".select2-search-choice").length == 0) {
+                        $("input[id^=ctl00_cblAreas_]").attr("checked", true);
+                    }
+                });
+            }
+            $("input[id^=ctl00_cblAreas_]").attr("checked", false);
+        });
+        $("#aByAreas").click(function () {
+            $("#s2id_autogen1").attr("disabled", true);
+            if ($("[id^='ctl00_cblAreas_']:checked").length == 0) {
+                $("input[id^=ctl00_cblAreas_]").attr("checked", true);
+            }
+            $("textarea.searchInput").select2("val", null);
+        });
+
+        $("input[name='selectItemctl00$ddlMinPrice']").change(function () {
+            var selval = $("input[name='selectItemctl00$ddlMinPrice']:checked").val(); 
+            if (selval != "") {
+                $("input[name='selectItemctl00$ddlMaxPrice']").each(function () {
+                    var maxval = $(this).val();
+                    if (maxval != "" && parseInt(maxval) < parseInt(selval)) {
+                        $(this).attr("disabled", true);
+                        $(this).parent().css("color", "lightgray");
+                    }
+                    else {
+                        $(this).attr("disabled", false);
+                        $(this).parent().css("color", "");
+                    }
+                })
+            }
+            else {
+                $("input[name='selectItemctl00$ddlMaxPrice']").attr("disabled", false);
+                $("input[name='selectItemctl00$ddlMaxPrice']").parent().parent().css("background-color", "");
+            }
+        });
+        $("input[name='selectItemctl00$ddlMaxPrice']").change(function () {
+            var selval = $("input[name='selectItemctl00$ddlMaxPrice']:checked").val(); 
+            if (selval != "") {
+                $("input[name='selectItemctl00$ddlMinPrice']").each(function () {
+                    var minval = $(this).val();
+                    if (minval != "" && parseInt(minval) > parseInt(selval)) {
+                        $(this).attr("disabled", true);
+                        $(this).parent().css("color", "lightgray");
+                    }
+                    else {
+                        $(this).attr("disabled", false);
+                        $(this).parent().css("color", "");
+                    }
+                })
+            }
+            else {
+                $("input[name='selectItemctl00$ddlMinPrice']").attr("disabled", false);
+                $("input[name='selectItemctl00$ddlMinPrice']").parent().parent().css("background-color", "");
+            }
+        });
+        if ($("input[name='selectItemctl00$ddlMaxPrice']:checked").val() != "") {
+            var selval = $("input[name='selectItemctl00$ddlMaxPrice']:checked").val();
+            $("input[name='selectItemctl00$ddlMinPrice']").each(function () {
+                var minval = $(this).val(); 
+                if (minval != "" && parseInt(minval) > parseInt(selval)) {
+                    $(this).attr("disabled", true);
+                    $(this).parent().css("color", "lightgray");
+                }
+                else {
+                    $(this).attr("disabled", false);
+                    $(this).parent().css("color", "");
+                }
+            })
+        }
+        if ($("input[name='selectItemctl00$ddlMinPrice']:checked").val() != "") {
+            var selval = $("input[name='selectItemctl00$ddlMinPrice']:checked").val();
+            $("input[name='selectItemctl00$ddlMaxPrice']").each(function () {
+                var maxval = $(this).val();
+                if (maxval != "" && parseInt(maxval) < parseInt(selval)) {
+                    $(this).attr("disabled", true);
+                    $(this).parent().css("color", "lightgray");
+                }
+                else {
+                    $(this).attr("disabled", false);
+                    $(this).parent().css("color", "");
+                }
+            })
+        }
+
+        $("input[name='selectItemctl00$ddlStates']").each(function () {
+         
+            if ( !$(this).parent().parent().hasClass("selected")) {
+                $(this).attr("disabled", true);
+                $(this).parent().css("color", "lightgray");
+            }
+            else {
+                $(this).attr("disabled", false);
+                $(this).parent().css("color", "");
+            }
+        })
+    }
+       $("#ctl00_Button1").click();
+       
+</script> 
+</html>  

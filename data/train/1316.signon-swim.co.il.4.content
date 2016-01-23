@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="he" ng-app="signonApp"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="he" ng-app="signonApp"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="he" ng-app="signonApp"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="he" ng-app="signonApp"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-language" content="he" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="keywords" content="{{pageInfo.keywords}}">
+        <meta name="description" content="{{pageInfo.description}}">
+        <title>{{pageInfo.title}}</title>
+
+        <!-- Bootstrap core CSS -->
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="//cdn.rawgit.com/morteza/bootstrap-rtl/master/dist/cdnjs/3.3.1-rc2/css/bootstrap-rtl.min.css">
+		<!-- Full calendar styles -->
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.6/fullcalendar.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body ng-controller="AppCtrl" ng-attr-id="{{page}}"  ng-class="pageInfo.style">
+        <div ng-include="'partials/header.html'"></div>
+        <section class="main-view animate container" ng-view></section>
+        <section ng-include="'partials/buttons.html'" class="main-buttons container"></section>
+        <section ng-include="'partials/footer.html'" class="footer"></section>
+<!--        <section ng-include="'partials/cms.html'"></section>-->
+		 
+        <!-- Jquery
+        ================================================== -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+
+        <!-- Angular 
+        ================================================== -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.9/angular.js"></script>
+        <script src="js/angular-route.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.9/angular-animate.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.0/ui-bootstrap-tpls.js"></script>
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+        <script src="js/app.js"></script>
+
+         <!-- Google map 
+        ================================================== -->  
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&language=iw" ></script>
+        
+        <!-- ui-calendar 
+        ================================================== -->     
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script> 
+        <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.6/fullcalendar.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.6/lang/he.js"></script>
+		<script src="js/calendar.js"></script>
+
+        <!-- fancybox 
+        ================================================== -->  
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.css">  
+        
+        <!-- cms 
+        ================================================== -->  
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/textAngular/1.3.3/dist/textAngular-rangy.min.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/textAngular/1.3.3/dist/textAngular-sanitize.min.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/textAngular/1.3.3/dist/textAngular.min.js'></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/textAngular/1.3.3/src/textAngular.css">
+		<!--[if IE 8]> <script src='js/angular-file-upload-shim.min.js'></script> <![endif]-->
+		<script src='js/angular-file-upload.min.js'></script>
+
+        <!-- Angular services 
+        ================================================== --> 
+        <script src="services/services.js"></script>        
+        <script src="services/cms.js"></script>        
+        
+        <!-- Angular controllers 
+        ================================================== -->
+        <script src="controllers/controllers.js"></script>
+		<script src="controllers/schedule.js"></script>
+        
+        <!-- Angular directives 
+        ================================================== -->
+        <script src="directives/directives.js"></script>
+    </body>
+</html>

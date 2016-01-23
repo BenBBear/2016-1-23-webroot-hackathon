@@ -1,0 +1,952 @@
+﻿
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="keywords" content="Ｆリーグ,Fリーグ,エフリーグ,フットサル,エスポラーダ北海道,ヴォスクオーレ仙台,バルドラール浦安,フウガドールすみだ,府中アスレティックＦＣ,ペスカドーラ町田,湘南ベルマーレ,アグレミーナ浜松,名古屋オーシャンズ,シュライカー大阪,デウソン神戸,バサジィ大分" />
+<meta name="description" content="日本フットサルリーグ（Fリーグ）公式サイト。スケジュール、試合結果、各クラブメンバーリスト、インタビューも掲載。" />
+<title>ゼビオＦリーグ公式サイト</title>
+<link href="/share/css/import.css" rel="stylesheet" type="text/css" />
+<link href="/css/index.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="/css/jquery.mCustomScrollbar.css" type="text/css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script src="https://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript" src="/share/js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="/share/js/jquery.hoverIntent.minified.js"></script>
+<script type="text/javascript" src="/share/js/jquery.naviDropDown.js"></script>
+<script type="text/javascript" src="/share/js/library.js"></script>
+<script type="text/javascript" src="/js/style.js"></script>
+<script type="text/javascript" src="/js/rss.js"></script>
+<script type="text/javascript" src="/js/jquery.mousewheel.min.js"></script>
+<script type="text/javascript" src="/report/js/report.js"></script>
+
+<!-- -------------------------- favicon -------------------------- -->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="57x57" href="/share/img/favicon/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/share/img/favicon/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/share/img/favicon/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/share/img/favicon/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/share/img/favicon/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/share/img/favicon/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/share/img/favicon/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/share/img/favicon/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/share/img/favicon/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/share/img/favicon/favicon-194x194.png" sizes="194x194">
+<link rel="icon" type="image/png" href="/share/img/favicon/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/share/img/favicon/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/share/img/favicon/favicon-32x32.png" sizes="32x32">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/share/img/favicon/mstile-144x144.png">
+<!-- -------------------------- //favicon -------------------------- -->
+
+<script type="text/javascript">
+google.load("feeds", "1");
+var entryNum = 5;
+var maxNum = 5;
+var urls = new Array (
+	"http://www.espolada.com/espolada_news.xml",
+	"http://www.voscuore.co.jp/feed",
+	"http://www.bardral-urayasu.com/news/rss.xml",
+	"http://www.fuga-futsal.com/feed",
+	"http://www.fuchu-athletic.com/feed",
+	"http://rssc.dokoda.jp/r/9de880170fd7fff5a9ebef18a93af5ea/http/www.pescadola-machida.com/",
+	"http://www.bellmare.or.jp/futsal/feed/sbfc_rss.xml",
+	"http://agleymina.jp/feed",
+	"http://www.nagoyaoceans.com/feed",
+	"http://shriker.osaka.jp/new/feed/",
+	"http://www.deucao-kobe.com/category/news/feed/",
+	"http://vasagey.com/info/feed"
+);
+$(function(){
+	getRss("clubFeed", urls, entryNum, maxNum);
+});
+</script>
+
+<script type="text/javascript">
+$(function(){
+	var t = getUrlVars()["t"];
+	if (t == undefined) {
+		t = '';
+	}
+	$.ajax({
+		url: "/modules/php/FlRankingTop.php",
+		cache: false,
+		data: "tid=828",
+		success: function(html){
+			$("#ranking").append(html);
+			$("table").each(function(){
+				jQuery(this).find("tr:last").addClass("last");
+			});
+		}
+	});
+});
+function getUrlVars() {
+	var vars = [], hash;
+	var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+	for(var i = 0; i < hashes.length; i++) {
+		hash = hashes[i].split('=');
+		vars.push(hash[0]);
+		vars[hash[0]] = hash[1];
+	}
+	return vars;
+}
+</script>
+
+<!--[if lte IE 8]>
+	<script type="text/javascript" src="share/js/jquery.backgroundSize.js"></script>
+    <script>
+    jQuery(document).ready(function() {
+        jQuery('body').css({backgroundSize: "contain"});
+    });
+    </script>
+<![endif]-->
+<!--[if IE 6]>
+	<script src="share/js/DD_belatedPNG.js" type="text/javascript"></script>
+	<script>
+		DD_belatedPNG.fix('img');
+	</script>
+<![endif]-->
+
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-24513654-1', 'fleague.jp');
+	ga('send', 'pageview');
+</script>
+
+<script type="text/javascript" src="js/loopedslider.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#loopedSlider').loopedSlider();
+	});
+</script>
+
+</head>
+
+<body>
+<a id="pagetop" name="pagetop"><!----></a>
+
+<!-- -------------------------- header -------------------------- -->
+<div id="header">
+	<h1><a href="/"><img src="/share/img/logo_new.png" alt="ゼビオＦリーグ公式サイト" /></a></h1>
+	<div id="headerRight">
+		<ul id="headerNavi">
+			<!-- <li><a href="http://f-lg.jp/mobile/ " target="_blank">MOBILE</a></li> -->
+			<li><a href="/news/">ニュース</a></li>
+			<li><a href="/score/score.html">試合情報</a></li>
+			<li><a href="/arena/">アリーナ情報</a></li>
+			<li><img src="/share/img/header_txt_navi.gif" width="62" height="18" alt="F.League Navi" /></li>
+		</ul>
+		<ul id="clubLogo">
+			<li><a href="/club/oita/"><img src="/share/img/logo_vasagey.png" width="33" height="34" title="バサジィ大分" /></a></li>
+			<li><a href="/club/kobe/"><img src="/share/img/logo_deucao.png" width="33" height="34" title="デウソン神戸" /></a></li>
+			<li><a href="/club/osaka/"><img src="/share/img/logo_shriker.png" width="33" height="34" title="シュライカー大阪" /></a></li>
+			<li><a href="/club/nagoya/"><img src="/share/img/logo_nagoyaoceans.png" width="33" height="34" title="名古屋オーシャンズ" /></a></li>
+			<li><a href="/club/hamamatsu/"><img src="/share/img/logo_agleymina.png" width="33" height="34" title="アグレミーナ浜松" /></a></li>
+			<li><a href="/club/shonan/"><img src="/share/img/logo_bellmare.png" width="33" height="34" title="湘南ベルマーレ" /></a></li>
+			<li><a href="/club/machida/"><img src="/share/img/logo_pescadola.png" width="33" height="34" title="ペスカドーラ町田" /></a></li>
+			<li><a href="/club/fuchu/"><img src="/share/img/logo_athletic.png" width="33" height="34" title="府中アスレティックＦＣ" /></a></li>
+			<li><a href="/club/sumida/"><img src="/share/img/logo_fuga.png" width="33" height="34" title="フウガドールすみだ" /></a></li>
+			<li><a href="/club/urayasu/"><img src="/share/img/logo_bardral.png" width="33" height="34" title="バルドラール浦安" /></a></li>
+			<li><a href="/club/sendai/"><img src="/share/img/logo_voscuore.png" width="33" height="34" title="ヴォスクオーレ仙台" /></a></li>
+			<li><a href="/club/hokkaido/"><img src="/share/img/logo_espolada.png" width="33" height="34" title="エスポラーダ北海道" /></a></li>
+		</ul>
+	</div>
+</div>
+<!-- -------------------------- //header -------------------------- -->
+
+<!-- -------------------------- matchResult -------------------------- -->
+<!-- OCEAN CUP -->
+<div id="OCEANCUP">
+	<p id="LeftBtn"><img src="/share/img/btn_next.png" width="17" height="33" alt="Next" /></p>
+	<p id="RightBtn"><img src="/share/img/btn_prev.png" width="17" height="33" alt="Prev" /></p>
+	<div id="carousel_OCEAN">
+		<div id="carouselInner_OCEAN">
+			<div class="OCEAN_Score">
+				<dl>
+					<dt>Playoff 1st-R<br>01.05 tue 17:00</dt>
+					<dd>
+						<table>
+						<tbody>
+							<tr>
+								<th class="l_logo"><a href="/club/sumida/"><img src="/share/img/logo_fuga.png" title="FUGADOR SUMIDA"></a></th>
+								<td class="vs">
+									<!-- �t�E�K�h�[�����݂��@�����@�V�����C�J�[��� -->
+									<a href="/playoff/score01_1R.html?gid=26649">2 - 5</a>
+									<!-- <img src="/share/img/header_txt_vs.gif" width="10" height="11" alt="VS" /> -->
+								</td>
+								<th class="r_logo"><a href="/club/osaka/"><img src="/share/img/logo_shriker.png" title="SHRIKER OSAKA"></a></th>
+							</tr>
+						</tbody>
+						</table>
+					</dd>
+				</dl>
+				<dl>
+					<dt>Playoff 1st-R<br>01.05 tue 19:30</dt>
+					<dd>
+						<table>
+						<tbody>
+							<tr>
+								<th class="l_logo"><a href="/club/machida/"><img src="/share/img/logo_pescadola.png" title="PESCADOLA MACHIDA"></a></th>
+								<td class="vs">
+									<!-- �y�X�J�h�[�����c�@�����@�{���A�X���e�B�b�N�e�b -->
+									<a href="/playoff/score01_1R.html?gid=26650">2 - 5</a>
+									<!-- <img src="/share/img/header_txt_vs.gif" width="10" height="11" alt="VS" /> -->
+								</td>
+								<th class="r_logo"><a href="/club/fuchu/"><img src="/share/img/logo_athletic.png" title="FUCHU ATHLETIC F.C."></a></th>
+							</tr>
+						</tbody>
+						</table>
+					</dd>
+				</dl>
+				<dl>
+					<dt>Playoff 4/5th-Place<br>01.06 wed 17:00</dt>
+					<dd>
+						<table>
+						<tbody>
+							<tr>
+								<th class="l_logo"><a href="/club/machida/"><img src="/share/img/logo_pescadola.png" title="PESCADOLA MACHIDA"></a></th>
+								<td class="vs">
+									<!-- �@�����@ -->
+									<a href="/playoff/score01_4-5th.html?gid=26651">3 - 4</a>
+									<!-- <img src="/share/img/header_txt_vs.gif" width="10" height="11" alt="VS" /> -->
+								</td>
+								<th class="r_logo"><a href="/club/sumida/"><img src="/share/img/logo_fuga.png" title="FUGADOR SUMIDA"></a></th>
+							</tr>
+						</tbody>
+						</table>
+					</dd>
+				</dl>
+				<dl>
+					<dt>Playoff 2nd-R<br>01.06 wed 19:30</dt>
+					<dd>
+						<table>
+						<tbody>
+							<tr>
+								<th class="l_logo"><a href="/club/osaka/"><img src="/share/img/logo_shriker.png" title="SHRIKER OSAKA"></a></th>
+								<td class="vs">
+									<!-- �@�����@ -->
+									<a href="/playoff/score01_2R.html?gid=26652">3 - 4</a>
+									<!-- <img src="/share/img/header_txt_vs.gif" width="10" height="11" alt="VS" /> -->
+								</td>
+								<th class="r_logo"><a href="/club/fuchu/"><img src="/share/img/logo_athletic.png" title="FUCHU ATHLETIC F.C."></a></th>
+							</tr>
+						</tbody>
+						</table>
+					</dd>
+				</dl>
+				<dl>
+					<dt>Playoff Final-R<br>01.09 sat 14:00</dt>
+					<dd>
+						<table>
+						<tbody>
+							<tr>
+								<th class="l_logo"><a href="/club/nagoya/"><img src="/share/img/logo_nagoyaoceans.png" title="NAGOYA OCEANS"></a></th>
+								<td class="vs">
+									<!-- ���É��I�[�V�����Y�@�����@ -->
+									<a href="/playoff/score01_Final.html?gid=26653">6 - 3</a>
+									<!-- <img src="/share/img/header_txt_vs.gif" width="10" height="11" alt="VS" /> -->
+								</td>
+								<th class="r_logo"><a href="/club/fuchu/"><img src="/share/img/logo_athletic.png" title="FUCHU ATHLETIC F.C."></a></th>
+							</tr>
+						</tbody>
+						</table>
+					</dd>
+				</dl>
+			</div>
+			<div class="OCEAN_Score">
+				<dl>
+					<dt>Playoff 1st-R<br>01.05 tue 17:00</dt>
+					<dd>
+						<table>
+						<tbody>
+							<tr>
+								<th class="l_logo"><a href="/club/sumida/"><img src="/share/img/logo_fuga.png" title="FUGADOR SUMIDA"></a></th>
+								<td class="vs">
+									<!-- �t�E�K�h�[�����݂��@�����@�V�����C�J�[��� -->
+									<a href="/playoff/score01_1R.html?gid=26649">2 - 5</a>
+									<!-- <img src="/share/img/header_txt_vs.gif" width="10" height="11" alt="VS" /> -->
+								</td>
+								<th class="r_logo"><a href="/club/osaka/"><img src="/share/img/logo_shriker.png" title="SHRIKER OSAKA"></a></th>
+							</tr>
+						</tbody>
+						</table>
+					</dd>
+				</dl>
+				<dl>
+					<dt>Playoff 1st-R<br>01.05 tue 19:30</dt>
+					<dd>
+						<table>
+						<tbody>
+							<tr>
+								<th class="l_logo"><a href="/club/machida/"><img src="/share/img/logo_pescadola.png" title="PESCADOLA MACHIDA"></a></th>
+								<td class="vs">
+									<!-- �y�X�J�h�[�����c�@�����@�{���A�X���e�B�b�N�e�b -->
+									<a href="/playoff/score01_1R.html?gid=26650">2 - 5</a>
+									<!-- <img src="/share/img/header_txt_vs.gif" width="10" height="11" alt="VS" /> -->
+								</td>
+								<th class="r_logo"><a href="/club/fuchu/"><img src="/share/img/logo_athletic.png" title="FUCHU ATHLETIC F.C."></a></th>
+							</tr>
+						</tbody>
+						</table>
+					</dd>
+				</dl>
+				<dl>
+					<dt>Playoff 4/5th-Place<br>01.06 wed 17:00</dt>
+					<dd>
+						<table>
+						<tbody>
+							<tr>
+								<th class="l_logo"><a href="/club/machida/"><img src="/share/img/logo_pescadola.png" title="PESCADOLA MACHIDA"></a></th>
+								<td class="vs">
+									<!-- �@�����@ -->
+									<a href="/playoff/score01_4-5th.html?gid=26651">3 - 4</a>
+									<!-- <img src="/share/img/header_txt_vs.gif" width="10" height="11" alt="VS" /> -->
+								</td>
+								<th class="r_logo"><a href="/club/sumida/"><img src="/share/img/logo_fuga.png" title="FUGADOR SUMIDA"></a></th>
+							</tr>
+						</tbody>
+						</table>
+					</dd>
+				</dl>
+				<dl>
+					<dt>Playoff 2nd-R<br>01.06 wed 19:30</dt>
+					<dd>
+						<table>
+						<tbody>
+							<tr>
+								<th class="l_logo"><a href="/club/osaka/"><img src="/share/img/logo_shriker.png" title="SHRIKER OSAKA"></a></th>
+								<td class="vs">
+									<!-- �@�����@ -->
+									<a href="/playoff/score01_2R.html?gid=26652">3 - 4</a>
+									<!-- <img src="/share/img/header_txt_vs.gif" width="10" height="11" alt="VS" /> -->
+								</td>
+								<th class="r_logo"><a href="/club/fuchu/"><img src="/share/img/logo_athletic.png" title="FUCHU ATHLETIC F.C."></a></th>
+							</tr>
+						</tbody>
+						</table>
+					</dd>
+				</dl>
+				<dl>
+					<dt>Playoff Final-R<br>01.09 sat 14:00</dt>
+					<dd>
+						<table>
+						<tbody>
+							<tr>
+								<th class="l_logo"><a href="/club/nagoya/"><img src="/share/img/logo_nagoyaoceans.png" title="NAGOYA OCEANS"></a></th>
+								<td class="vs">
+									<!-- ���É��I�[�V�����Y�@�����@ -->
+									<a href="/playoff/score01_Final.html?gid=26653">6 - 3</a>
+									<!-- <img src="/share/img/header_txt_vs.gif" width="10" height="11" alt="VS" /> -->
+								</td>
+								<th class="r_logo"><a href="/club/fuchu/"><img src="/share/img/logo_athletic.png" title="FUCHU ATHLETIC F.C."></a></th>
+							</tr>
+						</tbody>
+						</table>
+					</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+</div><!-- /OCEAN CUP-->
+
+<!-- <div id="matchResult">
+	<p id="LeftBtn"><img src="/share/img/btn_next.png" width="17" height="33" alt="Next" /></p>
+	<p id="RightBtn"><img src="/share/img/btn_prev.png" width="17" height="33" alt="Prev" /></p>
+	<div id="carousel">
+		<div id="carouselInner2">
+			<div class="ScoreBox" style="height:97px"></div>
+			<div class="ScoreBox" style="height:97px"></div>
+			<div class="ScoreBox" style="height:97px"></div>
+		</div>
+	</div>
+</div> -->
+<!-- -------------------------- //matchResult -------------------------- -->
+
+<!-- -------------------------- nav -------------------------- -->
+<div id="nav">
+	<ul>
+		<li id="naviNews"><a href="#">ニュース<br /><span>News</span></a>
+			<div class="sub">
+				<ul>
+					<li><h2><a>ニュース　<span class="en">News</span></a></h2></li>
+					<li><a href="/news/">すべてのニュース　<span class="en">News (all)</span></a></li>
+					<li><a href="/news/?cat=1">ニュース｜リーグ戦　<span class="en">News about League</span></a></li>
+					<li><a href="/news/?cat=2">ニュース｜リーグカップ　<span class="en">News about Tournament</span></a></li>
+					<li><a href="/news/?cat=25">ニュース｜Ｆチャレンジリーグ　<span class="en">News about F Challenge League</span></a></li>
+					<li><a href="/news/?cat=8">ニュース｜U-23選抜　<span class="en">News about U23 Selection</span></a></li>
+					<li><a href="/news/?cat=6">ニュース｜クラブ　<span class="en">News about Club</span></a></li>
+					<li><a href="/news/?cat=4">ニュース｜チケット　<span class="en">News about Ticket</span></a></li>
+					<li><a href="/news/?cat=5">ニュース｜メディア情報　<span class="en">News about Press</span></a></li>
+					<li><a href="/news/?cat=3">ニュース｜フットサル日本代表　<span class="en">News about National Team</span></a></li>
+				</ul>
+				<ul>
+					<li><h2><a>クラブニュース　<span class="en">News from Club</span></a></h2></li>
+					<li><a href="/clubnews/hokkaido/" class="hokkaido">エスポラーダ北海道　<span class="en">ESPOLADA HOKKAIDO</span></a></li>
+					<li><a href="/clubnews/sendai/" class="sendai">ヴォスクオーレ仙台　<span class="en">Voscuore Sendai</span></a></li>
+					<li><a href="/clubnews/urayasu/" class="urayasu">バルドラール浦安　<span class="en">Bardral URAYASU</span></a></li>
+					<li><a href="/clubnews/sumida/" class="sumida">フウガドールすみだ　<span class="en">FUGADOR SUMIDA</span></a></li>
+					<li><a href="/clubnews/fuchu/" class="fuchu">府中アスレティックＦＣ　<span class="en">FUCHU ATHLETIC F.C.</span></a></li>
+					<li><a href="/clubnews/machida/" class="machida">ペスカドーラ町田　<span class="en">PESCADOLA MACHIDA</span></a></li>
+				</ul>
+				<ul class="last">
+					<li><h2>&nbsp;</h2></li>
+					<li><a href="/clubnews/shonan/" class="shonan">湘南ベルマーレ　<span class="en">SHONAN BELLMARE</span></a></li>
+					<li><a href="/clubnews/hamamatsu/" class="hamamatsu">アグレミーナ浜松　<span class="en">AGLEYMINA HAMAMATSU</span></a></li>
+					<li><a href="/clubnews/nagoya/" class="nagoya">名古屋オーシャンズ　<span class="en">NAGOYA OCEANS</span></a></li>
+					<li><a href="/clubnews/osaka/" class="osaka">シュライカー大阪　<span class="en">SHRIKER OSAKA</span></a></li>
+					<li><a href="/clubnews/kobe/" class="kobe">デウソン神戸　<span class="en">DEUÇÃO KOBE</span></a></li>
+					<li><a href="/clubnews/oita/" class="oita">バサジィ大分　<span class="en">VASAGEY OITA</span></a></li>
+				</ul>
+			</div>
+		</li>
+		<li id="naviGame"><a href="#">試合情報<br /><span class="en">Game information</span></a>
+			<div class="sub">
+				<ul>
+					<li><h2><a>SuperSports XEBIO<br />Ｆリーグ2015/2016<br /><span class="en">SuperSports XEBIO F.LEAGUE 2015/2016</span></a></h2></li>
+					<li><a href="/score/score.html">スコア結果　<span class="en">Game Result</span></a></li>
+					<li><a href="/score/teamrank.html">順位表　<span class="en">Standings</span></a></li>
+					<li><a href="/score/matrix.html">戦績表　<span class="en">Table</span></a></li>
+					<li><a href="/score/">試合日程　<span class="en">League Schedule</span></a></li>
+					<li><a href="/score/penalty.html">警告・退場・出場停止選手　<span class="en">Disciplinary</span></a></li>
+					<li><a href="/score/goalrank.html">個人ランキング｜ゴール　<span class="en">Personal Ranking｜Goal</span></a></li>
+					<li><a href="/score/shootrank.html">個人ランキング｜シュート　<span class="en">Personal Ranking｜Shoot</span></a></li>
+					<li><a href="/score/success.html">個人ランキング｜シュート成功率　<span class="en">Personal Ranking｜Goal Rate</span></a></li>
+					<li><a href="/score/2nd-pk.html">個人ランキング｜第2PK　<span class="en">Personal Ranking｜2nd PK</span></a></li>
+				</ul>
+				<ul>
+					<li><h2><a>SuperSports XEBIO<br />Ｆリーグ2015/2016 プレーオフ<br /><span class="en">SuperSports XEBIO F.LEAGUE 2015/2016 Playoff</span></a></h2></li>
+					<li><a href="/playoff/">プレーオフ日程・結果　<span class="en">Playoff Schedule & Result</span></a></li>
+					<li><a href="/league/index.html#playoff">プレーオフ概要　<span class="en">About Playoff</span></a></li>
+					<li><h2><a>&nbsp;<br /><span class="en">&nbsp;</span></a></h2></li>
+					<li><h2><a>SuperSports XEBIO<br />Ｆチャレンジリーグ2015/2016<br /><span class="en">SuperSports XEBIO F CHALLENGE LEAGUE 2015/2016</span></a></h2></li>
+					<li><a href="/associate/">試合日程・結果　<span class="en">Schedule & Result</span></a></li>
+					<li><a href="/associate/outline/">大会概要　<span class="en">About This Tournament</span></a></li>
+				</ul>
+				<ul class="last">
+					<li><h2><a>SFIDA Ｆリーグオーシャンカップ・神戸フェスタ2015 supported by LIFEGUARD<br /><span class="en">F.LEAGUE OCEAN CUP 2015</span></a></h2></li>
+					<li><a href="/leaguecup/">組合せ　<span class="en">Matches</span></a></li>
+					<li><a href="/leaguecup/schedule.html">試合日程・結果　<span class="en">Schedule & Result</span></a></li>
+					<li><a href="/leaguecup/outline/">大会概要　<span class="en">About This Tournament</span></a></li>
+					<li><a href="/leaguecup/arena/">アリーナ情報　<span class="en">Arena Information</span></a></li>
+					<li><a href="/leaguecup/ticket/">チケット情報　<span class="en">Ticket Information</span></a></li>
+					<li><a href="/leaguecup/archive/">過去のオーシャンカップ　<span class="en">Archives</span></a></li>
+				</ul>
+			</div>
+		</li>
+		<li id="naviClubs"><a href="#">クラブ<br /><span class="en">Clubs</span></a>
+			<div class="sub">
+				<ul>
+					<li><h2><a>SuperSports XEBIO Ｆリーグ2015/2016<br /><span class="en">SuperSports XEBIO F.LEAGUE 2015/2016</span></a></h2></li>
+					<li><a href="/club/hokkaido/" class="hokkaido">エスポラーダ北海道　<span class="en">ESPOLADA HOKKAIDO</span></a></li>
+					<li><a href="/club/sendai/" class="sendai">ヴォスクオーレ仙台　<span class="en">Voscuore Sendai</span></a></li>
+					<li><a href="/club/urayasu/" class="urayasu">バルドラール浦安　<span class="en">Bardral URAYASU</span></a></li>
+					<li><a href="/club/sumida/" class="sumida">フウガドールすみだ　<span class="en">FUGADOR SUMIDA</span></a></li>
+					<li><a href="/club/fuchu/" class="fuchu">府中アスレティックＦＣ　<span class="en">FUCHU ATHLETIC F.C.</span></a></li>
+					<li><a href="/club/machida/" class="machida">ペスカドーラ町田　<span class="en">PESCADOLA MACHIDA</span></a></li>
+				</ul>
+				<ul>
+					<li><h2><a>&nbsp;<br /><span class="en">&nbsp;</span></a></h2></li>
+					<li><a href="/club/shonan/" class="shonan">湘南ベルマーレ　<span class="en">SHONAN BELLMARE</span></a></li>
+					<li><a href="/club/hamamatsu/" class="hamamatsu">アグレミーナ浜松　<span class="en">AGLEYMINA HAMAMATSU</span></a></li>
+					<li><a href="/club/nagoya/" class="nagoya">名古屋オーシャンズ　<span class="en">NAGOYA OCEANS</span></a></li>
+					<li><a href="/club/osaka/" class="osaka">シュライカー大阪　<span class="en">SHRIKER OSAKA</span></a></li>
+					<li><a href="/club/kobe/" class="kobe">デウソン神戸　<span class="en">DEUÇÃO KOBE</span></a></li>
+					<li><a href="/club/oita/" class="oita">バサジィ大分　<span class="en">VASAGEY OITA</span></a></li>
+				</ul>
+				<ul class="last">
+					<li><h2><a>SuperSports XEBIO Ｆチャレンジリーグ2015/2016<br /><span class="en">SuperSports XEBIO F CHALLENGE LEAGUE 2015/2016</span></a></h2></li>
+					<li><a href="/club/kashiwa/" class="kashiwa">柏TOR’82　<span class="en">KASHIWA TOR' 82</span></a></li>
+					<li><a href="/club/hakusan/" class="hakusan">ビークス白山　<span class="en">VEEX HAKUSAN</span></a></li>
+					<li><a href="/club/hiroshima/" class="hiroshima">広島エフ・ドゥ　<span class="en">HIROSHIMA F-DO</span></a></li>
+					<li><a href="/club/tokushima/" class="tokushima">徳島ラパス　<span class="en">TOKUSHIMA RAPAZ</span></a></li>
+				</ul>
+			</div>
+		</li>
+		<li id="naviTicket"><a href="#">チケット<br /><span class="en">Tickets Information</span></a>
+			<div class="sub">
+				<ul>
+					<li><h2><a>チケット情報<br /><span class="en">Tickets Information</span></a></h2></li>
+					<li><a href="/ticket/">チケット情報TOP</a></li>
+					<li><a href="/ticket/"><img src="/share/img/bnr_ticketing.jpg" width="210" height="92" alt="チケットインフォメーション" /></a></li>
+					<!-- <li><a href="/ticket/recommend/">おトクなチケット</a></li> -->
+					<!-- <li><a href="/ticket/guide/">Ｆリーグ観戦ガイド</a></li> -->
+				</ul>
+				<ul>
+					<li><h2><a>&nbsp;<br /><span class="en">&nbsp;</span></a></h2></li>
+					<li><a href="/ticket/central/">セントラル開催 チケット情報</a></li>
+					<li><a href="/ticket/central/yoyogi/" class="fleague">代々木セントラル</a></li>
+					<li><a href="/ticket/central/nagoya/" class="fleague">名古屋セントラル</a></li>
+					<li><a href="/ticket/central/odawara/" class="fleague">小田原セントラル</a></li>
+					<li><a href="/ticket/central/machida/" class="fleague">町田セントラル</a></li>
+					<li><a href="/ticket/central/playoff/" class="fleague">プレーオフ 1st/2nd Round</a></li>
+					<li><a href="/ticket/central/playoff-final/" class="fleague">プレーオフ Final Round</a></li>
+				</ul>
+				<ul>
+					<li><h2><a>&nbsp;<br /><span class="en">&nbsp;</span></a></h2></li>
+					<li><a>ホームクラブ開催 チケット情報</a></li>
+					<li><a href="/ticket/home/hokkaido.html" class="hokkaido">北海道　<span class="en">ESPOLADA HOKKAIDO</span></a></li>
+					<li><a href="/ticket/home/sendai.html" class="sendai">仙台　<span class="en">Voscuore Sendai</span></a></li>
+					<li><a href="/ticket/home/urayasu.html" class="urayasu">浦安　<span class="en">Bardral URAYASU</span></a></li>
+					<li><a href="/ticket/home/sumida.html" class="sumida">すみだ　<span class="en">FUGADOR SUMIDA</span></a></li>
+					<li><a href="/ticket/home/fuchu.html" class="fuchu">府中　<span class="en">FUCHU ATHLETIC F.C.</span></a></li>
+					<li><a href="/ticket/home/machida.html" class="machida">町田　<span class="en">PESCADOLA MACHIDA</span></a></li>
+				</ul>
+				<ul class="last">
+					<li><h2><a>&nbsp;<br /><span class="en">&nbsp;</span></a></h2></li>
+					<li><a>&nbsp;</a></li>
+					<li><a href="/ticket/home/shonan.html" class="shonan">湘南　<span class="en">SHONAN BELLMARE</span></a></li>
+					<li><a href="/ticket/home/hamamatsu.html" class="hamamatsu">浜松　<span class="en">AGLEYMINA HAMAMATSU</span></a></li>
+					<li><a href="/ticket/home/nagoya.html" class="nagoya">名古屋　<span class="en">NAGOYA OCEANS</span></a></li>
+					<li><a href="/ticket/home/osaka.html/" class="osaka">大阪　<span class="en">SHRIKER OSAKA</span></a></li>
+					<li><a href="/ticket/home/kobe.html" class="kobe">神戸　<span class="en">DEUÇÃO KOBE</span></a></li>
+					<li><a href="/ticket/home/oita.html" class="oita">大分　<span class="en">VASAGEY OITA</span></a></li>
+				</ul>
+			</div>
+		</li>
+		<li id="naviArena"><a href="#">アリーナ<br /><span class="en">Arena</span></a>
+			<div class="sub">
+				<ul>
+					<li><h2><a>アリーナ一覧　<span class="en">Arenas</span></a></h2></li>
+					<li><a href="/arena/arena.html?aid=280">旭川大雪</a></li>
+					<li><a href="/arena/arena.html?aid=279">釧路</a></li>
+					<li><a href="/arena/arena.html?aid=283">苫小牧</a></li>
+					<li><a href="/arena/arena.html?aid=643">函館</a></li>
+					<li><a href="/arena/arena.html?aid=281">北海きたえーる</a></li>
+					<li><a href="/arena/arena.html?aid=311">塩釜ガス</a></li>
+					<li><a href="/arena/arena.html?aid=588">仙台市青葉体育館</a></li>
+					<li><a href="/arena/arena.html?aid=555">仙台市体育館</a></li>
+				</ul>
+				<ul>
+					<li><h2>&nbsp;</h2></li>
+					<li><a href="/arena/arena.html?aid=505">ゼビオアリーナ</a></li>
+					<li><a href="/arena/arena.html?aid=288">浦安</a></li>
+					<li><a href="/arena/arena.html?aid=268">墨田</a></li>
+					<li><a href="/arena/arena.html?aid=291">府中</a></li>
+					<li><a href="/arena/arena.html?aid=292">町田</a></li>
+					<li><a href="/arena/arena.html?aid=271">代々木第一</a></li>
+					<li><a href="/arena/arena.html?aid=294">小田原</a></li>
+					<li><a href="/arena/arena.html?aid=586">秦野</a></li>
+				</ul>
+				<ul>
+					<li><h2>&nbsp;</h2></li>
+					<li><a href="/arena/arena.html?aid=331">エコパ</a></li>
+					<li><a href="/arena/arena.html?aid=330">浜松</a></li>
+					<li><a href="/arena/arena.html?aid=642">岡崎</a></li>
+					<li><a href="/arena/arena.html?aid=238">オーシャン</a></li>
+					<li><a href="/arena/arena.html?aid=247">サンアリーナ</a></li>
+					<li><a href="/arena/arena.html?aid=175">大阪中体</a></li>
+					<li><a href="/arena/arena.html?aid=296">岸和田</a></li>
+					<li><a href="/arena/arena.html?aid=587">住吉スポーツセンター</a></li>
+				</ul>
+				<ul class="last">
+					<li><h2>&nbsp;</h2></li>
+					<li><a href="/arena/arena.html?aid=543">明石</a></li>
+					<li><a href="/arena/arena.html?aid=185">グリーン神戸</a></li>
+					<li><a href="/arena/arena.html?aid=590">神戸市立中央</a></li>
+					<li><a href="/arena/arena.html?aid=301">大分</a></li>
+					<li><a href="/arena/arena.html?aid=302">ビーコン</a></li>
+					<li><a href="/arena/arena.html?aid=213">べっぷ</a></li>
+					<li><a href="/arena/">アリーナ一覧</a></li>
+				</ul>
+			</div>
+		</li>
+		<li id="naviAbout"><a href="#">リーグ概要<br /><span class="en">About Us</span></a>
+			<div class="sub">
+				<ul>
+					<li><h2><a href="/about/">日本フットサルリーグについて<br/ ><span class="en">About F.LEAGUE</span></a></h2></li>
+					<li><h2><a href="/about/"><img src="/share/img/navi_img06-01.png" width="290" height="149" alt="日本フットサルリーグについて" /></a></h2></li>
+					<li><h2><a>&nbsp;</a></h2></li>
+					<li><h2><a href="/about/column/">Ｆリーグ報道官 加藤未央のコラム<br/ ><span class="en">Column by KATO Mio as the F.LEAGUE Spokeswoman</span></a></h2></li>
+					<li><h2><a href="/about/column/"><img src="/share/img/navi_img06-05.png" width="290" height="149" alt="Ｆリーグ報道官 加藤未央のコラム" /></a></h2></li>
+				</ul>
+				<ul>
+					<li><h2><a href="/league/">ゼビオＦリーグ概要<br/ ><span class="en">League Outline</span></a></h2></li>
+					<li><a href="/league/"><img src="/share/img/navi_img02.png" width="290" height="149" alt="ゼビオＦリーグ概要" /></a></li>
+				</ul>
+				<ul class="last">
+					<li><h2><a href="/league/sponsor.html">スポンサー<br/ ><span class="en">Sponsors</span></a></h2></li>
+					<li><a href="/league/sponsor.html"><img src="/share/img/navi_img04.jpg" width="290" height="149" alt="スポンサー" /></a></li>
+				</ul>
+			</div>
+		</li>
+		<li id="naviRecords"><a href="#">通算試合記録<br /><span>Records</span class="en"></a>
+			<div class="sub">
+				<ul class="results">
+					<li><h2><a>年度別試合結果<br /><span class="en">Game Results by Season</span></a></h2></li>
+					<li><a href="/records/score/2015/">2015 - 2016シーズン</a></li>
+					<li><a href="/records/score/2014/">2014 - 2015シーズン</a></li>
+					<li><a href="/records/score/2013/">2013 - 2014シーズン</a></li>
+					<li><a href="/records/score/2012/">2012 - 2013シーズン</a></li>
+					<li><a href="/records/score/2011/">2011 - 2012シーズン</a></li>
+					<li><a href="/records/score/2010/">2010 - 2011シーズン</a></li>
+					<li><a href="/records/score/2009/">2009 - 2010シーズン</a></li>
+					<li><a href="/records/score/2008/">2008 - 2009シーズン</a></li>
+					<li><a href="/records/score/2007/">2007 - 2008シーズン</a></li>
+				</ul>
+				<ul class="profile">
+					<li><h2><a>所属選手の通算記録<br /><span class="en">Player Profile by Career Statistics</span></a></h2></li>
+					<li><a href="/records/hokkaido/" class="hokkaido">北海道　<span class="en">ESPOLADA HOKKAIDO</span></a></li>
+					<li><a href="/records/sendai/" class="sendai">仙台　<span class="en">Voscuore Sendai</span></a></li>
+					<li><a href="/records/urayasu/" class="urayasu">浦安　<span class="en">Bardral URAYASU</span></a></li>
+					<li><a href="/records/sumida/" class="sumida">すみだ　<span class="en">FUGADOR SUMIDA</span></a></li>
+					<li><a href="/records/fuchu/" class="fuchu">府中　<span class="en">FUCHU ATHLETIC F.C.</span></a></li>
+					<li><a href="/records/machida/" class="machida">町田　<span class="en">PESCADOLA MACHIDA</span></a></li>
+				</ul>
+				<ul class="profile">
+					<li><h2><a>&nbsp;<br /><span class="en">&nbsp;</span></a></h2></li>
+					<li><a href="/records/shonan/" class="shonan">湘南　<span class="en">SHONAN BELLMARE</span></a></li>
+					<li><a href="/records/hamamatsu/" class="hamamatsu">浜松　<span class="en">AGLEYMINA HAMAMATSU</span></a></li>
+					<li><a href="/records/nagoya/" class="nagoya">名古屋　<span class="en">NAGOYA OCEANS</span></a></li>
+					<li><a href="/records/osaka/" class="osaka">大阪　<span class="en">SHRIKER OSAKA</span></a></li>
+					<li><a href="/records/kobe/" class="kobe">神戸　<span class="en">DEUÇÃO KOBE</span></a></li>
+					<li><a href="/records/oita/" class="oita">大分　<span class="en">VASAGEY OITA</span></a></li>
+				</ul>
+				<ul class="last statistics">
+					<li><h2><a>リーグ統計データ<br /><span class="en">Statistics</span></a></h2></li>
+					<li><a href="/records/league/appearances.html">出場数ランキング　<span class="en">Personal Ranking of Career Appearances</span></a></li>
+					<li><a href="/records/league/goalrank.html">得点数ランキング　<span class="en">Personal Ranking of Career Goals</span></a></li>
+					<li><a href="/records/league/memorial.html">記念ゴール　<span class="en">Memorial Goals</span></a></li>
+					<li><a href="/records/league/hattrick.html">ハットトリック　<span class="en">Hat Trick</span></a></li>
+					<li><a href="/records/league/attendance.html">入場者数　<span class="en">Attendance</span></a></li>
+					<li><a href="/records/league/referee.html">担当審判員　<span class="en">Referees</span></a></li>
+					<li><a href="/records/league/stats01.html">通算勝敗表　<span class="en">Winning Rate</span></a></li>
+					<li><a href="/records/league/stats02.html">アリーナ別勝敗表　<span class="en">Winning Rate by Arena</span></a></li>
+					<li><a href="/records/league/stats03.html">対戦別勝敗表　<span class="en">Winning Rate by Opponent</span></a></li>
+					<li><a href="/records/league/stats04.html">状況別勝敗表　<span class="en">Winning Rate by Situation</span></a></li>
+					<li><a href="/records/league/stats05.html">時間帯別得失点　<span class="en">Goals by Time Zone</span></a></li>
+				</ul>
+			</div>
+		</li>
+		<li id="naviFun"><a href="#">ファンゾーン<br /><span class="en">Fun Zone</span></a>
+			<div class="sub">
+				<!-- <ul>
+					<li><h2><a href="/yoyogi-event/" target="_blank">開幕戦 代々木セントラル イベント情報<br/ ><span class="en">Event Information</span></a></h2></li>
+					<li><a href="/yoyogi-event/" target="_blank"><img src="/share/img/navi_img05.jpg" width="290" height="166" alt="開幕戦 代々木セントラル イベント情報" /></a></li>
+				</ul>
+				<ul>
+					<li><h2><a href="/fun/xebiocup.html">SuperSports XEBIO CUP in Tokyo<br/ ><span class="en">SuperSports XEBIO CUP in Tokyo</span></a></h2></li>
+					<li><a href="/fun/xebiocup.html"><img src="/share/img/navi_img06.jpg" width="290" height="166" alt="SuperSports XEBIO CUP in Tokyo" /></a></li>
+				</ul> -->
+				<ul>
+					<li><h2><a>Ｆリーグチャンネル　<span class="en">F.LEAGUE Channel</span></a></h2></li>
+					<li><a href="/channel/" class="photosAll">Ｆリーグチャンネル一覧　<span class="en">All Movies</span></a></li>
+					<li><h2><a href="/channel/"><img src="/share/img/navi_img08-01.png" width="290" height="128" alt="Ｆリーグチャンネル" /></a></h2></li>
+				</ul>
+				<ul>
+					<li><h2><a>Ｆリーグフォト　<span class="en">F.LEAGUE Photos</span></a></h2></li>
+					<li><a href="/photo/" class="photosAll">Ｆリーグフォト一覧　<span class="en">All Photos</span></a></li>
+					<li><a href="/photo/hokkaido.html" class="hokkaido">エスポラーダ北海道　<span class="en">ESPOLADA HOKKAIDO</span></a></li>
+					<li><a href="/photo/sendai.html" class="sendai">ヴォスクオーレ仙台　<span class="en">Voscuore Sendai</span></a></li>
+					<li><a href="/photo/urayasu.html" class="urayasu">バルドラール浦安　<span class="en">Bardral URAYASU</span></a></li>
+					<li><a href="/photo/sumida.html" class="sumida">フウガドールすみだ　<span class="en">FUGADOR SUMIDA</span></a></li>
+					<li><a href="/photo/fuchu.html" class="fuchu">府中アスレティックＦＣ　<span class="en">FUCHU ATHLETIC F.C.</span></a></li>
+					<li><a href="/photo/machida.html" class="machida">ペスカドーラ町田　<span class="en">PESCADOLA MACHIDA</span></a></li>
+				</ul>
+				<ul class="last">
+					<li><h2><a>&nbsp;</a></h2></li>
+					<li><a>&nbsp;</a></li>
+					<li><a href="/photo/shonan.html" class="shonan">湘南ベルマーレ　<span class="en">SHONAN BELLMARE</span></a></li>
+					<li><a href="/photo/hamamatsu.html" class="hamamatsu">アグレミーナ浜松　<span class="en">AGLEYMINA HAMAMATSU</span></a></li>
+					<li><a href="/photo/nagoya.html" class="nagoya">名古屋オーシャンズ　<span class="en">NAGOYA OCEANS</span></a></li>
+					<li><a href="/photo/osaka.html" class="osaka">シュライカー大阪　<span class="en">SHRIKER OSAKA</span></a></li>
+					<li><a href="/photo/kobe.html" class="kobe">デウソン神戸　<span class="en">DEUÇÃO KOBE</span></a></li>
+					<li><a href="/photo/oita.html" class="oita">バサジィ大分　<span class="en">VASAGEY OITA</span></a></li>
+				</ul>
+			</div>
+		</li>
+	</ul>
+</div>
+<!-- -------------------------- //nav -------------------------- -->
+
+<div id="wrapper">
+	<div id="contents">
+
+		<div id="loopedSlider">
+
+			<!-- メインイメージ -->
+			<div class="Bnrwrap">
+				<ul class="slides">
+																				<li><a href="http://www.fleague.jp/news/?p=16640"><img width="1478" height="984" src="http://www.fleague.jp/news/wp-content/uploads/2016/01/GH2_8839.jpg" class="attachment-full wp-post-image" alt="PO1ｓｔ小曽戸" /><div class="textArea"><p>【日本代表】1/27(水)・1/30(土)国際親善試合は全国生中継！</p></div></a></li>
+										<li><a href="http://www.fleague.jp/news/?p=16636"><img width="1229" height="816" src="http://www.fleague.jp/news/wp-content/uploads/2016/01/POfinal森岡.jpg" class="attachment-full wp-post-image" alt="POfinal森岡" /><div class="textArea"><p>【Ｆリーグチャンネル更新】プレーオフ Final Round 全9ゴールダイジェスト！</p></div></a></li>
+										<li><a href="http://www.fleague.jp/news/?p=16608"><img width="560" height="420" src="http://www.fleague.jp/news/wp-content/uploads/2015/07/ゼビオカップ.png" class="attachment-full wp-post-image" alt="ゼビオカップ" /><div class="textArea"><p>SuperSports XEBIO CUP in 郡山＆福岡　参加チーム募集開始！</p></div></a></li>
+										<li><a href="http://www.fleague.jp/news/?p=16603"><img width="1000" height="665" src="http://www.fleague.jp/news/wp-content/uploads/2016/01/PO4-5田村、宮崎.jpg" class="attachment-full wp-post-image" alt="PO4-5田村、宮崎" /><div class="textArea"><p>【Ｆリーグチャンネル更新】2nd Round＆4/5位決定戦 全14ゴールダイジェスト！</p></div></a></li>
+										<li><a href="http://www.fleague.jp/news/?p=16596"><img width="1047" height="742" src="http://www.fleague.jp/news/wp-content/uploads/2016/01/0120代表.png" class="attachment-full wp-post-image" alt="0120代表" /><div class="textArea"><p>【日本代表】2016年初のトレーニングキャンプを愛知で開始</p></div></a></li>
+																			</ul>
+			</div>
+			<!-- /メインイメージ -->
+
+			<!-- 遷移ボタン -->
+			<div class="sc_btn cbox">
+				<div class="IconArea">
+					<h3><img src="/img/pickup_title.gif" alt=""></h3>
+					<ul class="pagination cbox">
+																								<li><a href="#"><img width="78" height="51" src="http://www.fleague.jp/news/wp-content/uploads/2016/01/GH2_8839-150x99.jpg" class="attachment-78x53 wp-post-image" alt="PO1ｓｔ小曽戸" /><span>【日本代表】1/27(水)・1/30(土)国際親善試合は全国生中継！</span></a></li>
+												<li><a href="#"><img width="78" height="51" src="http://www.fleague.jp/news/wp-content/uploads/2016/01/POfinal森岡-150x99.jpg" class="attachment-78x53 wp-post-image" alt="POfinal森岡" /><span>【Ｆリーグチャンネル更新】プレーオフ Final Round 全9ゴールダイジェスト！</span></a></li>
+												<li><a href="#"><img width="53" height="53" src="http://www.fleague.jp/news/wp-content/uploads/2015/07/ゼビオカップ-150x150.png" class="attachment-78x53 wp-post-image" alt="ゼビオカップ" /><span>SuperSports XEBIO CUP in 郡山＆福岡　参加チーム募集開始！</span></a></li>
+												<li><a href="#"><img width="78" height="51" src="http://www.fleague.jp/news/wp-content/uploads/2016/01/PO4-5田村、宮崎-150x99.jpg" class="attachment-78x53 wp-post-image" alt="PO4-5田村、宮崎" /><span>【Ｆリーグチャンネル更新】2nd Round＆4/5位決定戦 全14ゴールダイジェスト！</span></a></li>
+												<li><a href="#"><img width="75" height="53" src="http://www.fleague.jp/news/wp-content/uploads/2016/01/0120代表-150x106.png" class="attachment-78x53 wp-post-image" alt="0120代表" /><span>【日本代表】2016年初のトレーニングキャンプを愛知で開始</span></a></li>
+																							</ul>
+				</div>
+			</div>
+			<!-- /遷移ボタン -->
+		</div>
+
+		<!-- リンクボックス -->
+		<div id="boxArea">
+			<ul class="cbox">
+				<li><a href="/records/score/2015/"><img src="/img/banner_awards.png" width="960" height="120" alt="2015/2016 最終結果・表彰" /></a></li>
+			</ul>
+		</div>
+		<!-- /リンクボックス -->
+
+		<!-- SNSボックス&順位表 -->
+		<div id="snsArea" class="cbox">
+		
+			<dl>
+				<dt><img src="/img/standings_title.gif" alt="順位表"></dt>
+				<dd class="first">
+					<div id="ranking"></div>
+				</dd>
+			</dl>
+			
+			<dl class="center_top">
+				<dt><img src="/img/channel_title.gif" alt="Ｆリーグチャンネル"></dt>
+				<dd>
+																				
+					<div id="Movie"><p><iframe src="//www.youtube.com/embed/PNznPg9dV74?rel=0" width="300" height="150" frameborder="0" allowfullscreen="allowfullscreen"></iframe></p>
+<p>素敵なゴール集（2015/2016シーズン プレーオフ Final Round）</p>
+</div>
+					<h4>素敵なゴール集（プレーオフ Final Round）</h4>
+					
+					
+															<p class="link"><a href="/channel/">Ｆリーグチャンネル一覧</a></p>
+				</dd>
+			</dl>
+			
+			<dl class="center_bottom">
+				<dt><img src="/img/photos_title.gif" alt="Ｆリーグフォト"></dt>
+				<dd>
+					
+																					<p class="pht"><a href="http://www.fleague.jp/news/?p=16211"><img src="http://www.fleague.jp/news/wp-content/uploads/2015/12/32_20151213_ngy-mcd_1411-T.jpg" width="298" height="181"></a></p>
+						<h4><a href="http://www.fleague.jp/news/?p=16211">第32節　名古屋 vs 町田</a></h4>
+															<p class="link"><a href="/photo/">Ｆリーグフォト一覧</a></p>
+				</dd>
+			</dl>
+			
+			<dl class="last">
+				<dt><img src="/img/fb_title.gif" alt="公式Facebookページ"></dt>
+				<dd>
+					<div class="fb-page" data-href="https://www.facebook.com/jff.fleague" data-width="298" data-height="519" data-small-header="false" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="false" data-show-posts="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/jff.fleague"><a href="https://www.facebook.com/jff.fleague">F.League（日本フットサルリーグ）</a></blockquote></div></div>
+				</dd>
+			</dl>
+		</div>
+    <!-- /SNSボックス&順位表 -->
+
+		<!-- バナーエリア -->
+		<div id="bnrArea">
+			<ul id="New_Banner" class="cbox">
+				<li><a href="https://j-futsal.jfa.jp/" target="_blank"><img src="/img/banner_jfa.jpg" width="228" height="100" alt="JFA公式エンジョイフットサル総合サイト" /></a></li>
+				<li><a href="https://tixee.tv/feature/fleague2015" target="_blank"><img src="/img/banner04.jpg" width="228" height="100" alt="tixee" /></a></li>
+				<li><a href="http://www.kotobuki-seating.co.jp/f-league2014/" target="_blank"><img src="/img/kotobuki.jpg" width="228" height="100" alt="コトブキシーティング" /></a></li>
+				<li class="right"><a href="http://www.kosaido.co.jp/" target="_blank"><img src="/img/banner_kosaido.jpg" width="228" height="100" alt="廣済堂" /></a></li>
+				<li><a href="http://oh-en.com/" target="_blank"><img src="/img/banner_oh-en.jpg" width="472" height="216" alt="応援.com" /></a></li>
+				<li class="right"><a href="http://www.xsmktg.com/supersportsxebiocup/futsal/" target="_blank"><img src="/img/banner_xebiocup.jpg" width="472" height="216" alt="SuperSport XEBIO CUP" /></a></li>
+				<!-- <li><a href="http://www.jsports.co.jp/football/fleague/" target="_blank"><img src="/img/banner_j-sports.jpg" width="472" height="100" alt="JSPORTS" /></a></li>
+				<li><a href="http://shop.soccer-king.jp/shopdetail/000000002875/" target="_blank"><img src="/img/banner_officialguide.jpg" width="228" height="216" alt="Ｆリーグオフィシャルガイド" /></a></li>
+				<li class="right"><a href="/news/?p=9927"><img src="/img/banner_pocketschedule.png" width="228" height="216" alt="Ｆリーグポケットスケジュール" /></a></li>
+				<li class="ab01"><a href="/news/?p=12161"><img src="/img/banner_360supporter.jpg" width="228" height="100" alt="360度サポーターズ・アイ" /></a></li>
+				<li class="ab02"><a href="http://ssx.xebio-online.com/site/topics/futsal/?utm_source=fleague&utm_medium=refferal&utm_campaign=" target="_blank"><img src="/img/banner_infinito-s02.png" width="228" height="100" alt="INFINITO" /></a></li> -->
+				<li><a href="http://www.jsports.co.jp/football/fleague/" target="_blank"><img src="/img/banner_j-sports.jpg" width="472" height="100" alt="JSPORTS" /></a></li>
+				<li><a href="/news/?p=12161"><img src="/img/banner_360supporter.jpg" width="228" height="100" alt="360度サポーターズ・アイ" /></a></li>
+				<li class="right"><a href="http://ssx.xebio-online.com/site/topics/futsal/?utm_source=fleague&utm_medium=refferal&utm_campaign=" target="_blank"><img src="/img/banner_infinito-s02.png" width="228" height="100" alt="INFINITO" /></a></li>
+			</ul>
+	  </div>
+		<!-- /バナーエリア -->
+
+		<!-- ニュースエリア -->
+		<div id="NewsArea" class="cbox">
+			<div id="News">
+				<h3><img src="/img/topics_news_title.gif" alt=""><span id="RSS"><a href="http://www.fleague.jp/news/?feed=rss2" target="_blank"><img src="/img/btn_rss.gif" width="14" height="20" alt="RSS" /></a></span><span id="More"><a href="/news/"><img src="/img/btn_more.gif" width="21" height="20" alt="more" /></a></span></h3>
+				<div id="mcs_container">
+					<div class="customScrollBox">
+						<div class="container">
+							<div class="content">
+																															<dl>
+									<dt>
+										2016.01.23									</dt>
+									<dd><a href="http://www.fleague.jp/news/?p=16640">
+										【日本代表】1/27(水)・1/30(土)国際親善試合は全国生中継！									</a></dd>
+								</dl>
+																<dl>
+									<dt>
+										2016.01.22									</dt>
+									<dd><a href="http://www.fleague.jp/news/?p=16636">
+										【Ｆリーグチャンネル更新】プレーオフ Final Round 全9ゴールダイジェスト！									</a></dd>
+								</dl>
+																<dl>
+									<dt>
+										2016.01.21									</dt>
+									<dd><a href="http://www.fleague.jp/news/?p=16608">
+										SuperSports XEBIO CUP in 郡山＆福岡　参加チーム募集開始！									</a></dd>
+								</dl>
+																<dl>
+									<dt>
+										2016.01.21									</dt>
+									<dd><a href="http://www.fleague.jp/news/?p=16603">
+										【Ｆリーグチャンネル更新】2nd Round＆4/5位決定戦 全14ゴールダイジェスト！									</a></dd>
+								</dl>
+																<dl>
+									<dt>
+										2016.01.20									</dt>
+									<dd><a href="http://www.fleague.jp/news/?p=16596">
+										【日本代表】2016年初のトレーニングキャンプを愛知で開始									</a></dd>
+								</dl>
+																<dl>
+									<dt>
+										2016.01.18									</dt>
+									<dd><a href="http://www.fleague.jp/news/?p=16585">
+										【Ｆリーグチャンネル更新】白熱のプレーオフ 1st Round ゴールダイジェスト！									</a></dd>
+								</dl>
+																<dl>
+									<dt>
+										2016.01.15									</dt>
+									<dd><a href="http://www.fleague.jp/news/?p=16560">
+										Road to COLOMBIA vol.21 『5枚の切符をかけた戦い』									</a></dd>
+								</dl>
+																<dl>
+									<dt>
+										2016.01.15									</dt>
+									<dd><a href="http://www.fleague.jp/news/?p=16579">
+										【テレビ放送】1/15(金)20：00～ J SPORTSでプレーオフ Final Round放送！									</a></dd>
+								</dl>
+																<dl>
+									<dt>
+										2016.01.14									</dt>
+									<dd><a href="http://www.fleague.jp/news/?p=16551">
+										Road to COLOMBIA vol.20 『14人』									</a></dd>
+								</dl>
+																<dl>
+									<dt>
+										2016.01.13									</dt>
+									<dd><a href="http://www.fleague.jp/news/?p=16549">
+										Road to COLOMBIA vol.19 『いよいよ世界に向けた第一関門』									</a></dd>
+								</dl>
+																							</div>
+						</div>
+						<div class="dragger_container">
+							<div class="dragger"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+<div id="clubNews">
+				<h3><img src="/img/club_news_title.gif" alt=""></h3>
+				<div id="mcs_container02">
+					<div class="customScrollBox">
+						<div class="container">
+							<div class="content" id="clubFeed">							</div>
+						</div>
+						<div class="dragger_container">
+							<div class="dragger"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+	  </div>
+		<!-- /ニュースエリア -->
+
+	</div>
+</div>
+
+<!-- footerLinks -->
+<div id="footerLinks">
+	<div class="area">
+		<dl id="Sponsor">
+			<dt><a href="http://www.supersports.co.jp/" target="_blank"><img src="/share/img/sponsor2015_xebio.gif" width="165" height="53" alt="inゼリー" /></a><a href="http://www.victoria.co.jp/" target="_blank"><img src="/share/img/sponsor2015_victoria.gif" width="166" height="53" alt="inゼリー" /></a></dt>
+			<dd>
+				<ul>
+					<li><a href="http://www.cheerio.co.jp/" target="_blank"><img src="/share/img/sponsor2015_lifeguard.gif" width="121" height="53" alt="" /></a></li>
+					<li><a href="http://sfidasports.com/" target="_blank"><img src="/share/img/sponsor2015_sfida.gif" width="117" height="53" alt="" /></a></li>
+					<li><a href="http://mitre.jp/" target="_blank"><img src="/share/img/sponsor2015_mitre.gif" width="142" height="53" alt="" /></a></li>
+					<li><a href="http://www.climbfactory.com/" target="_blank"><img src="/share/img/sponsor2015_clubfactory.gif" width="145" height="53" alt="" /></a></li>
+					<li><a href="http://www.nihon-sportcourt.jp/" target="_blank"><img src="/share/img/sponsor2015_sportcourt.gif" width="136" height="53" alt="" /></a></li>
+					<li><a href="http://www.nichiban.co.jp/" target="_blank"><img src="/share/img/sponsor2015_nichiban.gif" width="159" height="53" alt="" /></a></li>
+					<li><a href="http://www.yomiuri.co.jp/" target="_blank"><img src="/share/img/sponsor2015_yomiuri.gif" width="139" height="53" alt="" /></a></li>
+				</ul>
+			</dd>
+		</dl>
+		<div id="bLink">
+			<ul>
+				<li><a href="http://japantopleague.jp/" target="_blank"><img src="/share/img/link01.gif" width="67" height="40" alt="日本トップリーグ連携機構" /></a></li>
+				<li><a href="http://www.toto-dream.com/" target="_blank"><img src="/share/img/link02.gif" width="67" height="40" alt="toto" /></a></li>
+				<li><a href="http://www.toto-dream.com/support/" target="_blank"><img src="/share/img/link03.gif" width="67" height="40" alt="totoによるスポーツ振興助成について" /></a></li>
+				<li><a href="http://www.jff-futsal.or.jp/" target="_blank"><img src="/share/img/link04.gif" width="136" height="40" alt="一般財団法人日本フットサル連盟" /></a></li>
+			</ul>
+		</div>
+		<p id="pageTop"><a href="#pagetop"><img src="/share/img/btn_pagetop.gif" width="120" height="30" alt="ページの先頭へ" /></a></p>
+	</div>
+</div>
+<!-- //footerLinks --> 
+
+<!-- footer -->
+<div id="footer">
+	<p><img src="/share/img/text_copy.gif" width="241" height="11" alt="Copyright &copy; Japan Futsal Federation  All Rights Reserved." /></p>
+	<ul>
+		<li><a href="/media/" target="_blank">メディアサービス</a></li>
+		<li><a href="/link.html">リンク一覧</a></li>
+		<li><a href="/sitemap.html">サイトマップ</a></li>
+		<li><a href="/privacy.html">プライバシーポリシー</a></li>
+		<li><a href="/attention.html">このサイトについて</a></li>
+	</ul>
+</div>
+<!-- //footer -->
+
+<!-- content to show if javascript is disabled -->
+
+<noscript>
+</noscript>
+
+<script>
+$(window).load(function() {
+	mCustomScrollbars();
+});
+function mCustomScrollbars(){
+	$("#mcs_container").mCustomScrollbar("vertical",300,"easeOutCirc",1.05,"auto","yes","yes",15); 
+	$("#mcs_container02").mCustomScrollbar("vertical",300,"easeOutCirc",1.05,"auto","yes","yes",15); 
+}
+
+/* function to fix the -10000 pixel limit of jquery.animate */
+$.fx.prototype.cur = function(){
+	if ( this.elem[this.prop] != null && (!this.elem.style || this.elem.style[this.prop] == null) ) {
+	  return this.elem[ this.prop ];
+	}
+	var r = parseFloat( jQuery.css( this.elem, this.prop ) );
+	return typeof r == 'undefined' ? 0 : r;
+}
+
+/* function to load new content dynamically */
+function LoadNewContent(id,file){
+	$("#"+id+" .customScrollBox .content").load(file,function(){
+		mCustomScrollbars();
+	});
+}
+</script> 
+
+<script src="js/jquery.mCustomScrollbar.js"></script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.4";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+</body>
+</html>

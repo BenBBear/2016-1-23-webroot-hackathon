@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta property="og:title" content="横浜DeNAベイスターズ オフィシャルホームページ">
+<meta property="og:image" content="http://www.baystars.co.jp/common/img/fb_logo01.png">
+<meta name="google-site-verification" content="xrWRaqUXPD3rgOjd5o-aGsSR4EOzUlzE05P4FfqX6oM" />
+<title>横浜DeNAベイスターズ</title>
+<meta name="keywords" content="横浜DeNAベイスターズ,ベイスターズ,baystars,横浜,DeNA,ベイ,野球,db,プロ野球,セ・リーグ,セリーグ,横浜スタジアム" />
+<meta name="description" content="横浜DeNAベイスターズ オフィシャルホームページ" />
+<link rel="shortcut icon" href="/common/img/favicon.ico" /><link rel="stylesheet" type="text/css" href="/common/css/import.css?20150604" media="all" />
+<link id="size-stylesheet" rel="stylesheet" type="text/css" href="/common/css/narrow.css" media="all" />
+<!-- Add Style -->
+<link rel="stylesheet" type="text/css" href="/css/layout.css?140910" media="all" />
+<link rel="stylesheet" type="text/css" href="/common/css/animation.css" media="all" />
+<link rel="stylesheet" type="text/css" href="/common/css/countdown.css" media="all" />
+<!-- Add JS -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<!--[if IE]>
+<script type="text/javascript" src="/js/jquery.masonry.min.ie.js"></script>
+<![endif]-->
+<!--[if ! IE]>-->
+<script type="text/javascript" src="/js/jquery.masonry.min.js"></script>
+<!--<![endif]-->
+<script type="text/javascript" src="/common/js/common.js"></script>
+<script type="text/javascript">
+$(function(){
+  $('ul.boxes').masonry({
+    itemSelector: '.box',
+    columnWidth : 200,
+    isAnimated: true,
+    isFitWidth: true
+  });
+});
+$(window).load(function() {
+  var today = 123;
+  $('div.weekly li').each(function(){
+    if ($(this).hasClass(today)){
+      $(this).addClass('nowLi');
+    }
+  });
+  var li_wid = $(".weekly li").outerHeight(); // liのpaddingを含む高さを取得
+  var li_num = $(".weekly li").size();// liの数を取得
+  var ul_wid = li_wid*li_num;// ulの高さを計算(liを全部縦に並べた高さ)
+  var nowNum = $(".nowLi").index("div.weekly li");
+  var nowNumHei = (nowNum * -48 + 48) ; // 試合中
+  // 全日程が完了後 var nowNumHei = -(ul_wid - 240);
+  // 全日程が完了後 $('#next').removeClass('show').addClass('hide');
+  $('.weekly ul').css({top: nowNumHei}); // 試合中
+
+  $('li.nowLi').nextAll('li').addClass('newLi');
+  $('.nowLi').wrapInner('<div class="bdr"></div>');
+
+  // $(".nowLi").prevAll(".mon").first().addClass('nowWeek');
+  // var nowNum = $(".nowWeek").index(".weekly li.mon");
+  // var nowNumHei = (nowNum * -276) ;
+  // $('.weekly ul').css({top: nowNumHei});
+});
+
+</script>
+
+<script type="text/javascript" src="/js/top_base.js?0904"></script>
+<!-- Add JS end -->
+<!-- ニュースタブ化 関連 -->
+<script type="text/javascript" src="/js/tab_news.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(
+  ['_setAccount', 'UA-7627933-1'],
+  ['_trackPageview'],
+  ['b._setAccount', 'UA-30465149-1'],
+  ['b._trackPageview']
+  );
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-50338613-1', 'auto', {'allowLinker': true});
+  ga('require', 'linker');
+  ga('linker:autoLink', ['baystars.co.jp', 'dena-baystars.jp', 'db-m.jp']);
+  ga('send', 'pageview');
+
+</script>
+
+<!-- スコア非表示の場合↓のスタイルのコメントを外す -->
+<!-- スコア非表示の場合↑のスタイルのコメントを外す -->
+
+<style>
+.gameSchedule li .enemyImg2 {
+float: right;
+padding: 7px 7px 0 0;
+}
+
+/* ↓シーズン後（topscore非表示）の場合。シーズン中（topscore表示）の場合は以下スタイルは外す。*/
+#top #headerWrap {
+margin: -25px 0 0 0;
+}
+
+
+.gameSchedule li .enemyImg02 {
+float: right;
+padding: 10px 10px 0 0;
+}
+
+</style>
+
+</head>
+<body id="top" class="lDef">
+<div id="wrapper_r">
+  
+  <style>
+.season a{
+margin: 0 6px 0 0;
+padding: 6px 2px !important;
+}
+.season a span{
+	display:block;
+	color:#FFF;
+	font-size:8px;
+	background:#019EE8;
+	padding:2px 0;
+	border-radius: 8px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	-ms-border-radius: 8px;
+}
+.header .gnav li a.button{
+	width:98px !important;
+}
+
+.link_trans{
+  position: relative;
+  margin: 0px auto;
+  min-width: 1000px;
+  max-width: 1300px;
+  text-align: right;
+}
+.link_trans span{
+  display: block;
+  position: absolute;
+  right: 0px;
+/*  top: -30px;*/
+  top: -23px;
+  font-size:100%;
+  height:40px;
+  z-index:99;
+  }
+.link_trans a{
+  display:block;
+  top:0;
+  color:#FFFFFF;
+  padding:5px;
+  font-size: 88%;
+/*    font-weight:bold;
+text-decoration:underline;*/
+  }
+.link_trans a:hover {
+  color: #019ee8;
+}
+/*}*/
+a.ico_tri_white{
+background:url(/common/img/ico_tri_white2.png) left 0.8em no-repeat;
+  padding-left: 11px;
+/*  padding-left: 13px;*/
+  margin-right: 15px;
+}
+a.ico_tri_white:hover {
+  background:url(/common/img/ico_tri_white2_h.png) left 0.8em no-repeat;
+}
+</style>
+
+  <div id="headerWrap">
+    <div class="header">
+      <h1 class="logo">
+        <a href="http://www.baystars.co.jp/"><img src="/common/img/logo_r.png" height="140" width="147" alt="横浜DeNAベイスターズ YOKOHAMA DeNA BAYSTARS OFFICIAL HOME PAGE" /></a>
+              </h1>
+      <div class="link_trans"><span><a href="/english/" class="ico_tri_white" target="_blank">English</a></span></div>
+
+      <!-- グローバルナビ// -->
+      <div class="navCompany">
+        <ul>
+          <li class="ln02"><a href="http://accountpage.line.me/denabaystars" target="_blank" onMouseDown="_gaq.push(['b._trackEvent', 'LINE', 'Header Click']);"><img src="/common/img/bnr_line.png" alt="横浜DeNAベイスターズ公式LINE" width="24" height="23" class="fade" /></a></li>
+          <li class="yt02"><a href="http://www.youtube.com/user/BAYSTARSch?desktop_uri=%2Fuser%2FBAYSTARSch&app=desktop" target="_blank"><img src="/common/img/bnr_youtube.png" alt="球団公式Youtubeチャンネル" width="29" height="13" class="fade" /></a></li>
+          <li class="fb02"><a href="https://www.facebook.com/baystars.official" target="_blank"><img src="/common/img/bnr_fb.png" alt="横浜DeNAベイスターズ公式Facebookページ" width="23" height="23" class="fade" /></a></li>
+          <li class="pb03"><a href="http://www.baystars.co.jp/plusb/" target="_blank"><img src="/common/img/bnr_plusb03.png" alt="+B" width="30" height="30" class="fade" /></a></li>
+          <li><a href="http://www.baystars.co.jp/sponsor/">スポンサー</a></li>
+          <li><a href="http://www.baystars.co.jp/faq/">FAQ</a></li>
+          <li><a href="http://www.baystars.co.jp/recruit/" target="_blank">採用</a></li>
+          <li><a href="http://www.baystars.co.jp/corporate/">会社概要</a></li>
+          <li><a href="http://www.baystars.co.jp/school/">スクール</a></li>
+          <li><a href="http://www.baystars.co.jp/region/">地域貢献活動</a></li>
+          <li><a href="http://www.baystars.co.jp/mobile/">モバイル</a></li>
+          <li><a href="http://www.baystars.co.jp/farm/">ファーム</a></li>
+        </ul>
+      </div>
+      <div class="gnav">
+        <ul>
+          <li><a href="http://www.baystars.co.jp/season/" class="button comm" target="_blank">シーズン<br />シート</a></li>
+          <li><a href="http://www.baystars.co.jp/community/" class="button comm">エンター<br />テインメント</a></li>
+          <li><a href="http://ec.baystars.co.jp/?m=oph" class="button" target="_blank">グッズ</a></li>
+          <li><a href="http://www.baystars.co.jp/fanclub/" class="button">ファンクラブ</a></li>
+          <li><a href="http://www.baystars.co.jp/team/" class="button">チーム</a></li>
+          <li><a href="http://www.baystars.co.jp/news/" class="button">ニュース</a></li>
+          <li><a href="http://www.baystars.co.jp/ticket/" class="button">チケット</a></li>
+          <li><a href="http://www.baystars.co.jp/game/" class="button">試合</a></li>
+        </ul>
+      </div>
+
+    </div>
+  <!-- headerWrap --></div>
+
+  <div id="contentWrap">
+    <div class="content">
+
+            
+<ul id="loading" class="boxes">
+
+<!--▼NINEDREAM 1000 -->
+<li class="box widW">
+    <div class="boxInr">
+    <a href="/ninedreams/?p=top" target="_blank">
+      <!--<h3 class="fltL"><img src="/img/tit_seasonseat_r.png" alt="NINEDREAMS 「夢」がある。" /></h3>-->
+      <img class="img zoom" src="/img/panel/2016/ballpark_1000.jpg" height="400" width="1000" alt="NINEDREAMS 「夢」がある。" />
+      <img src="/common/img/img-hover-arw.png" alt="" class="hoverArw">
+
+    </a></div>
+  </li>
+
+<!--▼GOODS カレンダー200-->
+<li class="box widS">
+<div class="boxInr">
+    <a href="/news/2015/11/1119_01.php?p=top">
+      <h3 class="fltL"><img src="/img/tit_goods_r.png" alt="GOODS" /></h3>
+	  <!--<p class="new"></p>-->
+	  <a href="/news/2015/11/1119_01.php?p=top"><img class="img zoom" src="/img/panel/2016calendar_200.jpg" height="400" width="200" alt="GOODS" />
+      <img src="/common/img/img-hover-arw.png" alt="" class="hoverArw">
+	  <p class="txt">試合日程入り壁掛け・卓上 <br>カレンダー販売中☆</p>
+    </a></div>
+</li>
+
+<!--▼5th新ビジターユニ 800 -->
+<li class="box widL">
+    <div class="boxInr">
+    <a href="/5th/?p=top" target="_blank">
+      <!--h3 class="fltL"><img src="/img/tit_seasonseat_r.png" alt="SEASON SEAT" /></h3-->
+      <img class="img zoom" src="/img/panel/new-visuni_800.jpg" height="400" width="800" alt="SEASON SEAT" />
+      <img src="/common/img/img-hover-arw.png" alt="" class="hoverArw">
+
+    </a></div>
+  </li>
+
+  <!--▼SEASON SEAT ベイサイド 400 -->
+  <li class="box widM">
+  <div class="boxInr">
+      <a href="/seasonseat/?p=top" target="_blank">
+        <h3 class="fltL"><img src="/img/tit_seasonseat_r.png" alt="SEASON SEAT" /></h3>
+  	  <!--<p class="new"></p> -->
+  	  <img class="img zoom" src="/img/panel/ss2016_bayside_400.jpg" height="400" width="400" alt="EVENT" />
+        <img src="/common/img/img-hover-arw.png" alt="" class="hoverArw">
+      </a></div>
+  </li>
+
+  <!--▼fc 友の会 400-->
+  <li class="box widM">
+  <div class="boxInr">
+<a href="/fanclub/2016/?p=top" target="_blank">
+<h3 class="fltL"><img src="/img/tit_fanclub_r.png" alt="FANCLUB" /></h3>
+      <a href="/fanclub/2016/?p=top" target="_blank">
+              <img class="img zoom" src="/img/panel/fanclub2016_160107_m.jpg" height="400" width="400" alt="FANCLUB" />
+        <img src="/common/img/img-hover-arw.png" alt="" class="hoverArw">
+  	  <p class="txt">2016年度『B☆SPIRIT友の会』新規会員募集中!<br />
+キッズ会員にオリジナルグローブをプレゼント☆</p>
+      </a></div>
+  </li>
+
+
+<!--▼ハヤシ缶 400-->
+<li class="box widM">
+<div class="boxInr">
+    <a href="/news/2015/11/1127_01.php?p=top">
+      <h3 class="fltL"><img src="/img/tit_plusB2_r.png" alt="+B" /></h3>
+	  <!--p class="new"></p-->
+	  <a href="/news/2015/11/1127_01.php?p=top"><img class="img zoom" src="/img/panel/hayashikan_400.jpg" height="400" width="400" alt="+B" />
+	  <!--p class="new"></p-->
+      <img src="/common/img/img-hover-arw.png" alt="" class="hoverArw">
+	  <p class="txt">8のつく日は「青星寮ハヤシ」の日。 <br>寮生でも8の付く日にしか食べられないハヤシを、食卓へ。</p>
+    </a></div>
+</li>
+
+<!--▼ファッションチェック 200-->
+<li class="box widS">
+<div class="boxInr">
+    <a href="/news/2015/12/1228_02.php?p=top">
+      <h3 class="fltL"><img src="/img/tit_mobile_r.png" alt="+B" /></h3>
+	  <!--p class="new"></p-->
+	  <a href="/news/2015/12/1228_02.php?p=top"><img class="img zoom" src="/img/panel/2016/20160106_kajitani.jpg" height="400" width="200" alt="+B" />
+	  <!--p class="new"></p-->
+      <img src="/common/img/img-hover-arw.png" alt="" class="hoverArw">
+	  <p class="txt">選手こだわりの私服を<br>ファッションチェック!</p>
+    </a></div>
+</li>
+
+
+
+<!--▼新人グッズ 200 -->
+<li class="box widS">
+    <div class="boxInr">
+    <a href="/news/2016/01/0106_01.php?p=top" >
+      <h3 class="fltL"><img src="/img/tit_goods_r.png" alt="GOODS" /></h3>
+<!--	  	<p class="new"></p>-->
+      <img class="img zoom" src="/img/panel/2016/20160112rookie.jpg" height="400" width="200" alt="+B" />
+      <img src="/common/img/img-hover-arw.png" alt="" class="hoverArw">
+	  <p class="txt">2016ルーキーグッズを<br>いち早く練習場･webでGET!</p>
+    </a></div>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+            
+      <div class="headline">
+        <div class="headlineNav">
+          <p class="tit"><img src="/img/tit_headline_news_r.png" height="20" width="125" alt="HEADLINE NEWS" /></p>
+          <p class="more"><a href="/news/"><img class="fade" src="/img/icn_more_r.png" height="30" width="70"></a></p>
+        </div>
+        <div class="chaseWrap">
+          <ul>
+            <li id="l_all"><a class="selected" href="javascript:change('ALL');"><img src="/img/btm_nav_all_r.png" height="11" width="22" alt="" /></a></li>
+            <li id="l_team"><a href="javascript:change('newsTeam');"><img src="/img/btm_nav_team_r.png" height="11" width="35" alt="" /></a></li>
+            <li id="l_ticket"><a href="javascript:change('newsTicket');"><img src="/img/btm_nav_ticket_r.png" height="11" width="46" alt="" /></a></li>
+            <li id="l_event"><a href="javascript:change('newsEvent');"><img src="/img/btm_nav_event_r.png" height="11" width="40" alt="" /></a></li>
+            <li id="l_fc"><a href="javascript:change('newsFC');"><img src="/img/btm_nav_fanclub_r.png" height="11" width="58" alt="" /></a></li>
+            <li id="l_goods"><a href="javascript:change('newsGoods');"><img src="/img/btm_nav_goods_r.png" height="11" width="42" alt="" /></a></li>
+            <li id="l_farm"><a href="javascript:change('newsFarm');"><img src="/img/btm_nav_farm_r.png" height="11" width="35" alt="" /></a></li>
+            <li id="l_mobile"><a href="javascript:change('newsMobile');"><img src="/img/btm_nav_mobile_r.png" height="11" width="48" alt="" /></a></li>
+            <li id="l_other"><a href="javascript:change('newsOther');"><img src="/img/btm_nav_other_r.png" height="11" width="41" alt="" /></a></li>
+          </ul>
+          <span class="chase" style="overflow:visible !important;"></span>        </div>
+        <div class="headlineContent">
+          <!-- 埋め込み -->
+        </div>
+      </div>
+
+      
+<ul class="newsline">
+<li class="mb05"><img id="ALL" src="/common/img/news/bar_all1.png" width="510"></li>
+<li class="mb05"><img id="newsTeam" src="/common/img/news/bar_team1.png" width="510"></li>
+<li class="mb05"><img id="newsTicket" src="/common/img/news/bar_ticket1.png" width="510"></li>
+<li class="mb05"><img id="newsEvent" src="/common/img/news/bar_event1.png" width="510"></li>
+<li class="mb05"><img id="newsFC" src="/common/img/news/bar_fc1.png" width="510"></li>
+<li class="mb05"><img id="newsGoods" src="/common/img/news/bar_goods1.png" width="510"></li>
+<li class="mb05"><img id="newsFarm" src="/common/img/news/bar_farm1.png" width="510"></li>
+<li class="mb05"><img id="newsMobile" src="/common/img/news/bar_mobile1.png" width="510"></li>
+<li class="mb05"><img id="newsOther" src="/common/img/news/bar_other1.png" width="510"></li>
+</ul>
+
+
+<ul class="newsList">
+<li><span class="date">2016/1/22</span><a class="newsGoods" href="/news/2016/01/0122_01.php">1/22(金)より5周年記念グッズ第2弾発売開始</a></li><li><span class="date">2016/1/22</span><a class="newsTeam" href="/news/2016/01/0122_03.php">2016年沖縄春季キャンプ 参加メンバー決定</a></li><li><span class="date">2016/1/22</span><a class="newsEvent" href="/news/2016/01/0122_02.php">ダイヤモンド社・代官山蔦屋書店主催『BALLPARK』出版記念トークセッション開催</a></li><li><span class="date">2016/1/21</span><a class="newsGoods" href="/news/2016/01/0121_02.php">球団初のメッセージフォトブック『BALLPARK』本日より予約受付開始</a></li><li><span class="date">2016/1/21</span><a class="newsOther" href="/news/2016/01/0121_03.php">横浜スタジアムに対する公開買付け終了</a></li><li><span class="date">2016/1/20</span><a class="newsGoods" href="/news/2016/01/0120_01.php">1/24(日)「dianaファンミーティング」限定dianaオリジナルグッズ発売</a></li><li><span class="date">2016/1/17</span><a class="newsOther" href="/news/2016/01/0117_01.php">TBSチャンネル2はオフ期間も特番やBESTセレクションを放送中</a></li><li><span class="date">2016/1/15</span><a class="newsFC" href="/news/2016/01/0115_01.php">2016ファンクラブ会員限定! サイン入り卓上カレンダープレゼント!!!</a></li><li><span class="date">2016/1/14</span><a class="newsGoods" href="/news/2016/01/0114_01.php">開幕までにお届けできるオーセンティックユニフォーム 250着限定発売</a></li><li><span class="date">2016/1/13</span><a class="newsGoods" href="/news/2016/01/0113_01.php">Happy Valentine2016 スイートギフトお申し込み受付中！</a></li><li><span class="date">2016/1/13</span><a class="newsOther" href="/news/2016/01/0113_02.php">3/5(土)･6(日)横浜スタジアムにて『第4回DeNAベイスターズカップ』開催</a></li><li><span class="date">2016/1/12</span><a class="newsOther" href="/news/2016/01/0112_01.php">2/1(月) 2016年度横浜DeNAベイスターズインターンシップ説明会開催</a></li><li><span class="date">2016/1/11</span><a class="newsOther" href="/news/2016/01/0111_01.php">新ビジターユニフォーム着用選手広告が1/12(火)スポーツ紙をジャック</a></li><li><span class="date">2016/1/9</span><a class="newsOther" href="/news/2016/01/0109_01.php">2016シーズンよりビジターユニフォームをフルモデルチェンジ</a></li><li><span class="date">2016/1/8</span><a class="newsEvent" href="/news/2016/01/0108_01.php">キャンプ地の子どもたちに『ベースボールキャップ』をプレゼント</a></li><li><span class="date">2016/1/7</span><a class="newsGoods" href="/news/2016/01/0107_01.php">5周年特別企画! 世界に1つ超豪華555,555円福袋お申込受付け開始!!</a></li><li><span class="date">2016/1/7</span><a class="newsGoods" href="/news/2016/01/0107_03.php">1/9(土)新ビジターユニフォームやユニフォームデザイン関連グッズなど発売決定!</a></li><li><span class="date">2016/1/7</span><a class="newsOther" href="/news/2016/01/0107_02.php">「神奈川少年野球応援シート」の2015年寄付金額のご報告</a></li><li><span class="date">2016/1/6</span><a class="newsGoods" href="/news/2016/01/0106_01.php">1/9(土)新人合同自主トレ開始に合わせてルーキーグッズ発売中</a></li><li><span class="date">2016/1/5</span><a class="newsOther" href="/news/2016/01/0105_02.php">1/9(土)「新ビジターユニフォーム発表会」の様子をSHOWROOMでお届け!</a></li><li><span class="date">2016/1/5</span><a class="newsEvent" href="/news/2016/01/0105_01.php">京急観光主催「2016年 横浜DeNAベイスターズ沖縄キャンプ観戦ツアー」開催</a></li><li><span class="date">2016/1/4</span><a class="newsTeam" href="/news/2016/01/0104_01.php">2016年シーズンスローガン決定</a></li><li><span class="date">2016/1/2</span><a class="newsEvent" href="/news/2016/01/0102_01.php">1/9(土)「5周年企画第二弾　新ビジターユニフォーム発表会」開催!</a></li><li><span class="date">2016/1/1</span><a class="newsGoods" href="/news/2016/01/0101_01.php">オフィシャルwebショップ限定、新春初売り企画!!</a></li><li><span class="date">2015/12/28</span><a class="newsMobile" href="/news/2015/12/1228_02.php">選手の私服をチェック! 公式モバイルサイト『オシャレ総選挙『ハマコレ』2015～モバイルサイトver.～』配信中!</a></li><li><span class="date">2015/12/28</span><a class="newsFC" href="/news/2015/12/1228_01.php">2016年ファンクラブ継続年会費引落しカード情報変更申請をされた方へ</a></li><li><span class="date">2015/12/27</span><a class="newsOther" href="/news/2015/12/1227_01.php">2016年シーズン『Personal slogan』発表</a></li><li><span class="date">2015/12/26</span><a class="newsGoods" href="/news/2015/12/1226_01.php">1/9(土)豪華“あたり”景品あり『2016新春福袋』1,300セット限定発売</a></li><li><span class="date">2015/12/25</span><a class="newsTeam" href="/news/2015/12/1225_01.php">山﨑康選手「内閣総理大臣杯 日本プロスポーツ大賞」最高新人賞受賞</a></li><li><span class="date">2015/12/24</span><a class="newsOther" href="/news/2015/12/1224_01.php">1/24(日)diana初のワンマンイベント「dianaファンミーティング」開催!!</a></li><li><span class="date">2015/12/22</span><a class="newsTeam" href="/news/2015/12/1222_01.php">2016年春季キャンプ実施詳細発表</a></li><li><span class="date">2015/12/21</span><a class="newsFC" href="/news/2015/12/1221_03.php">B☆SPIRIT友の会会員限定「選手直筆サイン入り壁掛けカレンダー」プレゼント</a></li><li><span class="date">2015/12/18</span><a class="newsMobile" href="/news/2015/12/1218_01.php">モバイルサイト会員限定! 選手直筆年賀色紙プレゼント実施中!</a></li><li><span class="date">2015/12/18</span><a class="newsTeam" href="/news/2015/12/1218_03.php">ザック・ペトリック選手と契約合意</a></li><li><span class="date">2015/12/15</span><a class="newsTeam" href="/news/2015/12/1215_01.php">2016年度オープン戦 試合日程発表</a></li><li><span class="date">2015/12/11</span><a class="newsFC" href="/news/2015/12/1211_01.php">2016年B☆SPIRIT友の会会員限定! サイン入りクリスマスカードプレゼント!!</a></li><li><span class="date">2015/12/9</span><a class="newsTeam" href="/news/2015/12/1209_01.php">砂田 毅樹選手・白崎 浩之選手の背番号変更</a></li><li><span class="date">2015/12/4</span><a class="newsEvent" href="/news/2015/12/1204_01.php">スーパーバズーカーが『ヨコハマ ホット・ロッドカスタムショー 』に登場</a></li><li><span class="date">2015/12/1</span><a class="newsEvent" href="/news/2015/12/1201_05.php">「5周年企画第一弾発表会」・「ベースボールキャッププレゼント」レポート</a></li><li><span class="date">2015/12/1</span><a class="newsEvent" href="/news/2015/12/1201_04.php">横浜スタジアムをキャッチボールの為に無償開放『DREAM GATE CATCHBALL』実施</a></li><li><span class="date">2015/12/1</span><a class="newsTeam" href="/news/2015/12/1201_01.php">『横浜DeNAベイスターズ 5周年ロゴ』を発表</a></li><li><span class="date">2015/11/30</span><a class="newsTeam" href="/news/2015/11/1130_01.php">2016年度 L.グリエルJr.選手契約について</a></li><li><span class="date">2015/11/29</span><a class="newsEvent" href="/news/2015/11/1129_01.php">YOKOHAMA☆GIRLS FESTIVAL 2015 チャリティオークション報告</a></li><li><span class="date">2015/11/28</span><a class="newsTeam" href="/news/2015/11/1128_02.php">2016年度 新入団選手 記者発表会を実施</a></li><li><span class="date">2015/11/28</span><a class="newsEvent" href="/news/2015/11/1128_01.php">11/28(土)『ファンフェスティバル2015』開門時間等繰り上げ</a></li><li><span class="date">2015/11/26</span><a class="newsEvent" href="/news/2015/11/1126_02.php">11/28(土)「ファンフェスティバル2015」 入場ゲート・整理券配布時間</a></li><li><span class="date">2015/11/24</span><a class="newsFarm" href="/news/2015/11/1124_01.php">12/6(日)横須賀スタジアム「横浜DeNAベイスターズ野球教室」参加者募集中</a></li><li><span class="date">2015/11/21</span><a class="newsTicket" href="/news/2015/11/1121_01.php">ファンフェスティバル2015 前売チケット完売・当日チケット発売決定</a></li><li><span class="date">2015/10/27</span><a class="newsTicket" href="/news/2015/10/1027_01.php">ファンフェスティバル2015のスペシャルチケット決定</a></li><li><span class="date">2015/10/23</span><a class="newsTicket" href="/news/2015/10/1023_01.php">10/29(木)ファンフェスティバル2015「ハッピートートバッグチケット」発売</a></li><li><span class="date">2015/10/22</span><a class="newsTicket" href="/news/2015/10/1022_03.php">『ファンフェスティバル2015』唯一の指定席『スペシャルBOXシート』発売</a></li><li><span class="date">2015/10/22</span><a class="newsTicket" href="/news/2015/10/1022_07.php">『ファンフェスティバル2015』直接指導体験型スペシャルチケット発売</a></li><li><span class="date">2015/10/20</span><a class="newsFC" href="/news/2015/10/1020_03.php">『B☆SPIRIT友の会』2016年度キッズ会員に5周年記念オリジナルグローブ進呈</a></li><li><span class="date">2015/10/20</span><a class="newsFC" href="/news/2015/10/1020_02.php">10/23(金)公式ファンクラブ2016年新規会員募集・2015年会員様更新手続き開始</a></li><li><span class="date">2015/10/9</span><a class="newsFarm" href="/news/2015/10/1009_04.php">10/26(月) 四国アイランドリーグplus選抜戦 試合開始時間変更</a></li><li><span class="date">2015/10/4</span><a class="newsFarm" href="/news/2015/10/1004_03.php">『みやざきフェニックス・リーグ2015』参加選手決定のお知らせ</a></li><li><span class="date">2015/10/3</span><a class="newsMobile" href="/news/2015/10/1003_01.php">10/22(木)『ドラフト速報メール』配信 & 2015入団選手着用ビブスプレゼント</a></li><li><span class="date">2015/10/3</span><a class="newsTicket" href="/news/2015/10/1003_05.php">10/3(土)当日チケット発売について</a></li><li><span class="date">2015/10/3</span><a class="newsTicket" href="/news/2015/10/1003_03.php">10/3(土)チケット発売時間繰り上げのお知らせ</a></li><li><span class="date">2015/10/1</span><a class="newsTicket" href="/news/2015/10/1001_10.php">10/3(土)開催分車椅子席チケット発売のお知らせ</a></li><li><span class="date">2015/10/1</span><a class="newsTicket" href="/news/2015/10/1001_09.php">10/3(土)追加日程分チケット発売・シーズンシート予備券のお知らせ</a></li><li><span class="date">2015/10/1</span><a class="newsTicket" href="/news/2015/10/1001_05.php">10/1(木)チケット発売時間見合わせのお知らせ</a></li><li><span class="date">2015/9/25</span><a class="newsFC" href="/news/2015/09/0925_02.php">10/1(木)大人気！選手カードに山﨑康選手新人最多セーブ記録記念カード登場</a></li><li><span class="date">2015/9/21</span><a class="newsFarm" href="/news/2015/09/0921_02.php">9/25(金)・26(土)ファームホームゲーム最終戦こども入場無料デー開催</a></li><li><span class="date">2015/9/18</span><a class="newsMobile" href="/news/2015/09/0918_04.php">9/19(土)モバイルサイト会員限定！<br>グッズ10％OFF&選手愛用品抽選会に参加しよう</a></li><li><span class="date">2015/9/18</span><a class="newsFC" href="/news/2015/09/0918_01.php">9/26(土)より選手カード購入してdianaグッズ抽選会・サイングッズ抽選会に<br>参加しよう</a></li><li><span class="date">2015/9/18</span><a class="newsFarm" href="/news/2015/09/0918_03.php">【イースタン・リーグ公式戦】<br>9/18(金) 東北楽天 対 横浜DeNAの試合は中止</a></li><li><span class="date">2015/9/15</span><a class="newsFC" href="/news/2015/09/0915_05.php">ファンクラブ会員限定イベントについてのご注意とお願い</a></li><li><span class="date">2015/9/14</span><a class="newsFC" href="/news/2015/09/0914_01.php">「大人気！選手カード」を購入しファンクラブイベントに参加しよう</a></li><li><span class="date">2015/9/11</span><a class="newsFarm" href="/news/2015/09/0911_04.php">イースタン・リーグ公式戦　試合日程追加のお知らせ</a></li><li><span class="date">2015/9/10</span><a class="newsMobile" href="/news/2015/09/0910_03.php">9/19(土)モバイル会員限定！抽選で始球式など豪華イベントに参加しよう</a></li><li><span class="date">2015/9/10</span><a class="newsFarm" href="/news/2015/09/0910_02.php">【イースタン・リーグ公式戦】<br>9/10(木) 東京ヤクルト 対 横浜DeNAの試合は中止</a></li><li><span class="date">2015/9/9</span><a class="newsFarm" href="/news/2015/09/0909_01.php">【イースタン・リーグ公式戦】<br>9/9(水) 東京ヤクルト 対 横浜DeNAの試合は中止</a></li><li><span class="date">2015/9/8</span><a class="newsFarm" href="/news/2015/09/0908_02.php">イースタン・リーグ公式戦　試合日程追加のお知らせ</a></li><li><span class="date">2015/9/8</span><a class="newsFarm" href="/news/2015/09/0908_01.php">【イースタン・リーグ公式戦】<br>9/8(火) 東京ヤクルト 対 横浜DeNAの試合は中止</a></li><li><span class="date">2015/8/21</span><a class="newsMobile" href="/news/2015/08/0821_06.php">山﨑康晃選手、新人記録達成直後の直筆サイン入り試合球プレゼント！</a></li><li><span class="date">2015/3/22</span><a class="newsMobile" href="/news/2015/03/0322_03.php">選手実着用ユニフォーム上下セットなどが当たる大抽選会受付開始</a></li><li><span class="date">2015/2/20</span><a class="newsMobile" href="/news/2015/02/0220_05.php">総勢68名の監督・選手独占インタビュー！今年は俺のココを見ろ!!</a></li><li><span class="date">2015/1/19</span><a class="newsMobile" href="/news/2015/01/0119_01.php">公式モバイルサイトで「こちら☆ファームですよ！」開始！</a></li><li><span class="date">2014/12/23</span><a class="newsMobile" href="/news/2014/12/1223_01.php">球団公式モバイルサイト「試合ダイジェスト動画」<br>2014シーズンの再生回数ベスト10を発表！</a></li>
+</ul>
+
+
+      <div class="social">
+        <ul>
+          <li><a href="/event/stadium/"><img class="fade" src="/img/banner/2015/bnr_community_ballpark_400.jpg" alt="横浜スタジアム『コミュニティボールパーク』化構想" width="400" height="100"></a></li>
+          <li><a href="/i_love_yokohama/" target="_blank"><img class="fade" src="/img/banner/2015/bnr_ilove_400.jpg" alt="I☆YOKOHAMA" width="400" height="100"></a></li>
+          <li><a href="/community/club_baystars/info.php" target="_blank"><img class="fade" src="/img/banner/2015/bnr_club_baystars_400.jpg" alt="club_baystars" width="400" height="100"></a></li>
+        </ul>
+      </div>
+      <div class="btmBnrs">
+        <ul>
+
+                    <li><a href="http://ec.baystars.co.jp/?m=opb" target="_blank"><img class="fade" src="/img/banner/2015/bnr_goods.jpg" alt="オフィシャルwebショップ"></a></li>
+          <li><a href="http://dena.com/sekai_egao/" target="_blank"><img class="fade" src="/img/banner/2014/sekaiegao_2014.jpg" alt="sekai☆egao project"></a></li>
+        </ul>
+
+        <ul>
+
+		          </ul>
+      </div>
+    <!-- content --></div>
+  <!-- contentWrap --></div>
+
+<!-- wrapper_r --></div>
+
+<div class="sponsorWrap">
+  <div class="sponsor">
+    <h3><img src="/img/tit_sponsor_r.png" height="20" width="74" alt="SPONSOR" /></h3>
+        <ul>
+      <li><a href="http://www.nojima.co.jp/" target="_blank"><img class="fade" src="/img/banner/sp_nojima.gif" alt="株式会社ノジマ" width="110" height="40"></a></li>
+      <li><a href="http://www.e-bukken-list.com/" target="_blank"><img class="fade" src="/img/banner/sp_list4.jpg" alt="いい物件リスト" width="110" height="40"></a></li>
+      <li><a href="http://www.paloma.co.jp/" target="_blank"><img class="fade" src="/img/banner/sponser_logo_paloma.gif" alt="パロマ" width="110" height="40"></a></li>
+      <li><a href="http://www.sej.co.jp" target="_blank"><img class="fade" src="/img/banner/sponser_logo.gif" alt="セブン-イレブン" width="110" height="40"></a></li>
+      <li><a href="http://www.dena.jp/" target="_blank"><img class="fade" src="/img/banner/sp_dena_02.gif" alt="[DeNA] 株式会社ディー・エヌ・エー" width="110" height="40"></a></li>
+<!--      <li><a href="http://www.jcb-card.jp/fanfesta2015/" target="_blank"><img class="fade" src="/img/banner/2015/fanfesta.jpg" alt="ファンフェスタ" width="110" height="40"></a></li>
+      <li><a href="http://www.dena-ec.com/yokohama_dena_baystars_shop/?aff_id=mbga1540" target="_blank"><img class="fade" src="/img/banner/online_shop_01.gif" alt="公式オンラインショップ" width="110" height="40"></a></li>-->
+    </ul>  </div>
+</div>
+
+<div class="footer_rWrap">
+  <div class="footer_r">
+    <p id="pageTop"><img src="/common/img/icn_pagetop_arw_r.png" height="10" width="19" alt="" /></p>
+    <div class="footer_nav">
+      <p><a href="/">TOP</a><span>|</span><a href="/ticket/">チケット情報</a><span>|</span><a href="/game/">試合</a><span>|</span><a href="/news/">ニュース</a><span>|</span><a href="/team/">チーム</a><span>|</span><a href="/fanclub/">ファンクラブ</a></p>
+      <p><a href="/shopping/">グッズ</a><span>|</span><a href="/community/">エンターテインメント</a><span>|</span><a href="/season/">シーズンシート</a><span>|</span><a href="/site/">サイトのご利用について</a></p>
+    </div>
+    <p class="copy">Copyright &copy; YOKOHAMA DeNA BAYSTARS All Rights Reserved.</p>
+  </div>
+</div>
+<script type="text/javascript">
+<!--
+var _uic = _uic ||{}; var _uih = _uih ||{};_uih['id'] = 51349;
+_uih['lg_id'] = '';
+_uih['fb_id'] = '';
+_uih['tw_id'] = '';
+_uih['uigr_1'] = ''; _uih['uigr_2'] = ''; _uih['uigr_3'] = ''; _uih['uigr_4'] = ''; _uih['uigr_5'] = '';
+_uih['uigr_6'] = ''; _uih['uigr_7'] = ''; _uih['uigr_8'] = ''; _uih['uigr_9'] = ''; _uih['uigr_10'] = '';
+
+/* DO NOT ALTER BELOW THIS LINE */
+/* WITH FIRST PARTY COOKIE */
+(function() {
+var bi = document.createElement('scri'+'pt');bi.type = 'text/javascript'; bi.async = true;
+bi.src = ('https:' == document.location.protocol ? 'https://bs' : 'http://c') + '.nakanohito.jp/b3/bi.js';
+var s = document.getElementsByTagName('scri'+'pt')[0];s.parentNode.insertBefore(bi, s);
+})();
+//-->
+</script>
+
+</body>
+</html>

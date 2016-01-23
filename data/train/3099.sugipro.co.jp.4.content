@@ -1,0 +1,277 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta name="Keywords" content="ダイビング,水泳教室,水泳の家庭教師,水中文学,電子書籍">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta name="GENERATOR" content="JustSystems Homepage Builder Version 18.0.7.0 for Windows">
+<script type="text/javascript" src="modi.js"></script>
+<title>SUGIPRO</title>
+<script language="javascript">
+  <!--
+  /*  Your are permitted to reuse this code as long as the following copyright
+      notice is not removed:
+
+      This HTML tip handling is copyright 1998 by insideDHTML.com, LLC. More information about this
+      code can be found at Inside Dynamic HTML: HTTP://www.insideDHTML.com
+  */
+
+
+  // Support for all collection
+  var allSupport = document.all!=null
+
+  function setupEventObject(e) {
+    // Map NS event object to IEs
+    if (e==null) return // IE returns
+    window.event = e
+    window.event.fromElement = e.target
+    window.event.toElement = e.target
+    window.event.srcElement = e.target
+    window.event.x = e.x
+    window.event.y = e.y
+    // Route the event to the original element
+    // Necessary to make sure _tip is set.
+    window.event.srcElement.handleEvent(e);
+  }
+
+
+  function checkName(src) {
+    // Look for tooltip in IE
+    while ((src!=null) && (src._tip==null))
+      src = src.parentElement
+    return src
+  }
+
+  function getElement(elName) {
+    // Get an element from its ID
+    if (allSupport)
+      return document.all[elName]
+    else
+      return document.layers[elName]
+  }
+
+  function writeContents(el, tip) {
+    // Replace the contents of the tooltip
+    if (allSupport)
+      el.innerHTML = tip
+    else {
+      // In NS, insert a table to work around
+      // stylesheet rendering bug.
+      // NS fails to apply style sheets when writing
+      // contents into a positioned element.
+      el.document.open()
+      el.document.write("<TABLE WIDTH=200 BORDER=1 bordercolor=black><TR><TD WIDTH=100% BGCOLOR=red>")
+      el.document.write(tip)
+      el.document.write("</TD></TR></TABLE>")
+      el.document.close()
+    }
+  }
+
+  function getOffset(el, which) {
+    // Function for IE to calculate position 
+    // of an element.
+    var amount = el["offset"+which] 
+    if (which=="Top")
+      amount+=el.offsetHeight
+    el = el.offsetParent
+    while (el!=null) {
+      amount+=el["offset"+which]
+      el = el.offsetParent
+    }
+    return amount
+  }
+  
+
+  function setPosition(el) {
+    // Set the position of an element
+    src = window.event.srcElement
+    if (allSupport) {
+      el.style.pixelTop = getOffset(src, "Top")
+      el.style.pixelLeft = getOffset(src, "Left")
+    } else
+    {
+      el.top = src.y + 20 //window.event.y + 15
+      el.left = src.x //window.event.x
+    }
+  }
+      
+  function setVisibility(el, bDisplay) {
+    // Hide or show to tip
+    if (bDisplay)
+      if (allSupport)
+        el.style.visibility = "visible" 
+      else
+        el.visibility = "show";
+    else
+      if (allSupport)
+        el.style.visibility = "hidden"
+      else
+        el.visibility = "hidden"
+  }
+
+
+  function displayContents(tip) {
+    // Display the tooltip. 
+    var el = getElement("tipBox")
+    writeContents(el, tip)
+    setPosition(el)
+    setVisibility(el, true)
+  }
+
+
+  function doMouseOver(e) {
+    // Mouse moves over an element
+    setupEventObject(e)
+    var el, tip
+    if ((el = checkName(window.event.srcElement))!=null)
+      if  (!el._display) {
+        displayContents(el._tip)
+        el._display = true
+      }
+  }
+
+  function doMouseOut(e) {
+    // Mouse leaves an element
+    setupEventObject(e)
+    el = checkName(window.event.srcElement)
+    var el, tip
+    if ((el = checkName(window.event.srcElement))!=null)
+      if (el._display)
+        if ((el.contains==null) || (!el.contains(window.event.toElement))) {
+          setVisibility(getElement("tipBox"), false)
+          el._display = false
+        }
+  }
+
+  function doLoad() {
+    // Do Loading
+    if ((window.document.captureEvents==null) && (!allSupport))
+      return // Not IE4 or NS4
+    if (window.document.captureEvents!=null)  // NS - capture events
+      window.document.captureEvents(Event.MOUSEOVER | Event.MOUSEOUT)
+    window.document.onmouseover = doMouseOver;
+    window.document.onmouseout = doMouseOut;
+  }
+
+  window.onload = doLoad
+  // -->
+</script>
+<style>
+<!--
+#tipBox{
+  BORDER-RIGHT: black 1pt solid;
+  BORDER-TOP: black 1pt solid;
+  Z-INDEX: 100;
+  BACKGROUND: #ffff00;
+  VISIBILITY: hidden;
+  BORDER-LEFT: black 1pt solid;
+  WIDTH: 150px;
+  BORDER-BOTTOM: black 1pt solid;
+  POSITION: absolute;
+}
+-->
+</style>
+<STYLE TYPE="text/css"> 
+<!-- 
+
+.table1{
+	 
+width: 600px; /* テーブルの横幅 */ 
+border-collapse: collapse; /* 枠線の表示方法 */ 
+border: 1px #1C79C6 solid; /* テーブル全体の枠線（太さ・色・スタイル） */ 
+} 
+
+.table1 TD{
+	 
+border: 1px #1C79C6 solid; /* セルの枠線（太さ・色・スタイル） */ 
+} 
+
+--> 
+</STYLE> 
+
+</head>
+<body>
+<div id="tipBox" style="width : 300px; height: 20; left: 136; top: -1; position: absolute;"></div>
+<div align="center">
+  <center></center>
+  <table border="0" cellpadding="0" cellspacing="8" width="909" bordercolor="#0000FF" height="361">
+    <tbody>
+      <tr>
+        <td align="center" valign="top" width="867" height="22">
+        <table class="sample1" width="803" height="1">
+          <tbody>
+            <tr>
+              <td class="sample" align="center" width="267" height="1" bgcolor="#FFFFFF">
+              <p align="left"><a href="http://www.sugipro.co.jp/enkaku.html#b"><img border="1" src="sugipro.jpg" width="69" height="71" alt="会社案内"></a></p>
+              </td>
+              <td class="sample" align="center" width="267" height="1" bgcolor="#FFFFFF"><img src="http://www.sugipro.co.jp/img/sss.gif" width="188" height="55" border="0"></td>
+              <td class="sample" align="center" width="267" height="1" bgcolor="#FFFFFF">
+              <p align="right"><a href="http://www.sugipro.co.jp/enkaku.html#a"><img border="1" src="index310.jpg" width="59" height="71" alt="個人の経歴"></a></p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        </td>
+      </tr>
+      <tr>
+        <td align="center" valign="middle" width="867" height="25"><b><font color="#0000ff" size="4" face="Century">Swimming&amp;Diving</font></b></td>
+      </tr>
+      <tr>
+        <td align="center" valign="top" height="225">
+        <div align="center">
+          <table class="table1" width="632" bordercolor="#000000" height="315">
+            <TR>
+              <td width="99" height="50" align="center" valign="middle"><a onmouseover="this._tip='&lt;FONT COLOR=red&gt;　女性指導員が優しく指導！！'" href="http://www.sugipro.co.jp/swimming.html"><img border="0" src="index31.jpg" width="167" height="84" align="top"></a></td>
+              <td width="99" height="50" align="center" valign="middle"><a onmouseover="this._tip='&lt;FONT COLOR=red&gt;　いつまでも、健康で！それは水泳'" href="http://www.sugipro.co.jp/senior.html"><img border="0" src="index32.jpg" width="167" height="84"></a></td>
+              <td width="99" height="50" align="center" valign="middle"><a onmouseover="this._tip='&lt;FONT COLOR=red&gt;　スノーケリング、簡単だけど、<BR>　ちゃんと習いましょう！'" href="http://www.sugipro.co.jp/school/school.html#a"><img border="0" src="index33.jpg" width="167" height="84"></a></td>
+              <td width="99" height="50" align="center" valign="middle"><a onmouseover="this._tip='&lt;FONT COLOR=red&gt;　ダイビング、基礎が肝心！'" href="http://www.sugipro.co.jp/school/school.html#b"><img border="0" src="index34.jpg" width="167" height="84"></a></td>
+              <td height="59" valign="middle"><a onmouseover="this._tip='&lt;FONT COLOR=red&gt;　実技の前に、充分予習を！'" href="http://www.sugipro.co.jp/kouza/index.html" target="_blank"><img border="0" src="index35.jpg" width="167" height="88"></a></td>
+            </TR><tr valign="middle" align="center">
+              <td width="99" height="67" align="center" valign="middle"><a href="http://www.sugipro.co.jp/swimming.html"><font size="2">水と海に学ぶ会<br>
+              水泳の家庭教師<br>
+              子どもと婦人のための<br>
+              水泳教室</font></a></td>
+              <td width="99" height="67" align="center" valign="middle"><a href="http://www.sugipro.co.jp/senior.html"><font size="2">水と海に学ぶ会<br>
+              水泳の家庭教師<br>
+              シニアーのための<br>
+              水泳教室</font></a></td>
+              <td width="99" height="67" align="center" valign="middle"><a href="http://www.sugipro.co.jp/school/school.html#a"><font size="2">スノーケル<br>
+              ＆<br>
+              スキンダイビング<br>
+              プールレッスン</font></a></td>
+              <td width="99" height="67" align="center" valign="middle"><a href="http://www.sugipro.co.jp/school/school.html#b"><font size="2">初級<br>
+              スキューバダイビング<br>
+              コース</font></a></td>
+              <td height="67" align="center" valign="middle"><font size="2"><a href="http://www.sugipro.co.jp/kouza/index.html" target="_blank">実技の前にちょっと予習<br>
+              ダイビング自習ｗｅｂ講座&nbsp;</a></font></td>
+            </tr><TR>
+              <td width="99" height="50" align="center" valign="middle">&nbsp;<a onmouseover="this._tip='&lt;FONT COLOR=red&gt;　良いものを、安価で！'" href="http://www.sugipro.co.jp/kizai/gkeikizai2.pdf"><img border="0" src="index36.jpg" width="167" height="88"></a></td>
+              <td width="99" height="50" align="center" valign="middle"><a onmouseover="this._tip='&lt;FONT COLOR=red&gt;　マイ ギアで、快適安心ダイビング！'" href="http://www.sugipro.co.jp/kizai/gversion.pdf"><img border="0" src="index37.jpg" width="167" height="88"></a></td>
+              <td width="99" height="50" align="center" valign="middle"><a onmouseover="this._tip='&lt;FONT COLOR=red&gt;　南の島で、自然体験！'" href="http://www.sugipro.co.jp/boken/boken.htm" target="_blank"><img border="0" src="index38.jpg" width="167" height="101"></a></td>
+              <td width="99" height="50" align="center" valign="middle"><a onmouseover="this._tip='&lt;FONT COLOR=red&gt;　４０年のダイビングの記録と感想です'" href="http://www.sugipro.co.jp/mybook/annai.html"><img src="img_e069.gif" width="144" height="88" border="0"></a></td>
+              <td align="left" valign="middle" rowspan="2">　　　　<font size="2">お知らせ<br>
+              <br>
+              ブログ「うみに想う」は閉鎖しました。<br clear="none">
+              過去原稿は私の本棚へ移しました。<br>
+              新しい読み物も追加しています。</font></td>
+            </TR><TR>
+              <td width="99" height="50" align="center" valign="middle"><font size="2"><a href="http://www.sugipro.co.jp/kizai/gkeikizai2.pdf">若者向け<br>
+              格安<br>
+              軽器材セット</a></font></td>
+              <td width="99" height="50" align="center" valign="middle"><a href="http://www.sugipro.co.jp/kizai/gversion.pdf"><font size="2">若者向け<br>
+              格安<br>
+              重器材セット</font></a></td>
+              <td width="99" height="50" align="center" valign="middle"><a href="http://www.sugipro.co.jp/boken/boken.htm" target="_blank"><font size="2">子ども<br>
+              「海の冒険教室</font>」</a></td>
+              <td width="99" height="50" align="center" valign="middle"><font size="2"><a href="http://www.sugipro.co.jp/mybook/annai.html" target="_blank">私のｗｅｂ本棚</a></font></td>
+            </TR>
+          </table>
+        </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <font size="2"><a href="http://www.sugipro.co.jp/enkaku.html">スギプロの沿革</a></font></div>
+<p align="center"><font size="2" color="#000000">Copyright (C)2013 SUGIPRO.All Right Reserved</font></p>
+</body>
+</html>

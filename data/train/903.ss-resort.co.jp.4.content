@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="keywords" content="佐用スターリゾート公式サイト"/>
+<meta name="description" content="佐用スターリゾート公式サイト"/>
+<title>佐用スターリゾート公式サイト</title>
+
+<meta name="viewport" content="width=device-width, user-scalable=yes, minimum-scale=1.0">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="common/css/default.css">
+<link rel="stylesheet" href="common/css/rwdgrid.css">
+
+<link rel="stylesheet" href="common/css/font-awesome.css">
+<link rel="stylesheet" href="common/css/style.css">
+<link href="common/css/index.css" rel="stylesheet" type="text/css">
+<link href="common/css/animate.css" rel="stylesheet" type="text/css">
+
+<!--[if lte IE 7]>
+<link rel="stylesheet" href="common/css/font-awesome-ie7.css">
+<![endif]-->
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+<!--wowスクリプト -->
+<script type="text/javascript" language="javaScript" src="common/js/wow.js"></script>
+<script>
+ new WOW().init();
+</script>
+<!--wowスクリプト -->
+
+<!--高さを合わせる -->
+<script type="text/javascript" language="javaScript" src="common/js/jquery.matchHeight-min.js"></script>
+<script>
+    $(function(){
+      $('.js-matchHeight').matchHeight();
+    });
+  </script>
+<!--高さを合わせる -->
+
+<script type="text/javascript" language="javaScript" src="common/js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" language="javaScript" src="common/js/yuga.js"></script>
+<script type="text/javascript" language="javaScript" src="common/js/yuga.onload.js"></script>
+<script type="text/javascript" language="javaScript" src="common/js/smoothscroll.js"></script>
+<script type="text/javascript" language="javaScript" src="common/js/common.js"></script>
+<script src="../../api.html5media.info/1.1.4/html5media.min.js"></script>
+<script src="common/js/rollover.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	// Video音声コントロール
+	var _v = document.getElementById("video-background");
+	var _btn = document.getElementById("btn_img");
+	// Section高さ設定
+	$(window).bind("load resize", init);
+	
+	function init(){
+		var _width = $("#wrapper").width();
+		var _height = _width * 0.5625;
+	}
+	
+	// PC閲覧時はサブナビゲーションを表示
+	var ua = navigator.userAgent.toUpperCase();
+	if(!(ua.indexOf('IPHONE') != -1 || (ua.indexOf('ANDROID') != -1 && ua.indexOf('MOBILE') != -1))){
+		
+		var nav = $("#subnavi");
+		
+		//表示位置
+		var showPos = $("#mov_cover").height();
+		var navTop = nav.offset().top + showPos;
+		var _video = $("#video-background");
+		var navHeight = nav.height();
+		var showFlug = false;
+		nav.css('top', -navHeight+'px');
+		
+		$(window).scroll(function(){
+			var winTop = $(this).scrollTop();
+			if (winTop >= navTop) {
+				if (showFlug == false) {
+					showFlug = true;
+					nav.stop().show().animate({'top':'0px'}, 300);
+					_video.css("display", "none");
+				}
+			} else if (winTop <= navTop) {
+				if (showFlug) {
+					showFlug = false;
+					nav.stop().hide().css("top", -navHeight+"px");
+					_video.css("display", "block");
+				}
+			}
+		});
+	}
+});
+</script>
+
+
+
+<script type="text/javascript">
+// iPhoneまたは、Androidの場合は振り分けを判断
+if (document.referrer.indexOf('ss-resort.co.jp') == -1 && ((navigator.userAgent.indexOf('iPhone') > 0 && navigator.userAgent.indexOf('iPad') == -1) || navigator.userAgent.indexOf('iPod') > 0 || navigator.userAgent.indexOf('Android') > 0)) {
+    if(confirm('佐用スターリゾートへようこそ。\nこのサイトにはスマートフォン用のサイトがあります。\n表示しますか？')) {
+        location.href = 'http://ss-resort.co.jp/sp/';
+    }
+}
+</script>
+
+
+<script type="text/javascript">
+var ua = navigator.userAgent;
+if(ua.indexOf('iPhone') > -1 || ua.indexOf('iPod') > -1 || (ua.indexOf('Android') > -1 && ua.indexOf('Mobile') > -1)){
+	document.write('<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">');
+	
+}
+else if(ua.indexOf('iPad') > -1 || ua.indexOf('Android') > -1){
+		document.write('<meta name="viewport" content="width=1100, initial-scale=1, maximum-scale=1.5, user-scalable=yes">');
+	}
+
+</script>
+
+
+<!--[if gte IE 9]><!-->
+<![endif]-->
+
+<!-- html5.js for IE less than 9 -->
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<!-- css3-mediaqueries.js for IE 9 -->
+<!--[if IE 9]>
+<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+<![endif]-->
+
+<!--[if lte IE 8]>
+<link rel="stylesheet" href="common/css/ie.css">
+<!--script type="text/javascript" src="common/js/jquery.backgroundSize.js"></script>
+<script>
+   $(function() {
+       $("#first_section").css("background-size", "cover");
+       $("#second_section").css("background-size", "cover");
+       $("#third_section").css("background-size", "cover");
+   });
+</script-->
+<![endif]-->
+<!--<script type="text/javascript" language="javaScript" src="common/js/rollover.js"></script>-->
+
+</head>
+
+
+<body id="top" class="top">
+<div id="subnavi">
+	
+	<ul>
+	<li><a href="index.html"><img src="img/common/gnavi01_off.gif" alt="トップ"></a></li>
+    <li><a href="http://www.ss-resort.co.jp/golf2013/index.html" target="_blank"><img src="img/common/gnavi02_off.gif" alt="ゴルフ"></a></li>
+    <li><a href="tennis/index.html"><img src="img/common/gnavi03_off.gif" alt="テニス"></a></li>
+	<li><a href="bbq/index.html"><img src="img/common/gnavi04_off.gif" alt="プール&バーベキュー"></a></li>
+	<li><a href="stay/index.html"><img src="img/common/gnavi05_off.gif" alt="宿泊"></a></li>
+	<li> <a href="spa/index.html"><img src="img/common/gnavi06_off.gif" alt="温泉・エステ"></a>
+	<ul><li><a href="spa/spa.html">佐用の湯</a></li>
+		<li><a href="spa/libran.html">エステリブラン</a></li>
+	</ul>
+	</li>
+	<li><a href="restaurant/index.html"><img src="img/common/gnavi07_off.gif" alt="レストラン"></a></li>
+	</ul>
+
+</div>
+<header id="header" class="container-16 clearfix">
+	<div class="inner">
+		
+		</div>
+	</div>
+<!-- / #header --></header>
+
+<div id="info_navi">
+		<ul>
+				<li><a href="access/index.html"><img src="img/index/hd_navi01_off.png" alt="交通アクセス"></a></li>
+				<li><a href="http://www.jhpds.net/fusion/uw/uwp3100/uww3101.do?yadNo=323204" target="_blank"><img src="img/index/hd_navi02_off.png" alt="宿泊予約"></a></li>
+				<li><img src="img/index/hd_navi03.png" alt="リゾートマップ"></li>
+				<li><a href="https://www.facebook.com/pages/佐用ゴルフ倶楽部/121621534680755" target="_blank"><img src="img/index/hd_navi04_off.png" alt="facebook"></a></li>
+				<li><a href="https://twitter.com/#!/sayogolfclub" target="_blank"><img src="img/index/hd_navi05_off.png" alt="Twitter"></a></li>
+		</ul>
+</div>
+
+
+
+
+<!--<div id="info_catch">
+		<div class="catch"><img src="img/index/hd_copy.png" alt="大人から楽しめる"></div>
+</div> -->
+
+
+
+
+
+
+<!--<div id="info_sk_logo">
+	<div id="logo"><img src="img/index/hd_logo02.png" alt="KURASHO SK GROUP"></div>
+</div> --> 
+
+
+
+<!-- #video_container -->
+
+<div id="video_container">
+	<div id="mov_cover"></div>
+	
+	<video poster="img/index/hd_main.jpg" preload="auto" autoplay loop muted id="video-background">
+		<source src="video/top.mp4" type="video/mp4" >
+	</video>
+	<div id="info_news_box">
+		<div class="innar clearfix">
+				<div class="title_area js-matchHeight">
+						<div class="st1">プレスリリース</div>
+						<div class="st2">NEWS</div>
+				</div>
+				<div class="news_area js-matchHeight">
+						<table>
+						<tr>
+								<th scope="row"><table>
+										<tr>
+												<th scope="row">2016.1.20</th>
+												<td> <a href="img/index/201602_valentine.pdf" class="link_u" target="_blank">【2月11日(木･祝)】テニスミックスダブルスバレンタイン大会開催！<br>
+                                                参加者募集中！（応募締切 2月4日）</a></td>
+										</tr>
+										<tr>
+												<th scope="row">2016.1.20</th>
+												<td> <a href="img/index/201602_tennis.pdf" class="link_u" target="_blank">お得なテニスパック登場！テニス＋ランチ＋天然温泉で2,000円～！</a></td>
+										</tr>
+										<tr>
+												<th scope="row">2016.1.1</th>
+												<td>～謹賀新年～<br>
+昨年は格別 の御厚情を賜り、厚く御礼を申し上げます。<br>
+本年も社員一同、皆様にご満足頂けるサービスを心がける所存でございますので、 何とぞ昨年同様のご愛顧を賜わりますよう、お願い申し上げます。<br>
+皆様のご健勝と貴社の益々のご発展を心よりお祈り致します。<br>
+本年もどうぞ宜しくお願い申し上げます。</td>
+										</tr>
+										<tr>
+												<th scope="row">2015.12.25</th>
+												<td> <a href="img/index/201601_tennis.pdf" class="link_u" target="_blank">1月限定！ テニス満喫プラン5,000円　会社・学校後に激安で宿泊可能！</a></td>
+										</tr>
+										<tr>
+												<th scope="row">2015.12.05</th>
+												<td>年末年始、各種プランもご用意しております是非お問い合わせください。</td>
+										</tr>
+										<tr>
+												<th scope="row">2015.09.18</th>
+												<td>スポーツの秋　シルバーウイークは皆様のご来場をお待ちしております</td>
+										</tr>
+										<tr>
+												<th scope="row">2015.09.17</th>
+												<td>ホームページリニューアルしました。</td>
+										</tr>
+								</table></th>
+						</tr>
+						</table>
+				</div>
+		</div>
+</div>
+</div>
+<!--<img src="img/mov_cover.png">-->
+<!-- / #video_container -->
+	
+	
+<div id="wrapper" class="clearfix"><!-- #BeginLibraryItem "/Library/gnavi.lbi" --><div id="gnavi">
+	<ul>
+	<li><a href="index.html"><img src="img/common/gnavi01_off.gif" alt="トップ"></a></li>
+    <li><a href="index.html#golf_section"><img src="img/common/gnavi02_off.gif" alt="ゴルフ"></a></li>
+    <li><a href="tennis/index.html"><img src="img/common/gnavi03_off.gif" alt="テニス"></a></li>
+	<li><a href="bbq/index.html"><img src="img/common/gnavi04_off.gif" alt="プール&バーベキュー"></a></li>
+	<li><a href="stay/index.html"><img src="img/common/gnavi05_off.gif" alt="宿泊"></a>
+	<ul>
+		<li class="point02"><a href="stay/index.html">佐用コンドミニアム</a></li>
+		<li class="point02"><a href="stay/fusion.html">佐用フュージョン倶楽部</a></li>
+	</ul>
+	</li>
+	<li> <a href="spa/spa.html"><img src="img/common/gnavi06_off.gif" alt="温泉・エステ"></a>
+	<ul>
+	<li class="point02"><a href="spa/spa.html">佐用の湯</a></li>
+	<li class="point02"><a href="spa/libran.html">エステ リブラン</a></li>
+	</ul>
+	</li>
+	<li><a href="restaurant/index.html"><img src="img/common/gnavi07_off.gif" alt="レストラン"></a>
+	<!--<ul>
+		<li class="point02"><a href="#">朝食バイキング</a></li>
+		<li class="point02"><a href="#">ランチバイキング</a></li>
+		<li class="point02"><a href="#">イタリアンメニュー</a></li>
+		<li class="point02"><a href="#">中華メニュー</a></li>
+	</ul> -->
+	</li>
+	</ul>
+</div><!-- #EndLibraryItem --><section id="second_section">
+				<div class="main wow fadeIn" data-wow-delay="0.3s">大人から、幸せになる。150万坪の総合スポーツレジャー＆スポーツ</div>
+				<div class="bnr_area">
+						<div class="innar">
+								<ul class="bnr01 clearfix">
+										<li class="wow fadeInUp" data-wow-delay="0.3s"><a href="#golf_section"><img src="img/index/intro_area_bt01_off.jpg" alt="GOLF　佐用スターリゾートゴルフ倶楽部"></a></li>
+										<li class="wow fadeInUp" data-wow-delay="0.5s"><a href="#tennis_section"><img src="img/index/intro_area_bt02_off.jpg" alt="TENNIS　美しい山々に囲まれたリゾート地でテニスを満喫"></a></li>
+										<li class="none wow fadeInUp" data-wow-delay="0.7s"><a href="#stay_section"><img src="img/index/intro_area_bt03_off.jpg" alt="STAY　宿泊施設についての説明が入ります"></a></li>
+								</ul>		
+								<ul class="bnr01 clearfix">
+										<li class="wow fadeInUp" data-wow-delay="0.4s"><a href="#bbq_section"><img src="img/index/intro_area_bt04_off.jpg" alt="BBQ　バーベキューテラス"></a></li>
+										<li class="wow fadeInUp" data-wow-delay="0.6s"><a href="#spa_section"><img src="img/index/intro_area_bt06_off.jpg" alt="SPA　極上の空間で癒しのひとときを"></a></li>
+										<li class="none wow fadeInUp" data-wow-delay="0.8s"><a href="#rest_section"><img src="img/index/intro_area_bt07_off.jpg" alt="RESTRANT　レストランさよ姫"></a></li>
+								</ul>		
+								<ul class="bnr02 clearfix">
+										<li class="wow fadeInUp" data-wow-delay="1s"><a href="http://www.ss-resort.jp/" target="_blank"><img src="img/index/intro_area_bt08_off.jpg" alt="ヒルズエリア"></a></li>
+										<li class="none wow fadeInUp" data-wow-delay="1s"><a href="forest_area/index.html"><img src="img/index/intro_area_bt09_off.jpg" alt="フォレストエリア"></a></li>
+								</ul>
+						</div>
+				</div>
+
+		<!-- / #second_section --></section>
+		
+		
+		
+		<section id="golf_section">
+				<div class="intro wow fadeIn" data-wow-delay="0.8s">
+						<div class="title clearfix">
+						<div class="catch"><img src="img/index/golf_catch.gif" alt="Golf　27ホールダイナミックゴルフ"></div>
+						<div class="bt"><a href="http://www.ss-resort.co.jp/golf2013/" target="_blank"><img src="img/index/golf_bt_off.gif" alt="詳しく見る"></a></div>
+						</div>
+						
+						<div class="mb45">佐用スターリゾートゴルフ倶楽部は、兵庫県佐用郡佐用町にある関西随一の総合ゴルフリゾートです。全27コースがありますが、まるで海外でのプレーを思わせる南コースと、ヤード数に定評のあるのチャンピオンコースの東・西コースといった性格の違うコースバリエーションが、人気の秘密です。また、このゴルフ場の中で最も目立つのは、有名な建築家である安藤忠雄氏が設計した宿泊施設です。</div>
+						
+				</div>
+				
+				
+				<div class="main wow fadeInUp" data-wow-delay="0.3s">Golf　27ホール　ダイナミックゴルフ</div>
+				<div class="txt_area">
+						<div class="innar">
+								<div class="intro2 clearfix">
+										<div class="txt">佐用スターリゾートゴルフ倶楽部は、東コースと南コースと西コース、合計27ホールで構成されています。東や西コースは広さが特徴で、飛距離重視の男性に人気があります。そして南コースは、テクニックを要する海外でのプレーを意識するようなコース内容になっており、女性に大変好評です。あらゆる視点でゴルフを楽しむことが出来る、素晴らしい場所になっています。</div>
+										<div class="bt"><a href="http://www.ss-resort.co.jp/golf2013/index.html" target="_blank"><img src="img/index/golf_bt_off.gif" alt="詳しく見る"></a></div>
+								</div>
+								<div class="pic">
+										<ul class="clearfix">
+										<li class="wow fadeInUp" data-wow-delay="0.3s"><img src="img/index/golf_pic01.jpg" alt=""></li>
+										<li class="wow fadeInUp" data-wow-delay="0.5s"><img src="img/index/golf_pic02.jpg" alt=""></li>
+										<li class="wow fadeInUp" data-wow-delay="0.7s"><img src="img/index/golf_pic03.jpg" alt=""></li>
+										<li class="wow fadeInUp" data-wow-delay="0.9s"><img src="img/index/golf_pic04.jpg" alt=""></li>
+										</ul>		
+										<ul class="clearfix">
+										<li class="wow fadeInUp" data-wow-delay="0.4s"><img src="img/index/golf_pic05.jpg" alt=""></li>
+										<li class="wow fadeInUp" data-wow-delay="0.6s"><img src="img/index/golf_pic06.jpg" alt=""></li>
+										<li class="wow fadeInUp" data-wow-delay="0.8s"><img src="img/index/golf_pic07.jpg" alt=""></li>
+										<li class="wow fadeInUp" data-wow-delay="1s"><img src="img/index/golf_pic08.jpg" alt=""></li>
+										</ul>
+								</div>
+						</div>
+				</div>
+		<!-- / #golf_section --></section>
+		
+		
+		
+		
+
+		<section id="tennis_section">
+		<div class="intro wow fadeIn" data-wow-delay="0.5s">
+						<div class="title clearfix">
+						<div class="catch"><img src="img/index/tennis_catch.gif" alt="TENNIS　全16面のオムコートさわやかな高原でテニスを満喫"></div>
+						<div class="bt"><a href="tennis/index.html"><img src="img/index/tennis_bt_off.gif" alt="詳しく見る"></a></div>
+						</div>
+						
+						<div class="mb45">さわやかな風が吹き抜ける高原で、思いっきりテニスをエンジョイ。 美しい山々に囲まれた6面のテニスコートは、 いずれも人工芝に砂を敷いたオムニコート。 グラスコートとオールウェザーコートのメリットを合わせもつ全天候型コートです。まばゆい光と緑の中、夢中になってボールを追いながら、子供たちとふれあう貴重なひととき。 ご夫婦のぴったり息の合ったファインプレーもなかなかの見もの。 ポーン、ポーンと小気味よい音が、弾む心に気持ちよく跳ね返ってきます。</div>
+						
+				</div>
+				
+				
+				<div class="main wow fadeInUp" data-wow-delay="0.3s">TENNIS　全16面のオムコートさわやかな高原でテニスを満喫</div>
+				
+				
+				<div class="txt_area">
+						<div class="innar clearfix wow fadeIn" data-wow-delay="0.6s">
+										<div class="pic"><img src="img/index/tennis_pic.jpg" alt="詳しく見る"></div>
+								<div class="txt">
+								  <p>テニスコートで思い通りのゲームを楽しんだ後は、新緑に抱かれるように木陰のベンチで休憩してみてはいかがですか？<br>
+								    鳥たちの囀る声や、そよぐ風の音、心身ともにリフレッシュできる最高のテニス環境が皆様をお待ちしています。</p>
+				  </div></div>
+				</div>
+
+
+		<!-- / #tennis_section --></section>
+		
+		
+		
+		
+		
+		
+		<section id="bbq_section">
+		<div class="intro wow fadeIn" data-wow-delay="0.6s">
+						<div class="title clearfix">
+						<div class="catch"><img src="img/index/bbq_catch.gif" alt="BBQ ＆ P00LプールサイドのBBQテラス夜は満点の星を眺めながら" width="651" height="55"></div>
+						<div class="bt"><a href="bbq/index.html"><img src="img/index/bbq_bt_off.gif" alt="詳しく見る"></a></div>
+						</div>
+						
+						<div class="mb45">青い空と播磨の美しい空気に抱かれた高原リゾート。広いプールの水辺に位置するBBQテラスではのびのびと天候を気にせず心行くまでお食事をお楽しみいただけます。</div>
+						
+				</div>
+				
+				
+				<div class="main wow fadeInUp" data-wow-delay="0.3s">TENNIS　全16面のオムコートさわやかな高原でテニスを満喫</div>
+				<div class="txt_area">
+						<div class="innar clearfix wow fadeIn" data-wow-delay="0.6s">
+										<div class="pic"><img src="img/index/bbq_pic.jpg" alt="詳しく見る"></div>
+								<div class="txt">佐用リゾートの広大なスポーツ施設で汗を流した後は、仲間・友人・ご家族で揃ってプールサイドバーベキューはいかがですか？<br>
+								屋根付き全天候型のバーベキューテラスでいつでも楽しく美味しいお食事をお楽しみいただけます。</div>
+						</div>
+				</div>
+				
+		<!-- / #bbq_section --></section>
+		
+		
+		
+		
+		
+		
+		<section id="stay_section">
+		<div class="catch wow fadeIn" data-wow-delay="0.65s"><img src="img/index/stay_catch.gif" alt="STAY"></div>
+		<div class="txt wow fadeIn" data-wow-delay="1s">夜明けから星の降り注ぐ夜まで、最高に楽しんだ後も心身ともにお寛ぎいただける至福の宿泊施設をご用意しておもてなしいたします。<br>
+				全室ファーストクラスのコンドミニアム、合宿やご利用に便利なフュージョン倶楽部2棟の3施設をご用意してお待ちしております。</div>
+		<div class="bnr">
+				<ul class="clearfix">
+						<a href="stay/index.html"><li class="bnr01">佐用コンドミニアム</li></a>
+						<a href="stay/fusion.html"><li class="bnr02">フュージョン倶楽部</li></a>
+				</ul>
+				</div>
+		<!-- / #stay_section --></section>
+		
+		
+		
+		
+		
+		<section id="spa_section">
+		<div class="catch wow fadeIn" data-wow-delay="0.6s"><img src="img/index/spa_catch.gif" alt="SPA"></div>
+		<div class="txt wow fadeIn" data-wow-delay="1s">佐用の湯では綺麗な夜空を眺めつつ、趣きを凝らしたお湯にゆったりと身体をゆだねれば、この上ない開放感に満たされることでしょう。エステリブランではお客様にゆっくりと贅沢な時間を過ごしていただくために優雅で寛ぎのある癒し空間とおもてなしを提供いたします。</div>
+		<div class="bnr">
+				<ul class="clearfix">
+						<a href="spa/spa.html"><li class="bnr01">佐用の湯</li></a>
+						<a href="spa/libran.html"><li class="bnr02">エステリブラン</li></a>
+				</ul>
+				</div>
+		<!-- / #spa_section --></section>
+		
+		
+		
+		
+		
+		<section id="rest_section">
+		<div class="intro clearfix wow fadeIn" data-wow-delay="0.7s">
+		<div class="catch"><img src="img/index/restrant_catch.gif" alt="REATRANT"></div>
+		<div class="bt"><a href="restaurant/index.html"><img src="img/index/restrant_bt_off.gif" alt="詳しく見る"></a></div>
+		</div>
+		
+		<div class="txt wow fadeIn" data-wow-delay="0.5s">リゾートでお楽しみの皆様に、お食事も楽しんでいただける上質な空間「レストランさよ姫」に是非お越しください。<br>
+				陽気がふりそそぐアトリウムのような客室、広くラウンド配置したテーブルセットはお客様の大切なひと時を守ります。</div>
+		<div class="pic">REATRANT</div>
+		<!-- / #rest_section --></section>
+		
+		
+		
+		
+		<div id="ft_bnr">
+<div class="center mb30"><img src="img/index/bnr_st.jpg" alt=""></div>
+<div class="innar">
+						<ul class="clearfix">
+						<li class="bnr01 wow fadeInUp" data-wow-delay="0.3s"><a href="http://www.funasaka.com/" target="_blank"><img src="img/index/bnr01_off.jpg" alt="船坂ゴルフ倶楽部"></a></li>
+						<li class="bnr01 wow fadeInUp" data-wow-delay="0.5s"><a href="http://grampus.biz/" target="_blank"><img src="img/index/bnr02_off.jpg" alt="グランパスリゾート白浜"></a></li>
+						<li class="bnr02 wow fadeInUp" data-wow-delay="0.7s"><p class="mb20"><a href="http://www.mjnet.ne.jp/grampus/" target="_blank"><img src="img/index/bnr03_off.jpg" alt="グランパスinn大阪"></a></p>
+						<a href="http://grampus.biz/shinsaibashi/" target="_blank"><img src="img/index/bnr04_off.jpg" alt="グランパスinn心斎橋"></a></li>
+						</ul>		
+						<ul class="clearfix">
+						<li class="wow fadeInUp" data-wow-delay="0.4s"><a href="http://www.kurasho-group.co.jp/" target="_blank"><img src="img/index/bnr05_off.jpg" alt="人・街・自然が喜ぶ総合企業"></a></li>
+						
+						</ul>
+				</div>
+		</div><!-- #BeginLibraryItem "/Library/footer.lbi" -->
+		<div class="pagetop_bg clearfix">
+		  <div id="pagetop" class="clearfix"><a href="#"><img src="img/common/pagetop.gif" alt="PAGE TOP" width="160" height="40"></a> </div>
+  </div>
+        <div id="f_map">
+          <div class="innar clearfix">
+            <div class="sup clearfix">
+              <div class="menu">
+  <ul>
+    <li class="point01"><a href="index.html#golf_section" target="_blank">ゴルフ</a></li>
+    <li class="point01"><a href="tennis/index.html">テニス</a></li>
+    <li class="point01"><a href="bbq/index.html">BBQ＆プール</a></li>
+    <li class="point01"><a href="stay/index.html">宿泊</a></li>
+    <li class="point02"><a href="stay/index.html">佐用コンドミニアム</a></li>
+    <li class="point02"><a href="stay/fusion.html">佐用フュージョン倶楽部</a></li>
+    <li class="point02"><a href="http://www.jhpds.net/fusion/uw/uwp3100/uww3101.do?yadNo=323204" target="_blank">宿泊予約</a></li>
+  </ul>
+                <ul>
+                  <li class="point01"><a href="spa/index.html">温泉・エステ</a></li>
+                  <li class="point02"><a href="spa/spa.html">佐用の湯</a></li>
+                  <li class="point02"><a href="spa/libran.html">エステ リブラン</a></li>
+                  <li class="point01"><a href="restaurant/index.html">レストラン</a></li>
+                  <li class="point01"><a href="forest_area/index.html">分譲別荘地</a></li>
+                </ul>
+                <ul>
+                  <li class="point01"><a href="company/index.html">企業情報</a></li>
+                  <li class="point01"><a href="privacy/index.html">個人情報保護方針</a></li>
+                  <li class="point01"><a href="sitepolicy/index.html">サイト利用規約</a></li>
+                  <li class="point01"><a href="link/index.html">関連リンク</a></li>
+                </ul>
+                <ul>
+                  <li class="point01"><a href="#">リゾートマップ</a></li>
+                  <li class="point01"><a href="access/index.html">交通アクセス</a></li>
+                  <li class="point01"><a href="contact/index.html">お問い合わせ</a></li>
+                  <li class="point01"><a href="sitemap/index.html">サイトマップ</a></li>
+                </ul>
+              </div>
+              <div class="logo_wrapper">
+                <div class="logo01"><img src="img/common/ft_logo01.jpg" alt="SAYO STAR RESORT"></div>
+                <div class="logo02"><img src="img/common/ft_logo02.jpg" alt="KURASHO SK SROUP"></div>
+                <div class="logo_ad">〒679-5341　兵庫県佐用郡佐用町横坂669番地</div>
+              </div>
+            </div>
+            <div class="sub">
+              <div class="tel_box clearfix">
+                  <div class="st">ご予約・お問い合わせ</div>
+                  <div class="tel_box01"><strong>ご宿泊のお客様とレストランのご予約</strong><br>
+                  	受付時間8:00～18:00<br>
+					TEL：0790-82-0555（フュージョン倶楽部）<br>
+					FAX：0790-82-0082
+                  </div>
+                  <div class="tel_box01"><p class="mb10"><strong>ゴルフのご予約</strong><br>
+					TEL：0790-82-3800（ゴルフ倶楽部）</p>
+                    <p><strong>温泉・スパへのお問合せ</strong><br>
+					TEL：0790-82-3426（佐用の湯）</p></div>
+                  <div class="tel_box01">
+                    <p><strong>分譲別荘地購入のお問合せ</strong><br>
+					0120-763-766（フリーダイヤル）<br>
+					受付時間 10:00～17:00</p>
+                  </div>
+                </div>
+                <div class="caption">各所へのご案内番号が異なっておりお客様にはお手数をおかけしますが よろしくお願いいたします。</div>
+            </div>
+          </div>
+        </div>
+        <footer>
+          <p id="copyright">Copyright (C) 2015 Sayo Star Resort. All Rights Reserved.</p>
+        </footer>
+<!-- #EndLibraryItem --><!-- / #wrapper --></div>
+
+
+
+
+
+</body>
+</html>

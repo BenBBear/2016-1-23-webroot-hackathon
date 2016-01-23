@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="content-style-type" content="text/css" />
+<meta http-equiv="content-script-type" content="text/javascript" />
+<meta name="viewport" content="width=device-width; initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+<script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+<title>生涯学習センター/青山生涯学習館</title>
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<link rel="stylesheet" type="text/css" href="common/css/common.css" media="screen,print" />
+<link rel="stylesheet" type="text/css" href="common/css/responsive.css" media="screen" />
+</head>
+<script type="text/javascript">
+$.ajax({
+  url:"ajax_news.php",
+  type: "POST",
+  dataType:"json",
+  cache:false,
+  data:{name:"syogai"}
+}).done(function(data){
+  
+  news_html = "";
+  
+  if(data['count'] > 0) {
+    news_html += '<div class="top-head2"><h2><span class="off">新着情報</span><img src="images/2015_news.png" width="87" height="20" alt="新着情報" title="新着情報" /></h2></div>';
+    
+    for(i=0; i< data['count']; i++) {
+      news_html += '<dl>';
+      news_html += '<dt>' + data[i]['disp_date']+'</dt>';
+      news_html += '<dd>';
+      if(data[i]['pdf'] != '') {
+          news_html += '<img src="images/ico_pdf_s.gif" width="17" height="17"> <a href="pdf/'+data[i]['pdf']+'" target="_blank">'+data[i]['title']+'</a>';
+      }
+      else {
+          news_html += data[i]['title'];
+      }
+      news_html += '</dd>';
+      news_html += '</dl>';
+    }
+  }
+  $('#top-news').html(news_html);
+});
+</script>
+<body>
+<div class="wrapper">
+<div class="top-main-visual">
+<h1><span class="off">生涯学習センター（ばるーん）/青山生涯学習館</span><img src="images/2015main_visual_s.png" alt="生涯学習センター（ばるーん）/青山生涯学習館" title="生涯学習センター（ばるーん）/青山生涯学習館" /></h1>
+</div>
+<div class="top-about">
+<p>生涯学習センター（ばるーん）・青山生涯学習館は、区民の生涯にわたる学習活動を総合的に支援し、<br />
+生涯学習社会を実現していくため、設置された施設です。</p>
+</div>
+<div class="content cf">
+
+<!--LEFT-->
+<div class="top-main-content"> 
+
+<!--BLOCK-->
+<div class="top-riyou-btn1">
+<h2 class="off">生涯学習センター（ばるーん）</h2>
+<img src="images/2015_to_balloon.png" alt="生涯学習センター（ばるーん）" title="生涯学習センター（ばるーん）" width="287" height="161" />
+<a href="shisetsu/index.html">施設案内<br />
+<span> [ 利用案内・休館日・施設詳細など ]</span></a><br />
+<a href="riyou/index.html">ご利用される方（よくあるご質問）</a> </div>
+<!--/BLOCK--> 
+
+<!--BLOCK-->
+<div class="top-riyou-btn2">
+<h2 class="off">青山生涯学習館</h2><img src="images/2015_to_aoyama.png" width="287" height="161" alt="青山生涯学習館" title="青山生涯学習館" />
+<a href="shisetsu-aoyama/index.html">施設案内<br />
+<span> [ 利用案内・休館日・施設詳細など ]</span></a><br />
+<a href="riyou/aoyama.html">ご利用される方（よくあるご質問）</a> </div>
+<!--/BLOCK-->
+
+</div><!--/LEFT-->
+
+<!--RIGHT-->
+<div class="top-sub-content top-links">
+<a href="http://www.city.minato.tokyo.jp/shougaigakushu/syakaikyouiku.html" target="_blank"><img src="images/2015_to_toroku_dantai.gif" alt="登録団体［港区サイト］社会教育関係登録団体一覧" width="288" height="81" title="登録団体［港区サイト］社会教育関係登録団体一覧" /></a>
+<a href="http://www.city.minato.tokyo.jp/shougaigakushu/kodomo/shogai/manabiya/index.html" target="_blank"><img src="images/2015_to_manabiya.gif" alt="「まなび屋」［港区サイト］生涯学習講座提供事業" width="288" height="81" title="「まなび屋」［港区サイト］生涯学習講座提供事業" /></a>
+<a href="http://www.city.minato.tokyo.jp/map/index.html" target="_blank"><img src="images/2015_to_yoyaku.gif" alt="施設予約システム［港区サイト］" width="288" height="81" title="施設予約システム［港区サイト］" /></a>
+<a href="https://www.contactcenter-minato.jp/index.php" target="_blank"><img src="images/2015_to_contact.jpg" alt="お問い合わせ　港区施設についてのお問い合わせ" width="288" height="81" title="お問い合わせ　港区施設についてのお問い合わせ" /></a>
+</div><!--/RIGHT-->
+
+<div class="cf"></div>
+
+<!--LEFT-->
+<div class="top-main-content resp">
+
+<!--以下新着情報入る-->
+<div class="top-news cf" id="top-news"></div>
+
+<a href="http://www.kissport.or.jp/event_list.php?center=syogai#horizontalTab5" target="_blank"><img src="images/2015_to_event.gif" alt="イベント情報ー港区のイベント検索や詳細" width="276" height="56" title="イベント情報ー港区のイベント検索や詳細" /></a>
+
+
+<div class="top-head2">
+<h2><span class="off">動画一覧</span><img src="images/2015_movie.png" width="87" height="20" alt="動画一覧" title="動画一覧" /></h2>
+</div>
+
+<div class="top_movie cf">
+<dl>
+<dt><img src="images/movie04.jpg" width="110" height="62" /></dt>
+<dd><a href="http://www.city.minato.tokyo.jp/kouhou/movie/1512-syougai.html" target="_blank">やっぱり明治は面白い～近代化の風と庶民の生活「近代広告の幕開け　時代を先取りした男たち」</a></dd>
+</dl>
+
+<dl>
+<dt><img src="images/movie03.jpg" width="110" height="62" /></dt>
+<dd><a href="http://www.city.minato.tokyo.jp/kouhou/movie/1509-syougai02.html" target="_blank">証券投資入門講座　だれでもわかる株式投資の基礎知識（2）</a></dd>
+</dl>
+
+<dl>
+<dt><img src="images/movie03.jpg" width="110" height="62" /></dt>
+<dd><a href="http://www.city.minato.tokyo.jp/kouhou/movie/1509-syougai01.html" target="_blank">証券投資入門講座　だれでもわかる株式投資の基礎知識（1）</a></dd>
+</dl>
+
+<dl>
+<dt><img src="images/movie01.jpg" width="110" height="62" /></dt>
+<dd><a href="http://www.city.minato.tokyo.jp/kouhou/movie/1508-syougai.html" target="_blank">港ユネスコ協会　第1回国際理解講演会「戦後70年　歴史和解への道」</a></dd>
+</dl>
+
+<!--<dl>
+<dt><img src="images/grey.gif" width="110" height="62" /></dt>
+<dd><a href="http://www.city.minato.tokyo.jp/kouhou/movie/1508-syougai.html" target="_blank">港ユネスコ協会　第1回国際理解講演会「戦後70年　歴史和解への道」</a></dd>
+</dl>
+
+<dl>
+<dt><img src="images/grey.gif" width="107" height="69" /></dt>
+<dd><a href="#">動画のタイトルが入ります</a><br />
+動画の説明が入ります以下ダミーダミーダミーダミーダミーダミーダミーダミー</dd>
+</dl>-->
+
+</div><!--/top_movie-->
+</div><!--/top-main-content-->
+
+<div class="top-sub-content">
+
+<div class="top-minatoku-shisetsu">
+<h3><span class="off">港区施設</span><img src="images/2015_facilities.gif" alt="港区施設" title="港区施設" style="width:75px; height:18px;" /></h3>
+
+<ul class="cf top_facl">
+<li><a href="http://www.azabu-civiccenter.jp/index.html" target="_blank">麻布区民センター</a></li>
+<li><a href="http://www.akasaka-civiccenter.jp/index.html" target="_blank">赤坂区民センター</a></li>
+<li><a href="http://www.shibaura-konan-civiccenter.jp/index.html" target="_blank">芝浦港南区民センター</a></li>
+<li><a href="http://www.daiba-civiccenter.jp/index.html" target="_blank">台場区民センター</a></li>
+<li><a href="http://www.minato-kenkozoshin.jp/index.html" target="_blank">健康増進センター</a></li>
+</ul>
+<ul class="separator top_facl">
+<li><a href="http://takanawa.foryou.or.jp/work.php?id=w079" target="_blank">高輪区民センター</a></li>
+<li><a href="http://www.minatoku-sports.com" target="_blank">港区スポーツセンター</a></li>
+</ul>
+<div class="resp_cf"><img src="common/images/spacer.gif" width="0" height="0" alt="" /></div>
+</div>
+
+<div class="top-banner">
+<h3><span class="off">関連リンク</span><img src="images/2015_links.gif" alt="関連リンク" title="関連リンク" style="width:85px; height:18px;" /></h3>
+
+<ul class="cf">
+<li><a href="http://www.city.minato.tokyo.jp/" target="_blank"><img src="images/bnr_minato_city_portal_site.gif" alt="港区ポータルサイト" width="132" height="66" /></a></li>
+<li class="bnr_r"><a href="http://www.kissport.or.jp/" target="_blank"><img src="images/bnr_kiss_port.jpg" alt="港区コミュニティ情報ネット Kissポート" width="132" height="66" /></a></li>
+<li><a href="http://www.minato-artnavi.jp/" target="_blank"><img src="images/bnr_minato_art_navi.jpg" alt="みなとアートナビ" width="132" height="66" /></a></li>
+<li class="bnr_r"><a href="http://www.city.minato.tokyo.jp/kouchou/kuse/kocho/iken/call-center.html" target="_blank"><img src="images/bnr_minato_call.gif" alt="みなとコール" width="132" height="66" /></a></li>
+<li><a href="http://www.kissport.or.jp/link/index.html" target="_blank"><img src="images/bnr_minato_related_links.gif" alt="港区関連リンク" width="132" height="66" /></a></li>
+</ul>
+</div>
+
+</div><!--/top-sub-content-->
+</div><!--/content-->
+
+
+<div class="footer_top cf">
+<div class="footer-nav_top">
+<ul class="cf">
+<li class="btx">生涯学習センター（ばるーん）</li>
+<li><a href="riyou/index.html">施設をご利用される方</a></li>
+<li><a href="shisetsu/index.html">施設案内</a></li>
+<li><a href="http://www.city.minato.tokyo.jp/shougaigakushu/syakaikyouiku.html" target="_blank">登録団体</a></li>
+<li><a href="shisetsu/access.html">アクセス</a></li>
+<li><a href="https://www.contactcenter-minato.jp/index.php" target="_blank">お問い合わせ</a></li>
+</ul>
+<ul class="cf">
+<li class="btx">青山生涯学習館&nbsp;&nbsp;</li>
+<li><a href="riyou/aoyama.html">施設をご利用される方</a></li>
+<li><a href="shisetsu-aoyama/index.html">施設案内</a></li>
+<li><a href="http://www.city.minato.tokyo.jp/shougaigakushu/syakaikyouiku.html" target="_blank">登録団体</a></li>
+<li><a href="shisetsu-aoyama/access.html">アクセス</a></li>
+<li><a href="https://www.contactcenter-minato.jp/index.php" target="_blank">お問い合わせ</a></li>
+</ul>
+</div>
+<div class="footer-address">
+<dl>
+<dt>港区立生涯学習センター（ばるーん）</dt>
+<dd>〒105-0004 東京都港区新橋3-16-3<br />
+　 TEL：03(3431)1606　　FAX：03(3431)1619</dd>
+</dl>
+<dl class="footer-address-aoyama" >
+<dt>港区立青山生涯学習館</dt>
+<dd>〒107-0062 東京都港区南青山4-19-7<br />
+　 TEL：03(3470)4584　　FAX：03(3470)0856</dd>
+</dl>
+</div>
+<div class="resp_cf"><img src="common/images/spacer.gif" width="0" height="0" alt="" /></div>
+<div class="footer-icon">
+<ul>
+<li><a href="http://www.jqa.jp/" target="_blank"><img src="common/images/icn_iso.gif" alt="ISO9001/ISO14001" /></a></li>
+<li><a href="http://privacymark.jp/" target="_blank"><img src="common/images/icn_privacy_mark.gif" alt="プライバシーマーク" /></a></li>
+</ul>
+</div>
+</div>
+</div>
+</body>
+</html>

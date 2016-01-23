@@ -1,0 +1,377 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Photogamma</title>
+<meta name="description" content=" ">
+<meta name="keywords" content="">
+
+<link rel="Shortcut Icon" href="/favicon.ico" type="image/x-icon" />
+
+<link href="/css/styles.css" rel="stylesheet" type="text/css" />
+<link href="/css/reset.css" rel="stylesheet" type="text/css" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+<script src="http://codeorigin.jquery.com/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/js/jquery.anoslide.js"></script>
+
+<link type="text/css" rel="stylesheet" href="/css/floatbox.css" />
+<script type="text/javascript" src="/java/floatbox.js"></script> 
+<script> 
+function showhide(id){ 
+if (document.getElementById){ 
+obj = document.getElementById(id); 
+if (obj.style.display == "none"){ 
+obj.style.display = ""; 
+} else { 
+obj.style.display = "none"; 
+} 
+} 
+} 
+function show(id){ 
+if (document.getElementById){ 
+obj = document.getElementById(id); 
+obj.style.display = ""; 
+} 
+} 
+function hide(id){ 
+if (document.getElementById){ 
+obj = document.getElementById(id); 
+obj.style.display = "none"; 
+} 
+} 
+</script>	
+
+
+	<style type="text/css">
+			.carousel { position:relative; min-height: 20px; height:auto !important; height: 20px; border:none }
+			.carousel .next,
+			.carousel .prev { display:none; width:39px; height:40px; position:absolute; top:50%;  margin-top:-28px; z-index:9999; cursor:pointer; }
+			.carousel .prev { left:10px; background:url(/imagenes/prev2.png) 0 0 no-repeat;  }
+			.carousel .next { margin-right:0px;  background:url(/imagenes/next2.png) 0 0 no-repeat; right:0 }
+			.carousel li { display:none; }
+			.carousel li img { width:100%; height:auto; }
+			.paging { position:absolute; z-index:9998; }
+			.paging > a { display:block; cursor:pointer; width:40px; height:40px; float:left; background:url(/images/dots.png) 0px -40px no-repeat; }
+			.paging > a:hover,
+			.paging > a.current { background:url(/images/dots.png) 0px 0px no-repeat;  }
+			
+			img {
+-webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  -o-user-select: none;
+  user-select: none;    
+}
+			/* Figure */
+		body,td,th {
+	font-family: "Open Sans", sans-serif;
+}
+    </style>
+		<!--[if lt IE 9]>
+		   <script>
+		      document.createElement('header');
+		      document.createElement('nav');
+		      document.createElement('section');
+		      document.createElement('article');
+		      document.createElement('aside');
+		      document.createElement('footer');
+		      document.createElement('figure');
+		   </script>
+		<![endif]-->
+
+<script src="/java/jquery.placeholder.js"></script>
+<SCRIPT language="JavaScript">
+function searchq()
+{
+  busqueda = document.searchbox.q.value;
+  busqueda = busqueda.replace(" ","-");
+  busqueda = busqueda.replace(" ","-");
+  busqueda = busqueda.replace(" ","-");
+  busqueda = busqueda.replace(" ","-");
+  busqueda = busqueda.replace(" ","-");
+  busqueda = busqueda.replace(" ","-");
+  busqueda = busqueda.replace(" ","-");
+  //alert(busqueda);
+  document.searchbox.action ="/buscar/" + busqueda.replace(" ","-");
+  return true;
+}
+</SCRIPT>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-955534-61', 'auto');
+  ga('send', 'pageview');
+
+</script>	
+</head>
+<body >
+<div id="container">
+
+<header>
+<div id="logo"><a href="/"><img src="/imagenes/logo.png" alt="Photogamma" /></a></div>
+<div id="buscador">
+<form name="searchbox" id="searchbox" method="post" style="border:0px; margin:0px;" onSubmit="return searchq();">
+<input name="q" id="q" type="text" placeholder="Buscar..." />
+<input name="" type="image" src="/imagenes/ic-search.png" onSubmit="return searchq();" />
+</form>
+</div><!--buscador-->
+
+<ul id="acceso">
+<li>Acceso
+	<ul>
+    <li>
+    <span></span>
+    <h1>Usuarios registrados</h1>
+    <form action="" method="post">
+    <input name="uemail" type="text" placeholder="Usuario" />
+     <input name="password" type="text" placeholder="Clave" onclick="this.value='';this.style.color='#000'; setAttribute('type', 'password');" onfocus="setAttribute('type', 'password');"  onkeypress="setAttribute('type', 'password');"   onblur="setAttribute('type', 'password');" />
+     <input name="ingresar" type="submit" value="Ingresar" />
+    </form>
+     <br />     <a href="javascript:showhide('formolvido')" class="nuevo">&iquest;OLVID&Oacute; SU CLAVE?</a>
+    <form id="formolvido" action="" method="post" style="display:none">
+    <input name="uemailolvido" type="text" placeholder="Usuario" />
+     <input name="ingresar" type="submit" value="Generar Nueva" style="font-size:11px !important" />
+    </form>
+    </li>
+    </ul>
+</li>
+</ul>
+
+<div id="rs">
+<a href="https://www.facebook.com/PhotogammaAgency?ref=hl"><img src="/imagenes/ic-fb.png" /></a><a href="http://instagram.com/photogammaoficial/" target="_blank"><img src="/imagenes/ic-ig.png" style="margin:0 4px;" /></a></div><!--rs-->
+
+<div class="clear"></div>
+
+    <nav>
+    <ul>
+    <li><a href="/" class="active"> Home</a></li>
+    <li><a href="/itinerario" >Itinerario</a></li>
+    <li><!---agregar span para submenu desplegable---><span></span><a href="#">Deportes</a>
+                <ul>
+                                <li><a href="/eventos-de-futbol-1" >FÚTBOL</a>
+                                        <ul>
+                    <li><a href="/eventos-de-liguilla-pre-libertadores-1-1346">Liguilla Pre-Libertadores</a></li><li><a href="/eventos-de-liguilla-pre-sudamericana-1-1347">Liguilla Pre-Sudamericana</a></li><li><a href="/eventos-de-eliminatorias-sudamericanas-para-los-mundiales-de-futbol-1-1345">Eliminatorias Sudamericanas para los Mundiales de Futbol</a></li><li><a href="/eventos-de-torneo-de-futbol-primera-division-de-argentina-1-1344">Torneo de Fútbol Primera División de Argentina</a></li><li><a href="/eventos-de-copa-america-1-1343">Copa América</a></li><li><a href="/eventos-de-copa-america-femenina-1-1342">Copa América Femenina</a></li><li><a href="/eventos-de-torneo-1ra-division-ramon-carrillo-1-1341">Torneo 1ra División Ramón Carrillo</a></li><li><a href="/eventos-de-torneo-final-2014-1-1339">Torneo Final 2014</a></li><li><a href="/eventos-de-mundial-de-futbol-fifa-brasil-2014-1-1337">Mundial de Futbol FIFA Brasil 2014</a></li><li><a href="/eventos-de-mundial-juvenil-sub-17-1-1336">Mundial Juvenil Sub 17</a></li>                    </ul>
+                    
+                    <ul class="sec">
+                    <li><a href="/eventos-de-torneo-inicial-2013-1-1335">Torneo Inicial 2013</a></li><li><a href="/eventos-de-campeon-de-futbol-argentino-1-1333">Campeon de Futbol Argentino</a></li><li><a href="/eventos-de-copa-libertadores-1-1332">Copa Libertadores</a></li><li><a href="/eventos-de-torneo-final-1-1331">Torneo Final </a></li><li><a href="/eventos-de-sudamericano-sub-20-1-1330">Sudamericano Sub 20</a></li><li><a href="/eventos-de-mundial-de-clubes-1-1329">Mundial de Clubes</a></li><li><a href="/eventos-de-copa-confederaciones-brasil-2013-1-1328">Copa Confederaciones Brasil 2013</a></li><li><a href="/eventos-de-supercopa-argentina-1-1327">Supercopa Argentina</a></li><li><a href="/eventos-de-copa-sudamericana-1-1326">Copa Sudamericana</a></li><li><a href="/eventos-de-torneo-inicial-2012-1-1325">Torneo Inicial 2012</a></li>                    </ul>
+
+                </li>
+                                <li><a href="/eventos-de-basketball-3" >BASKETBALL</a>
+                                        <ul>
+                    <li><a href="/eventos-de-basquet-3-1155">Basquet</a></li><li><a href="/eventos-de-amistoso-de-basquetbol-3-1137">Amistoso de Basquetbol</a></li><li><a href="/eventos-de-river-plate-74-82-boca-jrs-3-974">River Plate 74-82 Boca Jrs.</a></li><li><a href="/eventos-de-basquetbol-sin-fronteras-america-3-905">Basquetbol sin fronteras - América</a></li><li><a href="/eventos-de-river-plate-2-3-san-pablo-3-903">River Plate 2-3 San Pablo</a></li><li><a href="/eventos-de-river-plate-78-91-boca-jrs-3-828">River Plate 78-91 Boca Jrs.</a></li><li><a href="/eventos-de-mexico-final-del-clausura-2004-3-580">MEXICO: Final del Clausura 2004</a></li>                    </ul>
+                    
+                    <ul class="sec">
+                    <li><a href="/eventos-de-boca-jrs-4-1-1-3-sao-caetano-ii-3-566">Boca Jrs. (4) 1-1 (3) Sao Caetano II</a></li><li><a href="/eventos-de-avion-de-boca-juniors-3-429">Avion de Boca Juniors</a></li><li><a href="/eventos-de-1er-congreso-mundial-de-directores-tecnicos-iii-3-428">1er Congreso Mundial de Directores Técnicos III</a></li><li><a href="/eventos-de-boca-jrs-2-0-atletico-rafaela-3-394">Boca Jrs. 2-0 Atletico Rafaela</a></li><li><a href="/eventos-de-puerto-rico-argentina-102-72-rep-dominicana-3-352">PUERTO RICO: Argentina 102-72 Rep. Dominicana</a></li><li><a href="/eventos-de-puerto-rico-argentina-92-97-venezuela-3-350">PUERTO RICO: Argentina 92-97 Venezuela</a></li><li><a href="/eventos-de-puerto-rico-argentina-86-94-usa-3-348">PUERTO RICO: Argentina 86-94 USA</a></li>                    </ul>
+
+                </li>
+                                <li><a href="/eventos-de-polo-4" >POLO</a>
+                                        <ul>
+                    <li><a href="/eventos-de-polo-4-1146">POLO</a></li><li><a href="/eventos-de-112-campeonato-argentino-abierto-de-polo-4-1036">112º Campeonato Argentino Abierto de Polo</a></li><li><a href="/eventos-de-112-campeonato-argentino-abierto-de-polo-4-1033">112º Campeonato Argentino Abierto de Polo</a></li><li><a href="/eventos-de-112-campeonato-argentino-abierto-de-polo-4-1032">112º Campeonato Argentino Abierto de Polo</a></li><li><a href="/eventos-de-112-campeonato-argentino-abierto-de-polo-4-1029">112º Campeonato Argentino Abierto de Polo</a></li><li><a href="/eventos-de-112-campeonato-argentino-abierto-de-polo-4-1026">112º Campeonato Argentino Abierto de Polo</a></li><li><a href="/eventos-de-112-campeonato-argentino-abierto-de-polo-4-1024">112º Campeonato Argentino Abierto de Polo</a></li>                    </ul>
+                    
+                    <ul class="sec">
+                    <li><a href="/eventos-de-112-campeonato-argentino-abierto-de-polo-4-1018">112º Campeonato Argentino Abierto de Polo</a></li><li><a href="/eventos-de-112-campeonato-argentino-abierto-de-polo-4-1017">112º Campeonato Argentino Abierto de Polo</a></li><li><a href="/eventos-de-polo-final-del-112-abierto-de-hurlingham-4-1000">POLO: Final del 112º Abierto de Hurlingham</a></li><li><a href="/eventos-de-112-abierto-de-polo-en-hurlingham-4-995">112° Abierto de Polo en Hurlingham</a></li><li><a href="/eventos-de-112-abierto-de-polo-en-hurlingham-4-992">112° Abierto de Polo en Hurlingham</a></li><li><a href="/eventos-de-polo-indios-chapaleufu-i-12-17-la-dolfina-4-990">POLO: Indios Chapaleufu I 12-17 La Dolfina</a></li><li><a href="/eventos-de-polo-la-dolfina-13-16-ellerstina-4-986">POLO: La Dolfina 13-16 Ellerstina</a></li>                    </ul>
+
+                </li>
+                                <li><a href="/eventos-de-rugby-5" >RUGBY</a>
+                                        <ul>
+                    <li><a href="/eventos-de-rugby-5-1149">Rugby</a></li><li><a href="/eventos-de-pumas-68-36-japon-5-830">PUMAS 68-36 Japón</a></li><li><a href="/eventos-de-sic-15-9-casi-5-393">SIC 15-9 CASI</a></li><li><a href="/eventos-de-pumas-33-32-francia-5-293">Pumas 33-32 Francia</a></li><li><a href="/eventos-de-pumas-10-6-francia-5-285">Pumas 10-6 Francia</a></li><li><a href="/eventos-de-los-pumas-vs-all-blacks-5-6">Los Pumas vs All Blacks</a></li>                    </ul>
+                    
+                    <ul class="sec">
+                                        </ul>
+
+                </li>
+                                <li><a href="/eventos-de-voley-10" >VOLEY</a>
+                                        <ul>
+                    <li><a href="/eventos-de-club-de-amigos-4-2-rosario-sonder-10-1128">Club de Amigos 4-2 Rosario Sonder</a></li><li><a href="/eventos-de-brasil-3-2-rusia-10-67">Brasil 3-2 Rusia</a></li><li><a href="/eventos-de-argentina-2-3-italia-10-68">Argentina 2-3 Italia</a></li><li><a href="/eventos-de-argentina-vs-francia-10-63">Argentina vs Francia</a></li><li><a href="/eventos-de-rusia-vs-grecia-10-64">Rusia vs Grecia</a></li><li><a href="/eventos-de-argentina-vs-italia-10-61">Argentina vs Italia</a></li><li><a href="/eventos-de-japon-vs-bulgaria-10-62">Japón vs Bulgaria</a></li>                    </ul>
+                    
+                    <ul class="sec">
+                    <li><a href="/eventos-de-italia-vs-japon-10-57">Italia vs Japón</a></li><li><a href="/eventos-de-argentina-vs-bulgaria-10-60">Argentina vs Bulgaria</a></li><li><a href="/eventos-de-argentina-vs-japon-10-56">Argentina vs Japón</a></li><li><a href="/eventos-de-italia-vs-bulgaria-10-59">Italia vs Bulgaria</a></li><li><a href="/eventos-de-yugoslavia-vs-japon-10-54">Yugoslavia vs Japón</a></li><li><a href="/eventos-de-japon-vs-espania-10-53">Japón vs España</a></li><li><a href="/eventos-de-japon-vs-kazakstan-10-51">Japón vs Kazakstan</a></li>                    </ul>
+
+                </li>
+                                <li><a href="/eventos-de-tenis-12" >TENIS</a>
+                                        <ul>
+                    <li><a href="/eventos-de-copa-davis-2008-12-1183">Copa Davis 2008</a></li><li><a href="/eventos-de-tenis-12-1189">Tenis</a></li><li><a href="/eventos-de-wimbledon-2007-12-1165">Wimbledon 2007</a></li><li><a href="/eventos-de-atp-masters-series-12-1161">ATP Masters Series</a></li><li><a href="/eventos-de-master-tenis-madrid-2007-12-1175">Master Tenis Madrid 2007</a></li><li><a href="/eventos-de-copa-davis-2006-12-1145">Copa Davis 2006</a></li><li><a href="/eventos-de-copa-davis-argentina-vs-suecia-12-1063">Copa Davis - Argentina vs Suecia</a></li>                    </ul>
+                    
+                    <ul class="sec">
+                    <li><a href="/eventos-de-copa-davis-argentina-vs-suecia-12-1060">Copa Davis - Argentina vs Suecia</a></li><li><a href="/eventos-de-copa-davis-argentina-3-0-republica-checa-12-783">Copa Davis - Argentina 3-0 Republica Checa</a></li><li><a href="/eventos-de-copa-davis-argentina-2-0-republica-checa-12-780">Copa Davis - Argentina 2-0 Republica Checa</a></li><li><a href="/eventos-de-mexico-torneo-abierto-de-tenis-2005-12-771">MEXICO: Torneo Abierto de Tenis 2005</a></li><li><a href="/eventos-de-mexico-torneo-abierto-de-tenis-2005-12-770">MEXICO: Torneo Abierto de Tenis 2005</a></li><li><a href="/eventos-de-tenis-atp-buenos-aires-12-761">TENIS: ATP Buenos Aires</a></li><li><a href="/eventos-de-tenis-atp-buenos-aires-12-759">TENIS: ATP Buenos Aires</a></li>                    </ul>
+
+                </li>
+                                <li><a href="/eventos-de-boxing-13" >BOXING</a>
+                                        <ul>
+                    <li><a href="/eventos-de-box-13-1148">Box</a></li><li><a href="/eventos-de-box-corona-mundial-femenina-13-1138">BOX: Corona Mundial Femenina</a></li><li><a href="/eventos-de-locomotora-castro-vs-jose-luis-herrera-13-1127">Locomotora Castro vs José Luis Herrera</a></li><li><a href="/eventos-de-boxeo-titulo-fedelatin-super-welter-13-1076">Boxeo: Título Fedelatin super welter</a></li><li><a href="/eventos-de-box-en-el-luna-park-13-981">Box en el Luna Park</a></li><li><a href="/eventos-de-marcos-maidana-vs-marcelo-miranda-13-973">Marcos Maidana vs Marcelo Miranda</a></li><li><a href="/eventos-de-box-ii-ko-a-las-drogas-13-862">Box II: KO a las Drogas</a></li>                    </ul>
+                    
+                    <ul class="sec">
+                    <li><a href="/eventos-de-box-ko-a-las-drogas-13-857">Box: KO a las Drogas</a></li><li><a href="/eventos-de-box-sebastian-lujan-vs-sergio-finetto-13-656">Box: Sebastian Lujan vs Sergio Finetto</a></li><li><a href="/eventos-de-box-juan-g-cabrera-vs-nazareno-g-ruiz-13-623">BOX: Juan G. Cabrera vs Nazareno G. Ruiz</a></li><li><a href="/eventos-de-boxeo-ariel-oliveira-vs-victor-castro-13-613">Boxeo: Ariel Oliveira vs Victor Castro</a></li>                    </ul>
+
+                </li>
+                                <li><a href="/eventos-de-olimpiadas-14" >OLIMPÍADAS</a>
+                                        <ul>
+                    <li><a href="/eventos-de-juegos-olimpicos-londres-2012-14-1324">Juegos Olímpicos Londres 2012</a></li><li><a href="/eventos-de-atenas-ceremonia-de-clausura-14-633">Atenas: Ceremonia de Clausura</a></li><li><a href="/eventos-de-atenas-argentina-1-0-paraguay-14-630">ATENAS: Argentina 1-0 Paraguay</a></li><li><a href="/eventos-de-argentina-3-0-italia-14-628">Argentina 3-0 Italia</a></li><li><a href="/eventos-de-argentina-1-0-australia-14-624">Argentina 1-0 Australia</a></li><li><a href="/eventos-de-atenas-argentina-2-0-tunez-14-619">ATENAS: Argentina 2-0 Tunez</a></li><li><a href="/eventos-de-atenas-ceremonia-inaugural-14-617">ATENAS: Ceremonia Inaugural</a></li>                    </ul>
+                    
+                    <ul class="sec">
+                                        </ul>
+
+                </li>
+                                <li><a href="/eventos-de-varios-16" >VARIOS</a>
+                                        <ul>
+                    <li><a href="/eventos-de-xvi-juegos-panamericanos-guadalajara-2011-16-1313">XVI Juegos Panamericanos Guadalajara 2011</a></li><li><a href="/eventos-de-hockey-16-1300">Hockey</a></li><li><a href="/eventos-de-juegos-olimpicos-beijing-2008-16-1187">Juegos Olímpicos Beijing 2008</a></li><li><a href="/eventos-de-temas-varios-16-1195">Temas Varios</a></li><li><a href="/eventos-de-pre-temporada-16-1192">Pre - Temporada</a></li><li><a href="/eventos-de-moto-gp-16-1185">Moto GP</a></li><li><a href="/eventos-de-imagenes-publicitarias-iv-16-1188">Imagenes publicitarias IV</a></li>                    </ul>
+                    
+                    <ul class="sec">
+                    <li><a href="/eventos-de-verano-2007-2008-16-1178">Verano 2007 - 2008</a></li><li><a href="/eventos-de-formula-1-16-1168">Fórmula 1</a></li><li><a href="/eventos-de-imagenes-publicitarias-i-16-1179">Imágenes publicitarias I</a></li><li><a href="/eventos-de-imagenes-publicitarias-ii-16-1184">Imágenes publicitarias II</a></li><li><a href="/eventos-de-imagenes-publicitarias-iii-16-1186">Imágenes publicitarias III</a></li><li><a href="/eventos-de-pre-temporada-2006-2007-16-1152">Pre-temporada 2006-2007</a></li>                    </ul>
+
+                </li>
+                                <li><a href="/eventos-de-rally-17" >RALLY</a>
+                                        <ul>
+                    <li><a href="/eventos-de-rally-dakar-17-1288">Rally Dakar</a></li>                    </ul>
+                    
+                    <ul class="sec">
+                                        </ul>
+
+                </li>
+                                <li><a href="/eventos-de-automovilismo-18" >AUTOMOVILISMO</a>
+                                        <ul>
+                    <li><a href="/eventos-de-automovilismo-18-1291">Automovilismo</a></li>                    </ul>
+                    
+                    <ul class="sec">
+                                        </ul>
+
+                </li>
+                                </ul> 
+         </li>
+    <li><a href="/eventos" >Eventos</a></li>
+    </ul>
+    </nav>
+
+</header>
+<div class="clear"></div>
+
+
+	<div class="carousel captions">        <div class="mod shadow" style="width:327px !important; " onclick="window.open('/ver-evento-boca-juniors-2-4-racing-5422','_self');">
+     <div style="width:327px !important; height:205px !important; transform:perspective(800px) rotateY(20deg);" class="contimg"><img src="http://www.photogamma.com/data/img_cont/img_fotos/img_mediana/2016-01/5422_20012016boc-rac01.jpg" width="327" /></div>
+            
+    <h1 style="color:#FFF; margin:5px; text-align:center">Boca Juniors 2-4 Racing</h1>
+    <h2 style="color:#FFF; margin:5px; text-align:center">20-01-2015 - Torneo de Verano 2016</h2><br />
+    </div><!--mod-->
+	        <div class="mod shadow" style="width:327px !important;  margin:7px 2px" onclick="window.open('/ver-evento-river-plate-2-3-independiente-5421','_self');">
+     <div style="width:327px !important; height:190px" class="contimg"><img src="http://www.photogamma.com/data/img_cont/img_fotos/img_mediana/2016-01/5421_18012016riv-ind31.jpg" width="327" /></div>
+            
+    <h1 style="color:#FFF; margin:5px; text-align:center">River Plate 2-3 Independiente</h1>
+    <h2 style="color:#FFF; margin:5px; text-align:center">18-01-2015 - Torneo de Verano 2016</h2><br />
+    </div><!--mod-->
+	    	    <div class="mod shadow" style="width:327px !important;" onclick="window.open('/ver-evento-san-lorenzo-1-3-huracan-5420','_self');">
+         <div style="width:327px !important; height:205px !important; transform:perspective( 800px ) rotateY( -20deg );" class="contimg"><img src="http://www.photogamma.com/data/img_cont/img_fotos/img_mediana/2016-01/5420_16012016slo-hur25.JPG.jpg" width="327" /></div>
+            
+    <h1 style="color:#FFF; margin:5px; text-align:center">San Lorenzo 1-3 Huracan</h1>
+    <h2 style="color:#FFF; margin:5px; text-align:center">16-01-2015 - Torneo de Verano 2016</h2><br />
+    </div><!--mod-->
+</div>
+<div style="clear:both"> </div>
+<div class="clear"></div>
+
+
+
+<div class="desthome ">
+
+	   				                <div class="mod" onclick="window.open('/ver-evento-estudiantes-lp-4-2-racing-5418','_self');">
+                    <div class="contimg"><img src="http://www.photogamma.com/data/img_cont/img_fotos/img_mediana/2016-01/5418_14012016est-rac20.jpg" height="140" /></div>
+                <h1>Estudiantes LP 4-2 Racing</h1>
+                <h2>14-01-2016 - Torneo de Verano - Copa de Oro 2016</h2>
+                </div><!--mod-->
+                                                <div class="mod" onclick="window.open('/ver-evento-plantel-de-boca-juniors-2016-5419','_self');">
+                    <div class="contimg"><img src="http://www.photogamma.com/data/img_cont/img_fotos/img_mediana/2016-01/5419_14012016boca01.JPG.jpg" height="140" /></div>
+                <h1>Plantel de Boca Juniors 2016</h1>
+                <h2>14-01-2016 - Fotos del plantel de Boca Juniors</h2>
+                </div><!--mod-->
+                                                <div class="mod" onclick="window.open('/ver-evento-entrenamiento-de-boca-juniors-5417','_self');">
+                    <div class="contimg"><img src="http://www.photogamma.com/data/img_cont/img_fotos/img_mediana/2016-01/5417_13012016boca01.JPG.jpg" height="140" /></div>
+                <h1>Entrenamiento de Boca Juniors</h1>
+                <h2>13-01-2016 - Dia 11 de la pretemporada en Cardales - Buenos Aires.</h2>
+                </div><!--mod-->
+                                                <div class="mod" onclick="window.open('/ver-evento-san-lorenzo-1-1-independiente-5416','_self');">
+                    <div class="contimg"><img src="http://www.photogamma.com/data/img_cont/img_fotos/img_mediana/2016-01/5416_12012016slo-ind01.JPG.jpg" height="140" /></div>
+                <h1>San Lorenzo 1-1 Independiente</h1>
+                <h2>12-01-2016 - Torneo de Verano </h2>
+                </div><!--mod-->
+                                                <div class="mod" onclick="window.open('/ver-evento-entrenamiento-de-boca-juniors-5414','_self');">
+                    <div class="contimg"><img src="http://www.photogamma.com/data/img_cont/img_fotos/img_mediana/2016-01/5414_11012016boca01.JPG.jpg" height="140" /></div>
+                <h1>Entrenamiento de Boca Juniors</h1>
+                <h2>11-01-2016 - Noveno dia de pretemporada en Sifitel La Reserva - Buenos Aires</h2>
+                </div><!--mod-->
+                                	<div style="clear:both"> </div>
+                                                    <div class="mod" onclick="window.open('/ver-evento-entrenamiento-de-boca-juniors-5415','_self');">
+                    <div class="contimg"><img src="http://www.photogamma.com/data/img_cont/img_fotos/img_mediana/2016-01/5415_11012016boca201.JPG.jpg" height="140" /></div>
+                <h1>Entrenamiento de Boca Juniors</h1>
+                <h2>11-01-2016 - Practica vespertina de la pretemporada en Sifitel La Reserva - Buenos Aires</h2>
+                </div><!--mod-->
+                                                <div class="mod" onclick="window.open('/ver-evento-entrenamiento-de-boca-juniors-5412','_self');">
+                    <div class="contimg"><img src="http://www.photogamma.com/data/img_cont/img_fotos/img_mediana/2016-01/5412_08012016boca01.JPG.jpg" height="140" /></div>
+                <h1>Entrenamiento de Boca Juniors</h1>
+                <h2>08-01-2016 - Sexto dia de pretemporada en el Sofitel de Cardales</h2>
+                </div><!--mod-->
+                                                <div class="mod" onclick="window.open('/ver-evento-boca-juniors-5413','_self');">
+                    <div class="contimg"><img src="http://www.photogamma.com/data/img_cont/img_fotos/img_mediana/2016-01/5413_08012016osvaldo01.JPG.jpg" height="140" /></div>
+                <h1>Boca Juniors</h1>
+                <h2>08-01-2016 - Conferencia y presentacion de Daniel Osvaldo</h2>
+                </div><!--mod-->
+                                                <div class="mod" onclick="window.open('/ver-evento-entrenamiento-de-boca-juniors-5410','_self');">
+                    <div class="contimg"><img src="http://www.photogamma.com/data/img_cont/img_fotos/img_mediana/2016-01/5410_07012016boca102.jpg" height="140" /></div>
+                <h1>Entrenamiento de Boca Juniors</h1>
+                <h2>07-01-2016-Sexto dia de pretemporada en Cardales - Matutino</h2>
+                </div><!--mod-->
+                                                <div class="mod" onclick="window.open('/ver-evento-entrenamiento-de-boca-juniors-5411','_self');">
+                    <div class="contimg"><img src="http://www.photogamma.com/data/img_cont/img_fotos/img_mediana/2016-01/5411_06012016boca301.JPG.jpg" height="140" /></div>
+                <h1>Entrenamiento de Boca Juniors</h1>
+                <h2>06-01-2016 - Daniel Osvaldo se suma al plantel en la pretemporada</h2>
+                </div><!--mod-->
+                                	<div style="clear:both"> </div>
+                                                    <div class="mod" onclick="window.open('/ver-evento-entrenamiento-de-boca-juniors-5408','_self');">
+                    <div class="contimg"><img src="http://www.photogamma.com/data/img_cont/img_fotos/img_mediana/2016-01/5408_06012016boca03.JPG.jpg" height="140" /></div>
+                <h1>Entrenamiento de Boca Juniors</h1>
+                <h2>06-01-2016 - Quinto dia de pretemporada en Cardales - Matutino</h2>
+                </div><!--mod-->
+                                                <div class="mod" onclick="window.open('/ver-evento-entrenamiento-de-boca-juniors-5409','_self');">
+                    <div class="contimg"><img src="http://www.photogamma.com/data/img_cont/img_fotos/img_mediana/2016-01/5409_06012016boca201.JPG.jpg" height="140" /></div>
+                <h1>Entrenamiento de Boca Juniors</h1>
+                <h2>06-01-2016 - Quinto dia de pretemporada en Cardales - Vespertino</h2>
+                </div><!--mod-->
+                                                <div class="mod" onclick="window.open('/ver-evento-entrenamiento-de-boca-juniors-5407','_self');">
+                    <div class="contimg"><img src="http://www.photogamma.com/data/img_cont/img_fotos/img_mediana/2016-01/5407_05012016boca01.JPG.jpg" height="140" /></div>
+                <h1>Entrenamiento de Boca Juniors</h1>
+                <h2>05-01-2016 - Cuarto dia de pretemporada en Cardales</h2>
+                </div><!--mod-->
+                                                <div class="mod" onclick="window.open('/ver-evento-entrenamiento-de-boca-juniors-5406','_self');">
+                    <div class="contimg"><img src="http://www.photogamma.com/data/img_cont/img_fotos/img_mediana/2016-01/5406_04012016boca36.JPG.jpg" height="140" /></div>
+                <h1>Entrenamiento de Boca Juniors</h1>
+                <h2>04-01-2016 - Entrenamiento matutino</h2>
+                </div><!--mod-->
+                                                <div class="mod" onclick="window.open('/ver-evento-entrenamiento-de-boca-juniors-5404','_self');">
+                    <div class="contimg"><img src="http://www.photogamma.com/data/img_cont/img_fotos/img_mediana/2016-01/5404_03012016boca01.JPG.jpg" height="140" /></div>
+                <h1>Entrenamiento de Boca Juniors</h1>
+                <h2>03-01-2016 - Pretemporada - trabajos matutinos.</h2>
+                </div><!--mod-->
+                                	<div style="clear:both"> </div>
+                                    		
+</div><!--desthome-->
+
+<div class="clear"></div>
+
+<hr />
+
+<footer>
+&copy;2012-2016 - PHOTOGAMMA &reg;- Todos los derechos reservados. - <a href="http://www.fullsites.com.ar/" target="_blank" style="color:#0066ff">Desarrollado por Full Sites</a><br />
+La republicaci&oacute;n o redistribuci&oacute;n del contenido de PHOTOGAMMA queda expresamente prohibida.
+
+<div class="lnks">
+<a href="/contacto"><img src="/imagenes/ic-mail.png" /></a>
+</div>
+</footer>
+	
+    
+</div><!--container-->
+
+
+</body>
+</html>

@@ -1,0 +1,1246 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta name="robots" content="noydir">
+<meta name="robots" content="noodp">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>東京の賃貸オフィス・賃事務所は『オフィス×東京 』</title>
+<meta name="description" lang="ja" content="東京の賃貸オフィス・賃事務所は『オフィス×東京 』都内最大級の物件情報！不動産鑑定士・一級建築士等のエキスパートが理想と安心のオフィスをご提案いたします。">
+<meta name="keywords" lang="ja" content="オフィス,賃事務所,東京">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="google-site-verification" content="hTfdYaP9WQbNMx4jGzNGaida2kXjOMWcxLgCiIWGhGE">
+<link href="css/common.css" rel="stylesheet" type="text/css" media="all">
+<link href="css/base.css" rel="stylesheet" type="text/css" media="all">
+<link href="css/index.css" rel="stylesheet" type="text/css" media="all">
+<link href="search/css/index.css" rel="stylesheet" type="text/css" media="all">
+<link href="css/index_map.css" rel="stylesheet" type="text/css" media="all">
+<link rel="canonical" href="http://www.office-x-tokyo.com/"/>
+<script language="javascript" type="text/javascript" src="js/css.js"></script>
+<script language="javascript" type="text/javascript" src="js/common.js"></script>
+<script language="javascript" type="text/javascript" src="js/jquery.js"></script>
+<script language="javascript" type="text/javascript" src="js/checkbox.js"></script>
+<script language="javascript" type="text/javascript" src="js/iepngfix.js"></script>
+<script language="javascript" type="text/javascript" src="js/swap.js"></script>
+<script language="javascript" type="text/javascript" src="js/swfobject.js"></script>
+<script language="javascript" type="text/javascript" src="js/textarea.js"></script>
+<script language="javascript" type="text/javascript" src="js/articleSearch.js"></script>
+<script language="javascript" type="text/javascript">
+<!--
+setCss(0);
+var menuID = 'gnavi01';
+$(document).ready(function(){
+	$("#w").setDefaultValue("キーワードを入力してください", "gray");
+	getUpdata();
+});
+function seaGmap(){
+	location.href = "search/maps/"+$("#map_aid").val();
+}
+function getUpdata(){
+	AS.getData('/getUpdata.php', function(json){
+		var news_list = "";
+		for (j in json) {
+			news_list += '<dl class=clearfix>'
+			+'<dt>'+json[j].upd+'</dt>'
+			+'<dd><a href="/detail/'+json[j].article_id+'/'+json[j].comp_id+'" onclick="return hrefWaitDisp(this);">'+json[j].station_full+'駅　'+json[j].station_time+''+json[j].article_name+' '+json[j].room_floor+' 物件情報が更新されました。 </a></dd>'
+			+'</dl>';
+		}
+		if(news_list==''){
+			$('h2#news_title').hide();
+			$('div#news_list').hide();
+		}else{
+			$('div#news_list').html(news_list);
+		}
+	}, null);
+}
+//-->
+</script>
+<script language="javascript" type="text/javascript">
+<!--
+var areas = ["chiyoda","chuo","minato","shinjuku","shibuya","shinagawa","toshima"]; 
+function show_area(n) {
+	if (n == 1) {
+		for (var i = 0; i < areas.length; i++) {
+			document.getElementById('map_' + areas[i]).style.visibility = "";
+		}
+		document.getElementById('top').style.visibility = "";
+		document.getElementById('search_area').style.visibility = "";
+		document.getElementById('area').style.visibility = "";
+		document.getElementById('map').style.visibility = "";
+		document.getElementById('map02').style.visibility = "";
+	} else {
+		document.getElementById('top').style.visibility = "visible";
+		document.getElementById('search_area').style.visibility = "visible";
+		document.getElementById('area').style.visibility = "visible";
+		document.getElementById('map').style.visibility = "visible";
+		document.getElementById('map02').style.visibility = "visible";
+	}
+}
+function display_layer(name,n) {
+	if (n == 1) {
+		for (var i = 0; i < areas.length; i++) {
+			if (areas[i] == name) {
+				document.getElementById('map_' + areas[i]).style.visibility = "visible";
+			} else {
+				document.getElementById('map_' + areas[i]).style.visibility = "";
+			}
+		}
+	} else {
+		document.getElementById('map_' + name).style.visibility = "";
+	}
+}
+//-->
+</script>
+</head>
+<body id="top">
+<!-- header -->
+<div id="catch" class="clearfix">
+<p class="catch_txt font_small">東京都心部（千代田区、中央区、港区、新宿区、渋谷区、品川区）の賃貸オフィス・賃貸事務所等事業用不動産の物件情報は、「オフィス×東京」にお任せください</p>
+<p class="fl_r"><img src="img/cmn_head_t01.png" alt="POWERED BY 株式会社エルシーアイ" width="97" height="25" class="iepngfix"></p>
+</div>
+<div id="header_bg">
+<div id="header" class="clearfix">
+<p id="title"><img src="img/cmn_head_logo_n.gif" alt="オフィス×東京" width="172" height="46"><img src="img/cmn_head_01_n.gif" width="36" height="46"><img src="img/cmn_head_02_n.gif" alt="理想×安心のオフィスをご提案" width="147" height="46"><img id="contact" src="img/cmn_head_03_n.gif" alt="オフィスに関するお問い合わせは" width="110" height="46"><img src="img/cmn_head_04_n.gif" alt="0120-989-241" width="209" height="46"><img src="img/cmn_head_05_n.gif" width="116" height="46" border="0" usemap="#Map_riq_cont">
+<a href="#" class="article_bookmark"><img src="img/cmn_head_06_n.gif" alt="お気に入り物件を見る" width="93" height="46" id="request"></a></p>
+<map name="Map_riq_cont">
+<area shape="rect" coords="0,0,116,23" href="https://www.kashijimusyo.net/office-x/request/index.php" alt="物件リクエスト">
+<area shape="rect" coords="0,23,116,46" href="https://www.kashijimusyo.net/office-x/contact/index.php" alt="お問い合わせ">
+</map>
+</div>
+</div>
+<!-- /header -->
+<!-- navi -->
+<div id="gnavi_bg" class="clearfix">
+<!-- drop down menu -->
+<div id="gnavi"></div>
+<!-- /drop down menu -->
+</div>
+<!-- /navi -->
+<div id="wrapper_bg">
+<div id="wrapper" class="clearfix mg_b30">
+<!-- main -->
+<div class="mainpic">
+<!-- Flash Area -->
+<div id="flash">
+<div id="no_flash">
+<p id="mainpic"><img src="img/index_mainpic.jpg" alt="「オフィス×東京」が選ばれる理由　最大級の物件情報量　不動産鑑定士・一級建築士等のエキスパートが対応" width="950" height="285" border="0" usemap="#Map">
+<map name="Map">
+  <area shape="rect" coords="317,135,374,158" href="/about/point02.html">
+<area shape="rect" coords="439,231,496,255" href="/about/point03.html">
+<area shape="rect" coords="795,130,945,167" href="https://www.kashijimusyo.net/office-x/contact/index.php">
+<area shape="rect" coords="795,184,944,228" href="https://www.kashijimusyo.net/office-x/request/index.php">
+</map></p>
+</div>
+<!--<script language="javascript" type="text/javascript">
+var flashvars = {_pageID: "4"};
+var params = {wmode: "transparent"};
+swfobject.embedSWF("img/index_mainpic.swf", "flash", "950", "285", "8.0.0", "000000", flashvars, params);
+</script>-->
+</div>
+<!-- /Flash Area -->
+</div>
+<div class="mg_b35 clearfix">
+</div>
+<!-- /main -->
+<!-- contents -->
+<div id="contents">
+<!-- search_area -->
+<h1><img src="img/index_01_tit.gif" alt="エリアから賃貸オフィス・貸事務所を探す" width="730" height="50"></h1>
+<div id="search_area" class="mg_b30 clearfix">
+<div id="area">
+<h2><img src="img/index_01_stit01.gif" alt="東京の賃貸オフィス・賃事務所を複数エリアから検索できます" width="730" height="35"></h2>
+<form action="search/search.php" method="post" name="area_map" id="area_map" class="articleChkImg">
+<input name="type" type="hidden" value="area">
+<input name="view" type="hidden" value="list">
+<input name="set" type="hidden" value="aid[]">
+
+<!-- map -->
+<div id="map">
+
+<!-- map01 -->
+<div id="map01">
+
+<div id="map_chiyoda">
+<p><a class="checkbox"><img src="img/index_01_map_chiyoda_00.gif" id="areabtn03" name="千代田区" width="93" height="23" alt="千代田区"></a></p>
+<ul>
+<li><a class="checkbox"><img class="areabtn03" src="img/index_01_map_chiyoda_01.gif" id="chiyoda01" name="140" width="135" height="25" alt="麹町・半蔵門・永田町"></a></li>
+<li><a class="checkbox"><img class="areabtn03" src="img/index_01_map_chiyoda_02.gif" id="chiyoda02" name="120" width="119" height="25" alt="神田・秋葉原・岩本町"></a></li>
+<li><a class="checkbox"><img class="areabtn03" src="img/index_01_map_chiyoda_03.gif" id="chiyoda03" name="130" width="125" height="25" alt="神保町・九段下・竹橋"></a></li>
+<li><a class="checkbox"><img class="areabtn03" src="img/index_01_map_chiyoda_04.gif" id="chiyoda04" name="150" width="105" height="24" alt="大手町・丸の内"></a></li>
+<li><a class="checkbox"><img class="areabtn03" src="img/index_01_map_chiyoda_05.gif" id="chiyoda05" name="110" width="139" height="24" alt="御茶ノ水・水道橋・飯田橋"></a></li>
+<li><a class="checkbox"><img class="areabtn03" src="img/index_01_map_chiyoda_06.gif" id="chiyoda06" name="160" width="135" height="24" alt="有楽町・日比谷・霞ヶ関"></a></li>
+</ul>
+<div><img src="img/index_01_map_chiyoda.gif" alt="" width="419" height="117" border="0" usemap="#MapChiyoda">
+<map name="MapChiyoda">
+<area shape="circle" coords="400,42,17" onClick="display_layer('chiyoda',0);" alt="閉じる">
+</map>
+</div>
+</div>
+
+<div id="map_chuo">
+<p><a class="checkbox"><img src="img/index_01_map_chuo_00.gif" id="areabtn10" name="中央区" width="93" height="23" alt="中央区"></a></p>
+<ul>
+<li><a class="checkbox"><img class="areabtn10" src="img/index_01_map_chuo_01.gif" id="chuo01" name="200" width="117" height="25" alt="築地・勝どき・月島"></a></li>
+<li><a class="checkbox"><img class="areabtn10" src="img/index_01_map_chuo_02.gif" id="chuo02" name="180" width="85" height="25" alt="銀座・東銀座"></a></li>
+<li><a class="checkbox"><img class="areabtn10" src="img/index_01_map_chuo_03.gif" id="chuo03" name="190" width="116" height="25" alt="八丁堀・茅場町・新川"></a></li>
+<li><a class="checkbox"><img class="areabtn10" src="img/index_01_map_chuo_04.gif" id="chuo04" name="220" width="61" height="25" alt="三越前"></a></li>
+<li><a class="checkbox"><img class="areabtn10" src="img/index_01_map_chuo_05.gif" id="chuo05" name="210" width="239" height="24" alt="小伝馬町・人形町・水天宮前・浜町・東日本橋"></a></li>
+<li><a class="checkbox"><img class="areabtn10" src="img/index_01_map_chuo_06.gif" id="chuo06" name="170" width="140" height="24" alt="八重洲・京橋・日本橋"></a></li>
+</ul>
+<div><img src="img/index_01_map_chuo.gif" alt="" width="497" height="135" border="0" usemap="#MapChuo">
+<map name="MapChuo">
+<area shape="circle" coords="18,17,17" onClick="display_layer('chuo',0);" alt="閉じる">
+</map>
+</div>
+</div>
+
+<div id="map_minato">
+<p><a class="checkbox"><img src="img/index_01_map_minato_00.gif" id="areabtn17" name="港区" width="93" height="23" alt="港区"></a></p>
+<ul>
+<li><a class="checkbox"><img class="areabtn17" src="img/index_01_map_minato_01.gif" id="minato01" name="230" width="79" height="25" alt="新橋・汐留"></a></li>
+<li><a class="checkbox"><img class="areabtn17" src="img/index_01_map_minato_02.gif" id="minato02" name="240" width="67" height="25" alt="赤坂・溜池"></a></li>
+<li><a class="checkbox"><img class="areabtn17" src="img/index_01_map_minato_03.gif" id="minato03" name="280" width="112" height="25" alt="虎ノ門・愛宕・神谷町"></a></li>
+<li><a class="checkbox"><img class="areabtn17" src="img/index_01_map_minato_04.gif" id="minato04" name="250" width="121" height="25" alt="青山・表参道・外苑前"></a></li>
+<li><a class="checkbox"><img class="areabtn17" src="img/index_01_map_minato_05.gif" id="minato05" name="260" width="114" height="24" alt="六本木・広尾・麻布"></a></li>
+<li><a class="checkbox"><img class="areabtn17" src="img/index_01_map_minato_06.gif" id="minato06" name="270" width="128" height="24" alt="浜松町・田町・品川・高輪"></a></li>
+<li><a class="checkbox"><img class="areabtn17" src="img/index_01_map_minato_07.gif" id="minato07" name="290" width="137" height="24" alt="港南・芝浦・海岸・お台場"></a></li>
+</ul>
+<div><img src="img/index_01_map_minato.gif" alt="" width="465" height="135" border="0" usemap="#MapMinato">
+<map name="MapMinato">
+<area shape="circle" coords="447,17,17" onClick="display_layer('minato',0);" alt="閉じる">
+</map>
+</div>
+</div>
+
+<div id="map_shibuya">
+<p><a class="checkbox"><img src="img/index_01_map_shibuya_00.gif" id="areabtn02" name="渋谷区" width="93" height="23" alt="渋谷区"></a></p>
+<ul>
+<li><a class="checkbox"><img class="areabtn02" src="img/index_01_map_shibuya_01.gif" name="60" id="shibuya01" width="117" height="25" alt="渋谷・原宿・神宮前"></a></li>
+<li><a class="checkbox"><img class="areabtn02" src="img/index_01_map_shibuya_02.gif" name="70" id="shibuya02" width="116" height="25" alt="恵比寿・代官山・広尾"></a></li>
+<li><a class="checkbox"><img class="areabtn02" src="img/index_01_map_shibuya_03.gif" name="80" id="shibuya03" width="146" height="25" alt="代々木・千駄ヶ谷・北参道"></a></li>
+<li><a class="checkbox"><img class="areabtn02" src="img/index_01_map_shibuya_04.gif" name="100" id="shibuya04" width="211" height="24" alt="代々木公園・代々木上原・富ヶ谷"></a></li>
+<li><a class="checkbox"><img class="areabtn02" src="img/index_01_map_shibuya_05.gif" name="90" id="shibuya05" width="168" height="24" alt="初台・笹塚・幡ヶ谷"></a></li>
+</ul>
+<div><img src="img/index_01_map_shibuya.gif" alt="" width="526" height="91" border="0" usemap="#MapShibuya">
+<map name="Mapshibuya">
+<area shape="circle" coords="508,17,17" onClick="display_layer('shibuya',0);" alt="閉じる">
+</map>
+</div>
+</div>
+
+<div id="map_shinagawa">
+<p><a class="checkbox"><img src="img/index_01_map_shinagawa_00.gif" id="areabtn23" name="品川区" width="93" height="23" alt="品川区"></a></p>
+<ul>
+<li><a class="checkbox"><img class="areabtn23" src="img/index_01_map_shinagawa_01.gif" id="shinagawa01" name="330" width="190" height="25" alt="五反田・東五反田・西五反田"></a></li>
+<li><a class="checkbox"><img class="areabtn23" src="img/index_01_map_shinagawa_02.gif" id="shinagawa02" name="310" width="189" height="25" alt="大井・戸越・中延"></a></li>
+<li><a class="checkbox"><img class="areabtn23" src="img/index_01_map_shinagawa_03.gif" id="shinagawa03" name="320" width="190" height="24" alt="天王洲・品川シーサイド"></a></li>
+<li><a class="checkbox"><img class="areabtn23" src="img/index_01_map_shinagawa_04.gif" id="shinagawa04" name="300" width="189" height="24" alt="目黒・大崎"></a></li>
+</ul>
+<div><img src="img/index_01_map_shinagawa.gif" alt="" width="504" height="116" border="0" usemap="#MapShinagawa">
+<map name="MapShinagawa">
+<area shape="circle" coords="487,17,17" onClick="display_layer('shinagawa',0);" alt="閉じる">
+</map>
+</div>
+</div>
+
+<div id="map_shinjuku">
+<p><a class="checkbox"><img src="img/index_01_map_shinjuku_00.gif" id="areabtn01" name="新宿区" width="93" height="23" alt="新宿区"></a></p>
+<ul>
+<li><a class="checkbox"><img class="areabtn01" src="img/index_01_map_shinjuku_01.gif" id="shinjuku01" name="40" width="162" height="25" alt="高田馬場・早稲田"></a></li>
+<li><a class="checkbox"><img class="areabtn01" src="img/index_01_map_shinjuku_02.gif" id="shinjuku02" name="20" width="113" height="25" alt="新宿・御苑"></a></li>
+<li><a class="checkbox"><img class="areabtn01" src="img/index_01_map_shinjuku_03.gif" id="shinjuku03" name="10" width="104" height="25" alt="西新宿"></a></li>
+<li><a class="checkbox"><img class="areabtn01" src="img/index_01_map_shinjuku_04.gif" id="shinjuku04" name="50" width="194" height="24" alt="大久保・歌舞伎町・百人町"></a></li>
+<li><a class="checkbox"><img class="areabtn01" src="img/index_01_map_shinjuku_05.gif" id="shinjuku05" name="30" width="185" height="24" alt="四ツ谷・市ヶ谷・神楽坂"></a></li>
+</ul>
+<div><img src="img/index_01_map_shinjuku.gif" alt="" width="487" height="102" border="0" usemap="#MapShinjuku">
+<map name="MapShinjuku">
+<area shape="circle" coords="469,28,17" onClick="display_layer('shinjuku',0);" alt="閉じる">
+</map>
+</div>
+</div>
+
+<div id="map_toshima">
+<p><a class="checkbox"><img src="img/index_01_map_toshima_00.gif" id="areabtn24" name="豊島区" width="93" height="23" alt="豊島区"></a></p>
+<ul>
+<li><a class="checkbox"><img class="areabtn24" src="img/index_01_map_toshima_01.gif" id="toshima01" name="340" width="137" height="49" alt="大塚・巣鴨・駒込"></a></li>
+<li><a class="checkbox"><img class="areabtn24" src="img/index_01_map_toshima_02.gif" id="toshima02" name="350" width="119" height="49" alt="要町・千川"></a></li>
+<li><a class="checkbox"><img class="areabtn24" src="img/index_01_map_toshima_03.gif" id="toshima03" name="360" width="123" height="49" alt="池袋・目白"></a></li>
+</ul>
+<div><img src="img/index_01_map_toshima.gif" alt="" width="525" height="86" border="0" usemap="#MapToshima">
+<map name="MapToshima">
+<area shape="circle" coords="508,17,17" onClick="display_layer('toshima',0);" alt="閉じる">
+</map>
+</div>
+</div>
+
+<!--<p id="map01btn"><img src="img/index_01_map_btn01.gif" alt="その他のエリア" width="125" height="41" onClick="show_area(0);"></p>-->
+<p id="map01map"><img src="img/index_01_map_01.gif" alt="" width="728" height="319" border="0" usemap="#Map01">
+<map name="Map01">
+<area shape="poly" coords="333,83,379,88,400,93,391,88,413,79,420,89,429,89,443,98,433,108,400,114,407,121,375,157,361,153,338,151,318,146,310,135,296,129,293,117,313,108" alt="千代田区" onClick="display_layer('chiyoda',1);">
+<area shape="poly" coords="378,155,408,122,401,115,432,110,443,98,458,101,470,121,453,143,453,151,458,156,453,158,456,180,412,203,404,196,413,190,411,186,399,195,396,181,405,177,400,172,387,183,376,174,383,161" alt="中央区" onClick="display_layer('chuo',1);">
+<area shape="poly" coords="296,128,313,137,318,147,340,152,358,153,375,157,377,155,381,161,376,175,384,184,383,188,376,188,371,201,377,205,376,218,372,237,354,246,335,249,329,244,313,244,309,248,294,243,290,231,276,223,262,226,257,224,252,212,273,200,267,181,244,178,244,173,232,163,244,153,252,144,262,146,262,137,281,134,285,128" alt="港区" onClick="display_layer('minato',1);">
+<area shape="poly" coords="159,108,169,130,199,113,223,116,249,133,241,141,252,145,233,163,245,178,267,181,272,199,252,211,228,211,194,190,171,172,134,168,129,149,99,151,94,143" alt="渋谷区" onClick="display_layer('shibuya',1);">
+<area shape="poly" coords="246,211,254,212,261,226,272,225,292,229,295,243,310,248,316,244,328,242,337,249,353,248,372,237,372,257,382,268,381,276,421,311,414,319,287,320,287,311,267,306,259,310,244,296,207,293,191,278,190,267,209,255,191,244,225,244,246,236,240,219" alt="品川区" onClick="display_layer('shinagawa',1);">
+<area shape="poly" coords="333,84,331,73,307,70,299,73,293,68,272,72,266,64,244,61,240,57,223,63,226,52,217,43,199,47,159,44,155,34,140,32,136,44,128,46,128,53,144,54,159,72,187,68,170,79,171,93,158,108,170,129,198,114,225,117,248,131,239,141,263,147,261,138,280,133,283,129,294,127,294,118,313,109" alt="新宿区" onClick="display_layer('shinjuku',1);" id="areabtn01">
+
+<!--
+<area shape="poly" coords="146,14,197,4,212,18,232,0,263,-1,261,2,277,9,281,-4,301,0,303,8,322,3,352,18,344,24,334,20,325,20,325,28,307,28,311,36,293,41,282,33,271,40,273,49,256,55,256,60,245,60,240,56,225,62,224,53,216,42,197,47,161,44,156,33,141,32" alt="豊島区" onClick="display_layer('toshima',1);">
+-->
+
+</map>
+</p>
+
+</div>
+<!-- /map01 -->
+
+<!-- map02 -->
+<div id="map02">
+
+<div id="map_edogawa">
+<p><a class="checkbox"><img class="areabtn25" src="img/index_01_map_edogawa.gif" id="edogawa" name="520" width="68" height="19" alt="江戸川区"></a></p>
+</div>
+<div id="map_koutou">
+<p><a class="checkbox"><img class="areabtn26" src="img/index_01_map_koutou.gif" id="koutou" name="480" width="61" height="19" alt="江東区"></a></p>
+</div>
+<div id="map_sumida">
+<p><a class="checkbox"><img class="areabtn27" src="img/index_01_map_sumida.gif" id="sumida" name="470" width="59" height="19" alt="墨田区"></a></p>
+</div>
+<div id="map_taitou">
+<p><a class="checkbox"><img class="areabtn28" src="img/index_01_map_taitou.gif" id="taitou" name="430" width="59" height="19" alt="台東区"></a></p>
+</div>
+<div id="map_katsushika">
+<p><a class="checkbox"><img class="areabtn29" src="img/index_01_map_katsushika.gif" id="katsushika" name="510" width="59" height="19" alt="葛飾区"></a></p>
+</div>
+<div id="map_adachi">
+<p><a class="checkbox"><img class="areabtn30" src="img/index_01_map_adachi.gif" id="adachi" name="500" width="59" height="19" alt="足立区"></a></p>
+</div>
+<div id="map_arakawa">
+<p><a class="checkbox"><img class="areabtn31" src="img/index_01_map_arakawa.gif" id="arakawa" name="490" width="59" height="19" alt="荒川区"></a></p>
+</div>
+<div id="map_bunkyo">
+<p><a class="checkbox"><img class="areabtn32" src="img/index_01_map_bunkyo.gif" id="bunkyo" name="420" width="59" height="19" alt="文京区"></a></p>
+</div>
+<div id="map_kita">
+<p><a class="checkbox"><img class="areabtn33" src="img/index_01_map_kita.gif" id="kita" name="450" width="59" height="19" alt="北区"></a></p>
+</div>
+<div id="map_itabashi">
+<p><a class="checkbox"><img class="areabtn34" src="img/index_01_map_itabashi.gif" id="itabashi" name="460" width="59" height="19" alt="板橋区"></a></p>
+</div>
+<div id="map_nerima">
+<p><a class="checkbox"><img class="areabtn35" src="img/index_01_map_nerima.gif" id="nerima" name="440" width="59" height="19" alt="練馬区"></a></p>
+</div>
+<div id="map_nakano">
+<p><a class="checkbox"><img class="areabtn36" src="img/index_01_map_nakano.gif" id="nakano" name="370" width="59" height="19" alt="中野区"></a></p>
+</div>
+<div id="map_suginami">
+<p><a class="checkbox"><img class="areabtn37" src="img/index_01_map_suginami.gif" id="suginami" name="380" width="59" height="19" alt="杉並区"></a></p>
+</div>
+<div id="map_setagaya">
+<p><a class="checkbox"><img class="areabtn38" src="img/index_01_map_setagaya.gif" id="setagaya" name="410" width="68" height="19" alt="世田谷区"></a></p>
+</div>
+<div id="map_meguro">
+<p><a class="checkbox"><img class="areabtn39" src="img/index_01_map_meguro.gif" id="meguro" name="400" width="59" height="19" alt="目黒区"></a></p>
+</div>
+<div id="map_ohta">
+<p><a class="checkbox"><img class="areabtn40" src="img/index_01_map_ohta.gif" id="ohta" name="390" width="59" height="19" alt="大田区"></a></p>
+</div>
+
+<p id="map02btn"><img src="img/index_01_map_btn02.gif" alt="中央エリアに戻る" width="125" height="41" onClick="show_area(1);"></p>
+<p id="map02map">
+<img src="img/index_01_map_02.gif" alt="" width="728" height="319">
+</p>
+
+</div>
+<!-- /map02 -->
+
+</div>
+<!-- /map -->
+
+<div class="srhbtn_bg"><p><input type="image" src="img/cmn_search_btn01.gif" alt="エリアから東京の賃貸オフィス・賃事務所を検索する" width="172" height="30" class="iepngfix" onClick="return topAreaDispEvasion();"></p></div>
+</form>
+</div>
+
+</div>
+<!-- /search_area -->
+<!-- search_station -->
+<h2 id="anc02"><img src="img/index_02_tit.gif" alt="沿線・駅から東京の賃貸オフィス・賃事務所を探す" width="730" height="50"></h2>
+<table border="0" cellspacing="0" cellpadding="0" summary="layout" id="search_station" class="mg_b30">
+<tr>
+<th><img src="img/index_02_stit01.gif" alt="駅名から東京の賃貸オフィス・賃事務所を探す" width="244" height="35"></th>
+<th><img src="img/index_02_stit02.gif" alt="区間から東京の賃貸オフィス・賃事務所を探す" width="243" height="35"></th>
+<th><img src="img/index_02_stit03.gif" alt="路線図から東京の賃貸オフィス・賃事務所を探す" width="243" height="35"></th>
+</tr>
+<tr>
+<td class="txt">
+<p class="mg_b10">
+<img src="img/index_02_sstit01.gif" alt="ご希望の駅から賃貸オフィス・賃事務所を検索いただけます。" width="172" height="22"></p>
+<form action="search/search.php" method="post" name="station" id="station" class="articleSearch">
+<select name="lid" class="mg_b5 line_station">
+<option value="">沿線を選んで下さい</option>
+</select>
+<select name="sid" class="mg_b5 line_station">
+<option value="">駅名を選んで下さい</option>
+</select>
+<input name="type" type="hidden" value="station">
+<input name="view" type="hidden" value="list">
+</form>
+</td>
+<td class="txt">
+<p class="mg_b10">
+<img src="img/index_02_sstit02.gif" alt="ご希望の区間から賃貸オフィス・賃事務所を検索いただけます。" width="172" height="22"></p>
+<form action="search/search.php" method="post" name="line" id="line" class="articleSearch">
+<select name="lid" class="mg_b5 line_ln">
+<option value="">沿線を選んで下さい</option>
+</select>
+<select name="ssid" class="mg_b5 line_ln">
+<option value="">乗車駅を選んで下さい</option>
+</select>
+<select name="esid" class="mg_b5 line_ln">
+<option value="">降車駅を選んで下さい</option>
+</select>
+<input name="type" type="hidden" value="line">
+<input name="view" type="hidden" value="list">
+</form>
+</td>
+<td class="txt"><p class="mg_b10"><img src="img/index_02_sstit03.gif" alt="鉄道路線図から賃貸オフィス・賃事務所を検索いただけます。" width="172" height="22"></p>
+<p><a href="search/route.html"><img src="img/index_02_p03.gif" alt="map" width="172" height="82"></a></p></td>
+</tr>
+<tr>
+<td class="btn"><input type="image" src="img/cmn_search_btn01.gif" alt="駅名から東京の賃貸オフィス・賃事務所を検索する" class="iepngfix" onClick="topStationDispEvasion();"></td>
+<td class="btn"><input type="image" src="img/cmn_search_btn01.gif" alt="区間から東京の賃貸オフィス・賃事務所を検索する" class="iepngfix" onClick="topLineDispEvasion();"></td>
+<td class="btn"><p><a href="search/route.html"><img src="img/cmn_search_btn01.gif" alt="路線図から東京の賃貸オフィス・賃事務所を検索する" width="172" height="30"></a></p></td>
+</tr>
+</table>
+<!-- /search_station -->
+<!-- search_map -->
+<table border="0" cellspacing="0" cellpadding="0" summary="layout" id="search_map">
+<tr>
+<th><h2><img src="img/index_03_tit.gif" alt="地図から東京の賃貸オフィス・賃事務所を探す" width="365" height="51"></h2></th>
+<th><h2 id="anc04"><img src="img/index_04_tit.gif" alt="キーワードから東京の賃貸オフィス・賃事務所を探す" width="365" height="51"></h2></th>
+</tr>
+<tr>
+<td class="txt"><p>ご希望のエリア周辺地図から賃貸オフィス・賃事務所を<br>
+    検索いただけます。</p></td>
+<td class="txt"><p>ビル名、地名、物件Noなどのキーワードから<br>
+賃貸オフィス・賃事務所を検索いただけます。（例：<a href="/search/list/w=丸の内/1">丸の内</a>）</p></td>
+</tr>
+<tr>
+<td class="btn"><form method="post" action="search/map.php" class="search_form" name="chizu" id="chizu">
+<select name="aid" class="mg_b10">
+<option value="" selected>エリアを選んでください</option>
+<option value="d10">■新宿区</option>
+<option value="10">西新宿</option>
+<option value="20">新宿・御苑</option>
+<option value="30">四ツ谷・市ヶ谷・神楽坂</option>
+<option value="40">高田馬場・早稲田</option>
+<option value="50">大久保・歌舞伎町・百人町</option>
+<option>--------------------</option>
+<option value="d20">■渋谷区</option>
+<option value="60">渋谷・原宿・神宮前</option>
+<option value="70">恵比寿・代官山・広尾</option>
+<option value="80">代々木・千駄ヶ谷・北参道</option>
+<option value="90">初台・笹塚・幡ヶ谷</option>
+<option value="100">代々木公園・代々木上原・富ヶ谷</option>
+<option>--------------------</option>
+<option value="d30">■千代田区</option>
+<option value="110">御茶ノ水・水道橋・飯田橋</option>
+<option value="120">神田・秋葉原・岩本町</option>
+<option value="130">神保町・九段下・竹橋</option>
+<option value="140">麹町・半蔵門・永田町</option>
+<option value="150">大手町・丸の内</option>
+<option value="160">有楽町・日比谷・霞ヶ関</option>
+<option>--------------------</option>
+<option value="d40">■中央区</option>
+<option value="170">八重洲・京橋・日本橋</option>
+<option value="180">銀座・東銀座</option>
+<option value="190">八丁堀・茅場町・新川</option>
+<option value="200">築地・勝どき・月島</option>
+<option value="210">小伝馬町・人形町・水天宮前・浜町・東日本橋</option>
+<option value="220">三越前</option>
+<option>--------------------</option>
+<option value="d50">■港区</option>
+<option value="230">新橋・汐留</option>
+<option value="240">赤坂・溜池</option>
+<option value="250">青山・表参道・外苑前</option>
+<option value="260">六本木・広尾・麻布</option>
+<option value="270">浜松町・田町・品川・高輪</option>
+<option value="280">港南・芝浦・海岸・お台場</option>
+<option value="290">虎ノ門・愛宕・神谷町</option>
+<option>--------------------</option>
+<option value="d60">■品川区</option>
+<option value="300">目黒・大崎</option>
+<option value="310">大井・戸越・中延</option>
+<option value="320">天王洲・品川シーサイド</option>
+<option value="330">五反田・東五反田・西五反田</option>
+<option>--------------------</option>
+<option value="d70">■豊島区</option>
+<option value="340">池袋・目白</option>
+<option value="350">要町・千川</option>
+<option value="360">大塚・巣鴨・駒込</option>
+<option>--------------------</option>
+<option value="d99">■その他エリア</option>
+<option value="370">中野区</option>
+<option value="380">杉並区</option>
+<option value="390">大田区</option>
+<option value="400">目黒区</option>
+<option value="410">世田谷区</option>
+<option value="420">文京区</option>
+<option value="430">台東区</option>
+<option value="440">練馬区</option>
+<option value="450">北区</option>
+<option value="460">板橋区</option>
+<option value="470">墨田区</option>
+<option value="480">江東区</option>
+<option value="490">荒川区</option>
+<option value="500">足立区</option>
+<option value="510">葛飾区</option>
+<option value="520">江戸川区</option>
+</select>
+<br>
+<input type="image" src="img/cmn_search_btn01.gif" alt="東京の賃貸オフィス・賃事務所を検索する" class="iepngfix" onClick="return topChizuDispEvasion();">
+<input name="type" type="hidden" id="type" value="maps">
+</form></td>
+<td class="btn">
+<form action="search/search.php" method="post" name="keyword" id="keyword" class="articleSearch">
+<label><input type="text" name="w" id="w" value="" class="mg_b10 txt_form" maxlength="30"></label>
+<input type="image" src="img/cmn_search_btn01.gif" alt="キーワードから東京の賃貸オフィス・賃事務所を検索する" class="iepngfix" onClick="return topKeywordDispEvasion();">
+</form></td>
+</tr>
+</table>
+<!-- /search_map -->
+<!-- search_rate -->
+<table border="0" cellspacing="0" cellpadding="0" summary="layout" id="search_rate">
+<tr>
+<th><h2><a name="anc_souba"></a><img src="img/index_05_tit.gif" alt="相場から東京の賃貸オフィス・賃事務所を探す" width="365" height="51"></h2></th>
+<th><h2><a name="anc_gaikan"></a><img src="img/index_06_tit.gif" alt="外観から東京の賃貸オフィス・賃事務所を探す" width="365" height="51"></h2></th>
+</tr>
+<tr>
+<td class="txt"><p>賃料単価および建物築年数のマトリックスから賃貸オフィス・賃事務所を検索いただけます。</p></td>
+<td class="txt"><p>ビルの外観から賃貸オフィス・賃事務所を検索いただけます。</p></td>
+</tr>
+<tr>
+<td class="btn"><form method="post" action="search/market.php" class="search_form" name="souba" id="souba">
+<select name="aid" class="mg_b10">
+<option value="0" selected>エリアを選んでください</option>
+<option value="d10">■新宿区</option>
+<option value="10">西新宿</option>
+<option value="20">新宿・御苑</option>
+<option value="30">四ツ谷・市ヶ谷・神楽坂</option>
+<option value="40">高田馬場・早稲田</option>
+<option value="50">大久保・歌舞伎町・百人町</option>
+<option value="--">--------------------</option>
+<option value="d20">■渋谷区</option>
+<option value="60">渋谷・原宿・神宮前</option>
+<option value="70">恵比寿・代官山・広尾</option>
+<option value="80">代々木・千駄ヶ谷・北参道</option>
+<option value="90">初台・笹塚・幡ヶ谷</option>
+<option value="100">代々木公園・代々木上原・富ヶ谷</option>
+<option value="--">--------------------</option>
+<option value="d30">■千代田区</option>
+<option value="110">御茶ノ水・水道橋・飯田橋</option>
+<option value="120">神田・秋葉原・岩本町</option>
+<option value="130">神保町・九段下・竹橋</option>
+<option value="140">麹町・半蔵門・永田町</option>
+<option value="150">大手町・丸の内</option>
+<option value="160">有楽町・日比谷・霞ヶ関</option>
+<option value="--">--------------------</option>
+<option value="d40">■中央区</option>
+<option value="170">八重洲・京橋・日本橋</option>
+<option value="180">銀座・東銀座</option>
+<option value="190">八丁堀・茅場町・新川</option>
+<option value="200">築地・勝どき・月島</option>
+<option value="210">小伝馬町・人形町・水天宮前・浜町・東日本橋</option>
+<option value="220">三越前</option>
+<option value="--">--------------------</option>
+<option value="d50">■港区</option>
+<option value="230">新橋・汐留</option>
+<option value="240">赤坂・溜池</option>
+<option value="250">青山・表参道・外苑前</option>
+<option value="260">六本木・広尾・麻布</option>
+<option value="270">浜松町・田町・品川・高輪</option>
+<option value="280">港南・芝浦・海岸・お台場</option>
+<option value="290">虎ノ門・愛宕・神谷町</option>
+<option value="--">--------------------</option>
+<option value="d60">■品川区</option>
+<option value="300">目黒・大崎</option>
+<option value="310">大井・戸越・中延</option>
+<option value="320">天王洲・品川シーサイド</option>
+<option value="330">五反田・東五反田・西五反田</option>
+<option value="--">--------------------</option>
+<option value="d70">■豊島区</option>
+<option value="340">池袋・目白</option>
+<option value="350">要町・千川</option>
+<option value="360">大塚・巣鴨・駒込</option>
+<option value="--">--------------------</option>
+<option value="d99">■その他エリア</option>
+<option value="370">中野区</option>
+<option value="380">杉並区</option>
+<option value="390">大田区</option>
+<option value="400">目黒区</option>
+<option value="410">世田谷区</option>
+<option value="420">文京区</option>
+<option value="430">台東区</option>
+<option value="440">練馬区</option>
+<option value="450">北区</option>
+<option value="460">板橋区</option>
+<option value="470">墨田区</option>
+<option value="480">江東区</option>
+<option value="490">荒川区</option>
+<option value="500">足立区</option>
+<option value="510">葛飾区</option>
+<option value="520">江戸川区</option>
+</select><br>
+<input type="image" src="img/cmn_search_btn01.gif" alt="東京 オフィスを検索する" class="iepngfix" onClick="return topSoubaDispEvasion();">
+<input name="type" type="hidden" value="market">
+</form></td>
+<td class="btn">
+<form action="search/search.php" method="post" name="visual" class="articleSearch" id="visual">
+<input name="view" type="hidden" value="visual">
+<select name="aid[]" class="mg_b10">
+<option value="all" selected>エリアを選んでください</option>
+<option value="d10">■新宿区</option>
+<option value="10">西新宿</option>
+<option value="20">新宿・御苑</option>
+<option value="30">四ツ谷・市ヶ谷・神楽坂</option>
+<option value="40">高田馬場・早稲田</option>
+<option value="50">大久保・歌舞伎町・百人町</option>
+<option value="--">--------------------</option>
+<option value="d20">■渋谷区</option>
+<option value="60">渋谷・原宿・神宮前</option>
+<option value="70">恵比寿・代官山・広尾</option>
+<option value="80">代々木・千駄ヶ谷・北参道</option>
+<option value="90">初台・笹塚・幡ヶ谷</option>
+<option value="100">代々木公園・代々木上原・富ヶ谷</option>
+<option value="--">--------------------</option>
+<option value="d30">■千代田区</option>
+<option value="110">御茶ノ水・水道橋・飯田橋</option>
+<option value="120">神田・秋葉原・岩本町</option>
+<option value="130">神保町・九段下・竹橋</option>
+<option value="140">麹町・半蔵門・永田町</option>
+<option value="150">大手町・丸の内</option>
+<option value="160">有楽町・日比谷・霞ヶ関</option>
+<option value="--">--------------------</option>
+<option value="d40">■中央区</option>
+<option value="170">八重洲・京橋・日本橋</option>
+<option value="180">銀座・東銀座</option>
+<option value="190">八丁堀・茅場町・新川</option>
+<option value="200">築地・勝どき・月島</option>
+<option value="210">小伝馬町・人形町・水天宮前・浜町・東日本橋</option>
+<option value="220">三越前</option>
+<option value="--">--------------------</option>
+<option value="d50">■港区</option>
+<option value="230">新橋・汐留</option>
+<option value="240">赤坂・溜池</option>
+<option value="250">青山・表参道・外苑前</option>
+<option value="260">六本木・広尾・麻布</option>
+<option value="270">浜松町・田町・品川・高輪</option>
+<option value="280">港南・芝浦・海岸・お台場</option>
+<option value="290">虎ノ門・愛宕・神谷町</option>
+<option value="--">--------------------</option>
+<option value="d60">■品川区</option>
+<option value="300">目黒・大崎</option>
+<option value="310">大井・戸越・中延</option>
+<option value="320">天王洲・品川シーサイド</option>
+<option value="330">五反田・東五反田・西五反田</option>
+<option value="--">--------------------</option>
+<option value="d70">■豊島区</option>
+<option value="340">池袋・目白</option>
+<option value="350">要町・千川</option>
+<option value="360">大塚・巣鴨・駒込</option>
+<option value="--">--------------------</option>
+<option value="d99">■その他エリア</option>
+<option value="370">中野区</option>
+<option value="380">杉並区</option>
+<option value="390">大田区</option>
+<option value="400">目黒区</option>
+<option value="410">世田谷区</option>
+<option value="420">文京区</option>
+<option value="430">台東区</option>
+<option value="440">練馬区</option>
+<option value="450">北区</option>
+<option value="460">板橋区</option>
+<option value="470">墨田区</option>
+<option value="480">江東区</option>
+<option value="490">荒川区</option>
+<option value="500">足立区</option>
+<option value="510">葛飾区</option>
+<option value="520">江戸川区</option>
+</select>
+<br>
+<input type="image" src="img/cmn_search_btn01.gif" alt="東京の賃貸オフィス・賃事務所を検索する" class="iepngfix" onClick="return topVisualDispEvasion();">
+</form></td>
+</tr>
+</table>
+<!-- /search_rate -->
+<!-- search_kodawari -->
+<h2 id="anc07"><img src="img/index_07_tit.gif" alt="こだわり条件から東京の賃貸オフィス・事務所を探す" width="730" height="50"></h2>
+<table border="0" cellspacing="0" cellpadding="0" summary="layout" id="search_kodawari" class="mg_b40">
+<tr>
+  <td colspan="6" background="img/index_072_bg.gif" class="txt"><p>新築や最上階等こだわりの条件から、賃貸オフィス・賃事務所を検索いただけます。</p></td>
+  </tr>
+<tr>
+<td><h3><img src="img/index_07_stit01.gif" alt="築年数" width="121" height="35"></h3>
+<ul>
+<li><a href="/search/list/cy=1/1">新築の物件</a></li>
+<li><a href="/search/feat/2">築浅物件</a></li>
+</ul></td>
+<td><h3><img src="img/index_07_stit02.gif" alt="階数" width="122" height="35"></h3>
+<ul>
+<li><a href="/search/feat/3">最上階</a></li>
+<li><a href="/search/feat/4">高層階</a></li>
+<li><a href="/search/feat/5">1階</a></li>
+</ul></td>
+<td><h3><img src="img/index_07_stit03.gif" alt="立地・アクセス" width="122" height="35"></h3>
+<ul>
+<li><a href="/search/feat/6">ランドマーク</a></li>
+<li><a href="/search/feat/7">駅直結</a></li>
+<li><a href="/search/feat/8">大通り沿い</a></li>
+<li><a href="/search/feat/9">駅5分以内</a></li>
+</ul></td>
+<td><h3><img src="img/index_07_stit04.gif" alt="デザイン" width="122" height="35"></h3>
+<ul>
+<li><a href="/search/feat/10">デザイナーズ</a></li>
+<li><a href="/search/feat/11">レトロ</a></li>
+</ul>
+<td><h3><img src="img/index_07_stit05.gif" alt="用途" width="122" height="35"></h3>
+<ul>
+<li><a href="/search/feat/12">店舗相談可</a></li>
+</ul></td>
+<td><h3><img src="img/index_07_stit06.gif" alt="面積" width="121" height="35"></h3>
+<ul>
+<li><a href="/search/feat/13">大規模物件</a></li>
+<li><a href="/search/feat/14">1棟貸し</a></li>
+<li><a href="/search/feat/15">ワンフロア</a></li>
+</ul></td>
+</tr>
+</table>
+<!-- /search_kodawari -->
+<!-- news -->
+<h2 class="mg_b10" id="news_title"><img src="img/index_news_tit.gif" alt="「オフィス×東京」新着情報" width="730" height="35"></h2>
+<div id="news_list" class="mg_b20"></div>
+<!-- /news -->
+<!-- topic -->
+<!--<h2 class="mg_b10"><img src="img/index_topic_tit.gif" alt="特集" width="730" height="35"></h2>
+<div id="news_list">
+<dl>
+<dt>2010.05.05</dt>
+<dd><a href="#">ダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミー</a></dd>
+</dl>
+<dl class="end">
+<dt>2010.05.05</dt>
+<dd><a href="#">ダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミー</a></dd>
+</dl>
+</div>-->
+<!-- /topic -->
+</div>
+<!-- /contents -->
+<!-- side --><!-- #BeginLibraryItem "/Library/side01.lbi" --><div id="side">
+<p><img src="img/cmn_side_today_tit.gif" alt="掲載物件総数" width="200" height="30"></p>
+<table class="hyou" border="0" cellspacing="0" cellpadding="0" summary="掲載物件総数">
+<tr>
+<!--<th><span class="font_small">掲載物件総数</span></th>-->
+<td align="center">　<span class="font_large_side" id="article_num"></span><br>
+<span class="font_small">　（最終更新日</span><span class="font_small" id="article_lastUpdate"></span><span class="font_small">）</span>
+</td>
+</tr>
+<!--<tr>
+<th><span class="font_small">最終更新日</span></th>
+<td><span class="font_small">（最終更新日</span><span class="font_small" id="article_lastUpdate"></span><span class="font_small">）</span></td>
+</tr>-->
+<!-- <tr>
+<th><span class="font_small">新着・更新物件</span></th>
+<td><span class="font_small" id="article_recent"></span></td>
+</tr> -->
+</table>
+<!-- favorite -->
+<p><img src="img/cmn_side_favorite_tit.gif" alt="お気に入り物件" width="200" height="30"></p>
+<div class="s_box line_btm">
+<p class="mg_b5">現在のお気に入り件数　<span class="bold font_large"><a href="#" id="article_bookmark_count" class="article_bookmark"></a></span></p>
+<p><a href="#" class="article_bookmark"><img src="img/cmn_side_btn03.gif" alt="お気に入り物件リスト" width="172" height="32"></a></p>
+</div>
+<!-- /favorite -->
+<p><img src="img/cmn_side_search_tit.gif" alt="物件検索" width="200" height="30"></p>
+<!-- search area -->
+<p><img src="img/cmn_side_search_stit01.gif" alt="エリアから探す" width="200" height="30"></p>
+<form action="search/search.php" method="post" name="side_search_area" class="articleSearch" id="side_search_area">
+<div class="s_box">
+<div class="clearfix mg_b10">
+<select name="aid[]" class="ple01">
+<option value="" selected>エリアを選んでください</option>
+<option value="d10">■新宿区</option>
+<option value="10">西新宿</option>
+<option value="20">新宿・御苑</option>
+<option value="30">四ツ谷・市ヶ谷・神楽坂</option>
+<option value="40">高田馬場・早稲田</option>
+<option value="50">大久保・歌舞伎町・百人町</option>
+<option>--------------------</option>
+<option value="d20">■渋谷区</option>
+<option value="60">渋谷・原宿・神宮前</option>
+<option value="70">恵比寿・代官山・広尾</option>
+<option value="80">代々木・千駄ヶ谷・北参道</option>
+<option value="90">初台・笹塚・幡ヶ谷</option>
+<option value="100">代々木公園・代々木上原・富ヶ谷</option>
+<option>--------------------</option>
+<option value="d30">■千代田区</option>
+<option value="110">御茶ノ水・水道橋・飯田橋</option>
+<option value="120">神田・秋葉原・岩本町</option>
+<option value="130">神保町・九段下・竹橋</option>
+<option value="140">麹町・半蔵門・永田町</option>
+<option value="150">大手町・丸の内</option>
+<option value="160">有楽町・日比谷・霞ヶ関</option>
+<option>--------------------</option>
+<option value="d40">■中央区</option>
+<option value="170">八重洲・京橋・日本橋</option>
+<option value="180">銀座・東銀座</option>
+<option value="190">八丁堀・茅場町・新川</option>
+<option value="200">築地・勝どき・月島</option>
+<option value="210">小伝馬町・人形町・水天宮前・浜町・東日本橋</option>
+<option value="220">三越前</option>
+<option>--------------------</option>
+<option value="d50">■港区</option>
+<option value="230">新橋・汐留</option>
+<option value="240">赤坂・溜池</option>
+<option value="250">青山・表参道・外苑前</option>
+<option value="260">六本木・広尾・麻布</option>
+<option value="270">浜松町・田町・品川・高輪</option>
+<option value="280">港南・芝浦・海岸・お台場</option>
+<option value="290">虎ノ門・愛宕・神谷町</option>
+<option>--------------------</option>
+<option value="d60">■品川区</option>
+<option value="300">目黒・大崎</option>
+<option value="310">大井・戸越・中延</option>
+<option value="320">天王洲・品川シーサイド</option>
+<option value="330">五反田・東五反田・西五反田</option>
+</select>
+</div>
+<p class="mg_b5 pic"><img src="img/cmn_side_search_sstit01.gif" alt="坪数" width="25" height="13"></p>
+<div class="clearfix ple_mg">
+<select name="amin_t" class="ple02" id="amin_t">
+<option value="">指定しない</option>
+<option value="10">10坪</option>
+<option value="15">15坪</option>
+<option value="20">20坪</option>
+<option value="25">25坪</option>
+<option value="30">30坪</option>
+<option value="40">40坪</option>
+<option value="50">50坪</option>
+<option value="60">60坪</option>
+<option value="70">70坪</option>
+<option value="80">80坪</option>
+<option value="90">90坪</option>
+<option value="100">100坪</option>
+<option value="150">150坪</option>
+<option value="200">200坪</option>
+<option value="250">250坪</option>
+<option value="300">300坪</option>
+</select>
+<p class="karamade"><img src="img/cmn_side_t01.gif" alt="から" width="20" height="15"></p>
+</div>
+<div class="clearfix mg_b10">
+<select name="amax_t" class="ple02" id="amax_t">
+<option value="">指定しない</option>
+<option value="10">10坪</option>
+<option value="15">15坪</option>
+<option value="20">20坪</option>
+<option value="25">25坪</option>
+<option value="30">30坪</option>
+<option value="40">40坪</option>
+<option value="50">50坪</option>
+<option value="60">60坪</option>
+<option value="70">70坪</option>
+<option value="80">80坪</option>
+<option value="90">90坪</option>
+<option value="100">100坪</option>
+<option value="150">150坪</option>
+<option value="200">200坪</option>
+<option value="250">250坪</option>
+<option value="300">300坪</option>
+</select>
+<p class="karamade"><img src="img/cmn_side_t02.gif" alt="まで" width="20" height="15"></p>
+</div>
+<p class="mg_b5 pic"><img src="img/cmn_side_search_sstit02.gif" alt="賃料合計（共益費込み）" width="117" height="13"></p>
+<div class="clearfix ple_mg">
+<select name="pmin_a" class="ple02" id="pmin_a">
+<option value="" selected>指定しない</option>
+<option value="100000">10万円</option>
+<option value="150000">15万円</option>
+<option value="200000">20万円</option>
+<option value="250000">25万円</option>
+<option value="300000">30万円</option>
+<option value="350000">35万円</option>
+<option value="400000">40万円</option>
+<option value="450000">45万円</option>
+<option value="500000">50万円</option>
+<option value="600000">60万円</option>
+<option value="700000">70万円</option>
+<option value="800000">80万円</option>
+<option value="900000">90万円</option>
+<option value="1000000">100万円</option>
+<option value="1500000">150万円</option>
+<option value="2000000">200万円</option>
+<option value="3000000">300万円</option>
+<option value="4000000">400万円</option>
+<option value="5000000">500万円</option>
+</select>
+<p class="karamade"><img src="img/cmn_side_t01.gif" alt="から" width="20" height="15"></p>
+</div>
+<div class="clearfix mg_b15">
+<select name="pmax_a" class="ple02" id="pmax_a">
+<option value="" selected>指定しない</option>
+<option value="100000">10万円</option>
+<option value="150000">15万円</option>
+<option value="200000">20万円</option>
+<option value="250000">25万円</option>
+<option value="300000">30万円</option>
+<option value="350000">35万円</option>
+<option value="400000">40万円</option>
+<option value="450000">45万円</option>
+<option value="500000">50万円</option>
+<option value="600000">60万円</option>
+<option value="700000">70万円</option>
+<option value="800000">80万円</option>
+<option value="900000">90万円</option>
+<option value="1000000">100万円</option>
+<option value="1500000">150万円</option>
+<option value="2000000">200万円</option>
+<option value="3000000">300万円</option>
+<option value="4000000">400万円</option>
+<option value="5000000">500万円</option>
+</select>
+<p class="karamade"><img src="img/cmn_side_t02.gif" alt="まで" width="20" height="15"></p>
+</div>
+<p>
+<input type="image" src="img/cmn_side_btn01.gif" alt="検索する" onClick="return menuSideSearchAreaDispEvasion();">
+<input name="at" type="hidden" value="t">
+<input name="pt" type="hidden" value="a">
+<input name="type" type="hidden" value="area">
+<input name="view" type="hidden" value="list">
+</p>
+</div>
+</form>
+<!-- /search area -->
+<!-- search route and station -->
+<p><img src="img/cmn_side_search_stit02.gif" alt="沿線・駅名から探す" width="200" height="30"></p>
+<div class="s_box">
+<form action="search/search.php" method="post" name="side_search_route" id="side_search_route" class="articleSearch">
+<div class="clearfix ple_mg">
+<select name="lid" class="ple01 line_side">
+<option value="">沿線を選んで下さい</option>
+</select>
+</div>
+<div class="clearfix mg_b10">
+<select name="sid" class="ple01 line_side">
+<option value="">駅名を選んで下さい</option>
+</select>
+</div>
+<p class="mg_b5 pic"><img src="img/cmn_side_search_sstit01.gif" alt="坪数" width="25" height="13"></p>
+<div class="clearfix ple_mg">
+<select name="amin_t" class="ple02" id="amin_t">
+<option value="">指定しない</option>
+<option value="10">10坪</option>
+<option value="15">15坪</option>
+<option value="20">20坪</option>
+<option value="25">25坪</option>
+<option value="30">30坪</option>
+<option value="40">40坪</option>
+<option value="50">50坪</option>
+<option value="60">60坪</option>
+<option value="70">70坪</option>
+<option value="80">80坪</option>
+<option value="90">90坪</option>
+<option value="100">100坪</option>
+<option value="150">150坪</option>
+<option value="200">200坪</option>
+<option value="250">250坪</option>
+<option value="300">300坪</option>
+</select>
+<p class="karamade"><img src="img/cmn_side_t01.gif" alt="から" width="20" height="15"></p>
+</div>
+<div class="clearfix mg_b10">
+<select name="amax_t" class="ple02" id="amax_t">
+<option value="">指定しない</option>
+<option value="10">10坪</option>
+<option value="15">15坪</option>
+<option value="20">20坪</option>
+<option value="25">25坪</option>
+<option value="30">30坪</option>
+<option value="40">40坪</option>
+<option value="50">50坪</option>
+<option value="60">60坪</option>
+<option value="70">70坪</option>
+<option value="80">80坪</option>
+<option value="90">90坪</option>
+<option value="100">100坪</option>
+<option value="150">150坪</option>
+<option value="200">200坪</option>
+<option value="250">250坪</option>
+<option value="300">300坪</option>
+</select>
+<p class="karamade"><img src="img/cmn_side_t02.gif" alt="まで" width="20" height="15"></p>
+</div>
+<p class="mg_b5 pic"><img src="img/cmn_side_search_sstit02.gif" alt="賃料合計（共益費込み）" width="117" height="13"></p>
+<div class="clearfix ple_mg">
+<select name="pmin_a" class="ple02" id="pmin_a">
+<option value="" selected>指定しない</option>
+<option value="100000">10万円</option>
+<option value="150000">15万円</option>
+<option value="200000">20万円</option>
+<option value="250000">25万円</option>
+<option value="300000">30万円</option>
+<option value="350000">35万円</option>
+<option value="400000">40万円</option>
+<option value="450000">45万円</option>
+<option value="500000">50万円</option>
+<option value="600000">60万円</option>
+<option value="700000">70万円</option>
+<option value="800000">80万円</option>
+<option value="900000">90万円</option>
+<option value="1000000">100万円</option>
+<option value="1500000">150万円</option>
+<option value="2000000">200万円</option>
+<option value="3000000">300万円</option>
+<option value="4000000">400万円</option>
+<option value="5000000">500万円</option>
+</select>
+<p class="karamade"><img src="img/cmn_side_t01.gif" alt="から" width="20" height="15"></p>
+</div>
+<div class="clearfix mg_b15">
+<select name="pmax_a" class="ple02" id="pmax_a">
+<option value="" selected>指定しない</option>
+<option value="100000">10万円</option>
+<option value="150000">15万円</option>
+<option value="200000">20万円</option>
+<option value="250000">25万円</option>
+<option value="300000">30万円</option>
+<option value="350000">35万円</option>
+<option value="400000">40万円</option>
+<option value="450000">45万円</option>
+<option value="500000">50万円</option>
+<option value="600000">60万円</option>
+<option value="700000">70万円</option>
+<option value="800000">80万円</option>
+<option value="900000">90万円</option>
+<option value="1000000">100万円</option>
+<option value="1500000">150万円</option>
+<option value="2000000">200万円</option>
+<option value="3000000">300万円</option>
+<option value="4000000">400万円</option>
+<option value="5000000">500万円</option>
+</select>
+<p class="karamade"><img src="img/cmn_side_t02.gif" alt="まで" width="20" height="15"></p>
+</div>
+<p><input type="image" src="img/cmn_side_btn01.gif" alt="検索する" onClick="return menuSideSearchRouteDispEvasion();"></p>
+<input name="at" type="hidden" value="t">
+<input name="pt" type="hidden" value="a">
+<input name="type" type="hidden" value="station">
+<input name="view" type="hidden" value="list">
+</form>
+</div>
+<div class="bg_gray01"><a href="search/index.html"><img src="img/cmn_side_btn02.gif" alt="他の検索方法で探す" width="172" height="32" border="0"></a></div>
+<!-- /search route and station -->
+<!-- osusume -->
+<p><img src="img/cmn_side_osusume_tit.gif" alt="オススメ物件" width="200" height="30"></p>
+<p class="mg_b15"><iframe src="/osusume/index.php" frameborder="0" title="osusume" id="osusume">オススメ物件</iframe></p>
+<!-- /osusume -->
+<!-- info -->
+<p class="mg_b15"><a href="http://www.office-x-tokyo.com/owner.html"><img src="http://www.office-x-tokyo.com/img/cmn_side_bnr_request.gif" alt="ビルオーナー・管理会社様へ" width="200" height="60"></a></p>
+<p class="mg_b15"><a href="http://www.office-x-tokyo.com/alliance.html"><img src="http://www.office-x-tokyo.com/img/cmn_side_bnr_request2.gif" alt="提携について" width="200" height="60"></a></p>
+<!-- <p><img src="../img/cmn_side_info_tit.gif" alt="お役立ち情報" width="200" height="30"></p>
+<div class="s_box mg_b15 line_btm">
+<ul>
+<li><a href="../info/cost.html">オフィス移転費用</a></li>
+<li><a href="../info/check.html">オフィス移転のチェック<br>
+リスト</a></li>
+<li><a href="../info/case.html">レイアウト事例</a></li>
+<li><a href="../info/faq.html">オフィス移転Q&amp;A</a></li>
+<li><a href="../info/words/index.html">不動産用語集</a></li>
+<li><a href="../info/areainfo/index.html">エリア情報</a></li>
+</ul>
+</div> -->
+<!-- /info -->
+<!-- <p class="mg_b15"><a href="../manual/index.html"><img src="../img/cmn_side_bnr_iten.gif" alt="オフィス移転マニュアル オフィス移転のノウハウをご紹介！" width="200" height="90"></a></p> -->
+<!-- about -->
+<p><a href="about/index.html"><img src="img/cmn_side_about_tit.gif" alt="当サイトについて" width="200" height="30"></a></p>
+<div class="s_box">
+<table class="about" border="0" cellspacing="0" cellpadding="0" summary="layout">
+<tr>
+<td><p class="mg_r10"><a href="about/index.html"><img src="img/cmn_side_about_p01.jpg" alt="運営会社の強み" width="60" height="60"></a></p></td>
+<td><p class="mg_b10"><a href="about/index.html"><img src="img/cmn_side_about_t01.gif" alt="運営会社の強み" width="112" height="14"></a></p>
+<p class="font_small">選ばれる理由</p></td>
+</tr>
+
+</table>
+<p class="pd_t10 mg_b10"><img src="img/cmn_side_dotline.gif" alt="" width="170" height="1"></p>
+<table class="about" border="0" cellspacing="0" cellpadding="0" summary="layout">
+<tr>
+<td><p class="mg_r10"><a href="about/company.html"><img src="img/cmn_side_about_p02.jpg" alt="LCI" width="60" height="60"></a></p></td>
+<td><p class="mg_b10"><a href="about/company.html"><img src="img/cmn_side_about_t02.gif" alt="運営会社概要" width="98" height="14"></a></p>
+<p class="font_small">当サイトの運営会社のご紹介</p></td>
+</tr>
+</table>
+</div>
+<p><img src="img/cmn_side_contact_tit.gif" alt="賃貸オフィスのお問い合わせ" width="200" height="30"></p>
+<div class="s_box mg_b15 line_btm">
+<table class="about" border="0" cellspacing="0" cellpadding="0" summary="layout">
+<tr>
+<td><div>
+<p class="pic"><img src="img/cmn_side_contact.gif" alt="0120-989-241 お問い合わせ　物件リクエスト" width="174" height="89" border="0" usemap="#Map_cont"></p>
+</div></td>
+</tr>
+</table>
+</div>
+<map name="Map_cont">
+<area shape="rect" coords="10,32,166,61" href="https://www.kashijimusyo.net/office-x/contact/index.php">
+<area shape="rect" coords="10,60,166,86" href="https://www.kashijimusyo.net/office-x/request/index.php">
+</map>
+<!-- /about -->
+<!-- request -->
+<!-- <p class="mg_b10"><a href="https://www.kashijimusyo.net/office-x/request/index.php"><img src="../img/cmn_side_bnr_request.gif" alt="物件リクエスト 当サイト掲載以外の物件も対応。" width="200" height="60"></a></p>-->
+<!-- /request -->
+<!-- <p class="mg_b10"><a href="http://www.kashijimusyo.net/" target="_blank"><img src="http://www.chintai-navi.jp/img/cmn_side_btn05.gif" alt="大阪の貸事務所・賃貸オフィスなら貸事務所ドットネット" width="200" height="55"></a></p>
+<p><a href="http://www.chintai-navi.jp/"><img src="http://www.chintai-navi.jp/img/cmn_side_bnr_navi.gif" alt="大阪 賃貸・不動産物件紹介の『賃貸ナビ』お部屋探しはピタットハウス新大阪"></a></p> -->
+</div>
+
+<!-- #EndLibraryItem --><!-- /side -->
+<!-- pagetop -->
+<p class="pagetop clear"><a href="#catch"><img src="img/cmn_pagetop.gif" alt="Page Top" width="80" height="21"></a></p>
+<!-- /pagetop -->
+</div>
+<div class="clear"></div>
+</div>
+<!-- /wrapper -->
+<!-- footer --><!-- #BeginLibraryItem "/Library/footer.lbi" -->
+<div id="f_bg">
+<div id="footer" class="clearfix">
+<div id="logo">
+<p><a href="index.html"><img src="img/cmn_foot_logo.gif" alt="オフィス×東京 運営会社 株式会社エルシーアイ" width="133" height="77" border="0"></a></p>
+<p><img src="img/cmn_foot_copy.gif" alt="COPYRIGHT&copy;2010 OFFICE×TOKYO ALL RIGHTS RESERVED." width="133" height="40"></p>
+</div>
+<div class="f_box">
+<div id="f_navi" class="mg_b15">
+<ul class="link01 font_small clearfix">
+<li><a href="index.html">HOME</a></li>
+<li><a href="search/index.html">オフィス検索</a></li>
+<li><a href="guide.html">はじめての方</a></li>
+<li><a href="info/index.html">お役立ち情報</a></li>
+<li><a href="manual/index.html">オフィス移転マニュアル</a></li>
+<li><a href="about/index.html">運営会社について</a></li>
+<li><a href="https://www.kashijimusyo.net/office-x/request/index.php">物件リクエスト</a></li>
+<li><a href="https://www.kashijimusyo.net/office-x/contact/index.php">お問い合わせ</a></li>
+<li class="end"><a href="link.html">相互リンク</a></li>
+</ul>
+<ul class="link01 font_small clearfix">
+<li><a href="policy.html">個人情報保護について</a></li>
+<li class="end"><a href="sitemap.html">サイトマップ</a></li>
+</ul>
+</div>
+
+</div>
+<p class="dotline01"><img src="img/cmn_foot_dotline01.gif" alt="" width="777" height="1"></p>
+<div class="f_box mg_b20">
+<div class="link02 clearfix">
+<p class="tit"><em>オフィスクイックリンク：エリア</em></p>
+<div class="st1 fl_l">
+<ul>
+<li><em>新宿区の賃貸オフィス・貸事務所</em></li>
+<li><a href="/quick/10/10">西新宿</a></li>
+<li><a href="/quick/10/20">新宿・御苑</a></li>
+<li><a href="/quick/10/30">四ツ谷・市ヶ谷・神楽坂</a></li>
+<li><a href="/quick/10/40">高田馬場・早稲田</a></li>
+<li><a href="/quick/10/50">大久保・歌舞伎町・百人町</a></li>
+<li><em>渋谷区の賃貸オフィス・貸事務所</em></li>
+<li><a href="/quick/20/60">渋谷・原宿・神宮前</a></li>
+<li><a href="/quick/20/70">恵比寿・代官山・広尾</a></li>
+<li><a href="/quick/20/80">代々木・千駄ヶ谷・北参道</a></li>
+<li><a href="/quick/20/90">初台・笹塚・幡ヶ谷</a></li>
+<li><a href="/quick/20/100">代々木公園・代々木上原・富ヶ谷</a></li>
+</ul>
+</div>
+<div class="st2 fl_l">
+<ul>
+<li><em>千代田区の賃貸オフィス・貸事務所</em></li>
+<li><a href="/quick/30/110">御茶ノ水・水道橋・飯田橋</a></li>
+<li><a href="/quick/30/120">神田・秋葉原・岩本町</a></li>
+<li><a href="/quick/30/130">神保町・九段下・竹橋</a></li>
+<li><a href="/quick/30/140">麹町・半蔵門・永田町</a></li>
+<li><a href="/quick/30/150">大手町・丸の内</a></li>
+<li><a href="/quick/30/160">有楽町・日比谷・霞ヶ関</a></li>
+<li><em>中央区の賃貸オフィス・貸事務所</em></li>
+<li><a href="/quick/40/170">八重洲・京橋・日本橋</a></li>
+<li><a href="/quick/40/180">銀座・東銀座</a></li>
+<li><a href="/quick/40/190">八丁堀・茅場町・新川</a></li>
+<li><a href="/quick/40/200">築地・勝どき・月島</a></li>
+<li><a href="/quick/40/210">小伝馬町・人形町・水天宮前・浜町・東日本橋</a></li>
+<li><a href="/quick/40/220">三越前</a></li>
+</ul>
+</div>
+<div class="st3 fl_l">
+<ul>
+<li><em>港区の賃貸オフィス・貸事務所</em></li>
+<li><a href="/quick/50/230">新橋・汐留</a></li>
+<li><a href="/quick/50/240">赤坂・溜池</a></li>
+<li><a href="/quick/50/250">青山・表参道・外苑前</a></li>
+<li><a href="/quick/50/260">六本木・広尾・麻布</a></li>
+<li><a href="/quick/50/270">浜松町・田町・品川・高輪</a></li>
+<li><a href="/quick/50/280">港南・芝浦・海岸・お台場</a></li>
+<li><a href="/quick/50/290">虎ノ門・愛宕・神谷町</a></li>
+<li><em>品川区の賃貸オフィス・貸事務所</em></li>
+<li><a href="/quick/60/300">目黒・大崎</a></li>
+<li><a href="/quick/60/310">大井・戸越・中延</a></li>
+<li><a href="/quick/60/320">天王洲・品川シーサイド</a></li>
+<li><a href="/quick/60/330">五反田・東五反田・西五反田</a></li>
+<!--<li><em><a href="/quick/70">豊島区 オフィス</a></em></li>
+<li><a href="/quick/70/340">池袋・目白</a></li>
+<li><a href="/quick/70/350">要町・千川</a></li>
+<li><a href="/quick/70/360">大塚・巣鴨・駒込</a></li>
+<li><em><a href="/quick/99">その他エリア オフィス</a></em></li>
+<li><a href="/quick/99/370">中野区</a></li>
+<li><a href="/quick/99/380">杉並区</a></li>
+<li><a href="/quick/99/390">大田区</a></li>
+<li><a href="/quick/99/400">目黒区</a></li>
+<li><a href="/quick/99/410">世田谷区</a></li>
+<li><a href="/quick/99/420">文京区</a></li>
+<li><a href="/quick/99/430">台東区</a></li>
+<li><a href="/quick/99/440">練馬区</a></li>
+<li><a href="/quick/99/450">北区</a></li>
+<li><a href="/quick/99/460">板橋区</a></li>
+<li><a href="/quick/99/470">墨田区</a></li>
+<li><a href="/quick/99/480">江東区</a></li>
+<li><a href="/quick/99/490">荒川区</a></li>
+<li><a href="/quick/99/500">足立区</a></li>
+<li><a href="/quick/99/510">葛飾区</a></li>
+<li><a href="/quick/99/520">江戸川区</a></li>-->
+</ul>
+</div>
+</div>
+<!--<div class="link03">
+<p class="tit"><em>株式会社エルシーアイ運営サイト</em></p>
+<ul>
+<li class="w03">賃貸ナビ</li>
+<li class="w03">貸事務所.net</li>
+</ul>
+</div>-->
+</div>
+</div>
+<!-- catch -->
+<div id="f_catch">
+<p class="font_small">東京都心部（千代田区、中央区、港区、新宿区、渋谷区、品川区）のオフィス・賃貸事務所等事業用賃貸不動産物件情報なら「オフィス×東京」にお任せください</p>
+</div>
+<!-- /catch -->
+<!-- user heat -->
+<script src="http://f1.nakanohito.jp/lit/index.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">try { var lb = new Vesicomyid.Bivalves("106328"); lb.init(); } catch(err) {} </script>
+<!-- /user heat -->
+</div><!-- #EndLibraryItem --><!-- /footer --><!-- trackingcode/ -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-2394400-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+<!-- /trackingcode -->
+</body>
+</html>

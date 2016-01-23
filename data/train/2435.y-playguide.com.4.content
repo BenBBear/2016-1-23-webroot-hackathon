@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" href="/user_data/packages/FSV001EC018/css/import.css" type="text/css" media="all" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.y-playguide.com/rss/" />
+<script type="text/javascript" src="/js/css.js"></script>
+<script type="text/javascript" src="/js/navi.js"></script>
+<script type="text/javascript" src="/js/win_op.js"></script>
+<script type="text/javascript" src="/js/site.js"></script>
+<script type="text/javascript" src="/js/jquery-1.4.2.min.js"></script>
+
+<title>ヨコハマよみうりプレイガイド</title>
+    <meta name="description" content="横浜市内で行われる各公演を中心に、チケット販売をいたしております。また、東京ドーム巨人戦のチケットも取り扱っております。ご利用ください。" />
+    <meta name="keywords" content="横浜,読売,プレイガイド,ヨコハマよみうり" />
+<link rel="shortcut icon" href="/user_data/packages/FSV001EC018/img/common/favicon.ico" />
+<link rel="icon" type="image/vnd.microsoft.icon" href="/user_data/packages/FSV001EC018/img/common/favicon.ico" />
+
+<script type="text/javascript">//<![CDATA[
+    
+    $(function(){
+        
+    });
+//]]>
+</script>
+<script type="text/javascript" src="/user_data/packages/FSV001EC018/js/heightLine.js"></script>
+</head>
+
+<!-- ▼BODY部 スタート -->
+<body>
+
+
+<noscript>
+    <p>JavaScript を有効にしてご利用下さい.</p>
+</noscript>
+
+<div class="frame_outer">
+    <a name="top" id="top"></a>
+
+                            <!--▼HEADER-->
+<div id="header_wrap">
+    <div id="header" class="clearfix">
+        <div id="logo_area">
+            <p id="site_description">横浜市内のチケット情報・ご購入はヨコハマよみうりプレイガイドで</p>
+            <h1>
+                <a href="http://www.y-playguide.com/"><img src="/user_data/packages/FSV001EC018/img/common/logo.gif" alt=":ヨコハマよみうりプレイガイド" /><span>ヨコハマよみうりプレイガイド</span></a>
+            </h1>
+        </div>
+        <div id="header_utility">
+            <div id="headerInternalColumn">
+                                                                            <!-- ▼【ヘッダー】ログイン -->
+                                            <script type="text/javascript">//<![CDATA[
+    $(function(){
+        var $login_email = $('#header_login_area input[name=login_email]');
+
+        if (!$login_email.val()) {
+            $login_email
+                .val('メールアドレス')
+                .css('color', '#AAA');
+        }
+
+        $login_email
+            .focus(function() {
+                if ($(this).val() == 'メールアドレス') {
+                    $(this).val('')
+                           .css('color', '#000');
+                }
+            })
+            .blur(function() {
+                if (!$(this).val()) {
+                    $(this).val('メールアドレス')
+                           .css('color', '#AAA');
+                }
+            });
+
+        $('#header_login_form').submit(function() {
+            if (!$login_email.val()
+                || $login_email.val() == 'メールアドレス') {
+                if ($('#header_login_area input[name=login_pass]').val()) {
+                    alert('メールアドレス/パスワードを入力して下さい。');
+                }
+                return false;
+            }
+            return true;
+        });
+    });
+//]]>
+</script>
+<div class="bloc_outer">
+    <div id="header_login_area" class="clearfix">
+        <form name="header_login_form" id="header_login_form" method="post" action="https://www.y-playguide.com/eccube/html/frontparts/login_check.php" onsubmit="return fnCheckLogin('header_login_form')">
+        <input type="hidden" name="mode" value="login" />
+        <input type="hidden" name="transactionid" value="94548a234811e8c61dd397aeb052b69c8296591e" />
+        <input type="hidden" name="url" value="/" />
+        <div class="bloc_body clearfix">
+                            <ul class="formlist clearfix">
+                    <li class="mail">
+                        <input type="text" class="box150" name="login_email" value="" style="ime-mode: disabled;" title="メールアドレスを入力して下さい" />
+                    </li>
+                    <li class="login_memory">
+                        <input type="checkbox" name="login_memory" id="header_login_memory" value="1"  /><label for="header_login_memory"><span>記憶</span></label>
+                    </li>
+                    <li class="password"><input type="password" class="box100" name="login_pass" title="パスワードを入力して下さい" /></li>
+                    <li class="btn">
+                        <input type="image" onmouseover="chgImgImageSubmit('/user_data/packages/FSV001EC018/img/common/btn_header_login_on.jpg',this)" onmouseout="chgImgImageSubmit('/user_data/packages/FSV001EC018/img/common/btn_header_login.jpg',this)" src="/user_data/packages/FSV001EC018/img/common/btn_header_login.jpg" />
+                    </li>
+                    <li class="forgot">
+                        <a href="https://www.y-playguide.com/eccube/html/forgot/" onclick="win01('https://www.y-playguide.com/eccube/html/forgot/','forget','600','400'); return false;" target="_blank">パスワードを忘れた方</a>
+                    </li>
+                </ul>
+
+                    </div>
+        </form>
+    </div>
+</div>
+                                        <!-- ▲【ヘッダー】ログイン -->
+                                                                    </div>
+            <div id="header_navi">
+                <ul>
+                    <li class="mypage">
+                        <a href="https://www.y-playguide.com/eccube/html/mypage/login.php" onmouseover="chgImg('/user_data/packages/FSV001EC018/img/common/btn_header_mypage_on.jpg','mypage');" onmouseout="chgImg('/user_data/packages/FSV001EC018/img/common/btn_header_mypage.jpg','mypage');"><img src="/user_data/packages/FSV001EC018/img/common/btn_header_mypage.jpg" alt="MYページ" name="mypage" id="mypage" /></a>
+                    </li>
+                    <li class="entry">
+                        <a href="http://www.y-playguide.com/entry/kiyaku.php" onmouseover="chgImg('/user_data/packages/FSV001EC018/img/common/btn_header_entry_on.jpg','entry');" onmouseout="chgImg('/user_data/packages/FSV001EC018/img/common/btn_header_entry.jpg','entry');"><img src="/user_data/packages/FSV001EC018/img/common/btn_header_entry.jpg" alt="会員登録" name="entry" id="entry" /></a>
+                    </li>
+                    <li>
+                        <a href="http://www.y-playguide.com/cart/" onmouseover="chgImg('/user_data/packages/FSV001EC018/img/common/btn_header_cart_on.jpg','cartin');" onmouseout="chgImg('/user_data/packages/FSV001EC018/img/common/btn_header_cart.jpg','cartin');"><img src="/user_data/packages/FSV001EC018/img/common/btn_header_cart.jpg" alt="カゴの中を見る" name="cartin" id="cartin" /></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--▲HEADER-->        
+        <div id="container" class="clearfix">
+
+                        
+                            <div id="leftcolumn" class="side_column heightLine">
+                                                    <!-- ▼商品検索 -->
+                                            <div class="bloc_outer">
+    <div id="search_area">
+    <h2><span class="title"><img src="/user_data/packages/FSV001EC018/img/title/tit_bloc_search.gif"alt="検索条件" /></span></h2>
+        <div class="bloc_body">
+            <!--検索フォーム-->
+            <form name="search_form" id="search_form" method="get" action="http://www.y-playguide.com/products/list.php">
+            <input type="hidden" name="transactionid" value="94548a234811e8c61dd397aeb052b69c8296591e" />
+            <dl class="formlist">
+                <dt>商品カテゴリから選ぶ</dt>
+                <dd><input type="hidden" name="mode" value="search" />
+                <select name="category_id" class="box145">
+                    <option label="すべての商品" value="">全ての商品</option>
+                    <option label="&nbsp;&nbsp;東京ドーム巨人オープン戦" value="1">&nbsp;&nbsp;東京ドーム巨人オープン戦</option>
+<option label="&nbsp;&nbsp;音楽" value="3">&nbsp;&nbsp;音楽</option>
+<option label="&nbsp;&nbsp;落語" value="4">&nbsp;&nbsp;落語</option>
+<option label="&nbsp;&nbsp;演劇・舞台" value="5">&nbsp;&nbsp;演劇・舞台</option>
+<option label="&nbsp;&nbsp;ファミリー" value="6">&nbsp;&nbsp;ファミリー</option>
+
+                </select>
+                </dd>
+            </dl>
+            <dl class="formlist">
+                                <dt>会場から選ぶ</dt>
+                <dd><select name="maker_id" class="box145">
+                    <option label="全ての会場" value="">全ての会場</option>
+                    <option label="厚木市文化会館" value="61">厚木市文化会館</option>
+<option label="鶴見区民文化センター　サルビアホール" value="60">鶴見区民文化センター　サルビアホール</option>
+<option label="ハーモニーホール座間" value="35">ハーモニーホール座間</option>
+<option label="東京ドーム" value="26">東京ドーム</option>
+<option label="神奈川県民ホール" value="1">神奈川県民ホール</option>
+<option label="関内ホール" value="2">関内ホール</option>
+<option label="神奈川県立音楽堂" value="5">神奈川県立音楽堂</option>
+<option label="横浜アリーナ" value="23">横浜アリーナ</option>
+<option label="鎌倉芸術館" value="7">鎌倉芸術館</option>
+<option label="横浜にぎわい座" value="20">横浜にぎわい座</option>
+<option label="パシフィコ横浜" value="21">パシフィコ横浜</option>
+
+                </select>
+                </dd>
+            </dl>
+            <dl class="formlist">
+                                <dt>検索ワードを入力</dt>
+                <dd><input type="text" name="name" class="box140" maxlength="50" value="" /></dd>
+            </dl>
+            <p class="btn"><input type="image" onmouseover="chgImgImageSubmit('/user_data/packages/FSV001EC018/img/button/btn_bloc_search_on.jpg',this)" onmouseout="chgImgImageSubmit('/user_data/packages/FSV001EC018/img/button/btn_bloc_search.jpg',this)" src="/user_data/packages/FSV001EC018/img/button/btn_bloc_search.jpg" alt="検索" name="search" /></p>
+            </form>
+        </div>
+    </div>
+</div>
+                                        <!-- ▲商品検索 -->
+                                    <!-- ▼カテゴリ -->
+                                            <script type="text/javascript">//<![CDATA[
+    $(function(){
+        $('#category_area li.level1:last').css('border-bottom', 'none');
+    });
+//]]>
+</script>
+<div class="bloc_outer">
+    <div id="category_area">
+        <div class="bloc_body">
+            <h2><img src="/user_data/packages/FSV001EC018/img/title/tit_bloc_category.gif"alt="商品カテゴリー" /></h2>
+            <ul id="categorytree"><li class="level1"><p><a href="http://www.y-playguide.com/products/list.php?category_id=1">東京ドーム巨人オープン戦</a></p></li><li class="level1"><p><a href="http://www.y-playguide.com/products/list.php?category_id=3">音楽</a></p></li><li class="level1"><p><a href="http://www.y-playguide.com/products/list.php?category_id=4">落語</a></p></li><li class="level1"><p><a href="http://www.y-playguide.com/products/list.php?category_id=5">演劇・舞台</a></p></li><li class="level1"><p><a href="http://www.y-playguide.com/products/list.php?category_id=6">ファミリー</a></p></li></ul>
+        </div>
+    </div>
+</div>
+                                        <!-- ▲カテゴリ -->
+                                    <!-- ▼twitterタイムライン -->
+                                            <div style="margin:0;padding:0;text-align:center;">
+<a class="twitter-timeline" width="180px" height="270px" href="https://twitter.com/yyplayguide" data-widget-id="413861515016433664">@yyplayguide からのツイート</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>                                        <!-- ▲twitterタイムライン -->
+                                    <!-- ▼利用ガイド -->
+                                            <div class="bloc_outer">
+    <div id="guide_area" class="bloc_body">
+        <ul class="button_like"><li><a href="http://www.y-playguide.com/abouts/" class="">当サイトについて</a></li><li><a href="https://www.y-playguide.com/eccube/html/contact/" class="">お問い合わせ</a></li><li><a href="http://www.y-playguide.com/order/" class="">特定商取引に関する表記</a></li><li><a href="http://www.y-playguide.com/guide/privacy.php" class="">プライバシーポリシー</a></li></ul>
+        <div style="height: 0px; overflow: hidden;"></div>    </div>
+</div>                                        <!-- ▲利用ガイド -->
+                                            </div>
+                
+                <div 
+                            id="three_maincolumn"
+                        class="main_column heightLine"
+        >
+                                    
+                        <div id="main_image">
+        <img src="/user_data/packages/FSV001EC018/img/banner/bnr_top_main.jpg" alt="横浜市内で行われる各公演を中心に、チケットの販売をいたしております。また、東京ドーム巨人戦のチケットも取り扱っております。ぜひご利用ください。" />
+</div>            
+                                                            <!-- ▼事前抽選予約バナー -->
+                                            <div class="bloc_outer" style="float:left;margin-right:5px;">
+<a href="http://shop.y-playguide.com/identify.php" target="_blank"><img src="/user_data/packages/FSV001EC018/img/button/banner_yoyaku.gif"alt="東京ドーム巨人戦チケット 事前抽選予約" /></a>
+</div>                                        <!-- ▲事前抽選予約バナー -->
+                                    <!-- ▼抽選結果発表バナー -->
+                                            <div class="bloc_outer" style="float:right;margin-left:5px;">
+<a href="http://shop.y-playguide.com/list.php" target="_blank"><img src="/user_data/packages/FSV001EC018/img/button/banner_kekka.gif"alt="抽選結果発表" /></a>
+</div>                                        <!-- ▲抽選結果発表バナー -->
+                                    <!-- ▼お知らせ -->
+                                            <div class="bloc_outer" style="clear:both;">
+    <div id="news_area">
+    <h2><img src="/user_data/packages/FSV001EC018/img/title/tit_bloc_oshirase.gif" alt="お知らせ" /><span class="rss"><a href="/rss/" target="_blank"><img src="/user_data/packages/FSV001EC018/img/button/btn_rss.jpg" alt="RSS" /></a></span></h2>
+        <div class="bloc_body">
+            <div class="news_contents_ue">
+                        <dl class="newslist clearfix">
+                <dt>2016/01/21</dt>
+                <dd><a href="/uenews/detail.php?id=93">【巨人戦】2016読売ジャイアンツオープン戦チケット販売について</a></dd>
+            </dl>
+                        <dl class="newslist clearfix">
+                <dt>2015/11/30</dt>
+                <dd><a href="/uenews/detail.php?id=92">【重要】年末年始の休暇のお知らせ</a></dd>
+            </dl>
+                        <dl class="newslist clearfix">
+                <dt>2015/09/28</dt>
+                <dd><a href="/uenews/detail.php?id=91">【巨人戦】クライマックスシリーズチケットの販売について</a></dd>
+            </dl>
+                        <dl class="newslist clearfix">
+                <dt>2015/08/11</dt>
+                <dd><a href="/uenews/detail.php?id=89">【重要】夏季休暇のお知らせ</a></dd>
+            </dl>
+                        <dl class="newslist clearfix">
+                <dt>2015/03/04</dt>
+                <dd><a href="/uenews/detail.php?id=88">【重要】営業時間変更のお知らせ</a></dd>
+            </dl>
+                        <p><a href="/uenews/index.php">お知らせ一覧はこちら>></a></p>
+            </div>
+        </div>
+    </div>
+</div>
+                                        <!-- ▲お知らせ -->
+                                    <!-- ▼新着チケット情報 -->
+                                            
+<style type="text/css">
+#arrNewItems h2 {
+ padding: 5px 0 8px 10px;
+ margin-bottom:10px;
+ border-style: solid;
+ border-color: #C2E0E0;
+ border-width: 1px 1px 0;
+ background: url('/user_data/packages/FSV001EC018/img/background/bg_btn_bloc_02.jpg') repeat-x left bottom #FFFFFF;
+}
+#arrNewItems{margin-bottom:10px;}
+#arrNewItems ul li {float:left; width:114px; height:200px;}
+#arrNewItems ul li p.item_image{ text-align:center;}
+#arrNewItems ul li p.price{ font-size:90%;}
+#arrNewItems ul li p.price em{ color:#FF0000;}
+</style>
+<!-- arrNewItems -->
+<div id="arrNewItems">
+<h2><img src="http://www.y-playguide.com/plugin/NewItems/media/images/tit_bloc_newticket.gif" alt="新着チケット情報" class="title_icon" /></h2>
+<ul class="clearfix">
+<li>
+<p class="item_image">
+<a href="http://www.y-playguide.com/products/detail.php?product_id=826">
+<img src="/resize_image.php?image=11011019_5454350fb9fac.jpg&amp;width=110&amp;height=110" alt="2016年2月7日(日)/ 青少年のための音楽会 横響 第668回定期演奏会【新春コンサート】" class="protect" /></a>
+</p>
+<p class="checkItemname"><a href="http://www.y-playguide.com/products/detail.php?product_id=826">2016年2月7日(日)/ 青少年のための音楽会 ..</a></p>
+<p class="price">販売価格(税込)<br /><em>1,100円</em></p>
+</li>
+<li>
+<p class="item_image">
+<a href="http://www.y-playguide.com/products/detail.php?product_id=825">
+<img src="/resize_image.php?image=12171818_56727dfe61896.jpg&amp;width=110&amp;height=110" alt="2016年4月15日(金)/八神純子 TOUR 2016 〜あなたの街へ -There you are- 〜" class="protect" /></a>
+</p>
+<p class="checkItemname"><a href="http://www.y-playguide.com/products/detail.php?product_id=825">2016年4月15日(金)/八神純子 TOUR 2..</a></p>
+<p class="price">販売価格(税込)<br /><em>6,100円</em></p>
+</li>
+<li>
+<p class="item_image">
+<a href="http://www.y-playguide.com/products/detail.php?product_id=824">
+<img src="/resize_image.php?image=12171809_56727be216531.jpg&amp;width=110&amp;height=110" alt="2016年3月5日(土)/井上陽水 コンサート2016  「UNITED COVER 2」" class="protect" /></a>
+</p>
+<p class="checkItemname"><a href="http://www.y-playguide.com/products/detail.php?product_id=824">2016年3月5日(土)/井上陽水 コンサート20..</a></p>
+<p class="price">販売価格(税込)<br /><em>8,740円</em></p>
+</li>
+<li>
+<p class="item_image">
+<a href="http://www.y-playguide.com/products/detail.php?product_id=822">
+<img src="/resize_image.php?image=09170921_55fa077d1c066.jpg&amp;width=110&amp;height=110" alt="2016年2月27日(土)/30周年記念 島津亜矢コンサート2016 ありがとう～30年の想いを込めて～" class="protect" /></a>
+</p>
+<p class="checkItemname"><a href="http://www.y-playguide.com/products/detail.php?product_id=822">2016年2月27日(土)/30周年記念 島津亜矢..</a></p>
+<p class="price">販売価格(税込)<br /><em>6,600円</em></p>
+</li>
+<li>
+<p class="item_image">
+<a href="http://www.y-playguide.com/products/detail.php?product_id=821">
+<img src="/resize_image.php?image=12111729_566a897fc87c2.jpg&amp;width=110&amp;height=110" alt="2016年5月21日(土)/稲垣潤一 コンサート2016" class="protect" /></a>
+</p>
+<p class="checkItemname"><a href="http://www.y-playguide.com/products/detail.php?product_id=821">2016年5月21日(土)/稲垣潤一 コンサート2..</a></p>
+<p class="price">販売価格(税込)<br /><em>6,100円</em></p>
+</li>
+<li>
+<p class="item_image">
+<a href="http://www.y-playguide.com/products/detail.php?product_id=819">
+<img src="/resize_image.php?image=12081412_566666acb799a.jpg&amp;width=110&amp;height=110" alt="2016年5月14日(土)/小野リサ　LISA ONO Dancing Bossa Tour 2016" class="protect" /></a>
+</p>
+<p class="checkItemname"><a href="http://www.y-playguide.com/products/detail.php?product_id=819">2016年5月14日(土)/小野リサ　LISA O..</a></p>
+<p class="price">販売価格(税込)<br /><em>6,100円</em></p>
+</li>
+<li>
+<p class="item_image">
+<a href="http://www.y-playguide.com/products/detail.php?product_id=818">
+<img src="/resize_image.php?image=12081408_566665cd63a6c.jpg&amp;width=110&amp;height=110" alt="2016年4月22日(金)/野村萬斎　狂言の現在2016" class="protect" /></a>
+</p>
+<p class="checkItemname"><a href="http://www.y-playguide.com/products/detail.php?product_id=818">2016年4月22日(金)/野村萬斎　狂言の現在2..</a></p>
+<p class="price">販売価格(税込)<br /><em>5,600〜6,300円</em></p>
+</li>
+<li>
+<p class="item_image">
+<a href="http://www.y-playguide.com/products/detail.php?product_id=816">
+<img src="/resize_image.php?image=05271123_55652a94cca4c.jpg&amp;width=110&amp;height=110" alt="2016年2月13日(土)/クレイジーケンバンド" class="protect" /></a>
+</p>
+<p class="checkItemname"><a href="http://www.y-playguide.com/products/detail.php?product_id=816">2016年2月13日(土)/クレイジーケンバンド</a></p>
+<p class="price">販売価格(税込)<br /><em>7,000円</em></p>
+</li>
+<li>
+<p class="item_image">
+<a href="http://www.y-playguide.com/products/detail.php?product_id=815">
+<img src="/resize_image.php?image=12161144_5670d01d4c78b.jpg&amp;width=110&amp;height=110" alt="2016年2月27日(土)/有馬徹とノーチェクバーナ　元コンサートマスター寺田正敏率いるOrquesta de la MADRUGADA オンステージ" class="protect" /></a>
+</p>
+<p class="checkItemname"><a href="http://www.y-playguide.com/products/detail.php?product_id=815">2016年2月27日(土)/有馬徹とノーチェクバー..</a></p>
+<p class="price">販売価格(税込)<br /><em>4,100円</em></p>
+</li>
+<li>
+<p class="item_image">
+<a href="http://www.y-playguide.com/products/detail.php?product_id=814">
+<img src="/resize_image.php?image=11301040_565ba91cefd93.jpg&amp;width=110&amp;height=110" alt="2016年2月22日(月)/よみうり寄席　馬生一門による落語と鹿芝居　品川心中噂達引　四場" class="protect" /></a>
+</p>
+<p class="checkItemname"><a href="http://www.y-playguide.com/products/detail.php?product_id=814">2016年2月22日(月)/よみうり寄席　馬生一門..</a></p>
+<p class="price">販売価格(税込)<br /><em>3,000〜3,100円</em></p>
+</li>
+<li>
+<p class="item_image">
+<a href="http://www.y-playguide.com/products/detail.php?product_id=813">
+<img src="/resize_image.php?image=11261423_5656976d854c1.jpg&amp;width=110&amp;height=110" alt="2016年4月23日(土)/神田松之丞 独演会「松之丞ひとり+(プラス)」ゲスト:春風亭一之輔" class="protect" /></a>
+</p>
+<p class="checkItemname"><a href="http://www.y-playguide.com/products/detail.php?product_id=813">2016年4月23日(土)/神田松之丞 独演会「松..</a></p>
+<p class="price">販売価格(税込)<br /><em>0〜2,600円</em></p>
+</li>
+<li>
+<p class="item_image">
+<a href="http://www.y-playguide.com/products/detail.php?product_id=812">
+<img src="/resize_image.php?image=11261601_54757ae17012b.jpg&amp;width=110&amp;height=110" alt="2016年5月14日(土)/寺内タケシとブルージーンズ　エレキ!エレキ!エレキ! XX" class="protect" /></a>
+</p>
+<p class="checkItemname"><a href="http://www.y-playguide.com/products/detail.php?product_id=812">2016年5月14日(土)/寺内タケシとブルージー..</a></p>
+<p class="price">販売価格(税込)<br /><em>3,600〜5,100円</em></p>
+</li>
+<li>
+<p class="item_image">
+<a href="http://www.y-playguide.com/products/detail.php?product_id=806">
+<img src="/resize_image.php?image=10211757_5627536808b6d.jpg&amp;width=110&amp;height=110" alt="2016年2月27日(土)/おかあさんといっしょ 『ポコポッテイトがやってきた!!』" class="protect" /></a>
+</p>
+<p class="checkItemname"><a href="http://www.y-playguide.com/products/detail.php?product_id=806">2016年2月27日(土)/おかあさんといっしょ ..</a></p>
+<p class="price">販売価格(税込)<br /><em>2,700円</em></p>
+</li>
+<li>
+<p class="item_image">
+<a href="http://www.y-playguide.com/products/detail.php?product_id=805">
+<img src="/resize_image.php?image=10211754_562752b5a87e8.jpg&amp;width=110&amp;height=110" alt="2016年4月16日(土)/トワ・エ・モワ45周年記念コンサート ～空と海と虹をこえて～" class="protect" /></a>
+</p>
+<p class="checkItemname"><a href="http://www.y-playguide.com/products/detail.php?product_id=805">2016年4月16日(土)/トワ・エ・モワ45周年..</a></p>
+<p class="price">販売価格(税込)<br /><em>6,100円</em></p>
+</li>
+<li>
+<p class="item_image">
+<a href="http://www.y-playguide.com/products/detail.php?product_id=804">
+<img src="/resize_image.php?image=10220859_562826cb3bf13.jpg&amp;width=110&amp;height=110" alt="2016年3月12日(土)/伊奈かっぺい コンサート-ク2016 雪だべが星だべが 降る里 津軽" class="protect" /></a>
+</p>
+<p class="checkItemname"><a href="http://www.y-playguide.com/products/detail.php?product_id=804">2016年3月12日(土)/伊奈かっぺい コンサー..</a></p>
+<p class="price">販売価格(税込)<br /><em>4,900円</em></p>
+</li>
+<li>
+<p class="item_image">
+<a href="http://www.y-playguide.com/products/detail.php?product_id=803">
+<img src="/resize_image.php?image=05271058_556524de372eb.jpg&amp;width=110&amp;height=110" alt="2016年3月5日(土)/秋川雅史コンサート～聴いてよく分かるクラシック～" class="protect" /></a>
+</p>
+<p class="checkItemname"><a href="http://www.y-playguide.com/products/detail.php?product_id=803">2016年3月5日(土)/秋川雅史コンサート～聴い..</a></p>
+<p class="price">販売価格(税込)<br /><em>5,600〜6,600円</em></p>
+</li>
+<li>
+<p class="item_image">
+<a href="http://www.y-playguide.com/products/detail.php?product_id=802">
+<img src="/resize_image.php?image=11211545_565013216970b.jpg&amp;width=110&amp;height=110" alt="2016年4月24日(日)/来生たかお　Symphonic Concert　2015～2016　～夢のあとさき～" class="protect" /></a>
+</p>
+<p class="checkItemname"><a href="http://www.y-playguide.com/products/detail.php?product_id=802">2016年4月24日(日)/来生たかお　Symph..</a></p>
+<p class="price">販売価格(税込)<br /><em>7,600〜8,600円</em></p>
+</li>
+<li>
+<p class="item_image">
+<a href="http://www.y-playguide.com/products/detail.php?product_id=798">
+<img src="/resize_image.php?image=09170909_55fa04ac232c2.jpg&amp;width=110&amp;height=110" alt="2016年2月19日(金)/特選 匠の噺会 桂 歌丸・春風亭小朝 二人会" class="protect" /></a>
+</p>
+<p class="checkItemname"><a href="http://www.y-playguide.com/products/detail.php?product_id=798">2016年2月19日(金)/特選 匠の噺会 桂 歌..</a></p>
+<p class="price">販売価格(税込)<br /><em>3,600〜4,100円</em></p>
+</li>
+<li>
+<p class="item_image">
+<a href="http://www.y-playguide.com/products/detail.php?product_id=791">
+<img src="/resize_image.php?image=05271049_556522bfb403f.jpg&amp;width=110&amp;height=110" alt="2016年4月2日(土)/岩崎宏美　40周年感謝祭 光の軌跡" class="protect" /></a>
+</p>
+<p class="checkItemname"><a href="http://www.y-playguide.com/products/detail.php?product_id=791">2016年4月2日(土)/岩崎宏美　40周年感謝祭..</a></p>
+<p class="price">販売価格(税込)<br /><em>6,100〜6,600円</em></p>
+</li>
+<li>
+<p class="item_image">
+<a href="http://www.y-playguide.com/products/detail.php?product_id=775">
+<img src="/resize_image.php?image=08111409_55c983a4db06e.gif&amp;width=110&amp;height=110" alt="2016年2月26日(金)/美輪明宏" class="protect" /></a>
+</p>
+<p class="checkItemname"><a href="http://www.y-playguide.com/products/detail.php?product_id=775">2016年2月26日(金)/美輪明宏</a></p>
+<p class="price">販売価格(税込)<br /><em>7,300円</em></p>
+</li>
+<li>
+<p class="item_image">
+<a href="http://www.y-playguide.com/products/detail.php?product_id=747">
+<img src="/resize_image.php?image=09031258_55e7c5561c2e5.jpg&amp;width=110&amp;height=110" alt="2016年2月28日(日)/財津和夫コンサート2015-2016 スペシャルゲスト:姫野達也 ～TULIPの夢を歌う2～" class="protect" /></a>
+</p>
+<p class="checkItemname"><a href="http://www.y-playguide.com/products/detail.php?product_id=747">2016年2月28日(日)/財津和夫コンサート20..</a></p>
+<p class="price">販売価格(税込)<br /><em>6,900円</em></p>
+</li>
+</ul>
+</div>
+<!-- / arrNewItems END -->
+
+                                        <!-- ▲新着チケット情報 -->
+                                                </div>
+        
+                            <div id="rightcolumn" class="side_column heightLine">
+                                                    <!-- ▼かごの中 -->
+                                            <div class="bloc_outer">
+    <div id="cart_area">
+    <h2 class="cart"><span class="title"><img src="/user_data/packages/FSV001EC018/img/title/tit_bloc_cart.gif"alt="現在のカゴの中" /></span></h2>
+        <div class="bloc_body">
+            <div class="information">
+                <p class="item">合計数量：<span class="attention">0</span></p>
+                <p class="total">商品金額：<span class="price">0円</span></p>
+                                            </div>
+            <div class="btn">
+                <a href="http://www.y-playguide.com/cart/" onmouseover="chgImg('/user_data/packages/FSV001EC018/img/button/btn_bloc_cart_on.jpg','button_cart');" onmouseout="chgImg('/user_data/packages/FSV001EC018/img/button/btn_bloc_cart.jpg','button_cart');"><img src="/user_data/packages/FSV001EC018/img/button/btn_bloc_cart.jpg" alt="カゴの中を見る" border="0" name="button_cart" id="button_cart" /></a>
+            </div>
+        </div>
+    </div>
+</div>
+                                        <!-- ▲かごの中 -->
+                                    <!-- ▼ログイン -->
+                                            <div class="bloc_outer">
+    <div id="login_area">
+        <h2><img src="/user_data/packages/FSV001EC018/img/title/tit_bloc_login.gif" alt="ログイン" /></h2>
+        <form name="login_form" id="login_form" method="post" action="https://www.y-playguide.com/eccube/html/frontparts/login_check.php" onsubmit="return fnCheckLogin('login_form')">
+            <input type="hidden" name="transactionid" value="94548a234811e8c61dd397aeb052b69c8296591e" />
+            <input type="hidden" name="mode" value="login" />
+            <input type="hidden" name="url" value="/" />
+            <div class="bloc_body">
+                                    <dl class="formlist">
+                        <dt>メールアドレス</dt>
+                        <dd>
+                            <input type="text" name="login_email" class="box140" value="" style="ime-mode: disabled;" />
+                        </dd>
+                        <dd class="mini">
+                            <input type="checkbox" name="login_memory" id="login_memory" value="1"  />
+                            <label for="login_memory"><span>コンピューターに記憶する</span></label>
+                        </dd>
+                    </dl>
+                    <dl class="formlist">
+                        <dt class="password">パスワード</dt>
+                        <dd><input type="password" name="login_pass" class="box140" /></dd>
+                        <dd class="mini">
+                        <a href="https://www.y-playguide.com/eccube/html/forgot/" onclick="win01('https://www.y-playguide.com/eccube/html/forgot/','forget','600','400'); return false;" target="_blank">パスワードを忘れた方はこちら</a>
+                        </dd>
+                    </dl>
+                    <p class="btn">
+                        <input type="image" onmouseover="chgImgImageSubmit('/user_data/packages/FSV001EC018/img/button/btn_bloc_login_on.jpg',this)" onmouseout="chgImgImageSubmit('/user_data/packages/FSV001EC018/img/button/btn_bloc_login.jpg',this)" src="/user_data/packages/FSV001EC018/img/button/btn_bloc_login.jpg" alt="ログイン" />
+                    </p>
+                            </div>
+        </form>
+    </div>
+</div>
+                                        <!-- ▲ログイン -->
+                                    <!-- ▼迷惑メール -->
+                                            <div class="bloc_outer">
+<div class="bloc_body" style="padding:8px;">
+<p>携帯電話のメールアドレスで迷惑メール対策の設定をされている方は、以下ドメインのメールを受信できるよう、あらかじめ設定をお願いします。<br /><br />
+ドメイン指定受信：<br />
+y-playguide.com</p>
+</div></div>                                        <!-- ▲迷惑メール -->
+                                    <!-- ▼先行受付中 -->
+                                            
+                                        <!-- ▲先行受付中 -->
+                                            </div>
+                
+                        
+    </div>
+    
+                <!--▼FOOTER-->
+<div id="footer_wrap">
+    <div id="footer" class="clearfix">
+        <div id="pagetop"><a href="#top">このページの先頭へ</a></div>
+        <div id="copyright">Copyright ©
+            2005-2016
+            ヨコハマよみうりプレイガイド All rights reserved.
+        </div>
+    </div>
+</div>
+<!--▲FOOTER-->                    </div>
+
+</body><!-- ▲BODY部 エンド -->
+</html>

@@ -1,0 +1,965 @@
+
+<!DOCTYPE html PUBLIC "_//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title>
+    極真会館    </title>
+	<meta name="description" content="国際空手道連盟極真会館（館長/松井章奎）の公式サイトです。大山倍達が創始した世界最大の武道団体として、極真空手道を通じて人格の淘治と心身の鍛錬をはかり、社会貢献を遂行します。" />
+	<meta name="keywords" content="極真会館,空手,大山倍達" />
+	<link href="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/style.css" rel="stylesheet" type="text/css" media="screen,tv,print" />
+	<link href="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/css/top.css" rel="stylesheet" type="text/css" media="screen,tv,print" />
+	<script type="text/javascript" src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/js/jquery.js"></script>
+<script type="text/javascript" src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/js/common.js"></script>
+<script type="text/javascript" src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/js/jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/js/jquery.dropdown.js"></script>
+<script type="text/javascript" src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/js/jquery.carouFredSel.js"></script>
+<script type="text/javascript" src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/js/accordion.js"></script>
+<script type="text/javascript" src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/js/counter.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/js/gmaps.js"></script>
+<script type="text/javascript" src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/js/mapcontrol.js"></script>
+<script type="text/javascript" src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/js/minmax.js"></script>
+<script type="text/javascript" src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/js/photolib.js"></script>
+
+	<script type="text/javascript" src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/js/jquery.imagesloaded.min.js"></script>
+	<script type="text/javascript">
+    $(function(){
+      // message
+        $("#introPost1").find("a").prependTo($("#msgPhoto1"));
+        $("#introPost2").find("a").prependTo($("#msgPhoto2"));
+        $("#introPost3").find("a").prependTo($("#msgPhoto3"));
+      	// news1
+      	for(i=0;i<$(".newsBox").length;i++){
+      	      if($(".newsBox").eq(i).find(".excerpt").find("a").length){
+      	      $(".newsBox").eq(i).find(".excerpt").find("a").prependTo($(".newsContent").eq(i)).wrap("<div class='photo'>");
+      	      }else{
+      	      $(".newsContent").eq(i).prepend("<div class='photo'></div>");
+      	      }
+      	}
+				$('.newsContent .photo img').imagesLoaded(function(){
+					var imgs = this;
+					for(var i=0 ; i<imgs.length ; i++){
+						var img = imgs[i];
+						$(img).removeAttr("width");
+						$(img).removeAttr("height");
+						
+						if($(img).width() < 213 && $(img).height() < 301){
+							//小さな画像
+							var pt = (301 - $(img).height())/2;
+							$(img).parent().css("padding-top",pt+"px");
+						}else{
+							//まず縦を合わせる
+							$(img).attr("height","301");
+							//はみ出たものは修正
+							if($(img).width()>213){
+								$(img).removeAttr("height");
+								$(img).attr("width","213");
+								
+								var pt = (301 - $(img).height())/2;
+								$(img).parent().css("padding-top",pt+"px");
+								}
+						}
+					}
+				});
+			
+				// news1 library rollover
+				$(document).ready(function(){
+					$("#news1 .photo a").hover(function(){
+						$(this).append($("<span></span>")).find("span:last-child").addClass("hoverImg");
+						var hoverImgHeight = 301;
+						$(".hoverImg").css("height",hoverImgHeight);
+					},function () {
+						$(this).find("span:last").remove();
+					}
+				);
+			});
+		});
+</script>
+<script>
+/*
+ヘッダー画像を一定時間でスライドさせるには、ここのコメントアウトを解除する。
+jQuery(function(){
+	$('.bxslider').bxSlider({
+		auto: true
+	});
+});
+*/
+</script>
+	</head>
+	<body id="top">
+<div id="wrapper">
+<div id="header">
+      <div id="mainImages">
+    <div class="bx-wrapper ">
+          <ul class="bxslider">
+        <li>
+					<div class="sliderImg"><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/slide/slide-keyvisual.jpg" width="1024" height="500" alt="極真舎" /></div>
+				</li>
+        <!--
+				ヘッダー画像を一定時間でスライドさせるには、ここのコメントアウトを解除する。
+				<li>
+					<div class="sliderImg"><a href="http://www.kyokushinkaikan.org/ja/news/2015/08/12/11th-world-news01/" target="_blank"><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/slide/slide-kyokushin-open.jpg" width="1024" height="500" alt="第11回オープントーナメント 全世界空手道選手権大会" /></a></div>
+				</li>-->
+			</ul>
+		</div>
+	<!-- /#mainImages -->
+	</div>
+	<div id="headerTop">
+<div class="inner">
+	<div class="searchBox">
+			<form method="get" action="/ja/sitesearch/" name="siteSearch" id="siteSearch">
+				<input name="q" type="text" class="txt_search" value="" id="searchInput1" />
+				<a href="#" onclick="document.siteSearch.submit();return false;" class="btn_search">
+					<input name="searchbt" type="button" id="btn_search1" alt="検索" />
+				</a>
+			</form>
+			<script type="text/javascript" src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/js/sitesearch.js"></script>
+    <!-- /.searchBox --></div>
+    <ul>
+        <!-- <li><a href="http://www.kyokushinkaikan.org/ja/search/">入門問い合わせ</a></li> -->
+        <li><a href="http://www.kyokushinkaikan.org/ja/press/">取材受付</a></li>
+        <li><a href="http://www.kyokushinkaikan.org/ja/faq/">よくある質問</a></li>
+        <li><a href="/en/">ENGLISH</a></li>
+	</ul>
+<!-- /.inner --></div>
+<!-- /#headerTop --></div>      <div id="logo">
+    <h1><a href="http://www.kyokushinkaikan.org/ja/"><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/commons/logo.gif" width="200" height="186" alt="国際空手道連盟 極真会館" /></a></h1>    <p class="btn_message"><a href="http://www.kyokushinkaikan.org/ja/kancho/">松井館長の閑話休題</a></p>
+    <!-- /#logo --></div>
+
+      <!-- /#header --></div>
+<ul id="nav" class="dropdown">
+	<li id="menu01">
+    	<a href="http://www.kyokushinkaikan.org/ja/" id="menu01a">ホーム</a>
+    </li>
+    <li id="menu02">
+      <a href="http://www.kyokushinkaikan.org/ja/introduction/" id="menu02a">入門案内</a>
+      <ul class="submenu">
+      	<li><a href="http://www.kyokushinkaikan.org/ja/introduction/information/">会員制度のご案内</a></li>
+        <li><a href="http://www.kyokushinkaikan.org/ja/introduction/youth/">青少年の部</a></li>
+        <li><a href="http://www.kyokushinkaikan.org/ja/introduction/men/">一般男子の部</a></li>
+        <li><a href="http://www.kyokushinkaikan.org/ja/introduction/women/">一般女子の部</a></li>
+        <li class="last"><a href="http://www.kyokushinkaikan.org/ja/introduction/senior/">壮年部</a></li>
+      </ul>
+    </li>
+    <li id="menu03">
+    	<a href="http://www.kyokushinkaikan.org/ja/search/" id="menu03a">道場検索</a>
+    </li>
+    <li id="menu04">
+    	<a href="http://www.kyokushinkaikan.org/ja/about/" id="menu04a">極真会館とは</a>
+        <ul class="submenu">
+      	<li><a href="http://www.kyokushinkaikan.org/ja/about/originator/">大山倍達総裁 紹介</a></li>
+        <li><a href="http://www.kyokushinkaikan.org/ja/about/president/">松井章奎館長 紹介</a></li>
+        <li><a href="http://www.kyokushinkaikan.org/ja/about/director/">役員紹介</a></li>
+        <li><a href="http://www.kyokushinkaikan.org/ja/about/organization/">国際空手道連盟について</a></li>
+        <li class="last"><a href="http://www.kyokushinkaikan.org/ja/about/history/">極真の歴史</a></li>
+      </ul>
+    </li>
+    <li id="menu05">
+    	<a href="http://www.kyokushinkaikan.org/ja/news/" id="menu05a">ニュース</a>
+        <ul class="submenu">
+      	<li><a href="http://www.kyokushinkaikan.org/ja/news/headquarter/">本部最新情報</a></li>
+        <li><a href="http://www.kyokushinkaikan.org/ja/news/world/">世界支部最新情報</a></li>
+        <li><a href="http://www.kyokushinkaikan.org/ja/news/committee/">委員会最新情報</a></li>
+        <li><a href="http://www.kyokushinkaikan.org/ja/news/tournament/">公式大会情報</a></li>
+        <li class="last"><a href="http://branch.kyokushinkaikan.org/" target="_blank">全国支部最新情報</a></li>
+      </ul>
+    </li>
+    <li id="menu06">
+    	<a href="http://www.kyokushinkaikan.org/ja/record/" id="menu06a">公式記録</a>
+        <ul class="submenu">
+      	<li><a href="http://www.kyokushinkaikan.org/ja/record/tornament/">大会記録</a></li>
+        <li class="last"><a href="http://www.kyokushinkaikan.org/ja/record/event/">行事記録</a></li>
+      </ul>
+    </li>
+    <li id="menu07">
+    	<a href="http://www.kyokushinkaikan.org/ja/info/" id="menu07a">インフォメーション</a>
+        <ul class="submenu">
+        <li><a href="http://www.kyokushinkaikan.org/ja/info/commission/">各委員会紹介</a></li>
+        <li><a href="http://www.kyokushinkaikan.org/ja/info/holder/">今月の昇段者</a></li>
+        <li><a href="http://www.kyokushinkaikan.org/ja/info/referee/">審判員資格者リスト</a></li>
+        <li><a href="http://www.kyokushinkaikan.org/ja/info/regulation/">試合規則</a></li>
+        <li><a href="http://www.kyokushinkaikan.org/ja/info/master/">師範の言葉</a></li>
+        <li><a href="http://www.kyokushinkaikan.org/ja/fighter/">選手一覧</a></li>
+        <li><a href="http://www.kyokushinkaikan.org/ja/info/student/">道場生紹介</a></li>
+        <li><a href="http://www.kyokushinkaikan.org/ja/info/report/">昇段レポート</a></li>
+        <li class="last"><a href="http://www.kyokushinkaikan.org/ja/info/schedule/">年間スケジュール</a></li>
+      </ul>
+    </li>
+<!-- /#nav --></ul><div id="container">
+      <div id="content">
+    <div id="main">
+          <div class="section">
+        <h2><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/tit_memberRecruit.gif" width="680" height="39" alt="全国の道場で入門者募集中" /></h2>
+        <div class="section_in" id="programList">
+              <dl id="program1">
+            <dt><a href="http://www.kyokushinkaikan.org/ja/introduction/youth/"><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/bnr_program1.jpg" width="155" height="200" alt="青少年の部" /></a></dt>
+            <dd>自分の痛さ苦しさを知ることによって、相手の痛さ苦しさを知ることが出来ます</dd>
+          </dl>
+              <dl id="program2">
+            <dt><a href="http://www.kyokushinkaikan.org/ja/introduction/women/"><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/bnr_program2.jpg" width="155" height="200" alt="一般女子の部" /></a></dt>
+            <dd>いざというときに役立つ極真空手は女性の強い味方になります。</dd>
+          </dl>
+              <dl id="program3">
+            <dt><a href="http://www.kyokushinkaikan.org/ja/introduction/men/"><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/bnr_program3.jpg" width="155" height="200" alt="一般男子の部" /></a></dt>
+            <dd>本当の強さとは何か？　これは、武道を志す者にとって永遠のテーマです。</dd>
+          </dl>
+              <dl id="program4">
+            <dt><a href="http://www.kyokushinkaikan.org/ja/introduction/senior/"><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/bnr_program4.jpg" width="155" height="200" alt="壮年部" /></a></dt>
+            <dd>理想的で充実した生活を自分自身でプランニングするサポートをします。</dd>
+          </dl>
+              <!-- /.section_in --></div>
+        <!-- /.section --></div>
+
+
+
+		<div class="section" id="mapsearch">
+			<h2><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/tit_mapsearch.gif" width="680" height="39" alt="道場検索" /></h2>
+
+			<div class="clearfix">
+				<div id="searchTopLeft">
+                <div class="topMap">
+                <div class="btn_mapA"><a href="http://www.kyokushinkaikan.org/ja/search/areas?id=1">北海道・東北</a></div>
+                <div class="btn_mapB"><a href="http://www.kyokushinkaikan.org/ja/search/areas?id=2">関東</a></div>
+                <div class="btn_mapC"><a href="http://www.kyokushinkaikan.org/ja/search/areas?id=3">信越・北陸</a></div>
+                
+                <div class="btn_mapD"><a href="http://www.kyokushinkaikan.org/ja/search/areas?id=4">東海</a></div>
+                <div class="btn_mapE"><a href="http://www.kyokushinkaikan.org/ja/search/areas?id=5">近畿</a></div>
+                <div class="btn_mapF"><a href="http://www.kyokushinkaikan.org/ja/search/areas?id=6">中国</a></div>
+                <div class="btn_mapG"><a href="http://www.kyokushinkaikan.org/ja/search/areas?id=7">四国</a></div>
+                
+                <div class="btn_mapH"><a href="http://www.kyokushinkaikan.org/ja/search/areas?id=8">九州・沖縄</a></div>
+                
+                
+                 </div>
+             
+					
+				</div>
+
+				<div id="searchTopRight">
+
+					<h3><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/search/tit_search4.gif" width="320" height="22" alt="道場一覧"></h3>
+
+					<ul class="pt10">
+						<li><a href="http://www.kyokushinkaikan.org/ja/search/areas?id=1">北海道・東北</a></li>
+						<li><a href="http://www.kyokushinkaikan.org/ja/search/areas?id=2">関東</a></li>
+						<li><a href="http://www.kyokushinkaikan.org/ja/search/areas?id=3">信越・北陸</a></li>
+						<li><a href="http://www.kyokushinkaikan.org/ja/search/areas?id=4">東海</a></li>
+					</ul>
+
+					<ul>
+						<li><a href="http://www.kyokushinkaikan.org/ja/search/areas?id=5">近畿</a></li>
+						<li><a href="http://www.kyokushinkaikan.org/ja/search/areas?id=6">中国</a></li>
+						<li><a href="http://www.kyokushinkaikan.org/ja/search/areas?id=7">四国</a></li>
+						<li><a href="http://www.kyokushinkaikan.org/ja/search/areas?id=8">九州・沖縄</a></li>
+					</ul>
+
+
+					<p class="pt10">地域名や駅名、郵便番号等をご記入いただき、地図から道場検索を行うことができます。<br />
+						例）　〇〇市、△△駅、□□町、など
+					</p>
+					<p>
+						地名や駅名をこちらにご記入ください。
+					</p>
+
+					<div class="searchBox clearfix">
+						<form action="./" method="post" class="geocoding_form">
+							<input type="text" name="dojoSearchKeywords" class="dojoSearchKeywords" value="" />
+							<input type="button" value="" class="dojoSearchButton" />
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+          <div class="section" id="news1">
+        <h2><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/tit_news1.gif" width="680" height="39" alt="最新情報" /></h2>
+        <a href="http://www.kyokushinkaikan.org/ja/news/headquarter/" class="newsLink1"><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/btn_newsList_honbu.gif" width="98" height="15" alt="本部情報一覧" /></a> <a href="http://www.kyokushinkaikan.org/ja/news/world/" class="newsLink2"><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/btn_newsList_world.gif" width="144" height="15" alt="世界支部活動情報一覧" /></a>
+        <div id="news1_in">
+                                                        <div class="newsBox" style="clear:both;">
+                        <div class="newsBox_in">
+                  <div class="newsBox_in_in">
+                <h3>
+                      <img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/titles/title-headquarter.gif" alt="本部最新情報" />                    </h3>
+                <p class="label">
+                      <img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/labels/label-headquarter-event.gif" alt="EVENT" />                    </p>
+                <div class="info"> <span class="date">2016年1月15日</span>
+                      <ul>
+                    <li> <span><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/ico_twi1.gif" width="15" height="15" alt="Twitter" /></span> <span class="number number_tw">0</span> </li>
+                    <li> <span><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/ico_fb1.gif" width="15" height="15" alt="Facebook" /></span> <span class="number number_fb">0</span> </li>
+                  </ul>
+                      <!-- /.info --></div>
+                <div class="newsContent">
+                      <div class="headLine">
+                    <p class="title"><a href="http://www.kyokushinkaikan.org/ja/news/2016/01/15/kancho-name/">
+                      松井館長、誕生日にあたり。                      </a></p>
+
+                    <!-- /.headLine --></div>
+                      <div class="excerpt">
+                    <a href="http://www.kyokushinkaikan.org/ja/news/2016/01/15/kancho-name/"><img width="213" height="114" src="http://www.kyokushinkaikan.org/ja/news/wp-content/blogs.dir/6/files/2016/01/sea-300x161.jpg" class="alignright tfe wp-post-image" alt="sea" title="sea" /></a><p>私、松井章圭は、皆様のお陰を持ちまして本日2016年1月15日に無事に53歳の誕生日を迎えることが出来ました。 誕生日にあたり、多くの皆様から御祝いのメッセージを頂戴致しました。 この場を借りて厚く御礼申し上げます。 極…</p>
+                    <!-- /.excerpt --></div>
+                      <!-- /.newsContent--></div>
+                <!-- /.newsBox_in_in --></div>
+                  <!-- /.newsBox_in --></div>
+            <!-- /.newsBox --></div>
+                            <div class="newsBox" >
+                        <div class="newsBox_in">
+                  <div class="newsBox_in_in">
+                <h3>
+                      <img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/titles/title-tournament.gif" alt="公式大会情報" />                    </h3>
+                <p class="label">
+                      <img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/labels/label-tournament-event.gif" alt="EVENT" />                    </p>
+                <div class="info"> <span class="date">2016年1月15日</span>
+                      <ul>
+                    <li> <span><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/ico_twi1.gif" width="15" height="15" alt="Twitter" /></span> <span class="number number_tw">0</span> </li>
+                    <li> <span><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/ico_fb1.gif" width="15" height="15" alt="Facebook" /></span> <span class="number number_fb">0</span> </li>
+                  </ul>
+                      <!-- /.info --></div>
+                <div class="newsContent">
+                      <div class="headLine">
+                    <p class="title"><a href="http://www.kyokushinkaikan.org/ja/news/2016/01/15/0423-zahari-100men/">
+                      4月23日（土）、ザハリ・ダミヤノフ 100人組手に挑戦                      </a></p>
+
+                    <!-- /.headLine --></div>
+                      <div class="excerpt">
+                    <a href="http://www.kyokushinkaikan.org/ja/news/2016/01/15/0423-zahari-100men/"><img width="213" height="141" src="http://www.kyokushinkaikan.org/ja/news/wp-content/blogs.dir/6/files/2015/11/1124a-300x199.jpg" class="alignright tfe wp-post-image" alt="▼決勝戦
+○ザハリ・ダミヤノフ（ブルガリア）
+判定勝ち
+×ジマ・ベルコジャ（フランス）" title="1124a" /></a><p>昨年11月に行われた第11回世界大会で優勝したザハリ・ダミヤノフ（ブルガリア）の100人組手挑戦が、2016国際親善空手道選手権大会の一週間後となる4月23日（土）本部直轄代官山道場に決定しました。 ■ザハリ・ダミヤノフ…</p>
+                    <!-- /.excerpt --></div>
+                      <!-- /.newsContent--></div>
+                <!-- /.newsBox_in_in --></div>
+                  <!-- /.newsBox_in --></div>
+            <!-- /.newsBox --></div>
+                            <div class="newsBox" >
+                        <div class="newsBox_in">
+                  <div class="newsBox_in_in">
+                <h3>
+                      <img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/titles/title-headquarter.gif" alt="本部最新情報" />                    </h3>
+                <p class="label">
+                      <img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/labels/label-headquarter-event.gif" alt="EVENT" />                    </p>
+                <div class="info"> <span class="date">2016年1月11日</span>
+                      <ul>
+                    <li> <span><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/ico_twi1.gif" width="15" height="15" alt="Twitter" /></span> <span class="number number_tw">0</span> </li>
+                    <li> <span><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/ico_fb1.gif" width="15" height="15" alt="Facebook" /></span> <span class="number number_fb">0</span> </li>
+                  </ul>
+                      <!-- /.info --></div>
+                <div class="newsContent">
+                      <div class="headLine">
+                    <p class="title"><a href="http://www.kyokushinkaikan.org/ja/news/2016/01/11/0111-kagamibiraki/">
+                      2016年総本部鏡開きを本部直轄代官山道場で実施                      </a></p>
+
+                    <!-- /.headLine --></div>
+                      <div class="excerpt">
+                    <a href="http://www.kyokushinkaikan.org/ja/news/2016/01/11/0111-kagamibiraki/"><img width="213" height="100" src="http://www.kyokushinkaikan.org/ja/news/wp-content/blogs.dir/6/files/2016/01/111-300x142.jpg" class="alignright tfe wp-post-image" alt="11" title="11" /></a><p>　1月11日（日）、東京都渋谷区の本部直轄代官山道場にて、2016年最初の稽古始めとなる総本部鏡開きが早朝午前６時30分より実施された。稽古には松井章圭館長、郷田勇三最高顧問、山田雅稔本部長をはじめ、全国各地から支部長や…</p>
+                    <!-- /.excerpt --></div>
+                      <!-- /.newsContent--></div>
+                <!-- /.newsBox_in_in --></div>
+                  <!-- /.newsBox_in --></div>
+            <!-- /.newsBox --></div>
+                            <div class="newsBox" style="clear:both;">
+                        <div class="newsBox_in">
+                  <div class="newsBox_in_in">
+                <h3>
+                      <img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/titles/title-headquarter.gif" alt="本部最新情報" />                    </h3>
+                <p class="label">
+                      <img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/labels/label-headquarter-event.gif" alt="EVENT" />                    </p>
+                <div class="info"> <span class="date">2016年1月7日</span>
+                      <ul>
+                    <li> <span><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/ico_twi1.gif" width="15" height="15" alt="Twitter" /></span> <span class="number number_tw">0</span> </li>
+                    <li> <span><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/ico_fb1.gif" width="15" height="15" alt="Facebook" /></span> <span class="number number_fb">0</span> </li>
+                  </ul>
+                      <!-- /.info --></div>
+                <div class="newsContent">
+                      <div class="headLine">
+                    <p class="title"><a href="http://www.kyokushinkaikan.org/ja/news/2016/01/07/2016-mitsumine/">
+                      三峰神社にて恒例の2016年総本部冬合宿を実施                      </a></p>
+
+                    <!-- /.headLine --></div>
+                      <div class="excerpt">
+                    <a href="http://www.kyokushinkaikan.org/ja/news/2016/01/07/2016-mitsumine/"><img width="213" height="141" src="http://www.kyokushinkaikan.org/ja/news/wp-content/blogs.dir/6/files/2016/01/06-300x199.jpg" class="alignright tfe wp-post-image" alt="06" title="06" /></a><p>1月4日（月）～6日（水）、大山倍達総裁ゆかりの三峰神社（埼玉県秩父市）にて恒例の2016年総本部冬合宿が実施された。松井章圭館長を筆頭に、最高顧問・郷田勇三師範、各支部長や昨年行われた第11回世界大会6位に入賞した上田…</p>
+                    <!-- /.excerpt --></div>
+                      <!-- /.newsContent--></div>
+                <!-- /.newsBox_in_in --></div>
+                  <!-- /.newsBox_in --></div>
+            <!-- /.newsBox --></div>
+                            <div class="newsBox" >
+                        <div class="newsBox_in">
+                  <div class="newsBox_in_in">
+                <h3>
+                      <img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/titles/title-headquarter.gif" alt="本部最新情報" />                    </h3>
+                <p class="label">
+                      <img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/labels/label-headquarter-info.gif" alt="INFO" />                    </p>
+                <div class="info"> <span class="date">2016年1月1日</span>
+                      <ul>
+                    <li> <span><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/ico_twi1.gif" width="15" height="15" alt="Twitter" /></span> <span class="number number_tw">0</span> </li>
+                    <li> <span><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/ico_fb1.gif" width="15" height="15" alt="Facebook" /></span> <span class="number number_fb">0</span> </li>
+                  </ul>
+                      <!-- /.info --></div>
+                <div class="newsContent">
+                      <div class="headLine">
+                    <p class="title"><a href="http://www.kyokushinkaikan.org/ja/news/2016/01/01/2016-0101/">
+                      新年を迎えて～ 2016年 松井章圭館長より新年のご挨拶                      </a></p>
+
+                    <!-- /.headLine --></div>
+                      <div class="excerpt">
+                    <a href="http://www.kyokushinkaikan.org/ja/news/2016/01/01/2016-0101/"><img width="213" height="142" src="http://www.kyokushinkaikan.org/ja/news/wp-content/blogs.dir/6/files/2015/12/02-300x200.jpg" class="alignright tfe wp-post-image" alt="02" title="02" /></a><p>新年、あけましておめでとうございます。 昨年中はひとかたならぬ御支援を賜り、誠にありがとうございます。本年もさらなる発展を目指し、また皆様に御賛同いただけるよう活動に邁進して参りますので、何卒宜しくお願い申し上げます。 …</p>
+                    <!-- /.excerpt --></div>
+                      <!-- /.newsContent--></div>
+                <!-- /.newsBox_in_in --></div>
+                  <!-- /.newsBox_in --></div>
+            <!-- /.newsBox --></div>
+                            <div class="newsBox" >
+                        <div class="newsBox_in">
+                  <div class="newsBox_in_in">
+                <h3>
+                      <img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/titles/title-tournament.gif" alt="公式大会情報" />                    </h3>
+                <p class="label">
+                      <img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/labels/label-tournament-event.gif" alt="EVENT" />                    </p>
+                <div class="info"> <span class="date">2015年12月18日</span>
+                      <ul>
+                    <li> <span><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/ico_twi1.gif" width="15" height="15" alt="Twitter" /></span> <span class="number number_tw">0</span> </li>
+                    <li> <span><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/ico_fb1.gif" width="15" height="15" alt="Facebook" /></span> <span class="number number_fb">0</span> </li>
+                  </ul>
+                      <!-- /.info --></div>
+                <div class="newsContent">
+                      <div class="headLine">
+                    <p class="title"><a href="http://www.kyokushinkaikan.org/ja/news/2015/12/18/2016ikf-news01/">
+                      2016 国際親善空手道選手権大会・出場選手募集！                      </a></p>
+
+                    <!-- /.headLine --></div>
+                      <div class="excerpt">
+                    <a href="http://www.kyokushinkaikan.org/ja/news/2015/12/18/2016ikf-news01/"><img width="213" height="142" src="http://www.kyokushinkaikan.org/ja/news/wp-content/blogs.dir/6/files/2015/04/0419h-300x200.jpg" class="alignright tfe wp-post-image" alt="0419h" title="0419h" /></a><p>2016年4月16日（土）17日（日）、東京体育館において「2016 国際親善空手道選手権大会」を開催致します。 出場を希望される方は所属する各支部道場までお問い合わせの上、お申し込みください。 大会名称：日本赤十字社 …</p>
+                    <!-- /.excerpt --></div>
+                      <!-- /.newsContent--></div>
+                <!-- /.newsBox_in_in --></div>
+                  <!-- /.newsBox_in --></div>
+            <!-- /.newsBox --></div>
+                            
+              <!-- /#news1_in --></div>
+        <!-- /.section --></div>
+          <div class="section">
+        <h2><a href="http://branch.kyokushinkaikan.org/" target="_blank"><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/tit_news2.gif" width="680" height="39" alt="全国支部情報" /></a></h2>
+        <div class="newsBox2">
+              <div class="newsBox2_in">
+            <div class="newsBox2_in_in">
+                                    <dl class="clearfix">
+                <dt>01月22日</dt>
+                <dd class="title"> <a href="http://branch.kyokushinkaikan.org/josaisetagayahigashi/blog/1120" target="_blank">1月24日（日）田無神社にて寒稽古と餅つきを行います。～城西世田谷東支部田無道場</a> <span class="label">城西世田谷東支部</span> </dd>
+                <dd class="social">
+                      <ul>
+                    <li> <span><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/ico_twi2.gif" width="15" height="15" alt="Twitter" /></span> <span class="number number_tw">0</span> </li>
+                    <li> <span><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/ico_fb2.gif" width="15" height="15" alt="Facebook" /></span> <span class="number number_fb">0</span> </li>
+                  </ul>
+                    </dd>
+                <dd class="label"> <img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/labels/label-branch-report.gif" alt="REPORT" /> </dd>
+              </dl>
+                                    <dl class="clearfix">
+                <dt>01月21日</dt>
+                <dd class="title"> <a href="http://branch.kyokushinkaikan.org/iwatedojo/blog/2252" target="_blank">2016本部直轄岩手道場全体稽古始め、年間努力賞表彰</a> <span class="label">本部直轄 岩手道場</span> </dd>
+                <dd class="social">
+                      <ul>
+                    <li> <span><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/ico_twi2.gif" width="15" height="15" alt="Twitter" /></span> <span class="number number_tw">0</span> </li>
+                    <li> <span><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/ico_fb2.gif" width="15" height="15" alt="Facebook" /></span> <span class="number number_fb">0</span> </li>
+                  </ul>
+                    </dd>
+                <dd class="label"> <img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/labels/label-branch-report.gif" alt="REPORT" /> </dd>
+              </dl>
+                                    <dl class="clearfix">
+                <dt>01月20日</dt>
+                <dd class="title"> <a href="http://branch.kyokushinkaikan.org/sapporohigashi/blog/2897" target="_blank">2016年2月　札幌東支部　稽古体験会・行事予定</a> <span class="label">札幌東支部</span> </dd>
+                <dd class="social">
+                      <ul>
+                    <li> <span><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/ico_twi2.gif" width="15" height="15" alt="Twitter" /></span> <span class="number number_tw">0</span> </li>
+                    <li> <span><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/ico_fb2.gif" width="15" height="15" alt="Facebook" /></span> <span class="number number_fb">0</span> </li>
+                  </ul>
+                    </dd>
+                <dd class="label"> <img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/labels/label-branch-report.gif" alt="REPORT" /> </dd>
+              </dl>
+                                    <dl class="clearfix">
+                <dt>01月20日</dt>
+                <dd class="title"> <a href="http://branch.kyokushinkaikan.org/chibakita/blog/1162" target="_blank">第19回千葉県北支部内少年型試合</a> <span class="label">千葉県北支部</span> </dd>
+                <dd class="social">
+                      <ul>
+                    <li> <span><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/ico_twi2.gif" width="15" height="15" alt="Twitter" /></span> <span class="number number_tw">0</span> </li>
+                    <li> <span><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/ico_fb2.gif" width="15" height="15" alt="Facebook" /></span> <span class="number number_fb">0</span> </li>
+                  </ul>
+                    </dd>
+                <dd class="label"> <img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/labels/label-branch-report.gif" alt="REPORT" /> </dd>
+              </dl>
+                                    <dl class="clearfix">
+                <dt>01月19日</dt>
+                <dd class="title"> <a href="http://branch.kyokushinkaikan.org/hibarigaokadojo/blog/570" target="_blank">中原小学校演武会</a> <span class="label">本部直轄ひばりが丘道場</span> </dd>
+                <dd class="social">
+                      <ul>
+                    <li> <span><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/ico_twi2.gif" width="15" height="15" alt="Twitter" /></span> <span class="number number_tw">0</span> </li>
+                    <li> <span><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/ico_fb2.gif" width="15" height="15" alt="Facebook" /></span> <span class="number number_fb">0</span> </li>
+                  </ul>
+                    </dd>
+                <dd class="label"> <img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/labels/label-branch-report.gif" alt="REPORT" /> </dd>
+              </dl>
+                                    <dl class="clearfix">
+                <dt>01月17日</dt>
+                <dd class="title"> <a href="http://branch.kyokushinkaikan.org/akita/blog/960" target="_blank">２０１６年冬合宿</a> <span class="label">秋田県支部</span> </dd>
+                <dd class="social">
+                      <ul>
+                    <li> <span><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/ico_twi2.gif" width="15" height="15" alt="Twitter" /></span> <span class="number number_tw">0</span> </li>
+                    <li> <span><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/ico_fb2.gif" width="15" height="15" alt="Facebook" /></span> <span class="number number_fb">0</span> </li>
+                  </ul>
+                    </dd>
+                <dd class="label"> <img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/top/labels/label-branch-report.gif" alt="REPORT" /> </dd>
+              </dl>
+                  
+                  <!-- /.newsBox2_in_in --></div>
+            <!-- /.newsBox2_in --></div>
+              <!-- /.newsBox2 --></div>
+        <div style="text-align: right; padding: 0 10px;"><a href="http://branch.kyokushinkaikan.org/" target="_blank">&gt;&gt; 支部ポータルサイト</a></div>
+        <!-- /.section --></div>
+
+          <!-- /#main --></div>
+    <div id="side">
+          <div class="section" id="section1">
+<h3><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/commons/sideTit_search.gif" width="240" height="30" alt="全国道場検索" /></h3>
+   <a href="http://www.kyokushinkaikan.org/ja/search/" class="more"><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/commons/btn_more.gif" width="34" height="11" alt="MORE" /></a>
+   <div class="holder bor">
+	<dl class="sideSearch">
+		<dt><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/commons/tit_search1.gif" width="183" height="13" alt="お近くにある道場が検索できます" /></dt>
+		<dd>
+								<form action="./" method="post" class="geocoding_form">
+								<input name="dojoSearchKeywords" type="text" class="dojoSearchKeywords" />
+								<input name="dojoSearchButton" type="button" class="dojoSearchButton" alt="検索" />
+								</form>
+								</dd>
+	</dl>
+	   <dl>
+		<dt><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/commons/tit_search2.gif" width="73" height="12" alt="クイック検索" /></dt>
+		<dd>
+			<ul class="mb10">
+				<li><a href="http://www.kyokushinkaikan.org/ja/search/areas?id=1">北海道・東北</a></li>
+				   <li><a href="http://www.kyokushinkaikan.org/ja/search/areas?id=2">関東</a></li>
+				   <li><a href="http://www.kyokushinkaikan.org/ja/search/areas?id=3">信越・北陸</a></li>
+				   <li class="last"><a href="http://www.kyokushinkaikan.org/ja/search/areas?id=4">東海</a></li>
+			</ul>
+
+			   <ul>
+				<li><a href="http://www.kyokushinkaikan.org/ja/search/areas?id=5">近畿</a></li>
+				   <li><a href="http://www.kyokushinkaikan.org/ja/search/areas?id=6">中国</a></li>
+				   <li><a href="http://www.kyokushinkaikan.org/ja/search/areas?id=7">四国</a></li>
+				   <li class="last"><a href="http://www.kyokushinkaikan.org/ja/search/areas?id=8">九州・沖縄</a></li>
+			</ul>
+		   </dd>
+	   </dl>
+   <!-- /.holder --></div>
+<!-- /.section --></div>
+
+<p class="bnr"><a href="http://www.flux-conditionings.com" target="_blank"><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/banner/flux-conditionings_logo.gif" width="240" height="70" alt="FLUX CONDITIONINGS" /></a></p>
+<p class="bnr"><a href="http://branch.kyokushinkaikan.org/head/" target="_blank"><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/banner/souhonbudojo.jpg" width="240" height="70" alt="総本部道場" /></a></p>
+<p class="bnr"><a href="http://branch.kyokushinkaikan.org/head/link" target="_blank"><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/banner/hq-branch.jpg" width="240" height="70" alt="直轄道場リンク集" /></a></p>
+<p class="bnr"><a href="http://branch.kyokushinkaikan.org/" target="_blank"><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/banner/branch.jpg" width="240" height="70" alt="支部ポータルサイト" /></a></p>
+<p class="bnr"><a href="http://www.kyokushinkaikan.org/ja/about/organization/#anti_social"><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/banner/correspondence_anti_social.jpg" width="240" height="20" alt="反社会勢力への対応について" /></a></p>
+<!-- add widget here -->
+<div id="newpostcatch-2" class="widget widget_newpostcatch">
+<div class="section">
+<h3><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/commons/sideTit_library.gif" width="240" height="30" alt="全国支部道場フォトライブラリー" /></h3>
+<div class="holder bor list_carousel">
+<div id="npcatch" >
+<p><span>
+<a href="http://www.kyokushinkaikan.org/ja/news/2016/01/15/kancho-name/" title="松井館長、誕生日にあたり。">
+<img src="http://www.kyokushinkaikan.org/ja/news/wp-content/blogs.dir/6/files/2016/01/sea-150x150.jpg" width="54" alt="松井館長、誕生日にあたり。" title="松井館長、誕生日にあたり。"  />
+</a>
+<!--
+<span class="title"><a href="http://www.kyokushinkaikan.org/ja/news/2016/01/15/kancho-name/" title="松井館長、誕生日にあたり。">松井館長、誕生日にあたり。</a></span>
+-->
+</span></p>
+<p><span>
+<a href="http://www.kyokushinkaikan.org/ja/news/2016/01/15/0423-zahari-100men/" title="4月23日（土）、ザハリ・ダミヤノフ 100人組手に挑戦">
+<img src="http://www.kyokushinkaikan.org/ja/news/wp-content/blogs.dir/6/files/2015/11/1124a-150x150.jpg" width="54" alt="4月23日（土）、ザハリ・ダミヤノフ 100人組手に挑戦" title="4月23日（土）、ザハリ・ダミヤノフ 100人組手に挑戦"  />
+</a>
+<!--
+<span class="title"><a href="http://www.kyokushinkaikan.org/ja/news/2016/01/15/0423-zahari-100men/" title="4月23日（土）、ザハリ・ダミヤノフ 100人組手に挑戦">4月23日（土）、ザハリ・ダミヤノフ 100人組手に挑戦</a></span>
+-->
+</span></p>
+<p><span>
+<a href="http://www.kyokushinkaikan.org/ja/news/2016/01/11/0111-kagamibiraki/" title="2016年総本部鏡開きを本部直轄代官山道場で実施">
+<img src="http://www.kyokushinkaikan.org/ja/news/wp-content/blogs.dir/6/files/2016/01/111-150x150.jpg" width="54" alt="2016年総本部鏡開きを本部直轄代官山道場で実施" title="2016年総本部鏡開きを本部直轄代官山道場で実施"  />
+</a>
+<!--
+<span class="title"><a href="http://www.kyokushinkaikan.org/ja/news/2016/01/11/0111-kagamibiraki/" title="2016年総本部鏡開きを本部直轄代官山道場で実施">2016年総本部鏡開きを本部直轄代官山道場で実施</a></span>
+-->
+</span></p>
+<p><span>
+<a href="http://www.kyokushinkaikan.org/ja/news/2016/01/07/2016-mitsumine/" title="三峰神社にて恒例の2016年総本部冬合宿を実施">
+<img src="http://www.kyokushinkaikan.org/ja/news/wp-content/blogs.dir/6/files/2016/01/06-150x150.jpg" width="54" alt="三峰神社にて恒例の2016年総本部冬合宿を実施" title="三峰神社にて恒例の2016年総本部冬合宿を実施"  />
+</a>
+<!--
+<span class="title"><a href="http://www.kyokushinkaikan.org/ja/news/2016/01/07/2016-mitsumine/" title="三峰神社にて恒例の2016年総本部冬合宿を実施">三峰神社にて恒例の2016年総本部冬合宿を実施</a></span>
+-->
+</span></p>
+<p><span>
+<a href="http://www.kyokushinkaikan.org/ja/news/2016/01/01/2016-0101/" title="新年を迎えて～ 2016年 松井章圭館長より新年のご挨拶">
+<img src="http://www.kyokushinkaikan.org/ja/news/wp-content/blogs.dir/6/files/2015/12/02-150x150.jpg" width="54" alt="新年を迎えて～ 2016年 松井章圭館長より新年のご挨拶" title="新年を迎えて～ 2016年 松井章圭館長より新年のご挨拶"  />
+</a>
+<!--
+<span class="title"><a href="http://www.kyokushinkaikan.org/ja/news/2016/01/01/2016-0101/" title="新年を迎えて～ 2016年 松井章圭館長より新年のご挨拶">新年を迎えて～ 2016年 松井章圭館長より新年のご挨拶</a></span>
+-->
+</span></p>
+<p><span>
+<a href="http://www.kyokushinkaikan.org/ja/news/2015/12/18/2016ikf-news01/" title="2016 国際親善空手道選手権大会・出場選手募集！">
+<img src="http://www.kyokushinkaikan.org/ja/news/wp-content/blogs.dir/6/files/2015/04/0419h-150x150.jpg" width="54" alt="2016 国際親善空手道選手権大会・出場選手募集！" title="2016 国際親善空手道選手権大会・出場選手募集！"  />
+</a>
+<!--
+<span class="title"><a href="http://www.kyokushinkaikan.org/ja/news/2015/12/18/2016ikf-news01/" title="2016 国際親善空手道選手権大会・出場選手募集！">2016 国際親善空手道選手権大会・出場選手募集！</a></span>
+-->
+</span></p>
+<p><span>
+<a href="http://www.kyokushinkaikan.org/ja/news/2015/12/11/2016-01winter-seminer/" title="2016年 総本部冬季合宿参加者募集中！">
+<img src="http://www.kyokushinkaikan.org/ja/news/wp-content/blogs.dir/6/files/2015/12/06s-150x150.jpg" width="54" alt="2016年 総本部冬季合宿参加者募集中！" title="2016年 総本部冬季合宿参加者募集中！"  />
+</a>
+<!--
+<span class="title"><a href="http://www.kyokushinkaikan.org/ja/news/2015/12/11/2016-01winter-seminer/" title="2016年 総本部冬季合宿参加者募集中！">2016年 総本部冬季合宿参加者募集中！</a></span>
+-->
+</span></p>
+<p><span>
+<a href="http://www.kyokushinkaikan.org/ja/news/2015/12/09/wk2016-01-2/" title="ワールド空手2016年1月号「世界大会特集号」　12月10日（木）発売！">
+<img src="http://www.kyokushinkaikan.org/ja/news/wp-content/blogs.dir/6/files/2015/12/wk_001-150x150.jpg" width="54" alt="ワールド空手2016年1月号「世界大会特集号」　12月10日（木）発売！" title="ワールド空手2016年1月号「世界大会特集号」　12月10日（木）発売！"  />
+</a>
+<!--
+<span class="title"><a href="http://www.kyokushinkaikan.org/ja/news/2015/12/09/wk2016-01-2/" title="ワールド空手2016年1月号「世界大会特集号」　12月10日（木）発売！">ワールド空手2016年1月号「世界大会特集号」　12月10日（木）発売！</a></span>
+-->
+</span></p>
+<p><span>
+<a href="http://www.kyokushinkaikan.org/ja/news/2015/12/02/1206bsfuji/" title="12月6日（日）深夜、BSフジの第11回世界大会番組宣伝映像">
+<img src="http://www.kyokushinkaikan.org/ja/news/wp-content/blogs.dir/6/files/2015/12/zahari-150x150.jpg" width="54" alt="12月6日（日）深夜、BSフジの第11回世界大会番組宣伝映像" title="12月6日（日）深夜、BSフジの第11回世界大会番組宣伝映像"  />
+</a>
+<!--
+<span class="title"><a href="http://www.kyokushinkaikan.org/ja/news/2015/12/02/1206bsfuji/" title="12月6日（日）深夜、BSフジの第11回世界大会番組宣伝映像">12月6日（日）深夜、BSフジの第11回世界大会番組宣伝映像</a></span>
+-->
+</span></p>
+<p><span>
+<a href="http://www.kyokushinkaikan.org/ja/news/2015/12/02/wk2016-01/" title="第11回世界大会特集のワールド空手2016年1月号は12月10日（木）発売">
+<img src="http://www.kyokushinkaikan.org/ja/news/wp-content/blogs.dir/6/files/2015/12/1202-150x150.jpg" width="54" alt="第11回世界大会特集のワールド空手2016年1月号は12月10日（木）発売" title="第11回世界大会特集のワールド空手2016年1月号は12月10日（木）発売"  />
+</a>
+<!--
+<span class="title"><a href="http://www.kyokushinkaikan.org/ja/news/2015/12/02/wk2016-01/" title="第11回世界大会特集のワールド空手2016年1月号は12月10日（木）発売">第11回世界大会特集のワールド空手2016年1月号は12月10日（木）発売</a></span>
+-->
+</span></p>
+<p><span>
+<a href="http://www.kyokushinkaikan.org/ja/news/2015/11/24/1122news02-2/" title="第11回世界大会レポート／ザハリ・ダミヤノフが優勝、12/6（日）BSフジで放送">
+<img src="http://www.kyokushinkaikan.org/ja/news/wp-content/blogs.dir/6/files/2015/11/1124a-150x150.jpg" width="54" alt="第11回世界大会レポート／ザハリ・ダミヤノフが優勝、12/6（日）BSフジで放送" title="第11回世界大会レポート／ザハリ・ダミヤノフが優勝、12/6（日）BSフジで放送"  />
+</a>
+<!--
+<span class="title"><a href="http://www.kyokushinkaikan.org/ja/news/2015/11/24/1122news02-2/" title="第11回世界大会レポート／ザハリ・ダミヤノフが優勝、12/6（日）BSフジで放送">第11回世界大会レポート／ザハリ・ダミヤノフが優勝、12/6（日）BSフジで放送</a></span>
+-->
+</span></p>
+<p><span>
+<a href="http://www.kyokushinkaikan.org/ja/news/2015/11/23/1123news01/" title="2015世界女子大会、2015ワールドユース・シニア・チーム型競技大会各カテゴリー入賞者">
+<img src="http://www.kyokushinkaikan.org/ja/news/wp-content/blogs.dir/6/files/2015/11/1123d-150x150.jpg" width="54" alt="2015世界女子大会、2015ワールドユース・シニア・チーム型競技大会各カテゴリー入賞者" title="2015世界女子大会、2015ワールドユース・シニア・チーム型競技大会各カテゴリー入賞者"  />
+</a>
+<!--
+<span class="title"><a href="http://www.kyokushinkaikan.org/ja/news/2015/11/23/1123news01/" title="2015世界女子大会、2015ワールドユース・シニア・チーム型競技大会各カテゴリー入賞者">2015世界女子大会、2015ワールドユース・シニア・チーム型競技大会各カテゴリー入賞者</a></span>
+-->
+</span></p>
+<p><span>
+<a href="http://www.kyokushinkaikan.org/ja/news/2015/11/22/1122news01-2/" title="11月22日（日）、第11回世界大会3日目結果">
+<img src="http://www.kyokushinkaikan.org/ja/news/wp-content/blogs.dir/6/files/2015/11/1122b-150x150.jpg" width="54" alt="11月22日（日）、第11回世界大会3日目結果" title="11月22日（日）、第11回世界大会3日目結果"  />
+</a>
+<!--
+<span class="title"><a href="http://www.kyokushinkaikan.org/ja/news/2015/11/22/1122news01-2/" title="11月22日（日）、第11回世界大会3日目結果">11月22日（日）、第11回世界大会3日目結果</a></span>
+-->
+</span></p>
+<p><span>
+<a href="http://www.kyokushinkaikan.org/ja/news/2015/11/21/1121news01/" title="11月21日（土）、第11回世界大会／２日目結果">
+<img src="http://www.kyokushinkaikan.org/ja/news/wp-content/blogs.dir/6/files/2015/11/1121-150x150.jpg" width="54" alt="11月21日（土）、第11回世界大会／２日目結果" title="11月21日（土）、第11回世界大会／２日目結果"  />
+</a>
+<!--
+<span class="title"><a href="http://www.kyokushinkaikan.org/ja/news/2015/11/21/1121news01/" title="11月21日（土）、第11回世界大会／２日目結果">11月21日（土）、第11回世界大会／２日目結果</a></span>
+-->
+</span></p>
+<p><span>
+<a href="http://www.kyokushinkaikan.org/ja/news/2015/11/20/1120news/" title="11月20日（金）、第11回世界大会が開幕／初日結果">
+<img src="http://www.kyokushinkaikan.org/ja/news/wp-content/blogs.dir/6/files/2015/11/1120a-150x150.jpg" width="54" alt="11月20日（金）、第11回世界大会が開幕／初日結果" title="11月20日（金）、第11回世界大会が開幕／初日結果"  />
+</a>
+<!--
+<span class="title"><a href="http://www.kyokushinkaikan.org/ja/news/2015/11/20/1120news/" title="11月20日（金）、第11回世界大会が開幕／初日結果">11月20日（金）、第11回世界大会が開幕／初日結果</a></span>
+-->
+</span></p>
+<p><span>
+<a href="http://www.kyokushinkaikan.org/ja/news/2015/11/19/1122news03/" title="11月19日（木）、第11回世界大会前日記者会見を実施">
+<img src="http://www.kyokushinkaikan.org/ja/news/wp-content/blogs.dir/6/files/2015/11/1119g-150x150.jpg" width="54" alt="11月19日（木）、第11回世界大会前日記者会見を実施" title="11月19日（木）、第11回世界大会前日記者会見を実施"  />
+</a>
+<!--
+<span class="title"><a href="http://www.kyokushinkaikan.org/ja/news/2015/11/19/1122news03/" title="11月19日（木）、第11回世界大会前日記者会見を実施">11月19日（木）、第11回世界大会前日記者会見を実施</a></span>
+-->
+</span></p>
+<p><span>
+<a href="http://www.kyokushinkaikan.org/ja/news/2015/11/19/prop_jpn_jersey/" title="第11回世界大会開催中、極真会館公認「日本代表選手モデルジャージ」の受注販売が行われます。">
+<img src="http://www.kyokushinkaikan.org/ja/news/wp-content/blogs.dir/6/files/2015/11/prop_jpn_jersey-150x150.jpg" width="54" alt="第11回世界大会開催中、極真会館公認「日本代表選手モデルジャージ」の受注販売が行われます。" title="第11回世界大会開催中、極真会館公認「日本代表選手モデルジャージ」の受注販売が行われます。"  />
+</a>
+<!--
+<span class="title"><a href="http://www.kyokushinkaikan.org/ja/news/2015/11/19/prop_jpn_jersey/" title="第11回世界大会開催中、極真会館公認「日本代表選手モデルジャージ」の受注販売が行われます。">第11回世界大会開催中、極真会館公認「日本代表選手モデルジャージ」の受注販売が行われます。</a></span>
+-->
+</span></p>
+<p><span>
+<a href="http://www.kyokushinkaikan.org/ja/news/2015/11/18/1122news01/" title="11月22日（日）、世界大会3日目に全空連トップ選手の演武が決定！">
+<img src="http://www.kyokushinkaikan.org/ja/news/wp-content/blogs.dir/6/files/2015/11/ara-150x150.jpg" width="54" alt="11月22日（日）、世界大会3日目に全空連トップ選手の演武が決定！" title="11月22日（日）、世界大会3日目に全空連トップ選手の演武が決定！"  />
+</a>
+<!--
+<span class="title"><a href="http://www.kyokushinkaikan.org/ja/news/2015/11/18/1122news01/" title="11月22日（日）、世界大会3日目に全空連トップ選手の演武が決定！">11月22日（日）、世界大会3日目に全空連トップ選手の演武が決定！</a></span>
+-->
+</span></p>
+<p><span>
+<a href="http://www.kyokushinkaikan.org/ja/news/2015/11/18/1122news02/" title="11月22日（日）、世界大会3日目開場後に書家・柳田泰山先生が席上揮毫を披露！">
+<img src="http://www.kyokushinkaikan.org/ja/news/wp-content/blogs.dir/6/files/2015/11/yana-150x150.jpg" width="54" alt="11月22日（日）、世界大会3日目開場後に書家・柳田泰山先生が席上揮毫を披露！" title="11月22日（日）、世界大会3日目開場後に書家・柳田泰山先生が席上揮毫を披露！"  />
+</a>
+<!--
+<span class="title"><a href="http://www.kyokushinkaikan.org/ja/news/2015/11/18/1122news02/" title="11月22日（日）、世界大会3日目開場後に書家・柳田泰山先生が席上揮毫を披露！">11月22日（日）、世界大会3日目開場後に書家・柳田泰山先生が席上揮毫を披露！</a></span>
+-->
+</span></p>
+<p><span>
+<a href="http://www.kyokushinkaikan.org/ja/news/2015/11/14/1120-23/" title="11月20日(金)・21日(土)・22日(日)・23日（月/祝）　大会スケジュール＆世界大会当日券は9:30より販売開始">
+<img src="http://www.kyokushinkaikan.org/ja/news/wp-content/blogs.dir/6/files/2015/11/soto-150x150.jpg" width="54" alt="11月20日(金)・21日(土)・22日(日)・23日（月/祝）　大会スケジュール＆世界大会当日券は9:30より販売開始" title="11月20日(金)・21日(土)・22日(日)・23日（月/祝）　大会スケジュール＆世界大会当日券は9:30より販売開始"  />
+</a>
+<!--
+<span class="title"><a href="http://www.kyokushinkaikan.org/ja/news/2015/11/14/1120-23/" title="11月20日(金)・21日(土)・22日(日)・23日（月/祝）　大会スケジュール＆世界大会当日券は9:30より販売開始">11月20日(金)・21日(土)・22日(日)・23日（月/祝）　大会スケジュール＆世界大会当日券は9:30より販売開始</a></span>
+-->
+</span></p>
+<p><span>
+<a href="http://www.kyokushinkaikan.org/ja/news/2015/10/26/daikanyama-d/" title="本部直轄代官山道場の道場開き式典を実施">
+<img src="http://www.kyokushinkaikan.org/ja/news/files/2015/10/01.jpg" width="54" alt="本部直轄代官山道場の道場開き式典を実施" title="本部直轄代官山道場の道場開き式典を実施" />
+</a>
+<!--
+<span class="title"><a href="http://www.kyokushinkaikan.org/ja/news/2015/10/26/daikanyama-d/" title="本部直轄代官山道場の道場開き式典を実施">本部直轄代官山道場の道場開き式典を実施</a></span>
+-->
+</span></p>
+<p><span>
+<a href="http://www.kyokushinkaikan.org/ja/news/2015/10/26/1123tournament/" title="11月23日（月・祝）開催、世界女子、ワールドユース、ワールドシニア、ワールドチーム型 組み合わせ発表">
+<img src="http://www.kyokushinkaikan.org/ja/news/wp-content/blogs.dir/6/files/2015/04/0419h-150x150.jpg" width="54" alt="11月23日（月・祝）開催、世界女子、ワールドユース、ワールドシニア、ワールドチーム型 組み合わせ発表" title="11月23日（月・祝）開催、世界女子、ワールドユース、ワールドシニア、ワールドチーム型 組み合わせ発表"  />
+</a>
+<!--
+<span class="title"><a href="http://www.kyokushinkaikan.org/ja/news/2015/10/26/1123tournament/" title="11月23日（月・祝）開催、世界女子、ワールドユース、ワールドシニア、ワールドチーム型 組み合わせ発表">11月23日（月・祝）開催、世界女子、ワールドユース、ワールドシニア、ワールドチーム型 組み合わせ発表</a></span>
+-->
+</span></p>
+<p><span>
+<a href="http://www.kyokushinkaikan.org/ja/news/2015/10/19/2015-10-akishinsa/" title="10月18日、総本部秋季昇級審査会を実施">
+<img src="http://www.kyokushinkaikan.org/ja/news/wp-content/blogs.dir/6/files/2015/10/a01-150x150.jpg" width="54" alt="10月18日、総本部秋季昇級審査会を実施" title="10月18日、総本部秋季昇級審査会を実施"  />
+</a>
+<!--
+<span class="title"><a href="http://www.kyokushinkaikan.org/ja/news/2015/10/19/2015-10-akishinsa/" title="10月18日、総本部秋季昇級審査会を実施">10月18日、総本部秋季昇級審査会を実施</a></span>
+-->
+</span></p>
+<p><span>
+<a href="http://www.kyokushinkaikan.org/ja/news/2015/10/07/11th/" title="9/30第11回世界大会開催記者会見動画">
+<img src="http://www.kyokushinkaikan.org/ja/news/wp-content/blogs.dir/6/files/2015/10/c-150x150.jpg" width="54" alt="9/30第11回世界大会開催記者会見動画" title="9/30第11回世界大会開催記者会見動画"  />
+</a>
+<!--
+<span class="title"><a href="http://www.kyokushinkaikan.org/ja/news/2015/10/07/11th/" title="9/30第11回世界大会開催記者会見動画">9/30第11回世界大会開催記者会見動画</a></span>
+-->
+</span></p>
+</div>
+<a id="prev" class="prev" href="#"><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/commons/btn_prev.gif" width="13" height="23" alt="前へ" /></a>
+<a id="next" class="next" href="#"><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/commons/btn_next.gif" width="13" height="23" alt="次へ" /></a>
+</div>
+</div>
+
+</div><!-- /add widget here -->
+
+<div class="section fbArea">
+<h3><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/commons/sideTit_fb.gif" width="240" height="30" alt="極真会館　公式Facebook" /></h3>
+<iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2FI.K.O.Kyokushinkaikan&amp;width=240&amp;height=558&amp;colorscheme=light&amp;show_faces=true&amp;border_color=%23e9e9e9&amp;stream=true&amp;header=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:240px; height:558px;"></iframe>
+
+<!-- /.section --></div>
+
+<div class="section">
+<p class="bnr"><a href="http://www.youtube.com/user/kyokushinkaikanmov" target="_blank">
+  <iframe width="240" height="135" src="http://www.youtube.com/embed/M-UrvRKYQ40?list=UULCsWUusUPNeU2Eu9t9_WrA&amp;hl=ja_JP" frameborder="0" allowfullscreen></iframe>
+  <img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/commons/bnr_youtube.gif" width="240" height="62" alt="極真会館公式チャンネル YouTube" /></a>
+</p>
+<p class="bnr"><a href="http://twitter.com/iko_kyokushin" target="_blank"><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/commons/bnr_twitter.gif" width="240" height="62" alt="極真会館公式Twitter" /></a></p>
+<p class="bnr"><a href="http://www.sankyo-fever.co.jp" target="_blank"><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/commons/bnr_sankyo.gif" width="240" height="60" alt="株式会社SANKYO" /></a></p>
+
+<!--<p class="bnr"><a href="http://itunes.apple.com/jp/app/ikyokushin-portal/id440688719?mt=8" target="_blank"><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/commons/bnr_app.gif" width="240" height="62" alt="iKyokushin Portal" /></a></p>-->
+<!-- <p class="bnr"><a href="#"><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/commons/bnr_ml.gif" width="240" height="62" alt="外部有償メルマガ" /></a></p> -->
+<!-- /.section --></div>
+          <div class="section" id="sideSubmenu">
+	<ul>
+        <li><a href="http://www.kyokushinkaikan.org/ja/info/master/">師範の言葉</a></li>
+        <li><a href="http://www.kyokushinkaikan.org/ja/info/player/">選手紹介</a></li>
+        <li><a href="http://www.kyokushinkaikan.org/ja/info/student/">道場生紹介</a></li>
+	</ul>
+</div>          <!-- /#side --></div>
+
+    <!-- /#content --></div>
+      <!-- /#container --></div>
+<div id="footer"> <a href="#wrapper" id="pagetop"><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/commons/pagetop.gif" width="105" height="21" alt="ページトップへ" /></a>
+	<div id="footerTop">
+		<div class="inner">
+			<dl>
+				<dt><a href="http://www.ichigeki.com/" target="_blank"><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/commons/footBnr_4.gif" width="224" height="51" alt="イベント「一撃」や、オフィシャルショップ「一撃」" /></a></dt>
+				<dd><a href="http://www.ichigeki.com/" target="_blank">イベント「一撃」や、オフィシャルショップ「一撃」</a></dd>
+			</dl>
+			<dl>
+				<dt><a href="http://media8.org/" target="_blank"><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/commons/footBnr_3.gif" width="224" height="51" alt="極真会館公認ビデオ会社" /></a></dt>
+				<dd><a href="http://media8.org/" target="_blank">極真会館公認ビデオ会社</a></dd>
+			</dl>
+			<dl>
+				<dt><a href="http://itunes.apple.com/jp/app/ikyokushin-portal/id440688719" target="_blank"><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/commons/footBnr_ikyokushin.gif" width="224" height="51" alt="iKyokushin Portal" /></a></dt>
+				<dd><a href="http://itunes.apple.com/jp/app/ikyokushin-portal/id440688719" target="_blank">"地上最強のカラテ"こと極真空手の魅力が満載の極真会館の公式アプリケーション</a></dd>
+			</dl>
+			<dl class="last">
+				<dt><a href="http://itunes.apple.com/jp/app/genkotsu/id457504854" target="_blank"><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/commons/footBnr_genkotsu.gif" width="224" height="51" alt="GENKOTSU" /></a></dt>
+				<dd><a href="http://itunes.apple.com/jp/app/genkotsu/id457504854" target="_blank">スワイプ入力だけで楽しめる、試し割をテーマにしたゲーム</a></dd>
+			</dl>
+            <dl>
+				<dt><a href="https://photoreco.com/kyokushin/honbu/" target="_blank"><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/commons/footBnr_photoreco.gif" width="224" height="51" alt="フォトレコ" /></a></dt>
+				<dd><a href="https://photoreco.com/kyokushin/honbu/" target="_blank">「フォトレコ」はカメラマンなどが撮影した写真をインターネット上で掲載・販売するサービスです。</a></dd>
+			</dl>
+
+			<!-- /.inner --></div>
+
+		<!-- /#footerTop --></div>
+	<div id="footerMid">
+		<div class="inner">
+			<ul>
+
+				<!-- 1st -->
+
+				<li>
+					<dl>
+						<dt><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/commons/footTit_programs.gif" width="168" height="23" alt="入門案内" /></dt>
+						<dd>
+							<ul>
+								<li><a href="http://www.kyokushinkaikan.org/ja/introduction/information/">会員制度のご案内</a></li>
+								<li><a href="http://www.kyokushinkaikan.org/ja/introduction/youth/">青少年の部</a></li>
+								<li><a href="http://www.kyokushinkaikan.org/ja/introduction/men/">一般男子の部</a></li>
+								<li><a href="http://www.kyokushinkaikan.org/ja/introduction/women/">一般女子の部</a></li>
+								<li><a href="http://www.kyokushinkaikan.org/ja/introduction/senior/">壮年部</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</li>
+
+				<!-- 2nd -->
+
+				<li>
+					<dl>
+						<dt><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/commons/footTit_dojo.gif" width="168" height="23" alt="道場検索" /></dt>
+						<dd>
+							<ul>
+								<li><a href="http://www.kyokushinkaikan.org/ja/search/areas?id=1">北海道・東北地区</a></li>
+								<li><a href="http://www.kyokushinkaikan.org/ja/search/areas?id=2">関東地区</a></li>
+								<li><a href="http://www.kyokushinkaikan.org/ja/search/areas?id=3">信越・北陸地区</a></li>
+								<li><a href="http://www.kyokushinkaikan.org/ja/search/areas?id=5">近畿地区</a></li>
+								<li><a href="http://www.kyokushinkaikan.org/ja/search/areas?id=6">中国地区</a></li>
+								<li><a href="http://www.kyokushinkaikan.org/ja/search/areas?id=7">四国地区</a></li>
+								<li><a href="http://www.kyokushinkaikan.org/ja/search/areas?id=8">九州・沖縄地区</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</li>
+
+				<!-- 3rd -->
+
+				<li>
+					<dl>
+						<dt><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/commons/footTit_about.gif" width="168" height="23" alt="極真会館とは" /></dt>
+						<dd>
+							<ul>
+								<li><a href="http://www.kyokushinkaikan.org/ja/about/originator/">大山倍達総裁 紹介</a></li>
+								<li><a href="http://www.kyokushinkaikan.org/ja/about/president/">松井章奎館長 紹介</a></li>
+								<li><a href="http://www.kyokushinkaikan.org/ja/about/director/">役員紹介</a></li>
+								<li><a href="http://www.kyokushinkaikan.org/ja/about/organization/">国際空手道連盟について</a></li>
+								<li><a href="http://www.kyokushinkaikan.org/ja/about/history/">極真の歴史</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</li>
+
+				<!-- 4th -->
+
+				<li>
+					<dl>
+						<dt><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/commons/footTit_news.gif" width="168" height="23" alt="ニュース" /></dt>
+						<dd>
+							<ul>
+								<li><a href="http://www.kyokushinkaikan.org/ja/news/headquarter/">本部最新ニュース一覧</a></li>
+								<li><a href="http://www.kyokushinkaikan.org/ja/news/world/">世界支部最新情報</a></li>
+								<li><a href="http://www.kyokushinkaikan.org/ja/news/committee/">委員会最新情報</a></li>
+								<li><a href="http://www.kyokushinkaikan.org/ja/news/tournament/">公式大会情報</a></li>
+                                <li><a href="http://branch.kyokushinkaikan.org/" target="_blank">全国支部最新情報</a></li>
+							</ul>
+						</dd>
+					</dl>
+					<dl>
+						<dt><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/commons/footTit_record.gif" width="168" height="23" alt="公式記録" /></dt>
+						<dd>
+							<ul>
+								<li><a href="http://www.kyokushinkaikan.org/ja/record/tornament/">過去の大会</a></li>
+								<li><a href="http://www.kyokushinkaikan.org/ja/record/event/">過去の行事</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</li>
+
+				<!-- 5th -->
+
+				<li class="last">
+					<p><a href="http://www.kyokushinkaikan.org/ja/info/"><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/commons/footTit_member.gif" width="168" height="23" alt="インフォメーション" /></a></p>
+					<p><a href="http://www.kyokushinkaikan.org/ja/kancho/"><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/commons/footTit_kancho.gif" width="168" height="23" alt="松井館長の閑話休題" /></a></p>
+					<p><a href="http://www.kyokushinkaikan.org/ja/faq/"><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/commons/footTit_faq.gif" width="168" height="23" alt="よくある質問" /></a></p>
+					<p><a href="http://www.kyokushinkaikan.org/ja/press/"><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/commons/footTit_press.gif" width="168" height="23" alt="取材受付" /></a></p>
+					<p><a href="http://www.kyokushinkaikan.org/ja/head/"><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/commons/footTit_souhonbu.gif" width="168" height="23" alt="総本部道場" /></a></p>
+
+					<!-- <p><a href="http://www.kyokushinkaikan.org/ja/search/"><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/commons/footTit_admission.gif" width="168" height="23" alt="入門お問い合わせ" /></a></p> -->
+
+				</li>
+			</ul>
+
+			<!-- /.inner --></div>
+
+		<!-- /#footerMid --></div>
+	<div id="footerBottom">
+		<div class="inner">
+			<ul>
+				<li><a href="http://www.kyokushinkaikan.org/ja/sitepolicy/">本サイトについて</a></li>
+				<li><a href="http://www.kyokushinkaikan.org/ja/sitemap/">サイトマップ</a></li>
+				<li><a href="http://www.kyokushinkaikan.org/ja/glossary/">用語集</a></li>
+				<li><a href="http://www.kyokushinkaikan.org/ja/privacy/">プライバシーポリシー</a></li>
+			</ul>
+			<p id="copyright"><img src="http://www.kyokushinkaikan.org/ja/wp-content/themes/kyokushin/images/commons/copyright.gif" alt="(C) Kyokushinkaikan. All Rights Reserved." width="281" height="11" /></p>
+
+			<!-- /.inner --></div>
+
+		<!-- /#footerBottom --></div>
+
+	<!-- /#footer --></div>
+
+<!-- /#wrapper -->
+</div>
+
+<!-- analytics -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-15410844-1");
+pageTracker._setDomainName(".kyokushinkaikan.org");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+<!-- /analytics -->
+
+</body></html>

@@ -1,0 +1,1385 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Language" content="ja" />
+
+<title>名古屋オフィス検索｜仲介手数料半額の賃貸オフィス・事務所移転</title>
+<meta name="y_key" content="46f8b516828ad0af" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="description" content="名古屋オフィス検索は、名古屋エリア最大級の物件数から探せる賃貸事務所検索サービス。相場の半額の仲介手数料。物件情報は毎日更新中。写真や図面も多数掲載しています。" />
+<meta name="keywords" content="貸事務所,賃貸,事務所,オフィス,名古屋" />
+
+<link rel="canonical" href="http://of-nagoya.jp/" />
+<link rel="alternate" media="only screen and (max-width: 640px)" href="http://of-nagoya.jp/s/" />
+
+<link rel="stylesheet" type="text/css" href="/style/default.css?1453506062" />
+<link rel="stylesheet" type="text/css" href="/style/top_d.css?1453506062" />
+<link rel="stylesheet" type="text/css" href="/style/parts-route_icon_nagoya.css" />
+
+<script type="text/javascript" src="/js/jquery-1.7.min.js"></script>
+<script type="text/javascript" src="/js/jquery.color.js"></script>
+<script type="text/javascript" src="/js/err_img_replace.js"></script>
+<script type="text/javascript" src="/js/jquery.idTabs.min.js"></script>
+<script type="text/javascript" src="/js/jquery_easingscroll.js"></script>
+<script type="text/javascript" src="/js/top.js"></script>
+<script type="text/javascript" src="/js/pagetop.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
+<script type="text/javascript" src="/js/prettyPhoto.js"></script>
+<script src="/js/jquery-ui-1.9.2.custom.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/style/prettyPhoto.css" />
+
+<script type="text/javascript">
+
+	var workmode = "nagoya";
+	var lang_img_mode =  "";
+	var current_placeholder = "例）名古屋駅、金山";
+	var geocoder;
+	$("a[rel='prettyPhoto']").prettyPhoto();
+	
+	$(function(){
+		$(".search ul.menu").idTabs();
+
+		//20140526 - DUNG - OFT-265
+		//Get number for view recent and favarite
+		//because, for cache page
+		$.ajax({
+	        type: "POST",
+	        url: "/ajax/header_popup_recently_watched_floor.php",
+	        success: function (data, textStatus) {
+	        	var ar_result = data.split("@#@");
+	        	$(".it_nearly .nm").html(ar_result[1]);
+	        }
+	    });
+		$.ajax({
+	        type: "POST",
+	        url: "/ajax/header_popup_favorite_floor.php",
+	        success: function (data, textStatus) {
+	        	var ar_result = data.split("@#@");
+	        	$(".it_fv .nm").html(ar_result[1]);
+	        }
+	    });
+		//END - DUNG
+	
+		//DUNG
+		//OFT-314
+		//get suggestion data when input search key
+		//get suggestion data when input search key
+		$(".d_autocomplete").bind('input', function(e)
+		{
+			//get type and value of input search
+			var flag = $("input[name='keyword_search_type']:checked").val();
+			
+			if(flag == "buil_name")
+			{
+				var type = "buil_name";
+			}
+			else
+			{
+				var type = "local_name";
+			}
+
+			//value of input search
+			var str_search	=	$(this).val();
+			
+			if(str_search.length < 2)//Not have value, and smaller 2 character
+			{
+				//Hide drop box autocomplete
+				$(".div_autocomplete").hide();
+			}
+			else
+			{
+				$(".div_autocomplete").hide();
+				suggestion_data_by_key(".div_autocomplete",type,str_search);
+			}	
+		});
+		//END - DUNG
+		
+	});
+</script>
+</head>
+<body>
+
+<script>
+
+var lang_img_mode = "";
+var error_login = "<p>ログインに失敗しました。メールアドレス、パスワードの入力をご確認下さい。</p>";
+var success_login = "<p>ログインしました。画面を再表示します。</p>";
+var language_mode = "ja";
+var home_url = "http://of-nagoya.jp";
+</script>
+<!--★ヘッダ-->
+<script type="text/javascript" src="/js/pages/header_popup.js"></script>
+<script type="text/javascript" src="/js/jquery.tile.js"></script>
+<script>
+	<!--
+		$(function(){
+			$("dl.header_pop .h_bdlist").tile(2);
+				
+		});
+	-->
+</script>
+
+<a id="pagetop" name="pagetop"></a>
+<div id="header">
+
+<script type="text/javascript" src="/js/rollover.js"></script>
+
+<div class="contents">
+
+
+
+
+
+<ul class="hd_info">
+<li class="h1"><h1>名古屋の賃貸事務所・オフィス情報量NO1！仲介料半額の事務所移転情報サイト</h1></li>
+
+<li class="etc_link"><a href="http://of-nagoya.jp/office/flow/">契約までの流れ</a></li>
+<li class="etc_link"><a href="http://of-nagoya.jp/faq/">よくある質問</a></li>
+<li class="etc_link"><a href="http://of-nagoya.jp/office/example/">お客様の声</a></li>
+<li class="change_type">
+	<select name="change_localarea" id="change_localarea">
+		<option value="tokyo" >東京</option>
+		<option value="sapporo" >札幌</option>
+		<option value="sendai" >仙台</option>
+		<option value="saitama" >埼玉</option>
+		<option value="chiba" >千葉</option>
+		<option value="yokohama" >横浜</option>
+		<option value="nagoya" selected = "selected">名古屋</option>
+		<option value="osaka" >大阪</option>
+		<option value="kyoto" >京都</option>
+		<option value="kobe" >神戸</option>
+		<option value="hiroshima" >広島</option>
+		<option value="fukuoka" >福岡</option>
+	</select>
+</li>
+
+
+</ul>
+
+<a class="logo" href="http://of-nagoya.jp/"><img src="/img_nagoya/logo_b.gif" width="260" height="75" alt="名古屋オフィス検索" class="rollover" /></a>
+
+<div class="bnr_no1_t"><p>3,820</p></div>
+
+<div class="h_conR">
+
+
+<script>
+<!--
+	$(function(){
+	
+		var default_value1 = "建物名・住所から検索";
+		var default_value2 = "駅名・住所から検索";
+		
+		if($(".K_search input[name=keyword]").val() == "")
+		{
+			if($("input[name=keyword_search_type]").val().match(/buil/))
+			{
+				$(".K_search input[name=keyword]").val(default_value1).css({"color":"gray"});
+			}
+			else
+			{
+				$(".K_search input[name=keyword]").val(default_value2).css({"color":"gray"});			
+			}
+		}
+		
+		$(".K_search input[name=keyword]").focus(function(){
+		
+			if($(this).val().match(default_value1) || $(this).val().match(default_value2))
+			{
+				$(this).val("").css({"color":"black"});
+			}
+		});
+
+		$(".K_search input[name=keyword]").blur(function(){
+			if($(this).val() == "")
+			{
+				if($("input[name=keyword_search_type]").val().match(/buil/))
+				{
+					$(".K_search input[name=keyword]").val(default_value1).css({"color":"gray"});
+				}
+				else
+				{
+					$(".K_search input[name=keyword]").val(default_value2).css({"color":"gray"});			
+				}
+			}
+		});
+		
+		$("a.select_keyword_search").click(function(){
+		
+			$("a.select_keyword_search").removeClass("selected");
+		
+			if($(this).hasClass("buil_name"))
+			{
+				//ビル名から検索
+				$("input[name=keyword_search_type]").val("buil_name");
+				$(this).addClass("selected");
+			}
+			else
+			{
+				//住所から検索
+				$("input[name=keyword_search_type]").val("address");
+				$(this).addClass("selected");
+			}
+		
+			if($("input[name=keyword]").val() == "" || $("input[name=keyword]").val().match(default_value1) || $("input[name=keyword]").val().match(default_value2))
+			{
+				if($("input[name=keyword_search_type]").val().match(/buil/))
+				{
+					$("input[name=keyword]").val(default_value1).css({"color":"gray"});
+				}
+				else
+				{
+					$("input[name=keyword]").val(default_value2).css({"color":"gray"});			
+				}
+			}
+						
+		});
+		
+		$( "#change_localarea" ).change(function() {
+			var localarea = $( "#change_localarea" ).val();
+			window.location.href = "http://of-"+localarea+".jp/";//redirect to new localarea search page.
+		});
+
+		$(".K_search input.bt_search").live( "click", function() {
+			  $("form#form_search_header").submit();
+		});
+		//get suggestion data when input search key
+		$("#keyword").bind('input', function(e)
+		{
+			//get type and value of input search
+			if($("ul.tab_k li.s1 a").hasClass("selected"))
+			{
+				var type = "buil_name";
+			}
+			else
+			{
+				var type = "local_name";
+			}
+
+			//value of input search
+			var str_search	=	$(this).val();
+			
+			if(str_search.length < 2)//Not have value, and smaller 2 character
+			{
+				//Hide drop box autocomplete
+				$(".dv_drop_box").hide();
+			}
+			else
+			{
+				$(".dv_drop_box").hide();
+				suggestion_data_by_key(".dv_drop_box",type,str_search);
+			}	
+		});
+		
+	});
+	
+	//DUNG
+	//OFT-314
+	//get suggestion data when input search key
+	function suggestion_data_by_key(html_tag,type,str_search)
+	{
+		$.ajax({
+	        type: "POST",
+	        url: "/ajax/common.php",
+	        data:{get_data_by_key_search:1,type:type,str_search:str_search},
+	        success: function (data, textStatus) 
+	        {
+	        	var ob_json = JSON.parse(data);
+	        	var html = "";
+	        	
+	        	if(ob_json.length > 0)
+	        	{
+	        		$(html_tag).show();
+	        		html = "<ul>";
+		        	for(var i in ob_json)
+		        	{
+		        		html += "<li onclick='insert_text_search(\""+html_tag+"\",\""+ob_json[i]+"\")'>"+ob_json[i]+"</li>";
+			        }
+			        html += "</ul>"; 
+	        	}
+	        	$(html_tag).html(html);
+	        }
+	    });
+	}
+	function insert_text_search(html_tag,text_str)
+	{
+		if(html_tag==".dv_drop_box")
+		{
+			$("#keyword").val(text_str);
+			$("#keyword").focus();
+			$(html_tag).hide();
+		}
+		else
+		{
+			$(".d_autocomplete").val(text_str);
+			$(".d_autocomplete").focus();
+			$(html_tag).hide();
+		}
+	}
+	//END DUNG
+
+-->
+</script>
+
+
+<form action="/index.php" method="post" id="form_search_header">
+<input type="hidden" name="keyword_search_type" value="buil_name">
+<div class="h_key_box">
+
+<div class="panel_box">
+<table class="K_search">
+<tr>
+<td class="w_input"><input type="text" id="keyword" name="keyword" autocomplete="off" value="" class="word" /></td>
+<td class="bt_k_search"><input type="button" value="検索" class="bt_search" /></td>
+</tr>
+</table>
+
+<!-- plz html fix div -->
+<style type="text/css">
+.dv_drop_box ul li:hover
+{
+	background-color:rgb(211, 213, 218);
+}
+</style>
+
+<div class="dv_drop_box" style="background-color: white;line-height:20px;font-size:small;border:1px solid rgb(213, 209, 209);padding:5px;z-index:999;display:none; clear:both; position:relative;">
+	<ul>
+	</ul>
+</div>
+<!-- end html fix div -->
+
+</div><!--div.panel_box-->
+
+</div><!--div.h_key_box-->
+</form>
+
+</div><!--h_conR-->
+
+<div class="h_conR_b">
+	<ul class="mm_link">
+	<li class="bt_logout">
+		<a class="login" id="log_popup" href="javascript:void(0)">ログイン</a>
+		</li>
+	<li class="newmm"><a href="/entry/entry.php">新規会員登録</a></li>
+	</ul>
+	
+	<ul class="it_info">
+		<li class="it_stock">
+			<a href="javascript:void(0)">
+			保存した<br />検索条件			</a>
+		</li>
+		<li class="it_nearly">
+			<a href="javascript:void(0)">
+			<p class="number"><span class="nm">0</span><span class="ken">件</span></p>
+			最近見た物件			</a>
+		</li>
+		<li class="it_fv">
+			<a href="javascript:void(0)">
+			<p class="number"><span class="nm">0</span><span class="ken">件</span></p>
+			検討リスト			</a>
+		</li>
+	</ul>
+	
+	<div class="h_loading" style="display: none"><img src="/img/loading_header_b.gif" width="211" height="50" alt="Now loading" /></div>
+	
+</div>
+
+
+
+<!--<div class="btn_link">
+<a class="login" href="http://of-nagoya.jp/login/login.php">ログイン</a>
+<a class="inq" href="http://of-nagoya.jp/inq/">お問い合わせ</a>
+</div>-->
+
+<!--★東京オフィス検索情報-->
+<!--<div class="oftokyo_data">
+<img src="/img_common/of_tokyo_num.jpg" alt="" width="420" height="55" />
+<div class="item_num">
+<div class="today_num">
+<p class="today_txt">本日の更新</p>
+<p class="num" id="todays_update_count"></p>
+</div>
+
+<div class="today_num">
+<p class="now_txt">現在の募集物件数</p>
+<p class="num"></p>
+</div>
+
+</div>
+</div>--><!--div.d_oftokyo_info-->
+
+
+
+<!--<div class="category_navi">
+
+<dl>
+<dt>賃貸事務所を探す・選ぶ</dt>
+<dd><a href="http://of-nagoya.jp/">賃貸オフィス</a></dd>
+<dd><a href="http://of-nagoya.jp/rentaloffice/">レンタルオフィス</a></dd>
+</dl>
+
+<dl>
+<dt>事務所の改装・移転</dt>
+<dd><a href="http://of-nagoya.jp/design/">オフィスデザイン</a></dd>
+<dd><a href="http://of-nagoya.jp/move/">お引越し</a></dd>
+</dl>
+
+<dl>
+<dt>駐車場・会議室</dt>
+<dd><a href="http://of-nagoya.jp/parking/" title="月極駐車場">月極駐車場</a></dd>
+<dd><a href="http://of-nagoya.jp/meeting/" title="貸会議室">貸し会議室</a></dd>
+</dl>
+
+</div>--><!--div.category_navi-->
+
+
+<ul class="g_navi">
+<li class="gn1"><a href="http://of-nagoya.jp/search/ta/?new" title="エリアから賃貸事務所・オフィスを検索">エリアから探す</a></li>
+<li class="gn2"><a href="http://of-nagoya.jp/search/tr/?new" title="路線・駅から賃貸事務所・オフィスを検索">路線から探す</a></li>
+<li class="gn3"><a href="http://of-nagoya.jp/search/map_search.php" title="地図から賃貸事務所・オフィスを検索">地図から探す</a></li>
+<li class="gn4"><a href="http://of-nagoya.jp/area/area_list.php" title="賃貸ビル相場情報">賃貸の相場</a></li>
+
+<li class="gn5"><a href="http://of-nagoya.jp/parking/" title="月極駐車場">駐車場を探す</a></li>
+
+<!--<li class="mypage">
+<a href="http://of-nagoya.jp/mypage/favorite_list.php">
+	<span id="user_favorite_floor_str" style="display:none;">
+		<span class="user_favorite_floor_num of_user_favorite_floor_num" id="user_favorite_floor_num"></span>件	</span>
+</a>
+</li>-->
+</ul>
+
+<script type="text/javascript">
+<!--
+	var global_user_fav_list = new Array();
+	var user_fav_list_init = false;
+
+	function ajax_get_user_favorite_floor_num()
+	{
+		$.get("/ajax/ajax_get_user_favorite_floor_list.php?" + Math.random() , function(data){
+		
+			if(data != "")
+			{
+				global_user_fav_list = data.split(",");	
+				var num = String(global_user_fav_list.length);
+				
+				$("span.user_favorite_floor_num").html(num);
+			}
+			else
+			{
+				$("span.user_favorite_floor_num").html("0");
+			}
+			
+			user_fav_list_init = true;	//お気に入り情報の初期化が完了したことを示すフラグ
+		});
+	}
+	
+	$(function(){
+		$("span#user_favorite_floor_str").show();
+		ajax_get_user_favorite_floor_num();
+		
+	});
+	
+-->
+</script>
+
+
+
+
+<!--<div class="keywordbox">
+
+<form action="/index.php" method="post">
+<table class="K_search">
+<tr>
+<th colspan="2" scope="col"><p>キーワードで物件を検索！</p></th>
+</tr>
+<tr>
+<td><input type="text" id="keyword" name="keyword" value="" onFocus="key_input_check(this.value,'f')" onBlur="key_input_check(this.value,'b')" class="word" /></td>
+<td class="bt_k_search"><input type="image" src="/img_common/bt_keyword.jpg" class="rollover" /></td>
+</tr>
+</table>
+</form>
+</div>-->
+
+</div><!--div.contents-->
+
+</div><!--div#header-->
+<!--★ヘッダ ここまで-->
+
+<!-- 20140306 Nguyen Trang OFT-81 -->
+
+<!--★コンテンツ-->
+<div id="popup_login" style = "display: none;">
+<dl id="login_pop" class="login_pop">
+<dt style="cursor: move;">
+	<span>会員ログイン</span>
+	<div class="bt_close"><a href="#" class="close_pp"><img src="/img/bt_close_pp_b.gif" alt="閉じる" width="14" height="14"/></a></div>
+</dt>
+<dd>
+
+<form action="#" method="post" name="loginbox">
+	<table class="pp_login">
+		<tr>
+		<th scope="row">ID（メールアドレス）</th>
+		</tr>
+		<tr>
+		<td class="cid"><input type="text" class="fm" name="user_email" style="ime-mode: disabled;"/></td>
+		</tr>
+		<tr>
+		<th scope="row">パスワード</th>
+		</tr>
+		<tr>
+		<td><input type="password" class="fm" name="user_pw" /></td>
+		</tr>
+		<tr>
+		<td><input type="checkbox" name="remember_user" value="on" />IDとパスワードを保存する</td>
+		</tr>
+	</table>
+	
+	<div class="btn" >
+		<input type="button" value="ログイン" class="bt_login" />
+	</div><!--div.btn-->
+	<div class="error_msg"></div>
+	<div class="forget_id"><a href="/login/pw_reset_need.php">ID・パスワードを忘れた方はこちら</a></div>
+	
+	<div class="bt_entrypp"><a href="/entry/entry.php" class="bt_epp"><span>新規会員登録はこちら</span></a></div>
+	
+</form>
+
+</dd>
+</dl>
+
+</div><!--div#contents-->
+<div id="it_stock" style="display: none;">
+
+<!-- 
+DUNG20140407
+load image
+-->
+
+<dl class="header_pop h_stock">
+<dt class="ttl_hp" style="cursor: move;">
+保存した検索条件<img src="/img/h_pop_trigona.png" alt="" width="10" height="10" class="pop_trigona" />
+<div class="bt_del"><a href="#"  id="bt_del_search_term">履歴削除</a></div>
+</dt>
+<dd class="hp_box">
+<div style="width: 100%; text-align: center;">
+<img src="/img/load.gif" alt="" width="20" height="20" />
+</div>
+</dd>
+</dl>
+</div>
+
+<div id="it_nearly" style="display: none;">
+
+<dl class="header_pop h_nearly">
+<dt class="ttl_hp" style="cursor: move;">
+最近見た物件<img src="/img/h_pop_trigona.png" alt="" width="10" height="10" class="pop_trigona" />
+<div class="bt_del"><a href="#" id="bt_del_watched">履歴削除</a></div>
+</dt>
+<dd class="hp_box">
+<div style="width: 100%; text-align: center;">
+<img src="/img/load.gif" alt="" width="20" height="20" />
+</div>
+</dd>
+</dl>
+</div>
+
+<div id="it_fv" style="display: none;">
+
+<dl class="header_pop h_fv">
+<dt class="ttl_hp" style="cursor: move;">
+検討リスト<img src="/img/h_pop_trigona.png" alt="" width="10" height="10" class="pop_trigona" />
+<div class="bt_del"><a href="#"  id="bt_del_fav">履歴削除</a></div>
+</dt>
+<dd class="hp_box">
+<div style="width: 100%; text-align: center;">
+<img src="/img/load.gif" alt="" width="20" height="20" />
+</div>
+
+</dd>
+</dl>
+
+
+</div>
+<div id="popup_hidden" style="display: none;width: 100%;height: 100%;position: fixed"></div>
+<!--★コンテンツ ここまで-->
+<!-- End Nguyen Trang -->
+
+<!--★コンテンツ-->
+<div id="contents">
+
+<div class="main_column">
+
+
+
+<h2>仲介手数料半額のオフィス検索</h2>
+
+<!--★物件検索-->
+
+<div class="search">
+	<div class="menu_box">
+		<ul class="menu">
+		<li><a href="#content-area">エリアから探す</a></li>
+		<li><a href="#content-station">路線から探す</a></li>
+		<li><a href="#content-map">地図から探す</a></li>
+		</ul>
+				
+	</div><!--/.menu_box-->
+
+<!--☆エリアから探す search from area-->
+<div class="map_list" id="content-area"><!--地図エリアここから-->
+<div class="map_area">
+
+<!--nagoya-->
+<img src="/img_nagoya/img_searchmap_d.jpg" alt="" width="341" height="219" usemap="#areamapMap" id="areamap" />
+<map name="areamapMap" id="areamapMap">
+  <area href="/search/ta/西区/" alt="西区" onMouseOver="changemap(1)" shape="poly" coords="65,36,84,75,94,67,114,78,121,51,134,47,145,33,152,2,88,4" title="西区の物件一覧" />
+  <area href="/search/ta/中村区/" alt="中村区" onMouseOver="changemap(2)" shape="poly" coords="46,42,31,58,19,78,20,99,5,116,26,125,67,119,102,114,114,125,110,94,113,78,95,67,82,75,63,38" title="中村区の物件一覧" />
+  <area href="/search/ta/中区/" alt="中区" onMouseOver="changemap(3)" shape="poly" coords="133,49,123,51,115,79,112,96,116,131,126,146,155,153,164,133,160,110,175,97,147,91,161,41,146,37" title="中区の物件一覧" />
+  <area href="/search/ta/東区/" alt="東区" onMouseOver="changemap(4)" shape="poly" coords="161,45,150,92,180,98,196,88,205,72,226,75,233,70,243,74,245,68,207,55,212,30,197,40,180,40,171,43" title="東区の物件一覧" />
+  <area href="/search/ta/千種区/" alt="千種区" onMouseOver="changemap(5)" shape="poly" coords="176,98,161,108,163,129,184,133,185,146,191,137,211,145,211,154,235,162,247,139,257,133,261,123,245,113,241,99,272,67,248,65,242,78,234,71,228,78,204,73,199,88,181,100" title="千種区の物件一覧" />
+  <area href="/search/ta/名東区/" alt="名東区" onMouseOver="changemap(6)" shape="poly" coords="260,80,244,98,246,113,263,123,258,136,245,143,240,156,267,176,274,171,293,191,303,183,308,191,314,182,308,173,323,153,329,130,321,118,337,101,321,80,295,56,273,62"  title="名東区の物件一覧" />
+  <area href="/search/ta/熱田区/" alt="熱田区" onMouseOver="changemap(7)" shape="poly" coords="116,153,107,152,90,192,97,201,113,208,124,199,136,212,152,203,168,185,169,169,158,153,130,149,122,146" title="熱田区の物件一覧" />
+</map>
+<!--/nagoya-->
+
+</div><!--/.map_area-->
+
+<div class="item_num">
+<!--区リスト 2列表示-->
+<ul class="num_list">
+<li class="d_list"><a href="/search/ta/%E4%B8%AD%E6%9D%91%E5%8C%BA/" title="中村区の物件一覧">中村区</a><span class="num">139<span> 件</span></span></li>
+<li class="d_list"><a href="/search/ta/%E4%B8%AD%E5%8C%BA/" title="中区の物件一覧">中区</a><span class="num">1,339<span> 件</span></span></li>
+<li class="d_list"><a href="/search/ta/%E6%9D%B1%E5%8C%BA/" title="東区の物件一覧">東区</a><span class="num">299<span> 件</span></span></li>
+<li class="d_list"><a href="/search/ta/%E5%8D%83%E7%A8%AE%E5%8C%BA/" title="千種区の物件一覧">千種区</a><span class="num">167<span> 件</span></span></li>
+<li class="d_list"><a href="/search/ta/%E5%90%8D%E6%9D%B1%E5%8C%BA/" title="名東区の物件一覧">名東区</a><span class="num">144<span> 件</span></span></li>
+<li class="d_list"><a href="/search/ta/%E8%A5%BF%E5%8C%BA/" title="西区の物件一覧">西区</a><span class="num">75<span> 件</span></span></li>
+<li class="d_list"><a href="/search/ta/%E7%86%B1%E7%94%B0%E5%8C%BA/" title="熱田区の物件一覧">熱田区</a><span class="num">46<span> 件</span></span></li>
+</ul>
+
+<div class="total_item">
+<strong class="ttl_total_item">賃貸事務所募集フロア件数</strong>
+<span class="num" id="total_update_count">2,209<span>件</span></span>
+</div><!--/.total_item-->
+
+</div><!--div.item_num-->
+
+</div><!--div.map_list-->
+
+<!--☆路線から探す search from route-->
+<div class="station_list" id="content-station" style="display: none">
+
+<dl>
+<dt>JR</dt>
+<dd class="nagoya_11411m"><a href="/search/tr/JR%E4%B8%AD%E5%A4%AE%E6%9C%AC%E7%B7%9A/" title="JR中央本線の駅一覧">JR中央本線</a></dd>
+<dd class="nagoya_11502m"><a href="/search/tr/JR%E6%9D%B1%E6%B5%B7%E9%81%93%E6%9C%AC%E7%B7%9A/" title="JR東海道本線の駅一覧">JR東海道本線</a></dd>
+</dl>
+<dl>
+<dt>名古屋市営地下鉄</dt>
+<dd class="nagoya_99513m"><a href="/search/tr/%E5%9C%B0%E4%B8%8B%E9%89%84%E6%9D%B1%E5%B1%B1%E7%B7%9A/" title="地下鉄東山線の駅一覧">地下鉄東山線</a></dd>
+<dd class="nagoya_99514m"><a href="/search/tr/%E5%9C%B0%E4%B8%8B%E9%89%84%E5%90%8D%E5%9F%8E%E7%B7%9A/" title="地下鉄名城線の駅一覧">地下鉄名城線</a></dd>
+<dd class="nagoya_99515m"><a href="/search/tr/%E5%9C%B0%E4%B8%8B%E9%89%84%E5%90%8D%E6%B8%AF%E7%B7%9A/" title="地下鉄名港線の駅一覧">地下鉄名港線</a></dd>
+<dd class="nagoya_99516m"><a href="/search/tr/%E5%9C%B0%E4%B8%8B%E9%89%84%E9%B6%B4%E8%88%9E%E7%B7%9A/" title="地下鉄鶴舞線の駅一覧">地下鉄鶴舞線</a></dd>
+<dd class="nagoya_99517m"><a href="/search/tr/%E5%9C%B0%E4%B8%8B%E9%89%84%E6%A1%9C%E9%80%9A%E7%B7%9A/" title="地下鉄桜通線の駅一覧">地下鉄桜通線</a></dd>
+</dl>
+<dl>
+<dt>私鉄</dt>
+<dd class="nagoya_30001m"><a href="/search/tr/%E5%90%8D%E9%89%84%E5%90%8D%E5%8F%A4%E5%B1%8B%E6%9C%AC%E7%B7%9A/" title="名鉄名古屋本線の駅一覧">名鉄名古屋本線</a></dd>
+<dd class="nagoya_30008m"><a href="/search/tr/%E5%90%8D%E9%89%84%E5%B8%B8%E6%BB%91%E7%B7%9A/" title="名鉄常滑線の駅一覧">名鉄常滑線</a></dd>
+<dd class="nagoya_30011m"><a href="/search/tr/%E5%90%8D%E9%89%84%E7%AF%89%E6%B8%AF%E7%B7%9A/" title="名鉄築港線の駅一覧">名鉄築港線</a></dd>
+<dd class="nagoya_30012m"><a href="/search/tr/%E5%90%8D%E9%89%84%E7%80%AC%E6%88%B8%E7%B7%9A/" title="名鉄瀬戸線の駅一覧">名鉄瀬戸線</a></dd>
+<dd class="nagoya_31027m"><a href="/search/tr/%E8%BF%91%E9%89%84%E5%90%8D%E5%8F%A4%E5%B1%8B%E7%B7%9A/" title="近鉄名古屋線の駅一覧">近鉄名古屋線</a></dd>
+<dd class="nagoya_99509m"><a href="/search/tr/%E8%A5%BF%E5%90%8D%E5%8F%A4%E5%B1%8B%E6%B8%AF%E7%B7%9A%28%E3%81%82%E3%81%8A%E3%81%AA%E3%81%BF%E7%B7%9A%29/" title="西名古屋港線(あおなみ線)の駅一覧">西名古屋港線(あおなみ線)</a></dd>
+<dd class="nagoya_99510m"><a href="/search/tr/%E6%9D%B1%E6%B5%B7%E4%BA%A4%E9%80%9A%E4%BA%8B%E6%A5%AD%E5%9F%8E%E5%8C%97%E7%B7%9A/" title="東海交通事業城北線の駅一覧">東海交通事業城北線</a></dd>
+<dd class="nagoya_99512m"><a href="/search/tr/%E6%9D%B1%E9%83%A8%E4%B8%98%E9%99%B5%E7%B7%9A%28%E3%83%AA%E3%83%8B%E3%83%A2%29/" title="東部丘陵線(リニモ)の駅一覧">東部丘陵線(リニモ)</a></dd>
+<dd class="nagoya_99523m"><a href="/search/tr/%E3%82%86%E3%81%A8%E3%82%8A%E3%83%BC%E3%81%A8%E3%83%A9%E3%82%A4%E3%83%B3/" title="ゆとりーとラインの駅一覧">ゆとりーとライン</a></dd>
+</dl>
+
+</div><!--div.station_list-->
+
+<!--☆地図から探す search from map-->
+<div class="mapnavi_list" id="content-map" style="display: none">
+
+	<div class="mapnavi"><a href="/search/map_search.php" title="地図から賃貸事務所を検索"><img src="/img/img_mapnavi2_c.jpg" alt="" width="343" height="221" class="rollover" /></a></div>
+	
+	<div class="t_mapsearch">
+		<form action="/index.php" name="form1" method="POST" id="form_search_top">
+			<!--☆エリア入力-->
+			<table class="mapsearch">
+				<tr>
+					<th scope="col"><span>駅名・住所から探す</span></th>
+				</tr>
+				<tr>
+					<td>
+					<input type="text" id="search_str" name="search_str" style='color:#868686'value="例）名古屋駅、金山" class="s_area" />
+					
+					</td>
+				</tr>
+			</table><!--/.mapsearch-->
+			
+			<!--☆坪数-->
+			<table class="mapsearch">
+				<tr>
+					<th scope="col"><span>坪数</span></th>
+				</tr>
+				<tr>
+					<td>
+					<select class="acreg" id="acreg_min" name="acreg_min">
+					<option value="0"  selected>下限なし</option>
+<option value="10" >10坪</option>
+<option value="15" >15坪</option>
+<option value="20" >20坪</option>
+<option value="25" >25坪</option>
+<option value="30" >30坪</option>
+<option value="35" >35坪</option>
+<option value="40" >40坪</option>
+<option value="45" >45坪</option>
+<option value="50" >50坪</option>
+<option value="60" >60坪</option>
+<option value="70" >70坪</option>
+<option value="80" >80坪</option>
+<option value="90" >90坪</option>
+<option value="100" >100坪</option>
+<option value="120" >120坪</option>
+<option value="150" >150坪</option>
+<option value="200" >200坪</option>
+<option value="250" >250坪</option>
+<option value="300" >300坪</option>
+<option value="350" >350坪</option>
+<option value="400" >400坪</option>
+<option value="450" >450坪</option>
+<option value="500" >500坪</option>
+<option value="600" >600坪</option>
+<option value="700" >700坪</option>
+<option value="800" >800坪</option>
+<option value="900" >900坪</option>
+<option value="1000" >1000坪</option>
+					</select>
+					<span>～</span>
+					<select class="acreg" id="acreg_min" name="acreg_max">
+					<option value="0"  selected>上限なし</option>
+<option value="10" >10坪</option>
+<option value="15" >15坪</option>
+<option value="20" >20坪</option>
+<option value="25" >25坪</option>
+<option value="30" >30坪</option>
+<option value="35" >35坪</option>
+<option value="40" >40坪</option>
+<option value="45" >45坪</option>
+<option value="50" >50坪</option>
+<option value="60" >60坪</option>
+<option value="70" >70坪</option>
+<option value="80" >80坪</option>
+<option value="90" >90坪</option>
+<option value="100" >100坪</option>
+<option value="120" >120坪</option>
+<option value="150" >150坪</option>
+<option value="200" >200坪</option>
+<option value="250" >250坪</option>
+<option value="300" >300坪</option>
+<option value="350" >350坪</option>
+<option value="400" >400坪</option>
+<option value="450" >450坪</option>
+<option value="500" >500坪</option>
+<option value="600" >600坪</option>
+<option value="700" >700坪</option>
+<option value="800" >800坪</option>
+<option value="900" >900坪</option>
+<option value="1000" >1000坪</option>
+					</select>
+					</td>
+				</tr>
+			</table><!--/.mapsearch-->
+			
+			<!--☆坪単価-->
+			<table class="mapsearch msmb">
+				<tr>
+					<th scope="col"><span>坪単価</span></th>
+				</tr>
+				<tr>
+					<td>
+					<select class="acreg" id="rent_price_min" name="rent_price_min">
+					<option value="0"  selected>下限なし</option>
+<option value="0.7" >0.7万円</option>
+<option value="1.0" >1万円</option>
+<option value="1.1" >1.1万円</option>
+<option value="1.2" >1.2万円</option>
+<option value="1.3" >1.3万円</option>
+<option value="1.4" >1.4万円</option>
+<option value="1.5" >1.5万円</option>
+<option value="1.6" >1.6万円</option>
+<option value="1.7" >1.7万円</option>
+<option value="1.8" >1.8万円</option>
+<option value="1.9" >1.9万円</option>
+<option value="2.0" >2万円</option>
+<option value="2.3" >2.3万円</option>
+<option value="2.5" >2.5万円</option>
+<option value="2.7" >2.7万円</option>
+<option value="3.0" >3万円</option>
+<option value="3.5" >3.5万円</option>
+<option value="3.8" >3.8万円</option>
+<option value="4.0" >4.0万円</option>
+<option value="10.0" >10万円</option>
+					</select>
+					<span>～</span>
+					<select class="acreg" id="rent_price_min" name="rent_price_max">
+					<option value="0"  selected>上限なし</option>
+<option value="0.7" >0.7万円</option>
+<option value="1.0" >1万円</option>
+<option value="1.1" >1.1万円</option>
+<option value="1.2" >1.2万円</option>
+<option value="1.3" >1.3万円</option>
+<option value="1.4" >1.4万円</option>
+<option value="1.5" >1.5万円</option>
+<option value="1.6" >1.6万円</option>
+<option value="1.7" >1.7万円</option>
+<option value="1.8" >1.8万円</option>
+<option value="1.9" >1.9万円</option>
+<option value="2.0" >2万円</option>
+<option value="2.3" >2.3万円</option>
+<option value="2.5" >2.5万円</option>
+<option value="2.7" >2.7万円</option>
+<option value="3.0" >3万円</option>
+<option value="3.5" >3.5万円</option>
+<option value="3.8" >3.8万円</option>
+<option value="4.0" >4.0万円</option>
+<option value="10.0" >10万円</option>
+					</select>
+					</td>
+				</tr>
+			</table><!--/.mapsearch-->
+			
+			<div class="bt_map_search_box">
+				<input type="submit"  value="地図検索スタート" class="bt_map_search" />
+			</div><!--/.bt_re_search_box-->
+			</form>
+	</div>
+
+</div><!--div.mapnavi_list-->
+
+
+</div><!--div.search-->
+
+
+<!---->
+<!--↓↓↓ABテスト開始↓↓↓-->
+<div class="of_area_list">
+<div class="ttl_h3">
+	<h3>エリア一覧から賃貸事務所･貸しオフィスを探す</h3>
+</div>
+<div class="area_list"><dl class="area_box">
+<dt><a href="/search/p/option:0/local_area:1_1/" title="中村区の賃貸事務所一覧">中村区</a></dt>
+
+<dd class="areaname"><a href="/search/p/option:0/local_area:1_1/" title="中村区 名古屋駅エリアの賃貸事務所一覧">名古屋駅エリア<span>（139件）</span></a></dd>
+</dl>
+<dl class="area_box">
+<dt><a href="/search/p/option:0/local_area:2_1-2_2-2_3-2_4/" title="中区の賃貸事務所一覧">中区</a></dt>
+
+<dd class="areaname"><a href="/search/p/option:0/local_area:2_1/" title="中区 伏見・栄エリアの賃貸事務所一覧">伏見・栄エリア<span>（842件）</span></a></dd>
+<dd class="areaname"><a href="/search/p/option:0/local_area:2_2/" title="中区 丸の内・久屋大通エリアの賃貸事務所一覧">丸の内・久屋大通エリア<span>（251件）</span></a></dd>
+<dd class="areaname"><a href="/search/p/option:0/local_area:2_3/" title="中区 金山・大須・上前津エリアの賃貸事務所一覧">金山・大須・上前津エリア<span>（180件）</span></a></dd>
+<dd class="areaname"><a href="/search/p/option:0/local_area:2_4/" title="中区 丸田町エリアの賃貸事務所一覧">丸田町エリア<span>（66件）</span></a></dd>
+</dl>
+<dl class="area_box">
+<dt><a href="/search/p/option:0/local_area:3_1-3_2/" title="東区の賃貸事務所一覧">東区</a></dt>
+
+<dd class="areaname"><a href="/search/p/option:0/local_area:3_1/" title="東区 新栄・高岳エリアの賃貸事務所一覧">新栄・高岳エリア<span>（164件）</span></a></dd>
+<dd class="areaname"><a href="/search/p/option:0/local_area:3_2/" title="東区 車道エリアの賃貸事務所一覧">車道エリア<span>（136件）</span></a></dd>
+</dl>
+</div><!--div.area_list--><div class="area_list"><dl class="area_box">
+<dt><a href="/search/p/option:0/local_area:4_1-4_4/" title="千種区の賃貸事務所一覧">千種区</a></dt>
+
+<dd class="areaname"><a href="/search/p/option:0/local_area:4_1/" title="千種区 今池エリアの賃貸事務所一覧">今池エリア<span>（142件）</span></a></dd>
+<dd class="areaname"><a href="/search/p/option:0/local_area:4_4/" title="千種区 東山公園・星が丘エリアの賃貸事務所一覧">東山公園・星が丘エリア<span>（25件）</span></a></dd>
+</dl>
+<dl class="area_box">
+<dt><a href="/search/p/option:0/local_area:5_1/" title="名東区の賃貸事務所一覧">名東区</a></dt>
+
+<dd class="areaname"><a href="/search/p/option:0/local_area:5_1/" title="名東区 本郷エリアの賃貸事務所一覧">本郷エリア<span>（144件）</span></a></dd>
+</dl>
+<dl class="area_box">
+<dt><a href="/search/p/option:0/local_area:6_1/" title="西区の賃貸事務所一覧">西区</a></dt>
+
+<dd class="areaname"><a href="/search/p/option:0/local_area:6_1/" title="西区 名駅・牛島町エリアの賃貸事務所一覧">名駅・牛島町エリア<span>（78件）</span></a></dd>
+</dl>
+</div><!--div.area_list--><div class="area_list"><dl class="area_box">
+<dt><a href="/search/p/option:0/local_area:10_1/" title="熱田区の賃貸事務所一覧">熱田区</a></dt>
+
+<dd class="areaname"><a href="/search/p/option:0/local_area:10_1/" title="熱田区 金山駅南エリアの賃貸事務所一覧">金山駅南エリア<span>（46件）</span></a></dd>
+</dl>
+</div><!--div.area_list-->
+</div><!--div.of_area_list-->
+
+<!--↑↑↑ABテスト終了↑↑↑-->
+
+
+
+
+<!--★ご成約企業一覧-->
+<div class="ttl_h3 cus_h3">
+	<h3 class="ttl_cus">ご成約企業様一覧</h3>
+	<dl class="cus_num">
+		<dt>移転企業数<p>※2016年1月5日現在</p></dt>
+		<dd><span class="c_num">3,820</span>社</dd>
+	</dl>
+</div><!--/.ttl_h3-->
+
+<div class="customer">
+
+	<ul class="logo_list">
+		<li><img src="/img/logo_cookpad.jpg" alt="クックパッド株式会社様" width="130" height="32" /></li>
+		<li><img src="/img/logo_evernote.jpg" alt="エバーノート株式会社様" width="133" height="33" /></li>
+		<li><img src="/img/logo_mitsubishi.jpg" alt="三菱電機株式会社様" width="120" height="46" /></li>
+		<li><img src="/img/logo_taisei.jpg" alt="大成建設株式会社様" width="115" height="46" /></li>
+	</ul>
+	
+	<ul class="company_name">
+		<li>クックパッド株式会社様</li>
+		<li>エバーノート株式会社様</li>
+		<li>三菱電機株式会社様</li>
+		<li>大成建設株式会社様</li>
+	</ul>
+	
+	<ul class="logo_list">
+		<li><img src="/img/logo_liverevolution.jpg" alt="株式会社ライブレボリューション様" width="135" height="19" /></li>
+		<li><img src="/img/logo_coojlapanfund.jpg" alt="株式会社海外需要開拓支援機構様" width="80" height="48" /></li>
+		<li><img src="/img/logo_sangyokakushin.jpg" alt="株式会社産業革新機構様" width="128" height="41" /></li>
+		<li><img src="/img/logo_apcompany.jpg" alt="APカンパニー様" width="52" height="53" /></li>
+	</ul>
+	
+	<ul class="company_name">
+		<li>株式会社<br />ライブレボリューション様</li>
+		<li>株式会社<br />海外需要開拓支援機構様</li>
+		<li>株式会社産業革新機構様</li>
+		<li>APカンパニー様</li>
+	</ul>
+	
+	<ul class="logo_list">
+		<li><img src="/img/logo_hokuden.jpg" alt="北海道電力株式会社様" width="81" height="47" /></li>
+		<li><img src="/img/logo_kokuyo.jpg" alt="コクヨ株式会社様" width="130" height="17" /></li>
+		<li><img src="/img/logo_kirincity.jpg" alt="キリンシティ株式会社様" width="119" height="34" /></li>
+		<li><img src="/img/logo_nihonexpress.jpg" alt="日本通運株式会社様" width="115" height="27" /></li>
+	</ul>
+	
+	<ul class="company_name">
+		<li>北海道電力株式会社様</li>
+		<li>コクヨ株式会社様</li>
+		<li>キリンシティ株式会社様</li>
+		<li>日本通運株式会社様</li>
+	</ul>
+	
+	<div class="bt_more_contents">
+		<a href="/office/example/index.php" class="bt_more"><span>ご成約企業様をもっと見る</span></a>
+	</div><!--/.bt_more_contents-->
+	
+</div><!--/.customer-->
+
+<!--★ご成約企業一覧-->
+<div class="ttl_h3 vc_h3">
+	<h3>お客様の声</h3>
+</div><!--/.ttl_h3-->
+
+<div class="voice">
+	<dl class="voice_box">
+		<dt><div class="ttl_cus_name">合同会社ゼンショウマテリアル</div><p class="voice_date">2016.1.4</p></dt>
+		<dd>
+			<img src="/office/example/img/img_example_405.jpg" alt="" width="78" height="78" class="ph_voice" />
+			<p>物件の詳細な図面や写真等をお送りくださる等、物件の案内はとても丁寧で…<a href="/office/example/">続きを読む</a>
+				<img src="/img/img_s_trigona_c.gif" alt="" width="10" height="6" class="s_trigona" />
+			</p>
+		</dd>
+	</dl>
+	<dl class="voice_box">
+		<dt><div class="ttl_cus_name">株式会社花形商品研究所</div><p class="voice_date">2016.1.4</p></dt>
+		<dd>
+			<img src="/office/example/img/img_example_403.jpg" alt="" width="78" height="78" class="ph_voice" />
+			<p>検索をしやすかったところが良かったです。…<a href="/office/example/">続きを読む</a>
+			<img src="/img/img_s_trigona_c.gif" alt="" width="10" height="6" class="s_trigona" />
+			</p>
+		</dd>
+	</dl>
+	<dl class="voice_box">
+		<dt><div class="ttl_cus_name">フォレみどり様</div><p class="voice_date">2016.1.4</p></dt>
+		<dd>
+			<img src="/office/example/img/img_example_404.jpg" alt="" width="78" height="78" class="ph_voice" />
+			<p>物件を選んだ決め手は、物件の雰囲気、立地でした。…<a href="/office/example/">続きを読む</a>
+			<img src="/img/img_s_trigona_c.gif" alt="" width="10" height="6" class="s_trigona" />
+			</p>
+		</dd>
+	</dl>
+	<dl class="voice_box">
+		<dt><div class="ttl_cus_name">ネットワークサービス株式会社</div><p class="voice_date">2016.1.4</p></dt>
+		<dd>
+			<img src="/office/example/img/img_example_402.jpg" alt="" width="78" height="78" class="ph_voice" />
+			<p>物件数が多いところがサイトを利用していて良かったです。…<a href="/office/example/">続きを読む</a>
+			<img src="/img/img_s_trigona_c.gif" alt="" width="10" height="6" class="s_trigona" />
+			</p>
+		</dd>
+	</dl>
+	
+	<div class="bt_more_contents">
+		<a href="/office/example/" class="bt_more"><span>お客様の声をもっと見る</span></a>
+	</div><!--/.bt_more_contents-->
+
+</div><!--/.voice-->
+
+<!--★オリジナルコンテンツ-->
+<div class="ttl_h3">
+	<h3>名古屋オフィス検索　オリジナルコンテンツ</h3>
+</div><!--/.ttl_h3-->
+
+
+<div>
+
+</div>
+	
+<!--☆賃料相場情報・人気ランキング-->
+<div class="special">
+	<div class="bnr_specalL"> 
+		<a href="http://of-nagoya.jp/area/area_list.php"><img src="/img/bnr-area_info.jpg" alt="賃料相場情報" width="345" height="135" class="rollover" /></a>
+	</div><!--/.bnr_specalL-->
+	
+	<div class="bnr_specalR">
+		<a href="http://of-nagoya.jp/rank/"><img src="/img/bnr-ranking.jpg" alt="人気ランキング" width="345" height="135" class="rollover" /></a>
+	</div><!--/.bnr_specalR-->
+</div><!--/.special-->
+
+<!--★オリジナルコンテンツ-->
+<div class="ttl_h3">
+	<h3>名古屋オフィス検索　更新情報</h3>
+	<a href="/news/" class="news_list">ニュース一覧へ</a>
+</div><!--/.ttl_h3-->
+
+<div class="news">
+
+<table summary="名古屋オフィス検索ニュース">
+
+<tr>
+<th>2015/12/15</th>
+<td><a href="http://of-nagoya.jp/news/d:21/">年末年始休業日のご案内</a></td>
+</tr>
+<tr>
+<th>2015/07/30</th>
+<td><a href="http://of-nagoya.jp/news/d:20/">夏季休業のご案内</a></td>
+</tr>
+<tr>
+<th>2015/04/24</th>
+<td><a href="http://of-nagoya.jp/news/d:19/">ゴールデンウィーク休業日のご案内</a></td>
+</tr>
+
+</table>
+
+</div><!--div.news-->
+
+
+<p class="ex_oftokyo">名古屋オフィス検索は、名古屋エリアにおける最新の賃貸事務所や貸事務所といった物件の情報を公開しているサイトです。当サイト経由でのご成約の場合、仲介手数料はなんと半額！移転費用を抑えることができます。そして、名古屋における賃貸事務所情報量はNo.1！高い更新頻度で物件を紹介しております。いくつもの検索システムで、あなたにぴったりの賃貸事務所をすぐにお探しいただけます。</p>
+
+
+</div><!--div.main_column-->
+
+<div class="sub_column">
+<!--★3つの特長-->
+	<div class="bnr_s_brokerages">
+		<a href="/appeal/"><img src="/img_nagoya/bnr_offeature.jpg" alt="名古屋オフィス検索の3つの特長：・仲介手数料半額、・全物件公開中、・賃料最安値" width="260" height="124" class="rollover" /></a>
+	</div>
+<!--★問い合わせ-->
+	<div class="sub_bnr_inq">
+		<!--☆電話問い合わせボタン-->
+		<a href="http://of-nagoya.jp/inq/inquiry_all.php" title="お問い合わせ（総合窓口）">
+					<!--地方オフィス検索-->
+			<img src="/img/bnr_totalinq_c.jpg" alt="電話でお気軽にお問い合わせください。0120-9898-65受付時間9:00～18:00" width="260" height="253" class="rollover" />
+				</a>
+	</div><!--/.sub_bnr_inq--><!--★ご成約企業数-->
+	<div class="sub_contract">
+		<div class="contract">ご成約企業数<span class="c_num">3,820</span>社以上</div>
+		<p class="now_date">※2016年1月5日現在</p>
+		<div class="link_ct"><a href="/office/example/other_example_list.php">ご成約いただいた企業様をご紹介</a></div>
+	</div>	
+<!--★おまかせ-->
+	<div class="sub_bnr_inq">
+		<a href="http://of-nagoya.jp/inq/inquiry_pickup.php" title="オフィス探しおまかせサービス">
+			<img src="/img/bnr_omakase_d.jpg" alt="オフィス探しでお悩みのお客様。当社の専門スタッフにご相談いただければがぴったりのオフィスをお探しいたします。" width="260" height="335" class="rollover" />
+		</a>
+	</div><!--/.sub_bnr_inq-->
+<!--★ご成約企業数-->
+	<!--★新着物件速報-->
+	<div class="new_item">
+
+	<dl class="flash_info">
+	<dt class="ttl_fi1">
+	新着物件速報
+	</dt>
+
+	<dt class="ttl_fi2">
+	<img id="ustream_onair" src="/img/ttl_streaming.jpg" alt="オフィス生中継　ただいま物件更新中" width="240" height="51" />
+	</dt>
+	<dd class="flash_mv" id="streaming">
+	<iframe id="streaming_iframe" scrolling="no" style="border:0;" src="" height="130" width="230"></iframe>
+	</dd>
+
+	<dd class="flash_item">
+
+	<ul class="n_item_list" id="update_floors">
+
+		<li id="update_floor_1" class="update_floor_info">
+	<a href="/building/アルティメイトタワー栄5ビル/880" class="ni_name" title="アルティメイトタワー栄5ビル">アルティメイトタワー栄5ビル</a>
+	<a href="/floor/34291/" class="ph_item" title="880"><img src="https://s3-ap-northeast-1.amazonaws.com/worksmediaimage/website_images/oflocal/nagoya/qc_data/photo/880/r_a-1.jpeg" b_no="880" class="img_buil_thumb" alt="アルティメイトタワー栄5ビル" width="83" height="98" /></a>
+	<div class="ni_detail ">
+	<img src="/img/ico_s_new.png" alt="new" width="30" height="12" class="img_item_new" />
+	<p class="date">2016.1.21 更新</p>
+	<p>坪数：6階・39.56坪</p>
+	<p>坪単価：未定</p>
+	<p class="mb">愛知県名古屋市中区栄5-28-19</p>
+	<a href="/floor/34291/" class="bt_detail"><span>詳細を見る</span></a>
+	</div><!--div.ni_detail -->
+	</li>
+		<li id="update_floor_2" class="update_floor_info">
+	<a href="/building/錦三ビル/545" class="ni_name" title="錦三ビル">錦三ビル</a>
+	<a href="/floor/131960/" class="ph_item" title="545"><img src="https://s3-ap-northeast-1.amazonaws.com/worksmediaimage/website_images/oflocal/nagoya/qc_data/photo/545/r_a-1.jpeg" b_no="545" class="img_buil_thumb" alt="錦三ビル" width="83" height="98" /></a>
+	<div class="ni_detail ">
+	<img src="/img/ico_s_new.png" alt="new" width="30" height="12" class="img_item_new" />
+	<p class="date">2016.1.21 更新</p>
+	<p>坪数：8階・46坪</p>
+	<p>坪単価：13,000円/坪</p>
+	<p class="mb">愛知県名古屋市中区錦3-17-10</p>
+	<a href="/floor/131960/" class="bt_detail"><span>詳細を見る</span></a>
+	</div><!--div.ni_detail -->
+	</li>
+		<li id="update_floor_3" class="update_floor_info">
+	<a href="/building/イノフィスビル/684" class="ni_name" title="イノフィスビル">イノフィスビル</a>
+	<a href="/floor/148394/" class="ph_item" title="684"><img src="https://s3-ap-northeast-1.amazonaws.com/worksmediaimage/website_images/oflocal/nagoya/qc_data/photo/684/r_a-1.jpeg" b_no="684" class="img_buil_thumb" alt="イノフィスビル" width="83" height="98" /></a>
+	<div class="ni_detail ">
+	<img src="/img/ico_s_new.png" alt="new" width="30" height="12" class="img_item_new" />
+	<p class="date">2016.1.21 更新</p>
+	<p>坪数：5階・18.17坪</p>
+	<p>坪単価：11,000円/坪</p>
+	<p class="mb">愛知県名古屋市中区新栄2-2-1</p>
+	<a href="/floor/148394/" class="bt_detail"><span>詳細を見る</span></a>
+	</div><!--div.ni_detail -->
+	</li>
+		<li id="update_floor_4" class="update_floor_info">
+	<a href="/building/MSインテリジェンスビル/117633" class="ni_name" title="MSインテリジェンスビル">MSインテリジェンスビル</a>
+	<a href="/floor/148419/" class="ph_item" title="117633"><img src="https://s3-ap-northeast-1.amazonaws.com/worksmediaimage/website_images/oflocal/nagoya/qc_data/photo/117633/r_a-1.jpeg" b_no="117633" class="img_buil_thumb" alt="MSインテリジェンスビル" width="83" height="98" /></a>
+	<div class="ni_detail ">
+	<img src="/img/ico_s_new.png" alt="new" width="30" height="12" class="img_item_new" />
+	<p class="date">2016.1.21 更新</p>
+	<p>坪数：6階・118.86坪</p>
+	<p>坪単価：9,000円/坪</p>
+	<p class="mb">愛知県名古屋市中村区岩塚本通2-1-2</p>
+	<a href="/floor/148419/" class="bt_detail"><span>詳細を見る</span></a>
+	</div><!--div.ni_detail -->
+	</li>
+		<li id="update_floor_5" class="update_floor_info">
+	<a href="/building/クラウンビル/26111" class="ni_name" title="クラウンビル">クラウンビル</a>
+	<a href="/floor/90946/" class="ph_item" title="26111"><img src="https://s3-ap-northeast-1.amazonaws.com/worksmediaimage/website_images/oflocal/nagoya/qc_data/photo/26111/r_a-1.jpeg" b_no="26111" class="img_buil_thumb" alt="クラウンビル" width="83" height="98" /></a>
+	<div class="ni_detail ">
+	<img src="/img/ico_s_new.png" alt="new" width="30" height="12" class="img_item_new" />
+	<p class="date">2016.1.21 更新</p>
+	<p>坪数：1階・18.82坪</p>
+	<p>坪単価：未定</p>
+	<p class="mb">愛知県名古屋市北区志賀南通2-4-3</p>
+	<a href="/floor/90946/" class="bt_detail"><span>詳細を見る</span></a>
+	</div><!--div.ni_detail -->
+	</li>
+	
+	</ul><!--ul.n_item_list-->
+
+	</dd>
+	</dl><!--dl.new_item-->
+
+	</div><!--div.new_item-->	
+<!--★オフィスwatch-->
+	<dl class="sub_flame_c">
+		<dt class="ttl_sub_fl"><img src="/img/ttl_s_watch.jpg" alt="オフィスwatch" width="130" height="19" /></dt>
+		<dd class="sub_fl_box">
+			<p class="txt_watch">オフィスWatchは、事務所内のレイアウト・内装デザインへのこだわりから、企業文化・経営の本質に迫る、内装情報マガジンです。</p>
+			
+			<div class="ttl_w_new">最新号紹介</div>
+			
+			<div class="ttl_watch">株式会社セレス</div>
+			
+			<div class="watch_detail">
+			<p class="txt_wd">NYブルックリンスタイルのエントランスにシンプルモダンのワークスペースが好対照なオフィス</p>
+			<p class="w_logo"><img src="/img/logo_s_watch.gif" alt="" width="79" height="54" /></p>
+			</div>
+			
+			<div class="img_watch">
+				<img src="/img/img_watch.jpg" alt="" width="240" height="162" />
+			</div>
+				
+				
+				<div class="link_watch">
+					<a href="http://of-watch.jp/bn/157_01.php" target="_blank">オフィスwatchを見る</a>
+				</div>
+		</dd>
+	</dl><!--/.sub_flame_c--></div><!--div.sub_column-->
+
+<!--ページトップ-->
+<p id="page-top"><a href="#wrap"><img src="/img/bt_go_top_b.png" alt="go to top" width="40" height="40" class="rollover" /></a></p></div><!--div#contents-->
+
+<div class="bottom_contents">
+
+	<div class="bottom_inner">
+		<h3>賃貸事務所・賃貸オフィスをこだわり条件・目的から探す</h3>
+				<dl class="top_search tsL top_search_b">
+			<dt>物件の規模から探す</dt>
+			<dd>
+				<ul class="ts_list">
+					<li><a href="/search/kodawari/acreg_max:20/" >20坪以下の賃貸事務所</a></li>
+					<li><a href="/search/kodawari/acreg_min:20/acreg_max:30/" >20坪～30坪の賃貸事務所</a></li>
+					<li><a href="/search/kodawari/acreg_min:30/acreg_max:40/" >30坪～40坪の賃貸事務所</a></li>
+					<li><a href="/search/kodawari/acreg_min:40/acreg_max:50/" >40坪～50坪の賃貸事務所</a></li>
+					<li><a href="/search/kodawari/acreg_min:50/acreg_max:100/" >50坪～100坪の賃貸事務所</a></li>
+					<li><a href="/search/kodawari/acreg_min:100/acreg_max:200/" >100坪～200坪の賃貸事務所</a></li>
+				</ul>
+			</dd>
+		</dl>
+		
+		<dl class="top_search tsR top_search_b price_range">
+			<dt>賃料帯から探す</dt>
+			<dd>
+				<ul class="ts_list">
+					<li><a href="/search/kodawari/rent_price_max:1.0/" >1.0万円／坪以下</a></li>
+					<li><a href="/search/kodawari/rent_price_min:1.0/rent_price_max:1.2/" >1.0万円～1.2万円／坪</a></li>
+					<li><a href="/search/kodawari/rent_price_min:1.2/rent_price_max:1.4/" >1.2万円～1.4万円／坪</a></li>
+					<li><a href="/search/kodawari/rent_price_min:1.4/rent_price_max:1.6/" >1.4万円～1.6万円／坪 </a></li>
+					<li><a href="/search/kodawari/rent_price_min:1.6/rent_price_max:1.8/" >1.6万円～1.8万円／坪</a></li>
+					<li><a href="/search/kodawari/rent_price_min:1.8/rent_price_max:2.0/" >1.8万円～2.0万円／坪</a></li>
+					<li><a href="/search/kodawari/rent_price_min:2.0/" >2.0万円／坪以上</a></li>
+				</ul>
+			</dd>
+		</dl>
+		
+		<dl class="top_search_b">
+			<dt>路線から探す</dt>
+			<dd>
+				<ul class="ts_list">
+				<li><a href="/search/p/st_cd:11411_1141101-11411_1141102/">JR中央本線</a></li><li><a href="/search/p/st_cd:11502_1141101-11502_1141102/">JR東海道本線</a></li><li><a href="/search/p/st_cd:30001_1141101-30001_1141102-30001_3000137-30001_3000138/">名鉄名古屋本線</a></li><li><a href="/search/p/st_cd:30008_1141102/">名鉄常滑線</a></li><li><a href="/search/p/st_cd:/">名鉄築港線</a></li><li><a href="/search/p/st_cd:30012_1141105-30012_3001201-30012_3001202-30012_3001203-30012_3001204-30012_3001205-30012_3001207/">名鉄瀬戸線</a></li><li><a href="/search/p/st_cd:31027_1141101-31027_3102702-31027_3102703-31027_3102704/">近鉄名古屋線</a></li><li><a href="/search/p/st_cd:99509_1141101-99509_3102702/">西名古屋港線(あおなみ線)</a></li><li><a href="/search/p/st_cd:99510_9951003-99510_9951004/">東海交通事業城北線</a></li><li><a href="/search/p/st_cd:99512_9951201/">東部丘陵線(リニモ)</a></li><li><a href="/search/p/st_cd:99523_1141105-99523_9951401-99523_9951428/">ゆとりーとライン</a></li><li><a href="/search/p/st_cd:99513_1141101-99513_1141104-99513_3001201-99513_9951201-99513_9951303-99513_9951304-99513_9951305-99513_9951306-99513_9951307-99513_9951309-99513_9951311-99513_9951313-99513_9951314-99513_9951315-99513_9951316-99513_9951317-99513_9951318-99513_9951319/">地下鉄東山線</a></li><li><a href="/search/p/st_cd:99514_1141102-99514_1141105-99514_9951401-99514_9951405-99514_9951410-99514_9951411-99514_9951412-99514_9951428/">地下鉄名城線</a></li><li><a href="/search/p/st_cd:/">地下鉄名港線</a></li><li><a href="/search/p/st_cd:99516_3001506-99516_9951309-99516_9951602-99516_9951603-99516_9951606-99516_9951611-99516_9951613-99516_9951616-99516_9951617-99516_9951618-99516_9951619/">地下鉄鶴舞線</a></li><li><a href="/search/p/st_cd:99517_1141101-99517_9951313-99517_9951408-99517_9951606-99517_9951612-99517_9951701-99517_9951703-99517_9951706-99517_9951707-99517_9951709-99517_9951717/">地下鉄桜通線</a></li>				</ul>
+			</dd>
+		</dl>
+		
+		
+	</div>
+
+</div><!--/.bottom_contents-->
+
+
+<!--★コンテンツ ここまで-->
+
+<!--★フッター-->
+<div id="footer">
+<div class="f_contents_a">
+	<ul class="f_link_a">
+		<li><a href="http://of-nagoya.jp/search/ta/?new" title="エリアから賃貸事務所・オフィスを検索">エリアから探す</a></li>
+		<li><a href="http://of-nagoya.jp/search/tr/?new" title="路線・駅から賃貸事務所・オフィスを検索">路線から探す</a></li>
+		<li><a href="http://of-nagoya.jp/search/map_search.php" title="地図から賃貸事務所・オフィスを検索">地図から探す</a></li>
+		<li><a href="http://of-nagoya.jp/area/area_list.php">賃料の相場</a></li>
+		<li><a href="http://of-nagoya.jp/office/flow/" title="契約までの流れ">契約までの流れ</a></li>
+		<li><a href="http://of-nagoya.jp/faq/" title="よくある質問">よくある質問</a></li>
+		<li class="last"><a href="http://of-nagoya.jp/office/example/" title="お客様の声">お客様の声</a></li>
+	</ul>
+</div>
+<div class="f_contents_b">
+<div class="f_contents_inner">
+	<dl class="f_link_b wa">
+		<dt>名古屋オフィス検索のコンテンツ</dt>
+		<dd>
+			<ul>
+				<li><a href="http://of-nagoya.jp/etc/mng_corp_info.php">運営会社情報</a></li>
+				<li><a href="http://of-nagoya.jp/etc/use_rule.php">利用規約</a></li>
+				<li><a href="http://of-nagoya.jp/etc/personal_policy.php">個人情報保護方針</a></li>
+			<li><a href="http://of-nagoya.jp/etc/sitemap.php">サイトマップ</a></li>
+			</ul>
+			<ul>
+				<li><a href="http://of-nagoya.jp/area/area_list.php" title="エリア・駅周辺の賃貸ビル相場情報">賃貸事務所の相場</a></li>
+				<li><a href="http://of-nagoya.jp/rank/" title="東京都内の貸事務所検索人気ランキング">人気ランキング</a></li>
+				<li><a class="inq" href="http://of-nagoya.jp/inq/">お問い合わせ</a></li>
+							</ul>
+		</dd>
+	</dl>
+	
+	<dl class="f_link_b wb">
+		<dt>事務所を探す</dt>
+		<dd>
+			<ul>
+				<li><a href="http://of-nagoya.jp/">賃貸オフィス</a></li>
+								</ul>	
+		</dd>
+	</dl>
+	
+	<dl class="f_link_b wc">
+		<dt>駐車場・会議室</dt>
+		<dd>
+			<ul>
+				<li><a href="http://of-nagoya.jp/parking/" title="月極駐車場">月極駐車場</a></li>
+							</ul>	
+		</dd>
+	</dl>
+
+	
+	<dl class="f_link_b we">
+		<dt>ワークスメディアのサービス</dt>
+		<dd>
+			<ul class="we1">
+				<li><a href="http://chumap.jp/" target="_blank" title="月極駐車場検索サイト駐マップ">月極駐車場検索サイト</a></li>
+				<li><a href="http://of-watch.jp/" target="_blank">オフィスwatch</a></li>
+<li><a href="http://zeirishi-center.jp/" target="_blank" title="税理士無料紹介センター">税理士無料紹介センター</a></li>
+<li><a href="http://r-kaijo.jp/" target="_blank" title="貸し会議室検索">貸し会議室検索</a></li>
+			</ul>
+			<ul class="we2">
+				<li><a href="http://e-street.jp/" target="_blank" title="東京の商店街情報サイト マチキタ！">東京の商店街情報サイト<br />マチキタ!</a></li>
+				<li><a href="http://pitax.jp" target="_blank" title="「税理士がわかる！話せる！選べる！」ピタックスナビ">ピタックスナビ</a></li>
+				<li><a href="http://worksmedia.jp/i/" target="_blank" title="オフィスリサーチ">オフィスリサーチ</a></li>
+				<li><a href="http://usagiya-akasaka.jp" target="_blank" title="赤坂うさぎや">赤坂うさぎや</a></li>
+			</ul>	
+		</dd>
+	</dl>
+
+</div><!--div.f_contents_inner-->
+</div><!--div.f_contents_b-->
+
+<div class="f_contents_c">
+	<div class="f_contents_inner">
+		<div class="f_logo"><img src="/img_nagoya/logo_f.gif" alt="名古屋オフィス検索" width="176" height="34" /></div>
+		
+					<div class="f_txt local">
+			名古屋エリア最大級の物件数！使いやすいと評判の検索システムで、賃貸オフィス探しをサポート。写真や図面も豊富。【仲介料は半額】です。
+			</div>
+			</div><!--div.f_contents_inner-->
+</div><!--div.f_contents_c-->
+
+
+<div class="copyright">
+<div class="copy_box">
+<address>COPYRIGHT (C) 2005-2016 <a href="http://worksmedia.jp/" target="_blank" title="株式会社ワークスメディアコーポレートサイト">Worksmedia Co.,Ltd.</a> ALL RIGHTS RESERVED.</address>
+
+</div>
+
+</div><!--div#copyright-->
+
+</div><!--div#footer-->
+
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4671652-10']);
+
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+
+<!--★フッター ここまで-->
+
+</body>
+
+</html>

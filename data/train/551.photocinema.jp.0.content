@@ -1,0 +1,1161 @@
+<!doctype html>
+<html>
+<head lang="ja">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="ALL">
+<meta name="description" content="好きな音楽のリズムにのせて、思い出の写真や動画をつなぎ一本のムービーにする動画作成ソフト「PhotoCinema」。Instagramのようなフィルター機能なども搭載し、初心者でもカンタンに映画のようなムービーを作成可能。結婚式ムービーや子供の成長記録、お祝いメッセージムービーなどに最適です。">
+<meta name="keywords" content="動画作成,ムービー作成,フォトムービー,プロフィールムービー,生い立ちムービー,結婚式ムービー,コラボ動画,成長ムービー,PhotoCinema,フォトシネマ,デジタルステージ">
+<meta property='og:type' content="website">
+<meta property='og:site_name' content="動画作成ソフト | PhotoCinema | フォトシネマ スペシャルサイト">
+<meta property='og:description' content="好きな音楽のリズムにのせて、思い出の写真や動画をつなぎ一本のムービーにする動画作成ソフト「PhotoCinema」。Instagramのようなフィルター機能なども搭載し、初心者でもカンタンに映画のようなムービーを作成可能。結婚式ムービーや子供の成長記録、お祝いメッセージムービーなどに最適です。">
+<!-- <meta property='og:image' content=""> -->
+<meta property='og:url' content="http://photocinema.jp">
+<meta property='og:title' content="動画作成ソフト | PhotoCinema | フォトシネマ スペシャルサイト">
+<title>動画作成ソフト | PhotoCinema | フォトシネマ スペシャルサイト</title>
+
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+<link rel="stylesheet" href="_css/_normalize.css?date=20150518">
+<link rel="stylesheet" href="_css/_grid.css?date=20150518">
+<link rel="stylesheet" href="_css/_icons/style.css?date=20150518">
+<link rel="stylesheet" href="_css/_frame.css?date=20150518">
+<link rel="stylesheet" href="_css/_components.css?date=20150518">
+<link rel="stylesheet" href="_css/_plugin.css?date=20150518">
+<link rel="stylesheet" href="_css/_general.css?date=20150518">
+<link rel="stylesheet" href="_css/dsnav/style.css?date=20150518">
+<link rel="stylesheet" href="_css/home.css?date=20150518">
+<!--[if lt IE 9]>
+<script src="http://bindcloud.jp/_js/plugin/html5shiv.js"></script>
+<![endif]-->
+<script src="//use.typekit.net/aka4iuq.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+
+<script src="_js/jquery.js?ver=1112"></script>
+<script src="_js/plugin/scrollmagic/ScrollMagic.min.js"></script>
+<script src="_js/plugin/scrollmagic/plugins/debug.addIndicators.min.js"></script>
+<script src="_js/plugin/greensock/TweenMax.min.js"></script>
+<script src="_js/plugin/greensock/plugins/ScrollToPlugin.min.js"></script>
+<script src="_css/dsnav/script.js"></script>
+<script src="_js/_dsstore.js"></script>
+</head>
+
+<body>
+<script>
+$(document).ready(function(){
+	// $('#header').css('top','-40px');
+
+	var isDeviceNonMobile = $.restive.isNonMobile();
+	var controller = new ScrollMagic.Controller();
+	if ( isDeviceNonMobile == true ) {
+		var controllerNonMobile = new ScrollMagic.Controller();
+	};
+
+	// change header
+	var sceneHeader1 = new ScrollMagic.Scene({triggerElement:'#templates', triggerHook:'onLeave', offset:-4})
+		.setClassToggle('#header','header-fixed')
+		.addTo(controller);
+	var sceneHeader2 = new ScrollMagic.Scene({triggerElement:'#templates-wedding', triggerHook:'onLeave', offset:-4})
+		.setClassToggle('#header','header-wedding')
+		.addTo(controller);
+	var sceneHeader3 = new ScrollMagic.Scene({triggerElement:'#scene', triggerHook:'onLeave', offset:-4})
+		.setClassToggle('#header','header-sepalated')
+		.addTo(controller);
+	// pin slide
+	var scenePin1 = new ScrollMagic.Scene({triggerElement:'#templates', duration:600, triggerHook:'onLeave'})
+		.setPin('#templates')
+		.addTo(controllerNonMobile);
+	var scenePin2 = new ScrollMagic.Scene({triggerElement:'#templates-wedding', duration:600, triggerHook:'onLeave'})
+		.setPin('#templates-wedding')
+		.addTo(controllerNonMobile);
+
+	// animate scroll
+	controller.scrollTo(function (newpos) {
+		TweenMax.to(window, 0.5, {scrollTo: {y: newpos}});
+	});
+
+	// bind scroll to anchor links
+	if ( isDeviceNonMobile == true ) {
+		$(document).on("click", "a[href^='#']", function (e) {
+			var id = $(this).attr("href");
+			if ($(id).length > 0) {
+				e.preventDefault();
+				controller.scrollTo(id);
+				if (window.history && window.history.pushState) {
+					history.pushState("", document.title, id);
+				}
+			}
+		});
+	};
+});
+</script>
+
+<section id="hero" class="wrapper">
+	<div class="hero__container">
+		<div class="hero__container__inner">
+			<a class="hero__enter" href="#templates">
+				<h1 class="hero__logo"><small class="hero__logo__label">Movie Design Software</small><br><img src="_img/_common/logo_main.svg" alt="PhotoCinema（フォトシネマ）"></h1>
+				<!-- <p class="hero__release">2015.05.28 Debut !</p> -->
+				<div class="hero__arrow"><img src="_img/hero/arrow.png" alt="Enter"></div>
+			</a>
+			<a class="hero__stamp" href="#store"><span class="icon-cart"></span><span class="hero__stamp__txt">今すぐ購入</span></a>
+		</div>
+	<!-- /.container --></div>
+<!-- #.wrapper --></section>
+<a class="hero__player" data-property="{videoURL:'http://youtu.be/VF44WaWKF74',containment:'#hero',autoPlay:true,showControls:false,mute:true,startAt:0,opacity:1}"></a>
+
+<section id="templates" class="wrapper">
+	<div class="template__slider">
+		<div class="flexslider">
+			<ul class="slides">
+				<li class="slide template__slider--shop" data-thumb="_img/template/thumb_shop.jpg">
+					<a class="template__slider__link" href="https://www.youtube.com/watch?v=WnkE5PQrnxE">
+						<div class="template__slider__caption">
+							<h3 class="template__slider__caption__tit"><span>Shop</span> PhotoCinema</h3>
+							<p class="template__slider__caption__txt">お店の自己紹介を上手に雰囲気よく</p>
+							<span class="template__slider__caption__play">Play</span>
+						</div>
+					</a>
+				</li>
+				<li class="slide template__slider--pet" data-thumb="_img/template/thumb_pet.jpg">
+					<a class="template__slider__link" href="https://www.youtube.com/watch?v=NVHKG5DHIcQ">
+						<div class="template__slider__caption">
+							<h3 class="template__slider__caption__tit"><span>Pet</span> PhotoCinema</h3>
+							<p class="template__slider__caption__txt">愛するペットの写真や動画を1つのムービーに</p>
+							<span class="template__slider__caption__play">Play</span>
+						</div>
+					</a>
+				</li>
+				<li class="slide template__slider--kids" data-thumb="_img/template/thumb_kids.jpg">
+					<a class="template__slider__link" href="https://www.youtube.com/watch?v=vs7c773a61I">
+						<div class="template__slider__caption">
+							<h3 class="template__slider__caption__tit"><span>Kids</span> PhotoCinema</h3>
+							<p class="template__slider__caption__txt">我が子との日々の思い出や成長記録</p>
+							<span class="template__slider__caption__play">Play</span>
+						</div>
+					</a>
+				</li>
+				<li class="slide template__slider--trip" data-thumb="_img/template/thumb_trip.jpg">
+					<a class="template__slider__link" href="https://www.youtube.com/watch?v=gAHv9ctA5tc">
+						<div class="template__slider__caption">
+							<h3 class="template__slider__caption__tit"><span>Trip</span> PhotoCinema</h3>
+							<p class="template__slider__caption__txt">旅先でのワンシーンが蘇る思い出ムービー</p>
+							<span class="template__slider__caption__play">Play</span>
+						</div>
+					</a>
+				</li>
+				<li class="slide template__slider--music" data-thumb="_img/template/thumb_music.jpg">
+					<a class="template__slider__link" href="https://www.youtube.com/watch?v=ktjw7yR4XU8">
+						<div class="template__slider__caption">
+							<h3 class="template__slider__caption__tit"><span>Music</span> PhotoCinema</h3>
+							<p class="template__slider__caption__txt">オリジナルのミュージックビデオ制作に</p>
+							<span class="template__slider__caption__play">Play</span>
+						</div>
+					</a>
+				</li>
+				<li class="slide template__slider--message" data-thumb="_img/template/thumb_message.jpg">
+					<a class="template__slider__link" href="https://www.youtube.com/watch?v=OTNt0GyKCHM">
+						<div class="template__slider__caption">
+							<h3 class="template__slider__caption__tit"><span>Message</span> PhotoCinema</h3>
+							<p class="template__slider__caption__txt">友人や家族に贈るメッセージビデオ</p>
+							<span class="template__slider__caption__play">Play</span>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+	<!-- /.container --></div>
+<!-- #templates.wrapper --></section>
+
+<section id="templates-wedding" class="wrapper">
+	<div class="template__slider">
+		<div class="flexslider">
+			<ul class="slides">
+				<li class="slide template__slider--invitation" data-thumb="_img/template_wedding/thumb_invitation.jpg">
+					<a class="template__slider__link" href="https://www.youtube.com/watch?v=mcbF0qRw0gE">
+						<div class="template__slider__caption">
+							<h3 class="template__slider__caption__tit"><span>Invitation</span> PhotoCinema</h3>
+							<p class="template__slider__caption__txt">結婚式やパーティーの招待状として</p>
+							<span class="template__slider__caption__play">Play</span>
+						</div>
+					</a>
+				</li>
+				<li class="slide template__slider--opening" data-thumb="_img/template_wedding/thumb_opening.jpg">
+					<a class="template__slider__link" href="https://www.youtube.com/watch?v=bGtdmUMBRbg">
+						<div class="template__slider__caption">
+							<h3 class="template__slider__caption__tit"><span>Opening</span> PhotoCinema</h3>
+							<p class="template__slider__caption__txt">会場のムードを一気に盛り上げるムービー</p>
+							<span class="template__slider__caption__play">Play</span>
+						</div>
+					</a>
+				</li>
+				<li class="slide template__slider--endroll" data-thumb="_img/template_wedding/thumb_endroll.png">
+					<a class="template__slider__link" href="https://www.youtube.com/watch?v=z5pxml_hAhM">
+						<div class="template__slider__caption">
+							<h3 class="template__slider__caption__tit"><span>Endroll</span> PhotoCinema</h3>
+							<p class="template__slider__caption__txt">大切な方へ感謝の気持ちを込めて</p>
+							<span class="template__slider__caption__play">Play</span>
+						</div>
+					</a>
+				</li>
+				<li class="slide template__slider--profile1" data-thumb="_img/template_wedding/thumb_profile1.jpg">
+					<a class="template__slider__link" href="https://www.youtube.com/watch?v=N6dzZRqNS6s">
+						<div class="template__slider__caption">
+							<h3 class="template__slider__caption__tit"><span>Profile</span> PhotoCinema</h3>
+							<p class="template__slider__caption__txt">出会いからふたりが歩んできた軌跡をカタチに</p>
+							<span class="template__slider__caption__play">Play</span>
+						</div>
+					</a>
+				</li>
+				<li class="slide template__slider--profile2" data-thumb="_img/template_wedding/thumb_profile2.jpg">
+					<a class="template__slider__link" href="https://www.youtube.com/watch?v=Rjg-Yx8mnBU">
+						<div class="template__slider__caption">
+							<h3 class="template__slider__caption__tit"><span>Profile</span> PhotoCinema</h3>
+							<p class="template__slider__caption__txt">新郎・新婦それぞれの生い立ちをまとめて</p>
+							<span class="template__slider__caption__play">Play</span>
+						</div>
+					</a>
+				</li>
+				<li class="slide template__slider--messagecongrats" data-thumb="_img/template_wedding/thumb_message.jpg">
+					<a class="template__slider__link" href="https://www.youtube.com/watch?v=ehf0XMUUgbs">
+						<div class="template__slider__caption">
+							<h3 class="template__slider__caption__tit"><span>Message</span> PhotoCinema</h3>
+							<p class="template__slider__caption__txt">友人や家族と一緒につくるメッセージムービー</p>
+							<span class="template__slider__caption__play">Play</span>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+	<!-- /.container --></div>
+<!-- #templates-wedding.wrapper --></section>
+
+<section id="scene" class="wrapper">
+	<div class="container">
+		<h2 class="title-ll align-lg-c">こんなシーンで役立つフォトシネマ</h2>
+		<p class="lead align-lg-c">我が子の成長記録や結婚式での演出はもちろん、お店紹介やプロモーションビデオまで、<br class="hidden-xs hidden-sm">普段のコミュニケーションやインフォメーションの伝えるチカラを何倍にも広げていきます。</p>
+	<!-- /.container --></div>
+	<div class="scene__container">
+		<div class="row row-tight">
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 scene__grid">
+				<div class="scene__column scene__column--kids">
+					<div class="scene__column__inner">
+						<h3 class="scene__column__tit title-m">成長記録ムービー</h3>
+						<p class="scene__column__txt">出生から現在までに撮影した動画や写真を使って、我が子の成長記録を鮮やかなムービーとして残せます。</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 scene__grid">
+				<div class="scene__column scene__column--music">
+					<div class="scene__column__inner">
+						<h3 class="scene__column__tit title-m">ミュージックビデオ</h3>
+						<p class="scene__column__txt">演奏シーンやダンスシーンを音楽と組み合わせて、お気に入りのアーティストの様なキャッチーな動画を作成。</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 scene__grid">
+				<div class="scene__column scene__column--pet">
+					<div class="scene__column__inner">
+						<h3 class="scene__column__tit title-m">ペットムービー</h3>
+						<p class="scene__column__txt">かわいくて、癒されるペットの写真や動画を1つのストーリー仕立てのムービーにすることができます。</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 scene__grid">
+				<div class="scene__column scene__column--farewell">
+					<div class="scene__column__inner">
+						<h3 class="scene__column__tit title-m">お別れのメッセージ</h3>
+						<p class="scene__column__txt">転勤や転校など、複数名で送別メッセージを撮影して、1つの動画に。別れ行く人を感動させてみませんか？</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 scene__grid">
+				<div class="scene__column scene__column--travel">
+					<div class="scene__column__inner">
+						<h3 class="scene__column__tit title-m">旅の思い出ムービー</h3>
+						<p class="scene__column__txt">旅先での思い出を動画で記録しませんか？旅行先で撮影した、風景、家族の写真や動画を1本のムービーに。</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 scene__grid">
+				<div class="scene__column scene__column--pv">
+					<div class="scene__column__inner">
+						<h3 class="scene__column__tit title-m">プロモーションムービー</h3>
+						<p class="scene__column__txt">施設や商品の紹介など、臨場感ある映像でスタッフや店舗の雰囲気をしっかりと伝えることができます。</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 scene__grid">
+				<div class="scene__column scene__column--invitation">
+					<div class="scene__column__inner">
+						<h3 class="scene__column__tit title-m"><small class="scene__column__tit__tag"><span>for wedding</span></small>	インビテーション・招待状ムービー</h3>
+					<p class="scene__column__txt">結婚式やパーティーなどの招待状を、動画で送ってみませんか？	招待された人も、きっと期待感が増すはずです。</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 scene__grid">
+				<div class="scene__column scene__column--opening">
+					<div class="scene__column__inner">
+						<h3 class="scene__column__tit title-m"><small class="scene__column__tit__tag"><span>for wedding</span></small>オープニングムービー</h3>
+						<p class="scene__column__txt">披露宴やパーティーで登場感を仰ぐ動画を流せば、入場シーンを盛り上げ、会場に一体感を生むことができます。</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 scene__grid">
+				<div class="scene__column scene__column--profile">
+					<div class="scene__column__inner">
+						<h3 class="scene__column__tit title-m"><small class="scene__column__tit__tag"><span>for wedding</span></small>プロフィールムービー</h3>
+						<p class="scene__column__txt">出会いから結婚までの二人の歩んできた道のりを1本のムービーに。思い出やエピソードを生かして感動的なひと時を伝えます。</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 scene__grid">
+				<div class="scene__column scene__column--history">
+					<div class="scene__column__inner">
+						<h3 class="scene__column__tit title-m"><small class="scene__column__tit__tag"><span>for wedding</span></small>生い立ちムービー</h3>
+						<p class="scene__column__txt">新郎と新婦、それぞれの生い立ちをストーリー仕立てで紹介。幼い頃の映像は会場で盛り上がること間違いありません。</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 scene__grid">
+				<div class="scene__column scene__column--ending">
+					<div class="scene__column__inner">
+						<h3 class="scene__column__tit title-m"><small class="scene__column__tit__tag"><span>for wedding</span></small>エンドロールムービー</h3>
+						<p class="scene__column__txt">映画のラストシーンの様に、結婚式やパーティーの締めくくりに、列席者へ感謝のメッセージを伝えることができます。</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 scene__grid">
+				<div class="scene__column scene__column--message">
+					<div class="scene__column__inner">
+						<h3 class="scene__column__tit title-m"><small class="scene__column__tit__tag"><span>for wedding</span></small>お祝いメッセージ</h3>
+						<p class="scene__column__txt">友人や家族からのメッセージなど、別々に撮影した動画を集め、新郎新婦へのサプライズムービーとしておくれます。</p>
+					</div>
+				</div>
+			</div>
+		<!-- /.row --></div>
+	<!-- /.scene__container --></div>
+<!-- #.wrapper --></section>
+
+<section id="feature" class="wrapper">
+	<div class="container">
+		<h2 class="title-ll align-lg-c">フォトシネマでできること</h2>
+		<p class="lead align-lg-c">慣れない動画作成で自信のない方も、腕をふるってこだわりの動画を作りたい方も、<br class="hidden-xs hidden-sm">作りたいものをカタチにするための機能をそろえました。楽しみながら動画づくりが可能です。</p>
+	<!-- /.container --></div>
+	<div class="feature__container">
+		<div class="row row-tight">
+			<div class="col-xs-12 col-sm-6 col-md-3 feature__grid">
+				<div class="feature__column">
+					<p class="feature__column__icon"><span class="icon-photocinema-edit2"></span></p>
+					<h3 class="feature__column__tit title-m">3つの編集モードで“映画”のような動画が簡単に</h3>
+					<p class="feature__column__txt">素材を入れるだけの「おまかせモード」、細部までこだわれる「じぶんでモード」、ストーリー仕立てに作る「シナリオモード」の3つのモードで慣れない動画作りを手助け。Instagramのようなフィルター機能も充実し、ハイセンスな動画が思いのままに。</p>
+					<figure class="feature__column__figure"><img src="_img/feature/ui_1.png" alt="動画編集画面"></figure>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-3 feature__grid">
+				<div class="feature__column">
+					<p class="feature__column__icon"><span class="icon-photocinema-tap"></span></p>
+					<h3 class="feature__column__tit title-m">音楽のリズムに合った動画でドラマチックに</h3>
+					<p class="feature__column__txt">音楽にシンクロした動画が作れるのがPhotoCinemaの魅力。曲調に合った動画は心地いいドラマチックな効果を生み出します。音楽のリズムに合わせてタップするとBPM（拍子）が検出され、あとはソフトにおまかせ。ゲーム感覚で楽しめる機能です。</p>
+					<figure class="feature__column__figure"><img src="_img/feature/ui_2.png" alt="音楽設定画面"></figure>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-3 feature__grid">
+				<div class="feature__column">
+					<p class="feature__column__icon"><span class="icon-photocinema-collabo"></span></p>
+					<h3 class="feature__column__tit title-m">遠方の友人らと一緒に楽しく作れるコラボ機能</h3>
+					<p class="feature__column__txt">複数の人と作る時にネックとなる素材集めなどの面倒なやりとりを解消し、一緒に作る楽しみを共有できます。依頼内容は自動でWebページ化され、参加者へはFacebookやメールで一括送信！みんなで進捗確認やチャットも可能。幹事さんにオススメです。</p>
+					<figure class="feature__column__figure"><img src="_img/feature/ui_3.png" alt="コラボ設定"></figure>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-3 feature__grid">
+				<div class="feature__column">
+					<p class="feature__column__icon"><span class="icon-youtube"></span></p>
+					<h3 class="feature__column__tit title-m">フルHD書き出しにも対応。FacebookやYouTubeで拡散</h3>
+					<p class="feature__column__txt">作った動画は、YouTubeやVimeo、Facebookと連携して公開、拡散が可能。「フルHD」サイズに書き出せば、プロジェクターなどの大画面でも美しい映像が楽しめます。あるいは自分のWebサイトにフルスクリーン表示してサイトにインパクトを持たせるのもアリ！</p>
+					<figure class="feature__column__figure"><img src="_img/feature/ui_4.png" alt="Webサービスと連携"></figure>
+				</div>
+			</div>
+		<!-- /.row --></div>
+	<!-- /.container --></div>
+<!-- #feature.wrapper --></section>
+
+<section id="store" class="wrapper">
+	<div class="store__container">
+		<div class="container">
+			<h2 class="store__release title-ll align-md-c align-lg-c">ただいま、好評発売中</h2>
+			<div class="row">
+				<div class="col-xs-12 col-md-6">
+					<div class="store__set store__set--package store__set--standard">
+						<h3 class="store__set__logo store__set--package__logo"><img src="_img/_common/logo_main.png" alt="PhotoCinema"></h3>
+						<div class="store__set__app store__set--package__app">
+							<p><img src="_img/store/package_standard.jpg" alt="PhotoCinema パッケージ"><br><span class="store__set__info">パッケージ版［定価14,800円＋税］</span>
+						</div>
+						<div class="store__set__and"><span class="icon-plus"></span></div>
+						<div class="store__set__bonus store__set--package__bonus">
+							<p><img src="_img/store/package_bonus.png" alt="ボーナス素材集"><br><span class="store__set__info">ボーナス素材集［DSストア特典／非売品］</span>
+						</div>
+						<div class="store__set__arrow"><img src="_img/store/arrow1.png" width="52"></div>
+						<p class="store__set__price">定価14,800円<small>（税抜）</small>のところ<em class="store__set__price__off">2,000円OFF</em><br>DSストア特別価格<span class="store__set__price__total">12,800円</span>＋税</p>
+						<p class="store__set__cart"><a class="btn btn-standard" href="javascript:doBuy('PHCI-M-NML_DV');"><span class="icon-mac"></span>Mac版を購入</a><a class="btn btn-standard" href="javascript:doBuy('PHCI-W-NML_DV');"><span class="icon-win"></span>Windows版を購入</a></p>
+					</div>
+				</div>
+				<div class="col-xs-12 col-md-6">
+					<div class="store__set store__set--package store__set--wedding">
+						<h3 class="store__set__logo store__set--package__logo"><img src="_img/_common/logo_main_wd_2.png" alt="PhotoCinema Wedding"></h3>
+						<div class="store__set__app store__set--package__app">
+							<p><img src="_img/store/package_wedding.jpg" alt="PhotoCinema Wedding パッケージ"><br><span class="store__set__info">パッケージ版［定価14,800円＋税］</span>
+						</div>
+						<div class="store__set__and"><span class="icon-plus"></span></div>
+						<div class="store__set__bonus store__set--package__bonus">
+							<p><img src="_img/store/package_bonus.png" alt="ボーナス素材集"><br><span class="store__set__info">ボーナス素材集［DSストア特典／非売品］</span>
+						</div>
+						<div class="store__set__arrow"><img src="_img/store/arrow2.png" width="52"></div>
+						<p class="store__set__price">定価14,800円<small>（税抜）</small>のところ<em class="store__set__price__off">2,000円OFF</em><br>DSストア特別価格<span class="store__set__price__total">12,800円</span>＋税</p>
+						<p class="store__set__cart"><a class="btn btn-wedding" href="javascript:doBuy('PHCI-M-WED_DV');"><span class="icon-mac"></span>Mac版を購入</a><a class="btn btn-wedding" href="javascript:doBuy('PHCI-W-WED_DV');"><span class="icon-win"></span>Windows版を購入</a></p>
+					</div>
+				</div>
+			<!-- /.row --></div>
+			<div class="store__dl">
+				<h3 class="title-l align-lg-c space-none">ダウンロード版もご用意しています。</h3>
+				<div class="row">
+					<div class="col-xs-12 col-md-6">
+						<div class="store__set store__set--dl store__set--standard">
+							<h3 class="store__set__logo store__set--dl__logo"><img src="_img/_common/logo_typo.png" alt="PhotoCinema"></h3>
+							<div class="store__set--dl__block">
+								<div class="store__set__app store__set--dl__app">
+									<p><img src="_img/store/dl_standard.png" alt="PhotoCinema ダウンロード版"><br><span class="store__set__info">ダウンロード版<br>［定価14,800円＋税］</span>
+								</div>
+								<div class="store__set__and store__set--dl__and"><span class="icon-plus"></span></div>
+								<div class="store__set__bonus store__set--dl__bonus">
+									<p><img src="_img/store/dl_bonus.jpg" alt="ボーナス素材集"><br><span class="store__set__info">ボーナス素材集<br>［DSストア特典／非売品］</span>
+								</div>
+							</div>
+							<div class="store__set__arrow"><img src="_img/store/arrow1.png" width="52"></div>
+							<p class="store__set__price">定価14,800円<small>（税抜）</small>のところ<em class="store__set__price__off">2,000円OFF</em><br>DSストア特別価格<span class="store__set__price__total">12,800円</span>＋税</p>
+							<p class="store__set__cart"><a class="btn btn-standard" href="javascript:doBuy('PHCI-M-NML_DL');"><span class="icon-mac"></span>Mac版を購入</a><a class="btn btn-standard" href="javascript:doBuy('PHCI-W-NML_DL');"><span class="icon-win"></span>Windows版を購入</a></p>
+						</div>
+					</div>
+					<div class="col-xs-12 col-md-6">
+						<div class="store__set store__set--dl store__set--wedding">
+							<h3 class="store__set__logo store__set--dl__logo"><img src="_img/_common/logo_typo_wd_2.png" alt="PhotoCinema Wedding"></h3>
+							<div class="store__set--dl__block">
+								<div class="store__set__app store__set--dl__app">
+									<p><img src="_img/store/dl_wedding.png" alt="PhotoCinema Wedding ダウンロード版"><br><span class="store__set__info">ダウンロード版<br>［定価14,800円＋税］</span>
+								</div>
+								<div class="store__set__and store__set--dl__and"><span class="icon-plus"></span></div>
+								<div class="store__set__bonus store__set--dl__bonus">
+									<p><img src="_img/store/dl_bonus.jpg" alt="ボーナス素材集"><br><span class="store__set__info">ボーナス素材集<br>［DSストア特典／非売品］</span>
+								</div>
+							</div>
+							<div class="store__set__arrow"><img src="_img/store/arrow2.png" width="52"></div>
+							<p class="store__set__price">定価14,800円<small>（税抜）</small>のところ<em class="store__set__price__off">2,000円OFF</em><br>DSストア特別価格<span class="store__set__price__total">12,800円</span>＋税</p>
+							<p class="store__set__cart"><a class="btn btn-wedding" href="javascript:doBuy('PHCI-M-WED_DL');"><span class="icon-mac"></span>Mac版を購入</a><a class="btn btn-wedding" href="javascript:doBuy('PHCI-W-WED_DL');"><span class="icon-win"></span>Windows版を購入</a></p>
+						</div>
+					</div>
+				<!-- /.row --></div>
+			<!-- /.store__dl --></div>
+			<div class="row">
+				<div class="col-xs-12 col-md-6">
+					<h2 class="title-l space-3l"><small>他店で買うと絶対手に入らない画面スタイルや動画素材が手に入る</small><br>DSストア購入特典 ボーナス素材集</h2>
+					<p>DSストアでしか手に入らないPhotoCinema用素材集です。<br>画像の表示レイアウトを増やす追加スタイルや動画素材、イラストなどのPNG素材などが収録されています。</p>
+				</div>
+				<div class="col-xs-12 col-md-6">
+					<figure class="bonus__sample space-3l"><img src="_img/store/bonus_sample_1.jpg" alt="素材の使用例"></figure>
+				</div>
+			<!-- /.row --></div>
+			<h3>収録例</h3>
+			<div class="row row-compressed">
+				<div class="col-xs-12 col-sm-6 col-md-3">
+					<p class="note space-none"><img src="_img/store/bonus_sample_movie.png" alt="収録例"><br>オーバーレイできる動画など</p>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-3">
+					<p class="note space-none"><img src="_img/store/bonus_sample_frame.png" alt="収録例"><br>フレームなど</p>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-3">
+					<p class="note space-none"><img src="_img/store/bonus_sample_title.png" alt="収録例"><br>タイトルなど</p>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-3">
+					<p class="note space-none"><img src="_img/store/bonus_sample_text.png" alt="収録例"><br>装飾用のテキストなど</p>
+				</div>
+			<!-- /.row --></div>
+			<hr class="space-2l">
+			<div class="row">
+				<div class="col-xs-12 col-md-6">
+					<h2 class="title-l">PhotoCinema 追加テンプレート</h2>
+					<p>PhotoCinema本体に収録されたテンプレート以外にも、もっとバリエーションを増やしたい。そんな方にオススメするのが、追加テンプレートです。</p>
+					<p><a href="http://www.digitalstage.jp/photocinema/store/template.html" class="btn">追加テンプレートを購入する</a></p>
+				</div>
+				<div class="col-xs-12 col-md-6">
+					<figure class="bonus__sample"><img src="_img/store/template_sample.jpg" alt="追加テンプレート例"></figure>
+				</div>
+			<!-- /.row --></div>
+		<!-- /.container --></div>
+	<!-- /.store__container --></div>
+<!-- #package.wrapper --></section>
+
+<section id="cinemabox" class="wrapper">
+	<div class="container">
+		<h2 class="title-ll align-lg-c">PhotoCinema追加テンプレート CiNEMA Box</h2>
+		<p class="align-lg-c">6月18日発売予定　|　ダウンロード商品　|　各2980円＋税</p>
+	<!-- /.container --></div>
+	<div class="cinemabox__container">
+		<div class="row row-tight">
+			<div class="col-xs-12 col-md-6 cinemabox__grid">
+				<div class="cinemabox__column cinemabox__column--report">
+					<a class="cinemabox__column__link" href="https://www.youtube.com/watch?v=fITnGWzM6cY">
+						<div class="cinemabox__column__caption">
+							<h3 class="cinemabox__column__tit">CiNEMA Box vol.1<br><span>REPORT</span></h3>
+							<p class="cinemabox__column__txt">学校や地域のイベント報告をドキュメントタッチに</p>
+						</div>
+						<span class="cinemabox__column__play">Play</span>
+					</a>
+				</div>
+			</div>
+			<div class="col-xs-12 col-md-6 cinemabox__grid">
+				<div class="cinemabox__column cinemabox__column--promotion">
+					<a class="cinemabox__column__link" href="https://www.youtube.com/watch?v=ujU0HveCrx8">
+						<div class="cinemabox__column__caption">
+							<h3 class="cinemabox__column__tit">CiNEMA Box vol.2<br><span>PROMOTION</span></h3>
+							<p class="cinemabox__column__txt">製品やお店のプロモーションに</p>
+						</div>
+						<span class="cinemabox__column__play">Play</span>
+					</a>
+				</div>
+			</div>
+			<div class="col-xs-12 col-md-6 cinemabox__grid">
+				<div class="cinemabox__column cinemabox__column--letter cinemabox__column--wedding">
+					<a class="cinemabox__column__link" href="https://www.youtube.com/watch?v=6MTMbWwxymE">
+						<div class="cinemabox__column__caption">
+							<h3 class="cinemabox__column__tit">CiNEMA Box vol.3<br><span>LETTER for Wedding</span></h3>
+							<p class="cinemabox__column__txt">感謝の気持ちをメッセージムービーに</p>
+						</div>
+						<span class="cinemabox__column__play">Play</span>
+					</a>
+				</div>
+			</div>
+			<div class="col-xs-12 col-md-6 cinemabox__grid">
+				<div class="cinemabox__column cinemabox__column--opening cinemabox__column--wedding">
+					<a class="cinemabox__column__link" href="https://www.youtube.com/watch?v=fGaNcU-ToGY">
+						<div class="cinemabox__column__caption">
+							<h3 class="cinemabox__column__tit">CiNEMA Box vol.4<br><span>OPENING for Wedding</span></h3>
+							<p class="cinemabox__column__txt">式の高揚感を盛り上げるオープニングに</p>
+						</div>
+						<span class="cinemabox__column__play">Play</span>
+					</a>
+				</div>
+			</div>
+		<!-- /.row --></div>
+	<p class="note align-r space-half">※現在開発中のものです。変更が入る可能性があります。</p>
+	<!-- /.scene__container --></div>
+<!-- #.wrapper --></section>
+
+<section id="spec" class="wrapper">
+	<div class="container">
+		<h2 class="content_tit title-m">PhotoCinema 製品仕様</h2>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="table-block">
+					<table class="spec__table table-fixed">
+						<tr>
+							<th>Mac</th>
+							<td>
+								<ul>
+									<li>OS X 10.8.5</li>
+									<li>OS X 10.9.5</li>
+									<li>OS X 10.10.3</li>
+								</ul>
+								<ul class="note">
+									<li>※Server版を除く</li>
+									<li>※日本語環境での動作のみ対応</li>
+									<li>※Mac OSの動作が保証されているApple純正Macのみ対応</li>
+								</ul>
+							</td>
+							<th>Windows</th>
+							<td>
+								<ul>
+									<li>Windows 7 Service Pack 1</li>
+									<li>Windows 8.1</li>
+									<li>（但し64bit版OSでは32bitモードで動作）</li>
+								</ul>
+								<ul class="note">
+									<li>※日本語版での動作のみ対応</li>
+								</ul>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="table-block">
+					<table class="spec__table table-fixed">
+						<tr>
+							<th>共通</th>
+							<td>
+								<ul>
+									<li>CPU Intel Core2Duo 2.4GHz以上（または、同等のスぺックのプロセッサ）</li>
+									<li>メモリ 4GB以上（8GB以上推奨）</li>
+									<li>ディスプレイ1280x800ピクセル以上のモニタ</li>
+									<li>ハードディスク 30GB以上のハードディスク空き容量
+										<ul class="note">
+											<li>※システムドライブにインストールされます。</li>
+											<li>※32bitアプリケーションとなるため、2TBを超えるボリュームへインストールした場合の動作は対象外となります。</li>
+											<li>※外付けハードディスク、取り外し可能なUSBフラッシュメモリ等にインストールした場合の動作は対象外となります。</li>
+											<li>※Macのみ：Mac OS拡張（ジャーナリング）のみ動作</li>
+										</ul>
+									</li>
+									<li>CD-ROMもしくはDVD-ROMドライブ（インストール時／ない場合はダウロードでも可能）</li>
+									<li>インターネット接続環境とご自分のメールアドレス（初回起動時のみ必須）
+										<ul class="note">
+											<li>※オンラインユーザー登録が必須です</li>
+										</ul>
+									</li>
+								</ul>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="table-block">
+					<table class="spec__table table-fixed">
+						<tr>
+							<th>対応ファイル形式</th>
+							<td>
+								<ul>
+									<li>読み込み形式
+										<ul>
+											<li>静止画：JPEG, PNG, GIF</li>
+											<li>動画：MOV, MP4, AVI, M4V, FLV</li>
+											<li>音楽：MP3, AAC, WAV, AIFF（著作権保護ファイルを除く）</li>
+										</ul>
+									</li>
+								</ul>
+								<ul>
+									<li>書き出し形式
+										<ul>
+											<li>動画：MP4, AVI</li>
+										</ul>
+									</li>
+								</ul>
+							</td>
+							<th>その他</th>
+							<td>
+								<ul>
+									<li>※収録されている画像素材・楽曲は、PhotoCinemaでのみご使用いただけます。</li>
+									<li>※インターネット接続環境とご自分のメールアドレス（インストール時および初回起動時）<br>ブロードバンド環境推奨（2Mbps以上の回線速度／インストール時および各サービスへのアップロード時）</li>
+									<li>※Adobe AIR 17.0（ソフト本体の起動に必要／インストーラに同梱）</li>
+									<li>※PhotoCinemaをインストールするには、管理者権限を持ったユーザーアカウントが必要となります。</li>
+									<li>※1製品につき、2台のPCまで使用できます。</li>
+									<!-- <li>※フォトシネマ及び記載されている製品・サービス名は各社の登録商標または商標です。</li> -->
+								</ul>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		<!-- /.row --></div>
+	<!-- /.container --></div>
+<!-- #.wrapper --></section>
+
+<section id="faq" class="wrapper">
+	<div class="container">
+		<h2 class="content_tit title-m">よくあるお問い合わせ</h2>
+		<div class="row">
+			<div class="col-xs-12 col-md-3 col-lg-2">
+				<h3 class="title">商品のご購入に関して</h3>
+			</div>
+			<div class="col-xs-12 col-md-9 col-lg-8">
+				<dl class="accordion dlist dlist-label">
+					<dt>PhotoCinemaの製品ラインナップを教えてください。</dt>
+					<dd>
+						<p>PhotoCinemaの製品ラインナップは下記の通りです。</p>
+						<div class="table-overflow">
+							<table class="table table-line table-compressed">
+								<thead>
+									<tr>
+										<th></th>
+										<th></th>
+										<th>PhotoCinema</th>
+										<th>PhotoCinema<br>Wedding</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th rowspan="2">パッケージ製品</th>
+										<td>Mac版</td>
+										<td class="align-c">○</td>
+										<td class="align-c">○</td>
+									</tr>
+									<tr>
+										<td>Windows版</td>
+										<td class="align-c">○</td>
+										<td class="align-c">○</td>
+									</tr>
+									<tr>
+										<th rowspan="2">ダウンロード製品</th>
+										<td>Mac版</td>
+										<td class="align-c">○</td>
+										<td class="align-c">○</td>
+									</tr>
+									<tr>
+										<td>Windows版</td>
+										<td class="align-c">○</td>
+										<td class="align-c">○</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<ul class="note">
+							<li>※PhotoCinemaはクロスプラットフォーム版のご用意がございません。Windows版かMac版、いずれかの製品をお選びいただくことになります。</li>
+						</ul>
+						<h4 class="title">ダウンロード版について</h4>
+						<p class="space-none">パッケージ版と製品仕様は同じです。</p>
+						<ul class="note space-none">
+							<li>※ダウンロード版は商品の発送がございません。</li>
+						</ul>
+						<h4 class="title">PhotoCinemaとPhotoCinema Weddingの違いについて</h4>
+						<p class="space-none">PhotoCinemaとPhotoCinema Weddingは製品仕様は同一で、音楽の収録数やテンプレートの内容が異なります。</p>
+					</dd>
+					<dt>海外発送は行っていますか？</dt>
+					<dd>
+						<p>海外の発送につきましては、基本的にオンラインストアでの取扱いはございませんが、できる範囲でご対応させていただいております。国内発送とは異なる点がありますので、<a href="mailto:shop@digitalstage.jp">shop@digitalstage.jp</a>宛にご連絡ください。なお、ダウンロード版につきましては発送がございませんので、急ぎご利用を希望の場合はダウンロード版をご注文されることをおすすめいたします。</p>
+					</dd>
+					<dt>追加プラグインは販売していますか？</dt>
+					<dd>
+						<p>ご用意がございます。詳しくは下記のページをご覧ください。<br><a class="link" href="http://www.digitalstage.jp/photocinema/store/template.html">PhotoCinema 追加テンプレート</a></p>
+					</dd>
+					<dt>アカデミック販売はありますか？</dt>
+					<dd>
+						<p>ご用意がございます。詳しくは下記のページをご覧ください。<br><a class="link" href="http://www.digitalstage.jp/store/ac/buy.html">学生・教職員の方へ</a></p>
+					</dd>
+					<dt>購入できる全国の取扱店を教えてください。</dt>
+					<dd>
+						<p>オンラインストアの他、家電量販店等の販売店で購入可能です。<br>取扱販売店に関しましては、下記ページより、お近くの取扱店をご確認いただけます。<br><a class="link" href="http://www.digitalstage.jp/shoplist/">全国販売店一覧</a></p>
+						<p class="note">※在庫状況に関しましては、恐れ入りますが各店舗にご確認ください。</p>
+					</dd>
+				</dl>
+			</div>
+		<!-- /.row --></div>
+		<div class="row">
+			<div class="col-xs-12 col-md-3 col-lg-2">
+				<h3 class="title">よくあるお問い合わせ</h3>
+			</div>
+			<div class="col-xs-12 col-md-9 col-lg-8">
+				<dl class="accordion dlist dlist-label">
+					<dt>動作環境を教えて下さい。（Windows／Mac）</dt>
+					<dd>
+						<p><a href="#spec">動作環境をご覧ください。</a></p>
+					</dd>
+					<dt>PhotoCinemaの特長やLiFE3との違いについて教えてください。</dt>
+					<dd>
+						<h4 class="title">３つの編集モードで、作りたい動画を自由自在に。</h4>
+						<p class="space-none">素材を入れるだけの「おまかせモード」、細部までこだわれる「じぶんでモード」、ストーリー仕立てに作る「シナリオモード」の3つのモードをご用意しました。</p>
+						<h4 class="title">音楽のリズムに合わせて動画編集するタップ機能</h4>
+						<p class="space-none">選んだ曲のテンポに合わせてタップするとBPMを検出して、楽曲の長さを「BPM」に置き換えて動画の長さを分割します。曲のリズムに連動した動画が作れるので、音の展開に合わせた演出が可能に。ゲーム感覚で楽しめる機能です。（タップしないで作る編集方法も選べます。）</p>
+						<h4 class="title">遠方の友人らと一緒に楽しく作れるコラボ機能</h4>
+						<p class="space-none">遠方各地からお祝いメッセージを集めて1本の動画にしたり、 「恋チュン動画」に代表される「コラボダンスムービー」などがスムーズに作成できます。</p>
+						<ul class="note">
+							<li>※PhotoCinemaではLiFE3やLiFE2で作成したフォトシネマを編集することはできません。</li>
+						</ul>
+					</dd>
+					<dt>体験版はありますか？</dt>
+					<dd>
+						<p>現在、準備中です。<br>準備ができましたら、メールマガジンなどでお知らせいたします。</p>
+					</dd>
+					<dt>パッケージ版のPtohoCinemaをドライブのないPCにインストールし使用することはできますか？</dt>
+					<dd>
+						<p>可能です。<br>製品パッケージに同梱されている[ユーザー登録カード]内に「CDドライブがない場合」のインストーラーの入手先（ダウンロード方式）のURLを記載しています。</p>
+					</dd>
+				</dl>
+			</div>
+		<!-- /.row --></div>
+		<div class="row">
+			<div class="col-xs-12 col-md-3 col-lg-2">
+				<h3 class="title">機能や仕様について</h3>
+			</div>
+			<div class="col-xs-12 col-md-9 col-lg-8">
+				<dl class="accordion dlist dlist-label">
+					<dt>複数のPCにインストールして使用できますか？</dt>
+					<dd>
+						<p>1製品につき、2台のPCまで使用できます。</p>
+					</dd>
+					<dt>作成したフォトシネマをYouTubeやFacebookにアップロードできますか？</dt>
+					<dd>
+						<p>フォトシネマのアップロードは可能ですが、Googleアカウント（YouTubeアカウント）、Facebookアカウントの作成が必要となります。上記のアカウントはGoogle社、Facebook社が発行するものとなりますので、デジタルステージではアカウント発行及び、サポートは行っておりません。予めご了承ください。</p>
+					</dd>
+					<dt>使用できる画像形式を教えてください。</dt>
+					<dd>
+						<p>読み込みフォーマットはJPEG、PNG、GIFに対応しております。<br>RAWデータやスキャナーから取り込まれたデータは上記の対応形式に変換する必要があります。</p>
+					</dd>
+					<dt>音楽CDからの音楽の取り込みはできますか？</dt>
+					<dd>
+						<p>PhotoCinemaでは、直接CDから音楽を取り込むことはできません。<br>あらかじめApple社「iTunes」などのリッピングソフトを利用して、MP3、AIFF、WAV、AACフォーマット（著作権保護ファイルを除く）の音楽ファイルに変換することで、PhotoCinemaに取り込みことができるようになります。ご自身で著作権を有する楽曲以外をご使用になる場合は、著作権者の権利を侵害しないよう、十分にご注意ください。</p>
+					</dd>
+					<dt>2曲をつなげる事はできますか？</dt>
+					<dd>
+						<p>PhotoCinemaでは1つのフォトシネマに対して複数の楽曲を選曲することは出来ません。<br>音楽編集ソフトで楽曲を１曲にまとめていただき、その楽曲を使用することで、一つのフォトシネマに複数の楽曲を使用できます。</p>
+					</dd>
+					<dt>写真の枚数やサイズ、ビデオ動画の時間やサイズに制限がありますか？</dt>
+					<dd>
+						<p>特に制限はありません。</p>
+					</dd>
+					<dt>動画は取り込めますか？</dt>
+					<dd>
+						<p>動画を取り込むことが可能です。<br>PhotoCinemaでは、MOV、AVI、M4V、FLVの取り込みが可能となっております。</p>
+					</dd>
+					<dt>作成する動画にナレーションを入れることはできますか？</dt>
+					<dd>
+						<p>PhotoCinema単体ではナレーションを入れることはできません。<br>予めナレーション編集済みの楽曲データを作成して読み込む必要があります。</p>
+					</dd>
+					<dt>作成する動画の長さに制限はありますか？</dt>
+					<dd>
+						<p>1つのフォトシネマの再生時間は10分以内を推奨しております。</p>
+					</dd>
+					<dt>作成したフォトシネマを他の映像編集ソフトで編集することは可能ですか？</dt>
+					<dd>
+						<p>可能です。<br>QuickTime形式、AVI形式のムービーを読み込む事ができる映像編集ソフトであれば、フォトシネマやそれ以外の映像と編集を行うことができます。</p>
+					</dd>
+					<dt>PhotoCinemaで作成したフォトシネマはデジタルステージのその他の製品に取り込むことはできますか？</dt>
+					<dd>
+						<p>フォトシネマをYouTubeにアップロードすることで、BiNDクラウド・BiND7・LiVE2に取り込むことができます。</p>
+					</dd>
+					<dt>書き出しの詳細を教えてください。</dt>
+					<dd>
+						<p>PhotoCinemaでは以下の形式で書き出しができます。</p>
+						<div class="table-block">
+							<table class="table table-line table-compressed">
+								<tbody>
+									<tr>
+										<th>形式</th>
+										<td>MP4 / AVI</td>
+									</tr>
+									<tr>
+										<th>画面比率</th>
+										<td>16:9、4:3、DVサイズ</td>
+									</tr>
+									<tr>
+										<th>サイズ</th>
+										<td>
+											<ul>
+												<li>フルHD - 1080p（1920 x 1080）</li>
+												<li>HD - 720p（1280 x 720）</li>
+												<li>480p（854 x 480）</li>
+												<li>360p（640 x 360）</li>
+												<li>XGA（1024 x 768）</li>
+												<li>SVGA（800 x 600）</li>
+												<li>VGA（640 x 480）</li>
+												<li>DV（720 x 480）</li>
+											</ul>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<p>4:3、DVサイズ時には次の画角設定が選べます</p>
+						<ul class="list space-none">
+							<li>レターボックス</li>
+							<li>ズーム</li>
+							<li>ストレッチ</li>
+						</ul>
+					</dd>
+					<dt>PhotoCinemaでDVDは作成できますか？</dt>
+					<dd>
+						<p>PhotoCinema本体にはDVD作成機能は搭載していないため、別途「DVDオーサリング（作成）ソフト」を使用してください。PhotoCinema Windows版には、DVDオーサリング（作成）ソフトの「MyDVD」（コーレル株式会社）がバンドルされておりますので、別途DVDオーサリング（作成）ソフトを購入しなくても、PhotoCinemaを購入するだけでDVDの作成が行えます。</p>
+						<ul class="note">
+							<li>※『MyDVD』はサービスバンドルソフトとなりますのでサポート対応は行っておりません。</li>
+							<li>※Mac版にはオーサリングソフトをバンドルしていません。</li>
+						</ul>
+					</dd>
+					<dt>PhotoCinemaにバンドルしているオーサリングソフト以外のオーサリングソフトでもDVDの作成は可能ですか？</dt>
+					<dd>
+						<p>QuickTime形式、AVI形式を読み込めるDVDオーサリング（作成）ソフトであればDVDの作成は可能です。</p>
+					</dd>
+					<dt>作成した動画をブルーレイディスクに書き出すことはできますか？</dt>
+					<dd>
+						<p>PhotoCinema本体にはBlu-ray作成機能は搭載していないため、別途「Blu-rayオーサリング（作成）ソフト」を使用してください。</p>
+					</dd>
+					<dt>作成した動画をスマホやタブレットで見ることはできますか？</dt>
+					<dd>
+						<p>QuickTime形式、AVI形式の再生に対応しているスマホやタブレットであれば閲覧可能です。</p>
+					</dd>
+					<dt>ムービーの制作代行や制作物の販売など商用利用はできますか？</dt>
+					<dd>
+						<p>商用利用の目的でご利用可能です。</p>
+						<p class="note space-none">※商用利用専用のライセンスはなく、弊社への申請等も不要です。</p>
+						<p>以下の点につきましてご注意ください。</p>
+						<h4 class="title">ダウンロード版について</h4>
+						<p class="space-none">フォトシネマは「フレーズ」と呼ばれる機能などにあらかじめ画像等が含まれていたり、デザインが施されています。こちらでウォーターマーク（著作権）表記がされているものにつきましては、商用利用の目的でご利用いただくことはできませんので、ご了承ください。</p>
+						<h4 class="title">音楽ファイルの著作権について</h4>
+						<p class="space-none">ご自身で著作権をお持ちではない楽曲を使用する場合、著作権侵害には十分にご注意いただく必要があります。詳細は下記FAQをご参照ください。<br><a class="link" href="http://www.digitalstage.jp/support/photocinema/faq/10/01/003.html">著作権（音楽）に関するご注意</a></p>
+					</dd>
+				</dl>
+			</div>
+		<!-- /.row --></div>
+		<div class="row">
+			<div class="col-xs-12 col-md-3 col-lg-2">
+				<h3 class="title">サポート体制について</h3>
+			</div>
+			<div class="col-xs-12 col-md-9 col-lg-8">
+				<dl class="accordion dlist dlist-label">
+					<dt>購入後のサポート体制を教えてください。</dt>
+					<dd>
+						<h4 class="title">1. サポートサイトの公開</h4>
+						<p class="space-none">製品のマニュアルやよくあるご質問など、様々な情報を提供いたします。</p>
+						<h4 class="title">2. 機能追加／修正プログラムの提供</h4>
+						<p class="space-none">必要に応じ、アップデーターを配布させていただく予定です。</p>
+						<h4 class="title">3. 予期せぬトラブル、ご不明点などの個別の無料メールサポート対応</h4>
+						<p class="space-none">専用のお問い合わせフォームより、サポートセンターにてメールでのお問い合わせを承ります。</p>
+						<ul class="note">
+							<li>※メール以外のサポート（電話・FAX・訪問等）は承っておりませんので、ご了承ください。</li>
+						</ul>
+						<p>ご利用いただく上でのガイドラインとなるサポートポリシーは下記をご参照ください。<br><a class="link" href="http://www.digitalstage.jp/support/archives/2015/05/photocinemapolicy.php">PhotoCinema サポートポリシー</a></p>
+					</dd>
+					<dt>PhotoCinemaの使用許諾契約書を確認したい。</dt>
+					<dd>
+						<p>下記ページよりご確認いただけます。<br><a class="link" href="http://www.digitalstage.jp/licence/photocinema/">PhotoCinema 使用許諾契約書</a></p>
+					</dd>
+				</dl>
+			</div>
+		<!-- /.row --></div>
+	<!-- /.container --></div>
+<!-- #.wrapper --></section>
+
+<section id="widgets" class="wrapper">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-md-4">
+				<h2 class="widgets__tit"><a href="http://www.digitalstage.jp/go/ds_twitter.html" target="_blank">Twitter</a></h2>
+				<div class="widgets__feed widgets__feed--twitter">
+					<a class="twitter-timeline" href="https://twitter.com/dsCrew_jp" height="340" lang="en" data-widget-id="531987838250647552" data-chrome="nofooter noborder">@dsCrew_jpさんのツイート</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+				</div>
+			</div>
+			<div class="col-xs-12 col-md-4">
+				<h2 class="widgets__tit"><a href="http://www.digitalstage.jp/go/ds_facebook.html" target="_blank">Facebook</a></h2>
+				<div class="widgets__feed widgets__feed--fb">
+					<iframe src="http://www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fbindforweblife&amp;width&amp;height=264&amp;colorscheme=light&amp;show_faces=false&amp;header=false&amp;stream=true&amp;show_border=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100%;height:340px;" allowTransparency="true"></iframe>
+				</div>
+			</div>
+			<div class="col-xs-12 col-md-4">
+				<h2 class="widgets__tit"><a href="https://instagram.com/photocinema_jp/" target="_blank">Instagram</a></h2>
+				<div class="widgets__feed widgets__feed--instagram">
+					<iframe style="width:100%;height:340px;" src="http://design.planet.bindcloud.jp/photocinema/social/instagram.html" frameborder="0"></iframe>
+				</div>
+			</div>
+		<!-- /.row --></div>
+	<!-- /.container --></div>
+<!-- #.wrapper --></section>
+
+<header id="header">
+	<nav role="navigation">
+		<h2 class="header__logo"><a href="#top"><span class="header__logo__tit">動画作成ソフト<br></span><img class="header__logo--std" src="_img/_common/logo_typo.png" alt="PhotoCinema（フォトシネマ）"><img class="header__logo--wd" src="_img/_common/logo_typo_wd_1.png" alt="PhotoCinema Wedding（フォトシネマ・ウェディング）"></a></h2>
+		<div class="header__nav">
+			<ul class="header__nav__menu">
+				<li class="header__nav__menu--1"><a href="#templates">テンプレート</a></li>
+				<li class="header__nav__menu--2"><a href="#templates-wedding">テンプレート：ウェディング</a></li>
+				<li class="header__nav__menu--3"><a href="#scene">シーン</a></li>
+				<li class="header__nav__menu--4"><a href="#feature">主な特長</a></li>
+				<li class="header__nav__menu--5"><a href="#store">購入</a></li>
+				<li class="header__nav__menu--6"><a href="#cinemabox">追加テンプレート</a></li>
+				<li class="header__nav__menu--7"><a href="#spec">仕様</a></li>
+				<li class="header__nav__menu--8"><a href="#faq">FAQ</a></li>
+			</ul>
+			<ul class="header__nav__sns">
+				<li class="header__nav__sns--fb"><a href="http://www.digitalstage.jp/go/ds_facebook.html" target="_blank"><span class="icon-fb"></span></a></li>
+				<li class="header__nav__sns--twitter"><a href="http://www.digitalstage.jp/go/ds_twitter.html" target="_blank"><span class="icon-tweet"></span></a></li>
+				<li class="header__nav__sns--insta"><a href="https://instagram.com/photocinema_jp/" target="_blank"><span class="icon-instagram"></span></a></li>
+			</ul>
+		</div>
+	</nav>
+<!--/#header --></header>
+
+<div id="dsGlobal">
+	<p id="dsLogo"><a href="http://www.digitalstage.jp/"><img src="http://www.digitalstage.jp/common/images/glnav/ds.png" width="64" height="40" alt="デジタルステージ"><strong>デジタルステージ</strong></a></p>
+	<div id="dsNav">
+		<ul>
+			<li id="dsProducts"><a class="dsNavParent"><span>製品・サービス</span></a>
+				<ul class="dsNavChild">
+					<li><a href="http://www.digitalstage.jp/product/">製品</a>
+						<ul>
+							<li><a href="http://www.digitalstage.jp/bind/">BiND for WebLiFE*</a></li>
+							<li><a href="http://www.digitalstage.jp/live/">LiVE for WebLiFE*</a></li>
+							<li><a href="http://www.digitalstage.jp/photocinema/">PhotoCinema</a></li>
+							<li><a href="http://www.digitalstage.jp/benchmarkemail/">Benchmark Email</a></li>
+						</ul>
+					</li>
+					<li><a href="http://www.digitalstage.jp/service/">webサービス</a>
+						<ul>
+							<li><a href="http://bindcloud.jp/">BiNDクラウド</a>
+								<ul class="dsLogin">
+									<li><a href="https://mypage.weblife.me/?bindcld=true">ログイン</a></li>
+									<li><a href="https://mypage.weblife.me/bindcld/entry_kiyaku.php">新規申込</a></li>
+								</ul>
+							</li>
+							<li><a href="http://www.digitalstage.jp/weblife/">WebLiFE*サーバー</a>
+								<ul class="dsLogin">
+									<li><a href="https://mypage.weblife.me/">ログイン</a></li>
+									<li><a href="https://mypage.weblife.me/">新規申込</a></li>
+								</ul>
+							</li>
+							<li><a href="http://bindcart.com/">BiNDカート</a>
+								<ul class="dsLogin">
+									<li><a href="https://shops.bindcart.com/">ログイン</a></li>
+									<li><a href="https://shops.bindcart.com/">新規申込</a></li>
+								</ul>
+							</li>
+							<li><a href="http://materials.digitalstage.jp">materials</a></li>
+						</ul>
+					</li>
+					<li><a href="http://www.digitalstage.jp/project/">プロジェクト</a>
+						<ul>
+							<li><a href="http://nicesite.digitalstage.jp">ナイスサイトギャラリー</a></li>
+							<li><a href="http://www.digitalstage.jp/education/">教育機関向けプログラム</a></li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li id="dsSupport"><a class="dsNavParent"><span>サポート</span></a>
+				<ul class="dsNavChild">
+					<li><a href="http://www.digitalstage.jp/support/">サポート</a></li>
+					<li><a href="https://mypage.digitalstage.jp/">マイページサービス</a></li>
+					<li><span class="noLink">Webサービス</span>
+						<ul>
+							<li><a href="http://www.digitalstage.jp/support/bindcloud/">BiNDクラウド</a></li>
+							<li><a href="http://www.digitalstage.jp/support/weblife/">WebLiFE*サーバー</a></li>
+							<li><a href="http://www.digitalstage.jp/support/bindcart/">BiNDカート</a></li>
+						</ul>
+					</li>
+					<li><a href="http://www.digitalstage.jp/support/bind8/">BiND8</a></li>
+					<li><a href="http://www.digitalstage.jp/support/bind7/">BiND7</a></li>
+					<li><a href="http://www.digitalstage.jp/support/live2/">LiVE2</a></li>
+					<li><a href="http://www.digitalstage.jp/support/photocinema/">PhotoCinema</a></li>
+					<li><a href="http://www.digitalstage.jp/support/life3/">LiFE* with PhotoCinema 3</a></li>
+				</ul>
+			</li>
+			<li id="dsStore"><a class="dsNavParent"><span>DSストア</span></a>
+				<ul class="dsNavChild">
+					<li><a href="http://www.digitalstage.jp/store/">DSストア</a></li>
+					<li><a href="http://www.digitalstage.jp/store/method.html">ご利用ガイド</a></li>
+					<li><a href="http://www.digitalstage.jp/bind/store/">BiNDを購入</a>
+						<ul>
+							<li><a href="http://www.digitalstage.jp/store/faq/bind8.html">BiND購入前FAQ</a></li>
+						</ul>
+					</li>
+					<li><a href="http://www.digitalstage.jp/live/store/">LiVEを購入</a>
+						<ul>
+							<li><a href="http://www.digitalstage.jp/store/faq/live2.html">LiVE購入前FAQ</a></li>
+						</ul>
+					</li>
+					<li><a href="http://www.digitalstage.jp/photocinema/store/">PhotoCinemaを購入</a>
+						<ul>
+							<li><a href="http://www.digitalstage.jp/store/faq/photocinema.html">PhotoCinema購入前FAQ</a></li>
+						</ul>
+					</li>
+					<li><a href="http://www.digitalstage.jp/store/ac/">アカデミック</a></li>
+					<li><a href="http://www.digitalstage.jp/introduction/">DS紹介プログラム</a></li>
+				</ul>
+			</li>
+			<li class="btnSNS btnFb"><a href="https://www.facebook.com/bindforweblife" target="_blank"><span>Facebookページ</span></a></li>
+			<li class="btnSNS btnTwt"><a href="http://www.digitalstage.jp/go/ds_twitter.html" target="_blank"><span>Twitterページ</span></a></li>
+			<li class="btnSNS btnShr"><a class="dsNavParent"><span>シェア</span></a>
+				<ul class="dsNavChild">
+					<li><a href="https://twitter.com/share" class="twitter-share-button" data-via="dsCrew_jp" data-lang="ja">ツイート</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></li>
+					<li><script type="text/javascript">
+						var url = encodeURIComponent(location.href);
+						document.write('<iframe src="http://www.facebook.com/plugins/like.php?href=' + url + '&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=true&amp;height=21&amp;appId=283450958475872" scrolling="no" frameborder="0" style="border:none;overflow:hidden;height:21px;" allowTransparency="true"></iframe>');</script></li>
+				</ul>
+			</li>
+		</ul>
+	<!-- //dsNav --></div>
+<!-- //dsGlobal --></div>
+
+<footer id="footer">
+	<!-- <p class="footer__dslogo"><a href="http://www.digitalstage.jp/"><img src="http://www.digitalstage.jp/common/images/glnav/ds.png" width="64" height="40" alt="デジタルステージ"></a></p> -->
+	<p class="footer__right"><small>動画作成ソフト PhotoCinema（フォトシネマ）スペシャルサイト　Copyright &copy; digitalstage inc. All Rights Reserved.</small></p>
+<!--/#footer --></footer>
+
+<script src="http://webfont-pv.weblife.me/accessor/script/fontplus.js?~s-DHkKlphM%3D"></script>
+<script src="_js/plugin/device.js"></script>
+<script src="_js/plugin/jquery.restive.js"></script>
+<script src="_js/plugin/jquery.matchheight.js"></script>
+<script src="_js/plugin/jquery.flexslider.js"></script>
+<script src="_js/plugin/jquery.magnific-popup.js"></script>
+<script src="_js/plugin/YTPlayer/jquery.mb.YTPlayer.js"></script>
+<script src="_js/_load.js?date=20150416"></script>
+
+<script>
+$(document).ready(function(){
+	var isDeviceNonMobile = $.restive.isNonMobile();
+
+	// hero > bg video
+	if (isDeviceNonMobile == true) {
+		$('.hero__player').YTPlayer();
+	};
+
+	// template > flexslider
+	$('.flexslider').flexslider({
+		animation: 'slide',
+		controlNav: 'thumbnails',
+		touch: false
+	});
+
+	// template > popup
+	$('.template__slider__link, .cinemabox__column__link').magnificPopup({
+		type: 'iframe',
+		iframe: {
+			// markup: '',
+			patterns: {
+				youtube: {
+					index: 'youtube.com/',
+					id: 'v=',
+					src: 'https://www.youtube.com/embed/%id%?autoplay=1&rel=0'
+				}
+			}
+		},
+		callbacks: {
+			open: function() {
+				$('.flexslider').flexslider('pause')
+			},
+			close: function() {
+				$('.flexslider').flexslider('play')
+			}
+		}
+	});
+
+	// match height
+	$('.scene__grid').matchHeight({byRow:false});
+	$('.feature__grid').matchHeight();
+	$('.feature__column__txt').matchHeight({byRow:false});
+	$('.store__set--package__logo').matchHeight();
+	$('.cinemabox__grid').matchHeight();
+});
+</script>
+
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-1857369-31', 'auto',{'allowLinker':true});
+ga('require', 'linker');
+ga('linker:autoLink',['photocinema.jp','digitalstage.jp']);
+ga('require', 'displayfeatures');
+ga('require', 'linkid', 'linkid.js');
+ga('send', 'pageview');
+</script>
+</body>
+</html>

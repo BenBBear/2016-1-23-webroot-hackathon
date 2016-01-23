@@ -1,0 +1,294 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="ja">
+
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title>バーベキュー鉄板 - 板金のプロ「大丸製作所」が作るBBQ鉄板</title>
+
+<link rel="stylesheet" href="http://www.daimaru-ss.com/wp/wp-content/themes/CO90227-daimaru/style.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="バーベキュー鉄板 RSS Feed" href="http://www.daimaru-ss.com/feed" />
+<link rel="alternate" type="application/atom+xml" title="バーベキュー鉄板 Atom Feed" href="http://www.daimaru-ss.com/feed/atom" />
+<link rel="pingback" href="http://www.daimaru-ss.com/wp/xmlrpc.php" />
+
+<link rel="stylesheet" href="/css/datepicker.css" type="text/css" media="all">
+<script type="text/javascript" src="/js/prototype.js" charset="shift_jis"></script>
+<script type="text/javascript" src="/js/effects.js" charset="shift_jis"></script>
+<script type="text/javascript" src="/js/datepicker.js" charset="shift_jis"></script>
+<link rel="stylesheet" href="/css/SpryValidationTextField.css" type="text/css">
+<script type="text/javascript" src="/js/SpryValidationTextField.js"></script>
+<script type="text/javascript"><!--
+	Event.observe(window, "load", function(){
+		new DatePicker({
+			relative : "logi-date",
+			language : "ja",
+			disablePastDate : true,
+			disableFutureDate : false,
+			dateFormat : [ ["yyyy", "mm", "dd"], "/" ]
+		});
+	}, false);
+window.onload = function(){
+	new Spry.Widget.ValidationTextField("checkText1", "none", {validateOn:["blur"]});
+	new Spry.Widget.ValidationTextField("checkText2", "zip_code", {format:"zip_custom", pattern:"000-0000", validateOn:["blur"]});
+	new Spry.Widget.ValidationTextField("checkText3", "none", {validateOn:["blur"]});
+	new Spry.Widget.ValidationTextField("checkText4", "none", {validateOn:["blur"]});
+	new Spry.Widget.ValidationTextField("checkText5", "email", {validateOn:["blur"]});
+
+
+// 価格決定プロセス
+	var logi_tanka;
+	var logi_tanka_rent; // レンタルを選択したときの送料
+	// テンプレート側で送料をセットしておく
+	var cf_logitanka = parseInt(document.getElementById("cf-logitanka").value);
+
+	document.getElementById("logitanka").innerHTML = cf_logitanka;
+	document.getElementById("item-buytype").value = 'unchoice';
+
+// 購入・レンタル区別を選択した場合の処理
+	document.getElementById("item-buytype").onchange = function(){
+		var item_buytype = document.getElementById("item-buytype").value;
+		var item_num   = parseInt(document.getElementById("item-num").value) || 0;
+		var logi_price = 0; // 送料合計金額
+	
+		switch (item_buytype){
+			// 未選択
+			case 'unchoice':
+				document.getElementById("item-price").value =      0 ;
+				break;
+			// 購入
+			case 'buy':
+				document.getElementById("item-price").value   = parseInt(document.getElementById("cf-buy").value)   || 0;
+				// 送料が発生
+				cf_logitanka = parseInt(document.getElementById("cf-logitanka").value);
+				document.getElementById("logitanka").innerHTML = cf_logitanka;
+				break;
+			// レンタル1泊
+			case 'rent1':
+				document.getElementById("item-price").value = parseInt(document.getElementById("cf-rent1").value) || 0;
+				// 送料はレンタル用価格
+				document.getElementById("logitanka").innerHTML = cf_logitanka;
+				cf_logitanka = parseInt(document.getElementById("cf-logitanka-rent").value);
+				break;
+			// レンタル2泊
+			case 'rent2':
+				document.getElementById("item-price").value = parseInt(document.getElementById("cf-rent2").value) || 0;
+				// 送料はレンタル用価格
+				document.getElementById("logitanka").innerHTML = cf_logitanka;
+				cf_logitanka = parseInt(document.getElementById("cf-logitanka-rent").value);
+				break;
+			// レンタル3泊
+			case 'rent3':
+				document.getElementById("item-price").value = parseInt(document.getElementById("cf-rent3").value) || 0;
+				// 送料はレンタル用価格
+				document.getElementById("logitanka").innerHTML = cf_logitanka;
+				cf_logitanka = parseInt(document.getElementById("cf-logitanka-rent").value);
+		}
+	
+		logi_price = cf_logitanka * item_num; // 送料の合計
+	
+		var item_price = parseInt(document.getElementById("item-price").value) || 0;
+		document.getElementById("item-price-view").innerHTML = document.getElementById("item-price").value + '円';
+	    document.getElementById("item-sumprice").value = item_price * item_num ;
+		document.getElementById("item-sumprice-view").innerHTML = document.getElementById("item-sumprice").value + '円';
+		document.getElementById("item-logiprice-view").innerHTML = logi_price + '円';	
+		document.getElementById("item-logiprice").value = logi_price;
+		document.getElementById("total-price-view").innerHTML = item_price * item_num + logi_price + '円';	
+		document.getElementById("total-price").value = item_price * item_num + logi_price;
+	}
+  // 数量を選択した場合の処理
+	document.getElementById("item-num").onchange = function(){
+	    var item_buytype = document.getElementById("item-buytype").value;
+	    var item_price = parseInt(document.getElementById("item-price").value) || 0;
+	    var item_num   = parseInt(document.getElementById("item-num"  ).value) || 0;
+		var logi_price = 0; // 送料合計金額
+	
+		// 未選択
+	//	document.getElementById("item-logiprice-view").innerHTML = 0 + '円';	
+	    document.getElementById("item-sumprice").value = item_price * item_num ;
+		document.getElementById("item-sumprice-view").innerHTML = document.getElementById("item-sumprice").value + '円';
+	/*
+		if( item_buytype == 'buy') {
+		  logi_price = logi_tanka * item_num;
+		}
+	*/
+		logi_price = cf_logitanka * item_num;
+		document.getElementById("item-logiprice-view").innerHTML = logi_price + '円';	
+		document.getElementById("item-logiprice").value = logi_price;
+		document.getElementById("total-price-view").innerHTML = item_price * item_num + logi_price + '円';	
+		document.getElementById("total-price").value = item_price * item_num + logi_price;
+	}
+}
+--></script>
+
+<link rel="alternate" type="application/rss+xml" title="バーベキュー鉄板 &raquo; ホーム のコメントのフィード" href="http://www.daimaru-ss.com/feed" />
+<link rel='stylesheet' id='contact-form-7-css'  href='http://www.daimaru-ss.com/wp/wp-content/plugins/contact-form-7/styles.css?ver=2.3.1' type='text/css' media='all' />
+<script type='text/javascript' src='http://www.daimaru-ss.com/wp/wp-includes/js/jquery/jquery.js?ver=1.3.2'></script>
+<link rel='index' title='バーベキュー鉄板' href='http://www.daimaru-ss.com' />
+
+<!-- All in One SEO Pack 1.6.12.1 by Michael Torbert of Semper Fi Web Design[-1,-1] -->
+<link rel="canonical" href="http://www.daimaru-ss.com" />
+<!-- /all in one seo pack -->
+</head>
+<body class="home page page-id-3 page-template page-template-toppage-php">
+<div id="page">
+
+<div id="header">
+	<div id="headerimg">
+        <h1 class="noren"><a href="http://www.daimaru-ss.com"><img src="/top-images/top-noren.jpg" 
+        alt="バーベキュー鉄板 - 板金のプロ「大丸製作所」が作るBBQ鉄板"></a></h1>
+	</div>
+	<div class="headersearch">
+      <form method="get" id="searchform_header" action="http://www.daimaru-ss.com">
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="検索" /> 
+      </form>
+	</div>
+</div>
+<hr />
+<div class="gnavi">
+<ul>
+			<li class="page_item page-item-3 current_page_item"><a href="http://www.daimaru-ss.com" title="ホーム">ホーム</a></li>
+<li class="page_item page-item-16"><a href="http://www.daimaru-ss.com/whatsnew" title="新着情報">新着情報</a></li>
+<li class="page_item page-item-12"><a href="http://www.daimaru-ss.com/products" title="取扱製品">取扱製品</a></li>
+<li class="page_item page-item-140"><a href="http://www.daimaru-ss.com/kodawari" title="鉄板にこだわる">鉄板にこだわる</a></li>
+<li class="page_item page-item-14"><a href="http://www.daimaru-ss.com/payment" title="ご購入の流れ・送料">ご購入の流れ・送料</a></li>
+<li class="page_item page-item-15"><a href="http://www.daimaru-ss.com/inquiry" title="お問い合わせ">お問い合わせ</a></li>
+<li class="page_item page-item-13"><a href="http://www.daimaru-ss.com/asct" title="特定商取引表示">特定商取引表示</a></li>
+</ul>
+</div>
+<div class="clear"></div>
+
+<div class="eyechatch-top" style="text-align:center;"><img src="/top-images/top-main.jpg"></div>	<div id="content" class="narrowcolumn">
+				<div class="post" id="post-3">
+			<div class="entry">
+	
+
+<h2>新着情報</h2>
+<ul class="getposts"><li><a href="http://www.daimaru-ss.com/archives/703">[2014-04-01] 消費税増税に伴う価格改定のお知らせ</a></li></ul>
+<p><span id="more-3"></span></p>
+<h2>買って良かった！大丸製作所の極厚バーベキュー鉄板</h2>
+<p><a href="/products/voic/">ご愛用者様の声</a>が続々届いています。<br />
+<a href="kodawari/comparison/">大丸製作所の極厚バーベキュー鉄板はここが違う</a>をご覧頂くと、なぜ大丸製作所が極厚鉄板にこだわるのか、きっとご納得いただけると思います。</p>
+<h2>取扱製品</h2>
+<p>板厚なんと4.5ミリ～100ミリ！</p>
+<p>既製サイズ以外にも、外寸サイズはご要望にあわせて製作いたします。重量厚モノの製缶板金溶接のスペシャリスト集団の手にかかれば、どんなモノでも製作可能です。他社でマネのできないモノ、突拍子もないアイディアも、製造業のプロにはカタチにする技術力があります。</p>
+<p><a href="/products/p006"><img class="alignnone size-full wp-image-516 top-productimg" title="[006]平形鉄板（大）80X40(板厚4.5ミリ）" src="http://www.daimaru-ss.com/wp/wp-content/uploads/p006.jpg" alt="[006]平形鉄板（大）80X40(板厚4.5ミリ）" width="240" height="180" /></a><a href="/products/"><img class="alignnone size-full wp-image-514 top-productimg" title="平型寸法指定各種" src="http://www.daimaru-ss.com/wp/wp-content/uploads/p004-016.jpg" alt="平型寸法指定各種" width="240" height="180" /></a></p>
+<p><a href="/products/p017"><img class="alignnone size-full wp-image-516 top-productimg" title="[017]特厚９ミリ鉄板74X40（平形）" src="http://www.daimaru-ss.com/wp/wp-content/uploads/p017.jpg" alt="[017]特厚９ミリ鉄板74X40（平形）" width="240" height="180" /></a><a href="/products/p019"><img class="alignnone size-full wp-image-514 top-productimg" title="[019]グリルスタンド （ガスコンロ使用可）" src="http://www.daimaru-ss.com/wp/wp-content/uploads/p019.jpg" alt="[019]グリルスタンド （ガスコンロ使用可）" width="240" height="180" /></a></p>
+<p><a href="/products/p020"><img class="alignnone size-full wp-image-516 top-productimg" title="[020]溝穴つき焼肉鉄板（板厚9 ミリ）" src="http://www.daimaru-ss.com/wp/wp-content/uploads/p020.jpg" alt="[020]溝穴つき焼肉鉄板（板厚9 ミリ）" width="240" height="180" /></a><a href="/products/p023"><img class="alignnone size-full wp-image-514 top-productimg" title="[023]コンビネーション鉄板" src="http://www.daimaru-ss.com/wp/wp-content/uploads/p023.jpg" alt="[023]コンビネーション鉄板" width="240" height="180" /></a></p>
+<p><a href="/products/p024"><img class="alignnone size-full wp-image-516 top-productimg" title="[024]炭焼きグリルスタンド" src="http://www.daimaru-ss.com/wp/wp-content/uploads/p024.jpg" alt="[024]炭焼きグリルスタンド" width="240" height="180" /></a></p>
+
+				
+			</div>
+		</div>
+			</div>
+
+	<div id="sidebar">
+		<ul class="subpages">
+											</ul>
+		<ul>
+			<li id="text-4" class="widget widget_text">			<div class="textwidget"><a href="/asct" title="安心返金保証について"><img src="http://www.daimaru-ss.com/wp/wp-content/uploads/side_henkin.png" alt"安心返金保証について"></a></div>
+		</li><li id="text-3" class="widget widget_text"><h2 class="widgettitle">運営会社</h2>			<div class="textwidget"><a href="/info/" target="_blank"><img src="/info/images/daimaru-s.jpg" alt="株式会社大丸製作所"></a>
+<a href="/palette/" target="_blank">
+<img src="http://www.daimaru-ss.com/wp/wp-content/uploads/palette-banner2.jpg" alt="大丸製作所の金属パレットは最短納期7日、小ロット、修理、再加工、試作の限界に挑戦"></a></div>
+		</li>		<li id="recent-posts-3" class="widget widget_recent_entries">		<h2 class="widgettitle">新着情報</h2>		<ul>
+				<li><a href="http://www.daimaru-ss.com/archives/703" title="消費税増税に伴う価格改定のお知らせ">消費税増税に伴う価格改定のお知らせ </a></li>
+				</ul>
+		</li><li id="pages-3" class="widget widget_pages"><h2 class="widgettitle">サイトマップ</h2>		<ul>
+			<li class="page_item page-item-3 current_page_item"><a href="http://www.daimaru-ss.com" title="ホーム">ホーム</a></li>
+<li class="page_item page-item-16"><a href="http://www.daimaru-ss.com/whatsnew" title="新着情報">新着情報</a></li>
+<li class="page_item page-item-12"><a href="http://www.daimaru-ss.com/products" title="取扱製品">取扱製品</a>
+<ul>
+	<li class="page_item page-item-32"><a href="http://www.daimaru-ss.com/products/p004" title="[004]平形鉄板（小）46X34（板厚4.5ミリ）">[004]平形鉄板（小）46X34（板厚4.5ミリ）</a></li>
+	<li class="page_item page-item-34"><a href="http://www.daimaru-ss.com/products/p005" title="[005]平形鉄板（中）60X40(板厚4.5ミリ）">[005]平形鉄板（中）60X40(板厚4.5ミリ）</a></li>
+	<li class="page_item page-item-36"><a href="http://www.daimaru-ss.com/products/p006" title="[006]平形鉄板（大）80X40(板厚4.5ミリ）">[006]平形鉄板（大）80X40(板厚4.5ミリ）</a></li>
+	<li class="page_item page-item-38"><a href="http://www.daimaru-ss.com/products/p012" title="[012]平形；縦＋横＝80㎝まで（板厚4.5ミリ）">[012]平形；縦＋横＝80㎝まで（板厚4.5ミリ）</a></li>
+	<li class="page_item page-item-40"><a href="http://www.daimaru-ss.com/products/p013" title="[013]平形；縦＋横＝90㎝まで(板厚4.5ミリ）">[013]平形；縦＋横＝90㎝まで(板厚4.5ミリ）</a></li>
+	<li class="page_item page-item-42"><a href="http://www.daimaru-ss.com/products/p014" title="[014]平形；縦＋横＝110㎝まで(板厚4.5ミリ）">[014]平形；縦＋横＝110㎝まで(板厚4.5ミリ）</a></li>
+	<li class="page_item page-item-44"><a href="http://www.daimaru-ss.com/products/p015" title="[015]平形；縦＋横＝130㎝まで(板厚4.5ミリ）">[015]平形；縦＋横＝130㎝まで(板厚4.5ミリ）</a></li>
+	<li class="page_item page-item-49"><a href="http://www.daimaru-ss.com/products/p016" title="[016]平形；縦＋横＝150㎝まで(板厚4.5ミリ）">[016]平形；縦＋横＝150㎝まで(板厚4.5ミリ）</a></li>
+	<li class="page_item page-item-51"><a href="http://www.daimaru-ss.com/products/p017" title="[017]特厚９ミリ鉄板74X40（平形）">[017]特厚９ミリ鉄板74X40（平形）</a></li>
+	<li class="page_item page-item-53"><a href="http://www.daimaru-ss.com/products/p019" title="[019]グリルスタンド （ガスコンロ使用可）">[019]グリルスタンド （ガスコンロ使用可）</a></li>
+	<li class="page_item page-item-55"><a href="http://www.daimaru-ss.com/products/p020" title="[020]溝穴つき焼肉鉄板（板厚9 ミリ）">[020]溝穴つき焼肉鉄板（板厚9 ミリ）</a></li>
+	<li class="page_item page-item-61"><a href="http://www.daimaru-ss.com/products/p023" title="[023]コンビネーション鉄板">[023]コンビネーション鉄板</a></li>
+	<li class="page_item page-item-64"><a href="http://www.daimaru-ss.com/products/p024" title="[024]炭焼きグリルスタンド">[024]炭焼きグリルスタンド</a></li>
+</ul>
+</li>
+<li class="page_item page-item-140"><a href="http://www.daimaru-ss.com/kodawari" title="鉄板にこだわる">鉄板にこだわる</a>
+<ul>
+	<li class="page_item page-item-575"><a href="http://www.daimaru-ss.com/kodawari/voice" title="ご愛用者様の声">ご愛用者様の声</a></li>
+	<li class="page_item page-item-558"><a href="http://www.daimaru-ss.com/kodawari/comparison" title="大丸の極厚バーベキュー鉄板はここが違う">大丸の極厚バーベキュー鉄板はここが違う</a></li>
+</ul>
+</li>
+<li class="page_item page-item-14"><a href="http://www.daimaru-ss.com/payment" title="ご購入の流れ・送料">ご購入の流れ・送料</a></li>
+<li class="page_item page-item-15"><a href="http://www.daimaru-ss.com/inquiry" title="お問い合わせ">お問い合わせ</a></li>
+<li class="page_item page-item-13"><a href="http://www.daimaru-ss.com/asct" title="特定商取引表示">特定商取引表示</a></li>
+		</ul>
+		</li><li id="archives-3" class="widget widget_archive"><h2 class="widgettitle">新着記事［月別］</h2>		<ul>
+			<li><a href='http://www.daimaru-ss.com/archives/date/2014/04' title='2014年4月'>2014年4月</a>&nbsp;(1)</li>
+		</ul>
+</li><li id="calendar-3" class="widget widget_calendar"><h2 class="widgettitle">カレンダー</h2><div id="calendar_wrap"><table id="wp-calendar" summary="カレンダー">
+	<caption>2016年1月</caption>
+	<thead>
+	<tr>
+		<th abbr="月曜日" scope="col" title="月曜日">月</th>
+		<th abbr="火曜日" scope="col" title="火曜日">火</th>
+		<th abbr="水曜日" scope="col" title="水曜日">水</th>
+		<th abbr="木曜日" scope="col" title="木曜日">木</th>
+		<th abbr="金曜日" scope="col" title="金曜日">金</th>
+		<th abbr="土曜日" scope="col" title="土曜日">土</th>
+		<th abbr="日曜日" scope="col" title="日曜日">日</th>
+	</tr>
+	</thead>
+
+	<tfoot>
+	<tr>
+		<td abbr="4月" colspan="3" id="prev"><a href="http://www.daimaru-ss.com/archives/date/2014/04" title="2014年4月の投稿を表示">&laquo; 4月</a></td>
+		<td class="pad">&nbsp;</td>
+		<td colspan="3" id="next" class="pad">&nbsp;</td>
+	</tr>
+	</tfoot>
+
+	<tbody>
+	<tr>
+		<td colspan="4" class="pad">&nbsp;</td><td>1</td><td>2</td><td>3</td>
+	</tr>
+	<tr>
+		<td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td>
+	</tr>
+	<tr>
+		<td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td>
+	</tr>
+	<tr>
+		<td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td id="today">23</td><td>24</td>
+	</tr>
+	<tr>
+		<td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td>
+	</tr>
+	</tbody>
+	</table></div></li>		</ul>
+	</div>
+
+
+
+<hr />
+<div id="footer">
+	<p>
+		バーベキュー鉄板	</p>
+</div>
+</div>
+
+		<script type='text/javascript' src='http://www.daimaru-ss.com/wp/wp-includes/js/jquery/jquery.form.js?ver=2.02m'></script>
+<script type='text/javascript' src='http://www.daimaru-ss.com/wp/wp-content/plugins/contact-form-7/scripts.js?ver=2.3.1'></script>
+
+<!-- tracker added by Ultimate Google Analytics plugin v1.6.0: http://www.oratransplant.nl/uga -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-17463622-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+</body>
+</html>

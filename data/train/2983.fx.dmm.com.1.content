@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:mixi="http://mixi-platform.com/ns#" xml:lang="ja" lang="ja" dir="ltr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="Slurp" content="NOYDIR" />
+<meta name="google-site-verification" content="xWVe0nCfcRWdat8fO-ghHxZ-uuejRXYBXGmJxoQfKyU" />
+<meta property="og:image" content="http://fx.dmm.com/_img/DMM.comlogo.png" />
+<meta name="keywords" content="FX,CFD,取引" />
+<meta name="description" content="FX取引（店頭外国為替証拠金取引）をはじめるならDMM.com証券へ。ドル円スプレッド原則固定0.3銭はもちろん全通貨FX業界最狭水準のスプレッド縮小に挑戦中！お試し用のバーチャル取引もあるので初心者も安心！口座開設のキャッシュバックキャンペーンも実施中！マーケット情報も満載でFX/CFDの快適なオンライントレードを支援します。" />
+<title>FX/CFD取引のDMM.com証券</title>
+<link rel="alternate" media="only screen and (max-width: 640px)" href="http://fx.dmm.com/sp/" />
+<link rel="alternate" media="handheld" href="http://mobile.fx.dmm.com/" />
+<link rel="stylesheet" type="text/css" href="/_css/import.css?0512" media="all" />
+<link rel="stylesheet" type="text/css" href="/_css/detail.css" media="all" />
+<link rel="stylesheet" type="text/css" href="/_css/clearfix.css" media="all" />
+<script type="text/javascript" src="/_js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/_js/custom.jquery.js"></script>
+<script type="text/javascript" src="/_js/siteSearch.js"></script>
+<script type="text/javascript" src="/_js/html5shiv.min.js"></script>
+<script type="text/javascript" src="/_js/friendly.js"></script>
+<script type="text/javascript" src="/_js/handlebars.js"></script>
+<script type="text/javascript" src="/_js/parseRates.js"></script>
+<script type="text/javascript" src="/_js/economicList.js"></script>
+<script type="text/javascript" src="/_js/newsheadlineList.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		parseEconomicList($("#Indicator_topinc"), $("#economicListTmpl").html());
+		parseNewsheadlineList($("#MarketNews"), $("#newsheadlineListTmpl").html());
+		setupRateBlocks();
+	});
+</script>
+
+<script id="realtimeRateTmpl" type="text/x-handlebars-template">
+    <th><img src="/_img/market/rate/lp8pair/flag/{{name}}.png" width="34" height="11" alt="{{name}}">{{cpJpn name}}</th>
+    <td id="{{name}}_BID">{{bid}}</td>
+    <td id="{{name}}_ASK">{{ask}}</td>
+    <td id="{{name}}_SPREAD" class="Spread">{{toSpreadPrice spread}}</td>
+</script>
+
+<script id="marketnewsListTmpl" type="text/x-handlebars-template">
+    {{#each base}}
+    <dl>
+        <dt id="{{this.id}}" class="newstitle" onclick="$(this).siblings().toggle();"><a href="#" onclick="return false;">{{this.title}}<span>【{{this.date}} {{this.time}}】</a></span></dt>
+        <dd style="display: none;">{{safeString this.body}}
+            <div class="copyright">情報提供：<a onclick="window.open(this.href, 'copyright', 'width=640, height=250, menubar=no, toolbar=no, scrollbars=yes'); return false;" href="/market/news/copyright.html">株式会社時事通信社<img src="/_img/logo_jiji.png" width="30" height="28" alt="株式会社時事通信社" style="vertical-align:-6px;"></a><br>Copyright(c) JIJI PRESS LTD., All Rights Reserved. </div>
+         </dd>
+    </dl>
+    {{/each}}
+</script>
+<script id="newsheadlineListTmpl" type="text/x-handlebars-template">
+    {{#each base}}
+    <dt>{{this.date}} {{this.time}}</dt>
+    <dd><a href="/market/news/#{{this.id}}">{{this.title}}</a><img src="/_img/icon_new.gif" alt="NEW" /></dd>
+    {{/each}}
+</script>
+
+<script id="economicListTmpl" type="text/x-handlebars-template">
+    {{#each l}}
+    <dt><img src="/_img/indicatoricon_{{this.starChars}}.png" width="15" height="14" alt="" class="iepngfix"/>{{this.date}} {{this.time}}</dt>
+    <dd>{{this.title}}【 {{eLastCheck this.last}} {{eExpectCheck this.expect}} 】</dd>
+    {{/each}}
+</script>
+
+<script id="rateBoxTmpl" type="text/x-handlebars-template">
+    <td class="PairDisplay" id="pair1">{{repName name}}</td>
+    <td id="{{name}}_BID" style="color:{{toBlueRed16 updown}}">{{bid}}</td>
+    <td id="{{name}}_ASK" style="color:{{toBlueRed16 updown}}">{{ask}}</td>
+    <td class="Spread" id="{{name}}_SPREAD">{{toSpreadPrice spread}}</td>
+    <td id="{{name}}_CHANGE" style="color:{{toBlueRed16 bchg}}">{{bchg}}</td>
+    <td id="{{name}}_BID_HIGH">{{high}}</td>
+    <td id="{{name}}_BID_LOW">{{low}}</td>
+    <td id="{{name}}_BUY_SWAP" style="color:{{toBlueRed16 bswap}}">{{bswap}}</td>
+    <td id="{{name}}_SELL_SWAP" style="color:{{toBlueRed16 aswap}}">{{aswap}}</td>
+</script>
+
+<script id="rateListBoxTmpl" type="text/x-handlebars-template">
+    <td class="Pair">{{repName name}}</td>
+    <td id="{{name}}_BID" style="color:{{toBlueRed16 updown}}">{{bid}}</td>
+    <td id="{{name}}_ASK" style="color:{{toBlueRed16 updown}}">{{ask}}</td>
+    <td class="Spread" id="{{name}}_SPREAD">{{toSpreadPrice spread}}</td>
+    <td id="{{name}}_CHANGE" style="color:{{toBlueRed16 bchg}}">{{bchg}}</td>
+    <td id="{{name}}_BID_HIGH">{{high}}</td>
+    <td id="{{name}}_BID_LOW">{{low}}</td>
+</script>
+
+<script id="rateListBoxSwapTmpl" type="text/x-handlebars-template">
+    <td class="Pair">{{repName name}}</td>
+    <td id="{{name}}_BUY_SWAP" style="color:{{toBlueRed16 bswap}}">{{bswap}}</td>
+    <td id="{{name}}_SELL_SWAP" style="color:{{toBlueRed16 aswap}}">{{aswap}}</td>
+</script>
+
+<script id="MarketRateVisualTmpl" type="text/x-handlebars-template">
+    <td id="{{name}}_BID" style="color:{{toBlueRedMrv updown}}" class="bid"><span class="{{toBlueRed updown}}">{{bid}}</span></td>
+    <td id="{{name}}_SPREAD" class="spread">{{toSpreadPrice spread}}</td>
+    <td id="{{name}}_ASK" style="color:{{toBlueRedMrv updown}}" class="ask"><span class="{{toBlueRed updown}}">{{ask}}</span></td>
+</script>
+
+<script id="rateRangeTmpl" type="text/x-handlebars-template">
+    <div class="Header clearfix"><img src="/_img/market/rate/rate_top/{{toLower name}}.gif" width="90" height="11" alt="{{ name }}"><span id = "{{ name }}DATETIME" class="Time">{{ time }}</span></div>
+    <div class="RateRange">
+      <div class="Bid"> <span class="BidInner"  id ="{{ name }}-bid1">
+        <table width="32" border="0" align="left" cellpadding="0" cellspacing="0">
+          <tbody>
+            <tr>
+              <td width="9" height="11" align="left" valign="top"><img id="{{ name }}_BID_0" src="/_img/market/rate/rate_top/{{toRatePanel bid 0}}.gif" width="{{toRateWidth bid 0}}" height="11" alt="0" border="0"></td>
+              <td width="9" height="11" align="left" valign="top"><img id="{{ name }}_BID_1" src="/_img/market/rate/rate_top/{{toRatePanel bid 1}}.gif" width="{{toRateWidth bid 1}}" height="11" alt="0" border="0"></td>
+              <td width="9" height="11" align="left" valign="top"><img id="{{ name }}_BID_2" src="/_img/market/rate/rate_top/{{toRatePanel bid 2}}.gif" width="{{toRateWidth bid 2}}" height="11" alt="0" border="0"></td>
+              <td width="9" height="11" align="left" valign="top"><img id="{{ name }}_BID_3" src="/_img/market/rate/rate_top/{{toRatePanel bid 3}}.gif" width="{{toRateWidth bid 3}}" height="11" alt="0" border="0"></td>
+            </tr>
+          </tbody>
+        </table>
+        </span> <span class="BidInner" id ="{{ name }}-bid2">
+        <table width="38" border="0" cellspacing="0" cellpadding="0" align="left">
+          <tbody>
+            <tr>
+              <td align="left" valign="bottom"><img id="{{ name }}_BID_4" src="/_img/market/rate/rate_top/{{toRatePanel bid 4}}.gif" width="{{toRateWidth bid 4}}" height="17" alt="0" border="0"></td>
+              <td align="left" valign="bottom"><img id="{{ name }}_BID_5" src="/_img/market/rate/rate_top/{{toRatePanel bid 5}}.gif" width="{{toRateWidth bid 5}}" height="17" alt="0" border="0"></td>
+              <td align="left" valign="bottom"><img id="{{ name }}_BID_6" src="/_img/market/rate/rate_top/{{toRatePanel bid 6}}.gif" width="{{toRateWidth bid 6}}" height="11" alt="0" border="0"></td>
+              <td align="left" valign="bottom"><img id="{{ name }}_BID_4" src="/_img/market/rate/rate_top/{{toRatePanel bid 7}}.gif" width="{{toRateWidth bid 7}}" height="11" alt="0" border="0"></td>
+            </tr>
+          </tbody>
+        </table>
+        </span> </div>
+      <div class="Sp" id ="{{ name }}-spread">
+        <table width="47" border="0" cellspacing="0" cellpadding="0" align="center">
+          <tbody>
+            <tr>
+              <td><img id="{{ name }}_SPREAD_0" src="/_img/market/rate/rate_top/LL_{{toSpreadPanel spread 0}}.gif" width="24" height="28" alt="0" border="0"></td>
+              <td><img id="{{ name }}_SPREAD_1" src="/_img/market/rate/rate_top/LL_dot.gif" width="5" height="28" alt="0" border="0"></td>
+              <td><img id="{{ name }}_SPREAD_2" src="/_img/market/rate/rate_top/LL_{{toSpreadPanel spread 1}}.gif" width="24" height="28" alt="0" border="0"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="Ask"> <span class="AskInner" id ="{{ name }}-ask1">
+        <table width="32" border="0" align="left" cellpadding="0" cellspacing="0">
+          <tbody>
+            <tr>
+              <td width="9" height="11" align="left" valign="top"><img id="{{ name }}_ASK_0" src="/_img/market/rate/rate_top/{{toRatePanel ask 0}}.gif" width="{{toRateWidth ask 0}}" height="11" alt="0" border="0"></td>
+              <td width="9" height="11" align="left" valign="top"><img id="{{ name }}_ASK_1" src="/_img/market/rate/rate_top/{{toRatePanel ask 1}}.gif" width="{{toRateWidth ask 1}}" height="11" alt="0" border="0"></td>
+              <td width="9" height="11" align="left" valign="top"><img id="{{ name }}_ASK_2" src="/_img/market/rate/rate_top/{{toRatePanel ask 2}}.gif" width="{{toRateWidth ask 2}}" height="11" alt="0" border="0"></td>
+              <td width="9" height="11" align="left" valign="top"><img id="{{ name }}_ASK_3" src="/_img/market/rate/rate_top/{{toRatePanel ask 3}}.gif" width="{{toRateWidth ask 3}}" height="11" alt="0" border="0"></td>
+            </tr>
+          </tbody>
+        </table>
+        </span> <span class="AskInner" id ="{{ name }}-ask2">
+        <table width="38" border="0" cellspacing="0" cellpadding="0" align="left">
+          <tbody>
+            <tr>
+              <td align="left" valign="bottom"><img id="{{ name }}_ASK_4" src="/_img/market/rate/rate_top/{{toRatePanel ask 4}}.gif" width="{{toRateWidth ask 4}}" height="17" alt="0" border="0"></td>
+              <td align="left" valign="bottom"><img id="{{ name }}_ASK_5" src="/_img/market/rate/rate_top/{{toRatePanel ask 5}}.gif" width="{{toRateWidth ask 5}}" height="17" alt="0" border="0"></td>
+              <td align="left" valign="bottom"><img id="{{ name }}_ASK_6" src="/_img/market/rate/rate_top/{{toRatePanel ask 6}}.gif" width="{{toRateWidth ask 6}}" height="11" alt="0" border="0"></td>
+              <td align="left" valign="bottom"><img id="{{ name }}_ASK_7" src="/_img/market/rate/rate_top/{{toRatePanel ask 7}}.gif" width="{{toRateWidth ask 7}}" height="11" alt="0" border="0"></td>
+
+            </tr>
+          </tbody>
+        </table>
+        </span> </div>
+    </div>
+    <div id="bottomBox" class="clearfix">
+      <div class="bLeft" id ="{{ name }}-low">
+        <table width="32" border="0" cellspacing="0" cellpadding="0">
+          <!--売り-->
+          <tbody>
+            <tr>
+              <td><table width="47" border="0" align="left" cellpadding="0" cellspacing="0">
+                <tbody>
+                  <tr>
+                    <td width="7" height="11" align="left" valign="top"><img id="{{ name }}_BIDHIGH_7" src="/_img/market/rate/rate_top/{{toSpacer low 0}}.gif" width="{{getSpacerSize low 0}}" height="11"alt="0" border="0" /></td>
+                    <td width="7" height="11" align="left" valign="top"><img id="{{ name }}_BIDHIGH_8" src="/_img/market/rate/rate_top/{{toSpacer low 1}}.gif" width="{{getSpacerSize low 1}}" height="11"alt="0" border="0" /></td>
+                    <td width="7" height="11" align="left" valign="top"><img id="{{ name }}_BIDHIGH_9" src="/_img/market/rate/rate_top/{{toSpacer low 2}}.gif" width="{{getSpacerSize low 2}}" height="11"alt="0" border="0" /></td>
+                    <td width="5" height="11" align="left" valign="top"><img id="{{ name }}_BIDHIGH_10" src="/_img/market/rate/rate_top/{{toSpacer low 3}}.gif" width="{{getSpacerSize low 3}}" height="11" alt="0" border="0" /></td>
+                    <td width="7" height="11" align="left" valign="top"><img id="{{ name }}_BIDHIGH_11" src="/_img/market/rate/rate_top/{{toSpacer low 4}}.gif" width="{{getSpacerSize low 4}}" height="11"alt="0" border="0" /></td>
+                    <td width="7" height="11" align="left" valign="top"><img id="{{ name }}_BIDHIGH_12" src="/_img/market/rate/rate_top/{{toSpacer low 5}}.gif" width="{{getSpacerSize low 5}}" height="11"alt="0" border="0" /></td>
+                    <td width="7" height="11" align="left" valign="top"><img id="{{ name }}_BIDHIGH_13" src="/_img/market/rate/rate_top/{{toSpacer low 6}}.gif" width="{{getSpacerSize low 6}}" height="11"alt="0" border="0" /></td>
+                  </tr>
+                </tbody>
+              </table></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="space"></td>
+            </tr>
+
+            <!--買い-->
+          </tbody>
+        </table>
+      </div>
+      <div class="bRight" id ="{{ name }}-high">
+        <table width="47" border="0" cellspacing="0" cellpadding="0">
+          <!--高値-->
+          <tbody>
+            <tr>
+              <td><table width="47" border="0" align="left" cellpadding="0" cellspacing="0">
+                  <tbody>
+                    <tr>
+                      <td width="7" height="11" align="left" valign="top"><img id="{{ name }}_BIDHIGH_6" src="/_img/market/rate/rate_top/{{toSpacer high 0}}.gif" width="{{getSpacerSize high 0}}" height="11"alt="0" border="0"></td>
+                      <td width="7" height="11" align="left" valign="top"><img id="{{ name }}_BIDHIGH_5" src="/_img/market/rate/rate_top/{{toSpacer high 1}}.gif" width="{{getSpacerSize high 1}}" height="11"alt="0" border="0"></td>
+                      <td width="7" height="11" align="left" valign="top"><img id="{{ name }}_BIDHIGH_4" src="/_img/market/rate/rate_top/{{toSpacer high 2}}.gif" width="{{getSpacerSize high 2}}" height="11"alt="0" border="0"></td>
+                      <td width="5" height="11" align="left" valign="top"><img id="{{ name }}_BIDHIGH_3" src="/_img/market/rate/rate_top/{{toSpacer high 3}}.gif" width="{{getSpacerSize high 3}}" height="11" alt="0" border="0"></td>
+                      <td width="7" height="11" align="left" valign="top"><img id="{{ name }}_BIDHIGH_2" src="/_img/market/rate/rate_top/{{toSpacer high 4}}.gif" width="{{getSpacerSize high 4}}" height="11"alt="0" border="0"></td>
+                      <td width="7" height="11" align="left" valign="top"><img id="{{ name }}_BIDHIGH_1" src="/_img/market/rate/rate_top/{{toSpacer high 5}}.gif" width="{{getSpacerSize high 5}}" height="11"alt="0" border="0"></td>
+                      <td width="7" height="11" align="left" valign="top"><img id="{{ name }}_BIDHIGH_0" src="/_img/market/rate/rate_top/{{toSpacer high 6}}.gif" width="{{getSpacerSize high 6}}" height="11"alt="0" border="0"></td>
+                    </tr>
+                  </tbody>
+                </table></td>
+            </tr>
+
+            <!--安値-->
+          </tbody>
+        </table>
+      </div>
+    </div>
+</script>
+
+
+<script type="text/javascript" src="/_js/swfobject.js"></script>
+<script type="text/javascript" src="/_js/jquery.featureList.js"></script>
+
+<!-- tag0048 -->
+<!-- GTM連動タグ -->
+<script>
+var dataLayer = dataLayer || [];
+(function () {
+var seg_lookup = false;
+var fn = 'im' + ( + new Date);
+window[fn] = function (data) {
+try {
+  var jsStr = JSON.stringify(data);
+  var jsObject = JSON.parse(jsStr);
+} catch (e) {
+  return false;
+}
+dataLayer.push({"itm_sids" : jsObject.segment_eids.join('|')});
+dataLayer.push({"itm_aid" : jsObject.imid});
+dataLayer.push({"event":"im-ready"});
+fo.parentNode && fo.parentNode.removeChild(fo);
+fo = null;
+};
+var fo = document.createElement('script');
+fo.async = true;
+fo.src = '//sync.im-apps.net/imid/segment?token=NfULVgWNfGUxiIkb8Mzm7Q&callback=' + fn;
+var s = document.getElementsByTagName('script') [0];
+s.parentNode.insertBefore(fo, s);
+}());
+</script>
+<!-- End tag0048 -->
+
+<!-- tag0050 -->
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','//connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', '714954485304145');
+fbq('track', "PageView");</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=714954485304145&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+<!-- End tag0050 -->
+
+<!-- Google Analystics// -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-9694445-1");
+pageTracker._setDomainName(".dmm.com");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+<!-- //Google Analystics -->
+</head>
+
+<body>
+<!-- #Tags BodyTop For Pc  -->
+
+<!-- tag0043 131022 -->
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TQ7D8J"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TQ7D8J');</script>
+<!-- End Google Tag Manager -->
+<!-- //tag0043 131022 -->
+<script type="text/javascript">
+//<![CDATA[
+	// headtop for ipad
+	function hdbnr_ipad() {
+	      if (navigator.userAgent.indexOf('iPad') > 0) {
+	            var classname="PageHdBnr" //base.css
+	            var link="/fx/service/tool/advance/";
+	            var img="/_img/bnr_head_ipad.png";
+	            var alt="ipad専用 DMMFX ADVANCE 詳細はこちらから";
+	            document.write("<div class=\"" +classname+ "\"><a href=\"" +link+ "\"><img src=\"" +img+ "\"alt=\"" +alt+ "\" /></a></div>");
+	      }
+	};
+	//call(function hdbnr_ipad)
+	hdbnr_ipad();
+//]]>
+</script>
+
+<div id="DmmHeader">
+<script type="text/javascript"><!--
+document.write($.ajax({type:"GET",url:"/dmmnavi.top",cache: false,async: false}).responseText);
+--></script>
+</div><!-- //DmmHeader-->
+
+<div id="Wrapper">
+	<div id="ContentsWrapper" class="CateSec">
+		<div id="Contents" class="SecTop">
+			<div id="HeaderTxt">
+<!--[if IE 7]><div id="d-ie7"><![endif]-->
+<h1 class="d-scarehead">
+<span class="d-txten">FX/CFD</span>
+<span class="d-txten3">おかげさまで、DMM.com証券は、FX口座数国内【第１位】を獲得しました(※1)</span>
+</h1>
+<div id="S_Plugin" class="SpTopOnly">
+<!--Facebook-->
+<iframe src="//www.facebook.com/v2.0/plugins/like.php?href=http://fx.dmm.com/&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:110px; height:21px;" allowTransparency="true"></iframe>
+<!-- //Facebook -->
+<!--Twitter-->
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://fx.dmm.com/" data-text="FX/CFD取引のDMM.com証券" data-hashtags="FX,為替" data-count="none">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<!--/Twitter-->
+<!--Google-->
+<div class="g-plusone" data-size="tall" data-annotation="none"></div>
+<script type="text/javascript">
+  window.___gcfg = {lang: 'ja'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/platform.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+<!--/Google-->
+</div><!-- //S_Plugin -->
+<!--[if IE 7]></div><![endif]-->
+</div>
+
+			<div id="BillboardArea">
+				<ul id="TopBnr">
+					<li class="FirstBnr"><a href="/fx/service/"><img src="/_img/_top/_bnr/32_755x200.jpg" width="755" height="200" alt ="FX口座数国内第１位" /></a></li>
+					<li><a href="/line/"><img src="/_img/_top/_bnr/31_755x200.png" width="755" height="200" alt ="FX業界初！LINEからカスタマーサポートへお問い合わせができます！" /></a></li>
+					<li><a href="/fx/service/spread/"><img src="/_img/_top/_bnr/26_755x200.png" width="755" height="200" alt ="DMMFXだからできる！業界最狭水準スプレッド!!" /></a></li>
+					<li><a href="/campaign/new/"><img src="/_img/_top/_bnr/02_755x200.png" width="755" height="200" alt ="口座開設キャンペーン 10000円キャッシュバック" /></a></li>
+					<li><a href="/campaign/sp_trade/"><img src="/_img/_top/_bnr/28_755x200.png" width="755" height="200" alt ="スマホで取引キャンペーン 10000円キャッシュバック" /></a></li>
+					<li><a href="/campaign/cp_point/"><img src="/_img/_top/_bnr/18_755x200.png" width="755" height="200" alt ="取引応援ポイントサービス" /></a></li> 
+				</ul>
+				<ul id="TopBnrThumb">
+					<li><a href="javascript:;"><img src="/_img/_top/_bnr/32_115x45.png" width="115" height="45" alt ="FX口座数国内第１位" /></a></li>
+					<li><a href="javascript:;"><img src="/_img/_top/_bnr/31_115x45.png" width="115" height="45" alt ="Lineでサポート" /></a></li>
+					<li><a href="javascript:;"><img src="/_img/_top/_bnr/26_115x45.png" width="115" height="45" alt ="米ドル円0.3銭" /></a></li>
+					<li><a href="javascript:;"><img src="/_img/_top/_bnr/02_115x45.png" width="115" height="45" alt ="口座開設キャンペーン" /></a></li>
+					<li><a href="javascript:;"><img src="/_img/_top/_bnr/28_115x45.png" width="115" height="45" alt ="スマホで取引キャンペーン" /></a></li>
+					<li><a href="javascript:;"><img src="/_img/_top/_bnr/18_115x45.png" width="115" height="45" alt ="取引応援ポイントサービス" /></a></li>
+				</ul>
+				<p class="BnrNotice">※1. 2015年3月末時点。ファイナンス・マグネイト社調べ（2015年3月口座数調査報告書）</p>
+			</div><!-- //BillboardArea -->
+
+
+			<table id="TopNav">
+				<tr>
+					<td class="TopNavFx">
+						<h2><span><a href="/fx/">FX</a></span></h2>
+						<p class="TopNavGuide"><span><img src="/_img/_top/fxfirst_icon.png" width="50" height="45" alt ="" class="iepngfix" /></span>
+						<a href="/fx/aboutfx/">FXはじめてガイド</a></p>
+						<p class="TopNavPoint"><span><img src="/_img/_top/fxpoint_icon.png" width="50" height="45" alt ="" class="iepngfix" /></span>
+						<a href="/fx/service/">DMM FXが選ばれる6つの理由</a></p>
+						<ul>
+							<li><img src="/_img/_top/fx_namber_01.png" width="17" height="16" alt="1" /><a href="/fx/service/spread/">全20通貨ペアが業界最狭水準スプレッド</a></li>
+							<li><img src="/_img/_top/fx_namber_02.png" width="17" height="16" alt="2" /><a href="/campaign/">嬉しい！お得！キャンペーン・サービス</a></li>
+							<li><img src="/_img/_top/fx_namber_03.png" width="17" height="16" alt="3" /><a href="/fx/service/quick/">クイック入金 約370金融機関対応</a></li>
+							<li><img src="/_img/_top/fx_namber_04.png" width="17" height="16" alt="4" /><a href="/fx/service/tool/">抜群の操作性！取引システム</a></li>
+							<li><img src="/_img/_top/fx_namber_05.png" width="17" height="16" alt="5" /><a href="/support/">平日24時間安心サポート</a></li>
+							<li><img src="/_img/_top/fx_namber_06.png" width="17" height="16" alt="6" /><a href="/fx/service/trust/">安心・安全 完全信託保全</a></li>
+						</ul>
+					</td>
+
+					<td class="TopNavSpace">&nbsp;</td>
+					
+					<td class="TopNavCfd">
+						<h2><span><a href="/cfd/">CFD</a></span></h2>
+						<p class="TopNavGuide"><span><img src="../_img/_top/cfdfirst_icon.png" width="50" height="45" alt ="" class="iepngfix" /></span>
+						<a href="/cfd/aboutcfd/">CFDはじめてガイド</a></p>
+						<p class="TopNavPoint"><span><img src="../_img/_top/cfdpoint_icon.png" width="50" height="45" alt ="" class="iepngfix" /></span>
+						<a href="/cfd/service/">DMM CFDが選ばれる6つの理由</a></p>
+						<ul>
+							<li><img src="/_img/_top/cfd_namber_01.png" width="17" height="16" alt="1" /><a href="/cfd/service/lineup/">簡単7銘柄</a></li>
+							<li><img src="/_img/_top/cfd_namber_02.png" width="17" height="16" alt="2" /><a href="/cfd/service/spread/">スプレッド業界最狭水準</a></li>
+							<li><img src="/_img/_top/cfd_namber_03.png" width="17" height="16" alt="3" /><a href="/cfd/service/">取引手数料0円</a></li>
+							<li><img src="/_img/_top/cfd_namber_04.png" width="17" height="16" alt="4" /><a href="/cfd/service/trust/">安心・安全完全信託保全</a></li>
+							<li><img src="/_img/_top/cfd_namber_05.png" width="17" height="16" alt="5" /><a href="/cfd/service/quick/">クイック入金 約370金融機関対応</a></li>
+							<li><img src="/_img/_top/cfd_namber_06.png" width="17" height="16" alt="6" /><a href="/support/">平日24時間安心サポート</a></li>
+						</ul>
+					</td>
+				</tr>
+			</table>
+
+			<div id="TabChange">
+				<ul id="Tabs">
+					<li id="ex-tab1"><a rel="tab1" class="current">お知らせ</a></li>
+					<li id="ex-tab2"><a rel="tab2">経済指標</a></li>
+					<li id="ex-tab4" class="news"><a rel="tab3">ニュース</a></li>
+				</ul>
+				<p class="Rss"><a href="/rss/" target="_blank"><img src="/_img/icon_rss.png" width="40" height="14" alt="rss" /></a></p>
+				<div id="TabWrapp">
+					<div id="NewsBox">
+						<div id="tab1">
+							<iframe width="745" scrolling="no" height="170" frameborder="0" src="/information/press/if_top_news/" title="if_top_news" marginwidth="0"></iframe>
+							<p class="NewsLink"><a href="/information/press/" class="Link">お知らせ一覧へ</a></p>
+						</div>
+					</div>
+					<div id="tab2">
+						            <div id="Indicator">
+                <dl id="Indicator_topinc"></dl>
+            </div>
+
+            <p class="IndicatorScore">重要度　高:<img src="/_img/indicatoricon_big.png" width="15" height="14" alt="" />　中:<img src="/_img/indicatoricon_normal.png" width="15" height="14" alt="" />　低:<img src="/_img/indicatoricon_small.png" width="15" height="14" alt="" /></p>
+            <p class="IndicatorLink"><a href="http://fx.dmm.com/market/indicators/" class="Link">経済指標一覧へ</a></p>					</div>
+					<div id="tab3">
+						<dl id="MarketNews"></dl>
+						<p class="NewsLink"><a href="/market/news/" class="Link"> 為替ニュース一覧へ</a>&nbsp;&nbsp;&nbsp;情報提供：株式会社時事通信社<img src="/_img/logo_jiji.png" width="30" height="28" alt="株式会社時事通信社" style="vertical-align:-6px;"></p>
+					</div>
+				</div><!-- //TabWrapp -->
+			</div><!-- //TabChange -->
+
+			<div id="TabChange2">
+				<p class="GoToRate"><a href="/market/rate/"><img src="/_img/_top/btn_gotorate.png" alt="リアルタイムレート一覧へ" width="170" height="20" /></a></p>
+				<ul id="Tabs2">
+					<li id="ex-tab2-1"><a rel="tab2-1" href="" class="current">ボックス表示</a></li>
+					<li id="ex-tab2-2"><a rel="tab2-2" href="">リスト表示</a></li>
+				</ul>
+				<div id="TabWrapp2">
+					<div id="tab2-1">
+						<iframe scrolling="no" height="280" frameborder="0" width="105%" style="margin:0;padding:0" src="/market/rate/rate_top.html" title="リアルタイム為替レート"></iframe>
+
+						<ul class="SprDiscr">
+							<li>※リーマンショックや東日本大震災のような突発的な事象が発現した場合には、やむを得ずスプレッドが拡大する場合があります。</li>
+							<li>※経済指標の発表前後や相場の変動時等の場合は、スプレッドが拡大する場合があります。経済指標カレンダーは<a href="/market/indicators/">こちら</a>。</li>
+							<li>※注文の成立にともない、スリッページが発生する可能性があります。スリッページとは、一般的に注文時の表示価格と実際の約定価格との差を指していますが、当該価格差については、お客様にとって有利な場合もあれば、不利な場合もあります。</li>
+						</ul>
+
+					</div>
+					<div id="tab2-2">
+						<iframe name="rate_list" style="width:100%;height:390px" src="/market/rate/rate_if.html" frameborder="0" scrolling="no"></iframe>
+
+						<ul class="SprDiscr">
+							<li>※リーマンショックや東日本大震災のような突発的な事象が発現した場合には、やむを得ずスプレッドが拡大する場合があります。</li>
+							<li>※経済指標の発表前後や相場の変動時等の場合は、スプレッドが拡大する場合があります。経済指標カレンダーは<a href="/market/indicators/">こちら</a>。</li>
+							<li>※注文の成立にともない、スリッページが発生する可能性があります。スリッページとは、一般的に注文時の表示価格と実際の約定価格との差を指していますが、当該価格差については、お客様にとって有利な場合もあれば、不利な場合もあります。</li>
+						</ul>
+					</div><!-- //tab2-2 -->
+				</div><!-- //TabWrapp -->
+			</div><!-- //TabChange -->
+
+			<div id="TopFlow">
+				<h2><a href="/support/openingflow/">口座開設までの流れ</a></h2>
+				<div id="OpeningFlow">
+					<img src="/_img/_top/openingflow/openingflow_title.png" width="424" height="62" alt="お取引まで最短翌日" /><br />
+					<div class="stepFlow">
+						<div class="step1">
+							<a href="/support/openingflow/"><img src="/_img/_top/openingflow/step1_openingflow.png" width="170" height="210" alt="口座開設のお申込み" /><br /><span>詳細▶</span></a>
+						</div>
+						<img class="stepArrow" src="/_img/_top/openingflow/step_arrow_img.png" width="72" height="210" alt="" />
+						<div class="step2">
+							<img class="mailSendig" src="/_img/_top/openingflow/mail_sending.png" width="72" height="40" alt="" />
+							<a href="/support/openingflow/personal/"><img src="/_img/_top/openingflow/step2_personal.png" width="170" height="210" alt="本人確認書類の送付" /><br />
+							<span>詳細▶</span></a>
+						</div>
+						<img class="stepArrow" src="/_img/_top/openingflow/step_arrow_examination.png" width="105" height="210" alt="" />
+						<div class="step3">
+							<a href="/fx/aboutfx/tradingflow/"><img src="/_img/_top/openingflow/step3_start.png" width="200" height="210" alt="郵送書類到着後お取引スタート！" /><br />
+							<span>詳細▶</span></a>
+						</div>
+					</div>
+					<hr />
+					<p class="EntryBtn"><a href="/account/entry/">スピード口座開設</a></p><!-- スピード口座開設 -->
+				</div>
+			</div><!-- TopFlow -->
+			<p class="PageTop"><a href="#DmmHeader">ページトップへ</a></p>
+		</div><!-- //Contents -->
+	</div><!-- //ContentsWrapper -->
+
+<script type="text/javascript" src="/_js/jquery.cookie.js"></script>
+<script type="text/javascript" src="/_js/jquery.json-2.4.min.js"></script>
+<script type="text/javascript">
+<!--
+var cookieParam = {
+    expires: 7,  // 7日間有効
+    path: '/',   // 全てのページで有効
+    domain: location.hostname,  // このドメインでのみ有効
+    secure: false // httpの時もサーバにデータを送出する
+}
+var mypage_session = {
+    _db: new Object(),
+    set: function(key, val){
+        mypage_session._db[key] = val;
+    },
+    get: function(key){
+        return mypage_session._db[key];
+    },
+    init: function(){
+        var m = $.cookie('MYPAGE_SESSION');
+        if(m) {
+            mypage_session._db = $.evalJSON(m);
+        }
+    },
+    save: function() {
+        var m = $.toJSON(mypage_session._db?$.extend({params:{cfdStatus: "", fxStatus:""}}, mypage_session._db):[]);
+        $.cookie('MYPAGE_SESSION', m, cookieParam);
+    },
+    destoroy: function() {
+        $.cookie('MYPAGE_SESSION', '', cookieParam);
+        $.removeCookie('MYPAGE_SESSION', {path:'/'});
+    }
+}
+$(function(){
+    mypage_session.init();
+    var params = mypage_session.get('params');
+    if(params && 'fxStatus' in params && params['fxStatus']) {
+        var fxStat = params['fxStatus'];
+        $('.exclude_fxlogin').hide();
+        $('.require_fxlogin').show();
+        $('.require_fxstatus'+fxStat).show();
+    }
+    if(params && 'cfdStatus' in params && params['cfdStatus']) {
+        var cfdStat = params['cfdStatus'];
+        $('.exclude_cfdlogin').hide();
+        $('.require_cfdlogin').show();
+        $('.require_cfdstatus'+cfdStat).show();
+    }
+    if(params && 'fxStatus' in params && 'cfdStatus' in params && params['cfdStatus'] && params['fxStatus']) {
+        $('.exclude_bothlogin').hide();
+        $('.require_bothlogin').show();
+    }
+    if(params) {
+        $('.mypage_logout').click(function(){
+            mypage_session.destoroy();
+            window.location = '/';
+        });
+        var hb_url = 'https://trade.fx.dmm.com/comportal/CheckSession.do';
+        var hb_last = new Date(0);
+        var hb_ajax_req = { url: hb_url, type: "HEAD", async: false, timeout : 2000, dataType: "jsonp",
+            complete: function(xhr, status) {hb_last=xhr.status===200?(new Date()):hb_last;}};
+        $.ajax({ url: hb_url, type: "HEAD", timeout : 5000, dataType: "jsonp", complete: function(xhr, status) {
+            hb_last=xhr.status===200?(new Date()):hb_last;
+            var hb = setInterval((function hb_check(){
+                var intval = 1+(new Date()).getTime() - hb_last.getTime();
+                if(5000 < intval) $.ajax(hb_ajax_req);
+                if(18000000 < intval) {
+                    clearInterval(hb);
+                    // alert('マイページのセッションがタイムアウトしました。');
+                    mypage_session.destoroy();
+                    window.location.reload();
+                    return;
+                }
+                return hb_check;
+            }()), 600000);
+        }});
+    }
+});
+-->
+
+</script>
+<div id="Side">
+
+	<div class="SideEntry exclude_bothlogin">
+		<p class="SideEntryBtn"><a href="/account/entry/">スピード口座開設</a></p>
+		<p class="SideOpeningFlow"><a href="/support/openingflow/">口座開設までの流れ</a></p>
+		<p class="SideRequest"><a href="https://trade.fx.dmm.com/comportalpublic/EnterInformationMaterial.do">資料請求はこちらから</a></p>
+	</div>
+    <script type="text/javascript"><!--
+        $(function(){
+            jQuery.ajax({
+                type: "GET",
+                async: true,
+                cache: false,
+                url: '/_status2',
+                success: function(stat){
+                switch (+stat){
+                    case 2: // メンテナンス中
+                    case 3: // 緊急メンテナンス中
+                        $('#systemLoginButton').append("<img class=\"mainte\" src=\"/_img/side_mainte.png\" width=\"135\" height=\"24\" alt=\"メンテナンス中です。\" />");
+                        $('#systemLoginButton').append("<p>只今、システムメンテナンス中です。詳しくは<a href=\"/maintenance/\">こちら</a>をご覧ください。</p>");
+                        break;
+                    default :
+                        $('#systemLoginButton').append("<p class=\"SideLoginBtn\"><a href=\"https://trade.fx.dmm.com/comportal/Login.do\">共通取引システムログイン</a></p>");
+                        break;
+                }
+                },
+                error: function(xhr, txtStat, err) {
+                    ('#systemLoginButton').append("<p class=\"SideLoginBtn\"><a href=\"https://trade.fx.dmm.com/comportal/Login.do\">共通取引システムログイン</a></p>");
+                }
+            });
+        });
+    --></script>
+
+	<div id="SideLoginBeforeBox" class="exclude_bothlogin">
+		<img src="/_img/side_logintite.png" width="165" height="22" alt="会員ログイン" />
+		<div class="SideMembars" id="systemLoginButton">
+			<img src="/_img/login_dmmfxcfd.png" width="145" height="25" alt="DMM fx/cfd" />
+		</div>
+	</div>
+	<div id="SideLoginAfterBox" class="require_bothlogin" style="display:none;">
+		<img src="/_img/side_logintite.png" width="165" height="22" alt="会員ログイン" />
+		<div class="SideMembars">
+			<p class="MyPageBtn"><a href="/account/info/">マイページ</a></p>
+			<p class="SideLogout"><a href="#" class="mypage_logout" onclick="">ログアウト</a></p>
+		</div>
+	</div>
+
+<div class="SideBanner">
+<p><a href="/support/tax/"><img src="/_img/_bnr/sbnr_tax.png" width="165" height="60" alt="税金と確定申告について" /></a></p> 
+<p><a href="/comic/fx/"><img src="/_img/_bnr/sbnr_comic.png" alt="マンガで分かる!DMMFX" width="165" height="78" /></a></p>
+</div>
+<!-- マーケット情報 -->
+<div id="SideVtBox">
+	<p class="SideMarketBtn"><a href="/market/" >マーケット情報</a></p>
+</div><!-- //マーケット情報 -->
+<!-- FX -->
+<p class="SideFxTtl"><a href="/fx/">FX</a></p>
+<div class="SideFx">
+	<dl>
+		<dt class="SideFxSpread"><a href="/fx/service/">DMM FXの特長</a></dt>
+		<dt class="SideFxAboutfx"><a href="/fx/aboutfx/">FXはじめてガイド</a></dt>
+	</dl>
+</div><!-- //FX -->
+<!-- CFD -->
+<p class="SideCfdTtl"><a href="/cfd/">CFD</a></p>
+<div class="SideCfd">
+	<dl>
+		<dt class="SideCfdSpread"><a href="/cfd/service/">DMM CFDの特長</a></dt>
+		<dt class="SideCfdAboutcfd"><a href="/cfd/aboutcfd/">CFDはじめてガイド</a></dt>
+	</dl>
+</div><!-- //CFD -->
+
+<div class="SideInfo">
+	<dl>
+		<dt class="SideInfoSearch">
+			<div class="accordion" id="slider">
+				<p id="sitesearch"><a href="javascript:void(0)" onclick="return false">サイト内検索</a></p>
+
+				<div id="srchBox">
+					<form action="/sitesearch/" method="get" name="yjSsFrm" id="srch">
+
+						<span id="yjSsMod_1">
+							<span id="yjSsTxtWrap"><input type="text" name="p" id="srchInput" style="width:143px;" /></span>
+							<span id="yjSsBtnWrap"><input class="Button" type="submit" value=" " id="srchBtn" /></span>
+						</span>
+						<input type="hidden" id="ei" name="ei" value="UTF-8">
+						<input type="hidden" id="fr" name="fr" value="cse">
+						<input type="hidden" value="wrt" name="x" />
+						<input type="hidden" id="csid" name="csid" value="JGU_2LVvBLjJhjmQn4yMUxUwIPEU1e4-">
+						<input type="hidden" name="vs" value="fx.dmm.com" id="yjInsite">
+					</form>
+					<img src="http://custom.search.yahoo.co.jp/images/window/JGU_2LVvBLjJhjmQn4yMUxUwIPEU1e4-.gif">
+				</div>
+			</div>
+		</dt>
+		<dt class="SideInfoCamp"><a href="/campaign/">豊富なキャンペーン</a></dt>
+		<dt class="SideInfoSession"><a href="/session/">取引時間</a></dt>
+		<dt class="SideInfoMarket"><a href="/market/">マーケット情報</a></dt>
+		<dt class="SideInfoSupport"><a href="/support/">お客様サポート</a></dt>
+		<dt class="SideInfoPress"><a href="/information/press/">お知らせ</a></dt>
+		<dt class="SideInfoCompany"><a href="/company/outline/">会社概要</a></dt>
+		<dt class="SideInfoRisk"><a href="/policy/risk/">重要事項の説明</a></dt>
+		<dt class="SideInfoSitemap"><a href="/sitemap/">サイトマップ</a></dt>
+		<dt class="SideInfoSupportCheck last"><a href="/support/spec/check/">動作環境確認</a></dt>
+	</dl>
+</div><!-- //SideInfo -->
+
+<div class="SideBanner">
+	<p><a href="/support/mynumber/"><img src="/_img/_bnr/sbnr_mynumber.png" width="165" height="60" alt="2016年度よりマイナンバー制度がスタートします" /></a></p>
+	<p><a href="/fx/service/tool/"><img src="/_img/_bnr/sbnr_tool.png" width="165" height="60" alt="DMMのツールいろいろ" /></a></p>
+	<p><a href="/fx/service/tool/android_dmmfxtrade"><img src="/_img/_bnr/sbnr_android_dmmfxtrade.png" width="165" height="60" alt="Android版　DMMFX Trade" /></a></p>
+	<p><a href="/fx/service/tool/premierechart/"><img src="/_img/_bnr/sbnr_premiere.png" width="165" height="88" alt="プレミアチャート" /></a></p>
+	<p><a href="/fx/service/quick/"><img src="/_img/_bnr/sbnr_quick.png" width="165" height="60" alt="クイック入金 370の金融期間でご利用可能！" /></a></p>
+	<p><a href="/campaign/"><img src="/_img/_bnr/sbnr_campaign.png" width="165" height="60" alt="開催中のキャンペーン" /></a></p>
+	<p><a href="/campaign/cp_point/"><img src="/_img/_bnr/sbnr_point.png" width="165" height="60" alt="取引応援ポイントサービス" /></a></p>
+	<p><a href="/information/faq/"><img src="/_img/_bnr/sbnr_qanda.png" width="165" height="60" alt="よくあるご質問 Q&amp;A" /></a></p>
+	<p><a href="/market/twitterdetail/"><img src="/_img/_bnr/sbnr_twitter.png" width="165" height="60" alt="DMMFX Twitter" /></a></p>
+	<p><a href="http://www.fsa.go.jp/ordinary/kanyu/20090731.html" target="_blank"><img src="/_img/_bnr/sbnr_inducement.png" width="165" height="50" alt="海外無登録業者とのFX取引にご注意ください" /></a></p>
+	<p><a href="http://www.jsda.or.jp/sonaeru/inv_alerts/alearts01/mikoukai/index.html" target="_blank" ><img src="/_img/_bnr/sbnr_mikoukai.png" width="165" height="52" alt="投資詐欺にご用心！" /></a></p>
+	<p><a href="http://www.cas.go.jp/jp/seisaku/bangoseido/" target="_blank"><img src="/_img/_bnr/sbnr_mynumberLink.png" width="165" height="" alt="マイナンバー社会保障・税番号制度" /></a></p>
+</div>
+
+</div><!-- //Side -->
+<script type="text/javascript">
+var slider1=new accordion.slider("slider1");
+slider1.init('slider');
+</script>
+
+</div><!-- //Wrapper -->
+
+<!-- フッター（TOP)/ -->
+<p id="No1Footer">
+<span class="Bold">おかげさまで、DMM.com証券は、FX口座数国内【第１位】を獲得しました(※1)</span><br />
+サービスの大きな特長としては、サービス開始以来、継続的して低スプレッドをご提供していることと、多様な取引チャネルを用意しています。<br />
+パソコン版取引ツールでは、『DMMFX ADVANCE』、簡易発注版の『DMMFX MINI』、モバイルツールの対応も、通常の『iPhoneアプリ版 DMMFX Trade』、『Android版アプリ版 DMMFX Trade』、『DMMFX for smart phone』、『DMMFX for Mobile』を取り揃えてお客様のあらゆるニーズにお応えしています。<br />
+DMM FX口座へリアルタイムに反映されるクイック入金サービスは振込手数料無料、全国約370の金融機関に対応しており、24時間ご入金が可能となっています。<br />
+その他、当社オリジナルの取引応援ポイントが貯まるサービス、取引応援ポイントは直近の取引状況に応じてポイントランクがあり、最大3倍の取引応援ポイントを付与、
+貯まったポイントは現金に換金でき、お取引に利用することも自由に引き出すこともできます。<br />
+当社のFXとCFDが支持されるには理由があります！<br />
+
+ 詳しくは<a href="/fx/service/">「DMM FXの特長」</a>、<a href="/cfd/service/">「DMM CFDの特長」</a>より当社の魅力あるサービスをご覧ください。<br />
+※1. 2015年3月末時点。ファイナンス・マグネイト社調べ（2015年3月口座数調査報告書）</p>
+
+<p id="RiskText">
+<span class="Bold">金融商品取引法/商品先物取引法に基づく表示</span><br />
+<span class="Bold">【当社の概要】</span><br />
+商号等：<a href="http://www.dmmsec.co.jp/" target="_blank" >株式会社DMM.com証券</a><br />
+金融商品取引業者　関東財務局長(金商)第1629号 商品先物取引業者<br />
+加入協会等:日本証券業協会　一般社団法人 金融先物取引業協会　日本商品先物取引協会 日本投資者保護基金<br />
+ 
+<span class="Bold">【投資にかかる手数料、リスク等について】</span><br />
+弊社のホームページに記載の商品等にご投資いただく際には、各商品等に所定の手数料や諸経費等をご負担いただく場合があります。<br />
+また、各商品等には価格の変動等による損失を生じるおそれがあり、預入金額以上の損失が生じる場合もあります。<br />
+WEBサイトに掲載された各商品等へのご投資にかかる手数料等およびリスクについては、当サイトの当該商品等の契約締結前交付書面、または当サイトの「重要事項の説明」に記載されておりますので、当該ページをよくお読みいただき、お取引の最終決定は、お客様のご自身の判断と責任で行ってください。<br />
+<span class="BottomLinks">
+<a href="/policy/risk/">リスク・手数料などの重要事項の説明ページへ</a><br />
+<a href="/">FX・CFDはDMM.com証券</a>
+</span>
+</p>
+
+<div id="FooterBnrs">
+    <div id="Norton">
+        <!-- Symantec Code -->
+        <table width="135" border="0" cellpadding="2" cellspacing="0" title="このマークは、ウェブサイトを安心してご利用いただける安全の証です。">
+        <tr>
+            <td width="135" align="center" valign="top"><script type="text/javascript" src="https://seal.websecurity.norton.com/getseal?host_name=fx.dmm.com&amp;size=L&amp;use_flash=NO&amp;use_transparent=YES&amp;lang=ja"></script><br /> <a href="http://www.symantec.com/ja/jp/ssl-certificates/" target="_blank"  style="color:#000000; text-decoration:none; font:bold 12px 'ＭＳ ゴシック',sans-serif; letter-spacing:.5px; text-align:center; margin:0px; padding:0px;">SSLとは？</a></td>
+        </tr>
+        </table>
+        <!-- /Symantec Code -->
+    </div>
+    <ul id="FooterLinks">
+        <li><a href="http://www.fsa.go.jp/" target="_blank" ><img src="/_img/footer_bnr_fsa.png" width="175" height="50" alt="金融庁" /></a></li>
+        <li><a href="http://www.ffaj.or.jp/" target="_blank" ><img src="/_img/footer_bnr_ffaj.png" width="175" height="50" alt="一般社団法人 金融先物取引業協会" /></a></li>
+        <li><a href="https://www.fsa.go.jp/sesc/watch/" target="_blank" ><img src="/_img/footer_bnr_sesc.png" width="175" height="50" alt="証券取引監視委員会" /></a></li>
+        <li><a href="http://www.finmac.or.jp/" target="_blank" ><img src="/_img/footer_bnr_finmac.png" width="175" height="50" alt="証券・金融商品あっせんセンター" /></a></li>
+        <li><a href="http://www.jsda.or.jp/" target="_blank" ><img src="/_img/footer_bnr_jsda.png" width="175" height="50" alt="日本証券業協会" /></a></li>
+        <li><a href="http://www.shouken-toukei.jp/" target="_blank" ><img src="/_img/footer_bnr_toukei.png" width="175" height="50" alt="証券統計ポータルサイト" /></a></li>
+        <li><a href="http://www.ffaj.or.jp/regulation/" target="_blank" ><img src="/_img/footer_bnr_fx_rule.png" width="175" height="50" alt="FX取引の規制について" /></a></li>
+    </ul>
+</div><!-- //id FooterBners-->
+<div id="DmmFooter">
+<p class="anchor"><a href="#" class="d-txttopback">このページのトップへ</a></p>
+
+<iframe src="http://www.dmm.com/remotepage/-/navi/=/loginoutpath=aHR0cDovL2Z4LmRtbS5jb20v/link=_parent/_jloff=1/page=footer" frameborder="0" height="230" scrolling="no" width="100%" id="Top" style="height:268px;">DMM.comフッター</iframe>
+<!-- [ #DmmFooter ] -->
+</div>
+<!-- /フッター（TOP) -->
+<!-- タグ/ -->
+
+<!--tag 130807-->
+<script type="text/javascript">
+  $(function($){
+    var Host = ((document.location.protocol == "http:") ? "http" : "https");
+    //Fx
+    if($("#ContentsWrapper").hasClass("CateFx")){
+      var tag_id = 3393;
+      var nend_domain = "https://s.nend.net";
+      $(document.body).append($("<!--tag 130807(append)--><script type='text/javascript' src='"+ Host +"://s.nend.net/js/nendRt.js'><\/script>"));
+    }
+  });
+</script>
+<!-- //tag 130807-->
+
+<!--tag 130917-->
+<img width="1" height="1" border="0" src="//tag.ladsp.com/pixel/nm?advertiser_id=00000756" style="display:none" alt="" />
+<!--//tag 130917-->
+
+<!--tag 131106 1401022-->
+<script type="text/javascript">
+$(function($){
+  //MyPage
+  if($("#Contents").hasClass("MyPage")){
+    var URL = "https://secure.leadback.advertising.com/adcedge/lb?site=733844&amp;betr=lb_dmmfx=[+]2[8760]";
+    $(document.body).append($("<!--tag 131106(append)--><img src='"+ URL +"' width='1' height='1' border='0' \/>"));
+  //Others
+  }else{
+    var URL= ((document.location.protocol == "http:") ? "http://leadback.advertising.com/adcedge/lb?site=733844&betr=lb_dmmfx=1[2160]" : "https://secure.leadback.advertising.com/adcedge/lb?site=733844&betr=lb_dmmfx=1[2160]");
+    $(document.body).append($("<!--tag 141023(append)--><img src='"+ URL +"' width='1' height='1' border='0' style='display:none' \/>"));
+  }
+});
+</script>
+<!--//tag 131106 1401022-->
+
+<!--tag 131210-->
+<script type="text/javascript">
+$(function($){
+  var Host = ((document.location.protocol == "http:") ? "http" : "https");
+  //MyPage
+  if($("#Contents").hasClass("MyPage")){
+  imobile_adv_sid = "5579";
+  imobile_adv_cq = "regist=1";
+    $(document.body).append($("<!--tag 131210(append)--><script type='text/javascript' src='" + Host + "://spcnv.i-mobile.co.jp/script/adv.js?20120316'><\/script>"));
+  }
+  //TOP
+  else if($("#Contents").hasClass("SecTop")){
+  imobile_adv_sid = "5579";
+  imobile_adv_cq = "top=1";
+    $(document.body).append($("<!--tag 131210(append)--><script type='text/javascript' src='http://spcnv.i-mobile.co.jp/script/adv.js'><\/script>"));
+  }
+  //2階層目より下
+  else{
+  imobile_adv_sid = "5579";
+  imobile_adv_cq = "detail=1"; 
+    $(document.body).append($("<!--tag 131210(append)--><script type='text/javascript' src='" + Host + "://spcnv.i-mobile.co.jp/script/adv.js?20120316'><\/script>"));
+  }
+});
+</script>
+<!--//tag 131210 -->
+
+
+<!--tag 140213-->
+<script type="text/javascript">
+  var _fout_queue = _fout_queue || {}; if (_fout_queue.segment === void 0) _fout_queue.segment = {};
+  if (_fout_queue.segment.queue === void 0) _fout_queue.segment.queue = [];
+
+  _fout_queue.segment.queue.push({
+    'user_id': 4942
+  });
+
+  (function() {
+    var el = document.createElement('script'); el.type = 'text/javascript'; el.async = true;
+    el.src = (('https:' == document.location.protocol) ? 'https://' : 'http://') + 'js.fout.jp/segmentation.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(el, s);
+  })();
+</script>
+<!--//tag 140213-->
+<!--tag 140311-->
+<script type="text/javascript">
+$(function($){
+  var Host = ((document.location.protocol == "http:") ? "http://" : "https://");
+  var URL = "spcnv.i-mobile.co.jp/script/adv.js";
+  //MyPage(除外)
+  if($("#Contents").hasClass("MyPage")){
+    imobile_adv_sid = "6318";
+    imobile_adv_cq = "other=1";
+    $(document.body).append($("<!--tag 140311_MyPage(append)--><script type='text/javascript' src='" + Host + URL +"'><\/script>"));
+  }
+  //TOP
+  else if($("#Contents").hasClass("SecTop")){
+    imobile_adv_sid = "6318";
+    imobile_adv_cq = "top=1";
+    $(document.body).append($("<!--tag 140311_TOP(append)--><script type='text/javascript' src='" + Host + URL +"'><\/script>"));
+  }
+  //Others
+  else{
+    imobile_adv_sid = "6318";
+    imobile_adv_cq = "detail=1";
+    $(document.body).append($("<!--tag 140311_Others(append)--><script type='text/javascript' src='" + Host + URL +"'><\/script>"));
+  }
+});
+</script>
+<!--//tag 140311--><!-- /タグ -->
+
+
+
+<!--For BigBanner-->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$.featureList(
+			$("#TopBnrThumb li a"),
+			$("#TopBnr li"), { start_item	:	0 }
+		);
+	});
+</script>
+<!--//For BigBanner-->
+<script type="text/javascript">
+//<![CDATA[
+(function() {
+var _analytics_scr = document.createElement('script');
+_analytics_scr.type = 'text/javascript'; _analytics_scr.async = true; _analytics_scr.src = '/_Incapsula_Resource?SWJIYLWA=2977d8d74f63d7f8fedbea018b7a1d05&ns=1';
+var _analytics_elem = document.getElementsByTagName('script')[0]; _analytics_elem.parentNode.insertBefore(_analytics_scr, _analytics_elem);
+})();
+// ]]>
+</script></body>
+</html>

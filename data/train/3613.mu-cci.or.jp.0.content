@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<link rel="shortcut icon" href="/image/favicon.ico">
+<meta charset="utf-8">	
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="村上商工会議所の公式ホームページです。
+経営に関する相談や資金調達、共済制度や福利厚生、人材採用や育成（研修）など、経営者をサポートします。国や村上市への政策提言活動や、中小企業の国際展開（海外進出）を積極的に支援しています。
+会議所にはメリットがいっぱいあります！
+きっと貴事業所に役立つメニューが見つかると思います。
+是非ご活用ください！" />
+<meta name="keywords" content="商工会議所,タウン情報,観光,貸会議室,助成金,村上商工会議所" />
+<!-- ここからOGP -->
+<!-- ここまでOGP -->
+<title>村上商工会議所</title>
+<link rel="stylesheet" type="text/css" href="http://www.mu-cci.or.jp/wp/wp-content/themes/cci/kube.css" />
+<link rel="stylesheet" type="text/css" href="http://www.mu-cci.or.jp/wp/wp-content/themes/cci/style.css" />
+<link rel="stylesheet" type="text/css" href="http://www.mu-cci.or.jp/wp/wp-content/themes/cci/color-enji.css" />
+<link rel="stylesheet" type="text/css" href="http://www.mu-cci.or.jp/wp/wp-content/themes/cci/original.css" />
+<!--[if lt IE 9]><script src="js/html5shiv-printshiv.js" media="all"></script><![endif]-->
+<!--<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&language=ja"></script>-->
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?v=3&sensor=false" charset="UTF-8"></script>
+<script src="http://code.jquery.com/jquery.min.js"></script>
+<script src="http://www.mu-cci.or.jp/wp/wp-content/themes/cci/js/scrolltopcontrol.js" type="text/javascript"></script>
+<script src="http://www.mu-cci.or.jp/wp/wp-content/themes/cci/js/easyResponsiveTabs.js" type="text/javascript"></script>
+<script src="http://www.mu-cci.or.jp/wp/wp-content/themes/cci/js/html5shiv.js" type="text/javascript"></script>
+<script src="http://www.mu-cci.or.jp/wp/wp-content/themes/cci/js/respond.min.js" type="text/javascript"></script>
+<script src="http://www.mu-cci.or.jp/wp/wp-content/themes/cci/js/downloadxml.js" type="text/javascript"></script>
+<!-- 以下、トップページでのみ表示 -->
+<script type="text/javascript">
+//<![CDATA[
+var markers = [];
+//マーカーとラジオボタンの制御をするためのコントローラー
+var markerController = new google.maps.MVCObject();
+      
+function initialize()
+    {
+
+        var map = new google.maps.Map(document.getElementById("map_canvas"),
+        {
+        //center:new google.maps.LatLng(38.762249,140.305792),
+        center:new google.maps.LatLng(36.3142,139.80685),
+        zoom:11,
+		zoomControl:true,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+        
+ 		//ボタンが選択されたら、selectChangedを呼び出す
+        var i, choise = [ 
+          document.getElementById("sightseeing"),
+          document.getElementById("life"),
+          document.getElementById("businesssupport"),
+          document.getElementById("infrastructure"),
+          document.getElementById("event"),
+          document.getElementById("all")
+        ];
+        
+        for (i = 0; i < choise.length; i++) {
+          google.maps.event.addDomListener(choise[i], "click", selectChanged);
+        }
+        
+        downloadUrl("/google-maps-xml/", function(data)
+        {
+        
+        var xmlDoc = xmlParse(data);
+        var markers = xmlDoc.getElementsByTagName("marker");
+
+            for (var i = 0; i < markers.length; i++)
+            {
+            var point = new google.maps.LatLng(
+            parseFloat(markers[i].getAttribute("lat")),
+            parseFloat(markers[i].getAttribute("lng")));
+            
+            var name = markers[i].getAttribute("name");
+            
+            var type = markers[i].getAttribute("type");
+            
+            var sightseeing = markers[i].getAttribute("sightseeing");
+            var life = markers[i].getAttribute("life");
+            var businesssupport = markers[i].getAttribute("businesssupport");
+            var infrastructure = markers[i].getAttribute("infrastructure");
+            var event = markers[i].getAttribute("event");
+            var all = markers[i].getAttribute("all");
+            others = {'sightseeing' : sightseeing, 'life' : life, 'businesssupport' : businesssupport, 'infrastructure' : infrastructure, 'event' : event, 'all' : all};
+            var html = '<div class="infoBox">'+name+''  ;
+
+            //if(type == 2){
+				if(sightseeing == 1){
+					type = 4;
+				} else if(life == 1){
+					type = 5;
+				} else if(businesssupport == 1){
+					type = 6;
+				} else if(infrastructure == 1){
+					type = 7;
+				} else if(event == 1){
+					type = 2;
+				} else {
+					type = 2;	
+				}
+            //}
+
+            var customIcons ={
+     　　　　　  1:{icon: 'http://www.mu-cci.or.jp/wp/wp-content/themes/cci/img/gmarker/map/icon_participating.png'},
+     　　　　　  2:{icon: 'http://www.mu-cci.or.jp/wp/wp-content/themes/cci/img/gmarker/map/icon_sightseeing.png'},
+     　　　　　  3:{icon: 'http://www.mu-cci.or.jp/wp/wp-content/themes/cci/img/gmarker/map/icon_eating.png'},
+     　　　　　  4:{icon: 'http://www.mu-cci.or.jp/wp/wp-content/themes/cci/img/gmarker/map/pin_spa.png'},
+     　　　　　  5:{icon: 'http://www.mu-cci.or.jp/wp/wp-content/themes/cci/img/gmarker/map/pin_food.png'},
+     　　　　　  6:{icon: 'http://www.mu-cci.or.jp/wp/wp-content/themes/cci/img/gmarker/map/pin_nature.png'},
+     　　　　　  7:{icon: 'http://www.mu-cci.or.jp/wp/wp-content/themes/cci/img/gmarker/map/pin_culture.png'}};
+        	var icon = customIcons[type] || {};
+			
+            createMarker(point,html,map,type,name,others,icon);
+            }
+        });
+        
+    }
+
+//ラジオボタンが選択されたら呼び出される。
+ //markerControllerの値を更新すると、各マーカーに select_changedイベントが発生する
+ function selectChanged() {
+   var selectedVal = this.id;
+   markerController.set("select", selectedVal);
+   
+ }
+      
+function createMarker(point,html,map,type,name,others,icon)
+    {
+        
+        var marker = new google.maps.Marker(
+        {
+        map: map,
+        position: point,
+        icon: icon.icon,
+        content: name,
+        others: others,
+        });
+ 		
+        markers.push(marker);
+        
+        google.maps.event.addListener(marker, 'click', function(){
+	        InfoWindow.close();
+	        InfoWindow.setContent(html);
+	        InfoWindow.open(map,marker);
+	        map.panTo(point);
+		
+        });
+        
+        // marker.select = markerController.select として連動させる。
+        // markerController.select が変化すると、marker.select も変化して
+        // select_changedイベントが発生する
+        marker.bindTo("select", markerController, "select");
+        google.maps.event.addListener(marker, "select_changed", changeMarkerVisibility);
+    }
+    
+	//markerControllerのselectプロパティが変化したら、
+    //params.others.[nozomi/hikari/kodama]の値を調べて、
+    //マーカーの表示／非表示を変更する
+    function changeMarkerVisibility() {
+      	
+        //this は markerを指す
+        var marker = this;
+        var others = marker.get("others");
+        
+        //ラジオボタンの選択された値(play / hotspring / around)
+        var selectedVal = marker.get("select");
+
+        //マーカーを作るときに渡したothersプロパティの play / hotspring / aroundプロパティを見て
+        // 1ならtrue、0ならfalse
+        if(others[selectedVal] == 0){
+        	marker.setVisible( false );
+        } else {
+        	marker.setVisible( true );
+        }
+    }
+	
+	var InfoWindow = new google.maps.InfoWindow();
+
+	window.onload=initialize;
+ 
+//]]>
+</script>
+
+<link rel="alternate" type="application/rss+xml" title="村上商工会議所 &raquo; フィード" href="http://www.mu-cci.or.jp/feed/" />
+<link rel="alternate" type="application/rss+xml" title="村上商工会議所 &raquo; コメントフィード" href="http://www.mu-cci.or.jp/comments/feed/" />
+<link rel='stylesheet' id='esl-slideshow-css'  href='http://www.mu-cci.or.jp/wp/wp-content/plugins/easing-slider/css/slideshow.min.css?ver=2.1.4.3' type='text/css' media='all' />
+<link rel='stylesheet' id='tablepress-default-css'  href='http://www.mu-cci.or.jp/wp/wp-content/plugins/tablepress/css/default.min.css?ver=1.4' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack_css-css'  href='http://www.mu-cci.or.jp/wp/wp-content/plugins/jetpack/css/jetpack.css?ver=3.2.1' type='text/css' media='all' />
+<link rel='stylesheet' id='column-styles-css'  href='http://www.mu-cci.or.jp/wp/wp-content/plugins/ultimate-tinymce/css/column-style.css?ver=4.0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-members-css'  href='http://www.mu-cci.or.jp/wp/wp-content/plugins/wp-members/css/wp-members-2012.css?ver=4.0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-pagenavi-css'  href='http://www.mu-cci.or.jp/wp/wp-content/plugins/wp-pagenavi/pagenavi-css.css?ver=2.70' type='text/css' media='all' />
+<script type='text/javascript' src='http://www.mu-cci.or.jp/wp/wp-includes/js/jquery/jquery.js?ver=1.11.1'></script>
+<script type='text/javascript' src='http://www.mu-cci.or.jp/wp/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+<script type='text/javascript' src='http://www.mu-cci.or.jp/wp/wp-content/plugins/easing-slider/js/slideshow.min.js?ver=2.1.4.3'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.mu-cci.or.jp/wp/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.mu-cci.or.jp/wp/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 4.0.1" />
+<link rel='shortlink' href='http://wp.me/4ZvVa' />
+ <style type="text/css"> .easingsliderlite { } .easingsliderlite .easingsliderlite-arrows.easingsliderlite-next, .easingsliderlite .easingsliderlite-arrows.easingsliderlite-prev { } .easingsliderlite .easingsliderlite-arrows.easingsliderlite-next { background-image: url(http://cci.sample02.biznavi.jp/wp/wp-content/plugins/easing-slider/images/slideshow_arrow_next.png); } .easingsliderlite .easingsliderlite-arrows.easingsliderlite-prev { background-image: url(http://cci.sample02.biznavi.jp/wp/wp-content/plugins/easing-slider/images/slideshow_arrow_prev.png); } .easingsliderlite .easingsliderlite-pagination .easingsliderlite-icon { } .easingsliderlite .easingsliderlite-pagination .easingsliderlite-icon.inactive { background-image: url(http://cci.sample02.biznavi.jp/wp/wp-content/plugins/easing-slider/images/slideshow_icon_inactive.png); } .easingsliderlite .easingsliderlite-pagination .easingsliderlite-icon.active { background-image: url(http://cci.sample02.biznavi.jp/wp/wp-content/plugins/easing-slider/images/slideshow_icon_active.png); } </style> <!-- WP-Members version 2.8.6, available at http://rocketgeek.com/wp-members -->
+<!-- BEGIN: WP-OGP costomized by http://inspire-tech.jp Version: 0.0.3  -->
+<meta property="og:title" content="村上商工会議所" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="http://www.mu-cci.or.jp/wp/wp-content/themes/cci/img/default.jpg" />
+<meta property="og:url" content="http://www.mu-cci.or.jp" />
+<meta property="og:site_name" content="村上商工会議所" />
+<meta property="fb:admins" content="209485989192225" />
+<!--fb:app_id value was blank-->
+<meta property="og:description" content="～会議所で聞く 知る 伸ばす 企業の進路～" />
+<!-- END: WP-OGP costomized by http://inspire-tech.jp Version: 0.0.3 -->
+<!-- BEGIN: WP Social Bookmarking Light -->
+<script type="text/javascript" src="http://connect.facebook.net/ja_JP/all.js#xfbml=1"></script>
+<style type="text/css">
+.wp_social_bookmarking_light{
+    border: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+.wp_social_bookmarking_light div{
+    float: left !important;
+    border: 0 !important;
+    padding: 0 !important;
+    margin: 0 5px 0px 0 !important;
+    height: 27px !important;
+    text-indent: 0 !important;
+}
+.wp_social_bookmarking_light img{
+    border: 0 !important;
+    padding: 0;
+    margin: 0;
+    vertical-align: top !important;
+}
+.wp_social_bookmarking_light_clear{
+    clear: both !important;
+}
+.wsbl_twitter{
+    width: 100px;
+}</style>
+<!-- END: WP Social Bookmarking Light -->
+<style type="text/css">.broken_link, a.broken_link {
+	text-decoration: line-through;
+}</style><meta name="google-translate-customization" content="4b2d16d3e616ce2e-c7c3fa8399d47cbb-g59a6b10a7a66fc53-15"></meta>
+</head>
+<body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="wrapper">
+<header id="header" class="group">
+<div class="units-row units-split">
+<div class="unit-50"><h1>～会議所で聞く 知る 伸ばす 企業の進路～</h1></div>
+<div class="unit-50">
+<p class="admission"><a href="http://www.mu-cci.or.jp/admission"><span><img src="http://www.mu-cci.or.jp/wp/wp-content/themes/cci/img/icon_admission.png" /></span>ご入会はこちらから</a></p>
+<div class="sns"><div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'ja', includedLanguages: 'en,es,fr,it,ko,ru,zh-CN,zh-TW', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script></div>
+<div class='wp_social_bookmarking_light'><div class="wsbl_facebook_like"><fb:like href="http://www.mu-cci.or.jp/latest_information/201601133781/" send="false" layout="button_count" width="100" show_faces="false" action="like" colorscheme="light" font=""></fb:like></div><div class="wsbl_facebook_send"><fb:send href="http://www.mu-cci.or.jp/latest_information/201601133781/" font="" colorscheme="light"></fb:send></div><div class="wsbl_facebook"><a href='http://www.facebook.com/share.php?u=http%3A%2F%2Fwww.mu-cci.or.jp%2Flatest_information%2F201601133781%2F&t=%E3%80%8C%E3%82%80%E3%82%89%E3%81%8B%E3%81%BF%E5%95%86%E5%B7%A5%E4%BC%9A%E8%AD%B0%E6%89%80%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9%E3%80%8D%E3%83%BB%E7%AC%AC471%E5%8F%B7%28%E5%B9%B3%E6%88%9028%E5%B9%B41%E6%9C%88%E5%8F%B7%29%E3%82%92%E7%99%BA%E8%A1%8C' title='Share on Facebook' rel=nofollow class='wp_social_bookmarking_light_a' target=_blank><img src='http://www.mu-cci.or.jp/wp/wp-content/plugins/wp-social-bookmarking-light/images/facebook.png' alt='Share on Facebook' title='Share on Facebook' width='16' height='16' class='wp_social_bookmarking_light_img' /></a></div><div class="wsbl_google_plus_one"><g:plusone size="medium" annotation="none" href="http://www.mu-cci.or.jp/latest_information/201601133781/" ></g:plusone></div><div class="wsbl_twitter"><iframe allowtransparency="true" frameborder="0" scrolling="no" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fwww.mu-cci.or.jp%2Flatest_information%2F201601133781%2F&amp;text=%E3%80%8C%E3%82%80%E3%82%89%E3%81%8B%E3%81%BF%E5%95%86%E5%B7%A5%E4%BC%9A%E8%AD%B0%E6%89%80%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9%E3%80%8D%E3%83%BB%E7%AC%AC471%E5%8F%B7%28%E5%B9%B3%E6%88%9028%E5%B9%B41%E6%9C%88%E5%8F%B7%29%E3%82%92%E7%99%BA%E8%A1%8C&amp;lang=en&amp;count=horizontal" style="width:130px; height:20px;"></iframe></div><div class="wsbl_line"><a href='http://line.naver.jp/R/msg/text/?「むらかみ商工会議所ニュース」・第471号(平成28年1月号)を発行%0D%0Ahttp://www.mu-cci.or.jp/latest_information/201601133781/' title='LINEで送る' rel=nofollow class='wp_social_bookmarking_light_a' target=_blank><img src='http://www.mu-cci.or.jp/wp/wp-content/plugins/wp-social-bookmarking-light/images/line88x20.png' alt='LINEで送る' title='LINEで送る' width='88' height='20' class='wp_social_bookmarking_light_img' /></a></div></div><br class='wp_social_bookmarking_light_clear' />
+</div>
+</div>
+
+<ul class="units-row headerBox">
+<li class="unit-50 logo">
+<dl>
+<dt><a href="http://www.mu-cci.or.jp"><img src="http://www.mu-cci.or.jp/wp/wp-content/themes/cci/img/icon_logo.gif" /></dt>
+<dd><a href="http://www.mu-cci.or.jp">
+
+村上商工会議所
+<span>The Murakami Chamber of Commerce and Industy</span></a></dd>
+
+</dl>
+</li>
+
+<li class="unit-50 subHeaderBox">
+<span>mail ： cci@mu-cci.or.jp</span>
+<div class="units-row units-row-end">
+<div class="unit-50 tel"><img src="http://www.mu-cci.or.jp/wp/wp-content/themes/cci/img/icon_contact-tel.gif" /><span>0254-53-4257</span></div>
+<div class="unit-50 fax"><img src="http://www.mu-cci.or.jp/wp/wp-content/themes/cci/img/icon_contact-fax.gif" /><span>0254-53-0172</span></div>
+</div>
+</li>
+
+
+</ul>
+<nav class="nav-g globalnavi"><ul id="menu-%e4%b8%8a-%e3%83%a1%e3%82%a4%e3%83%b3%e3%83%a1%e3%83%8b%e3%83%a5%e3%83%bc" class="units-row units-split"><li id="menu-item-385" class="unit-20 menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-385"><a href="http://www.mu-cci.or.jp/">トップページ</a></li>
+<li id="menu-item-550" class="unit-20 menu-item menu-item-type-taxonomy menu-item-object-category menu-item-550"><a href="http://www.mu-cci.or.jp/category/seminar/">イベント・セミナー</a></li>
+<li id="menu-item-499" class="unit-20 menu-item menu-item-type-post_type menu-item-object-page menu-item-499"><a href="http://www.mu-cci.or.jp/cci-info/kaiin/">会員事業所リンク</a></li>
+<li id="menu-item-436" class="unit-20 menu-item menu-item-type-post_type menu-item-object-page menu-item-436"><a href="http://www.mu-cci.or.jp/assay/">検定情報</a></li>
+<li id="menu-item-353" class="unit-20 menu-item menu-item-type-post_type menu-item-object-page menu-item-353"><a href="http://www.mu-cci.or.jp/link/">リンク集</a></li>
+</ul></nav></header>
+<div class="units-container">
+<div class="units-row">
+<div class="unit-25 leftNav">
+<nav class='members nav-v'>			<div class="textwidget"><iframe src="http://www.google.com/calendar/embed?
+showTitle=0&amp;showTabs=0&amp;showCalendars=0&amp;showPrint=0&amp;showTz=0&amp;height=160&amp;wkst=1&amp;bgcolor=%23ffffff&amp;color=%23B1365F&amp;src=event%40sake3.com&amp;ctz=Asia%2FTokyo" style=" border-width:0 ;" width="205" height="160" frameborder="0" scrolling="no"></iframe>
+</div>
+		</nav><nav class='members nav-v'><h2>村上商工会議所について</h2>
+<div class="menu-%e5%b7%a6-%e6%9d%91%e4%b8%8a%e5%95%86%e5%b7%a5%e4%bc%9a%e8%ad%b0%e6%89%80%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6-container"><ul id="menu-%e5%b7%a6-%e6%9d%91%e4%b8%8a%e5%95%86%e5%b7%a5%e4%bc%9a%e8%ad%b0%e6%89%80%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6" class="menu"><li id="menu-item-373" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-373"><a href="http://www.mu-cci.or.jp/cci-info/guidance/">当所の概要</a></li>
+<li id="menu-item-376" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-376"><a href="http://www.mu-cci.or.jp/cci-info/yakuin/">役員･議員紹介</a></li>
+<li id="menu-item-498" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-498"><a href="http://www.mu-cci.or.jp/cci-info/kaiin/">会員事業所リンク</a></li>
+<li id="menu-item-377" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-377"><a href="http://www.mu-cci.or.jp/cci-info/staff/">職員紹介</a></li>
+<li id="menu-item-378" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-378"><a href="http://www.mu-cci.or.jp/cci-info/conference_room/">貸会議室</a></li>
+<li id="menu-item-381" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-381"><a href="http://www.mu-cci.or.jp/cci-info/disclosure/">情報公開･活動状況</a></li>
+<li id="menu-item-802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-802"><a href="http://www.mu-cci.or.jp/cci-info/privacy_policy/">個人情報保護方針</a></li>
+<li id="menu-item-1398" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1398"><a href="http://www.mu-cci.or.jp/admission/">ご入会案内</a></li>
+<li id="menu-item-380" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-380"><a href="http://www.mu-cci.or.jp/cci-info/contact/">お問い合わせ</a></li>
+</ul></div></nav><nav class='members nav-v'><h2>経営情報</h2>
+<div class="menu-%e5%b7%a6-%e7%b5%8c%e5%96%b6%e6%83%85%e5%a0%b1-container"><ul id="menu-%e5%b7%a6-%e7%b5%8c%e5%96%b6%e6%83%85%e5%a0%b1" class="menu"><li id="menu-item-551" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-551"><a href="http://www.mu-cci.or.jp/category/seminar/">イベント･セミナー</a></li>
+<li id="menu-item-157" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-157"><a href="http://www.mu-cci.or.jp/financing/">金融</a></li>
+<li id="menu-item-607" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-607"><a href="http://www.mu-cci.or.jp/roumu/">労務・雇用</a></li>
+<li id="menu-item-608" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-608"><a href="http://www.mu-cci.or.jp/tax-2/">税務</a></li>
+<li id="menu-item-609" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-609"><a href="http://www.mu-cci.or.jp/pr/">販売促進</a></li>
+<li id="menu-item-969" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-969"><a href="http://www.mu-cci.or.jp/pr/premium/">・プレミアム商品券</a></li>
+<li id="menu-item-1739" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1739"><a href="http://www.mu-cci.or.jp/pr/coupon/">・クーポンマガジン</a></li>
+<li id="menu-item-970" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-970"><a href="http://www.mu-cci.or.jp/pr/machizemi/">・まちゼミ</a></li>
+<li id="menu-item-3617" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3617"><a href="http://www.mu-cci.or.jp/pr/bar/">・越後むらかみバル街</a></li>
+<li id="menu-item-972" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-972"><a href="http://www.mu-cci.or.jp/pr/dm/">・チラシ配送代行</a></li>
+<li id="menu-item-613" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-613"><a href="http://www.mu-cci.or.jp/kyousai/">共済・保険</a></li>
+<li id="menu-item-610" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-610"><a href="http://www.mu-cci.or.jp/kaigyou/">新規開業</a></li>
+<li id="menu-item-943" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-943"><a href="http://www.mu-cci.or.jp/kigyouyuuchi/">企業誘致</a></li>
+<li id="menu-item-611" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-611"><a href="http://www.mu-cci.or.jp/it/">ＩＴ支援</a></li>
+<li id="menu-item-612" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-612"><a href="http://www.mu-cci.or.jp/syoumei/">証明書発行</a></li>
+<li id="menu-item-1392" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1392"><a href="http://www.mu-cci.or.jp/service/">その他会員向け情報</a></li>
+<li id="menu-item-1178" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1178"><a href="http://www.mu-cci.or.jp/akitenpo/">空き店舗情報</a></li>
+<li id="menu-item-618" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-618"><a href="http://www.mu-cci.or.jp/assay/">検定情報</a></li>
+<li id="menu-item-614" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-614"><a href="http://www.mu-cci.or.jp/magazine/">広報・書籍等</a></li>
+<li id="menu-item-929" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-929"><a href="http://www.mu-cci.or.jp/magazine/cci-news/">・会議所ニュース</a></li>
+<li id="menu-item-615" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-615"><a href="http://www.mu-cci.or.jp/toukei/">各種統計情報</a></li>
+<li id="menu-item-619" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-619"><a href="http://www.mu-cci.or.jp/link/">リンク集</a></li>
+</ul></div></nav><nav class='members nav-v'><h2>関係団体</h2>
+<div class="menu-%e5%b7%a6-%e5%8f%97%e8%a8%97%e5%9b%a3%e4%bd%93-container"><ul id="menu-%e5%b7%a6-%e5%8f%97%e8%a8%97%e5%9b%a3%e4%bd%93" class="menu"><li id="menu-item-2448" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2448"><a target="_blank" href="http://www.mu-cci.or.jp/m-yeg/">村上商工会議所青年部(YEG)</a></li>
+<li id="menu-item-2439" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2439"><a target="_blank" href="http://www.iwafune.ne.jp/~iwafunejc/">いわふね青年会議所(JC)</a></li>
+<li id="menu-item-2440" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2440"><a target="_blank" href="http://www.mu-cci.or.jp/houjinkai/">村上法人会</a></li>
+<li id="menu-item-2445" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2445"><a target="_blank" href="http://www.rid2560niigata.jp/district2560/rc02">村上ロータリークラブ(RC)</a></li>
+<li id="menu-item-2446" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2446"><a target="_blank" href="http://www.rid2560niigata.jp/district2560/rc09">村上岩船ロータリークラブ(RC)</a></li>
+<li id="menu-item-2447" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2447"><a target="_blank" href="http://333a.jp/murakami/">村上ライオンズクラブ(LC)</a></li>
+<li id="menu-item-2442" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2442"><a target="_blank" href="http://www.mu-cci.or.jp/koyou/">岩船郡村上市雇用対策協議会</a></li>
+<li id="menu-item-2441" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2441"><a target="_blank" href="http://www.mu-cci.or.jp/shisyouren/">村上市商店会連合会</a></li>
+<li id="menu-item-2443" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2443"><a target="_blank" href="http://958.jp/">村上市中央商店街</a></li>
+<li id="menu-item-2444" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2444"><a target="_blank" href="http://www.mu-cci.or.jp/salmon/">村上鮭加工業組合</a></li>
+</ul></div></nav><nav class='members nav-v'><h2>お知らせ</h2>
+<div class="menu-%e5%b7%a6-%e3%81%8a%e7%9f%a5%e3%82%89%e3%81%9b-container"><ul id="menu-%e5%b7%a6-%e3%81%8a%e7%9f%a5%e3%82%89%e3%81%9b" class="menu"><li id="menu-item-2168" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2168"><a href="http://www.mu-cci.or.jp/category/latest_information/">新着情報</a></li>
+<li id="menu-item-2169" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2169"><a href="http://www.mu-cci.or.jp/category/seminar/">イベント・セミナー</a></li>
+<li id="menu-item-2345" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2345"><a href="http://www.city.murakami.lg.jp/calendar/">イベントカレンダー</a></li>
+<li id="menu-item-2173" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2173"><a href="http://www.mu-cci.or.jp/matsuri/">まつり・まちづくり</a></li>
+<li id="menu-item-2170" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2170"><a href="http://www.mu-cci.or.jp/kankou/">村上の観光便利情報</a></li>
+<li id="menu-item-2172" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2172"><a href="http://www.mu-cci.or.jp/kankou/gokigenban/">・ご起源板(町名由来)</a></li>
+<li id="menu-item-3691" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3691"><a href="http://www.mu-cci.or.jp/kankou/jisya/">・寺社由来案内板</a></li>
+<li id="menu-item-2171" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2171"><a href="http://www.mu-cci.or.jp/kankou/spot/">・ミニ観光スポット</a></li>
+<li id="menu-item-3339" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3339"><a href="http://www.mu-cci.or.jp/wp/wp-content/uploads/2014/06/%E6%9D%91%E4%B8%8A%E6%A1%88%E5%86%852015.pdf">・道路案内図2015(PDFファイル)</a></li>
+<li id="menu-item-2191" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2191"><a href="http://www.mu-cci.or.jp/koyou/jigyou/saiyou/">求人情報</a></li>
+<li id="menu-item-2578" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2578"><a href="http://www.mu-cci.or.jp/sitemap5/">サイトマップ</a></li>
+</ul></div></nav><nav class='members nav-v'><h2>イベントカレンダー</h2>
+			<div class="textwidget"><p><iframe src="http://www.google.com/calendar/embed?<br />
+showTitle=0&amp;showTabs=0&amp;showPrint=0&amp;showTz=0&amp;mode=AGENDA&amp;height=350&amp;wkst=1&amp;bgcolor=%23ffffff&amp;color=%23B1365F&amp;src=event%40sake3.com&<br />
+amp;color=%23AB8B00&amp;src=a9ap2jd4vnfpoomd8m4cnpkikc%40group.calendar.google.com&<br />
+amp;color=%235229A3&amp;src=gge8bh6ddq55oe9k7smrsqheo8%40group.calendar.google.com&<br />
+amp;color=%23B1440E&amp;src=9c7ma3oueakp5ocat1guu2o4tk%40group.calendar.google.com&<br />
+amp;color=%2328754E&amp;src=i1re7uitkf0355eam7t4lgmf4c%40group.calendar.google.com&<br />
+amp;color=%230D7813&amp;src=vvaj355tls6705bjt5vknhaf4k%40group.calendar.google.com&<br />
+amp;color=%238D6F47&amp;src=ie79h5ichtve9e05b5a4q69bbo%40group.calendar.google.com&<br />
+amp;ctz=Asia%2FTokyo" style=" border-width:0 ;" width="205" height="400" frameborder="0" scrolling="no"></iframe><br />
+<DIV align="right"><FONT size="-1">by <A href="http://www.sake3.com/calendar.html" target="_blank">村上市観光協会</A>　</FONT></DIV></p>
+</div>
+		</nav><nav class='members nav-v'><h2>サイト内検索</h2>
+<form role="search" method="get" id="searchform" class="searchform" action="http://www.mu-cci.or.jp/">
+				<div>
+					<label class="screen-reader-text" for="s">検索:</label>
+					<input type="text" value="" name="s" id="s" />
+					<input type="submit" id="searchsubmit" value="検索" />
+				</div>
+			</form></nav></div><!-- /.unit-25 -->
+<div class="unit-75 home">
+<div class="pickupArea">
+<div class="easingsliderlite  use-slide" data-options="{&quot;dimensions&quot;:{&quot;width&quot;:715,&quot;height&quot;:265,&quot;responsive&quot;:true},&quot;transitions&quot;:{&quot;effect&quot;:&quot;slide&quot;,&quot;duration&quot;:500},&quot;navigation&quot;:{&quot;arrows&quot;:true,&quot;arrows_hover&quot;:true,&quot;arrows_position&quot;:&quot;inside&quot;,&quot;pagination&quot;:true,&quot;pagination_hover&quot;:false,&quot;pagination_position&quot;:&quot;inside&quot;,&quot;pagination_location&quot;:&quot;bottom-center&quot;},&quot;playback&quot;:{&quot;enabled&quot;:true,&quot;pause&quot;:5000}}" style="max-width: 715px; max-height: 265px">
+    <div class="easingsliderlite-viewport" style="padding-top: 37.0629370629% !important;">
+        <div class="easingsliderlite-slides-container" style="display: none; width: 600%;">
+                                                    <div class="easingsliderlite-slide" style="max-width: 715px; max-height: 265px">
+                    <a href="http://www.mu-cci.or.jp/latest_information/201512243726/" target="_blank">                        <img src="http://www.mu-cci.or.jp/wp/wp-content/uploads/2015/12/00案内文_PAGE0000.jpg" class="easingsliderlite-image" alt="" title="00案内文_PAGE0000" />
+                    </a>                </div>
+                                        <div class="easingsliderlite-slide" style="max-width: 715px; max-height: 265px">
+                                            <img src="http://www.mu-cci.or.jp/wp/wp-content/uploads/2016/01/01白鳥見物－遠山喜樹.jpg" class="easingsliderlite-image" alt="" title="01白鳥見物－遠山喜樹" />
+                                    </div>
+                                        <div class="easingsliderlite-slide" style="max-width: 715px; max-height: 265px">
+                                            <img src="http://www.mu-cci.or.jp/wp/wp-content/uploads/2016/01/01早春－佐藤彰吾.jpg" class="easingsliderlite-image" alt="" title="01早春－佐藤彰吾" />
+                                    </div>
+                                        <div class="easingsliderlite-slide" style="max-width: 715px; max-height: 265px">
+                                            <img src="http://www.mu-cci.or.jp/wp/wp-content/uploads/2016/01/01会員大会IMG_7256.jpg" class="easingsliderlite-image" alt="" title="01会員大会IMG_7256" />
+                                    </div>
+                    </div>
+    </div>
+
+    <div class="easingsliderlite-preload"></div>
+
+            <div class="easingsliderlite-arrows easingsliderlite-next inside"></div>
+        <div class="easingsliderlite-arrows easingsliderlite-prev inside"></div>
+    
+            <div class="easingsliderlite-pagination inside bottom-center">
+                            <div class="easingsliderlite-icon inactive"></div>
+                            <div class="easingsliderlite-icon inactive"></div>
+                            <div class="easingsliderlite-icon inactive"></div>
+                            <div class="easingsliderlite-icon inactive"></div>
+                    </div>
+    
+        </div>
+
+<div class='easingsliderlite-shadow' style='display: none; max-width: 715px; '></div></div><!-- /.boxBorder -->
+<div class='simpleW'><h2>新着情報</h2>
+<ul class="advanced-recent-posts"><li><span class="date"> 2016.01.13</span> <a href="http://www.mu-cci.or.jp/latest_information/201601133781/" title="「むらかみ商工会議所ニュース」・第471号(平成28年1月号)を発行" >「むらかみ商工会議所ニュース」・第471号(平成28年1月号)を発行</a></li><li><span class="date"> 2016.01.07</span> <a href="http://www.mu-cci.or.jp/latest_information/201601073770/" title="鮭・酒・人情（なさけ）　越後村上の物産まつり" >鮭・酒・人情（なさけ）　越後村上の物産まつり</a></li><li><span class="date"> 2016.01.07</span> <a href="http://www.mu-cci.or.jp/latest_information/201601073765/" title="クーポンマガジンむらかみ　Vol．４２" >クーポンマガジンむらかみ　Vol．４２</a></li><li><span class="date"> 2015.12.25</span> <a href="http://www.mu-cci.or.jp/latest_information/201512253736/" title="第142回　日商簿記検定試験のご案内" >第142回　日商簿記検定試験のご案内</a></li><li><span class="date"> 2015.12.24</span> <a href="http://www.mu-cci.or.jp/latest_information/201512243726/" title="【H28.1.22(金)開催】　会員の集い　新年会員大会のご案内" >【H28.1.22(金)開催】　会員の集い　新年会員大会のご案内</a></li><li><span class="date"> 2015.12.09</span> <a href="http://www.mu-cci.or.jp/latest_information/201512093711/" title="「むらかみ商工会議所ニュース」・第470号(平成27年12月号)を発行" >「むらかみ商工会議所ニュース」・第470号(平成27年12月号)を発行</a></li><li><span class="date"> 2015.11.24</span> <a href="http://www.mu-cci.or.jp/latest_information/201511243682/" title="第141回　簿記検定試験　合格者発表" >第141回　簿記検定試験　合格者発表</a></li><li><span class="date"> 2015.11.10</span> <a href="http://www.mu-cci.or.jp/latest_information/201511103667/" title="「むらかみ商工会議所ニュース」・第469号(平成27年11月号)を発行" >「むらかみ商工会議所ニュース」・第469号(平成27年11月号)を発行</a></li><li><span class="date"> 2015.11.06</span> <a href="http://www.mu-cci.or.jp/latest_information/201511063657/" title="【H27.12.06（日）開催】T-1グランプリin村上のご案内　〆切間近！" >【H27.12.06（日）開催】T-1グランプリin村上のご案内　〆切間近！</a></li><li><span class="date"> 2015.10.21</span> <a href="http://www.mu-cci.or.jp/latest_information/201510213606/" title="【H27.12.06（日）開催】T-1グランプリin村上のご案内　第4回" >【H27.12.06（日）開催】T-1グランプリin村上のご案内　第4回</a></li><li><span class="date"> 2015.10.15</span> <a href="http://www.mu-cci.or.jp/latest_information/201510153555/" title="第１回越後むらかみバル街を実施します！" >第１回越後むらかみバル街を実施します！</a></li><li><span class="date"> 2015.10.09</span> <a href="http://www.mu-cci.or.jp/latest_information/201510093538/" title="「むらかみ商工会議所ニュース」・第468号(平成27年10月号)を発行" >「むらかみ商工会議所ニュース」・第468号(平成27年10月号)を発行</a></li><li><span class="date"> 2015.10.01</span> <a href="http://www.mu-cci.or.jp/latest_information/201510013472/" title="クーポンマガジンむらかみ　Vol．41　" >クーポンマガジンむらかみ　Vol．41　</a></li><li><span class="date"> 2015.09.30</span> <a href="http://www.mu-cci.or.jp/latest_information/201509303455/" title="10/10～11/15　第６回　村上まちなかゼミナール　まちゼミ始まります！" >10/10～11/15　第６回　村上まちなかゼミナール　まちゼミ始まります！</a></li><li><span class="date"> 2015.09.30</span> <a href="http://www.mu-cci.or.jp/latest_information/201509303445/" title="11/6(金)販売促進セミナー　商売繁盛　９つの心理学的テクニック" >11/6(金)販売促進セミナー　商売繁盛　９つの心理学的テクニック</a></li><li><span class="date"> 2015.09.11</span> <a href="http://www.mu-cci.or.jp/latest_information/201509113425/" title="胎内高原ゴルフ倶楽部　【HPリンク】" >胎内高原ゴルフ倶楽部　【HPリンク】</a></li><li><span class="date"> 2015.09.11</span> <a href="http://www.mu-cci.or.jp/latest_information/201509113421/" title="菓子処 松籟庵　角銀【HPリニューアル】" >菓子処 松籟庵　角銀【HPリニューアル】</a></li><li><span class="date"> 2015.09.11</span> <a href="http://www.mu-cci.or.jp/latest_information/201509113413/" title="「むらかみ商工会議所ニュース」・第467号(平成27年9月号)を発行" >「むらかみ商工会議所ニュース」・第467号(平成27年9月号)を発行</a></li><li><span class="date"> 2015.09.07</span> <a href="http://www.mu-cci.or.jp/latest_information/201509073405/" title="第141回　日商簿記検定試験のご案内" >第141回　日商簿記検定試験のご案内</a></li><li><span class="date"> 2015.08.24</span> <a href="http://www.mu-cci.or.jp/latest_information/201508243390/" title="～村上をぶらりと、食べて飲んでハシゴしてもらおう！～第１回越後むらかみバル　参加店募集中！" >～村上をぶらりと、食べて飲んでハシゴしてもらおう！～第１回越後むらかみバル　参加店募集中！</a></li></ul></div><div class='simpleW'><h2>Facebook</h2>
+			<div class="textwidget"><div class="fb-like-box" data-href="http://www.facebook.com/murakamicci" data-width="710" data-height="400" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="true" data-show-border="true"></div></div>
+		</div><div class='pickupArea boxBlue'><div class='boxInner'><h2><a class='rsswidget' href='http://www.jcci.or.jp/news/jcci-news/atom.xml'><img style='border:0' width='14' height='14' src='http://www.mu-cci.or.jp/wp/wp-includes/images/rss.png' alt='RSS' /></a> <a class='rsswidget' href='http://www.jcci.or.jp/'>日商・ニュース</a></h2><div class='recommendContents'>
+<ul><li><a class='rsswidget' href='http://www.jcci.or.jp/news/jcci-news/2016/0122164500.html'>「全国商工会議所お祭りカレンダー」の内容を更新しました（1月22日更新）</a> <span class="rss-date">2016/01/22</span></li><li><a class='rsswidget' href='http://www.jcci.or.jp/news/jcci-news/2016/0122120000.html'>【重要なお知らせ】サーバメンテナンスに伴う日本商工会議所ウェブサイトの一時停止について</a> <span class="rss-date">2016/01/22</span></li><li><a class='rsswidget' href='http://www.jcci.or.jp/news/jcci-news/2016/0121183047.html'>商工会議所ニュースかわら版No.44を発行</a> <span class="rss-date">2016/01/21</span></li><li><a class='rsswidget' href='http://www.jcci.or.jp/news/2016/0115175246.html'>「再生可能エネルギー導入促進関連制度改革小委員会報告書（案）に対する意見」を経産省に提出</a> <span class="rss-date">2016/01/15</span></li><li><a class='rsswidget' href='http://www.jcci.or.jp/news/jcci-news/2016/0114114723.html'>初心者にもわかりやすい　タブレットＰＯＳレジ導入テキストを作成</a> <span class="rss-date">2016/01/14</span></li></ul></div></div></div><div class='pickupArea boxBlue'><div class='boxInner'><h2><a class='rsswidget' href='http://www.jcci.or.jp/news/trend-box/atom.xml'><img style='border:0' width='14' height='14' src='http://www.mu-cci.or.jp/wp/wp-includes/images/rss.png' alt='RSS' /></a> <a class='rsswidget' href='http://www.jcci.or.jp/'>日商・トレンドボックス</a></h2><div class='recommendContents'>
+<ul><li><a class='rsswidget' href='http://www.jcci.or.jp/news/2016/0122200703.html'>「COOL CHOICE NEWS LETTER Vol.9」を発行（環境省）</a> <span class="rss-date">2016/01/22</span></li><li><a class='rsswidget' href='http://www.jcci.or.jp/news/2016/0122184209.html'>２月５日に東京で「チャレンジふくしまサミットin首都圏」を開催（福島県）</a> <span class="rss-date">2016/01/22</span></li><li><a class='rsswidget' href='http://www.jcci.or.jp/news/trend-box/2016/0122142115.html'>「がん患者の就労支援セミナー」2月29日開催（東京都社労士会）</a> <span class="rss-date">2016/01/22</span></li><li><a class='rsswidget' href='http://www.jcci.or.jp/news/trend-box/2016/0120151718.html'>「青年国際交流事業」参加者を募集（内閣府）</a> <span class="rss-date">2016/01/20</span></li><li><a class='rsswidget' href='http://www.jcci.or.jp/news/trend-box/2016/0120113835.html'>「若者・女性の活躍推進」取組事例【３５】有限会社すこやか（東京都）</a> <span class="rss-date">2016/01/20</span></li></ul></div></div></div><div class='pickupArea boxBlue'><div class='boxInner'><h2><a class='rsswidget' href='http://www.jcci.or.jp/news/local-front/atom.xml'><img style='border:0' width='14' height='14' src='http://www.mu-cci.or.jp/wp/wp-includes/images/rss.png' alt='RSS' /></a> <a class='rsswidget' href='http://www.jcci.or.jp/'>日商・地域最前線</a></h2><div class='recommendContents'>
+<ul><li><a class='rsswidget' href='http://www.jcci.or.jp/news/local-front/2016/0122135043.html'>「第14回勇気ある経営大賞」募集開始（東京商工会議所）</a> <span class="rss-date">2016/01/22</span></li><li><a class='rsswidget' href='http://www.jcci.or.jp/news/2016/0122133554.html'>「フードピア金沢2016」2月1日から開催（金沢商工会議所）</a> <span class="rss-date">2016/01/22</span></li><li><a class='rsswidget' href='http://www.jcci.or.jp/news/2016/0122132107.html'>「東京北区・岩手ビジネス商談会」2月22日に初開催（東京商工会議所北支部）</a> <span class="rss-date">2016/01/22</span></li><li><a class='rsswidget' href='http://www.jcci.or.jp/news/2016/0122115855.html'>第34回「博多うまかもん市」25日まで開催中（福岡商工会議所）</a> <span class="rss-date">2016/01/22</span></li><li><a class='rsswidget' href='http://www.jcci.or.jp/news/2016/0122095502.html'>2月22日に「税務申告だけの決算書ではもったいない！経営者のための中小会計要領セミナー」を開催（東京商工会議所）</a> <span class="rss-date">2016/01/22</span></li></ul></div></div></div><div class='pickupArea boxBlue'><div class='boxInner'><h2><a class='rsswidget' href='http://news.google.com/news?hl=ja&#038;ned=us&#038;ie=UTF-8&#038;oe=UTF-8&#038;output=rss'><img style='border:0' width='14' height='14' src='http://www.mu-cci.or.jp/wp/wp-includes/images/rss.png' alt='RSS' /></a> <a class='rsswidget' href='http://news.google.com/news?hl=ja&#038;ned=us'>Googleニュース</a></h2><div class='recommendContents'>
+<ul><li><a class='rsswidget' href='http://news.google.com/news/url?sa=t&#038;fd=R&#038;ct2=us&#038;usg=AFQjCNFL_yOrtBJsbgGFDdXxS7UG2W0oHw&#038;clid=c3a7d30bb8a4878e06b80cf16b898331&#038;cid=52779821920019&#038;ei=wh-iVqC8IIes8wWv6KigAw&#038;url=http://www.asahi.com/articles/ASJ1Q5HPBJ1QUTIL037.html'>今週末ふたたび大雪の恐れ 都心では２３日夜に積雪か - 朝日新聞</a> <span class="rss-date">2016/01/22</span></li><li><a class='rsswidget' href='http://news.google.com/news/url?sa=t&#038;fd=R&#038;ct2=us&#038;usg=AFQjCNGQscDXvxlgJeBb_9q_WFoF3MJvBA&#038;clid=c3a7d30bb8a4878e06b80cf16b898331&#038;cid=52779822989467&#038;ei=wh-iVqC8IIes8wWv6KigAw&#038;url=http://mainichi.jp/articles/20160123/k00/00m/010/089000c'>甘利氏説明、２８日までに - 毎日新聞</a> <span class="rss-date">2016/01/22</span></li><li><a class='rsswidget' href='http://news.google.com/news/url?sa=t&#038;fd=R&#038;ct2=us&#038;usg=AFQjCNEJEz_d0canj1k2Ha1g6NL8sYctUQ&#038;clid=c3a7d30bb8a4878e06b80cf16b898331&#038;cid=52779823794447&#038;ei=wh-iVqC8IIes8wWv6KigAw&#038;url=http://www.asahi.com/international/reuters/CRWKCN0V01AM.html'>日ロ首脳が電話会談、安倍首相の非公式訪ロを調整へ - 朝日新聞</a> <span class="rss-date">2016/01/22</span></li><li><a class='rsswidget' href='http://news.google.com/news/url?sa=t&#038;fd=R&#038;ct2=us&#038;usg=AFQjCNF4aq5HhkKTlbDauHwsDZ1mojTTVQ&#038;clid=c3a7d30bb8a4878e06b80cf16b898331&#038;cid=52779822370732&#038;ei=wh-iVqC8IIes8wWv6KigAw&#038;url=http://news.tv-asahi.co.jp/news_politics/articles/000066770.html'>大雪で国会に遅刻…防衛省幹部「異例の訓戒処分」 - テレビ朝日</a> <span class="rss-date">2016/01/22</span></li><li><a class='rsswidget' href='http://news.google.com/news/url?sa=t&#038;fd=R&#038;ct2=us&#038;usg=AFQjCNHpEwHEL0zmx48t9l7DrA16TD_cNQ&#038;clid=c3a7d30bb8a4878e06b80cf16b898331&#038;cid=52779823049288&#038;ei=wh-iVqC8IIes8wWv6KigAw&#038;url=http://news.biglobe.ne.jp/domestic/0122/jj_160122_6345807211.html'>野々村元県議、強制出廷へ＝神戸地裁が勾引状―政務活動費詐欺 - BIGLOBEニュース</a> <span class="rss-date">2016/01/22</span></li><li><a class='rsswidget' href='http://news.google.com/news/url?sa=t&#038;fd=R&#038;ct2=us&#038;usg=AFQjCNH2rWiQubGedpBX-2nsGVOnlDWj5A&#038;clid=c3a7d30bb8a4878e06b80cf16b898331&#038;cid=52779823690846&#038;ei=wh-iVqC8IIes8wWv6KigAw&#038;url=http://news.biglobe.ne.jp/domestic/0122/jjp_160122_6212759204.html'>偽くまモンで初の行政処分 - BIGLOBEニュース</a> <span class="rss-date">2016/01/22</span></li><li><a class='rsswidget' href='http://news.google.com/news/url?sa=t&#038;fd=R&#038;ct2=us&#038;usg=AFQjCNF4UdpyFDKoCxNoSLwD59mC91ikwg&#038;clid=c3a7d30bb8a4878e06b80cf16b898331&#038;cid=52779823763999&#038;ei=wh-iVqC8IIes8wWv6KigAw&#038;url=http://www.nikkei.com/article/DGXLASGD22H3L_S6A120C1000000/'>新日本監査法人、新理事長に辻氏 監査の質改善急ぐ - 日本経済新聞</a> <span class="rss-date">2016/01/22</span></li><li><a class='rsswidget' href='http://news.google.com/news/url?sa=t&#038;fd=R&#038;ct2=us&#038;usg=AFQjCNFcnjUPQPd6n0w1qaWY9H7gvmnHqw&#038;clid=c3a7d30bb8a4878e06b80cf16b898331&#038;cid=52779822315939&#038;ei=wh-iVqC8IIes8wWv6KigAw&#038;url=http://jp.wsj.com/articles/SB10152201462225363779004581493634014825852'>【オピニオン】台湾問題に沈黙する米国の愚 - ウォール・ストリート・ジャーナル日本版</a> <span class="rss-date">2016/01/22</span></li><li><a class='rsswidget' href='http://news.google.com/news/url?sa=t&#038;fd=R&#038;ct2=us&#038;usg=AFQjCNF3S7fvZn15dcnXmtksy4K-F_4jEg&#038;clid=c3a7d30bb8a4878e06b80cf16b898331&#038;cid=52779823387879&#038;ei=wh-iVqC8IIes8wWv6KigAw&#038;url=http://jp.reuters.com/article/usa-weather-idJPKCN0V0099'>週末に米東部で積雪75センチ予報、各地で警報や非常事態宣言 - ロイター</a> <span class="rss-date">2016/01/22</span></li><li><a class='rsswidget' href='http://news.google.com/news/url?sa=t&#038;fd=R&#038;ct2=us&#038;usg=AFQjCNHntcyO42brr_oTSPDjen4Cre1c5w&#038;clid=c3a7d30bb8a4878e06b80cf16b898331&#038;cid=52779820691839&#038;ei=wh-iVqC8IIes8wWv6KigAw&#038;url=http://www.sanspo.com/geino/news/20160120/geo16012019490027-n1.html'>ＮＨＫ「クロ現」４月から名称を変更、午後１０時に - サンケイスポーツ</a> <span class="rss-date">2016/01/20</span></li></ul></div></div></div><div class="units-row recommendBox">    		<div class='pickupArea boxBlue unit-50'><div class='boxInner'>			        	<h2>検定情報ニュース</h2><div class='recommendContents'>
+        	
+<dl class="assayNews">
+<dt>2015/12/25</dt>
+<dd><a href="http://www.mu-cci.or.jp/assay/%e7%ac%ac142%e5%9b%9e%e3%80%80%e6%97%a5%e5%95%86%e7%b0%bf%e8%a8%98%e6%a4%9c%e5%ae%9a%e8%a9%a6%e9%a8%93%e3%81%ae%e3%81%94%e6%a1%88%e5%86%85/">第142回　日商簿記検定試験のご案内</a></dd>
+<dt>2015/10/21</dt>
+<dd><a href="http://www.mu-cci.or.jp/assay/h271206_t-1-2/">【H27.12.06（日）開催】T-1グランプリin村上のご案内　第4回</a></dd>
+<dt>2015/09/07</dt>
+<dd><a href="http://www.mu-cci.or.jp/assay/%e7%ac%ac141%e5%9b%9e%e3%80%80%e6%97%a5%e5%95%86%e7%b0%bf%e8%a8%98%e6%a4%9c%e5%ae%9a%e8%a9%a6%e9%a8%93%e3%81%ae%e3%81%94%e6%a1%88%e5%86%85/">第141回　日商簿記検定試験のご案内</a></dd>
+<dt>2015/06/22</dt>
+<dd><a href="http://www.mu-cci.or.jp/assay/%e7%ac%ac140%e5%9b%9e%e3%80%80%e7%b0%bf%e8%a8%98%e6%a4%9c%e5%ae%9a%e8%a9%a6%e9%a8%93%e3%80%80%e5%90%88%e6%a0%bc%e8%80%85%e7%99%ba%e8%a1%a8/">第140回　簿記検定試験　合格者発表</a></dd>
+<dt>2015/04/22</dt>
+<dd><a href="http://www.mu-cci.or.jp/assay/suke27/">平成27年度検定試験スケジュール</a></dd>
+</dl>
+
+			<a href="http://www.mu-cci.or.jp/assay/" class="btn btn-round recommendBtn borderInner">検定情報ニュースをもっと見る</a>		   </div></div></div>		   
+        <div class='pickupArea boxBlue unit-50'><div class='boxInner'><h2>人気の投稿とページ</h2><div class='recommendContents'>
+<ul>				<li>
+										<a href="http://www.mu-cci.or.jp/latest_information/201512243726/" class="bump-view" data-bump-view="tp">
+						【H28.1.22(金)開催】　会員の集い　新年会員大会のご案内					</a>
+									</li>
+							<li>
+										<a href="http://www.mu-cci.or.jp/cci-info/yakuin/" class="bump-view" data-bump-view="tp">
+						役員･議員紹介					</a>
+									</li>
+							<li>
+										<a href="http://www.mu-cci.or.jp/latest_information/201601073770/" class="bump-view" data-bump-view="tp">
+						鮭・酒・人情（なさけ）　越後村上の物産まつり					</a>
+									</li>
+							<li>
+										<a href="http://www.mu-cci.or.jp/latest_information/201601133781/" class="bump-view" data-bump-view="tp">
+						「むらかみ商工会議所ニュース」・第471号(平成28年1月号)を発行					</a>
+									</li>
+							<li>
+										<a href="http://www.mu-cci.or.jp/cci-info/kaiin/" class="bump-view" data-bump-view="tp">
+						会員事業所リンク					</a>
+									</li>
+			</ul></div></div></div></div>
+<div class="units-row recommendBox"></div>
+
+<div class="sponsorArea"><ul class="units-row mb20"><li class="unit-25"><a href="http://www.jcci.or.jp/" target="_blank" class="widget_sp_image-image-link" title=""><img width="170" height="50" alt="" class="attachment-full" style="max-width: 100%;" src="http://www.mu-cci.or.jp/wp/wp-content/uploads/2014/06/sponsor01.gif" /></a></li><li class="unit-25"><a href="https://www.jfc.go.jp/" target="_blank" class="widget_sp_image-image-link" title=""><img width="170" height="50" alt="" class="attachment-full" style="max-width: 100%;" src="http://www.mu-cci.or.jp/wp/wp-content/uploads/2014/06/sponsor02.gif" /></a></li><li class="unit-25"><a href="http://www.mhlw.go.jp/" target="_blank" class="widget_sp_image-image-link" title=""><img width="170" height="50" alt="" class="attachment-full" style="max-width: 100%;" src="http://www.mu-cci.or.jp/wp/wp-content/uploads/2014/06/sponsor03.gif" /></a></li><li class="unit-25"><a href="http://www.smrj.go.jp/" target="_blank" class="widget_sp_image-image-link" title=""><img width="170" height="50" alt="" class="attachment-full" style="max-width: 100%;" src="http://www.mu-cci.or.jp/wp/wp-content/uploads/2014/06/sponsor04.gif" /></a></li><li class="unit-25"><a href="http://www.kentei.ne.jp/" target="_blank" class="widget_sp_image-image-link" title=""><img width="170" height="50" alt="" class="attachment-full" style="max-width: 100%;" src="http://www.mu-cci.or.jp/wp/wp-content/uploads/2014/06/sponsor05.gif" /></a></li><li class="unit-25"><a href="http://www.sake3.com/" target="_blank" class="widget_sp_image-image-link" title=""><img width="200" height="50" alt="" class="attachment-full" style="max-width: 100%;" src="http://www.mu-cci.or.jp/wp/wp-content/uploads/2014/08/sponsor091.gif" /></a></li><li class="unit-25"><a href="http://j-net21.smrj.go.jp/" target="_blank" class="widget_sp_image-image-link" title=""><img width="170" height="50" alt="" class="attachment-full" style="max-width: 100%;" src="http://www.mu-cci.or.jp/wp/wp-content/uploads/2014/06/sponsor07.jpg" /></a></li><li class="unit-25"><a href="https://www.mirasapo.jp/" target="_blank" class="widget_sp_image-image-link" title=""><img width="170" height="50" alt="" class="attachment-full" style="max-width: 100%;" src="http://www.mu-cci.or.jp/wp/wp-content/uploads/2014/06/sponsor08.gif" /></a></li></ul></div>
+
+
+</div><!-- /.unit-75 -->
+</div><!-- /.units-row -->
+</div><!-- /.units-container -->
+
+</div><!-- /.wrapper -->
+<div id="backToTop"><a href="#header"><img src="http://www.mu-cci.or.jp/wp/wp-content/themes/cci/img/icon_gotop.png" alt="ページトップ" width="33" height="36" /></a></div>
+<footer class="width-100">
+<div class="wrapper">
+<div class="fb"><h3>Facebook</h3>
+			<div class="textwidget"><div class="face_book_plgin_shadow_hidden"> </div>
+<section class="face_book_plgin_proposal">
+  <div class="fb-like-box" data-href="http://www.facebook.com/murakamicci" data-width="960" height="400" data-show-faces="true" data-colorscheme="dark" data-stream="false" data-header="false" data-show-border="false"></div>
+  <div class="face_book_plgin_border_top black_color height_1"> </div>
+  <div class="face_book_plgin_border_right black_color"> </div>
+  <div class="face_book_plgin_border_bottom black_color"> </div>
+  <div class="face_book_plgin_border_left black_color"> </div>
+</section></div>
+		</div>
+<div class="units-row units-split siteInfo">
+<div class="unit-30">
+<div class='companyInfo'><h3>村上商工会議所</h3>
+<div class="textwidget">
+<p>〒958-0841　新潟県村上市小町4-10</p>
+<div class="units-row">
+<div class="unit-50">TEL：0254-53-4257</div>
+<div class="unit-50">FAX：0254-53-0172</div>
+</div>
+<div class="units-row">
+<div class="mb10">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="unit-66">
+<div class="units-row">
+<div class="unit-25">商工会議所情報
+<nav class="menu-%e4%b8%8b%e9%83%a8%e3%83%bc%e5%95%86%e5%b7%a5%e4%bc%9a%e8%ad%b0%e6%89%80%e6%83%85%e5%a0%b1-container"><ul id="menu-%e4%b8%8b%e9%83%a8%e3%83%bc%e5%95%86%e5%b7%a5%e4%bc%9a%e8%ad%b0%e6%89%80%e6%83%85%e5%a0%b1" class=""><li id="menu-item-36" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-36"><a href="http://www.mu-cci.or.jp/cci-info/guidance/">当所の概要/アクセス</a></li>
+<li id="menu-item-37" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-37"><a href="http://www.mu-cci.or.jp/cci-info/contact/">お問い合わせ</a></li>
+</ul></nav></div>
+<div class="unit-45">市内企業様向け情報<br />
+
+<div class="unit-55"><nav class="menu-%e4%b8%8b%e9%83%a8%e3%83%bc%e5%b8%82%e5%86%85%e4%bc%81%e6%a5%ad%e6%a7%98%e5%90%91%e3%81%91%e6%83%85%e5%a0%b12-container"><ul id="menu-%e4%b8%8b%e9%83%a8%e3%83%bc%e5%b8%82%e5%86%85%e4%bc%81%e6%a5%ad%e6%a7%98%e5%90%91%e3%81%91%e6%83%85%e5%a0%b12" class=""><li id="menu-item-821" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-821"><a href="http://www.mu-cci.or.jp/toukei/">各種統計情報</a></li>
+<li id="menu-item-822" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-822"><a href="http://www.mu-cci.or.jp/magazine/">会議所ニュース等</a></li>
+</ul></nav></div>
+<div class="unit-45"><nav class="menu-%e4%b8%8b%e9%83%a8%e3%83%bc%e4%bc%81%e6%a5%ad%e3%83%bb%e3%82%b5%e3%82%a4%e3%83%88%e6%83%85%e5%a0%b1-container"><ul id="menu-%e4%b8%8b%e9%83%a8%e3%83%bc%e4%bc%81%e6%a5%ad%e3%83%bb%e3%82%b5%e3%82%a4%e3%83%88%e6%83%85%e5%a0%b1" class=""><li id="menu-item-1411" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1411"><a href="http://www.mu-cci.or.jp/sitemap5/">サイトマップ</a></li>
+<li id="menu-item-1466" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1466"><a href="http://www.mu-cci.or.jp/login/">職員専用-管理画面</a></li>
+</ul></nav></div>
+</div>
+<div class="unit-30">リンク
+<nav class="menu-%e4%b8%8b%e9%83%a8%e3%83%bc%e5%a4%96%e9%83%a8%e3%83%aa%e3%83%b3%e3%82%af-container"><ul id="menu-%e4%b8%8b%e9%83%a8%e3%83%bc%e5%a4%96%e9%83%a8%e3%83%aa%e3%83%b3%e3%82%af" class=""><li id="menu-item-41" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-41"><a href="http://www.city.murakami.lg.jp/">村上市</a></li>
+<li id="menu-item-40" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-40"><a href="http://www.sake3.com/">村上市観光協会</a></li>
+</ul></nav>
+</div>
+</div>
+</div>
+</div>
+<address>Copyright&nbsp;&copy;&nbsp;2013–2016&nbsp;村上商工会議所.All rights reserved.</address>
+
+</div>
+</footer>
+	<div style="display:none">
+	</div>
+<!-- BEGIN: WP Social Bookmarking Light -->
+<script type="text/javascript">
+  window.___gcfg = {lang: 'ja'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+<!-- END: WP Social Bookmarking Light -->
+<script type='text/javascript' src='http://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201603'></script>
+
+	<script src="http://stats.wp.com/e-201603.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	st_go({v:'ext',j:'1:3.2.1',blog:'73766060',post:'0',tz:'9'});
+	var load_cmc = function(){linktracker_init(73766060,0,2);};
+	if ( typeof addLoadEvent != 'undefined' ) addLoadEvent(load_cmc);
+	else load_cmc();
+	</script></body>
+</html>

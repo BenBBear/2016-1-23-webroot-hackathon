@@ -1,0 +1,475 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="ie6 oldie"> </html><![endif]-->
+<!--[if IE 7]>    <html class="ie7 oldie"> </html><![endif]-->
+<!--[if IE 8]>    <html class="ie8 oldie"> </html><![endif]-->
+<!--[if gt IE 8]><!-->
+<html>
+<!--<![endif]-->
+<head>
+<title>Gaur City</title>	
+<link href="images/favicon.ico" rel="shortcut icon" />
+<meta charset="utf-8" />
+<meta http-equiv="content-language" content="english" />
+<link href="./style.css" rel="stylesheet" type="text/css" />
+<link href="./set1.css" rel="stylesheet" type="text/css" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable = no" name="viewport" />
+<!--[if lt IE 9]>
+<script src="../html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<script src="./js/respond.min.js"></script>
+<!--<script src="./js/jquery-1.11.0.min.js"></script>-->
+<script src="./js/jquery-1.7.2.min.js"></script>
+<!--<link rel="stylesheet" href="./js/prettyPhoto.css" />-->
+<script src="./js/prettyphoto/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" href="./js/treeview/jquery.treeview.css" />
+<script src="./js/treeview/jquery.treeview.js" type="text/javascript"></script>
+<script type="text/javascript" src="./js/banner/jquery.ad-gallery.js"></script>
+<link rel="stylesheet" type="text/css" href="./js/banner/jquery.ad-gallery-inner.css" />
+<script>
+outerwidth = 965;
+function resizeImage() {
+	screenWidth = $(window).width();
+	screenHeight = $(window).height();
+	screenWidthdiv1 = $(".ourProjects").width();
+	screenWidthdiv2 = $(".corporateav").width();
+	
+	screenWidthdiv1tot = screenWidthdiv1 + screenWidthdiv2;
+	
+	
+	
+	if (screenWidth > 1180){
+		$("#wrapperFoot").css('width', 1180);
+		//$(".ourProjects").css('width', 800);
+	} else {
+		$("#wrapperFoot").css('width', screenWidth);
+		//$(".ourProjects").css('width', screenWidthdiv1tot);		
+	}
+	
+	
+	
+			if (screenWidth < 478){
+				$('.ad-image-wrapper').css({'margin-left':(screenWidth-478)/2});
+			} else {
+				$('.ad-image-wrapper').css({'margin-left':0})
+			}
+			
+
+			imageWidth = 2000;
+			imageHeight = 920;
+			navWidth = jQuery(window).width();
+			navHeight = jQuery(window).height()-75;
+			navRatio = navWidth / navHeight;
+			imageRatio = imageWidth / imageHeight;
+			if (navRatio > imageRatio) {
+				newHeight = (navWidth / imageWidth) * imageHeight;
+				newWidth = navWidth;
+			} else {
+				newHeight = navHeight;
+				newWidth = (navHeight / imageHeight) * imageWidth;
+			}	
+			newTop = 0 - ((newHeight - navHeight) / 2);
+			//newLeft =  0 - ((newWidth - navWidth) / 2);
+			newLeft =  navWidth - newWidth;
+
+			if (screenWidth < outerwidth){
+				$('.ad-image-wrapper').css({'height':screenWidth/2})
+				$('.bannerContainer ').css({'position':'static', 'height': 'auto', 'width': 'auto'});
+				jQuery('.bannerContainer .ad-image img').css({'height': 'auto', 'width': '100%', 'marginTop': 0, 'marginLeft': 0});
+			} else {
+				$('.bannerContainer ').css({'width':'100%', 'height':screenHeight})
+				$('.ad-image-wrapper').css({'width':'100%', 'height':screenHeight})
+				jQuery('.bannerContainer').css({'position':'absolute', 'height': navHeight, 'width': navWidth, 'overflow':'hidden'});
+				jQuery('.bannerContainer .ad-image img').css({height: newHeight, width: newWidth, marginTop: newTop, marginLeft: newLeft});
+			}
+					
+//			
+				
+}
+
+jQuery(document).ready(function($) {
+	$(".hppop_close,").click(function(){
+		$(".hppop_bg").fadeOut(500);
+		$(".hppop").fadeOut(500);	
+	});
+	
+	
+	$(".partnerclick").click(function(){
+		$(".blackoverlay, .partnrpopup").fadeIn("fast");
+	});
+	$(".closepopup").click(function(){
+		$(".blackoverlay, .partnrpopup").fadeOut("fast");
+	});
+
+	
+	clickcount = 0;
+				$(".enquiry-form-btn").click(function(){
+					clickcount++;
+					if(clickcount == 1){
+						$(".enquiry-form").animate({right:0});
+						$(".enquiry-form-btn").animate({right:200});
+					} else if (clickcount == 2){
+						$(".enquiry-form").animate({right:-200});
+						$(".enquiry-form-btn").animate({right:0});
+						clickcount = 0;
+					}
+				});
+	
+	$("#browser").treeview({
+		collapsed: true
+//		animated:"normal",
+//		persist: "cookie"
+	});
+	
+	$('.btnmenu').click(function() {
+		$('#mobilemenu, .mobilemenuBG').fadeIn(500);		  
+	});
+	 
+	$('.mobilemenuclose').click(function() {
+		$('#mobilemenu, .mobilemenuBG').fadeOut(500);		  
+	});
+	
+	$('.menuwrapper li').mouseover( function() {
+		var left = $(this).position().left + $(this).width() - 160 ;
+		$('#marker').stop().animate( {marginLeft: left}, 300 );
+	});
+		$('.menuwrapper li').mouseleave( function() {$('#marker').stop().animate( {marginLeft: -43}, 300 );
+		});
+	
+	function showMenu(prmBut,prmMenu){
+		$(prmBut).hover(function(){
+			$(prmMenu).stop(true).delay(200).fadeIn(500);
+		}, function(){
+			$(prmMenu).stop(true).delay(100).fadeOut();
+		});
+		$(prmMenu).hover(function(){
+			$(this).stop(true).show();
+		}, function(){
+			$(this).hide();
+		});
+	}
+	showMenu(".but1","#memu1");
+	showMenu(".but2","#memu2");
+	showMenu(".but4","#memu4");
+	/*showMenu(".but3","#memu3");
+	showMenu(".but4","#memu4");
+	showMenu(".but5","#memu5");	
+	showMenu(".but7","#memu7");*/
+	
+	$(".menusublinks").click(function(){
+				$(".leftPanel ul").stop(true, true).slideToggle();
+				$(".ullk").stop(true, true).slideToggle();
+	});
+	
+	
+	$(".slideverticalsbtn").click(function(){
+				$(".slideverticals").stop(true, true).slideToggle();
+	});
+	
+	
+	
+	
+
+	$(window).load(function(e){
+		resizeImage();
+	});
+	$(window).resize(function(e){
+		resizeImage();
+	});
+	resizeImage();
+
+
+	$(".menubtn").click(function(){
+		$(".menuaccor").slideUp("fast");	
+		$(".mainlink").removeClass("activrbtn");
+		if($(this).find(".menuaccor").is(":hidden")==true){
+			$(this).find(".menuaccor").slideDown("fast");	
+			$(this).find(".mainlink").addClass("activrbtn");
+		}
+	});
+	
+	
+	/*
+	
+	var scroller = $('#scroller div.innerScrollArea');
+    var scrollerContent = scroller.children('ul');
+        scrollerContent.children().clone().appendTo(scrollerContent);
+        var curX = 0;
+        scrollerContent.children().each(function(){
+            var $this = $(this);
+            $this.css('left', curX);
+            curX += $this.width();
+        });
+        var fullW = curX / 2;
+        var viewportW = scroller.width();
+
+        // Scrolling speed management
+        var controller = {curSpeed:0, fullSpeed:1};
+        var $controller = $(controller);
+        var tweenToNewSpeed = function(newSpeed, duration)
+        {
+            if (duration === undefined)
+                duration = 600;
+            $controller.stop(true).animate({curSpeed:newSpeed}, duration);
+        };
+
+        // Pause on hover
+        scroller.hover(function(){
+            tweenToNewSpeed(0);
+        }, function(){
+            tweenToNewSpeed(controller.fullSpeed);
+        });
+
+        // Scrolling management; start the automatical scrolling
+        var doScroll = function()
+        {
+            var curX = scroller.scrollLeft();
+            var newX = curX + controller.curSpeed;
+            if (newX > fullW*2 - viewportW)
+                newX -= fullW;
+            scroller.scrollLeft(newX);
+        };
+        setInterval(doScroll, 25);
+        tweenToNewSpeed(controller.fullSpeed);
+	
+	*/
+	
+});
+
+</script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+<body>
+<header>
+
+	<div class="followCopy">
+    	<div id="wrapper">
+        
+            <div class="copy">
+        	&nbsp;&nbsp;   Mobile : &nbsp;&nbsp;<strong>+91- 9650196774</strong > &nbsp;&nbsp;|&nbsp;&nbsp;   Email :<strong>&nbsp;&nbsp;info.gaurcityprojects@gmail.com</strong> 	
+        </div>   
+    	<div class="clear"></div>
+        </div>
+  </div>
+	<div id="wrapper" class="menuwrapper">
+    <div id="marker"></div>
+    	<a href="./index.html" class="logo"><img src="./images/logo.png" alt="Lotus Greens" /></a>
+        <a href="javascript:();" class="menuicon btnmenu"><span>Menu</span><img src="./images/menuweb.png" alt="menu" /></a>
+        <ul>
+        	<li><a href="./index.html" class="but1">Home</a></li>
+			<li><a href="./about-us.html">Profile</a></li>
+            <li><a href="javascript:()" class="but2">Projects</a>
+           	  <div id="memu2" class="menuformat">
+                	<div class="menudiv">
+        <img src="./images/menu_projects.jpg" alt="real estate developers in noida" />
+						<div class="menucnt">
+                        	<h1>Our Projects</h1>
+                            <div class="menubtn">
+                                <ul>
+                                    <li><a href="raj-residency.html" class="mainlink">Raj Residency</a></li>
+                                </ul>
+                              
+                            </div>
+                            
+                            <div class="menubtn">
+                                <ul>
+                                    <li><a href="geotech-pristine-avenue.html" class="mainlink">Geotech Pristine Avenue</a></li>
+                                </ul>
+                                
+                            </div>
+							 <div class="menubtn">
+                                <ul>
+                                    <li><a href="casa-wood-stock.html" class="mainlink">Casa Wood Stock</a></li>
+                                </ul>
+                              
+                            </div>
+                            
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </li>
+            <li><a href="./market-research.html" class="but3">Case Study</a></li>
+          
+            <li><a href="./contact-us.html">Contact us</a></li>
+            
+        </ul>
+    	
+        <div class="clear"></div>
+    </div>
+</header>
+<div class="mobilemenuBG"></div>
+<div id="mobilemenu">
+    <div class="mobilemenuclose"><img src="./images/close-icon.png" border="" style="margin-right:0px;" alt="close button" /></div>
+    <div class="mobilemenucontent">
+        <ul id="browser">	
+           	<li><span><a href="./index.html">Home</a></span>            
+            </li>
+			<li><span><a href="./about-us.html">Profile</a></span>            
+            </li>
+            <li><span><a href="#">Our Projects</a></span>
+				<ul>
+                  <li><span><a href="./raj-residency.html">Raj Residency</a></span></li>
+					<li><span><a href="./geotech-pristine-avenue.html">Geotech Pristine Avenue</a></span></li>
+                    <li><span><a href="./casa-wood-stock.html">Casa Wood Stock</a></span></li>
+                 </ul>
+            </li>
+            <li><span><a href="./market-research.html">Case Study</a></span></li>
+            <li><span><a href="./contact-us.html">Contact Us</a></span></li>
+        </ul>
+    </div>
+</div>
+
+
+
+
+<div class="bannerin">
+<img src="./images/banner.jpg" alt="real estate company in noida" />	
+</div>
+<footer>	
+				
+ 
+    <div class="footermain">
+	
+    <div id="wrapperFoot">
+             <h1 style="padding: 5px 0 5px 0px;margin-bottom:1%; margin-top:2%;" >Our Projects - “All these projects are available below 3300 per sq. ft. (All Inclusive) .”</h1>
+			 
+            <!-- <div class="corporateav grid">
+			 
+			
+					<figure class="effect-lily">
+						<img src="images/raj.jpg" alt="img12">
+						<figcaption>
+							<div>
+								<h2 style="background: rgba(0,0,0,0.6); width: 188px;
+    padding: 7px;">Raj Residency</h2>
+								<p style="background: rgba(0,0,0,0.6); width: 146px;
+    padding: 7px; margin: 2px;">Gaur City 2</p>
+							</div>
+							
+						</figcaption>			
+					</figure>
+					
+				
+			 
+			 
+				
+              </div>-->
+			                <div class="corporateav grid">
+			  <a href="raj-residency.html">
+				<figure class="effect-lily">
+						<img src="resources/project/20151117121253-raj.jpg" alt="Raj Residency" style="height:208px;"/>
+						<figcaption>
+							<div>
+								<h2 style="background: rgba(0,0,0,0.6); width: 310px;
+    padding: 7px;">Raj Residency</h2>
+								<p style="background: rgba(0,0,0,0.6); width: 146px;
+    padding: 7px; margin: 2px;">Gaur City</p>
+							</div>
+							
+						</figcaption>
+					</figure>		</a>	
+              </div>
+		              <div class="corporateav grid">
+			  <a href="geotech-pristine-avenue.html">
+				<figure class="effect-lily">
+						<img src="resources/project/20151117120929-geotech.jpg" alt="Geotech Pristine Avenue" style="height:208px;"/>
+						<figcaption>
+							<div>
+								<h2 style="background: rgba(0,0,0,0.6); width: 310px;
+    padding: 7px;">Geotech Pristine Avenue</h2>
+								<p style="background: rgba(0,0,0,0.6); width: 146px;
+    padding: 7px; margin: 2px;">Gaur City</p>
+							</div>
+							
+						</figcaption>
+					</figure>		</a>	
+              </div>
+		              <div class="corporateav grid">
+			  <a href="casa-wood-stock.html">
+				<figure class="effect-lily">
+						<img src="resources/project/20151117121006-casa.jpg" alt="Casa Wood Stock" style="height:208px;"/>
+						<figcaption>
+							<div>
+								<h2 style="background: rgba(0,0,0,0.6); width: 310px;
+    padding: 7px;">Casa Wood Stock</h2>
+								<p style="background: rgba(0,0,0,0.6); width: 146px;
+    padding: 7px; margin: 2px;">Gaur City</p>
+							</div>
+							
+						</figcaption>
+					</figure>		</a>	
+              </div>
+					<!-- <div class="corporateav grid">
+				<figure class="effect-lily">
+						<img src="images/casa.jpg" alt="img1">
+						<figcaption>
+							<div>
+								<h2 style="background: rgba(0,0,0,0.6); width: 225px;
+    padding: 7px;">Casa Wood Stock</h2>
+								<p style="background: rgba(0,0,0,0.6); width: 146px;
+    padding: 7px; margin: 2px;">Gaur City 2</p>
+							</div>
+							
+						</figcaption>			
+					</figure>
+              </div>-->
+			  
+			
+            	<div class="clear"></div>
+        	</div>
+            </div>
+  	<div class="followCopy">
+    	<div id="wrapper">
+        	<!--<div class="followus">
+        	<span>Follow us at</span>
+            <!--<a target="_blank" href="#"><img src="images/fbicon.png" alt="facebook"></a>
+            <a target="_blank" href="#"><img src="images/tweeticon.png" alt=twitter></a>
+            <a target="_blank" href="#" rel="nofollow"><img src="./images/yticon.png" alt="youtube" /></a>
+			<a target="_blank" href="#"><img src="./images/blogicon.png" alt="blogger" /></a>
+            <a target="_blank" href="#"><img src="./images/linkedin.png" alt="linkedin" /></a>
+      		</div>-->
+			&copy; Copyright 2015, All rights reserved.
+        <div class="copy">
+        Designed by: <a href="http://www.techbuddies.co.in/" target="_blank" style="color:#fff">Tech Buddies</a>
+        </div>        
+    	<div class="clear"></div>
+        </div>
+  </div></footer>
+<script type="text/javascript">
+  jQuery(document).ready(function(){
+	jQuery("#fbclosepop, #fbblack-bg").click(function(){
+		jQuery("#fbblockpop").fadeOut(500);
+		jQuery("#fbblack-bg").fadeOut(500);
+	});
+  });
+</script>
+<style>
+#fbblack-bg{width:100%;height:100%;position:fixed;top:0;left:0;z-index:9999999999;opacity:0.8;background:rgb(0, 0, 0);}
+#fbblockpop{position:absolute;width:100%;top:15%;left:0;z-index:9999999999;}
+#fbclosepop{position:fixed;top:20px;right:20px;z-index:9999999999;cursor:pointer;}
+#fbblockContent{display:block;margin:auto auto;width:100%;max-width:900px;}
+#fbblockpop .popimg{width:100%;max-width:900px;}
+@media screen and (max-width:970px){#fbblockpop .popimg{padding:10px}
+#fbclosepop{top:0px;right:0px}
+}
+</style>
+<div id="fbblack-bg"></div>
+<div id="fbblockpop">
+	<img src="images/close.png" id="fbclosepop" alt="hpclose"/>
+<div id="fbblockContent">
+	<a href="http://www.gaurcitynoidaextension.org/market-research.html" target="_blank"><img class="popimg" src="images/pop-up.jpg" alt="popImg" /></a>
+</div>
+</div>
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+  ga('create', 'UA-70364564-1', 'auto');
+  ga('send', 'pageview');
+ 
+</script>
+</body>
+</html>

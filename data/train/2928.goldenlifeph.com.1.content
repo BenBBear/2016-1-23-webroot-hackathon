@@ -1,0 +1,357 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Golden Life Philippines</title>
+        <link href="css/styles.css" rel="stylesheet" type="text/css" />
+        <link rel=StyleSheet href="css/admin-css/styles.css" type="text/css" media=screen>
+            <script type="text/javascript" src="http://code.jquery.com/jquery-latest.pack.js"></script>
+            <script type="text/javascript" src="js/jquery.js"></script>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $(".pdflink").on("click", function () {
+                        $('#loading-div').fadeIn();
+                        $.post("index.php", {pdflink: $(this).attr('id')}, function (data) {
+                            $('#loading-div').fadeOut();
+                            window.open(data, '_blank');
+                        });
+                    });
+                });
+            </script>
+
+            <style type="text/css">
+                body {
+                    overflow-x: hidden;
+                }
+
+
+                /* LOADING [start] */
+                div#loading-div {
+                    z-index: 10000;
+                    background-color: rgba(0, 0, 0, 0.37);
+                    position: fixed;
+                    top: 0px;
+                    bottom: 0px;
+                    left: 0px;
+                    right: 0px;
+                    display: none;
+                }
+                #loading-div span {
+                    background-color: #fff;
+                    position: fixed;
+                    width: 150px;
+                    text-align: center;
+                    border-radius: 5px;
+                    top: 50%;
+                    left: 50%;
+                    margin-top: -100px;
+                    margin-left: -100px;
+                    box-shadow: 0px 0px 20px #000;
+                    padding: 25px;
+                }
+                div#loading-div h4 {
+                    margin: 0px;
+                    margin-bottom: 10px;
+                }
+                /* LOADING [end] */
+
+            </style>
+    </head>
+
+    <body>
+
+        <!--LOADING [start]-->
+        <div id="loading-div">
+            <span>
+                <h4>Loading...</h4>
+                <img src="img/ajax-loader.gif" alt="Loading...">
+            </span>
+        </div>
+        <!--LOADING [end]-->
+
+        <div id="header">
+            <div id="logo"></div>
+            <span id="title">An agency of AXA Philippines</span>
+        </div>
+
+        <div id="hrblue"></div>
+        <div id="hrblack"></div>
+
+        <div id="wrapper">
+
+            <div id="navigation">
+                <ul id="menu">
+                    <li><a href="https://click.axa.com.ph/" target="_blank"><span class="click">AXA - Click</span></a></li>
+                    <!--<li><a href="http://switch-axa.com.ph" target="_blank"><span class="pro">AXAPro Web</span></a></li>-->
+                    <li><a href="https://click.axa.com.ph/myaxaclick/" target="_blank"><span class="my-red">my</span><span class="my-blue">AXA Click</span></a></li>
+                    <li><a href="https://privilege.axa.com.ph/" target="_blank"><img src="img/logo_ap.png" width="100" align="absmiddle"></a></li>
+                    <li><a href="https://axa.csod.com/client/axa/default.aspx" target="_blank"><img src="img/axa_learning.jpg" width="120" align="absmiddle"></a></li>
+                    <li><a href="https://myaxabiz.my.salesforce.com/" target="_blank"><img src="img/axa_biz.jpg" width="120" align="absmiddle"></a></li>
+                    <li><a href="http://knowledgebase.axa.com.ph/kb/login.php" target="_blank"><span class="click">MyAXApedia</span></a></li>
+                    <li><a href="http://myaxapartner.com.ph" target="_blank"><span class="click">MyAXApartner</span></a></li> 
+                </ul>
+            </div>
+
+            <div id="textholder">
+                <span class="headtext">Prices (as of January 21, 2016)</span>
+                <br />
+                <span class="subtext">Click on fund name to get the latest Fund Fact Sheet.</span>
+            </div>
+
+            <div id="sidebar">
+                <a href="administrator.php" target="_blank"><img src="img/btn_member.png" /></a>
+                <br />
+                <img src="img/btn_consultant.png" />
+                <br />
+                <img src="img/btn_manager.png" />
+                <br />
+                <a href="#dialog" name="modal">
+                    <img src="img/btn_email.png" /></a>
+                <br />
+                <br />
+                <br />
+                <span class="headtext">Downloads</span>
+                <br />
+                <img src="img/btn_download.png" />
+            </div>
+
+
+
+
+            <div id="boxes">
+
+                <div id="dialog" class="window">
+                    <div class="mail"><!--<a href="#" class="close" />&times;</a>--></div>
+                    <div id="clear"></div>
+                    <div class="email">
+
+                        <ul>
+                            <li><a href="http://mail.goldenlifeph.com" target="_blank">Golden Life Philippines</a></li>
+                            <li><a href="http://mail.axa.net.ph" target="_blank">AXA.net.ph</a></li>
+                            <li><a href="http://mail.axaphils.com" target="_blank">AXA.PHILS.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <div id="tableholder">
+                <table border="0" cellpadding="0" cellspacing="0" id="table" width="590">
+                        <!-- <colgroup>
+                                <col width="300" />
+                                <col width="200" />
+                                <col width="200" />
+                        </colgroup> -->
+
+                    <tr>
+                        <td class="tablehead" style="border-radius: 10px 0px 0px 0px; -moz-border-radius: 10px 0px 0px 0px; -webkit-border-radius: 10px 0px 0px 0px;"><span class="text">Fund</span></td>
+                        <td class="tablehead" align="center">Offer Price</td>
+                        <td class="tablehead" align="center" style="border-radius: 0px 10px 0px 0px; -moz-border-radius: 0px 10px 0px 0px; -webkit-border-radius: 0px 10px 0px 0px;">Bid Price</td>
+                    </tr>
+
+                    					
+                        <tr id="alttr" valign="middle">
+                            <td style="padding: 5px;"><a href="#" id="https://www.axa.com.ph/assets/assets/1w/t6/7n/id/1wt67nidsm.pdf" class="pdflink">Philippine Wealth Bond Fund</a></td>
+                            <td align="center">17.6480</td>
+                            <td align="center">16.8076</td>
+                        </tr>
+    					
+                        <tr id="maintr" valign="middle">
+                            <td style="padding: 5px;"><a href="#" id="https://www.axa.com.ph/assets/assets/6x/3f/hz/t2/6x3fhzt2hv.pdf" class="pdflink">3GX-B16 Fund</a></td>
+                            <td align="center">12.6665</td>
+                            <td align="center">12.6665</td>
+                        </tr>
+    					
+                        <tr id="alttr" valign="middle">
+                            <td style="padding: 5px;"><a href="#" id="https://www.axa.com.ph/assets/assets/sk/lg/6i/19/sklg6i1924.pdf" class="pdflink">3GX-B16 Series 2 Fund</a></td>
+                            <td align="center">12.3757</td>
+                            <td align="center">12.3757</td>
+                        </tr>
+    					
+                        <tr id="maintr" valign="middle">
+                            <td style="padding: 5px;"><a href="#" id="https://www.axa.com.ph/assets/assets/gj/m9/hi/29/gjm9hi29nk.pdf" class="pdflink">3GX-B17  Fund</a></td>
+                            <td align="center">11.1914</td>
+                            <td align="center">11.1914</td>
+                        </tr>
+    					
+                        <tr id="alttr" valign="middle">
+                            <td style="padding: 5px;"><a href="#" id="https://www.axa.com.ph/assets/assets/iz/kz/h8/0l/izkzh80l24.pdf" class="pdflink">3GX-B17 Series 2 Fund</a></td>
+                            <td align="center">11.8636</td>
+                            <td align="center">11.8636</td>
+                        </tr>
+    					
+                        <tr id="maintr" valign="middle">
+                            <td style="padding: 5px;"><a href="#" id="https://www.axa.com.ph/assets/assets/s6/d8/51/yq/s6d851yqzy.pdf" class="pdflink">3GX-B18  Fund</a></td>
+                            <td align="center">11.8972</td>
+                            <td align="center">11.8972</td>
+                        </tr>
+    					
+                        <tr id="alttr" valign="middle">
+                            <td style="padding: 5px;"><a href="#" id="https://www.axa.com.ph/assets/assets/du/2c/ex/sn/du2cexsnlg.pdf" class="pdflink">3GX-B18 Series 2 Fund</a></td>
+                            <td align="center">10.8094</td>
+                            <td align="center">10.8094</td>
+                        </tr>
+    					
+                        <tr id="maintr" valign="middle">
+                            <td style="padding: 5px;"><a href="#" id="https://www.axa.com.ph/assets/assets/ne/e6/25/ev/nee625evfm.pdf" class="pdflink">3GX-B19  Fund</a></td>
+                            <td align="center">13.6927</td>
+                            <td align="center">13.6927</td>
+                        </tr>
+    					
+                        <tr id="alttr" valign="middle">
+                            <td style="padding: 5px;"><a href="#" id="https://www.axa.com.ph/assets/assets/un/rh/2r/ug/unrh2rugji.pdf" class="pdflink">3GX-B20  Fund</a></td>
+                            <td align="center">12.5097</td>
+                            <td align="center">12.5097</td>
+                        </tr>
+    					
+                        <tr id="maintr" valign="middle">
+                            <td style="padding: 5px;"><a href="#" id="https://www.axa.com.ph/assets/assets/b5/2v/jp/nr/b52vjpnria.pdf" class="pdflink">3GX-B21  Fund</a></td>
+                            <td align="center">10.8964</td>
+                            <td align="center">10.8964</td>
+                        </tr>
+    					
+                        <tr id="alttr" valign="middle">
+                            <td style="padding: 5px;"><a href="#" id="https://www.axa.com.ph/assets/assets/9f/ud/p1/kx/9fudp1kx38.pdf" class="pdflink">Philippine Wealth Equity Fund</a></td>
+                            <td align="center">35.6846</td>
+                            <td align="center">33.9853</td>
+                        </tr>
+    					
+                        <tr id="maintr" valign="middle">
+                            <td style="padding: 5px;"><a href="#" id="https://www.axa.com.ph/assets/assets/mg/wi/3a/g5/mgwi3ag5jm.pdf" class="pdflink">Opportunity Fund</a></td>
+                            <td align="center">26.0097</td>
+                            <td align="center">24.7711</td>
+                        </tr>
+    					
+                        <tr id="alttr" valign="middle">
+                            <td style="padding: 5px;"><a href="#" id="https://www.axa.com.ph/assets/assets/sr/13/jk/vx/sr13jkvx7s.pdf" class="pdflink">Chinese Tycoon Fund</a></td>
+                            <td align="center">16.6987</td>
+                            <td align="center">15.9035</td>
+                        </tr>
+    					
+                        <tr id="maintr" valign="middle">
+                            <td style="padding: 5px;"><a href="#" id="https://www.axa.com.ph/assets/assets/uk/of/09/6a/ukof096ame.pdf" class="pdflink">Spanish-American Legacy Fund</a></td>
+                            <td align="center">11.6918</td>
+                            <td align="center">11.1350</td>
+                        </tr>
+    					
+                        <tr id="alttr" valign="middle">
+                            <td style="padding: 5px;"><a href="#" id="https://www.axa.com.ph/assets/assets/je/fw/ik/ut/jefwikutto.pdf" class="pdflink">Philippine Wealth Balanced Fund</a></td>
+                            <td align="center">25.4432</td>
+                            <td align="center">24.2316</td>
+                        </tr>
+    					
+                        <tr id="maintr" valign="middle">
+                            <td style="padding: 5px;"><a href="#" id="https://www.axa.com.ph/assets/assets/wh/n7/s6/7x/whn7s67xgy.pdf" class="pdflink">Philippine Peso Liquidity Fund</a></td>
+                            <td align="center">11.5835</td>
+                            <td align="center">11.5835</td>
+                        </tr>
+    					
+                        <tr id="alttr" valign="middle">
+                            <td style="padding: 5px;"><a href="#" id="https://www.axa.com.ph/assets/assets/ke/nc/ah/ci/kencahci02.pdf" class="pdflink">Premium Bond Fund</a></td>
+                            <td align="center">2.5905</td>
+                            <td align="center">2.4671</td>
+                        </tr>
+    					
+                        <tr id="maintr" valign="middle">
+                            <td style="padding: 5px;"><a href="#" id="https://www.axa.com.ph/assets/assets/1d/ru/f6/t3/1druf6t302.pdf" class="pdflink">Capital Investment Fund</a></td>
+                            <td align="center">1.3359</td>
+                            <td align="center">1.2722</td>
+                        </tr>
+    					
+                        <tr id="alttr" valign="middle">
+                            <td style="padding: 5px;"><a href="#" id="https://www.axa.com.ph" class="pdflink">3GX$-B19  Fund</a></td>
+                            <td align="center">1.1656</td>
+                            <td align="center">1.1656</td>
+                        </tr>
+    					
+                        <tr id="maintr" valign="middle">
+                            <td style="padding: 5px;"><a href="#" id="https://www.axa.com.ph" class="pdflink">3GX$-B20  Fund</a></td>
+                            <td align="center">1.0744</td>
+                            <td align="center">1.0744</td>
+                        </tr>
+    					
+                        <tr id="alttr" valign="middle">
+                            <td style="padding: 5px;"><a href="#" id="https://www.axa.com.ph" class="pdflink">3GX$-B21  Fund</a></td>
+                            <td align="center">1.0805</td>
+                            <td align="center">1.0805</td>
+                        </tr>
+    					
+                        <tr id="maintr" valign="middle">
+                            <td style="padding: 5px;"><a href="#" id="https://www.axa.com.ph/assets/assets/cz/ja/8g/74/czja8g748r.pdf" class="pdflink">Global Advantage Fund</a></td>
+                            <td align="center">1.5174</td>
+                            <td align="center">1.4451</td>
+                        </tr>
+    					
+                        <tr id="alttr" valign="middle">
+                            <td style="padding: 5px;"><a href="#" id="https://www.axa.com.ph/assets/assets/xl/oz/js/3r/xlozjs3rnb.pdf" class="pdflink">Asia Growth Fund</a></td>
+                            <td align="center">0.7769</td>
+                            <td align="center">0.7399</td>
+                        </tr>
+    					
+                        <tr id="maintr" valign="middle">
+                            <td style="padding: 5px;"><a href="#" id="https://www.axa.com.ph/assets/assets/5a/rb/p3/bf/5arbp3bfuj.pdf" class="pdflink">European Wealth Fund</a></td>
+                            <td align="center">0.8138</td>
+                            <td align="center">0.7750</td>
+                        </tr>
+    					
+                        <tr id="alttr" valign="middle">
+                            <td style="padding: 5px;"><a href="#" id="https://www.axa.com.ph/assets/assets/25/gh/qr/q1/25ghqrq1ia.pdf" class="pdflink">Peso Phoenix 5 Fund</a></td>
+                            <td align="center">6.7780</td>
+                            <td align="center">6.7780</td>
+                        </tr>
+    					
+                        <tr id="maintr" valign="middle">
+                            <td style="padding: 5px;"><a href="#" id="https://www.axa.com.ph/assets/assets/8l/lv/i4/3i/8llvi43im5.pdf" class="pdflink">Peso Phoenix 7 Fund</a></td>
+                            <td align="center">6.5970</td>
+                            <td align="center">6.5970</td>
+                        </tr>
+    					
+                        <tr id="alttr" valign="middle">
+                            <td style="padding: 5px;"><a href="#" id="https://www.axa.com.ph/assets/assets/hf/37/zk/gu/hf37zkguqp.pdf" class="pdflink">Dollar Phoenix 5 Fund</a></td>
+                            <td align="center">0.8625</td>
+                            <td align="center">0.8625</td>
+                        </tr>
+    					
+                        <tr id="maintr" valign="middle">
+                            <td style="padding: 5px;"><a href="#" id="https://www.axa.com.ph/assets/assets/s4/1k/qp/vp/s41kqpvpqj.pdf" class="pdflink">Dollar Phoenix 7 Fund</a></td>
+                            <td align="center">0.8601</td>
+                            <td align="center">0.8601</td>
+                        </tr>
+    
+                    <tr>
+                        <td id="maintr_last" style="border-radius: 0px 0px 0px 10px; -moz-border-radius: 0px 0px 0px 10px; -webkit-border-radius: 0px 0px 0px 10px;"></td>
+                        <td id="maintr_last"></td>
+                        <td id="maintr_last" style="border-radius: 0px 0px 10px 0px; -moz-border-radius: 0px 0px 10px 0px; -webkit-border-radius: 0px 0px 10px 0px;"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="news-holder">
+                <div id="btn_news"></div>
+                <div id="head_news"></div>
+                <div id="div_news">
+
+
+                                         
+                    <!--<marquee direction="up" height="300" scrollamount="1">-->
+                    <marquee direction="up" height="300" onMouseOver="this.stop();" onMouseOut="this.start();" scrolldelay="0" scrollamount="2">
+                                            </marquee>
+                    <!--<h1>SAMPLE NEWS</h1>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem.</marquee>-->
+                </div>
+            </div>
+            <div id="clear"></div>
+
+            <div id="footer">
+                <div id="hrbottom">
+                    <br />
+                    <span class="footer">G/F Wellington Bldg., Plaza Lorenzo Ruiz, Binondo, Manila For Direct Inquiries: 579-5287 , 359-1760 EMAIL : <a href="mailto:info@goldenlifeph.com">info@goldenlifeph.com</a> FAX: (632) 559-9349</span>
+                </div>
+            </div>
+
+            <div id="clear"></div>
+        </div>
+    </body>
+</html>

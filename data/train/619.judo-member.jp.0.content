@@ -1,0 +1,351 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=emulateIE8" /> 
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="keywords" content="公益財団法人全日本柔道連盟" />
+
+<title>Judo Member - 公益財団法人全日本柔道連盟 会員登録システム</title>
+
+<link rel="stylesheet" type="text/css" href="css/css_main.css" media="screen,tv" />
+<link rel="stylesheet" type="text/css" href="css/css_dummy.css" />
+<link rel="stylesheet" type="text/css" href="css/css_print.css" media="print" title="print" />
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
+
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="js/jkl-parsexml.js"></script>
+<script type="text/javascript" src="js/jkl-calendar.js"></script>
+<script type="text/javascript" src="js/prototype.js"></script>
+<script type="text/javascript" src="js/builder.js"></script>
+<script type="text/javascript" src="js/effects.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+
+<!-- jsProgressBarHandler prerequisites : prototype.js -->
+<script type="text/javascript" src="js/jsprogressbarhandler/js/prototype/prototype.js"></script>
+<!-- jsProgressBarHandler core -->
+<script type="text/javascript" src="js/jsprogressbarhandler/js/bramus/jsProgressBarHandler3.js"></script>
+
+<script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-2516909-21', 'auto');
+    ga('send', 'pageview');
+
+</script>
+
+
+</head>
+<body onload="fscRef();">
+<div id="preLoad"><img src="image/side_bg_bottom_open.gif" width="1" height="1" /><img src="image/side_bg_bottom_close.gif" width="1" height="1" /><img src="image/side_bg_bottom_move.gif" width="1" height="1" /></div><div id="allBody" class="clearfix"><a name="top"></a><div id="header"><h1><div class="left"><div class="logo"><a href="./" title="トップページへ"><img src="image/header_logo2.gif" width="269" height="50" alt="Judo-Member.jp" style="padding:8px 0 0 5px;" /></a></div><div class="siteMode">｜<span style="color:#E72922;">2015-2016</span></div></div><div class="right"><div class="logo"><a href="./" title="トップページへ"><img src="image/header_logo.gif" width="42" height="50" alt="全日本柔道連盟" /></a></div><p class="x-small">公益財団法人全日本柔道連盟 会員登録システム<br/><span>All Japan Judo Federation : Member Management System</span></p></div></h1></div><!--header--><div id="header2" class="clearfix">
+    <script type="text/javascript">
+    <!--
+    document.write('<div id="fscDiv"><a href="#" onclick="fsc(\'smaller\');return false;" onkeypress="fsc(\'smaller\');return false;" title="文字サイズを縮小します" ><img src="image/fontsize_small.gif" width="36" height="17" /></a><a href="#" onclick="fsc(\'default\');return false;" onkeypress="fsc(\'default\');return false;" title="文字サイズを元に戻します" ><img src="image/fontsize_normal.gif" width="36" height="17" /></a><a href="#" onclick="fsc(\'larger\');return false;" onkeypress="fsc(\'larger\');return false;" title="文字サイズを拡大します" ><img src="image/fontsize_big.gif" width="36" height="17" /></a></div>');
+    -->
+    </script>
+    </div><!--header2-->
+
+    <script type="text/javascript">
+        function close_info(id) {
+            all_id = "all_body_" + id;
+            short_id = "short_body_" + id;
+            $(all_id).style.display = "none";
+            $(short_id).style.display = "";
+        }
+
+        function open_info(id) {
+            all_id = "all_body_" + id;
+            short_id = "short_body_" + id;
+            $(all_id).style.display = "";
+            $(short_id).style.display = "none";
+        }
+    </script>
+
+
+<div class="h2Div clearfix">
+    <div>
+        <h2>公益財団法人全日本柔道連盟 会員登録システム</h2>
+    </div>
+</div><!--h2Div-->
+
+<div id="mainContainer" class="clearfix">
+
+    <div id="sideMenu" class="clearfix">
+        <div id="sideSH" class="clearfix">
+            <dl>
+                <dt>チーム／団体責任者</dt>
+                <dd class="clearfix">
+                    <a href="https://judo-member.jp/index.php?action_org_top=true" class="linkA">チーム/団体責任者TOP</a>
+
+                    <p class="bqTxt x-small">チーム/団体責任者のログイン・新規登録はこちらです。</p>
+                                    </dd>
+            </dl>
+            <dl>
+                <dt>メンバー</dt>
+                <dd class="clearfix">
+                    <a href="https://judo-member.jp/index.php?action_mb_top=true" class="linkA">メンバーTOP</a>
+
+                    <p class="bqTxt x-small">メンバーのログイン・新規登録はこちらです。</p>
+                                    </dd>
+            </dl>
+            <dl>
+                <dt>よくある質問</dt>
+                <dd class="clearfix">
+                    <a href="?action_faq=true" class="linkA" target="_blank">よくある質問</a>
+
+                    <p class="bqTxt x-small">よくある質問はこちらで確認できます。</p>
+                </dd>
+            </dl>
+            <dl>
+                <dt>ヘルプデスク</dt>
+                <dd class="clearfix">
+                    <a href="#toiawase" class="linkA">ヘルプデスク</a>
+
+                    <p class="bqTxt x-small">電話窓口・問い合わせフォームはこちらで確認できます。</p>
+                </dd>
+            </dl>
+            <dl>
+                <dt>利用規約</dt>
+                <dd class="clearfix">
+                    <a href="?action_kiyaku=true" class="linkA" target="_blank">利用規約</a>
+
+                    <p class="bqTxt x-small">Judo Memberの利用規約はこちらで確認できます。</p>
+                </dd>
+            </dl>
+                                                                                                                        </div>
+        <div id="sideSHbtn" onclick="showhide('sideSH','sideSHbtn');" title="クリックでサイドバーを開閉します"></div>
+    </div>
+
+    <div id="mainLeft">
+
+        <a id="osirase"></a>
+
+        <h3>お知らせ</h3>
+
+        <div class="tBox">
+                                                <dl class="indDate">
+                                <dt>2015/11/09</dt>
+                <dd id="short_body_8">
+                    【平成27年度登録手続き締切り日について】<br/>
+                    平成２７年度の全日本柔道連盟会員登録の最終締切りは２０１６年２月２９日(月)入金分までとなります。<br />...
+                    <a href="javascript:open_info(8)">続きを開く</a>
+                </dd>
+                <dd id="all_body_8" style="display:none">
+                    【平成27年度登録手続き締切り日について】<br/>
+                    平成２７年度の全日本柔道連盟会員登録の最終締切りは２０１６年２月２９日(月)入金分までとなります。<br />
+２月２９日(月)までに登録費のお支払いが完了していることが必要です。３月１日以降は平成２７年度分の登録手続きが出来なくなります。<br />
+お早めにご登録をお願いいたします。
+                    <a href="javascript:close_info(8)">続きを閉じる</a>
+                </dd>
+                                    </dl>
+                                                            </div>
+
+
+        <h3>ログイン</h3>
+
+        <div class="tBox">
+            <p>県柔連、地区・支部の方は以下からログインしてください。</p>
+            <p><a href="?action_org_top=true" class="linkA">ログイン（団体責任者TOP）</a></p>
+            <br/>
+            <p>チーム（登録団体）の方は以下からログイン（または新規登録）してください。</p>
+            <p><a href="?action_org_top=true" class="linkA">ログイン（チーム責任者TOP）</a></p>
+            <br/>
+            <p>メンバーの方は以下からログイン（または新規登録）してください。</p>
+            <p><a href="?action_mb_top=true" class="linkA">ログイン（メンバーTOP）</a></p>
+        </div>
+
+        <h3>Judo Member登録ガイド、規程</h3>
+
+        <div class="tBox">
+            <table>
+                                                                                                                                                                
+                                                                            <tr>
+                    <th rowspan="5" style="width:15em;">登録ガイド</th>
+                    <td style="width:35em;">
+                        <a href="file/guide/team_guide.pdf" class="linkA" target="_blank">
+                            チーム責任者向け登録ガイド
+                            <img src="image/pdficon_small.png" width="16" height="16" alt="pdf"/>
+                        </a>
+
+                        <p>チーム・メンバーの登録ガイドです。</p>
+                        <p>チーム責任者の方はこちらをご覧ください。</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="file/guide/member_guide.pdf" class="linkA" target="_blank">
+                            個人登録者・審判員・指導者・形審査員向け登録ガイド
+                            <img src="image/pdficon_small.png" width="16" height="16" alt="pdf"/>
+                        </a>
+
+                        <p>メンバー本人による競技者・審判員・指導者・形審査員の登録ガイドです。</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:35em;">
+                        <a href="file/guide/team_keizoku_guide.pdf" class="linkA" target="_blank">
+                            継続登録ガイド（チーム責任者向け）
+                            <img src="image/pdficon_small.png" width="16" height="16" alt="pdf"/>
+                        </a>
+
+                        <p>新年度（平成28年度）に行うチーム・メンバーの継続登録ガイドです。</p>
+                        <p>旧年度（平成27年度）にチームや個人登録者の登録を行ったチーム責任者の方はこちらをご覧ください。</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:35em;">
+                        <a href="file/guide/member_keizoku_guide.pdf" class="linkA" target="_blank">
+                            継続登録ガイド（個人登録者・審判員・指導者・形審査員向け）
+                            <img src="image/pdficon_small.png" width="16" height="16" alt="pdf"/>
+                        </a>
+
+                        <p>新年度（平成28年度）に行うメンバー本人による競技者・審判員・指導者・形審査員の継続登録ガイドです。</p>
+                        <p>旧年度（平成27年度）にメンバー本人による各種登録を行った方はこちらをご覧下さい。</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="file/guide/tiku_guide.pdf" class="linkA" target="_blank">
+                            地区・支部向け初期設定ガイド
+                            <img src="image/pdficon_small.png" width="16" height="16" alt="pdf"/>
+                        </a>
+
+                        <p>地区・支部の責任者の方が行う初期設定および承認作業に関する操作ガイドです。</p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th rowspan="5" style="width:15em;">規程</th>
+                    <td style="width:35em;">
+                        <a href="file/regulations/touroku_kitei.pdf" class="linkA" target="_blank">
+                            登録規程
+                            <img src="image/pdficon_small.png" width="16" height="16" alt="pdf"/>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:35em;">
+                        <a href="file/regulations/shinpanin_kitei.pdf" class="linkA" target="_blank">
+                            公益財団法人全日本柔道連盟 公認審判員規程
+                            <img src="image/pdficon_small.png" width="16" height="16" alt="pdf"/>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:35em;">
+                        <a href="file/regulations/shidousha_kitei.pdf" class="linkA" target="_blank">
+                            公認柔道指導者資格制度規程
+                            <img src="image/pdficon_small.png" width="16" height="16" alt="pdf"/>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:35em;">
+                        <a href="file/regulations/katashinsain_kitei.pdf" class="linkA" target="_blank">
+                            全日本柔道連盟形審査員規程
+                            <img src="image/pdficon_small.png" width="16" height="16" alt="pdf"/>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:35em;">
+                        <a href="file/regulations/mimaikin_sikyu_kitei.pdf" class="linkA" target="_blank">
+                            柔道競技に関わる活動に関する見舞金支給規程について
+                            <img src="image/pdficon_small.png" width="16" height="16" alt="pdf"/>
+                        </a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th rowspan="1" style="width:15em;">登録費</th>
+                    <td style="width:35em;">
+                        <a href="file/regulations/tourokuhi.pdf" class="linkA" target="_blank">
+                            登録費一覧
+                            <img src="image/pdficon_small.png" width="16" height="16" alt="pdf"/>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <h3>お支払い方法</h3>
+
+        <div class="tBox">
+            登録料は、セブンイレブン、ローソン、ファミリーマート、サークルKサンクス、ヤマザキデイリーストアー、ミニストップ、ペイジー（ゆうちょATM、銀行ATM）、楽天銀行、ジャパンネット銀行でお支払いいただけます。<br>
+            下記のURLより、各支払先窓口でのお支払い方法をご確認いただけます。<br><br>
+            <a href="http://www.dsk-ec.jp/products/shuunou/support/index_a.html" target="_blank" class="linkA">収納代行サービス：支払い方法のご案内</a>
+        </div>
+
+        <h3>特定商取引についての表示</h3>
+
+        <div class="tBox">
+            <a href="?action_organization=true#tokushou" class="linkA">特定商取引法に基づく表記</a>
+        </div>
+
+        <h3 id="toiawase">ヘルプデスク</h3>
+        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+        <h4>電話窓口</h4>
+
+        <div class="tBox">
+                                                                    <table>
+                <tr>
+                    <th style="width:15em;">電話番号</th>
+                    <td style="width:35em;">
+                        <p style="font-size:x-large;">06-4400-5245</p>
+                        <p class="warning">※お掛け間違いのないようお願い致します。</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>受付時間</th>
+                    <td>
+                        <p>■2015/3/23（月）～7/31（金）</p>
+                        <p>月～金 10：00～13：00　14：00～17：00</p>
+                        <p>※4月・5月・6月中の水曜日のみ<br />10：00～13：00　14：00～20：00</p>
+                        <p>※祝日休止</p>
+                    </td>
+                </tr>
+            </table>
+            <p>※当ヘルプデスクは登録システムの操作に関するお問い合わせを受け付けております。</p>
+            <p>※登録システム以外のお問い合わせ（登録制度や大会に関する内容）に関しましては、当ヘルプデスクでは回答いたしかねますのでご了承ください。</p>
+        </div>
+
+        <h4>問い合わせフォーム</h4>
+
+        <div class="tBox">
+            <p>登録システムに関してのお問い合わせは下記の「問い合わせフォームはこちら」からお願い致します。</p>
+            <p>※問い合わせ内容及び対応状況に応じまして回答にお時間がかかることがございますので予めご了承ください。</p>
+            <p>※登録システム以外のお問い合わせ（登録制度や大会に関する内容）に関しましては、当ヘルプデスクでは回答いたしかねますのでご了承ください。</p>
+            <p style="margin-top:1em;">
+                <a href="?action_question_edit=true" class="linkA" target="_blank">
+                    問い合わせフォーム
+                </a>
+            </p>
+        </div>
+
+
+</div><!--mainLeft-->
+</div><!--mainContainer-->
+
+<div id="footer">
+<div><a href="#top" onclick="toPageTop();return false;" title="このページの先頭へ"><img src="image/gotop.gif" width="113" height="13" /></a></div>
+<p class="x-small">&copy; ALL JAPAN JUDO FEDERATION ALL RIGHTS RESERVED.</p>
+</div><!--footer-->
+
+</div><!--allBody-->
+
+</body>
+</html>
+<!--<i>page was processed in 0.0634 seconds</i>-->
+
+<!--<i> 10.201.17.106</i>-->
+
+<!-- memory => 10447488 -->
+
+<!-- 2016/01/23 08:30:57 -->

@@ -1,0 +1,488 @@
+<!--PHP FUNCTIONS-->
+<!doctype html>
+<!--[if lt IE 7 ]><html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]><html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]><html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]><html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="author" content="RentInKosovo.com">
+<meta name="keywords" content="">
+
+<title>RentInKosovo - Fillimi</title>
+<link href='http://fonts.googleapis.com/css?family=Lato:400italic,400,700|Bitter' rel='stylesheet'>
+<link rel="shortcut icon" href="favicon.png" type="image/png">
+<link href="style.css" media="screen" rel="stylesheet">
+<link href="screen.css" media="screen" rel="stylesheet">
+
+<!-- Mobile optimized -->
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<script src="js/libs/modernizr-2.5.3.min.js"></script>
+<script src="js/libs/respond.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/general.js"></script>
+
+<script src="js/jquery.tools.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+
+<script src="js/slides.min.jquery.js"></script>
+<script>
+	jQuery(document).ready(function($) {
+			$('.header_slider').slides({
+				play: 4000,
+				pause: 2500,
+				hoverPause: true
+			});
+			
+			/*nderrimi i cmimeve*/
+			$('#loader_cmimimax').hide();
+			$('#cmimimax_trego').hide();
+			
+			$('#cmimimin_id').change(function(){
+				//alert($('#cmimimin_id').val());
+				if ($('#cmimimin_id').val() == 0)
+				{
+					$('#loader_cmimimax').show();
+					$('#cmimimax_trego').hide();
+					$('#loader_cmimimax').hide();
+				} 
+				else
+				{
+					$('#cmimimax_trego').fadeOut();
+					$('#loader_cmimimax').show();
+					$.post("get_cmimet.php", {
+						parent_id: $('#cmimimin_id').val(),
+					}, function(response){
+						setTimeout("finishAjax('loader_cmimimax', 'cmimimax_trego', '"+escape(response)+"')", 400);
+					});
+					return false;
+				}
+			});
+
+	});	
+function finishAjax(loader, id, response){
+  $('#'+loader).hide();
+  $('#'+id).html(unescape(response));
+  $('#'+id).fadeIn();
+} 
+
+function alert_id()
+{
+	if($('#sub_category_id').val() == '')
+	alert('Please select a sub category.');
+	else
+	alert($('#sub_category_id').val());
+	return false;
+}
+</script>
+
+<link href="css/cusel.css" rel="stylesheet">
+<script src="js/cusel-min.js"></script>
+<script src="js/jScrollPane.js"></script>
+<script src="js/jquery.mousewheel.js"></script>
+
+<script src="js/jquery.dependClass.js"></script>
+<script src="js/jquery.slider-min.js"></script>
+<link href="css/jslider.css" rel="stylesheet">
+
+<script src="js/jquery.jcarousel.min.js"></script>
+<link rel="stylesheet" href="images/skins/tango/skin.css">
+
+<!--[if IE 7]><link rel="stylesheet" href="css/ie.css><![endif]-->
+<link href="custom.css" media="screen" rel="stylesheet">
+</head>
+
+<body>
+<div class="body_wrap">
+
+<div class="header" style="background-image:url(images/header_default.jpg);">
+<div class="header_inner">
+	<div class="container_12">
+		<script src="js/jquery.lightbox_me.js"></script><div class="header_top">
+    
+        <div class="logo">
+        <a href="."><img src="images/logo.png" alt=""></a>
+        <h1>rentinkosovo.com</h1>
+        </div>
+        
+        <div class="topmenu">
+            <ul class="dropdown">
+                <li class="menu-item-home"><a href="index.php"><span>Ballina</span></a></li>
+                <li><a href="#"><span>Si funkcionon?</span></a></li>
+                <li><a href="#"><span>Partnerët</span></a></li>     
+				<li><a href="#" id="login"><span>Login</span></a></li>
+				<li><a href="#"><span>FAQ</span></a></li>
+                <li><a href="#"><span>Kontakti</span></a></li>
+            </ul>
+        </div>
+        <div class="widget-container widget_login" id="sign_up" style="display: none">
+							<h3>Hyrja për agjent</h3>
+							
+						  <form action="hyrja.php" method="post" id="loginform" class="loginform">
+							
+							<p><label>Shfrytëzuesi</label><br><input name="user_login" id="user_login" class="input" value="" size="20" tabindex="10" type="text"></p>
+							
+							<p><label>Fjalëkalimi</label><br><input name="user_pass" id="user_pass" class="input" value="" size="20" tabindex="20" type="password"></p>
+							
+							<p class="forget_password"><a href="#">Keni harruar fjalëkalimin?</a></p>   
+							
+							<p class="submit">
+								<input type="submit" name="wp-submit" id="wp-submit" class="btn-submit" value="Vazhdo" tabindex="100">
+							</p>                        
+							
+						  </form>
+					</div>
+					<script>
+						$("#login").click(function(e) {
+							$("#sign_up").lightbox_me({
+								centered: true, 
+								onLoad: function() { 
+									$("#sign_up").find("input:first").focus()
+									}
+								});
+							e.preventDefault();
+						});
+					</script>
+        <div class="header_phone">
+        	<a target="_blank" href="http://rentinkosovo.com/webmail" id="my_saved_offers"><span>WEBMAIL</span></a>	<span>045 - 845 - 662</span>
+        </div>
+        
+        <div class="clear"></div>
+    </div> 
+    <div class="header_bot">
+    	
+        <div class="search_home">
+        	<p class="search_title"><strong>KËRKIMI I SHPEJTË</strong></p><form action="submit.php?page=1" method="post" class="form_search"><div class="row rowInput tf-seek-select-form-item-slider">
+		       <label class="label_title">Produkti:</label>
+		       <select class="select_styled" name="location_id"><option value="0" >Të gjitha</option><option value="1">Banese</option><option value="2">Shtepi</option><option value="3">Dyqan</option><option value="4">Truall</option><option value="5">Garazhe</option><option value="6">Zyre</option>      </select>
+		  </div>   <div class="row">
+                	<label class="label_title">Lloji:</label>
+                    <select class="select_styled" name="lloji_id">
+					<option value="0" >Të gjitha</option>
+					<option value="Qira" >Qira</option>
+					<option value="Blerje" >Blerje</option>
+					</select>
+                    
+         </div>   <div class="row selectField">
+                	<label class="label_title">Lokacioni:</label>
+                    	<select class="select_styled" name="search_no_beds" id="search_no_beds" title="Beds">
+                        		<option value="0">Të gjitha</option><option value="GJK">Gjakova</option><option value="GJL">Gjilan</option><option value="MIT">Mitrovica</option><option value="PEJ">Peja</option><option value="PRN">Prishtina</option><option value="PRZ">Prizreni</option></select>
+                        
+                        <select class="select_styled" name="search_no_baths" id="search_no_baths" title="Baths">
+                        		<option value="0">Dhomat</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5+</option>
+                        </select>
+             </div>	<div class="row rangeField">
+                	<div class="range-slider">
+                    <input id="price_range" type="text" name="price_range" value="0;10000">
+                    </div>                   
+                    <div class="clear"></div>
+                </div>     <div class="row submitField">
+                	<input type="submit" value="KËRKO PRODUKTIN" id="search_submit" class="btn_search">
+                </div></form><script >
+						jQuery(document).ready(function($) {
+							// Switch Type
+							$(".cb-enable").click(function(){
+								var parent = $(this).parents(".switch");
+								$(parent).removeClass("switch_off");								
+								$(".cb-disable",parent).removeClass("selected");
+								$(this).addClass("selected");	
+								document.getElementById("txtSale").value = "1";
+								document.getElementById("txtRent").value = "0";							
+							});
+							$(".cb-disable").click(function(){
+								var parent = $(this).parents(".switch");
+								$(parent).addClass("switch_off");
+								$(".cb-enable",parent).removeClass("selected");
+								$(this).addClass("selected");	
+								document.getElementById("txtSale").value = "0";
+								document.getElementById("txtRent").value = "1";									
+							});
+							
+							// Price Range Input
+                     		$("#price_range").slider({ 
+					  			from: 0,
+								to: 10000,
+								scale: [0, "|", "2500", "|", "5000", "|", "7500", "|", ">10000"],
+								limits: false, 
+								step: 50,
+								smooth: true,
+								dimension: "&nbsp;€",
+								skin: "round_gold"
+							});
+						});
+            </script></div>    
+    
+    	<div class="header_slider">
+        	<span class="slider_ribbon"></span>
+        	<div class="slides_container">
+			       
+					<div class="slide">
+						<a href="details.php?id=PR-10002"><img src="Properties/PR-10002/main.png" width="645" height="407" alt=""></a>
+						<div class="caption"><p>Prona #: PR-10002 - Banesa me qera 140 m2 tek Vellusha <span class="price">700€</span></p></div>
+					</div>       
+					<div class="slide">
+						<a href="details.php?id=PR-10003"><img src="Properties/PR-10003/main.png" width="645" height="407" alt=""></a>
+						<div class="caption"><p>Prona #: PR-10003 - Banese ne shitje, 94 m2 mbrapa Teatrit <span class="price">350€</span></p></div>
+					</div>       
+					<div class="slide">
+						<a href="details.php?id=PR-10001"><img src="Properties/PR-10001/main.png" width="645" height="407" alt=""></a>
+						<div class="caption"><p>Prona #: PR-10001 - Oferte per qira te shtepise per rezidence diplomatike <span class="price">6000€</span></p></div>
+					</div>       
+					<div class="slide">
+						<a href="details.php?id=PR-10004"><img src="Properties/PR-10004/main.png" width="645" height="407" alt=""></a>
+						<div class="caption"><p>Prona #: PR-10004 - Shtepi me qera ne Sofali <span class="price">600€</span></p></div>
+					</div>       
+					<div class="slide">
+						<a href="details.php?id=PR-10005"><img src="Properties/PR-10005/main.png" width="645" height="407" alt=""></a>
+						<div class="caption"><p>Prona #: PR-10005 - Shtepi 270m2 me qera: Prishtine <span class="price">0€</span></p></div>
+					</div>       
+					<div class="slide">
+						<a href="details.php?id=PR-10006"><img src="Properties/PR-10006/main.png" width="645" height="407" alt=""></a>
+						<div class="caption"><p>Prona #: PR-10006 - Shtepi me qera ne Lagjen Emshir <span class="price">700€</span></p></div>
+					</div></div>         
+        </div>    	      
+    </div>    
+    <div class="clear"></div>
+    </div>
+</div>
+</div>
+<!--/ header -->
+
+<!-- carousel before content -->
+<div class="before_content">
+	<div class="container_12">
+    	<h2>Më të fundit</h2>
+    	<div class="carusel_list">
+					<ul id="latest_properties" class="jcarousel-skin-tango">       <li>
+		                        <div class="item_image"><a href="details.php?id=VI-10015"><img src="Properties/VI-10015/nofoto.png" width="218" height="125" alt="">   </a></div>        
+		        		<div class="item_row item_type"><span>Lloji produktit:</span> <a href="#"><strong>Banese</strong></a></div>
+		                        <div class="item_row item_price"><span>Çmimi:</span> <strong>120€</strong></div>
+		                        <div class="item_row item_rooms"><span>Nr. i dhomave:</span> <strong>1</strong></div>
+		                        <div class="item_row item_location"><span>Lokacioni:</span> <strong>Prishtina</strong></div>
+		                        <div class="item_row item_view"><a href="details.php?id=VI-10015" class="btn_view">Shiko më shumë...</a></div>
+		                    </li>       <li>
+		                        <div class="item_image"><a href="details.php?id=VI-10016"><img src="Properties/VI-10016/002ac288-8349-41ea-b521-261b5c3982be.jpg" width="218" height="125" alt="">   </a></div>        
+		        		<div class="item_row item_type"><span>Lloji produktit:</span> <a href="#"><strong>Banese</strong></a></div>
+		                        <div class="item_row item_price"><span>Çmimi:</span> <strong>300€</strong></div>
+		                        <div class="item_row item_rooms"><span>Nr. i dhomave:</span> <strong>2</strong></div>
+		                        <div class="item_row item_location"><span>Lokacioni:</span> <strong>Prishtina</strong></div>
+		                        <div class="item_row item_view"><a href="details.php?id=VI-10016" class="btn_view">Shiko më shumë...</a></div>
+		                    </li>       <li>
+		                        <div class="item_image"><a href="details.php?id=VI-10017"><img src="Properties/VI-10017/4ff74024-742c-4797-b699-175945831ab2.jpg" width="218" height="125" alt="">   </a></div>        
+		        		<div class="item_row item_type"><span>Lloji produktit:</span> <a href="#"><strong>Banese</strong></a></div>
+		                        <div class="item_row item_price"><span>Çmimi:</span> <strong>320€</strong></div>
+		                        <div class="item_row item_rooms"><span>Nr. i dhomave:</span> <strong>3</strong></div>
+		                        <div class="item_row item_location"><span>Lokacioni:</span> <strong>Prishtina</strong></div>
+		                        <div class="item_row item_view"><a href="details.php?id=VI-10017" class="btn_view">Shiko më shumë...</a></div>
+		                    </li>       <li>
+		                        <div class="item_image"><a href="details.php?id=YL-10036"><img src="Properties/YL-10036/cf415bce-22e5-4abe-ab34-5f17ef79845c.jpg" width="218" height="125" alt="">   </a></div>        
+		        		<div class="item_row item_type"><span>Lloji produktit:</span> <a href="#"><strong>Banese</strong></a></div>
+		                        <div class="item_row item_price"><span>Çmimi:</span> <strong>600€</strong></div>
+		                        <div class="item_row item_rooms"><span>Nr. i dhomave:</span> <strong>3</strong></div>
+		                        <div class="item_row item_location"><span>Lokacioni:</span> <strong>Prishtina</strong></div>
+		                        <div class="item_row item_view"><a href="details.php?id=YL-10036" class="btn_view">Shiko më shumë...</a></div>
+		                    </li>       <li>
+		                        <div class="item_image"><a href="details.php?id=YL-10037"><img src="Properties/YL-10037/5bcc1dd8-3b2e-4d84-9cdf-1ad628afefcc.jpg" width="218" height="125" alt="">   </a></div>        
+		        		<div class="item_row item_type"><span>Lloji produktit:</span> <a href="#"><strong>Banese</strong></a></div>
+		                        <div class="item_row item_price"><span>Çmimi:</span> <strong>250€</strong></div>
+		                        <div class="item_row item_rooms"><span>Nr. i dhomave:</span> <strong>2</strong></div>
+		                        <div class="item_row item_location"><span>Lokacioni:</span> <strong>Prishtina</strong></div>
+		                        <div class="item_row item_view"><a href="details.php?id=YL-10037" class="btn_view">Shiko më shumë...</a></div>
+		                    </li>   </ul>
+				  </div><script>   jQuery(document).ready(function($) {     $('#latest_properties').jcarousel({        easing: 'easeOutBack',        animation: 600,		  scroll: 1,		  wrap: 'circular', auto: 3      });    });</script>    </div>
+</div>
+<!--/ carousel before content -->
+
+<div class="middle">
+<div class="container_12">
+	
+    <!-- page content -->
+	<div class="entry">
+
+        <br>
+
+        <div class="col col_1">
+        <h3 class="title_up">ÇKA ËSHTË RENTINKOSOVO.COM?</h3>
+        </div>	
+            
+        <div class="col col_1_2">
+        <div class="inner">
+            <p>Misioni ynë është të realizoj shitë-blerjen e pasaurive të patundshme në mënryrë sa më efektive. Gjithashtu synimi ynë kryesorë ëdhtë
+            të mundësoj blerërsit të kenë një eksperiencë sa më të rehatshme gjatë kërkimit dhe zgjedhjes së patundshmërisë.</p>
+        </div>
+        </div>
+        
+        <div class="col col_1_2">
+        <div class="inner">
+            <p>E gjithë kjo realizohet duke punuar me partnerët, të cilët janë agjencionet e patundshmërisë më të fortë dhe më të besueshëm ne Kosovë.
+            Klientët do ta kenë cilësinë e shërbimit maksimal, si dhe lehtësinë e zgjedhjes së produktit të dëshiruar në mjedise online, duke perdorur
+            cilin do mjet qe ofron internet.</p>
+        </div>
+        </div>
+        <div class="divider_space_thin"></div>
+        
+        <div class="col col_1_3">
+        <div class="inner"> <a href="submit.php?lid=2,0,0,0,50;100000,1&page=1"><img src="images/property_sale.png" width="137" height="137" alt="Property for SALE" class="alignleft"></a>
+            <div class="text-block-1">
+                <strong>Doni të bleni <span>Shtëpi?</span></strong>
+              <p><a href="submit.php?lid=2,0,0,0,50;100000,1&page=1" class="link-more2">Shiko të gjitha >></a></p>
+            </div>
+        </div>
+        </div>
+        
+        <div class="col col_1_3">
+        <div class="inner"> <a href="submit.php?lid=1,0,0,0,50;100000,1&page=1"><img src="images/property_rent.png" width="137" height="137" alt="APARTMENTS for RENT" class="alignleft"></a>
+            <div class="text-block-1">
+                <strong>Kërkoni <span>Banesë?</span></strong>
+              <p><a href="submit.php?lid=1,0,0,0,50;100000,1&page=1" class="link-more2">Shiko të gjitha >></a></p>
+            </div>
+        </div>
+        </div>
+        
+        <div class="col col_1_3">
+        <div class="inner"> <a href="#"><img src="images/property_lease.png" width="137" height="137" alt="OFFICE SPACE for LEASE" class="alignleft"></a>
+            <div class="text-block-1">
+                <strong>Ju duhet <span>Zyre?</span></strong>
+              <p><a href="#" class="link-more2">Shiko të gjitha >></a></p>
+            </div>
+        </div>
+        </div>
+        <div class="divider_space"></div>
+        
+    	<div class="col col_1_4">
+        	<h3 class="title_up">PARTNERËT</h3>
+        </div>	
+        <div class="col col_1_1">
+	        <div class="minigallery-list minigallery">
+	                            <ul id="mycarouse2" class="jcarousel-skin-tango">
+	                            	<li><img src="agents/ylli.jpg" width="90px" height="90px" alt="Ylli"></li>
+	                            	<li><img src="agents/xixa.jpg" width="90px" height="90px" alt="XIXA"></li>
+	                            	<li><img src="agents/dion.jpg" width="90px" height="90px" alt="Dion"></li>
+	                            	<li><img src="agents/ecovita.jpg" width="90px" height="90px" alt="EcoVita"></li>
+	                            	<li><img src="agents/realcon.jpg" width="90px" height="90px" alt="RealCon"></li>
+	                            	<li><img src="agents/virtyti.jpg" width="90px" height="90px" alt="Virtyti"></li>
+	                            	<li><img src="agents/eni.jpg" width="90px" height="90px" alt="Eni"></li>
+	                            	<li><img src="agents/zogu.jpg" width="90px" height="90px" alt="Zogu"></li>
+	                            </ul>
+	        </div>
+		</div>
+						<script>
+                        jQuery(document).ready(function($) {
+                            $("#mycarouse2").jcarousel({
+                                easing: "easeInOutQuint",
+                                animation: 600
+                            });
+                        });
+                        </script>
+    </div>
+    <!--/ page content -->
+    
+       
+</div>
+</div>
+<!--/ middle -->
+
+<div class="footer">
+<div class="footer_inner">
+	<div class="container_12">
+    
+    <div class="f_col_1">
+        	
+            <div id="categories-3" class="widget-container widget_categories">
+            	<h3 class="widget-title">PRODUKTET</h3>
+                    <ul>
+                      <li><a href="#">Banesa</a></li>
+                        <li><a href="#">Shtëpi</a></li>
+                        <li><a href="#">Villa</a></li>
+                        <li><a href="#">Zyre</a></li>
+                        <li><a href="#">Garazh</a></li>
+                    </ul>
+			</div>
+                
+        </div>
+        <!--/ footer col 1 -->
+        
+        <div class="f_col_2">
+        	
+			<div class="widget-container widget_pages">
+				<h3 class="widget-title">PER NE</h3>
+                        <ul>
+                          <li><a href="#">Si funkcionon?</a></li>
+                          <li><a href="#">Partnerët</a></li>
+						  <li><a href="#">Kyçja për agjent</a></li>
+						  <li><a href="#">FAQ</a></li>
+                          <li><a href="#">Kontakti</a></li>
+                        </ul>
+			</div>
+            
+        </div>
+        <!--/ footer col 2 -->
+        
+        <div class="f_col_3">
+        	
+			<div class="widget-container widget_twitter">
+				
+               
+  		    	                
+			</div>            
+            
+        </div>        
+        <!--/ footer col 3 -->
+        
+        <div class="f_col_4">      	
+           
+            
+            <!-- widget contacts -->
+                    <div class="widget-container widget_contact">                    
+                    	<h3>Na Kontaktoni</h3>     
+                                           
+						<div class="contact-address">
+                            <div class="address">045 - 845 - 662</div>
+                        </div>                            
+                    </div>
+				<!--/ widget contacts -->           
+          	
+            
+            <div class="footer_social">
+                	<a href="#"><img src="images/icons/social_facebook_16.png" alt="" width="16" height="16"></a>
+                	<a href="#"><img src="images/icons/social_twitter_16.png" alt="" width="16" height="16"></a>
+                    <a href="#"><img src="images/icons/social_rss_16.png" alt="" width="16" height="16"></a>
+				<div class="clear"></div>
+		  	</div>
+            
+      	</div>
+        <!--/ footer col 4 -->
+        
+        <div class="clear"></div>
+    	        
+    </div>
+</div>    
+</div>
+</div>
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+  _paq.push(["setCookieDomain", "*.www.rentinkosovo.com"]);
+  _paq.push(["setDomains", ["*.www.rentinkosovo.com"]]);
+  _paq.push(["trackPageView"]);
+  _paq.push(["enableLinkTracking"]);
+
+  (function() {
+    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://rentinkosovo.com/piwik/";
+    _paq.push(["setTrackerUrl", u+"piwik.php"]);
+    _paq.push(["setSiteId", "1"]);
+    var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+    g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Piwik Code -->
+</body>
+</html>

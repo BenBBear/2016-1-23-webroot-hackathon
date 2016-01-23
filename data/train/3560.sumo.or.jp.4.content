@@ -1,0 +1,1296 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja"><!-- InstanceBegin template="/Templates/common.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>日本相撲協会公式サイト</title>
+<!-- InstanceEndEditable -->
+
+<meta name="keywords" content="大相撲,番付,取組,力士,行司,本場所,伝統,国技,親方,相撲部屋,巡業,入場券,土俵,まわし,軍配" />
+<meta name="description" content="入場券や相撲観戦の情報も充実。番付の即日発表や相撲歴史文化等、最新情報提供中。" />
+<meta property="og:locale" content="ja_JP" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="日本相撲協会公式サイト" />
+<meta property="og:url" content="http://www.sumo.or.jp/" />
+<meta property="og:site_name" content="日本相撲協会公式サイト" />
+<meta property="og:image" content="http://www.sumo.or.jp/img/common/fb_logo.gif" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+
+<link rel="stylesheet" href="/css/common/reset.css" media="screen,print" />
+
+<link rel="stylesheet" href="/css/common/modules.css" media="screen,print" />
+<link rel="stylesheet" href="/css/top.css" media="screen,print" />
+
+<script type="text/javascript" src="/js/common/jquery.js"></script>
+<script type="text/javascript" src="/js/common/font_chg.js"></script>
+<script type="text/javascript" src="/js/common/page_scroll.js"></script>
+<script type="text/javascript" src="/js/common/gnavi.js"></script>
+
+<script type="text/javascript" src="js/jquery.aw-showcase.js"></script>
+
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+    function decorateWidget(id) {
+        var $twwgt = $(id);
+        var decorate = function($el) {
+            console.log($el.find("a.customisable-highlight"));
+            $el.find("h1.summary > a.customisable-highlight").html('ツイッターを開く');
+            $el.find("h1.summary > a.customisable-highlight").attr('title', '公式ツイッターを開く');
+            return $el;
+        };
+        //ウィジェットが読み込まれるまで再帰
+        if ($twwgt.length > 0 && $twwgt[0].contentWindow.document.body.innerHTML !== "") {
+            decorate($($twwgt[0].contentWindow.document));
+        } else {
+            setTimeout(function() {
+                decorateWidget(id);
+            }, 500);
+        }
+    }
+
+    decorateWidget("#twitter-widget-1");
+
+		// 星取投票機能
+		$("#hoshitori_vote .btn").click(function() {
+			var self       = $(this);
+			var rikishi_id = self.val();
+			self.parent().parent().hide();
+			$.ajax({
+				type: "POST",
+				url:  "/ouen/vote/vote",
+				data: {rikishi_id : rikishi_id},
+				success: function(result) {
+					if (result == 1) {
+						var selector = $("#hoshitori_vote").find(".vote-" + rikishi_id);
+						selector.html(Number(selector.html()) + 1);
+
+						var voteResultBoxSelector = self.parent().parent().parent().find(".voteResultBox");
+						var west_count = Number(voteResultBoxSelector.find('.west > span').html());
+						var east_count = Number(voteResultBoxSelector.find('.east > span').html());
+						voteResultBoxSelector.find(".meter").attr("style", "width:" + Number(west_count/(east_count+west_count)*100) + "%");
+						voteResultBoxSelector.attr("style", "visibility:visible").hide().fadeIn('slow');
+					} else {
+						alert(result);
+						self.parent().parent().show();
+					}
+				}
+			});
+		});
+
+});
+</script>
+
+
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
+<!-- InstanceParam name="パンくず" type="boolean" value="true" -->
+</head>
+<body id="top">
+<div id="fb-root"></div>
+
+<div id="header">
+	<div class="headerInner">
+	<p id="logo"><a href="/"><img src="/img/common/header_logo.gif" width="242" height="36" alt="公益財団法人 日本相撲協会" /></a></p>		<div class="sub">
+          <p class="lang en"><a href="/en/index">ENGLISH</a></p>
+          <dl class="fontChg" id="fontsizeSwitcher">
+            <dt>文字サイズ</dt>
+            <dd>
+              <ul>
+                <li class="small"><a href="javascript:;" id="fontNaviSmall">小</a></li>
+                <li class="default"><a href="javascript:;" id="fontNaviDefault">中</a></li>
+                <li class="large"><a href="javascript:;" id="fontNaviLarge">大</a></li>
+              </ul>
+            </dd>
+          </dl>
+		<ul class="sns">
+			<li class="tw"><a href="https://twitter.com/sumokyokai" target="_blank"></a></li>
+
+			<li class="line"><a href="http://lineat.jp/sumokyokai" target="_blank"></a></li>
+			<li class="ticket"><a href="http://sumo.pia.jp/vacant/va01.jsp" target="_blank"></a></li>
+			<li class="ust"><a href="http://www.ustream.tv/jp/special/sumo/jp/" target="_blank"></a></li>
+
+		</ul>
+	</div><!--sub-->
+		</div><!--headerInner-->
+		<div id="global">
+		<ul class="globalIn">
+			<li class="home"><a href="/index">ホーム</a></li>
+			<li class="aid">
+				<a href="/ticket/index">入場券情報</a>
+				<ul class="sub">
+					<li><a href="/ticket/index">入場券の買い方</a></li>
+
+					<li><a href="/ticket/event_schedule">大相撲等に関する日程</a></li>
+					<li><a href="/ticket/year_schedule">本場所の年間日程表</a></li>
+					<li><a href="/ticket/kiyaku/index">相撲競技観戦契約約款</a></li>
+					<li><a href="/ticket/timetable">土俵上の時間割</a></li>
+					<li><a href="/ticket/price_list">料金</a></li>
+					<li><a href="/ticket/special_ticket">お得なチケット</a></li>
+					<li><a href="/ticket/dantai">団体申込</a></li>
+					<li><a href="/ticket/tokyo/seat_view">国技館・座席ビュー</a></li>
+				</ul>
+			</li>
+			<li class="knowledge">
+				<a href="/honbasho/index">本場所情報</a>
+				<ul class="sub">
+					<li><a href="/honbasho/index">本場所情報トップ</a></li>
+					<li><a href="/honbasho/campaign">ご来場お楽しみ企画</a></li>
+					<li><a href="/honbasho/kansen/index">観戦案内</a></li>
+					<li><a href="/honbasho/main/torikumi">日別の取組・結果</a></li>
+					<li><a href="/honbasho/main/hoshitori">星取表</a></li>
+					<li><a href="/honbasho/main/absence">休場力士情報</a></li>
+										<li><a href="/honbasho/main/champions">各段の優勝力士・<br />三賞力士</a></li>
+															<li><a href="/honbasho/main/leaders">各段の成績優秀力士</a></li>
+															<li><a href="/honbasho/main/kanto_seishin">敢闘精神あふれる力士</a></li>
+										<li><a href="/honbasho/banzuke/index">一月場所番付</a></li>
+					<li><a href="/honbasho/banzuke/shin_juryo">新十両力士一覧</a></li>
+					<li><a href="/honbasho/banzuke/kaimei_rikishi">改名力士一覧</a></li>
+					<li><a href="/honbasho/banzuke/shindeshi">新弟子検査<br />合格者一覧</a></li>
+					<li><a href="/honbasho/banzuke/intai">引退力士情報</a></li>
+					<li><a href="/honbasho/topics/banzuke_topics">番付トピックス</a></li>
+					<li><a href="/honbasho/topics/ko_torikumi15/list">好取組十五番</a></li>
+					<li><a href="/honbasho/topics/interview">場所前インタビュー</a></li>
+					<li><a href="/honbasho/kensho">懸賞について</a></li>
+				</ul>
+			</li>
+			<li class="museum">
+				<a href="/kyokai/index">協会について</a>
+				<ul class="sub">
+					<li><a href="/kyokai/index">協会からのお知らせ</a></li>
+					<li><a href="/kyokai/organization">協会の使命・組織</a></li>
+					<li><a href="/kyokai/rijikai">職務分掌</a></li>
+					<li><a href="/kyokai/history">協会のあゆみ</a></li>
+					<li><a href="/kyokai/social_action/list">社会貢献活動</a></li>
+					<li><a href="/kyokai/social_responsibility/list">社会的責任</a></li>
+					<li><a href="/kyokai/donation_sponsor/list">維持員制度について</a></li>
+					<li><a href="/kyokai/financial_information/list">業務・財務情報</a></li>
+				</ul>
+			</li>
+			<li class="hall">
+				<a href="/kokugikan/index">国技館の貸出</a>
+				<ul class="sub">
+					<li><a href="/kokugikan/index">概要</a></li>
+					<li><a href="/kokugikan/kannai">館内のご紹介</a></li>
+					<li><a href="/kokugikan/schedule">行事予定</a></li>
+					<li><a href="/kokugikan/rental">貸館について</a></li>
+					<li><a href="/kokugikan/faq">よくあるご質問</a></li>
+					<li><a href="/honbasho/kansen/tokyo#access">アクセス</a></li>
+					<li><a href="/kokugikan/rental_rules">貸館規則</a></li>
+				</ul>
+			</li>
+			<li class="associate">
+				<a href="/jungyo/index">巡業について</a>
+				<ul class="sub">
+					<li><a href="/jungyo/index">お知らせ</a></li>
+					<li><a href="/jungyo/kanjinmoto">勧進元募集</a></li>
+					<li><a href="/jungyo/schedule">巡業スケジュール</a></li>
+					<li><a href="/jungyo/timetable">巡業の一日</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div><!--global-->
+	</div><!--header-->
+
+
+
+<!--ここからメインコンテンツ-->
+<div class="contentArea">
+<div class="mainVisual" id="mvJanuary">
+ <div class="inner">
+      <!-- メインビジュアルボタン -->
+      <div class="BtnMvInfo">
+            <a href="http://sumo.pia.jp/vacant/va01.jsp" target="_blank"><span>現在の空席情報・購入はコチラ</span></a>
+      	</div>
+  </div>
+</div>
+<div class="contentArea" id="now">
+	<div class="mainWrap">
+
+	  <div id="mainContent">
+	    
+	    <!-- おすすめ情報 -->
+	    <div id="recommend">
+	<h2 class="mdTtl2">
+		<span class="txt1">おすすめ情報</span>
+	</h2>
+	<div class="wrap">
+		<div id="showcase" class="showcase">
+															<div class="showcase-slide">
+					<p class="showcase-content">
+												<a href="/ticket/index#jan" >
+												  <img src="/img/top/slide_bnr/jan_2016_price.jpg" width="720" height="180" alt="大相撲一月場所詳細" />
+												</a>
+											</p>
+					<p class="showcase-thumbnail">
+						<img src="/img/top/slide_bnr/jan_2016_price.jpg" />
+					</p>
+				</div>
+															<div class="showcase-slide">
+					<p class="showcase-content">
+												<a href="/honbasho/campaign" >
+												  <img src="/img/top/slide_bnr/campaign_2016_jan.jpg" width="720" height="180" alt="一月場所ご来場お楽しみ企画" />
+												</a>
+											</p>
+					<p class="showcase-thumbnail">
+						<img src="/img/top/slide_bnr/campaign_2016_jan.jpg" />
+					</p>
+				</div>
+															<div class="showcase-slide">
+					<p class="showcase-content">
+												<a href="/ticket/index#march" >
+												  <img src="/img/top/slide_bnr/bnr_ticketozumo1603.jpg" width="720" height="180" alt="大相撲チケット三月場所先行抽選申込" />
+												</a>
+											</p>
+					<p class="showcase-thumbnail">
+						<img src="/img/top/slide_bnr/bnr_ticketozumo1603.jpg" />
+					</p>
+				</div>
+					</div>
+	</div>
+</div>
+	    
+	    <!-- 3ブロック -->
+	    <div class="holding txtType2">
+	      
+	      <div class="box">
+		<div class="twView">
+		  <h3 class="ttl">
+		    <img src="img/top/ttl_tw.gif" width="118" height="16" alt="公式ツイッター" title="公式ツイッター" />
+		  </h3>
+		  <div class="timeLine">
+		    <a class="twitter-timeline" href="https://twitter.com/sumokyokai" data-widget-id="361699646466314240" height="255px">@sumokyokai からのツイート</a>
+		    
+		    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		    
+		  </div>
+		</div>
+	      </div>
+	      
+	      <div class="box">
+		<h3 class="ttl" id="otanoshimi"><span style="font-size:17px">ご来場<br />お楽しみ企画</span></h3>
+		<img class="bnr" src="/img/top/top-campaign_yoshikaze.jpg" width="212px" height="156px"/>
+		<p class="mdBtn type1 colorType2"><a href="/honbasho/campaign"><span>詳しくはこちら</span></a></p>
+	      </div>
+	      
+	      <div class="box last">
+		<h3 class="ttl" id="special_ticket"><span style="font-size:17px">LINE登録で<br />限定プレゼント</span></h3>
+		<img class="bnr" src="/img/top/top-campaign_line07.jpg" width="212px" height="156px" />
+		<p class="mdBtn type1 colorType3"><a href="/honbasho/campaign#sns"><span>詳しくはこちら</span></a></p>
+	      </div>
+	      
+	    </div>
+	    
+	    <!-- 本場所情報  -->
+	    <div class="innerWrap">
+	      <h2 class="mdTtl2">
+		<span class="txt1">本場所情報</span>
+	      </h2>
+	      <div class="prArea">
+		
+
+		<!-- インターネット配信 -->
+		<div class="movie mdSection2">
+  <h3 class="mdTtl6" style="font-size:19px;">インターネット取組配信</h3>
+<div id="ustPr" style="width:230px">
+<a href="http://www.ustream.tv/jp/special/sumo/jp/" target="_blank">インターネット配信サービス</a>
+</div>
+</div>
+
+		<!--応援番付-->
+		<div class="aidRank mdSection2">
+	<h3 class="ttl">
+		<span class="txtType2">応援番付</span>
+	</h3>
+	<ol class="rankBox">
+							<li class="rank1">
+				<img src="/img/sumo_data/rikishi/40x40/20040026.jpg" width="40" height="40" alt="" class="pic" />
+				<p class="txt txtType2">嘉風</p>
+			</li>
+					<li class="rank2">
+				<img src="/img/sumo_data/rikishi/40x40/20110008.jpg" width="40" height="40" alt="" class="pic" />
+				<p class="txt txtType2">照ノ富士</p>
+			</li>
+					<li class="rank3">
+				<img src="/img/sumo_data/rikishi/40x40/20050033.jpg" width="40" height="40" alt="" class="pic" />
+				<p class="txt txtType2">勢</p>
+			</li>
+			</ol>
+	<p class="mdBtn type1 colorType3"><a href="/ouen/ranking/top"><span>応援番付を見る</span></a></p>
+</div>
+		
+		<!--星取予測投票-->
+		<div id="hoshitori_vote" class="predict">
+		  <h3 class="mdTtl6">星取予測投票</h3>
+		  
+		  		  		  		  		  <p class="lead fntS">どちらが勝つか毎日予測。<br />みんなで投票して力士を応援しよう！</p>
+		  		  <div class="box">
+		    <ul class="versus">
+		      <li class="west">
+			<img src="/img/sumo_data/rikishi/60x60/20002308.jpg" width="60" height="60" alt="" class="pic" />
+			<p class="name">日馬富士</p>
+		      </li>
+		      <li class="east">
+			<img src="/img/sumo_data/rikishi/60x60/20010035.jpg" width="60" height="60" alt="" class="pic" />
+			<p class="name">鶴竜</p>
+		      </li>
+		    </ul>
+		    
+		    		    		    		    <ul class="vote">
+		      <li class="west"><input type="button" name="#" value="2308" class="btn" /></li>
+		      <li class="east"><input type="button" name="#" value="2416" class="btn" /></li>
+		    </ul>
+		    		    
+		    		    		    		    		    		    <div class="voteResultBox" style="display: none;">
+		      <div class="voteResult">
+			<div class="gauge">
+			  <div class="meter" style="width:68%;"></div>
+			</div>
+		      </div>
+		      <ul class="voteResultNum">
+			<li class="west"><span class="vote-2308">202</span>票</li>
+			<li class="east"><span class="vote-2416">92</span>票</li>
+		      </ul>
+		    </div>
+		    
+		  </div>
+		  		  		  		  		  <div class="box">
+		    <ul class="versus">
+		      <li class="west">
+			<img src="/img/sumo_data/rikishi/60x60/20020024.jpg" width="60" height="60" alt="" class="pic" />
+			<p class="name">稀勢の里</p>
+		      </li>
+		      <li class="east">
+			<img src="/img/sumo_data/rikishi/60x60/20002320.jpg" width="60" height="60" alt="" class="pic" />
+			<p class="name">白鵬</p>
+		      </li>
+		    </ul>
+		    
+		    		    		    		    <ul class="vote">
+		      <li class="west"><input type="button" name="#" value="2445" class="btn" /></li>
+		      <li class="east"><input type="button" name="#" value="2320" class="btn" /></li>
+		    </ul>
+		    		    
+		    		    		    		    		    		    <div class="voteResultBox" style="display: none;">
+		      <div class="voteResult">
+			<div class="gauge">
+			  <div class="meter" style="width:61%;"></div>
+			</div>
+		      </div>
+		      <ul class="voteResultNum">
+			<li class="west"><span class="vote-2445">196</span>票</li>
+			<li class="east"><span class="vote-2320">125</span>票</li>
+		      </ul>
+		    </div>
+		    
+		  </div>
+		  		</div>
+		
+		<h3 class="mdTtl6">敢闘力士アンケート</h3>
+		<p class="mdBtn type1 colorType3">
+		  <a href="/honbasho/main/kanto_seishin">
+		    <span>アンケート結果を見る</span>
+		  </a>
+		</p>
+		<div class="movie">
+		  <div class="movie">
+  <h3 class="mdTtl6">
+    <span class="txt1">三月場所PR動画</span>
+  </h3>
+  <div class="movieView">
+    <!-- movie入れ込み -->
+    <iframe width="230" height="170" src="//www.youtube.com/embed/YfZbF65dlQk?rel=0"  frameborder="0" allowfullscreen></iframe>
+  </div>
+</div>
+
+		</div>
+	      </div>
+	      
+	      <div class="banzukeFl">
+		<div class="mdBox4 type2">
+		  <h3 class="ttl"><img src="img/top/torikumi_ttl01.gif" width="353" height="31" alt="大相撲一月場所 幕内取組表" title="大相撲一月場所 幕内取組表" /></h3>
+		  <p class="summary">十四日目</p>
+		  <p class="summary"><img width="16" height="16" alt="黒丸" src="/img/common/result_ic03.gif">　＝　勝ち　　<img width="16" height="16" alt="白丸" src="/img/common/result_ic04.gif">　＝　負け</p>
+		  <table>
+		    <col span="1" class="colSp1" />
+		    <col span="1" class="colSp2" />
+		    <col span="1" class="colSp1" />
+		    <tr>
+		      <th colspan="2" class="brLt">東</th>
+		      <th class="rankTtl">決まり手</th>
+		      <th colspan="2" class="brRt">西</th>
+		    </tr>
+		  </table>
+		  <div class="cover">
+		    		    <table>
+		      <col span="1" class="colSp1" />
+		      <col span="1" class="colSp2" />
+		      <col span="1" class="colSp3" />
+		      <col span="1" class="colSp2" />
+		      <col span="1" class="colSp1" />
+		      		      		      		      		      		      <tr class="bTnone">
+			<td class="east">佐田の海</td>
+			<td class="east">
+			  			</td>
+			<td class="rank"></td>
+			<td class="west">
+			  			</td>
+			<td class="west">千代鳳</td>
+		      </tr>
+		      		      		      		      		      		      <tr class="bTnone">
+			<td class="east">阿夢露</td>
+			<td class="east">
+			  			</td>
+			<td class="rank"></td>
+			<td class="west">
+			  			</td>
+			<td class="west">臥牙丸</td>
+		      </tr>
+		      		      		      		      		      		      <tr class="bTnone">
+			<td class="east">妙義龍</td>
+			<td class="east">
+			  			</td>
+			<td class="rank"></td>
+			<td class="west">
+			  			</td>
+			<td class="west">貴ノ岩</td>
+		      </tr>
+		      		      		      		      		      		      <tr class="bTnone">
+			<td class="east">北太樹</td>
+			<td class="east">
+			  			</td>
+			<td class="rank"></td>
+			<td class="west">
+			  			</td>
+			<td class="west">高安</td>
+		      </tr>
+		      		      		      		      		      		      <tr class="bTnone">
+			<td class="east">誉富士</td>
+			<td class="east">
+			  			</td>
+			<td class="rank"></td>
+			<td class="west">
+			  			</td>
+			<td class="west">玉鷲</td>
+		      </tr>
+		      		      		      		      		      		      <tr class="bTnone">
+			<td class="east">徳勝龍</td>
+			<td class="east">
+			  			</td>
+			<td class="rank"></td>
+			<td class="west">
+			  			</td>
+			<td class="west">輝</td>
+		      </tr>
+		      		      		      		      		      		      <tr class="bTnone">
+			<td class="east">正代</td>
+			<td class="east">
+			  			</td>
+			<td class="rank"></td>
+			<td class="west">
+			  			</td>
+			<td class="west">隠岐の海</td>
+		      </tr>
+		      		      		      		      		      		      <tr class="bTnone">
+			<td class="east">千代大龍</td>
+			<td class="east">
+			  			</td>
+			<td class="rank"></td>
+			<td class="west">
+			  			</td>
+			<td class="west">蒼国来</td>
+		      </tr>
+		      		      		      		      		      		      <tr class="bTnone">
+			<td class="east">旭秀鵬</td>
+			<td class="east">
+			  			</td>
+			<td class="rank"></td>
+			<td class="west">
+			  			</td>
+			<td class="west">豊響</td>
+		      </tr>
+		      		      		      		      		      		      <tr class="bTnone">
+			<td class="east">豪風</td>
+			<td class="east">
+			  			</td>
+			<td class="rank"></td>
+			<td class="west">
+			  			</td>
+			<td class="west">琴勇輝</td>
+		      </tr>
+		      		      		      		      		      		      <tr class="bTnone">
+			<td class="east">御嶽海</td>
+			<td class="east">
+			  			</td>
+			<td class="rank"></td>
+			<td class="west">
+			  			</td>
+			<td class="west">碧山</td>
+		      </tr>
+		      		      		      		      		      		      <tr class="bTnone">
+			<td class="east">逸ノ城</td>
+			<td class="east">
+			  			</td>
+			<td class="rank"></td>
+			<td class="west">
+			  			</td>
+			<td class="west">松鳳山</td>
+		      </tr>
+		      		      		      		      		      		      <tr class="bTnone">
+			<td class="east">勢</td>
+			<td class="east">
+			  			</td>
+			<td class="rank"></td>
+			<td class="west">
+			  			</td>
+			<td class="west">魁聖</td>
+		      </tr>
+		      		      		      		      		      		      <tr class="bTnone">
+			<td class="east">安美錦</td>
+			<td class="east">
+			  			</td>
+			<td class="rank"></td>
+			<td class="west">
+			  			</td>
+			<td class="west">栃ノ心</td>
+		      </tr>
+		      		      		      		      		      		      <tr class="bTnone">
+			<td class="east">豊ノ島</td>
+			<td class="east">
+			  			</td>
+			<td class="rank"></td>
+			<td class="west">
+			  			</td>
+			<td class="west">嘉風</td>
+		      </tr>
+		      		      		      		      		      		      <tr class="bTnone">
+			<td class="east">琴奨菊</td>
+			<td class="east">
+			  			</td>
+			<td class="rank"></td>
+			<td class="west">
+			  			</td>
+			<td class="west">栃煌山</td>
+		      </tr>
+		      		      		      		      		      		      <tr class="bTnone">
+			<td class="east">宝富士</td>
+			<td class="east">
+			  			</td>
+			<td class="rank"></td>
+			<td class="west">
+			  			</td>
+			<td class="west">豪栄道</td>
+		      </tr>
+		      		      		      		      		      		      <tr class="bTnone">
+			<td class="east">日馬富士</td>
+			<td class="east">
+			  			</td>
+			<td class="rank"></td>
+			<td class="west">
+			  			</td>
+			<td class="west">鶴竜</td>
+		      </tr>
+		      		      		      		      		      		      <tr class="bTnone">
+			<td class="east">稀勢の里</td>
+			<td class="east">
+			  			</td>
+			<td class="rank"></td>
+			<td class="west">
+			  			</td>
+			<td class="west">白鵬</td>
+		      </tr>
+		      		    </table>
+		    		  </div>
+		  <p class="mdBtn type2 colorType2">
+		    <a href="/honbasho/main/torikumi"><span>全力士の取組表を見る</span></a>
+		  </p>
+		</div>
+	      </div>
+	    </div>
+	    
+	    <div class="innerWrap">
+	      <div class="prArea">
+		<!-- 相撲を知る -->
+		<div class="aboutSumo">
+		  <h3 class="mdTtl2">
+		    <span class="txt1">相撲を知る</span>
+		  </h3>
+		  <ul class="bnr">
+		    <li class="sumoData"><a href="/sumo_data/rikishi/search">力士を知る - 力士・部屋紹介</a></li>
+		    <li class="nyumon"><a href="/shido_fukyubu/information?id=7"></a></li>
+		  </ul>
+		</div>
+		<!-- 施設案内 -->
+		<div class="structure">
+		  <h3 class="mdTtl2">
+		    <span class="txt1">施設案内</span>
+		  </h3>
+		  <ul class="bnr">
+		    <li class="bnr museum"><a href="/sumo_museum/index">相撲博物館のご案内 - 休館日カレンダーはこちらから</a></li>
+		    <li class="bnr kokugikan"><a href="/kokugikan/index">両国国技館のご案内 - 行事予定・貸館についてはこちらから</a></li>
+		    <li class="bnr baiten"><a href="/ticket/honbasho_information/shop">相撲土産のご案内 - 売店の営業日時はこちらから</a></li>
+		  </ul>
+		</div>
+	      </div>
+	      <!-- 更新情報 -->
+	      			<div class="newsArea">
+				<!-- 更新情報 -->
+				<div class="news">
+					<h3 class="mdTtl2">
+						<span class="txt1">更新情報</span>
+					</h3>
+					<ul class="mdList2">
+												<li>
+							<dl>
+								<dt>平成28年 1月22日</dt>
+								<dd>
+									
+
+
+
+
+<a href="/ticket/tokyo/dantai" >平成28年五月場所「団体申込」を公開しました</a>
+
+
+ <span class="txtNew">NEW!</span>
+								</dd>
+							</dl>
+						</li>
+												<li>
+							<dl>
+								<dt>平成28年 1月22日</dt>
+								<dd>
+									
+
+
+
+
+<a href="/honbasho/main/kanto_seishin" >来場者アンケート「敢闘精神あふれる力士」結果</a>
+
+
+ <span class="txtNew">NEW!</span>
+								</dd>
+							</dl>
+						</li>
+												<li>
+							<dl>
+								<dt>平成28年 1月22日</dt>
+								<dd>
+									
+
+
+
+
+<a href="/kyokai/rijikai" >「職務分掌」を更新しました</a>
+
+
+ <span class="txtNew">NEW!</span>
+								</dd>
+							</dl>
+						</li>
+												<li>
+							<dl>
+								<dt>平成28年 1月22日</dt>
+								<dd>
+									
+
+
+
+
+<a href="/honbasho/banzuke/intai" >「引退力士情報」を更新しました</a>
+
+
+ <span class="txtNew">NEW!</span>
+								</dd>
+							</dl>
+						</li>
+												<li>
+							<dl>
+								<dt>平成28年 1月22日</dt>
+								<dd>
+									
+
+
+
+
+<a href="/kyokai/information?id=127" >引退および年寄襲名のお知らせ</a>
+
+
+ <span class="txtNew">NEW!</span>
+								</dd>
+							</dl>
+						</li>
+												<li>
+							<dl>
+								<dt>平成28年 1月22日</dt>
+								<dd>
+									
+
+
+
+
+<a href="/honbasho/main/champions" >大相撲一月場所「各段の優勝力士」を更新しました</a>
+
+
+ <span class="txtNew">NEW!</span>
+								</dd>
+							</dl>
+						</li>
+												<li>
+							<dl>
+								<dt>平成28年 1月21日</dt>
+								<dd>
+									
+
+
+
+
+<a href="/jungyo/information?id=24#winter" >平成27年冬巡業「写真レポート」を公開しました</a>
+
+
+ <span class="txtNew">NEW!</span>
+								</dd>
+							</dl>
+						</li>
+												<li>
+							<dl>
+								<dt>平成28年 1月21日</dt>
+								<dd>
+									
+
+
+
+
+<a href="/kyokai/information?id=126" >引退および年寄襲名のお知らせ</a>
+
+
+ <span class="txtNew">NEW!</span>
+								</dd>
+							</dl>
+						</li>
+												<li>
+							<dl>
+								<dt>平成28年 1月20日</dt>
+								<dd>
+									
+
+
+
+
+<a href="/jungyo/schedule" >「平成28年春巡業日程」を更新しました</a>
+
+
+ <span class="txtNew">NEW!</span>
+								</dd>
+							</dl>
+						</li>
+												<li>
+							<dl>
+								<dt>平成28年 1月17日</dt>
+								<dd>
+									
+
+
+
+
+<a href="/honbasho/main/leaders" >大相撲一月場所「各段の成績優秀力士」を公開しました</a>
+
+
+ <span class="txtNew">NEW!</span>
+								</dd>
+							</dl>
+						</li>
+											</ul>
+				</div>
+
+				<!-- お知らせ -->
+				<div class="information">
+					<h3 class="mdTtl2">
+						<span class="txt1">お知らせ</span>
+					</h3>
+					<ul class="mdList2">
+												<li>
+							<dl>
+								<dt>
+																<img width="66" height="16" title="協会" alt="協会" src="img/top/news_cate1.gif">
+																								</dt>
+								<dd>
+									
+
+<a href="/kyokai/information?id=127" >引退および年寄襲名のお知らせ</a>
+
+
+ <span class="txtNew">NEW!</span>
+								</dd>
+							</dl>
+						</li>
+												<li>
+							<dl>
+								<dt>
+																<img width="66" height="16" title="巡業部" alt="巡業部" src="img/top/news_cate2.gif">
+																								</dt>
+								<dd>
+									
+
+<a href="/jungyo/information?id=24" >平成27年巡業「写真レポート」</a>
+
+
+ <span class="txtNew">NEW!</span>
+								</dd>
+							</dl>
+						</li>
+												<li>
+							<dl>
+								<dt>
+																<img width="66" height="16" title="協会" alt="協会" src="img/top/news_cate1.gif">
+																								</dt>
+								<dd>
+									
+
+<a href="/kyokai/information?id=126" >引退および年寄襲名のお知らせ</a>
+
+
+ <span class="txtNew">NEW!</span>
+								</dd>
+							</dl>
+						</li>
+												<li>
+							<dl>
+								<dt>
+																<img width="66" height="16" title="巡業部" alt="巡業部" src="img/top/news_cate2.gif">
+																								</dt>
+								<dd>
+									
+
+
+
+
+<a href="/jungyo/schedule" >平成28年春巡業日程</a>
+
+
+ <span class="txtNew">NEW!</span>
+								</dd>
+							</dl>
+						</li>
+												<li>
+							<dl>
+								<dt>
+																<img width="66" height="16" title="協会" alt="協会" src="img/top/news_cate1.gif">
+																								</dt>
+								<dd>
+									
+
+<a href="/kyokai/information?id=125" >年寄名跡襲名のお知らせ</a>
+
+
+ 								</dd>
+							</dl>
+						</li>
+												<li>
+							<dl>
+								<dt>
+																<img width="66" height="16" title="協会" alt="協会" src="img/top/news_cate1.gif">
+																								</dt>
+								<dd>
+									
+
+<a href="/kyokai/information?id=100" >年寄継承襲名のお知らせ</a>
+
+
+ 								</dd>
+							</dl>
+						</li>
+												<li>
+							<dl>
+								<dt>
+																<img width="66" height="16" title="協会" alt="協会" src="img/top/news_cate1.gif">
+																								</dt>
+								<dd>
+									
+
+
+
+
+<a href="/kyokai/information?id=121#kikaku" > 一月場所インターネット取組配信における企画特集動画のご案内</a>
+
+
+ 								</dd>
+							</dl>
+						</li>
+												<li>
+							<dl>
+								<dt>
+																<img width="66" height="16" title="協会" alt="協会" src="img/top/news_cate1.gif">
+																								</dt>
+								<dd>
+									
+
+<a href="/kyokai/information?id=123" >理事会発表事項</a>
+
+
+ 								</dd>
+							</dl>
+						</li>
+												<li>
+							<dl>
+								<dt>
+																<img width="66" height="16" title="協会" alt="協会" src="img/top/news_cate1.gif">
+																								</dt>
+								<dd>
+									
+
+<a href="/kyokai/information?id=121" >一月場所インターネット取組配信チケット販売開始のご案内</a>
+
+
+ 								</dd>
+							</dl>
+						</li>
+												<li>
+							<dl>
+								<dt>
+																<img width="66" height="16" title="協会" alt="協会" src="img/top/news_cate1.gif">
+																								</dt>
+								<dd>
+									
+
+
+
+
+<a href="/ticket/event_detail?id=406" >旭天鵬引退大島襲名披露大相撲</a>
+
+
+ 								</dd>
+							</dl>
+						</li>
+												<li>
+							<dl>
+								<dt>
+																<img width="66" height="16" title="協会" alt="協会" src="img/top/news_cate1.gif">
+																								</dt>
+								<dd>
+									
+
+
+
+
+<a href="/ticket/event_detail?id=405" >若の里引退西岩襲名披露大相撲</a>
+
+
+ 								</dd>
+							</dl>
+						</li>
+												<li>
+							<dl>
+								<dt>
+																<img width="66" height="16" title="協会" alt="協会" src="img/top/news_cate1.gif">
+																								</dt>
+								<dd>
+									
+
+
+
+
+<a href="/ticket/event_detail?id=291" >豊真将引退立田川襲名披露大相撲</a>
+
+
+ 								</dd>
+							</dl>
+						</li>
+											</ul>
+				</div>
+
+				<ul class="sMenu">
+					<li class="kyokai"><a href="/kyokai/index">協会について</a></li>
+					<li class="jungyo"><a href="/jungyo/index">巡業部について</a></li>
+					<li class="shido"><a href="/shido_fukyubu/index">指導普及部について</a></li>
+				</ul>
+
+				<div class="msg">
+					<p class="mdBox5">
+						<a href="/kyokai/social_action/list">東日本大震災で被災された方々に心よりお見舞い申し上げます。1日も早い復旧と皆様のご健康を心からお祈り申し上げます。</a>
+					</p>
+				</div>
+			</div>
+	    </div>
+	    
+	  </div>
+	  
+	  
+	  <!-- サイドメニュー -->
+	  <div id="side">
+	    
+	    <!-- ちらしPDF設置ボタン -->
+	    	    <p class="mdBtn type1 colorType1">
+              <a href="/pdf/honbasho/2016_jan_leaflet.pdf" target="_blank" onClick="ga('send', 'event', 'download', 'click', '/pdf/honbasho/2016_jan_leaflet.pdf');">
+		<span style="font-size:16px">1月場所チラシ(購入方法)</span>
+	      </a>
+	    </p>
+	        <!-- 座席案内図PDF設置ボタン -->
+
+	    <!-- 特別ボタン -->
+
+	    
+	    <!-- トップサイドbnr -->
+	    <ul class="seat">
+
+	      	      	      <li>
+				<a href="/ticket/index#march" style="background-image: url(/img/top/top_right_bnr/top_bnr_ticket_adv1603_02.jpg)" >3月場所先行開始</a>
+			      </li>
+	      	      	      	      <li>
+				<a href="/ticket/index#may" style="background-image: url(/img/top/top_right_bnr/top_bnr_ticket_adv1605_01.jpg)" >5月場所告知</a>
+			      </li>
+	      	      	    </ul>
+	    
+
+    <!-- PR動画 -->
+<div class="movie">
+  <h3 class="mdTtl6">
+    <span class="txt1" style="font-size:15px;">力士会よりファンの皆様へ</span>
+  </h3>
+  <div class="movieView">
+    <!-- movie入れ込み -->
+    <iframe width="230" height="170" src="//www.youtube.com/embed/TQYkuwkHecs?rel=0"  frameborder="0" allowfullscreen></iframe>
+  </div>
+</div>
+    <ul class="seat">
+      <li>
+	<a href="/honbasho/kansen/guide" style="background-image: url(/img/top/top_right_bnr/topr_bnr_kansen.jpg)" target="_blank">観戦案内</a>
+      </li>
+      <li>
+	<a href="/kyokai/information?id=61" style="background-image: url(/img/top/top_right_bnr/bnr_gakushi.jpg)" target="_blank">大相撲学士支援シート</a>
+      </li>
+    </ul>
+
+
+	    <!-- 各種サイドbnr -->
+	    <ul class="bnrBox">
+	      
+	     
+	      
+	      
+	      <li class="schedule lastChild"><a href="/ticket/event_schedule">スケジュールのご案内 - 大相撲等に関する日程はこちらから</a></li>
+	    </ul>
+	    
+            <div class="bnrBox" style="margin-bottom:10px;">
+		<p class="sekitorikun_linestmp">
+		<a href="/kyokai/information?id=71" target="_blank">ハッキヨイ！せきトリくんLINEスタンプ</a>
+		</p>             
+	      <p class="sekitorikun">
+                <a href="/sekitorikun/index" target="_blank">ハッキョイ！せきトリくん 公式サイト</a>
+              </p>
+            </div>
+	    
+	    <!-- sns bnr -->
+	    <ul class="sns">
+	      
+	      
+	    </ul>
+	    <div class="bnrBox adBnr">
+<p>
+<a href="/kyokai/information?id=74" style="background-image: url(/img/top/ad/bnr_spdwango02.jpg)">公式アプリ「大相撲」スマートフォンサイト</a>
+</p>
+<p>
+<a href="/kyokai/information?id=13" style="background-image: url(/img/top/ad/bnr_magazine.jpg)">大相撲メールマガジン</a>
+</p>
+<p>
+<a href="http://pc.dwango.jp/services/show/sumo.html" style="background-image: url(/img/top/ad/bnr_dwango.jpg)" target="_blank">公式「大相撲」携帯サイト</a>
+</p>
+<p>
+<a href="http://ch.nicovideo.jp/sumo" style="background-image: url(/img/top/ad/bnr_chanel.jpg)" target="_blank">大相撲チャンネル</a>
+</p>
+<p>
+<a href="http://gree.jp/r/58560/1" style="background-image: url(/img/top/ad/bnr_card.jpg)" target="_blank">大相撲カード決戦</a>
+</p>
+<p>
+<a href="http://www.kokugikan.co.jp/obento.html" style="background-image: url(/img/top/ad/bnr_annaijo.jpg)" target="_blank">相撲案内所</a>
+</p>
+</div>
+	  </div>
+	  
+	</div>
+</div>
+
+
+</div><!--content-->
+
+<div id="footer">
+	<p class="pageTop"><a href="#header"><img src="/img/common/footer_btn_pagetop.gif" width="103" height="22" alt="ページ上部へ" /></a></p>
+	<div class="inner">
+		<div class="footerMenu">
+			<p class="home"><a href="/index">ホーム</a></p>
+			<ul class="nav">
+				<li>
+					<dl>
+						<dt>入場券情報</dt>
+						<dd>
+						<ul class="inner2">
+						  <li><a href="/ticket/index">入場券の買い方</a></li>
+						  <li><a href="http://www.ustream.tv/jp/special/sumo/jp" target="_blank">インターネット取組配信</a></li>
+						  <li><a href="/ticket/event_schedule">大相撲等に関する日程</a></li>
+						  <li><a href="/ticket/year_schedule">本場所の年間日程表</a></li>
+						  <li><a href="/ticket/kiyaku/index">相撲競技観戦契約約款</a></li>
+						  <li><a href="/ticket/timetable">土俵上の時間割</a></li>
+						  <li><a href="/ticket/price_list">料金</a></li>
+						  <li><a href="/ticket/special_ticket">お得なチケット</a></li>
+						  <li><a href="/ticket/dantai">団体申込</a></li>
+						  <li><a href="/ticket/tokyo/seat_view">国技館・座席ビュー</a></li>
+						</ul>
+						</dd>
+					</dl>
+				</li>
+				<li class="type2">
+					<dl>
+						<dt>本場所情報</dt>
+						<dd>
+						<ul class="inner2">
+							<li><a href="/honbasho/index">本場所情報トップ</a></li>
+							<li><a href="/honbasho/kansen/index">観戦案内</a></li>
+							<li><a href="/honbasho/main/torikumi">日別の取組・結果</a></li>
+							<li><a href="/honbasho/main/hoshitori">星取表</a></li>
+							<li><a href="/honbasho/main/absence">休場力士情報</a></li>
+														<li><a href="/honbasho/main/champions">各段の優勝力士・<br />三賞力士</a></li>
+																					<li><a href="/honbasho/main/leaders">各段の成績優秀力士</a></li>
+																					<li><a href="/honbasho/main/kanto_seishin">敢闘精神あふれる力士</a></li>
+														<li><a href="/honbasho/banzuke/index">一月場所番付</a></li>
+						</ul>
+						<ul class="inner2">
+							<li><a href="/honbasho/banzuke/shin_juryo">新十両力士一覧</a></li>
+							<li><a href="/honbasho/banzuke/kaimei_rikishi">改名力士一覧</a></li>
+							<li><a href="/honbasho/banzuke/shindeshi">新弟子検査<br />合格者一覧</a></li>
+							<li><a href="/honbasho/banzuke/intai">引退力士情報</a></li>
+							<li><a href="/honbasho/topics/banzuke_topics">番付トピックス</a></li>
+							<li><a href="/honbasho/topics/ko_torikumi15/list">好取組十五番</a></li>
+							<li><a href="/honbasho/topics/interview">場所前インタビュー</a></li>
+							<li><a href="/honbasho/kensho">懸賞について</a></li>
+						</ul>
+						</dd>
+					</dl>
+				</li>
+				<li>
+					<dl>
+						<dt>協会について</dt>
+						<dd>
+						<ul class="inner2">
+							<li><a href="/kyokai/index">協会からのお知らせ</a></li>
+							<li><a href="/kyokai/organization">協会の使命・組織</a></li>
+							<li><a href="/kyokai/rijikai">職務分掌</a></li>
+							<li><a href="/kyokai/history">協会のあゆみ</a></li>
+							<li><a href="/kyokai/social_action/list">社会貢献活動</a></li>
+							<li><a href="/kyokai/social_responsibility/list">社会的責任</a></li>
+							<li><a href="/kyokai/donation_sponsor/list">維持員制度について</a></li>
+							<li><a href="/kyokai/financial_information/list">業務・財務情報</a></li>
+						</ul>
+						</dd>
+					</dl>
+				</li>
+				<li>
+					<dl>
+						<dt>国技館のご案内</dt>
+						<dd>
+						<ul class="inner2">
+							<li><a href="/kokugikan/index">概要</a></li>
+							<li><a href="/kokugikan/kannai">館内のご紹介</a></li>
+							<li><a href="/kokugikan/schedule">行事予定</a></li>
+							<li><a href="/kokugikan/rental">貸館について</a></li>
+							<li><a href="/kokugikan/faq">よくあるご質問</a></li>
+							<li><a href="/honbasho/kansen/tokyo#access">アクセス</a></li>
+							<li><a href="/kokugikan/rental_rules">貸館規則</a></li>
+						</ul>
+					</dd>
+					</dl>
+				</li>
+				<li class="lastChild">
+					<dl>
+						<dt>巡業について</dt>
+						<dd>
+						<ul class="inner2">
+							<li><a href="/jungyo/index">お知らせ</a></li>
+							<li><a href="/jungyo/kanjinmoto">勧進元募集</a></li>
+							<li><a href="/jungyo/schedule">巡業スケジュール</a></li>
+							<li><a href="/jungyo/timetable">巡業の一日</a></li>
+						</ul>
+						</dd>
+					</dl>
+				</li>
+			</ul>
+
+			<ul class="nav">
+				
+				<li>
+					<dl>
+						<dt>指導普及部について</dt>
+						<dd>
+						<ul class="inner2">
+							<li><a href="/shido_fukyubu/index">指導普及部からのお知らせ</a></li>
+							<li><a href="/shido_fukyubu/event/index">夏期相撲大会等催事について</a></li>
+							<li><a href="/shido_fukyubu/donation">寄贈について</a></li>
+							<li><a href="/shido_fukyubu/reference">お問い合わせ</a></li>
+						</ul>
+						</dd>
+					</dl>
+				</li>
+				<li>
+					<dl>
+						<dt>大相撲データ</dt>
+						<dd>
+							<ul class="inner2">
+								<li><a href="/sumo_data/rikishi/search">力士を探す</a></li>
+								<li><a href="/sumo_data/sumo_beya/list">相撲部屋のご紹介</a></li>
+								<li><a href="/sumo_data/kyokai_member/index">協会員のご紹介</a></li>
+								<li><a href="/sumo_data/daicho/search">記録台帳</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</li>
+				<li>
+					<dl>
+						<dt>相撲博物館</dt>
+						<dd>
+							<ul class="inner2">
+								<li><a href="/sumo_museum/index">沿革・概要</a></li>
+								<li><a href="/sumo_museum/close_calendar">休館日カレンダー</a></li>
+								<li><a href="/sumo_museum/display/list">展示紹介</a></li>
+								<li><a href="/sumo_museum/history">相撲の歴史</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</li>
+				<li>
+					<dl>
+						<dt>サイトについて</dt>
+						<dd>
+						<ul class="inner2">
+							<li><a href="/guide/inquiry/input">ご意見/ご質問</a></li>
+							<li><a href="/guide/policy">プライバシーポリシー</a></li>
+						</ul>
+						</dd>
+					</dl>
+				</li>
+			</ul>
+		</div>
+		<p class="logo"><img src="/img/common/foot_logo.png" width="295" height="43" alt="公益財団法人 日本相撲協会" /></p>
+	</div>
+	<div class="copyright"><p>Copyright (C) Nihon Sumo Kyokai all rights reserved.</p></div>
+</div><!--footer-->
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  $env = 'production';
+  if ($env == 'production') {
+      ga('create', 'UA-42610049-1', 'sumo.or.jp');
+  } else if ($env == 'staging') {
+      ga('create', 'UA-42610049-3', 'rainbow-wave.co.jp');
+  }
+  ga('send', 'pageview');
+</script>
+
+
+</body>
+<!-- InstanceEnd -->
+</html>

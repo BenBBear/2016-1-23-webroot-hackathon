@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<title>The AZ Academy :: Home</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="/styles.css" />
+	<script type="text/javascript" src="/inc/jquery.js"></script>
+	<script type="text/javascript" src="/inc/jquery.validationEngine.js"></script>
+	<script type="text/javascript" src="/inc/jquery.validationEngine-en.js"></script>
+	<script type="text/javascript" src="/inc/jquery.cookie.js"></script>
+	<script type="text/javascript" src="/inc/jquery.maskedinput.js"></script>
+	<link rel="stylesheet" type="text/css" href="/inc/validationEngine.jquery.css" />
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#registration").validationEngine({
+				promptPosition: "centerRight",
+				//inlineValidation: false,
+				relative: false,
+				scroll: false
+			})
+
+			$('#insapprove').click(function() {
+				$('#insurance-panel').toggle();
+			});
+
+			$('input[name="Radio9"]').bind('change', function() {
+				if($('#location1').is(':checked')) {
+					$('#time1').replaceWith('<div id="time1">8:15 AM - 10:15 AM</div>');
+					$('#time2').replaceWith('<div id="time2">10:15 AM - 12:15 PM</div>');
+					$('#time3').replaceWith('<div id="time3">12:15 PM - 2:15 PM</div>');
+					$('#camp-sessions').show();
+				}
+				if($('#location2').is(':checked')) {
+					$('#time1').replaceWith('<div id="time1">8:30 AM - 10:15 AM</div>');
+					$('#time2').replaceWith('<div id="time2">10:15 AM - 12:00 PM</div>');
+					$('#time3').replaceWith('<div id="time3">12:00 PM - 2:00 PM</div>');
+					$('#camp-sessions').show();
+				}
+			});
+
+			if($('#insapprove').is(':checked')) {
+				$('#insurance-panel').show();
+			}
+
+			if($('#teamdiscount').is(':checked')) {
+				$('#price1').replaceWith('<b id="price1">$292.50</b>');
+				$('#price2').replaceWith('<b id="price2">$247.50</b>');
+				$('#discount-panel').show();
+			}
+			
+			$('#roster-toggle').click(function() {
+				$('#roster-toggle').hide();
+				$('#roster-add').show();
+				$.cookie('form_visible', $('#roster-add').is(':visible').toString());
+			});
+			
+			if($.cookie('form_visible') == 'true') {
+				$('#roster-toggle').hide();
+				$('#roster-add').show();
+			} else {
+				$('#roster-toggle').show();
+				$('#roster-add').hide();
+			}
+			
+			var currID = 0;
+			var current;
+			var previous;
+			
+			
+						
+			$('#schedule-button').click(function() {
+				$('#schedule-reveal').toggle();
+			});
+			
+			$("#mainphone").mask("999-999-9999");
+
+		});
+	</script>
+</head>
+
+<body>
+	<div id="wrapper">
+		<div id="header">
+			<a href="/index.php"><img src="/images/aza_logo.png" alt="The AZ Academy" id="logo" style="float:left" /></a>
+			<a href="/theazacademy_liability_form.pdf" target="_blank"><img src="/images/b_download_form2.png" alt="download emergency contact form" style="float:right;margin:40px 20px 0 0" /></a>			<div style="clear:both"></div>
+						
+			
+							<div id="bannerContainer">
+					<!--<a href="/camp-registration.php"><img src="/images/home_banner2.jpg" alt="" /></a>
+					<a href="/camp-registration.php"><img src="/images/home_banner1.jpg" alt="" /></a>-->
+					<a href="/basketball-camp.php"><img src="/images/banner5.png" alt="" /></a>
+				</div>
+					</div>
+		<div id="nav">
+			<a href="/index.php"><img src="/images/n_home.gif" onmouseover="this.src='/images/n_home_h.gif'" onmouseout="this.src='/images/n_home.gif'" alt="Home" /></a>
+			<a href="/mission-statement.php"><img src="/images/n_philosophy.gif" onmouseover="this.src='/images/n_philosophy_h.gif'" onmouseout="this.src='/images/n_philosophy.gif'" alt="Philosophy" /></a>
+			<a href="/basketball-classes.php"><img src="/images/n_programs.gif" onmouseover="this.src='/images/n_programs_h.gif'" onmouseout="this.src='/images/n_programs.gif'" alt="Programs" /></a>
+			<a href="/contact.php"><img src="/images/n_contact.gif" onmouseover="this.src='/images/n_contact_h.gif'" onmouseout="this.src='/images/n_contact.gif'" alt="Contact" /></a>
+			<div style="clear:left"></div>
+		</div>
+		<div id="main-content">
+			<div id="col-1" style="width:664px">
+				<img src="/images/bball.png" alt="" style="float:left;width:91px;margin:40px 60px 0 20px" />
+				<div style="float:left;width:295px;padding-top:50px;font:normal 13px arial,sans-serif;line-height:18px">
+					Want to take your game to the next level? Are you looking to assess if your student has what it takes to make it in the "next" level of basketball? Do you want to build skills and competency with the guidance of those that have a long history of stewarding next level athletes? You have found the place.<br />
+				</div>
+				<img src="/images/aau_logo2.png" alt="AAU" style="float:left;width:74px;margin:40px 0 0 50px" />
+				<br />
+				<div style="clear:left"></div>
+				<br />
+				<br />
+				<br />
+				<div style="font:normal 11px arial,sans-serif">
+					* Participation in AZ Academy events requires a valid AAU membership number and a $12 annual fee. Sign up <a href="http://aausports.org/JoinNow.aspx" target="_blank">here</a>.
+				</div>
+			</div>
+			<div style="clear:left"></div>
+		</div>
+		<div id="footer" style="margin:15px 0 0 0">
+			<b>The AZ Academy</b> 7819  E. Greenway Rd., Ste. 5, Scottsdale, AZ 85260<br />
+		  	<b>work:</b> (310) 579-7405  <b>email: </b><a href="mailto:coach@theazacademy.com">Click here</a><br />
+			&copy;2016 The AZ Academy 501(c)(3). All Rights Reserved.<br />
+		</div>
+	</div>
+</body>
+</html>

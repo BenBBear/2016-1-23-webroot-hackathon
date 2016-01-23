@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Webpeakr | search</title>
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/gif" href="/favicon.gif" />
+  <meta name="abstract" content="WebPeakr - a software to simulate 2D solid-state NMR spectra" />
+  <meta name="description" content="WebPeakr is a software to simulate 2D solid-state NMR spectra." />
+  <meta name="keywords" content="" />
+  <meta name="page-topic" content="genome research" />
+  <meta name="page-type" content="interface to simulate 2D solid-state NMR spectra." />
+  <meta name="audience" content="all" />
+  <meta name="publisher" content="Peakr Team" />
+  <meta name="copyright" content="Peakr Team, 2012-2016" />
+
+  <link href="/assets/application-f619f42bf329076e4215f3a1b4abe19a.css" media="all" rel="stylesheet" type="text/css" />
+  <script src="/assets/application-94d62879cf642550c8271c52adf2f50c.js" type="text/javascript"></script>
+  
+  <meta content="authenticity_token" name="csrf-param" />
+<meta content="ZuxH+EvF9BRJ9HWY1Uz3fJq+kkwxejKokUJ2+nh65+4=" name="csrf-token" />
+</head>
+<body>
+
+    <div id="waiting" style = "display: none">
+  <div style="position: fixed; width: 100%; height:100%;">
+    <table style="width:100%; height:100%;">
+      <tr>
+        <td align="center" style="width: 100%; vertical-align:middle;">
+          <div id="waiting_infobox">
+            <p><img alt="Progress_dog_neg" src="/assets/icons/progress_dog_neg-5388af972cb48c7b2dde221e63331788.gif" /></p>
+            <p>
+              Running since <span id="waiting_counter">0</span> seconds.<br /> Please wait...
+            <div class="waiting_abort" onclick="hide_show_waiting('hide');">Abort</div>
+            </p>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+    <div align="center">
+      <div id="main_page">
+        <div id="header">
+          <div id="logo"></div>
+          <ul id="menu">
+  <li class=selected><a href="/search">Simulation</a></li>
+
+  <li><a href="/upload_settings">Upload</a></li>
+
+  <li><a href="/team">Team</a></li>
+
+  <li><a href="/help">Help</a></li>
+
+  <li><a href="/contact">Contact</a></li>
+
+</ul>
+
+        </div>
+        <div>
+          <div id="content">
+            <h1>Spectra <a href="/peakr/show_help?help=spectra" class="fancy_iframe_help" style="width:1000px;"><img alt="Info" src="/assets/layout/info-d370a62c95032386e170b39fdeb2778f.png" /></a></h1>
+<span id="new_spectrum"><form accept-charset="UTF-8" action="/peakr/add_spectra" data-remote="true" enctype="multipart/form-data" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="ZuxH+EvF9BRJ9HWY1Uz3fJq+kkwxejKokUJ2+nh65+4=" /></div>
+
+  <h2>Protein <a href="/peakr/show_help?help=protein" class="fancy_iframe_help" style="width:1000px;"><img alt="Info" src="/assets/layout/info-d370a62c95032386e170b39fdeb2778f.png" /></a></h2>
+
+<div class="description">Protein Name</div><div class="description_values"><input id="spectrum_name" maxlength="20" name="spectrum_name" onblur="clickrecall(this, &#x27;ExampleProtein&#x27;)" onfocus="clickclear(this, &#x27;ExampleProtein&#x27;)" size="20" style="font-size:0.9em;" type="text" value="ExampleProtein" /></div><div style="clear: both;"></div>
+
+<div class="description">Protein Sequence</div><div class="description_values"><textarea cols="40" id="protein_sequence_field" name="protein_sequence" onblur="getElementById(&#x27;protein_sequence_field&#x27;).rows = 1;check_sequence_pdb_identity();" onchange="show_hide_info(&#x27;sequence_pdb_info&#x27;)" onclick="getElementById(&#x27;protein_sequence_field&#x27;).rows = 5;" rows="1">
+</textarea></div><div style="clear: both;"></div>
+
+<div class="description"><span>PDB File upload</span><span id="important_pdb_upload" style="display: none"><img alt="Important" src="/assets/icons/important-359b7a10da332b38e5bd9ea2616cc883.png" style="padding-left:5px;" title="Please upload a PDB file" /></span></div><div class="description_values"><input class="ajax_upload_field" data-form-data="{&quot;hidden_field&quot;:&quot;protein_pdb_file&quot;,&quot;data_field&quot;:&quot;protein_pdb_file_data&quot;}" data-url="/peakr/upload_file_ajax" id="file_field_prot_pdb_file" multiple="multiple" name="uploaded_file" type="file" /><span id="protein_pdb_file_data"> No file selected</span><span id="hidden_pdb_sequence" style="display:none"></span><input id="protein_pdb_file" name="protein_pdb_file" type="hidden" value="" /><input id="protein_sequence_identical" name="protein_sequence_identical" type="hidden" value="" /></div><div style="clear: both;"></div>
+
+<div class="description">or get PDB by ID</div><div class="description_values"><input id="pdb_name_field" maxlength="4" name="pdb_name" onchange="update_pdb_name();" size="20" type="text" /> <a href="/peakr/get_pdb?pdb_name=" data-remote="true" id="get_pdb_button" onclick="hide_show_waiting(&#x27;show&#x27;);"><img alt="Add" src="/assets/icons/add-9881c37d49a41785a44226600acfdb14.png" title="Use this PDB" /></a></div><div style="clear: both;"></div>
+
+<div class="info" id="sequence_info" style="display: none;">If a sequence and a pdb file are provided, the sequences will be aligned and the longer sequence will be used.</div>
+
+  <h2>Chemical shifts <a href="/peakr/show_help?help=chemical_shifts" class="fancy_iframe_help" style="width:1000px;"><img alt="Info" src="/assets/layout/info-d370a62c95032386e170b39fdeb2778f.png" /></a></h2>
+
+<div>
+  <span class="description" style="padding-right: 5px">Add shifts using</span> 
+  <select data-remote="true" data-url="/peakr/change_shift_prediction_method?pdb_file_id=" id="shift_prediction_method" name="shift_prediction_method"><option value="shift_list">Shift list</option>
+<option value="shift_list_prediction">Shift list + Prediction</option>
+<option value="shift_list_prediction_database">Shift list + Prediction + Database</option>
+<option value="shift_list_database">Shift list + Database</option>
+<option value="prediction">Prediction</option>
+<option value="prediction_database">Prediction + Database</option>
+<option value="prediction_shift_list">Prediction - Shift list</option>
+<option value="database">Database</option></select>
+</div><br />
+<div id="shift_prediction_options">
+  <h4>Shifts from Sparky file</h4><script>$('#important_pdb_upload').hide();</script>
+<div class="description">Upload Sparky file</div>
+<div class="description_values"><input class="ajax_upload_field" data-form-data="{&quot;hidden_field&quot;:&quot;sparky_file&quot;,&quot;data_field&quot;:&quot;sparky_file_data&quot;}" data-url="/peakr/upload_file_ajax" id="file_field_sparky_file_upload" multiple="multiple" name="uploaded_file" type="file" /><span id="sparky_file_data"> No file selected</span><input id="sparky_file" name="sparky_file" type="hidden" value="" /></div>
+<div style="clear: both;"></div>
+<h4>Shifts from ShiftX file</h4><div class="description">Upload ShiftX file</div>
+<div class="description_values"><input class="ajax_upload_field" data-form-data="{&quot;hidden_field&quot;:&quot;shiftx_file&quot;,&quot;data_field&quot;:&quot;shiftx_file_data&quot;}" data-url="/peakr/upload_file_ajax" id="file_field_shiftx_file_upload" multiple="multiple" name="uploaded_file" type="file" /><span id="shiftx_file_data"> No file selected</span><input id="shiftx_file" name="shiftx_file" type="hidden" value="" /></div>
+<div style="clear: both;"></div>
+<h4>Shifts from CSV file</h4><script>$('#important_pdb_upload').hide();</script>
+<div class="description">Upload CSV file</div>
+<div class="description_values"><input class="ajax_upload_field" data-form-data="{&quot;hidden_field&quot;:&quot;csv_file&quot;,&quot;data_field&quot;:&quot;csv_file_data&quot;}" data-url="/peakr/upload_file_ajax" id="file_field_csv_file_upload" multiple="multiple" name="uploaded_file" type="file" /><span id="csv_file_data"> No file selected</span><input id="csv_file" name="csv_file" type="hidden" value="" /></div>
+<div style="clear: both;"></div>
+<h4>Shifts from BMRB entry</h4><div class="description">Use BMRB entry</div><div class="description_values"><input id="bmrb_name_field" maxlength="10" name="bmrb_name" onchange="update_bmrb_name();" size="20" type="text" /> <a href="/peakr/get_bmrb_shift_list?bmrb_name=" data-remote="true" id="get_bmrb_button" onclick="hide_show_waiting(&#x27;show&#x27;);"><img alt="Add" src="/assets/icons/add-9881c37d49a41785a44226600acfdb14.png" title="Use this BMRB entry" /></a><span id="selected_bmrb_entry" style="padding-left: 100px;">No BMRB entry selected</span><input id="bmrb_file" name="bmrb_file" type="hidden" value="" /></div><div style="clear: both;"></div>
+
+<div class="info" id="shift_list_info" style="display: none;">If several shift lists are uploaded, shifts will be added to the atoms in the following order:<br />Sparky list > ShiftX list > shifts from CSV file</div>
+
+
+</div>
+<div style="clear: both"></div>
+
+  <h2>Correlations <a href="/peakr/show_help?help=correlations" class="fancy_iframe_help" style="width:1000px;"><img alt="Info" src="/assets/layout/info-d370a62c95032386e170b39fdeb2778f.png" /></a></h2>
+<span id="correlation_container"><div class="description">Correlation Type</div><div class="description_values"><select data-remote="true" data-url="/peakr/change_coupling_style" id="coupling_type" name="coupling_type" style="width:150px"><option value="IntraResidualCoupling" selected="selected">C-C intraresidue</option>
+<option value="InterResidualCoupling">C-C interresidue</option>
+<option value="DoubleQuantumCoupling">C-C double quantum</option>
+<option value="nca">N-C intraresidue</option>
+<option value="nco">N(i)-C(i-1) interresidue</option>
+<option value="ThroughSpaceCoupling">Through-space</option></select><span class="info" id="thoughspace_missing_pdb_info" style="display: none;"><img alt="Important" src="/assets/icons/important-359b7a10da332b38e5bd9ea2616cc883.png" style="padding-left: 5px;" title="Missing pdb file" /> A pdb file is needed for this correlation type.</span></div><div style="clear: both;"></div>
+
+
+<div class="description">Correlation Name</div><div class="description_values"><input id="coupling_name" maxlength="25" name="coupling_name" onblur="clickrecall(this, &#x27;ExampleCorrelation&#x27;)" onfocus="clickclear(this, &#x27;ExampleCorrelation&#x27;)" size="20" style="font-size:0.9em;" type="text" value="ExampleCorrelation" /></div><div style="clear: both;"></div>
+
+
+	<div class="description">Depth</div><div class="description_values"><select id="coupling_depth" name="coupling_depth"><option value="0">All</option>
+<option value="1">CA</option>
+<option value="2">CB</option>
+<option value="3">CG</option>
+<option value="4">CD</option>
+<option value="5">CE</option>
+<option value="6">CZ</option>
+<option value="7">CH2</option></select></div><div style="clear: both;"></div>
+
+	  		<div class="description">Number of Bonds</div><div class="description_values"><select id="number_bonds" name="number_bonds"><option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9" selected="selected">All</option></select></div><div style="clear: both;"></div>
+
+			<div class="description">Single Bond Distance</div><div class="description_values" style="margin: -1px 0px 0px 0px"><input id="single_bond_distance" name="single_bond_distance" type="checkbox" value="1" /></div><div style="clear: both;"></div>
+</span><span id="protein_conformation"></span>
+
+  <br />
+  <input class="nice_button" name="commit" onclick="hide_show_waiting(&#x27;show&#x27;);" style="padding: 1px 16px 3px;" type="submit" value="Create Spectrum" />
+  <small><a href="/peakr/reset_form" class="nice_button" data-remote="true">Reset form</a></small>
+  <small>or</small>
+  <a href="/peakr/load_spectrum_example" class="nice_button" data-remote="true">Load Example</a>
+
+</form></span>
+<h2>Added Spectra <a href="/peakr/show_help?help=added_spectra" class="fancy_iframe_help" style="width:1000px;"><img alt="Info" src="/assets/layout/info-d370a62c95032386e170b39fdeb2778f.png" /></a></h2><div id="added_spectra">	<div class="added_spectra_head"><div class="added_spectra_content"><img alt="Check_off" src="/assets/icons/check_off-9734591da91b6857c4021fcad056bc91.png" title="Select spectrum (example)" /><img alt="Peak_list" src="/assets/icons/peak_list-0f9f6e5eea6b34a2566f736b432d3b03.jpeg" title="Show peak list (example)" /><img alt="Edit" src="/assets/icons/edit-bf77a4079987f9f5ea2637610915b66a.gif" title="Details of your spectrum (example)" /><img alt="Clone" src="/assets/icons/clone-3667c514ea8f07c67260d55c67392dc3.png" title="Clone your spectrum (example)" /><img alt="Download" src="/assets/icons/download-6db611a20ca96992c7f6c1558000d98c.png" title="Download your peaks and settings (example)" /><img alt="Trash" src="/assets/icons/trash-85db7447de6da5b990e8933833784af2.gif" title="Delete spectra (example)" /></div><div class="added_spectra_content"><b>ExampleProteinName_ExampleCorrelationName</b><small id="spectra_settings_example_hide" onclick="$(&#x27;#spectra_settings_example&#x27;).toggle();$(&#x27;#spectra_settings_example_hide&#x27;).toggle();$(&#x27;#spectra_settings_example_show&#x27;).toggle();"><img alt="Up" src="/assets/icons/up-3d12e5b0366c36f4f01fcfe0eb328e4e.png" style="padding-left: 5px;" title="Hide settings" /> Hide settings</small><small id="spectra_settings_example_show" onclick="$(&#x27;#spectra_settings_example&#x27;).toggle();$(&#x27;#spectra_settings_example_hide&#x27;).toggle();$(&#x27;#spectra_settings_example_show&#x27;).toggle();" style="display: none;"><img alt="Down" src="/assets/icons/down-51ba0c119904270c0fef6ab63a4c0eee.png" title="Show settings" /> Show settings</small></div></div><div style="clear: both;"></div>
+
+	<div id="spectra_settings_example"><div class="added_spectra_body"><div class="added_spectra_content"><b>Labelling </b><select disabled="disabled" id="label" name="label"><option value="1">15N, 13C uniform</option></select> Graded opacity<input disabled="disabled" id="graded_opacity" name="graded_opacity" type="checkbox" value="1" /><a href="/peakr/show_help?help=labelling" class="fancy_iframe_help" style="width:1000px;"><img alt="Info" src="/assets/layout/info-d370a62c95032386e170b39fdeb2778f.png" /></a></div></div><div style="clear: both;"></div><div class="added_spectra_body"><div class="added_spectra_content"><b>Chain </b><select disabled="disabled" id="chain" name="chain"><option value="1">A</option></select></div><div class="added_spectra_content"><b>Model </b><span id="select_chain_model_example">  <select disabled="disabled" id="chain_model" name="chain_model"><option value="1">1</option></select>
+
+</span></div><div class="added_spectra_content" style="padding-left: 10px;"><b>Start </b><input disabled="disabled" id="structure_start" maxlength="15" name="structure_start" size="1" type="text" value="1" /></div><div class="added_spectra_content"><b>End </b><input disabled="disabled" id="structure_stop" maxlength="15" name="structure_stop" size="1" type="text" value="100" /></div></div><div style="clear: both;"></div><div class="added_spectra_body"><div class="added_spectra_content "><b>Amino Acids </b>A C D E F G H I K L M N P Q R S T V W Y <img alt="Check_off" src="/assets/icons/check_off-9734591da91b6857c4021fcad056bc91.png" title="Select/Deselect all Amino Acids (example)" /></div></div><div style="clear: both;"></div><div class="added_spectra_body"><div class="added_spectra_content "><b>Secondary structure </b>H G I E B T C<img alt="Info" src="/assets/layout/info-d370a62c95032386e170b39fdeb2778f.png" style="position: relative; top: -2px; left: 5px" title="Show secondary structure information. (example)" /></div></div><div style="clear: both;"></div></div>
+
+<script type="text/javascript">load_fancy_boy();$('#show_spectra_button').hide();</script>
+
+</div>
+<h1>Experimental Data <a href="/peakr/show_help?help=experimental_data" class="fancy_iframe_help" style="width:1000px;"><img alt="Info" src="/assets/layout/info-d370a62c95032386e170b39fdeb2778f.png" /></a></h1>
+<h2>Select files <a href="/peakr/show_help?help=experimental_data_upload" class="fancy_iframe_help" style="width:1000px;"><img alt="Info" src="/assets/layout/info-d370a62c95032386e170b39fdeb2778f.png" /></a></h2><div class="description">Select format</div><div class="description_values" id="experimental_data_selector"><select data-remote="true" data-url="/peakr/change_experimental_method" id="experimental_data" name="experimental_data"><option value="bruker">Bruker</option>
+<option value="nmrpipe">NMRPipe</option>
+<option value="varian">Varian</option></select></div><div style="clear: both;"></div><span id="experimental_method"><span id="experimental_data_head"><form accept-charset="UTF-8" action="/peakr/upload_file_ajax" data-remote="true" enctype="multipart/form-data" id="experiment_upload" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="ZuxH+EvF9BRJ9HWY1Uz3fJq+kkwxejKokUJ2+nh65+4=" /></div><div class="description">Measured Data Name</div><div class="description_values"><input id="exp_name" maxlength="15" name="exp_name" size="20" type="text" value="ExampleData" /></div><div style="clear: both;"></div><div class="description">Upload 2rr File</div><div class="description_values"><input class="defaulttext" id="ajax_upload_2rr_file" name="uploaded_2rr_file" onblur="clickrecall(this, &#x27;&#x27;)" onfocus="clickclear(this, &#x27;&#x27;)" type="file" /><input id="hidden_2rr_id" name="hidden_2rr_id" type="hidden" /><span id="hidden_2rr_id_data"> No file selected</span></div><div style="clear: both;"></div><div class="description">Upload procs File</div><div class="description_values"><input class="defaulttext" id="ajax_upload_procs_file" name="uploaded_procs_file" onblur="clickrecall(this, &#x27;&#x27;)" onfocus="clickclear(this, &#x27;&#x27;)" type="file" /><input id="hidden_procs_id" name="hidden_procs_id" type="hidden" /><span id="hidden_procs_id_data"> No file selected</span></div><div style="clear: both;"></div><div class="description">Upload proc2s File</div><div class="description_values"><input class="defaulttext" id="ajax_upload_proc2s_file" name="uploaded_proc2s_file" onblur="clickrecall(this, &#x27;&#x27;)" onfocus="clickclear(this, &#x27;&#x27;)" type="file" /><input id="hidden_proc2s_id" name="hidden_proc2s_id" type="hidden" /><span id="hidden_proc2s_id_data"> No file selected</span></div><div style="clear: both;"></div><br /><input class="nice_button" id="uploadsubmit" name="commit" onclick="hide_show_waiting(&#x27;show&#x27;);" type="submit" value="Add Experiment" /> <a href="/peakr/change_experimental_method?experimental_data=bruker" class="nice_button" data-remote="true" id="reset_experiment">Reset form</a><small> or </small><a href="/peakr/load_experiment_example" class="nice_button" data-remote="true" onclick="hide_show_waiting(&#x27;show&#x27;);">Load Example</a></form></span>
+
+</span>
+
+
+<h2>Added Experiments <a href="/peakr/show_help?help=experiments" class="fancy_iframe_help" style="width:1000px;"><img alt="Info" src="/assets/layout/info-d370a62c95032386e170b39fdeb2778f.png" /></a></h2><div id="experiments_list">No experimental data added.
+<script type="text/javascript">load_fancy_boy();$('#show_spectra_button').hide();</script></div><br />
+
+<h1 id="resultant_spectra">Resultant spectra <a href="/peakr/show_help?help=results_and_spectra" class="fancy_iframe_help" style="width:1000px;"><img alt="Info" src="/assets/layout/info-d370a62c95032386e170b39fdeb2778f.png" /></a><span id="download_spectra_data"></span><span id="download_spectra" style="display: none;"><a href="http://www.peakr.org/api/r00000000/poi-x0y0z0w0h0.png" id="download_spectra_link_png" target="_blank"><img alt="Png" onmouseover="iframe_position();" src="/assets/icons/png-81d425aa1dd6a1016ce024ea41d53fd6.png" style="position: relative; top: -2px;" title="Download this spectrum as .png." /></a><a href="http://www.peakr.org/api/r00000000/poi-x0y0z0w0h0.pdf" id="download_spectra_link_pdf" target="_blank"><img alt="Pdf" onmouseover="iframe_position();" src="/assets/icons/pdf-51173ea87529f2db346620e1bcfe7b18.png" style="position: relative; top: -2px;" title="Download this spectrum as .pdf." /></a><a href="http://www.peakr.org/api/r00000000/poi-x0y0z0w0h0.svg" id="download_spectra_link_svg" target="_blank"><img alt="Svg" onmouseover="iframe_position();" src="/assets/icons/svg-d860b7c4726658a1a30afd29e555edbe.png" style="position: relative; top: -2px;" title="Download this spectrum as .svg." /></a></span></h1>
+<div id="show_spectra_button" style="display:none;"><a href="/peakr/view_spectrum" class="nice_button" data-remote="true" onclick="hide_show_waiting(&#x27;show&#x27;);">Display selected spectra</a><br /><br /><div id="needed_seconds"></div></div><div id="picture" style="position: relative; left:-10px; width: 735px"><div id="result_spektra" style="padding-left: 10px;">Select one or more spectra from the 'Added Spectra' list above and click 'Display selected spectra'.</div></div><script>window.addEventListener('message', function(event) {receiveMessage(event,'http://www.peakr.org')}, false);</script>
+
+
+          </div>
+          <div id="rightside">
+            <div>
+              <div style="padding-top: 5px"><a href="http://sherekhan.bionmr.org" target="_blank"><img alt="link to peakr" src="/assets/layout/sherekhan_link-aa634eb9b5a418d1612388bcb2f1907d.png" /></a></div>
+			        <div style="padding-top: 5px"><a href="http://www.motorprotein.de" target="_blank"><img alt="link to motorprotein" src="/assets/layout/motorprotein_link-4d0fa05748ca77c970b5b06a7d9b39c3.png" /></a></div>
+              <div style="padding-top: 5px"><a href="http://www.mpg.de" target="_blank"><img alt="link to MPG" src="/assets/layout/mpg-0b0ccbd76963787be069581d3565a183.png" /></a></div>
+              <div style="padding-top: 5px"><a href="http://www.mpibpc.mpg.de" target="_blank"><img alt="MPI for biophysical chemistry" src="/assets/layout/mpibpc-2c3df5ee5157729a13f0ef954d2fd4d4.png" /></a></div>
+            </div>
+          </div>
+        </div>
+        <div id="footer">
+          <div style="margin-bottom: 5px">
+          	&#169; <a class="internal" href="/peakr/team">Peakr Team 2016</a> | 
+          	<a class="external" href="http://www.mpibpc.gwdg.de/metanavi/impressum/index.html" target="foobar">
+          		Impressum
+          	</a>
+          </div>
+          <a href="http://www.mozilla.org/products/firefox" target="_blank"><img alt="MPI for biophysical chemistry" src="/assets/layout/firefox-1126640aaf0db22db9130dcde5878a03.png" /></a>
+          <a href="http://en.wikipedia.org/wiki/Web_2.0" target="_blank"><img alt="Web_2.0" src="/assets/layout/web_2_0-6b066f7b227d93de536e46ea9ccb92c8.png" /></a>
+          <a href="http://www.rubyonrails.org" target="_blank"><img alt="Ruby on Rails" src="/assets/layout/ror-95928acea1a99a0b838ce00e0376f2f1.gif" /></a>
+          <a href="http://www.adaptivepath.com/publications/essays/archives/000385.php" target="_blank"><img alt="Ajax" src="/assets/layout/ajax-417df510ca72efd170a3cb536bdd9a15.png" /></a>
+        </div>
+      </div>
+    </div>
+    <span style="display: none;">
+      <a href="#errors_container" id="error" class="fancy_iframe_error"></a>
+      <div id="errors_container"></div>
+    </span>
+  </body>
+
+
+	<script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-9383624-6']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+</body>
+</html>

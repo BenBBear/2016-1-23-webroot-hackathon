@@ -1,0 +1,804 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja" class="LC_Page_Index"><head>
+
+<link rel="stylesheet" href="/user_data/packages/default/css/import.css" type="text/css" media="all" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="/js/jquery.colorbox/colorbox.css" type="text/css" media="all" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://kenpro-shop.jp/rss/" />
+<script type="text/javascript" src="/js/css.js"></script>
+<script type="text/javascript" src="/js/navi.js"></script>
+<script type="text/javascript" src="/js/win_op.js"></script>
+<script type="text/javascript" src="/js/site.js"></script>
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="/js/jquery.page-scroller-308.js"></script>
+
+
+<script type="text/javascript" src="/js/common/mega_global.js"></script>
+<script type="text/javascript" src="/js/common/jquery.blend.js"></script>
+<script type="text/javascript" src="/js/jquery.colorbox/jquery.colorbox-min.js"></script>
+<script type="text/javascript" src="/js/config_zoom_prettyPhoto.js"></script>
+<script type="text/javascript" src="/js/jquery.prettyPhoto.js"></script>
+
+
+
+<script type="text/javascript" src="/js/slideopen.js" ></script>
+<script type="text/javascript" src="/js/jquery-ui-1.9.0.custom.min.js" ></script>
+<script type="text/javascript" src="/js/jquery-ui-tabs-rotate.js" ></script>
+
+<!--トップ3つバナー-->
+<script type="text/javascript">
+$(function(){
+	var slidSpd = 300;		//フェードの速度
+	var slidTimer = 5000;	//スライドの間隔
+	var count = 0;			//count番目の画像が表示される（0から数える）
+ 
+	//画像の枚数を調べて<li>にidを付加
+	var qua = $("#banner li").length;
+	for(i=0; i<qua; i++) {
+      //メイン画像のリストにidを付与
+		$("#banner li:eq("+i+")").attr("id", "list"+ i);
+      //サムネイル画像のリストにidを付与
+      $("#thum li:eq("+i+")").attr("id", "btn"+ i);
+	}
+ 
+	//画像をフェードさせる関数
+	function photoFade() {
+      //countと同じ番号のidが振られた<li>を一番後ろ（重なりの一番上にくる）へ移動させる
+		$("#banner li#list"+count).appendTo('#banner');
+      
+      //移動させた<li>の透明度を0に
+		$('#banner li:last').css({ opacity:'0'})
+      
+      //透明度を0→100へアニメーションさせ、フェードで出現するように見せる
+		$('#banner li:last').stop(true, false).animate({ opacity:'1' }, slidSpd ); 
+      
+      //全てのサムネイル画像の透明度を1に
+      $("#thum li").css({ opacity:'1'})
+      
+      //countと同じ番号のidが振られたサムネイルのみ半透明にアニメーションさせる
+      $("#thum #btn"+count).stop(true, false).animate({ opacity:'0.8' }, slidSpd ); 
+	}
+   
+	//カウントを1増やす関数
+	function countUp(){
+      //countが画像枚数より大きくなれば0へ戻し、それ以外なら1増やす
+		if(count>=qua-1) {
+			count = 0;
+		} else {
+			count ++;
+		}
+	}
+ 
+	//slidTimer秒毎に繰り返し処理をさせる関数
+	var timerID;
+	function timerStart(){
+		clearInterval(timerID);
+		timerID = setInterval(function(){
+			countUp();
+			photoFade();
+		}, slidTimer);
+	};
+   
+   //サムネイルを押した時の処理
+   $("#thum li").click(function(){
+      var index =  $("#thum li").index(this);
+      count = index;
+      photoFade();
+      timerStart();
+   });
+   
+	//スライドスタート
+	photoFade();
+	timerStart();
+});
+</script>
+
+<!--トップに戻るボタン-->
+<script type="text/javascript">
+$(document).ready(function() {
+  var pagetop = $('.pagetop');
+    $(window).scroll(function () {
+       if ($(this).scrollTop() > 100) {
+            pagetop.fadeIn();
+       } else {
+            pagetop.fadeOut();
+            }
+       });
+       pagetop.click(function () {
+           $('body, html').animate({ scrollTop: 0 }, 500);
+              return false;
+   });
+});
+</script>
+
+
+
+<title>建プロショップ</title>
+
+
+<link rel="shortcut icon" href="/user_data/packages/default/img/common/favicon.ico" />
+<link rel="icon" type="image/vnd.microsoft.icon" href="/user_data/packages/default/img/common/favicon.ico" />
+
+    <meta name="author" content="メガソフト" />
+    <meta name="description" content="建築関係商品を厳選してご紹介する建築プロ向けサイトです。CADなどPCソフトや３Dプリンタ、書籍など" />
+    <meta name="keywords" content="建築,パース,パース作成,プレゼン,3DCG,CAD,構造,見積,原価管理,3Dプリンタ,住宅模型" />
+<link rel="shortcut icon" href="/user_data/packages/default/img/common/favicon.ico" />
+<link rel="icon" type="image/vnd.microsoft.icon" href="/user_data/packages/default/img/common/favicon.ico" />
+
+<script type="text/javascript">//<![CDATA[
+    
+    $(function(){
+        
+    });
+//]]></script>
+
+
+
+
+<!-- GA -->
+<script type="text/javascript" src="/js/kenpro_ga.js"></script>
+<!-- /GA -->
+
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-1121431-50', {
+    'name': 'plg_gaecommerceua',
+    'cookieDomain': 'auto'
+  });
+
+  ga('plg_gaecommerceua.send', 'pageview');
+
+    </script>
+</head><!-- ▼BODY部 スタート -->
+<body>
+
+
+<noscript>
+    <p>JavaScript を有効にしてご利用下さい.</p>
+</noscript>
+
+<a name="top" id="top"></a> 
+<div class="frame_outer">
+
+                            
+<!--▼HEADER-->
+<p class="pagetop"><a href="#header">&#9650;</a></p>
+
+<div id="kenpro_header">
+<br>
+<h1>建プロショップはプレゼン・画像加工ソフト、書籍など建築プロへのおすすめ商品を取り揃えています！</h1>
+<a href="/"><img src="/user_data/packages/default/img/common/header_logo.jpg" alt="建プロショップ" class="logo"></a>
+
+<div id="kenpro_header_inner" class="cf">
+<p id="kenpro_header_inner_left" class="cf"><a href="https://kenpro-shop.jp/user_data/whatiskenpro.php"><img src="/user_data/packages/default/img/common/header_whats.jpg" alt="建プロショップとは？"></a></p>
+
+<table border="0" id="kenpro_header_inner_right" class="cf">
+  <tr>
+    <td><a href="https://kenpro-shop.jp/user_data/guide/"><img src="/user_data/packages/default/img/common/header_guide.jpg" alt="ご購入ガイド"></a></td>
+    <td><a href="https://kenpro-shop.jp/contact/"><img src="/user_data/packages/default/img/common/header_contact.jpg" alt="お問い合わせ"></a></td>
+  </tr>
+  <tr>
+    <td colspan="2"><a href="/cart/" title="カートの中を見る"><img src="/user_data/packages/default/img/common/header_cart.jpg" alt="カートを見る"></a></td>
+    </tr>
+</table>
+
+<p id="kenpro_header_inner_right2" class="cf"><img src="/user_data/packages/default/img/common/header_carriage.jpg" alt="1万円以上ご購入で送料無料"></p>
+
+</div>
+
+<div style="clear: both"></div>
+
+<!-- 検索BOX -->
+<div class="searchBox"><form name="search_form" id="search_form" method="get" action="https://kenpro-shop.jp/products/list.php"><input type="hidden" name="mode" value="search"><input type="text" name="name" class="box140" maxlength="200" value="" ><input type="image" src="/user_data/packages/default/img/common/header_search.jpg" name="shopsearch_btn" value="検索" class="btn_shopserch"></form></div>
+<!-- /検索BOX -->
+
+<div id="headerInternalColumn" class="cf">
+
+<!--<p id="mail"><img src="img/common/header_mail.jpg"></p>-->
+
+<!-- ▼【ヘッダー】ログイン -->
+
+                                                                            <!-- ▼【ヘッダー】ログイン -->
+                                            <script type="text/javascript">//<![CDATA[
+    $(function(){
+        var $login_email = $('#header_login_area input[name=login_email]');
+
+        if (!$login_email.val()) {
+            $login_email
+                .val('メールアドレス')
+                .css('color', '#AAA');
+        }
+
+        $login_email
+            .focus(function() {
+                if ($(this).val() == 'メールアドレス') {
+                    $(this)
+                        .val('')
+                        .css('color', '#000');
+                }
+            })
+            .blur(function() {
+                if (!$(this).val()) {
+                    $(this)
+                        .val('メールアドレス')
+                        .css('color', '#AAA');
+                }
+            });
+
+        $('#header_login_form').submit(function() {
+            if (!$login_email.val()
+                || $login_email.val() == 'メールアドレス') {
+                if ($('#header_login_area input[name=login_pass]').val()) {
+                    alert('メールアドレス/パスワードを入力して下さい。');
+                }
+                return false;
+            }
+            return true;
+        });
+    });
+//]]></script>
+<div class="block_outer">
+    <div id="header_login_area" class="clearfix">
+        <form name="header_login_form" id="header_login_form" method="post" action="https://kenpro-shop.jp/frontparts/login_check.php" onsubmit="return fnCheckLogin('header_login_form')">
+        <input type="hidden" name="mode" value="login" />
+        <input type="hidden" name="transactionid" value="aed1511b7487887c94ace41e53a14f7dd49101af" />
+        <input type="hidden" name="url" value="/" />
+        <div class="block_body clearfix">
+                            <p>ようこそゲスト様</p>
+                <ul class="formlist clearfix">
+
+                    <li class="login"><a href="/mypage/login.php" title="マイページ">マイページ</a></li>
+                    <li class="regist"><a href="/entry/kiyaku.php" title="新規会員登録">新規会員登録</a></li>
+
+                
+                </ul>
+
+                    </div>
+        </form>
+    </div>
+</div>
+                                        <!-- ▲【ヘッダー】ログイン -->
+                                                        </div>
+
+
+
+<div style="clear: both"></div>
+
+<!-- PC用ナビ -->
+    <ul id="nav" class="cf">
+        <li><a href="https://kenpro-shop.jp/user_data/products_list/presen/"><img src="/user_data/packages/default/img/common/nav_01.jpg" alt="プレゼン・3DCG"></a></li>
+        <li><a href="https://kenpro-shop.jp/user_data/products_list/cad/"><img src="/user_data/packages/default/img/common/nav_02.jpg" alt="CAD・構造・診断"></a></li>
+        <li><a href="https://kenpro-shop.jp/user_data/products_list/image/"><img src="/user_data/packages/default/img/common/nav_03.jpg" alt="画像作成・加工"></a></li>
+        <li><a href="https://kenpro-shop.jp/user_data/products_list/estimate/"><img src="/user_data/packages/default/img/common/nav_04.jpg" alt="見積もり・原価管理"></a></li>
+        <li><a href="https://kenpro-shop.jp/user_data/products_list/documents/"><img src="/user_data/packages/default/img/common/nav_05.jpg" alt="資料作成"></a></li>
+        <li><a href="https://kenpro-shop.jp/user_data/products_list/material/"><img src="/user_data/packages/default/img/common/nav_06.jpg" alt="データ素材"></a></li>
+        <li><a href="https://kenpro-shop.jp/user_data/products_list/hardware/"><img src="/user_data/packages/default/img/common/nav_07.jpg" alt="3Dプリンタ・カメラ"></a></li>
+        <li><a href="https://kenpro-shop.jp/user_data/products_list/model/"><img src="/user_data/packages/default/img/common/nav_08.jpg" alt="住宅模型"></a></li>
+        <li><a href="https://kenpro-shop.jp/user_data/products_list/book/"><img src="/user_data/packages/default/img/common/nav_09.jpg" alt="書籍"></a></li>
+        <li><a href="https://kenpro-shop.jp/user_data/products_list/other/"><img src="/user_data/packages/default/img/common/nav_10.jpg" alt="その他"></a></li>
+    </ul>
+</div>
+<!--kenpro_header_END-->
+
+<div id="kenpro_header_sp">
+<h1>建プロショップはプレゼン・画像加工ソフト、書籍など建築プロのおすすめ商品を取り揃えています！</h1>
+<a href="/"><img src="/user_data/packages/default/img/common/header_logo.jpg" alt="建プロショップ" class="logo"></a>
+
+<div id="kenpro_header_sp_left">
+<img src="/user_data/packages/default/img/common/header_carriage.jpg">
+</div>
+
+<div id="kenpro_header_sp_right">
+<!-- ▼【ヘッダー】ログイン -->
+
+                                                                            <!-- ▼【ヘッダー】ログイン -->
+                                            <script type="text/javascript">//<![CDATA[
+    $(function(){
+        var $login_email = $('#header_login_area input[name=login_email]');
+
+        if (!$login_email.val()) {
+            $login_email
+                .val('メールアドレス')
+                .css('color', '#AAA');
+        }
+
+        $login_email
+            .focus(function() {
+                if ($(this).val() == 'メールアドレス') {
+                    $(this)
+                        .val('')
+                        .css('color', '#000');
+                }
+            })
+            .blur(function() {
+                if (!$(this).val()) {
+                    $(this)
+                        .val('メールアドレス')
+                        .css('color', '#AAA');
+                }
+            });
+
+        $('#header_login_form').submit(function() {
+            if (!$login_email.val()
+                || $login_email.val() == 'メールアドレス') {
+                if ($('#header_login_area input[name=login_pass]').val()) {
+                    alert('メールアドレス/パスワードを入力して下さい。');
+                }
+                return false;
+            }
+            return true;
+        });
+    });
+//]]></script>
+<div class="block_outer">
+    <div id="header_login_area" class="clearfix">
+        <form name="header_login_form" id="header_login_form" method="post" action="https://kenpro-shop.jp/frontparts/login_check.php" onsubmit="return fnCheckLogin('header_login_form')">
+        <input type="hidden" name="mode" value="login" />
+        <input type="hidden" name="transactionid" value="aed1511b7487887c94ace41e53a14f7dd49101af" />
+        <input type="hidden" name="url" value="/" />
+        <div class="block_body clearfix">
+                            <p>ようこそゲスト様</p>
+                <ul class="formlist clearfix">
+
+                    <li class="login"><a href="/mypage/login.php" title="マイページ">マイページ</a></li>
+                    <li class="regist"><a href="/entry/kiyaku.php" title="新規会員登録">新規会員登録</a></li>
+
+                
+                </ul>
+
+                    </div>
+        </form>
+    </div>
+</div>
+                                        <!-- ▲【ヘッダー】ログイン -->
+                                                        </div>
+
+<div style="clear: both"></div>
+
+<!-- スマホ用ナビ -->
+<div id="nav_spmain">
+<div style="clear: both"></div>
+    <ul class="nav_sp">
+        <li><a href="https://kenpro-shop.jp/user_data/products_list/presen/"><img src="/user_data/packages/default/img/common/nav_sp_01.jpg" alt="プレゼン・3DCG"></a></li>
+        <li><a href="https://kenpro-shop.jp/user_data/products_list/cad/"><img src="/user_data/packages/default/img/common/nav_sp_02.jpg" alt="CAD・構造・診断"></a></li>
+    </ul>
+<div style="clear: both"></div>
+    <ul class="nav_sp">
+        <li><a href="https://kenpro-shop.jp/user_data/products_list/image/"><img src="/user_data/packages/default/img/common/nav_sp_03.jpg" alt="画像作成・加工"></a></li>
+        <li><a href="https://kenpro-shop.jp/user_data/products_list/estimate/"><img src="/user_data/packages/default/img/common/nav_sp_04.jpg" alt="見積もり・原価管理"></a></li>
+    </ul>
+<div style="clear: both"></div>
+    <ul class="nav_sp">
+        <li><a href="https://kenpro-shop.jp/user_data/products_list/documents/"><img src="/user_data/packages/default/img/common/nav_sp_05.jpg" alt="資料作成"></a></li>
+        <li><a href="https://kenpro-shop.jp/user_data/products_list/material/"><img src="/user_data/packages/default/img/common/nav_sp_06.jpg" alt="データ素材"></a></li>
+    </ul>
+<div style="clear: both"></div>
+    <ul class="nav_sp">
+        <li><a href="https://kenpro-shop.jp/user_data/products_list/hardware/"><img src="/user_data/packages/default/img/common/nav_sp_07.jpg" alt="3Dプリンタ・カメラ"></a></li>
+        <li><a href="http://kenpro-shop.jp/products/detail.php?product_id=305"><img src="/user_data/packages/default/img/common/nav_sp_08.jpg" alt="模型"></a></li>
+    </ul>
+<div style="clear: both"></div>
+    <ul class="nav_sp">
+        <li><a href="https://kenpro-shop.jp/user_data/products_list/book/"><img src="/user_data/packages/default/img/common/nav_sp_09.jpg" alt="書籍"></a></li>
+        <li><a href="https://kenpro-shop.jp/user_data/products_list/other/"><img src="/user_data/packages/default/img/common/nav_sp_10.jpg" alt="その他"></a></li>
+    </ul>
+</div>
+</div>
+<!--kenpro_header_sp_END-->
+
+<div style="clear: both"></div>
+<!--▲HEADER-->        
+    <div id="container" class="clearfix">
+
+                        
+                        
+                <div
+                            id="one_maincolumn"
+                        class="main_column"
+        >
+                                    
+            <!-- ▼メイン -->
+            
+<!--<a href="/user_data/info/winter.php"><div style="margin:10px auto;padding:10px 20px;border:2px dashed red;background-color:#ffffd5;font-weight:bold;">年末年始 冬季休業スケジュールのご案内</div></a>-->
+
+<p class="pagetop"><a href="#header">&#9650;</a></p>
+
+<!-- PC スライドバナー -->
+<div id="slider">
+    <ul id="banner">
+        <li><a href="/products/detail.php?product_id=650"><img src="/user_data/packages/default/img/top/bnr_open2.jpg" alt="STRDESIGN Version 16"></a></li>
+        <li><a href="/user_data/products_list/set/"><img src="/user_data/packages/default/img/top/bnr_open1.jpg" alt="３ＤマイホームデザイナーＰＲＯ９ EXとのお得なセット"></a></li>
+        <li><a href="/products/detail.php?product_id=645"><img src="/user_data/packages/default/img/top/bnr_open3.jpg" alt="オリンパス STYLUS TG-3 工一郎"></a></li>
+    </ul>
+
+    <ul id="thum">
+        <li><img src="/user_data/packages/default/img/top/bnr_open2_s.jpg" alt="STRDESIGN Version 16"></li>
+        <li><img src="/user_data/packages/default/img/top/bnr_open1_s.jpg" alt="３ＤマイホームデザイナーＰＲＯ９ EXとのお得なセット"></li>
+        <li><img src="/user_data/packages/default/img/top/bnr_open3_s.jpg" alt="オリンパス STYLUS TG-3 工一郎"></li>
+    </ul>
+</div>
+
+<!-- スマホ スライドバナー -->
+<div class="bnr_ap">
+<a href="/products/detail.php?product_id=650"><img src="/user_data/packages/default/img/top/bnr_open_sp.jpg" alt="STRDESIGN Version 16"></a></div>
+<br clear="all">
+
+<div id="top">
+	<div id="main">
+<!-- お知らせ -->
+<table class="news">
+<tr><th><img src="/user_data/packages/default/img/top/news.png" alt="お知らせ"> 新商品やショップからのお知らせなど</th></tr>
+<tr>
+<td>
+<dl>
+<dt>2016/1/20</dt><dd><img src="/user_data/packages/default/img/top/icon_new.png" alt="新商品" class="icon"><a href="/products/detail.php?product_id=654">使いやすさに定評のある国産2次元製図CAD「DRA-CAD14 LE」新発売！</a></dd>
+<dt>2016/1/19</dt><dd><img src="/user_data/packages/default/img/top/icon_new.png" alt="新商品" class="icon"><a href="/products/detail.php?product_id=650">さまざまな木造軸組工法住宅の構造計算がこれ1つで対応可能!!「STRDESIGN Version 16」</a></dd>
+<dt>2015/12/22</dt><dd><img src="/user_data/packages/default/img/top/icon_new.png" alt="新商品" class="icon"><a href="/products/detail.php?product_id=652">伊礼智の住宅設計のすべて+超豪華DVDデジタル図面集「建築知識 2016年1月号」</a></dd>
+<dt>2015/12/1</dt><dd><img src="/user_data/packages/default/img/top/icon_new.png" alt="新商品" class="icon"><a href="/user_data/products_list/set/">数量限定！オリジナル商品 「3DマイホームデザイナーPRO9 EXとのセット商品」</a></dd>
+<dt>2015/11/9</dt><dd><img src="/user_data/packages/default/img/top/icon_new.png" alt="新商品" class="icon"><a href="/products/detail.php?product_id=645">タフで頼れるデジカメ「STYLUS TG-3 工一郎」</a></dd>
+<dt>2015/11/1</dt><dd><img src="/user_data/packages/default/img/top/icon_new.png" alt="新商品" class="icon"><a href="/products/detail.php?product_id=639">ついに出ました！住宅・建築プレゼンソフトの最新版「3DマイホームデザイナーPRO9 EX」</a><br>
+<dt>2015/10/23</dt><dd><img src="/user_data/packages/default/img/top/icon_new.png" alt="新商品" class="icon"><a href="/products/detail.php?product_id=589">省エネ計算でお客様にメリットを「HOUSE-省エネ Ver.2」</a></dd>
+</dl>
+</td>
+</tr>
+</table>
+<!-- /お知らせ -->
+
+<!-- HOUSE省エネ -->
+
+      <p class="title"><img src="/user_data/packages/default/img/top/main_title_check.jpg" alt="戸建て住宅の省エネルギー計算に"></p> 
+      <p class="title_sp"><img src="/user_data/packages/default/img/top/main_title_check_sp.jpg" alt="戸建て住宅の省エネルギー計算に"></p> 
+      <div class="main_inner">
+      <div class="item">
+            <h2>混構造対応だから、これ1本で省エネ計算を完結！</h2>
+            
+            <div class="item_inner">
+            <p id="item_pc"><a href="/products/detail.php?product_id=589"><img src="/user_data/packages/default/img/item/housesyouene2/item_img.png" width="150" alt="HOUSE-省エネ Ver.2"></a></p>
+			<div id="item_content">
+            <ul id="icon">
+            <li><img src="/user_data/packages/default/img/top/icon_pc.jpg" alt="PCソフト"></li>
+            <li><img src="/user_data/packages/default/img/top/icon_carriage.jpg" alt="送料無料"></li>
+            </ul>
+            <div style="clear: both"></div>
+            <p class="item_name">HOUSE-省エネ Ver.2</p>
+            <p class="item_txt">エネルギーの使用の合理化に関する法律(省エネルギー法)に準拠した計算を行います。
+長期優良住宅の判定にも利用でき、年間の概算冷暖房費および年間暖冷房負荷も計算できます。</p>
+            <p class="item_plice_top"><span>77,760円</span>(税込)</p>
+            <p class="buy"><a href="/products/detail.php?product_id=589"><img src="/user_data/packages/default/img/common/btn_buy.png" alt="詳細・ご購入はこちら"></a></p>
+			</div>
+            </div>
+
+<!-- スマホ向けコンテンツ -->
+            <p class="item_txt_sp">エネルギーの使用の合理化に関する法律(省エネルギー法)に準拠した計算を行います。
+長期優良住宅の判定にも利用でき、年間の概算冷暖房費および年間暖冷房負荷も計算できます。</p>
+            <p class="buy_sp"><a href="/products/detail.php?product_id=589"><img src="/user_data/packages/default/img/common/btn_buy_sp.png" alt="詳細・ご購入はこちら"></a></p>
+            
+            <p id="item_img"><img src="/user_data/packages/default/img/category/cad/img_04.png" width="300" alt="HOUSE-省エネ Ver.2の操作画面"></p>
+            <div style="clear: both"></div>
+            
+            <div class="point">
+            <ul class="point_inner">
+            <li class="point_img"><img src="/user_data/packages/default/img/top/main_point01.jpg" alt="スタッフおすすめポイント"></li>
+            <li class="point_txt">新しく改定された平成25年省エネ基準に対応した省エネ計算ソフトです。<br>
+省エネ計算は、省エネルギー措置の届出以外にも金利の優遇や補助金の交付などを受けられたり、年間暖冷房負荷を減らせたりすることができることから、施主様にとっては大きなメリットがあります。
+<br>省エネ住宅をPRすれば、施主様の気持ちをぐっと掴むことができますよ!</li>
+            </ul>
+            </div>
+        </div>
+      </div>
+
+      <br clear="all">
+
+<!-- 建築みつも郎 -->
+
+      <p class="title"><img src="/user_data/packages/default/img/top/main_title_estimate.jpg" alt="建築に特化した見積もりソフト"></p> 
+      <p class="title_sp"><img src="/user_data/packages/default/img/top/main_title_estimate_sp.jpg" alt="建築に特化した見積もりソフト"></p> 
+      <div class="main_inner">
+      <div class="item">
+            <h2>使いやすさと高機能を兼ね備えた建築見積の王道ソフト</h2>
+            
+            <div class="item_inner">
+            <p id="item_pc"><a href="/products/detail.php?product_id=279"><img src="/user_data/packages/default/img/item/kenchikumitsu12/item_img.png" width="150" alt="建築みつも郎12"></a></p>
+			<div id="item_content">
+            <ul id="icon">
+            <li><img src="/user_data/packages/default/img/top/icon_pc.jpg" alt="PCソフト"></li>
+            <li><img src="/user_data/packages/default/img/top/icon_carriage.jpg" alt="送料無料"></li>
+            </ul>
+            <div style="clear: both"></div>
+            <p class="item_name">建築みつも郎12</p>
+            <p class="item_txt">社内外のデータ連携から原価管理を意識した見積作成まで、"使える"機能と"考える"機能を進化。 建築見積に特化した機能満載だからこそ競争力のある見積もりをタイムリーに作成できます。</p>
+            <p class="item_plice_top"><span>64,800円</span>(税込)</p>
+            <p class="buy"><a href="/products/detail.php?product_id=279"><img src="/user_data/packages/default/img/common/btn_buy.png" alt="詳細・ご購入はこちら"></a></p>
+			</div>
+            </div>
+
+<!-- スマホ向けコンテンツ -->
+            <p class="item_txt_sp">社内外のデータ連携から原価管理を意識した見積作成まで、"使える"機能と"考える"機能を進化。 建築見積に特化した機能満載だからこそ競争力のある見積もりをタイムリーに作成できます。</p>
+            <p class="buy_sp"><a href="/products/detail.php?product_id=279"><img src="/user_data/packages/default/img/common/btn_buy_sp.png" alt="詳細・ご購入はこちら"></a></p>
+            
+            <p id="item_img"><img src="/user_data/packages/default/img/category/estimate/img_01.png" width="300" alt="建築みつも郎12の操作画面"></p>
+            <div style="clear: both"></div>
+            
+            <div class="point">
+            <ul class="point_inner">
+            <li class="point_img"><img src="/user_data/packages/default/img/top/main_point01.jpg" alt="スタッフおすすめポイント"></li>
+            <li class="point_txt">建築みつも郎12は、建設会社を中心に設備や電気そして土木業など、多くの業界で使われている、長年の知識と経験が反映された『建築系見積作成の定番ソフト』です。<br>
+過去に作成した見積書を検索して一覧表示させる機能なども搭載。見積・積算にかかる時間を大幅に削減できます。</li>
+            </ul>
+            </div>
+        </div>
+      </div>
+
+      <br clear="all">
+
+<!-- パースをより魅力的に -->
+
+      <p class="title"><img src="/user_data/packages/default/img/top/main_title_image.jpg" alt="パースをより魅力的に"></p> 
+      <p class="title_sp"><img src="/user_data/packages/default/img/top/main_title_image_sp.jpg" alt="パースをより魅力的に"></p> 
+      <div class="main_inner">
+      <div class="item">
+            <h2>短時間で簡単に建築パースに彩りを与えるクイックレタッチツール</h2>
+            
+            <div class="item_inner">
+            <p id="item_pc"><a href="/products/detail.php?product_id=366"><img src="/user_data/packages/default/img/top/pac_epaint3.jpg" alt="E-Paint3"></a></p>
+			<div id="item_content">
+            <ul id="icon">
+            <li><img src="/user_data/packages/default/img/top/icon_pc.jpg" alt="PCソフト"></li>
+            <li><img src="/user_data/packages/default/img/top/icon_carriage.jpg" alt="送料無料"></li>
+            </ul>
+            <div style="clear: both"></div>
+            <p class="item_name">E-paint3</p>
+            <p class="item_txt">簡単にパースを見栄えのよいものにするツールを搭載。<br>
+手書き風に変換するだけでなく、照明や観葉植物などの素材をパース上にポンッと置くだけで簡単に見栄えの良いパースに大変身させることができます。</p>
+            <p class="item_plice_top"><span>138,240円</span>(税込)</p>
+            <p class="buy"><a href="/products/detail.php?product_id=366"><img src="/user_data/packages/default/img/common/btn_buy.png" alt="詳細・ご購入はこちら"></a></p>
+			</div>
+            </div>
+
+<!-- スマホ向けコンテンツ -->
+            <p class="item_txt_sp">簡単にパースを見栄えのよいものにするツールを搭載。<br>
+手書き風に変換するだけでなく、照明や観葉植物などの素材をパース上にポンッと置くだけで簡単に見栄えの良いパースに大変身させることができます。</p>
+            <p class="buy_sp"><a href="/products/detail.php?product_id=366"><img src="/user_data/packages/default/img/common/btn_buy_sp.png" alt="詳細・ご購入はこちら"></a></p>
+            
+            <p id="item_img"><img src="/user_data/packages/default/img/top/img_epaint3.jpg" alt="E-Paint3の操作画面"></p>
+            <div style="clear: both"></div>
+            
+            <div class="point">
+            <ul class="point_inner">
+            <li class="point_img"><img src="/user_data/packages/default/img/top/main_point01.jpg" alt="スタッフおすすめポイント"></li>
+            <li class="point_txt">E-Paintなら、簡単にパースを見栄えよくできます！<br>
+例えば観葉植物なら、目的の素材を選択して、サイズや角度を調整して、パース上にポンッと置くだけで、違和感なく既存パースにしっくり馴染む素材を配置することができます。<br>
+操作も簡単！15分くらいあれば使いこなせるようになりますよ！</li>
+            </ul>
+            </div>
+        </div>
+      </div>
+
+      <br clear="all">
+
+<!-- おすすめ書籍 -->
+            <p class="title"><img src="/user_data/packages/default/img/top/main_title_book.jpg" alt="スキルアップのおすすめ書籍"></p>
+     		 <p class="title_sp"><img src="/user_data/packages/default/img/top/main_title_book_sp.jpg" alt="スキルアップのおすすめ書籍"></p> 
+
+            <div class="main_inner">
+              <div class="book"><a href="/products/detail.php?product_id=652"><img src="/user_data/packages/default/img/item/book/4910034290160.jpg" height="176" alt="建築知識 2016年1月号"></a>
+                <p>建築知識 2016年1月号</p>
+              </div>
+
+              <div class="book"><a href="/products/detail.php?product_id=636"><img src="/user_data/packages/default/img/item/book/9784767820545.jpg" height="176" alt="JDrafオフィシャルガイドブック"></a>
+                <p>JDrafオフィシャルガイドブック</p>
+              </div>
+
+                <div class="book"><a href="/products/detail.php?product_id=596"><img src="/user_data/packages/default/img/item/book/9784767814551.jpg" height="176" alt="建設業者"></a>
+                <p>建設業者</p>
+                </div>
+
+              <div class="book"><a href="/products/detail.php?product_id=594"><img src="/user_data/packages/default/img/top/book03.jpg" height="176" alt="間取りの方程式"></a>
+                <p>間取りの方程式</p>
+              </div>
+
+              <div class="book"><a href="/products/detail.php?product_id=602"><img src="/user_data/packages/default/img/item/book/9784767819273.jpg" height="176" alt="一生使える! 住宅の高さ寸法"></a>
+                <p>一生使える! 住宅の高さ寸法</p>
+              </div>
+<br clear="all">
+            <p align="right" style="margin:1% 2% 3% 0;"><a href="/user_data/products_list/book/">>> その他の書籍はこちら</a></p>
+		</div>
+      <br clear="all">
+
+<!-- インタビュー-->
+            <p class="title"><img src="/user_data/packages/default/img/top/main_title_interview.jpg" alt="お使いの方にインタビュー"></p>
+     		 <p class="title_sp"><img src="/user_data/packages/default/img/top/main_title_interview_sp.jpg" alt="お使いの方にインタビュー"></p> 
+
+            <div class="main_inner">
+            
+            <div id="intervew">
+            <p id="intervew_item"><a href="/products/detail.php?product_id=645"><img src="/user_data/packages/default/img/top/main_intervew_item.jpg" alt="今回の使用商品 オリンパス STYLUS TG-3 工一郎"></a></p>
+            <div id="intervew_item_sp"><a href="/products/detail.php?product_id=645"><img src="/user_data/packages/default/img/top/main_intervew_item_sp.jpg" alt="今回の使用商品 オリンパス STYLUS TG-3 工一郎"></a>
+            </div>
+            
+            <div class="intervew_inner">
+            <p class="intervew_img"><img src="/user_data/packages/default/img/top/main_intervew_img01.jpg" alt="土木現場監督　T.Aさん"></p>
+            <p class="intervew_txt"><b>土木現場監督　T.Aさん</b></p>
+            <p class="intervew_txt">建設・土木の現場でもデジタルカメラは必需品のアイテムですが、その職務内容から精密機器にとって過酷な状況での使用が多くなるのが悩ましいところ。<br>
+そのようなハードなシーンでも安心して使えるのが、オリンパス社製の工事現場用デジタルカメラ「TG-3工一郎」です。<br>
+土木の現場で監督として働いているT.Aさんに工一郎を使用していただきました。</p>
+            <p class="intervew_txt" align="right" style="margin-right:2%;"><a href="/products/detail.php?product_id=645#05">>> 続きはこちら</a></p>
+            </div>
+			</div>
+
+      <br clear="all">
+            
+		<ul id="sp_menu">
+          <!--<li><a href=""><img src="/user_data/packages/default/img/top/download_sp.jpg" alt="ダウンロード版"></a></li>-->
+          <li><a href="/user_data/products_list/book/"><img src="/user_data/packages/default/img/top/book_sp.jpg" alt="書籍"></a></li>
+          <li><a href="/mypage/change.php"><img src="/user_data/packages/default/img/top/member_sp.jpg" alt="会員登録"></a></li>
+        </ul>
+        <ul id="sp_menu_sns">
+          <a herf="https://twitter.com/kenproshop" target="_blank"><li class="twitter"><img src="/user_data/packages/default/img/top/side_twitter.jpg"></li></a>
+          <a href="https://www.facebook.com/kenpro.shop.mega" target="_blank"><li class="facebook"><img src="/user_data/packages/default/img/top/side_facebook.jpg"></li></a>
+        </ul>
+
+    </div>
+    </div>
+<!--/main-->
+
+<!-- 今月のピックアップー-->
+  <div id="side">
+    	<div id="recommend">
+            <div id="recommend_inner">
+            <img src="/user_data/packages/default/img/top/side_title.jpg" alt="今月のピックアップ">
+            <p class="recommend_img"><a href="/products/detail.php?product_id=654"><img src="/user_data/packages/default/img/item/dracad14le/item_img.png" alt="DRA-CAD14 LE" width="60%"></a></p>
+           
+            <div id="recommend_txt">
+            <img src="/user_data/packages/default/img/top/side_point.jpg" alt="ここがポイント"><br><br>
+            <p>建築2次元製図CAD「DRA-CAD14 LE」。</p>
+            <p>昨年末に最新バージョンが発売され、30以上の新機能が搭載されました。</p>
+            <p>指定範囲に点や線で網掛けのハッチングをしたり図面上の文字を検索したりと以前より図面の表現力が向上し、図面情報をより活用できるように改良されています。</p>
+<p>使いやすさに定評のある国産CAD。互換性がいいのも嬉しいですね。</p>
+<div align="center"><a href="/products/detail.php?product_id=654"><img src="/user_data/packages/default/img/common/btn_buy.png" alt="詳細・ご購入はこちら"></a></div>
+            </div>
+            </div>
+        </div>
+
+        <ul id="side_menu">
+        <!--<li><a href="/user_data/download/index.php"><img src="/user_data/packages/default/img/top/side_download.jpg" alt="ダウンロード版"></a></li>-->
+        <li><a href="/user_data/products_list/book/"><img src="/user_data/packages/default/img/top/side_book.jpg" alt="書籍"></a></li>
+        <li><a href="/entry/kiyaku.php"><img src="/user_data/packages/default/img/top/side_member.jpg" alt="会員登録"></a></li>
+		</ul>
+
+<br>
+
+        <ul id="side_menu_sns">
+        <!--<li class="twitter"><a href=""><img src="/user_data/packages/default/img/top/side_twitter.jpg" alt="Twitter"></a></li>
+        <a href="https://www.facebook.com/kenpro.shop.mega"><li class="facebook"><img src="/user_data/packages/default/img/top/side_facebook.jpg"alt="Facebook"></li></a>-->
+<!-- Likebox -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.4";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-page" data-href="https://www.facebook.com/kenpro.shop.mega/" data-tabs="timeline" data-width="255" data-height="550" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/kenpro.shop.mega/"><a href="https://www.facebook.com/kenpro.shop.mega/">建プロショップ</a></blockquote></div></div>
+<!-- /Likebox -->　
+<!-- Twitter -->
+            <a class="twitter-timeline"  href="https://twitter.com/kenproshop" data-widget-id="649579777347596288">@kenproshopさんのツイート</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<!-- /Twitter -->
+
+        </ul>
+    </div>
+<!--/side-->
+
+</div>
+<!--/top-->
+<div style="clear: both"></div>            <!-- ▲メイン -->
+
+                                            </div>
+        
+                        
+                        
+    </div>
+
+                
+<!--▼FOOTER-->
+<div id="kenpro_footer"> 
+  <p id="footer_title"><img src="/user_data/packages/default/img/common/footer_title.jpg" alt="ご購入について"></p>
+  <hr style="border: 0;
+    height: 1px;
+    background: #B5B5B5;
+     width:98%; margin-left:10px;">
+  
+  
+  <div id="footer_menumain">
+  <div class="footer_menu">
+    <div class="footer_menu_title"><a href="/user_data/guide/charge.php">お届け・送料</a></div>
+    <ul class="footer_menu_box">
+      <li class="footer_menu_inner"><img src="/user_data/packages/default/img/common/footer_carriage.jpg" alt="全国送料一律684円一万円以上ご注文で送料無料　買ってすぐに使えるダウンロード版も"></li>
+      <li class="footer_menu_inner" style="text-align:left;"><a href="/user_data/guide/charge.php">・詳細はこちら</a></li>
+
+      
+    </ul>
+  </div>
+  <div class="footer_menu">
+    <div class="footer_menu_title"><a href="/user_data/guide/howtoPay.php">お支払い方法</a></div>
+    <ul class="footer_menu_box">
+      <li class="footer_menu_inner"><img src="/user_data/packages/default/img/common/footer_card.jpg" alt="カード　銀行振込　代金引換"></li>
+      <li class="footer_menu_inner" style="text-align:left;"><a href="/user_data/guide/howtoPay.php">・詳細はこちら</a></li>
+    </ul>
+  </div>
+  <div class="footer_menu">
+    <div class="footer_menu_title"><a href="/entry/kiyaku.php">会員登録・登録内容の変更</a></div>
+    <ul class="footer_menu_box">
+        <li class="footer_menu_inner" style="text-align:left;"><a href="/entry/kiyaku.php">・新規会員登録</a></li>
+        <li class="footer_menu_inner" style="text-align:left;"><a href="/mypage/login.php">・会員ログイン<br>
+        （登録内容の確認・変更）</a></li>
+        <li class="footer_menu_inner" style="text-align:left;"><span id="ss_gmo_img_wrapper_130-66_image_ja">
+<a href="https://jp.globalsign.com/" target="_blank" rel="nofollow">
+<img alt="SSL　GMOグローバルサインのサイトシール" border="0" id="ss_img" src="//seal.globalsign.com/SiteSeal/images/gs_noscript_130-66_ja.gif">
+</a>
+</span>
+<script type="text/javascript" src="//seal.globalsign.com/SiteSeal/gmogs_image_130-66_ja.js" defer="defer"></script>
+</li>
+      </ul>
+  </div>
+  <div class="footer_menu">
+
+    <div class="footer_menu_title"><a href="/user_data/guide/">ご購入ガイド</a></div>
+    <ul class="footer_menu_box">
+      <li class="footer_menu_inner" style="text-align:left;">お買い物の流れ・会員制度について・よくあるご質問など</li>
+        <li class="footer_menu_inner" style="text-align:left;"><a href="/user_data/guide/">・ご購入ガイド</a></li>
+        <li class="footer_menu_inner" style="text-align:left;"><a href="/user_data/guide/cancel.php">・キャンセル、返品</a></li>
+        <li class="footer_menu_inner" style="text-align:left;"><a href="/user_data/guide/question.php">・よくある質問</a></li>
+        <li class="footer_menu_inner" style="text-align:left;"><a href="https://kenpro-shop.jp/contact/">・お問い合わせ</a></li>
+        <li class="footer_menu_inner" style="text-align:left;"><a href="/user_data/guide/commerce.php">・特定商取引法に基づく表示</a></li>
+    </ul>
+  </div>
+  </div>
+</div>
+  <div style="clear: both"></div>
+<div id="fotter">
+<div class="footer_copy">Copyright &copy; 2016 <a href="http://www.megasoft.co.jp/">MEGASOFT</a> Inc.</div>
+<div class="footer_logo">
+<p><a href="/"><img src="/user_data/packages/default/img/common/footer_logo.jpg" alt="建プロショップロゴ"></a></p>
+</div>
+</div>
+</div>
+<!--▲FOOTER-->                    </div>
+
+<!--Adwors リマーケティングタグ-->
+<!-- Google Code for &#12522;&#12510;&#12540;&#12465;&#12486;&#12451;&#12531;&#12464; &#12479;&#12464; -->
+<!-- Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. For instructions on adding this tag and more information on the above requirements, read the setup guide: google.com/ads/remarketingsetup -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1063501992;
+var google_conversion_label = "OctMCOysiQYQqIGP-wM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1063501992/?value=1.00&amp;currency_code=JPY&amp;label=OctMCOysiQYQqIGP-wM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+<!--/Adwors リマーケティングタグ-->
+
+</body><!-- ▲BODY部 エンド --></html>

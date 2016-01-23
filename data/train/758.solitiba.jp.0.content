@@ -1,0 +1,855 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>GAME FREAK 株式会社ゲームフリーク オフィシャルサイト</title>
+    <meta name="description" content="東京都世田谷区。ポケットモンスターなどの家庭用ゲームソフト開発。会社概要、作品紹介、採用情報。" />
+    <meta name="keywords" content="ゲームフリーク,GAME FREAK,ポケモン" />
+    <meta property="og:title" content="GAME FREAK 株式会社ゲームフリーク オフィシャルサイト" />
+    <meta property="og:image" content="https://www.gamefreak.co.jp/img/sq100_logo.png" />
+
+    <link rel="stylesheet" href="/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="/css/jquery.bxslider.css" type="text/css" />
+    <link rel="stylesheet" href="/css/top.css" type="text/css" />
+    <link rel="stylesheet" href="/js/popup/css/popupwindow.css" type="text/css" />
+    <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.page-scroller.js"></script>
+    <script type="text/javascript" src="/js/popup/popupwindow-1.8.1.js"></script>
+    <script type="text/javascript" src="/js/swfobject.js"></script>
+    <script type="text/javascript" src="/js/swffit.js"></script>
+    <script type="text/javascript" src="/js/common.js"></script>
+    <script type="text/javascript" src="/js/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="/js/jquery.bxslider.min.js"></script>
+    <script type="text/javascript">
+    ;(function (window, $) {
+	var document = window.document;
+	$(document).ready(function () {
+
+		// required jquery.bxslider.js
+		slider_e = $('#main-panel').bxSlider({
+			mode:'fade',
+			auto: true,
+			pagerCustom: '#main-panel-thumbnails',
+			easing: 'swing',
+			speed: 715,
+			slideWidth: 2000,
+			controls: false,
+			preloadImages: 'all',
+			onSlideAfter: function() {
+				slide_index = $('#main-panel').attr('class');
+				if(slide_index) {
+					slide_index = slide_index.replace('cur', '');
+					slider_e.goToSlide(slide_index);
+					$('#main-panel').attr('class', '');
+				}
+			}
+	    });
+		$('#main-panel-thumbnails a').hover(function() {
+			slide_index = $(this).attr('data-slide-index');
+			$('#main-panel').attr('class', 'cur'+slide_index);
+			slider_e.stopAuto();
+			slider_e.goToSlide(slide_index);
+		}, function() {
+			slider_e.startAuto();
+		});
+		$('#main-panel-thumbnails a').click(function() {
+			if ($(this).attr('href') != "") {
+				window.open($(this).attr('href'));
+			}
+		});
+    //lightbox
+    $("#contents").on("click", ".open-lightbox", function(){
+      var t = $(document).scrollTop();
+      $(".lightbox").css({top: t + 20 + "px"}).fadeIn(300);
+      $(".lightbox-bg").fadeTo(300,0.7);
+      $("#contents").on("click", ".close-lightbox", function(){
+        $(".lightbox,.lightbox-bg").fadeOut(300);
+      });
+    });
+	});
+}(this, jQuery));
+
+var html_test = "";
+
+$(function() {
+	var agent = navigator.userAgent;
+	if(agent.search(/iPhone/) != -1 || agent.search(/iPad/) != -1 || agent.search(/iPod/) != -1 || agent.search(/Android/) != -1){
+		$('#splink' ).css('display', 'block');
+	}
+
+	var popupFlag = false;
+	$(".popup_window").on("click",function(){
+		var documentHeight = $(document).height();
+		var offsetHeight = $("body").scrollTop() || $(window).scrollTop();
+		var windowHeight = $(window).height();
+		var popupTop = offsetHeight + (windowHeight / 2 - 200);
+		$("#bg-layer").height(documentHeight).fadeTo(300, 0.5);
+		$("#popup-frame").css("top",popupTop).fadeIn(300);
+		var userAgent = window.navigator.userAgent.toLowerCase();
+		var appVersion = window.navigator.appVersion.toLowerCase();
+		if($("#video").length > 0){
+			if($("#video")[0].currentTime){
+				$("#video")[0].currentTime = 0;
+			}
+			if (userAgent.indexOf('msie') != -1) {
+			  	if (appVersion.indexOf('msie 6.') != -1 || appVersion.indexOf('msie 7.') != -1 || appVersion.indexOf('msie 8.') != -1) {
+			  		if ($("#popup-frame2").html()) {
+			  			$("#popup-frame").html($("#popup-frame2").html());
+			  			$("#popup-frame2").html('');
+			  		}
+				} else {
+					$("#video")[0].play();
+				}
+			} else {
+			  	if (appVersion.indexOf('msie 6.') != -1 || appVersion.indexOf('msie 7.') != -1 || appVersion.indexOf('msie 8.') != -1) {
+				} else {
+					$("#video")[0].play();
+				}
+			}
+		}else {
+			$("#flcontent").replaceWith('<div id="flcontent" style="display: none;"></div>');
+			$("#flspace").css("visibility","hidden");
+		}
+		popupFlag = true;
+
+		if(popupFlag == true) {
+			$("#bg-layer").on("click",function(){
+				closeAction();
+			});
+			$("#popup-frame .close-button").live("click",function(){
+				closeAction();
+			});
+		}
+		var closeAction = function(){
+			$("#bg-layer,#popup-frame").fadeOut(300);
+			if($("#video").length > 0){
+				var userAgent = window.navigator.userAgent.toLowerCase();
+				var appVersion = window.navigator.appVersion.toLowerCase();
+				if (userAgent.indexOf('msie') != -1) {
+				  	if (appVersion.indexOf('msie 6.') != -1 || appVersion.indexOf('msie 7.') != -1 || appVersion.indexOf('msie 8.') != -1) {
+				  		if ($("#popup-frame").html()) {
+					  		$("#popup-frame2").html($("#popup-frame").html());
+					  		$("#popup-frame").html('');
+				  		}
+					} else {
+						$("#video")[0].pause();
+					}
+				} else {
+				  	if (appVersion.indexOf('msie 6.') != -1 || appVersion.indexOf('msie 7.') != -1 || appVersion.indexOf('msie 8.') != -1) {
+					} else {
+						$("#video")[0].pause();
+					}
+				}
+
+			}else {
+				var flashvars = {};
+				var params = {wmode:"transparent"};
+				var attributes = {};
+				swfobject.embedSWF("swf/index.swf", "flcontent", "100%", "616", "8.0.0", false, flashvars, params, attributes);
+				swffit.fit("flcontent", 900, 616, null, 616, true, false );
+				$("#flcontent").height(616)
+				var userAgent = window.navigator.userAgent.toLowerCase();
+				var appVersion = window.navigator.appVersion.toLowerCase();
+				if (appVersion.indexOf("msie 9.") != -1) {
+				} else {
+					document.getElementById('flcontent').style.position = 'absolute';
+					document.getElementById('flcontent').style.top = '0px';
+				}
+				$("#video-content").replaceWith('<div id="video-content"></div>');
+				$("#flspace").css("visibility","visible");
+			}
+			popupFlag = false;
+		};
+	});
+
+
+	$(".popup_window_csr").click(function(){
+		var newPopup = new $pop( this.href, { type: 'iframe', title: '', effect: 'normal',  width: 618, height: 417 , modal: true } ); return false;
+	});
+});
+
+
+
+    </script>
+
+  </head>
+  <body>
+    <div id="splink" style="display:none;"><a href="./sp/"><img src="./img/btn_splink.png"></a></div>
+    <div id="header">
+  <h1><a href="/"><img src="/img/logo.png" alt="" /></a></h1>
+  
+  <ul class="header-navigation">
+    <li><a href="/sitemap.html"><img src="/img/button/btn_sitemap.png" alt="" /></a></li>
+    <li><a href="/contact.html"><img src="/img/button/btn_inquiry.png" alt="" /></a></li>
+  </ul>
+  <ul class="header-social-button">
+    <li><a href="#" class="btnFacebook" target="_blank"><img src="/img/icon/ico_facebook.png" alt="" /></a></li>
+    <li><a href="#" class="btnTwitter" target="_blank"><img src="/img/icon/ico_twitter.png" alt="" /></a></li>
+  </ul>
+</div>    <div style="width:100%;background:#ebebeb;">
+      <div id="main-panel-area" class="row">
+        <div class="main-panel-inner">
+          <ul id="main-panel">
+            <li><a href="http://www.pokemon.co.jp/ex/oras/?a001=msign" target="_blank"><img src="img/main_01.png" alt="" /></a></li>
+            <li><a href="http://www.sega.com/games/tembo-badass-elephant" target="_blank"><img src="img/main_04.jpg" alt="" /></a></li>
+            <li><a href="/solitiba/index.html" target="_blank"><img src="img/main_02.jpg" alt="" /></a></li>
+            <li><a href="/harmoknight/index.html" target="_blank"><img src="img/main_03.jpg" alt="" /></a></li>
+          </ul>
+          <ul id="main-panel-thumbnails">
+            <li><a href="http://www.pokemon.co.jp/ex/oras/?a001=msign" data-slide-index="0"><img src="img/main_thum_01.png" alt="" /></a></li>
+            <li><a href="http://www.sega.com/games/tembo-badass-elephant" data-slide-index="1"><img src="img/main_thum_04.png" alt="" /></a></li>
+            <li><a href="/solitiba/index.html" data-slide-index="2"><img src="img/main_thum_02.png" alt="" /></a></li>
+            <li class="last"><a href="/harmoknight/index.html" data-slide-index="3"><img src="img/main_thum_03.png" alt="" /></a></li>
+          </ul>
+          <ul id="main-panel-controls">
+            <li id="main-panel-next"></li>
+            <li id="main-panel-prev"></li>
+          </ul>
+        </div>
+        <!-- /.row-inner -->
+      </div>
+      <!-- /#section-carousel -->
+    </div>
+
+    <div id="contents">
+      <div class="contents-inner">
+        <div class="global-navigation">
+  <ul>
+    <li><a href="/"><img src="/img/button/btn_gn_home.png" height="32" width="60" alt="" /></a></li>
+    <li><a href="/company/about.html"><img src="/img/button/btn_gn_info.png" height="32" width="85" alt="" /></a></li>
+    <li>
+      <a href="/recruit/">
+        <span><img src="/img/icon/ico_new.png" alt="" /></span>
+        <img src="/img/button/btn_gn_recruit.png" height="32" width="93" alt="" />
+      </a>
+    </li>
+    <li>
+      <a href="/list/">
+        <span><img src="/img/icon/ico_new.png" alt="" /></span>
+        <img src="/img/button/btn_gn_portfolio.png" height="32" width="98" alt="" />
+      </a>
+    </li>
+    <li><a href="/contact.html"><img src="/img/button/btn_gn_inquiry.png" height="32" width="116" alt="" /></a></li>
+  </ul>
+</div>        <div class="left-cont">
+          <div class="information">
+            <div class="information-inner">
+              <h2><img src="img/title/title_information2.png" alt="" /></h2>
+              <ul>
+                                                                    <li>
+                    <dl>
+                      <dt>
+                        <div class="icon">
+                                                    <img src="/img/icon/ico_game.png" height="13" width="39" alt="" />
+                                                  </div>
+                        2015/12/16                      </dt>
+                      <dd>
+                        <img src="/img/icon/icon_new.gif" style="margin-left: -5px;" alt="" />                        <p>WiiUバーチャルコンソール<br />
+『スクリューブレイカー 轟振どりるれろ』配信中！<br />
+<a href="https://www.nintendo.co.jp/titles/20010000017727" title="スクリューブレイカー 轟振どりるれろ" target="_blank">詳しくはこちら</a></p>
+                      </dd>
+                    </dl>
+                  </li>
+                                                      <li>
+                    <dl>
+                      <dt>
+                        <div class="icon">
+                                                    <img src="/img/icon/ico_game.png" height="13" width="39" alt="" />
+                                                  </div>
+                        2015/09/17                      </dt>
+                      <dd>
+                                                <p>日本ゲーム大賞2015において、『ポケットモンスター オメガルビー・アルファサファイア』が「優秀賞」 を受賞しました。<br />
+応援していただいた皆様に、心から感謝いたします。<br />
+<a title="『ポケットモンスター オメガルビー・アルファサファイア』公式サイト" href="http://www.pokemon.co.jp/ex/oras/" target="_blank">『ポケットモンスター オメガルビー・アルファサファイア』の公式サイトはこちら</a></p>
+                      </dd>
+                    </dl>
+                  </li>
+                                                      <li>
+                    <dl>
+                      <dt>
+                        <div class="icon">
+                                                    <img src="/img/icon/ico_blog.png" height="13" width="39" alt="" />
+                                                  </div>
+                        2015/09/11                      </dt>
+                      <dd>
+                                                <p><a href="http://www.gamefreak.co.jp/blog/dir/" target="_blank">増田部長のめざめるパワー更新</a></p>
+                      </dd>
+                    </dl>
+                  </li>
+                                                      <li>
+                    <dl>
+                      <dt>
+                        <div class="icon">
+                                                    <img src="/img/icon/ico_game.png" height="13" width="39" alt="" />
+                                                  </div>
+                        2015/07/21                      </dt>
+                      <dd>
+                                                <p>SEGA × GAME FREAK<br />
+『TEMBO THE BADASS ELEPHANT』<br />
+2015年7月21日より配信開始！(欧米)<br />
+<a href="http://www.sega.com/games/tembo-badass-elephant" title="TEMBO THE BADASS ELEPHANT" target="_blank">詳しくはこちら</a></p>
+                      </dd>
+                    </dl>
+                  </li>
+                                                      <li>
+                    <dl>
+                      <dt>
+                        <div class="icon">
+                                                    <img src="/img/icon/ico_game.png" height="13" width="39" alt="" />
+                                                  </div>
+                        2015/04/22                      </dt>
+                      <dd>
+                                                <p>『ポケットモンスター オメガルビー・アルファサファイア』がファミ通アワード2014で優秀賞を受賞しました。</p>
+<p>応援していただいた皆様に、心から感謝いたします。</p>
+<p><a title="『ポケットモンスター オメガルビー・アルファサファイア』公式サイト" href="http://www.pokemon.co.jp/ex/oras/" target="_blank">『ポケットモンスター オメガルビー・アルファサファイア』公式サイトはこちら</a></p>
+                      </dd>
+                    </dl>
+                  </li>
+                                                      <li class="last_r"><a href="javascript:void(0);" class="open-lightbox"><img src="/img/button/top_whatnew_btn.png" height="25" width="89" alt="" /></a></li>
+                              </ul>
+            </div><!-- /information-inner -->
+          </div><!-- /information -->
+          <div class="lightbox" style="margin: 0 0 0 -298px;z-index: 1001;display: none;position: absolute;top: 50%;left: 50%;background: #fff;">
+            <div class="close-lightbox" style="position: absolute;top: 18px;right: 16px;"><a href="javascript:void(0);"><img src="/img/button/btn_close.png" alt="" /></a></div>
+            <div class="information" style="background: none;margin: 0;overflow: hidden;">
+            <div class="information-inner">
+              <h2><img src="img/title/title_information2.png" alt="" /></h2>
+              <ul style="margin: 0 0 -1px;">
+                                                                    <li>
+                    <dl>
+                      <dt>
+                        <div class="icon">
+                                                    <img src="/img/icon/ico_game.png" height="13" width="39" alt="" />
+                                                  </div>
+                        2015/12/16                      </dt>
+                      <dd>
+                        <img src="/img/icon/icon_new.gif" style="margin-left: -5px;" alt="" />                        <p>WiiUバーチャルコンソール<br />
+『スクリューブレイカー 轟振どりるれろ』配信中！<br />
+<a href="https://www.nintendo.co.jp/titles/20010000017727" title="スクリューブレイカー 轟振どりるれろ" target="_blank">詳しくはこちら</a></p>
+                      </dd>
+                    </dl>
+                  </li>
+                                                      <li>
+                    <dl>
+                      <dt>
+                        <div class="icon">
+                                                    <img src="/img/icon/ico_game.png" height="13" width="39" alt="" />
+                                                  </div>
+                        2015/09/17                      </dt>
+                      <dd>
+                                                <p>日本ゲーム大賞2015において、『ポケットモンスター オメガルビー・アルファサファイア』が「優秀賞」 を受賞しました。<br />
+応援していただいた皆様に、心から感謝いたします。<br />
+<a title="『ポケットモンスター オメガルビー・アルファサファイア』公式サイト" href="http://www.pokemon.co.jp/ex/oras/" target="_blank">『ポケットモンスター オメガルビー・アルファサファイア』の公式サイトはこちら</a></p>
+                      </dd>
+                    </dl>
+                  </li>
+                                                      <li>
+                    <dl>
+                      <dt>
+                        <div class="icon">
+                                                    <img src="/img/icon/ico_blog.png" height="13" width="39" alt="" />
+                                                  </div>
+                        2015/09/11                      </dt>
+                      <dd>
+                                                <p><a href="http://www.gamefreak.co.jp/blog/dir/" target="_blank">増田部長のめざめるパワー更新</a></p>
+                      </dd>
+                    </dl>
+                  </li>
+                                                      <li>
+                    <dl>
+                      <dt>
+                        <div class="icon">
+                                                    <img src="/img/icon/ico_game.png" height="13" width="39" alt="" />
+                                                  </div>
+                        2015/07/21                      </dt>
+                      <dd>
+                                                <p>SEGA × GAME FREAK<br />
+『TEMBO THE BADASS ELEPHANT』<br />
+2015年7月21日より配信開始！(欧米)<br />
+<a href="http://www.sega.com/games/tembo-badass-elephant" title="TEMBO THE BADASS ELEPHANT" target="_blank">詳しくはこちら</a></p>
+                      </dd>
+                    </dl>
+                  </li>
+                                                      <li>
+                    <dl>
+                      <dt>
+                        <div class="icon">
+                                                    <img src="/img/icon/ico_game.png" height="13" width="39" alt="" />
+                                                  </div>
+                        2015/04/22                      </dt>
+                      <dd>
+                                                <p>『ポケットモンスター オメガルビー・アルファサファイア』がファミ通アワード2014で優秀賞を受賞しました。</p>
+<p>応援していただいた皆様に、心から感謝いたします。</p>
+<p><a title="『ポケットモンスター オメガルビー・アルファサファイア』公式サイト" href="http://www.pokemon.co.jp/ex/oras/" target="_blank">『ポケットモンスター オメガルビー・アルファサファイア』公式サイトはこちら</a></p>
+                      </dd>
+                    </dl>
+                  </li>
+                                                      <li>
+                    <dl>
+                      <dt>
+                        <div class="icon">
+                                                    <img src="/img/icon/ico_game.png" height="13" width="39" alt="" />
+                                                  </div>
+                        2015/04/22                      </dt>
+                      <dd>
+                                                <p>『ポケットモンスター 赤・緑』がファミ通アワード2014でゲームメディアアワードを受賞しました。</p>
+<p>応援していただいた皆様に、心から感謝いたします。</p>
+                      </dd>
+                    </dl>
+                  </li>
+                                                      <li>
+                    <dl>
+                      <dt>
+                        <div class="icon">
+                                                    <img src="/img/icon/ico_game.png" height="13" width="39" alt="" />
+                                                  </div>
+                        2015/03/12                      </dt>
+                      <dd>
+                                                <p>SEGA × GAME FREAK<br />
+『TEMBO THE BADASS ELEPHANT』<br />
+2015年夏リリース予定(欧米)<br />
+<a href="http://www.sega.com/games/tembo-badass-elephant" title="TEMBO THE BADASS ELEPHANT" target="_blank">詳しくはこちら</a></p>
+                      </dd>
+                    </dl>
+                  </li>
+                                                      <li>
+                    <dl>
+                      <dt>
+                        <div class="icon">
+                                                    <img src="/img/icon/ico_game.png" height="13" width="39" alt="" />
+                                                  </div>
+                        2014/12/06                      </dt>
+                      <dd>
+                                                <p>『ポケットモンスター オメガルビー・アルファサファイア』、<br />
+世界累計770万本突破！<br />
+いつも応援していただき、ありがとうございます。<br />
+<a title="『ポケットモンスター オメガルビー・アルファサファイア』、世界累計770万本突破！" href="http://www.pokemon.co.jp/info/2014/12/141206_gm01.html?a001=news" target="_blank">詳しくはこちら</a></p>
+                      </dd>
+                    </dl>
+                  </li>
+                                                      <li>
+                    <dl>
+                      <dt>
+                        <div class="icon">
+                                                    <img src="/img/icon/ico_game.png" height="13" width="39" alt="" />
+                                                  </div>
+                        2014/11/26                      </dt>
+                      <dd>
+                                                <p>11月26日(水)より、スマートフォン版『ソリティ馬』の配信を開始しました！<br />
+<a href="http://www.solitiba.jp/index.html" title="スマートフォン版『ソリティ馬』公式サイト" target="_blank">スマートフォン版『ソリティ馬』公式サイトはこちら</a></p>
+                      </dd>
+                    </dl>
+                  </li>
+                                                      <li>
+                    <dl>
+                      <dt>
+                        <div class="icon">
+                                                    <img src="/img/icon/ico_game.png" height="13" width="39" alt="" />
+                                                  </div>
+                        2014/11/21                      </dt>
+                      <dd>
+                                                <p>『ポケットモンスター オメガルビー・アルファサファイア』<br />
+好評発売中！！</p>
+<p><a title="ポケットモンスター オメガルビー・アルファサファイア" href="http://www.pokemon.co.jp/ex/oras/?a001=msign" target="_blank">『ポケットモンスター オメガルビー・アルファサファイア』の<br />
+公式サイトはこちら</a></p>
+                      </dd>
+                    </dl>
+                  </li>
+                                                      <li>
+                    <dl>
+                      <dt>
+                        <div class="icon">
+                                                    <img src="/img/icon/ico_blog.png" height="13" width="39" alt="" />
+                                                  </div>
+                        2014/11/10                      </dt>
+                      <dd>
+                                                <p><a title="増田部長の目覚めるパワー" href="http://www.gamefreak.co.jp/blog/dir/" target="_blank">増田部長のめざめるパワー更新</a></p>
+                      </dd>
+                    </dl>
+                  </li>
+                                                      <li>
+                    <dl>
+                      <dt>
+                        <div class="icon">
+                                                    <img src="/img/icon/ico_game.png" height="13" width="39" alt="" />
+                                                  </div>
+                        2014/09/20                      </dt>
+                      <dd>
+                                                <p>9月20日（土）より<br />
+『ポケットモンスター オメガルビー・アルファサファイア』の<br />
+予約を開始しました！<br />
+<a title="『ポケットモンスター　オメガルビー・アルファサファイア』　公式サイト" href="http://www.pokemon.co.jp/ex/oras/?a001=msign" target="_blank">公式サイトはこちら</a></p>
+                      </dd>
+                    </dl>
+                  </li>
+                                                      <li>
+                    <dl>
+                      <dt>
+                        <div class="icon">
+                                                    <img src="/img/icon/ico_news.png" height="13" width="39" alt="" />
+                                                  </div>
+                        2014/09/18                      </dt>
+                      <dd>
+                                                <p>日本ゲーム大賞2014において、『ポケットモンスター Ｘ・Ｙ』が「優秀賞」「ベストセールス賞」「グローバル賞 日本作品部門」 を受賞しました。<br />
+応援していただいた皆様に、心から感謝いたします。<br />
+<a title="『ポケットモンスター Ｘ・Ｙ』公式サイト" href="http://www.pokemon.co.jp/ex/xy/" target="_blank">『ポケットモンスター Ｘ・Ｙ』の公式サイトはこちら</a></p>
+                      </dd>
+                    </dl>
+                  </li>
+                                                      <li>
+                    <dl>
+                      <dt>
+                        <div class="icon">
+                                                    <img src="/img/icon/ico_news.png" height="13" width="39" alt="" />
+                                                  </div>
+                        2014/09/18                      </dt>
+                      <dd>
+                                                <p>日本ゲーム大賞2014において、ニンテンドー3DSダウンロードソフト『ソリティ馬』が「特別賞」を受賞しました。<br />
+応援していただいた皆様に、心から感謝いたします。<br />
+<a title="『ソリティ馬』公式サイト" href="http://www.gamefreak.co.jp/solitiba/index.html" target="_blank">『ソリティ馬』の公式サイトはこちら</a></p>
+                      </dd>
+                    </dl>
+                  </li>
+                                                      <li>
+                    <dl>
+                      <dt>
+                        <div class="icon">
+                                                    <img src="/img/icon/ico_game.png" height="13" width="39" alt="" />
+                                                  </div>
+                        2014/07/02                      </dt>
+                      <dd>
+                                                <p>『クインティ』がバーチャルコンソール（Wii U）にて<br />
+配信開始されました！<br />
+<a href="http://www.nintendo.co.jp/wiiu/software/vc/fdcj/index.html" target="_blank">詳しくはこちら</a></p>
+                      </dd>
+                    </dl>
+                  </li>
+                                                      <li>
+                    <dl>
+                      <dt>
+                        <div class="icon">
+                                                    <img src="/img/icon/ico_game.png" height="13" width="39" alt="" />
+                                                  </div>
+                        2014/06/11                      </dt>
+                      <dd>
+                                                <p>『ポケットモンスター オメガルビー・アルファサファイア』<br />
+2014年11月21日<span style="font-size: 8pt;">(金)</span> 発売決定！<span style="font-size: 8pt;">※日本国内</span><br />
+現在、鋭意制作中！！<br />
+<a title="『ポケットモンスター　オメガルビー・アルファサファイア』　公式サイト" href="http://www.pokemon.co.jp/ex/oras/?a001=msign" target="_blank">公式サイトはこちら</a></p>
+                      </dd>
+                    </dl>
+                  </li>
+                                                      <li>
+                    <dl>
+                      <dt>
+                        <div class="icon">
+                                                    <img src="/img/icon/ico_news.png" height="13" width="39" alt="" />
+                                                  </div>
+                        2014/05/27                      </dt>
+                      <dd>
+                                                <p><a href="http://www.nindori.com/books/publications/sugimoriworks.html" target="_blank">ゲームフリーク アートディレクター 杉森 建の<br />
+25年間の作品を収めた作品集『杉森 建の仕事』が、<br />
+徳間書店様より発売されました。</a></p>
+                      </dd>
+                    </dl>
+                  </li>
+                                                      <li>
+                    <dl>
+                      <dt>
+                        <div class="icon">
+                                                    <img src="/img/icon/ico_news.png" height="13" width="39" alt="" />
+                                                  </div>
+                        2014/04/24                      </dt>
+                      <dd>
+                                                <p>ファミ通アワード2013で、『ポケットモンスター Ｘ・Ｙ』が優秀賞・ベストヒット賞を受賞しました。</p>
+<p>応援していただいた皆様に、心から感謝いたします。</p>
+<p><a title="『ポケットモンスター Ｘ・Ｙ』公式サイト" href="http://www.pokemon.co.jp/ex/xy/" target="_blank">『ポケットモンスター Ｘ・Ｙ』の公式サイトはこちら</a></p>
+                      </dd>
+                    </dl>
+                  </li>
+                                                      <li>
+                    <dl>
+                      <dt>
+                        <div class="icon">
+                                                    <img src="/img/icon/ico_news.png" height="13" width="39" alt="" />
+                                                  </div>
+                        2014/01/22                      </dt>
+                      <dd>
+                                                <p><a title="『ポケモンバンク』配信再開のお知らせ" href="http://www.nintendo.co.jp/support/information/2014/0122.html" target="_blank">『ポケモンバンク』の配信再開のお知らせ</a></p>
+                      </dd>
+                    </dl>
+                  </li>
+                                                      <li>
+                    <dl>
+                      <dt>
+                        <div class="icon">
+                                                    <img src="/img/icon/ico_game.png" height="13" width="39" alt="" />
+                                                  </div>
+                        2013/12/04                      </dt>
+                      <dd>
+                                                <p>ニンテンドーeショップにて『ソリティ馬』無料体験版配信中！</p>
+<p><a href="http://www.gamefreak.co.jp/solitiba/index.html">『ソリティ馬』公式サイトはこちら</a></p>
+                      </dd>
+                    </dl>
+                  </li>
+                                                      <li>
+                    <dl>
+                      <dt>
+                        <div class="icon">
+                                                    <img src="/img/icon/ico_blog.png" height="13" width="39" alt="" />
+                                                  </div>
+                        2013/11/18                      </dt>
+                      <dd>
+                                                <p><a title="増田部長の目覚めるパワー" href="http://www.gamefreak.co.jp/blog/dir/" target="_blank">増田部長のめざめるパワー更新</a></p>
+                      </dd>
+                    </dl>
+                  </li>
+                                                      <li>
+                    <dl>
+                      <dt>
+                        <div class="icon">
+                                                    <img src="/img/icon/ico_game.png" height="13" width="39" alt="" />
+                                                  </div>
+                        2013/10/15                      </dt>
+                      <dd>
+                                                <p>「ポケットモンスターX・Y」好評発売中！！</p>
+<p><a href="http://www.pokemon.co.jp/ex/xy/" target="_blank">「ポケットモンスター X・Y」の公式サイトはこちら</a></p>
+                      </dd>
+                    </dl>
+                  </li>
+                                                      <li>
+                    <dl>
+                      <dt>
+                        <div class="icon">
+                                                    <img src="/img/icon/ico_game.png" height="13" width="39" alt="" />
+                                                  </div>
+                        2013/07/31                      </dt>
+                      <dd>
+                                                <p><a href="http://www.gamefreak.co.jp/solitiba/index.html" target="_blank">ニンテンドー3DSダウンロード専用タイトル</a><br />
+<a href="http://www.gamefreak.co.jp/solitiba/index.html" target="_blank"> 「ソリティ馬」発売中！</a></p>
+                      </dd>
+                    </dl>
+                  </li>
+                                                      <li>
+                    <dl>
+                      <dt>
+                        <div class="icon">
+                                                    <img src="/img/icon/ico_game.png" height="13" width="39" alt="" />
+                                                  </div>
+                        2013/06/12                      </dt>
+                      <dd>
+                                                <p>「ポケットモンスター X・Y」</p>
+<p>2013年10月12日世界同時発売決定！</p>
+<p><a title="『ポケットモンスター X・Y』公式サイト" href="http://www.pokemon.co.jp/ex/xy/" target="_blank">「ポケットモンスター X・Y」の公式サイトはこちら</a></p>
+                      </dd>
+                    </dl>
+                  </li>
+                                                      <li>
+                    <dl>
+                      <dt>
+                        <div class="icon">
+                                                    <img src="/img/icon/ico_news.png" height="13" width="39" alt="" />
+                                                  </div>
+                        2013/04/17                      </dt>
+                      <dd>
+                                                <p>ファミ通アワード2012で、『ポケットモンスター ブラック２・ホワイト２』が優秀賞・ベストヒット賞を受賞しました。</p>
+<p>応援していただいた皆様に、心から感謝いたします。</p>
+<p><a title="『ポケットモンスターブラック２・ホワイト２』公式サイト" href="http://www.pokemon.co.jp/ex/b2w2/" target="_blank">「ポケットモンスター ブラック２・ホワイト２」の公式サイトはこちら</a></p>
+                      </dd>
+                    </dl>
+                  </li>
+                                                      <li>
+                    <dl>
+                      <dt>
+                        <div class="icon">
+                                                    <img src="/img/icon/ico_game.png" height="13" width="39" alt="" />
+                                                  </div>
+                        2013/03/28                      </dt>
+                      <dd>
+                                                <p>「リズムハンター　ハーモナイト」</p>
+<p>(海外タイトル名：「HarmoKnight」)</p>
+<p>北米・欧州にて製品版配信中！</p>
+<p><a title="HarmoKnight Official Page(US)" href="http://harmoknight.nintendo.com/" target="_blank">Go to the HarmoKnight Official Nintendo page!(US)</a></p>
+<p><a title="HarmoKnight Official GAMEFREAK page" href="http://www.gamefreak.co.jp/harmoknight_en/index.html" target="_blank">Go to the HarmoKnight Official GAMEFREAK page!</a></p>
+                      </dd>
+                    </dl>
+                  </li>
+                                                      <li>
+                    <dl>
+                      <dt>
+                        <div class="icon">
+                                                    <img src="/img/icon/ico_news.png" height="13" width="39" alt="" />
+                                                  </div>
+                        2012/10/26                      </dt>
+                      <dd>
+                                                <p><a title="Amazon ポケモンストア" href="http://www.amazon.co.jp/b?ie=UTF8&amp;node=2430277051&amp;tag=gamefreak03-22&amp;linkCode=ure&amp;creative=6339" target="_blank">Amazonにポケモンストアオープン！</a></p>
+                      </dd>
+                    </dl>
+                  </li>
+                                                      <li>
+                    <dl>
+                      <dt>
+                        <div class="icon">
+                                                    <img src="/img/icon/ico_game.png" height="13" width="39" alt="" />
+                                                  </div>
+                        2012/06/23                      </dt>
+                      <dd>
+                                                <p><a title="『ポケットモンスター ブラック2・ホワイト2』公式サイト" href="http://www.pokemon.co.jp/ex/b2w2/" target="_blank">「ポケットモンスター ブラック２・ホワイト２」発売中！</a></p>
+                      </dd>
+                    </dl>
+                  </li>
+                                                                  </ul>
+            </div><!-- /information-inner -->
+          </div><!-- /information -->
+          </div>
+          <div class="recruit">
+            <div class="recruit-inner">
+              <h2><img src="img/title/title_recruit2.png" alt="" /></h2>
+              <ul>
+                                                                    <li>
+                    <dl>
+                      <dt>
+                        <div class="icon">
+                                                    <img src="/img/icon/ico_career.png" height="13" width="39" alt="" />
+                                                  </div>
+                        2015/12/29                      </dt>
+                      <dd>
+                        <img src="/img/icon/icon_new.gif" style="margin-left: -5px;" alt="" />                        <p><a href="http://www.gamefreak.co.jp/recruit/recruit.html?jobname=etc">【正社員】経営管理部リーダー</a>の募集を開始しました。</p>
+                      </dd>
+                    </dl>
+                  </li>
+                                                      <li>
+                    <dl>
+                      <dt>
+                        <div class="icon">
+                                                    <img src="/img/icon/ico_career.png" height="13" width="39" alt="" />
+                                                  </div>
+                        2015/12/29                      </dt>
+                      <dd>
+                        <img src="/img/icon/icon_new.gif" style="margin-left: -5px;" alt="" />                        <p><a href="http://www.gamefreak.co.jp/recruit/recruit.html?jobname=etc">【正社員】経営管理部スタッフ</a>の募集を開始しました。</p>
+                      </dd>
+                    </dl>
+                  </li>
+                                                      <li class="last_r"><a href="./recruit/"><img src="/img/button/btn_recruit.png" height="25" width="113" alt="" /></a></li>
+                              </ul>
+            </div><!-- /recruit-inner -->
+          </div><!-- /recruit -->
+        </div><!-- /left-cont -->
+        <div class="sidebar">
+          <div class="movie-frame">
+            <div class="movie-frame-inner">
+              <a href="javascript:void(0);" class="popup_window">
+                <img src="img/thum_movie.png" alt="" />
+                <div><img src="img/txt_movie.png" alt="" /></div>
+              </a>
+            </div><!-- /movie-frame-inner -->
+          </div><!-- /movie-frame -->
+          <div class="banner">
+
+            <a href="http://www.pokemon.co.jp/ex/pokemonbank/" target="_blank"><img src="img/banner/banner_bank.png" alt="" /></a>
+
+<!--            <a href="#"><img src="img/banner/banner_recruit.jpg" height="64" width="321" alt="" /></a>-->
+            <a href="blog/dir/" target="_blank"><img src="img/banner/banner_blog.png" height="90" width="321" alt="" style="margin-bottom: 0;" /></a>
+            <a href="blog/dir_english/" target="_blank" style="margin-bottom: 10px;text-align: right;display: block;margin-right: 5px;">→English Page.</a>
+
+            <a href="http://www.nindori.com/books/publications/sugimoriworks.html" target="_blank">
+              <img src="img/banner/banner_sugimori.png" alt="" />
+            </a>
+
+
+            <a href="http://www.amazon.co.jp/b?ie=UTF8&node=2430277051&tag=gamefreak03-22&linkCode=ure&creative=6339" target="_blank"><img src="img/banner/banner_pokemon_store.png" height="90" width="320" alt="" /></a>
+          </div>
+          <div style="border-bottom: 1px solid #000;padding-bottom: 5px;padding-left: 5px;width: 315px;margin: 0 auto 5px;">
+            <img src="img/title_pokemon.jpg" alt="ポケットモンスターオフィシャルサイト" />
+          </div>
+          <div class="banner">
+            <a href="http://www.pokemon.co.jp/" target="_blank"><img src="img/banner/pokemon_official_banner.gif" alt="ポケットモンスターオフィシャルサイト" /></a>
+          </div>
+
+          <div style="border-bottom: 1px solid #000;padding-bottom: 5px;padding-left: 5px;width: 315px;margin: 0 auto 10px;">
+            <img src="img/title_gamesite.jpg" alt="ゲーム公式サイト" />
+          </div>
+          <div class="banner">
+            <a href="http://www.sega.com/Source/Wireframes/GamesPage.aspx?pageid=6704" target="_blank"><img src="img/banner/banner_tembo.jpg" alt="TEMBO THE BADASS ELEPHANT" /></a>
+            <a href="/solitiba/index.html" target="_blank"><img src="img/banner/game_banner_01.jpg" alt="ソリティ馬" /></a>
+            <a href="/harmoknight/index.html" target="_blank"><img src="img/banner/game_banner_02.jpg" alt="リズムハンターハーモナイト" /></a>
+            <a href="http://elnea.koagames.co.jp/" target="_blank"><img src="img/banner/banner_elnea.jpg" alt="ワールドネバーランド エルネア王国の日々" /></a>
+            <a href="http://legion.koagames.co.jp/" target="_blank"><img src="img/banner/banner_legion.png" alt="伝説のレギオン" /></a>
+            <a href="http://kamen.koagames.co.jp/" target="_blank"><img src="img/banner/banner_kamen.png" alt="仮面の勇者" /></a>
+          </div>
+        </div><!-- /sidebar -->
+      </div><!-- /contents-inner -->
+    </div><!-- contents -->
+        <div id="footer">
+      <div class="footer-inner">
+        <div class="page-top">
+          <a href="#top"><img src="/img/button/btn_pagetop.png" height="29" width="109" alt="" /></a>
+        </div>
+        <div class="footer-navigation">
+          <ul class="footer-navigation-ul">
+            <li class="footer-navigation-li-top">
+              <h3><a href="/">トップ</a></h3>
+              <h3><a href="/company/about.html">会社情報</a></h3>
+              <ul>
+                <li><a href="/company/">会社理念</a></li>
+                <li><a href="/company/about.html">会社概要</a></li>
+                <li><a href="/company/access.html">アクセス</a></li>
+              </ul>
+            </li>
+            <li class="footer-navigation-li-saiyou">
+              <h3><a href="/recruit/">採用情報</a></h3>
+              <ul>
+                <li class="line"><a href="/recruit/interview_01.html">社員インタビュー</a></li>
+                <li class="line"><a href="/recruit/recruit.html" target="_blank">募集要項・応募方法</a></li>
+                <li class="line"><a href="/recruit/about.html">ゲームフリークをもっと知る！</a></li>
+                <li class="line"><a href="/recruit/faq.html">採用に関してよくある質問</a></li>
+                <li class="line"><a href="/recruit/inquiry.php">採用に関するお問い合わせ</a></li>
+              </ul>
+            </li>
+            <li class="footer-navigation-li-list">
+              <h3><a href="/list/">作品リスト</a></h3>
+              <ul>
+                <li><a href="/list/">New Products</a></li>
+                <li><a href="/list/#pokemon-serease">Series Products</a></li>
+                <li><a href="/list/#past-work">Release Products</a></li>
+                <li><a href="/list/awards.html">Record of Awards</a></li>
+              </ul>
+              <h3 style="margin-top: 10px;"><a href="/contact.html">お問い合わせ</a></h3>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-logo"><img src="/img/footer_logo.png" height="30" width="258" alt="" /></div>
+        <div class="footer-copyright">(C)2016 GAME FREAK inc. All Rights Reserved.</div>
+        <ul class="footer-subnavigation">
+          <li><a href="/sitemap.html">サイトマップ</a></li>
+          <li><a href="/privacy.html">個人情報利用規約</a></li>
+          <li><a href="/guide.html">ご利用案内</a></li>
+        </ul>
+      </div>
+    </div>
+  <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-4763154-1";
+urchinTracker();
+</script>
+</body>
+</html>
+    <div class="lightbox-bg" style="display: none;z-index: 1000;position: fixed;top: 0px;left: 0px;width: 100%;height: 100%;background: #000;"></div>
+<script type="text/javascript">
+var userAgent = window.navigator.userAgent.toLowerCase();
+var appVersion = window.navigator.appVersion.toLowerCase();
+document.write('<div id="popup-frame" style="display: none;">');
+document.write('	<div class="video" id="video-content">');
+
+document.write('	<iframe width="640" height="360" src="//www.youtube.com/embed/IFh019LdY04?rel=0" frameborder="0" allowfullscreen></iframe>');
+
+document.write('	</div>');
+document.write('	<div class="close-button"><img src="/js/popup/css/images/btn_close.png" alt="" /></div>');
+document.write('</div>');
+document.write('<div id="bg-layer"></div>');
+document.write('<div id="popup-frame2" style="display:none;"></div>');
+</script>
+
+</body>
+</html>

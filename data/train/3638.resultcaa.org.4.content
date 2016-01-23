@@ -1,0 +1,281 @@
+<html>
+<head>
+
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,width=device-width">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link type="text/css" rel="stylesheet" media="all" href="css/iscroll.css" />
+<link type="text/css" rel="stylesheet" media="all" href="css/browse.css" />
+<link rel="stylesheet" type="text/css" media="all" href="css/results.css" />
+<link type="text/css" rel="stylesheet" media="all" href="css/menu.css" />
+      <script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+<sc ript type="text/javascript" src="iscroll.js"></script>
+<style>
+body {
+      overflow:scroll;
+      background: #A8BAEC ;
+}
+</style>
+</head>
+
+<body>
+      <center>
+            
+            <table>
+                  <td><img src="images/logoTestata.gif"></td>
+            </table>
+            
+<table align=center border=0 width=900>
+      <tr >
+            <td>
+      
+
+            </td><td width=400>
+<div id="menu_sx" ></div>
+            </td><td>
+                <table>
+                  <tr  valign=middle>
+                    <td width=80>
+                        <a href="javascript:cambia_lingua('Eng');"><img border=0 src="images/ENG.png"></a>
+                    </td>
+                    <td width=80>
+                        <a href="javascript:cambia_lingua('Fra');"><img border=0 src="images/FRA.png"></a>
+                    </td>
+                    <td width=80>
+                        <a href="pdf/Book_all_Results.pdf" target=_blank><img src="images/icon_PDF.png"></a>
+                    </td>
+                  </tr>
+                </table>   
+            </td>
+      <td>
+            <table  align=center>
+ <td>
+<div id="icon_prev" sty le="position:absolute;left:660px;top:820px;"><a href="#" onclick="javascript:carica_url(url_prev);"><img src="images/freccia_sx.png" border=0></a></div>
+ </td><td>
+      <div id="icon_next" sty le="position:absolute;left:860px;top:820px;"><a href="javascript:carica_url(url_next);"><img src="images/freccia_dx.png" border=0></a></div>
+      </td></table>
+      </td>
+      
+      </tr>
+      </table>
+<table style="width:1000px;background-image:url('images/box_web.png');background-repeat: no-repeat;background-color:#C7C7C7;">
+ <td align=center>
+<BR>
+
+<div id="iframe_center"  style="left:10px;width:960px;"></div>
+
+
+<BR><BR><BR>
+
+ </td></tr><tr>
+ <tr>
+<td style="background-color:#eeeeee;height:20px;text-align:center;">
+   <a href="http://www.microplus.it/" target=_blank><img src="images/microplus.png"></a>
+</td>
+ </tr>
+</table>
+<br><br><br>
+<div style="">
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div id="menu_dx" style="position:absolute;left:1320px;top:130px;"></div>
+
+
+
+<script>
+    var cur_doc="";
+    var cur_url="";
+    var cur_update="";
+    var cur_update_index="";
+    var url_prev="";
+    var url_next="";
+    var last_obj=$(this);
+    var last_obj_type="";
+    var cssObj_new_dx = {
+       'background-image': 'url(images/button_grey_selected.png)',
+       'background-repeat': 'no-repeat'
+
+    }
+
+    var cssObj_last_dx = {
+       'background-image': 'url(images/button_grey.png)',
+       'background-repeat': 'no-repeat'
+    }
+    var cssObj_new_sx_top = {
+       'background-image': 'url(images/button_green_selected.png)',
+       'background-repeat': 'no-repeat'
+
+    }
+
+    var cssObj_last_sx_top = {
+       'background-image': 'url(images/button_green.png)',
+       'background-repeat': 'no-repeat'
+    }
+
+        var cssObj_new_sx_bottom = {
+       'background-image': 'url(images/button_orange_selected.png)',
+       'background-repeat': 'no-repeat'
+
+    }
+      var cssObj_last_sx_bottom = {
+       'background-image': 'url(images/button_orange.png)',
+       'background-repeat': 'no-repeat'
+    }
+
+
+
+    function carica_url(url)
+    {
+
+      $('#iframe_center').load(url, function() {
+      check(true);
+      cur_url=url;
+
+});
+
+
+
+    }
+
+    function check(justloaded)
+    {
+
+      $.ajax({
+        type: "GET",
+        url: "./export/indici/" + cur_doc + ".php",
+
+        success : function(data) {
+
+         if (data!=cur_update)
+          {
+            cur_update=data;
+            if (justloaded==true)
+            { justloaded=false; } else
+            {
+            carica_url(cur_url);
+            }
+          }
+            }
+      });
+    }
+
+        function check_index()
+    {
+
+      $.ajax({
+        type: "GET",
+        url: "./export/indici/update_index.php",
+
+        success : function(data) {
+
+         if (data!=cur_update_index)
+          {
+           cur_update_index=data;
+            carica_url(cur_url);
+
+          }
+            }
+      });
+    }
+
+
+
+    function cambia_lingua(lingua)
+    {
+      $.ajax({
+        type: "GET",
+        url: "cambia_lingua.php?lingua=" + lingua,
+          success : function(data) {
+            carica_menu();
+            carica_url(cur_url);
+
+            }
+      });
+
+    }
+
+function seleziona(obj,url,tipo)
+{
+      switch(tipo)
+      {
+            case "dx":
+                  obj.css(cssObj_new_dx);
+                  break;
+            case "sx_top":
+                  obj.css(cssObj_new_sx_top);
+                  break;
+            case "sx_bottom":
+                  obj.css(cssObj_new_sx_bottom);
+                  break;
+      }
+
+      switch(last_obj_type)
+      {
+            case "dx":
+                  last_obj.css(cssObj_last_dx);
+                  break;
+            case "sx_top":
+                  last_obj.css(cssObj_last_sx_top);
+                  break;
+            case "sx_bottom":
+                  last_obj.css(cssObj_last_sx_bottom);
+                  break;
+      }
+
+
+   carica_url(url);
+
+    last_obj=obj;
+    last_obj_type=tipo;
+    return false;
+}
+
+function zeri(s)
+{
+ if (s.length==1) { return "0" + s; } else { return s; }
+}
+
+function aggiorna_ora()
+{
+      ourDate = new Date();
+      var ora=String(ourDate.getHours());
+      var minuti=String(ourDate.getMinutes());
+      var secondi=String(ourDate.getSeconds());
+      $('#ora').html(zeri(ora.trim()) + ":" + zeri(minuti.trim()) + ":" + zeri(secondi.trim()) );
+}
+
+
+
+function carica_menu()
+{
+        $('#menu_sx').load("./pulsanti_web.php?lato=sx");
+        $('#menu_dx').load("./pulsanti_web.php?lato=dx");
+}
+
+$(document).ready(function() {
+      carica_menu();
+  // Handler for .ready() called.
+});
+
+seleziona($(this),'browse_day.php?sport=AT');
+
+setInterval("check(false)",1000);
+setInterval("check_index()",1000);
+
+</script>
+</td></table>
+
+</body>
+</html>

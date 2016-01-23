@@ -1,0 +1,910 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja-JP" xml:lang="ja-JP">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-jp" />
+<meta http-equiv="content-style-type" content="text/css" />
+<meta http-equiv="content-script-type" content="text/javascript" />
+<title>新築一戸建て一括収集サイト　新築一戸建て速報</title>
+<meta name="Description" content="理想のマイホーム探しに悩んでいませんか？新築一戸建て情報一括収集サイト「新築一戸建て速報」なら複数社の大量非公開新築一戸建て情報を一括収集！" />
+<meta name="Keywords" content="非公開,新築,新築一戸建て,不動産,一括収集,新築一戸建て速報,東京,神奈川,横浜,川崎,埼玉,千葉" />
+<meta name="robots" content="index,follow" />
+
+
+<link rel="stylesheet" type="text/css" media="all" href="/design_d/common/css/bootstrap_table.css?upd=131108" />
+<link rel="stylesheet" type="text/css" media="all" href="/design_d/common/css/bootstrap_btn.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/design_d/common/css/layout.css?upd=131108" />
+<link rel="stylesheet" type="text/css" media="all" href="/design_d/common/css/text.css" />
+<link rel="shortcut icon" type="image/x-icon" href="/design_d/common/img//favicon.ico" />
+
+<script type="text/javascript" src="/design_d/common/js/jquery-1.7.2.min.js"></script>
+<script src="http://ajaxzip3.googlecode.com/svn/trunk/ajaxzip3/ajaxzip3.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/design_d/common/js/common.js"></script>
+<script type="text/javascript" src="/design_d/common/js/imgfuncs.jquery.js"></script>
+<script type="text/javascript" src="/design_d/common/js/jquery.ah-placeholder.js"></script>
+<script language="javascript" src="/design_d/common/js/velocity.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		
+		$('a[href^=#]').click(function() {
+			var href= $(this).attr("href");
+			var target = $(href == "#" || href == "" ? 'html' : href);
+			$($.browser.safari ? 'body' : 'html').animate({ scrollTop: target.offset().top }, 500);
+			return false;
+		});
+
+		$('a img.imgover').hover(function(){
+			$(this).attr('src', $(this).attr('src').replace('_out', '_over'));
+				}, function(){
+				   if (!$(this).hasClass('current')) {
+				   $(this).attr('src', $(this).attr('src').replace('_over', '_out'));
+			}
+		});
+	
+		$(".overall_link").click(function(){
+			 window.location = $(this).find('a').attr("href");
+			 return false;
+		});
+		
+	});
+</script>
+
+
+<link rel="stylesheet" type="text/css" media="all" href="/design_d/common/js/exvalidation/exvalidation.css" />
+<style>
+
+	table.wrapper tr th,
+	table.wrapper tr td{
+		border:none;
+		background:none;
+		margin:0;
+		padding:0;
+		font-size:12px;
+		font-weight:normal;
+	}
+	table.wrapper tr th{
+		font-size:10px;
+	}
+
+	#address_select{
+		display:none;
+	}
+</style>
+<link rel="stylesheet" type="text/css" media="all" href="/design_d/common/css/top.css" />
+<script type="text/javascript" src="/design_d/common/js/post/complete.js"></script>
+<script type="text/javascript" src="/design_d/common/js/post/ecl.js"></script>
+<script type="text/javascript" src="/design_d/common/js/post/initcompletion.js"></script>
+<script src="http://ajaxzip3.googlecode.com/svn/trunk/ajaxzip3/ajaxzip3.js" charset="UTF-8"></script>
+<script type="text/javascript">
+<!--
+$(function(){
+
+
+
+	
+
+	$('select[name="pref"]').change(function(){
+		validation.laterCall('#form_pref');
+	});
+
+	$('select[name^=me_price]').change(function(){
+		validation.laterCall('#pricegroup');
+	});
+
+	$(':checkbox[name^=me_adr]').click(function(){
+		validation.laterCall('#areagroup');
+	});
+
+	$("input[name^=me_]").blur(function(){
+		//if($(this).attr("id") != 'me_email'){
+	  		validation.laterCall('#'+$(this).attr("id"));
+		//}
+	});
+
+	$('#form1 :checkbox, #form1 :radio').live('click', function(){sd.chk2bold(this);});
+	$('#form1 :checkbox, #form1 :radio').each(function(){sd.chk2bold(this);});
+
+	$('#either .btn').click(function(){
+
+
+		if($(this).closest('div').next('.comment').css('display') == 'none'){
+			$(this).find('img').attr('src', $(this).find('img').attr('src').replace('.', '_close.'));
+		}else {
+			$(this).find('img').attr('src', $(this).find('img').attr('src').replace('_close.', '.'));
+		}
+		$(this).closest('div').next('.comment').slideToggle('400');
+	});
+
+		var price_low_array  = [1000,2000,2500,3000,3500,4000,4500,5000,5500,6000,6500,7000,7500,8000,8500,9000,9500,10000,10500,11000,11500,12000,12500,13000,13500,14000,14500,15000,15500,16000,16500,17000,17500,18000,18500,19000,19500,20000];
+	var price_high_array = [1000,2000,2500,3000,3500,4000,4500,5000,5500,6000,6500,7000,7500,8000,8500,9000,9500,10000,10500,11000,11500,12000,12500,13000,13500,14000,14500,15000,15500,16000,16500,17000,17500,18000,18500,19000,19500,20000];
+	var price_low_array_count = price_low_array.length;
+	var price_high_array_count = price_high_array.length;
+
+	//到来時にデフォルト設定の下限価格より低い上限を削除
+	$('#form_me_price_high').find('option').each(function(){
+		if(!$(this).val()) { return true; }//下限なしはスルー
+
+		//下限で選んだ値より大きい上限の選択肢は削除
+		if($('#form_me_price_low').find('option:selected').val() - $(this).val() >= 0) {
+			$(this).remove();
+		}
+	});
+
+	//下限を選択したとき下限より小さい上限を選ばせない
+	$('#form_me_price_low').change(function() {
+		var selected_value = $('#form_me_price_high').find('option:selected').val();
+		var html = '';
+
+		//まず、価格の選択肢をすべて表示
+		for (var i = 0; i < price_high_array_count; i++) {
+			html += '<option value="' + price_high_array[i] + '">' + number_format(price_high_array[i]) + '万円</option>';
+		};
+		$($('#form_me_price_high').find('option')).each(function(){
+			if($(this).val()) $(this).remove();
+		});
+		$('#form_me_price_high').find('option').eq(0).after(html);
+
+		//その後、選択中の下限より小さい上限の選択肢を削除
+		$('#form_me_price_high').find('option').each(function(){
+			//change 前に selected だった要素を selectedへ
+			if(selected_value == $(this).val()) $(this).attr('selected','selected');
+
+			if(!$(this).val()) {return true;}//下限なしはスルー
+
+			//下限で選んだ値より大きい上限の選択肢は削除
+			if($('#form_me_price_low').find('option:selected').val() - $(this).val() >= 0) {
+				$(this).remove();
+			}
+		});
+	});
+
+	//上限を選択したとき価格の上限より大きい下限を選ばせない
+	$('#form_me_price_high').change(function() {
+		var selected_value = $('#form_me_price_low').find('option:selected').val();
+		var html = '';
+
+		//まず、価格の選択肢をすべて表示
+		for (var i = 0; i < price_low_array_count; i++) {
+			html += '<option value="' + price_low_array[i] + '">' + number_format(price_low_array[i]) + '万円</option>';
+		};
+		$($('#form_me_price_low').find('option')).each(function(){
+			if($(this).val()) $(this).remove();
+		});
+		$('#form_me_price_low').find('option').eq(0).after(html);
+
+		//その後、選択中の上限より大きい下限の選択肢を削除
+		$('#form_me_price_low').find('option').each(function(){
+			//change 前に selected だった要素を selectedへ
+			if(selected_value == $(this).val()) {
+				$(this).attr('selected','selected');
+			}
+			//上限なしを選んだときはなにも削除しない
+			if(!$('#form_me_price_high').find('option:selected').val()) {return true;}
+
+			if(!$(this).val()) {return true;}//下限なしはスルー
+
+			//上限で選んだ値より大きい下限の選択肢は削除
+			if($('#form_me_price_high').find('option:selected').val() - $(this).val() <= 0) {
+				$(this).remove();
+			}
+		});
+	});
+	
+});
+function number_format(num){
+	return String(num).replace(/(\d+?)(?=(?:\d{3})+$)/g , '$1,');
+}
+-->
+</script>
+<script type="text/javascript" src="/design_d/common/js/autoslide.js"></script>
+
+<script src="/design_d/common/js/jquery.easing.1.3.js" type="text/javascript"></script>
+<script src="/design_d/common/js/jquery.inview.min.js" type="text/javascript"></script>
+<script src="/design_d/common/js/jQueryRotate.js" type="text/javascript"></script>
+<script src="/design_d/common/js/top_animation.js" type="text/javascript"></script>
+
+</head>
+<body>
+<div id="backimage">
+<div id="wrapper">
+<div id="header">
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-P5LHL8"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P5LHL8');</script>
+<!-- End Google Tag Manager -->
+
+<div id="head" class="cf">
+	<div id="logo"><a href="/shinchiku/"><img src="/design_d/common/img/default/logo.png" alt="新築一戸建て速報" /></a></div>
+
+    <div class="float_right"><img src="/design_d/common/img/default/h_perfect_free.png" width="128" height="54" alt="完全無料" /></div>
+	<div class="float_right a_right  spr20">
+    	<h1 class="spb5">日本最大級の非公開新築一戸建て専門サイト</h1>
+        <img src="/design_d/common/img/default/h_appear.png" width="218" height="26" alt="掲載者数79000件" />
+    </div>
+</div>
+</div><!--header-->
+<div id="primary">
+
+<div style="display:none;" id="hidden_src_box">
+	</div>
+<div style="display:none;" id="hidden_adr1_box">
+	</div>
+    <div id="mainvisual" class="test2">
+        <div class="inner">
+            <div id="maincopy"></div>
+            <img id="lady01" class="lady" src="/design_d/common/img/default/lady01.png" width="396" height="434" />
+            <img id="lady02" class="lady" src="/design_d/common/img/default/lady02.png" width="396" height="434" />
+            <img id="lady03" class="lady" src="/design_d/common/img/default/lady03.png" width="396" height="434" />
+            <div class="trigger"></div>
+        </div>
+    </div><!--mainvisual-->
+<div id="mainvisual02">
+    <div class="inner a_center">
+        <p><img src="/design_d/common/img/default/mainvisual02.png" alt="新築一戸建ての情報をどこよりも早く完全無料であなただけにお届けします" /></p>
+        <div class="a_center spt20"><a href="#register"><img src="/design_d/common/img/default/btn_reg1_green.png" class="on_off"></a></div>
+    </div><!--inner-->
+</div><!--mainvisual2-->
+<div id="slide_bk">
+	<div class="wrapper">
+        <!--sec2_01-->
+
+	        <div id="slide_bk_02">
+
+							<div id="slide">
+				<ul id="slideIn" class="cf">
+																								<li><div class="date">1月23日更新</div><a href="#register" ><img src="/design_d/common/img/default/btn_hikoukai_a.jpg" /></a></li>
+														<li><div class="date">1月23日更新</div><a href="#register" ><img src="/design_d/common/img/default/btn_hikoukai_c.jpg" /></a></li>
+														<li><div class="date">1月23日更新</div><a href="#register" ><img src="/design_d/common/img/default/btn_hikoukai_d.jpg" /></a></li>
+														<li><div class="date">1月23日更新</div><a href="#register" ><img src="/design_d/common/img/default/btn_hikoukai_d.jpg" /></a></li>
+																										<li><div class="date">1月23日更新</div><a href="#register" ><img src="/design_d/common/img/default/btn_hikoukai_a.jpg" /></a></li>
+														<li><div class="date">1月23日更新</div><a href="#register" ><img src="/design_d/common/img/default/btn_hikoukai_d.jpg" /></a></li>
+														<li><div class="date">1月23日更新</div><a href="#register" ><img src="/design_d/common/img/default/btn_hikoukai_c.jpg" /></a></li>
+														<li><div class="date">1月23日更新</div><a href="#register" ><img src="/design_d/common/img/default/btn_hikoukai_a.jpg" /></a></li>
+																										<li><div class="date">1月23日更新</div><a href="#register" ><img src="/design_d/common/img/default/btn_hikoukai_b.jpg" /></a></li>
+														<li><div class="date">1月23日更新</div><a href="#register" ><img src="/design_d/common/img/default/btn_hikoukai_a.jpg" /></a></li>
+														<li><div class="date">1月23日更新</div><a href="#register" ><img src="/design_d/common/img/default/btn_hikoukai_a.jpg" /></a></li>
+																										<li><div class="date">1月23日更新</div><a href="#register" ><img src="/design_d/common/img/default/btn_hikoukai_b.jpg" /></a></li>
+														<li><div class="date">1月23日更新</div><a href="#register" ><img src="/design_d/common/img/default/btn_hikoukai_d.jpg" /></a></li>
+														<li><div class="date">1月23日更新</div><a href="#register" ><img src="/design_d/common/img/default/btn_hikoukai_a.jpg" /></a></li>
+														<li><div class="date">1月23日更新</div><a href="#register" ><img src="/design_d/common/img/default/btn_hikoukai_a.jpg" /></a></li>
+														<li><div class="date">1月23日更新</div><a href="#register" ><img src="/design_d/common/img/default/btn_hikoukai_a.jpg" /></a></li>
+																										<li><div class="date">1月23日更新</div><a href="#register" ><img src="/design_d/common/img/default/btn_hikoukai_c.jpg" /></a></li>
+														<li><div class="date">1月23日更新</div><a href="#register" ><img src="/design_d/common/img/default/btn_hikoukai_a.jpg" /></a></li>
+														<li><div class="date">1月23日更新</div><a href="#register" ><img src="/design_d/common/img/default/btn_hikoukai_c.jpg" /></a></li>
+														<li><div class="date">1月23日更新</div><a href="#register" ><img src="/design_d/common/img/default/btn_hikoukai_c.jpg" /></a></li>
+																										<li><div class="date">1月23日更新</div><a href="#register" ><img src="/design_d/common/img/default/btn_hikoukai_a.jpg" /></a></li>
+														<li><div class="date">1月23日更新</div><a href="#register" ><img src="/design_d/common/img/default/btn_hikoukai_b.jpg" /></a></li>
+														<li><div class="date">1月23日更新</div><a href="#register" ><img src="/design_d/common/img/default/btn_hikoukai_d.jpg" /></a></li>
+														<li><div class="date">1月23日更新</div><a href="#register" ><img src="/design_d/common/img/default/btn_hikoukai_c.jpg" /></a></li>
+														<li><div class="date">1月23日更新</div><a href="#register" ><img src="/design_d/common/img/default/btn_hikoukai_d.jpg" /></a></li>
+																										<li><div class="date">1月23日更新</div><a href="#register" ><img src="/design_d/common/img/default/btn_hikoukai_a.jpg" /></a></li>
+														<li><div class="date">1月23日更新</div><a href="#register" ><img src="/design_d/common/img/default/btn_hikoukai_c.jpg" /></a></li>
+														<li><div class="date">1月23日更新</div><a href="#register" ><img src="/design_d/common/img/default/btn_hikoukai_a.jpg" /></a></li>
+														<li><div class="date">1月23日更新</div><a href="#register" ><img src="/design_d/common/img/default/btn_hikoukai_a.jpg" /></a></li>
+																										<li><div class="date">1月23日更新</div><a href="#register" ><img src="/design_d/common/img/default/btn_hikoukai_b.jpg" /></a></li>
+														<li><div class="date">1月23日更新</div><a href="#register" ><img src="/design_d/common/img/default/btn_hikoukai_d.jpg" /></a></li>
+														<li><div class="date">1月23日更新</div><a href="#register" ><img src="/design_d/common/img/default/btn_hikoukai_d.jpg" /></a></li>
+														<li><div class="date">1月23日更新</div><a href="#register" ><img src="/design_d/common/img/default/btn_hikoukai_b.jpg" /></a></li>
+														<li><div class="date">1月23日更新</div><a href="#register" ><img src="/design_d/common/img/default/btn_hikoukai_b.jpg" /></a></li>
+																										<li><div class="date">1月23日更新</div><a href="#register" ><img src="/design_d/common/img/default/btn_hikoukai_c.jpg" /></a></li>
+														<li><div class="date">1月23日更新</div><a href="#register" ><img src="/design_d/common/img/default/btn_hikoukai_a.jpg" /></a></li>
+																										<li><div class="date">1月23日更新</div><a href="#register" ><img src="/design_d/common/img/default/btn_hikoukai_a.jpg" /></a></li>
+														<li><div class="date">1月23日更新</div><a href="#register" ><img src="/design_d/common/img/default/btn_hikoukai_b.jpg" /></a></li>
+											</ul>
+				</div>
+				        </div><!--slide_bk_02-->
+	    </div><!--wrapper-->
+</div><!--slide_bk-->
+
+<div id="question">
+	<div class="wrapper">
+	<h2><img src="/design_d/common/img/default/question01.png" width="928" height="184" alt="理想のマイホーム探しに悩んでいませんか？"></h2>
+        <div class="cf">
+        	<p id="question_txt01" class="spt20 spb15">
+                家が欲しい時にいざ探してみると、自分の<span class="red">希望どおりの物件</span>ってなかなか見つからないものです。
+                希望通りの物件に住んでいる方との違いは一体何なのでしょう？
+            </p>
+            <div id="question02">
+                <h3 id="question02_ti01">希望どおりの物件が見つからない、その理由とは</h3>
+                <p id="question02_txt01">
+                    物件探しの方法はいくつかあります。悩んでいる方の中には上手な探し方ができていない方が大勢いらっしゃいます。
+                </p>
+                <h3 id="question02_ti02">上手な探し方ができなかった結果</h3>
+                <p id="question02_txt02">
+                    その結果、希望どおりの物件に巡り会うことができず、最低限の希望に合った物件
+                    を購入してしまうケースが多くあります。希望どおりの物件を見つけるためには
+                    <strong>希望どおりの物件を見つけるためには３つのポイントが重要なんです。</strong>
+                </p>
+            </div><!--question02-->
+            <div id="question03" class="spt5">
+            	<ul>
+                	<li id="question03_balloon01"><img src="/design_d/common/img/default/question03_balloon01.png" width="68" height="69" alt="庭付きがいい"></li>
+                    <li id="question03_balloon02"><img src="/design_d/common/img/default/question03_balloon02.png" width="79" height="80" alt="この地域に住みたい"></li>
+                    <li id="question03_balloon03"><img src="/design_d/common/img/default/question03_balloon03.png" width="80" height="91" alt="この価格 以上はムリ"></li>
+                    <li id="question03_balloon04"><img src="/design_d/common/img/default/question03_balloon04.png" width="78" height="83" alt="できるだけ 広く"></li>
+                    <li id="question03_balloon05"><img src="/design_d/common/img/default/question03_balloon05.png" width="81" height="82" alt="駐車スペース が欲しい"></li>
+                </ul>
+                <img src="/design_d/common/img/default/question03.png" width="340" height="315" alt="理想の物件はなかなか見つからないものです">
+            </div>
+        </div>
+
+    </div><!--wrapper-->
+</div><!--question-->
+
+<div id="point">
+	<div class="wrapper">
+        <h2><img src="/design_d/common/img/default/point01.png" width="920" height="158" alt="理想のマイホームを手に入れるための３つのポイントとは!？"></h2>
+        <ul class="cf">
+            <li id="point02">
+                <h3><img src="/design_d/common/img/default/point02_ti.png" width="280" height="39" alt="情報入手のスピード"></h3>
+                <div class="figure"><span><img src="/design_d/common/img/default/point02_img.png" width="280" height="155" alt=""></span></div>
+                <p id="point02_02">
+                    良い物件ほど探している人は大勢います。つまり家を買うということはある意味<strong>スピード勝負</strong>と言えます。今すぐ買おうと思っていなくても<strong>早めの情報収集</strong>を行うことが大事です。
+              </p>
+                <div class="balloon"><img src="/design_d/common/img/default/point_balloon1.png" width="83" height="70" alt="" /></div>
+            </li><!--point02-->
+            <li id="point03">
+                <h3><img src="/design_d/common/img/default/point03_ti.png" width="280" height="39"  alt="複数社からの一括収集"></h3>
+                <div class="figure"><span><img src="/design_d/common/img/default/point03_img.png" width="280" height="155" alt=""></span></div>
+                <p id="point03_02">
+                    一つの不動産会社から<strong>すべての情報を集めることは困難</strong>です。<br><strong>複数の不動産会社</strong>から情報を集めるのが賢い選択と言えるでしょう。
+                </p>
+                <div class="balloon"><img src="/design_d/common/img/default/point_balloon2.png" width="83" height="70" alt="" /></div>
+            </li><!--point03-->
+            <li id="point04">
+                <h3><img src="/design_d/common/img/default/point04_ti.png" width="280" height="39"  alt="非公開物件の情報を入手"></h3>
+                <div class="figure"><span><img src="/design_d/common/img/default/point04_img.png" width="280" height="155" alt=""></span></div>
+                <p id="point04_02">
+                  非公開物件は大手不動産情報サイトに公開されていない物件で、<strong>数多くの優良物件</strong>が存在します。<br>
+                    この情報を得ることによって他の買い手に<strong>一歩リード</strong>することができます。
+                </p>
+                <div class="balloon"><img src="/design_d/common/img/default/point_balloon3.png" width="83" height="70" alt="" /></div>
+            </li><!--point04-->
+        </ul>
+    	<p><img src="/design_d/common/img/default/point05.png" width="920" height="216" alt="３つのポイントを全て満たしたサイト「新築一戸建て速報」はあなたが考えている理想のマイホームとの出会いをお約束いたします"></p>
+        <div class="a_center" style="margin-top:50px;"><a href="#register"><img src="/design_d/common/img/default/btn_reg1.png" class="on_off"></a></div>
+    </div><!--wrapper-->
+</div><!--point-->
+
+
+<div id="either">
+    <div class="wrapper">
+        <h2><img src="/design_d/common/img/default/either01.png" width="920" height="196" alt="新築一戸建て速報と大手不動産情報サイトどちらを活用するべき？"></h2>
+        <ul class="cf">
+            <li class="float_left">
+                <h3><img src="/design_d/common/img/default/either02_01.png" width="445" height="90" alt=""></h3>
+                <div id="chart01" class="chart">
+                    <img id="chart01_sokuho_bar" src="/design_d/common/img/default/either_chart01_sokuho_bar.png" width="386" height="42" alt="">
+                    <img id="chart01_oote_bar" src="/design_d/common/img/default/either_chart01_oote_bar.png" width="131" height="42" alt="">
+                    <img id="chart01_bg" src="/design_d/common/img/default/either_chart01_bg.png" width="445" height="269" alt="">
+                    <img id="chart01_sokuho_name" src="/design_d/common/img/default/either_chart01_sokuho_name.png" width="131" height="20" alt="">
+                    <img id="chart01_oote_name" src="/design_d/common/img/default/either_chart01_oote_name.png" width="118" height="17" alt="">
+                    <img id="chart01_arrow01" src="/design_d/common/img/default/either_chart01_arrow.png" width="190" height="21" alt="">
+                    <img id="chart01_arrow02" src="/design_d/common/img/default/either_chart01_arrow.png" width="190" height="21" alt="">
+                    <img id="chart01_txt01" src="/design_d/common/img/default/either_chart01_txt01?20141119.png" width="98" height="30" alt="">
+                    <img id="chart01_txt02" src="/design_d/common/img/default/either_chart01_txt02?20141119.png" width="194" height="30" alt="">
+                </div><!--chart01-->
+                <div class="a_center"><span class="btn"><img src="/design_d/common/img/default/either_btn.png" width="200" height="50" alt="解説を見る"></span></div>
+                <div class="comment">
+                	<h4><span>売りに出ていないので競争相手がいない！？</span></h4>
+                    <p>
+                    	「新築一戸建て速報」では建設前の段階時など、まだ<strong>売りに出されていない物件</strong>をお届けすることができます。<br>
+                        希望の地域があるのに、販売されている物件では満足できない場合はこちらを狙うのもひとつの手です。<br>
+                        この段階では他の買い手、つまり<strong>競争相手が極端に少ない</strong>ため、理想の物件を手に入れる確率が高まります。<br>
+                    </p>
+                    <h4><span>サイトに掲載しなくても売れてしまう<br />物件とは！？</span></h4>
+                    <p>
+                        大手不動産情報サイトに不動産を掲載するには売主などへの掲載許可が必要になります。<br>
+                        許可を得るためには必要な条件があり、許可が下りるのまでに時間がかかります。<br>
+                        そのため、売りに出された物件情報を<strong>すぐに掲載できるというわけではありません</strong>。
+                        そして魅力的な物件は<strong>掲載許可が下りる前に成約</strong>されてしまいます。<br>
+                        「新築一戸建て速報」では売りに出された物件を<strong>すぐにお届け</strong>することができます。
+                    </p>
+                    <h4><span>物件情報を知ることができるのは<br />掲載期間内だけ！？</span></h4>
+                    <p>
+                    	大手不動産情報サイトは掲載期間が決まっているため、掲載期間が過ぎてしまった場合は再掲載をしない限り、<strong>物件が掲載されなくなってしまいます</strong>。<br />
+                        新築一戸建て速報では掲載期間が存在しないため、<strong>物件が売れてしまうまで紹介</strong>することができます。
+                    </p>
+                </div><!--comment-->
+            </li>
+            <li class="float_right">
+                <h3><img src="/design_d/common/img/default/either03_01.png" width="445" height="90" alt=""></h3>
+                <div id="chart02" class="chart">
+                    <img id="chart02_oote_pie" src="/design_d/common/img/default/either_chart02_oote_pie.png" width="175" height="174" alt="">
+                    <img id="chart02_sokuho_pie" src="/design_d/common/img/default/either_chart02_sokuho_pie.png" width="200" height="200" alt="">
+                    <img id="chart02_pie" src="/design_d/common/img/default/either_chart02_pie.png" width="308" height="200" alt="">
+                    <img id="chart02_sokuho_name" src="/design_d/common/img/default/either_chart02_sokuho_name.png" width="99" height="38" alt="">
+                    <img id="chart02_oote_name" src="/design_d/common/img/default/either_chart02_oote_name.png" width="84" height="38" alt="">
+                    <img id="chart02_arrow" src="/design_d/common/img/default/either_chart02_arrow.png" width="31" height="55" alt="">
+                    <img id="chart02_txt" src="/design_d/common/img/default/either_chart02_txt.png" width="147" height="37" alt="">
+                </div><!--chart02-->
+                <div class="a_center"><span class="btn"><img src="/design_d/common/img/default/either_btn.png" width="200" height="50" alt="解説を見る"></span></div>
+                <div class="comment">
+                	<h4><span>大手不動産情報サイトにはすべての物件が<br />掲載されているわけではない！？</span></h4>
+                    <p>
+                        大手不動産情報サイトは不動産会社がお金を支払って掲載しているため、<strong>全ての物件情報が掲載されているというわけではありません</strong>。<br>
+                        そして魅力的な物件は、そのようなサイトにわざわざ<strong>掲載しなくても成約できる</strong>ため、掲載されていないことが多いのです。<br>
+                        「新築一戸建て速報」では大手不動産情報サイトが<strong>公開することができない物件</strong>もお届けすることができます。
+                    </p>
+                </div><!--comment-->
+            </li>
+        </ul>
+        <p id="either04">手軽に調べることができる大変便利な大手不動産情報サイトですが、大手不動産情報サイトを活用するだけではすべての新築一戸建てを探したとは言えません。</p>
+        <p id="either05">新築一戸建て速報と併用することによりあなたが理想のマイホームを手に入れる可能性は大幅にアップします！</p>
+        <div class="a_center" style="margin-top:50px;"><a href="#register"><img src="/design_d/common/img/default/btn_reg1.png" class="on_off"></a></div>
+    </div><!--wrapper-->
+</div><!--either-->
+
+<div id="voice">
+	<div class="wrapper">
+    	 <h2><img src="/design_d/common/img/default/voice01.png" width="920" height="156" alt="「新築一戸建て速報」を利用して理想のマイホームを手に入れたお客様から感謝の声が届いております"></h2>
+         <ul class="cf">
+         	<li class="odd">
+            	<h3><span>想像していたより、条件に合う物件が多かったです！</span></h3>
+                <div class="cf">
+                	<div class="voice_img"><img src="/design_d/common/img/default/voice_ph01.jpg" width="187" height="135" alt=""></div>
+                    <div class="voice_profile">
+                    	<ul>
+                        	<li>東京都中野区</li>
+                            <li>斉藤様(男性)</li>
+                            <li>4000万円台物件購入</li>
+                            <li class="btn"><a href="/shinchiku/voice01.html"><img src="/design_d/common/img/default/voice_btn01.png" width="183" height="50" alt="続きを読む"></a></li>
+                        </ul>
+                    </div><!--voice_profile-->
+                </div>
+                <p>
+                    ３ヶ月前から中野区で駐車スペースが２台分ある新築戸建てを探していました。<br>
+                    さまざまなサイトで物件を探したのですが、なかなか条件に合う物件がありませんでした。<br>
+                    ネットで探し尽くしてしまいどうしたら良いかわからず、藁にもすがる思いでこのサイトに登録しました。<br>
+                    すると３日後に不動産会社から電話が来て、なんと条件に合う物件が４件も見つかりました！<br>
+                    これには本当に驚きました！<br>
+                    その後、約２週間で１０件の物件を紹介してもらい、その内の１件を家族全員がとても気に入り購入するに至りました。<br>
+                    新築一戸建て速報へ登録して本当によかったです。<br>
+                    新築一戸建てを探している友人がいたら絶対にこのサイトを紹介したいと思います。
+                </p>
+
+            </li>
+            <li class="even">
+            	<h3><span>子供が転校せずにすみました。</span></h3>
+                <div class="cf">
+                	<div class="voice_img"><img src="/design_d/common/img/default/voice_ph02.jpg" width="187" height="135" alt=""></div>
+                    <div class="voice_profile">
+                    	<ul>
+                        	<li>千葉県袖ケ浦市</li>
+                            <li>本田様(女性)</li>
+                            <li>3000万円台物件購入</li>
+                            <li class="btn"><a href="/shinchiku/voice02.html"><img src="/design_d/common/img/default/voice_btn01.png" width="183" height="50" alt="続きを読む"></a></li>
+                        </ul>
+                    </div><!--voice_profile-->
+                </div>
+                <p>
+                    これまで主人の会社の社宅に住んでいましたが、貯金が目標額まで貯まったのでとうとう夢のマイホームを購入することになりました。<br>
+                    そこで問題になることがありました。<br>
+                    我が家には今年中学校に入学した娘と、小学校４年生になった息子がいるのです。<br>
+                    娘は新しい友だちがたくさんできて、毎日本当に楽しく学校生活を送っています。<br>
+                    ここへ来て転校することになるのは気の毒ですし、主人が職場から遠くなるのは嫌と言っているので、娘の中学校の学区内で一戸建ての物件を探すことにしました。<br>
+                    探してみた結果、限られた場所だったので条件に合う物件が本当に僅かしかありませんでした。<br>
+                    この先何十年も住む家を、この僅かな候補から選ぶのはさすがに嫌なので新築一戸建て速報に希望学区を記載して登録することにしました。<br>
+                    すると翌日、ご希望条件の物件が２件見つかりました。というメールが届きました。<br>
+                    その直後、別の不動産会社の方からも希望物件が３件ございます。というメールが届きました。<br>
+                    私がこれだけ探してなかったのだから、そう簡単には見つからないだろうと思いでいましたが、期待以上の連絡にびっくりしました。<br>
+                    その後も新しい物件が見つかり次第すぐに連絡をくれるということだったので、紹介された物件を下見に行きつつ、ここだ！と思える物件が見つかったらすぐに決めようという気持ちでいました。<br>
+                    そして１か月後に無事希望物件が見つかり、子供たちも大喜びでした！<br>
+                    本当にありがとうございました。
+                </p>
+            </li>
+            <li class="odd">
+            	<h3><span>物件の選び方がわからなかったので安心しました。</span></h3>
+                <div class="cf">
+                	<div class="voice_img"><img src="/design_d/common/img/default/voice_ph03.jpg" width="187" height="135" alt=""></div>
+                    <div class="voice_profile">
+                    	<ul>
+                        	<li>埼玉県浦和区</li>
+                            <li>足立様(女性)</li>
+                            <li>3000万円台物件購入</li>
+                            <li class="btn"><a href="/shinchiku/voice03.html"><img src="/design_d/common/img/default/voice_btn01.png" width="183" height="50" alt="続きを読む"></a></li>
+                        </ul>
+                    </div><!--voice_profile-->
+                </div>
+                <p>
+                	結婚を期に物件を探し始めました。<br>
+                    正直、何から手をつけていいかもわからないレベルでした。<br>
+                    検索で新築がいいか、マンションがいいか、中古の戸建がいいのかとか考えるだけ、もうさっぱりでした。<br>
+                    はじめから、不動産屋さんを回ることは決めていたし、事前調査も一つ一つサイトに登録するのは面倒臭いなと思っていた矢先に、見つけたのがこの「新築一戸建て速報」でした。<br>
+                    物件選びがわからない自分にとって、○mazonみたいにレコメンドをしてくれるし、親身になって相談に乗ってもらえました。<br>
+                    現在、新築一戸建て速報で登録した不動産屋さんにお願いして新居を手に入れました。<br>
+                    妻も台所が広くて、とても満足したようです。<br>
+                    物件選びがわからない人には、有意義なサイトだと思います。
+                </p>
+            </li>
+            <li class="even">
+            	<h3><span>夢の海沿い生活が実現できました！</span></h3>
+                <div class="cf">
+                	<div class="voice_img"><img src="/design_d/common/img/default/voice_ph04.jpg" width="187" height="135" alt=""></div>
+                    <div class="voice_profile">
+                    	<ul>
+                        	<li>神奈川県横浜市戸塚区</li>
+                            <li>池谷様(男性)</li>
+                            <li>2000万円台物件購入</li>
+                            <li class="btn"><a href="/shinchiku/voice04.html"><img src="/design_d/common/img/default/voice_btn01.png" width="183" height="50" alt="続きを読む"></a></li>
+                        </ul>
+                    </div><!--voice_profile-->
+                </div>
+                <p>
+                    サーフィンが好きなので、湘南の海の近くの一軒家に住むのが夢でした。<br>
+                    いざ探してみると自分には手が出ない金額のものが多く、手が出るのは正直あまり住みたいと思わない物件ばかりでした。<br>
+                    この夢だけは諦めることは出来ないと思っていたので色々調べていたら、新築一戸建て速報にたどり着きました。<br>
+                    本当に見つかるかは未知数でしたが見つかることを願って登録しました。<br>
+                    その結果、湘南のことを知り尽くしている不動産に出会うことができて希望価格に合う、多くの物件を紹介してもらえました。<br>
+                    また、備考欄に「海に近い物件希望」と書いたので、湘南だけでなく海に近い穴場的な物件まで紹介してくれました。<br>
+                    結果的に希望通り湘南の海沿いの家を紹介してもらえたので、その穴場物件を買うことはなかったですが想像以上に良い物件を紹介してくれて感謝です！
+                </p>
+            </li>
+         </ul>
+         <div class="trigger"></div>
+    </div><!--wrapper-->
+</div><!--voice-->
+
+<div id="flow" class="pattern2">
+	<div class="wrapper">
+        <h2><img src="/design_d/common/img/default/flow01.png" width="920" height="220" alt="大量の非公開新築一戸建て情報を複数社から一括収集できます！"></h2>
+        <p id="flow02">
+            使い方は簡単！
+            登録するだけで複数社の不動産のプロがあなたのために希望どおりの物件を「非公開・公開」含めすべてお探し！そしてあなたの満足がいく物件に出会えるまでお届けいたします。もちろん<strong>完全無料</strong>です！
+            <img id="flow02_02" src="/design_d/common/img/default/flow02_02.png" width="920" height="322" alt="" />
+            <img id="flow02_03" src="/design_d/common/img/default/flow02_03.png" width="920" height="322" alt="" />
+        </p>
+        <div id="flow03"><img src="/design_d/common/img/default/flow03.jpg" width="920" height="322" alt="新築一戸建て速報の使い方"></div>
+
+        <script type="text/javascript">
+			$(function(){
+				$('#btn_area .btn').click(function(){
+					$('#bpt_contents').stop().animate({'height': 'toggle', 'opacity': 'toggle'});
+				});
+
+				$('#bpt_close').click(function(){
+					var bpt_top = $('#bpt_contents').offset().top;
+					$("html, body").animate({ scrollTop: bpt_top });
+					$('#bpt_contents').stop().animate({'height': 'toggle', 'opacity': 'toggle'});
+
+				});
+			});
+		 </script>
+        <div id="bpt">
+        	<div id="btn_area">
+            	<div class="btn"><img src="/design_d/common/img/default/bpt_btn.jpg" class="on_off" width="493" height="117" alt="分筆前の物件もご紹介できます"></div>
+            </div><!--btn_area-->
+        <div id="bpt_contents">
+            	<h2 id="bpt_ti">
+                	「新築一戸建て速報」では
+                    「絶対にこの地域に住みたい」「立地の良い場所に住みたい」
+                    と強くご希望の方に、その地域で今後家を建てる予定のある
+                    分筆前の物件情報を提供いたします。
+                </h2>
+                <h3><img src="/design_d/common/img/default/bpt_about1.jpg" width="841" height="83" alt="分筆って一体なに？"></h3>
+                <div id="bpt_about" class="cf">
+                	<p class="float_left">
+                    	もともと一つの建物があり、その不動産が売却されて<br>
+                        それを建築会社が買い取り新たに建物を建設するとし<br>
+                        ます。その場合、その土地は登記簿に「一筆」<br>
+                        つまり一つの土地として登録されています。<br>
+                        その後、新たに複数の建物を建設する際に土地を<br>
+                        いくつかに分割することになります。土地を分割して<br>
+                        土地台帳に登記し直すことを「分筆」と言います。
+                    </p>
+                    <div class="float_right"><!--bpt_about-->
+                    	<div><img src="/design_d/common/img/default/bpt_ph.jpg" width="366" height="155" alt=""></div>
+                        <p class="spt5 a_center f14">もともと一つの大きな建物が建っていましたが<br>分筆されて家が4軒建設されることになります。</p>
+                    </div>
+                </div>
+                <div id="bpt_merit">
+                	<h2><img src="/design_d/common/img/default/bpt_merit_ti.jpg" width="841" height="83" alt="分筆前の物件のメリットとは？"></h2>
+                    <h3 id="merit01">
+                        <img src="/design_d/common/img/default/bpt_merit_ti01.jpg" width="841" height="108" alt="競争相手が少ない">
+                        <img class="check" src="/design_d/common/img/default/bpt_merit_check.png" width="30" height="38" alt="" />
+                    </h3>
+                    <p>
+                    	希望する地域に住みたいと思っていて「いいな」と思う物件を見つけた場合、<br>
+                        他の買い手の方も同じように「いいな」と思っていることが多いです。<br>
+                        そういった物件はすぐに買われてしまうため、なかなか手に入れることができません。<br>
+                        しかし分筆前の物件は、大手不動産サイトに掲載されることはないため<strong>競争相手がほとんどおらず</strong>、希望地域の優良物件を手に入れやすいのです。
+                    </p>
+                    <h3 id="merit02">
+                    	<img src="/design_d/common/img/default/bpt_merit_ti02.jpg" width="841" height="86" alt="良い立地に住める可能性あり">
+                        <img class="check" src="/design_d/common/img/default/bpt_merit_check.png" width="30" height="38" alt="" />
+                    </h3>
+                    <p>
+                    	一戸建ての場合、マンションと違い駅から遠かったり、良い立地の物件は限られています。<br>
+                        もし建築業者が駅前などの立地がよい土地を確保した場合、新らしいマンションを建設しようと試みます。<br>
+                        しかし、マンションを建築するほどの広い土地が確保できない場合が多くあります。<br>
+                        そういった際、その土地は一戸建て用に使用されることになります。<br>
+                        タイミングがよければ<strong>最高な立地の新築一戸建て</strong>をあなたが手に入れることができます。
+                    </p>
+                    <h3 id="merit03">
+                        <img src="/design_d/common/img/default/bpt_merit_ti03.jpg" width="841" height="86" alt="あなたのご要望を取り入れることが可能">
+                        <img class="check" src="/design_d/common/img/default/bpt_merit_check.png" width="30" height="38" alt="" />
+                    </h3>
+                    <p>
+                    	分筆前の段階で話に加わることができる場合がございます。そうなった際、<strong>あなたのご要望を取り入れて分筆を行える</strong>可能性があります。<br>
+                        そうすることにより土地をあなたの希望に沿った広さにすることができます。
+                    </p>
+                </div><!--bpt_merit-->
+                <p id="bpt_message">
+                	分筆前の物件には多くのメリットがあります。
+                    今すぐ家を欲しいと思っていない方も早めに分筆前の不動産情報を入手することが近い将来「希望の地域」「良い立地」の物件を手に入れるための重要な鍵となります。
+                </p>
+                <div id="bpt_close"><img src="/design_d/common/img/default/bpt_btn_close.png" width="36" height="38" alt="閉じる"></div>
+            </div><!--bpt_contents-->
+
+        </div><!--bpt-->
+            </div><!--wrapper-->
+</div><!--flow-->
+
+<div id="register">
+	<div class="wrapper">
+    	<h2><img src="/design_d/common/img/default/register01.png" width="920" height="100" alt="最短30秒で完了！簡単情報入力"></h2>
+        <div id="step_info">
+        	<img style="margin-top:117px;" src="/design_d/common/img/default/img_step01_2.png" width="920" height="155" alt="ステップ１「お探し条件を入力」">
+            <img id="step_arrow" src="/design_d/common/img/default/register_2step_arrow.png" width="47" height="96" alt="">
+            <img id="step_img" src="/design_d/common/img/default/register_2step.png" width="559" height="99" alt="ご登録はたったの２ステップ！">
+        </div>
+        <form method="post" name="form1" id="form1" action="/shinchiku/company_select" >
+            <h3 class="simple a_center spt20">お探しの非公開新築一戸建ての条件</h3>
+            <table class="reg_table" style="border:7px solid #6cbdf7;">
+                <tr>
+                    <th>都道府県</th>
+                    <td><select name='pref' id='form_pref' onchange="sc.change_pref_pc(this)"><option value='' >選択してください</option><optgroup label='関東'>
+<option value='13'  >東京都</option><option value='14'  >神奈川県</option><option value='11'  >埼玉県</option><option value='12'  >千葉県</option></optgroup>
+<optgroup label='中部'>
+<option value='23'  >愛知県</option></optgroup>
+<optgroup label='関西'>
+<option value='27'  >大阪府</option><option value='28'  >兵庫県</option></optgroup>
+</select></td>
+                </tr>
+                <tr id="address_select">
+                    <th>市区町村</th>
+                    <td>
+                        <p class="attention f14 spb15">
+                            ご希望の市区町村を選択し、最低１つはチェックを入れて下さい。<br />
+                            ひとつの市区町村の中では希望順に関係なく何件でもチェックを入れていただいて構いません。
+                        </p>
+
+                        <span id="areagroup">
+                         <select name='adr_group[1]' id='form_adr_group[1]' onchange="sc.dsp_address_pc(1,this.options[this.selectedIndex].value)" disabled="disabled"><option value=''  selected>第１希望</option></select>                        <div id= "src_ad_box1" class="src_box_area"></div>
+                        <span class="clear">&nbsp;</span>
+
+                        <select name='adr_group[2]' id='form_adr_group[2]' onchange="sc.dsp_address_pc(2,this.options[this.selectedIndex].value)" disabled="disabled"><option value=''  selected>第２希望</option></select>                        <div id= "src_ad_box2" class="src_box_area"></div>
+                        <span class="clear">&nbsp;</span>
+
+                        <select name='adr_group[3]' id='form_adr_group[3]' onchange="sc.dsp_address_pc(3,this.options[this.selectedIndex].value)" disabled="disabled"><option value=''  selected>第３希望</option></select>                        <div id= "src_ad_box3" class="src_box_area"></div>
+                        <span class="clear">&nbsp;</span>
+                        </span>
+                     </td>
+                </tr>
+                <tr>
+                    <th>価格帯</th>
+                    <td><span id="pricegroup">
+                            <select name='me_price_low' id='form_me_price_low' ><option value=''  >下限なし</option><option value='1000'  >1,000万円</option><option value='2000'  >2,000万円</option><option value='2500'  >2,500万円</option><option value='3000'  >3,000万円</option><option value='3500'  >3,500万円</option><option value='4000'  >4,000万円</option><option value='4500'  >4,500万円</option><option value='5000'  >5,000万円</option><option value='5500'  >5,500万円</option><option value='6000'  >6,000万円</option><option value='6500'  >6,500万円</option><option value='7000'  >7,000万円</option><option value='7500'  >7,500万円</option><option value='8000'  >8,000万円</option><option value='8500'  >8,500万円</option><option value='9000'  >9,000万円</option><option value='9500'  >9,500万円</option><option value='10000'  >10,000万円</option><option value='10500'  >10,500万円</option><option value='11000'  >11,000万円</option><option value='11500'  >11,500万円</option><option value='12000'  >12,000万円</option><option value='12500'  >12,500万円</option><option value='13000'  >13,000万円</option><option value='13500'  >13,500万円</option><option value='14000'  >14,000万円</option><option value='14500'  >14,500万円</option><option value='15000'  >15,000万円</option><option value='15500'  >15,500万円</option><option value='16000'  >16,000万円</option><option value='16500'  >16,500万円</option><option value='17000'  >17,000万円</option><option value='17500'  >17,500万円</option><option value='18000'  >18,000万円</option><option value='18500'  >18,500万円</option><option value='19000'  >19,000万円</option><option value='19500'  >19,500万円</option><option value='20000'  >20,000万円</option></select> 〜
+                            <select name='me_price_high' id='form_me_price_high' ><option value=''  >上限なし</option><option value='1000'  >1,000万円</option><option value='2000'  >2,000万円</option><option value='2500'  >2,500万円</option><option value='3000'  >3,000万円</option><option value='3500'  >3,500万円</option><option value='4000'  >4,000万円</option><option value='4500'  >4,500万円</option><option value='5000'  >5,000万円</option><option value='5500'  >5,500万円</option><option value='6000'  >6,000万円</option><option value='6500'  >6,500万円</option><option value='7000'  >7,000万円</option><option value='7500'  >7,500万円</option><option value='8000'  >8,000万円</option><option value='8500'  >8,500万円</option><option value='9000'  >9,000万円</option><option value='9500'  >9,500万円</option><option value='10000'  >10,000万円</option><option value='10500'  >10,500万円</option><option value='11000'  >11,000万円</option><option value='11500'  >11,500万円</option><option value='12000'  >12,000万円</option><option value='12500'  >12,500万円</option><option value='13000'  >13,000万円</option><option value='13500'  >13,500万円</option><option value='14000'  >14,000万円</option><option value='14500'  >14,500万円</option><option value='15000'  >15,000万円</option><option value='15500'  >15,500万円</option><option value='16000'  >16,000万円</option><option value='16500'  >16,500万円</option><option value='17000'  >17,000万円</option><option value='17500'  >17,500万円</option><option value='18000'  >18,000万円</option><option value='18500'  >18,500万円</option><option value='19000'  >19,000万円</option><option value='19500'  >19,500万円</option><option value='20000'  >20,000万円</option></select>                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>間取り</th>
+                    <td class="madori">
+                        <select name='me_rooms' id='form_me_rooms' ><option value=''  >-</option><option value='1'  >1</option><option value='2'  >2</option><option value='3'  >3</option><option value='4'  >4</option><option value='5'  >5</option><option value='6'  >6以上</option></select>                        <select name='me_layout_type' id='form_me_layout_type' ><option value='0'  >-</option><option value='1'  >R</option><option value='2'  >K</option><option value='3'  >DK</option><option value='4'  >LK</option><option value='5'  >LDK</option><option value='6'  >SK</option><option value='7'  >SDK</option><option value='8'  >SLK</option><option value='9'  >SLDK</option></select>                    </td>
+                </tr>
+                <tr>
+                    <th>その他ご要望</th>
+                    <td><textarea id="me_comment" name="me_comment" cols="40" rows="5" placeholder="例） 『駐車スペース2台分希望』、『○○中学校の学区内希望』、『ローン等、資金の相談をしたい』など"></textarea></td>
+                </tr>
+            </table>
+
+
+            <div class="a_center">
+                <img src="/design_d/common/img/default/arrow_form.png" width="222" height="62" />
+            </div>
+
+
+            <h3 class="simple a_center">非公開物件情報の送付先</h3>
+            <table class="reg_table" style="border:7px solid #6cbdf7;">
+                <tr>
+                    <th>お名前</th>
+                    <td><input type="text" id="me_name" name="me_name" value="" placeholder="新築太郎" style="ime-mode:active;" size="20" /></td>
+                </tr>
+                <tr>
+                    <th>フリガナ</th>
+                    <td><input type="text" id="me_kana" name="me_kana" value="" placeholder="シンチクタロウ" size="20" style="ime-mode:active;" /></td>
+                </tr>
+                <tr>
+                    <th>メール</th>
+                    <td>
+                        <input type="email" class="half_char input-xxlarge" id="me_email" name="me_email" value="" placeholder="shinchiku@ikkodate.jp" style="ime-mode:disabled" size="40" /><br />
+                    </td>
+                </tr>
+                <tr>
+                    <th>電話番号</th>
+                    <td><input type="tel" class="half_char" id="me_tel" name="me_tel" value="" placeholder="09012345678" style="ime-mode:disabled" size="20" /></td>
+                </tr>
+                <tr>
+                    <th>ご住所</th>
+                    <td>〒 <input type="text" id="zip01" name="zip01" autocomplete="off" size="10" placeholder="1500002"  onKeyUp="AjaxZip3.zip2addr(this,'','me_address','me_address');"
+                     	value="" style="ime-mode:disabled;" />
+                        <span class="f12" style="color:#b8000b;">郵便番号を入力すると住所候補が表示されます。</span><br />
+                        <input type="text" id="me_address" class="spt20" name="me_address" placeholder="東京都渋谷区○丁目○-○" style="ime-mode:active;" autocomplete="off" size="60" value="" />
+                    </td>
+                </tr>
+            </table>
+
+
+            <input type="hidden" name="me_type" value="2" />
+            <input type="hidden" name="maruhi" value="1" />
+
+
+            <div class="a_center sp40">
+                <input name="Submit" type="image" src="/design_d/common/img/default/btn_to_step02.png" id="Submit" class="on_off" value="不動産会社の選択へ進む" alt="不動産会社の選択へ進む" />
+            </div>
+
+        </form>
+    </div><!--wrapper-->
+</div><!--register-->
+
+
+<!--アナウンス-->
+<script>
+$(function(){
+	var cvH = $('#cv_announce').height();
+	$('#cv_announce').css('bottom', -cvH);
+	setTimeout(function(){
+		var cvH = $('#cv_announce').height();
+		$('#cv_announce').show().animate({'bottom': 15});
+		$('#cv_announce').click(function(){
+			$('#cv_announce').animate({'bottom': -cvH},'fast',function(){
+				$(this).remove();
+			});
+		});
+
+		setTimeout(function(){
+			$('#cv_announce').animate({'bottom': -cvH},'fast',function(){
+				$(this).remove();
+			});
+		}, 20000)
+	}, 15000)
+});
+</script>
+
+
+<div id="cv_announce">
+	<p><span><span>4</span>分前に千葉県船橋市にて3,000万円以下の条件で登録がありました。</span></p>
+</div><!--cv_cannounce-->
+
+<script type="text/javascript" src="/design_d/common/js/exvalidation/exvalidation.js"></script>
+<script type="text/javascript" src="/design_d/common/js/exvalidation/exchecker-ja.js"></script>
+<script type="text/javascript">
+// NG電話番号
+window.ng_tel = new RegExp('^(00000000000|33333333333|01111111111|01000000000|44444444444|08000000000|02000000000|55555555555|123123123123|03000000000|66666666666|08011111111|0000000000|77777777777|1234567890|88888888888|01234567890|99999999999|11111111111|98765432111|22222222222|12345678900|0450450450|0311111111 |09011111111|0900000000|0800000000|09000000000|08000000000|0000000000|09099999999|08012345678|09012345678|00012345678|0420000000|0123456789|0100000000|0000000000|000000000|1111111111|11111111111|3333333333|33333333333|1234567890|8888888888|88888888888|4444444444|44444444444|09099999999|09000000000|08000000000|05000000000|01000000000|02000000000|03000000000|09012345678|0900000000|00000000|0333333333|0300000000|0300000000|0120816688|09011111112|09011111113|03123456789|04212345678|0440000000|09024061617)$');
+
+// NGネーム
+window.ng_name = new RegExp('(新築)');
+
+// NGメールアドレス
+window.ng_email = new RegExp('^(ueda-mayumi-0630.@docomo.ne.jp|)$');
+
+var validation = $("#form1")
+	.exValidation({
+		firstValidate: false,
+		rules: {
+			form_pref: "chkselect",
+			areagroup: "chkgroup chkselect chkcheckbox",
+			pricegroup: "chkgroup chkselect2",
+			me_name: "chkrequired chkngname",
+			me_kana: "chkrequired chkkatakana",
+			me_email: "chkrequired chkemail chkhankaku",
+			me_tel: "chkrequired chktel chkngtel",
+			me_address: "chkrequired"
+		},
+		errTipCloseBtn: false,
+		stepValidation: false
+	});
+
+$(function(){
+
+	var execBeforeUnload = false; // 確認ダイアログを出すかどうかのフラグ
+
+	// 変更されているときだけ確認ダイアログを出す
+	$('#form1 *').change(function(){
+		if($(this).val().length) execBeforeUnload = true;
+	});
+
+	function cancelBeforeUnload() {
+	    execBeforeUnload = false;
+	    setTimeout(function() {
+	        execBeforeUnload = true;
+	    }, 1000);
+	}
+
+	// IE だと href="javascript:void(0)" といったリンクを
+	// クリックしても beforeunload が発生するのでキャンセルする
+	$("a").bind('click', function(e) {
+	    if (this.href.indexOf('javascript') == 0) {
+	        cancelBeforeUnload();
+	    }
+	});
+
+	// form の submit 時に beforeunload が発生するのでキャンセルする
+	$('form').bind('submit', function(e) {
+	    cancelBeforeUnload();
+	});
+
+	$(window).bind('beforeunload', function(e) {
+	    if (execBeforeUnload) {
+			send_data();
+	        return "入力内容が破棄されます！移動してよろしいですか？";
+	    }
+	});
+
+	function send_data(){
+		$.ajax({
+			type : 'post',
+			url : "/util/send_data",
+			data : $("#form1").serializeArray(),
+			dataType : 'json',
+			scriptCharset: 'euc-jp',
+			success : function(data) {
+			}
+		});
+	}
+});
+</script>
+
+
+</div><!--primary-->
+<div id="secondary">
+</div><!--secondary-->
+<span class="clear"></span>
+</div><!--wrapper-->
+<div id="footer">
+<div class="f_navi cf">
+    <ul class="cf float_left">
+        <li><a href="/shinchiku/hikoukai.html">非公開物件とは？</a></li>
+        <li><a href="/shinchiku/company.html">運営会社</a></li>
+        <li><a href="/shinchiku/privacypolicy.html">個人情報保護方針</a></li>
+        <li><a href="/etc/contact">お問い合わせ</a></li>
+        
+            </ul>
+    <div id="pagetop" class="float_right">
+        <a href="#wrapper"><img src="/design_d/common/img/default/btn_pagetop.png" alt="ページトップへ" /></a>
+    </div>
+</div><!--f_contents-->
+
+<p id="copyright">Copyright &copy; 新築一戸建て速報 All Rights Reserved.</p>
+
+<div class="footer_bottom">
+    <div class="f_contents">
+        <p><img src="/design_d/common/img/default/img_footer_sales.png" width="385" height="98" alt="Stop!迷惑セールス" /></p>
+        <p class="f20 bold">新築一戸建て速報は、お客様の快適な住まい探しを応援しています。</p>
+        <p class="f16">新築一戸建て速報からリクエストを送信した不動産会社からしつこい営業や迷惑行為があった場合には、<br /><a href="/etc/contact" target="_blank">お問い合わせ</a>よりお知らせください。</p>
+        
+        <div id="footer_bnr" class="cf spt20" style="background: url(/design_d/common/img/default/iemitsu_lens.png) no-repeat center top; min-height:140px;">
+        <div style="float:left; width:380px; text-align:right;"><a href="/shinchiku/?bnr_f" target="_blank" class="btn"><img src="/design_d/common/img/default/bnr_ft_sinchiku.jpg" alt="新築一戸建て速報" /></a></div>
+        <div style="float:right; width:380px; text-align:left;"><a href="/baikyaku/?bnr_f" target="_blank" class="btn"><img src="/design_d/common/img/default/bnr_ft_man_sale.jpg" alt="マンション売却速報" /></a></div>
+    </div><!-- /f_contents -->
+
+	<img src="/session.php?" id="session_image" />
+	<script language="javascript">
+	sd.chaser("YToyOntzOjExOiJSRVFVRVNUX1VSSSI7czoxMDoiL3NoaW5jaGlrdSI7czoxMjoiSFRUUF9SRUZFUkVSIjtzOjA6IiI7fQ==");
+	</script>
+    
+</div><!--footer_bg-->
+
+
+</div>
+            
+
+</div><!--footer-->
+</div><!--backimage-->
+</body>
+</html>

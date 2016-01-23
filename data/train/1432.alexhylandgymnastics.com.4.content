@@ -1,0 +1,982 @@
+<html>
+<head>
+<title>Alex Hyland Gymnastics</title>
+<script>
+
+function showDiv(divName)
+{
+   hideAll();
+   document.getElementById(divName).style.display = "block";
+}
+
+function showVideo(videoid, text)
+{
+   var container = document.getElementById("videoframe");
+
+   // remove all child nodes of the div
+   while (container.hasChildNodes())
+		container.removeChild(container.lastChild);
+
+   var frame = document.createElement("iframe");
+
+   frame.width = 420;
+   frame.height = 345;
+   frame.src = "http://www.youtube.com/embed/" + videoid;
+
+   var headerSpan = document.createElement("span");
+   headerSpan.className = "videoheader";
+   var headerText = document.createTextNode(text + ":");
+   headerSpan.appendChild(headerText);
+   container.appendChild( headerSpan );
+   container.appendChild( document.createElement("br") );
+   container.appendChild( document.createElement("br") );
+   container.appendChild(frame);
+}
+
+function hideAll()
+{
+   document.getElementById("homecontent").style.display = "none";
+   document.getElementById("videoscontent").style.display = "none";
+   document.getElementById("resultscontent").style.display = "none";
+   document.getElementById("skillscontent").style.display = "none";
+}
+
+var states15videodata = [
+{
+ "title": "Vault",
+ "id": "lHIbKHlucjU"
+},
+{
+ "title": "Bars",
+ "id": "QM4oXtZwX7o"
+},
+{
+ "title": "Beam",
+ "id": "gnu_iUolnY4"
+},
+{
+ "title": "Floor",
+ "id": "3v1e9pDR1LA"
+}
+];
+
+var videodata = [
+{
+ "title": "JO Nationals 2012 Vault",
+ "id": "v1-MH9YgazU"
+},
+{
+ "title": "Level 10 States 2012 Vault",
+ "id": "n6n-u1FaNP8"
+},
+{
+ "title": "JO Nationals 2012 Bars",
+ "id": "EohYuiFIw3I"
+},
+{
+ "title": "Level 10 Regionals 2011 Bars",
+ "id": "DekQXpYJ7Ag"
+},
+{
+ "title": "Level 10 States 2012 Bars",
+ "id": "aum3EUU-jTY"
+},
+{
+ "title": "JO Nationals 2012 Beam",
+ "id": "08pfxi4yNMc"
+},
+{
+ "title": "Level 10 States 2012 Beam",
+ "id": "wdgpk6VHyRM"
+},
+{
+ "title": "Bay State Classic 2012 Beam",
+ "id": "h5A1QgwI_P4"
+},
+{
+ "title": "JO Nationals 2012 Floor",
+ "id": "5xuNsgc1llk"
+},
+{
+ "title": "Level 10 States 2012 Floor",
+ "id": "zq9Da8fGPO0"
+},
+{
+ "title": "Sand Dollar Invitational 2012 Floor",
+ "id": "-T8XIlMT2KE"
+},
+{
+ "title": "Bay State Classic 2012 Floor",
+ "id": "p9egZ3_zz9g"
+}
+];
+
+var states14videodata = [
+{
+ "title": "Vault",
+ "id": "AZJKLCkOhEM"
+},
+{
+ "title": "Bars",
+ "id": "anS8UljGUXo"
+},
+{
+ "title": "Beam",
+ "id": "uDQ69-UFy6o"
+},
+{
+ "title": "Floor",
+ "id": "3hdMEfSEYjo"
+}
+];
+
+
+var sd14videodata = [
+{
+ "title": "Vault",
+ "id": "hhJBc7YOu-w"
+},
+{
+ "title": "Bars",
+ "id": "6dxtuK4WH4Y"
+},
+{
+ "title": "Beam",
+ "id": "3iCIiGvCDq4"
+},
+{
+ "title": "Floor",
+ "id": "Bm7DDhjULgU"
+}
+];
+
+var jo13videodata = [
+{
+ "title": "Vault",
+ "id": "BDTn1KpNsNE"
+},
+{
+ "title": "Bars",
+ "id": "6q6TSbvn27w"
+},
+{
+ "title": "Beam",
+ "id": "EcFGSDgsGac"
+},
+{
+ "title": "Floor",
+ "id": "IsqtfsV56Jo"
+}
+];
+
+var reg13videodata = [
+{
+ "title": "Vault",
+ "id": "TV4QhjqdWC8"
+},
+{
+ "title": "Bars",
+ "id": "d0O2r0voDa8"
+},
+{
+ "title": "Beam",
+ "id": "CCcJTUNRGKw"
+},
+{
+ "title": "Floor",
+ "id": "2MVGN8TQ8B8"
+}
+];
+
+
+var states13videodata = [
+{
+ "title": "Vault",
+ "id": "k0Uu8ah-gVU"
+},
+{
+ "title": "Bars",
+ "id": "ShN5BLkCf1I"
+},
+{
+ "title": "Beam",
+ "id": "dSj7ewINUys"
+},
+{
+ "title": "Floor",
+ "id": "zJxeQYz0SA8"
+}
+];
+
+
+var manvideodata = [
+{
+ "title": "Vault",
+ "id": "MuzS8BYAiAo"
+},
+{
+ "title": "Bars",
+ "id": "XSHkgf4i-ys"
+},
+{
+ "title": "Beam",
+ "id": "eXbsfIMRPsI"
+},
+{
+ "title": "Floor",
+ "id": "AnaNE9S7NjI"
+}
+];
+
+
+var exxvideodata = [
+{
+ "title": "Vault",
+ "id": "tw6PsO_U62A"
+},
+{
+ "title": "Bars",
+ "id": "1_PWRRReN5c"
+},
+{
+ "title": "Beam",
+ "id": "3bqqPUvIt_8"
+},
+{
+ "title": "Floor",
+ "id": "-Vq3YTiBz7E"
+}
+];
+
+var jovideodata = [
+{
+ "title": "Vault",
+ "id": "v1-MH9YgazU"
+},
+{
+ "title": "Bars",
+ "id": "EohYuiFIw3I"
+},
+{
+ "title": "Beam",
+ "id": "08pfxi4yNMc"
+},
+{
+ "title": "Floor",
+ "id": "5xuNsgc1llk"
+}
+];
+
+var capevideodata = [
+{
+ "title": "Vault",
+ "id": "zLRyVW7yY18"
+},
+{
+ "title": "Bars",
+ "id": "Lyr3obABWz4"
+},
+{
+ "title": "Beam",
+ "id": "Nc-kAP9UWAw"
+},
+{
+ "title": "Floor",
+ "id": "k4TYQxEFnZY"
+}
+];
+
+var thompsonvideodata = [
+{
+ "title": "Vault",
+ "id": "yTgWApBKl98"
+},
+{
+ "title": "Bars",
+ "id": "nXSdHML_9N8"
+},
+{
+ "title": "Beam",
+ "id": "GT5RF7sbIyA"
+},
+{
+ "title": "Floor",
+ "id": "DeI-l8CvFp8"
+}
+];
+
+var statesvideodata = [
+{
+ "title": "Vault",
+ "id": "n6n-u1FaNP8"
+},
+{
+ "title": "Bars",
+ "id": "aum3EUU-jTY"
+},
+{
+ "title": "Beam",
+ "id": "wdgpk6VHyRM"
+},
+{
+ "title": "Floor",
+ "id": "zq9Da8fGPO0"
+}
+];
+
+var extravideodata = [
+{
+ "title": "Level 10 Regionals 2011 Bars",
+ "id": "DekQXpYJ7Ag"
+},
+{
+ "title": "Bay State Classic 2012 Beam",
+ "id": "h5A1QgwI_P4"
+},
+{
+ "title": "Sand Dollar Invitational 2012 Floor",
+ "id": "-T8XIlMT2KE"
+},
+{
+ "title": "Bay State Classic 2012 Floor",
+ "id": "p9egZ3_zz9g"
+},
+{
+ "title": "Candy Cane Classic 2012 Floor",
+ "id": "BxdBneGZpKw"
+}
+];
+
+
+var videodata2 = [
+{
+ "title": "Vault Yerchenko Layout Full and \u00BD",
+ "id": "gI9bg6x3OmU"
+},
+{
+ "title": "Vault Yerchenko Layout Full",
+ "id": "lg0PBjc6vYA"
+},
+{
+ "title": "Vault Yerchenko Layout Full 2",
+ "id": "KSz-9K1z5A0"
+},
+{
+ "title": "Vault Yerchenko Layout Full 3",
+ "id": "a3pfeYY3K1c"
+},
+{
+ "title": "Bars Blind Full Gienger",
+ "id": "HBZCqXhxihM"
+},
+{
+ "title": "Bars Routine with Double",
+ "id": "UvAd19o14Dg"
+},
+{
+ "title": "Bars Connection",
+ "id": "3UjSA5JpMcE"
+},
+{
+ "title": "Bars Full In",
+ "id": "FjotL4KYacI"
+},
+{
+ "title": "Beam Connection 1",
+ "id": "KGl9NbtMDOQ"
+},
+{
+ "title": "Beam Connection 2",
+ "id": "rfsg7wcsPD0"
+},
+{
+ "title": "Beam Handspring Handspring Layout",
+ "id": "w0fR87HQyxk"
+},
+{
+ "title": "Beam Handspring Layout",
+ "id": "w6stMu0MboU"
+},
+{
+ "title": "Beam Front Aerial to Side Aerial",
+ "id": "I1Rt70GReQc"
+},
+{
+ "title": "Beam Front Aerial Handspring Layout Layout",
+ "id": "rIPBPvA3RZw"
+},
+{
+ "title": "Beam back handspring layout 2 foot",
+ "id": "m09ZjWjgFDE"
+},
+{
+ "title": "Floor Double Pike",
+ "id": "zzePYR5cMf4"
+},
+{
+ "title": "Floor One and \u00BD Front Layout",
+ "id": "Wzj-1d47pWE"
+},
+{
+ "title": "Floor Front Full Front Layout",
+ "id": "ePiXJi-qwbc"
+},
+{
+ "title": "Floor Front Full Front Pike",
+ "id": "APJhnTssGGE"
+},
+{
+ "title": "Floor Full In",
+ "id": "NWXmWQWWs9A"
+}
+];
+
+var skilldata = [
+{
+ "header": "Vault",
+ "competing": ["Yerchenko layout full"],
+ "working": ["Yerchenko layout full and \u00BD"]
+},
+{
+ "header": "Bars",
+ "competing": ["Blind full connected to Gienger", "Cast handstand overshoot to toe up", "2 giants full-in dismount"],
+ "working": ["Tkachev", "Half pirouette overshoot connected to toe handstand connected to toe up"]
+},
+{
+ "header": "Beam",
+ "competing": ["Switch leap back tuck", "Switch leap split jump", "Cat leap front aerial", "Handspring layout stepout", "Roundoff double full dismount"],
+ "working": ["Switch leap layout step out", "Switch leap straddle quarter", "Back handspring layout 2 foot", "Front aerial connected to side aerial", "Front toss", "Roundoff 2 \u00BD dismount", "Switch leap tuck full", "Back handspring layout step out layout step out"]
+},
+{
+ "header": "Floor",
+ "competing": ["Double pike", "Full \u00BD punch front pike", "Tourjete full", "Tourjete half wolf full", "Double turn", "2 \u00BD twist"],
+ "working": ["Full in", "Double arabian", "2 \u00BD twist front tuck", "Roundoff full and \u00BD step out to 2 \u00BD twist", "Front handspring front layout front layout", "Front handspring front full front layout"]
+}
+];
+
+function createSkillTable()
+{
+	var container = document.getElementById('skillscontenttablecontainer');
+
+	for (var index = 0; index < 4; index++)
+	{
+		// IE stinks.  The class is ignored for the table css, and the border property sets borders on all cells.
+		// To work around this, create a wrapper table (1 cell) with a border
+		var outerTable = document.createElement("table");
+		var outerTbody = document.createElement("tbody");
+		var outerTrow = document.createElement("tr");
+		var outerTcell = document.createElement("td");
+
+		// .skilltable {border-width:2px; border-style:solid;}
+		outerTable.setAttribute("border", "1px solid white");
+
+		var table = document.createElement("table");
+		var tbody = document.createElement("tbody");
+
+		// create the header row
+		var headerRow = document.createElement("tr");
+
+		var mainCell = document.createElement("td");
+		mainCell.appendChild( document.createTextNode( skilldata[index].header ) );
+		mainCell.setAttribute("class", "skillheader");
+		mainCell.width = 150;
+
+		var competingCell = document.createElement("td");
+		competingCell.appendChild( document.createTextNode("Competing") );
+		competingCell.setAttribute("class", "skillcolheader");
+		competingCell.width = 350;
+
+		var workingCell = document.createElement("td");
+		workingCell.appendChild( document.createTextNode("Working on...") );
+		workingCell.setAttribute("class", "skillcolheader");
+		workingCell.width = 350;
+
+		headerRow.appendChild(mainCell);
+		headerRow.appendChild(competingCell);
+		headerRow.appendChild(workingCell);
+
+		tbody.appendChild(headerRow);
+
+		// now loop over the rows
+		for (var subindex = 0; subindex < skilldata[index].competing.length || subindex < skilldata[index].working.length; subindex++)
+		{
+		   var dataRow = document.createElement("tr");
+
+		   // create the blank first cell
+		   var blankCell = document.createElement("td");
+		   blankCell.appendChild( document.createTextNode("\u00a0") );
+
+		   // now create the competing cell
+		   var col1Cell = document.createElement("td");
+		   var col1Text = "\u00a0";
+
+		   if (subindex < skilldata[index].competing.length)
+		      col1Text = "- " + skilldata[index].competing[subindex];
+
+		   col1Cell.appendChild( document.createTextNode(col1Text) );
+
+		   // now create the working cell
+		   var col2Cell = document.createElement("td");
+		   var col2Text = "\u00a0";
+
+		   if (subindex < skilldata[index].working.length)
+		      col2Text = "- " + skilldata[index].working[subindex];
+
+		   col2Cell.appendChild( document.createTextNode(col2Text) );
+
+		   dataRow.appendChild(blankCell);
+		   dataRow.appendChild(col1Cell);
+		   dataRow.appendChild(col2Cell);
+
+		   tbody.appendChild(dataRow);
+		}
+
+		table.appendChild(tbody);
+
+		outerTcell.appendChild(table);
+		outerTrow.appendChild(outerTcell);
+		outerTbody.appendChild(outerTrow);
+		outerTable.appendChild(outerTbody);
+
+		container.appendChild(outerTable);
+		container.appendChild( document.createElement("br") );
+	}
+
+	createVideoData();
+}
+
+function createVideoData()
+{
+   var videotabcontainer = document.getElementById("videotabs");
+
+   var compHeaderSpan = document.createElement("span");
+   compHeaderSpan.className = "videoheader";
+   var compHeader = document.createTextNode("Competition Videos");
+   compHeaderSpan.appendChild(compHeader);
+
+   videotabcontainer.appendChild(compHeaderSpan);
+
+   videotabcontainer.appendChild( document.createElement("br") );
+   videotabcontainer.appendChild( document.createElement("br") );
+
+   videotabcontainer.appendChild( document.createTextNode("2014-2015:") );
+   videotabcontainer.appendChild( document.createElement("br") );
+   videotabcontainer.appendChild( document.createElement("br") );
+
+   // States 2015
+   var state15Header = document.createTextNode("Level 10 States 2015");
+   videotabcontainer.appendChild(state15Header);
+   videotabcontainer.appendChild( document.createElement("br") );
+
+   createVideoSection(videotabcontainer, states15videodata, "Level 10 States 2015 ", false);
+
+   videotabcontainer.appendChild( document.createElement("br") );
+   videotabcontainer.appendChild( document.createElement("br") );
+
+   videotabcontainer.appendChild( document.createTextNode("2013-2014:") );
+   videotabcontainer.appendChild( document.createElement("br") );
+   videotabcontainer.appendChild( document.createElement("br") );
+
+   // States 2014
+   var state14Header = document.createTextNode("Level 10 States 2014");
+   videotabcontainer.appendChild(state14Header);
+   videotabcontainer.appendChild( document.createElement("br") );
+
+   createVideoSection(videotabcontainer, states14videodata, "Level 10 States 2014 ", false);
+
+   videotabcontainer.appendChild( document.createElement("br") );
+   videotabcontainer.appendChild( document.createElement("br") );
+
+   // Sand Dollar 2014
+   var sd14Header = document.createTextNode("Sand Dollar Invitational 2014");
+   videotabcontainer.appendChild(sd14Header);
+   videotabcontainer.appendChild( document.createElement("br") );
+
+   createVideoSection(videotabcontainer, sd14videodata, "Sand Dollar Invitational 2014 ", false);
+
+   videotabcontainer.appendChild( document.createElement("br") );
+   videotabcontainer.appendChild( document.createElement("br") );
+
+   videotabcontainer.appendChild( document.createTextNode("2012-2013:") );
+   videotabcontainer.appendChild( document.createElement("br") );
+   videotabcontainer.appendChild( document.createElement("br") );
+
+   // JO Nationals 2013
+   var jo13Header = document.createTextNode("JO Nationals 2013");
+   videotabcontainer.appendChild(jo13Header);
+   videotabcontainer.appendChild( document.createElement("br") );
+
+   createVideoSection(videotabcontainer, jo13videodata, "JO Nationals 2013 ", false);
+
+   videotabcontainer.appendChild( document.createElement("br") );
+
+   // Regionals2013
+   var reg13Header = document.createTextNode("Level 10 Regionals 2013");
+   videotabcontainer.appendChild(reg13Header);
+   videotabcontainer.appendChild( document.createElement("br") );
+
+   createVideoSection(videotabcontainer, reg13videodata, "Level 10 Regionals 2013 ", false);
+
+   videotabcontainer.appendChild( document.createElement("br") );
+
+   // States2013
+   var sta13Header = document.createTextNode("Level 10 States 2013");
+   videotabcontainer.appendChild(sta13Header);
+   videotabcontainer.appendChild( document.createElement("br") );
+
+   createVideoSection(videotabcontainer, states13videodata, "Level 10 States 2013 ", false);
+
+   videotabcontainer.appendChild( document.createElement("br") );
+
+   var ExxHeader = document.createTextNode("Exxcel Beach Party 2013");
+   videotabcontainer.appendChild(ExxHeader);
+   videotabcontainer.appendChild( document.createElement("br") );
+
+   createVideoSection(videotabcontainer, exxvideodata, "Exxcel Beach Party 2012 ", false);
+
+   videotabcontainer.appendChild( document.createElement("br") );
+
+   // man classic
+   var manHeader = document.createTextNode("Manhattan Classic 2013");
+   videotabcontainer.appendChild(manHeader);
+   videotabcontainer.appendChild( document.createElement("br") );
+
+   createVideoSection(videotabcontainer, manvideodata, "Manhattan Classic 2013 ", false);
+
+   videotabcontainer.appendChild( document.createElement("br") );
+
+   var JOHeader = document.createTextNode("JO Nationals 2012");
+   videotabcontainer.appendChild(JOHeader);
+   videotabcontainer.appendChild( document.createElement("br") );
+
+   createVideoSection(videotabcontainer, jovideodata, "JO Nationals 2012 ", false);
+
+   videotabcontainer.appendChild( document.createElement("br") );
+
+   var capeHeader = document.createTextNode("Cape Code Classic 2012");
+   videotabcontainer.appendChild(capeHeader);
+   videotabcontainer.appendChild( document.createElement("br") );
+
+   createVideoSection(videotabcontainer, capevideodata, "Cape Code Classic 2012 ", false);
+
+   videotabcontainer.appendChild( document.createElement("br") );
+
+   var thompsonHeader = document.createTextNode("Thompsons Invitational 2012");
+   videotabcontainer.appendChild(thompsonHeader);
+   videotabcontainer.appendChild( document.createElement("br") );
+
+   createVideoSection(videotabcontainer, thompsonvideodata, "Thompsons Invitational 2012 ", false);
+
+   videotabcontainer.appendChild( document.createElement("br") );
+
+   videotabcontainer.appendChild( document.createTextNode("2011-2012:") );
+   videotabcontainer.appendChild( document.createElement("br") );
+   videotabcontainer.appendChild( document.createElement("br") );
+
+   var statesHeader = document.createTextNode("Level 10 States 2012");
+   videotabcontainer.appendChild(statesHeader);
+   videotabcontainer.appendChild( document.createElement("br") );
+
+   createVideoSection(videotabcontainer, statesvideodata, "Level 10 States 2012 ", false);
+
+   videotabcontainer.appendChild( document.createElement("br") );
+
+   var extraHeader = document.createTextNode("Extras");
+   videotabcontainer.appendChild(extraHeader);
+   videotabcontainer.appendChild( document.createElement("br") );
+
+   createVideoSection(videotabcontainer, extravideodata, "", false);
+
+   videotabcontainer.appendChild( document.createElement("br") );
+
+
+   var practiceVideotabcontainer = document.getElementById("practicevideotabs");
+   var pracHeaderSpan = document.createElement("span");
+   pracHeaderSpan.className = "videoheader";
+   var pracHeader = document.createTextNode("Practice Videos");
+   pracHeaderSpan.appendChild(pracHeader);
+   practiceVideotabcontainer.appendChild(pracHeaderSpan);
+   practiceVideotabcontainer.appendChild( document.createElement("br") );
+   practiceVideotabcontainer.appendChild( document.createElement("br") );
+
+   createVideoSection(practiceVideotabcontainer, videodata2, "", true);
+
+   // init the iframe
+   showVideo(jo13videodata[3].id, "JO Nationals 2013 " + jo13videodata[3].title);
+}
+
+function createVideoSection(videotabcontainer, data, extratitle, includeSpacing)
+{
+   var needTable = false;
+   var table = null;
+   var tbody = null;
+   var row = null;
+   var lastTitle = "";
+
+   if (extratitle.length > 0)
+      needTable = true;
+
+   if (needTable) {
+      table = document.createElement("table");
+      tbody = document.createElement("tbody");
+      table.appendChild(tbody);
+   }
+
+   // create the links
+   for (var index = 0; index < data.length; index++)
+   {
+       var anchor = document.createElement("a");
+
+       anchor.href = "#";
+       anchor.setAttribute("onClick", "showVideo('" + data[index].id + "', '" + (extratitle + data[index].title) + "')");
+
+       var anchorText = document.createTextNode(data[index].title);
+
+       anchor.appendChild(anchorText);
+
+       container = videotabcontainer;
+
+       if (needTable) {
+          if (index % 2 == 0) {
+             row = document.createElement("tr");
+             tbody.appendChild(row);
+          }
+          var cell = document.createElement("td");
+          cell.width = "60";
+          row.appendChild(cell);
+          container = cell;
+       } else {
+   	      if (includeSpacing) {
+  	         if (lastTitle.length > 0 && data[index].title.indexOf(lastTitle) != 0)
+   	         	container.appendChild( document.createElement("br") );
+
+   	         lastTitle = data[index].title.slice(0, 3);
+   	      }
+       }
+
+       container.appendChild(anchor);
+
+       if (!needTable) {
+	      container.appendChild( document.createElement("br") );
+	   }
+   }
+
+   if (needTable)
+      videotabcontainer.appendChild(table);
+}
+
+</script>
+
+<style>
+p a:link {color: #52F3FF; font-size:1.5em;}
+p a:visited {color: #52F3FF; font-size:1.5em;}
+p a:hover {color: white;}
+a:link {color: #52F3FF;}
+a:visited {color: #52F3FF;}
+a:hover {color: white;}
+.links {word-spacing:20px;}
+.tabmargin {margin-left:100px;margin-top:50px;}
+.tabcenter {margin-top:50px;}
+.skillheader {font-size:2em;}
+.skillcolheader {font-size:1.5em;text-decoration:underline}
+.paddedImage {margin-top:60px;margin-left:120px;}
+.paddedInfo {margin-top:170px;}
+#resultscontentdiv {font-size:1.2em;}
+.homeText {font-size:1.3em;}
+li {padding-top:5px; }
+.videoheader {font-size: 1.3em; }
+</style>
+
+</head>
+<body bgcolor="#151B54" text="#56A5EC"  onload="javascript:createSkillTable();">
+<div id="header" align="center">
+<br/><font size="7">Alex Hyland</font>
+</div>
+<div id="tabs" align="center">
+<br/>
+<p class="links">
+<a href="#" onclick="javascript:showDiv('homecontent');">Home</a>
+<a href="#" onclick="javascript:showDiv('videoscontent');">Videos</a>
+<a href="#" onclick="javascript:showDiv('resultscontent');">Results</a>
+<a href="#" onclick="javascript:showDiv('skillscontent');">Skills</a>
+</p>
+</div>
+
+<div id="homecontent" class="tabcenter" align="center">
+<table>
+ <tr>
+  <td valign="top">
+   <table>
+    <tr>
+     <td>
+      <img src="images/alex5.jpg" height="450" width="300"/>
+     </td>
+    </tr>
+    <tr>
+     <td>&nbsp;</td>
+    </tr>
+    <tr>
+     <td>
+      <img src="images/061.JPG" height="450" width="300"/>
+     </td>
+    </tr>
+   </table>
+  </td>
+  <td valign="top">
+   <table>
+    <tr>
+     <td width="440" style="padding:20px" valign="top"><div class="homeText">Alexandra (Alex) Hyland is a USA level 10 gymnast who trains at Arnold's Gymnastics Academy in Mansfield,
+  Massachusetts. She is currently in her fifth year as a level 10.<br><br>Alex is a four time level 10 Massachusetts State All Around and Events Champion, a two time level
+  10 Region 6 Bars Champion, and the 2014 Region 6 All Around Champion.  Alex has qualified four times to J.O. Nationals.  In 2013, she placed 3rd on floor and 6th All Around in the Junior D division, and
+  in 2014 she placed 4th on floor in the senior A division.<br><br>
+  Alex accepted a full scholarship to the University of Kentucky where she plans to compete when she graduates high school in 2015.</div>
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <img class="paddedImage" src="images/187.JPG" height="330" width="220"/>
+     </td>
+    </tr>
+    <tr>
+     <td valign="bottom" align="center">
+      <div class="paddedInfo">
+Club contact information:<br/>
+Arnold痴 Gymnastics Academy, Mansfield, MA<br/>
+Coach: Nikki Longo - 774-222-3522<br/>
+Contact Us: <a href="mailto:christopherhyland@yahoo.com">christopherhyland@yahoo.com</a><br>
+      </div>
+     </td>
+    </tr>
+   </table>
+  </td>
+  <td valign="top">
+   <table>
+    <tr>
+     <td>
+      <img src="images/005_5831.JPG" height="450" width="300"/>
+     </td>
+    </tr>
+    <tr>
+     <td>&nbsp;</td>
+    </tr>
+    <tr>
+     <td>
+      <img src="images/alex3.jpg" height="450" width="300"/>
+     </td>
+    </tr>
+   </table>
+  </td>
+ </tr>
+</table>
+</div>
+
+<div id="videoscontent" style="display:none" class="tabmargin">
+<table>
+ <tr>
+  <td width="400" valign="top">
+<div id="videotabs">
+</div>
+  </td>
+  <td valign="top" width="500">
+<div id="videoframe">
+</div>
+  </td>
+  <td valign="top">
+   <div id="practicevideotabs">
+   </div>
+  </td>
+ </tr>
+</table>
+</div>
+
+<div id="resultscontent" style="display:none" class="tabmargin">
+<table><tr><td>
+<div id="resultscontentdiv">
+Level 10:<br/>
+<p class="indent">
+2012-2013:
+<ul>
+<li>
+2013 J.O. Nationals: 3rd Floor (9.7), 6th All Around (37.45)
+</li>
+<li>
+2013 Regionals (Region VI): 3rd Vault (9.575), 1st Bars (9.2), 9th Beam (8.825), 4th Floor (9.4), 4th All Around (37.0)
+</li>
+<li>
+2013 MA State Championships: 2nd Vault (9.75), 2nd Bars (9.175), 1st Beam (9.55), 2nd Floor (9.525), 1st All Around (38.0)
+</li>
+<li>
+2013 Exxcel Beach Party: 1st Vault (9.7), 1st Bars (9.425), 1st Beam (9.325), 1st Floor (9.525), 1st All Around (37.975)
+</li>
+<li>
+2013 Team Challenge: 1st Vault (9.7), 2nd Bars (9.2), 4th Beam (9.3), 9th Floor (9.4), 2nd All Around (37.6), Individual Event Winner: Vault and Beam
+</li>
+<li>
+2013 Manhattan Classic: 4th Vault (9.15), 3rd Bars (9.3), 2nd Beam(9.15), 2nd Floor (9.375), 2nd All Around (36.975)
+</li>
+<li>
+2013 Sand Dollar Invitaional: 1st Vault (9.425), 1st Bars (9.0), 1st Beam (9.1), 4th Floor (9.05), 1st All Around (36.575)
+</li>
+</ul>
+2011-2012:
+<ul>
+<li>
+2012 J.O. Nationals: 5th Beam, 19th All Around (37.35)
+</li>
+<li>
+2012 Regionals (Region VI): 4th Vault, 2nd Bars, 8th Beam, 5th Floor, 2nd All Around (37.275)
+</li>
+<li>
+2012 MA State Championships: 2nd Vault, 1st Bars, 1st Beam, 1st Floor, 1st All Around (37.55)
+</li>
+<li>
+2012 Sand Dollar Invitational: 1st Vault, 1st Bars, 1st Beam, 1st Floor, 1st All Around
+</li>
+<li>
+2012 Bay State Classic: 1st Vault, 2nd Bars, 1st Beam, 1st Floor, 1st All Around
+</li>
+</ul>
+2010-2011:
+<ul>
+<li>
+2011 J.O. Nationals: 35th All Around (36.15)
+</li>
+<li>
+2011 Regionals: 1st Bars, 5th Floor, 5th All Around (36.025)
+</li>
+<li>
+2011 MA State Championships: 1st Bars, 3rd Floor, 5th All Around (36.45)
+</li>
+</ul>
+2009-2010:
+<ul>
+<li>
+2010 Regionals: 10th All Around
+</li>
+<li>
+2010 MA State Championships: 1st Vault, 1st Bars, 1st Beam, 1st Floor, 1st All Around
+</li>
+</ul>
+</p>
+<br/>
+Level 9:<br/>
+<p class="indent">
+<ul>
+<li>
+2009 Easterns: 5th Beam, 9th All Around (36.175)
+</li>
+<li>
+2009 Regionals: 3rd Beam, 3rd All Around (36.325)
+</li>
+</ul>
+</p>
+</div>
+</td><td align="right" width="500"><img style="margin-right:30px" src="images/115.JPG" height="300" width="200"/><img src="images/085.JPG" height="300" width="200"/></td></tr></table>
+</div>
+
+<div id="skillscontent" style="display:none" class="tabcenter" align="center">
+ <div id="skillscontenttablecontainer"></div>
+</div>
+
+</body>
+</html>

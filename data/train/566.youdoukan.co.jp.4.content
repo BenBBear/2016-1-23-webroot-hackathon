@@ -1,0 +1,260 @@
+<?php
+$host = $_SERVER["SERVER_NAME"];
+$agent = $_SERVER["HTTP_USER_AGENT"];
+
+if (preg_match("/.*(DoCoMo).*/i", $agent) == true) {
+	//DoCoMo(グーグルボット以外)
+	if (preg_match("/.*(Googlebot).*/i", $agent) == false) {
+		header("Location: http://".$host."/m/i/");
+		exit();
+	}
+} elseif (preg_match("/^(J\-PHONE|Vodafone|MOT\-[CV]|Softbank)/i", $agent) == true) {
+	//SoftBank
+	header("Location: http://".$host."/m/s/");
+	exit();
+} elseif (preg_match("/^KDDI\-/i", $agent) == true || preg_match("/UP\.Browser/i", $agent) == true) {
+	//AU
+	if (preg_match("/.*(Googlebot).*/i", $agent) == false) {
+		// au(グーグルボット以外)
+		header("Location: http://".$host."/m/e/");
+		exit();
+	}
+} elseif(stristr($agent, 'Android') || stristr($agent, 'iPhone') || stristr($agent, 'iPad') || stristr($agent, 'iPod') ){
+	//スマートフォン(Android,iPhone,iPad,iPod)
+	header("Location: http://".$host."/m/smart/");
+	exit();
+}
+?>
+<html>
+<head>
+<title>ようどう館ホームページ</title>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<style type="text/css">
+<!--
+.ホワイト {
+	color: #FFF;
+}
+.white {
+	color: #FFF;
+}
+.nine {
+	font-size: 12px;
+}
+.ten {
+	font-size: 12px;
+}
+.twelve {
+	font-size: 12px;
+}
+.ten {
+}
+.twelve {
+	font-size: 12px;
+}
+.aka {
+	color: #F00;
+	font-size: 12px;
+}
+.aka {
+	color: #F00;
+}
+.ten1 {	font-size: 12px;
+}
+.ten1 {}
+.ten1 {	font-size: 12px;
+}
+.pink {
+	color: #F6C;
+}
+.pink {
+	color: #F0F;
+}
+.aka {
+	color: #F00;
+}
+.aka {
+	color: #F00;
+}
+.aka {
+	color: #F00;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="#FFFFFF" link="#FF0000" alink="#FF9999">
+<table width="900" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr bgcolor="#0000FF"> 
+    <td width="300" valign="top"> 
+      <p class="white"><br>
+      　「心と体を育てます」</p>
+      <p><br>
+        　　　<span class="white">水泳指導研究所</span><br>
+        　　<img src="image/youdoukan.png" width="218" height="51"> </p>
+    </td>
+    <td width="600" align="center"><img src="image/bus-anime2.gif" width="500" height="142" alt="バス"></td>
+  </tr>
+  <tr align="center"> 
+    <td colspan="2"> 
+      <p><font color="#0000FF">ようどう館とは「幼童館」、つまり「子供達の家」という意味です。　この名前には、<br>
+        子供達が明るく元気に集まって来て、楽しく学習してほしいという願いが込められています。</font></p>
+      </td>
+  </tr>
+  <tr bgcolor="#0000FF"> 
+    <td width="271">　</td>
+    <td width="629">　</td>
+  </tr>
+</table>
+<table width="900" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td width="247"> 
+      <table width="246" border="1" cellspacing="0" cellpadding="0" bordercolor="#6666FF">
+        <tr> 
+          <td> 
+            <p>《おしらせ》            </p>
+            <p class="ten">◎<span class="aka">秋・冬限定お試しコース</span>を開設しました。詳しくは右のチラシをクリックしてください。大きく表示されます。</p>
+<p class="ten"><span class="ten">◎保護者の方が本館の修了生(4級以上到達)の場合、入会金が無料となります。<a href="syuryousei.html">修了生一覧</a>の修了生Noを申し出てください。</span></p>
+            <p class="ten"><span class="ten">◎一日無料体験は毎日受付ています<br>
+              </span><br>
+          </p></td>
+        </tr>
+      </table>
+    </td>
+    <td width="402" height="300" rowspan="2" align="center" valign="top"><table width="400" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td><a href="image/akifuyu-L.jpg" target="_blank"><img src="image/akifuyu-S.jpg" width="400" height="283"></a></td>
+        </tr>
+    </table>
+      <br>
+<hr width="80%">
+<br><div><iframe width="360" height="270" src="http://www.kizoa.com/embed-28007078-3932434o1l1" frameborder="0" allowfullscreen></iframe><br /><a href="http://www.kizoa.jp/Movie-Maker/d28007078k3932434o2l1/2015"><b>2015冬・テスト会</b></a> - <i><a href="http://www.kizoa.jp">Kizoa 動画 編集</a></i></div>
+      <br>
+      <hr width="80%">
+      <p><br>
+  《本館の特徴》　</p>
+<table width="395" border="1" cellspacing="0" cellpadding="3" bordercolor="#6666FF">
+  <tr>
+    <td valign="top"><br>
+      ◎本館は1979年8月創立です。以来36年間、<br>
+      　　　　　　　　　子供達専門に指導しています。 <br>
+      　　〜水に顔をつけられない子から水泳選手まで〜
+      <p>◎プールは<a href="pictures/dansa.jpg">浅い方と深い方</a>に分かれています。<br>
+        　　泳げない子はまず浅い方で練習を行います。</p>
+      <p>◎水遊びではなく水泳指導を行います。<br>
+        　　〜各時間、泳力別に分かれて練習しています〜</p>
+      <p>◎プールを学習の場と考え、<br>
+        　　　　　　　　自動販売機等を置いていません。</p>
+      <p>◎祝祭日や第５週も練習があります。</p>
+      <p>◎皆勤賞があります。<br>
+        　　 （<a href="image/tukikaikin.png">月間皆勤賞</a>12枚で<a href="pictures/kaikinsyo.jpg">皆勤賞のトロフィー</a>が！）</p>
+      <p>◎テスト会(年２回)で、１級２級３級に合格したら<br>
+        　　　<a href="pictures/1kyuu.jpg">トロフィー</a>、<a href="pictures/2kyuu.jpg">楯</a>、<a href="pictures/3kyuu.jpg">メダル</a>を授与し表彰します。</p>
+      <p>◎本館の基準の４級に到達したら、<a href="pictures/syuryosyo.jpg">退会時に修了証</a><br>
+        　　を渡し、また<a href="syuryousei.html">ホームページに名前</a>が残ります。</p>
+      <p>◎<a href="LC.html">ライブカメラ</a>〜職場からでも自宅からでも<br>
+        　　　パソコンがあれば練習風景を見学できます。 </p></td>
+  </tr>
+</table>
+<p>&nbsp;</p></td>
+    <td width="251" height="300" rowspan="2" valign="top"> 
+      <table width="246" border="1" cellspacing="0" cellpadding="0" bordercolor="#6666FF">
+      <tr valign="top">
+        <td valign="middle"><p class="nine"><br>
+          　パソコンで練習風景が見学できます        </p>
+          <p><a href="LC.html"><img src="image/LC.png" alt="ライブカメラ" width="242" height="231" border="0"></a> </p></td>
+      </tr>
+    </table>
+      <br>
+      <br>
+      <br>
+      <hr width="80%">
+      <p><br>
+      　　　 《もくじ》</p>
+      <p>　◎<a href="fu-kei.html">練習風景動画</a><br>
+　◎<a href="mokuteki.html">勉強の目的</a><br>
+　◎<a href="backnumber2.html">ようどう館だより</a><br>
+　◎<a href="tubuyaki.html">先生のつぶやき</a><br>
+　◎<a href="+alfa.html">水泳の＋&alpha;について</a><br>
+　　　　　<a href="+alfa.html">考えてみましょう </a><br>
+　◎<a href="annaisyo.html">案内書</a>(諸費用、時間割等)<br>
+　◎<a href="test/test-kai.html">テスト会合格者分布</a><br>
+　◎<a href="suieitaikai/suieitaikai.html">館内水泳大会</a>(一般コース)<br>
+　◎<a href="suieitaikai/suieitaikai2015/record2015.pdf">館内水泳大会大会記録</a><br>
+　◎<a href="BestTime.html">強化コースベスト記録</a><br>
+　◎<a href="http://kyoka.youdoukan.co.jp/" target="_blank">強化コースホームページ</a><br>
+　◎<a href="anke-to/anke-to.html">ようどう館って厳しい？</a><br>
+　◎<a href="image.html">イメージアンケート</a><br> 
+　◎<a href="album.html">昔のアルバム</a><br>
+　◎<a href="suitaianke/suitaianke.html">小学校における水泳大会の</a><br>
+　　　　　　　　　　 <a href="suitaianke/suitaianke.html">実態調査</a><br>
+　◎<a href="syuryousei.html">ようどう館修了者一覧</a><br>
+　　　　　　　(４級以上到達者) </p></td>
+  </tr>
+  <tr> 
+    <td width="247" height="197" valign="top"><table width="246" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td colspan="2" class="ten"><br>
+            　<span class="ten">大和校：<a href="http://www.mapion.co.jp/m/33.3155277777778_130.297469444444_8/">佐賀市大和町久池井1002-1</a><br>
+            　　　　　　0952-62-4853<br>
+            　佐賀校：<a href="http://www.mapion.co.jp/m/33.2488333333333_130.278283333333_9/">佐賀市新栄東1-7-13</a><br>
+            　　　　　　0952-25-3539 </span></td>
+        </tr>
+        <tr> 
+          <td width="51" height="58"><a href="mailto:info@youdoukan.co.jp"><img src="image/mail2_a.gif" width="49" height="50"></a></td>
+          <td width="195" valign="top"> 
+            <p>              　<span class="twelve">営業時間：月〜金 12時〜<br>
+              　　　　　　　土　　9時〜<br>
+              　日曜日は休館日です </span></p>
+          </td>
+        </tr>
+      </table>
+      <hr width="80%">
+      <p><br>
+      　　　　《更新情報》</p>
+      <p>(2016.1.18)<br>
+　<a href="test/test-kai.html">テスト会合格者分布</a><br>
+　　　　　　　　更新しました</p>
+      <p>(2016.1.17)<br>
+        　<a href="backnumber2.html">おたより</a>更新しました</p>
+      <p>(2015.12.12)<br>
+        　<a href="backnumber2.html">おたより</a>更新しました</p>
+      <p>(2015.12.12)<br>
+        　<a href="tubuyaki.html">先生のつぶやき</a>更新しました</p>
+      <p>(2015.11.14)<br>
+        　<a href="backnumber2.html">おたより</a>更新しました </p>
+      <p>(2015.10.25)<br>
+        　<a href="suieitaikai/suieitaikai.html">館内水泳大会</a>更新しました</p>
+      <p>(2015.10.20)<br>
+        　<a href="backnumber2.html">おたより</a>更新しました </p>
+      <p>(2015.10.20)<br>
+        　<a href="tubuyaki.html">先生のつぶやき</a>更新しました      </p>
+      <p>(2015.9.12)<br>
+        　<a href="tubuyaki.html">先生のつぶやき</a>更新しました      </p>
+      <p>(2015.8.4)<br>
+        　<a href="syuryousei.html">平成26年度修了生</a>UPしました      </p>
+      <p>(2015.5.7)<br>
+        　<a href="album.html">昔のアルバム</a>UPしました      </p>
+      <p>(2014.11.18)<br>
+        　11/16に「キッズ大会」に<br>
+        　出場しました&rarr;<a href="http://www.kizoa.com/Video-Maker/d15036866k1106692o1/2014" target="_blank">スライドショー</a></p>
+      <p>(2011.4.24)<br>
+        　<a href="fu-kei.html">練習風景動画</a>UPしました</p>
+      <p>(2010.4.2)<br>
+    　ホームページ リニューアル<br>
+    　　　　　　　　　　 しました</p></td>
+  </tr>
+  <tr> 
+    <td rowspan="4" valign="top"><p><br>
+    </p></td>
+    <td rowspan="4" height="2" valign="top">&nbsp;</td>
+    <td rowspan="4" height="2" valign="top"> <br>
+      　</td>
+  </tr>
+  <tr> </tr>
+  <tr> </tr>
+  <tr> </tr>
+</table>
+<p>　</p>
+<p>　</p>
+</body>
+</html>

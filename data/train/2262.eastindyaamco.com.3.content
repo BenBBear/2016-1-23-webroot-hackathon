@@ -1,0 +1,492 @@
+
+
+<head>
+        <title>Make an appointment with the Car Care Experts! AAMCO</title>
+        <link rel="stylesheet" type="text/css" href="includes/adPool.css">
+<link rel="shortcut icon" href="images/AAMCO_logo_ico.ico" />
+        <script type="text/javascript" src="includes/noRightClick.js"></script>
+        <script language="JavaScript">
+                function form1_validator(theForm)
+                {
+                        var location = theForm.locations.options[theForm.locations.selectedIndex].value
+                        theForm.selectedLocation.value=location;
+                        return (true);
+                }
+				
+				function submitLink(pageName)
+				{
+				 	  document.linkForm.action = pageName;
+				  	  document.linkForm.method = "post";
+				  	  document.linkForm.submit();	
+					  return (true);	
+				}
+        </script>
+</head>
+
+<body bgcolor="#e1e1e1" leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0">
+<center>
+
+<script language="JavaScript">
+	
+	
+	 jQuery(document).ready(function ($) {
+
+        $('a[rel*=facebox]').facebox();
+        $.facebox.settings.opacity = 0.5;
+
+    })
+    function hidediv() {   
+        $('#facebox').hide();
+        $("#facebox_overlay").removeClass("facebox_overlayBG");
+        $("#facebox_overlay").addClass("facebox_hide");
+        $("#facebox_overlay").remove();
+        $('#facebox .content').removeClass().addClass('content');
+        $('#facebox .loading').remove();  
+    } 
+
+	function showdiv() {
+        alert("1111");
+        $('#sendToPhone').show();
+        //document.getElementById("sendToPhone").style.display = "block";
+    }
+
+	 function sendSMS() {
+        var flag = true;
+        var txtPhone1 ="";
+        var txtPhone2 = "";
+        var drpCarrier ="0";
+        var myCity = "";
+        var myAddress = "";
+
+        $('input[name="txtPhone1"]').each(function (index) {
+          
+            if ($(this).val() != "") {
+                txtPhone1 = $(this).val();
+            }
+        });
+        $('input[name="txtPhone2"]').each(function (index) {
+            if ($(this).val() != "") {
+                txtPhone2 = $(this).val();
+            }
+        });
+        $('select[name="drpCarrier"]').each(function (index) {
+           
+            if ($(this).val() != "0") {
+                drpCarrier = $(this).val();
+            }
+        });
+
+
+        if (txtPhone1 == "") {
+            alert("Must fill in all fields1");
+            flag = false;
+            $('input[name="txtPhone1"]').each(function (index) {
+              $(this).focus(); 
+          });
+            return;
+        }
+        if (txtPhone2 == "") {
+            alert("Must fill in all fields2");
+            flag = false;
+            $('input[name="txtPhone2"]').each(function (index) {
+              $(this).focus();
+                 });
+            return;
+        }
+        if (drpCarrier== "0") {
+            alert("Must fill in all fields3");
+            flag = false;
+            $('select[name="drpCarrier"]').each(function (index) {
+              $(this).focus();
+                 });
+          
+            return;
+        }
+		tempStr = "txtPhone1=" + txtPhone1 + "&txtPhone2=" + txtPhone2 + "&drpCarrier=" + drpCarrier+"&number=1 (877) 79-AAMCO";		
+		getMessage(tempStr);
+		 
+	}
+    
+
+	function XHConn()
+	{
+	  var xmlhttp, bComplete = false;
+	  try { xmlhttp = new ActiveXObject("Msxml2.XMLHTTP"); }
+	  catch (e) { try { xmlhttp = new ActiveXObject("Microsoft.XMLHTTP"); }
+	  catch (e) { try { xmlhttp = new XMLHttpRequest(); }
+	  catch (e) { xmlhttp = false; }}}
+	  if (!xmlhttp) return null;
+	  this.connect = function(sURL, sMethod, sVars, fnDone)
+	  {
+		if (!xmlhttp) return false;
+		bComplete = false;
+		sMethod = sMethod.toUpperCase();
+		try {
+		  if (sMethod == "GET")
+		  {
+			xmlhttp.open(sMethod, sURL+"?"+sVars, true);
+			sVars = "";
+		  }
+		  else
+		  {
+			xmlhttp.open(sMethod, sURL, true);
+			xmlhttp.setRequestHeader("Method", "POST "+sURL+" HTTP/1.1");
+			xmlhttp.setRequestHeader("Content-Type",
+			  "application/x-www-form-urlencoded");
+		  }
+		  xmlhttp.onreadystatechange = function(){
+			if (xmlhttp.readyState == 4 && !bComplete)
+			{
+			  bComplete = true;
+			  fnDone(xmlhttp);
+			}};
+		  xmlhttp.send(sVars);
+		}
+		catch(z) { return false; }
+		return true;
+	  };
+	  return this;
+	}
+
+	// doAJAXCall : Generic AJAX Handler, used with XHConn
+	// PageURL : the server side page we are calling
+	// ReqType : either POST or GET, typically POST
+	// PostStr : parameter passed in a query string format 'param1=foo&param2=bar'
+	// FunctionName : the JS function that will handle the response
+
+	var doAJAXCall = function (PageURL, ReqType, PostStr, FunctionName) {
+		// create the new object for doing the XMLHTTP Request
+		var myConn = new XHConn();
+
+		// check if the browser supports it
+		if (myConn)	{	
+			// XMLHTTPRequest is supported by the browser, continue with the request
+			myConn.connect('' + PageURL + '', '' + ReqType + '', '' + PostStr + '', FunctionName);    
+		} 
+		else {
+			// Not support by this browser, alert the user
+			alert("XMLHTTP not available. Try a newer/better browser, this application will not work!");   
+		}
+	}
+
+	// launched from button click 
+	var getMessage = function (ParamStr) {
+		// build up the post string when passing variables to the server side page
+		var PostStr = ParamStr;
+		// use the generic function to make the request
+		doAJAXCall('sendSMS.asp', 'POST', PostStr, showMessageResponse);
+	}
+
+	// The function for handling the response from the server
+	var showMessageResponse = function (oXML) { 
+		
+		// get the response text, into a variable
+		var response = oXML.responseText;
+		
+		// update the Div to show the result from the server
+		//document.getElementById("responseDiv").innerHTML = response;
+		alert(response);
+		hidediv();
+	};
+</script>
+
+
+
+<div id="header_main"><!--original link of logo   javascript: location.href='index.asp?startPage=&request=';-->
+	<div id="logoHolder" style="background:url(/ap/images/AAMCO_logo.png) no-repeat 17px 11px;" onclick="javascript: submitLink('index.asp?request=');"></div>
+    <div id="centerNpath">
+    	<div id="titleCenterName">
+            <h2>Greater Indy</h2>
+            <h3>We put the Care back into Car Care - Transmissions, Brakes, Maintenance, and a whole lot more!</h3>
+        </div>
+	</div>
+    <div id="phoneNicons">
+    	<div id="phoneHolder">
+        	<div id="phoneNum">1 (877) 79-AAMCO</div>
+            <!--div id="textToPhone"><a  href="#sendToPhone" rel="facebox"></a></div-->
+        <!-- POP UP starts >
+            <div id="sendToPhone" style="display:none; z-index:999; border-radius:6px; border: 1px solid #ccc; background:#f4f4f4; width: 330px; padding:10px; position:relative;">
+                <div id="cellNumber">Cellular Phone Number</div>
+                <div>
+                    <input type="text" class="txtPhone1" style="width:45px;"  id="txtPhone1" maxlength="3" name="txtPhone1"/> - 
+                    <input type="text" class="txtPhone2"  style="Width:80px;" id="txtPhone2" maxlength="7" name="txtPhone2"/>	
+                </div>
+                <div class="clear"></div>
+	
+                <div id="phoneCarrier">Cellular Phone Carrier</div>
+                <div style="padding-top: 10px; width: 200px;">
+                    <select style="Width:150px" class="dropdown" id="drpCarrier" name="drpCarrier" drdown="drpCarrier">
+                        <option value="0">--Select--</option>
+                        <option value="@txt.att.net">AT&amp;T</option>
+                        <option value="@qwestmp.com">Qwest</option>
+                        <option value="@tmomail.net">T-Mobile</option>
+                        <option value="@vtext.com">Verizon</option>
+                        <option value="@messaging.sprintpcs.com">Sprint</option>
+                        <option value="@vmobl.com">Virgin Mobile</option>
+                        <option value="@messaging.nextel.com">Nextel</option>
+                        <option value="@message.alltel.com">Alltel</option>
+                        <option value="@mymetropcs.com">Metro PCS</option>
+                        <option value="@ptel.com">Powertel</option>
+                        <option value="@myboostmobile.com">Boost Mobile</option>
+                        <option value="@tms.suncom.com">Suncom</option>
+                        <option value="@mmst5.tracfone.com">Tracfone</option>
+                        <option value="@email.uscc.net">U.S. Cellular</option>
+                    </select>
+                </div>
+                <div style="text-align: center; padding-top: 15px;"><a  href="#sendToPhone" rel="facebox"></a></div>
+                <div id="buttonsHolder">
+                	<img id="preloader" src="images/preloader_64x64.gif"  class="preloader" style="display:none; height: 15px; width: 20px;"  /> 
+                    <input type="button" onclick="sendSMS()" class="button" tabindex="68" id="btnSend" value="Send 2 Phone" name="btnSend"/> 
+                    <input type="button" value="Cancel" id="btnCancel" onclick="javascript: hidediv();" class="button"/>
+                </div>
+            </div>
+        < POP UP ends -->
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<table width="770" border="0" bordercolor="#ff00ff" cellspacing="0" cellpadding="0">
+        <tr>
+                <td width="212" valign="top" background="images/sideBG.gif">
+					
+<script type="text/javascript">
+		
+		function openCoupons(ind){
+			   	window.open('couponsPrint.asp?couponNum='+ind+'&index=index.asp&adPoolNum=170&request=','MyWindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=500,height=400');
+							
+		}
+		
+</script>
+<table width="212" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td height="153" class="text" valign="top" style="padding-top: 20px; background: url(/ap/images/sideBG.png) repeat-y;">
+            <table width="212" border="0" cellspacing="0" cellpadding="2">
+                <tr>
+                    <td class="text" align="right" style="border-bottom: solid 1px #e31a23;"><a href="javascript: submitLink('/ap/index.asp?request=');" class="linkMenu" style="padding: 10px 20px; display:block;">Home</a></td>
+                </tr>
+                
+                <tr>
+                    <td class="text" align="right" style="border-bottom: solid 1px #e31a23;"><a href="javascript: submitLink('/ap/trustAamco.asp?request=');" class="linkMenu" style="padding: 10px 20px; display:block;">Trust AAMCO</a></td>
+                </tr>
+                  					
+                <tr>
+                    <td class="text" align="right" style="border-bottom: solid 1px #e31a23;"><a href="javascript: submitLink('/ap/makeAppt.asp?request=');" class="linkMenu" style="padding: 5px 20px; display:block;">Make an Appointment</a></td>
+                </tr>
+				
+                <tr>
+                    <td class="text" align="right" style="border-bottom: solid 1px #e31a23;"><a href="javascript: submitLink('/ap/specOffers.asp?request=');" class="linkMenu" style="padding: 5px 20px; display:block;">COUPONS</a></td>
+                </tr>
+				
+            </table>
+        </td>
+    </tr>
+    <!--tr>
+        <td class="text" align="right" style="border-bottom: solid 1px #304c84; padding-right: 20px;"><a href="javascript: submitLink('makeAppt.asp?request=');" class="linkMenu" style="padding-left: 15px;">
+        <img src="images/comm_cusReview.png" width="145" height="60" alt="Customers Lobby Reviews" border="0"/>	
+        </a></td>						
+    </tr-->
+    <tr>
+            <td class="text" valign="top">
+					
+                    <a href="javascript: submitLink('/ap/specOffers.asp?request=');" ><img src="/ap/images/i_specOffers.gif" width="212" height="83" alt="Online offers from the Transmission Experts" border="0"/></a><br/>
+					
+                            <!--<a href="javascript: submitLink('apptScheduling.asp?request=');"><img src="images/i_apptSched.gif" width="212" height="75" alt="Schedule your appt. today, with the Transmission Experts" border="0"/></a><br/>-->
+                        
+                    <br/>
+                    <br/>
+                    <img src="/ap/images/i_callFree.gif" width="212" height="27" alt="" border="0"/><br/>
+                    <span class="textCallFree">1 (877) 79-AAMCO</span><br/>
+                    <br/>
+                    <br/>
+                    <a href="javascript: submitLink('/ap/completeCarCare.asp?request=');"><img src='/ap/images/logoCCC.gif' alt="" border="0"></a><br/>
+                    <br/>
+                    <div align="center">
+                    											
+                        <table border="0" width="190" bordercolor="#ff00ff" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td width="190">
+                                    <table width="190" height="120" border="0" background="/ap/images/BGbanner_SAMPLE.jpg" cellspacing="0" cellpadding="0" style="border: dashed 4px #fff000;">
+                                        <tr>
+                                            <td class="textTeaserCouponIN" align="center">
+                                                <b>FREE Transmission Multi-Point Inspection</b><br/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="textSmall" align="center"><br/>													
+                                                <b><a href="javascript: void(0);" onclick="javascript: openCoupons('1002');" class="linkPage">Click here</a> to redeem this offer</b>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    
+                    </div>
+            </td>
+        </tr>
+</table>
+<form style="margin: 0px;" name="form1" method="post">
+	<input type="hidden" name="selectedLocation" value="" />
+	<input type="hidden" name="couponNum" value="" />
+	<input type="hidden" name="couponTitle" value="" />
+	<input type="hidden" name="request" value='' />
+	<input type="Hidden" name="startPage" value='index.asp' />	
+</form>
+                </td>
+                <td valign="top" bgcolor="#ffffff">
+                        <table border="0" width="558" bordercolor="#ff00ff" cellspacing="0" cellpadding="0">
+                        	<tr>
+    <td>
+        <div id="adpoolThemeBackground">
+            
+                 <div style="height:143px; width:558px; background:url(../imagegeneral/d6/images/hp_promoImg.jpg);" >
+                    <table border="0" width="558" background="images/header.gif" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td width="355">&nbsp;</td>
+                            <td width="203">
+                                <!--img name="IMGguy" src="" alt="AAMCO Transmissions &amp; Total Car Care Service." border="0" style="position: absolute; z-index: 3; margin: -71px -2px;"/--></td>
+                        </tr>
+                    </table>
+                </div>
+            
+        </div>
+    </td>
+</tr>
+                        <!-- Path Starts -->
+                            <tr>
+                                <td bgcolor="#ffffff" class="path" height="20" style="border-bottom: solid 1px #c00b24; height: 20px; padding-left: 15px;">
+                                        <b>You Are Here:</b> <a href="javascript: submitLink('index.asp?request=');" class="linkPath">Home</a> | Make an Appointment
+                                </td>
+                            </tr>
+                        <!-- Path Ends -->
+                                <tr>
+                        <!-- Content Starts -->
+                                        <td class="text" valign="top" style="padding-top: 15px; padding-left: 15px;">
+                                                <b>Get Back on the Road with Confidence!</b><br/>
+                                                Bring your car today, to one of 
+												our Complete Car Care AAMCO centers,<br>
+												conveniently located throughout&nbsp; 
+												Greater Indy. area.<br/>
+                                               <table border="0" width="528" bordercolor="#ff00ff" cellspacing="0" cellpadding="0">
+                                                        
+                                                               <tr><td colspan="3">&nbsp;</td></tr>
+                                                                <tr><td colspan="3" bgcolor="#eeeeee" class="text" style="padding-left: 10px;"><b>Indiana</b></td></tr>
+                                                                
+                                                        <tr>
+                                                                <td>
+                                                                        <table border="0" width="528" bordercolor="#ff00ff" cellspacing="0" cellpadding="0">
+                                                                                <tr>
+                                                                                        <td width="75"><a href='centerInfo.asp?selectedLocation=3178451744&index=index.asp&request='><img src="images/logoCenter.gif" width="75" height="75" alt="Click here for center information" border="0"></a></td>
+                                                                                        <td width="13" align="center"><img src="images/divider.gif" width="7" height="75" alt="" border="0"></td>
+                                                                                        <td class="text">
+                                                                                                <b><a href='apptScheduling.asp?selectedLocation=3178451744&request=' class="linkPage">Indianapolis</a></b><!-- &gt;&gt; <a href='' class="linkPage"><img src="images/btn_go.gif" align="absmiddle" alt="" width="37" height="24" border="0"></a--><br/>
+                                                                                                8141&nbsp;North Craig Street,&nbsp;Indianapolis, IN&nbsp;46250<br/>
+                                                                                                (317) 429-0348 | <a href='apptScheduling.asp?selectedLocation=3178451744&request=' class="linkFooter"><b>Schedule appt. online</b></a> | 
+                                                                                                
+                                                                                                	<a href='http://www.neindyaamco.com?request=' class="linkPage">Visit Website</a><br/>
+                                                                                                <br/>
+                                                                                        </td>
+                                                                                </tr>
+                                                                        </table>
+                                                                </td>
+                                                        </tr>
+                                                        <tr><td colspan="3" style="border-bottom: solid 1px #06073f;"><img src="images/spacer.gif" width="1" height="1" alt="" border="0"></td></tr>
+                                                        
+                                                        <tr>
+                                                                <td>
+                                                                        <table border="0" width="528" bordercolor="#ff00ff" cellspacing="0" cellpadding="0">
+                                                                                <tr>
+                                                                                        <td width="75"><a href='centerInfo.asp?selectedLocation=3178729457&index=index.asp&request='><img src="images/logoCenter.gif" width="75" height="75" alt="Click here for center information" border="0"></a></td>
+                                                                                        <td width="13" align="center"><img src="images/divider.gif" width="7" height="75" alt="" border="0"></td>
+                                                                                        <td class="text">
+                                                                                                <b><a href='apptScheduling.asp?selectedLocation=3178729457&request=' class="linkPage">Indianapolis</a></b><!-- &gt;&gt; <a href='' class="linkPage"><img src="images/btn_go.gif" align="absmiddle" alt="" width="37" height="24" border="0"></a--><br/>
+                                                                                                8516&nbsp;North Michigan Road,&nbsp;Indianapolis, IN&nbsp;46268<br/>
+                                                                                                (317) 489-6156 | <a href='apptScheduling.asp?selectedLocation=3178729457&request=' class="linkFooter"><b>Schedule appt. online</b></a> | 
+                                                                                                
+                                                                                                	<a href='http://www.nwindyaamco.com?request=' class="linkPage">Visit Website</a><br/>
+                                                                                                <br/>
+                                                                                        </td>
+                                                                                </tr>
+                                                                        </table>
+                                                                </td>
+                                                        </tr>
+                                                        <tr><td colspan="3" style="border-bottom: solid 1px #06073f;"><img src="images/spacer.gif" width="1" height="1" alt="" border="0"></td></tr>
+                                                        
+                                                </table>
+                                        </td>
+                        <!-- Content Ends -->
+                                </tr>
+                        </table>
+                </td>
+        </tr>
+        <tr><td colspan="2" height="19" style="vertical-align: bottom; height: 19px;"><img src="images/siteBot.gif" width="770" height="19" alt="" border="0"></td></tr>
+</table>
+<br/>
+
+<table border="0" width="770" cellspacing="0" cellpadding="0">
+	<tr>
+		<td align="center" valign="top" class="textFooter"><br/>
+			<span class="st_sharethis" st_url="http://sharethis.com"; st_title="Sharing Rocks!" displayText="ShareThis" ></span>
+			<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+			<script type="text/javascript">
+			stLight.options({
+			publisher:'12345',
+			});
+			</script>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<iframe src="http://www.facebook.com/plugins/like.php?href=greaterindy.aamcocenters.com&amp;layout=standard&amp;show_faces=false&amp;width=320&amp;action=like&amp;colorscheme=light&amp;height=23"; scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:320px; height:23px;" allowTransparency="true"></iframe>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" >Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js" height="80"></script>
+												
+											
+			<hr color="#18377f" size="1" width="730"/>
+			Phone: 1 (877) 79-AAMCO| <a href="javascript: submitLink('makeAppt.asp?request=');" class="linkFooter">Make an Appointment</a> | <a href="javascript: submitLink('siteMap.asp?request=');" class="linkFooter">Site Map</a> | 
+			<a href="javascript: void(0);" onclick="javascript: window.open('http://www.aamco.com/sites/privacy.html','MyWindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=540,height=400');" class="linkFooter">Privacy Policy</a><br/>
+			<b></b><br/>
+			ATI - All Rights Reserved, Locally Owned And Operated.<br/>
+			<br/>
+			<span class="textFooterS">Content and images on <b>this website may not be reproduced</b> without explicit permission.<br/>
+			Please contact <a class="linkFooter" href="mailto:info@pwmedia.com?subject=regading website information / PW MEdia products & services">PW Media</a> for additional details.</span>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			&nbsp;
+		</td>
+	</tr>
+	<tr>
+		<td align="center">
+			<A target="_blank" HREF="http://www.copyscape.com/dmca-takedown-notice-search/"><IMG SRC="http://banners.copyscape.com/images/cs-wh-3d-234x16.gif" ALT="Protected by Copyscape DMCA Takedown Notice Search Tool" TITLE="Protected by Copyscape Plagiarism Checker - Do not copy content from this page." WIDTH="234" HEIGHT="16" BORDER="0"></A>
+		</td>
+	</tr>
+</table>
+<br/>
+</center>
+
+<script type="text/javascript">
+//_uacct = "UA-4922440-3";
+//urchinTracker();
+
+(function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date(); a = s.createElement(o),
+    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+ga('create', 'UA-4922440-3', 'auto');
+ga('require', 'displayfeatures');
+ga('send', 'pageview');
+</script><script type="text/javascript">
+
+ga('create', 'UA-5415608-1', 'auto',{'name': 'AllTracker'});
+ga('AllTracker.require', 'displayfeatures');
+ga('AllTracker.send', 'pageview');
+</script> 
+</body>
+</html>
+<form method="POST" action="" name="linkForm" language="JavaScript" style="margin: 0px;">
+    <input type="Hidden" name="startPage" value='index.asp' />
+	<INPUT type="Hidden" name="request" value='' />	
+</form>

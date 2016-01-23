@@ -1,0 +1,513 @@
+<!DOCTYPE HTML>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>
+    
+    Sugar Grove Square -  Apartment Homes in Westerville, OH
+</title>
+        
+        
+        <meta name="description" content="">
+        <meta name="keywords" content="Westerville, OH Apartment Homes, Apartment Homes in Westerville, Westerville Apartment Homes, Sugar Grove Square">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+
+        
+        <script src="https://static2.apts247.info/cache/js/modernizr.js"></script>
+
+        <!--[if lte IE 8]>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.js"></script>
+        <script>window.jQuery || document.write('<script src="https://static2.apts247.info/cms/js/jquery-1.10.2.min.js">\x3C/script>')</script>
+        <![endif]-->
+        <!--[if gte IE 9]><!-->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
+        <script>window.jQuery || document.write('<script src="https://static2.apts247.info/cms/js/jquery-2.0.3.min.js">\x3C/script>')</script>
+        <!--<![endif]-->
+
+        
+        <script src="https://static2.apts247.info/cache/js/underscore-min.js"></script>
+        
+        <script src="https://static2.apts247.info/cache/js/json2.js"></script>
+        
+        <script src="https://static2.apts247.info/cache/js/backbone-min.js"></script>
+        <script src="https://static2.apts247.info/cache/js/backbone-tastypie.js"></script>
+        
+        
+        <script>
+            var api_key = "ddac66dc9e20d442d44968725d5a2e9938078b08";
+        </script>
+        
+        
+        
+        <script src="https://static2.apts247.info/js/communityextrainfo.js"></script>
+        <script src="https://static2.apts247.info/js/tokens.js"></script>
+        
+        
+    <script src="https://static2.apts247.info/cache/js/jquery.mobilemenu.js"></script>
+    <script src="https://static2.apts247.info/js/jquery.marquee2.js"></script>
+    <script src="https://static2.apts247.info/js/marquee.js"></script>
+    <script src="https://static2.apts247.info/js/zoomfix.js"></script>
+    <script src="/gridmedia/js/jquery.plusslider-min.js"></script>
+    <script src="/gridmedia/js/__basescripts.js"></script>
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+        
+    <script src="https://static2.apts247.info/cache/js/jquery.cookie.js"></script>
+    
+<script>
+    function parseISO8601(dateStringInRange) {
+        var isoExp = /^\s*(\d{4})-(\d\d)-(\d\d)\s*$/,
+            date = new Date(NaN), month,
+            parts = isoExp.exec(dateStringInRange);
+    
+        if(parts) {
+          month = +parts[2];
+          date.setFullYear(parts[1], month - 1, parts[3]);
+          if(month != date.getMonth() + 1) {
+            date.setTime(NaN);
+          }
+        }
+        return date;
+    }
+</script>
+
+<script type="text/template" id="prepend_promotion_template">
+</script>
+
+
+<script type="text/template" id="promotions_template">
+    <div class="promotions">
+    </div>
+</script>
+
+<script type="text/template" id="promotion_template">
+    <%
+    sd = parseISO8601(start_date);
+    ed = parseISO8601(end_date);
+    start_date = (sd.getMonth()+1)+"-"+sd.getDate()+"-"+sd.getFullYear();
+    end_date = (ed.getMonth()+1)+"-"+ed.getDate()+"-"+ed.getFullYear();
+    %>
+    
+    <div class="promotion twelve" style="background-color: <%= body_background_color %>; color: <%= body_foreground_color %>;">
+        <h4 style="background-color: <%= background_color %>; color: <%= foreground_color %>;">
+            <%= headline %>
+        </h4>
+        <p><%= body %></p>
+        <% if (image) { %>
+            <p><img src="<%= image %>" class="img-responsive"></p>
+        <% } %>
+        <p >Valid <%= start_date %> to <%= end_date %></p><br>
+        <a class="get_coupon_emailed_to_you_link button" id="a_promotion_<%= id %>" href="#">Click here to have a coupon e-mailed to you.</a>
+        <div class="errors" id="div_errors_<%= id %>"></div>
+        <form class="form_promotion" id="form_promotion_<%= id %>">
+            <div id="div_input_name">
+                <label for="id_name_<%= id %>">Name:</label>
+                <input name="name">
+            </div>
+            <div id="div_input_email">
+                <label for="id_email_<%= id %>">Email:</label>
+                <input name="email">
+            </div>
+            <div id="id_ripple">
+                <input name="ripple">
+            </div>
+            <div>
+                <input name="submit" type="submit">
+            </div>
+        </form>
+    </div>
+</script>
+    
+<script src="https://static2.apts247.info/cache/backbone/promotions.app.js"></script>
+<script src="https://static2.apts247.info/js/promotions.js"></script>
+
+<link rel="stylesheet" href="https://static2.apts247.info/jquery_ui/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="https://static2.apts247.info/css/validationEngine.jquery.css">
+<link rel="stylesheet" href="https://static2.apts247.info/css/jquery-ui-datetime-addon.css">
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script type="text/template" id="pep_promotions_template">
+    <div class="promotions">
+    </div>
+</script>
+    
+<script type="text/template" id="pep_promotion_template">
+    <%
+    sd = parseISO8601(start_date);
+    ed = parseISO8601(end_date);
+    start_date = (sd.getMonth()+1)+"-"+sd.getDate()+"-"+sd.getFullYear();
+    end_date = (ed.getMonth()+1)+"-"+ed.getDate()+"-"+ed.getFullYear();
+    %>
+    
+   <div class="promotion twelve" style="background-color: <%= body_background_color %>; color: <%= body_foreground_color %>;">
+        <h4 style="background-color: <%= background_color %>; color: <%= foreground_color %>;">
+            <%= headline %>
+        </h4>
+        <p><%= body %></p>
+        <p>Valid <%= start_date %> to <%= end_date %></p><br>
+        <% if (image) { %>
+            <p><img src="<%= image %>" class="img-responsive"></p>
+        <% } %>
+        <div class="errors" id="div_errors_<%= id %>"></div>
+        <form class="form_pep_promotion" id="form_pep_promotion_<%= id %>" style="display: inline-block;">
+            <div id="div_input_name">
+                <label for="id_name_<%= id %>">Name:</label>
+                <input name="name">
+            </div><br>
+            <div id="div_input_email">
+                <label for="id_email_<%= id %>">Email:</label>
+                <input name="email">
+            </div><br>
+            <div id="div_input_phone">
+                <label for="phone_<%= id %>">Phone:</label>
+                <input name="phone">
+            </div><br>
+            <div id="div_input_move_in_date">
+                <label for="move_in_date_<%= id %>">Move in date:</label>
+                <input name="move_in_date">
+            </div><br>
+            <div id="div_input_preferred_employer">
+                <label for="id_preferred_employer_<%= id %>">Preferred Employer:</label>
+                <select name="preferred_employer">
+                    <% _.each(preferred_employers, function(pe) { %>
+                        <option value="<%= pe.name %>"><%= pe.name %></option>
+                    <% }); %>
+                </select>
+            </div><br>
+            <div id="id_ripple">
+                <input name="ripple">
+            </div>
+            <div>
+                <input name="submit" type="submit">
+            </div>
+        </form>
+    </div>
+</script>
+
+
+
+    <script type='text/javascript' src='/gridmedia/js/__homescripts.js'></script>
+
+    
+
+        
+        <link rel="stylesheet" href="https://static2.apts247.info/css/global.css">
+        
+        
+        
+    <link rel="stylesheet" href="/gridmedia/css/main.css">
+    <link rel="stylesheet" href="/gridmedia/css/__3d_retina.css">
+    <link rel="stylesheet" href="/gridmedia/css/__theme.css">
+    
+        <link href='http://fonts.googleapis.com/css?family=Julius+Sans+One|Oxygen' rel='stylesheet' type='text/css'>
+    
+    
+        <link rel="stylesheet" href="/gridmedia/css/__print.css" type="text/css" media="print"> 
+    
+    
+    <script src="/gridmedia/js/selectivizr-min.js"></script>
+    <script src="/gridmedia/js/respond.min.js"></script>
+
+        
+
+        <link rel="canonical" href="http://sugargrovesquare.com/">
+
+        
+        
+        <script>
+            var _gaq = _gaq || [];
+            _gaq.push(["_setAccount", "UA-26812135-2"]);
+            _gaq.push(["_trackPageview"]);
+
+            (function() {
+                var ga = document.createElement("script");
+                ga.type = "text/javascript"; ga.async = true;
+                ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+        
+        
+        <meta name="google-site-verification" content="pWF-T0WLUrZfzANFmX4qgcXon7nE1Exn0vfYORAQI4c">
+        
+        
+
+        
+        
+        
+
+        
+            
+        
+    </head>
+    <body id="body_home">
+        
+        <div class="container">
+            
+
+
+
+
+    <div class="container" id="site_container">
+        <header class="sixteen columns" role="banner">
+            
+                
+            
+           
+                <span class="topphone api-phone">614-882-7757</span>
+            
+            
+            <div class="max">
+                
+                    <h1>Sugar Grove Square</h1>
+                    <h2>Apartment Homes</h2>
+                
+                <div class="imagebar">
+                    <div id="fullbar">
+                        <img src="/gridmedia/img/slide1.jpg" alt="slideshow image">
+                        <img src="/gridmedia/img/slide2.jpg" alt="slideshow image">
+                        <img src="/gridmedia/img/slide3.jpg" alt="slideshow image">
+                        <img src="/gridmedia/img/slide4.jpg" alt="slideshow image">
+                    </div>
+                    <div id="slideshow1" class="slideshow">
+                        <img src="/gridmedia/img/slide1.jpg" alt="slideshow image">
+                        <img src="/gridmedia/img/slide2.jpg" alt="slideshow image" style="display:none;">
+                    </div>
+                    <div id="slideshow2" class="slideshow">     
+                        <img src="/gridmedia/img/slide3.jpg" alt="slideshow image">
+                        <img src="/gridmedia/img/slide4.jpg" alt="slideshow image" style="display:none;">
+                    </div>
+                    <div id="slideshow3" class="slideshow">
+                        <img src="/gridmedia/img/slide1.jpg" alt="slideshow image">
+                        <img src="/gridmedia/img/slide2.jpg" alt="slideshow image" style="display:none;">
+                        <img src="/gridmedia/img/slide3.jpg" alt="slideshow image" style="display:none;">
+                        <img src="/gridmedia/img/slide4.jpg" alt="slideshow image" style="display:none;">
+                    </div>
+                </div>
+            </div>
+            
+
+            <nav>
+                
+<ul class="mainnav">
+    <li><a href="/" id="home_ni"><p>Home</p></a></li><li>
+    <a href="/gallery/" id="photo_gallery_ni"><p>Photo Gallery</p></a></li><li>
+    <a href="/floorplans/" id="availability_ni"><p>Floor Plans</p></a></li><li>
+    <a href="/amenities/" id="amenities_ni"><p>Amenities</p></a></li><li>
+    <a href="/map/" id="directions_ni"><p>Directions</p></a></li><li>
+    <a href="/residents/" id="residents_ni"><p>Residents</p></a></li><li>
+    <a href="/contact_us/" id="contact_ni"><p>Contact Us</p></a></li>
+</ul>
+
+            </nav>
+        </header>
+
+        <div class="content sixteen columns">
+            <div id="marquee_container" class="sixteen columns">
+                <marquee id="marquee_yesreally">
+                </marquee>
+            </div>
+            
+            
+<div id="div_home_page_content">
+    <h1 class="api-token-home-header-1">Welcome To Sugar Grove Square</h1>
+    <h2 class="api-token-home-header-2">come home to a beautiful Westerville apartment home</h2>
+    <div id="div_home_page_text">
+    
+        <p class="api-token-home-page-text-1">Located on South State Street in the heart of Westerville, Ohio, Sugar Grove Square Apartments places you just minutes away from everything, including major highways, fabulous shopping, and fine dining. Enjoy the convenience of apartment home living here at Sugar Grove Square Apartments.</p>
+    
+    
+        <p class="api-token-home-page-text-2">Our spacious one bedroom floor plan offer our residents many lovely amenities, including an all electric kitchen with a pantry, plush wall-to-wall carpeting, central air conditioning & heating, all paid utilities, and private balconies on the 2nd and 3rd floors. Living in Westerville just doesn't get any better than this!</p>
+    
+    
+        <p class="api-token-home-page-text-3">Coming home to Sugar Grove Square Apartments with its beautiful landscaping will be a welcome sight! To accommodate our residents domestic needs, we provide a complete laundry facility, large recreation room, an elevator, and 24 hour emergency call system. Discover our peaceful, tranquil enclave, and choose your new home today!</p>
+    
+    </div>
+    <div id="div_promotions"></div>
+<div id="div_pep_promotions"></div>
+
+</div>
+<div class="home-right">
+    
+        <div class="address" itemscope itemtype="http://schema.org/ApartmentComplex">
+            <span itemprop="name">Sugar Grove Square</span><br>
+            <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                <span itemprop="streetAddress" class="api-address">530 South State Street</span><br>
+                
+                <span itemprop="addressLocality">Westerville, OH</span>
+                <span itemprop="postalCode">43081</span>
+            </div><br><br>
+            Phone: <span itemprop="telephone" class="api-phone">614-882-7757</span><br>
+            TTY Phone: <span itemprop="telephone">800-750-0750</span><br>
+            
+                Fax: <span itemprop="faxNumber" class="api-fax">614-882-7736</span>
+            <br><br>
+            <span itemprop="url">www.SugarGroveSquare.com</span>
+        </div>
+    
+    <div class="homelinks">
+        
+        
+
+
+
+            
+            
+            <a href="/ebrochure/" target="e-brochure" class="ebrochure"><p>e-Brochure</p></a>
+
+        
+        
+            <div class="refer-promo-holder">
+                <div class="refer-a-friend-wrapper">
+                    <a href="#" class="refer-a-friend-button"></a>
+                    <h4 class="refer-a-friend-button">Refer a Friend</h4>
+                    <p class="refer-a-friend-incentive api-refer_a_friend_text"></p>
+                    
+<div>
+    
+    <form class="refer-a-friend">
+        <label> Your Name:</label>
+        <input type="text" name="name" placeholder="Your name here">
+
+        <label>Your Email Address:</label>
+        <input type="email" name="sender_email" placeholder="Your email here">
+
+        <label>Subject:</label>
+        <input type="text" name="subject" placeholder="Email Subject">
+
+        <label>Recipient email address:</label>
+        <textarea name="recipients"></textarea>
+        <p>If entering multiple e-mail addresses, please insert a comma between them.</p>
+        <div id="refer-recaptcha"></div>
+        <input type="submit" value="Send">
+    </form>
+</div>
+<script>
+    var api_key = "ddac66dc9e20d442d44968725d5a2e9938078b08";
+    $(document).ready(function() {
+        $.getJSON("/api/v4/refer_a_friend/?format=json&api_key="+api_key, function(data) {
+            $("#refer-recaptcha").html(
+                '<div id="recaptcha" class="g-recaptcha" data-sitekey="' + data.sitekey + '" data-stoken="' + data.stoken + '"></div>'
+            );
+            var scriptTag=document.createElement("script");
+            scriptTag.setAttribute("type","text/javascript");
+            scriptTag.setAttribute("src", "https://www.google.com/recaptcha/api.js");
+            document.getElementsByTagName("head")[0].appendChild(scriptTag);
+        });
+        $(".refer-a-friend").on("submit", function(e) {
+            e.preventDefault();
+            var $this = $(this),
+                subject = $this.find("[name=subject]").val();
+
+            if (subject == "") {
+                subject = "You may be interested in Sugar Grove Square";
+            }
+            
+            // Run Google's Conversion Click Handler
+            if (typeof goog_report_conversion !== "undefined") {
+                goog_report_conversion();
+            }
+            $.ajax(
+                "/api/v4/refer_a_friend/?format=json&api_key="+api_key,
+                {
+                    type: "post",
+                    data: JSON.stringify({
+                        "sender": $this.find("[name=name]").val(),
+                        "sender_email": $this.find("[name=sender_email]").val(),
+                        "subject": subject,
+                        "recaptcha": grecaptcha.getResponse(),
+                        "recipients": $this.find("[name=recipients]").val()
+                    }),
+                    contentType: "application/json"
+                }
+            );
+        });
+    });
+</script>
+
+                    <p class="refer-a-friend-thanks">Thank you for sharing our community website!</p>
+                </div>
+            </div>
+        
+        
+    </div>
+</div>
+
+            
+            <!--
+            <nav class="tools">
+                <ul>
+                    <lh>Resident Tools</lh><br>
+                    <li><a href="" id="service_request">Service Request</a></li>
+                    <li><a href="" id="newsletter">Newsletter</a></li>
+                    <li><a href="" id="calendar">Calendar</a></li>
+                    <li><a href="" id="classifieds">Classifieds</a></li>
+                    <li><a href="" id="concierge">Concierge</a></li>
+                    <li><a href="" id="online_rent_pay">Online Rent Pay</a></li>
+                </ul>
+            </nav>
+            -->
+            
+            
+    
+            
+    
+
+        </div>
+    </div>
+
+        <footer>
+            
+                <div class="copyright">
+                    
+                        
+                            
+                                
+                                Property Management Services by The Barcus Company, Inc.<br>
+                            
+                        
+                    
+                     Copyright &copy; 2000 &ndash; 2016 <a href="http://www.apartments247.com" target="_blank">Apartments247.com</a> All designs, content and images are subject to Copyright Laws. All rights reserved.
+(<a href="http://files.apts247.com//files/common/disclaimer/index.html" class="poplink">disclaimer</a>) 
+| <a href="/blogs/">Latest Site Updates</a> | 
+                    
+                        <a href="http://cms.apts247.info/cms/" target="_blank" class="manage">Corporate Login</a>
+                    
+                </div>
+                
+                <div class="logo">
+                    <a href="http://www.apartments247.com/" target="new" class="apts247"></a>
+                </div>
+                <div class="eho">
+                    <a href="http://files.apts247.com/files/common/eho/index.html" class="eho poplink">
+                        <span class="ehoimg poplinks"></span><span>Equal Housing Opportunity</span>
+                    </a>
+                </div>
+                
+        </footer>
+
+
+
+        </div>
+        
+
+        
+        <script>
+            var static_url = "https://static2.apts247.info/";
+            community_extra_info = new CommunityExtraInfo();
+            community_extra_info.start();
+
+            tokens = new Tokens();
+            tokens.start();
+        </script>
+        
+        
+        
+    </body>
+</html>

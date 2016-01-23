@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="_token" content="56a2bc3464d191.20138857">
+  <title>ぽいぽい</title>
+  <link href="/common/css/bootstrap.min.css?r=00a98172" rel="stylesheet">
+  <link href="/common/css/ladda-themeless.min.css?r=1d75c2ec" rel="stylesheet">
+  <link href="/common/css/awesome-bootstrap-checkbox.css?r=445832a5" rel="stylesheet">
+  <link href="/common/css/font-awesome.min.css?r=445832a5" rel="stylesheet">
+  <link href="/css/frontend.css?r=de5a20ea" rel="stylesheet">
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-60901589-1', "auto");
+    ga('send', 'pageview');
+  </script>
+</head>
+<body>
+<div class="poipoi-global-notice">
+  <div class="container">
+    <div class="alert alert-success" role="alert">
+      <button type="button" class="close"><span>&times;</span></button>
+      <span class="glyphicon"></span>
+      <span class="message"></span>
+    </div>
+  </div>
+</div>
+<div class="poipoi-loading tooltip bottom">
+  <div class="tooltip-arrow"></div>
+  <div class="tooltip-inner">
+    <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
+    <span class="text">Loading!</span>
+  </div>
+</div>
+<div class="poipoi-navibar">
+  <div class="container">
+    <div class="row">
+      <a href="/help" target="_blank" class="poipoi-help-navtop poipoi-help-navtop-entrance"> 使用帮助 </a>
+      <a href="/help/02_03" target="_blank" class="poipoi-help-navtop poipoi-help-navtop-fee"> 费用说明 </a>
+      <div class="col-md-2 col-md-offset-1">
+        <a href="/" class="poipoi-navibar-logo">POIPOI LOGO</a>
+      </div>
+      <div class="col-md-7 col-md-offset-2">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a class="poipoi-navbar-cart"  href="/cart">购物车 <span class="badge" id="cart-badge"></span></a></li>
+                      <li class="dropdown-toggle">
+              <a class="poipoi-navbar-login" id="dLabel" href="javascript:;" data-target="#login" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">登录<span class="caret"></span></a>
+              <div class="poipoi-login-dropdown dropdown-menu dropdown-window" role="menu" aria-labelledby="dLabel">
+                <form id="login-form" role="form" ajax-url="/login" method="post" ajax-cb="reload()" aria-labelledby="dLabel" ajax-alert-inside="">
+                  <div class="alert alert-danger" role="alert" style="display:none;"></div>
+                  <div class="form-group">
+                    <label for="email">2POI账户</label>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="输入您的邮箱或电话">
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label" for="password">密码</label>
+                    <input type="password" class="form-control" name="password" id="password" placeholder="输入您的密码">
+                  </div>
+                  <button type="submit" class="btn btn-primary ladda-button" data-style="slide-right"><span class="ladda-label">登录</span></button>
+                </form>
+              </div><!-- /.dropdown-menu -->
+            </li>
+            <li><a class="poipoi-navbar-reg" href="/register">注册</a></li>
+                  </ul>
+      </div>
+    </div>
+  </div>
+</div><!-- poipoi-navibar -->
+<div class="poipoi-main">
+  <div class="poipoi-guide">
+    <div class="container">
+      <div class="col-md-8 col-md-offset-2 poipoi-guide-search">
+        <label class="poipoi-guide-search-label">
+          <a target="_blank" href="/help/01_01">
+            <span>点击了解如何使用2POI</span>
+            贴入您中意的商品地址，简单三步即可完成购买!
+          </a>
+        </label>
+        <div class="row">
+          <form ajax-url="/index/crawl" ajax-cb="poi.item_list.items = @.items; poi.item_list.url = @.url; poi.item_list.$apply(); $('#poipoi-ItemData').modal();">
+            <div class="col-md-10 poipoi-guide-search-input">
+              <input type="text" name="url" placeholder="填入 虎穴 或 CQ-WEB 地址" class="form-control">
+            </div>
+            <div class="col-md-2 poipoi-guide-search-button">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">Poi Poi ~</button>
+              </span>
+            </div>
+            <!-- <p class="help-block">
+              <span>
+                <span class="label label-primary">公告</span>
+                <a href="#" target="_blank"></a>
+              </span>
+            </p> -->
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="poipoi-carousel" class="carousel slide poipoi-carousel" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+              <div class="item active">
+          <a href="#CQCQ"><img src="http://side.2poi.jp/a7/a7e8/a7e8bb9945ad3773efa7f698e5ec8b67.jpg" alt="CQ CQ"></a>
+          <div class="carousel-caption">CQ CQ</div>
+        </div>
+              <div class="item ">
+          <a href="#POIPOI"><img src="http://side.2poi.jp/61/6137/61377ab3fb64630f683e993378ba6ea7.jpg" alt="POI POI "></a>
+          <div class="carousel-caption">POI POI </div>
+        </div>
+          </div>
+
+    <!-- Controls -->
+    <a class="left carousel-control" href="#poipoi-carousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    </a>
+    <a class="right carousel-control" href="#poipoi-carousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="poipoi-recommend clearfix">
+    <div class="col-sm-8">
+              <div class="poipoi-recommend-title">
+          <h2>向您推荐</h2>
+          <span>妹子也可以看的男性向作品</span>
+        </div>
+        <div class="poipoi-recommend-showcase clearfix">
+                      <a class="poipoi-recommend-item" href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fmailorder%2Farticle%2F21%2F0006%2F56%2F34%2F210006563417.html" target="_blank">
+              <img src="http://side.2poi.jp/93/9330/93304140b2644a0017e6d3e420a48723.jpg" />
+              <span class="poipoi-recommend-item-title">(CD)THE IDOLM@STER CINDERELLA MASTER 038一ノ瀬志希</span>
+              <span class="poipoi-recommend-item-subtitle">偶像大师灰姑娘 一ノ瀬志希角色歌</span>
+            </a>
+                      <a class="poipoi-recommend-item" href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fmailorder%2Farticle%2F20%2F0011%2F59%2F86%2F200011598667.html" target="_blank">
+              <img src="http://side.2poi.jp/4a/4ace/4ace24314f47cdc16140da8fd4189c07.jpg" />
+              <span class="poipoi-recommend-item-title">冴えない彼女(ヒロイン)の育てかた 9</span>
+              <span class="poipoi-recommend-item-subtitle">话题作路人女主的最新作。</span>
+            </a>
+                      <a class="poipoi-recommend-item" href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fmailorder%2Farticle%2F21%2F0006%2F56%2F21%2F210006562118.html" target="_blank">
+              <img src="http://side.2poi.jp/35/35bd/35bd91e4de4f5b2cae8ddc236a021d7c.jpg" />
+              <span class="poipoi-recommend-item-title">(CD)「ノラガミ ARAGOTO」エンディングテーマ ニルバナ(初回生産限定盤)</span>
+              <span class="poipoi-recommend-item-subtitle">野良神ARAGOTO ED</span>
+            </a>
+                      <a class="poipoi-recommend-item" href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fmailorder%2Farticle%2F21%2F0006%2F56%2F21%2F210006562100.html" target="_blank">
+              <img src="http://side.2poi.jp/de/deaf/deaf6c9f5c688d8bfec68b0085f3bf21.jpg" />
+              <span class="poipoi-recommend-item-title">(CD)「ご注文はうさぎですか??」エンディングテーマ ときめきポポロン?</span>
+              <span class="poipoi-recommend-item-subtitle">4个版本的兔子，萌到没朋友！</span>
+            </a>
+                      <a class="poipoi-recommend-item" href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fmailorder%2Farticle%2F04%2F0030%2F32%2F99%2F040030329977.html" target="_blank">
+              <img src="http://side.2poi.jp/09/0922/0922d63e0b1ec4ef6e8d5791ae595102.jpg" />
+              <span class="poipoi-recommend-item-title">いろハスハス</span>
+              <span class="poipoi-recommend-item-subtitle">一色股持续上涨中。</span>
+            </a>
+                      <a class="poipoi-recommend-item" href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fmailorder%2Farticle%2F20%2F0011%2F57%2F08%2F200011570866.html" target="_blank">
+              <img src="http://side.2poi.jp/df/dfce/dfce4eba70406dc49538703ce1fc1a68.jpg" />
+              <span class="poipoi-recommend-item-title">緋弾のアリアAA 10</span>
+              <span class="poipoi-recommend-item-subtitle">绯弹的亚里亚AA 最新话。</span>
+            </a>
+                      <a class="poipoi-recommend-item" href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fmailorder%2Farticle%2F20%2F0011%2F60%2F03%2F200011600397.html" target="_blank">
+              <img src="http://side.2poi.jp/b4/b484/b48415e9ac0f8d44e6c63e4b729368a0.jpg" />
+              <span class="poipoi-recommend-item-title">新妹魔王の契約者(テスタメント) 9</span>
+              <span class="poipoi-recommend-item-subtitle">勇者哥哥与魔王妹妹的主仆故事（</span>
+            </a>
+                      <a class="poipoi-recommend-item" href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fmailorder%2Farticle%2F04%2F0030%2F36%2F37%2F040030363786.html%3Frec%3Dcircle" target="_blank">
+              <img src="http://side.2poi.jp/cf/cfa1/cfa1197e627e4c7118ca2992d1b3bde8.jpg" />
+              <span class="poipoi-recommend-item-title">ほっぽちゃんの日常6</span>
+              <span class="poipoi-recommend-item-subtitle">大和抚子老师带来的冬天小北方的日常。</span>
+            </a>
+                      <a class="poipoi-recommend-item" href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fmailorder%2Farticle%2F04%2F0030%2F36%2F55%2F040030365505.html%3Frec%3Dcircle" target="_blank">
+              <img src="http://side.2poi.jp/b1/b18a/b18aeeda90ebec90d2af513912975afc.jpg" />
+              <span class="poipoi-recommend-item-title">艦隊これくしょん-カラフル-</span>
+              <span class="poipoi-recommend-item-subtitle">满是新舰娘与季节限定衣装的全彩舰娘！</span>
+            </a>
+                      <a class="poipoi-recommend-item" href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fmailorder%2Farticle%2F04%2F0030%2F37%2F03%2F040030370348.html" target="_blank">
+              <img src="http://side.2poi.jp/7c/7c6c/7c6c6905e28d90b2517dbec96c217dd8.jpg" />
+              <span class="poipoi-recommend-item-title">曙さんとクソ提督 総集編</span>
+              <span class="poipoi-recommend-item-subtitle">1-4+限定版合集</span>
+            </a>
+                      <a class="poipoi-recommend-item" href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fmailorder%2Farticle%2F04%2F0030%2F36%2F79%2F040030367986.html" target="_blank">
+              <img src="http://side.2poi.jp/b0/b0a2/b0a26a926b8f8f454850ff5c7bc6ad9f.jpg" />
+              <span class="poipoi-recommend-item-title">Fate/EXTRA MOON LOG:TYPEWRITER I</span>
+              <span class="poipoi-recommend-item-subtitle">TYPE-MOON</span>
+            </a>
+                      <a class="poipoi-recommend-item" href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fmailorder%2Farticle%2F04%2F0030%2F36%2F92%2F040030369279.html" target="_blank">
+              <img src="http://side.2poi.jp/70/70ea/70eab7fe1e6bc6988d6b5cdcf4e2a0a7.jpg" />
+              <span class="poipoi-recommend-item-title">シンデレラガールズ二期まとめ本</span>
+              <span class="poipoi-recommend-item-subtitle">THE IDOLM@STER</span>
+            </a>
+                  </div>
+              <div class="poipoi-recommend-title">
+          <h2>向您推荐</h2>
+          <span>汉子也可以看的女性向作品</span>
+        </div>
+        <div class="poipoi-recommend-showcase clearfix">
+                      <a class="poipoi-recommend-item" href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fbl%2Farticle%2F04%2F0030%2F37%2F57%2F040030375737.html" target="_blank">
+              <img src="http://side.2poi.jp/df/df31/df3122a14948b89ad222fcd3ba985b88.jpg" />
+              <span class="poipoi-recommend-item-title">紡唄if</span>
+              <span class="poipoi-recommend-item-subtitle">小狐丸×三日月宗近</span>
+            </a>
+                      <a class="poipoi-recommend-item" href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fbl%2Farticle%2F04%2F0030%2F37%2F84%2F040030378411.html" target="_blank">
+              <img src="http://side.2poi.jp/33/335d/335d17128c006461d18627df363f63fa.jpg" />
+              <span class="poipoi-recommend-item-title">月影に踊る瑠璃の星…ry</span>
+              <span class="poipoi-recommend-item-subtitle">名字太长了！！！</span>
+            </a>
+                      <a class="poipoi-recommend-item" href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fbl%2Fcot%2Fpagekit%2F0000%2F00%2F06%2F000000066548%2Findex.html" target="_blank">
+              <img src="http://side.2poi.jp/0e/0e2a/0e2ae99d70c42f96bb5518bb971cc1ea.jpg" />
+              <span class="poipoi-recommend-item-title">ある日、森の中。VII</span>
+              <span class="poipoi-recommend-item-subtitle">高永ひなこ</span>
+            </a>
+                      <a class="poipoi-recommend-item" href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fbl%2Fcit%2Fpagekit%2F0000%2F00%2F06%2F000000066588%2Findex.html" target="_blank">
+              <img src="http://side.2poi.jp/22/2228/2228b8673790615d295f5f041eaf4327.jpg" />
+              <span class="poipoi-recommend-item-title">百合くんとゾウさん</span>
+              <span class="poipoi-recommend-item-subtitle">ヤリチン☆ビッチ部</span>
+            </a>
+                      <a class="poipoi-recommend-item" href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fbl%2Farticle%2F04%2F0030%2F36%2F57%2F040030365734.html" target="_blank">
+              <img src="http://side.2poi.jp/86/8689/8689592a16a3a155fc641ec7278dcfb0.jpg" />
+              <span class="poipoi-recommend-item-title">刺傷再録集 傷痕 BtoE</span>
+              <span class="poipoi-recommend-item-subtitle">岩泉一×及川徹</span>
+            </a>
+                      <a class="poipoi-recommend-item" href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fbl%2Farticle%2F04%2F0030%2F37%2F53%2F040030375313.html" target="_blank">
+              <img src="http://side.2poi.jp/d2/d270/d2709d61750cfa791895b6161c42d519.jpg" />
+              <span class="poipoi-recommend-item-title">お世話したいされたい</span>
+              <span class="poipoi-recommend-item-subtitle">犬型太太的三日鹤</span>
+            </a>
+                      <a class="poipoi-recommend-item" href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fbl%2Farticle%2F04%2F0030%2F37%2F80%2F040030378059.html" target="_blank">
+              <img src="http://side.2poi.jp/fc/fc25/fc25b043ba4b953f5ed01364746cd346.jpg" />
+              <span class="poipoi-recommend-item-title">入れ替わって候。</span>
+              <span class="poipoi-recommend-item-subtitle">喜闻乐见的身体交换梗</span>
+            </a>
+                      <a class="poipoi-recommend-item" href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fbl%2Farticle%2F04%2F0030%2F37%2F03%2F040030370306.html" target="_blank">
+              <img src="http://side.2poi.jp/5f/5fd3/5fd33f20384cbecc5af4fdec8cb8a79f.jpg" />
+              <span class="poipoi-recommend-item-title">いつまで待てば</span>
+              <span class="poipoi-recommend-item-subtitle">沢村が仔犬になってしまった</span>
+            </a>
+                      <a class="poipoi-recommend-item" href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fbl%2Farticle%2F04%2F0030%2F37%2F17%2F040030371758.html" target="_blank">
+              <img src="http://side.2poi.jp/28/283f/283febe432d865de81af78696899e4df.jpg" />
+              <span class="poipoi-recommend-item-title">どうぞおすきな松を!</span>
+              <span class="poipoi-recommend-item-subtitle">F6の漫画とその他小ネタ漫画</span>
+            </a>
+                      <a class="poipoi-recommend-item" href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fbl%2Farticle%2F04%2F0030%2F38%2F01%2F040030380130.html" target="_blank">
+              <img src="http://side.2poi.jp/e8/e8c9/e8c92faeeb23759ec8db986cdb506286.jpg" />
+              <span class="poipoi-recommend-item-title">wataamecchi_now WEB再録 3</span>
+              <span class="poipoi-recommend-item-subtitle">みろくことこ</span>
+            </a>
+                      <a class="poipoi-recommend-item" href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fbl%2Farticle%2F04%2F0030%2F37%2F67%2F040030376744.html" target="_blank">
+              <img src="http://side.2poi.jp/38/3830/383085e7288dac26a8b8c5acaf7cb6d6.jpg" />
+              <span class="poipoi-recommend-item-title">オルノアチューン</span>
+              <span class="poipoi-recommend-item-subtitle">英日+米+悪友のギャグ詰め</span>
+            </a>
+                      <a class="poipoi-recommend-item" href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fbl%2Farticle%2F04%2F0030%2F37%2F95%2F040030379553.html" target="_blank">
+              <img src="http://side.2poi.jp/d8/d825/d825bac172bcd822ae36a723eb0cb621.jpg" />
+              <span class="poipoi-recommend-item-title">R師弟</span>
+              <span class="poipoi-recommend-item-subtitle">サイタマ×ジェノス</span>
+            </a>
+                  </div>
+          </div>
+    <div class="col-sm-4 col-sm-offset-1 poipoi-guide-side">
+      <div class="poipoi-side-outlink">
+        <h3>现在就前往您中意的网站挑选商品吧</h3>
+        <a href="http://www.toranoana.jp/mailorder/" target="_blank">
+          <img alt="とらのあな" src="/img/side_tora_logo.jpg">
+        </a>
+        <a href="https://www.c-queen.net" target="_blank">
+          <img alt="C-QUEEN" src="/img/side_cq_logo.jpg">
+        </a>
+      </div>
+              <div class="poipoi-side-guide">
+          <h3 class="poipoi-side-title">专题精选<img class="poipoi-suffix" alt="" src="/img/poi_suffix_nor.png"></h3>
+                      <a href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fmailorder%2Fbok%2Fpagekit%2F0000%2F00%2F05%2F000000056793%2Findex_01.html" target="_blank">
+                              舰娘商业出版物                          </a>
+                      <a href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fmailorder%2Fmcd%2Fpagekit%2F0000%2F00%2F04%2F000000045532%2Findex.html%3Fleft%3D1" target="_blank">
+                              Love live                          </a>
+                      <a href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fmailorder%2Fcit%2Fpagekit%2F0000%2F00%2F05%2F000000058429%2Findex.html" target="_blank">
+                              東方project                          </a>
+                      <a href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fmailorder%2Fcit%2Fpagekit%2F0000%2F00%2F06%2F000000060779%2Findex-0_01.html" target="_blank">
+                              VOCALOID                          </a>
+                      <a href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fcgi-bin%2FR2%2Fd_search.cgi%3Fitem_kind%3D0401%26stk%3D0%26obj%3D0%26nam%3D%26mak%3D%26act%3D%26adl%3D1%26img%3D1%26dys%3D%26dms%3D01%26dye%3D%26dme%3D01%26ps%3D1%26bl_fg%3D1%26itc%3D%26ikb%3D%26gnr%3DFate%26mch%3D%26com%3D" target="_blank">
+                              Fate/stay night                          </a>
+                      <a href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fmailorder%2Fcit%2Fpagekit%2F0000%2F00%2F06%2F000000061376%2Findex.html" target="_blank">
+                              IS VersusColors                          </a>
+                      <a href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fmailorder%2Fmdv%2Fpagekit%2F0000%2F00%2F06%2F000000060572%2Findex.html" target="_blank">
+                              甘城ブリリアントパーク                          </a>
+                      <a href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fmailorder%2Fmdv%2Fpagekit%2F0000%2F00%2F06%2F000000060872%2Findex.html" target="_blank">
+                              結城友奈は勇者である                          </a>
+                      <a href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fcgi-bin%2FR2%2Fd_search.cgi%3Fitem_kind%3D0401%26stk%3D0%26obj%3D0%26nam%3D%26mak%3D%26act%3D%26adl%3D1%26img%3D1%26dys%3D%26dms%3D01%26dye%3D%26dme%3D01%26ps%3D1%26bl_fg%3D1%26itc%3D%26ikb%3D%26gnr%3D%2583n%2583C%2583L%2583%2585%2581%255b%2521%2521%26mch%3D%26com%3D" target="_blank">
+                              ハイキュー                          </a>
+                      <a href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fcgi-bin%2FR2%2Fd_search.cgi%3Fitem_kind%3D0401%26stk%3D0%26obj%3D0%26nam%3D%26mak%3D%26act%3D%26adl%3D1%26img%3D1%26dys%3D%26dms%3D01%26dye%3D%26dme%3D01%26ps%3D1%26bl_fg%3D1%26itc%3D%26ikb%3D%26gnr%3D%258e%25e3%2592%258e%2583y%2583_%2583%258b%26mch%3D%26com%3D" target="_blank">
+                              弱虫ペダル                          </a>
+                      <a href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fcgi-bin%2FR2%2Fd_search.cgi%3Fitem_kind%3D0401%26stk%3D0%26obj%3D0%26nam%3D%26mak%3D%26act%3D%26adl%3D1%26img%3D1%26dys%3D%26dms%3D01%26dye%3D%26dme%3D01%26ps%3D1%26bl_fg%3D1%26itc%3D%26ikb%3D%26gnr%3D%2583W%2583%2587%2583W%2583%2587%2582%25cc%258a%25ef%2596%25ad%2582%25c8%2596%2560%258c%25af%26mch%3D%26com%3D" target="_blank">
+                              ジョジョの奇妙な冒険                          </a>
+                      <a href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fcgi-bin%2FR2%2Fd_search.cgi%3Fitem_kind%3D0401%26stk%3D0%26obj%3D0%26nam%3D%26mak%3D%26act%3D%26adl%3D1%26img%3D1%26dys%3D%26dms%3D01%26dye%3D%26dme%3D01%26ps%3D1%26bl_fg%3D1%26itc%3D%26ikb%3D%26gnr%3D%258c%258e%258a%25a7%258f%25ad%258f%2597%2596%25ec%258d%25e8%26mch%3D%26com%3D" target="_blank">
+                              月刊少女野崎                          </a>
+                      <a href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fcgi-bin%2FR2%2Fd_search.cgi%3Fitem_kind%3D0401%26stk%3D0%26obj%3D0%26nam%3D%26mak%3D%26act%3D%26adl%3D1%26img%3D1%26dys%3D%26dms%3D01%26dye%3D%26dme%3D01%26ps%3D1%26bl_fg%3D1%26itc%3D%26ikb%3D%26gnr%3D%2590i%258c%2582%2582%25cc%258b%2590%2590l%26mch%3D%26com%3D" target="_blank">
+                              進撃の巨人                          </a>
+                      <a href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fcgi-bin%2FR2%2Fd_search.cgi%3Fitem_kind%3D0401%26stk%3D0%26obj%3D0%26nam%3D%26mak%3D%26act%3D%26adl%3D1%26img%3D1%26dys%3D%26dms%3D01%26dye%3D%26dme%3D01%26ps%3D1%26bl_fg%3D1%26itc%3D%26ikb%3D%26gnr%3D%258d%2595%258eq%2582%25cc%2583o%2583X%2583P%26mch%3D%26com%3D" target="_blank">
+                              黒子のバスケ                          </a>
+                      <a href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fcgi-bin%2FR2%2Fd_search.cgi%3Fitem_kind%3D0401%26stk%3D0%26obj%3D0%26nam%3D%26mak%3D%26act%3D%26adl%3D1%26img%3D1%26dys%3D%26dms%3D01%26dye%3D%26dme%3D01%26ps%3D1%26bl_fg%3D1%26itc%3D%26ikb%3D%26gnr%3D%2583f%2583%2585%2583%2589%2583%2589%2583%2589%2581I%2581I%26mch%3D%26com%3D" target="_blank">
+                              デュラララ！！                          </a>
+                      <a href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fcgi-bin%2FR2%2Fd_search.cgi%3Fitem_kind%3D0401%26stk%3D0%26obj%3D0%26nam%3D%26mak%3D%26act%3D%26adl%3D1%26img%3D1%26dys%3D%26dms%3D01%26dye%3D%26dme%3D01%26ps%3D1%26bl_fg%3D1%26itc%3D%26ikb%3D%26gnr%3Dfree%26mch%3D%26com%3D" target="_blank">
+                              free！                          </a>
+                      <a href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fmailorder%2Fcot%2Fm_pagekit%2Fevent%2Fgenreptl%2Fassort%2Fbooklet%2Fall_nonx%2Findex.html%3Fri2" target="_blank">
+                              <img alt="虎穴原创同人本" src="http://side.2poi.jp/61/61b1/61b10457343b5e9b569b6159273de915.jpg">
+                          </a>
+                      <a href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fmailorder%2Fcit%2Fpagekit%2F0000%2F00%2F06%2F000000060729%2Fgoods.html%3Fcit-left%3D1" target="_blank">
+                              <img alt="男性向  同人周边特集" src="http://side.2poi.jp/b2/b21f/b21f7d29ed433cba960f6d103ccce428.jpg">
+                          </a>
+                      <a href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fbl%2Fcot%2Fm_pagekit%2Fevent%2Fev1501%2Findex.html" target="_blank">
+                              <img alt="女性向  同人新刊特集 " src="http://side.2poi.jp/f8/f839/f83982e35b72505c50787bc6131e784e.jpg">
+                          </a>
+                      <a href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fbl%2Fcit%2Fpagekit%2F0000%2F00%2F06%2F000000060862%2Findex.html" target="_blank">
+                              <img alt="女性向  同人周边特集" src="http://side.2poi.jp/e5/e5b8/e5b8ad038fc2ec769edebf4d0fb8ffc1.jpg">
+                          </a>
+                      <a href="http://img.toranoana.jp/img_auth.html?1http%3A%2F%2Fwww.toranoana.jp%2Fbl%2Fcit%2Fpagekit%2F0000%2F00%2F05%2F000000053408%2Findex.html" target="_blank">
+                              <img alt="女性向 2015年日历专题" src="http://side.2poi.jp/5b/5b89/5b89dbc4dfc307826710da2bf174b738.jpg">
+                          </a>
+                  </div>
+          </div>
+    <div class="col-sm-4 col-sm-offset-1 poipoi-guide-side">
+      <h4>您可以通过以下方式和我们联系</h4>
+
+      <dl class="clearfix">
+        <dt class="poipoi-contact-weibo"></dt>
+        <dd class="poipoi-contact-weibo">
+          <span class="poipoi-contact-label">2POI官方微博</span>
+          <a href="http://weibo.com/2poi" target="_blank">http://weibo.com/2poi</a>
+        </dd>
+      </dl>
+      <dl class="clearfix">
+        <dt class="poipoi-contact-email"></dt>
+        <dd class="poipoi-contact-email">
+          <span class="poipoi-contact-label">2POI 客服&amp;联络邮箱</span>
+          <a href="mailto:poi@2poi.jp" target="_blank">poi@2poi.jp</a>
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade poipoi-modal poipoi-modal-fetchinfo" id="poipoi-ItemData" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <form ajax-url="/cart/add" method="post" ajax-cb="$('#poipoi-ItemData').modal('hide'); poi.updateCart(@.badge);
+      if(@.overload) poi.msg('您购买的部分商品超过单个商品最大购买限制，请去购物车确认商品数量', 'danger');">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span class="sr-only">关闭</span></button>
+          <h4 class="modal-title">您选中的商品<span class="poipoi-modal-suffix"></span></h4>
+        </div>
+        <div class="modal-body">
+          <input name="url" type="hidden" value="">
+          <table class="table poipoi-itemdata poipoi-fetchinfo" data-template="#item-list-tpl"></table>
+        </div>
+        <div class="modal-footer">
+          <div class="poipoi-summary clearfix" data-template="#item-price-total"></div>
+          <button type="submit" class="btn btn-primary ladda-button" z-disabled="!@.total_rmb()">加入购物车</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="/common/js/jquery-1.11.1.min.js?r=8343cff8"></script>
+<script src="/common/js/bootstrap.min.js?r=e2b4ac51"></script>
+<script src="/common/js/spin.min.js?r=1d75c2ec"></script>
+<script src="/common/js/ladda.min.js?r=1d75c2ec"></script>
+<script src="/common/js/ladda.jquery.min.js?r=1d75c2ec"></script>
+<script src="/common/js/core.js?r=0d69cdda"></script>
+<script src="/js/frontend.js?r=29ec6eaf"></script>
+<script>
+  $(function(){
+    poi.msg('', '');
+    
+    $('.poipoi-global-notice .close').click(function(){
+      $('.poipoi-global-notice').removeClass('show');
+    });
+  });
+</script>
+<script src="/js/mustache.js?r=57fad24a"></script>
+<script src="/common/js/decimal.js?r=016f178a"></script>
+<script id="item-list-tpl" type="x-tmpl-mustache">
+  <thead>
+    <tr>
+      <th class="poipoi-itemdata-select">
+        <div class="checkbox awesome-bootstrap-checkbox-fix">
+          <input type="checkbox" id="check-all" z-onchange="@.check_all($.prop('checked'));" {{#all_checked}}checked{{/all_checked}}>
+          <label for="check-all"></label>
+        </div>
+      </th>
+      <th class="poipoi-itemdata-name">品名</th>
+      <th class="poipoi-itemdata-price">单价</th>
+      <th class="poipoi-itemdata-charge">手续费</th>
+      <th class="poipoi-itemdata-num">数量</th>
+      <th class="poipoi-itemdata-price">总价</th>
+      {{#is_cart}}<th class="poipoi-itemdata-act">操作</th>{{/is_cart}}
+    </tr>
+  </thead>
+  <tbody>
+    {{#items}}
+      <tr>
+        <td>
+          <div class="checkbox awesome-bootstrap-checkbox-fix">
+            {{#is_cart}}
+              <input type="checkbox" class="item-check" name="cart_item_ids[]" id="item-{{index}}" value="{{cart_item_id}}"
+                {{#checked}}checked{{/checked}} {{^product.in_stock}}disabled{{/product.in_stock}} z-onchange="@.check({{index}}, $.prop('checked'));">
+            {{/is_cart}}
+            {{^is_cart}}
+              <input type="checkbox" class="item-check" name="pid[{{index}}]" id="item-{{index}}" value="{{product.pid}}"
+                {{#checked}}checked{{/checked}} {{^product.in_stock}}disabled{{/product.in_stock}} z-onchange="@.check({{index}}, $.prop('checked'));">
+            {{/is_cart}}
+            <label for="item-{{index}}"></label>
+          </div>
+        </td>
+        <td><a href="{{url}}" target="_blank">{{product.title}}</a></td>
+        <td>{{product_price}} 円</td>
+        <td>
+          <span class="poipoi-itemdata-curprice">免手续费</span>
+        </td>
+        {{#product.in_stock}}
+          <td>
+            <a class="poipoi-num-obj" href="javascript:;"><span class="glyphicon glyphicon-minus" aria-hidden="true" z-onclick="if({{amount}} > 1) $('#amount-{{index}}').val({{amount}} - 1).change();"></span></a>
+            {{#is_cart}}
+              <input type="text" class="poipoi-num-obj form-control" value="{{amount}}" id="amount-{{index}}" min="1" max="3" maxlength="2"
+                ajax-url="/cart/edit" data-params="guid: '{{guid}}', amount: $.val()"
+                ajax-cb="poi.updateCart(@.badge); poi.item_list.update({{index}}, $.val());"
+                ajax-cb-fail="poi.item_list.$apply();"/>
+            {{/is_cart}}
+            {{^is_cart}}
+              <input type="text" class="poipoi-num-obj form-control" name="amount[{{index}}]" value="{{amount}}" id="amount-{{index}}" min="1" max="3" maxlength="2" z-onchange="@.update({{index}}, $.val());" />
+            {{/is_cart}}
+            <a class="poipoi-num-obj" href="javascript:;"><span class="glyphicon glyphicon-plus" aria-hidden="true" z-onclick="if({{amount}} < 3) $('#amount-{{index}}').val({{amount}} + 1).change();"></span></a>
+          </td>
+          <td>{{price_total}} 円</td>
+        {{/product.in_stock}}
+        {{^product.in_stock}}
+          <td>暂时缺货</td>
+          <td>-</td>
+        {{/product.in_stock}}
+        {{#is_cart}}
+          <td>
+            <a href="javascript:;" ajax-url="/cart/del" data-params="guid: '{{guid}}'" ajax-cb="poi.item_list.remove({{index}}); poi.updateCart(@.badge)">删除</a>
+          </td>
+        {{/is_cart}}
+      </tr>
+    {{/items}}
+  </tbody>
+</script>
+<script id="item-price-total" type="x-tmpl-mustache">
+  <span class="poipoi-summary-exchange">当前汇率: {{exchange}}</span>
+  <div class="pull-right">
+    <div class="cn-total">总价约合人民币 <em>{{total_rmb}}</em>元</div>
+  </div>
+</script>
+<script>
+$(function(){
+  poi.item_list = {
+    exchange: 0.056112,
+    is_cart: 0,
+    items: [],
+    index: function(){
+      var i;
+      for( i in poi.item_list.items ){
+        if( poi.item_list.items[i] == this ) return i;
+      }
+      return -1;
+    },
+    product_price: function(){
+      return poi.formatPrice(this.product.price);
+    },
+    price_total: function(){
+      return poi.formatPrice(this.product.price * this.amount);
+    },
+    check: function(index, value){
+      poi.item_list.items[index].checked = value;
+      poi.item_list.$apply();
+    },
+    check_all: function(value){
+      var i;
+      for( i in this.items ){
+        if( !this.items[i].product.in_stock ) continue;
+        this.items[i].checked = value;
+      }
+      poi.item_list.$apply();
+    },
+    update: function(index, amount){
+      poi.item_list.items[index].amount = amount;
+      poi.item_list.$apply();
+    },
+    remove: function(index){
+      poi.item_list.items.splice(index, 1);
+      poi.item_list.$apply();
+    },
+    all_checked: function(){
+      var i;
+      for( i in this.items ){
+        if( !this.items[i].checked && this.items[i].product.in_stock ) return false;
+      }
+      return true;
+    },
+    total_rmb: function(){
+      var i, sum = 0;
+      for( i in this.items ){
+        if( !this.items[i].checked || !this.items[i].product.in_stock ) continue;
+        sum += this.items[i].product.price * (this.items[i].amount || 1);
+      }
+      return Math.round10(sum * this.exchange, -2);
+    }
+  };
+});
+</script>
+<script>
+$(document).ready(function(){
+  $('#poipoi-ItemData').zBind(poi.item_list);
+});
+</script>
+
+<div class="poipoi-help-index">
+  <div class="container poipoi-row-container">
+          <div class="clearfix">
+        <h5 class="col-sm-2">使用2POI</h5>
+        <ul class="poipoi-list col-sm-10">
+                                  <li><a target="_blank" href="/help/01_04">常见问题 FAQ</a></li>
+                                    <li class="poipoi-list-inline-divider">|</li>
+                        <li><a target="_blank" href="/help/01_01">如何购买</a></li>
+                                    <li class="poipoi-list-inline-divider">|</li>
+                        <li><a target="_blank" href="/help/01_02">虎穴的使用</a></li>
+                                    <li class="poipoi-list-inline-divider">|</li>
+                        <li><a target="_blank" href="/help/01_03">虎穴的注意事项</a></li>
+                  </ul>
+      </div>
+          <div class="clearfix">
+        <h5 class="col-sm-2">流程周期及费用</h5>
+        <ul class="poipoi-list col-sm-10">
+                                  <li><a target="_blank" href="/help/02_01">流程和周期</a></li>
+                                    <li class="poipoi-list-inline-divider">|</li>
+                        <li><a target="_blank" href="/help/02_02">国际运输和售后</a></li>
+                                    <li class="poipoi-list-inline-divider">|</li>
+                        <li><a target="_blank" href="/help/02_03">费用说明</a></li>
+                                    <li class="poipoi-list-inline-divider">|</li>
+                        <li><a target="_blank" href="/help/02_04">国际运费明细</a></li>
+                  </ul>
+      </div>
+          <div class="clearfix">
+        <h5 class="col-sm-2">使用须知</h5>
+        <ul class="poipoi-list col-sm-10">
+                                  <li><a target="_blank" href="/help/03_01">协议及免责</a></li>
+                  </ul>
+      </div>
+          <div class="clearfix">
+        <h5 class="col-sm-2">联系2POI</h5>
+        <ul class="poipoi-list col-sm-10">
+                                  <li><a target="_blank" href="/help/04_01">如何联系2POI</a></li>
+                  </ul>
+      </div>
+      </div>
+</div>
+
+<nav class="navbar poipoi-footer" role="navigation">
+  <div class="container">
+    <p class="navbar-text">2POI @2014</p>
+      </div>
+</nav>
+
+</body>
+</html>

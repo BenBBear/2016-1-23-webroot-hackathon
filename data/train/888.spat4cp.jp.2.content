@@ -1,0 +1,1836 @@
+<!-- html-header -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="競馬予想サイトの口コミ・評判・評価をチェック＆シェア - 競馬予想サイト必勝ガイド" />
+<meta name="keywords" content="競馬,予想,サイト,口コミ,情報,評判,評価" />
+<!--{*<meta name="viewport" content="initial-scale=1.0; width=device-width;" />*}-->
+<title>競馬予想サイト必勝ガイド - 競馬予想サイトの口コミ・評判・評価</title>
+<!--{*<link rel=canonical href="http://www.spat4cp.jp/"/>*}-->
+<link rel="stylesheet" href="http://www.spat4cp.jp/theme/css/common.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="http://www.spat4cp.jp/theme/css/tab.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="http://www.spat4cp.jp/theme/css/colorbox.css" type="text/css" media="all"/>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.spat4cp.jp/rss/index.xml" />
+<script type="text/javascript" src="http://www.spat4cp.jp/theme/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="http://www.spat4cp.jp/theme/js/raty-2.5.2/jquery.raty.js"></script>
+<script type="text/javascript" src="http://www.spat4cp.jp/theme/js/jquery.xdomainajax.js"></script>
+<script type="text/javascript" src="http://www.spat4cp.jp/theme/js/jquery.colorbox.js"></script>
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/javascript">
+	$(function(){
+		$('form.voice').submit(function() {
+			var error_flag = false;
+			var error_text = '';
+			if($("#user_name").val().length > 14){
+				error_flag = true;
+				error_text += '「ニックネーム」が長すぎます（14文字以内）\r';
+				//$('#user_name').focus();
+				//return false;
+			}
+			if(!$("#comment").val()){
+				error_flag = true;
+				error_text += '「口コミ内容」が未入力です\r';
+			}
+			if($("#comment").val().length > 10000){
+				error_flag = true;
+				error_text += '「口コミ内容」が長すぎます（2000文字以内）\r';
+			}
+			if(error_flag) {
+				window.alert(error_text);
+				return false;
+			}
+		});
+	});
+</script>
+
+<script type="text/javascript">
+	$(function(){
+		$('form.contact').submit(function() {
+			var error_flag = false;
+			var error_text = '';
+			if($("#type").val() == 'advertise' || $("#type").val() == 'index'){
+				if(!$("#name").val()){
+					error_flag = true;
+					error_text += '「お名前」が未入力です\r';
+				}
+				if($("#name").val().length > 100){
+					error_flag = true;
+					error_text += '「お名前」が長すぎます（100文字以内）\r';
+				}
+				if(!$("#email").val()){
+					error_flag = true;
+					error_text += '「メールアドレス」が未入力です\r';
+				}
+				if($("#email").val()){
+					if(!$("#email").val().match(/[!#-9A-~]+@+[a-z0-9]+\.+[a-z|.]+[^.]$/i)){
+						error_flag = true;
+						error_text += '「メールアドレス」の形式が誤りです\r';
+					}
+				}
+			}
+			if($("#type").val() == 'advertise' || $("#type").val() == 'request'){
+				if(!$("#site_name").val()){
+					error_flag = true;
+					error_text += '「サイト名」が未入力です\r';
+				}
+				if($("#site_name").val().length > 100){
+					error_flag = true;
+					error_text += '「サイト名」が長すぎます（100文字以内）\r';
+				}
+				if(!$("#site_url").val()){
+					error_flag = true;
+					error_text += '「サイトURL」が未入力です\r';
+				}
+				if($("#site_url").val().length > 256){
+					error_flag = true;
+					error_text += '「サイトURL」が長すぎます（256文字以内）\r';
+				}
+			}
+			if(!$("#comment").val()){
+				error_flag = true;
+				error_text += '「コメント」が未入力です\r';
+			}
+			if($("#comment").val().length > 10000){
+				error_flag = true;
+				error_text += '「コメント」が長すぎます（2000文字以内）\r';
+			}
+			if(error_flag) {
+				window.alert(error_text);
+				return false;
+			}
+		});
+	});
+</script>
+
+<script type="text/javascript">
+	$(function(){
+		var url = location.href;
+		if(url.match(/http(s)?:\/\/(www\.|)spat4cp\.jp\/+$/g)) {
+			$('#menu li.home').css('background','#333');
+			$('#menu li.home a').css('color','#fff');
+		} else if(url.match(/http(s)?:\/\/(www\.|)spat4cp\.jp\/sitelist\/bad/g)) {
+			$('#menu li.bad').css('background','#333');
+			$('#menu li.bad a').css('color','#fff');
+		} else if(url.match(/http(s)?:\/\/(www\.|)spat4cp\.jp\/sitelist\/good/g)) {
+			$('#menu li.good').css('background','#333');
+			$('#menu li.good a').css('color','#fff');
+		} else if(url.match(/http(s)?:\/\/(www\.|)spat4cp\.jp\/rank/g)) {
+			$('#menu li.rank').css('background','#333');
+			$('#menu li.rank a').css('color','#fff');
+		} else if(url.match(/http(s)?:\/\/(www\.|)spat4cp\.jp\/review/g)) {
+			$('#menu li.review').css('background','#333');
+			$('#menu li.review a').css('color','#fff');
+		} else if(url.match(/http(s)?:\/\/(www\.|)spat4cp\.jp\/guide/g)) {
+			$('#menu li.guide').css('background','#333');
+			$('#menu li.guide a').css('color','#fff');
+		}
+	});
+</script>
+
+<script type="text/javascript">
+	$(function(){
+		$('select[name=sort]').change(function() {
+			$(this).closest('form').submit();
+		});
+	});
+</script>
+<script type="text/javascript">
+	$(function(){
+		$('clBox').click(function(){
+			//alert($(this).attr('href'));サイト閲覧カウント用
+		})
+	});
+</script>
+<script type="text/javascript">
+	$(document).ready(function(){
+	    $(".clBox").colorbox({iframe:true, width:"90%", height:"90%"});
+	});
+</script>
+
+<script type="text/javascript">
+	$(function() {
+		$('#all').raty({ 
+			score: 1.2,
+			hints: ['悪徳サイトが多い', '普通のサイトが多い', '普通のサイトが多い', '優良サイトが多い', 'ほぼ優良サイト'],
+			noRatedMsg : 'ほぼ悪徳サイト、もしくはまだ評価されていません'
+		});
+	});
+</script>
+
+
+
+
+
+<script type="text/javascript">
+	$(function() {
+				$('#vote-3924').raty({ 
+			score      : 1,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3923').raty({ 
+			score      : 0,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3921').raty({ 
+			score      : 0,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3920').raty({ 
+			score      : 0,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3918').raty({ 
+			score      : 0,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3917').raty({ 
+			score      : 0,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3916').raty({ 
+			score      : 1,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3915').raty({ 
+			score      : 0,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3914').raty({ 
+			score      : 0,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3913').raty({ 
+			score      : 0,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3912').raty({ 
+			score      : 1,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3910').raty({ 
+			score      : 0,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3909').raty({ 
+			score      : 0,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3908').raty({ 
+			score      : 0,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3907').raty({ 
+			score      : 1,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3904').raty({ 
+			score      : 5,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3902').raty({ 
+			score      : 1,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3898').raty({ 
+			score      : 0,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3897').raty({ 
+			score      : 2,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3896').raty({ 
+			score      : 2,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3894').raty({ 
+			score      : 0,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3893').raty({ 
+			score      : 0,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3892').raty({ 
+			score      : 4,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3891').raty({ 
+			score      : 0,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3889').raty({ 
+			score      : 0,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3888').raty({ 
+			score      : 1,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3887').raty({ 
+			score      : 2,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3886').raty({ 
+			score      : 0,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3885').raty({ 
+			score      : 0,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3883').raty({ 
+			score      : 0,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3882').raty({ 
+			score      : 0,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3881').raty({ 
+			score      : 0,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3878').raty({ 
+			score      : 0,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3876').raty({ 
+			score      : 0,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3875').raty({ 
+			score      : 1,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3873').raty({ 
+			score      : 0,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3870').raty({ 
+			score      : 3,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3866').raty({ 
+			score      : 1,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3865').raty({ 
+			score      : 1,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3862').raty({ 
+			score      : 2,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3857').raty({ 
+			score      : 0,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3856').raty({ 
+			score      : 0,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3848').raty({ 
+			score      : 0,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3847').raty({ 
+			score      : 1,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3846').raty({ 
+			score      : 0,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3844').raty({ 
+			score      : 4,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3843').raty({ 
+			score      : 0,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3842').raty({ 
+			score      : 3,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3841').raty({ 
+			score      : 0,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				$('#vote-3837').raty({ 
+			score      : 2,
+			hints      : ['悪徳の可能性高い（要検証）', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳（詐欺注意）'
+		});
+				
+				$('#rate-1506').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1505').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1504').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1503').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1502').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1501').raty({ 
+			score      : 4.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1500').raty({ 
+			score      : 4.3,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1499').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1498').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1497').raty({ 
+			score      : 2.7,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1496').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1495').raty({ 
+			score      : 0.1,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1494').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1493').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1492').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1491').raty({ 
+			score      : 0.2,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1490').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1489').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1488').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1487').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1486').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1485').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1484').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1483').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1482').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1481').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1480').raty({ 
+			score      : 3.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1479').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1478').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1477').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1476').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1475').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1474').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1473').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1472').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1471').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1470').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1469').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1467').raty({ 
+			score      : 0.5,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1466').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1465').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1464').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1463').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1462').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1461').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1460').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1459').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1458').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1457').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+				$('#rate-1456').raty({ 
+			score      : 0.0,
+			hints      : ['悪徳の可能性高い', '悪徳の可能性あり', '普通', '優良', '最優良'],
+			noRatedMsg : '悪徳、もしくはまだ評価されていません'
+		});
+			});
+</script>
+
+
+
+<script type="text/javascript">
+	$(function(){
+		var height = $('.tab-content').height();
+		height = height + 60;
+		$('.tabs').css('height', height);
+	});
+	
+	$(function(){
+		$('.tabs label').click(function(){
+			var height = $(this).next('.tab-content').height();
+			height = height + 60;
+			$('.tabs').css('height', height);
+		})
+	});
+	$(function(){
+		tab();
+	});
+
+	function tab(id) {
+		var lis = document.getElementById("tab").getElementsByTagName("li");
+		for(var i = 0; i < lis.length;i++) {
+			if(id) {
+				var n = lis[i].getAttribute("name");
+				var box = document.getElementById(n);
+				if(n == id) {
+					box.style.display		= "block";
+					box.style.visibility	= "visible";
+					lis[i].className		= "open";
+				} else {
+					box.style.display		= "none";
+					box.style.visibility	= "hidden";
+					lis[i].className		= "";
+				}
+			} else {
+				lis[i].onclick = function() {
+					tab(this.getAttribute("name"));
+				}
+			}
+		}
+		if(!id) {
+			// tab("デフォルトで表示させるタブ");
+			
+			tab("tabbox-1");
+		}
+	}
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-52657187-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</head>
+<body><!-- /html-header -->
+
+<!-- header -->
+<div id="top-wrap" class="cover">
+	<div id="top">
+		<h1>競馬予想サイト必勝ガイド - 競馬情報サイトの口コミ・評判を徹底比較調査！</h1>
+		<div class="sub">競馬予想サイトの口コミ・評判・評価をチェック＆シェアしよう</div>
+	</div>
+</div>
+
+<div id="header-wrap">
+	<div id="header">
+		<div id="logo">
+			<a href="http://www.spat4cp.jp/" rel="home"><img src="/theme/images/logo.png" alt="競馬予想サイト必勝ガイド" title="競馬予想サイト必勝ガイド" /><!--{*<span style="font-size:28px;">競馬予想サイト必勝ガイド</span>*}--></a>
+			<div class="sub-title">競馬情報サイトの口コミ・評判を徹底比較調査！</div>
+		</div>
+		<div id="header-left">
+			<p>
+				本当に当たる競馬予想会社・競馬予想サイトはあるのか？現在、数多くの競馬予想会社がありますが、その中には悪質・悪徳・詐欺会社も存在しているようです。<br />
+				競馬予想サイト必勝ガイドでは、実際に競馬予想サイトを利用した方々などから寄せられた口コミ・評判・評価を掲載していますので、ぜひあなたの競馬予想会社選びにお役立てください。
+			</p>
+		</div>
+	</div>
+</div>
+
+<div id="menu-wrap">
+	<div id="menu">
+		<ul>
+			<li class="home"><a href="http://www.spat4cp.jp/"><img src="/theme/images/navi/navi_home.jpg" onmouseover='this.src="/theme/images/navi/navi_home_on.jpg";' onmouseout='this.src="/theme/images/navi/navi_home.jpg";' alt="必勝ガイドHOME"/></a></li>
+			<li class="good"><a href="http://www.spat4cp.jp/sitelist/all"><img src="/theme/images/navi/navi_all.jpg" onmouseover='this.src="/theme/images/navi/navi_all_on.jpg";' onmouseout='this.src="/theme/images/navi/navi_all.jpg";' alt="競馬予想サイト一覧"/></a></li>
+			<li class="bad"><a href="http://www.spat4cp.jp/ranking/beginner"><img src="/theme/images/navi/navi_good.jpg" onmouseover='this.src="/theme/images/navi/navi_good_on.jpg";' onmouseout='this.src="/theme/images/navi/navi_good.jpg";' alt="優良ランキング"/></a></li>
+			<li class="rank"><a href="http://www.spat4cp.jp/ranking/bad"><img src="/theme/images/navi/navi_bad.jpg" onmouseover='this.src="/theme/images/navi/navi_bad_on.jpg";' onmouseout='this.src="/theme/images/navi/navi_bad.jpg";' alt="悪徳ランキング"/></a></li>
+			<li class="review"><a href="http://www.spat4cp.jp/review"><img src="/theme/images/navi/navi_review.jpg" onmouseover='this.src="/theme/images/navi/navi_review_on.jpg";' onmouseout='this.src="/theme/images/navi/navi_review.jpg";' alt="口コミ・評判一覧"/></a></li>
+			<li class="guide"><a href="http://www.spat4cp.jp/movielist/all"><img src="/theme/images/navi/navi_movie.jpg" onmouseover='this.src="/theme/images/navi/navi_movie_on.jpg";' onmouseout='this.src="/theme/images/navi/navi_movie.jpg";' alt="競馬名場面集"/></a></li>
+		</ul>
+	</div>
+</div>
+
+<div id="search">
+	<div class="search">
+		<p>
+			サイト名や運営会社名、フリーワードで検索可能です。
+			現在：<span>3541</span>件の口コミ
+			<span>677</span>件のサイト情報
+		</p>
+		<div class="keyword"><div class="title">キーワード検索</div>
+			<div style="padding-top:5px; width:500px;">
+<script>
+  (function() {
+    var cx = '012458506805395378483:dvsieyylbhw';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:searchbox-only></gcse:searchbox-only>
+			</div>
+		</div>
+	</div>
+	<div class="regist">
+		<p>当サイトに掲載されていない競馬予想サイトの調査依頼</p>
+		<a href="/contact/request">
+			<div class="rightlink">
+				競馬予想サイト調査・検証依頼
+			</div>
+		</a>
+	</div>
+</div>
+
+	<div id="main-visual">
+		<img src="/theme/images/bnr_main.jpg" alt="競馬予想サイト必勝ガイド" />
+	</div>
+<!-- /header -->
+
+<!-- body -->
+<div id="container">
+	<div id="rightcolumn">
+
+	<div class="rightblock pushblock">
+		<div class="title">
+			<h2 id="balloon-1-left" class="title">評価の高い競馬予想サイト</h2>
+			<div class="circle">PUSH</div>
+		</div>
+		<div id="pusharea">
+							<div id="pushbox">
+					<a href="/ad/109/3" target="_blank" rel="nofollow">
+																					<img src="http://www.spat4cp.jp/theme/images/thum/upload/spirits.png" alt="競馬スピリッツの口コミ・評判・評価" title="競馬スピリッツ" />
+																		</a>
+					<div id="title">競馬スピリッツ</div>
+					<!--{*
+					<div>
+						<a href="http://www.spat4cp.jp/site/www.hicchu.net">
+							<div class="link">競馬スピリッツの口コミ・評判を見る</div>
+						</a>
+					</div>
+					*}-->
+				</div>
+							<div id="pushbox">
+					<a href="/ad/78/3" target="_blank" rel="nofollow">
+																					<img src="http://www.spat4cp.jp/theme/images/thum/upload/umasen.com.png" alt="競馬予想の友ウマセンの口コミ・評判・評価" title="競馬予想の友ウマセン" />
+																		</a>
+					<div id="title">競馬予想の友ウマセン</div>
+					<!--{*
+					<div>
+						<a href="http://www.spat4cp.jp/site/www.umasen.com">
+							<div class="link">競馬予想の友ウマセンの口コミ・評判を見る</div>
+						</a>
+					</div>
+					*}-->
+				</div>
+							<div id="pushbox">
+					<a href="/ad/121/3" target="_blank" rel="nofollow">
+																					<img src="http://www.spat4cp.jp/theme/images/thum/upload/umamono.com.png" alt="うまものがたりの口コミ・評判・評価" title="うまものがたり" />
+																		</a>
+					<div id="title">うまものがたり</div>
+					<!--{*
+					<div>
+						<a href="http://www.spat4cp.jp/site/umamono.com">
+							<div class="link">うまものがたりの口コミ・評判を見る</div>
+						</a>
+					</div>
+					*}-->
+				</div>
+					</div>
+	</div>
+	
+	<div class="rightblock">
+		<div class="title">
+			<h2 id="balloon-1-left" class="title">追加・更新情報</h2>
+			<div class="circle">NEW</div>
+		</div>
+		<ul id="tab">
+			<li name="tabbox-1"><h3>口コミ・評価・評判の追加情報</h3><!--{*注目サイト*}--></li>
+			<li name="tabbox-2"><h3>お知らせ・更新情報</h3></li>
+		</ul>
+		<div id="tabbox-1">
+			<div id="reviewbox">
+															<dl>
+							<!--{*<dt>2016-01-14</dt>*}-->
+							<dt><span id="vote-3924"></span></dt>
+							<dd>先週の新馬に参加したけど、5万ちょっとの払戻しかなかった。
+リンクスの実力ってこんなものなのかな!?
+まぁ、的中させても300pt返還したところは良心的だと...（ <a href="/site/linx-k.com#talk" style="color:#339966;">競馬リンクス(競馬Links)の口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2016-01-13</dt>*}-->
+							<dt><span id="vote-3923"></span></dt>
+							<dd>ファーストポイント情報検証中。
+今のところ２０連敗中です。
+参加するとハズレます、参加しない情報は当たっています。
+どこの口コミサイトも悪徳サイトにな...（ <a href="/site/kr-plasma.com#talk" style="color:#339966;">馬券大革命プラズ馬の口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2016-01-08</dt>*}-->
+							<dt><span id="vote-3921"></span></dt>
+							<dd>ここのサイト脱会申請しても処理してくれません。
+１ヶ月以上経つのにまだ、それから何回か申請してもだめ
+どこかのサイトで申請中にログインすると無効にな...（ <a href="/site/rakuuma.com#talk" style="color:#339966;">楽UMAドットコムの口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2016-01-08</dt>*}-->
+							<dt><span id="vote-3920"></span></dt>
+							<dd>私はサクラでも何でもありません。
+会員になり予想を信じ、今週こそは…と。
+情報提供側も今回外したらもう、信じないでいいくらいの勢いで情報購入を促しわま...（ <a href="/site/www.king-k.net#talk" style="color:#339966;">競馬王の口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2016-01-04</dt>*}-->
+							<dt><span id="vote-3918"></span></dt>
+							<dd>勝馬特別インサイド&勝馬特別プレミアム&ビジターに参加したが全敗した 詐欺被害金額は１２万３千円  一つも当たらず 高額情報料金を進めて来て ５０万円の情...（ <a href="/site/www.l-horse.com#talk" style="color:#339966;">勝馬伝説の口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2016-01-03</dt>*}-->
+							<dt><span id="vote-3917"></span></dt>
+							<dd>勝馬伝説は詐欺競馬情報サイトだ（ <a href="/site/www.l-horse.com#talk" style="color:#339966;">勝馬伝説の口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2016-01-01</dt>*}-->
+							<dt><span id="vote-3916"></span></dt>
+							<dd>1300万の回収保証とか言って高額な会費払わせて、これまで20鞍1勝、回収20万未満。基本的に信じない方がいい。随分借金させられた（笑）。
+（ <a href="/site/rakuuma.com#talk" style="color:#339966;">楽UMAドットコムの口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-12-29</dt>*}-->
+							<dt><span id="vote-3915"></span></dt>
+							<dd>TURFのメールで「300ポイントプレゼント」という所をクリックしたら、
+UMANAVI登録完了に。。。兄弟会社でしょうか？？OR情報売られた？
+なぞ。。。（ <a href="/site/www.k-sinjidai.com#talk" style="color:#339966;">UMANAVIの口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-12-29</dt>*}-->
+							<dt><span id="vote-3914"></span></dt>
+							<dd>境 和樹、名前だけ立派、予想はてんで話しにならない。
+あれだけ、予想外して恥ずかしくないの？
+人相、特に目付きが 良くないネ（ <a href="/site/www.umasq.jp#talk" style="color:#339966;">うまスクエアの口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-12-27</dt>*}-->
+							<dt><span id="vote-3913"></span></dt>
+							<dd>このサイトは最悪、キャンペーンやポイントレースに参加した時には必ずと言って良い程、外れます。はっきり言ってお金を溝に捨てる様なもの。はっきりと検証...（ <a href="/site/tc-brain.net#talk" style="color:#339966;">トレセン直送ブレーンの口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-12-21</dt>*}-->
+							<dt><span id="vote-3912"></span></dt>
+							<dd>今までの参加や口コミから判断して。
+おそらく、いろんなパターンを情報を買った人に流してその中
+で当たる人、当たらない人がいるんじゃないかな？
+
+当方は...（ <a href="/site/3rd-stage.info#talk" style="color:#339966;">サードステージの口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-12-14</dt>*}-->
+							<dt><span id="vote-3910"></span></dt>
+							<dd>２０００万円競馬で、借金したから３８４００円ずつ、カンパしてくれと言う文章だね！ブログ見てて、プロじゃないのが直ぐに解ってしまった！素人臭さが漂っ...（ <a href="/site/www.umameshi.com#talk" style="color:#339966;">うまめし.comの口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-12-13</dt>*}-->
+							<dt><span id="vote-3909"></span></dt>
+							<dd>ターフは情報料が高いのに当たらない！二週間で情報料合わせて70万円のマイナス！ターフは人殺しか！？（ <a href="/site/www.tf-toushi.com#talk" style="color:#339966;">TURFの口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-12-13</dt>*}-->
+							<dt><span id="vote-3908"></span></dt>
+							<dd>ほんと最近当たりません
+夏にキャンペーン当たってその後、参加しないと的中。
+信じてまた参加して当たらない。
+その繰り返しで、かなりお金使いました。
+い...（ <a href="/site/www.king-k.net#talk" style="color:#339966;">競馬王の口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-12-10</dt>*}-->
+							<dt><span id="vote-3907"></span></dt>
+							<dd>ラージに久しぶりに参加、５日継続参加で10鞍中的中はわずか1鞍。
+毎週の実績メールを振り返ると今年11月までは的中無しの日はわずか２日だけなのに参加した...（ <a href="/site/profit-in.jp#talk" style="color:#339966;">PROFITの口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-12-02</dt>*}-->
+							<dt><span id="vote-3904"></span></dt>
+							<dd>止め時や、なんぼつぎ込んでも無駄スポーツ新聞で十分稼げるぜ（ <a href="/site/tc-brain.net#talk" style="color:#339966;">トレセン直送ブレーンの口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-12-01</dt>*}-->
+							<dt><span id="vote-3902"></span></dt>
+							<dd>嘘の上塗り詐欺師の集団 絶対止め時や、悪党にも二分の理念これっぽちもあらへん（ <a href="/site/tc-brain.net#talk" style="color:#339966;">トレセン直送ブレーンの口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-11-25</dt>*}-->
+							<dt><span id="vote-3898"></span></dt>
+							<dd>先にネット見てればよかった・・・
+3日開催負けたのでプレミア会員に500円払ってしまった（笑）（ <a href="/site/mailuma.ameblo.jp#talk" style="color:#339966;">佐藤トシヤスのメルうまの口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-11-24</dt>*}-->
+							<dt><span id="vote-3897"></span></dt>
+							<dd>大々的なキャンペーンを打ち出して、景気のいい想定配当額を出すが、送られてくる予想はガチガチ系のどう考えても想定配当額なんて無理な組み合わせ。しかも...（ <a href="/site/k-onl.com#talk" style="color:#339966;">競馬オンラインの口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-11-20</dt>*}-->
+							<dt><span id="vote-3896"></span></dt>
+							<dd>先週は新馬リンクスで的中ありがとうございました。
+まさか３６万も戻って来るとは思いませんでした。
+このお金を元手に今週はＧ３リンクスにチャレンジしま...（ <a href="/site/linx-k.com#talk" style="color:#339966;">競馬リンクス(競馬Links)の口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-11-18</dt>*}-->
+							<dt><span id="vote-3894"></span></dt>
+							<dd>ここの営業は個人情報を聞き出そうと必死。その上極秘情報だと言って情報料を振り込ませ、馬券はかすりもしない屑馬券。
+とにかく悪徳です。利用しない方が身...（ <a href="/site/tc-brain.net#talk" style="color:#339966;">トレセン直送ブレーンの口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-11-17</dt>*}-->
+							<dt><span id="vote-3893"></span></dt>
+							<dd>ここのプランは5レース参加一度も当たりなし？
+ずうっとほおっていたら、今度は半額プランを
+すすめてくる始末？前日に高額的中のメールがきて
+次の日に半額...（ <a href="/site/b-record.com#talk" style="color:#339966;">ベストレコードの口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-11-17</dt>*}-->
+							<dt><span id="vote-3892"></span></dt>
+							<dd>今週もＧ１があるのでグレートエキスパートに参加します。
+ここ最近配当がショボいんでアレですけどまぁ当たらないよりクソ情報よりはマシでしょう。（ <a href="/site/the11rice.com#talk" style="color:#339966;">Re:horseの口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-11-16</dt>*}-->
+							<dt><span id="vote-3891"></span></dt>
+							<dd>ターフ プレミアムDXと称したキャンペーンに参加。土日参加で6鞍の内1鞍のみ少額配当のみ。プレミアムはターフの最上情報みたいですが、高額的中情報は捏造し...（ <a href="/site/www.tf-toushi.com#talk" style="color:#339966;">TURFの口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-11-16</dt>*}-->
+							<dt><span id="vote-3889"></span></dt>
+							<dd>11/7、11/8土日全鞍不的中のアルティメット、次世代アルティメットは、なんと11/14、11/15は、なんと全鞍的中！まさにデータ捏造です。言葉巧みなメールと捏...（ <a href="/site/www.king-k.net#talk" style="color:#339966;">競馬王の口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-11-15</dt>*}-->
+							<dt><span id="vote-3888"></span></dt>
+							<dd>勝てる情報なんかあれば、誰が他人に教えるんだよ！
+損したくなけりゃあ、馬券やるなよw（ <a href="/site/to-dai.jp#talk" style="color:#339966;">現役東大生の馬券マネジメント講座の口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-11-14</dt>*}-->
+							<dt><span id="vote-3887"></span></dt>
+							<dd>無料だと買い目点数が多いから大した利益にはならないけど
+10点くらいの情報なら数十万レベルなら十分稼げるね。
+今回は土曜日だけで36万の回収でした。GI前...（ <a href="/site/linx-k.com#talk" style="color:#339966;">競馬リンクス(競馬Links)の口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-11-08</dt>*}-->
+							<dt><span id="vote-3886"></span></dt>
+							<dd>アルティメット、ＸＸアルティメットともに全く当たらない。実績も捏造。
+絶対に手をだしてはダメなサイトで、ぶっ潰すべきサイト。とにかくすべて嘘、詐欺。...（ <a href="/site/www.king-k.net#talk" style="color:#339966;">競馬王の口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-11-05</dt>*}-->
+							<dt><span id="vote-3885"></span></dt>
+							<dd>投稿どおり ひどい会社です 絶対に的中などありません こんな会社何とかならないのか JRA及び農水省が何とかすべきでわ 競馬人口減るよ（ <a href="/site/tc-brain.net#talk" style="color:#339966;">トレセン直送ブレーンの口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-11-02</dt>*}-->
+							<dt><span id="vote-3883"></span></dt>
+							<dd>ブレーンと言うサイトは先ず当たりません
+及川の秘技伝授馬券とやらはなんなんだ、参加レ－ス全滅頭にきます
+及川の看板を外せといいたいよ
+ここはダメだわ。（ <a href="/site/tc-brain.net#talk" style="color:#339966;">トレセン直送ブレーンの口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-10-31</dt>*}-->
+							<dt><span id="vote-3882"></span></dt>
+							<dd>投資競馬を言ってきます。中身はデキ○ースとして。
+限定１０人に選ばれたら、以降は付き合うのは止めた方が身の為です
+法律事務局に相談したら、ココはまず回...（ <a href="/site/trade-meister.jp#talk" style="color:#339966;">Meisterの口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-10-31</dt>*}-->
+							<dt><span id="vote-3881"></span></dt>
+							<dd>まずは無料登録をしたらやたらとテレクラとか俺俺詐欺的なサイトからやたらメールが入るようになる、これって個人情報を悪用してる人たちの集まりなのか、一...（ <a href="/site/tc-brain.net#talk" style="color:#339966;">トレセン直送ブレーンの口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-10-27</dt>*}-->
+							<dt><span id="vote-3878"></span></dt>
+							<dd>こんなに当たらないサイトは初めて！情報料はバカ高いくせに全く当たりません。続けていくだけ、負債が増えるだけ！
+悪いことは言いません。登録しない方がい...（ <a href="/site/ffr.tw#talk" style="color:#339966;">ファンファーレの口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-10-25</dt>*}-->
+							<dt><span id="vote-3876"></span></dt>
+							<dd>10月24日10月25日にカオスと言う情報を16鞍で130000円が114000円で初めて購入
+たまたま1鞍10月25日新潟5R10-9-4で3連単188倍が当たり、まあカス当たり
+カオス...（ <a href="/site/www.kin-uma.com#talk" style="color:#339966;">金馬の口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-10-25</dt>*}-->
+							<dt><span id="vote-3875"></span></dt>
+							<dd>驚異のデータ一致率馬券 10月24，25日
+参加した方いますか？高配当だったようですが
+来週参加するか悩んでます。（ <a href="/site/www.tf-toushi.com#talk" style="color:#339966;">TURFの口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-10-25</dt>*}-->
+							<dt><span id="vote-3873"></span></dt>
+							<dd>え～だめさいとですか～
+
+申し込みしたんですけど。来週なんですけど。
+
+当たったと言う人もあるので期待するわ
+
+（ <a href="/site/rakuuma.com#talk" style="color:#339966;">楽UMAドットコムの口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-10-17</dt>*}-->
+							<dt><span id="vote-3870"></span></dt>
+							<dd>佐藤さん
+競馬ですから当たる事もあればハズレる事もありますよ。
+因みに今日の無料情報は新潟10レースで万馬券が当たっていますから。
+おかげでGI前にいい小...（ <a href="/site/linx-k.com#talk" style="color:#339966;">競馬リンクス(競馬Links)の口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-10-10</dt>*}-->
+							<dt><span id="vote-3866"></span></dt>
+							<dd>今日の無料はリンクス調子よくなったね。
+こういう事ってよくあるかのかな？（ <a href="/site/linx-k.com#talk" style="color:#339966;">競馬リンクス(競馬Links)の口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-10-10</dt>*}-->
+							<dt><span id="vote-3865"></span></dt>
+							<dd>無料情報が当たったみたいだったので、試してみたが口込みにあるよなうな優良とはとても思えない・・2鞍ともハズレの挙句1レースは3複36点、2レース目は3単72...（ <a href="/site/linx-k.com#talk" style="color:#339966;">競馬リンクス(競馬Links)の口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-10-07</dt>*}-->
+							<dt><span id="vote-3862"></span></dt>
+							<dd>土曜日の的中で「大丈夫か？」と心配になりましたが、
+日曜日でしっかり帳尻合わせしてくれましたね。
+獲得目標クリアしたのは、今回の条件戦Linksが初めてで...（ <a href="/site/linx-k.com#talk" style="color:#339966;">競馬リンクス(競馬Links)の口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-09-27</dt>*}-->
+							<dt><span id="vote-3857"></span></dt>
+							<dd>マルチでもフォーメショーンでもいいけど、あたりません。せめて60点なら、2頭くらいはいってて。おしいとかあればいいんだけど、見当違いの買い目が多すぎ。（ <a href="/site/t-rsc.net#talk" style="color:#339966;">サラブレッドリサーチの口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-09-25</dt>*}-->
+							<dt><span id="vote-3856"></span></dt>
+							<dd>府中の母ー五代に引っかかりました。５００円送金、ハズレクオカード５００円送付
+極秘情報、的中実績　情報量数十万円　言葉たくみに引っかかりました。
+あ...（ <a href="/site/sakura-tsushin.com#talk" style="color:#339966;">さくら通信の口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-09-21</dt>*}-->
+							<dt><span id="vote-3848"></span></dt>
+							<dd>九月も毎土曜、日曜提供してくるが、全くの屑情報一頭もはいっていない根笑うしかない、ただし馬券は買っていないがね（ <a href="/site/www.premiumhorse-club.com#talk" style="color:#339966;">プレミアムホースクラブの口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-09-19</dt>*}-->
+							<dt><span id="vote-3847"></span></dt>
+							<dd>ここの口コミ見て今週から無料情報と
+プレミアムインフォメーションを活用して馬券を購入しました。
+結果から言いますと、無料情報は2レースとも的中。
+中山1...（ <a href="/site/linx-k.com#talk" style="color:#339966;">競馬リンクス(競馬Links)の口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-09-16</dt>*}-->
+							<dt><span id="vote-3846"></span></dt>
+							<dd>まあ、評価の価値はなさそう。週刊誌、ア〇ヒ〇能に、広告出す位のレベルだ。
+悪名高い、トロイアの木馬、
+ターフレジェンド、と 同レベル
+だ。
+いずれにせよ...（ <a href="/site/kb-union.com#talk" style="color:#339966;">ROUTE UNIONの口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-09-14</dt>*}-->
+							<dt><span id="vote-3844"></span></dt>
+							<dd>昨日、冷やかしで試してみましたが1レースだけ的中しました。
+中山9R、3連複1-5-6、781,850円…。
+3レース提供してもらい2レース外れで1レースあたり。
+偶然な...（ <a href="/site/JTpaFwMF.keiba-enrich.com#talk" style="color:#339966;">エンリッチの口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-09-10</dt>*}-->
+							<dt><span id="vote-3843"></span></dt>
+							<dd>そんなに稼げるならおまえが稼げ（ <a href="/site/salry.www.sal-g.com#talk" style="color:#339966;">最速で一億円の口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-09-10</dt>*}-->
+							<dt><span id="vote-3842"></span></dt>
+							<dd>本当に稼げるサイトなんてあるのかと思っていましたが、世の中には一つくらい本物があるもんだなと実感させられました。今後とも宜しくお願いします。（ <a href="/site/tenma-club.net#talk" style="color:#339966;">TENMACLUBの口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-09-10</dt>*}-->
+							<dt><span id="vote-3841"></span></dt>
+							<dd>そんな大物いたらすぐわかると思うけど大石透とか知らない（ <a href="/site/show.www.basonw.com#talk" style="color:#339966;">パーフェクト予想家 大石透の口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+											<dl>
+							<!--{*<dt>2015-09-10</dt>*}-->
+							<dt><span id="vote-3837"></span></dt>
+							<dd>リンクスの無料情報って調子いいみたいですね。
+先週も当たってますね。
+プレミアムインフォメーション推奨馬も馬券圏内に来ていますし、
+ココは信頼できそう...（ <a href="/site/linx-k.com#talk" style="color:#339966;">競馬リンクス(競馬Links)の口コミ・評判・評価を見る</a> ）</dd>
+						</dl>
+												</div>
+		</div>
+		<div id="tabbox-2">
+			<div id="newsbox">
+									<dl>
+						<!--{*<dt>2015-09-10</dt>*}-->
+						<dt><span id="rate-1506"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/salry.www.sal-g.com" title="最速で一億円の口コミ情報を見る">競馬予想サイト「最速で一億円」を追加しました。競馬予想サイト「最速で一億円」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-09-10</dt>*}-->
+						<dt><span id="rate-1505"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/show.www.basonw.com" title="パーフェクト予想家 大石透の口コミ情報を見る">競馬予想サイト「パーフェクト予想家 大石透」を追加しました。競馬予想サイト「パーフェクト予想家 大石透」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-09-10</dt>*}-->
+						<dt><span id="rate-1504"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/www.huntrance.com" title="競馬予想プログラムHUNTERの口コミ情報を見る">競馬予想サイト「競馬予想プログラムHUNTER」を追加しました。競馬予想サイト「競馬予想プログラムHUNTER」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-09-10</dt>*}-->
+						<dt><span id="rate-1503"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/max.www.mo-of.net" title="川中式的中術の口コミ情報を見る">競馬予想サイト「川中式的中術」を追加しました。競馬予想サイト「川中式的中術」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-09-10</dt>*}-->
+						<dt><span id="rate-1502"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/invite.www.cha-sers.com" title="チェイサーズの口コミ情報を見る">競馬予想サイト「チェイサーズ」を追加しました。競馬予想サイト「チェイサーズ」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-08-31</dt>*}-->
+						<dt><span id="rate-1501"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/JTpaFwMF.keiba-enrich.com" title="エンリッチの口コミ情報を見る">競馬予想サイト「エンリッチ」を追加しました。競馬予想サイト「エンリッチ」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-08-12</dt>*}-->
+						<dt><span id="rate-1500"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/tenma-club.net" title="TENMACLUBの口コミ情報を見る">競馬予想サイト「TENMACLUB」を追加しました。競馬予想サイト「TENMACLUB」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-07-21</dt>*}-->
+						<dt><span id="rate-1499"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/one.www.race-c.com" title="重賞・最終式 単勝一点の口コミ情報を見る">競馬予想サイト「重賞・最終式 単勝一点」を追加しました。競馬予想サイト「重賞・最終式 単勝一点」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-07-21</dt>*}-->
+						<dt><span id="rate-1498"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/tekichu-factory.com" title="的中ファクトリーの口コミ情報を見る">競馬予想サイト「的中ファクトリー」を追加しました。競馬予想サイト「的中ファクトリー」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-07-10</dt>*}-->
+						<dt><span id="rate-1497"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/keiba3.com" title="荒神式3連単の口コミ情報を見る">競馬予想サイト「荒神式3連単」を追加しました。競馬予想サイト「荒神式3連単」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-06-18</dt>*}-->
+						<dt><span id="rate-1496"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/katsu.www.yukoky.com" title="情報会社有効活用の口コミ情報を見る">競馬予想サイト「情報会社有効活用」を追加しました。競馬予想サイト「情報会社有効活用」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-06-11</dt>*}-->
+						<dt><span id="rate-1495"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/www.king-k.net" title="競馬王の口コミ情報を見る">競馬予想サイト「競馬王」を追加しました。競馬予想サイト「競馬王」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-06-11</dt>*}-->
+						<dt><span id="rate-1494"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/nozanfarm.com" title="ノーザンファームの口コミ情報を見る">競馬予想サイト「ノーザンファーム」を追加しました。競馬予想サイト「ノーザンファーム」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-06-11</dt>*}-->
+						<dt><span id="rate-1493"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/real-data.jp" title="REAL DATAの口コミ情報を見る">競馬予想サイト「REAL DATA」を追加しました。競馬予想サイト「REAL DATA」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-06-11</dt>*}-->
+						<dt><span id="rate-1492"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/count-u.com" title="COUNT UPの口コミ情報を見る">競馬予想サイト「COUNT UP」を追加しました。競馬予想サイト「COUNT UP」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-06-11</dt>*}-->
+						<dt><span id="rate-1491"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/rakuuma.com" title="楽UMAドットコムの口コミ情報を見る">競馬予想サイト「楽UMAドットコム」を追加しました。競馬予想サイト「楽UMAドットコム」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-06-11</dt>*}-->
+						<dt><span id="rate-1490"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/kb-union.com" title="ROUTE UNIONの口コミ情報を見る">競馬予想サイト「ROUTE UNION」を追加しました。競馬予想サイト「ROUTE UNION」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-06-11</dt>*}-->
+						<dt><span id="rate-1489"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/dream.www.htop-o.net" title="ゴー！ゴー！万券パラダイスの口コミ情報を見る">競馬予想サイト「ゴー！ゴー！万券パラダイス」を追加しました。競馬予想サイト「ゴー！ゴー！万券パラダイス」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-06-11</dt>*}-->
+						<dt><span id="rate-1488"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/www.bucchigiri-tekichu.com" title="ブッチギリ的中.comの口コミ情報を見る">競馬予想サイト「ブッチギリ的中.com」を追加しました。競馬予想サイト「ブッチギリ的中.com」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-06-11</dt>*}-->
+						<dt><span id="rate-1487"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/jikuuma.asia" title="極軸馬の口コミ情報を見る">競馬予想サイト「極軸馬」を追加しました。競馬予想サイト「極軸馬」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-06-11</dt>*}-->
+						<dt><span id="rate-1486"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/3dsynapse.com" title="IPAT連動競馬マルチソフト『3Dシナプス』の口コミ情報を見る">競馬予想サイト「IPAT連動競馬マルチソフト『3Dシナプス』」を追加しました。競馬予想サイト「IPAT連動競馬マルチソフト『3Dシナプス』」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-06-11</dt>*}-->
+						<dt><span id="rate-1485"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/%E3%83%A9%E3%82%A4%E3%82%B8%E3%83%B3%E3%82%B0%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%9B%E3%83%BC%E3%82%B9.lp.vindictiveimmunity.com" title="ライジングスターホースの口コミ情報を見る">競馬予想サイト「ライジングスターホース」を追加しました。競馬予想サイト「ライジングスターホース」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-06-11</dt>*}-->
+						<dt><span id="rate-1484"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/compi-a.com" title="ニッカンコンピ激勝馬券倶楽部の口コミ情報を見る">競馬予想サイト「ニッカンコンピ激勝馬券倶楽部」を追加しました。競馬予想サイト「ニッカンコンピ激勝馬券倶楽部」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-06-11</dt>*}-->
+						<dt><span id="rate-1483"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/winning-method.com" title="Winning Methodの口コミ情報を見る">競馬予想サイト「Winning Method」を追加しました。競馬予想サイト「Winning Method」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-06-11</dt>*}-->
+						<dt><span id="rate-1482"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/wakumonster.keiba-masters.com" title="枠連モンスターの口コミ情報を見る">競馬予想サイト「枠連モンスター」を追加しました。競馬予想サイト「枠連モンスター」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-06-11</dt>*}-->
+						<dt><span id="rate-1481"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/dreams-to-achieve.com" title="プロフェッショナルダービーの口コミ情報を見る">競馬予想サイト「プロフェッショナルダービー」を追加しました。競馬予想サイト「プロフェッショナルダービー」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-04-25</dt>*}-->
+						<dt><span id="rate-1480"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/search-am.jp" title="Searchの口コミ情報を見る">競馬予想サイト「Search」を追加しました。競馬予想サイト「Search」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-04-25</dt>*}-->
+						<dt><span id="rate-1479"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/www.uma-labo.com" title="うまラボの口コミ情報を見る">競馬予想サイト「うまラボ」を追加しました。競馬予想サイト「うまラボ」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-04-25</dt>*}-->
+						<dt><span id="rate-1478"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/marvelous-invest.jp" title="Marvelousの口コミ情報を見る">競馬予想サイト「Marvelous」を追加しました。競馬予想サイト「Marvelous」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-04-12</dt>*}-->
+						<dt><span id="rate-1477"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/eijapan.jp" title="JAPANの口コミ情報を見る">競馬予想サイト「JAPAN」を追加しました。競馬予想サイト「JAPAN」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-04-12</dt>*}-->
+						<dt><span id="rate-1476"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/top.win5-hit.net" title="WIN5 HITの口コミ情報を見る">競馬予想サイト「WIN5 HIT」を追加しました。競馬予想サイト「WIN5 HIT」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-04-12</dt>*}-->
+						<dt><span id="rate-1475"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/aiki-k.com" title="合気流競馬術の口コミ情報を見る">競馬予想サイト「合気流競馬術」を追加しました。競馬予想サイト「合気流競馬術」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-04-12</dt>*}-->
+						<dt><span id="rate-1474"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/brkrule.www.strmst.com" title="「双璧」3つの約束によって保障された結果の口コミ情報を見る">競馬予想サイト「「双璧」3つの約束によって保障された結果」を追加しました。競馬予想サイト「「双璧」3つの約束によって保障された結果」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-04-06</dt>*}-->
+						<dt><span id="rate-1473"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/keibaconcier.com" title="競馬予想コンシェルジュの口コミ情報を見る">競馬予想サイト「競馬予想コンシェルジュ」を追加しました。競馬予想サイト「競馬予想コンシェルジュ」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-04-06</dt>*}-->
+						<dt><span id="rate-1472"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/outcome-of-investment.com" title="トータルラインの口コミ情報を見る">競馬予想サイト「トータルライン」を追加しました。競馬予想サイト「トータルライン」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-04-06</dt>*}-->
+						<dt><span id="rate-1471"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/www.king-keiba.com" title="必中の口コミ情報を見る">競馬予想サイト「必中」を追加しました。競馬予想サイト「必中」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-03-30</dt>*}-->
+						<dt><span id="rate-1470"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/one-direct.jp" title="株式会社One-Directの口コミ情報を見る">競馬予想サイト「株式会社One-Direct」を追加しました。競馬予想サイト「株式会社One-Direct」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-03-27</dt>*}-->
+						<dt><span id="rate-1469"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/link-start.jp" title="Linkの口コミ情報を見る">競馬予想サイト「Link」を追加しました。競馬予想サイト「Link」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-03-24</dt>*}-->
+						<dt><span id="rate-1467"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/trigger-p.com" title="TRIGGER POINTの口コミ情報を見る">競馬予想サイト「TRIGGER POINT」を追加しました。競馬予想サイト「TRIGGER POINT」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-03-24</dt>*}-->
+						<dt><span id="rate-1466"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/exct.www.maswhs.com" title="馬切の法則の口コミ情報を見る">競馬予想サイト「馬切の法則」を追加しました。競馬予想サイト「馬切の法則」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-03-24</dt>*}-->
+						<dt><span id="rate-1465"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/ida-ten.com" title="韋駄天の口コミ情報を見る">競馬予想サイト「韋駄天」を追加しました。競馬予想サイト「韋駄天」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-03-24</dt>*}-->
+						<dt><span id="rate-1464"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/www.gfand.biz" title="Gallop Fandの口コミ情報を見る">競馬予想サイト「Gallop Fand」を追加しました。競馬予想サイト「Gallop Fand」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-03-24</dt>*}-->
+						<dt><span id="rate-1463"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/der-by.org" title="Derbyの口コミ情報を見る">競馬予想サイト「Derby」を追加しました。競馬予想サイト「Derby」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-03-19</dt>*}-->
+						<dt><span id="rate-1462"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/zaiteku-keiba.club" title="財テク競馬倶楽部の口コミ情報を見る">競馬予想サイト「財テク競馬倶楽部」を追加しました。競馬予想サイト「財テク競馬倶楽部」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-03-19</dt>*}-->
+						<dt><span id="rate-1461"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/benefit-agency.com" title="ベネフィットエージェンシーの口コミ情報を見る">競馬予想サイト「ベネフィットエージェンシー」を追加しました。競馬予想サイト「ベネフィットエージェンシー」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-03-19</dt>*}-->
+						<dt><span id="rate-1460"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/never---k.com" title="NEVERの口コミ情報を見る">競馬予想サイト「NEVER」を追加しました。競馬予想サイト「NEVER」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-03-19</dt>*}-->
+						<dt><span id="rate-1459"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/www.v-wing-k.com" title="金馬券の口コミ情報を見る">競馬予想サイト「金馬券」を追加しました。競馬予想サイト「金馬券」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-03-19</dt>*}-->
+						<dt><span id="rate-1458"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/freeway.realkeibatoushi.com" title="FREEWAY競馬投資法の口コミ情報を見る">競馬予想サイト「FREEWAY競馬投資法」を追加しました。競馬予想サイト「FREEWAY競馬投資法」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-03-19</dt>*}-->
+						<dt><span id="rate-1457"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/keima-en.com" title="恵馬苑の口コミ情報を見る">競馬予想サイト「恵馬苑」を追加しました。競馬予想サイト「恵馬苑」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+									<dl>
+						<!--{*<dt>2015-03-19</dt>*}-->
+						<dt><span id="rate-1456"></span></dt>
+													<dd><a href="http://www.spat4cp.jp/site/klf-ub177.info" title="千年ホース・プロジェクトの口コミ情報を見る">競馬予想サイト「千年ホース・プロジェクト」を追加しました。競馬予想サイト「千年ホース・プロジェクト」の口コミ情報・評判・評価をお待ちしております。</a></dd>
+																	</dl>
+							</div>
+		</div>
+		<ul class="tab-foot">
+			<li><a href="/review">口コミをすべて見る</a></li>
+			<li><a href="/arrival">更新情報をすべて見る</a></li>
+		</ul>
+	</div>
+
+	<div class="rightblock totop">
+			<div class="circle page-top"><a href="#top" style="color:#fff;">▲</a></div>
+	</div>
+
+</div>	<div id="leftcolumn">
+
+	<div class="leftblock">
+		<!--{*
+		<div class="title">
+			<h2 id="balloon-1-bottom">注目度急上昇！<br />今もっとも旬な<br />競馬予想サイト</h2>
+		</div>
+		*}-->
+		<div id="rankblock">
+										<!--{*
+				<div id="rankbox" class="side-corner-tag">
+					<div class="order"><div></div></div>
+					<div class="order-no">BEST</div>
+					<a href="/ad/158/3" target="_blank" rel="nofollow">
+																					<img src="http://www.spat4cp.jp/theme/images/thum/upload/spirits.png" alt="競馬スピリッツの口コミ・評判・評価" title="競馬スピリッツ" style="width:220px; height:220px;"/>
+																		</a>
+					<div id="title"><div>競馬スピリッツ</div></div>
+					<div>
+						<a href="http://www.spat4cp.jp/site/www.hicchu.net">
+							<div class="link" style="margin:0px; padding:10px; background:#396; color:#fff; width:200px; margin-top:5px; height:40px;">競馬スピリッツの口コミ・評判を見る</div>
+						</a>
+					</div>
+				</div>
+				*}-->
+				<div id="bestbox" style="background:url(/theme/images/dendou.jpg) no-repeat;">
+					<a href="/ad/158/3" target="_blank" rel="nofollow">
+						<div class="image">
+																								<img src="http://www.spat4cp.jp/theme/images/thum/upload/spirits.png" alt="競馬スピリッツの口コミ・評判・評価" title="競馬スピリッツ" />
+																					</div>
+					</a>
+					<div id="title"><div>競馬スピリッツ</div></div>
+				</div>
+								</div>
+	</div>
+	
+	<div class="leftblock" style="margin-bottom:30px; margin-top:-10px;">
+		<a href="http://b-asura.com/?172-1" target="_blank">
+			<img src="http://www.spat4cp.jp/theme/images/banner/b-asura-1.png" alt="競馬サイト潜入調査.net" title="競馬サイト潜入調査.net" />
+		</a>
+	</div>
+	
+	<div class="leftblock">
+		<div class="title">
+			<!--{*<h2 id="balloon-1-bottom">口コミランキング</h2>*}-->
+			<h2 class="access"><img src="http://www.spat4cp.jp/theme/images/title/accessrank.jpg" alt="アクセスランキング" /></h2>
+		</div>
+		<div id="rankblock">
+										<div id="rankbox" class="side-corner-tag">
+					<div class="order"><div></div></div>
+					<div class="order-no">NO.1</div>
+					<!--{*<a href="/ad/115/3" target="_blank" rel="nofollow">*}-->
+					<a href="http://www.spat4cp.jp/site/www.real-kb.com">
+						<div class="image">
+																								<img src="http://www.spat4cp.jp/theme/images/thum/upload/real.png" alt="真実の競馬情報会社REALの口コミ・評判・評価" title="真実の競馬情報会社REAL" style="width:220px; height:220px;"/>
+									<!--{*<img src="http://www.spat4cp.jp/theme/images/thum/160/www.real-kb.com.jpg" alt="真実の競馬情報会社REALの口コミ・評判・評価" title="真実の競馬情報会社REAL" style="width:220px; height:220px;"/>*}-->
+																					</div>
+					</a>
+					<div id="title"><div><a href="http://www.spat4cp.jp/site/www.real-kb.com">真実の競馬情報会社REAL</a></div></div>
+											<div class="comment"><span style="font-size: 140%; font-weight: bold; color:#f00;">【ただ今悪評で炎上中】</span>有料のキャンペーン情報がことごとく当たらないという口コミが多数。にもかかわらず、サイト内の的中実績には毎週必ず「3連単1点」で10万円単位の高額配当がズラリと並んでいます。<br><span style="font-weight: bold; color:#00f;">【追記】</span>最近1点ではなく、一様に30点という表記に変更されました。</div>
+										<!--{*
+					<div>
+						<a href="http://www.spat4cp.jp/site/www.real-kb.com">
+							<div class="link" style="margin:0px; padding:10px; background:#396; color:#fff; width:200px; margin-top:5px; height:40px;">真実の競馬情報会社REALの口コミ・評判を見る</div>
+						</a>
+					</div>
+					*}-->
+				</div>
+										<div id="rankbox" class="side-corner-tag">
+					<div class="order"><div></div></div>
+					<div class="order-no">NO.2</div>
+					<!--{*<a href="/ad/148/3" target="_blank" rel="nofollow">*}-->
+					<a href="http://www.spat4cp.jp/site/new-winners.jp">
+						<div class="image">
+																								<img src="http://www.spat4cp.jp/theme/images/thum/upload/NEWSnews.png" alt="NEWSの口コミ・評判・評価" title="NEWS" style="width:220px; height:220px;"/>
+									<!--{*<img src="http://www.spat4cp.jp/theme/images/thum/160/new-winners.jp.jpg" alt="NEWSの口コミ・評判・評価" title="NEWS" style="width:220px; height:220px;"/>*}-->
+																					</div>
+					</a>
+					<div id="title"><div><a href="http://www.spat4cp.jp/site/new-winners.jp">NEWS</a></div></div>
+											<div class="comment"><span style="color:#f00;">【悪評】</span>高額な情報料を払わせるため、複数の人物による誘導・勧誘が行われているという疑惑のサイト。信憑性のある口コミによれば、筧・玉井・渡邉・江原といった人物がリレー形式で劇場型の勧誘をしてくるようです。</div>
+										<!--{*
+					<div>
+						<a href="http://www.spat4cp.jp/site/new-winners.jp">
+							<div class="link" style="margin:0px; padding:10px; background:#396; color:#fff; width:200px; margin-top:5px; height:40px;">NEWSの口コミ・評判を見る</div>
+						</a>
+					</div>
+					*}-->
+				</div>
+										<div id="rankbox" class="side-corner-tag">
+					<div class="order"><div></div></div>
+					<div class="order-no">NO.3</div>
+					<!--{*<a href="/ad/131/3" target="_blank" rel="nofollow">*}-->
+					<a href="http://www.spat4cp.jp/site/mailuma.ameblo.jp">
+						<div class="image">
+																								<img src="http://www.spat4cp.jp/theme/images/thum/upload/meluma.png" alt="佐藤トシヤスのメルうまの口コミ・評判・評価" title="佐藤トシヤスのメルうま" style="width:220px; height:220px;"/>
+									<!--{*<img src="http://www.spat4cp.jp/theme/images/thum/160/mailuma.ameblo.jp.jpg" alt="佐藤トシヤスのメルうまの口コミ・評判・評価" title="佐藤トシヤスのメルうま" style="width:220px; height:220px;"/>*}-->
+																					</div>
+					</a>
+					<div id="title"><div><a href="http://www.spat4cp.jp/site/mailuma.ameblo.jp">佐藤トシヤスのメルうま</a></div></div>
+											<div class="comment"><span style="color:#f00;">【悪評】</span>常に売り切れ状態の絶対に参加できないレースと、販売中の申込可能なレースの2種類が存在し、絶対に参加できないレースは必ずと言っていいほど高額的中の報告がくるんだとか。もちろん参加可能な方は全不的中との口コミ多数です。</div>
+										<!--{*
+					<div>
+						<a href="http://www.spat4cp.jp/site/mailuma.ameblo.jp">
+							<div class="link" style="margin:0px; padding:10px; background:#396; color:#fff; width:200px; margin-top:5px; height:40px;">佐藤トシヤスのメルうまの口コミ・評判を見る</div>
+						</a>
+					</div>
+					*}-->
+				</div>
+										<div id="rankbox" class="side-corner-tag">
+					<div class="order"><div></div></div>
+					<div class="order-no">NO.4</div>
+					<!--{*<a href="/ad/149/3" target="_blank" rel="nofollow">*}-->
+					<a href="http://www.spat4cp.jp/site/www.tk-expert.jp">
+						<div class="image">
+																								<img src="http://www.spat4cp.jp/theme/images/thum/upload/tk-expert.jp.png" alt="後藤式馬券塾(エキスパート)の口コミ・評判・評価" title="後藤式馬券塾(エキスパート)" style="width:220px; height:220px;"/>
+									<!--{*<img src="http://www.spat4cp.jp/theme/images/thum/160/www.tk-expert.jp.jpg" alt="後藤式馬券塾(エキスパート)の口コミ・評判・評価" title="後藤式馬券塾(エキスパート)" style="width:220px; height:220px;"/>*}-->
+																					</div>
+					</a>
+					<div id="title"><div><a href="http://www.spat4cp.jp/site/www.tk-expert.jp">後藤式馬券塾(エキスパート)</a></div></div>
+											<div class="comment"><span style="color:#f00;">【悪評】</span>後藤孝男氏監修の競馬サイト「エキスパート(EXPERT)」が堂々のリニューアル。ドメインも電話番号もすべて同じなのに、リニューアルした瞬間から、いきなり2期生募集と言い切るあたりは、気持ち良いくらいの捏造ぶりです。相変わらず特殊詐欺(振り込め詐欺)被害者が現金を送った住所(警察庁HP)を掲載しており、メールアドレスなどの「個人情報流出」疑惑もあって、逆に良いところを探す方が難しいサイトです。</div>
+										<!--{*
+					<div>
+						<a href="http://www.spat4cp.jp/site/www.tk-expert.jp">
+							<div class="link" style="margin:0px; padding:10px; background:#396; color:#fff; width:200px; margin-top:5px; height:40px;">後藤式馬券塾(エキスパート)の口コミ・評判を見る</div>
+						</a>
+					</div>
+					*}-->
+				</div>
+										<div id="rankbox" class="side-corner-tag">
+					<div class="order"><div></div></div>
+					<div class="order-no">NO.5</div>
+					<!--{*<a href="/ad/95/3" target="_blank" rel="nofollow">*}-->
+					<a href="http://www.spat4cp.jp/site/www.tf-toushi.com">
+						<div class="image">
+																								<img src="http://www.spat4cp.jp/theme/images/thum/upload/tf-toushi.com.png" alt="TURFの口コミ・評判・評価" title="TURF" style="width:220px; height:220px;"/>
+									<!--{*<img src="http://www.spat4cp.jp/theme/images/thum/160/www.tf-toushi.com.jpg" alt="TURFの口コミ・評判・評価" title="TURF" style="width:220px; height:220px;"/>*}-->
+																					</div>
+					</a>
+					<div id="title"><div><a href="http://www.spat4cp.jp/site/www.tf-toushi.com">TURF</a></div></div>
+											<div class="comment"><span style="color:#f00;">【悪評】</span>喜びの声の画像を他サイトから盗用していたとみられ、それが口コミで書き込まれた直後に画像を消したという過去があるサイト。最近は特に有料情報がすべて不的中という口コミが多く見られます。特商法に関する記載の運営者は、他にも競馬サイトを複数運営しています。</div>
+										<!--{*
+					<div>
+						<a href="http://www.spat4cp.jp/site/www.tf-toushi.com">
+							<div class="link" style="margin:0px; padding:10px; background:#396; color:#fff; width:200px; margin-top:5px; height:40px;">TURFの口コミ・評判を見る</div>
+						</a>
+					</div>
+					*}-->
+				</div>
+										<div id="rankbox" class="side-corner-tag">
+					<div class="order"><div></div></div>
+					<div class="order-no">NO.6</div>
+					<!--{*<a href="/ad/92/3" target="_blank" rel="nofollow">*}-->
+					<a href="http://www.spat4cp.jp/site/tc-brain.net">
+						<div class="image">
+																								<img src="http://www.spat4cp.jp/theme/images/thum/upload/tresentb.png" alt="トレセン直送ブレーンの口コミ・評判・評価" title="トレセン直送ブレーン" style="width:220px; height:220px;"/>
+									<!--{*<img src="http://www.spat4cp.jp/theme/images/thum/160/tc-brain.net.jpg" alt="トレセン直送ブレーンの口コミ・評判・評価" title="トレセン直送ブレーン" style="width:220px; height:220px;"/>*}-->
+																					</div>
+					</a>
+					<div id="title"><div><a href="http://www.spat4cp.jp/site/tc-brain.net">トレセン直送ブレーン</a></div></div>
+											<div class="comment"><span style="color:#f00;">【悪評】</span>10万円単位の情報料を支払ったが当たらなかったという報告が多数。初めは安め(1万円程度)で、その情報が外れると次はもっと良い情報が…と高額な情報をお勧めしてくれる典型的なやり方ですが、看板になっているのは及川義弘氏。彼はホースマン歴40年でダービーニュースの本誌予想を勤めたこともある方らしいのですが…。</div>
+										<!--{*
+					<div>
+						<a href="http://www.spat4cp.jp/site/tc-brain.net">
+							<div class="link" style="margin:0px; padding:10px; background:#396; color:#fff; width:200px; margin-top:5px; height:40px;">トレセン直送ブレーンの口コミ・評判を見る</div>
+						</a>
+					</div>
+					*}-->
+				</div>
+										<div id="rankbox" class="side-corner-tag">
+					<div class="order"><div></div></div>
+					<div class="order-no">NO.7</div>
+					<!--{*<a href="/ad/89/3" target="_blank" rel="nofollow">*}-->
+					<a href="http://www.spat4cp.jp/site/k-bax.jp">
+						<div class="image">
+																								<img src="http://www.spat4cp.jp/theme/images/thum/upload/keibax.png" alt="競馬予想Xの口コミ・評判・評価" title="競馬予想X" style="width:220px; height:220px;"/>
+									<!--{*<img src="http://www.spat4cp.jp/theme/images/thum/160/k-bax.jp.jpg" alt="競馬予想Xの口コミ・評判・評価" title="競馬予想X" style="width:220px; height:220px;"/>*}-->
+																					</div>
+					</a>
+					<div id="title"><div><a href="http://www.spat4cp.jp/site/k-bax.jp">競馬予想X</a></div></div>
+											<div class="comment"><span style="color:#f00;">【悪評】</span>他の口コミサイトでベタ褒め＆猛プッシュされているが、実はトリガミなどの苦情が多いサイト。提供情報が人気馬のBOXという話もあり、新聞に書いてある程度の情報でユーザーからお金を集められているのだから、ある意味スゴイと言わざるを得ません。</div>
+										<!--{*
+					<div>
+						<a href="http://www.spat4cp.jp/site/k-bax.jp">
+							<div class="link" style="margin:0px; padding:10px; background:#396; color:#fff; width:200px; margin-top:5px; height:40px;">競馬予想Xの口コミ・評判を見る</div>
+						</a>
+					</div>
+					*}-->
+				</div>
+										<div id="rankbox" class="side-corner-tag">
+					<div class="order"><div></div></div>
+					<div class="order-no">NO.8</div>
+					<!--{*<a href="/ad/102/3" target="_blank" rel="nofollow">*}-->
+					<a href="http://www.spat4cp.jp/site/www.l-horse.com">
+						<div class="image">
+																								<img src="http://www.spat4cp.jp/theme/images/thum/upload/kachiumadensetu.png" alt="勝馬伝説の口コミ・評判・評価" title="勝馬伝説" style="width:220px; height:220px;"/>
+									<!--{*<img src="http://www.spat4cp.jp/theme/images/thum/160/www.l-horse.com.jpg" alt="勝馬伝説の口コミ・評判・評価" title="勝馬伝説" style="width:220px; height:220px;"/>*}-->
+																					</div>
+					</a>
+					<div id="title"><div><a href="http://www.spat4cp.jp/site/www.l-horse.com">勝馬伝説</a></div></div>
+											<div class="comment"><span style="color:#f00;">【悪評】</span>ベタ褒めするサイトがある一方で、数十万円の情報料金を支払った・騙されたという口コミも急増中です。</div>
+										<!--{*
+					<div>
+						<a href="http://www.spat4cp.jp/site/www.l-horse.com">
+							<div class="link" style="margin:0px; padding:10px; background:#396; color:#fff; width:200px; margin-top:5px; height:40px;">勝馬伝説の口コミ・評判を見る</div>
+						</a>
+					</div>
+					*}-->
+				</div>
+										<div id="rankbox" class="side-corner-tag">
+					<div class="order"><div></div></div>
+					<div class="order-no">NO.9</div>
+					<!--{*<a href="/ad/87/3" target="_blank" rel="nofollow">*}-->
+					<a href="http://www.spat4cp.jp/site/b-record.com">
+						<div class="image">
+																								<img src="http://www.spat4cp.jp/theme/images/thum/upload/bestrecord.png" alt="ベストレコードの口コミ・評判・評価" title="ベストレコード" style="width:220px; height:220px;"/>
+									<!--{*<img src="http://www.spat4cp.jp/theme/images/thum/160/b-record.com.jpg" alt="ベストレコードの口コミ・評判・評価" title="ベストレコード" style="width:220px; height:220px;"/>*}-->
+																					</div>
+					</a>
+					<div id="title"><div><a href="http://www.spat4cp.jp/site/b-record.com">ベストレコード</a></div></div>
+											<div class="comment">日々無料情報を更新しているため、とても良心的なサイトに見えますが、お金を払って有料情報に参加した途端、まったく当たらないという口コミが多数寄せられています。無料コンテンツを見る分には良いと思いますが果たして…。数年前まで多くの口コミサイトで業界を賑わせた「勝馬DX」系の後継サイトです。</div>
+										<!--{*
+					<div>
+						<a href="http://www.spat4cp.jp/site/b-record.com">
+							<div class="link" style="margin:0px; padding:10px; background:#396; color:#fff; width:200px; margin-top:5px; height:40px;">ベストレコードの口コミ・評判を見る</div>
+						</a>
+					</div>
+					*}-->
+				</div>
+										<div id="rankbox" class="side-corner-tag">
+					<div class="order"><div></div></div>
+					<div class="order-no">NO.10</div>
+					<!--{*<a href="/ad/94/3" target="_blank" rel="nofollow">*}-->
+					<a href="http://www.spat4cp.jp/site/profit-in.jp">
+						<div class="image">
+																								<img src="http://www.spat4cp.jp/theme/images/thum/upload/profit.png" alt="PROFITの口コミ・評判・評価" title="PROFIT" style="width:220px; height:220px;"/>
+									<!--{*<img src="http://www.spat4cp.jp/theme/images/thum/160/profit-in.jp.jpg" alt="PROFITの口コミ・評判・評価" title="PROFIT" style="width:220px; height:220px;"/>*}-->
+																					</div>
+					</a>
+					<div id="title"><div><a href="http://www.spat4cp.jp/site/profit-in.jp">PROFIT</a></div></div>
+											<div class="comment">他の口コミサイトで良評と悪評が極端なサイト。万馬券が当たりましたという口コミしかないサイトもあれば、買い目点数が多くて儲からないという口コミサイトも。あまりにもどちらか片方の評価しかないのは、どう考えても不自然と言わざるを得ません。
+</div>
+										<!--{*
+					<div>
+						<a href="http://www.spat4cp.jp/site/profit-in.jp">
+							<div class="link" style="margin:0px; padding:10px; background:#396; color:#fff; width:200px; margin-top:5px; height:40px;">PROFITの口コミ・評判を見る</div>
+						</a>
+					</div>
+					*}-->
+				</div>
+										<div id="rankbox" class="side-corner-tag">
+					<div class="order"><div></div></div>
+					<div class="order-no">NO.11</div>
+					<!--{*<a href="/ad/88/3" target="_blank" rel="nofollow">*}-->
+					<a href="http://www.spat4cp.jp/site/ko-haito.com">
+						<div class="image">
+																								<img src="http://www.spat4cp.jp/theme/images/thum/upload/kouhaitou.png" alt="高配当.comの口コミ・評判・評価" title="高配当.com" style="width:220px; height:220px;"/>
+									<!--{*<img src="http://www.spat4cp.jp/theme/images/thum/160/ko-haito.com.jpg" alt="高配当.comの口コミ・評判・評価" title="高配当.com" style="width:220px; height:220px;"/>*}-->
+																					</div>
+					</a>
+					<div id="title"><div><a href="http://www.spat4cp.jp/site/ko-haito.com">高配当.com</a></div></div>
+											<div class="comment"><span style="color:#f00;">【悪評】</span>あたかも高配当が的中するような言いまわしのメールや、「おめでとうございます」「次回のご案内はございません」「逃せばきっと後悔する」など煽りのメールが多く、このサイトへの登録後は、迷惑メールが急増したなど悪徳業者ではよくある手口を使い、登録者からの反発が多いのが特徴です。実際に有料情報を利用しても「かすりもしないクズ予想」「全不的中だった」などのタレこみが多く見られます。
+</div>
+										<!--{*
+					<div>
+						<a href="http://www.spat4cp.jp/site/ko-haito.com">
+							<div class="link" style="margin:0px; padding:10px; background:#396; color:#fff; width:200px; margin-top:5px; height:40px;">高配当.comの口コミ・評判を見る</div>
+						</a>
+					</div>
+					*}-->
+				</div>
+										<div id="rankbox" class="side-corner-tag">
+					<div class="order"><div></div></div>
+					<div class="order-no">NO.12</div>
+					<!--{*<a href="/ad/90/3" target="_blank" rel="nofollow">*}-->
+					<a href="http://www.spat4cp.jp/site/kt-napo.jp">
+						<div class="image">
+																								<img src="http://www.spat4cp.jp/theme/images/thum/upload/naporeon.png" alt="皇帝万馬券ナポレオンの口コミ・評判・評価" title="皇帝万馬券ナポレオン" style="width:220px; height:220px;"/>
+									<!--{*<img src="http://www.spat4cp.jp/theme/images/thum/160/kt-napo.jp.jpg" alt="皇帝万馬券ナポレオンの口コミ・評判・評価" title="皇帝万馬券ナポレオン" style="width:220px; height:220px;"/>*}-->
+																					</div>
+					</a>
+					<div id="title"><div><a href="http://www.spat4cp.jp/site/kt-napo.jp">皇帝万馬券ナポレオン</a></div></div>
+											<div class="comment"><span style="color:#f00;">【悪評】</span>とにかく登録すると、しつこいくらいに送られてくるメールの嵐に皆辟易しているようです。また、有料情報も1レース180点の予想で、しかも1点1000円推奨って…一体誰が買うんでしょう？「天下統一」「G1 BOSS」と同一運営業者の可能性があります。
+</div>
+										<!--{*
+					<div>
+						<a href="http://www.spat4cp.jp/site/kt-napo.jp">
+							<div class="link" style="margin:0px; padding:10px; background:#396; color:#fff; width:200px; margin-top:5px; height:40px;">皇帝万馬券ナポレオンの口コミ・評判を見る</div>
+						</a>
+					</div>
+					*}-->
+				</div>
+								</div>
+	</div>
+	
+	<div class="leftblock">
+		<div class="title">
+			<h2 id="balloon-1-bottom">予想サイト攻略</h2>
+		</div>
+		<div class="content-right">
+			<div><a href="http://www.spat4cp.jp/guide/bad">悪徳サイトの見分け方</a></div>
+			<div><a href="http://www.spat4cp.jp/guide/free">無料予想サイト活用法</a></div>
+			<div><a href="http://www.spat4cp.jp/guide/charge">有料予想サイト活用法</a></div>
+			<div><a href="http://www.spat4cp.jp/contact/request">調査依頼を出す</a></div>
+		</div>
+	</div>
+
+	<div class="leftblock">
+		<div class="title">
+			<h2 id="balloon-1-bottom">おすすめリンク</h2>
+		</div>
+		<div class="content-right">
+			<div><a href="http://www.jra.go.jp/" target="_blank">JRA</a></div>
+			<div><a href="http://www.ipat.jra.go.jp/" target="_blank">IPAT</a></div>
+			<div><a href="http://jra-van.jp/nx/index.html" target="_blank">JRA-VAN</a></div>
+			<div><a href="http://jra-van.jp/dlb/index.html" target="_blank">データラボ</a></div>
+			<div><a href="http://horserace.blogmura.com/ranking.html" target="_blank">競馬ブログ</a></div>
+		</div>
+	</div>
+	
+</div></div>
+<!-- /body -->
+
+<!-- footer -->
+<!--footer-->
+<div id="footer-wrap">
+	<div id="fnavi">
+		<div class="fnavibox">
+			<h2>メインメニュー</h2>
+			<ul>
+				<li><a href="/" rel="home">競馬予想サイト必勝ガイド</a></li>
+				<li><a href="/review">口コミ一覧</a></li>
+				<li><a href="/movielist/all">競馬名場面集一覧</a></li>
+				<li><a href="/arrival">お知らせ一覧</a></li>
+			</ul>
+		</div>
+		<div class="fnavibox">
+		<h2>競馬予想サイト情報</h2>
+			<ul>
+				<li><a href="/sitelist/good">優良競馬予想サイト</a></li>
+				<li><a href="/sitelist/bad">悪徳競馬予想サイト</a></li>
+				<li><a href="/sitelist/check">検証中競馬予想サイト</a></li>
+				<li><a href="/sitelist/end">閉鎖済み競馬予想サイト</a></li>
+				<li><a href="/ranking/bad">競馬予想サイトランキング</a></li>
+			</ul>
+		</div>
+		<div class="fnavibox">
+		<h2>競馬予想サイト攻略情報</h2>
+			<ul>
+				<li><a href="/guide/bad">悪徳サイトの見分け方</a></li>
+				<li><a href="/guide/free">無料予想サイト活用法</a></li>
+				<li><a href="/guide/good">有料予想サイト活用法</a></li>
+			</ul>
+		</div>
+		<div class="fnavibox">
+		<h2>サポート</h2>
+			<ul>
+				<li><a href="/contact/request">競馬予想サイト調査依頼</a></li>
+				<li><a href="/contact">お問い合わせ</a></li>
+				<li><a href="/guide/rule">利用規約</a></li>
+				<li><a href="/guide/guideline">口コミガイドライン</a></li>
+				<li><a href="/guide/privacy">プライバシーポリシー</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div id="copyright-wrap">
+	<div class="copyright">Copyright &copy; 競馬予想サイト必勝ガイド All Rights Reserved.</div>
+</div>
+<!--/footer-->
+<!-- /footer -->
+</body>
+</html>

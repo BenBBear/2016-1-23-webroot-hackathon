@@ -1,0 +1,640 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:fb='http://www.facebook.com/2008/fbml' xmlns:og='http://ogp.me/ns#'>
+<head>
+<title>WebPay: 開発者向けクレジットカード決済サービス</title>
+<link href="https://d2bd1bdgljo32z.cloudfront.net/assets/application-05eecd1b07b31b67919e4993d4a3b23f.css" media="all" rel="stylesheet" type="text/css" />
+<link href="https://webpay.jp/assets/font-awesome-7b1e9be565e363280ca8e8d06392eb39.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="https://d2bd1bdgljo32z.cloudfront.net/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+<script src="https://d2bd1bdgljo32z.cloudfront.net/assets/application-99fa97ed5d16ed8c30778d3024b49396.js" type="text/javascript"></script>
+<meta content="authenticity_token" name="csrf-param" />
+<meta content="nqNyUxBFTWXKz3kRexlua+OWjlLhUbeulX/QhHpMmPw=" name="csrf-token" />
+
+<meta content='width=device-width, user-scalable=no, initial-scale=1.0' name='viewport' />
+<meta content='使いやすいAPIとライブラリ。シンプルな料金。ウェブサイトにカード決済を導入。' name='description' />
+<meta content='クレジットカード,クレジット決済,カード決済,決済代行' name='keywords' />
+<meta content='website' property='og:type' />
+<meta content='https://webpay.jp/' property='og:url' />
+<meta content='使いやすいAPIとライブラリ。シンプルな料金。ウェブサイトにカード決済を導入。' property='og:description' />
+<meta content='WebPay: 開発者向けクレジットカード決済サービス' property='og:title' />
+<meta content='https://d2bd1bdgljo32z.cloudfront.net/assets/og_rectangle-83cee680067aaad32bf84b13ca4d56cd.png' property='og:image' />
+<meta content='imaga/png' property='og:image:type' />
+
+</head>
+<body>
+<!-- / Google Tag Manager -->
+<iframe height='0' src='//www.googletagmanager.com/ns.html?id=GTM-NQJZCL' style='display:none;visibility:hidden' width='0'></iframe>
+<script type='text/javascript'>
+  //<![CDATA[
+    // Universal Analytics
+    var acct_key = 'false';
+    
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-37655759-1');
+    if (acct_key) { ga('set', 'dimension1', acct_key); }
+    ga('send', 'pageview');
+    
+    // Google Tag Manager
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NQJZCL');
+    
+    // mixpanel
+    (function(c,a){window.mixpanel=a;var b,d,h,e;b=c.createElement("script");b.type="text/javascript";b.async=!0;b.src=("https:"===c.location.protocol?"https:":"http:")+'//cdn.mxpnl.com/libs/mixpanel-2.1.min.js';d=c.getElementsByTagName("script")[0];d.parentNode.insertBefore(b,d);a._i=[];a.init=function(b,c,f){function d(a,b){var c=b.split(".");2==c.length&&(a=a[c[0]],b=c[1]);a[b]=function(){a.push([b].concat(Array.prototype.slice.call(arguments,0)))}}var g=a;"undefined"!==typeof f?
+    g=a[f]=[]:f="mixpanel";g.people=g.people||[];h="disable track track_pageview track_links track_forms register register_once unregister identify name_tag set_config people.identify people.set people.increment".split(" ");for(e=0;e<h.length;e++)d(g,h[e]);a._i.push([b,c,f])};a.__SV=1.1})(document,window.mixpanel||[]);
+    mixpanel.init("e7dbb2817f06eef6bb14a8bae5c09ee7");
+    mixpanel.track("gui/pages#index");
+    
+    // mouseflow
+    document.write(unescape("%3Cscript src='" + (("https:" == document.location.protocol) ? "https" : "http") + "://cdn.mouseflow.com/projects/5c5e7a57-fbae-4a79-93be-f310a05ccfee.js' type='text/javascript'%3E%3C/script%3E"));
+  //]]>
+</script>
+
+<div id='wrap'>
+<header id='header'>
+<div class='navbar navbar-default navbar-fixed-top' id='root-header'>
+<div class='navbar-header'>
+<button class='navbar-toggle' data-target='.navbar-collapse' data-toggle='collapse'>
+<span class='icon-bar'></span>
+<span class='icon-bar'></span>
+<span class='icon-bar'></span>
+</button>
+<a href="/" class="navbar-brand webpay-logo"></a>
+</div>
+<div class='navbar-collapse collapse'>
+<ul class='nav navbar-nav navbar-left'>
+<li>
+<a href="http://engineering.webpay.co.jp/2016/01/04/backend-maintenance/" target="_blank"><i class='fa fa-bullhorn'></i>
+1/25 数分間の通信断の予定
+</a></li>
+
+</ul>
+<ul class='nav navbar-nav navbar-right'>
+<li></li>
+<li class='dropdown'>
+<a href="#" class="dropdown-toggle" data-toggle="dropdown">WebPayについて
+<b class='caret'></b>
+</a><ul class='dropdown-menu'>
+<li><a href="/pricing">ご利用料金</a></li>
+<li><a href="/security">セキュリティへの取り組み</a></li>
+<li><a href="/faq">よくある質問</a></li>
+<li><a href="/contact">お問い合わせ</a></li>
+<li class='divider'></li>
+<li><a href="/tos">利用規約</a></li>
+<li><a href="/privacy">プライバシーポリシー</a></li>
+</ul>
+</li>
+<li class='dropdown'>
+<a href="#" class="dropdown-toggle" data-toggle="dropdown">開発者向け情報
+<b class='caret'></b>
+</a><ul class='dropdown-menu'>
+<li><a href="/docs/introduction">決済を行う</a></li>
+<li><a href="/docs/payments_with_token">トークン決済</a></li>
+<li><a href="/docs/uncaptured_payments">仮売上</a></li>
+<li><a href="/docs/checkout">CheckoutHelper</a></li>
+<li><a href="/docs/webhooks">Webhook</a></li>
+<li><a href="/docs/mock_cards">テスト用カード</a></li>
+<li><a href="/docs/recursions">定期課金</a></li>
+<li><a href="/docs/extend">WebPay Extend</a></li>
+<li><a href="/docs/libraries">ライブラリ</a></li>
+<li><a href="/docs/plugins">プラグイン</a></li>
+<li class='divider'></li>
+<li><a href="/docs/guideline">利用ガイドライン</a></li>
+<li><a href="/docs/api">APIドキュメント</a></li>
+</ul>
+</li>
+<li class='dropdown visible-xs visible-sm'>
+<a href="#" class="dropdown-toggle" data-toggle="dropdown">運営会社について
+<b class='caret'></b>
+</a><ul class='dropdown-menu'>
+<li><a href="/company">会社情報</a></li>
+<li><a href="/company#ecommerce_law">特定商取引法に基づく表記</a></li>
+<li><a href="http://blog.webpay.co.jp/" target="_blank">運営者ブログ</a></li>
+<li><a href="http://engineering.webpay.co.jp/" target="_blank">開発者ブログ</a></li>
+</ul>
+</li>
+
+<li>
+<div class='btn-group hidden-xs'>
+<a href="/accounts/register" class="btn btn-emphasize">テスト環境を利用する</a>
+<a href="/login" class="btn btn-default">ログイン</a>
+</div>
+</li>
+<li><a href="/accounts/register" class="visible-xs">テスト環境を利用する</a></li>
+<li><a href="/login" class="visible-xs">ログイン</a></li>
+</ul>
+</div>
+</div>
+<script type='text/javascript'>
+  //<![CDATA[
+    (function() {
+      $(function() {
+        var header;
+    
+        header = $('#root-header');
+        if (header) {
+          header.hide();
+          return $(window).scroll(function() {
+            var top;
+    
+            top = $(this).scrollTop();
+            if (top > 500) {
+              if (header.is(":hidden")) {
+                return header.fadeIn();
+              }
+            } else {
+              if (!header.is(":hidden")) {
+                return header.fadeOut();
+              }
+            }
+          });
+        }
+      });
+    
+    }).call(this);
+  //]]>
+</script>
+
+</header>
+<div id='content'>
+<div id='pages'>
+<div id='index'>
+<div class='message'>
+<div class='navbar navbar-default'>
+<div class='navbar-header'>
+<button class='navbar-toggle' data-target='.navbar-collapse' data-toggle='collapse'>
+<span class='icon-bar'></span>
+<span class='icon-bar'></span>
+<span class='icon-bar'></span>
+</button>
+<a href="/" class="navbar-brand webpay-logo hidden-xs hidden-sm"></a>
+</div>
+<div class='navbar-collapse collapse'>
+<ul class='nav navbar-nav navbar-right'>
+<li class='dropdown'>
+<a href="#" class="dropdown-toggle" data-toggle="dropdown">WebPayについて
+<b class='caret'></b>
+</a><ul class='dropdown-menu'>
+<li><a href="/pricing">ご利用料金</a></li>
+<li><a href="/security">セキュリティへの取り組み</a></li>
+<li><a href="/faq">よくある質問</a></li>
+<li><a href="/contact">お問い合わせ</a></li>
+<li class='divider'></li>
+<li><a href="/tos">利用規約</a></li>
+<li><a href="/privacy">プライバシーポリシー</a></li>
+</ul>
+</li>
+<li class='dropdown'>
+<a href="#" class="dropdown-toggle" data-toggle="dropdown">開発者向け情報
+<b class='caret'></b>
+</a><ul class='dropdown-menu'>
+<li><a href="/docs/introduction">決済を行う</a></li>
+<li><a href="/docs/payments_with_token">トークン決済</a></li>
+<li><a href="/docs/uncaptured_payments">仮売上</a></li>
+<li><a href="/docs/checkout">CheckoutHelper</a></li>
+<li><a href="/docs/webhooks">Webhook</a></li>
+<li><a href="/docs/mock_cards">テスト用カード</a></li>
+<li><a href="/docs/recursions">定期課金</a></li>
+<li><a href="/docs/extend">WebPay Extend</a></li>
+<li><a href="/docs/libraries">ライブラリ</a></li>
+<li><a href="/docs/plugins">プラグイン</a></li>
+<li class='divider'></li>
+<li><a href="/docs/guideline">利用ガイドライン</a></li>
+<li><a href="/docs/api">APIドキュメント</a></li>
+</ul>
+</li>
+<li class='dropdown visible-xs visible-sm'>
+<a href="#" class="dropdown-toggle" data-toggle="dropdown">運営会社について
+<b class='caret'></b>
+</a><ul class='dropdown-menu'>
+<li><a href="/company">会社情報</a></li>
+<li><a href="/company#ecommerce_law">特定商取引法に基づく表記</a></li>
+<li><a href="http://blog.webpay.co.jp/" target="_blank">運営者ブログ</a></li>
+<li><a href="http://engineering.webpay.co.jp/" target="_blank">開発者ブログ</a></li>
+</ul>
+</li>
+
+<li><a href="/accounts/register">テスト環境を利用する</a></li>
+<li><a href="/login">ログイン</a></li>
+</ul>
+</div>
+</div>
+<div class='row visible-xs visible-sm'>
+<div class='col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3'>
+<img alt="Rectangle_logo" src="https://d2bd1bdgljo32z.cloudfront.net/assets/rectangle_logo-ef88cab85d85afde2efe898e1e56c5c6.png" title="WebPay" width="100%" />
+</div>
+</div>
+<div class='row'>
+<div class='col-xs-12 col-md-10 col-md-offset-1'>
+<h1>クレジットカード決済をもっとシンプルに</h1>
+<p>ウェブサービス、ECサイト、あなたのウェブサイトにすぐに決済機能を開発できます</p>
+</div>
+</div>
+<div class='row'>
+<div class='col-xs-12 col-md-4 col-md-offset-4'>
+<a href="/accounts/register" class="btn btn-lg btn-block btn-emphasize">すぐにテスト環境を利用する
+</a></div>
+</div>
+</div>
+<div class='features hidden-xs hidden-sm'>
+<div class='row'>
+<div class='col-md-2 col-md-offset-1'>
+<a href='#api'>
+<div class='feature-icon'>
+<i class='fa fa-cogs'></i>
+</div>
+<div class='feature-explanation'>
+<h5>分かりやすいAPI</h5>
+</div>
+</a>
+</div>
+<div class='col-md-2'>
+<a href='#pricing'>
+<div class='feature-icon'>
+<i class='fa fa-heart'></i>
+</div>
+<div class='feature-explanation'>
+<h5>導入費、固定費ゼロ</h5>
+</div>
+</a>
+</div>
+<div class='col-md-2'>
+<a href='#brands'>
+<div class='feature-icon'>
+<i class='fa fa-credit-card'></i>
+</div>
+<div class='feature-explanation'>
+<h5>5大ブランドに対応</h5>
+</div>
+</a>
+</div>
+<div class='col-md-2'>
+<a href='#security'>
+<div class='feature-icon'>
+<i class='fa fa-lock'></i>
+</div>
+<div class='feature-explanation'>
+<h5>安心のセキュリティ</h5>
+</div>
+</a>
+</div>
+<div class='col-md-2'>
+<a href='#env'>
+<div class='feature-icon'>
+<i class='fa fa-flask'></i>
+</div>
+<div class='feature-explanation'>
+<h5>すぐに試せるテスト環境</h5>
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class='detail odd' id='api'>
+<div class='row'>
+<div class='col-md-6 col-xs-12'>
+<h2>
+<i class='fa fa-cogs'></i>
+開発者のための分かりやすいAPI
+</h2>
+<div class='description'>
+<p>
+数行のコードを実装するだけでクレジットカードへの課金処理を行えます。
+Rubyをはじめ様々なプログラミング言語向けのライブラリも用意しています。
+</p>
+<p>
+APIはRESTfulに構成され、シンプルで、わかりやすく、使いやすい作りになっているので、
+開発の足かせになることなく、素早い開発サイクルを実現できます。
+</p>
+</div>
+<div class='see-more'>
+<a href="/docs/introduction" class="btn btn-default">詳しく見る</a>
+</div>
+</div>
+<div class='col-md-6 hidden-xs hidden-sm'>
+<div class='picture api'>
+<div class='tabbable language-switcher'>
+<ul class='nav nav-pills'>
+<i class='fa fa-code'></i>
+<li class='active'>
+<a data-toggle='tab' href='#curl-05621893428690343'>
+curl
+</a>
+</li>
+<li class=''>
+<a data-toggle='tab' href='#ruby-05621893428690343'>
+Ruby
+</a>
+</li>
+<li class=''>
+<a data-toggle='tab' href='#php-05621893428690343'>
+PHP
+</a>
+</li>
+<li class=''>
+<a data-toggle='tab' href='#java-05621893428690343'>
+Java
+</a>
+</li>
+<li class=''>
+<a data-toggle='tab' href='#python-05621893428690343'>
+Python
+</a>
+</li>
+<li class=''>
+<a data-toggle='tab' href='#node-05621893428690343'>
+Node.js
+</a>
+</li>
+</ul>
+<div class='tab-content'>
+<div class='tab-pane clearfix active' id='curl-05621893428690343'>
+<span class='ps1'>$</span>
+<pre><code class='bash'><span>curl &quot;https://api.webpay.jp/v1/charges&quot; \</span>&#x000A;<span>-u &quot;test_secret_eHn4TTgsGguBcW764a2KA8Yd&quot;: \</span>&#x000A;<span>-d &quot;amount=400&quot; \</span>&#x000A;<span>-d &quot;currency=jpy&quot; \</span>&#x000A;<span>-d &quot;card=<span class='generated-token' tabindex='0'>tok_SampleCardToken</span>&quot;</span></code></pre>
+</div>
+<div class='tab-pane clearfix' id='ruby-05621893428690343'>
+<span class='ps1'>&gt;&gt;</span>
+<pre><code class='ruby'><span>require 'webpay'</span>&#x000A;<span>webpay = WebPay.new('test_secret_eHn4TTgsGguBcW764a2KA8Yd')</span>&#x000A;<span>webpay.charge.create(</span>&#x000A;<span>   amount: 400,</span>&#x000A;<span>   currency: &quot;jpy&quot;,</span>&#x000A;<span>   card: &quot;<span class='generated-token' tabindex='0'>tok_SampleCardToken</span>&quot;</span>&#x000A;<span>)</span></code></pre>
+</div>
+<div class='tab-pane clearfix' id='php-05621893428690343'>
+<span class='ps1'>php &gt;</span>
+<pre><code class='php'><span>require &quot;vendor/autoload.php&quot;;</span>&#x000A;<span>use WebPay\WebPay;</span>&#x000A;<span>$webpay = new WebPay('test_secret_eHn4TTgsGguBcW764a2KA8Yd');</span>&#x000A;<span>$webpay-&gt;charge-&gt;create(array(</span>&#x000A;<span>   &quot;amount&quot;=&gt;400,</span>&#x000A;<span>   &quot;currency&quot;=&gt;&quot;jpy&quot;,</span>&#x000A;<span>   &quot;card&quot;=&gt;&quot;<span class='generated-token' tabindex='0'>tok_SampleCardToken</span>&quot;</span>&#x000A;<span>));</span></code></pre>
+</div>
+<div class='tab-pane clearfix' id='java-05621893428690343'>
+<span class='ps1'>&gt;</span>
+<pre><code class='java'><span>import jp.webpay.webpay.WebPay;</span>&#x000A;<span>WebPay webpay = new WebPay(&quot;test_secret_eHn4TTgsGguBcW764a2KA8Yd&quot;);</span>&#x000A;<span>webpay.charge.createRequest()</span>&#x000A;<span>        .amount(400)</span>&#x000A;<span>        .currency(&quot;jpy&quot;)</span>&#x000A;<span>        .card(&quot;<span class='generated-token' tabindex='0'>tok_SampleCardToken</span>&quot;)</span>&#x000A;<span>        .execute();</span></code></pre>
+</div>
+<div class='tab-pane clearfix' id='python-05621893428690343'>
+<span class='ps1'>&gt;&gt;&gt;</span>
+<pre><code class='python'><span>import webpay</span>&#x000A;<span>client = webpay.WebPay('test_secret_eHn4TTgsGguBcW764a2KA8Yd')</span>&#x000A;<span>client.charge.create(amount=400, currency=&quot;jpy&quot;, card=&quot;<span class='generated-token' tabindex='0'>tok_SampleCardToken</span>&quot;)</span></code></pre>
+</div>
+<div class='tab-pane clearfix' id='node-05621893428690343'>
+<span class='ps1'>&gt;</span>
+<pre><code class='javascript'><span>var WebPay = require('webpay');</span>&#x000A;<span>webpay = new WebPay('test_secret_eHn4TTgsGguBcW764a2KA8Yd');</span>&#x000A;<span>webpay.charge.create({</span>&#x000A;<span>  amount: 400,</span>&#x000A;<span>  currency: &quot;jpy&quot;,</span>&#x000A;<span>  card: &quot;<span class='generated-token' tabindex='0'>tok_SampleCardToken</span>&quot;</span>&#x000A;<span>}, function(err, res) { ... });</span></code></pre>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div class='detail even' id='pricing'>
+<div class='row'>
+<div class='col-md-6 hidden-xs hidden-sm'>
+<table class='pricing table' style='margin: 0 auto'>
+<thead>
+<tr class='odd'>
+<th class='side-head'></th>
+<th class='emphasize'>スタータープラン</th>
+<th class='emphasize'>プロプラン</th>
+</tr>
+</thead>
+<tbody>
+<tr class='even'>
+<td class='side-head'>初期費用</td>
+<td class='emphasize' colspan='2'>0円</td>
+</tr>
+<tr class='odd'>
+<td class='side-head'>月額費用</td>
+<td>0円</td>
+<td>9,800円</td>
+</tr>
+<tr class='even'>
+<td class='side-head'>
+<img alt="Visa" height="36" src="https://d2bd1bdgljo32z.cloudfront.net/assets/card_types/visa-b4477a71ecc597c28d81a485dcd90e96.png" title="Visa" width="36" />
+<img alt="Mastercard" height="36" src="https://d2bd1bdgljo32z.cloudfront.net/assets/card_types/mastercard-dd0f8071b588ef1a807e9fa9a084fe6d.png" title="MasterCard" width="36" />
+</td>
+<td class='emphasize'>3.25%</td>
+<td class='emphasize'>2.69%</td>
+</tr>
+<tr class='odd'>
+<td class='side-head'>
+<img alt="Jcb" height="36" src="https://d2bd1bdgljo32z.cloudfront.net/assets/card_types/jcb-810254a382ce09b0e019218a7bff1291.png" title="JCB" width="36" />
+<img alt="American_express" height="36" src="https://d2bd1bdgljo32z.cloudfront.net/assets/card_types/american_express-d986e4b7e5f1aabd22c6cf8d55fe5c3c.png" title="American Express" width="36" />
+<img alt="Diners_club" height="36" src="https://d2bd1bdgljo32z.cloudfront.net/assets/card_types/diners_club-0fd33f4a1bf223f05b27e53357b05fb2.png" title="Diners Club" width="36" />
+</td>
+<td colspan='2'>3.40%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class='col-md-6 col-xs-12'>
+<h2>
+<i class='fa fa-heart'></i>
+シンプルな料金体系
+</h2>
+<div class='description'>
+<p>
+WebPayの利用料金は、1回の取引金額に対して
+<strong>Visa, MasterCardのカードでは3.25%、JCB, American Express, Diners Clubのカードでは3.40% のみ</strong>
+です。
+導入にかかる高額な初期費用や個別に問い合わせが必要な不透明な料金体系もありません。スタータープランでは月額費用も無料です。
+</p>
+<p>
+また、月額費用9,800円のプロプランでは、
+<strong>Visa, MasterCardの手数料が2.69%</strong>
+となります。
+</p>
+<p>
+今後ずっと、決済機能の導入のためのハードルを引き下げるために、WebPayは手数料の業界最安水準を目指し続けることをお約束します。
+</p>
+</div>
+<div class='see-more'>
+<a href="/pricing" class="btn btn-default">詳しく見る</a>
+</div>
+</div>
+</div>
+</div>
+<div class='detail odd centered' id='brands'>
+<div class='row'>
+<div class='col-md-6 col-md-offset-3 col-xs-12'>
+<h2>
+<i class='fa fa-credit-card'></i>
+5大ブランドに対応
+</h2>
+<div class='description'>
+<p>
+日本国内でほとんどのクレジットカードをカバーする、主要5大国際クレジットカードブランドに対応しています。
+これらのブランドのカードは国によらず決済を行うことができます。
+</p>
+</div>
+<div class='picture brands'></div>
+</div>
+</div>
+</div>
+<div class='detail even' id='security'>
+<div class='row'>
+<div class='col-md-6 col-xs-12'>
+<h2>
+<i class='fa fa-lock'></i>
+安心のセキュリティとトークン決済
+</h2>
+<div class='description'>
+<p>
+利用者が安心して決済機能を実装出来るようにセキュリティ向上へ取り組んでいます。
+クレジットカード情報漏洩防止の国際セキュリティ標準であるPCI DSSにも準拠しており、
+WebPayに預けたクレジットカード番号はしっかりと守られています。
+</p>
+<p>
+数行のHTMLを記述するだけで、 クレジットカードに関する入力情報のチェックと、
+あなたがカードの情報を直接取り扱わないセキュアなトークン決済を利用できるフォームも提供しています。
+</p>
+</div>
+<div class='see-more'>
+<a href="/security" class="btn btn-default">詳しく見る</a>
+</div>
+</div>
+<div class='col-md-4 col-md-offset-1 hidden-xs hidden-sm'>
+<img alt="Security" class="img-responsive" src="https://d2bd1bdgljo32z.cloudfront.net/assets/security-4e88f194bbfc5f09febbb47b521301c5.png" title="PCI DSS完全準拠、セキュアなフォームも提供" />
+</div>
+</div>
+</div>
+<div class='detail odd' id='env'>
+<div class='row'>
+<div class='col-md-6 hidden-xs hidden-sm'>
+<div class='picture env'></div>
+</div>
+<div class='col-md-6 col-xs-12'>
+<h2>
+<i class='fa fa-flask'></i>
+すぐに試せる無料のテスト環境
+</h2>
+<div class='description'>
+<p>
+登録するだけですぐに無料のテスト環境を利用することができます。
+テスト環境は実際の決済が発生するかどうかを除いて、全て商用環境と同じため、
+あなたのウェブサービスやECサイトの開発の手を止める必要はありません。
+</p>
+<p>
+利用審査通過後は、APIキーを商用環境向けのものに差し替えるだけで、すぐに決済を始められますので、
+リリースに向けて今から開発を始められます。
+</p>
+</div>
+<div class='see-more hidden-xs hidden-sm'>
+<a href="/accounts/register" class="btn btn-lg btn-emphasize">すぐにテスト環境を利用する
+</a></div>
+</div>
+</div>
+<div class='row visible-xs visible-sm'>
+<div class='col-xs-12 col-md-4 col-md-offset-4'>
+<a href="/accounts/register" class="btn btn-lg btn-block btn-emphasize">すぐにテスト環境を利用する
+</a></div>
+</div>
+</div>
+<div class='detail centered merchants even'>
+<div class='row'>
+<div class='col-md-6 col-md-offset-3 col-xs-12'>
+<h2>
+<i class='fa fa-building-o'></i>
+さまざまなサイトで導入頂いています
+</h2>
+</div>
+</div>
+<div class='row'>
+<div class='col-md-2 col-xs-4'>
+<a href="http://www.freee.co.jp/" target="_blank"><img alt="Freee" class="img-responsive" src="https://d2bd1bdgljo32z.cloudfront.net/assets/merchants/freee-288e80b4c5e9da544258841ee67b2403.png" title="freee" />
+</a></div>
+<div class='col-md-2 col-xs-4'>
+<a href="http://lttr.jp" target="_blank"><img alt="Letter" class="img-responsive" src="https://d2bd1bdgljo32z.cloudfront.net/assets/merchants/letter-811c31d17e2493aea4dcb6b45be87900.png" title="レター" />
+</a></div>
+<div class='col-md-2 col-xs-4'>
+<a href="https://www.wantedly.com/" target="_blank"><img alt="Wantedly" class="img-responsive" src="https://d2bd1bdgljo32z.cloudfront.net/assets/merchants/wantedly-93223ea8b89b00b1534e248bf18080fc.png" title="Wantedly" />
+</a></div>
+<div class='col-md-2 col-xs-4'>
+<a href="https://soracom.jp/" target="_blank"><img alt="Soracom" class="img-responsive" src="https://d2bd1bdgljo32z.cloudfront.net/assets/merchants/soracom-567fa8726cda5170811ddd9d1aea01f7.png" title="SORACOM" />
+</a></div>
+<div class='col-md-2 col-xs-4'>
+<a href="https://bg-bizer.jp/" target="_blank"><img alt="Bizer" class="img-responsive" src="https://d2bd1bdgljo32z.cloudfront.net/assets/merchants/bizer-acf35fae83de90efc207d6ffb0109fa6.png" title="Bizer" />
+</a></div>
+<div class='col-md-2 col-xs-4'>
+<a href="http://www.getgamba.com" target="_blank"><img alt="Gamba" class="img-responsive" src="https://d2bd1bdgljo32z.cloudfront.net/assets/merchants/gamba-e6a30089f4b0b91d3f8514c012e4b0d1.png" title="gamba!" />
+</a></div>
+</div>
+</div>
+</div>
+</div>
+<script type='text/javascript'>
+  //<![CDATA[
+    (function() {
+      $(".features a[href^='#']").click(function(e) {
+        var hash;
+    
+        e.preventDefault();
+        hash = this.hash;
+        return $('html, body').animate({
+          scrollTop: $(this.hash).offset().top
+        }, 500, function() {
+          return window.location.hash = hash;
+        });
+      });
+    
+    }).call(this);
+  //]]>
+</script>
+<script src="https://d2bd1bdgljo32z.cloudfront.net/assets/gui/sample_code-3fe03f4d9f4de6d9c495253874d3ba71.js" type="text/javascript"></script>
+
+</div>
+<footer id='footer'>
+<div class='container'>
+<div class='row'>
+<div class='col-md-3 col-xs-6'>
+<h2>WebPayについて</h2>
+<ul>
+<li><a href="/pricing">ご利用料金</a></li>
+<li><a href="/security">セキュリティへの取り組み</a></li>
+<li><a href="/faq">よくある質問</a></li>
+<li><a href="/contact">お問い合わせ</a></li>
+<li><a href="/forum">フォーラム</a></li>
+</ul>
+</div>
+<div class='col-md-3 col-xs-6'>
+<h2>開発者向け情報</h2>
+<ul>
+<li><a href="/docs/introduction">決済を行う</a></li>
+<li><a href="/docs/payments_with_token">トークン決済</a></li>
+<li><a href="/docs/uncaptured_payments">仮売上</a></li>
+<li><a href="/docs/checkout">CheckoutHelper</a></li>
+<li><a href="/docs/webhooks">Webhook</a></li>
+<li><a href="/docs/mock_cards">テスト用カード</a></li>
+<li><a href="/docs/recursions">定期課金</a></li>
+<li><a href="/docs/extend">WebPay Extend</a></li>
+<li><a href="/docs/libraries">ライブラリ</a></li>
+<li><a href="/docs/plugins">プラグイン</a></li>
+<li><a href="/docs/api">APIドキュメント</a></li>
+</ul>
+</div>
+<div class='col-md-3 col-xs-6'>
+<h2>規約・ポリシー</h2>
+<ul>
+<li><a href="/tos">利用規約</a></li>
+<li><a href="/privacy">プライバシーポリシー</a></li>
+<li><a href="/docs/guideline">利用ガイドライン</a></li>
+</ul>
+</div>
+<div class='col-md-3 col-xs-6'>
+<h2>運営会社について</h2>
+<ul>
+<li><a href="/company">会社情報</a></li>
+<li><a href="/company#ecommerce_law">特定商取引法に基づく表記</a></li>
+<li><a href="http://blog.webpay.co.jp/" target="_blank">運営者ブログ</a></li>
+<li><a href="http://engineering.webpay.co.jp/" target="_blank">開発者ブログ</a></li>
+</ul>
+</div>
+</div>
+<div class='row'>
+<div class='col-md-6 col-md-offset-3 copyrights'>
+&copy;&nbsp;WebPay All rights reserved.
+</div>
+</div>
+</div>
+
+
+</footer>
+</div>
+</body>
+</html>

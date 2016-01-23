@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns#">
+<meta charset="utf-8">
+<title>bet.japan</title>
+
+<meta name="description" content="bet.japan はあらゆる事柄を予想するサイトです。 誰でも出題でき、誰でも参加できます！">
+<meta name="keywords" content="bet.japan,未来予想,賞品,スポーツ,経済,株価,日経平均,エンタメ,プロ野球,サッカー,社会">
+<meta name="copyright" content="Copyright &copy; bet.japan. All Rights Reserved." />
+<meta property="og:title" content="bet.japan - ベットジャパン">
+<meta property="og:type" content="website">
+<meta property="og:url" content="http://betjapan.jp">
+<meta property="og:image" content="http://betjapan.jp/img/fb.jpg">
+<meta property="og:site_name" content="あらゆる事柄を予想するサイト - bet.japan（ベットジャパン） ">
+<meta property="og:description" content="bet.japan はあらゆる事柄を予想するサイトです。 誰でも出題でき、誰でも参加できます！">
+<meta http-equiv="Pragma" content="no-cache" />
+<link rel="shortcut icon" href="http://betjapan.jp/img/favicon.ico" />
+<link href="/css/import.css" rel="stylesheet" />
+<link href="/css/colorbox.css" rel="stylesheet" />
+
+<script type="text/javascript" src="//www.google.com/jsapi"></script>
+<script type="text/javascript">
+  google.load("jquery", "1");
+  google.load("swfobject", "2");
+</script>
+
+<script type="text/javascript" src="/js/setting.js"></script>
+<script type="text/javascript" src="/js/jquery.tile.js"></script>
+<script type="text/javascript" src="/js/jQueryRotate.js"></script>
+<script type="text/javascript" src="/js/jquery.backgroundpos.js"></script>
+<script type="text/javascript" src="/js/jquery.uniform.js"></script>
+<script type="text/javascript" src="/js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="/js/jquery.leanModal.min.js"></script>
+<script type="text/javascript" src="/js/jquery.colorbox.js"></script>
+<script type="text/javascript" src="/js/betjapan.common.js"></script>
+
+<script type="text/javascript" src="/js/jquery.bxslider.js"></script><script type="text/javascript">
+//<![CDATA[
+$(function(){
+
+	// UniForm
+	$("select, :checkbox, :radio, :file").uniform();
+
+	//////////// pager ////////////
+	//$(".pager a").live("click",function(){
+	$(".pager a").click(function(){
+		page = $(this).attr("rel");
+
+		$("#page").val(page);
+		$("#form").submit();
+		return false;
+	});
+
+	//////////// Left Column ////////////
+
+	// Form refine
+	$("#refine dt").on("click", function() {
+		$(this).next().slideToggle();
+		$(this).toggleClass("active");//追加部分
+	});
+
+	// Odai List
+	$('.top_odai').click(function() {
+		var anchorTag = $(this).find('.title a');
+		if (anchorTag) {
+			window.location.href = anchorTag.attr('href');
+			return false;
+		}
+	});
+
+	$('.top_odai')
+		.each(
+			function(){
+				$('.headwill img',this).css({'width':'20px','height':'20px'});
+			})
+		.hover(
+			function(){
+				$(this).addClass('top_odai_hover');
+				$('div.title a',this).css({'color':'#FFCC00','text-decoration':'none'});
+				$('.headwill img',this).stop().animate({'width':'31px','height':'31px','marginTop':'-7px','marginRight':'-6px'},'normal');
+				$('div.tag',this).stop().animate({'marginRight':'10px'},'normal');
+			},
+			function(){
+				$(this).removeClass("top_odai_hover");
+				$('div.title a',this).css({'color':'#525252','text-decoration':'none'});
+				$('.headwill img',this).stop().animate({'width':'20px','height':'20px','marginTop':'0px','marginRight':'0px'},'normal');
+				$('div.tag',this).stop().animate({'marginRight':'0px'},'normal');
+			});
+
+});
+
+//]]>
+</script><script type="text/javascript">
+//<![CDATA[
+$(function(){
+	betjapanCommon.slider();
+});
+//]]>
+</script><script type="text/javascript" src="/js/jquery.timeago.js"></script><script type="text/javascript">
+//<![CDATA[
+$(function(){
+	betjapanCommon.sidecolumn();
+});
+//]]>
+</script>
+<!--[if IE 6]>
+<script type="text/javascript" src="/js/DD_belatedPNG.js"></script>
+<script type="text/javascript" src="/js/ie6.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+
+</head>
+
+
+<body>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-48754751-1', 'betjapan.jp');
+ga('send', 'pageview');
+</script>
+
+
+<div id="wrapper">
+
+<!-- header -->
+
+<div id="header" class="clearfix">
+	<h1><a href='/'><img src="/img/logo.jpg" width="230" height="70" alt="bet.japan"></a></h1>
+	<h2 class="txt10">　　　　　「だと思った」を証明する　　　　　</h2>
+	<!-- <div id="head_ad"><a href="#"><img src="/img/ad.jpg" width="468" height="60" alt="AD"></a></div> -->
+
+	<!-- globalNav -->
+	<ul id="globalNav" class="clearfix">
+		<li class="about"><a href="/pages/about"><img src="/img/nav_about_off.jpg" width="126" height="43" alt="bet.japanとは？" /></a></li>
+		<li class="community"><a href="/community"><img src="/img/nav_community_off.jpg" width="124" height="43" alt="コミュニティ" /></a></li>
+		<li class="ranking"><a href="/ranking"><img src="/img/nav_ranking_off.jpg" width="124" height="43" alt="ユーザーランキング" /></a></li>
+		<li class="old"><a href="/home/past"><img src="/img/nav_old_off.jpg" width="124" height="43" alt="過去のお題" /></a></li>
+	</ul>
+	<div id="odai">
+		<a href="/odai/question"><img src="/img/nav_odai_off.png" width="129" height="54" alt="出題する" /></a>	</div>
+	<ul id="h_sns">
+		<li><a href="http://twitter.com/share?url=http%3A%2F%2Fbetjapan.jp%2F&hashtags=betjapan&text=bet.japan%E3%81%AF%E3%81%82%E3%82%89%E3%82%86%E3%82%8B%E4%BA%8B%E6%9F%84%E3%82%92%E4%BA%88%E6%83%B3%E3%81%99%E3%82%8B%E3%82%B5%E3%82%A4%E3%83%88%E3%81%A7%E3%81%99%E3%80%82%E8%AA%B0%E3%81%A7%E3%82%82%E5%87%BA%E9%A1%8C%E3%81%A7%E3%81%8D%E3%80%81%E8%AA%B0%E3%81%A7%E3%82%82%E5%8F%82%E5%8A%A0%E3%81%A7%E3%81%8D%E3%81%BE%E3%81%99%EF%BC%81" target="_blank"><img src="/img/h_tw_off.jpg" width="38" height="48" alt="Twitter"></a></li>
+		<li><a href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fbetjapan.jp%2F&amp;t=bet.japan" target="_blank"><img src="/img/h_fb_off.jpg" width="38" height="48" alt="Facebook"></a></li>
+	</ul>
+<script type="text/javascript">
+(function(){
+  var crl = 'Home';
+  var act = 'index';
+  var pas = 'undefined';
+  switch(crl) {
+    case 'Community':
+      $('#globalNav .community img').attr({'src':'/img/nav_community_on.jpg'});
+      break;
+    case 'Pages':
+      if(act=='display' && pas=='about') {
+        $('#globalNav .about img').attr({'src':'/img/nav_about_on.jpg'});
+      }
+      break;
+    case 'Ranking':
+      $('#globalNav .ranking img').attr({'src':'/img/nav_ranking_on.jpg'});
+      break;
+    case 'Home':
+      if(act=='past') {
+        $('#globalNav .old img').attr({'src':'/img/nav_old_on.jpg'});
+      }
+      break;
+  }
+})();
+</script>
+
+	<div id="h_statement">
+		<p class="name txt10"><span class="txt11 bold p-left5">ゲスト</span>さん</p>
+		<p class="lv txt10"><span class="p-left5">Lv.1</span></p>
+		<table class="will">
+			<tr>
+				<th><img src="/img/h_will2.png" alt=""></th>
+				<td>2000 will</td>
+			</tr>
+		</table>
+		<p class="login"><a href="#presubmit" rel="leanModal"><img src="/img/h_statement_register_off.jpg" width="124" height="34" alt="新規会員登録"></a></p>
+		<p class="regist"><a href="/account/login"><img src="/img/h_statement_login_off.jpg" width="124" height="34" alt="ログイン"></a></p>
+		<div id="presubmit" class="clearfix">
+			<form action="https://betjapan.jp/account/signup" id="SignUpForm" data-ajax-post="https://betjapan.jp/account/signup" method="post" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="_method" value="POST"/><input type="hidden" name="data[_Token][key]" value="bea649083b1665e7c8f1d75c8cd9fa072e2f0aa5" id="Token1598048942"/></div>			<input type="hidden" name="data[UserTemporary][mode]" value="confirm" id="UserTemporaryMode"/>			<div class="Inner">
+				<div class="fLeft">
+					<p class="newrigiTtl"><img src="/img/submit/ttl_presubmit.png" width="318" height="62" alt="仮会員登録" /></p>
+					<div class="abtbetjap">
+						<p class="betjap">bet.japanとは</p>
+						<p>bet.japanはあらゆる事柄を予想するサイトです。どなたでも参加・出題する事ができます。</p>
+					</div>
+				</div>
+				<div class="fRight">
+					<table class="popupform">
+						<tr>
+							<th>メールアドレス<span class="reqmark">*</span></th>
+							<td><input name="data[UserTemporary][mailaddress]" size="18" maxlength="255" type="text" id="UserTemporaryMailaddress" required="required"/></td>
+						</tr>
+						<tr class="add">
+							<th>パスワード<span class="reqmark">*</span></th>
+							<td><input name="data[UserTemporary][password]" size="18" type="password" id="UserTemporaryPassword" required="required"/><br /><span class="note">※6文字以上12文字以内で入力</span></td>
+						</tr>
+						<tr>
+							<th>パスワード<span class="note">(確認用)</span><span class="reqmark">*</span></th>
+							<td><input name="data[UserTemporary][password_confirm]" size="18" type="password" id="UserTemporaryPasswordConfirm"/></td>
+						</tr>
+						<tr>
+							<th>ユーザー名<span class="reqmark">*</span></th>
+							<td><input name="data[UserTemporary][nickname]" size="18" maxlength="255" type="text" id="UserTemporaryNickname" required="required"/></td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<p class="kiyakucheck"><input type="hidden" name="data[UserTemporary][agreement]" id="UserTemporaryAgreement_" value="0"/><input type="checkbox" name="data[UserTemporary][agreement]"  value="1" id="UserTemporaryAgreement"/><label for="UserTemporaryAgreement"><a href="/pages/terms">利用規約</a>に同意する</label>
+								</p>
+							</td>
+						</tr>
+					</table>
+					<p><input type="image" class="confiBtn" src="/img/submit/btn_presubmit.png" alt="仮会員登録" /></p>
+				</div>
+			</div><!-- ▲Inner --> 
+			<div style="display:none;"><input type="hidden" name="data[_Token][fields]" value="c0b6b9fb179f45901b425ce1d9fd3d0dd63d414a%3AUserTemporary.mode" id="TokenFields1845801494"/><input type="hidden" name="data[_Token][unlocked]" value="" id="TokenUnlocked812279219"/></div></form>
+<script type="text/javascript">
+$(function() {
+	$('#SignUpForm').submit(function(){
+		$().ajaxPost('#SignUpForm', '#presubmit');
+		return false;
+	});
+	var height = $('#presubmit .Inner .fRight').outerHeight();
+	if (height) $('#presubmit').height(height);
+});
+</script>
+		</div><!-- ▲presubmit -->
+	</div>
+
+</div>
+<!-- /header -->
+
+
+
+
+
+<!-- Slider -->
+
+
+
+
+<div id="list_openbox" style="display:none;">
+	<table class="list_open txt10">
+		<tr>
+			<td><a id="list_open" href="">賞品ウィンドウを開く <img src="/img/slide_open.png" alt=""></a></td>
+		</tr>
+	</table>
+</div>
+
+<div id="slidebox" class="clearfix">
+<div id="slideinner">
+<div class="list"><a href="/prize/"><img src="/img/slide_list_off.png" width="176" height="31" alt="賞品リストはこちら"></a></div>
+
+<div id="slider">
+
+<div class="box">
+	<a href="/prize/detail/117">
+		<div class="slide_pic"><img src="/files/prizes/0000/0117/177x162.jpg" alt=""></div>
+		<table class="slide_detail">
+			<tr>
+				<th class="bg_blue bold"><img src="/img/slide_arrow_blue.gif" class="arrow"><span class="txt18">1</span>名様</th>
+				<td><span class="bold">3万1000</span> will</td>
+			</tr>
+		</table>
+		<p class="hover txt_blue">松阪牛 黄金 特選すき焼き800g</p>
+	</a>
+</div>
+<div class="box">
+	<a href="/prize/detail/122">
+		<div class="slide_pic"><img src="/files/prizes/0000/0122/177x162.jpg" alt=""></div>
+		<table class="slide_detail">
+			<tr>
+				<th class="bg_pink bold"><img src="/img/slide_arrow_pink.gif" class="arrow"><span class="txt18">10</span>名様</th>
+				<td><span class="bold">3000</span> will</td>
+			</tr>
+		</table>
+		<p class="hover txt_pink">Amazonギフト券1000円分</p>
+	</a>
+</div>
+<div class="box">
+	<a href="/prize/detail/120">
+		<div class="slide_pic"><img src="/files/prizes/0000/0120/177x162.jpg" alt=""></div>
+		<table class="slide_detail">
+			<tr>
+				<th class="bg_green bold"><img src="/img/slide_arrow_green.gif" class="arrow"><span class="txt18">5</span>名様</th>
+				<td><span class="bold">3万</span> will</td>
+			</tr>
+		</table>
+		<p class="hover txt_green">Amazonギフト券3000円分</p>
+	</a>
+</div>
+<div class="box">
+	<a href="/prize/detail/121">
+		<div class="slide_pic"><img src="/files/prizes/0000/0121/177x162.jpg" alt=""></div>
+		<table class="slide_detail">
+			<tr>
+				<th class="bg_yellow bold"><img src="/img/slide_arrow_yellow.gif" class="arrow"><span class="txt18">1</span>名様</th>
+				<td><span class="bold">3万6500</span> will</td>
+			</tr>
+		</table>
+		<p class="hover txt_yellow">ネスカフェ ゴールドブレンド バリスタ ホワイト</p>
+	</a>
+</div>
+<div class="box">
+	<a href="/prize/detail/123">
+		<div class="slide_pic"><img src="/files/prizes/0000/0123/177x162.jpg" alt=""></div>
+		<table class="slide_detail">
+			<tr>
+				<th class="bg_purple bold"><img src="/img/slide_arrow_purple.gif" class="arrow"><span class="txt18">1</span>名様</th>
+				<td><span class="bold">3000</span> will</td>
+			</tr>
+		</table>
+		<p class="hover txt_purple">ルタオ　ドゥーブルフロマージュ</p>
+	</a>
+</div>
+
+</div>
+</div>
+
+	<table class="list_close txt10">
+		<tr>
+			<td><a id="list_close" href="#">賞品ウィンドウを閉じる <img src="/img/slide_close.png" alt=""></a></td>
+		</tr>
+	</table>
+</div>
+
+<!-- /Slider -->
+
+<!-- Contents -->
+<div class="w1000 p-top15 clearfix">
+
+<!-- Side Column -->
+
+
+
+
+<div id="w250">
+
+
+	<!-- Will注入 -->
+	<div class="s_spotwill">
+		<div class="willshot">
+			<a><img src="/img/side_spotwill.png" alt="" class="willball"></a>
+		</div>
+	</div>
+	<!-- /Will注入 -->
+
+	<div class="s_odaibox_large">
+		<div class="inner">
+			<div class="tag" style="background-color:#bd1f3c">囲碁<span class="tag_arrow" style="border-top-color:#bd1f3c"></span></div>			<div class="subject"><a href="/odai/view/2158">囲碁十段戦の行方は</a></div>
+			<table class="sub_list">
+
+				<tr>
+					<th>井山王座</th>
+					<td><div class="graph"><span class="bar bg_red" style="background-color: #2ecc71; width:58%;"></span></div></td>
+				</tr>
+				<tr>
+					<th>伊田十段</th>
+					<td><div class="graph"><span class="bar bg_red" style="background-color: #9b59b6; width:43%;"></span></div></td>
+				</tr>
+			</table>
+			<p>
+				<span class="txt15 bold"><span class="timeago" title="2016-03-08 00:00:00">2016-03-08 00:00:00</span></span>　
+				<span class="txt15 bold">700</span> will
+			</p>
+		</div>
+	</div>
+	<div class="s_odaibox_large">
+		<div class="inner">
+			<div class="tag" style="background-color:#1a4072">政治<span class="tag_arrow" style="border-top-color:#1a4072"></span></div>			<div class="subject"><a href="/odai/view/2159">どうなる甘利大臣</a></div>
+			<table class="sub_list">
+
+				<tr>
+					<th>３月中に辞任する</th>
+					<td><div class="graph"><span class="bar bg_red" style="background-color: #9b59b6; width:50%;"></span></div></td>
+				</tr>
+				<tr>
+					<th>３月中には辞任しな...</th>
+					<td><div class="graph"><span class="bar bg_red" style="background-color: #2ecc71; width:50%;"></span></div></td>
+				</tr>
+			</table>
+			<p>
+				<span class="txt15 bold"><span class="timeago" title="2016-02-10 00:00:00">2016-02-10 00:00:00</span></span>　
+				<span class="txt15 bold">600</span> will
+			</p>
+		</div>
+	</div>
+
+
+
+</div>
+<!-- /Side Column -->
+
+<!-- Left Column -->
+<div id="w730">
+
+<!-- 検索フォーム -->
+<div class="searchbox">
+<form action="/" id="form" method="post" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="_method" value="POST"/><input type="hidden" name="data[_Token][key]" value="bea649083b1665e7c8f1d75c8cd9fa072e2f0aa5" id="Token1563194226"/></div><input type="hidden" name="data[Search][page]" id="page" value=""/><table class="default">
+	<tr>
+		<th>カテゴリー</th>
+		<td class="select">：
+			<select name="data[Search][category]" id="SearchCategory">
+<option value="">指定しない</option>
+<option value="2">社会</option>
+<option value="3">エンタメ</option>
+<option value="4">スポーツ</option>
+<option value="6">経済</option>
+<option value="7">政治</option>
+<option value="8">学問</option>
+<option value="9">私</option>
+</select>		</td>
+		<td>タグ：
+			<span><a href="/home/tag/%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%84">スポーツ</a></span><span><a href="/home/tag/%E7%B5%8C%E6%B8%88">経済</a></span><span><a href="/home/tag/%E6%A0%AA%E4%BE%A1">株価</a></span><span><a href="/home/tag/%E6%97%A5%E7%B5%8C%E5%B9%B3%E5%9D%87">日経平均</a></span><span><a href="/home/tag/%E3%82%A8%E3%83%B3%E3%82%BF%E3%83%A1">エンタメ</a></span><span><a href="/home/tag/%E3%83%97%E3%83%AD%E9%87%8E%E7%90%83">プロ野球</a></span><span><a href="/home/tag/%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC">サッカー</a></span><span><a href="/home/tag/%E7%A4%BE%E4%BC%9A">社会</a></span>		</td>
+	</tr>
+	<tr>
+		<th>並び替え</th>
+		<td class="select">：
+			<select name="data[Search][order]" id="SearchOrder">
+<option value="pd">今日の人気順</option>
+<option value="new">新着順</option>
+<option value="pw">今週の人気順</option>
+<option value="pa">人気順</option>
+<option value="ads">注目順</option>
+<option value="old">古い順</option>
+<option value="limit">締切が近い順</option>
+</select>		</td>
+		<td>キーワード：<input name="data[Search][keyword]" id="textsearch" type="text"/>		</td>
+	</tr>
+</table>
+<dl id="refine">
+	<dt>さらに絞り込む</dt>
+	<dd>
+	<table>
+		<tr>
+			<td><label><input type="checkbox" name="data[Search][conditions][NewArrival]"  value="1" id="SearchConditionsNewArrival"/>新着1週間以内</label></td>
+			<td><label><input type="checkbox" name="data[Search][conditions][BetTotal]"  value="1" id="SearchConditionsBetTotal"/>総ベット1000will以上</label></td>
+			<td><label><input type="checkbox" name="data[Search][conditions][OdaiType1]"  value="1" id="SearchConditionsOdaiType1"/>普通のお題</label></td>
+			<td><label><input type="checkbox" name="data[Search][conditions][OdaiType2]"  value="1" id="SearchConditionsOdaiType2"/>複数選択のお題</label></td>
+		</tr>
+		<tr>
+			<td><label><input type="checkbox" name="data[Search][conditions][OdaiType3]"  value="1" id="SearchConditionsOdaiType3"/>順列予想のお題</label></td>
+			<td><label><input type="checkbox" name="data[Search][conditions][OdaiType4]"  value="1" id="SearchConditionsOdaiType4"/>組み合わせ予想のお題</label></td>
+			<td><label><input type="checkbox" name="data[Search][conditions][OdaiType5]"  value="1" id="SearchConditionsOdaiType5"/>直接回答のお題</label></td>
+			<td><label><input type="checkbox" name="data[Search][conditions][EndDateUncertain]"  value="1" id="SearchConditionsEndDateUncertain"/>締切未定のお題</label></td>
+		</tr>
+	</table>
+	</dd>
+</dl>
+<div class="btn">
+<input type="image" src="/img/search_btn.png" alt="表示する" width="154" height="44">
+</div>
+</form>
+</div>
+
+<div class="pager clearfix">
+<ul><li><strong>1</strong></li><li><a href="#" rel="2">2</a></li></ul></div>
+
+<div class="top_odai clearfix">
+	<div class="title">
+		<a href="http://betjapan.jp/odai/view/2161">
+			1/25～29　来週の「ナンバーズ3」 ダブルは何回？			<p><span class="timeago" title="2016-01-25 18:20:00">2016-01-25 18:20:00</span>　<span class="txt13 bold">7,200</span> will</p>
+		</a>
+	</div>
+	<div class="headwill"><img src="/img/list_will_b.jpg" alt=""></div>
+	<div class="tagouter"><div class="tag" style="background-color:#ceb41e">ナンバーズ</div></div>
+</div>
+<div class="top_odai clearfix">
+	<div class="title">
+		<a href="http://betjapan.jp/odai/view/2160">
+			プレミアリーグ第23節 アーセナルvsチェルシー			<p><span class="timeago" title="2016-01-25 01:00:00">2016-01-25 01:00:00</span>　<span class="txt13 bold">1,310</span> will</p>
+		</a>
+	</div>
+	<div class="headwill"><img src="/img/list_will_b.jpg" alt=""></div>
+	<div class="tagouter"><div class="tag" style="background-color:#6b1066">サッカー</div></div>
+</div>
+<div class="top_odai clearfix">
+	<div class="title">
+		<a href="http://betjapan.jp/odai/view/2158">
+			囲碁十段戦の行方は			<p><span class="timeago" title="2016-03-08 00:00:00">2016-03-08 00:00:00</span>　<span class="txt13 bold">700</span> will</p>
+		</a>
+	</div>
+	<div class="headwill"><img src="/img/list_will_g.jpg" alt=""></div>
+	<div class="tagouter"><div class="tag" style="background-color:#bd1f3c">囲碁</div></div>
+</div>
+<div class="top_odai clearfix">
+	<div class="title">
+		<a href="http://betjapan.jp/odai/view/2159">
+			どうなる甘利大臣			<p><span class="timeago" title="2016-02-10 00:00:00">2016-02-10 00:00:00</span>　<span class="txt13 bold">600</span> will</p>
+		</a>
+	</div>
+	<div class="headwill"><img src="/img/list_will_g.jpg" alt=""></div>
+	<div class="tagouter"><div class="tag" style="background-color:#1a4072">政治</div></div>
+</div>
+<div class="top_odai clearfix">
+	<div class="title">
+		<a href="http://betjapan.jp/odai/view/2134">
+			ラグビートップリーグ 決勝 東芝vsパナソニック 優勝は？			<p><span class="timeago" title="2016-01-24 14:00:00">2016-01-24 14:00:00</span>　<span class="txt13 bold">5,500</span> will</p>
+		</a>
+	</div>
+	<div class="headwill"><img src="/img/list_will.jpg" alt=""></div>
+	<div class="tagouter"><div class="tag" style="background-color:#62953d">ラグビー</div></div>
+</div>
+<div class="top_odai clearfix">
+	<div class="title">
+		<a href="http://betjapan.jp/odai/view/2137">
+			大河ドラマ「真田丸」 第3回視聴率は？			<p><span class="timeago" title="2016-01-25 00:00:00">2016-01-25 00:00:00</span>　<span class="txt13 bold">4,940</span> will</p>
+		</a>
+	</div>
+	<div class="headwill"><img src="/img/list_will.jpg" alt=""></div>
+	<div class="tagouter"><div class="tag" style="background-color:#5a2590">NHK</div></div>
+</div>
+<div class="top_odai clearfix">
+	<div class="title">
+		<a href="http://betjapan.jp/odai/view/2157">
+			1月24日（日）に行われるAJCC(ＧⅡ　芝2200m）の...			<p><span class="timeago" title="2016-01-24 15:30:00">2016-01-24 15:30:00</span>　<span class="txt13 bold">900</span> will</p>
+		</a>
+	</div>
+	<div class="headwill"><img src="/img/list_will.jpg" alt=""></div>
+	<div class="tagouter"><div class="tag" style="background-color:#dd2d47">競馬</div></div>
+</div>
+<div class="top_odai clearfix">
+	<div class="title">
+		<a href="http://betjapan.jp/odai/view/2146">
+			 第88回アカデミー賞　長編アニメーション賞予想			<p><span class="timeago" title="2016-02-27 00:00:00">2016-02-27 00:00:00</span>　<span class="txt13 bold">3,110</span> will</p>
+		</a>
+	</div>
+	<div class="headwill"><img src="/img/list_will.jpg" alt=""></div>
+	<div class="tagouter"><div class="tag" style="background-color:#ac6981">エンタメ</div></div>
+</div>
+<div class="top_odai clearfix">
+	<div class="title">
+		<a href="http://betjapan.jp/odai/view/2136">
+			全国都道府県対抗男子駅伝 優勝は？			<p><span class="timeago" title="2016-01-24 12:30:00">2016-01-24 12:30:00</span>　<span class="txt13 bold">2,400</span> will</p>
+		</a>
+	</div>
+	<div class="headwill"><img src="/img/list_will.jpg" alt=""></div>
+	<div class="tagouter"><div class="tag" style="background-color:#cc632b">駅伝</div></div>
+</div>
+<div class="top_odai clearfix">
+	<div class="title">
+		<a href="http://betjapan.jp/odai/view/2147">
+			 第88回アカデミー賞　助演男優賞予想			<p><span class="timeago" title="2016-02-27 00:00:00">2016-02-27 00:00:00</span>　<span class="txt13 bold">2,100</span> will</p>
+		</a>
+	</div>
+	<div class="headwill"><img src="/img/list_will.jpg" alt=""></div>
+	<div class="tagouter"><div class="tag" style="background-color:#ac6981">エンタメ</div></div>
+</div>
+<div class="top_odai clearfix">
+	<div class="title">
+		<a href="http://betjapan.jp/odai/view/2148">
+			 第88回アカデミー賞　助演女優賞予想			<p><span class="timeago" title="2016-02-27 00:00:00">2016-02-27 00:00:00</span>　<span class="txt13 bold">1,900</span> will</p>
+		</a>
+	</div>
+	<div class="headwill"><img src="/img/list_will.jpg" alt=""></div>
+	<div class="tagouter"><div class="tag" style="background-color:#ac6981">エンタメ</div></div>
+</div>
+<div class="top_odai clearfix">
+	<div class="title">
+		<a href="http://betjapan.jp/odai/view/2153">
+			1/29発表 2015年12月の日本の完全失業率			<p><span class="timeago" title="2016-01-29 00:00:00">2016-01-29 00:00:00</span>　<span class="txt13 bold">1,900</span> will</p>
+		</a>
+	</div>
+	<div class="headwill"><img src="/img/list_will.jpg" alt=""></div>
+	<div class="tagouter"><div class="tag" style="background-color:#358188">経済</div></div>
+</div>
+<div class="top_odai clearfix">
+	<div class="title">
+		<a href="http://betjapan.jp/odai/view/2139">
+			 第88回アカデミー賞　作品賞予想			<p><span class="timeago" title="2016-02-27 00:00:00">2016-02-27 00:00:00</span>　<span class="txt13 bold">1,610</span> will</p>
+		</a>
+	</div>
+	<div class="headwill"><img src="/img/list_will.jpg" alt=""></div>
+	<div class="tagouter"><div class="tag" style="background-color:#ac6981">エンタメ</div></div>
+</div>
+<div class="top_odai clearfix">
+	<div class="title">
+		<a href="http://betjapan.jp/odai/view/2083">
+			AKB48 43thシングル センターは誰？			<p>未定　<span class="txt13 bold">7,780</span> will</p>
+		</a>
+	</div>
+	<div class="headwill"><img src="/img/list_will.jpg" alt=""></div>
+	<div class="tagouter"><div class="tag" style="background-color:#4b40a1">AKB</div></div>
+</div>
+<div class="top_odai clearfix">
+	<div class="title">
+		<a href="http://betjapan.jp/odai/view/2150">
+			 第88回アカデミー賞　主演男優賞予想			<p><span class="timeago" title="2016-02-27 00:00:00">2016-02-27 00:00:00</span>　<span class="txt13 bold">1,100</span> will</p>
+		</a>
+	</div>
+	<div class="headwill"><img src="/img/list_will.jpg" alt=""></div>
+	<div class="tagouter"><div class="tag" style="background-color:#ac6981">エンタメ</div></div>
+</div>
+<div class="top_odai clearfix">
+	<div class="title">
+		<a href="http://betjapan.jp/odai/view/2151">
+			 第88回アカデミー賞　主演女優賞予想			<p><span class="timeago" title="2016-02-27 00:00:00">2016-02-27 00:00:00</span>　<span class="txt13 bold">1,100</span> will</p>
+		</a>
+	</div>
+	<div class="headwill"><img src="/img/list_will.jpg" alt=""></div>
+	<div class="tagouter"><div class="tag" style="background-color:#ac6981">エンタメ</div></div>
+</div>
+<div class="top_odai clearfix">
+	<div class="title">
+		<a href="http://betjapan.jp/odai/view/2149">
+			 第88回アカデミー賞　監督賞予想			<p><span class="timeago" title="2016-02-27 00:00:00">2016-02-27 00:00:00</span>　<span class="txt13 bold">1,000</span> will</p>
+		</a>
+	</div>
+	<div class="headwill"><img src="/img/list_will.jpg" alt=""></div>
+	<div class="tagouter"><div class="tag" style="background-color:#ac6981">エンタメ</div></div>
+</div>
+<div class="top_odai clearfix">
+	<div class="title">
+		<a href="http://betjapan.jp/odai/view/1830">
+			乃木坂46 14hシングル センターは誰？			<p>未定　<span class="txt13 bold">11,170</span> will</p>
+		</a>
+	</div>
+	<div class="headwill"><img src="/img/list_will.jpg" alt=""></div>
+	<div class="tagouter"><div class="tag" style="background-color:#c4c25f">乃木坂</div></div>
+</div>
+<div class="top_odai clearfix">
+	<div class="title">
+		<a href="http://betjapan.jp/odai/view/2112">
+			ベッキー　→　小島瑠璃子は何本？			<p><span class="timeago" title="2016-02-10 00:00:00">2016-02-10 00:00:00</span>　<span class="txt13 bold">7,630</span> will</p>
+		</a>
+	</div>
+	<div class="headwill"><img src="/img/list_will.jpg" alt=""></div>
+	<div class="tagouter"><div class="tag" style="background-color:#c54629">タレント</div></div>
+</div>
+<div class="top_odai clearfix">
+	<div class="title">
+		<a href="http://betjapan.jp/odai/view/551">
+			ラッスンゴレライって何？			<p>未定　<span class="txt13 bold">34,640</span> will</p>
+		</a>
+	</div>
+	<div class="headwill"><img src="/img/list_will.jpg" alt=""></div>
+	<div class="tagouter"><div class="tag" style="background-color:#cd4125">お笑い</div></div>
+</div>
+<div class="top_odai clearfix">
+	<div class="title">
+		<a href="http://betjapan.jp/odai/view/2098">
+			消費税率引き上げはどうなるか			<p><span class="timeago" title="2016-06-30 00:00:00">2016-06-30 00:00:00</span>　<span class="txt13 bold">2,700</span> will</p>
+		</a>
+	</div>
+	<div class="headwill"><img src="/img/list_will.jpg" alt=""></div>
+	<div class="tagouter"><div class="tag" style="background-color:#358188">経済</div></div>
+</div>
+<div class="top_odai clearfix">
+	<div class="title">
+		<a href="http://betjapan.jp/odai/view/92">
+			SMAPで次に結婚するのは？			<p>未定　<span class="txt13 bold">23,785</span> will</p>
+		</a>
+	</div>
+	<div class="headwill"><img src="/img/list_will.jpg" alt=""></div>
+	<div class="tagouter"><div class="tag" style="background-color:#582264">SMAP</div></div>
+</div>
+<div class="top_odai clearfix">
+	<div class="title">
+		<a href="http://betjapan.jp/odai/view/835">
+			どうなるノンアルコールビール			<p>未定　<span class="txt13 bold">9,450</span> will</p>
+		</a>
+	</div>
+	<div class="headwill"><img src="/img/list_will.jpg" alt=""></div>
+	<div class="tagouter"><div class="tag" style="background-color:#17651e">ビール</div></div>
+</div>
+<div class="top_odai clearfix">
+	<div class="title">
+		<a href="http://betjapan.jp/odai/view/86">
+			名探偵コナンの黒幕は？			<p>未定　<span class="txt13 bold">5,730</span> will</p>
+		</a>
+	</div>
+	<div class="headwill"><img src="/img/list_will.jpg" alt=""></div>
+	<div class="tagouter"><div class="tag" style="background-color:#68d982">名探偵コナン</div></div>
+</div>
+<div class="top_odai clearfix">
+	<div class="title">
+		<a href="http://betjapan.jp/odai/view/236">
+			HUNTER×HUNTER 連載再開はいつ？			<p>未定　<span class="txt13 bold">6,750</span> will</p>
+		</a>
+	</div>
+	<div class="headwill"><img src="/img/list_will.jpg" alt=""></div>
+	<div class="tagouter"><div class="tag" style="background-color:#87582b">少年ジャンプ</div></div>
+</div>
+<div class="top_odai clearfix">
+	<div class="title">
+		<a href="http://betjapan.jp/odai/view/159">
+			日本の未来について			<p>未定　<span class="txt13 bold">7,240</span> will</p>
+		</a>
+	</div>
+	<div class="headwill"><img src="/img/list_will.jpg" alt=""></div>
+	<div class="tagouter"><div class="tag" style="background-color:#4abcd8">社会</div></div>
+</div>
+<div class="top_odai clearfix">
+	<div class="title">
+		<a href="http://betjapan.jp/odai/view/418">
+			マクドナルド騒動 次にチキンナゲットに混入するモノは？			<p>未定　<span class="txt13 bold">6,461</span> will</p>
+		</a>
+	</div>
+	<div class="headwill"><img src="/img/list_will.jpg" alt=""></div>
+	<div class="tagouter"><div class="tag" style="background-color:#37b127">マクドナルド</div></div>
+</div>
+<div class="top_odai clearfix">
+	<div class="title">
+		<a href="http://betjapan.jp/odai/view/1138">
+			来年のＪ１、静岡のチームは残る！？			<p>未定　<span class="txt13 bold">11,050</span> will</p>
+		</a>
+	</div>
+	<div class="headwill"><img src="/img/list_will.jpg" alt=""></div>
+	<div class="tagouter"><div class="tag" style="background-color:#6b1066">サッカー</div></div>
+</div>
+<div class="top_odai clearfix">
+	<div class="title">
+		<a href="http://betjapan.jp/odai/view/126">
+			今世紀中に不老不死は実現する？			<p>未定　<span class="txt13 bold">4,460</span> will</p>
+		</a>
+	</div>
+	<div class="headwill"><img src="/img/list_will.jpg" alt=""></div>
+	<div class="tagouter"><div class="tag" style="background-color:#c6a046">学問</div></div>
+</div>
+<div class="top_odai clearfix">
+	<div class="title">
+		<a href="http://betjapan.jp/odai/view/1722">
+			東京五輪エンブレム 佐野氏はベルギーのデザイナーを訴える？			<p>未定　<span class="txt13 bold">7,000</span> will</p>
+		</a>
+	</div>
+	<div class="headwill"><img src="/img/list_will.jpg" alt=""></div>
+	<div class="tagouter"><div class="tag" style="background-color:#8652b6">エンブレム</div></div>
+</div>
+
+<div class="pager clearfix">
+<ul><li><strong>1</strong></li><li><a href="#" rel="2">2</a></li></ul></div>
+
+</div>
+<!-- /Left Column -->
+</div>
+<!-- /Contents -->
+
+<!-- BackTop -->
+<div class="w1000" style="height:50px;">
+<div class="float_r"><a href="#wrapper"><img src="/img/backtop.png" alt="トップへ戻る" width="40" height="40" class="hover_img"></a></div>
+</div>
+
+<!-- Footer -->
+<div id="footer">
+	<img src="/img/footer_ttl.png" width="644" height="46" alt="bet.japan はあらゆる事柄を予想するサイトです。 誰でも出題でき、誰でも参加できます！" class="ttl">
+
+	<ul id="fnav" class="clearfix">
+		<li class="pink"><a href="/pages/about">bet.japanとは？</a></li>
+	</ul>
+
+	<div id="fnav2" class="clearfix">
+		<!-- <p><a href="/pages/company">運営会社</a></p> -->
+		<p><a href="/pages/privacy">プライバシーポリシー</a></p>
+		<p><a href="/pages/terms">利用規約</a></p>
+		<p><a href="/pages/law">資金決済法・特定商取引法に基づく表記</a></p>
+		<p class="last"><a href="/home/inquiry">お問い合わせ</a></p>
+	</div>
+
+	<div class="copyright">
+		<p>Copyright &copy; bet.japan. All Rights Reserved.</p>
+	</div>
+</div>
+<!--  -->
+<!-- /Footer -->
+
+</div>
+<!-- /wrapper -->
+
+</body>
+</html>

@@ -1,0 +1,688 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
+
+
+<title>Apartmani Komarna - Komarna</title>
+<meta name="description" content="Apartmani Komarna - Komarna" />
+
+
+
+<link href="http://www.apartmani-capin-komarna.hr/css.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;hl=hr&amp;key=" type="text/javascript"></script>
+<script type="text/javascript" src="http://www.apartmani-capin-komarna.hr/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+<script type="text/javascript" src="http://www.apartmani-capin-komarna.hr/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+<link rel="stylesheet" type="text/css" href="http://www.apartmani-capin-komarna.hr/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+
+<script type="text/javascript">
+
+
+$(document).ready(function(){
+
+			$("a[rel=objekt_images]").fancybox({
+				'transitionIn'		: 'elastic',
+				'transitionOut'		: 'elastic',
+				'titlePosition' 	: 'over',
+				'titleFormat'		: function(title, currentArray, currentIndex, currentOpts) {
+					return '<span id="fancybox-title-over">Fotografija ' + (currentIndex + 1) + ' / ' + currentArray.length + (title.length ? ' &nbsp; ' + title : '') + '</span>';
+				}
+			});
+
+});
+
+$(document).ready(function(){
+
+			$("a[rel=region_images]").fancybox({
+				'transitionIn'		: 'elastic',
+				'transitionOut'		: 'elastic',
+				'titlePosition' 	: 'over',
+				'titleFormat'		: function(title, currentArray, currentIndex, currentOpts) {
+					return '<span id="fancybox-title-over">Fotografija ' + (currentIndex + 1) + ' / ' + currentArray.length + (title.length ? ' &nbsp; ' + title : '') + '</span>';
+				}
+			});
+});
+
+/*** 
+    Simple jQuery Slideshow Script
+    Released by Jon Raasch (jonraasch.com) under FreeBSD license: free to use or modify, not responsible for anything, etc.  Please link out to me if you like it :)
+***/
+
+function slideSwitch() {
+    var $active = $('#slideshow IMG.active');
+
+    if ( $active.length == 0 ) $active = $('#slideshow IMG:last');
+
+    // use this to pull the images in the order they appear in the markup
+    var $next =  $active.next().length ? $active.next()
+        : $('#slideshow IMG:first');
+
+    // uncomment the 3 lines below to pull the images in random order
+    
+    // var $sibs  = $active.siblings();
+    // var rndNum = Math.floor(Math.random() * $sibs.length );
+    // var $next  = $( $sibs[ rndNum ] );
+
+
+    $active.addClass('last-active');
+
+    $next.css({opacity: 0.0})
+        .addClass('active')
+        .animate({opacity: 1.0}, 1000, function() {
+            $active.removeClass('active last-active');
+        });
+}
+
+$(function() {
+    setInterval( "slideSwitch()", 2000 );
+});
+
+
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41492417-1', 'apartmani-capin-komarna.hr');
+  ga('send', 'pageview');
+
+</script>
+</head>
+
+<body onload="if(document.getElementById('karta')!=null){showMap();}" onunload="GUnload()">
+
+<div id="bg">
+
+<div id="container">
+
+<div id="conbg2">
+
+<div id="logolang">
+
+<div id="logo">
+Apartmani Komarna
+</div>
+
+<div id="langholder">
+<ul id="languages">
+
+<li><a title="Hrvatski" href="http://www.apartmani-capin-komarna.hr/"><img class="langhr" alt="Hrvatski" src="http://www.apartmani-capin-komarna.hr/images/lang/hr.png" width="24" height="24"/></a></li>
+
+<li><a title="English" href="http://www.apartmani-capin-komarna.hr/en/"><img class="langhr" alt="English" src="http://www.apartmani-capin-komarna.hr/images/lang/com.png" width="24" height="24"/></a></li>
+
+<li><a title="Deutsch" href="http://www.apartmani-capin-komarna.hr/de/"><img class="langhr" alt="Deutsch" src="http://www.apartmani-capin-komarna.hr/images/lang/de.png" width="24" height="24"/></a></li>
+
+<li><a title="ﾈesky" href="http://www.apartmani-capin-komarna.hr/cz/"><img class="langhr" alt="ﾈesky" src="http://www.apartmani-capin-komarna.hr/images/lang/cz.png" width="24" height="24"/></a></li>
+
+<li><a title="Italiano" href="http://www.apartmani-capin-komarna.hr/it/"><img class="langhr" alt="Italiano" src="http://www.apartmani-capin-komarna.hr/images/lang/it.png" width="24" height="24"/></a></li>
+
+<li><a title="Slovenski" href="http://www.apartmani-capin-komarna.hr/si/"><img class="langhr" alt="Slovenski" src="http://www.apartmani-capin-komarna.hr/images/lang/si.png" width="24" height="24"/></a></li>
+
+<li><a title="France" href="http://www.apartmani-capin-komarna.hr/fr/"><img class="langhr" alt="France" src="http://www.apartmani-capin-komarna.hr/images/lang/fr.png" width="24" height="24"/></a></li>
+
+<li><a title="Spain" href="http://www.apartmani-capin-komarna.hr/es/"><img class="langhr" alt="Spain" src="http://www.apartmani-capin-komarna.hr/images/lang/es.png" width="24" height="24"/></a></li>
+
+<li><a title="Holland" href="http://www.apartmani-capin-komarna.hr/nl/"><img class="langhr" alt="Holland" src="http://www.apartmani-capin-komarna.hr/images/lang/nl.png" width="24" height="24"/></a></li>
+
+<li><a title="Hungarian" href="http://www.apartmani-capin-komarna.hr/hu/"><img class="langhr" alt="Hungarian" src="http://www.apartmani-capin-komarna.hr/images/lang/hu.png" width="24" height="24"/></a></li>
+
+</ul>
+
+</div>
+
+<div style="clear: both"> </div>
+</div>
+
+<div id="menuholder">
+<div class="submenu">
+  	 <ul>
+<li><a href="http://www.apartmani-capin-komarna.hr/">Po鐺tna</a></li>
+      <li><a href="http://www.apartmani-capin-komarna.hr/smjestaj">Smje嗾aj</a></li>
+      
+      <li><a href="http://www.apartmani-capin-komarna.hr/komarna">Komarna</a></li>
+      
+      <li><a href="http://www.apartmani-capin-komarna.hr/lokacija">Lokacija</a></li>
+      
+      <li><a href="http://www.apartmani-capin-komarna.hr/galerija-slika">Galerija slika</a></li>
+      
+      <li><a href="http://www.apartmani-capin-komarna.hr/knjiga-gostiju">Knjiga gostiju</a></li>
+      
+      <li><a href="http://www.apartmani-capin-komarna.hr/kontakt">Kontakt</a></li>  
+
+    </ul>   
+
+</div>
+</div>
+
+
+
+
+<div id="slideholder">
+
+
+
+<div style="height: 211px; Background: url('images/slide.png') no-repeat; width: 525px; margin-left: 10px">
+<div id="slideshow">
+ 
+<img src="http://www.apartmani-capin-komarna.hr/foto/slide/thumb_Welcome.jpg" class="active"/>
+ 
+<img src="http://www.apartmani-capin-komarna.hr/foto/slide/thumb_Red ap.jpg"/>
+ 
+<img src="http://www.apartmani-capin-komarna.hr/foto/slide/thumb_13-Web 506x186.jpg"/>
+ 
+<img src="http://www.apartmani-capin-komarna.hr/foto/slide/thumb_Orange Ap.jpg"/>
+ 
+<img src="http://www.apartmani-capin-komarna.hr/foto/slide/thumb_14-Web 506x186.jpg"/>
+ 
+<img src="http://www.apartmani-capin-komarna.hr/foto/slide/thumb_6-Web 506x186.jpg"/>
+ 
+<img src="http://www.apartmani-capin-komarna.hr/foto/slide/thumb_2-Web 506x186.jpg"/>
+ 
+<img src="http://www.apartmani-capin-komarna.hr/foto/slide/thumb_3-Web 506x186.jpg"/>
+ 
+<img src="http://www.apartmani-capin-komarna.hr/foto/slide/thumb_Web 506x186.jpg"/>
+ 
+<img src="http://www.apartmani-capin-komarna.hr/foto/slide/thumb_5-Web 506x186.jpg"/>
+
+</div>
+  </div>
+
+
+</div>
+
+
+
+<div style="clear: both"> </div>
+
+</div>
+
+
+<div id="sjena">
+</div>
+
+
+<div id="content">
+
+<div id="left">
+<div class="conboxleft">
+
+
+
+<div style="margin-top: 0px; line-height: 20px">
+
+
+<h2 class="maintitle">Apartmani Komarna</h2>
+<div class="subline"> </div>
+<p style="margin-top: 12px">
+<b style="mso-bidi-font-weight:normal"><i style="mso-bidi-font-style:
+normal"><span style="font-size:18.0pt"><span style="color:blue"></span></span></i></b>
+
+<!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:View>Normal</w:View>
+  <w:Zoom>0</w:Zoom>
+  <w:TrackMoves/>
+  <w:TrackFormatting/>
+  <w:HyphenationZone>21</w:HyphenationZone>
+  <w:PunctuationKerning/>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:DoNotPromoteQF/>
+  <w:LidThemeOther>SH</w:LidThemeOther>
+  <w:LidThemeAsian>X-NONE</w:LidThemeAsian>
+  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+   <w:SplitPgBreakAndParaMark/>
+   <w:EnableOpenTypeKerning/>
+   <w:DontFlipMirrorIndents/>
+   <w:OverrideTableStyleHps/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+  <m:mathPr>
+   <m:mathFont m:val="Cambria Math"/>
+   <m:brkBin m:val="before"/>
+   <m:brkBinSub m:val="--"/>
+   <m:smallFrac m:val="off"/>
+   <m:dispDef/>
+   <m:lMargin m:val="0"/>
+   <m:rMargin m:val="0"/>
+   <m:defJc m:val="centerGroup"/>
+   <m:wrapIndent m:val="1440"/>
+   <m:intLim m:val="subSup"/>
+   <m:naryLim m:val="undOvr"/>
+  </m:mathPr></w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="true"
+  DefSemiHidden="true" DefQFormat="false" DefPriority="99"
+  LatentStyleCount="267">
+  <w:LsdException Locked="false" Priority="0" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Normal"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="heading 1"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 2"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 3"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 4"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 5"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 6"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 7"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 8"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 9"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 1"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 2"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 3"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 4"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 5"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 6"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 7"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 8"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 9"/>
+  <w:LsdException Locked="false" Priority="35" QFormat="true" Name="caption"/>
+  <w:LsdException Locked="false" Priority="10" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Title"/>
+  <w:LsdException Locked="false" Priority="0" Name="Default Paragraph Font"/>
+  <w:LsdException Locked="false" Priority="11" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtitle"/>
+  <w:LsdException Locked="false" Priority="0" Name="Hyperlink"/>
+  <w:LsdException Locked="false" Priority="22" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Strong"/>
+  <w:LsdException Locked="false" Priority="20" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Emphasis"/>
+  <w:LsdException Locked="false" Priority="59" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Table Grid"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Placeholder Text"/>
+  <w:LsdException Locked="false" Priority="1" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="No Spacing"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 1"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 1"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Revision"/>
+  <w:LsdException Locked="false" Priority="34" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="List Paragraph"/>
+  <w:LsdException Locked="false" Priority="29" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Quote"/>
+  <w:LsdException Locked="false" Priority="30" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Quote"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 1"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 1"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 2"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 2"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 2"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 3"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 3"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 3"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 4"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 4"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 4"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 5"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 5"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 5"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 6"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 6"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 6"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="19" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Emphasis"/>
+  <w:LsdException Locked="false" Priority="21" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Emphasis"/>
+  <w:LsdException Locked="false" Priority="31" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Reference"/>
+  <w:LsdException Locked="false" Priority="32" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Reference"/>
+  <w:LsdException Locked="false" Priority="33" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Book Title"/>
+  <w:LsdException Locked="false" Priority="37" Name="Bibliography"/>
+  <w:LsdException Locked="false" Priority="39" QFormat="true" Name="TOC Heading"/>
+ </w:LatentStyles>
+</xml><![endif]--><!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+</style>
+<![endif]-->DOBRODO貝I
+
+<p class="MsoNormal">&nbsp;</p>
+
+<p class="MsoNormal">Dobro do嗟i na web stranice apartmana KOMARNA.</p>
+
+<p class="MsoNormal">Na ovim stranicama mo枡te na詈 sve informacije o smje嗾aju i
+uslugama koje nudimo u na喨m novim i luksuzno opremljenim apartmanima.</p>
+
+<p class="MsoNormal">Apartmani KOMARNA imaju kategorizaciju od 3 zvjezdice koje
+uklju鑾ju maximalnu opremljenost i prostranost.</p>
+
+
+
+<p class="MsoNormal">Takor, poku啾t 詁mo Vam olak啾ti planiranje Va啼g
+putovanja nude詈 mnoge korisne informacije i linkove vezane za Komarnu i
+Dalmaciju.</p>
+
+<p class="MsoNormal">Nadamo se da 詁mo na嗤m ponudom zadovoljiti sve Va啼 枡lje
+da provedete ugodan i nezaboravan odmor koji 詁 vam pru枴ti na喨 apartmani,
+na啼 pla枡 i na啼 lijepo mirno mjesto KOMARNA.
+
+</p><br>
+</p>
+<br/>
+<h2 class="maintitle">Smje嗾aj</h2>
+<div class="subline"> </div>
+<div style="margin-top: 15px">
+
+
+<div class="smjbox">
+
+<a class="smjimg" href="http://www.apartmani-capin-komarna.hr/smjestaj/naran鐶sti-apartman/5"><img src="http://www.apartmani-capin-komarna.hr/foto/apartment/5/thumb_3hfghkj.jpg"/></a>
+<a class="title" href="http://www.apartmani-capin-komarna.hr/smjestaj/naran鐶sti-apartman/5">Naran鐶sti apartman</a>
+<p style="margin-top: 2px">
+A2+2 - Za dvije osobe plus dva pomo誅a le杪ja, Povr喨ne: 38m2
+</p>
+<p style="margin-top: 5px">
+<br>
+</p>
+
+<br style="clear: both"/>
+</div>
+
+
+<div class="smjbox">
+
+<a class="smjimg" href="http://www.apartmani-capin-komarna.hr/smjestaj/crveni-apartman/6"><img src="http://www.apartmani-capin-komarna.hr/foto/apartment/6/thumb_3gghj.jpg"/></a>
+<a class="title" href="http://www.apartmani-capin-komarna.hr/smjestaj/crveni-apartman/6">Crveni apartman</a>
+<p style="margin-top: 2px">
+A4+2 - Za 鐺tiri osobe plus dva pomo誅a le杪ja, Povr喨ne: 52m2
+</p>
+<p style="margin-top: 5px">
+<br>
+</p>
+
+<br style="clear: both"/>
+</div>
+
+</div>
+
+
+
+
+
+
+
+</div>
+
+
+
+</div>
+</div>
+
+<div id="right">
+<div class="conboxright">
+
+<h2 class="maintitle">Kontakt</h2>
+<div class="subline"> </div>
+
+<div style="margin-top: 13px; line-height: 20px">
+
+<div style="line-height: 21px">
+<b>Seka ﾆapin</b> <br/>
+Komarna 61/1 <br/>
+20356&nbsp;Komarna <br/>
+<a href="mailto:info@apartmani-komarna.com">info@apartmani-komarna.com</a> <br/>
+Telefon/Mobitel: <br/>
++385916025858
+
+</div>
+
+<br/>
+<h2 class="maintitle">Komarna</h2>
+<div class="subline"> </div>
+<img class="mjestoimg" src="http://www.apartmani-capin-komarna.hr/foto/mjesto/thumb_8.8.2010 Komarna3-26.jpg">
+
+
+<p style="text-align: right; padding-right: 13px"><a class="midlinks" href="http://www.apartmani-capin-komarna.hr/komarna">Pro鑛taj detaljnije</a></p><br/>
+
+
+
+<a href="http://www.apartmani-capin-komarna.hr/linkovi">Linkovi</a>
+
+
+
+<div style="margin-top: 25px; text-align: center">
+
+<a href="https://www.facebook.com/apartmani.komarna"><img src="http://www.apartmani-capin-komarna.hr/images/social_f.png"/></a>
+
+<a href="https://www.google.com/+ApartmaniKomarna"><img src="http://www.apartmani-capin-komarna.hr/images/social_g.png"/></a>
+
+</div>
+
+
+</div>
+
+
+
+</div>
+</div>
+
+<div style="clear: both"> </div>
+</div>
+
+
+<div id="footer">
+
+<div id="footerleft">
+ｩ Apartmani Komarna
+</div>
+
+<div id="footerright">
+<a target="_blank" href="http://www.hocusvojweb.com"><img src="http://www.apartmani-capin-komarna.hr/images/hsw.png"/></a>
+</div>
+
+<div style="clear: both"> </div>
+</div>
+
+</div>
+<br/>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,431 @@
+<!-- <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> -->
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>뚜벅뚜벅트레킹</title>
+<link rel="stylesheet" href="./style.css" type="text/css">
+
+<!-- 팝업 -->
+<script language="JavaScript">
+
+function setcookie( name, value, expirehours ) {
+var todayDate = new Date();
+todayDate.setHours( todayDate.getHours() + expirehours );
+document.cookie = name + "=" + escape( value ) + "; path=/; expires=" + todayDate.toGMTString() + ";"
+}
+
+function closeWin() {
+if ( document.notice_form.chkbox.checked ){
+setcookie( "maindiv", "done" , 24 );
+}
+
+document.all['divpop'].style.display = "none";
+
+}
+
+</script>
+
+
+
+</head>
+<script type="text/javascript">
+// 자바스크립트에서 사용하는 전역변수 선언
+var g4_path      = ".";
+var g4_bbs       = "bbs";
+var g4_bbs_img   = "img";
+var g4_url       = "http://tbtbtrek.com";
+var g4_is_member = "";
+var g4_is_admin  = "";
+var g4_bo_table  = "";
+var g4_sca       = "";
+var g4_charset   = "utf-8";
+var g4_cookie_domain = "";
+var g4_is_gecko  = navigator.userAgent.toLowerCase().indexOf("gecko") != -1;
+var g4_is_ie     = navigator.userAgent.toLowerCase().indexOf("msie") != -1;
+</script>
+<script type="text/javascript" src="./js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="./js/common.js"></script>
+<script>
+   onload=function() {
+      var submenu=new Array();
+
+      var sub_tmps=document.getElementById("nav").getElementsByTagName("ul");
+
+      for (var i=0, len=sub_tmps.length; i<len; i++) {
+         if (sub_tmps[i].className=="localNav")
+            submenu.push(sub_tmps[i]);
+      }
+
+      var menu_tmps=document.getElementById("nav").getElementsByTagName("a");
+
+      for (var i=0, len=menu_tmps.length; i<len; i++) {
+         if (menu_tmps[i].className=="globalNav") {
+            menu_tmps[i].onmouseover=function() {
+               for (var j=0, sublen=submenu.length; j<sublen; j++)
+                  submenu[j].style.display="none";
+
+               document.getElementById(this.id+"_sub").style.display="block";
+            }
+
+            menu_tmps[i].onfocus=menu_tmps[i].onmouseover;
+         }
+      }
+   }
+</script>
+
+<body style="background:url(/images/all_bg2.jpg) top center no-repeat" topmargin="0" leftmargin="0" >
+<a name="g4_head"></a><!--
+<div id="divpop" style="width:500px; height:680px; position:absolute; left:50%; margin-left:-250px; top:80px; z-index:1000; visibility:hidden;">
+<table width=500 height=650 cellpadding=2 cellspacing=0 bgcolor=#000000>
+<form name="notice_form">
+<tr>
+    <td align=center bgcolor=white bgcolor=#000000><a href="/bbs/board.php?bo_table=program06&wr_id=23">
+	<img src='/images/pop_15_03_19.jpg' border='0'></a></td>
+</tr>
+<tr>
+    <td align=right bgcolor=#000000 height="30" style="padding:0 5 3 0">
+        <input type="checkbox" name="chkbox" value=""><font color=#FFFFFF>오늘 하루 이 창을 열지 않음
+        </font><a href="javascript:closeWin();"><B><font color=#FFFFFF>[닫기]</font></B></a>
+    </td>
+</tr>
+        </form>
+</table>
+</div>
+
+<script language="Javascript">
+cookiedata = document.cookie;  
+if ( cookiedata.indexOf("maindiv=done") < 0 ){    
+    document.all['divpop'].style.visibility = "visible";
+    }
+    else {
+        document.all['divpop'].style.visibility = "hidden";
+}
+</script>
+-->
+
+<div id="wrapper">
+
+
+<!-- 상단 로고 및 버튼 시작 -->
+<table width="920" border="0" cellspacing="0" cellpadding="0" align="center">
+<tr>
+	<td colspan="3" height="5"></td>
+</tr>
+<tr>
+    <!-- 로고 -->
+    <td height="57" style="padding-left:10px;"><a href="./"><img src="./images/logo.jpg" width="235" height="80" border="0"></a></td>
+    <td>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <td>
+			<div> 
+			<ul id="nav"> 
+				<li class="globalNav">
+					<a href="#" id="menu01" class="globalNav"><img src="/images/top_menu01.gif" border="0"></a>
+					<ul id="menu01_sub" class="localNav"> 
+						<li><a href="/bbs/board.php?bo_table=program02&wr_id=1">아프리카트레킹</a></li> 
+						<li><a href="/bbs/board.php?bo_table=program04&wr_id=1">유럽트레킹</a></li>
+						<li><a href="/bbs/board.php?bo_table=program01&wr_id=1">미주트레킹</a></li>
+						<li><a href="/bbs/board.php?bo_table=program03&wr_id=1">남미트레킹</a></li>
+						<li><a href="/bbs/board.php?bo_table=program08&wr_id=1">오세아니아트레킹</a></li> 
+						<li><a href="/bbs/board.php?bo_table=program06&wr_id=1">아시아트레킹</a></li>
+						<li><a href="/bbs/board.php?bo_table=program05&wr_id=1">히말라야트레킹</a></li>
+					</ul>
+				</li> 
+				<li class="globalNav">
+					<a href="#" id="menu02" class="globalNav"><img src="/images/top_menu02.gif" border="0"></a>
+					<ul id="menu02_sub" class="localNav"> 
+						<li><a href="/bbs/board.php?bo_table=schedule&wr_id=1">트레킹일정보기</a></li>
+					</ul> 
+				</li> 
+				<li class="globalNav">
+					<a href="#" id="menu03" class="globalNav"><img src="/images/top_menu03.gif" border="0"></a>
+					<ul id="menu03_sub" class="localNav"> 
+						<li><a href="/bbs/board.php?bo_table=mov">뚜벅이동영상</a></li> 
+					</ul> 
+				</li>
+				<li class="globalNav">
+					<a href="#" id="menu04" class="globalNav"><img src="/images/top_menu04.gif" border="0"></a>
+					<ul id="menu04_sub" class="localNav"> 
+						<li><a href="/bbs/board.php?bo_table=photo_gal">트레킹맛보기</a></li> 
+					</ul> 
+				</li>
+			</ul>
+			</div>
+			</td>
+        </tr>
+        </table>
+    </td>
+    <td align="right" style="padding-right:10px;">
+        <table border="0" cellspacing="0" cellpadding="0">
+        <tr>
+                        <!-- 로그인 이전 -->
+            <td><a href="./bbs/login.php?url=%2F"><img src="./images/login_btn.jpg" border="0"></a></td>
+            <td><a href="./bbs/register.php">
+			<img src="./images/join_btn.jpg" border="0"></a></td>
+                    </tr>
+        </table>
+	</td>
+</tr>
+</table>
+<!-- 상단 로고 및 버튼 끝 -->
+
+<div style='height:40px;'></div>
+<table width='920' cellpadding=0 cellspacing=0 border=0 align="center">
+<tr>
+    <td width=10></td>
+    <!-- 왼쪽 메뉴 -->
+    <td width=200 valign=top>
+        <table cellpadding=0 cellspacing=0 border=0>
+			<tr>
+				<td><a href="/bbs/board.php?bo_table=notice"><img src="/images/main_left01.jpg" border="0"></a></td>
+			</tr>
+			<tr>
+				<td><a href="/bbs/board.php?bo_table=program01&wr_id=1"><img src="/images/main_left02.jpg" border="0"></a></td>
+			</tr>
+			<tr>
+				<td><a href="/bbs/board.php?bo_table=schedule&wr_id=1"><img src="/images/main_left03.jpg" border="0"></a></td>
+			</tr>
+			<tr>
+				<td><a href="/bbs/board.php?bo_table=mov"><img src="/images/main_left04.jpg" border="0"></a></td>
+			</tr>
+			<tr>
+				<td><a href="/bbs/board.php?bo_table=photo_gal"><img src="/images/main_left05.jpg" border="0"></a></td>
+			</tr>
+			<tr>
+				<td><a href="/bbs/board.php?bo_table=qna"><img src="/images/main_left06.jpg" border="0"></a></td>
+			</tr>
+			<tr>
+				<td height="10"></td>
+			</tr>
+			<tr>
+				<td><img src="/images/main_customer.jpg" border="0"></td>
+			</tr>
+
+		</table>
+
+    </td>
+    <td width=10></td>
+    <!-- 중간 -->
+    <td width=690 valign=top>
+
+<!-- 메인화면 최신글 시작 -->
+<table width="100%" cellpadding=0 cellspacing=0>
+<tr>
+<td valign="top">
+	<div id="slide">
+		<div id="slideshow">
+			<div class="btn_left"><img src="/images/left.gif" alt="Previous" onclick="slideshow.move(-1)" /></div>
+			<ul id="slides">
+				<li><img src="/images/slide01.jpg" alt="" /></li>
+				<li><img src="/images/slide02.jpg" alt="" /></li>
+				<li><img src="/images/slide03.jpg" alt="" /></li>
+				<li><img src="/images/slide04.jpg" alt="" /></li>
+				<li><img src="/images/slide05.jpg" alt="" /></li>
+				<li><img src="/images/slide06.jpg" alt="" /></li>
+			</ul>
+			<div class="btn_right"><img src="/images/right.gif" alt="Next" onclick="slideshow.move(1)" /></div>
+		</div>
+
+		<ul id="pagination" class="pagination">
+			<li onclick="slideshow.pos(0)">1</li>
+			<li onclick="slideshow.pos(1)">2</li>
+			<li onclick="slideshow.pos(2)">3</li>
+			<li onclick="slideshow.pos(3)">1</li>
+			<li onclick="slideshow.pos(4)">2</li>
+			<li onclick="slideshow.pos(5)">3</li>
+		</ul>
+	</div>
+</td>
+</tr>
+</table>
+<script type="text/javascript">
+
+
+var TINY={};
+
+function T$(i){return document.getElementById(i)}
+function T$$(e,p){return p.getElementsByTagName(e)}
+
+TINY.fader=function(){
+	function fade(n,p){this.n=n; this.init(p)}
+	fade.prototype.init=function(p){
+		var s=T$(p.id), u=this.u=T$$('li',s), l=u.length, i=this.l=this.c=this.z=0;
+		if(p.navid&&p.activeclass){this.g=T$$('li',T$(p.navid)); this.s=p.activeclass}
+		s.style.overflow='hidden'; this.a=p.auto||0; this.p=p.resume||0;
+		for(i;i<l;i++){
+			if(u[i].parentNode==s){
+				u[i].style.position='absolute'; this.l++; u[i].o=p.visible?100:0;
+				u[i].style.opacity=u[i].o/100; u[i].style.filter='alpha(opacity='+u[i].o+')'
+			}
+		}
+		this.pos(p.position||0,this.a?1:0,p.visible)
+	},
+	fade.prototype.auto=function(){
+		this.u.ai=setInterval(new Function(this.n+'.move(1,1)'),this.a*3000)
+	},
+	fade.prototype.move=function(d,a){
+		var n=this.c+d, i=d==1?n==this.l?0:n:n<0?this.l-1:n; this.pos(i,a)
+	},
+	fade.prototype.pos=function(i,a,v){
+		var p=this.u[i]; 
+		this.z++; 
+		p.style.zIndex=this.z;
+		clearInterval(p.si); 
+		
+		clearInterval(this.u.ai); 
+		this.u.ai=0; 
+		this.c=i;
+		if(p.o>=100&&!v){
+			p.o=0; 
+			p.style.opacity=0; 
+			p.style.filter='alpha(opacity=0)'
+		}
+		if(this.g){
+			for(var x=0;x<this.l;x++){
+				this.g[x].className=x==i?this.s:''}
+				}
+		p.si=setInterval(new Function(this.n+'.fade('+i+','+a+')'),40)
+	},
+	fade.prototype.fade=function(i,a){
+		var p=this.u[i];
+		if(p.o>=100){
+			clearInterval(p.si); if((a||(this.a&&this.p))&&!this.u.ai){this.auto()}
+		}else{
+			p.o+=5; p.style.opacity=p.o/100; p.style.filter='alpha(opacity='+p.o+')'
+		}
+	};
+	return{fade:fade}
+}();
+
+
+
+// 실행코드
+var slideshow=new TINY.fader.fade('slideshow',{
+	id:'slides',
+	auto:1,
+	resume:true,
+	navid:'pagination',
+	activeclass:'current',
+	visible:true,
+	position:0
+});
+</script>
+<!-- 메인화면 최신글 끝 -->
+
+</td>
+<td width=10></td>
+</tr></table>
+
+<table width="900" cellpadding=0 cellspacing=0 align="center">
+<tr>
+<td valign=top><img src="/images/main_system.jpg" border="0" usemap="#Map"></td>
+<map name="Map" id="Map">
+	<area shape="rect" coords="18,28,277,208" href="/bbs/board.php?bo_table=program02&wr_id=1" alt="아프리카트레킹" />
+	<area shape="rect" coords="277,38,623,208" href="/bbs/board.php?bo_table=program04&wr_id=1" alt="유럽트레킹" />
+	<area shape="rect" coords="641,29,879,232" href="/bbs/board.php?bo_table=program01&wr_id=1" alt="미주트레킹" />
+	<area shape="rect" coords="15,227,287,438" href="/bbs/board.php?bo_table=program03&wr_id=1" alt="남미트레킹" />
+	<area shape="rect" coords="287,208,537,441" href="/bbs/board.php?bo_table=program08&wr_id=1" alt="오세아니아트레킹" />
+	<area shape="rect" coords="537,240,,771,420" href="/bbs/board.php?bo_table=program06&wr_id=1" alt="아시아트레킹" />
+	<area shape="rect" coords="711,262,895,442" href="/bbs/board.php?bo_table=program05&wr_id=1" alt="히말라야트레킹" />
+</map>
+</tr>
+</table>
+<table width="920" cellpadding=0 cellspacing=0 align="center" background="/images/main_board_bg.jpg">
+<tr>
+<td valign=top><a href="/bbs/board.php?bo_table=photo_gal"><img src="/images/main_board_title.jpg" border="0"></a></td>
+</tr>
+<tr>
+<td valign=middle align="center" style="padding:10px 10px 10px 10px;">
+	<!-- 메인 리뷰 -->
+	<table width="900" cellpadding=0 cellspacing=0 align="center">
+		<tr>
+			<td style="padding:0 0px 0 0; width:300px"><a href="/bbs/board.php?bo_table=photo_gal&wr_id=223"><img src="/images/main_review01.jpg" /></a></td>
+			<td>
+				<table width="600px" cellpadding=0 cellspacing=0 align="center">
+					<tr>
+						<td style="padding:0 0 20px 20px;"><a href="/bbs/board.php?bo_table=photo_gal&wr_id=220"><img src="/images/main_review02.jpg" /></a></td>
+						<td style="padding:0 0 20px 20px;"><a href="/bbs/board.php?bo_table=photo_gal&wr_id=212&page=2"><img src="/images/main_review03.jpg" /></a></td>
+						<td style="padding:0 0 20px 20px;"><a href="/bbs/board.php?bo_table=photo_gal&wr_id=200&page=3"><img src="/images/main_review04.jpg" /></a></td>
+					</tr>
+					<tr>
+						<td style="padding:0 0 0 20px;"><a href="/bbs/board.php?bo_table=photo_gal&wr_id=209&page=2"><img src="/images/main_review05.jpg" /></a></td>
+						<td style="padding:0 0 0 20px;"><a href="/bbs/board.php?bo_table=photo_gal&wr_id=214&page=1"><img src="/images/main_review06.jpg" /></a></td>
+						<td style="padding:0 0 0 20px;"><a href="/bbs/board.php?bo_table=photo_gal&wr_id=207&page=2"><img src="/images/main_review07.jpg" /></a></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</td>
+</tr>
+<tr>
+<td valign=top><img src="/images/main_board_bottom.jpg" border="0"></td>
+</tr>
+</table>
+
+<!-- 카피라이트 시작 -->
+<table width="920" border="0" cellspacing="0" cellpadding="0" align="center">
+<tr>
+    <td valign="top"><img src="/images/bottom.jpg" border="0" usemap="#bottom"></td>
+</tr>
+</table>
+<map name="bottom" id="bottom">
+<area shape="rect" coords="4,11,79,33" href="/privacy.php" />
+<area shape="rect" coords="79,11,224,33" href="/bbs/board.php?bo_table=subpage&wr_id=3" />
+<area shape="rect" coords="224,8,279,36" href="/t_privacy.php" />
+<area shape="rect" coords="279,8,369,35" href="http://www.ftc.go.kr/info/bizinfo/communicationView.jsp?apv_perm_no=2014329010730200139&area1=&area2=&currpage=1&searchKey=04&searchVal=6052541041&stdate=&enddate=" target="_blank" />
+</map>
+<!-- 카피라이트 끝 -->
+
+
+
+
+
+
+
+<div id="quickR">
+	<ul class="quick_left">
+		<li style="padding:0 0 5px 0"><a href="http://www.pinterest.com/youngchulkim927" target="_blank"><img src="/images/left_sc_banner.jpg" border="0"></a></li>
+		<li style="padding:0 0 5px 0"><a href="#"><img src="/images/left_sns.jpg" border="0" usemap="#sns" /></a></li>
+		<map name="sns" id="sns">
+		<area shape="rect" coords="-1,56,102,99" href="https://www.facebook.com/youngchul.kim.92754" target="_blank" />
+		<area shape="rect" coords="0,98,109,140" href="https://twitter.com/moun1123" target="_blank" />
+		<area shape="rect" coords="0,139,126,178" href="http://blog.naver.com/tbtbtrek" target="_blank" />
+		<area shape="rect" coords="-1,177,128,223" href="http://www.youtube.com/channel/UCCHq_TcQW3OsPnTiRyxTzOA" target="_blank" />
+		</map>
+	</ul>
+
+	<ul class="quick_right">
+		<li style="padding:0 0 5px 0"><img src="/images/sc_banner_01.jpg" border="0" usemap="#sc"></li>
+		<li style="padding:0 0 5px 0"><a href="/bbs/board.php?bo_table=subpage&wr_id=4"><img src="/images/r_banner2.jpg" border="0"></a></li>
+		<li><a href="javascript:bookmarksite('뚜벅뚜벅트레킹', 'http://tbtbtrek.com')"><img src="/images/sc_banner_fv.jpg" border="0"></a></li>
+	</ul>
+	<map name="sc" id="sc">
+		<area shape="rect" coords="1,58,75,88" href="/bbs/board.php?bo_table=qna" />
+		<area shape="rect" coords="3,87,73,114" href="/bbs/board.php?bo_table=program01&wr_id=1" />
+		<area shape="rect" coords="2,113,74,140" href="/bbs/board.php?bo_table=subpage&wr_id=1" />
+		<area shape="rect" coords="2,140,74,165" href="/bbs/board.php?bo_table=subpage&wr_id=2" />
+		<area shape="rect" coords="3,165,74,191" href="/bbs/board.php?bo_table=subpage&wr_id=3" />
+	</map>
+</div>
+<script type="text/javascript">initializequick('quickR','930','125')</script> <!-- 처음위치값 -->
+
+
+
+
+
+
+
+</div>
+<!-- e : wrapper -->
+
+
+<script type="text/javascript" src="./js/wrest.js"></script>
+
+<!-- 새창 대신 사용하는 iframe -->
+<iframe width=0 height=0 name='hiddenframe' style='display:none;'></iframe>
+
+
+</body>
+</html>

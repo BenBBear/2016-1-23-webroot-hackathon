@@ -1,0 +1,305 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>不動産マンション売却査定の不動産買取王</title>
+<link href="css/base.css" rel="stylesheet" type="text/css" />
+<link href="css/index.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/jquery-1.7.1.js"></script>
+<script type="text/javascript" src="/js/page-scroller-308/jquery.page-scroller.js" charset="utf-8"></script>
+<script type="text/javascript" src="/js/common.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".kenselectoption").click(function(){
+		$("#keninput").val($(this).attr("alt"));
+		$.ajax({
+		    url: 'area.php?type=city&code=' + encodeURIComponent($(this).attr("alt")),
+		    type: 'GET',
+		    dataType: 'html',
+		    timeout: 1000,
+		    error: function(){
+		        alert('Error loading XML document');
+		    },
+		    success: function(xml){
+		    	$('#cityselect').empty();
+		    	$('#cityselect').html(xml);
+		    	
+				
+		    }
+		});
+	});
+	
+    $('#cityselect').click(function(){
+		$.ajax({
+		    url: 'area.php?type=town&code=' + encodeURIComponent($(this).val()),
+		    type: 'GET',
+		    dataType: 'html',
+		    timeout: 1000,
+		    error: function(){
+		        alert('Error loading XML document');
+		    },
+		    success: function(xml){
+		    	$('#townselect').empty();
+		    	$('#townselect').html(xml);
+		    }
+		});
+	});
+	
+	$("#btn_satei").mouseover(function(){
+		$(this).css("background-image","url(/img/b_start_down_890x79.png)");
+	});
+	
+	$("#btn_satei").mouseup(function(){
+		$(this).css("background-image","url(/img/b_start_up_890x79.png)");
+	});
+	$("#btn_satei").mouseout(function(){
+		$(this).css("background-image","url(/img/b_start_up_890x79.png)");
+	});
+	$("#keninput").val("");
+});
+
+
+function chValie() {
+	var atext ="";
+	var detect = 0;
+	var txt = $("#keninput").val();
+	if(txt === null || txt=="") {
+		atext ="都道府県の選択がされていません。\n";
+		detect = 1;
+	}
+	txt = $("#cityselect").val();
+	if(txt === null || txt=="") {
+		atext = atext + "市町村の選択がされていません。\n";
+		detect = 1;
+	}
+	txt = $("#townselect").val();
+	if(txt ===null || txt=="") {
+		atext = atext + "町字丁目の選択がされていません。\n";
+		detect = 1;
+	}
+	
+	txt = $("#bkn_type").val();
+	if(txt ===null || txt=="") {
+		atext = atext + "物件の種別の選択がされていません。\n";
+		detect = 1;
+	}
+	
+	
+	if(detect==1){
+		alert(atext);
+		return false;
+	}
+		
+	return true;
+}
+
+function chValieZ() {
+	var atext ="";
+	var detect = 0;
+	var txt = $("#zipcode1").val();
+	var txt2 = $("#zipcode2").val();
+	if(txt === null || txt=="" || txt2 === null || txt2 =="") {
+		atext ="郵便番号の入力がされていません。\n";
+		detect = 1;
+	}
+	
+	txt = $("#satei_zipcode_bkn_type").val();
+	if(txt ===null || txt=="") {
+		atext = atext + "物件の種別の選択がされていません。\n";
+		detect = 1;
+	}
+	
+	if(detect==1){
+		alert(atext);
+		return false;
+	}
+
+	return true;
+}
+</script>
+<meta name="google-site-verification" content="VErqJ-X08vBPASPEgdc471xHdviKyqjdz4XqL4XRdoU" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30092396-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script></head>
+
+<body>
+<div id="head">
+	<p class="headcopy">不動産マンション売却査定の不動産買取王</p>
+	<a href="/" name="top"><span class="novisibility logolink">不動産買取王.jp</span></a>
+</div><div id="wrapper">
+	<ul class="menu">
+<li class="menubox"><a href="http://不動産買取王.jp/index.php" class="menubox_top"><span class="novisible">TOP</span></a></li>
+<li class="menubox"><a href="http://不動産買取王.jp/beginner.php" class="menubox_hajimete"><span class="novisible">初めての方へ</span></a></li>
+<li class="menubox"><a href="http://不動産買取王.jp/lesson.php" class="menubox_kouza"><span class="novisible">不動産売却講座</span></a></li>
+<li class="menubox"><a href="http://不動産買取王.jp/qa.php" class="menubox_chie"><span class="novisible">不動産知恵袋</span></a></li>
+<li class="menubox"><a href="http://不動産買取王.jp/ad.php" class="menubox_koukoku"><span class="novisible">広告掲載</span></a></li>
+<li class="menubox"><a href="http://不動産買取王.jp/mailform.php" class="menubox_otoiawase"><span class="novisible">お問い合わせ</span></a></li>
+</ul>	<div class="mainbillboardarea">
+		<img src="/img/main-billbaord_950x277_03.png">
+	</div>
+	<div id="sateiarea">
+		<form action="http://不動産買取王.jp/satei.php" method="POST" onSubmit="return chValie()">
+			<div id="step1">
+			<img src="/img/japan.png" alt="全国から検索" id="japanmap" usemap="#japanmap" border="0">
+			<map name="japanmap">
+				<area shape="rect" coords="499,251,559,268" alt="埼玉県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="114,86,193,134" alt="北海道" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="523,33,603,63" alt="青森県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="516,72,556,112" alt="秋田県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="565,71,615,111" alt="岩手県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="517,122,557,162" alt="山形県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="563,122,603,162" alt="宮城県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="529,173,599,203" alt="福島県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="573,211,603,256" alt="茨城県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="535,211,565,246" alt="栃木県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="495,211,525,246" alt="群馬県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="573,263,613,313" alt="千葉県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="516,274,566,291" alt="東京都" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="515,297,560,322" alt="神奈川県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="488,273,509,309" alt="山梨県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="457,315,504,344" alt="静岡県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="445,237,480,310" alt="長野県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="459,209,490,268" alt="長野県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="403,275,439,309" alt="岐阜県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="462,172,518,203" alt="新潟県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="412,204,456,234" alt="富山県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="406,316,451,344" alt="愛知県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="385,197,405,241" alt="石川県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="355,247,405,270" alt="福井県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="373,315,393,385" alt="三重県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="373,276,398,310" alt="滋賀県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="314,277,364,309" alt="京都府" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="346,317,366,362" alt="奈良県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="322,368,366,386" alt="和歌山県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="321,316,341,351" alt="大阪府" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="270,264,305,319" alt="兵庫県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="229,262,264,287" alt="鳥取県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="229,292,264,322" alt="岡山県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="186,262,224,287" alt="島根県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="187,292,225,322" alt="広島県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="150,275,180,320" alt="山口県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="239,346,289,361" alt="香川県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="239,367,289,387" alt="徳島県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="170,354,230,384" alt="愛媛県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="168,390,238,415" alt="高知県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="86,311,111,351" alt="福岡県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="116,326,141,361" alt="大分県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="60,310,80,342" alt="佐賀県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="39,311,56,356" alt="長崎県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="75,360,110,400" alt="熊本県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="116,366,136,411" alt="宮崎県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="67,407,112,437" alt="鹿児島県" href="javascript:void(0);" class="kenselectoption">
+				<area shape="rect" coords="5,398,25,433" alt="沖縄県" href="javascript:void(0);" class="kenselectoption">
+			  </map>
+				<input name="bkn_ken" type="hidden" id="keninput">
+			</div>
+			<div id="step2">
+				<select name="bkn_city" id="cityselect" size="5">
+				</select>
+			</div>
+			<div id="step3">
+				<select name="bkn_town" id="townselect" size="5">
+				</select>
+			</div>
+			<div id="step4">
+			<input name="bkn_banch" id="banchinput">
+			</div>
+			<div id="step5">
+				<select name="bkn_type" id="bkn_type">
+					<option value="">選択して下さい</option>
+					<option value="分譲マンション">分譲マンション</option>
+					<option value="一戸建">一戸建</option>
+					<option value="土地">土地</option>
+					<option value="ビル一室">ビル一室</option>
+					<option value="一棟マンション">一棟マンション</option>
+					<option value="一棟アパート">一棟アパート</option>
+					<option value="一棟ビル">一棟ビル</option>
+					<option value="店舗・事務所">店舗・事務所</option>
+					<option value="工場・倉庫">工場・倉庫</option>
+					<option value="その他">その他</option>
+				</select>
+			</div>
+			<div id="btn_satei_frame">
+			<input type="submit" id="btn_satei" value="">
+			</div>
+		</form>
+	</div>
+
+<div id="left">
+	<div id="zipcodesearcharea">
+		<form action="http://不動産買取王.jp/satei.php" method="POST" onSubmit="return chValieZ()">
+		<input type="hidden" name="zmode" value="satei_zipcode">
+		<input name="zipcode1" id="zipcode1">
+		<input name="zipcode2" id="zipcode2">
+				<select name="bkn_type" id="satei_zipcode_bkn_type">
+					<option value="">選択して下さい</option>
+					<option value="分譲マンション">分譲マンション</option>
+					<option value="一戸建">一戸建</option>
+					<option value="土地">土地</option>
+					<option value="ビル一室">ビル一室</option>
+					<option value="一棟マンション">一棟マンション</option>
+					<option value="一棟アパート">一棟アパート</option>
+					<option value="一棟ビル">一棟ビル</option>
+					<option value="店舗・事務所">店舗・事務所</option>
+					<option value="工場・倉庫">工場・倉庫</option>
+					<option value="その他">その他</option>
+				</select>
+		<p id="btn_zipcodesatei_frame"><input type="submit" id="btn_zipcodesatei" value=""></p>
+		</form>
+	</div>
+	<ul id="sidemenu">
+		<li class="sidemenubox"><a href="http://不動産買取王.jp/lesson.php">不動産売却講座</a></li>
+		<li class="sidemenubox"><a href="http://不動産買取王.jp/qa.php">不動産知恵袋</a></li>
+		<li class="sidemenubox"><a href="http://不動産買取王.jp/ad.php">広告掲載</a></li>
+	</ul>
+	<a href="http://pc.ancket.com/?c_id=o50211"><img src="/img/baner01" class="banner_side"></a><br>
+	<a href="http://不動産買取王.jp/ad.php"><img src="/img/banner_bosyu_201x70.png" class="banner_side"></a>
+	<div id="uneisya">
+		デジタルシティ株式会社<br>
+		東京都渋谷区恵比寿西2-3-5
+	</div></div>
+<div id="right">
+	<div id="kensearcharea">
+			<ul class="chihou"><li class="chihou_title">北海道</li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E5%8C%97%E6%B5%B7%E9%81%93">北海道</a></li></ul><ul class="chihou"><li class="chihou_title">東北</li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E9%9D%92%E6%A3%AE%E7%9C%8C">青森県</a></li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E7%A7%8B%E7%94%B0%E7%9C%8C">秋田県</a></li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E5%B2%A9%E6%89%8B%E7%9C%8C">岩手県</a></li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E5%B1%B1%E5%BD%A2%E7%9C%8C">山形県</a></li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E5%AE%AE%E5%9F%8E%E7%9C%8C">宮城県</a></li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E7%A6%8F%E5%B3%B6%E7%9C%8C">福島県</a></li></ul><ul class="chihou"><li class="chihou_title">関東</li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E8%8C%A8%E5%9F%8E%E7%9C%8C">茨城県</a></li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E6%A0%83%E6%9C%A8%E7%9C%8C">栃木県</a></li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E7%BE%A4%E9%A6%AC%E7%9C%8C">群馬県</a></li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E5%9F%BC%E7%8E%89%E7%9C%8C">埼玉県</a></li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E6%9D%B1%E4%BA%AC%E9%83%BD">東京都</a></li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C">神奈川県</a></li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E5%8D%83%E8%91%89%E7%9C%8C">千葉県</a></li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E5%B1%B1%E6%A2%A8%E7%9C%8C">山梨県</a></li></ul><ul class="chihou"><li class="chihou_title">北陸</li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E6%96%B0%E6%BD%9F%E7%9C%8C">新潟県</a></li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E9%95%B7%E9%87%8E%E7%9C%8C">長野県</a></li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E5%AF%8C%E5%B1%B1%E7%9C%8C">富山県</a></li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E7%9F%B3%E5%B7%9D%E7%9C%8C">石川県</a></li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E7%A6%8F%E4%BA%95%E7%9C%8C">福井県</a></li></ul><ul class="chihou"><li class="chihou_title">東海</li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E9%9D%99%E5%B2%A1%E7%9C%8C">静岡県</a></li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E5%B2%90%E9%98%9C%E7%9C%8C">岐阜県</a></li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E6%84%9B%E7%9F%A5%E7%9C%8C">愛知県</a></li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E4%B8%89%E9%87%8D%E7%9C%8C">三重県</a></li></ul><ul class="chihou"><li class="chihou_title">近畿</li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E6%BB%8B%E8%B3%80%E7%9C%8C">滋賀県</a></li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E4%BA%AC%E9%83%BD%E5%BA%9C">京都府</a></li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E5%85%B5%E5%BA%AB%E7%9C%8C">兵庫県</a></li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E5%A4%A7%E9%98%AA%E5%BA%9C">大阪府</a></li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E5%A5%88%E8%89%AF%E7%9C%8C">奈良県</a></li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E5%92%8C%E6%AD%8C%E5%B1%B1%E7%9C%8C">和歌山県</a></li></ul><ul class="chihou"><li class="chihou_title">中国</li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E9%B3%A5%E5%8F%96%E7%9C%8C">鳥取県</a></li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E5%B3%B6%E6%A0%B9%E7%9C%8C">島根県</a></li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E5%B2%A1%E5%B1%B1%E7%9C%8C">岡山県</a></li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E5%BA%83%E5%B3%B6%E7%9C%8C">広島県</a></li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E5%B1%B1%E5%8F%A3%E7%9C%8C">山口県</a></li></ul><ul class="chihou"><li class="chihou_title">四国</li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E9%A6%99%E5%B7%9D%E7%9C%8C">香川県</a></li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E6%84%9B%E5%AA%9B%E7%9C%8C">愛媛県</a></li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E5%BE%B3%E5%B3%B6%E7%9C%8C">徳島県</a></li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E9%AB%98%E7%9F%A5%E7%9C%8C">高知県</a></li></ul><ul class="chihou"><li class="chihou_title">九州</li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E7%A6%8F%E5%B2%A1%E7%9C%8C">福岡県</a></li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E4%BD%90%E8%B3%80%E7%9C%8C">佐賀県</a></li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E9%95%B7%E5%B4%8E%E7%9C%8C">長崎県</a></li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E7%86%8A%E6%9C%AC%E7%9C%8C">熊本県</a></li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E5%A4%A7%E5%88%86%E7%9C%8C">大分県</a></li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E5%AE%AE%E5%B4%8E%E7%9C%8C">宮崎県</a></li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E9%B9%BF%E5%85%90%E5%B3%B6%E7%9C%8C">鹿児島県</a></li></ul><ul class="chihou"><li class="chihou_title">沖縄</li><li class="chihou_ken"><a href="http://不動産買取王.jp/areasearch.php?ken=%E6%B2%96%E7%B8%84%E7%9C%8C">沖縄県</a></li></ul>
+	</div>
+	<div id="oyakudachi">
+		<div id="oyakudachiarea">
+		<dl class="oyakudachibox"><dt class="oyakudachibox_date">2016/1/22</dt><dd class="oyakudachibox_text">都市農地重視へ政策転換　「都市農業振興基本計画」の案策定</dd></dl><dl class="oyakudachibox"><dt class="oyakudachibox_date">2016/1/22</dt><dd class="oyakudachibox_text">中古住宅の性能、品質情報拡充へ　不動産ポータルサイト大手</dd></dl><dl class="oyakudachibox"><dt class="oyakudachibox_date">2016/1/22</dt><dd class="oyakudachibox_text">国交省のIT重説実験、100件突破　昨年12月に急増</dd></dl><dl class="oyakudachibox"><dt class="oyakudachibox_date">2016/1/22</dt><dd class="oyakudachibox_text">2015年12月中古マンション売り価格　首都圏の連続上昇15カ月でストップ</dd></dl><dl class="oyakudachibox"><dt class="oyakudachibox_date">2016/1/22</dt><dd class="oyakudachibox_text">合格率は23.8%　2015年度管理業務主任者試験</dd></dl><dl class="oyakudachibox"><dt class="oyakudachibox_date">2016/1/21</dt><dd class="oyakudachibox_text">2015年・世界の投資額3%減　JLLグループ分析レポート</dd></dl><dl class="oyakudachibox"><dt class="oyakudachibox_date">2016/1/21</dt><dd class="oyakudachibox_text">インスペクション事業者　登録制度の創設検討　国交省</dd></dl><dl class="oyakudachibox"><dt class="oyakudachibox_date">2016/1/21</dt><dd class="oyakudachibox_text">首都圏、2015年12月の賃貸成約数　前年比で再び増加　アットホーム</dd></dl><dl class="oyakudachibox"><dt class="oyakudachibox_date">2016/1/21</dt><dd class="oyakudachibox_text">仲介店舗でリフォーム受注も　大京グループ</dd></dl><dl class="oyakudachibox"><dt class="oyakudachibox_date">2016/1/21</dt><dd class="oyakudachibox_text">HOME'S　高知県のポータルサイト「CLASS KOCHI」と提携</dd></dl><dl class="oyakudachibox"><dt class="oyakudachibox_date">2016/1/20</dt><dd class="oyakudachibox_text">ラサールロジポート投資法人　2月17日、4本目の物流リート上場</dd></dl><dl class="oyakudachibox"><dt class="oyakudachibox_date">2016/1/20</dt><dd class="oyakudachibox_text">「三ツ星管理員」を表彰　伊藤忠アーバン</dd></dl><dl class="oyakudachibox"><dt class="oyakudachibox_date">2016/1/20</dt><dd class="oyakudachibox_text">ヘルスケアリート　セミナーでノウハウ伝授　国交省、金融庁など</dd></dl><dl class="oyakudachibox"><dt class="oyakudachibox_date">2016/1/20</dt><dd class="oyakudachibox_text">競売取扱主任、736人が合格　合格率は38.3%</dd></dl><dl class="oyakudachibox"><dt class="oyakudachibox_date">2016/1/20</dt><dd class="oyakudachibox_text">2679人が合格　合格率は54.6%　2015年度賃貸経営管理士試験</dd></dl><dl class="oyakudachibox"><dt class="oyakudachibox_date">2016/1/19</dt><dd class="oyakudachibox_text">「民泊」　課題を深掘り、6月目途に方向性　プラットフォーマー規制など　</dd></dl><dl class="oyakudachibox"><dt class="oyakudachibox_date">2016/1/19</dt><dd class="oyakudachibox_text">2015年・首都圏新築マンション供給、前年比1割減の4万戸</dd></dl><dl class="oyakudachibox"><dt class="oyakudachibox_date">2016/1/19</dt><dd class="oyakudachibox_text">マンション管理の判例セミナー開催 マン管センター</dd></dl><dl class="oyakudachibox"><dt class="oyakudachibox_date">2016/1/19</dt><dd class="oyakudachibox_text">三井のリハウス 新たな仲介スタイル「360°サポート」開始</dd></dl><dl class="oyakudachibox"><dt class="oyakudachibox_date">2016/1/19</dt><dd class="oyakudachibox_text">森トラスト、ホテルリート投資法人を設立</dd></dl>		</div>
+	</div>
+<!--	
+	<img src="/img/b_toiawase_698x79.png" class="banner_right">
+-->	
+	<div class="shoplogoarea">
+	</div>
+</div>
+
+<div id="foot">
+	<div id="totop"><a href="#top" id="link_totop"><img src="/img/b_to-top_82x25.png" border="0" id="btn_totop"></a></div>
+<ul class="footmenu">
+<li><a href="http://不動産買取王.jp/index.php">不動産 ＆ マンション売却査定</a></li>
+<li><a href="http://不動産買取王.jp/beginner.php">始めての方へ</a></li>
+<li><a href="http://不動産買取王.jp/qa.php">不動産知恵袋</a></li>
+<li><a href="http://不動産買取王.jp/">不動産 ＆ マンション無料一括査定</a></li>
+<li class="footmenu_last"><a href="http://不動産買取王.jp/sitemap.php">サイトマップ</a></li>
+</ul>
+<ul class="footmenu">
+<li><a href="http://不動産買取王.jp/aboutus.php">会社概要</a></li>
+<li><a href="http://不動産買取王.jp/law.php">ご利用規約</a></li>
+<li><a href="http://不動産買取王.jp/privacy.php">個人情報保護方針</a></li>
+<li class="footmenu_last"><a href="http://不動産買取王.jp/mailform.php">お問い合わせ</a></li>
+</ul>
+
+</div></div>
+<div id="copyright">Copyright (C) 2016 不動産買取王.jp All rights reserved.</div>
+</body>
+</html>

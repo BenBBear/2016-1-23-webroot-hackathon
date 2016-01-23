@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
+	<title>UIP</title>
+	
+	<link rel="stylesheet" type="text/css" href="style.css" />
+
+	<script type="text/javascript" src="js/jquery-1.2.6.min.js"></script>
+	<script type="text/javascript" src="js/jquery-easing-1.3.pack.js"></script>
+	<script type="text/javascript" src="js/jquery-easing-compatibility.1.2.pack.js"></script>
+	<script type="text/javascript" src="js/coda-slider.1.1.1.pack.js"></script>
+	
+	<script type="text/javascript">
+	
+		var theInt = null;
+		var $crosslink, $navthumb;
+		var curclicked = 0;
+		
+		theInterval = function(cur){
+			clearInterval(theInt);
+			
+			if( typeof cur != 'undefined' )
+				curclicked = cur;
+			
+			$crosslink.removeClass("active-thumb");
+			$navthumb.eq(curclicked).parent().addClass("active-thumb");
+				$(".stripNav ul li a").eq(curclicked).trigger('click');
+			
+			theInt = setInterval(function(){
+				$crosslink.removeClass("active-thumb");
+				$navthumb.eq(curclicked).parent().addClass("active-thumb");
+				$(".stripNav ul li a").eq(curclicked).trigger('click');
+				curclicked++;
+				if( 3 == curclicked )
+					curclicked = 0;
+				
+			}, 6000);
+		};
+		
+		$(function(){
+			
+			$("#main-photo-slider").codaSlider();
+			
+			$navthumb = $(".nav-thumb");
+			$crosslink = $(".cross-link");
+			
+			$navthumb
+			.click(function() {
+				var $this = $(this);
+				theInterval($this.parent().attr('href').slice(1) - 1);
+				return false;
+			});
+			
+			theInterval();
+		});
+	</script>
+    
+    
+</head>
+
+<body>
+
+<div id="page-wrap">
+
+<!-- ------------------------- main content that side ------------------------- -->											
+	<div class="slider-wrap">
+    
+    <img style="z-index:100; position:absolute;" src="images/index_overlay.png" />
+    
+		<div id="main-photo-slider" class="csw">
+			<div class="panelContainer">
+				<div class="panel">
+					
+                    <div>
+						
+                        <div style=" width: auto; height:597px; background:url(imagehome/UIPslide.jpg);">
+                        
+                        
+               
+                        
+                        </div>
+                        
+					</div>
+				
+                </div>
+				<div class="panel">
+					<div>
+						
+                        <div style=" width: auto; height:597px; background:url(imagehome/UIP3.jpg);">
+                        
+                        
+                        </div>
+                        
+					</div>
+				</div>		
+				<div class="panel">
+					<div>
+                    
+                        <div style=" width: auto; height:597px; background:url(imagehome/UIP4.jpg);">
+                        
+                        
+                        </div>
+                    
+					</div>
+				</div>
+
+        </div>
+    </div>
+</div>
+<!-- ------------------------- main content that side ------------------------- -->
+
+<!-- ------------------------- menu and footer ------------------------- -->
+
+<div id="menu"> 
+
+        <div style="width:1024px; padding-left: 30px;">
+                
+                <a style=" float:left;" href="index.html"><img src="imagehome/logo.jpg" /></a> 
+                
+                <img style="padding:0 25px 0 30px; float:left;" src="imagehome/menu_break.jpg" />
+                
+                
+                <div id="menu_positioning">
+                
+                <a style=" float:left;" href="raiseher.html"><img src="imagehome/nav1.jpg" /></a>
+                <a style=" float:left;" href="whyher.html"><img src="imagehome/nav4.jpg" /></a>
+                <a style=" float:left;" href="fundher.html"><img src="imagehome/nav2.jpg" /></a>
+                
+                
+                </div>
+                
+                <img style="padding:0 25px 0 30px; float:left;" src="imagehome/menu_break.jpg" />
+                
+                <div id="network_links">
+                
+                <img align="middle" src="imagehome/fallow.jpg" />
+                
+                <br />
+                
+                 <a target="_blank" href="http://www.youtube.com/user/UIPeace1"><img class="networking_aera" src="imagehome/youtube.jpg" /></a>
+                
+                <a target="_blank" href="http://www.facebook.com/pages/United-Initiatives-for-Peace/114176888600451?ref=ts&sk=wall"><img class="networking_aera" src="imagehome/facebookjpg.jpg" /></a>
+                
+                <a target="_blank" href="http://twitter.com/UIPeace"><img class="networking_aera" src="imagehome/twitter.jpg" /></a>
+
+                
+                
+				</div>
+		</div>
+        
+        <div class="clear"></div>
+        
+ </div>
+
+<div id="footer"> 
+
+    <p class="bottom_link" align="center">
+    
+        <a href="BoardofDirectors.html">BOARD OF DIRECTORS</a>		
+        <a href="contact.html">CONTACT US</a> 		
+        <a href="press.html">PRESS</a> 			
+        <a href="PartnersandAffiliates.html">PARTNERS</a>
+        
+    </p>
+
+</div>
+
+<!-- ------------------------- menu and footer ------------------------- -->
+    
+    
+</div>
+
+</body>
+
+</html>

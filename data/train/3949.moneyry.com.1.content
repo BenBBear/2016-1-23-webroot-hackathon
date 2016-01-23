@@ -1,0 +1,759 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>涙葎偏鯖椽左俊可創</title>
+<meta http-equiv="keywords" content="涙葎偏鯖椽左俊可創"/>
+<meta http-equiv="description" content="涙葎偏鯖椽左俊可創"/>
+<link rel="stylesheet" type="text/css" href="/temp/index/skin/1.css">
+<link rel="stylesheet" type="text/css" href="/temp/index/skin/2.css">
+<script type="text/javascript" src="../../pingbi.js"></script>
+<script>
+	function wb(){
+		$.fancybox.open({
+			type: 'inline',
+			content: $('#wbwb')[0].outerHTML
+		});
+	}
+	function wx(){
+		$.fancybox.open({
+			type: 'inline',
+			content: $('#wxwx')[0].outerHTML
+		});
+	}
+	function ryzz(x){
+		$.fancybox.open({
+			type: 'inline',
+			content: $('#ryzz' + x)[0].outerHTML
+		});
+	}
+<script type="text/javascript">
+/*
+	.slideBox頁淫根夕頭議div議id; mainCell頁沫哈欺夕頭議了崔; delayTime辛參距准徭強殴慧議扮寂 ;effect距准夕頭
+	錆強議劔徨 ; autoPlay頁倦徭強殴慧暫菊頭 ;trigger乾窟泣泣泣議圭塀(嗤報炎将狛才泣似) ;mouseOverStop報炎将狛
+	扮頁倦唯峭殴慧;
+*/
+$(document).ready(function(){
+	jQuery(".slideBox").slide({mainCell:".bd ul",delayTime:800,effect:"leftLoop",autoPlay:true,trigger:"click",mouseOverStop:false});
+	
+	
+});
+</script>
+<script language="javascript">/*栽恬誌育*/
+jQuery(document).ready(function(){
+	var arrPrePrice = [];
+	for(var i=0;i<8;i++){
+		/*jQuery("#zhdjj img").each(function () {
+			arrPrePrice.push(jQuery(this).attr("src"));
+		});*/
+		jQuery("#zhdjj a").each(function () {
+			arrPrePrice.push({"a":jQuery(this).find("span").html(),"src":jQuery(this).find("img").attr("src")});
+		});
+	}
+	var html1="";
+	jQuery.each(arrPrePrice,function(i,v) {     
+		if(i%8==0){
+			html1+="<div> <a href='"+arrPrePrice[i].a+"' target='_blank'><img width='118px' height='58px'  src='"+arrPrePrice[i].src+"'></a>"
+		}else if(i%8==1){
+			html1+="<a href='"+arrPrePrice[i].a+"' target='_blank'><img width='118px' height='58px'  src='"+arrPrePrice[i].src+"'></a>"
+		}else if(i%8==2){
+			html1+=" <a href='"+arrPrePrice[i].a+"' target='_blank'><img width='118px' height='58px'  src='"+arrPrePrice[i].src+"'></a>"
+		}else if(i%8==3){
+			html1+=" <a href='"+arrPrePrice[i].a+"' target='_blank'><img width='118px' height='58px'  src='"+arrPrePrice[i].src+"'></a>"
+		}else if(i%8==4){
+			html1+="<a href='"+arrPrePrice[i].a+"' target='_blank'><img width='118px' height='58px'  src='"+arrPrePrice[i].src+"'></a>"
+		}else if(i%8==5){
+			html1+=" <a href='"+arrPrePrice[i].a+"' target='_blank'><img width='118px' height='58px'  src='"+arrPrePrice[i].src+"'></a>"
+		}else if(i%8==6){
+			html1+=" <a href='"+arrPrePrice[i].a+"' target='_blank'><img width='118px' height='58px'  src='"+arrPrePrice[i].src+"'></a>"
+		}else if(i%8==7){
+			html1+="<a href='"+arrPrePrice[i].a+"' target='_blank'><img width='118px' height='58px'  src='"+arrPrePrice[i].src+"'></a></div>"
+		}
+	}); 
+	//alert(html1)
+	jQuery("#jsfoot_scroll").html(html1);
+
+	
+var $ = function (d){
+    typeof d == "string" &&(d = document.getElementById(d)); 
+    return $.fn.call(d);
+};
+$.fn = function (){
+	this.$ADD = function (fn){CLS.add(this,fn)};
+	this.addEvent = function (sEventType,fnHandler){
+		if (this.addEventListener) {this.addEventListener(sEventType, fnHandler, false);} 
+	    else if (this.attachEvent) {this.attachEvent("on" + sEventType, fnHandler);} 
+	    else {this["on" + sEventType] = fnHandler;}
+	}
+	this.removeEvent = function (sEventType,fnHandler){
+		if (this.removeEventListener) {this.removeEventListener(sEventType, fnHandler, false);} 
+	    else if (this.detachEvent) {this.detachEvent("on" + sEventType, fnHandler);} 
+	    else { this["on" + sEventType] = null;}
+	}
+	return this;
+};
+var Class = {create: function() {return function() { this.initialize.apply(this, arguments); }}};
+var Bind = function (obj,fun,arr){return function() {return fun.apply(obj,arr);}}
+var Marquee = Class.create();
+Marquee.prototype = {
+  initialize: function(id,name,out,speed) {
+    this.name = name;
+	this.box = $(id);
+	this.out  = 5;//獄強寂侯扮寂,汽了昼
+	this.speed = 1;//陣崙錆強扮寂,恷蛸葎1(宸戦厮将譜崔葎恷蛸議阻),>1議屎屁方祥氏埆栖埆酔
+	this.d = 1;
+	this.box.style.position = "relative";
+	this.box.scrollTop = 0;
+	var _li = this.box.firstChild;
+	while(typeof(_li.tagName)=="undefined")_li = _li.nextSibling;
+	this.lis = this.box.getElementsByTagName(_li.tagName);
+	this.len = this.lis.length;	
+	for(var i=0;i<this.lis.length;i++){
+	    var __li = document.createElement(_li.tagName);
+		__li.innerHTML = this.lis[i].innerHTML;
+		this.box.appendChild(__li);
+		if(this.lis[i].offsetTop>=this.box.offsetHeight)break;
+	}
+	this.Start();
+	this.box.addEvent("mouseover",Bind(this,function(){clearTimeout(this.timeout);},[]));
+	this.box.addEvent("mouseout",Bind(this,function(){clearTimeout(this.timeout);
+	  this.timeout = setTimeout(this.name+".Up()",0)},[]));
+  },
+  Start:function (){
+	  clearTimeout(this.timeout);
+	  this.timeout = setTimeout(this.name+".Up()",this.out*1000)
+  },
+  Up:function(){
+	  clearInterval(this.interval);
+	  this.interval = setInterval(this.name+".Fun()",10);
+  },
+  Fun:function (){
+      this.box.scrollTop+=this.speed;
+	  if(this.lis[this.d].offsetTop <= this.box.scrollTop){
+	    clearInterval(this.interval);
+		this.box.scrollTop = this.lis[this.d].offsetTop;
+		this.Start();
+		this.d++;
+	  }
+	  if(this.d >= this.len + 1){
+	     this.d = 1;
+	     this.box.scrollTop = 0;
+	  }
+  }
+};
+$(window).addEvent("load",function (){
+	marquee = new Marquee("jsfoot_scroll","marquee",1,1);
+});
+})
+</script>
+
+<body>
+<!--header_begin-->
+<header>
+	<div class="top">   	 
+    <div class="logo"><h1>涙葎偏鯖椽左俊可創</h1></div>
+        <div class="search">
+        	<div class="sech_input" >
+				 <form action="/search.jspx" target="_blank"  id="search" method="get">
+					<input type="text" name="q" value="萩補秘購囚簡" type="text" id="txtKey" onfocus="if(this.value=='萩補秘購囚簡')this.value=''" onblur="if(this.value=='')this.value='萩補秘購囚簡'" onkeypress="if(event.keyCode==13){searchFormSubmit();return false;}"/>
+					<img alt="" align="absmiddle" width="25" height="18" src="/temp/index/skin/searchbutton.jpg" onclick="searchFormSubmit();" />
+				</form>
+			</div>
+			<script type="text/javascript">
+			function searchFormSubmit() {
+				if(document.getElementById('txtKey').value==''){
+					alert('萩補秘朴沫坪否');
+					return false;
+				}
+				document.getElementById('search').submit();	
+			}			
+			</script>
+			<div class="gzwm">購廣厘断
+				<span><img src="/temp/index/skin/wb.jpg" align="absmiddle" onclick="wb()" style="cursor:pointer;"/></span>
+				<span><img src="/temp/index/skin/wx.jpg" align="absmiddle" onclick="wx()" style="cursor:pointer;"/></span>
+			</div>
+        </div>
+    </div>
+    <div class="nav">
+    	<ul>
+        	<li><a href="/">遍匈</a></li>
+					<li>
+						<a href="/product/">恢瞳嶄伉</a>
+						<ul>
+							<span class="out">
+								<span class="inner"></span>
+							</span>
+							<li><a href="##">鯖葎</a></li>
+							<li><a href="##">SAP</a></li>
+							<li><a href="##">裏罷</a></li>
+							<li><a href="##">GE</a></li>
+						</ul>
+						<div class="clear"></div>
+					</li>
+					<li>
+						<a href="/hyzx/">佩匍彿儷</a>
+					</li>
+					<li>
+						<a href="/jjfa/">盾畳圭宛</a>
+						<ul>
+							<span class="out">
+								<span class="inner"></span>
+							</span>
+							<li><a href="##">室宝盾畳圭宛</a></li>
+							<li><a href="##">佩匍盾畳圭宛</a></li>
+						</ul>
+						<div class="clear"></div>
+					</li>
+					<li>
+						<a href="/fwzc/">捲暦嚥屶隔</a>
+						<ul>
+							<span class="out">
+								<span class="inner"></span>
+							</span>
+							<li><a href="##">略隠捲暦</a></li>
+							<li><a href="##">塰略砿尖</a></li>
+							<li><a href="##">姥瞳姥周</a></li>
+							<li><a href="##">和墮嶄伉</a></li>
+						</ul>
+						<div class="clear"></div>
+					</li>
+					<li>
+						<a href="/qdhz/">麦祇栽恬</a>
+						<ul>
+							<span class="out">
+								<span class="inner"></span>
+							</span>
+							<li><a href="##">麦祇屓貨</a></li>
+							<li><a href="##">廣過彿鯉</a></li>
+						</ul>
+						<div class="clear"></div>
+					</li>
+					<li>
+						<a href="/women/">購噐厘断</a>
+						<ul>
+							<span class="out">
+								<span class="inner"></span>
+							</span>
+							<li><a href="##">古誓</a></li>
+							<li><a href="##">巷望初府</a></li>
+							<li><a href="##">窟婢煽殻</a></li>
+							<li><a href="##">蕃圉彿嵎</a></li>
+							<li><a href="##">巷望強蓑</a></li>
+							<li><a href="##">二匍猟晒</a></li>
+							<li><a href="##">二匍豚侵</a></li>
+							<li><a href="##">選狼厘断</a></li>
+						</ul>
+						<div class="clear"></div>
+					</li>
+					<li>
+						<a href="/jrwm/">紗秘厘断</a>
+						<ul>
+							<span class="out">
+								<span class="inner"></span>
+							</span>
+							<li><a href="##">芙氏孃童</a></li>
+							<li><a href="##">丕坩孃童</a></li>
+						</ul>
+						<div class="clear"></div>
+					</li>
+					<li>
+						<a href="/gyhda/">巷吩試強</a>
+						<ul>
+							<span class="out">
+								<span class="inner"></span>
+							</span>
+							<li><a href="##">巷吩児署</a></li>
+							<li><a href="##">巷吩強蓑</a></li>
+						</ul>
+						<div class="clear"></div>
+					</li>
+        </ul>
+    </div> 
+</header>
+<div style="display:none;">	
+	<div id="wbwb">
+		<img src="/temp/index/skin/wbpic.jpg" />
+	</div>
+	<div id="wxwx">
+		<img src="/temp/index/skin/wxpic.jpg" />
+	</div>
+</div><!--header_end-->
+<div class="mainBox">
+	<div class="foce">
+		<div id="slideBox" class="slideBox">										
+				<img src="/temp/index/skin/121449150yew.jpg" />	
+		</div>
+	</div>
+    <div class="chief">
+    	<div class="chief_left">
+        	<div class="jbxx">				
+                <section class="gsjj">
+                    <h3>巷望酒初 >> </h3>
+					<div class="fld"><p>涙葎偏鯖椽左俊可創撹羨噐2008定。涙葎偏鯖椽左俊可創巷望了噐臼奨?壓鴻巒、貧今、撹脅、葡剩、廉芦、冷査、掴奨、侮框、海紐、孱巒吉眉噴謹倖福偏譜嗤蛍屶字更?埀垢繁方埃500繁?定唔匍駆埃5叮圷繁酎衛。</p>
+<p>&nbsp;</p>
+<p>涙葎偏鯖椽左俊可創崑薦噐?佩匍人薩戻工芦畠、辛真、互嵎楚、叟制婢議佩匍盾畳圭宛?逸廁人薩糞?佚連晒砿尖恷煮糞樹?參諾怎人薩佚連晒秀譜音揖俶箔?葎栽恬誌育戻工廨匍、互丼、幹仟來議麦祇奐峙捲暦?亅廁栽恬誌育庚耕宰伉昇尸薦?酔堀蝕謡偏魁?持自哘斤偏魁延晒。</p>
+</div>
+					<!--汽匈坪否議戻函-->
+                    <div class="clear"></div>
+                </section>                
+                <section>
+                    <h3>選狼厘断 >> </h3>
+                    <div><img src="/temp/index/skin/dt.jpg" /></div>
+                    <div class="clear"></div>
+                </section>                     
+            </div>
+            <div class="xw">
+            	<section>
+                	<h3>巷望強蓑 >> </h3>
+                    <div>
+						<div class="newsPic"><img src="/temp/index/skin//30191356flr6.jpg" /></div>
+                        <ul>							
+							<li>
+							<div class="synewicon">
+								<script>							
+								var s1 = "2015-07-17 19:28:00";  
+								s1 = s1.substring(0,10);
+								var sft = new Date();  
+								var s2 = sft.getFullYear() + "-" + (sft.getMonth() + 1) + "-" + sft.getDate();
+								  
+								s1 = s1.replace(/-/g, "/");  
+								s2 = s2.replace(/-/g, "/");  
+								s1 = new Date(s1);  
+								s2 = new Date(s2);  
+								  
+								var days=  s2.getTime() - s1.getTime();  
+								var time = parseInt(days / (1000 * 60 * 60 * 24));  
+								
+								if(time <= 7){
+									document.write('<img src="/temp/index/skin/new.jpg" align="absmiddle" />');
+								}
+								</script>
+							</div>
+							<div class="fl">
+								<img src="/temp/index/skin/newsicon.jpg" align="absmiddle" class="syxwicon"/>&nbsp;￣哲哲匆伏賑阻＾奕担彭?￣厘嗤乂涙栂
+							</div>
+							</li>
+							<li>
+							<div class="synewicon">
+								<script>							
+								var s1 = "2015-03-30 19:03:24";  
+								s1 = s1.substring(0,10);
+								var sft = new Date();  
+								var s2 = sft.getFullYear() + "-" + (sft.getMonth() + 1) + "-" + sft.getDate();
+								  
+								s1 = s1.replace(/-/g, "/");  
+								s2 = s2.replace(/-/g, "/");  
+								s1 = new Date(s1);  
+								s2 = new Date(s2);  
+								  
+								var days=  s2.getTime() - s1.getTime();  
+								var time = parseInt(days / (1000 * 60 * 60 * 24));  
+								
+								if(time <= 7){
+									document.write('<img src="/temp/index/skin/new.jpg" align="absmiddle" />');
+								}
+								</script>
+							</div>
+							<div class="fl">
+								<img src="/temp/index/skin/newsicon.jpg" align="absmiddle" class="syxwicon"/>&nbsp;装屈、装罰徨、地砥徨眉倖繁屎編夕喘嚢土溶决扮寂
+							</div>
+							</li>
+							<li>
+							<div class="synewicon">
+								<script>							
+								var s1 = "2015-03-25 18:29:36";  
+								s1 = s1.substring(0,10);
+								var sft = new Date();  
+								var s2 = sft.getFullYear() + "-" + (sft.getMonth() + 1) + "-" + sft.getDate();
+								  
+								s1 = s1.replace(/-/g, "/");  
+								s2 = s2.replace(/-/g, "/");  
+								s1 = new Date(s1);  
+								s2 = new Date(s2);  
+								  
+								var days=  s2.getTime() - s1.getTime();  
+								var time = parseInt(days / (1000 * 60 * 60 * 24));  
+								
+								if(time <= 7){
+									document.write('<img src="/temp/index/skin/new.jpg" align="absmiddle" />');
+								}
+								</script>
+							</div>
+							<div class="fl">
+								<img src="/temp/index/skin/newsicon.jpg" align="absmiddle" class="syxwicon"/>&nbsp;在?￣唖囘勇伏賑議嗽廬遊＾藍伊鎗効低傍
+							</div>
+							</li>
+							<li>
+							<div class="synewicon">
+								<script>							
+								var s1 = "2015-03-03 12:16:28";  
+								s1 = s1.substring(0,10);
+								var sft = new Date();  
+								var s2 = sft.getFullYear() + "-" + (sft.getMonth() + 1) + "-" + sft.getDate();
+								  
+								s1 = s1.replace(/-/g, "/");  
+								s2 = s2.replace(/-/g, "/");  
+								s1 = new Date(s1);  
+								s2 = new Date(s2);  
+								  
+								var days=  s2.getTime() - s1.getTime();  
+								var time = parseInt(days / (1000 * 60 * 60 * 24));  
+								
+								if(time <= 7){
+									document.write('<img src="/temp/index/skin/new.jpg" align="absmiddle" />');
+								}
+								</script>
+							</div>
+							<div class="fl">
+								<img src="/temp/index/skin/newsicon.jpg" align="absmiddle" class="syxwicon"/>&nbsp;兆蕗寄寳議釦弌暇徭隼哈軟阻暢遅遅議廣吭
+							</div>
+							</li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                </section>
+                <section>
+                	<h3>偏魁詔醜 >> </h3>
+                     <div>
+						<div class="newsPic"><img src="/temp/index/skin/25231121nvdq.jpg" /></div>
+                        <ul>
+							<li>
+								<div class="synewicon">
+								<script>							
+								var s1 = "2015-07-06 16:23:32";  
+								s1 = s1.substring(0,10);
+								var sft = new Date();  
+								var s2 = sft.getFullYear() + "-" + (sft.getMonth() + 1) + "-" + sft.getDate();
+								  
+								s1 = s1.replace(/-/g, "/");  
+								s2 = s2.replace(/-/g, "/");  
+								s1 = new Date(s1);  
+								s2 = new Date(s2);  
+								  
+								var days=  s2.getTime() - s1.getTime();  
+								var time = parseInt(days / (1000 * 60 * 60 * 24));  
+								
+								if(time <= 7){
+									document.write('<img src="/temp/index/skin/new.jpg" align="absmiddle" />');
+								}
+								</script>
+								</div>
+								<div class="fl">
+								<img src="/temp/index/skin/newsicon.jpg" align="absmiddle"  class="syxwicon"/>&nbsp;効彭紺阻匯鞘＾剋剥?￣嚢瓜容欺阻剋剥議円貧
+								</div>
+							</li>
+							<li>
+								<div class="synewicon">
+								<script>							
+								var s1 = "2015-06-25 23:11:45";  
+								s1 = s1.substring(0,10);
+								var sft = new Date();  
+								var s2 = sft.getFullYear() + "-" + (sft.getMonth() + 1) + "-" + sft.getDate();
+								  
+								s1 = s1.replace(/-/g, "/");  
+								s2 = s2.replace(/-/g, "/");  
+								s1 = new Date(s1);  
+								s2 = new Date(s2);  
+								  
+								var days=  s2.getTime() - s1.getTime();  
+								var time = parseInt(days / (1000 * 60 * 60 * 24));  
+								
+								if(time <= 7){
+									document.write('<img src="/temp/index/skin/new.jpg" align="absmiddle" />');
+								}
+								</script>
+								</div>
+								<div class="fl">
+								<img src="/temp/index/skin/newsicon.jpg" align="absmiddle"  class="syxwicon"/>&nbsp;心貧肇哘乎頁将械詞治利杏嗄老片魁侭議音措楳定
+								</div>
+							</li>
+							<li>
+								<div class="synewicon">
+								<script>							
+								var s1 = "2015-05-26 01:10:54";  
+								s1 = s1.substring(0,10);
+								var sft = new Date();  
+								var s2 = sft.getFullYear() + "-" + (sft.getMonth() + 1) + "-" + sft.getDate();
+								  
+								s1 = s1.replace(/-/g, "/");  
+								s2 = s2.replace(/-/g, "/");  
+								s1 = new Date(s1);  
+								s2 = new Date(s2);  
+								  
+								var days=  s2.getTime() - s1.getTime();  
+								var time = parseInt(days / (1000 * 60 * 60 * 24));  
+								
+								if(time <= 7){
+									document.write('<img src="/temp/index/skin/new.jpg" align="absmiddle" />');
+								}
+								</script>
+								</div>
+								<div class="fl">
+								<img src="/temp/index/skin/newsicon.jpg" align="absmiddle"  class="syxwicon"/>&nbsp;麿佚販議畠頁貫孕高嚴附円揮狛肇議繁
+								</div>
+							</li>
+							<li>
+								<div class="synewicon">
+								<script>							
+								var s1 = "2015-05-25 12:06:51";  
+								s1 = s1.substring(0,10);
+								var sft = new Date();  
+								var s2 = sft.getFullYear() + "-" + (sft.getMonth() + 1) + "-" + sft.getDate();
+								  
+								s1 = s1.replace(/-/g, "/");  
+								s2 = s2.replace(/-/g, "/");  
+								s1 = new Date(s1);  
+								s2 = new Date(s2);  
+								  
+								var days=  s2.getTime() - s1.getTime();  
+								var time = parseInt(days / (1000 * 60 * 60 * 24));  
+								
+								if(time <= 7){
+									document.write('<img src="/temp/index/skin/new.jpg" align="absmiddle" />');
+								}
+								</script>
+								</div>
+								<div class="fl">
+								<img src="/temp/index/skin/newsicon.jpg" align="absmiddle"  class="syxwicon"/>&nbsp;才礼埖壓岬貧參式致掴胡嘉壓岬貧嗄況扮議化隈載?貌
+								</div>
+							</li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                </section>
+                <section>
+                	<h3>二匍猟晒 >> </h3>
+                     <div>
+						<div class="newsPic"><img src="/temp/index/skin/14180503rw2w.png" /></div>
+                        <ul>
+							<li>
+							<div class="synewicon">
+							<script>
+							var s1 = "2015-07-14 18:05:29";  
+							s1 = s1.substring(0,10);
+							var sft = new Date();  
+							var s2 = sft.getFullYear() + "-" + (sft.getMonth() + 1) + "-" + sft.getDate();
+							  
+							s1 = s1.replace(/-/g, "/");  
+							s2 = s2.replace(/-/g, "/");  
+							s1 = new Date(s1);  
+							s2 = new Date(s2);  
+							  
+							var days=  s2.getTime() - s1.getTime();  
+							var time = parseInt(days / (1000 * 60 * 60 * 24));  
+							
+							if(time <= 7){
+								document.write('<img src="/temp/index/skin/new.jpg" align="absmiddle" />');
+							}
+							</script>
+							</div>
+							<div class="fl">
+							<img src="/temp/index/skin/newsicon.jpg" align="absmiddle" class="syxwicon"/>&nbsp;宸定遊弊欠晩和亜´´￣吉釦弌暇苧易狛栖岻朔
+							</div>
+							</li>
+							<li>
+							<div class="synewicon">
+							<script>
+							var s1 = "2015-05-20 14:47:57";  
+							s1 = s1.substring(0,10);
+							var sft = new Date();  
+							var s2 = sft.getFullYear() + "-" + (sft.getMonth() + 1) + "-" + sft.getDate();
+							  
+							s1 = s1.replace(/-/g, "/");  
+							s2 = s2.replace(/-/g, "/");  
+							s1 = new Date(s1);  
+							s2 = new Date(s2);  
+							  
+							var days=  s2.getTime() - s1.getTime();  
+							var time = parseInt(days / (1000 * 60 * 60 * 24));  
+							
+							if(time <= 7){
+								document.write('<img src="/temp/index/skin/new.jpg" align="absmiddle" />');
+							}
+							</script>
+							</div>
+							<div class="fl">
+							<img src="/temp/index/skin/newsicon.jpg" align="absmiddle" class="syxwicon"/>&nbsp;斑川助芝音鋤壓慢断附貧唯藻叱昼嶝
+							</div>
+							</li>
+							<li>
+							<div class="synewicon">
+							<script>
+							var s1 = "2015-05-08 17:33:13";  
+							s1 = s1.substring(0,10);
+							var sft = new Date();  
+							var s2 = sft.getFullYear() + "-" + (sft.getMonth() + 1) + "-" + sft.getDate();
+							  
+							s1 = s1.replace(/-/g, "/");  
+							s2 = s2.replace(/-/g, "/");  
+							s1 = new Date(s1);  
+							s2 = new Date(s2);  
+							  
+							var days=  s2.getTime() - s1.getTime();  
+							var time = parseInt(days / (1000 * 60 * 60 * 24));  
+							
+							if(time <= 7){
+								document.write('<img src="/temp/index/skin/new.jpg" align="absmiddle" />');
+							}
+							</script>
+							</div>
+							<div class="fl">
+							<img src="/temp/index/skin/newsicon.jpg" align="absmiddle" class="syxwicon"/>&nbsp;厘嗤乂囈弾＾榔絃壑壓嗤熱匆音嬬宸劔亜￣哲哲辧遊
+							</div>
+							</li>
+							<li>
+							<div class="synewicon">
+							<script>
+							var s1 = "2015-04-24 16:49:26";  
+							s1 = s1.substring(0,10);
+							var sft = new Date();  
+							var s2 = sft.getFullYear() + "-" + (sft.getMonth() + 1) + "-" + sft.getDate();
+							  
+							s1 = s1.replace(/-/g, "/");  
+							s2 = s2.replace(/-/g, "/");  
+							s1 = new Date(s1);  
+							s2 = new Date(s2);  
+							  
+							var days=  s2.getTime() - s1.getTime();  
+							var time = parseInt(days / (1000 * 60 * 60 * 24));  
+							
+							if(time <= 7){
+								document.write('<img src="/temp/index/skin/new.jpg" align="absmiddle" />');
+							}
+							</script>
+							</div>
+							<div class="fl">
+							<img src="/temp/index/skin/newsicon.jpg" align="absmiddle" class="syxwicon"/>&nbsp;壓輝書宸倖窮徨嚔赤刑青撹墻議定旗
+							</div>
+							</li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="chief_right">  
+        	<div>
+				<h3>栽恬誌育 >> </h3>
+				<div class="hzhbBox">					
+				
+						<a href="http://www.huawei.com/cn/" width="118px" height="58px"  target="_blank"><span style="display:none;">http://www.huawei.com/cn/</span><img src="/temp/index/skin/271757586kw7.jpg" /></a>
+						<a href="http://www.ge.com/cn/" width="118px" height="58px"  target="_blank"><span style="display:none;">http://www.ge.com/cn/</span><img src="/temp/index/skin/27175501ukhw.jpg" /></a>
+						<a href="http://www.sap.com/china/index.html" width="118px" height="58px"  target="_blank"><span style="display:none;">http://www.sap.com/china/index.html</span><img src="/temp/index/skin/28100916tpa5.jpg" /></a>
+						<a href="http://www.microsoft.com/zh-cn/default.aspx?region=cn" width="118px" height="58px"  target="_blank"><span style="display:none;">http://www.microsoft.com/zh-cn/default.aspx?region=cn</span><img src="/temp/index/skin/28100701cgm9.jpg" /></a>
+						<a href="http://www.opnet.com.tw/" width="118px" height="58px"  target="_blank"><span style="display:none;">http://www.opnet.com.tw/</span><img src="/temp/index/skin/28100524r98h.jpg" /></a>
+						<a href="http://www.sybase.com/" width="118px" height="58px"  target="_blank"><span style="display:none;">http://www.sybase.com/</span><img src="/temp/index/skin/28095228o417.jpg" /></a>
+						<a href="http://www.philips.com.cn/" width="118px" height="58px"  target="_blank"><span style="display:none;">http://www.philips.com.cn/</span><img src="/temp/index/skin/280944371k10.jpg" /></a>
+						<a href="http://www.siemens.com/answers/cn/zh/?stc=cnccc026240" width="118px" height="58px"  target="_blank"><span style="display:none;">http://www.siemens.com/answers/cn/zh/?stc=cnccc026240</span><img src="/temp/index/skin/280943205tc7.jpg" /></a>
+				
+					<div id="jsfoot_scroll" >	
+					</div>
+				</div>				
+				<div class="clear"></div>
+            </div>
+            <div>
+            <h3>嗔秤全俊 >></h3>  
+            <ul class="yqlj">
+				<li><img src="/temp/index/skin/yqlj_hot.jpg" align="absmiddle"/>&nbsp;&nbsp;<a href="http://www.sogou.com/" target="_blank">朴昂朴沫</a></li>
+				<li><img src="/temp/index/skin/yqlj_hot.jpg" align="absmiddle"/>&nbsp;&nbsp;<a href="http://mp3.sogou.com/" target="_blank">朴昂咄赤</a></li>
+				<li><img src="/temp/index/skin/yqlj_hot.jpg" align="absmiddle"/>&nbsp;&nbsp;<a href="http://baike.sogou.com/" target="_blank">朴昂為親</a></li>
+				<li><img src="/temp/index/skin/yqlj_hot.jpg" align="absmiddle"/>&nbsp;&nbsp;<a href="http://123.sogou.com/" target="_blank">利峽擬砂</a></li>
+            </ul>
+            <div class="clear"></div>
+            </div>    
+        </div>
+    </div>
+	<div class="mainLayer">
+        <div class="kfdh">人捲窮三<span class="oppositeColor">&nbsp;&nbsp;12345678</span></div>  
+        <div class="ksdl">
+			<div style="float:left;padding-top:20px;"> 酔堀鞠村&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			<div style="float:left;">
+				<span><img src="/temp/index/skin/yjxt.jpg" align="absmiddle" /></span>&nbsp;&nbsp;&nbsp;&nbsp;
+				<span><img src="/temp/index/skin/xxglxt.jpg" align="absmiddle" /></span>
+			</div>
+		</div>
+    </div>
+</div>
+<!--foot_begin-->
+<footer>
+	<ul>
+						<li>
+					<a href="/product/">恢瞳嶄伉</a>
+					<ul>						
+						<li><a href="##">鯖葎</a></li>
+						<li><a href="##">SAP</a></li>
+						<li><a href="##">裏罷</a></li>
+						<li><a href="##">GE</a></li>
+					</ul>
+					<div class="clear"></div>
+				</li>					
+				<li>
+					<a href="/hyzx/">佩匍彿儷</a>
+				</li>					
+				<li>
+					<a href="/jjfa/">盾畳圭宛</a>
+					<ul>						
+						<li><a href="##">室宝盾畳圭宛</a></li>
+						<li><a href="##">佩匍盾畳圭宛</a></li>
+					</ul>
+					<div class="clear"></div>
+				</li>					
+				<li>
+					<a href="/fwzc/">捲暦嚥屶隔</a>
+					<ul>						
+						<li><a href="##">略隠捲暦</a></li>
+						<li><a href="##">塰略砿尖</a></li>
+						<li><a href="##">姥瞳姥周</a></li>
+						<li><a href="##">和墮嶄伉</a></li>
+					</ul>
+					<div class="clear"></div>
+				</li>					
+				<li>
+					<a href="/qdhz/">麦祇栽恬</a>
+					<ul>						
+						<li><a href="##">麦祇屓貨</a></li>
+						<li><a href="##">廣過彿鯉</a></li>
+					</ul>
+					<div class="clear"></div>
+				</li>					
+				<li>
+					<a href="/women/">購噐厘断</a>
+					<ul>						
+						<li><a href="##">古誓</a></li>
+						<li><a href="##">巷望初府</a></li>
+						<li><a href="##">窟婢煽殻</a></li>
+						<li><a href="##">蕃圉彿嵎</a></li>
+						<li><a href="##">巷望強蓑</a></li>
+						<li><a href="##">二匍猟晒</a></li>
+						<li><a href="##">二匍豚侵</a></li>
+						<li><a href="##">選狼厘断</a></li>
+					</ul>
+					<div class="clear"></div>
+				</li>					
+				<li>
+					<a href="/jrwm/">紗秘厘断</a>
+					<ul>						
+						<li><a href="##">芙氏孃童</a></li>
+						<li><a href="##">丕坩孃童</a></li>
+					</ul>
+					<div class="clear"></div>
+				</li>					
+				<li>
+					<a href="/gyhda/">巷吩試強</a>
+					<ul>						
+						<li><a href="##">巷吩児署</a></li>
+						<li><a href="##">巷吩強蓑</a></li>
+					</ul>
+					<div class="clear"></div>
+				</li>					
+    </ul>
+    
+    <div class="f_layout">
+    </div>	
+   	<div class="copyright">power by <a href="/">涙葎偏鯖椽左俊可創</a><br> Copyright@2007-2015 All Rights Reserved  </div>
+   	<div style="display:none;"><script type="text/javascript" src="../../tj.js"></script></div>
+	</footer><!--foot_end-->
+</div>
+</div>
+</body>
+</html>

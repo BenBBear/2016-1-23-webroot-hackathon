@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>DotNetNuke</title>
+        <link rel="stylesheet" type="text/css" href="Install.css?refresh">
+        <link rel="stylesheet" type="text/css" href="../Portals/_default/default.css?refresh" />
+    </head>
+    <body BOTTOMMARGIN="5" LEFTMARGIN="5" TOPMARGIN="5" RIGHTMARGIN="5" MARGINWIDTH="0" MARGINHEIGHT="0">
+        <img src="../images/branding/logo.gif" border="0">
+        <br>
+<!-- tags excluded on purpose so that installation feedback messages are displayed
+</body>
+</html>
+-->                                                                     
+<h1>SQL Exception</h1><h2>Error Details</h2><table cellspacing=0 cellpadding=0 border=0><tr><td><b>File</b></td><td><b></b></td></tr><tr><td><b>Error</b>&nbsp;&nbsp;</td><td><b><b>Index #:</b> 0<br/><b>Source:</b> .Net SqlClient Data Provider<br/><b>Class:</b> 17<br/><b>Number:</b> 9002<br/><b>Procedure:</b> AddEventLog<br/><b>Message:</b> System.Data.SqlClient.SqlException: The transaction log for database 'tdreal' is full. To find out why space in the log cannot be reused, see the log_reuse_wait_desc column in sys.databases
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj)
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(DbAsyncResult result, String methodName, Boolean sendToPipe)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteNonQuery(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteNonQuery(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteNonQuery(String connectionString, String spName, Object[] parameterValues)
+   at DotNetNuke.Services.Log.EventLog.DBLoggingProvider.SqlDataProvider.AddLog(String logGUID, String logTypeKey, Int32 logUserID, String logUserName, Int32 logPortalID, String logPortalName, DateTime logCreateDate, String logServerName, String logProperties, Int32 logConfigID)
+   at DotNetNuke.Services.Log.EventLog.DBLoggingProvider.DBLoggingProvider.WriteLog(LogQueueItem logQueueItem)<br/></b></td></tr></table><br><br></body></html>

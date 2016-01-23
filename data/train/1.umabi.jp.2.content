@@ -1,0 +1,623 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>Umabi - 今度の休みは、うまびより。</title>
+	<meta name="description" content="どんなひとでもゆる～く競馬を楽しめちゃうサイト”Umabi”できました。GENKINGさん登場のビギナーズ競馬マニュアルや、小山健さん、綱本将也さん、山根 章裕さん、書き下ろしのオリジナルコミックなど楽しみながら競馬を身近に感じられるコンテンツ盛りだくさん！">
+	<meta name="keywords" content="umabi,umabi.jp,うまび,#うまび,走れ！サユリちゃん,走れさゆりちゃん,#run,競馬,JRA,GENKING,競馬場,bokete,pixiv,懸賞,キャンペーン,初心者,ジャパンカップ,ジャパンスモウカップ,ルパン,有馬記念,1227,ウォーリー,有馬,有馬記念でさがせ,ケイバ,ローリー,照英,楳図かずお">
+	<meta name="viewport" content="width=1280">
+	<link rel="apple-touch-icon" sizes="180x180" href="/img/icon.png">
+	<link rel="apple-touch-icon-precomposed" href="/img/icon.png">
+	<link rel="shortcut icon" href="/img/favicon.ico">
+	<link rel="icon" sizes="192x192" href="/img/icon.png">
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="Umabi 今度の休みは、うまびより。">
+	<meta property="og:description" content="今度の休みは、うまびより。青空と芝生と馬たちが、あなたの笑顔を待ってます！">
+	<meta property="og:url" content="http://umabi.jp">
+	<meta property="og:image" content="http://umabi.jp/img/ogp.png">
+	<meta property="fb:app_id" content="1437144859943954" />
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:domain" content="umabi.jp">
+	<meta name="twitter:site" content="@Umabi_Official">
+	<meta name="twitter:title" content="Umabi 今度の休みは、うまびより。">
+	<meta name="twitter:description" content="今度の休みは、うまびより。青空と芝生と馬たちが、あなたの笑顔を待ってます！">
+	<link rel="stylesheet" type="text/css" media="all" href="/css/reset.css">
+	<link rel="stylesheet" type="text/css" media="all" href="/css/style.css">
+</head>
+<body data-token="v7DBwPsdRzrZsCTU0JJKezMQpan8iiPAFF4n8u43" class="body--3column">
+
+<div class="wrap">
+
+	<header class="head">
+			<p class="head-logo head-logo--jra">
+			<a href="http://www.jra.go.jp/" target="_blank">
+				<img src="/img/cmn/logo_jra.gif" width="113" height="46" alt="JRA"></a></p>
+
+		<h1 class="head-logo head-logo--umabi">
+			<a href="/">
+				<img src="/img/cmn/logo_umabi.gif" width="266" height="109" alt="Umabi"></a></h1>
+
+		<div class="head-side">
+			<ul class="head-sns">
+				<li class="head-sns__item head-sns__bell">
+					<a href=""><img src="/img/cmn/icn_bell.gif" width="18" height="22" alt="お知らせ"></a></li>
+				<li class="head-sns__item head-sns__share">
+					<a href=""><img src="/img/cmn/btn_share.gif" width="86" height="28" alt="SHARE"></a></li></ul>
+
+			<div class="head-data">
+				<p class="head-login">
+					<a href="#" class="gtm-virtual_page_view" data-url="/login" data-title="ログインモーダル">
+						<img src="/img/cmn/btn_login.gif" width="139" height="28" alt="ログイン"></a></p>
+
+				<div class="head-profile">
+					<ul class="head-profile__medal">
+						<li class="head-profile__medal__num">
+							<img src="/img/cmn/icn_head_medal.gif" width="20" height="21" alt="メダル">
+							<img src="/img/cmn/icn_head_cross.gif" width="13" height="12" alt="×"><span>0</span></li>
+					</ul>
+					<div class="head-profile__medal__gauge">
+						<p class="head-profile__medal__meter"></p></div></div></div>
+
+			<script type="text/template" id="userInfoPanel">
+				<div class="head-select">
+					<div class="head-select__box">
+						<div class="head-select__status">
+							<p class="head-select__img">
+								<a href="">
+									<img src="<%= iconUrl %>" width="44" height="44" alt=""></a></p>
+							<div class="head-profile">
+								<ul class="head-profile__medal">
+									<li class="head-profile__medal__num">
+										<img src="/img/cmn/icn_head_medal.gif" width="20" height="21" alt="メダル">
+										<img src="/img/cmn/icn_head_cross.gif" width="13" height="12" alt="×"><span><%= umabiMedal %></span></li></ul>
+								<div class="head-profile__medal__gauge">
+									<p class="head-profile__medal__meter" style="width:<%= umabiGauge %>%"></p></div></div></div>
+						<a class="head-select__choice" href="#">
+							<img src="/img/cmn/icn_head_arr_01.png" width="8" height="7" alt="MENU"></a></div></div></script>
+
+			<div class="alert alert--news" style="display:none;">
+				<a href="#"></a></div>
+
+			<div class="alert alert--list" style="display:none;">
+				<ul class="alert-menu"></ul></div>
+
+			<script type="text/template" id="newsItemTemplate">
+				<li class="alert-menu__item">
+					<a href="<%= href %>" <% if (target){ %>target="<%= target %>"<% } %>><%= title %></a></li></script>
+
+			<div class="alert alert--share alert--share--head" style="display:none;">
+				<ul class="share-sns">
+					<li class="share-sns__item share-sns__facebook">
+						<div class="fb-like" data-layout="button_count" data-share="true" data-href="http://umabi.jp" data-width="145"></div></li>
+					<li class="share-sns__item share-sns__twitter">
+						<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://umabi.jp" data-text="今度の休みは、うまびより。青空と芝生と馬たちが、あなたの笑顔を待ってます！" data-hashtags="うまび">Tweet</a></li></ul>
+			</div>
+
+			<div class="alert alert--menu" style="display:none;opacity:0">
+				<ul class="login-menu">
+					<li class="login-menu__item btn btn--small">
+						<a href="/mypage/">マイページ</a></li>
+					<li class="login-menu__item btn btn--small">
+						<a href="/account/">ソーシャルアカウントの連携・解除</a></li>
+					<li class="login-menu__item">
+						<ul class="login-menu__list">
+							<li class="login-menu__list__item">
+								<a href="/static/terms" target="_blank">利用規約</a></li>
+							<li class="login-menu__list__item">
+								<a href="/static/faq" target="_blank">FAQ／お問い合わせ</a></li></ul></li>
+					<li class="login-menu__item btn btn--logout">
+						<a href="#">ログアウト</a></li></ul></div>
+
+			<div class="alert alert--login" style="display:none;opacity:0">
+				<p class="alert__txt">
+					<a href="#">うまびPEOPLEになって<br>プレゼントに応募しよう</a></p></div>
+
+			<div class="alert alert--get" style="display:none;opacity:0">
+				<p class="alert-get">
+					<img src="/img/cmn/txt_get.png" width="55" height="18" alt="GET!"></p>
+				<div class="alert-medal__move">
+					<p class="alert-medal__img">
+						<img src="/img/cmn/icn_umabi_mark.png" width="48" height="51" alt="うまびマーク"></p>
+					<p class="alert-medal__effect">
+						<img src="/img/cmn/icn_umabi_effect.png" width="101" height="39" alt="効果"></p></div>
+				<div class="alert-medal">
+					<p class="alert-medal__num">+<span>10%</span></p>
+					<div class="alert-medal__area">
+						<div class="alert-medal__area__line">
+							<div class="alert-medal__area__gauge">
+								<p class="alert-medal__area__meter"></p></div></div>
+						<img src="/img/cmn/icn_head_medal.gif" width="20" height="21" alt="メダル"></div></div></div></div></header>
+
+	<noscript>
+	<div class="main main--lower" id="noscript">
+		<div class="box">
+			<div class="box__inner">
+				<h2 class="box__alert">当サイトでは、Javascriptを使用しています。</h2>
+				<p class="box__txt">サイトをご覧いただくにはブラウザの設定でJavascriptを有効にして、<br>再度読み込み直してください。</p></div></div></div></noscript>
+
+	<input type="hidden" name="_token" value="v7DBwPsdRzrZsCTU0JJKezMQpan8iiPAFF4n8u43">
+
+	<div class="hero noscriptHidden" style="display:none">
+		<div class="hero-wrap">
+
+			<div class="hero-main">
+				<div class="hero-slide"></div>
+				<p class="hero-arrow hero-arrow--left">&lt;</p>
+				<p class="hero-arrow hero-arrow--right">&gt;</p>
+				<div class="head-dot">
+					<ul class="head-dot-list"></ul></div></div>
+
+			<script type="text/template" id="mainPanelsTemplate">
+				<% if (href) { %>
+				<a href="<%= href %>" target="<%= target %>" class="hero-slide__item <%= className %> gtm-main_banner_event" data-category="top_main_banner_click" data-action="<%= image %>" data-label="<%= index %>">
+					<img style="opacity:0;" src="<%= image %>" width="920" height="480" <% if (title) {%>alt="<%= title %>"<% } %>/></a>
+				<% } else { %>
+				<div class="hero-slide__item <%= className %> gtm-main_banner_event" data-category="top_main_banner_click" data-action="<%= image %>" data-label="<%= index %>">
+					<img style="opacity:0;" src="<%= image %>" width="920" height="480" <% if (title) {%>alt="<%= title %>"<% } %>/></div>
+				<% } %>
+			</script>
+
+			<script type="text/template" id="mainPanelsPointTemplate">
+				<li class="head-dot-list__item" data-index="<%= index %>"><a></a></li></script>
+
+			<div class="hero-side">
+				<div class="hero-slide hero-slide--sub"></div>
+
+				<script type="text/template" id="subPanelsTemplate">
+					<a class="hero-slide__area <%= className %> gtm-race_banner_event" target="<%= target %>" style="opacity:0;" href="<%= href %>" data-category="top-race-banner-click" data-action="<%= useImage %>" data-label="<%= index %>">
+						<img src="<%= useImage %>" width="320" height="240" <% if (title) {%>alt="<%= title %>"<% } %>>
+						<% if (isCountDown) { %>
+						<div class="live-counter live-counter__date">
+							<div class="live-counter__num"></div>
+							<div class="live-counter__num"></div>
+						</div>
+						<div class="live-counter live-counter__hour">
+							<div class="live-counter__num"></div>
+							<div class="live-counter__num"></div>
+						</div>
+						<div class="live-counter live-counter__min">
+							<div class="live-counter__num"></div>
+							<div class="live-counter__num"></div>
+						</div>
+						<div class="live-counter live-counter__sec">
+							<div class="live-counter__num"></div>
+							<div class="live-counter__num"></div>
+						</div>
+						<% } %></a></script>
+
+				<dl class="hero-spot">
+					<dt class="hero-spot__title">
+						<img src="/img/cmn/hero_sub_title.png" width="312" height="25" alt="今週のうまびスポット"></dt>
+					<dd class="hero-spot__body"></dd></dl>
+
+				<!-- 今週のうまびスポットテンプレート -->
+				<script type="text/template" id="pickupsTemplate">
+					<ul class="hero-spot__list">
+						<% _.each(groupedPickups , function(group) { %>
+						<li class="hero-spot__item">
+							<table class="hero-table">
+								<tr>
+									<th class="hero-table__head hero-table-color--<%= group[0].lowerWeek %> hero-table__height<%= days %>">
+										<span class="hero-table__day"><%= group[0].month %>/<%= group[0].date %></span>
+										<span class="hero-table__week"><%= group[0].week %></span>
+									</th>
+									<td class="hero-table__body">
+										<ul class="hero-table__list">
+											<% _.each(group , function(pickup) { %>
+											<li class="hero-table__item<% if((days === 3 && group.length === 2) || (days === 2 && group.length === 3)){%> hero-table__item--full<% } %>">
+												<a href="<%= pickup.href %>" target="<%= pickup.target %>">
+													<div class="hero-table__box">
+														<p class="hero-table__tag" style="background:<%= pickup.racetrackColor %>">
+															<%= pickup.racetrackName %></p>
+														<div class="hero-table__txt">
+															<p><%= pickup.title %></p></div></div></a></li>
+											<% }) %></ul></td></tr></table></li>
+						<% }) %></ul></script></div></div>
+</div>
+
+	<nav class="nav noscriptHidden" style="display:none">
+		<div class="nav-main">
+			<ul class="nav-list">
+				<li class="nav-list__item">
+					<a href="/" data-nav="1">
+						<img src="/img/cmn/nav_all.png" width="32" height="32" alt="ALL"></a></li>
+				<li class="nav-list__item">
+					<a href="/people" data-nav="2">
+						<img src="/img/cmn/nav_people.png" width="98" height="32" alt="PEOPLE"></a></li>
+				<li class="nav-list__item">
+					<a href="/joy" data-nav="3">
+						<img src="/img/cmn/nav_joy.png" width="70" height="32" alt="うまびJOY"></a></li>
+				<li class="nav-list__item">
+					<a href="/beginner" data-nav="4">
+						<img src="/img/cmn/nav_beginner.png" width="98" height="32" alt="BEGINNER"></a></li>
+				<li class="nav-list__item">
+					<a href="/turf" data-nav="5">
+						<img src="/img/cmn/nav_race.png" width="113" height="32" alt="競馬場へ行こう!"></a></li></ul></div></nav>
+
+	<!-- 競馬場へ行こうナビ -->
+	<div class="nav-race" style="display: none;">
+		<ul class="nav-race-list">
+			<li class="nav-race-list__item nav-race-list__item--open01" data-id="1"><a class="nav-race--icn01" href="/turf/sapporo">札幌競馬場</a></li>
+			<li class="nav-race-list__item nav-race-list__item--open02" data-id="3"><a class="nav-race--icn02" href="/turf/fukushima">福島競馬場</a></li>
+			<li class="nav-race-list__item nav-race-list__item--open03" data-id="5"><a class="nav-race--icn03" href="/turf/tokyo">東京競馬場</a></li>
+			<li class="nav-race-list__item nav-race-list__item--open04" data-id="7"><a class="nav-race--icn04" href="/turf/chukyo">中京競馬場</a></li>
+			<li class="nav-race-list__item nav-race-list__item--open05" data-id="9"><a class="nav-race--icn05" href="/turf/hanshin">阪神競馬場</a></li></ul>
+		<ul class="nav-race-list">
+			<li class="nav-race-list__item nav-race-list__item--open06" data-id="2"><a class="nav-race--icn06" href="/turf/hakodate">函館競馬場</a></li>
+			<li class="nav-race-list__item nav-race-list__item--open07" data-id="4"><a class="nav-race--icn07" href="/turf/niigata">新潟競馬場</a></li>
+			<li class="nav-race-list__item nav-race-list__item--open08" data-id="6"><a class="nav-race--icn08" href="/turf/nakayama">中山競馬場</a></li>
+			<li class="nav-race-list__item nav-race-list__item--open09" data-id="8"><a class="nav-race--icn09" href="/turf/kyoto">京都競馬場</a></li>
+			<li class="nav-race-list__item nav-race-list__item--open10" data-id="10"><a class="nav-race--icn10" href="/turf/kokura">小倉競馬場</a></li></ul></div>
+
+	<div class="main noscriptHidden" style="display:none">
+
+		<div class="main__wrap"></div>
+
+		<div class="btn btn--more">
+			<a href="#">
+				<img src="/img/cmn/btn_more.png" width="82" height="17" alt="もっとみる"></a></div>
+
+		<!-- パネルのテンプレート -->
+		<script type="text/template" id="panelTemplate">
+			<div class="item-grid item-grid--size0<% if (size === 2) { %>1<% } else { %>2<% } %> <%= className %>">
+
+				<% if (href) { %>
+				<a href="<%= href %>" class="item-grid__wrap<% if (category !==2) { %> gtm-panel_event<% } %>" <% if (target) { %>target="<%= target %>"<% } %> data-category="top_panel_click" data-action="<%= id %>" data-label="<%= size == 1 ? 'S' : 'L' %>">
+				<% } else { %>
+				<div class="item-grid__wrap">
+				<% } %>
+
+					<% if (mark === 1) { %>
+					<p class="item-icn item-icn--new">NEW</p>
+					<% } else if (mark === 2) { %>
+					<p class="item-icn item-icn--open">開催中</p>
+					<% } else if (mark === 3) { %>
+					<p class="item-icn item-icn--result">結果発表</p>
+					<% } else if (mark === 4) { %>
+					<p class="item-icn item-icn--finish">終了</p>
+					<% } else if (mark === 5) { %>
+					<p class="item-icn item-icn--weekend">土日OPEN</p>
+					<% } else if (mark === 6) { %>
+					<p class="item-icn item-icn--live">LIVE</p>
+					<% } %>
+
+					<% if (useImage) { %>
+					<figure class="item-grid__img"><img src="<%= useImage %>" <% if (title) { %>alt="<%= title %>"<% } %>></figure>
+					<% } %>
+
+					<% if (sns) { %>
+					<div class="social-head">
+						<% if (iconUrl) { %>
+						<p class="social-head__img"><img src="<%= iconUrl %>" alt="アイコン画像"></p>
+						<% } %>
+						<div class="social-head__name">
+							<ul class="social-head__box">
+								<% if (sns === 4) { %>
+								<li class="social-head__box__item">
+									<img src="/img/grid/icn_grid_tweet_big.gif" width="19" height="19" alt="TWITTER"></li>
+								<% } else if (sns === 1) { %>
+								<li class="social-head__box__item">
+									<img src="/img/grid/icn_grid_face_big.gif" width="19" height="18" alt="FACEBOOK"></li>
+								<% } else if (sns === 5) { %>
+								<li class="social-head__box__item">
+									<img src="/img/grid/icn_grid_insta_big.gif" width="19" height="19" alt="INSTAGRAM"></li>
+								<% } %>
+								<li class="social-head__box__item social-head__box__item--name">
+									<span class="social-head__name__txt"><%= name || screenName %></span></li></ul>
+							<% if (screenName && name) { %><p class="social-head__id">@<%= screenName %></p><% } %></div></div>
+					<div class="social-body social-body--small"><%= text %></div>
+					<% } else if (text) { %>
+					<p class="item-grid__txt"><%= text %></p>
+					<% } %>
+
+					<% if ((hmmm === 0 || hmmm) && category === 4) { %>
+					<div class="item-indeed"><span class="sns-num"><%= hmmm %></span>人がふむふむと言っています。</div>
+					<% } else if ((hmmm === 0 || hmmm) && category === 5) { %>
+					<div class="item-indeed"><span class="sns-num"><%= hmmm %></span>人が行きたい！と言っています。</div>
+					<% } %>
+
+					<% if (goods === 0 || goods || shares === 0 || shares) { %>
+					<ul class="item-sns">
+						<% if (sns === 4) { %>
+						<li class="item-sns__item">
+							<img src="/img/grid/icn_grid_share.gif" width="16" height="11" alt="コメント"><span class="sns-num"><%= comments %></span></li>
+						<li class="item-sns__item">
+							<img src="/img/grid/icn_grid_star.gif" width="11" height="11" alt="いいね"><span class="sns-num"><%= goods %></span></li>
+						<% } else if (sns === 1) { %>
+						<li class="item-sns__item">
+							<img class="icn-good" src="/img/grid/icn_grid_good.gif" width="11" height="13" alt="ツイート"><span class="sns-num"><%= goods %></span></li>
+						<li class="item-sns__item">
+							<img src="/img/grid/icn_grid_share.gif" width="16" height="11" alt="シェア"><span class="sns-num"><%= shares %></span></li>
+						<% } else if (sns === 5) { %>
+						<li class="item-sns__item">
+							<img class="icn-good" src="/img/grid/icn_grid_like.gif" width="16" height="13" alt="いいね"><span class="sns-num"><%= goods %></span></li>
+						<% } else { %>
+						<li class="item-sns__item">
+							<img src="/img/grid/icn_grid_face.gif" width="10" height="10" alt="FACEBOOK"><span class="sns-num"><%=　shares %></span></li>
+						<% } %></ul>
+					<% } else { %>
+					<ul class="item-sns" style="padding-bottom: <% if (isTagDisplayed) { %>24px<% } else { %>0<% } %>"></ul>
+					<% } %>
+
+					<% if (ruleAvailability) { %>
+					<p class="item-umabi">
+						<img src="/img/grid/icn_grid_umabi.png" width="23" height="24" alt="うまびマーク"></p>
+					<% } %>
+
+					<% if (isTagDisplayed) { %>
+					<ul class="item-tag">
+						<% if (category === 2) { %>
+						<li class="item-tag__item">
+							<img src="/img/grid/icn_grid_tag_05.gif" width="54" height="16" alt="PEOPLE"></li>
+						<% } else if (category === 3) { %>
+						<li class="item-tag__item">
+							<img src="/img/grid/icn_grid_tag_02.gif" width="29" height="16" alt="JOY"></li>
+						<% } else if (category === 4) { %>
+						<li class="item-tag__item">
+							<img src="/img/grid/icn_grid_tag_03.gif" width="49" height="16" alt="ビギナー"></li>
+						<% } else if (category === 5) { %>
+						<li class="item-tag__item">
+							<img src="/img/grid/icn_grid_tag_04.gif" width="39" height="18" alt="競馬場"></li>
+						<% } %></ul>
+					<% } %>
+
+				<% if (href) { %>
+				</a>
+				<% } else { %>
+				</div>
+				<% } %>
+
+			</div></script>
+
+		<!-- うまびシェアパネル -->
+		<script type="text/template" id="allSharePanelTemplate">
+			<div class="item-grid item-grid--size02 <%= className %>">
+				<div class="item-grid__wrap">
+					<figure class="item-grid__img"><img src="/img/item/item_all_04.jpg" alt="「#うまび」をつけてFacebookやTwitterで投稿しよう！"></figure>
+					<ul class="sns-group">
+						<li class="sns-group__item">
+							<a href="#" class="js-umabiFacebook gtm-top_sns_event" data-category="top_panel_sns_click" data-action="top" data-label="facebook">
+								<img src="/img/grid/icn_item_facebook.png" alt="FACEBOOK"></a></li>
+						<li class="sns-group__item">
+							<a href="#" class="js-umabiTwitter gtm-top_sns_event" data-text="今度の休みは、うまびより。青空と芝生と馬たちが、あなたの笑顔を待ってます！" data-category="top_panel_sns_click" data-action="top" data-label="twitter">
+								<img src="/img/grid/icn_item_tweet.png" alt="TWITTER"></a></li></ul></div></div></script>
+
+		<!-- 公式SNSパネル -->
+		<script type="text/template" id="allSnsPanelTemplate">
+			<div class="item-grid item-grid--sns item-grid--size02 <%= className %>">
+				<div class="item-grid__wrap">
+					<ul class="item-grid__sns">
+						<li class="item-grid__sns__list">
+							<a href="https://www.facebook.com/umabi.official" target="_blank">
+								<img src="/img/item/item_all_facebook.gif" alt="うまび ON FACEBOOK"></a></li>
+						<li class="item-grid__sns__list">
+							<a href="https://twitter.com/Umabi_Official/" target="_blank">
+								<img src="/img/item/item_all_twitter.gif" alt="うまび ON TWITTER"></a></li>
+						<li class="item-grid__sns__list">
+							<a href="https://instagram.com/umabi_official/" target="_blank">
+								<img src="/img/item/item_all_instagram.gif" alt="うまび ON INSTAGRAM"></a></li></ul></div></div></script>
+
+		<!-- うまびマークパネル -->
+		<script type="text/template" id="allPresentPanelTemplate">
+			<div class="item-grid item-grid--size02 <%= className %>">
+				<a href="/static/mark" class="item-grid__wrap gtm-panel_event" data-category="top_panel_click" data-action="allPresent" data-label="S">
+					<figure class="item-grid__img">
+						<img src="/img/item/item_all_06.jpg" alt="うまびマークを集めよう！"></figure>
+					<p class="item-grid__txt" style="padding-bottom: 18px">うまびマークを集めて、素敵なプレゼントに応募しよう！</p></a></div></script>
+
+		<!-- ワッツうまびパネル -->
+		<script type="text/template" id="allAboutPanelTemplate">
+			<div class="item-grid item-grid--size02 <%= className %>">
+				<a href="/static/about" class="item-grid__wrap gtm-panel_event" data-category="top_panel_click" data-action="allAbout" data-label="S">
+					<figure class="item-grid__img">
+						<img src="/img/item/item_all_05.jpg" alt="What's Umabi?"></figure>
+					<p class="item-grid__txt" style="padding-bottom: 18px">はじめての人も、毎週行ってるひとも、お待たせしました!<br>今度の休みもきっと、うまびより!相当テンションがあがる、競馬のあれこれ、ご用意しちゃいました!</p></a></div></script>
+
+		<!-- うまびRUNパネル -->
+		<script type="text/template" id="songPanelTemplate">
+			<div class="item-grid item-grid--size02 <%= className %>">
+				<div class="item-grid__wrap gtm-panel_event" data-category="top_panel_click" data-action="song" data-label="S">
+					<figure class="item-grid__img">
+						<img src="/img/item/item_song.jpg" alt="小室哲哉プロデュースUmabiテーマソング近日公開！"></figure>
+					<p class="item-grid__txt" style="padding-bottom: 18px">ボーカルには、圧倒的な歌唱力と抜群の演技力を持つ「あの人」を迎え、豪華コラボレーションが実現します！</p></div></div></script>
+
+		<!-- ピープルパネル -->
+		<script type="text/template" id="peoplePanelTemplate">
+			<div class="item-grid item-grid--size02 <%= className %>">
+				<div class="item-grid__wrap">
+					<p class="item-grid__title">
+						<img src="/img/item/people/item_people_tit_01.png" width="249" height="53" alt="この人たちも、うまびPEOPLEです！"></p>
+					<ul class="item-grid__people">
+						<% _.each(templateData, function(account) { %>
+						<li class="social-head social-head--people">
+							<a href="<%= account.href %>" target="_blank">
+								<p class="social-head__img">
+									<img src="<%= account.iconUrl %>" alt="アイコン画像"></p>
+								<div class="social-head__name">
+									<ul class="social-head__box social-head__box--list">
+										<% if (account.sns === 4) { %>
+										<li class="social-head__box__item social-head__box__item--small">
+											<img src="/img/grid/icn_grid_tweet_big.gif" width="19" height="19" alt="TWITTER"></li>
+										<% } else if (account.sns === 1) { %>
+										<li class="social-head__box__item social-head__box__item--small">
+											<img src="/img/grid/icn_grid_face_big.gif" width="19" height="18" alt="FACEBOOK"></li>
+										<% } else if (account.sns === 5) { %>
+										<li class="social-head__box__item social-head__box__item--small">
+											<img src="/img/grid/icn_grid_insta_big.gif" width="19" height="19" alt="INSTAGRAM"></li>
+										<% } %>
+										<li class="social-head__box__item social-head__box__item--name">
+											<span class="social-head__name__txt social-head__name__txt--small"><%= account.name || account.screenName %></span></li></ul>
+									<% if (account.screenName && account.name) { %><p class="social-head__id social-head__id--small">@<%= account.screenName %></p><% } %></div></a></li>
+						<% }) %></ul></div></div></script></div>
+	<footer class="foot">
+		<div class="foot-box">
+			<p class="foot-copy">
+				<img src="/img/cmn/copyright.png" width="354" height="12" alt="Copyright c Japan Racing Association All rights reserved."></p>
+
+			<div class="foot-nav">
+				<ul class="foot-list">
+					<li class="foot-list__item">
+						<a href="/static/terms" target="_blank">利用規約</a></li>
+					<li class="foot-list__item">
+						<a href="/static/faq" target="_blank">FAQ／お問い合わせ</a></li>
+					<li class="foot-list__item">
+						<a href="/static/policy" target="_blank">プライバシーポリシー</a></li></ul>
+				<p class="foot-share">
+					<a href="">
+						<img src="/img/cmn/btn_share.gif" width="86" height="28" alt="SHARE"></a></p></div>
+
+			<div class="alert alert--share alert--share--foot" style="display:none;">
+				<ul class="share-sns">
+					<li class="share-sns__item share-sns__facebook">
+						<div class="fb-like" data-layout="button_count" data-share="true" data-href="http://umabi.jp" data-width="145"></div></li>
+					<li class="share-sns__item share-sns__twitter">
+						<a href="https://twitter.com/share" class="twitter-share-button" data-lang="ja" data-text="今度の休みは、うまびより。青空と芝生と馬たちが、あなたの笑顔を待ってます！" data-hashtags="うまび" data-url="http://umabi.jp">ツイート</a></li></ul></div></div></footer>
+	<div class="overlay" style="display: none;"></div>
+	<div class="modal" style="display: none;"></div>
+
+	<!-- ログインモーダル -->
+	<script type="text/template" id="loginModalTemplate">
+		<p class="modal-logo">
+			<img src="/img/cmn/logo_umabi.gif" width="266" height="109" alt="Umabi"></p>
+		<p class="modal-lead">ログインして“うまびPEOPLE”になろう！</p>
+		<div class="error error--modal" style="display:none;">
+			<dl class="error__list">
+				<dt class="error__title">アカウント接続に失敗しました。下記方法をお試しください。</dt>
+				<dd class="error__txt">・選択したSNSを再度ログインし直す</dd>
+				<dd class="error__txt">・他のSNSアカウントを選択する</dd></dl></div>
+		<ul class="modal-sns">
+			<li class="modal-sns__item"><a href="#"><img src="/img/modal/btn_modal_face.gif" width="540" height="65" alt="Facebook アカウントでログイン"></a></li>
+			<li class="modal-sns__item"><a href="#"><img src="/img/modal/btn_modal_google.gif" width="540" height="65" alt="Google+ アカウントでログイン"></a></li>
+			<li class="modal-sns__item"><a href="#"><img src="/img/modal/btn_modal_yahoo.gif" width="540" height="65" alt="YahooID アカウントでログイン"></a></li>
+			<li class="modal-sns__item"><a href="#"><img src="/img/modal/btn_modal_tweet.gif" width="540" height="65" alt="Twitter アカウントでログイン"></a></li></ul>
+		<p class="modal-alert">ログインする場合は、当サイトの<a href="/static/terms" target="_blank">利用規約</a>と<a href="/static/policy" target="_blank">プライバシーポリシー</a>に同意するものとします。</p>
+		<p class="modal-close">
+			<a href="#"><img src="/img/modal/icn_modal_close.png" width="31" height="31" alt="閉じる"></a></p></script>
+
+	<!-- ジャックモーダル -->
+	<script type="text/template" id="jackModalTemplate">
+		<p class="modal-img"><img src="<%= image %>" width="800" height="400" alt="<%= title %>"></p>
+		<dl class="modal-content">
+			<dt class="modal-content__head"><%= title %></dt>
+			<dd class="modal-content__body"><%= text %></dd></dl>
+		<p class="btn btn--normal">
+			<a href="<%= href %>"<% if (target) { %>target="<%= target %>"<% } %>><%= buttonText %></a></p>
+		<p class="modal-close">
+			<a href="#"><img src="/img/modal/icn_modal_close.png" width="31" height="31" alt="閉じる"></a></p></script>
+
+	<!-- アンケートモーダル -->
+	<script type="text/template" id="questionnaireModalTemplate">
+		<p class="modal-logo"><img src="/img/cmn/logo_umabi.gif" width="266" height="109" alt="Umabi"></p>
+		<p class="modal-question-lead"><img src="/img/modal/txt_modal_question_lead.png" width="100%" alt="はじめてのひとも、ごぶさたなひとも、毎週行ってるひとも、お待たせしました!どんなひとでも、ゆる〜く競馬を楽しめちゃうサイト「Umabi」できました!今度の休みは、うまびより!"></p>
+		<p class="modal-question-txt"><img src="/img/modal/txt_modal_question_01.png" width="100%" alt="あなたにとって、競馬って?"></p>
+		<form action="post">
+			<div class="modal-question">
+				<ul class="modal-select">
+					<li class="modal-select__panel">
+						<input type="radio" id="check01" name="question" value="1">
+						<label for="check01">
+							<p class="modal-select__icn">
+								<img src="/img/modal/icn_question_a.gif" width="100%" alt="A"></p>
+							<ul class="modal-select__list">
+								<li class="modal-select__head">
+									<img src="/img/modal/img_question_01.gif" width="100%" alt="全然わかんない"></li></ul></label></li>
+					<li class="modal-select__panel">
+						<input type="radio" id="check02" name="question" value="2">
+						<label for="check02">
+							<p class="modal-select__icn">
+								<img src="/img/modal/icn_question_b.gif" width="100%" alt="B"></p>
+							<ul class="modal-select__list">
+								<li class="modal-select__head">
+									<img src="/img/modal/img_question_02.gif" width="100%" alt="一回だけ行ったことあるよ"></li></ul></label></li>
+					<li class="modal-select__panel">
+						<input type="radio" id="check03" name="question" value="3">
+						<label for="check03">
+							<p class="modal-select__icn">
+								<img src="/img/modal/icn_question_c.gif" width="100%" alt="C"></p>
+							<ul class="modal-select__list">
+								<li class="modal-select__head">
+									<img src="/img/modal/img_question_03.gif" width="100%" alt="有馬記念と日本ダービーとは見るよ"></li></ul></label>
+					</li>
+					<li class="modal-select__panel">
+						<input type="radio" id="check04" name="question" value="4">
+						<label for="check04">
+							<p class="modal-select__icn">
+								<img src="/img/modal/icn_question_d.gif" width="100%" alt="D"></p>
+							<ul class="modal-select__list">
+								<li class="modal-select__head">
+									<img src="/img/modal/img_question_04.gif" width="100%" alt="人生のすべてだよ"></li></ul></label></li></ul></div>
+			<div class="btn btn--question">
+				<a class="gtm-virtual_page_view" data-url="/survey001" data-title="アンケート回答">決定</a></div></form>
+		<p class="modal-close"><a href="#"><img src="/img/modal/icn_modal_close.png" width="28" height="28" alt="閉じる"></a></p></script>
+
+	<!-- 退会モーダル -->
+	<script type="text/template" id="leaveTemplate">
+		<p class="modal-title">退会について</p>
+		<div class="modal-leave">
+			<p class="modal-leave__lead">全ての連携しているソーシャルネットワークサービスのアカウントを<br>解除し、会員情報を削除します。</p>
+			<ul class="modal-leave-list">
+				<li class="modal-leave-list__item">うまびゲージ、うまびコインは退会と同時に無効となります。</li>
+				<li class="modal-leave-list__item">一度本サイトから退会すると、再度ユーザー登録を行っても、<br>退会前のデータ（プレゼント応募履歴、うまびコインの残量データ等）を引き継ぐことはできませんのでご注意ください。</li>
+				<li class="modal-leave-list__item">応募されたプレゼントの抽選期間中に退会された場合、<br>エントリーが無効となりますのでご了承ください。</li>
+				<li class="modal-leave-list__item">お手続き完了までお時間がかかる場合がございます。</li></ul>
+			<ul class="btn-list">
+				<li class="btn-list__item">
+					<p class="btn btn--separate btn--back">
+						<a href="#">戻る</a></p></li>
+				<li class="btn-list__item">
+					<p class="btn btn--separate btn--logout"
+									><a href="#" class="gtm-virtual_page_view" data-url="/account/delete_complete" data-title="退会完了">退会する</a></p></li></ul></div>
+		<p class="modal-close">
+			<a href="#">
+				<img src="/img/modal/icn_modal_close.png" width="28" height="28" alt="閉じる"></a></p></script>
+
+	<!-- 退会完了モーダル -->
+	<script type="text/template" id="leaveCompleteTemplate">
+		<p class="modal-title">退会手続が完了しました。</p>
+		<div class="modal-leave">
+			<p class="modal-leave__lead">お客様のアカウントの退会手続が完了しました。<br>ご利用ありがとうございました。</p>
+			<p class="modal-leave__txt">※自動的に画面が切り替わります。</p></div></script>
+
+	<!-- メダル獲得モーダル -->
+	<script	type="text/template" id="medalGetModalTemplate">
+		<div class="modal-get">
+			<p class="modal-get-title"><img src="/img/modal/img_getmedal.png" width="275" height="37" alt="うまびメダルをGET"></p>
+			<div class="modal-medal">
+				<div class="modal-medal__move">
+					<p class="modal-medal__img"><img src="/img/modal/icn_medal.png" width="88" height="88" alt="うまびメダル"></p>
+					<p class="modal-medal__effect"><img src="/img/modal/icn_medal_effect.png" width="159" height="61" alt="効果"></p></div>
+				<div class="modal-medal__area">
+					<div class="modal-medal__area__num">
+						<img src="/img/modal/icn_medal_middle.gif" width="28" height="29" alt="うまびメダル">
+						<img src="/img/modal/icn_cross.gif" width="17" height="17" alt="×"><span>0</span></div>
+					<div class="modal-medal__box">
+						<p class="modal-medal__box__num">100%</p>
+						<div class="modal-medal__box__line">
+							<div class="modal-medal__box__gauge">
+								<p class="modal-medal__box__meter"></p></div></div>
+						<img src="/img/cmn/icn_head_medal.gif" width="20" height="21" alt="うまびメダル"></div></div>
+				<p class="btn btn--get">
+					<a href="/mypage/">プレゼントに応募</a></p></div>
+			<p class="modal-close modal-close--get">
+				<a href="#"><img src="/img/modal/icn_modal_close_02.png" width="28" height="28" alt="閉じる"></a></p></div></script>
+
+</div>
+
+<script>(function(){var d=document.getElementsByClassName('noscriptHidden'),h=document.getElementById('noscript');if(h)h.remove();for(var i=0;i< d.length;i++){d[i].style.display='block'}})()</script>
+<script src="/js/vendor.bundle.js"></script>
+<script src="/js/common.bundle.js"></script>
+<script src="/js/index.bundle.js"></script>
+
+<!-- twttr -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.async=true;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+<!-- FB -->
+<script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.async=true;js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.4&appId=1437144859943954";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WBWZPV" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+</body>
+</html>

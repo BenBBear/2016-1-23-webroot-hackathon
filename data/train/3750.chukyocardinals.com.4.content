@@ -1,0 +1,289 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<meta name="keywords" content="中京カーディナルス">
+<meta name="description" content="中京カーディナルス">
+ <meta name="Author" content="CARDINALS">
+ <meta name="Copyright" content="Copyright 2012 CARDINALS. All Rights Reserved.">
+
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<link rel="stylesheet" href="style.css" type="text/css" media="screen,print">
+
+<title>中京カーディナルス ｜　少年野球チーム</title><script type="text/javascript" src="js/gotop.js"></script>
+<script src="js/smoothscroll.js" type="text/javascript"></script>
+<script language="javascript" src="js/prototype.js" type="text/javascript"></script>
+<script language="javascript" src="js/scriptaculous.js?load=effects" type="text/javascript"></script>
+<script language="javascript" src="js/layercommon.js" type="text/javascript"></script>
+<script language="javascript" src="js/scrolllayer.js" type="text/javascript"></script></head>
+
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript">
+//Google Feed Api
+google.load("feeds", "1");
+function initialize() {
+ var feed = new google.feeds.Feed("http://feedblog.ameba.jp/rss/ameblo/chukyo-cardinals/rss20.xml");
+ feed.setNumEntries(6)
+ feed.load(function(result) {
+  if (!result.error) {
+ var container = document.getElementById("feed");
+ while ( container.firstChild ) {
+ container.removeChild( container.lastChild );
+}
+// 取得した記事情報が0件の場合は、記事情報が無い旨を出力して終了。
+if (result.feed.entries.length == 0) {
+ var p = document.createElement("p");
+ var pStr = "現在、記事情報はありません。";
+ p.appendChild(document.createTextNode(pStr));
+ container.appendChild(p);
+ return;
+}
+   var list = "";
+    list = '<dl>';
+   for (var i = 0; i < result.feed.entries.length; i++) {
+    var entry = result.feed.entries[i]; 
+    if(entry.title.match(/^PR:/)) {
+    }
+    else{
+     var strdate = createDateString(entry.publishedDate);
+     list += '<dt>' + strdate + '</dt>';
+     list += '<dd>';
+     list += '<a href="' + entry.link + '" target="_blank">' + entry.title + '</a>';
+     list += '</dd>';
+    }
+        }
+     list += '</dl>';
+     container.innerHTML = list;
+     }  
+   });  
+}
+ 
+function createDateString(publishedDate) {
+ var pdate = new Date(publishedDate);
+ var pday = pdate.getDate();
+ var pmonth = pdate.getMonth() + 1;
+ var pyear = pdate.getFullYear();
+ var phour = pdate.getHours();
+ var pminute = pdate.getMinutes();
+ var psecond = pdate.getSeconds(); 
+ var strdate = pyear + "." + pmonth + "." + pday ;
+ return strdate;
+}
+google.setOnLoadCallback(initialize);
+</script>
+
+<body><div id="pagebody">
+  <div id="pagetop">
+
+<p id="topmainimage"><img src="images/cardinals_03_2.jpg" alt="Cardinals"></p>
+<!-- メイン ここから -->
+
+
+
+<div id="contents">
+<div id="contentsTop">
+  <a name="resultlastyear"></a> 
+  <h2><img src="images/cardinals_school.jpg" alt="ごあいさつ" width="572"></h2>
+  <h2><img src="images/cardinals_10.jpg" alt="ごあいさつ" height="40" width="572"></h2>
+  <ul id="feed" class="floatL"></ul>
+
+
+<!--役員
+  <a name="theboard"></a> 
+  <h2><img src="images/cardinals_14.jpg" alt="ごあいさつ" height="40" width="572"></h2>
+<ul class="table">
+  <li><img src="images/cardinals_mr_ibuki.jpg"><br><p><span class="tablestrong">伊吹　好之</span><span class="stext">（代表）</span></p><br>
+  <p>中京高校　硬式野球部　ＯＢ</p></li>
+  
+  <li><img src="images/cardinals_mr_kosumi.jpg"><br><p><span class="tablestrong">小澄　忍</span><span class="stext">（相談役）</span></p><br>
+  <p>中京高校　ＯＢ</p></li>
+  </ul>
+<ul class="table">
+  <li><img src="images/cardinals_mr_uematsu.jpg"><br><p><span class="tablestrong">植松　力</span><span class="stext">（マネージャー）</span></p><br>
+  <p>中京高校　ＯＢ</p></li></ul>
+  <p id="gototop"><a href="#pagetop" onClick="backToTop();return false"><img src="images/pagetop_35.jpg"></a></p>役員ここまで-->
+  
+  <a name="staff"></a> 
+  <h2><img src="images/cardinals_16.jpg" alt="ごあいさつ" height="40" width="572"></h2>
+  <ul class="table">
+  <li><img src="images/cardinals_mr_ohashi.jpg"><br><p><span class="tablestrong">大橋　伸康</span><span class="stext">（監督）</span></p><br>
+  <p>中京高校　硬式野球部　ＯＢ</p></li>
+  <li><img src="images/cardinals_mr_higashino.jpg"><br><p><span class="tablestrong">東野　義人</span><span class="stext">（コーチ）</span></p><br>
+  <p>中京高校　硬式野球部ＯＢ</p>
+  </li>
+  <li><img src="images/cardinals_mr_coach.jpg"><br>
+  <p><span class="tablestrong">沓拔　康則</span><span class="stext">（コーチ）</span></p><br>
+  <p>大阪府立佐野工業高等学校 OB</p>
+  </li></ul>
+  <ul class="table">
+  <li><img src="images/cardinals_mr_kobayashi.jpg"><br>
+  <p><span class="tablestrong">小林　克洋</span><span class="stext">（コーチ）</span></p><br>
+  <p>大府高校　硬式野球部 OB</p>
+  </li>
+  <li><img src="images/cardinals_mr_kawagishi.jpg"><br><p><span class="tablestrong">河岸　譲治</span><span class="stext">（コーチ）</span></p><br>
+  <p>中京高校　硬式野球部　ＯＢ</p></li>
+  <li><img src="images/cardinals_mr_hayashi.jpg"><br><p><span class="tablestrong">林　雅樹</span><span class="stext">（コーチ）</span></p><br>
+  <p>中京高校　硬式野球部ＯＢ</p>
+  </li>
+   </ul>
+  
+  <p id="gototop"><a href="#pagetop" onClick="backToTop();return false"><img src="images/pagetop_35.jpg"></a></p>
+  
+  <a name="practice"></a> 
+  <h2><img src="images/cardinals_21.jpg" alt="ごあいさつ" height="41" width="572"></h2>
+  <span class="tablestrong">プロ選手による野球指導</span><span class="stext">（立浪選手／2013年11月）</span>
+  <ul class="table">
+  <li><img src="images/cardinals_practice1.jpg"></li>
+  <li><img src="images/cardinals_practice2.jpg"></li>
+  <li><img src="images/cardinals_practice3.jpg"></li>
+  </ul>
+  <br>
+
+  <br>
+  <ul class="ytube">
+  <iframe width="695" height="391" src="http://www.youtube.com/embed/jRIlXQuv4d8?rel=0" frameborder="0" allowfullscreen></iframe>
+  </ul>
+    <ul class="ytube">
+  <iframe width="695" height="391" src="http://www.youtube.com/embed/YD2e0C06-jw?rel=0" frameborder="0" allowfullscreen></iframe>
+  </ul>
+      <ul class="ytube">
+  <iframe width="695" height="391" src="http://www.youtube.com/embed/CBQHnZMciVk?rel=0" frameborder="0" allowfullscreen></iframe>
+  </ul>
+  
+  <ul class="table">
+    <span class="tablestrong"><br><br><br>
+合宿</span><span class="stext">（2014年5月）</span><br><br>
+
+
+  <li><img src="images/cardinals_practice7.jpg"></li>
+  </ul>
+  <p id="gototop"><a href="#pagetop" onClick="backToTop();return false"><img src="images/pagetop_35.jpg"></a></p>
+  
+  <a name="ground"></a> 
+  <h2><img src="images/cardinals_26.jpg" alt="ごあいさつ" height="40" width="572"></h2>
+  <ul class="table">
+  <li><img src="images/cardinals_ground2.jpg"><br><p><span class="tablestrong">飛島木場南グランド</span></p><br>
+  <p>土曜日</p></li>
+  <li><img src="images/cardinals_ground3.jpg"><br><p><span class="tablestrong"></span></p><br>
+  <p></p></li>
+  <li><img src="images/cardinals_ground1.jpg"><br><p><span class="tablestrong">名古屋市立田光中学</span></p><br>
+  <p>日曜日</p></li>
+  </ul>
+  <p id="gototop"><a href="#pagetop" onClick="backToTop();return false"><img src="images/pagetop_35.jpg"></a></p>
+  
+  <a name="calendar"></a> 
+  <h2><img src="images/cardinals_33.jpg" alt="ごあいさつ" height="40" width="572"></h2>
+<span class="emphasis" style="font-weight: bold;">■当クラブチーム過去の進学高校<br>
+中京大学附属中京高等学校、豊川高等学校、至学館高等学校、<br>
+愛知産業大学工業高等学校、愛知啓成高等学校など<br>
+<br>
+■練習<br>
+毎週土曜日8：30～17：00［飛島木場南グランド・名古屋市内練習場］<br>
+毎週日曜日8：30～17：00［名古屋市立田光中学校］<br>
+毎月4回ナイター練習を実施<br>
+※雨天時も練習場を変更して行います。<br>
+※練習日・場所の変更がある場合は事前にご連絡します。<br>
+<br>
+最上級生は、夏の大会以降も硬式練習を行います。（週1回ナイター練習実施）<br>
+<br>
+■ご父兄様へ<br>
+ご父兄様は、お子様の送迎のみになります。<br>
+<br>
+■月謝<br>
+6,000円／月</span>
+<br>
+<br>
+
+  <p id="gototop"><a href="#pagetop" onClick="backToTop();return false"><img src="images/pagetop_35.jpg"></a></p>
+  
+  <a name="schedule"></a> 
+  <h2><img src="images/cardinals_38.jpg" alt="ごあいさつ" height="40" width="572"></h2>
+  <span style="font-weight: bold;" class="emphasis"></span><span style="font-weight: bold;"></span><span style="font-weight: bold;" class="emphasis"></span><span style="font-weight: bold;" class="emphasis"></span>
+  <table cellspacing="0" cellpadding="0">
+    <tr>
+      <td><span class="emphasis" style="font-weight: bold;">2015年</span></td>
+      <td>&nbsp;</td>
+      <td><span class="emphasis" style="font-weight: bold;">サッポロ ポッカ中日少年野球大会  ブロック優勝  県大会出場</span></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td><span class="emphasis" style="font-weight: bold;">クラブチーム選手権・県大会準優勝</span></td>
+    </tr>
+    <tr>
+      <td><span class="emphasis" style="font-weight: bold;">2014年</span></td>
+      <td width="30">&nbsp;</td>
+      <td><span class="emphasis" style="font-weight: bold;">サッポロ ポッカ 中日少年野球大会</span></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td><span class="emphasis" style="font-weight: bold;">ブロック準優勝</span></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td><span class="emphasis" style="font-weight: bold;">2013年</span></td>
+      <td>&nbsp;</td>
+      <td><span class="emphasis" style="font-weight: bold;">第11回ドリームズカップ</span></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td><span class="emphasis" style="font-weight: bold;">準優勝</span></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td><img src="images/2013dreamscup.jpg" width="400"></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+  <span style="font-weight: bold;" class="emphasis"><br>
+  <br>
+  </span>
+  <p id="gototop"></p><p id="gototop"><a href="#pagetop" onClick="backToTop();return false"><img src="images/pagetop_35.jpg"></a></p>
+  
+</div>
+
+<!-- メイン ここまで -->
+
+<!-- サイド ここから -->
+<div class="scrolllayer">
+<div id="side">
+<p class="banner"><a href="#resultlastyear" title=""><img src="images/cardinals_menu_03.jpg" name="menu01" id="menu01"></a></p>
+<p class="banner"><a href="#staff" title=""><img src="images/cardinals_menu_26.jpg" name="menu01" id="menu01"></a></p>
+<p class="banner"><a href="#practice" title=""><img src="images/cardinals_menu_10.jpg" name="menu01" id="menu01"></a></p>
+<p class="banner"><a href="#ground" title=""><img src="images/cardinals_menu_12.jpg" name="menu01" id="menu01"></a></p>
+<p class="banner"><a href="#calendar" title=""><img src="images/cardinals_menu_16.jpg" name="menu01" id="menu01"></a></p>
+<p class="banner"><a href="#schedule" title=""><img src="images/cardinals_menu_18.jpg" name="menu01" id="menu01"></a></p>
+<br>
+<p><img src="images/cardinals_recruit_07.jpg"></p>
+<!--
+<p class="banner"><a href="rule.html" title="チーム規約"><img src="images/cardinals_menu_20.jpg" name="menu01" id="menu01"></a></p>
+-->
+</div>
+</div>
+<!-- サイド ここまで -->
+
+  </div><!-- Contents -->
+
+  <!-- フッタ ここから -->
+<div id="footer">
+<hr>
+<div id="footerContents">
+<div id="footerAddress">Cardinals 2012© All Rights Reserved.</div>
+</div>
+</div>
+  <!-- フッタ ここまで -->
+</div>
+</div>
+</body></html>

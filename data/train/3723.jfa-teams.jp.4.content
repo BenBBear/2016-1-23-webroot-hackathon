@@ -1,0 +1,369 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="imagetoolbar" content="no"/>
+<title>女子サッカーチーム検索サイト</title>
+<link href="/teamsearch/css/common.css?20110723" rel="stylesheet" type="text/css"  media="screen,print"/>
+<!--[if gte IE 5]>
+<link href="/teamsearch/css/hack.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+<script language="JavaScript" src="/teamsearch/js/newWin.js?20110723" type="text/javascript"></script>
+<script language="JavaScript" src="/teamsearch/js/featValidate.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+function focusColor(i){
+	i.style.backgroundColor='#eeeeee';
+}
+function blurColor(i){
+	i.style.backgroundColor='#FFB9D5';
+}
+
+</script>
+
+</head>
+<body onload="resizeWin()">
+<div id="wrapper"><!--wrapper-->
+<div id="header"><!--header-->
+<h1><img src="/teamsearch/images/header.gif" alt="サッカーやろうよ　女子チーム検索サイト" width="780" height="132" /></h1>
+</div><!--/header-->
+<div id="primary"><!--primary-->
+<h2><img src="/teamsearch/images/heading_search_pref.gif" alt="都道府県で探そう" width="204" height="33" /></h2>
+<p><img src="/teamsearch/images/map.gif" alt="" width="533" height="457" usemap="#japan_map" /></p>
+</div><!--/primary-->
+<div id="secondary"><!--secondary-->
+<div id="tname"><!--tname-->
+<h2><img src="/teamsearch/images/heading_search_team.gif" alt="チーム名で探そう" width="204" height="33" /></h2>
+<form id="form_detail" method="post" action="/teamsearch/teamSearch/">
+<input name="teamname" type="text" id="input_tname" onfocus="focusColor(this)" onblur="blurColor(this)" />
+<input name="/teamSearch/" type="image" id="tname_search" src="/teamsearch/images/bt_teamname_search.gif" alt="検索" align="top" />
+</form>
+</div><!--/tname-->
+<div id="news"><!--news-->
+<h2><img src="/teamsearch/images/heading_news.gif" alt="お知らせ" width="203" height="33" /></h2>
+<div id="news_area"><!--news_area-->
+<dl>
+
+<p>
+2012年 07月 25日<br>
+<a href="/teamsearch/banner/">リンクバナーを作成しました。</a>
+</p>
+
+
+</dl>
+</div><!--/news_area-->
+</div><!--/news-->
+<p id="bt_team_kanri">
+<a href="applyinfo.html"><img src="/teamsearch/images/bt_team_Reg_Open.gif" alt="チーム情報の登録・公開はこちら!" width="205" height="44" border="0" /></a>
+</p>
+<!--
+<a href="/teamsearch/team/applyTeam/"><img src="/teamsearch/images/bt_team_new.gif" alt="新規チームID・パスワード発行のお申し込みはこちら" width="205" height="42" /></a>
+<a href="/teamsearch/team/"><img src="/teamsearch/images/bt_team_admin.gif" alt="チーム詳細情報の入力・更新はこちら" width="205" height="25" /></a></p>
+-->
+</div><!--/secondary-->
+
+<div id="footer">
+<h2><img src="/teamsearch/images/heading_search_detail.gif" alt="希望する条件で探そう" width="204" height="33"/></h2>
+<span class="multichoice">
+<p class="p1">探しているチームのいろいろな条件を組み合わせて検索することができます。<br />
+希望する条件を選択（<img src="/teamsearch/images/icon_checkbox.gif" width="9" height="9" border="0" /> にチェック）し、ページ右下の「この条件で検索」ボタンをクリックしてください。<br />
+条件に該当するチームが検索されます。</p></span>
+<form id="form_detail" method="post" action="/teamsearch/teamSearch/">
+<table width="750">
+<tr>
+<td><h3><img src="/teamsearch/images/heading_detail_age.gif" alt="年齢" width="54" height="23" /></h3></td>
+</tr>
+<tr>
+<td>
+
+<table><tr>
+<td width="120px"><input name="cat[]" type="checkbox" value="1" id="age1"  />
+<label for="age1">23歳以上</label></td>
+<td width="120px"><input type="checkbox" name="cat[]" value="2" id="age2" />
+<label for="age2">22歳〜19歳</label></td>
+<td width="120px"><input type="checkbox" name="cat[]" value="3" id="age3" />
+<label for="age3">18歳〜16歳</label></td>
+<td width="120px"><input type="checkbox" name="cat[]" value="4" id="age4" />
+<label for="age4">15歳〜13歳</label></td>
+<td width="120px"><input type="checkbox" name="cat[]" value="5" id="age5" />
+<label for="age5">12歳〜10歳</label></td>
+<td width="120px"><input type="checkbox" name="cat[]" value="6" id="age6" />
+<label for="age6">9歳以下</label></td>
+</tr></table>
+
+</td>
+</tr>
+<tr>
+<td><h3><img src="/teamsearch/images/heading_detail_game.gif" alt="参加する大会" width="105" height="22" /></h3></td>
+</tr>
+<tr>
+<td>
+
+<table>
+<tr>
+<td width="165px"><input name="compe[]" type="checkbox" id="game1" value="1" />
+<label for="game1">なでしこリーグ</label></td>
+<td width="165px"><input name="compe[]" type="checkbox" id="game11" value="11" />
+<label for="game11">チャレンジリーグ</label></td>
+<td width="165px"><input name="compe[]" type="checkbox" id="game12" value="12" />
+<label for="game12">地域リーグ</label></td>
+<td width="165px"><input name="compe[]" type="checkbox" id="game13" value="13" />
+<label for="game13">都道府県リーグ</label></td>
+</tr>
+<tr>
+<td width="165px"><input type="checkbox" name="compe[]" value="2" id="game2" />
+<label for="game2">全日本女子</label></td>
+<td width="165px"><input type="checkbox" name="compe[]" value="3" id="game3" />
+<label for="game3">大学女子</label></td>
+<td width="165px"><input type="checkbox" name="compe[]" value="4" id="game4" />
+<label for="game4">高校女子</label></td>
+<td width="165px"><input type="checkbox" name="compe[]" value="7" id="game5" />
+<label for="game5">女子ユース</label></td>
+</tr>
+<tr>
+<td width="165px"><input type="checkbox" name="compe[]" value="8" id="game6" />
+<label for="game6">女子ユース（U-15）</label></td>
+<td width="165px"><input type="checkbox" name="compe[]" value="9" id="game7" />
+<label for="game7">ガールズ・エイト（U-12）</label></td>
+<td><input type="checkbox" name="compe[]" value="5" id="game8" />
+<label for="game8">レディース</label></td>
+<td><input type="checkbox" name="compe[]" value="6" id="game9" />
+<label for="game9">レディース（0-40）</label></td>
+</tr>
+<tr>
+<td><input type="checkbox" name="compe[]" value="10" id="game10" />
+<label for="game10">全日本女子フットサル</label></td>
+<td><input type="checkbox" name="compe[]" value="14" id="game14" />
+<label for="game14">女子ユース（U-15）フットサル</label></td>
+</tr>
+</table>
+
+</td>
+</tr>
+<tr>
+<td><h3><img src="/teamsearch/images/heading_detail_game_v2.gif" alt="チームの特徴" width="105" height="23" /></h3></td>
+</tr>
+<tr>
+<td>
+
+<table>
+<tr>
+<td><input type="checkbox" name="team_type[]" value="1" id="feature12"  /></td>
+<td colspan="3"><label for="feature12">「女子」登録チーム</label></td>
+<td width="12px"><input type="checkbox" name="team_type[]" id="feature13" value="2"  /></td>
+<td colspan="3"><label for="feature13">「第1種~第4種・シニア」登録チーム</label></td>
+</tr>
+<tr>
+<td width="12px"><input name="feat[]" type="checkbox" value="6" id="feature1" onclick="checkFeat(this)"/></td><td width="148px"><label for="feature1">クラブチーム</label></td>
+<td><input name="feat[]" type="checkbox" value="5" id="feature2" onclick="checkFeat(this)"/></td><td><label for="feature2">学校のサッカー部</label></td>
+<td width="12px"><input name="feat[]" type="checkbox" value="1" id="feature3" /></td><td width="148px"><label for="feature3">初心者大歓迎！</label></td>
+<td width="12px"><input name="feat[]" type="checkbox" value="2" id="feature4" /></td><td width="148px"><label for="feature4">セレクションあり</label></td>
+</tr>
+<tr>
+<td width="12px"><input type="checkbox" name="feat[]" value="3" id="feature5" /></td><td width="148px"><label for="feature5">活動は週3回以上</label></td>
+<td width="12px"><input name="feat[]" type="checkbox" value="4" id="feature6" /></td><td width="148px"><label for="feature6">フットサルもやってます</label></td>
+<td width="12px"><input name="feat[]" type="checkbox" value="7" id="feature7" /></td><td width="148px"><label for="feature7">C級以上のコーチが指導</label></td>
+<td width="12px"><input name="feat[]" type="checkbox" value="9" id="feature8" /></td><td width="148px"><label for="feature8">GKコーチがいます</label></td>
+</tr>
+<tr>
+<td width="12px"><input name="feat[]" type="checkbox" value="8" id="feature9" /></td><td colspan="7"><label for="feature9">なでしこジャパン（各年代日本代表選手）・なでしこリーガー所属／輩出</label></td>
+</tr>
+<tr>
+<td width="12px"><input name="feat[]" type="checkbox" value="11" id="feature11" /></td><td width="148px"><label for="feature11">コーチ・スタッフ募集中！</label></td>
+<td width="12px"><input name="feat[]" type="checkbox" value="10" id="feature10" /></td><td width="148px" class="5"><label for="feature10">ホームページあり</label></td>
+</tr>
+</table>
+
+</td>
+</tr>
+<tr>
+<td><h3><img src="/teamsearch/images/heading_detail_pre.gif" alt="都道府県" width="79" height="24" align="top" /></td>
+</tr>
+<tr>
+<td><table cellpadding="3" cellspacing="0">
+<tr>
+<td width="64"><img src="/teamsearch/images/heading_area_hokkaido.gif" alt="北海道" width="64" height="25" /></td>
+<td width="662"><input name="tdfk_cd[]" type="checkbox" id="tdfk01" value="01" /><label for="tdfk01">北海道</label></td>
+</tr>
+<tr>
+<td><img src="/teamsearch/images/heading_area_tohoku.gif" alt="東北" width="64" height="25" /></td><td>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk02" value="02" /><label for="tdfk02">青森県</label></li>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk03" value="03" /><label for="tdfk03">岩手県</label></li>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk04" value="04" /><label for="tdfk04">宮城県</label></li>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk05" value="05" /><label for="tdfk05">秋田県</label></li>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk06" value="06" /><label for="tdfk06">山形県</label></li>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk07" value="07" /><label for="tdfk07">福島県</label></li>
+</td>
+</tr>
+<tr>
+<td><img src="/teamsearch/images/heading_area_kanto.gif" alt="関東" /></td><td>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk08" value="08" /><label for="tdfk08">茨城県</label></li>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk09" value="09" /><label for="tdfk09">栃木県</label></li>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk10" value="10" /><label for="tdfk10">群馬県</label></li>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk11" value="11" /><label for="tdfk11">埼玉県</label></li>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk12" value="12" /><label for="tdfk12">千葉県</label></li>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk13" value="13" /><label for="tdfk13">東京都</label></li>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk14" value="14" /><label for="tdfk14">神奈川県</label></li>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk15" value="15" /><label for="tdfk15">山梨県</label></li></td>
+</tr>
+<tr>
+<td><img src="/teamsearch/images/heading_area_hokushin.gif" alt="北信越" width="64" height="25" /></td><td>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk16" value="16" /><label for="tdfk16">長野県</label></li>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk17" value="17" /><label for="tdfk17">新潟県</label></li>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk18" value="18" /><label for="tdfk18">富山県</label></li>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk19" value="19" /><label for="tdfk19">石川県</label></li>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk20" value="20" /><label for="tdfk20">福井県</label></li></td>
+
+
+</tr>
+<tr><td><img src="/teamsearch/images/heading_area_tokai.gif" alt="東海" width="64" height="25" /></td><td>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk21" value="21" /><label for="tdfk21">静岡県</label></li>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk22" value="22" /><label for="tdfk22">愛知県</label></li>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk23" value="23" /><label for="tdfk23">三重県</label></li>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk24" value="24" /><label for="tdfk24">岐阜県</label></li></td>
+
+
+</tr>
+<tr>
+<td><img src="/teamsearch/images/heading_area_kansai.gif" alt="関西" width="64" height="25" /></td><td>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk25" value="25" /><label for="tdfk25">滋賀県</label></li>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk26" value="26" /><label for="tdfk26">京都府</label></li>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk27" value="27" /><label for="tdfk27">大阪府</label></li>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk28" value="28" /><label for="tdfk28">兵庫県</label></li>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk29" value="29" /><label for="tdfk29">奈良県</label></li>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk30" value="30" /><label for="tdfk30">和歌山県</label></li></td>
+
+</tr>
+<tr>
+<td><img src="/teamsearch/images/heading_area_cyugoku.gif" alt="中国" width="64" height="25" /></td><td>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk31" value="31" /><label for="tdfk31">鳥取県</label></li>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk32" value="32" /><label for="tdfk32">島根県</label></li>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk33" value="33" /><label for="tdfk33">岡山県</label></li>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk34" value="34" /><label for="tdfk34">広島県</label></li>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk35" value="35" /><label for="tdfk35">山口県</label></li></td>
+
+</tr>
+<tr>
+<td><img src="/teamsearch/images/heading_area_shikoku.gif" alt="四国" width="64" height="25" /></td><td>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk36" value="36" /><label for="tdfk36">香川県</label></li>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk37" value="37" /><label for="tdfk37">徳島県</label></li>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk38" value="38" /><label for="tdfk38">愛媛県</label></li>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk39" value="39" /><label for="tdfk39">高知県</label></li></td>
+
+</tr>
+<tr>
+<td><img src="/teamsearch/images/heading_area_kyusyu.gif" alt="九州・沖縄" width="64" height="25" /></td>
+<td>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk40" value="40" /><label for="tdfk40">福岡県</label></li>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk41" value="41" /><label for="tdfk41">佐賀県</label></li>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk42" value="42" /><label for="tdfk42">長崎県</label></li>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk43" value="43" /><label for="tdfk43">熊本県</label></li>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk44" value="44" /><label for="tdfk44">大分県</label></li>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk45" value="45" /><label for="tdfk45">宮崎県</label></li>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk46" value="46" /><label for="tdfk46">鹿児島県</label></li>
+<li><input name="tdfk_cd[]" type="checkbox" id="tdfk47" value="47" /><label for="tdfk47">沖縄県</label></li>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr>
+<td><h3><img src="/teamsearch/images/team/heading_city.gif" alt="市区郡町村" width="160" height="23" align="top" /></td> 
+</tr>
+<tr>
+<td>
+	<table cellpadding="3" cellspacing="0">
+	<tr>
+	<td><input type="text" name="address" size="40" /></td>
+	</tr>
+	</table>
+</td>
+</tr>
+
+<tr>
+<td><font color="red">※“都道府県”をチェックしなくても、市区郡町村の入力だけでも検索できます。<br>　複数で検索する場合は、「○○市　△△市　××市」のように間にスペースを入れてください。</font></td>
+</tr>
+
+<tr>
+<td align="right"><input name="imageField" type="image" src="/teamsearch/images/bt_search_condition_v2.gif" alt="この条件で検索" /></td>
+</tr>
+</table>
+</form>
+<!--/footer-->
+</div>
+<div id="copyright">
+Copyright(c) JFA All rights reserved</div>
+<!--/wrapper-->
+</div>
+
+<map name="japan_map" id="japan_map">
+<area shape="rect" coords="382,10,505,118" href="/teamsearch/teamSearch/?tdfk_cd[0]=01" alt="北海道" />
+<area shape="rect" coords="386,130,477,170" href="/teamsearch/teamSearch/?tdfk_cd[0]=02" alt="青森" />
+<area shape="rect" coords="430,172,477,200" href="/teamsearch/teamSearch/?tdfk_cd[0]=03" alt="岩手" />
+<area shape="rect" coords="430,199,471,234" href="/teamsearch/teamSearch/?tdfk_cd[0]=04" alt="宮城" />
+<area shape="rect" coords="384,170,430,199" href="/teamsearch/teamSearch/?tdfk_cd[0]=05" alt="秋田" />
+<area shape="rect" coords="382,198,429,233" href="/teamsearch/teamSearch/?tdfk_cd[0]=06" alt="山形" />
+<area shape="rect" coords="394,235,469,265" href="/teamsearch/teamSearch/?tdfk_cd[0]=07" alt="福島" />
+<area shape="rect" coords="450,271,486,305" href="/teamsearch/teamSearch/?tdfk_cd[0]=08" alt="茨城" />
+<area shape="rect" coords="419,266,450,296" href="/teamsearch/teamSearch/?tdfk_cd[0]=09" alt="栃木" />
+<area shape="rect" coords="384,265,418,296" href="/teamsearch/teamSearch/?tdfk_cd[0]=10" alt="群馬" />
+<area shape="rect" coords="390,296,451,318" href="/teamsearch/teamSearch/?tdfk_cd[0]=11" alt="埼玉" />
+<area shape="rect" coords="458,319,500,351" href="/teamsearch/teamSearch/?tdfk_cd[0]=12" alt="千葉" />
+<area shape="rect" coords="395,318,458,340" href="/teamsearch/teamSearch/?tdfk_cd[0]=13" alt="東京" />
+<area shape="rect" coords="388,340,432,365" href="/teamsearch/teamSearch/?tdfk_cd[0]=14" alt="神奈川" />
+<area shape="rect" coords="333,310,386,341" href="/teamsearch/teamSearch/?tdfk_cd[0]=15" alt="山梨" />
+<area shape="rect" coords="335,277,384,310" href="/teamsearch/teamSearch/?tdfk_cd[0]=16" alt="長野" />
+<area shape="rect" coords="337,234,392,258" href="/teamsearch/teamSearch/?tdfk_cd[0]=17" alt="新潟" />
+<area shape="rect" coords="317,258,366,278" href="/teamsearch/teamSearch/?tdfk_cd[0]=18" alt="富山" />
+<area shape="rect" coords="289,279,335,296" href="/teamsearch/teamSearch/?tdfk_cd[0]=19" alt="石川" />
+<area shape="rect" coords="267,296,324,314" href="/teamsearch/teamSearch/?tdfk_cd[0]=20" alt="福井" />
+<area shape="rect" coords="343,340,387,369" href="/teamsearch/teamSearch/?tdfk_cd[0]=21" alt="静岡" />
+<area shape="rect" coords="287,341,342,368" href="/teamsearch/teamSearch/?tdfk_cd[0]=22" alt="愛知" />
+<area shape="rect" coords="267,369,302,435" href="/teamsearch/teamSearch/?tdfk_cd[0]=23" alt="三重" />
+<area shape="rect" coords="289,314,331,341" href="/teamsearch/teamSearch/?tdfk_cd[0]=24" alt="岐阜" />
+<area shape="rect" coords="234,315,287,343" href="/teamsearch/teamSearch/?tdfk_cd[0]=25" alt="滋賀" />
+<area shape="rect" coords="235,341,285,367" href="/teamsearch/teamSearch/?tdfk_cd[0]=26" alt="京都" />
+<area shape="rect" coords="216,367,267,389" href="/teamsearch/teamSearch/?tdfk_cd[0]=27" alt="大阪" />
+<area shape="rect" coords="205,314,236,366" href="/teamsearch/teamSearch/?tdfk_cd[0]=28" alt="兵庫" />
+<area shape="rect" coords="217,389,266,410" href="/teamsearch/teamSearch/?tdfk_cd[0]=29" alt="奈良" />
+<area shape="rect" coords="218,410,265,437" href="/teamsearch/teamSearch/?tdfk_cd[0]=30" alt="和歌山" />
+<area shape="rect" coords="173,313,204,339" href="/teamsearch/teamSearch/?tdfk_cd[0]=31" alt="鳥取" />
+<area shape="rect" coords="143,315,172,340" href="/teamsearch/teamSearch/?tdfk_cd[0]=32" alt="島根" />
+<area shape="rect" coords="171,341,203,366" href="/teamsearch/teamSearch/?tdfk_cd[0]=33" alt="岡山" />
+<area shape="rect" coords="143,341,172,367" href="/teamsearch/teamSearch/?tdfk_cd[0]=34" alt="広島" />
+<area shape="rect" coords="105,328,140,357" href="/teamsearch/teamSearch/?tdfk_cd[0]=35" alt="山口" />
+<area shape="rect" coords="149,380,182,406" href="/teamsearch/teamSearch/?tdfk_cd[0]=36" alt="香川" />
+<area shape="rect" coords="182,388,208,423" href="/teamsearch/teamSearch/?tdfk_cd[0]=37" alt="徳島" />
+<area shape="rect" coords="122,387,150,424" href="/teamsearch/teamSearch/?tdfk_cd[0]=38" alt="愛媛" />
+<area shape="rect" coords="148,404,183,436" href="/teamsearch/teamSearch/?tdfk_cd[0]=39" alt="高知" />
+<area shape="rect" coords="49,328,97,351" href="/teamsearch/teamSearch/?tdfk_cd[0]=40" alt="福岡" />
+<area shape="rect" coords="16,328,49,350" href="/teamsearch/teamSearch/?tdfk_cd[0]=41" alt="佐賀" />
+<area shape="rect" coords="16,350,49,376" href="/teamsearch/teamSearch/?tdfk_cd[0]=42" alt="長崎" />
+<area shape="rect" coords="17,375,60,400" href="/teamsearch/teamSearch/?tdfk_cd[0]=43" alt="熊本" />
+<area shape="rect" coords="49,351,98,375" href="/teamsearch/teamSearch/?tdfk_cd[0]=44" alt="大分" />
+<area shape="rect" coords="60,374,98,400" href="/teamsearch/teamSearch/?tdfk_cd[0]=45" alt="宮崎" />
+<area shape="rect" coords="36,401,90,427" href="/teamsearch/teamSearch/?tdfk_cd[0]=46" alt="鹿児島" />
+<area shape="rect" coords="34,234,81,259" href="/teamsearch/teamSearch/?tdfk_cd[0]=47" alt="沖縄" />
+</map>
+
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-15990302-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</body>
+</html>

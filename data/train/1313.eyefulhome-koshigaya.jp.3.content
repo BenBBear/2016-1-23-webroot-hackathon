@@ -1,0 +1,226 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="WordPress 3.9.10" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+<link rel="stylesheet" href="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/style.css" type="text/css" media="screen" />
+<link rel="alternate" type="application/rss+xml" title="アイフルホーム越谷店 RSS Feed" href="http://www.eyefulhome-koshigaya.jp/feed" />
+<link rel="pingback" href="http://www.eyefulhome-koshigaya.jp/xmlrpc.php" />
+<link rel="shortcut icon" href="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/images/favicon.ico">
+
+<title>アイフルホーム越谷店  </title>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	var setId = '#slideshow';
+	var fadeTime = 1000;
+	var delayTime = 5000;
+
+	$(setId + ' div div').each(function(i){
+		$(this).attr('id','view' + (i + 1).toString());
+		$(setId + ' div div').css({zIndex:'98',opacity:'0'});
+		$(setId + ' div div:first').css({zIndex:'99'}).stop().animate({opacity:'1'},fadeTime);
+	});
+
+	$(setId + ' ul li').click(function(){
+		clearInterval(setTimer);
+
+		var connectCont = $(setId + ' ul li').index(this);
+		var showCont = connectCont+1;
+
+		$(setId + ' div div#view' + (showCont)).siblings().stop().animate({opacity:'0'},fadeTime,function(){$(this).css({zIndex:'98'})});
+		$(setId + ' div div#view' + (showCont)).stop().animate({opacity:'1'},fadeTime,function(){$(this).css({zIndex:'99'})});
+
+		$(this).addClass('active');
+		$(this).siblings().removeClass('active');
+
+		timer();
+
+	});
+
+	$(setId + ' ul li:not(.active)').hover(function(){
+		$(this).stop().animate({opacity:'1'},200);
+	},function(){
+		$(this).stop().animate({opacity:'0.5'},200);
+	});
+
+	$(setId + ' ul li').css({opacity:'0.5'});
+	$(setId + ' ul li:first').addClass('active');
+
+	timer();
+
+	function timer() {
+		setTimer = setInterval(function(){
+			$('li.active').each(function(){
+				var listLengh = $(setId + ' ul li').length;
+				var listIndex = $(setId + ' ul li').index(this);
+				var listCount = listIndex+1;
+
+				if(listLengh == listCount){
+					$(setId + ' ul li:first').click()
+				} else {
+					$(this).next('li').click();
+				};
+			});
+		},delayTime);
+	};
+});
+</script>
+<script type="text/javascript" language="javascript" src="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/js/jquery.dropdownPlain.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.eyefulhome-koshigaya.jp/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.eyefulhome-koshigaya.jp/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 3.9.10" />
+</head>
+
+<body>
+<div id="wrapper">
+<div id="header">
+	<a href="http://www.eyefulhome-koshigaya.jp"><img class="header_logo" src="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/images/img_logo.png" /></a>
+</div>
+<DIV align="center">
+<div id="slideshow">
+
+	<div class="thumbnail">
+		<ul>
+			<li><a href="javascript:void(0);"><img src="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/images/img_slide_6.png" width="140" alt="" /></a></li>
+			<li><a href="javascript:void(0);"><img src="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/images/img_slide_7.png" width="140" alt="" /></a></li>
+			<li><a href="javascript:void(0);"><img src="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/images/img_slide_9.png" width="140" alt="" /></a></li>
+			<li><a href="javascript:void(0);"><img src="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/images/img_slide_3.png" width="140" alt="" /></a></li>
+                        <li><a href="javascript:void(0);"><img src="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/images/img_slide_4.png" width="140" alt="" /></a></li>
+                        
+                </ul>
+	</div>
+
+	<div class="slide">
+		<div><a href="#1"><img src="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/images/img_slide_6.png" width="760" height="440" alt="" /></a></div>
+		<div><a href="#2"><img src="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/images/img_slide_7.png" width="760" height="440" alt="" /></a></div>
+		<div><a href="#3"><img src="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/images/img_slide_9.png" width="760" height="440" alt="" /></a></div>
+		<div><a href="#4"><img src="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/images/img_slide_3.png" width="760" height="440" alt="" /></a></div>
+                <div><a href="#5"><img src="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/images/img_slide_4.png" width="760" height="440" alt="" /></a></div>
+               
+	</div>
+
+</div><!--/#slideshow-->
+</DIV>
+<div id="navigation">
+	<ul class="dropdown">
+		<li><a class="home home-current" href="http://www.eyefulhome-koshigaya.jp" ><img src="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/images/spacer.png"></a></li>
+		<li><a class="event " href="http://www.eyefulhome-koshigaya.jp/category/event-campaign" ><img src="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/images/spacer.png"></a></li>
+		<!--<li><a class="works " href="http://www.eyefulhome-koshigaya.jp/category/works" ><img src="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/images/spacer.png"></a></li>
+		<li><a class="blog " href="#" ><img src="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/images/spacer.png"></a>
+			<ul>
+				<li style="clear:both;"><a class="gmblog" href="http://www.eyefulhome-koshigaya.jp/category/gm-blog" ><img src="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/images/spacer.png"></a></li>
+				<li style="clear:both;"><a class="staffblog" href="http://www.eyefulhome-koshigaya.jp/category/staff-blog" ><img src="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/images/spacer.png"></a></li>
+				<li style="clear:both;"><a class="girlsblog" href="http://www.eyefulhome-koshigaya.jp/category/girls-blog" ><img src="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/images/spacer.png"></a></li>
+			</ul>
+		</li>
+		-->
+		
+		<li><a class="modelhouse " href="http://www.eyefulhome-koshigaya.jp/modelhouse" ><img src="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/images/spacer.png"></a></li>
+		<li><a class="access " href="http://www.eyefulhome-koshigaya.jp/access" ><img src="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/images/spacer.png"></a></li>
+		
+	</ul>
+</div>
+
+<div id="firstrow">
+
+	<div id="gallery_head">
+		<img src="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/images/title_gallery.png"/>
+		<ul>
+			<li><a href="http://www.all-eyefulhomenavi.com/will2/koshigaya/example/index.html"><img src="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/images/btn_top_works_koshigaya.png" alt="越谷店の建築実例"/></a></li>
+			<li><a href="http://www.all-eyefulhomenavi.com/will/kamisu/example/index.html"><img src="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/images/btn_top_works_kamisu.png" alt="神栖店の建築実例"/></a></li>
+			<li><a href="http://www.all-eyefulhomenavi.com/will/tsuchiuraminami/example/index.html"><img src="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/images/btn_top_works_tsuchiura.png" alt="土浦南店の建築実例"/></a></li>
+			<!--<li><a href="http://www.eyefulhome-koshigaya.jp/%e3%81%b5%e3%82%8c%e3%81%82%e3%81%84%e7%a5%ad%e3%82%8a">リフォーム<br>ビフォーアフター</a></li>-->
+			<li><a href="http://www.eyefulhome-koshigaya.jp/customer"><img src="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/images/btn_top_voice.png" alt="お客様の声"/></a></li>
+		</ul>
+		
+	</div>
+	
+	<div id="topmenu_head">
+		<img src="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/images/title_worktogether.png"/>
+		<ul>
+			<li><a href="http://www.eyefulhome-koshigaya.jp/staff"><img src="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/images/btn_top_staff.png" alt="スタッフ紹介"/></a></li>
+			<li><a href="http://www.eyefulhome-koshigaya.jp/partner"><img src="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/images/btn_top_partner.png" alt="協力業者紹介"/></a></li>
+		</ul>
+	</div>
+	
+	<div id="staffblog_head">
+		<img src="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/images/title_staffblog.png"/>
+						<li><span class="ymd">2015.12.26</span><br/><a href="http://www.eyefulhome-koshigaya.jp/%e3%81%b5%e3%82%8c%e3%81%82%e3%81%84%e7%a5%ad%e3%82%8a">ふれあい祭り</a></li>
+						<li><span class="ymd">2015.12.07</span><br/><a href="http://www.eyefulhome-koshigaya.jp/%e3%81%84%e3%81%a4%e3%81%9e%e3%82%84%e3%81%ae%e3%80%81%e3%80%81%e3%80%81">いつぞやの、、、</a></li>
+						<li><span class="ymd">2015.11.29</span><br/><a href="http://www.eyefulhome-koshigaya.jp/%e3%81%b5%e3%82%8c%e3%81%82%e3%81%84%e7%a5%ad%e3%82%8a-2015-%e9%96%8b%e5%82%ac%e3%81%97%e3%81%be%e3%81%99%e3%80%82">ふれあい祭り 2015  開催します。</a></li>
+						<li><span class="ymd">2015.10.31</span><br/><a href="http://www.eyefulhome-koshigaya.jp/%e5%b0%8f%e3%81%95%e3%81%aa%e7%94%9f%e3%81%8d%e7%89%a9%e7%99%ba%e8%a6%8b%ef%bc%81">小さな生き物発見！</a></li>
+						<li><span class="ymd">2015.10.26</span><br/><a href="http://www.eyefulhome-koshigaya.jp/%e5%a4%a9%e6%b0%97%e3%81%8c%e3%81%84%e3%81%84%e3%81%ae%e3%81%a7">天気がいいので</a></li>
+			</div>
+	
+</div>
+
+<div id="secondrow">
+
+	<div id="topmenu_head">
+		<img src="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/images/title_kidsroom.png"/>
+		<ul>
+			<li><a href="http://www.eyefulhome-koshigaya.jp/kids-space"><img src="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/images/btn_top_kidsroom.png" alt="キッズルーム紹介"/></a></li>
+			<!--<li><a href="">今日のキッズ</a></li>-->
+		</ul>
+	</div>
+	
+	<div id="product_link">
+		<img src="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/images/title_eyefulstyle.png"/>
+		<ul>
+			<li><a href="http://www.eyefulhome.jp/lineup/cesibo/" target="_blank" class="cesibo">cesibo</a></li>
+			<li><a href="http://www.eyefulhome.jp/lineup/supreme/" target="_blank" class="supreme">supreme</a></li>
+			<li><a href="http://www.eyefulhome.jp/lineup/aya/" target="_blank" class="aya">aya</a></li>
+			<li><a href="http://www.eyefulhome.jp/lineup/cesibo-f/" target="_blank" class="f"><img src="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/images/product_f.png"/></a></li>
+		</ul>
+	</div>
+	
+	<div id="topmenu_head">
+		<img src="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/images/title_eyefulstyle.png"/>
+		<ul>
+			<li><a href="http://www.eyefulhome.jp/technology/index.html"><img src="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/images/btn_top_strength.png" alt="強い構造の秘密"/></a></li>
+			<li><a href="http://www.eyefulhome.jp/homebuild/hosyo/anzyu/index.html"><img src="http://www.eyefulhome-koshigaya.jp/wp-content/themes/eyefulhome-koshigaya/images/btn_top_safety.png" alt="安心保証の秘密"/></a></li>
+			<!--<li><a href="">越谷店現場の秘密</a></li>-->
+		</ul>
+	</div>
+	
+</div>
+
+
+<div id="footernavi">
+<p class="fnavi">
+|&nbsp;<a href="http://www.all-eyefulhomenavi.com/will2/koshigaya/index.html" target="_blank">モデルハウス</a>
+|&nbsp;<a href="http://www.all-eyefulhomenavi.com/will2/koshigaya/staff/index.html" target="_blank">スタッフ紹介</a>
+|&nbsp;<a href="http://www.all-eyefulhomenavi.com/will2/koshigaya/map/index.html" target="_blank">交通・案内図</a>
+|&nbsp;<a href="http://www.all-eyefulhomenavi.com/will2/koshigaya/company/index.html" target="_blank">加盟法人案内</a>
+|&nbsp;<a href="http://www.all-eyefulhomenavi.com/form/index.html" target="_blank">資料請求</a>&nbsp;|
+</p>
+<p class="fnote">※アイフルホームWEBサイト内の越谷店ページが別ウィンドウで開きます。</p>
+</div>
+
+<div id="footerrights">
+<p>&copy;2000- 2012 株式会社LIXIL住宅研究所. All Rights Reserved.&nbsp;アイフルホームはLIXIL住宅研究所が運営する住宅FCです。</p>
+</div>
+
+</div><!-- / wrapper end -->
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-43909053-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>快易理财网--理财改变生活</title>
+    <meta name="description" content='快易理财网--提供理财类如股票基金的资讯，自选股的管理及相关的查询股票信息的小工具，每天更新银联汇率以供查询。' />
+    <meta name="keywords" content='快易理财网 股票 基金 银联汇率 股票行情小工具' />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="Robots" content="all" />
+    <link type="text/css" rel="stylesheet" href= "/static/css/main.css" media= "All"/>
+    <script language="javascript" type="text/javascript" src="/static/js/main.min.js"></script>
+    <script language="javascript" type="text/javascript" src="/static/js/main.js"></script>
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "//hm.baidu.com/hm.js?830230e7ac8535c01b1d4bfe7c665b47";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+    
+</head>
+
+<body style="margin:0px;">
+    <form id="form1" name="form1" method='' action = ''>
+        <div id="container">
+            <script type="text/javascript">
+
+	
+	var refreshTimer_ucLoginBar;
+	
+    $(document).ready(function () {
+        $(function () {
+			refreshTimer_ucLoginBar = setTimeout(pageRefresh_ucLoginBar, 500);
+        });
+    });
+	
+	pageRefresh_ucLoginBar = function () {
+
+        $("#ucLoginBar_Login").css("display", "none");
+        $("#ucLoginBar_Register").css("display", "none");
+        $("#ucLoginBar_Exit").css("display", "none");
+        $("#ucLoginBar_Welcome").css("display", "none");
+        $("#ucLoginBar_UserInfo").css("display", "none");
+        $("#ucLoginBar_Sep1").css("display", "none");
+
+        clearTimeout(refreshTimer_ucLoginBar);
+
+        if (window.location.href.indexOf("account/register") > 0 || window.location.href.indexOf("account/login") > 0)
+            return;
+
+        if (readCookie("user_id", "") == "") {
+            $("#ucLoginBar_Login").css("display", "inline");
+            $("#ucLoginBar_Register").css("display", "inline");
+        }
+        else
+        {
+            $("#ucLoginBar_Exit").css("display", "inline");
+            $("#ucLoginBar_Welcome").css("display", "inline");
+            $("#ucLoginBar_UserInfo").css("display", "inline");
+			$("#ucLoginBar_UserInfo").attr("href", "/u/" + readCookie("user_seq", ""))
+			document.getElementById("ucLoginBar_UserInfo").innerHTML = decodeURI(unescape(readCookie("user_name", "")))+ "]";
+        }
+
+        $("#ucLoginBar_Sep1").css("display", "inline");
+    }
+
+	function ucLogin_exit(){
+        eraseCookie("user_id");
+		eraseCookie("user_seq");
+        eraseCookie("user_name");
+		eraseCookie("session_id");
+        window.location.reload();
+    }
+</script>
+
+<div id="loginBar" class="loginBarBackground">
+    <div id="loginBarLeft">
+        &nbsp;欢迎来到快易理财网 -- 理财改变生活
+    </div>
+    <div id="loginBarRight">
+        <a href="/sitemap.html"  title="快易理财网 -- 网站导航">网站导航</a>
+        <span>&nbsp;</span>
+
+        <span id="ucLoginBar_Welcome" style="display:none;color: #7C7C7C;">[欢迎您</span>&nbsp;
+        <a id="ucLoginBar_UserInfo" href="javascript::void(0)" style="display:none;text-decoration:underline;"></a>
+        <a id="ucLoginBar_Login" href="/account/login" style="display:none">[登录]</a>
+        <span id="ucLoginBar_Sep1" style="display:none;color: #7C7C7C;">·</span>
+        <a id="ucLoginBar_Register" href="/account/register" style="display:none">[注册]</a>
+        <a id="ucLoginBar_Exit" href="javascript:;" onclick="ucLogin_exit();" style="display:none">[退出]&nbsp;</a>
+		<span>&nbsp;</span>
+        
+    </div>
+</div>
+
+<div style="font: 0px/0px sans-serif;clear:both;display:block"></div>
+            <a href="/" style="width:250px;display:block;float:left;">
+                <div id="navigationLogo" class="logo" style="display:"></div>
+            </a>
+            
+
+            <div style="clear:both;"></div>
+            <div id="navigationBar" style="display:">
+                <ul id="navigationItem">
+                    
+	<li id="navEntrance"><a href="/" title="快易理财" >首页</a></li>
+	<li id="navStock"><a href="/stock" title="股票" >股票</a></li>
+	<li id="navIPO"><a href="/ipo" title="新股" >新股</a></li>
+	<li id="navFund"><a href="/fund" title="基金" >基金</a></li>
+	<li id="navBank"><a href="/bank" title="银行" >银行</a></li>
+	<li id="navHuilv"><a href="/huilv" title="汇率" >汇率</a></li>
+
+                    
+                </ul>
+            </div>
+            
+            <div style="clear:both;"></div>
+            
+            <div style="clear:both;"></div>
+
+            <div id="contentBody">
+                
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+     var refreshTimer;
+     var refreshTimes;
+
+     $(document).ready(function () {
+         $(function () {
+         });
+     });
+
+     function onPageload() {
+
+         onload('navEntrance');
+
+         var icons = {
+             header: "ui-icon-circle-arrow-e",
+             headerSelected: "ui-icon-circle-arrow-s"
+         };
+
+         $("#stockPic").css("display", "block");
+
+         $("#stockPic").accordion({
+             icons: icons,
+             event: "mouseover",
+             //change: function (event, ui) { // change event not working in jQuery UI 1.10
+			 activate: function (event, ui) {
+                 refreshAllPicture();
+             }
+         });
+
+         refreshTimes = -1;
+         refreshTimer = setTimeout(pageRefresh, 500);
+     }
+	 
+     pageRefresh = function () {
+	 
+         showFavStocks();
+
+         if (refreshTimes > 10 || refreshTimes < 0) {
+             refreshAllPicture();
+             refreshTimes = 0;
+         }
+
+         refreshTimes = refreshTimes + 1;
+
+         setTimeout(pageRefresh, 10000); //clearTimeout(refreshTimer);
+     };
+
+</script>
+
+ <div id="divContent">
+    <div class="cright">
+        <div class="cblock">
+    <dl>
+        <dt class="tit1 bottomLine">
+            <a href="javascript:" class="more" onclick="maintainStockList();">设置</a>
+            <a href="javascript:" onclick="maintainStockList();">我的自选股</a>
+        </dt>
+
+        <dd>
+            <table border="0" cellspacing="0" cellpadding="0" class="field">
+            <tr>
+                <td class="cellCenter cell70">简称</td>
+                <td class="cellRight cell60">价格</td>
+                <td class="cellRight cell55">涨跌</td>
+                <td class="cellRight">涨幅%</td>
+            </tr>
+            </table>
+            <div class="gap9"></div>
+            <table border="0" cellpadding="0" cellspacing="0" class="data" id="favStocks"></table>
+            <div id="favHotTitle" style="margin:8px 10px 8px 10px;color:Red;">以下为热门股票</div>
+            <table id="favHotStocks" border="0" cellpadding="0" cellspacing="0" class="data"></table>
+            </dd>
+    </dl>
+</div>
+
+<div id="divMaintainStock" title="快易理财 -- 自选股维护" style="display:none; overflow:visible;">
+	<div style="margin-left:20px;">
+         <div class="gap9"></div>
+         <span>我要添加:<input type="text" id="divStockFavTextSearch" style="width:120px;margin-left:10px;" 
+                onkeyup="javascript:searchStock(this.value);" onfocus="javascript:searchStockFocus();" onblur="javascript:searchStockFocusOut();"/>
+                <span id="divStockFavRunning" style="color:Red;visibility:hidden;">查询中...</span>
+                </span>
+         <table border="0" cellpadding="0" cellspacing="0" id="divStockFavSearchResult" style="position:absolute;left:90px; font-size:12px;" >
+            <tr style="background-color:#D2E9FF;">
+                <td class="cellCenter cell60">代码</td>
+                <td class="cellCenter cell75">名称</td>
+                <td class="cellCenter cell65">拼写</td>
+            </tr>
+         </table>
+         <div class="gap9" style="border-bottom:1px solid #E5E5E5;"></div>
+         <div class="gap9"></div>
+
+         <p id="divStockFavTitle"><b>已经选择了:</b></p>
+         <table border="0" cellspacing="0" cellpadding="0" class="field" id="tbStockFavListHead">
+            <tr>
+                <td class="cellCenter cell60">代码</td>
+                <td class="cellCenter cell75">股票简称</td>
+                <td class="cellCenter cell65">市场</td>
+                <td class="cellCenter">操作</td>
+            </tr>
+          </table>
+          <div class="gap9"></div>
+          <div style="height:200px;overflow:auto;">
+                <table border="0" cellpadding="0" cellspacing="0" class="data" id="tbStockFavList"></table>
+          </div>
+
+          <button id="btnSearchStockCancel" style="float:right; margin:10px;">取消</button>
+          <button id="btnSearchStockOk" style="float:right; margin:10px;">确定</button>
+          <input id="hidFavStockList" type="hidden"/>
+      </div>
+</div>
+		<div class="cblock">
+    <div class="tit2 bottomLine">
+        <span>股票行情桌面版</span>
+    </div>
+
+    <div>
+        <a href ="/stocktool.html" title="快易股票行情" target="_blank"
+                    style="display:inline-block;float:left;" class="stockToolLogo"></a>
+        
+        <div style="width:180px;height:88px;float:right;margin:9px 0px 9px 0px;">
+
+            <a href="/stocktool.html" target="_blank" style="text-decoration:none;font-size:14px;font-weight:bold;">
+                <span style="color:#000;">快易股票行情&nbsp;</span>
+                <span style="color:#c00;">新品发布</span>
+            </a>
+            
+            <p style="margin:9px 9px 9px 0px; line-height:14px;">
+            小巧强大的股票行情小软件,特别适合办公室人员使用
+            </p>
+
+            <a href="/stocktool.html" target="_blank" class="button"><span style="color:#fff;" title="了解快易股票行情">了解更多</span></a>
+            <a href="/download/kyStock.msi" target="_blank" class="button" title="下载快易股票行情"><span style="color:#fff;">立即下载</span></a>
+        </div>
+
+        <div style="font: 0px/0px sans-serif;clear: both;display: block"> </div>
+    </div>
+</div>
+		<!-- Recent Union Pay Exchange Rate-->
+		<div class="cblock"> 
+			<dl>
+				<dt class="tit2 bottomLine">
+					<strong><a href='/upcurrency.html' target='_blank' style="color:#1B2C58;">银联汇率查询</a></strong>
+				</dt>
+
+				<dd id="ddRates">
+					<table border='0' cellspacing='0' cellpadding='0' class='field'>
+						<tr>
+							<td class='cellCenter'>货币</td>
+							<td class='cellRight cell55'>
+								01月21日
+							</td>
+							<td class='cellRight cell55'>
+								01月22日
+							</td>
+							<td class='cellRight cell55'>
+								01月23日
+							</td>
+						</tr>
+					</table>
+
+					<table class='data detailTable'>
+
+							<tr>
+								<td class='cellCenter'><a href='/uprate' target='_blank'>港币</a></td>
+								<td class='cellRight cell55'>    0.8440</td>
+								<td class='cellRight cell55'>    0.8447</td>
+								<td class='cellRight cell55'>    0.8447</td>
+							</tr>
+							<tr>
+								<td class='cellCenter'><a href='/uprate/mop.html' target='_blank'>澳门元</a></td>
+								<td class='cellRight cell55'>    0.8221</td>
+								<td class='cellRight cell55'>    0.8217</td>
+								<td class='cellRight cell55'>    0.8217</td>
+							</tr>
+							<tr>
+								<td class='cellCenter'><a href='/uprate/usd.html' target='_blank'>美元</a></td>
+								<td class='cellRight cell55'>    6.5912</td>
+								<td class='cellRight cell55'>    6.5917</td>
+								<td class='cellRight cell55'>    6.5917</td>
+							</tr>
+							<tr>
+								<td class='cellCenter'><a href='/uprate/eur.html' target='_blank'>欧元</a></td>
+								<td class='cellRight cell55'>    7.2083</td>
+								<td class='cellRight cell55'>    7.1481</td>
+								<td class='cellRight cell55'>    7.1481</td>
+							</tr>
+							<tr>
+								<td class='cellCenter'><a href='/uprate/twd.html' target='_blank'>新台币</a></td>
+								<td class='cellRight cell55'>    0.1966</td>
+								<td class='cellRight cell55'>    0.1966</td>
+								<td class='cellRight cell55'>    0.1966</td>
+							</tr>
+							<tr>
+								<td class='cellCenter'><a href='/uprate/sgd.html' target='_blank'>新加坡元</a></td>
+								<td class='cellRight cell55'>    4.6003</td>
+								<td class='cellRight cell55'>    4.6152</td>
+								<td class='cellRight cell55'>    4.6152</td>
+							</tr>
+							<tr>
+								<td class='cellCenter'><a href='/uprate/jpy.html' target='_blank'>日元</a></td>
+								<td class='cellRight cell55'>    0.0564</td>
+								<td class='cellRight cell55'>    0.0562</td>
+								<td class='cellRight cell55'>    0.0562</td>
+							</tr>
+							<tr>
+								<td class='cellCenter'><a href='/uprate/thb.html' target='_blank'>泰国铢</a></td>
+								<td class='cellRight cell55'>    0.1828</td>
+								<td class='cellRight cell55'>    0.1830</td>
+								<td class='cellRight cell55'>    0.1830</td>
+							</tr>
+							<tr>
+								<td class='cellCenter'><a href='/uprate/php.html' target='_blank'>菲律宾比索</a></td>
+								<td class='cellRight cell55'>    0.1381</td>
+								<td class='cellRight cell55'>    0.1380</td>
+								<td class='cellRight cell55'>    0.1380</td>
+							</tr>
+							<tr>
+								<td class='cellCenter'><a href='/uprate/krw.html' target='_blank'>韩国元</a></td>
+								<td class='cellRight cell55'>    0.0055</td>
+								<td class='cellRight cell55'>    0.0055</td>
+								<td class='cellRight cell55'>    0.0055</td>
+							</tr>
+							<tr>
+								<td class='cellCenter'><a href='/uprate/gbp.html' target='_blank'>英镑</a></td>
+								<td class='cellRight cell55'>    9.3569</td>
+								<td class='cellRight cell55'>    9.3987</td>
+								<td class='cellRight cell55'>    9.3987</td>
+							</tr>
+							<tr>
+								<td class='cellCenter'><a href='/uprate/cad.html' target='_blank'>加拿大元</a></td>
+								<td class='cellRight cell55'>    4.5819</td>
+								<td class='cellRight cell55'>    4.6344</td>
+								<td class='cellRight cell55'>    4.6344</td>
+							</tr>
+							<tr>
+								<td class='cellCenter'><a href='/uprate/aud.html' target='_blank'>澳大利亚元</a></td>
+								<td class='cellRight cell55'>    4.5923</td>
+								<td class='cellRight cell55'>    4.6359</td>
+								<td class='cellRight cell55'>    4.6359</td>
+							</tr>
+							<tr>
+								<td class='cellCenter'><a href='/uprate/chf.html' target='_blank'>瑞士法郎</a></td>
+								<td class='cellRight cell55'>    6.5898</td>
+								<td class='cellRight cell55'>    6.5368</td>
+								<td class='cellRight cell55'>    6.5368</td>
+							</tr>
+							<tr>
+								<td class='cellCenter'><a href='/uprate/sek.html' target='_blank'>瑞典克朗</a></td>
+								<td class='cellRight cell55'>    0.7705</td>
+								<td class='cellRight cell55'>    0.7728</td>
+								<td class='cellRight cell55'>    0.7728</td>
+							</tr>
+							<tr>
+								<td class='cellCenter'><a href='/uprate/dkk.html' target='_blank'>丹麦克朗</a></td>
+								<td class='cellRight cell55'>    0.9629</td>
+								<td class='cellRight cell55'>    0.9615</td>
+								<td class='cellRight cell55'>    0.9615</td>
+							</tr>
+							<tr>
+								<td class='cellCenter'><a href='/uprate/nok.html' target='_blank'>挪威克朗</a></td>
+								<td class='cellRight cell55'>    0.7460</td>
+								<td class='cellRight cell55'>    0.7536</td>
+								<td class='cellRight cell55'>    0.7536</td>
+							</tr>
+							<tr>
+								<td class='cellCenter'><a href='/uprate/nzd.html' target='_blank'>新西兰元</a></td>
+								<td class='cellRight cell55'>    4.2800</td>
+								<td class='cellRight cell55'>    4.3207</td>
+								<td class='cellRight cell55'>    4.3207</td>
+							</tr>
+						
+						<tr><td colspan='4' align='left'>&nbsp;&nbsp;<a href='/upcurrency.html' target='_blank' style='color:#C00;'>查看更多货币&gt;&gt;</a>&nbsp;&nbsp;</td></tr>
+
+					</table>
+					
+					<div style='margin:5px 5px 5px 15px;line-height:16px;color: #585858;'>
+						<span>银联汇率指的是从银联购买外币的汇率,也就是持银联卡在境外取现和消费的当日汇率,每天早上11:00左右更新.周末和节假日参照上一工作日汇率.</span><br />
+						<span>注:此处银联汇率仅供参考,请以95516为准.</span>
+					</div>
+				</dd>
+			</dl>
+		</div>
+		<!-- End of Recent Union Pay Exchange Rate-->
+		
+
+
+<div class="cblock">
+
+    <div class='tit3 bottomLine'>
+            <a href='/finance/review.html' target='_blank'>评论杂谈</a>
+            <a target='_blank' class='more' href='/finance/review.html'>更多>></a>
+    </div>
+
+    <ul class='sideNewsBlock'>
+            <li><a href='/201511/f4ab0afa-93f8-11e5-8ca6-21b54631b0fa.html' target='_blank'>人民币汇率仍有长期升值趋势</a></li>
+            <li><a href='/201511/e8ecbc9c-8cc6-11e5-8ca6-21b54631b0fa.html' target='_blank'>十年来经济过热带来哪些教训</a></li>
+            <li><a href='/201511/2d49c50e-867a-11e5-8ca6-21b54631b0fa.html' target='_blank'>电商的假货问题该怎么管？</a></li>
+            <li><a href='/201510/0ea0c1b0-7d0c-11e5-8ca6-21b54631b0fa.html' target='_blank'>我国进入负利率时代？不可信</a></li>
+            <li><a href='/201509/001816ce-6340-11e5-8ca6-21b54631b0fa.html' target='_blank'>协调推进各项改革，防范金融市场大幅波动</a></li>
+            <li><a href='/201508/128534d6-4ac2-11e5-8ca6-21b54631b0fa.html' target='_blank'>中国房地产市场不会崩盘</a></li>
+            <li><a href='/201508/0f876630-4542-11e5-8ca6-21b54631b0fa.html' target='_blank'>中国经济调整远远未结束</a></li>
+            <li><a href='/201508/6584046e-3d89-11e5-8ca6-21b54631b0fa.html' target='_blank'>中国经济的问题到底在哪里</a></li>
+            <li><a href='/201508/c630561a-3d65-11e5-8ca6-21b54631b0fa.html' target='_blank'>人民币纳入SDR是一块战略拼图</a></li>
+            <li><a href='/201508/22d83a46-3c9d-11e5-8ca6-21b54631b0fa.html' target='_blank'>监管失灵是造成股灾的首要原因</a></li>
+            <li><a href='/201507/80c00832-29e2-11e5-8ca6-21b54631b0fa.html' target='_blank'>高温津贴被偷梁换柱 难见严惩实例</a></li>
+    </ul>
+</div>
+
+    </div> <!-- end of cright-->
+
+    <div class="cleft" style="border:none">
+        <div id ="stockPic" style="width:262px;overflow:hidden; margin:10px 0px 10px 0px;display:none;" >
+	        <h3><a href="#">上证指数</a></h3>
+	        <div style="overflow:hidden;padding-left:5px;">
+                <div style="height:125px;width:250px;">
+                    <img id="imgsh000001" alt="上证指数分时图" height="125px" width = "250px" />
+                </div>
+	        </div>
+	        <h3><a href="#">深证成指</a></h3>
+	        <div style="overflow:hidden;padding-left:5px;">
+                <div style="height:125px;width:250px;">
+                    <img id="imgsz399001" alt="深证成指分时图" height="125px" width = "250px" />
+                </div>
+	        </div>
+	        <h3><a href="#">沪深300</a></h3>
+	        <div style="overflow:hidden;padding-left:5px;">
+                <div style="height:125px;width:250px;">
+                    <img id="imgsh000300" alt="沪深300分时图" height="125px" width = "250px" />
+                </div>
+	        </div>
+            <h3><a href="#">沪市基金</a></h3>
+	        <div style="overflow:hidden;padding-left:5px;">
+                <div style="height:125px;width:250px;">
+                    <img id="imgsh000011" alt="沪市基金分时图" height="125px" width = "250px" />
+                </div>
+	        </div>
+            <h3><a href="#">深市基金</a></h3>
+	        <div style="overflow:hidden;padding-left:5px;">
+                <div style="height:125px;width:250px;">
+                    <img id="imgsz399305" alt="深市基金分时图" height="125px" width = "250px" />
+                </div>
+	        </div>
+        </div>
+		
+		
+
+
+<div class="cblock">
+
+    <div class='tit3 bottomLine'>
+            <a href='/finance/domestic.html' target='_blank'>国内财经</a>
+            <a target='_blank' class='more' href='/finance/domestic.html'>更多>></a>
+    </div>
+
+    <ul class='sideNewsBlock'>
+            <li><a href='/201512/8e90c72c-a6d2-11e5-8ca6-43e4eea6b7bd.html' target='_blank'>广西加大劳资纠纷案件处理力度化解社会矛盾</a></li>
+            <li><a href='/201512/926d9230-a6d2-11e5-8ca6-43e4eea6b7bd.html' target='_blank'>民调蓝皮书：物价上涨成居民生活压力主要来源</a></li>
+            <li><a href='/201512/95af89b2-a6d2-11e5-8ca6-43e4eea6b7bd.html' target='_blank'>如何利用“互联网+”提高农业竞争力？专家提出四大切入点</a></li>
+            <li><a href='/201512/976014ca-a6d2-11e5-8ca6-43e4eea6b7bd.html' target='_blank'>五大信号管窥中央经济工作会议</a></li>
+            <li><a href='/201512/e7b9f606-a6b0-11e5-8ca6-43e4eea6b7bd.html' target='_blank'>港媒:内地大妈有钱有闲 做投资就像在市场买菜</a></li>
+            <li><a href='/201512/e8bdfb92-a6b0-11e5-8ca6-43e4eea6b7bd.html' target='_blank'>中澳自贸协定今天正式生效 将实施第一次降税</a></li>
+            <li><a href='/201512/eb4c174a-a6b0-11e5-8ca6-43e4eea6b7bd.html' target='_blank'>世贸组织内罗毕部长会成果丰硕 中国作出积极贡献</a></li>
+    </ul>
+</div>
+		
+
+
+<div class="cblock">
+
+    <div class='tit3 bottomLine'>
+            <a href='/finance/foreign.html' target='_blank'>国际财经</a>
+            <a target='_blank' class='more' href='/finance/foreign.html'>更多>></a>
+    </div>
+
+    <ul class='sideNewsBlock'>
+            <li><a href='/201512/9b60cdbc-a6d2-11e5-8ca6-43e4eea6b7bd.html' target='_blank'>WTO部长级会议首次承诺终结农产品出口补贴</a></li>
+            <li><a href='/201512/ef1996a4-a6b0-11e5-8ca6-43e4eea6b7bd.html' target='_blank'>“宝能系”高杠杆风险有限 或引导价值投资回归</a></li>
+            <li><a href='/201512/f0b4b408-a6b0-11e5-8ca6-43e4eea6b7bd.html' target='_blank'>王石掏不出“毒丸”</a></li>
+            <li><a href='/201512/b5479666-a5e7-11e5-8ca6-43e4eea6b7bd.html' target='_blank'>加元跌破72美分创11年来新低</a></li>
+            <li><a href='/201512/1cbc3264-a540-11e5-8ca6-43e4eea6b7bd.html' target='_blank'>凛冬持续！普京警告俄罗斯人要"勒紧裤腰带"</a></li>
+            <li><a href='/201512/206e79d0-a540-11e5-8ca6-43e4eea6b7bd.html' target='_blank'>IMF总裁拉加德涉“渎职”突遭传唤 将提起上诉</a></li>
+            <li><a href='/201512/235b82c8-a540-11e5-8ca6-43e4eea6b7bd.html' target='_blank'>美联储加息同日阿根廷取消外汇管制 比索暴跌超30%</a></li>
+    </ul>
+</div>
+		
+
+
+<div class="cblock">
+
+    <div class='tit3 bottomLine'>
+            <a href='/finance/industry.html' target='_blank'>产业动态</a>
+            <a target='_blank' class='more' href='/finance/industry.html'>更多>></a>
+    </div>
+
+    <ul class='sideNewsBlock'>
+            <li><a href='/201507/646be688-29e2-11e5-8ca6-21b54631b0fa.html' target='_blank'>钢铁业重压之下分化明显</a></li>
+            <li><a href='/201507/3588949e-2a8a-11e5-8ca6-21b54631b0fa.html' target='_blank'>外卖O2O半年烧掉几十亿 美团饿了么现恶性竞争</a></li>
+            <li><a href='/201507/38436d4e-2a8a-11e5-8ca6-21b54631b0fa.html' target='_blank'>深圳前海134亿地王转让乌龙背后：中资股东频换</a></li>
+            <li><a href='/201507/39db4f6e-2a8a-11e5-8ca6-21b54631b0fa.html' target='_blank'>远大长沙“世界第一高楼”2年未动工 工地变渔场</a></li>
+            <li><a href='/201507/91df7e94-29c0-11e5-8ca6-21b54631b0fa.html' target='_blank'>国家能源局启动2015年电网安全风险管控专项监管</a></li>
+            <li><a href='/201507/11f306d4-291a-11e5-8ca6-21b54631b0fa.html' target='_blank'>万达旗下百货店亏损持续扩大 集团正式下手清理</a></li>
+            <li><a href='/201507/1514e3a0-291a-11e5-8ca6-21b54631b0fa.html' target='_blank'>中国拟用6-7年强化土壤污染治理 土壤修复亿万市场将开启</a></li>
+    </ul>
+</div>
+		
+
+
+<div class="cblock">
+
+    <div class='tit3 bottomLine'>
+            <a href='/finance/people.html' target='_blank'>财富人物</a>
+            <a target='_blank' class='more' href='/finance/people.html'>更多>></a>
+    </div>
+
+    <ul class='sideNewsBlock'>
+            <li><a href='/201512/9ab00fba-a5ea-11e5-8ca6-43e4eea6b7bd.html' target='_blank'>“全球协调定价”缩小中欧价差 Prada要把顾客留在中国</a></li>
+            <li><a href='/201512/9d53fc36-a5ea-11e5-8ca6-43e4eea6b7bd.html' target='_blank'>万隆：双汇将与洋快餐合作</a></li>
+            <li><a href='/201512/a1ad674a-a5ea-11e5-8ca6-43e4eea6b7bd.html' target='_blank'>马云想建这样的未来医院(图)</a></li>
+            <li><a href='/201512/a37b5686-a5ea-11e5-8ca6-43e4eea6b7bd.html' target='_blank'>【观察】“中国神船”为什么没能延续“中国神车”的奇迹？</a></li>
+            <li><a href='/201512/78e5e3f0-a540-11e5-8ca6-43e4eea6b7bd.html' target='_blank'>均瑶集团发力动漫文创产业</a></li>
+            <li><a href='/201512/e47873a2-a51e-11e5-8ca6-43e4eea6b7bd.html' target='_blank'>水果营行神话破灭 董事长失联CEO被刑拘</a></li>
+            <li><a href='/201512/e7144366-a51e-11e5-8ca6-43e4eea6b7bd.html' target='_blank'>携程CEO梁建章：旅游消费就是到全世界享受最好的服务</a></li>
+    </ul>
+</div>
+		
+
+
+<div class="cblock">
+
+    <div class='tit3 bottomLine'>
+            <a href='/finance/manage.html' target='_blank'>财富管理</a>
+            <a target='_blank' class='more' href='/finance/manage.html'>更多>></a>
+    </div>
+
+    <ul class='sideNewsBlock'>
+            <li><a href='/201507/708868ba-29e2-11e5-8ca6-21b54631b0fa.html' target='_blank'>工行北京分行500多家网点开通免费WiFi服务</a></li>
+            <li><a href='/201507/770b9afe-29e2-11e5-8ca6-21b54631b0fa.html' target='_blank'>外包物流的变革与供应链风险</a></li>
+            <li><a href='/201507/74d35f2e-29e2-11e5-8ca6-21b54631b0fa.html' target='_blank'>传统百货的逆袭之路</a></li>
+            <li><a href='/201507/72803f80-29e2-11e5-8ca6-21b54631b0fa.html' target='_blank'>创业不是救命草</a></li>
+            <li><a href='/201507/9fe195d6-29c0-11e5-8ca6-21b54631b0fa.html' target='_blank'>格力做手机理智还是任性</a></li>
+            <li><a href='/201507/9ddbc2ac-29c0-11e5-8ca6-21b54631b0fa.html' target='_blank'>步步高杀入跨境电商新蓝海</a></li>
+            <li><a href='/201507/9c1fc22e-29c0-11e5-8ca6-21b54631b0fa.html' target='_blank'>中国奢侈品热海外延烧</a></li>
+    </ul>
+</div>
+
+    </div> <!-- end of cleft-->
+
+    <div class="ccenter" style="float:left; margin:0px 0px 0px 15px;">
+
+		
+
+
+
+
+
+        
+        
+        <h1>
+            <a target='_blank' href='/201511/513a35fe-8051-11e5-8ca6-21b54631b0fa.html'>
+                    亲子市场容量将飞速增长
+            </a>
+        </h1>
+        
+        
+
+        <div style="margin:8px 5px 10px 5px;font-size: 12px;line-height: 20px;">
+            <p>　　"随着国家二胎政策的逐步开放，中国每年有超过两千万的新生儿，可以预见，婴童产业将有着巨大的发展和投资空间。”中国商业联合会监事长周京英在近日举办的首届贝因美杯中国金色未来创业大赛表示... <a target='_blank' href='/201511/513a35fe-8051-11e5-8ca6-21b54631b0fa.html'>[详细]</a></p> 
+        </div>
+        
+        
+
+  
+		
+
+
+<div class='newsBlockHeader'>
+
+        <a target='_blank' class='title' href='/finance/wealth.html'>财富故事</a>
+        <a target='_blank' class='more' href='/finance/wealth.html'>更多>></a>
+</div>
+
+<div class='newsBlockContent'>
+    <ul style='list-style-type:none;'>
+		
+		
+					<li class="newsTitleBold">
+					
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201512/82c73dfa-a51e-11e5-8ca6-43e4eea6b7bd.html'>年终奖的10种花法 看到最后眼泪掉下来</a>
+					
+				</li>
+		
+					<li class="newsTitle">
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201512/83f0e9e2-a51e-11e5-8ca6-43e4eea6b7bd.html'>别瞎哭穷！每天收入或生活费少于8.2元才算穷人</a>
+					
+				</li>
+		
+					<li class="newsTitle">
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201512/0adc85c6-a540-11e5-8ca6-43e4eea6b7bd.html'>“顶豪”排排坐 广州“顶豪”价远远落后京沪深</a>
+					
+				</li>
+		
+					<li class="newsTitle">
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201512/b20b49c6-a51e-11e5-8ca6-43e4eea6b7bd.html'>李超人“回归”抄底 “钱”途几何？(图)</a>
+					
+				</li>
+		
+					<li class="newsTitle">
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201512/87fb3c2c-a51e-11e5-8ca6-43e4eea6b7bd.html'>楼市投资冷销售热 今年全国卖房或创历史纪录</a>
+					
+				</li>
+		
+					<li class="newsTitle">
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201512/0c661510-a540-11e5-8ca6-43e4eea6b7bd.html'>5男虚构航班取消诈骗3次得手转走190万元</a>
+					
+				</li>
+    </ul>
+</div>
+
+		
+
+
+<div class='newsBlockHeader'>
+
+        <a target='_blank' class='title' href='/finance/news.html'>理财资讯</a>
+        <a target='_blank' class='more' href='/finance/news.html'>更多>></a>
+</div>
+
+<div class='newsBlockContent'>
+    <ul style='list-style-type:none;'>
+		
+		
+					<li class="newsTitleBold">
+					
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201512/5c5668f2-a6d2-11e5-8ca6-43e4eea6b7bd.html'>退休版城市幸福排行榜出炉 北上广深占据前五</a>
+					
+				</li>
+		
+					<li class="newsTitle">
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201512/5d714892-a6d2-11e5-8ca6-43e4eea6b7bd.html'>乱象丛生 如何甄别优质P2P平台？</a>
+					
+				</li>
+		
+					<li class="newsTitle">
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201512/85bbc1c4-a6d2-11e5-8ca6-43e4eea6b7bd.html'>“大妈”有钱有闲 成理财机构主要营销目标</a>
+					
+				</li>
+		
+					<li class="newsTitle">
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201512/87f8d0b2-a6d2-11e5-8ca6-43e4eea6b7bd.html'>中韩中澳自贸协定生效 哪些商品可以马上免税</a>
+					
+				</li>
+		
+					<li class="newsTitle">
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201512/dd931a7c-a476-11e5-8ca6-21b54631b0fa.html'>美联储加息 将如何影响A股跟你的钱包</a>
+					
+				</li>
+		
+					<li class="newsTitle">
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201512/28a4dfd2-a38c-11e5-8ca6-21b54631b0fa.html'>500位理财师生存调研:过半认为3-5年可财务自由</a>
+					
+				</li>
+    </ul>
+</div>
+
+		
+
+
+<div class='newsBlockHeader'>
+
+        <a target='_blank' class='title' href='/finance/plan.html'>理财规划</a>
+        <a target='_blank' class='more' href='/finance/plan.html'>更多>></a>
+</div>
+
+<div class='newsBlockContent'>
+    <ul style='list-style-type:none;'>
+		
+		
+					<li class="newsTitleBold">
+					
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201507/79dc6096-29c0-11e5-8ca6-21b54631b0fa.html'>装潢公司股东六百多万资产 家庭财富如何稳健增值</a>
+					
+				</li>
+		
+					<li class="newsTitle">
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201507/7b276c5c-29c0-11e5-8ca6-21b54631b0fa.html'>公务员小夫妻月结余9000元如何理财</a>
+					
+				</li>
+		
+					<li class="newsTitle">
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201507/d49ed86c-2919-11e5-8ca6-21b54631b0fa.html'>单身外企男先读博还是先买房 购房控制200万以内</a>
+					
+				</li>
+		
+					<li class="newsTitle">
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201507/d6340b98-2919-11e5-8ca6-21b54631b0fa.html'>在校大学生如何理财 让钱袋子鼓起来</a>
+					
+				</li>
+		
+					<li class="newsTitle">
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201507/385519bc-211c-11e5-8ca6-21b54631b0fa.html'>年入300万元家庭怎么理财</a>
+					
+						<span>&nbsp;</span>
+					
+						<a target='_blank' href='/201506/c67e8590-13e1-11e5-8ca6-21b54631b0fa.html'>单收入家庭如何稳健理财</a>
+					
+				</li>
+		
+					<li class="newsTitle">
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201506/dceceafe-1573-11e5-8ca6-21b54631b0fa.html'>4口之家1年内如何轻松攒够30万</a>
+					
+				</li>
+    </ul>
+</div>
+
+		
+
+
+<div class='newsBlockHeader'>
+
+        <a target='_blank' class='title' href='/finance/invest.html'>投资频道</a>
+        <a target='_blank' class='more' href='/finance/invest.html'>更多>></a>
+</div>
+
+<div class='newsBlockContent'>
+    <ul style='list-style-type:none;'>
+		
+		
+					<li class="newsTitleBold">
+					
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201512/ee590660-988b-11e5-8ca6-21b54631b0fa.html'>UI设计师月入1.5万 理财让生活保障</a>
+					
+				</li>
+		
+					<li class="newsTitle">
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201511/12f3ab3e-9264-11e5-8ca6-21b54631b0fa.html'>扒双十一画皮看打折真相 数据教你如何防剁手</a>
+					
+				</li>
+		
+					<li class="newsTitle">
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201511/e9d104f8-8e54-11e5-8ca6-21b54631b0fa.html'>年收入4万元是门槛 幸福感当真只跟钱有关吗</a>
+					
+				</li>
+		
+					<li class="newsTitle">
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201511/5ac265aa-8e76-11e5-8ca6-21b54631b0fa.html'>北漂小家五年规划：千万资产百万存款 财务自由</a>
+					
+				</li>
+		
+					<li class="newsTitle">
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201511/8457ff92-8d8b-11e5-8ca6-21b54631b0fa.html'>哪些国家和城市房地产还有好机会 首选德意</a>
+					
+				</li>
+		
+					<li class="newsTitle">
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201511/106c078c-8dad-11e5-8ca6-21b54631b0fa.html'>妹子们擦亮眼：如何辨别男人是否真有钱？</a>
+					
+				</li>
+    </ul>
+</div>
+
+		
+
+
+<div class='newsBlockHeader'>
+
+        <a target='_blank' class='title' href='/finance/skill.html'>理财技巧</a>
+        <a target='_blank' class='more' href='/finance/skill.html'>更多>></a>
+</div>
+
+<div class='newsBlockContent'>
+    <ul style='list-style-type:none;'>
+		
+		
+					<li class="newsTitleBold">
+					
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201507/f9f79358-2a89-11e5-8ca6-21b54631b0fa.html'>虚假兼职案件攀升 骗子多瞄准大学生</a>
+					
+				</li>
+		
+					<li class="newsTitle">
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201507/fc65a97c-2a89-11e5-8ca6-21b54631b0fa.html'>卡奴“以卡养卡”欠巨债 构成诈骗获刑</a>
+					
+				</li>
+		
+					<li class="newsTitle">
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201507/ff75f2c0-2a89-11e5-8ca6-21b54631b0fa.html'>险资入市 跟着买股或有“肉”吃</a>
+					
+				</li>
+		
+					<li class="newsTitle">
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201507/014642c6-2a8a-11e5-8ca6-21b54631b0fa.html'>温情关怀成陷阱 欺诈机构敛千万</a>
+					
+				</li>
+		
+					<li class="newsTitle">
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201507/4de8630a-29e2-11e5-8ca6-21b54631b0fa.html'>险资布局券商煤炭股乳业股 再获机构追捧</a>
+					
+				</li>
+		
+					<li class="newsTitle">
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201507/50458db2-29e2-11e5-8ca6-21b54631b0fa.html'>洗车平台私降价市场亟需规范</a>
+					
+				</li>
+    </ul>
+</div>
+
+		
+
+
+<div class='newsBlockHeader'>
+
+        <a target='_blank' class='title' href='/finance/family.html'>家庭生活</a>
+        <a target='_blank' class='more' href='/finance/family.html'>更多>></a>
+</div>
+
+<div class='newsBlockContent'>
+    <ul style='list-style-type:none;'>
+		
+		
+					<li class="newsTitleBold">
+					
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201408/42b2fe36-266f-11e4-8ca6-874b4ef38850.html'>央视薪酬有多少：分成三六九等 月薪平均8161元</a>
+					
+				</li>
+		
+					<li class="newsTitle">
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201408/0a2e29b0-1935-11e4-8ca6-075197cb4cf8.html'>信托公司中报预示行业分化加剧</a>
+					
+						<span>&nbsp;</span>
+					
+						<a target='_blank' href='/201407/bac31f5e-0249-11e4-8ca6-41015bbaf2ac.html'>中国大妈抬高宝粉年龄</a>
+					
+				</li>
+		
+					<li class="newsTitle">
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201407/ee236b44-07c9-11e4-8ca6-176ba07c84bc.html'>中国买家一年豪砸220亿美元在美购房</a>
+					
+				</li>
+		
+					<li class="newsTitle">
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201407/14899566-01a2-11e4-8ca6-41015bbaf2ac.html'>理财师证出多门 标准混乱难监管</a>
+					
+				</li>
+		
+					<li class="newsTitle">
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201406/af05e4c6-000f-11e4-8ca6-41015bbaf2ac.html'>理性看待宝宝类产品收益</a>
+					
+				</li>
+		
+					<li class="newsTitle">
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201406/2c927fc0-ffee-11e3-8ca6-41015bbaf2ac.html'>巴西里约房价与北京有一拼 世界杯催生高房价</a>
+					
+				</li>
+    </ul>
+</div>
+
+		
+
+
+<div class='newsBlockHeader'>
+
+        <a target='_blank' class='title' href='/finance/expense.html'>消费理财</a>
+        <a target='_blank' class='more' href='/finance/expense.html'>更多>></a>
+</div>
+
+<div class='newsBlockContent'>
+    <ul style='list-style-type:none;'>
+		
+		
+					<li class="newsTitleBold">
+					
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201511/089e20b6-93d5-11e5-8ca6-21b54631b0fa.html'>北京27日开始“补贴”消费者购买9类节能产品</a>
+					
+				</li>
+		
+					<li class="newsTitle">
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201511/6a2ac28a-8e76-11e5-8ca6-21b54631b0fa.html'>楼市分化加剧 “虹吸现象”显现</a>
+					
+				</li>
+		
+					<li class="newsTitle">
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201511/6bebb2c8-8e76-11e5-8ca6-21b54631b0fa.html'>10月70大中城市房价涨势疲弱</a>
+					
+				</li>
+		
+					<li class="newsTitle">
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201511/6dc237a2-8e76-11e5-8ca6-21b54631b0fa.html'>房地产已经接近“警戒线” 楼市又将出大招</a>
+					
+				</li>
+		
+					<li class="newsTitle">
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201511/b7f7cb98-8d8b-11e5-8ca6-21b54631b0fa.html'>万科“先租后售”传言真相：锁定租客去库存</a>
+					
+				</li>
+		
+					<li class="newsTitle">
+				
+						<span>·</span>
+						
+					
+						<a target='_blank' href='/201511/b982ac8a-8d8b-11e5-8ca6-21b54631b0fa.html'>任泽平：未来10年一线城市房价能再涨一倍</a>
+					
+				</li>
+    </ul>
+</div>
+
+
+    </div><!-- end of ccenter-->
+
+    <input id="hidHotStockList" type="hidden" value="sh600010,sh600111,sz000100,sh600031,sz000157" />
+    <script type="text/javascript">onPageload();</script>
+</div>
+
+
+
+                <div style="font: 0px/0px sans-serif;clear: both;display: block"></div>
+            </div>
+            
+            <div id="foot1">|<a href="/about/about.html" target='_blank'>关于快易理财网</a>|
+                <a href="/about/contact.html" target='_blank'>联系我们</a>|
+                Copyright &copy; 2012 - 2016 <a href="/" target='_blank'>快易理财网</a>
+            </div>
+            <div class="foot2"><strong>声明：</strong>快易理财网的信息及分析结果仅供投资理财参考，不构成实际操作建议！</div>
+
+            <div class="foot2">
+                <a href="http://www.miibeian.gov.cn" target="_blank">苏ICP备15002115号</a>
+                本页快照时间: 2016-01-23 07:19:44
+                <!--    <script src="http://s20.cnzz.com/stat.php?id=3978379&web_id=3978379" language="JavaScript"></script>
+                -->
+            </div>
+        </div>
+    </form>
+    
+
+</body>
+
+</html>

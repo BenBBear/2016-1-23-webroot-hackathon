@@ -1,0 +1,759 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" href="/user_data/packages/golfstyle/css/import.css" type="text/css" media="all" />
+<link rel="stylesheet" href="/js/jquery.ui/base/jquery.ui.all.css">
+<link rel="stylesheet" href="/js/nivo-slider/themes/default/default.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="/js/nivo-slider/themes/pascal/pascal.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="/js/nivo-slider/themes/orman/orman.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="/js/nivo-slider/nivo-slider.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="/js/tinydropdown2/tinydropdown.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.golfstyle.co.jp/rss/" />
+<script type="text/javascript" src="https://www.google.com/jsapi?key=ABQIAAAAjnNFE9JTUNVV-qBs8yXmVRTiX0cj96sm7Jn6XoeulHXEHl-RahTuk4fPzrsqwY20x4OMBiKtbeRgEg"></script>
+<script type="text/javascript" src="/js/css.js"></script>
+<script type="text/javascript" src="/js/navi.js"></script>
+<script type="text/javascript" src="/js/win_op.js"></script>
+<script type="text/javascript" src="/js/site.js"></script>
+<script type="text/javascript" src="/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/js/ui.core.js"></script>
+<script type="text/javascript" src="/js/ui.widget.min.js"></script>
+<script type="text/javascript" src="/js/ui.tabs.min.js"></script>
+<script type="text/javascript" src="http://j.maxmind.com/app/geoip.js"></script>
+<script type="text/javascript" src="/js/jquery.nivo.slider.pack.js"></script>
+<script type="text/javascript" src="/js/tinydropdown2/tinydropdown.js"></script>
+
+
+<title>Golf Style WEB [ゴルフスタイル・ウェブ]</title>
+    <meta name="author" content="株式会社ゴルフスタイル社 :: Golf Style Inc." />
+    <meta name="description" content="Golf Style WEB :: 本誌に乗り切らないレアな情報も多数お届け!! [本の発売日は偶数" />
+    <meta name="keywords" content="ゴルフ, ゴルフスタイル, GOLF, Golf Style, ゴルフ雑誌, マニア, フリーク" />
+
+<script type="text/javascript">//<![CDATA[
+    
+    $(function(){
+        
+    });
+//]]>
+</script>
+<script type="text/javascript">
+
+ var _gaq = _gaq || [];
+ _gaq.push(['_setAccount', 'UA-360054-16']);
+ _gaq.push(['_trackPageview']);
+
+ (function() {
+   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+ })();
+
+</script>
+
+
+<!--Google Feed API ↓↓-->
+<script src="https://www.google.com/jsapi?key=ABQIAAAAHQHj9KMS2zBouG-BRU4WcxTiX0cj96sm7Jn6XoeulHXEHl-RahQmpjPy6xDNoCy2LsI2GL2m84sYrA" type="text/javascript"></script>
+<script type="text/javascript">
+google.load("feeds", "1");   
+function initialize()
+{   
+ //RSSフィードの取得
+ var feed = new google.feeds.Feed("http://www.golfstyle.co.jp/wordpress/alacarte/?feed=rss2");
+ 
+ //取得するフィード数
+ feed.setNumEntries(6)   
+ 
+ //実際に読む込む
+ feed.load(function(result) 
+ {   
+  
+  //読み込めたか判別
+  if (!result.error) 
+  {
+   //表示部分を選択
+   var container = document.getElementById("feed");
+   
+   //変数の初期化
+   var list = "";
+   
+   //Feedの処理
+    // list = '<h1><a href="http://www.wilson-tennis.jp/news/wtennis.xml" target="_blank">最新情報</a></h1><ul>';
+	list = '';
+   for (var i = 0; i < result.feed.entries.length; i++) 
+   {   
+    //Feedを一つ抽出
+    var entry = result.feed.entries[i];  
+    if(entry.title.match(/^PR:/)) {
+    //「PR:」から始まるものがあれば何もしない
+    }
+    else{
+     list += '<li>';
+	      var strdate = createDateString(entry.publishedDate);
+     list += '<small>' + strdate + '</small><br />';
+     list += '<a href="' + entry.link + '" target="_blank">' + entry.title + '</a>';
+
+     list += '</li>';
+    }
+        } 
+     list += '</ul>';
+     container.innerHTML = list;
+     }   
+   });   
+} 
+//日付の表示方法を変更
+function createDateString(publishedDate)
+{
+ var pdate = new Date(publishedDate);
+ var pday = pdate.getDate();
+ var pmonth = pdate.getMonth() + 1;
+ var pyear = pdate.getFullYear();
+ var phour = pdate.getHours();
+ var pminute = pdate.getMinutes();
+ var psecond = pdate.getSeconds(); 
+ //var strdate = pyear + "年" + pmonth + "月" + pday + "日" + phour + "時" + pminute + "分" + psecond + "秒";
+ var strdate = pyear + "." + pmonth + "." + pday ;
+ return strdate;
+} 
+google.setOnLoadCallback(initialize); 
+</script>
+<!--Google Feed API ↑↑-->
+
+</head>
+<!-- ▼BODY部 スタート -->
+<body>
+
+
+<noscript>
+    <p>JavaScript を有効にしてご利用下さい.</p>
+</noscript>
+
+<div class="frame_outer">
+    <a name="top" id="top"></a>
+
+                            <!--▼HEADER-->
+<div id="header_wrap">
+<div id="header_Top"><p>Golf Style WEB :: 本誌に載り切らないレアな情報も多数お届け!! [本の発売日は偶数月の5日です]</p></div>
+<div id="header" class="clearfix">
+<div id="logo_area">
+<h1 class="name-h1"><a href="/"><img src="/user_data/packages/golfstyle//img/header/logo.jpg" alt="Golf Style" /></a></h1>
+</div>
+<div class="RdmHeaderAd">
+<a href="http://www.golfstyle.co.jp/products/detail.php?product_id=369"><img src="/user_data/packages/golfstyle/img/banner/banner_2teiki.jpg" alt="お得な2年定期購読" /></a>
+</div><!--HeaderAdBanner end -->
+<div class="clearfix"></div>
+<div id="header_navi">
+<ul id="menu" class="menu">
+<li><a href="/" onmouseover="chgImg('/user_data/packages/golfstyle//img/header/hnavi_01_on.jpg','home');" onmouseout="chgImg('/user_data/packages/golfstyle//img/header/hnavi_01.jpg','home');"><img src="/user_data/packages/golfstyle//img/header/hnavi_01.jpg" alt="ホーム" name="home" id="home" /></a></li>
+<li><a href="/user_data/news.php" onmouseover="chgImg('/user_data/packages/golfstyle//img/header/hnavi_02_on.jpg','news');" onmouseout="chgImg('/user_data/packages/golfstyle//img/header/hnavi_02.jpg','news');"><img src="/user_data/packages/golfstyle//img/header/hnavi_02.jpg" alt="NEWS" name="news" id="news" /></a></li>
+<li><a href="/user_data/p-contents.php" onmouseover="chgImg('/user_data/packages/golfstyle//img/header/hnavi_03_on.jpg','pcontents');" onmouseout="chgImg('/user_data/packages/golfstyle//img/header/hnavi_03.jpg','pcontents');"><img src="/user_data/packages/golfstyle//img/header/hnavi_03.jpg" alt="Premium Contents"  name="pcontents" id="pcontents" /></a></li>
+<li><a href="/products/list.php" onmouseover="chgImg('/user_data/packages/golfstyle//img/header/hnavi_04_on.jpg','pshopping');" onmouseout="chgImg('/user_data/packages/golfstyle//img/header/hnavi_04.jpg','pshopping');"><img src="/user_data/packages/golfstyle//img/header/hnavi_04.jpg" alt="Premium Shopping"  name="pshopping" id="pshopping" /></a></li>
+<li><a href="/user_data/amateurgolf.php" onmouseover="chgImg('/user_data/packages/golfstyle//img/header/hnavi_05_on.jpg','agolf');" onmouseout="chgImg('/user_data/packages/golfstyle//img/header/hnavi_05.jpg','agolf');"><img src="/user_data/packages/golfstyle//img/header/hnavi_05.jpg" alt="Amateur Golf"  name="agolf" id="agolf" /></a></li>
+<li><img src="/user_data/packages/golfstyle//img/header/hnavi_06.jpg" alt="ホーム" /></li>
+<li><a href="/entry/kiyaku.php" onmouseover="chgImg('/user_data/packages/golfstyle//img/header/hnavi_07_on.jpg','h_entry');" onmouseout="chgImg('/user_data/packages/golfstyle//img/header/hnavi_07.jpg','h_entry');"><img src="/user_data/packages/golfstyle//img/header/hnavi_07.jpg" alt="ユーザー登録" name="h_entry" id="h_entry" /></a></li>
+<li><a href="/mypage/index.php" onmouseover="chgImg('/user_data/packages/golfstyle//img/header/hnavi_08_on.jpg','h_mypage');" onmouseout="chgImg('/user_data/packages/golfstyle//img/header/hnavi_08.jpg','h_mypage');"><img src="/user_data/packages/golfstyle//img/header/hnavi_08.jpg" alt="マイページ" name="h_mypage" id="h_mypage" /></a></li>
+</ul>
+</div><!--header_navi end -->
+<script type="text/javascript">
+// var dropdown=new TINY.dropdown.init("dropdown", {id:'menu', active:'menuhover'});
+</script>
+<div class="slider-wrapper theme-default">
+<div class="ribbon"></div>
+<div id="slide_area" class="nivoSlider">
+<a href="http://www.golfstyle.co.jp/products/detail.php?product_id=427"><img src="/user_data/packages/golfstyle/img/top/main_01.jpg" alt="image" /></a>
+<a href="http://www.golfstyle.co.jp/products/detail.php?product_id=427"><img src="/user_data/packages/golfstyle/img/top/main_02.jpg" alt="image" /></a>
+<img src="/user_data/packages/golfstyle/img/top/main_03.jpg" alt="image" />
+
+
+</div>
+<div id="ticker">
+<div class="msg"><span></span></div>
+<ul>
+<li><a href="/products/detail.php?product_id=427">Golf Style(ゴルフスタイル) Vol.84 2016.1月号好評発売中!</a></li>
+<li><a href="/products/detail.php?product_id=426">Golf Style(ゴルフスタイル) Vol.83 2015.11月号好評発売中!</a></li>
+<li><a href="/user_data/tsubuyaki/?p=14">ゴルフ・トップアマのつぶやきを限定公開中!!</a></li>
+</ul>
+</div>
+<div id="htmlcaption" class="nivo-html-caption">
+<strong>This</strong> is an example of a <em>HTML</em> caption with <a href="#">a link</a>.
+</div>
+</div>
+<script type="text/javascript">
+    $(window).load(function() {
+        $('#slide_area').nivoSlider({
+        pauseTime:500000,
+		animSpeed:500
+		/*
+		effect:"random",
+        slices:15,
+        boxCols:8,
+        boxRows:4,
+        animSpeed:500,
+        pauseTime:3000,
+        startSlide:0,
+        directionNav:true,
+        directionNavHide:true,
+        controlNav:true,
+        controlNavThumbs:false,
+        controlNavThumbsFromRel:true,
+        keyboardNav:true,
+        pauseOnHover:true,
+        manualAdvance:false
+		*/
+    });
+    });
+</script>
+<script language="JavaScript">
+$(function(){
+	var dispNum = 0;
+	$('#ticker ul, #ticker ul li').hide();
+	dispList();
+	function dispList() {
+		$('#ticker span').fadeOut(
+			700,
+			function(){
+				var liNum = $("#ticker ul li").size();
+				if(dispNum > (liNum-1)) {
+					dispNum = 0;
+				}
+				$(this).html($("#ticker ul li:eq("+dispNum+")").html()).fadeIn(700);
+				dispNum++;
+				if(1 <  liNum) {
+					setTimeout(dispList,4000);
+				}
+			}
+		);
+	}
+});
+</script>
+</div><!--header end -->
+</div>
+<!--▲HEADER-->        
+        <div id="container" class="clearfix">
+
+                        
+                        
+                <div 
+                                                id="two_maincolumn_left"
+                                        class="main_column"
+        >
+                                                            <!-- ▼(メインカラム)ウェブコラム告知@TOP -->
+                                            <div class="bloc_outer">
+<div id="welcome_area">
+<h2>Golf Style 編集部のウェブコラム Vol.14(2016.1.15)発行!! NEW!!</h2>
+<p class="morelink"><a href="/user_data/special/?cat=5">ウェブコラムへ&nbsp;<img src="http://www.golfstyle.co.jp/user_data/packages/golfstyle/img/background/arrow_more.jpg" /></a></p>
+<div class="bloc_body">
+<a href="http://www.golfstyle.co.jp/user_data/special/?cat=5"><img src="http://www.golfstyle.co.jp/wordpress/special/wp-content/uploads/2013/11/title_webcolumn.jpg" alt="Golf Style 編集部のウェブコラム" width="670" height="175" class="ImgLeft"></a>
+<a href="http://www.golfstyle.co.jp/user_data/special/?p=498"><img src="http://www.golfstyle.co.jp/wordpress/special/wp-content/uploads/2016/01/title_vol14.jpg" alt="Vol.14 :: 次は何がくる〜!? [2016年モデル]PGAツアーハワイシリーズで見つけた、気になるギア!!" width="670" class="ImgLeft"></a>
+<h4 class="NewsListTitle">Golf Style編集部がお届けする「編集部のウェブコラム」 Vol.14発行!!</h4>
+<p class="NewsListText">
+ツアーのこぼれネタ、編集部いち押し情報から取材の裏側などなど、ゴルフスタイルならではの目線で皆様に新情報をお届けします！
+<br />
+2016.1.15: <a href="http://www.golfstyle.co.jp/user_data/special/?p=498">Vol.14 :: 次は何がくる〜!? [2016年モデル]PGAツアーハワイシリーズで見つけた、気になるギア!!</a><font color="#FF0000">NEW!!</font>
+2015.11.1: <a href="http://www.golfstyle.co.jp/user_data/special/?p=484">Vol.13 :: 次は何がくる〜!? [2016年モデル]ギアの傾向を分析してみました!</a>
+<br />
+2015.9.1: <a href="http://www.golfstyle.co.jp/user_data/special/?p=472">Vol.12 ::2015日本アマ優勝・金谷 拓実「勝者の足跡」 公開!!</a>
+<br />
+2015.7.1: <a href="http://www.golfstyle.co.jp/user_data/special/?p=426">Vol.11 ::「気になるクラブ、見つけました!」 公開!!</a>
+<br />
+2015.5.1: <a href="http://www.golfstyle.co.jp/user_data/special/?p=356">Vol.10 :: PGA TOUR 2014-15シーズン 勝者のクラブセッティング </a>
+<br />
+2015.3.1: <a href="http://www.golfstyle.co.jp/user_data/special/?p=338">Vol.9 :: PGAツアープロの「スイングスロームービー」 </a> 
+<br />
+2015.1.1: <a href="http://www.golfstyle.co.jp/user_data/special/?p=322">Vol.8 :: 数値を参考にする最新の弾道の作り方「谷原秀人の弾道」</a>
+<br />
+2014.11.7: <a href="http://www.golfstyle.co.jp/user_data/special/?p=283">Vol.7 :: じっくりスイングを見るだけで、なるほどのヒントが見えてくる!</a>
+<br />
+2014.9.1: <a href="http://www.golfstyle.co.jp/user_data/special/?p=228">Vol.6 :: 2014日本アマ優勝・小木曽 喬「勝者の足跡」</a>
+<br />
+2014.7.1: <a href="http://www.golfstyle.co.jp/user_data/special/?p=221">Vol.5 :: ツアープロの傾向が分かる! 「THE 平均値」</a>
+<br />
+2014.5.1: <a href="http://www.golfstyle.co.jp/user_data/special/?p=172">Vol.4 :: 2014 PGAツアー ギアランキング発表!!「今年のギアの傾向は!? トッププロたちの人気ギアを探る」</a>
+
+<br />
+2014.3.1: <a href="http://www.golfstyle.co.jp/user_data/special/?p=157">Vol.3 :: スイング中のゴルフシューズの動きって見たことあります?</a>
+
+<br />
+2014.1.1: <a href="http://www.golfstyle.co.jp/user_data/special/?p=104">Vol.2 :: GS最新号Vol.73の取材ネタ、ちょっと見せます! 〜ニューイヤーはニューモデルが続々と・・・</a>
+
+<br />
+2013.11.1: <a href="http://www.golfstyle.co.jp/user_data/special/?p=42">Vol.1 :: ボールの"打球音"って気にする!? 
+[動画で見るインパクト音の違い・ウレタンボール20機種徹底試打]</a>
+</p>
+<p class="clearfix"></p>
+<p class="NewsListLink"><a href="/user_data/special/?cat=5">＞&nbsp;詳しい内容はこちら</a></p>
+</div>
+<div class="bloc_footer"></div>
+</div>
+
+
+
+</div>                                        <!-- ▲(メインカラム)ウェブコラム告知@TOP -->
+                                    <!-- ▼(メインカラム)増刊号のお知らせ -->
+                                            <div class="bloc_outer">
+<div id="welcome_area">
+<h2>Golf Style(ゴルフスタイル) Vol.84 2016.1号・増刊[2015年12月19日(土)発売!!]</h2>
+<div class="bloc_body">
+<a href="http://www.golfstyle.co.jp/products/detail.php?product_id=428">
+<img src="http://www.golfstyle.co.jp/user_data/packages/golfstyle/img/news/golfstyle_201601z.jpg" width="220" style="float:left; margin-right:20px;" />
+</a>
+<p class="NewsListText">
+Golf Style(ゴルフスタイル) 1月号増刊・絶賛発売中!!<br />
+<br />
+2015日本ミッドアマゴルフ選手権 出場全132名のクラブ&スイング<br />
+優勝 豊島豊<br />
+悲願。自分のプレースタイルを貫き、手にした初の日本タイトル<br />
+<br />
+2015日本ミッドアマ アラカルト<br />
+<br />
+発表! 2015日本ミッドアマ ギアランキング</p>
+<p class="clearfix"></p>
+<p class="NewsListLink"><a href="http://www.golfstyle.co.jp/products/detail.php?product_id=428" >＞&nbsp;今すぐ購入ページへ</a></p>
+</div>
+<div class="bloc_footer"></div>
+</div>
+
+
+
+</div>                                        <!-- ▲(メインカラム)増刊号のお知らせ -->
+                                    <!-- ▼メインボックス(お詫び) -->
+                                            <div class="bloc_outer">
+<div id="welcome_area">
+<h2>お詫びと訂正</h2>
+<div class="bloc_body">
+<p class="NewsListText">
+ゴルフスタイル1月号増刊「日本ミッドアマゴルフ選手権」の内容に誤りがありました。内容は下記の通りです。<br />
+<br />
+[P86左下の写真キャプション]
+<br /><br />
+（誤）<br />福井発の工房「ゴルフスタジオGN」。愛用者は原田英明さん（50歳）。<br />
+（正）<br />愛用者は愛知県名古屋市名東区にあるカスタムショップ「ゴルフマイスター」のオーナー原田英明さん（50歳）。<br />
+<br /><br />
+[P38星健太さんのプロフィール文]
+<br /><br />
+（誤）富士大学　（正）東北学院大学<br />
+<br />
+（誤）・・・念願の全国大会出場　（正）03年の日本ジュニア以来２度目のJGA競技出場<br />
+<br /><br />
+読者の皆様、並びに選手、関係各位にご迷惑をお掛けいたしましたことをお詫びするとともに、ここに訂正させていただきます。</p>
+</div>
+<div class="bloc_footer"></div>
+</div>
+</div>                                        <!-- ▲メインボックス(お詫び) -->
+                                    <!-- ▼メインボックス(電子書籍お知らせ) -->
+                                            <div class="bloc_outer">
+<div id="welcome_area">
+<h2>【電子書籍版】ゴルフスタイル NEW!!</h2>
+<div class="bloc_body">
+<a href="http://honto.jp/ebook/pd_27618551.html" target="_blank">
+<img src="http://www.golfstyle.co.jp/user_data/packages/golfstyle/img/news/denshi1311.jpg" width="170" style="float:left; margin-right:20px;" />
+</a>
+<h4 class="NewsListTitle">【電子書籍版】ゴルフスタイル Vol.84 2016.1号が絶賛販売中!! </h4>
+<p class="NewsListText">
+スマホ、タブレットはもちろん、PC版まで!!
+ゴルフスタイルは電子書籍版でもお買い求め頂けます!!
+いつでもどこでも最新のゴルフスタイルをお楽しみ下さい!!
+</p>
+<p class="clearfix"></p>
+<p class="NewsListLink"><a href="http://honto.jp/ebook/pd_27618551.html" target="_blank" >＞&nbsp;今すぐ電子書籍版ゴルフスタイルをGET!!</a></p>
+</div>
+<div class="bloc_footer"></div>
+</div>
+
+
+
+</div>                                        <!-- ▲メインボックス(電子書籍お知らせ) -->
+                                    <!-- ▼(メインカラム)最新号発売情報掲載箇所 -->
+                                            <div class="bloc_outer">
+<div id="welcome_area">
+<h2>Golf Style(ゴルフスタイル) Vol.84 2016.1号は12月5日(土)発売!!</h2>
+<div class="bloc_body">
+<a href="http://www.golfstyle.co.jp/products/detail.php?product_id=427">
+<img src="http://www.golfstyle.co.jp/user_data/packages/golfstyle/img/news/golfstyle_201601.jpg" width="220" style="float:left; margin-right:20px;" />
+</a>
+<p class="NewsListText">
+アメリカ・チャンピオンズツアー往年の名プレーヤー31名のセッティング公開!<br />
+<br />
+女子ツアーを支えるイボミの人気と偉業<br />
+日本シニアアマ出場全選手のクラブ&スイング<br />
+日本ツアーアラカルト2015最終章</p>
+<p class="clearfix"></p>
+<p class="NewsListLink"><a href="http://www.golfstyle.co.jp/products/detail.php?product_id=427" >＞&nbsp;今すぐ購入ページへ</a></p>
+<p class="link"><a href="http://honto.jp/ebook/pd_27618551.html" target="_blank">>&nbsp;電子書籍版はこちら</a></p>
+</div>
+<div class="bloc_footer"></div>
+</div>
+
+
+
+</div>                                        <!-- ▲(メインカラム)最新号発売情報掲載箇所 -->
+                                    <!-- ▼メインボックス(アマチュアDB) -->
+                                            <div class="bloc_outer">
+<div id="welcome_area">
+<h2>アマチュア競技データベース</h2>
+<div class="bloc_body">
+<a href="/user_data/amateur/tournament.php?tournament_id=4">
+<img src="http://www.golfstyle.co.jp/user_data/amateur/images/tournament/4.jpg" alt="Golf Style alacarte" width="190" class="ImgLeft">
+</a>
+<h4 class="NewsListTitle">アマチュア競技データベース(2013日本アマ号)公開!!</h4>
+<p class="NewsListText">
+Golf Style WEB新コンテンツ、アマチュア競技データベースに2013年度版アーカイブが追加されました!!<br />
+これまでの2011、2012、2014年度に併せて4年分の出場選手分の成績、使用クラブ、連続写真(再生機能付き)が閲覧可能です!!<br />
+さらに、今後追加される最新2015年版にもご期待ください!!</p>
+<p class="clearfix"></p>
+<p class="NewsListLink"><a href="/user_data/amateur/tournament.php?tournament_id=5">「2014年度日本アマチュアゴルフ選手権」選手データベースへ</a></p>
+<p class="NewsListLink"><font color="ff0000">NEW!!</font> <a href="/user_data/amateur/tournament.php?tournament_id=4">「2013年度日本アマチュアゴルフ選手権」選手データベースへ</a></p>
+<p class="NewsListLink"><a href="/user_data/amateur/tournament.php?tournament_id=1">「2012年度日本アマチュアゴルフ選手権」選手データベースへ</a></p>
+<p class="NewsListLink"><a href="/user_data/amateur/tournament.php?tournament_id=3">「2011年度日本アマチュアゴルフ選手権」選手データベースへ</a></p>
+</div>
+<div class="bloc_footer"></div>
+</div></div>                                        <!-- ▲メインボックス(アマチュアDB) -->
+                                    <!-- ▼(メインカラム)グローブ販売案内 -->
+                                            <div class="bloc_outer">
+<div id="welcome_area">
+<h2>Gsオリジナル 最高級シープスキングローブが大好評!! NEW!!</h2>
+<p class="morelink"><a href="http://www.golfstyle.co.jp/products/detail.php?product_id=418">購入ページへ&nbsp;<img src="http://www.golfstyle.co.jp/user_data/packages/golfstyle/img/background/arrow_more.jpg" /></a></p>
+<div class="bloc_body">
+<a href="http://www.golfstyle.co.jp/products/detail.php?product_id=418"><img src="/user_data/packages/golfstyle//img/news/image_glove.jpg" /></a>
+<br /><br />
+<h4 class="NewsListTitle">2年購読でゲット! それとも、まとめ買いでお得にゲット!<br />
+GSオリジナルシープスキングローブが大好評!!</h4>
+<p class="NewsListText">
+AAキャブレッタレザー採用グローブ! アスリート御用達のオリジナルグッズ「第3弾! GSオリジナル・シープスキングローブ」が大好評を頂いております。<br>
+厳選した最高級羊革素材に独自の特殊加工を施すことにより極上のフィット感を達成。従来の天然皮革グローブに比べ、高いグリップ力と耐久性を合わせ持つキャブレッタレザーグローブです。<br>
+<br>
+●素材: キャブレッタ・シープスキン(最高級羊革) AAグレード<br>
+●サイズ: 21,22,23,24,25cm(左手用 ※右利き用のみ)<br>
+<br>
+<a href="http://www.golfstyle.co.jp/products/detail.php?product_id=369">&gt; 2年定期購読お申し込みでもれなくプレゼント!!</a><br>
+<a href="http://www.golfstyle.co.jp/products/detail.php?product_id=418">&gt; 単品・[お得な]セット販売も開始致しました!!</a><br>
+</p>
+</div>
+<div class="bloc_footer"></div>
+</div>
+
+
+
+</div>                                        <!-- ▲(メインカラム)グローブ販売案内 -->
+                                        
+                         <!-- 
+<div id="main_image"></div>
+-->            
+                                                            <!-- ▼メインボックス(オススメ!!) -->
+                                            <div class="bloc_outer">
+<div id="welcome_area">
+<h2>オススメ!!</h2>
+<p class="morelink"><a href="/user_data/news.php">Newsトップへ&nbsp;<img src="http://www.golfstyle.co.jp/user_data/packages/golfstyle/img/background/arrow_more.jpg" /></a></p>
+<div class="bloc_body">
+<a href="https://itunes.apple.com/jp/app/golfstylepafekutosuingukatarogu/id581159767?mt=8" target="_blank"><img src="http://www.golfstyle.co.jp/user_data/packages/golfstyle/img/news/apli01.jpg" alt="今すぐアプリをダウンロード" width="150" style="float:left; margin-right:25px;" /></a>
+<h4 class="NewsListTitle">これぞ別冊Golf Style!! iPhone用アプリが新登場!!</h4>
+<p class="NewsListText">
+Golf Styleが長年にわたり取材し続けたプロ、アマチュアのスイング連続写真をスマートフォンでご覧頂けます。<br />
+最新のスイング理論に基づいたスイングから超個性派のスイングまで、一挙に見られるゴルフファン必携のアプリです。<br />
+■本アプリの特長<br />
+・スワイプ動作による画像のコマ送りが可能<br />
+・再生スライダーにより柔軟な再生コントロール<br />
+・身長順ソート機能により、ユーザーと体格の近い選手を簡単に見つけられます。
+<br class="clear" />
+今すぐお試し下さい!!<br />
+<a href="https://itunes.apple.com/jp/app/golfstylepafekutosuingukatarogu/id581159767?mt=8" target="_blank"><img src="http://www.golfstyle.co.jp/user_data/packages/golfstyle/img/banner/appstore.jpg" alt="今すぐアプリをダウンロード" /></a>
+<br />アンドロイド版もリリース予定です!
+</p>
+<p class="clearfix"></p>
+<p class="NewsListLink"><a href="/products/detail.php?product_id=408">＞&nbsp;詳しい内容はこちら</a></p>
+</div>
+<div class="bloc_footer"></div>
+</div>
+</div>                                        <!-- ▲メインボックス(オススメ!!) -->
+                                    <!-- ▼(メインカラム)Topics & Recommended -->
+                                            <div class="bloc_outer">
+<div id="topics_area">
+<h2>Topics</h2>
+<div class="bloc_body">
+<ul>
+<li>2016.1.15:<br />
+<a href="http://www.golfstyle.co.jp/user_data/special/?p=498">次は何がくる〜!? [2016年モデル]PGAツアーハワイシリーズで見つけた、気になるギア!!</a></li>
+<li>2015.12.5:<br />
+<a href="http://www.golfstyle.co.jp/products/detail.php?product_id=427">CHAMPIONS TOUR 往年の名プレーヤー31名の“最新”クラブセッティング!!。ゴルフスタイル Vol.84 2016.1号は12月5日(土)発売!</a></li>
+<li>2015.11.1:<br />
+<a href="http://www.golfstyle.co.jp/user_data/special/?p=484">Golf Style編集部がお届けする「編集部のウェブコラム」Vol.13 :: 次は何がくる〜!? [2016年モデル]ギアの傾向を分析してみました!</a></li>
+<li>2015.10.5:<br />
+<a href="http://www.golfstyle.co.jp/products/detail.php?product_id=426">「プロユースモデル14年の軌跡」ゴルフスタイル Vol.83 2015.11号は10月5日(月)発売!</a></li>
+<li>2015.7.24:<br />
+<a href="http://www.golfstyle.co.jp/user_data/amateur/tournament.php?tournament_id=4">「2013年度日本アマチュアゴルフ選手権」選手別成績・使用クラブデータベースが公開されました!!</a></li>
+</ul>
+</div>
+<div class="bloc_footer"></div>
+</div>
+
+<div id="recommened_area">
+<h2>Recommended</h2>
+<p class="morelink"><a href="/user_data/news.php">さらに詳しく&nbsp;<img src="http://www.golfstyle.co.jp/user_data/packages/golfstyle/img/background/arrow_more.jpg" /></a></p>
+<div class="bloc_body">
+
+<div class="bloc_contents" style="margin-bottom:20px;"> <a href="http://www.golfstyle.co.jp/user_data/amateur/tournament.php?tournament_id=4"><img src="http://www.golfstyle.co.jp/user_data/amateur/images/tournament/4.jpg" alt="アマチュア競技データベース" width="130" style="float:left; margin-right:10px;" /></a>
+<h4 class="NewsListTitle"><img src="/user_data/packages/golfstyle//img/background/arrow_bkwh_7.jpg" />&nbsp;Golf Style WEB新コンテンツ、アマチュア競技データベース!! </h4>
+<p class="NewsListText">Golf Style WEBのイチオシコンテンツ、アマチュア競技データベース「日本アマ2013年」版の選手別成績データベースが公開されました!!  今現在データベース化されているのは、最新の「2014年度」「2013年度」「2012年度」「2011年度」4年分の日本アマチュアゴルフ選手権出場選手の成績、使用クラブ、連続写真(再生機能付き)となっております。<br>
+
+<a href="http://www.golfstyle.co.jp/user_data/amateur/tournament.php?tournament_id=5">&gt; 「2014年度日本アマチュアゴルフ選手権」選手データベースへ</a><br>
+<a href="http://www.golfstyle.co.jp/user_data/amateur/tournament.php?tournament_id=4">&gt; 「2013年度日本アマチュアゴルフ選手権」選手データベースへ</a> <font color="#FF0000">NEW!!</font><br>
+<a href="http://www.golfstyle.co.jp/user_data/amateur/tournament.php?tournament_id=1">&gt; 「2012年度日本アマチュアゴルフ選手権」選手データベースへ</a><br>
+<a href="http://www.golfstyle.co.jp/user_data/amateur/tournament.php?tournament_id=3">&gt; 「2011年度日本アマチュアゴルフ選手権」選手データベースへ</a>
+</p>
+<div class="clearfix"></div>
+</div>
+
+<div class="bloc_contents" style="margin-bottom:20px;"> <a href="http://www.golfstyle.co.jp/user_data/alacarte/"><img src="http://www.golfstyle.co.jp/wordpress/tsubuyaki/wp-content/uploads/2012/04/thumb_alacarte.jpg" alt="ゴルフスタイル:アラカルト(ブログ)更新中!!" width="130" style="float:left; margin-right:10px;" /></a>
+<h4 class="NewsListTitle"><img src="/user_data/packages/golfstyle//img/background/arrow_bkwh_7.jpg" />&nbsp;ゴルフスタイル:アラカルト(ブログ)更新中!!</h4>
+<p class="NewsListText">Golf Style編集部がお届けする「Golf Style alacarte(ゴルフスタイル アラカルト)」  ゴルフスタイル編集部が、小ネタから超レアネタまで、Golf Style Web限定でお届けする最新情報! 取材先からの生情報も!! 随時更新中!!!<br>
+<a href="http://www.golfstyle.co.jp/user_data/alacarte/">&gt; 今すぐアラカルト(ブログ)へGo!</a></p>
+<div class="clearfix"></div>
+</div>
+</div>
+<div class="bloc_footer"></div>
+</div>
+<div class="clearfix"></div>
+</div>                                        <!-- ▲(メインカラム)Topics & Recommended -->
+                                    <!-- ▼おすすめ商品 -->
+                                            
+<div class="bloc_outer clearfix">
+
+<div id="premiumshopping_area">
+    <h2>GS PremiumShopオススメ</h2>
+	<p class="morelink"><a href="/products/list.php">Shopトップへ&nbsp;<img src="http://www.golfstyle.co.jp/user_data/packages/golfstyle/img/background/arrow_more.jpg" /></a></p>
+    <div class="bloc_body clearfix">
+            <div class="bloc_product clearfix">
+            <div class="productImage">
+                <a href="/products/detail.php?product_id=427">
+                    <img src="/resize_image.php?image=12010029_565c6b73b7ac2.jpg&amp;width=140" alt="Golf Style(ゴルフスタイル) Vol.84 2016.1号" /></a>
+            </div>
+            <div class="productContents">
+                <h3>
+                    <a href="/products/detail.php?product_id=427"><img src="/user_data/packages/golfstyle//img/background/arrow_bkwh_7.jpg" />&nbsp;Golf Style(ゴルフスタイル) Vol.84 2016.1号</a>
+                </h3>
+                <!--★メーカー名★-->
+                <!-- <p class="maker_name mini" style="color:#000">メーカー::</p> -->
+                <p class="mini comment">CHAMPIONS TOUR 往年の名プレーヤー31名の“最新”クラブセッティング!!<br />
+日本シニアアマ出場全選手のクラブ&スイング</p>
+            </div>
+        </div>
+
+        <div class="bloc_product clearfix">
+            <div class="productImage">
+                                
+                <a href="/products/detail.php?product_id=369">
+                <img src="/resize_image.php?image=04052026_533fe872b9e68.jpg&amp;width=140" alt="ゴルフスタイル-定期購読【2年】" /></a>
+            </div>
+            <div class="productContents">
+                <h3>
+                    <a href="/products/detail.php?product_id=369"><img src="/user_data/packages/golfstyle//img/background/arrow_bkwh_7.jpg" />&nbsp;ゴルフスタイル-定期購読【2年】</a>
+                </h3>
+<!--★メーカー名★-->
+                <!-- <p class="maker_name mini" style="color:#000">メーカー::</p> -->
+                <p class="mini comment">2年定期購読販売開始! GOLF STYLEオリジナルグローブをもれなくプレゼント!!</p>
+                            </div>
+        </div>
+            <div class="bloc_product clearfix">
+            <div class="productImage">
+                <a href="/products/detail.php?product_id=367">
+                    <img src="/resize_image.php?image=04161759_4f8bdf862777a.jpg&amp;width=140" alt="トップアマのつぶやき" /></a>
+            </div>
+            <div class="productContents">
+                <h3>
+                    <a href="/products/detail.php?product_id=367"><img src="/user_data/packages/golfstyle//img/background/arrow_bkwh_7.jpg" />&nbsp;トップアマのつぶやき</a>
+                </h3>
+                <!--★メーカー名★-->
+                <!-- <p class="maker_name mini" style="color:#000">メーカー::</p> -->
+                <p class="mini comment">全国のトップアマの生の声。どうぞごゆっくりお楽しみください。</p>
+            </div>
+        </div>
+
+        <div class="bloc_product clearfix">
+            <div class="productImage">
+                                
+                <a href="/products/detail.php?product_id=368">
+                <img src="/resize_image.php?image=04161546_4f8bc03512a39.jpg&amp;width=140" alt="ゴルフスタイル-定期購読【1年】※パターカバー付き" /></a>
+            </div>
+            <div class="productContents">
+                <h3>
+                    <a href="/products/detail.php?product_id=368"><img src="/user_data/packages/golfstyle//img/background/arrow_bkwh_7.jpg" />&nbsp;ゴルフスタイル-定期購読【1年】※パターカバー付き</a>
+                </h3>
+<!--★メーカー名★-->
+                <!-- <p class="maker_name mini" style="color:#000">メーカー::</p> -->
+                <p class="mini comment">年間定期購読(毎号をお客様ご希望の場所にお届けします。)<br />
+送料・代引手数料無料で大変お得です。<br />
+素敵なプレゼントもございます!</p>
+                            </div>
+        </div>
+        </div>
+    <div class="bloc_footer"></div>
+</div>
+</div>
+
+                                        <!-- ▲おすすめ商品 -->
+                                                </div>
+        
+                            <div id="rightcolumn" class="side_column">
+                                                    <!-- ▼ログイン -->
+                                            <div class="bloc_outer">
+    <div id="login_area">
+        <h2>ログイン</h2>
+        <form name="login_form" id="login_form" method="post" action="http://www.golfstyle.co.jp/frontparts/login_check.php" onsubmit="return fnCheckLogin('login_form')">
+            <input type="hidden" name="transactionid" value="165ec4ae53f5f5126c250d8961e5e9affc4175f9" />
+            <input type="hidden" name="mode" value="login" />
+            <input type="hidden" name="url" value="/index.php" />
+            <div class="bloc_body">
+                                    <dl class="formlist">
+                        <dt>メールアドレス</dt>
+                        <dd>
+                            <input type="text" name="login_email" class="box270" value="" style="ime-mode: disabled;" />
+                        </dd>
+                        <dd class="mini">
+                            <input type="checkbox" name="login_memory" id="login_memory" value="1"  />
+                            <label for="login_memory"><span>コンピューターに記憶する</span></label>
+                        </dd>
+                    </dl>
+                    <dl class="formlist">
+                        <dt class="password">パスワード</dt>
+                        <dd><input type="password" name="login_pass" class="box270" /></dd>
+                        <dd class="mini">
+                        <a href="http://www.golfstyle.co.jp/forgot/" onclick="win01('http://www.golfstyle.co.jp/forgot/','forget','600','400'); return false;" target="_blank">パスワードを忘れた方はこちら</a>
+                        </dd>
+                    </dl>
+                    <p class="btn">
+                        <input type="image" onmouseover="chgImgImageSubmit('/user_data/packages/golfstyle/img/button/btn_bloc_login_on.jpg',this)" onmouseout="chgImgImageSubmit('/user_data/packages/golfstyle/img/button/btn_bloc_login.jpg',this)" src="/user_data/packages/golfstyle/img/button/btn_bloc_login.jpg" alt="ログイン" />
+						<a href="/entry/kiyaku.php" onmouseover="chgImg('/user_data/packages/golfstyle/img/button/btn_bloc_newuser_on.jpg','entry');" onmouseout="chgImg('/user_data/packages/golfstyle/img/button/btn_bloc_newuser.jpg','entry');"><img src="/user_data/packages/golfstyle/img/button/btn_bloc_newuser.jpg" alt="ユーザー登録" name="entry" id="entry" /></a>                        
+                    </p>
+                            </div>
+        </form>
+        <div class="bloc_footer"></div>
+    </div>
+</div>
+                                        <!-- ▲ログイン -->
+                                    <!-- ▼(サイドボックス)最新号発売情報箇所 -->
+                                            <div class="bloc_outer">
+<div class="white ad_area">
+<h2>最新号 Vol.84 12月5日発売!!</h2>
+<div class="bloc_body">
+<a href="/products/detail.php?product_id=427">
+<img src="http://www.golfstyle.co.jp/user_data/packages/golfstyle/img/news/golfstyle_201601.jpg" width="100" style="float:left; margin-right:10px;" /></a>
+<h4>Golf Style(ゴルフスタイル) Vol.84 2016.1号</h4>
+<p>
+CHAMPIONS TOUR 往年の名プレーヤー31名の“最新”クラブセッティング!!
+</p>
+<p class="link"><a href="/products/detail.php?product_id=427">＞&nbsp;さらに詳しく</a></p>
+<p class="link"><a href="http://honto.jp/ebook/pd_27618551.html" target="_blank">>&nbsp;電子書籍版はこちら</a></p>
+<div class="clearfix"></div>
+</div>
+<div class="bloc_footer"></div>
+<!--white ad_area end --></div>
+<!--bloc_outer end --></div>
+<!--
+<a href="http://www.facebook.com/pages/Golf-Style-ゴルフスタイル/235024966531208" target="_blank"><img src="http://www.golfstyle.co.jp/user_data/packages/golfstyle/img/banner/icon_fb.jpg" alt="ゴルフスタイルのFacebookページへ" class="FBIcon" /></a> -->
+<div class="clearfix"></div>                                        <!-- ▲(サイドボックス)最新号発売情報箇所 -->
+                                    <!-- ▼Facebookウィジット -->
+                                            <div class="bloc_outer">
+<div class="white ad_area">
+<h2>ゴルフスタイル:Facebookページ</h2>
+<div class="bloc_body">
+<iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fgolfstylejp&amp;width=300&amp;height=558&amp;colorscheme=light&amp;show_faces=true&amp;header=false&amp;stream=true&amp;show_border=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:558px;" allowTransparency="true"></iframe>
+<div class="clearfix"></div>
+</div>
+<div class="bloc_footer"></div>
+<!--white ad_area end --></div>
+<!--bloc_outer end --></div>
+<div class="clearfix"></div>                                        <!-- ▲Facebookウィジット -->
+                                    <!-- ▼カテゴリ -->
+                                            <script type="text/javascript">//<![CDATA[
+    $(function(){
+        $('#category_area li.level1:last').css('border-bottom', 'none');
+    });
+//]]>
+</script>
+<div class="bloc_outer">
+    <div id="category_area">
+        <div class="bloc_body">
+            <h2>PremiumShop商品カテゴリー</h2>
+            <ul id="categorytree"><li class="level1"><p><a href="/products/list.php?category_id=24">ゴルフ用品(1)</a></p></li><li class="level1"><p><a href="/products/list.php?category_id=22">本(60)</a></p></li></ul>
+        </div>
+    </div>
+</div>
+                                        <!-- ▲カテゴリ -->
+                                    <!-- ▼(サイドボックス)メーカーバナー -->
+                                            <div class="bloc_outer">
+<div id="login_area">
+<h2>メーカーサイトリンク</h2>
+<table width="300" border="0" cellspacing="0" cellpadding="0" class="MBanner">
+<tr>
+<td class="MBannerL"><a href="http://www.akira-products.co.jp/" target="_blank"><img src="/user_data/packages/golfstyle/img/banner/banner_akira.jpg" alt="AKIRA" width="145" /></a></td>
+<td class="MBannerR"><a href="http://www.alohastandard.com/index.html" target="_blank"><img src="/user_data/packages/golfstyle/img/banner/banner_aloha.jpg" alt="Aloha Standard" width="145" /></a></td>
+</tr>
+<tr>
+<td class="MBannerL"><a href="http://www.asahigolf.co.jp/" target="_blank"><img src="/user_data/packages/golfstyle/img/banner/banner_asahi.jpg" alt="ASAHI GOLF" width="145" /></a></td>
+<td class="MBannerR"><a href="http://www.ustmamiya.jp/home.html" target="_blank"><img src="/user_data/packages/golfstyle/img/banner/banner_UST-mamiya.jpg" alt="UST Mamiya" width="145" /></a></td>
+</tr>
+<tr>
+<td class="MBannerL"><a href="http://golf.dunlop.co.jp/" target="_blank"><img src="/user_data/packages/golfstyle/img/banner/banner_dunlop.jpg" alt="DUNLOP" width="145" /></a></a></td>
+<td class="MBannerR"><a href="http://www.footjoy.jp/" target="_blank"><img src="/user_data/packages/golfstyle/img/banner/banner_footjoy.jpg" alt="FootJoy" width="145" /></a></td>
+</tr>
+
+
+
+<tr>
+<td class="MBannerL"><a href="http://www.fourteen.co.jp/" target="_blank"><img src="/user_data/packages/golfstyle/img/banner/banner_fourteen.jpg" alt="Fourteen" width="145" /></a></td>
+<td class="MBannerR"><a href="http://www.fujikurashaft.jp/" target="_blank"><img src="/user_data/packages/golfstyle/img/banner/banner_fujikura.jpg" alt="Fujikura" width="145" /></a></td>
+</tr>
+<tr>
+<td class="MBannerL"><a href="http://www.gd-inc.co.jp/" target="_blank"><img src="/user_data/packages/golfstyle/img/banner/banner_graphite.jpg" alt="GRAPHITE DESIGN" width="145" /></a></td>
+<td class="MBannerR"><a href="http://mitsubishirayongolf.com/" target="_blank"><img src="/user_data/packages/golfstyle/img/banner/banner_mitsubishi.jpg" alt="MITSUBISHI RAYON" width="145" /></a></td>
+</tr>
+<tr>
+<td class="MBannerL"><a href="http://www.olympic-co-ltd.jp/golf/index.html" target="_blank"><img src="/user_data/packages/golfstyle/img/banner/banner_olympic.jpg" alt="OLYMPIC" width="145" /></a></td>
+<td class="MBannerR"><a href="http://onoff.globeride.co.jp/" target="_blank"><img src="/user_data/packages/golfstyle/img/banner/banner_onoff.jpg" alt="ONOFF" width="145" /></a></td>
+</tr>
+<tr>
+<td class="MBannerL"><a href="http://www.prgr-golf.com/" target="_blank"><img src="/user_data/packages/golfstyle/img/banner/banner_prgr.jpg" alt="PRGR" width="145" /></a></td>
+<td class="MBannerR"><a href="http://www.syb-golf.com/" target="_blank"><img src="/user_data/packages/golfstyle/img/banner/banner_syb.jpg" alt="SYB" width="145" /></a></td>
+</tr>
+<tr>
+<td class="MBannerL"><a href="http://www.titleist.co.jp/" target="_blank"><img src="/user_data/packages/golfstyle/img/banner/banner_titleist.jpg" alt="Titleist" width="145" /></a></td>
+<td class="MBannerR"><a href="http://www.yes-golf.jp/" target="_blank"><img src="/user_data/packages/golfstyle/img/banner/banner_tourstriker.jpg" alt="TOUR STRIKER" width="145" /></a></td>
+</tr>
+
+</table>
+</div>
+</div>                                        <!-- ▲(サイドボックス)メーカーバナー -->
+                                    <!-- ▼(サイドボックス)300px横長バナーエリア -->
+                                            <div class="bloc_outer" >
+<a href="http://www.ced-g.com/red/index.html" target="_blank"><img src="/user_data/packages/golfstyle/img/banner/hx_banner.jpg" width="300" class="SideBanner" alt="HUMP BACK LONGIRON" /></a>
+<a href="http://www.golfpartner.co.jp/html/gpcom/" target="_blank"><img src="/user_data/packages/golfstyle/img/banner/gp_banner.jpg" width="300" class="SideBanner" /></a>
+<a href="http://www.gew.co.jp/" target="_blank"><img src="/user_data/packages/golfstyle/img/banner/gew_banner.jpg" width="300" class="SideBanner" /></a>
+</div>                                        <!-- ▲(サイドボックス)300px横長バナーエリア -->
+                                            </div>
+                
+                        
+    </div>
+    
+                <!--▼FOOTER-->
+<div id="footer_wrap">
+<div id="footer" class="clearfix">
+<div class="pagetop"><a href="#">&brvbar; ページトップへ</a></div>
+<div id="footerArea01">
+<a href="../index.html"TOP</a>
+ &brvbar; <a href="/abouts/index.php">会社概要/広告掲載のご案内</a>
+ &brvbar; <a href="/order/index.php">特定商取引法の記載</a>
+  &brvbar; <a href="/guide/privacy.php">プライバシーポリシー</a>
+ &brvbar; <a href="/contact/index.php">お問い合わせ</a>
+ &brvbar; 
+<!--footerArea01 end --></div>
+<address id="copyright">
+Copyright &copy; GOLF STYLE Inc. All rights reserved.
+</address>
+<!--footer end --></div>
+</div>
+</div>
+<!--▲FOOTER-->                    </div>
+</body><!-- ▲BODY部 エンド -->
+</html>

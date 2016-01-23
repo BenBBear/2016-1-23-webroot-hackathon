@@ -1,0 +1,1647 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="google-site-verification" content="6FEPU2PGELnSouGDn6Wiu5edokdeYRWF4UdMThX7UZw" />
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<title>韓国旅行 おすすめ「リアリー」</title>
+<meta name="description" content="韓国旅行、ソウル旅行おすすめの情報満載。韓国・ソウルのグルメ・エステの紹介と予約、チケット代行、韓国観光名所や韓国通訳の紹介。割引クーポンも満載。" />
+<meta name="keywords" content="韓国旅行,韓国旅行おすすめ,韓国観光,韓国チケット代行" />
+
+<link rel="stylesheet" href="/common/css/basic.css;jsessionid=8101D0BB1A2D9C1DA9E0133927224B0B" />
+<link rel="stylesheet" href="/common/css/jquery-ui.min.css;jsessionid=8101D0BB1A2D9C1DA9E0133927224B0B" />
+<link rel="stylesheet" href="/common/css/jquery.timepicker.css;jsessionid=8101D0BB1A2D9C1DA9E0133927224B0B" />
+
+<script src="/common/js/jquery-1.11.1.min.js;jsessionid=8101D0BB1A2D9C1DA9E0133927224B0B"></script>
+<script src="/common/js/basic.js;jsessionid=8101D0BB1A2D9C1DA9E0133927224B0B"></script>
+<script src="/common/js/jquery-ui.min.js;jsessionid=8101D0BB1A2D9C1DA9E0133927224B0B"></script>
+
+<script src="/common/js/jquery.timepicker.min.js;jsessionid=8101D0BB1A2D9C1DA9E0133927224B0B"></script>
+
+ 
+ 
+
+
+
+
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	timerNext();
+});
+
+function timerNext(){
+	setTimeout("timerNext()", 5000);
+	$('.arrow-right').click();
+   
+}
+</script>
+
+
+<script src="/common/js/idangerous.swiper-2.1.min.js"></script>
+
+<script language="javascript">
+$(function(){
+});
+
+</script>
+
+
+<!-- <style>
+    .flex1{
+        font-family: 'Meiryo';
+    }
+    .jap {
+    font-family: 'ＭＳ Ｐゴシック', 'MS PGothic', 'メイリオ', Meiryo, sans-serif;
+ 
+}
+</style> -->
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-61369280-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+<script language="javascript">
+
+var ct1cd = '';
+var ct2cd = '';
+var ctcity = '';
+var ctdong = '';
+
+$(function(){
+	 //page_url, webpage_title, tag_title, description, keyword, h1tag;
+/* 	var url = '/main/main.do';
+	alert(url); */
+	$("#1" + ct1cd).addClass("on");		
+	$("#4" + ct2cd).addClass("on");		
+	$("#2" + ctcity).addClass("on");		
+	$("#3" + ctdong).addClass("on");		
+	
+	var len = $(".gnb_3d").find("li").size();
+	if(len == 0){
+		$(".gnb_3d").hide();
+	}
+	
+	var len2 = $(".gnb_4d").find("li").size();
+	if(len2 == 0){
+		$(".gnb_4d").hide();
+	}
+	
+});
+
+
+$(function(){
+	$("#findEmail").click(function(){
+		layer_close();
+		email_pw('01');
+		layer_open('layer_email_pw');
+		
+	});
+	$("#findPwd").click(function(){
+		layer_close();
+		email_pw('02');
+		layer_open('layer_email_pw');
+	});
+	$("#join").click(function(){
+		layer_close();
+		layer_open('Member_registration3');
+	});
+	
+});
+
+
+
+$(function(){
+	$("#btnFindEmail").click(function(){
+		var fname = $("#ep_first_name").val();
+		var lname = $("#ep_last_name").val();
+		var year = $("#ep_year").val();
+		var mon = $("#ep_month").val();
+		var day = $("#ep_day").val();
+		var nick = $("#ep_nickname").val();
+
+
+      	var url = "/usr/ajax/findID.do";
+      	var data = {};
+      	
+      	data.firstName = fname;
+      	data.lastName = lname;
+      	data.birthYear = year;
+      	data.birthMonth = mon;
+      	data.birthDate = day;
+      	data.nickName = nick;
+      	
+		$.post(url, data, function(result){
+			// alert(result.msg);
+			if(result.result == '100'){
+				$("#ep_user_email").val(result.emailID);
+				$("#findEmailErrorBox").addClass("hidden");
+			}else{
+				$("#findEmailErrorBox").removeClass("hidden");
+			}
+		});	     
+
+		
+	});
+	
+	var findPwdCk = '0';
+	$("#btnFindPwd").click(function(){
+		var email = $("#ep_user_email2").val();
+		var url = "/usr/ajax/findPWD.do";
+		if(findPwdCk == '1'){
+			return false;
+		}
+		$("#spanFindPwd").html("<img src='/common/img/lodingBar.gif'>Eメール発信中");
+		findPwdCk = '1';
+		
+		
+      	var data = {};
+      	
+      	data.emailID = email;
+      	
+		$.post(url, data, function(result){
+			// alert(result.msg);
+			if(result.result == '100'){
+				$("#ep_user_email").val(result.emailID);
+				$("#findEmailErrorBox").addClass("hidden");
+				alert("仮パスワードを発送しました。");
+				$("#spanFindPwd").html("仮パスワードを送信");
+				findPwdCk = '0';
+			}else{
+				$("#findEmailErrorBox").removeClass("hidden");
+				alert("仮パスワードが’発送できませんでした。");
+			}
+		});	     
+
+		
+	});
+	
+	$("#btnJoin").click(function(){
+		// email form validation		
+	 	var data = {};
+		var emailID = $("#emailID").val();
+		data.emailID = emailID;
+      	var url = "/usr/ajax/checkID.do";
+      	
+      	var chackIdCode = "";
+      	$.ajaxSetup({ async:false });
+		$.post(url, data, function(result){
+			chackIdCode = result.result;
+		});
+		$.ajaxSetup({ async:true });
+		if(chackIdCode == '101'){
+			alert("既に使用中のIDです。");
+			$("#emailID").val('');
+			$("#emailID").focus();
+			return false;
+		} 
+		
+		var passwd = $("#passwd").val();
+		var firstName = $("#firstName").val();
+		var lastName = $("#lastName").val();
+		var nickName = $("#nickName").val();
+		var birthYear = $("#birthYear").val();
+		var birthMonth = $("#birthMonth").val();
+		var birthDate = $("#birthDate").val();
+		
+		if(emailID === ''){ alert("Eメールを入力してください。");	return false; }
+		if(passwd === ''){ alert("パスワードを入力してください。");	return false; }
+		if(firstName === ''){ alert("姓を入力してください。");	return false; }
+		if(lastName === ''){ alert("名を入力してください。");	return false; }
+		if(nickName === ''){ alert("性別を入力してください。");	return false; }
+		if(birthYear === ''){ alert("生年月日をすべて入力してください。");	return false; }
+		if(birthMonth === ''){ alert("生年月日をすべて入力してください。");	return false; }
+		if(birthDate === ''){ alert("生年月日をすべて入力してください。");	return false; }
+		
+		// 비밀번호 일치 여부 체크		
+		var passwd = $("#passwd").val();
+		var passwdCheck = $("#passwd_check").val();
+		if(passwd !== passwdCheck){
+			alert("パスワードが一致しません。");
+			return false;
+		}
+		
+		// 이용약관 및 개인정보보호정책 체크 확인
+		var size = $("input[name=registration_check]:checked").size();
+		if(size != 2){
+			alert("利用規約およびプライバシーポリシーのチェックを行ってください。");
+			return false;
+			
+		}
+		
+		layer_close();
+		layer_open('Member_registration4');
+		
+	});
+	
+});
+</script>
+
+
+<script>
+$(function(){
+	$("#btnAlarmCheckAll").click(function(){
+		$("input[name=alarmCode]:checkbox").each(function() {	
+			$(this).attr("checked", true);
+			$(this).next().addClass("checked");
+		});
+		$('.customInput input').customInput();
+	});
+	
+	$("#btnAlarmUnCheckAll").click(function(){
+		$("input[name=alarmCode]:checkbox").each(function() {
+			$(this).attr("checked", false);
+			$(this).next().removeClass("checked");
+		});
+		$('.customInput input').customInput();
+	});
+	
+	$("#btnAlarmDone").click(function(){
+		// 여기서 form submit
+		var interest = [];
+		$("input[name=alarmCode]:checked").each(function(){
+			interest.push($(this).val());			
+		});
+		
+		$("#interest").val(interest.join(","));
+		
+		var dataString = $("#joinMemberForm").serialize();
+		
+		$.ajax({
+            type: "POST",
+            url: "/usr/ajax/join.do",
+            data: dataString,
+            dataType: "json",
+            success: function(data) {
+            
+                alert(data.msg);
+                
+                if(data.result == '100'){
+                	location.href="/";
+                }
+            },
+            error: function(){
+                alert('error');
+            }
+        });
+		
+	});
+});
+
+
+function fn_test(){
+	alert("준비중입니다.");
+}
+</script>
+	
+<!--[if lt IE 9]>
+<script src="/common/js/html5.js"></script>
+<![endif]-->
+</head>
+
+<body>
+
+<h1>韓国旅行 おすすめ「リアリー」</h1>
+<div class="wrap">
+<!-- header_wrap -->
+	<div class="header_wrap">
+		<!-- header -->
+		<div class="header">
+			<h1 class="logo"><a href="/"><img src="/common/img/logo.jpg" alt="jakoplan"></a></h1>
+			<!-- <div class="top_search input">
+				<label class="iLabel" for="top_search">Search</label>
+				<input name="" type="text" class="iText" id="top_search">
+				<a href="#" class="btn">search</a>
+			</div> -->
+			<ul class="top_login">
+				<li><a href="https://www.facebook.com/jakoplan?fref=ts" class="f" target="_blank">facebook Login</a></li>
+				<li><a href="https://twitter.com/jakoplan" class="t" target="_blank">twitter Login</a></li>
+				<!-- <li><a href="#" class="y">yahoo Login</a></li> -->
+			</ul>
+			<div class="top_login2">
+				<a href="javascript:" class="btn">Login</a>
+				<div class="list">
+					<i></i>
+					<ul>
+						<li><a href="/mypage/main.do">マイページ</a></li>
+						<li><a href="/mypage/payment/list.do">注文・予約・決済</a></li>
+						<li><a href="/mypage/question/list.do">問い合わせ履歴</a></li>
+						<li><a href="/mypage/favorite/list.do">お気に入り</a></li>
+						<!-- <li><a href="/mypage/mileage/list.do">マイレージ</a></li> -->
+						<!-- <li><a href="#">レビュー・旅行記</a></li> -->
+						<li><a href="/mypage/user/info.do">会員情報</a></li>
+						
+						
+								<li id="idLogout" class="hidden"><a id="btnLogout" href="javascript:void(0)">Logout</a></li>
+							 
+								<li id="idLogin"><a href="javascript:layer_open('layer_login')">ログイン・会員登録</a></li>
+							 
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- //header -->
+		<div class="gnb">
+			<ul>
+				
+					
+					
+						<li id="110900"><a href="/korinfo/list/list.do?ctgry_1dpth_cd=10900" class="flex1">韓国基本情報</a></li>
+					   
+				
+					
+					
+						<li id="110100"><a href="/food/list/list.do?ctgry_1dpth_cd=10100" class="flex1">グルメ</a></li>
+					   
+				
+					
+					
+						<li id="110600"><a href="/tour/list/list.do?ctgry_1dpth_cd=10600" class="flex1">観光地</a></li>
+					   
+				
+					
+					
+						<li id="111000"><a href="/korevent/list/list.do?ctgry_1dpth_cd=11000" class="flex1">韓国イベント</a></li>
+					   
+				
+					
+					
+						<li id="110300"><a href="/concert/list/list.do?ctgry_1dpth_cd=10300" class="flex1">チケット代行</a></li>
+					   
+				
+					
+					
+						<li id="110400"><a href="/beauty/list/list.do?ctgry_1dpth_cd=10400" class="flex1">美容</a></li>
+					   
+				
+					
+					
+						<li id="110700"><a href="/assist/list/list.do?ctgry_1dpth_cd=10700" class="flex1">アシスタント</a></li>
+					   
+				
+					
+					
+						<li id="110800"><a href="/shopping/list/list.do?ctgry_1dpth_cd=10800" class="flex1">韓国ツアー</a></li>
+					   
+				
+					
+					
+						<li id="111100"><a href="/enter/list/list.do?ctgry_1dpth_cd=11100" class="flex1">エンターテイメント</a></li>
+					   
+				     
+				<!-- <li><a href="#">グルメ</a></li>
+				<li><a href="#">ホテル</a></li>
+				<li><a href="#">チケット代行</a></li>
+				<li><a href="#">美容</a></li>
+				<li><a href="#">病院</a></li>
+				<li><a href="#">観光地</a></li>
+				<li><a href="#">アシスタント</a></li>
+				<li class="on"><a href="#">韓国ツアー</a></li>
+				<li><a href="#">韓国基本情報</a></li> -->
+			</ul>
+		</div>
+	
+		<!-- gnb_2d -->
+		<div class="gnb_2d">
+			<div>
+				<ul>
+					
+					
+						
+					
+					
+						
+					
+					
+						
+					
+					
+						
+					
+					
+						
+					
+					
+						
+					
+					
+						
+					
+					
+						
+					
+					
+						
+					
+					<!-- 
+					<li><a href="javascript:">全国</a></li>
+					<li><a href="javascript:">ソウル</a></li>
+					<li><a href="javascript:">釜山</a></li>
+					<li><a href="javascript:">済州島</a></li>
+					<li><a href="javascript:">仁川</a></li>
+					<li><a href="javascript:">京畿道</a></li>
+					<li><a href="javascript:">江原道</a></li>
+					<li><a href="javascript:">全州・全羅道</a></li>
+					<li class="on"><a href="javascript:">慶尚道</a></li>
+					<li><a href="javascript:">忠清道</a></li>
+					<li><a href="javascript:">大田・世宗</a></li>
+					<li><a href="javascript:">その他</a></li>
+					 -->
+				</ul>
+			</div>
+		</div>
+		<!-- //gnb_2d -->
+	
+		<!-- gnb_3d -->
+		<div class="gnb_3d">
+			<div>
+				<ul>
+					
+					
+						
+					
+					
+						
+					
+					
+						
+					
+					
+						
+					
+					
+						
+					
+					
+						
+					
+					
+						
+					
+					
+						
+					
+					
+						
+					
+					<!-- <li><a href="#">明洞</a></li>
+					<li><a href="#">南大門、ソウル駅</a></li>
+					<li><a href="#">東大門</a></li>
+					<li><a href="#">仁寺洞、鐘路</a></li>
+					<li><a href="#">弘大、新村、梨大</a></li>
+					<li><a href="#">狎鴎亭、清潭洞</a></li>
+					<li><a href="#">三清洞、ソウル北部</a></li>
+					<li><a href="#">新沙洞、カロスキル</a></li>
+					<li><a href="#">江南、論峴、宣陵</a></li>
+					<li><a href="#">市庁、光化門</a></li>
+					<li class="on"><a href="#">乙支路、忠武路、南山</a></li>
+					<li><a href="#">麻浦、汝矣島、永登浦</a></li>
+					<li><a href="#">大学路、城北洞</a></li>
+					<li><a href="#">駅三、三成、蚕室</a></li>
+					<li><a href="#">梨泰院、龍山</a></li>
+					<li><a href="#">その他</a></li> -->
+				</ul>
+				<span class="over"></span>
+				<a href="javascript:gnb_3d_close();" class="close"><img src="/common/img/closeBtn.jpg" alt="close"></a>
+			</div>
+		</div>
+		<!-- //gnb_3d -->
+	</div>
+	<div class="clear"></div>
+	<script>
+	// header영역 고정 스크립트 : 필요 없는 페이지는 주석걸어 주세요
+	$(window).load(function(){
+		header_resize();
+	});
+	$(document).ready(function(){
+		header_resize();
+	});
+	</script>
+	<!-- //header_wrap -->
+	
+	<!-- gnb_4d -->
+	<div class="gnb_4d">
+		<div>
+			<ul>
+				
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+				
+				<!-- <li><a href="#"><img src="/common/img/@img_50x50.jpg" alt=""><br>全体</a></li>
+				<li><a href="#"><img src="/common/img/@img_50x50.jpg" alt=""><br>出発地</a></li>
+				<li><a href="#"><img src="/common/img/@img_50x50.jpg" alt=""><br>目的地</a></li>
+				<li><a href="#"><img src="/common/img/@img_50x50.jpg" alt=""><br>半日ツアー</a></li>
+				<li><a href="#"><img src="/common/img/@img_50x50.jpg" alt=""><br>日帰りツアー</a></li> -->
+			</ul>
+		</div>
+	</div>
+	<!-- //gnb_4d -->
+
+
+	<!-- content_wrap -->
+	
+	
+<div class="content_wrap">
+	<!-- content -->
+			
+	
+<!-- content -->
+<div class="content">
+
+	<!-- 메인 프로모션 -->
+	<div class="main_promotion">
+		
+		<div class="swiper-slide"><a href="http://www.reallre.jp/notice/detail/detailType7.do?snum=66&noticeType=notice" target="_blank"  class="item"><img src="/common/img/main_t_jp.png" alt=""></a></div>
+		<div class="pagination"></div>
+	</div>
+	<script>
+	var mySwiper = new Swiper('.main_promotion .swiper-container',{
+		pagination: '.main_promotion .pagination',
+		loop:true,
+		grabCursor: true,
+		paginationClickable: true
+	})
+	$('.arrow-left').on('click', function(e){
+		e.preventDefault()
+		mySwiper.swipePrev()
+	})
+	$('.arrow-right').on('click', function(e){
+		e.preventDefault()
+		mySwiper.swipeNext()
+	})
+	
+	
+	</script>
+	
+	
+	
+	
+	
+	<!-- //메인 프로모션 -->
+	
+	<div class="main_bn">
+		
+			<a href="#none" onclick="window.open('http://www.stargoodsauction.jp', 'abcdefg', '');" ><img src="/common/img/950_100_jp.png" alt=""></a>
+		
+	</div> 
+	
+	<div class="main_beauty">
+		<h2 class="main_tit">美容<!-- ・病院 --><i></i></h2>	<!-- 미용,병원 -->
+		<ul class="list">
+			
+				
+				
+					<li><a href="/common/detail/detailRedirect.do?subcont_id=1920"  onclick="window.open(this.href); return false">
+						<img src="/download/downloadFile.do?file_uuid=195592c0-a262-4050-84f9-5d9c47145f8a&snum=1" alt="エスティオ(esttio)エステ">
+						<span class="text"><strong>エスティオ(esttio)エステ</strong><i>江南カロスキルに位置するストレスが原因で緊張した心と体の疲労を解消させ、美しい皮膚と体を取り戻してくれるエステ店。</i></span>
+					</a></li>
+				
+				
+				 
+				
+			
+				
+				
+					<li><a href="/common/detail/detailRedirect.do?subcont_id=1913"  onclick="window.open(this.href); return false">
+						<img src="/download/downloadFile.do?file_uuid=2b98d96c-c52c-4b1f-bcd7-1f7810c363ef&snum=1" alt="満足マッサージ">
+						<span class="text"><strong>満足マッサージ</strong><i>「満足マッサージ」は鐘路に位置し、鐘閣駅から徒歩５分ほどの距離にある韓国伝統のマッサージ店</i></span>
+					</a></li>
+				
+				
+				 
+				
+			
+				
+				
+					<li><a href="/common/detail/detailRedirect.do?subcont_id=1930"  onclick="window.open(this.href); return false">
+						<img src="/download/downloadFile.do?file_uuid=7890e3c5-b7ba-47e7-aae4-5e9292b7cd53&snum=1" alt="健美人エステ(ゴンミインエステ)">
+						<span class="text"><strong>健美人エステ(ゴンミインエステ)</strong><i>ソウルの代表観光地である明洞に位置する筋骨格経絡マッサージと顔の縮小専門マッサージショップ。</i></span>
+					</a></li>
+				
+				
+				 
+				
+			
+			
+			
+			
+			<!-- <li class="big">
+				<img src="/common/img/ja-big.jpg" alt="">
+			</li>
+			<li class="">
+				<img src="/common/img/ja-small.jpg" alt="">
+			</li>
+			<li class="">
+				<img src="/common/img/ja-small2.jpg" alt="">
+			</li> -->
+		</ul>
+	</div>
+	
+	<div class="main_performances">
+		<h2 class="main_tit">公演リスト<i></i></h2>
+		<ul class="list">
+			
+				<li>
+					<a href="/common/detail/detailRedirect.do?subcont_id=2219" class="img"><img src="/download/downloadFile.do?file_uuid=ed157bbe-5c00-49d2-8c64-a9b830b1e387&snum=1" alt="2016 BIGBANG(ビックバン)コンサート情報"></a>
+					<a href="/common/detail/detailRedirect.do?subcont_id=2219" class="tit">2016 BIGBANG(ビックバン)コンサート情報</a>
+					<a href="/common/detail/detailRedirect.do?subcont_id=2219" class="text">BIGBANG(ビックバン)ワールドツアーソウルコンサートのチケット代行取扱い詳細</a>
+				</li>
+			
+				<li>
+					<a href="/common/detail/detailRedirect.do?subcont_id=2187" class="img"><img src="/download/downloadFile.do?file_uuid=5c18212e-dbd4-4117-9eec-f3336667196c&snum=1" alt="２０１５ミュージカル「レベッカ」"></a>
+					<a href="/common/detail/detailRedirect.do?subcont_id=2187" class="tit">２０１５ミュージカル「レベッカ」</a>
+					<a href="/common/detail/detailRedirect.do?subcont_id=2187" class="text">オム・ギジュン、ミン・ヨンギ出演のミュージカル「レベッカ」ソウル公演の詳細</a>
+				</li>
+			
+				<li>
+					<a href="/common/detail/detailRedirect.do?subcont_id=2209" class="img"><img src="/download/downloadFile.do?file_uuid=5745472a-aed2-45ac-a059-3f98103d42ba&snum=1" alt="2015 チョンジンアジアツアー inソウル "></a>
+					<a href="/common/detail/detailRedirect.do?subcont_id=2209" class="tit">2015 チョンジンアジアツアー inソウル </a>
+					<a href="/common/detail/detailRedirect.do?subcont_id=2209" class="text">チョンジンアジアツアーコンサートのチケット代行取扱い詳細</a>
+				</li>
+			
+			<!-- <li>
+				<a href="/concert/detail/detailType3.do" class="img"><img src="/common/img/@img_110x70.jpg" alt=""></a>
+				<a href="/concert/detail/detailType3.do" class="tit">2014 INFINITEソウルコンサー INFINITEソウルコンサー</a>
+				<a href="/concert/detail/detailType3.do" class="text">青い空、涼しい風。爽やかな笑い声。 真夏の熱い日差しの中、あなたと最も...</a>
+			</li>
+			<li>
+				<a href="#" class="img"><img src="/common/img/@img_110x70.jpg" alt=""></a>
+				<a href="#" class="tit">2014 INFINITEソウルコンサー INFINITEソウルコンサー</a>
+				<a href="#" class="text">青い空、涼しい風。爽やかな笑い声。 真夏の熱い日差しの中、あなたと最も...</a>
+			</li>
+			<li>
+				<a href="#" class="img"><img src="/common/img/@img_110x70.jpg" alt=""></a>
+				<a href="#" class="tit">2014 INFINITEソウルコンサー INFINITEソウルコンサー</a>
+				<a href="#" class="text">青い空、涼しい風。爽やかな笑い声。 真夏の熱い日差しの中、あなたと最も...</a>
+			</li> -->
+		</ul>
+		<a href="/concert/list/list.do?ctgry_1dpth_cd=10300" class="main_more">公演リスト もっと見る</a>
+		<div class="bn">
+			<a href="/enter/list/list.do?ctgry_1dpth_cd=11100" ><img src="/common/img/@img_340x110.jpg" alt=""></a>
+		</div>
+	</div>
+	
+	<div class="main_accommodation">
+		<h2 class="main_tit">韓国ツアー<i></i></h2>
+		<ul class="list">
+			
+				
+					<li class="big"><a href="/common/detail/detailRedirect.do?subcont_id=1614">
+						<img src="/download/downloadFile.do?file_uuid=69e853f2-4af0-4f36-a980-6ffeb142dd98&snum=1" alt="ロマンの都市「春川」日帰りツアー">
+						<span class="text"><strong>ロマンの都市「春川」日帰りツアー</strong><i>韓国ドラマ「冬のソナタ」のロケ地としても有名な春川(チュンチョン)を満喫する日帰り現地ツアー</i></span>
+					</a></li>
+				
+				
+			
+				
+				
+					<li><a href="/common/detail/detailRedirect.do?subcont_id=2102">
+						<img src="/download/downloadFile.do?file_uuid=fe42a26a-dd18-4fcc-a8fa-edb0fbb717cf&snum=1" alt="A´REX(空港鉄道) 直通列車チケット">
+						<span class="text"><strong>A´REX(空港鉄道) 直通列車チケット</strong><i>A´REX(空港鉄道) 直通列車のチケットを販売しています。</i></span>
+					</a></li>
+				
+			
+				
+				
+					<li><a href="/common/detail/detailRedirect.do?subcont_id=1485">
+						<img src="/download/downloadFile.do?file_uuid=7acb141f-c073-42b1-9311-0685f0724a31&snum=1" alt="【63ビルディング】BIG3アイマックスセット入場券 ">
+						<span class="text"><strong>【63ビルディング】BIG3アイマックスセット入場券 </strong><i>63ビルディングの中にある水族館などをお得に利用できる入場券</i></span>
+					</a></li>
+				
+			
+				
+				
+					<li><a href="/common/detail/detailRedirect.do?subcont_id=1613">
+						<img src="/download/downloadFile.do?file_uuid=10ea97a9-aabb-4902-b11d-7c7476b7a098&snum=1" alt="食と文化の街「全州韓屋村」日帰りツアー">
+						<span class="text"><strong>食と文化の街「全州韓屋村」日帰りツアー</strong><i>食と文化の街として有名な全州韓屋村を満喫する日帰り現地ツアー</i></span>
+					</a></li>
+				
+			
+			<!-- <li class="big"><a href="/shopping/detail/detailType1.do">
+				<img src="/common/img/@img_590x230.jpg" alt="">
+				<span class="text"><strong>2014 INFINITE</strong><i>青い空、涼しい風。</i></span>
+			</a></li>
+			<li><a href="#">
+				<img src="/common/img/@img_190x110.jpg" alt="">
+				<span class="text"><strong>2014 INFINITE</strong><i>青い空、涼しい風。</i></span>
+			</a></li>
+			<li><a href="#">
+				<img src="/common/img/@img_190x110.jpg" alt="">
+				<span class="text"><strong>2014 INFINITE</strong><i>青い空、涼しい風。</i></span>
+			</a></li>
+			<li><a href="#">
+				<img src="/common/img/@img_190x110.jpg" alt="">
+				<span class="text"><strong>2014 INFINITE</strong><i>青い空、涼しい風。</i></span>
+			</a></li> -->
+		</ul>
+	</div>
+	
+	<div class="main_korea_event">
+		<h2 class="main_tit">韓国イベント<i></i></h2>
+		<ul class="list">
+			
+				
+					
+					<li class="big">
+						<a href="/common/detail/detailRedirect.do?subcont_id=2157" class="img"><img src="/download/downloadFile.do?file_uuid=25cd0ea2-f832-48e9-bfdf-887a0dd825ef&snum=1" alt="洪城歴史人物祭り"></a>
+						<a href="/common/detail/detailRedirect.do?subcont_id=2157" class="tit">洪城歴史人物祭り</a>
+					</li>
+				
+				
+			
+				
+				
+					<li>
+						<a href="/common/detail/detailRedirect.do?subcont_id=2106" class="img"><img src="/download/downloadFile.do?file_uuid=5024e64d-3e44-4fa0-ba5e-dd5c55a1db60&snum=1" alt="翰林(ハンリン)公園蓮祭り"></a>
+						<a href="/common/detail/detailRedirect.do?subcont_id=2106" class="tit">翰林(ハンリン)公園蓮祭り</a>
+					</li>
+				
+			
+				
+				
+					<li>
+						<a href="/common/detail/detailRedirect.do?subcont_id=2140" class="img"><img src="/download/downloadFile.do?file_uuid=18f1c504-df04-4447-8bbf-6fc15995d311&snum=1" alt="茂朱ホタル祭り"></a>
+						<a href="/common/detail/detailRedirect.do?subcont_id=2140" class="tit">茂朱ホタル祭り</a>
+					</li>
+				
+			
+			<!-- <li class="big">
+				<a href="/korevent/detail/detailType4.do" class="img"><img src="/common/img/@img_165x243.jpg" alt=""></a>
+				<a href="/korevent/detail/detailType4.do" class="tit">2014 INFINITEソウルコンサー INFINITEソウルコンサー</a>
+			</li>
+			<li>
+				<a href="#" class="img"><img src="/common/img/@img_165x100.jpg" alt=""></a>
+				<a href="#" class="tit">2014 INFINITEソウルコンサー INFINITEソウルコンサー</a>
+			</li>
+			<li>
+				<a href="#" class="img"><img src="/common/img/@img_165x100.jpg" alt=""></a>
+				<a href="#" class="tit">2014 INFINITEソウルコンサー INFINITEソウルコンサー</a>
+			</li> -->
+		</ul>
+		<a href="/korevent/list/list.do?ctgry_1dpth_cd=11000" class="main_more">韓国イベント もっと見る</a>
+		<div class="bn">
+			<a href="#"><img src="/common/img/@img_340x63.jpg" alt=""></a>
+		</div>
+	</div>
+	
+	<div class="main_featured">
+		<h2 class="main_tit">おすすめ韓国グルメ<i></i></h2>
+		<ul class="list">
+			
+				
+					<li class="big">
+						<a href="/common/detail/detailRedirect.do?subcont_id=2143" class="img"><img src="/download/downloadFile.do?file_uuid=a3500834-171a-4de4-9729-d4d9ad30818c&snum=1" alt="釜山ハジニネ"></a>
+						<a href="/common/detail/detailRedirect.do?subcont_id=2143" class="tit">釜山ハジニネ</a>
+						<a href="/common/detail/detailRedirect.do?subcont_id=2143" class="text">新鮮でおいしい魚が獲れることで有名な釜山青沙浦に位置し、焼き貝と焼きうなぎがおいしいと評判の観光客や地元の人からも愛されるお店です。</a>
+					</li>
+					
+				
+				
+				
+				
+			
+				
+				
+				
+				
+					<li>
+						<a href="/common/detail/detailRedirect.do?subcont_id=1752" class="img"><img src="/download/downloadFile.do?file_uuid=593271fb-ab69-49a9-8d4b-2bf8b1ce8517&snum=1" alt="校洞トッカルビ"></a>
+						<a href="/common/detail/detailRedirect.do?subcont_id=1752" class="tit">校洞トッカルビ</a>
+						<a href="/common/detail/detailRedirect.do?subcont_id=1752" class="text">全州韓屋村で有名な人気のトッカルビのお店
+「校洞トッカルビ」は、全州韓屋村の数あるトッカルビ屋の中でも美味しいと評判のトッカルビのお店です。</a>
+					</li>
+				
+			
+				
+				
+				
+				
+					<li>
+						<a href="/common/detail/detailRedirect.do?subcont_id=1736" class="img"><img src="/download/downloadFile.do?file_uuid=607c57da-071c-4836-bf93-a1c691c60e51&snum=1" alt="トンヌコルマックッス"></a>
+						<a href="/common/detail/detailRedirect.do?subcont_id=1736" class="tit">トンヌコルマックッス</a>
+						<a href="/common/detail/detailRedirect.do?subcont_id=1736" class="text">田舎にあるマックッスの隠れた人気店。交通アクセスの悪い場所にありながらも、江原道の束草あたりでマックッスを食べる際には多くの人が訪れるお店です。</a>
+					</li>
+				
+			
+				
+				
+					<li class="big2">
+						<a href="/common/detail/detailRedirect.do?subcont_id=1744" class="img"><img src="/download/downloadFile.do?file_uuid=72e3f0c4-4791-4458-a5f5-8ab8c1d2a52f&snum=1" alt="ムンガネ精肉食堂"></a>
+						<a href="/common/detail/detailRedirect.do?subcont_id=1744" class="tit">ムンガネ精肉食堂</a>
+						<a href="/common/detail/detailRedirect.do?subcont_id=1744" class="text">地元韓国人に人気の牛肉を安くでお腹いっぱい食べれる焼肉店
+ソウルの繁華街明洞から地下鉄４号線で約２０分の距離にあるスユ駅の近くに位置する人気の焼肉店です。</a>
+					</li>
+					
+				
+				
+				
+			
+			
+			<!-- <li class="big">
+				<a href="/food/detail/detailType1.do" class="img"><img src="/common/img/@img_270x270.jpg" alt=""></a>
+				<a href="/food/detail/detailType1.do" class="tit">2014 INFINITEソウルコンサー INFINITEソウルコンサー</a>
+				<a href="/food/detail/detailType1.do" class="text">青い空、涼しい風。爽やかな笑い声。 真夏の熱い日差しの中、あなたと最も...</a>
+			</li>
+			<li>
+				<a href="#" class="img"><img src="/common/img/@img_150x110.jpg" alt=""></a>
+				<a href="#" class="tit">2014 INFINITEソウルコンサー INFINITEソウルコンサー</a>
+				<a href="#" class="text">青い空、涼しい風。爽やかな笑い声。 真夏の熱い日差しの中、あなたと最も...</a>
+			</li>
+			<li>
+				<a href="#" class="img"><img src="/common/img/@img_150x110.jpg" alt=""></a>
+				<a href="#" class="tit">2014 INFINITEソウルコンサー INFINITEソウルコンサー</a>
+				<a href="#" class="text">青い空、涼しい風。爽やかな笑い声。 真夏の熱い日差しの中、あなたと最も...</a>
+			</li>
+			<li class="big2">
+				<a href="#" class="img"><img src="/common/img/@img_310x97.jpg" alt=""></a>
+				<a href="#" class="tit">2014 INFINITEソウルコンサー INFINITEソウルコンサー</a>
+				<a href="#" class="text">青い空、涼しい風。爽やかな笑い声。 真夏の熱い日差しの中、あなたと最も...</a>
+			</li> -->
+		</ul>
+		<a href="/food/list/list.do?ctgry_1dpth_cd=10100" class="main_more">おすすめ韓国グルメ もっと見る</a>
+	</div>
+	
+	<div class="main_guide">
+		
+		<div class="bn">
+			
+		</div>
+		<ul class="link">
+			<li class="link1"><a href="/korlang/list/list.do?ctgry_1dpth_cd=11200">韓国語</a></li>
+			<li class="link2"><a href="/foodrecipe/list/list.do?ctgry_1dpth_cd=11300">韓国料理レシピ</a></li>
+		</ul>
+	</div>
+	
+</div>
+<!-- //content -->	
+			
+	<!-- //content -->
+	
+	<!-- quick_menu -->
+	<div class="quick_menu">
+		<!-- div class="quick_weather">
+			<h2 class="quick_tit"><a href="#">天気<i></i></a></h2>
+			<div class="top">
+				<p><span>ソウル</span><strong>25.8°C</strong></p>
+				<div class="ico"><img src="/common/img/weather_sun_shower.png" alt=""></div>
+			</div>
+			<ul class="list">
+				<li>
+					<p><span>釜山</span><strong>25.8°C</strong></p>
+					<div class="ico"><img src="/common/img/weather_sun_shower.png" alt=""></div>
+				</li>
+				<li>
+					<p><span>済州島</span><strong>25.8°C</strong></p>
+					<div class="ico"><img src="/common/img/weather_sun_shower.png" alt=""></div>
+				</li>
+			</ul>
+		</div> -->
+		
+		<!-- div class="quick_rate">
+			<h2 class="quick_tit"><span>レート</span></h2>
+			<p class="date">2014-07-10 <span>04:00</span></p>
+			<ul class="list">
+				<li class="j"><i>日本</i><span>100</span>円</li>
+				<li class="k"><i>韓国</i><span>995.77</span>ウォン</li>
+			</ul>
+			<a href="#" class="btn">レート</a>
+		</div>
+		
+		<div class="quick_calendar">
+			<h2 class="quick_tit"><a href="#">カレンダー<i></i></a></h2>
+			<div>
+				<span>2014-07-14</span>
+				<span>木</span>
+			</div>
+		</div> -->
+		
+		<!-- <div class="quick_bn">
+			<ul>
+				<li><a href="#"><img src="/common/img/@img_130x60.jpg" alt=""></a></li>
+				<li><a href="#"><img src="/common/img/@img_130x60.jpg" alt=""></a></li>
+				<li><a href="#"><img src="/common/img/@img_130x60.jpg" alt=""></a></li>
+			</ul>
+		</div> -->
+		
+		<div class="quick_btn">
+			<ul>
+				<li class="quick_btn1"><a href="/mypage/favorite/list.do">お気に入り</a></li>
+				<li class="quick_btn2"><a href="/korevent/list/list.do?ctgry_1dpth_cd=11000">韓国イベント</a></li>
+				<!-- <li class="quick_btn3"><a href="/enter/list/list.do?ctgry_1dpth_cd=11100">エンターテイメント</a></li> -->
+				<li class="quick_btn4"><a href="/common/weather/detail.do">韓国天気予報</a></li>
+			</ul>
+		</div>
+		
+		<!-- <div class="quick_content">
+			<h2 class="quick_tit"><a href="#">最近見たコンテンツ<i></i></a></h2>
+			<ul class="list">
+				<li><a href="#"><img src="/common/img/@img_116x60.jpg" alt=""></a></li>
+				<li><a href="#"><img src="/common/img/@img_116x60.jpg" alt=""></a></li>
+				<li><a href="#"><img src="/common/img/@img_116x60.jpg" alt=""></a></li>
+				<li><a href="#"><img src="/common/img/@img_116x60.jpg" alt=""></a></li>
+			</ul>
+			<p class="count"><strong>1</strong>/<span>2</span></p>
+			<div class="btn">
+				<a href="#" class="p">PREV</a>
+				<a href="#" class="n">NEXT</a>
+			</div>
+		</div> -->
+		<!-- <div class="quick_content">
+			<ul class="list">
+				<li style="text-align: center;">QR二维码</li>
+				<li><img src="/common/img/116_216_jp.jpg" alt=""></li>
+			</ul>
+		</div>  -->
+		<!-- <div class="quick_content">
+			<ul class="list">
+				<li style="text-align: center;">QR二维码</li>
+				
+				<li>
+				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				서브
+				<ins class="adsbygoogle"
+				     style="display:inline-block;width:120px;height:600px"
+				     data-ad-client="ca-pub-9014934656337292"
+				     data-ad-slot="2611558167"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script> 
+				<img src="/common/img/116_216_jp.jpg" alt=""></li>
+			</ul>
+		</div>  -->
+		<a href="javascript:" class="quick_top">トップへ戻る</a>
+	</div>
+	<!-- //quick_menu -->
+</div>
+
+
+		
+	<!-- //content_wrap -->
+
+	<!-- footer_wrap -->
+	<div class="footer_wrap">
+		<div class="footer">
+			<div class="footer_list">
+				<div class="tab">
+					<ul>
+						<li class="footer_tab_01 on"><a href="javascript:footer_tab('01');">お知らせ</a></li>
+						<li class="footer_tab_02"><a href="javascript:footer_tab('02');">イベント</a></li>
+					</ul>
+				</div>
+				<div class="footer_list_01 list on">
+					<ul>
+						
+						<li><a href="/notice/detail/detailType7.do?snum=69&noticeType=notice"> アシスタントサービス一時中止のご案内</a></li>
+						
+						<li><a href="/notice/detail/detailType7.do?snum=67&noticeType=notice">サイト不具合に関しまして</a></li>
+						
+						<li><a href="/notice/detail/detailType7.do?snum=66&noticeType=notice">韓国旅行をもっと自由に☆新サービス開始！</a></li>
+						
+						<li><a href="/notice/detail/detailType7.do?snum=64&noticeType=notice">休業日のお知らせ</a></li>
+						
+						<li><a href="/notice/detail/detailType7.do?snum=60&noticeType=notice">当社運営【StarGoodsAuction】オープンのお知らせ</a></li>
+						
+					</ul>
+					<a href="/notice/list/list.do?noticeType=notice" class="more">お知らせ もっと見る</a>
+				</div>
+				<div class="footer_list_02 list">
+					<ul>
+						
+					</ul>
+					<a href="/notice/list/list.do?noticeType=event" class="more">イベント もっと見る</a>
+				</div>
+			</div>
+			
+			<ul class="footer_link">
+				<li class="footer_link1"><a href="/qna/list/list.do">よくある質問</a></li>
+				<li class="footer_link2"><a href="/common/question/writeForm.do?contactKindCd=13700">１：１お問い合わせ</a></li>
+				<li class="footer_link3"><a href="/common/usage/detail.do">利用ガイド</a></li>
+				<li class="footer_link4"><a href="/common/contact/writeForm.do">제휴문의 &#47; 事業提携</a></li>
+			</ul>
+			
+			<dl class="footer_mail">
+				<dt>ReAllre EMAIL</dt>
+				<dd>admin@reallre.com</dd>
+			</dl>
+			
+			<dl class="footer_time">
+				<dt>営業時間</dt>
+				<dd>平日：０９時３０分～１８時３０分<br>土、日、祝日は休み</dd>
+			</dl>
+			
+			<ul class="footer_btn">
+				 <li class="footer_btn1"><a href="/usr/join/subcont.do">사업자 로그인</a></li>
+				 <li class="footer_btn2"><a href="/usr/join/assistant.do">assistant Login</a></li>
+				<!-- <li class="footer_btn1"><a href="#none" onclick="fn_test();">사업자 로그인</a></li> -->
+				<!-- <li class="footer_btn2"><a href="#none" onclick="fn_test();">assistant Login</a></li> --> 
+			</ul>
+			
+			<div class="footer_menu">
+				<ul>
+					<li><a href="/">HOME</a></li>
+					<li><a href="/common/corporate/detail.do">会社紹介</a></li>
+					<li><a href="/common/privacy/detail.do">プライバシー</a></li>
+					<li><a href="/common/agreement/detail.do">利用規約</a></li>
+					<!-- <li><a href="#">特商取引法基準表記</a></li>
+					<li><a href="#">求人･求職</a></li> -->
+				</ul>
+			</div>
+			
+			<p class="footer_copy">&copy; Copyright - ReAllre</p>
+			
+		</div>
+	</div>
+	<!-- //footer_wrap -->
+
+</div>
+
+
+<!-- Layer 팝업 영역 -->
+<div class="layer_wrap">
+	<div class="layer_box Popup_type1" id="Member_registration5">
+			<p class="text">会員登録時の氏名と生年月日を入力してください.</p>
+				
+			<div class="btn_set">
+				<ul class="center">
+					<li><a href="#" class="btn_style1"><span>提携・広告</span></a></li>
+					<li><a href="#" class="btn_style2"><span>会社案内ダウンロード</span></a></li>
+				</ul>
+			</div>
+		
+		
+		<a href="javascript:layer_close();" class="layer_close">Layer Close</a>
+	</div>
+	
+	<div class="layer_box Member_registration1" id="Member_registration1">
+		<div class="btn">
+			<ul>
+				<li><a href="#" class="f">フェイスブックＩＤで会員登録</a></li>
+				<li><a href="#" class="g">グーグルＩＤで会員登録</a></li>
+				<li><a href="#" class="m">Eメールで会員登録</a></li>
+			</ul>
+		</div>
+		
+
+		
+		<a href="javascript:layer_close();" class="layer_close">Layer Close</a>
+	</div>
+	
+	<div class="layer_box Member_registration3" id="Member_registration3">
+	<form name="joinMemberForm" id="joinMemberForm">
+		<input type="hidden" name="interest" id="interest"/>
+		<div class="input_box2">
+			<ul>
+				<li class="input">
+					<label class="iLabel m" for="emailID">Eメール</label>
+					<input name="emailID" type="text" class="iText" id="emailID">
+					<p class="error hidden">間違って入力しましたエラーメッセージ</p>
+				</li>
+				<li class="input">
+					<label class="iLabel n" for="nickName">ニックネーム</label>
+					<input name="nickName" type="text" class="iText" id="nickName">
+					<p class="error hidden">間違って入力しましたエラーメッセージ</p>
+				</li>
+				<li class="input">
+					<label class="iLabel p" for="passwd">パスワード</label>
+					<input name="passwd" type="password" class="iText" id="passwd">
+				</li>
+				<li class="input">
+					<label class="iLabel pc" for="passwd_check">パスワード再入力</label>
+					<input name="passwd_check" type="password" class="iText" id="passwd_check">
+				</li>
+			</ul>
+		</div>
+		
+		<ul class="input_box">
+			<li><strong>氏名</strong>
+				<div class="input">
+					<label class="iLabel" for="firstName">性</label>
+					<input name="firstName" type="text" class="iText w78" id="firstName">
+				</div>
+				<div class="input">
+					<label class="iLabel" for="lastName">名</label>
+					<input name="lastName" type="text" class="iText w120" id="lastName">
+				</div>
+			</li>
+			<li><strong>生年月日</strong>
+				<div class="input">
+					<label class="iLabel" for="birthYear">年</label>
+					<input name="birthYear" type="text" class="iText w78" id="birthYear">
+				</div>
+				<div class="input">
+					<label class="iLabel" for="birthMonth">月</label>
+					<input name="birthMonth" type="text" class="iText w58" id="birthMonth">
+				</div>
+				<div class="input">
+					<label class="iLabel" for="birthDate">日</label>
+					<input name="birthDate" type="text" class="iText w58" id="birthDate">
+				</div>
+			</li>
+		</ul>
+		
+		<div class="check">
+			<ul class="customInput">
+				<li>会員登録と同時にリアリーの</li>
+					<!-- <li><input name="registration_check" type="checkbox" id="registration_check11"><label for="registration_check11">利用規約 </label><a href="/common/agreement/detail.do"><img src="/common/img/ico_privacy1.png" alt="first"></a></li>
+					<li><input name="registration_check" type="checkbox" id="registration_check2"><label for="registration_check2">プライバシーポリシー </label><a href="/common/privacy/detail.do"><img src="/common/img/ico_privacy2.png" alt="first"></a></li> -->
+					
+				 	<li>
+						<input name="registration_check" type="checkbox" id="registration_check1">
+						<label for="registration_check1">利用規約 
+							<a href="/common/agreement/detail.do" target="_blank"><img src="/common/img/ico_privacy1.gif" alt="first"></a>
+						</label>
+					</li>
+					<li>
+						<input name="registration_check" type="checkbox" id="registration_check2">
+						<label for="registration_check2">プライバシーポリシー 
+							<a href="/common/privacy/detail.do" target="_blank"><img src="/common/img/ico_privacy1.gif" alt="first"></a>
+						</label>
+					</li> 
+				<li>同意されたものとみなします.</li>
+			</ul>
+			
+		</div>
+		<div class="btn_set" style="margin-top:20px">
+			<ul class="center">
+				<li><a href="javascript:void(0)" id="btnJoin" class="btn_style2"><span>会員登録</span></a></li>
+			</ul>
+		</div>
+		
+	<!-- 	<div class="text">
+			Ｅメールを確認し、メール本文に記載してある 仮パスワードを入力してください。
+		</div>
+		
+		<div class="input_box3 input">
+			<label class="iLabel" for="registration_confirm">確認番号</label>
+			<input name="" type="text" class="iText" id="registration_confirm">
+			<a href="#">確認</a>
+		</div> -->
+		
+		<a href="javascript:layer_close();" class="layer_close">Layer Close</a>
+		</form>
+	</div>
+	
+
+	<div class="layer_box Member_registration4" id="Member_registration4">
+		<div class="tit"><h2>お知らせメール受信設定</h2></div>
+		
+		<div class="alarm_list">
+			<ul class="customInput">
+				<li><input name="alarmCode" type="checkbox" value="12300" id="alarm1_popup"><label for="alarm1_popup"><span class="alarm1"></span>宿泊施設のお得な情報 <i class="sale">SALE</i></label></li>
+				<li><input name="alarmCode" type="checkbox" value="12301" id="alarm2_popup"><label for="alarm2_popup"><span class="alarm2"></span>エステ・美容ショップのお得な情報 <i class="sale">SALE</i></label></li>
+				<li><input name="alarmCode" type="checkbox" value="12302" id="alarm3_popup"><label for="alarm3_popup"><span class="alarm3"></span>病院・医院のお得な情報 <i class="sale">SALE</i></label></li>
+				<li><input name="alarmCode" type="checkbox" value="12303" id="alarm4_popup"><label for="alarm4_popup"><span class="alarm4"></span>すべてのお得な情報 <i class="sale">SALE</i></label></li>
+				<li><input name="alarmCode" type="checkbox" value="12304" id="alarm5_popup"><label for="alarm5_popup"><span class="alarm5"></span>最新グルメ店情報 <i class="open">OPEN</i></label></li>
+				<li><input name="alarmCode" type="checkbox" value="12305" id="alarm6_popup"><label for="alarm6_popup"><span class="alarm6"></span>おすすめ旅行商品情報 <i class="best">BEST</i></label></li>
+				<li><input name="alarmCode" type="checkbox" value="12306" id="alarm7_popup"><label for="alarm7_popup"><span class="alarm7"></span>祭り/イベント情報</label></li>
+				<li><input name="alarmCode" type="checkbox" value="12307" id="alarm8_popup"><label for="alarm8_popup"><span class="alarm8"></span>コンサート・公演情報</label></li>
+			</ul>
+		</div>
+		
+		
+		<div class="alarm_ok">
+			<ul class="check">
+				<li><a href="javascript:void(0)" class="check1" id="btnAlarmCheckAll">すべて選択</a></li>
+				<li><a href="javascript:void(0)" class="check2" id="btnAlarmUnCheckAll">すべての情報を受信しない</a></li>
+			</ul>
+			<a href="javascript:void(0)" id="btnAlarmDone" class="btn">登録完了</a>
+		</div>
+		
+		<a href="javascript:layer_close();" class="layer_close">Layer Close</a>
+	</div>
+	
+	<div class="layer_box layer_login" id="layer_login">
+		<ul class="btn1">
+			<li><a href="javascript:void(0)" onclick="fb_login();" id="btnFacebookLogin"><img src="/common/img/btn_login_f.gif" alt="Login with Facebook" style="width:271px"></a></li>
+			<!-- <li><a href="#"><img src="/common/img/btn_login_g.gif" alt="Login with Google+"></a></li> -->
+			<!-- <li><fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button></li> -->
+			<li>
+			<div id="gConnect">
+				 <button class="g-signin"
+			        data-scope="https://www.googleapis.com/auth/plus.login  https://www.googleapis.com/auth/userinfo.email"
+			        data-requestvisibleactions="http://schemas.google.com/AddActivity"
+			        data-clientId="449822524656-ln0cael03fqg6lm49shjrf80gnj2vmgm.apps.googleusercontent.com"
+			        data-accesstype="offline"
+			        data-callback="onSignInCallback"
+			        data-theme="dark"
+			        data-height="tall"
+			        data-width="wide"
+			        data-cookiepolicy="single_host_origin">
+			    </button>
+    				<!-- data-approvalprompt="force" -->
+  			</div>
+	  		</li>
+		</ul>
+		<p class="or">or</p>
+		<ul class="input_box">
+			<li class="input">
+				<label class="iLabel id" for="login_id">Enter your email address</label>
+				<input type="text" class="iText" id="login_id" name="login_id" onKeyPress="javascript:if(event.keyCode == 13) { $('#btnEmailLogin').click(); }">
+			</li>
+			<li class="input">
+				<label class="iLabel pw" for="login_pw">Enter your password</label>
+				<input type="password" class="iText" id="login_pw" name="login_pw" onKeyPress="javascript:if(event.keyCode == 13) { $('#btnEmailLogin').click(); }">
+			</li>
+		</ul>
+		
+		<div class="btn_set" style="margin-top:0">
+			<ul class="center">
+				<li><a href="javascript:void(0)" class="btn_style2" id="btnEmailLogin"><span>Login</span></a></li>
+			</ul>
+		</div>
+		
+		
+		<ul class="btn2">
+			<li><a href="#" id="findEmail">Eメール を忘れた</a></li>
+			<li><a href="#" id="findPwd">パスワード を忘れた</a></li>
+		</ul>
+		
+		<div class="info">
+			<p>会員ではありませんか？<br>会員の方は多様なサービスを受けることができます.</p>
+			<div class="btn_set" style="margin-top:0">
+				<ul class="center">
+					<li><a href="#" class="btn_style3" id="join"><span>会員登録</span></a></li>
+				</ul>
+			</div>
+		</div>
+		
+		<a href="javascript:layer_close();" class="layer_close">Layer Close</a>
+	</div>
+	
+	<div class="layer_box layer_email_pw" id="layer_email_pw">
+		<div class="email_pw_tab">
+			<ul>
+				<li class="email_pw_tab_01 on"><a href="javascript:email_pw('01')">Eメールを忘れた</a></li>
+				<li class="email_pw_tab_02"><a href="javascript:email_pw('02')">パスワードを忘れた</a></li>
+			</ul>
+		</div>
+		
+		<!-- Eメールを忘れた -->
+		<div class="con email_pw_con_01">
+			<p class="text">会員登録時の氏名と生年月日を入力してください.</p>
+			<ul class="input_box">
+				<li><strong>氏名</strong>
+					<div class="input">
+						<label class="iLabel" for="ep_first_name">性</label>
+						<input name="" type="text" class="iText w78" id="ep_first_name">
+					</div>
+					<div class="input">
+						<label class="iLabel" for="ep_last_name">名</label>
+						<input name="" type="text" class="iText w120" id="ep_last_name">
+					</div>
+				</li>
+				<li><strong>生年月日</strong>
+					<div class="input">
+						<label class="iLabel" for="ep_year">年</label>
+						<input name="" type="text" class="iText w78" id="ep_year">
+					</div>
+					<div class="input">
+						<label class="iLabel" for="ep_month">月</label>
+						<input name="" type="text" class="iText w58" id="ep_month">
+					</div>
+					<div class="input">
+						<label class="iLabel" for="ep_day">日</label>
+						<input name="" type="text" class="iText w58" id="ep_day">
+					</div>
+				</li>
+				<li><strong>NickName</strong>
+					<div class="input">
+						<label class="iLabel" for="ep_nickname">NickName</label>
+						<input name="" type="text" class="iText w202" id="ep_nickname" >
+					</div>
+					<p id="findEmailErrorBox" class="error hidden">間違って入力しましたエラーメッセージ</p>
+				</li> 
+				<!-- <li><i class="character">323456</i>
+					<div class="input">
+						<label class="iLabel" for="ep_character">左の番号を入力してください</label>
+						<input name="" type="text" class="iText w202" id="ep_character">
+					</div>
+					<p class="error">間違って入力しましたエラーメッセージ</p>
+				</li> -->
+			</ul>
+			<div class="input email">
+				<!-- <label class="iLabel" for="ep_user_email">Enter your email address</label> -->
+				<input name="" type="text" class="iText" id="ep_user_email" readonly>
+			</div>
+			<div class="btn_set" style="margin-top:20px">
+				<ul class="center">	
+					<li><a href="javascript:void(0)" class="btn_style2" id="btnFindEmail"><span>SEND</span></a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- //Eメールを忘れた -->
+		
+		<!-- パスワードを忘れた -->
+		<div class="con email_pw_con_02" style="display:none">
+			<p class="text">会員登録時のＥメールアドレスを入力してください.</p>
+			<div class="input email">
+				<label class="iLabel" for="ep_user_email2">Enter your email address</label>
+				<input name="" type="text" class="iText" id="ep_user_email2">
+			</div>
+			<div class="btn_set" style="margin-top:20px">
+				<ul class="center">
+					<li><a id="btnFindPwd" href="javascript:void(0)" class="btn_style2"><span id="spanFindPwd">仮パスワードを送信</span></a></li>
+				</ul>
+			</div>
+			<div class="message">
+				<i></i>入力されたＥメールアドレスへ仮パスワードを 送信します。<br>仮パスワードにてログイン後、パスワードを 変更してください。
+			</div>
+		</div>
+		<!-- //パスワードを忘れた -->
+		
+		<a href="javascript:layer_close();" class="layer_close">Layer Close</a>
+	</div>
+</div>
+<script type="text/javascript">
+$(function(){
+	$('.customInput input').customInput();
+});
+</script>
+<span class="layer_bg"></span>
+<!-- //Layer 팝업 영역 -->
+
+<input type="hidden" name="subcont_id" id="subcont_id" value=""/>
+<input type="hidden" name="joinType" id="joinType" value=""/>
+
+<script type="text/javascript">
+
+(function() {
+    var po = document.createElement('script');
+    po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://plus.google.com/js/client:plusone.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(po, s);
+  })();
+  
+  
+var helper = (function() {
+  var authResult = undefined;
+
+  return {
+    /**
+     * Hides the sign-in button and connects the server-side app after
+     * the user successfully signs in.
+     *
+     * @param {Object} authResult An Object which contains the access token and
+     *   other authentication information.
+     */
+    onSignInCallback: function(authResult) {
+    
+      if (authResult['access_token']) {
+        
+        this.authResult = authResult;
+        helper.connectServer();
+        
+      } else if (authResult['error']) {
+        // There was an error, which means the user is not signed in.
+        // As an example, you can troubleshoot by writing to the console:
+        console.log('There was an error: ' + authResult['error']);
+        $('#authResult').append('Logged out');
+        $('#authOps').hide('slow');
+        $('#gConnect').show();
+      }
+      console.log('authResult', authResult);
+    },
+
+    /**
+     * Calls the server endpoint to disconnect the app for the user.
+     */
+    disconnectServer: function() {
+    	var url = "/usr/logoutGooglePlus.do";
+    	document.location.href=url;
+
+    },
+    /**
+     * Calls the server endpoint to connect the app for the user. The client
+     * sends the one-time authorization code to the server and the server
+     * exchanges the code for its own tokens to use for offline API access.
+     * For more information, see:
+     *   https://developers.google.com/+/web/signin/server-side-flow
+     */
+    connectServer: function() {
+      console.log(this.authResult.code);
+      
+      var url = "/usr/ajax/login.do";
+    	var data = {};
+    	data.joinType="10001";
+    	data.accessToken = this.authResult.code;
+    	$.post(url, data, function(result){
+			// alert(result.msg);
+			if(result.result == '120'){
+				$("#idLogout").removeClass("hidden").show();
+				$("#idLogin").hide(); 
+				layer_close();		
+				$("#joinType").val("10001");
+			}
+		});	
+    }
+  };
+})();
+
+/**
+ * Perform jQuery initialization and check to ensure that you updated your
+ * client ID.
+ */
+$(document).ready(function() {
+  /* $('#disconnect').click(helper.disconnectServer); */
+  if ($('[data-clientid="YOUR_CLIENT_ID"]').length > 0) {
+    alert('This sample requires your OAuth credentials (client ID) ' +
+        'from the Google APIs console:\n' +
+        '    https://code.google.com/apis/console/#:access\n\n' +
+        'Find and replace YOUR_CLIENT_ID with your client ID and ' +
+        'YOUR_CLIENT_SECRET with your client secret in the project sources.'
+    );
+  }
+});
+
+/**
+ * Calls the helper method that handles the authentication flow.
+ *
+ * @param {Object} authResult An Object which contains the access token and
+ *   other authentication information.
+ */
+function onSignInCallback(authResult) {
+  helper.onSignInCallback(authResult);
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+$(function(){
+	var loggedin = 'false';
+	
+	if(loggedin === 'true'){
+		
+		$("#idLogout").removeClass("hidden").show();
+		$("#idLogin").hide(); 
+	}
+	
+	$("#btnEmailLogin").click(function(){
+		// 이메일 로그인
+      	var url = "/usr/ajax/login.do";
+      	var data = {};
+      	data.joinType="10002";
+      	
+      	var id = $("#login_id").val();
+      	var pwd = $("#login_pw").val();
+      	
+      	if(id == ''){
+      		alert('Eメールを入力してください。');
+      		return false;
+      	}
+      	
+      	if(pwd== ''){
+      		alert('パスワードを入力してください。');
+      		return false;
+      	}
+    	
+    	data.emailID = id;
+    	data.passwd = pwd;
+      	
+		$.post(url, data, function(result){
+
+			if(result.result == '120'){
+				$("#idLogout").removeClass("hidden").show();
+				$("#idLogin").hide(); 
+				layer_close();		
+				$("#joinType").val("10002");
+		
+			}
+			
+			alert(result.msg);
+			
+		});
+	});
+	
+	$("#btnLogout").click(function(){
+		var joinType = $("#joinType").val();
+		
+		if(joinType == '10000'){
+			fb_logout();
+		}else if(joinType == '10001'){
+			helper.disconnectServer();
+		}else if(joinType == '10002'){
+			var url = "/usr/logout.do";
+		  	document.location.href=url;
+		}
+	});
+	
+});
+  // This is called with the results from from FB.getLoginStatus().
+  function statusChangeCallback(response) {
+      
+    console.log('statusChangeCallback');
+    console.log(response);
+
+	if (response.status === 'connected') {
+      
+      	var access_token = response.authResponse.accessToken;
+      	var url = "/usr/ajax/login.do";
+      	var data = {};
+      	data.joinType="10000";
+      	data.accessToken = access_token;
+		$.post(url, data, function(result){
+			if(result.result == '120'){
+			 //alert(result.result);
+				$("#idLogout").removeClass("hidden").show();
+				$("#idLogin").hide(); 
+				layer_close();		
+				$("#joinType").val("10000");
+		
+			}
+		});	     
+  
+    }
+  }
+
+  window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '465267540278710',
+    //appId      : '624408357660518',
+    cookie     : true,  // enable cookies to allow the server to access 
+                        // the session
+    xfbml      : true,  // parse social plugins on this page
+    version    : 'v2.1' // use version 2.1
+  });
+
+
+  FB.getLoginStatus(function(response) {
+	statusChangeCallback(response);
+  });
+
+  };
+  
+  // Load the SDK asynchronously
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+  function fb_logout(){
+	  FB.logout(function(response) {
+		  var url = "/usr/logout.do";
+		  document.location.href=url;
+      });
+  }
+  
+  function fb_login(){
+	    FB.login(function(response) {
+	        if (response.authResponse) {
+	        	statusChangeCallback(response);
+	        } else {
+	            alert('フェイスブックログイン失敗');
+	        }
+	    }, {
+	        scope: 'publish_stream,email'
+	    });
+	}
+</script>
+</body>
+</html>

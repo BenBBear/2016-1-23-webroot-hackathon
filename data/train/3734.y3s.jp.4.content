@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="robots" content="index,follow">
+<meta name="keywords" content="スキースクール,スキー学校,スキー,スキーインストラクター,ピラタス,ロイヤルヒル,蓼科東急,白樺湖,蓼科,長野県">
+<meta name="description" content="SAJ公認スキー学校 八ヶ岳山麓スキー学校　キッズからシニアまで、初心者からエキスパートまで幅広いレベルのスキーヤーをサポートします。">
+
+<meta property="og:title" content="もっと自由に！もっと気持ちよく！もっとスキーを楽しくしよう！ 八ヶ岳山麓スキー学校">
+<meta property="og:type" content="sport">
+<meta property="og:url" content="http://y3s.jp/">
+<meta property="og:image" content="http://y3s.jp/for_fb.jpg">
+<meta property="og:description" content="SAJ公認スキー学校 八ヶ岳山麓スキー学校　キッズからシニアまで、初心者からエキスパートまで幅広いレベルのスキーヤーをサポートします。">
+<meta property="og:site_name" content="八ヶ岳山麓スキー学校">
+
+<title>八ヶ岳山麓スキー学校</title>
+<!--[if IE]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+
+<![endif]-->
+<link href="common/css/style.css" rel="stylesheet" type="text/css" />
+<link href='http://fonts.googleapis.com/css?family=Coda+Caption:800' rel='stylesheet' type='text/css'>
+<script type="text/javascript" language="javascript" src="common/js/jquery.min.js"></script>
+<script type="text/javascript" language="javascript" src="common/js/jquery.freetile.min.js"></script>
+<script type="text/javascript" language="javascript" src="common/js/velocity.js"></script>
+<script type="text/javascript" language="javascript" src="common/js/jquery.easing.js"></script>
+<script type="text/javascript">
+$(function(){
+	var	headerHeight = $("#header").height();
+
+	var timer = false;
+	$(window).scroll(function(){
+		if (timer !== false) {
+			clearTimeout(timer);
+		}
+    timer = setTimeout(function(){
+			y = $(window).scrollTop();
+			if( headerHeight > y ){
+				$('nav').css({
+					'top': headerHeight + 'px'
+				})
+			}else{
+				// $('nav').stop().animate({ 'top': y-60+'px' }, 200, 'swing')
+				// 				.stop().animate({ 'top': y-5+'px' }, 200, 'swing');
+				$('nav').velocity('stop').velocity({ 'top': y-60+'px' }, 200, 'ease-out')
+								.velocity('stop').velocity({ 'top': y-5+'px' }, 200, 'ease-out');
+			}
+    }, 100);
+	});
+
+	$('.linker a[href^=#]').click(function(){
+		var href = $(this).attr("href");
+		var target = $(href == "#" || href == "" ? 'html' : href);
+		target.velocity('stop').velocity("scroll",{offset:-70,duration:1000,easing:"swing"});
+		return false;
+	});
+});
+
+var slidePos = {lesson:0,badge:0};
+function slide(id,size){
+	slidePos[id] = slidePos[id]*1 + size*1;
+	var margin = slidePos[id]*100 + "%";
+	$("#"+id).velocity('stop').velocity({ marginLeft: margin }, 500, 'ease-in-out');
+	if(slidePos[id]<=-1){
+		$("."+id+'arrow .toLeft').show(200);
+	}else{
+		$("."+id+'arrow .toLeft').hide(200);
+	}
+	var windowWidth = $(window).width();
+	if($("#"+id).width()<=(slidePos[id]-1)*windowWidth*-1){
+		$("."+id+'arrow .toRight').hide(200);
+	}else{
+		$("."+id+'arrow .toRight').show(200);
+	}
+}
+
+</script>
+
+<!-- GoogleAnalytics -->
+<script type="text/javascript">
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-46880410-1', 'auto');
+ga('require', 'displayfeatures'); //広告主向けの機能を有効
+ga('send', 'pageview');
+
+//滞在時間計測イベント
+ga('send','event','滞在時間','00:00-00:15');
+setTimeout(function(){ga('send','event','滞在時間','00:15');},15000);
+setTimeout(function(){ga('send','event','滞在時間','00:30');},30000);
+setTimeout(function(){ga('send','event','滞在時間','01:00');},60000);
+setTimeout(function(){ga('send','event','滞在時間','02:00');},120000);
+setTimeout(function(){ga('send','event','滞在時間','03:00');},180000);
+setTimeout(function(){ga('send','event','滞在時間','05:00');},300000);
+</script>
+</head>
+
+<body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div id="header">
+<header>
+<div class="twitterButton">
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://y3s.jp/" data-lang="en" data-related="anywhereTheJavascriptAPI" data-count="vertical">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
+<div class="fb-like" data-href="https://www.facebook.com/yatsugatake3s" data-layout="box_count" data-action="like" data-show-faces="true" data-share="false"></div>
+<h1 class="right">
+<a href="./"><img src="common/img/header_logo.gif" width="330" height="57" alt="全日本スキー連盟公認 八ヶ岳山麓スキー学校"/></a>
+</h1>
+</header>
+</div>
+
+<nav>
+<ul class="clearfix linker">
+<li><a href="#">Top <br><span class="textSS">ページトップ</span></a></li>
+<li><a href="#infomation">Infomation<br><span class="textSS">インフォメーション</span></a></li>
+<li><a href="#lesson">Lesson<br><span class="textSS">レッスン</span></a></li>
+<li><a href="#badge">Badge Test<br><span class="textSS">バッジテスト</span></a></li>
+<li><a href="contact.php" target="_blank">Contact<br><span class="textSS">お問い合わせ</span></a></li>
+</ul>
+</nav>
+
+<section class="container">
+<div id="infomation">
+<div class="post tripleWide">
+<p>八ヶ岳山麓スキー学校は、雄大な自然に恵まれた八ヶ岳中信高原国定公園の八ヶ岳の麓に広がる、蓼科高原・白樺湖エリアに設けられた「ピラタス蓼科スノーリゾート」「白樺湖ロイヤルヒル」「蓼科東急スキー場」のスキースクールを運営している、全日本スキー連盟公認のスキー学校です。</p>
+<p class="center">もっと自由に、もっと気持ちよく、もっと楽しいスキーを。<br>
+白銀のゲレンデでお待ちしています。</p>
+<h1>八ヶ岳山麓スキー学校</h1>
+</div>
+<div class="post singleWide center bg_orange">
+<a href="jr-race.php"><h3 class="textL">ピラタス<br>
+ジュニアスキー競技会</h3>
+平成28年3月27日（日）
+参加者募集中！</a>
+</div>
+<div class="post singleWide center bg_red">
+<a href="bestski.php"><h3 class="textL">ベストスキー</h3>
+参加者募集中！</a>
+</div>
+<div class="post singleWide center bg_green">
+<a href="shiminski.php"><h3 class="textL">市民子供スキー教室</h3>
+参加者募集中！</a>
+</div>
+<div class="post singleWide center bg_blue">
+<a href="recruit.htm" target="_blank">インストラクター募集中</a>
+</div>
+<div class="post singleWide textS bg_gray">
+<h2>各校連絡先</h2>
+<h3>ピラタス蓼科校 本校</h3>
+<p>茅野市北山蓼科4035<br>
+ピラタス蓼科スノーリゾート内<br>
+TEL 0266-67-6266</p>
+<h3>白樺湖ロイヤルヒル校</h3>
+<p>茅野市北山白樺湖3419-1<br>
+白樺湖ロイヤルヒルスキー場下<br>
+TEL 0266-68-2644</p>
+<h3>蓼科東急校</h3>
+<p>茅野市北山字鹿山4026<br>
+蓼科東急スキー場内<br>
+TEL 0266-55-2731</p>
+<p class="center"><a href="contact.php" target="_blank">メールでのお問い合わせは<br>
+こちらから</a></p>
+</div>
+
+<div class="post singleWide textSS">
+<div class="right clear">2016.1.19 23:37</div>
+茅野市姉妹都市交流事業として、台湾より<br>
+スキー研修のお客様達をお迎えしました。(^O^)<br>
+<br>
+アルクマ君、ウサギのミミちゃんも応援してくれました。<br>
+初めてのゆき景色、スキー、ソリなど、皆さん、冬山を<br>
+楽しんでいただいてました。<br>
+<span class="photo"><img src="https://scontent.xx.fbcdn.net/hphotos-xpf1/v/t1.0-0/p180x540/12552736_897539507031620_8791377645027039389_n.jpg?oh=72e049a501b9e82b9a1477f55b75662a&oe=57310D9B" style="margin-top:-26px"></span>
+</div>
+<div class="post singleWide textSS">
+<div class="right clear">2016.1.16 21:43</div>
+1月17日<br>
+第3日曜日は、スキー子供の日です。小学生対象、ジュニアレッスン、未就学児対象のキッズレッスン、レッスン料金は、半額となります‼️スノボーレッスンはジュニアレッスン半額です。<br>
+この機会にぜひ、ご入校ください。たくさんのお子様<br>
+お待ちしています！！<br>
+<span class="photo"><img src="https://scontent.xx.fbcdn.net/hphotos-xpl1/v/t1.0-9/s720x720/1526428_895909740527930_648348291206585919_n.jpg?oh=8be11ce7b02c8e42d7f677705fc547c5&oe=572BE106" style="margin-top:-15px"></span>
+</div>
+<div class="post singleWide textSS">
+<div class="right clear">2016.1.16 21:36</div>
+バッヂ検定のお知らせ<br>
+<br>
+明日、1月17日<br>
+バッヂ検定、予定通り行われます。ゲレンデ内、受付ハウスにて、朝9時より受付開始です。<br>
+1級事前講習、その他の級の講習内検定開始時刻は<br>
+10時半です。一級検定は13時30分からとなります。<br>
+受付は、なるべくお早目にお願いします。<br>
+皆様のお越しをお待ち申し上げております。<br>
+<span class="photo"><img src="https://scontent.xx.fbcdn.net/hphotos-xfp1/v/t1.0-0/p180x540/12400623_895902560528648_4696544166397778474_n.jpg?oh=2efbae7b3568bb0faf6fc91b97579276&oe=573616BA" style="margin-top:-26px"></span>
+</div>
+<div class="post singleWide textSS">
+<div class="right clear">2016.1.6 21:35</div>
+1月9、10、11日の三連休のレッスンについてのお知らせ。<br>
+<br>
+年末年始期間中は、たくさんのお客様のご入校、誠にありがとうございました！今週末のレッスンについてお知らせ致します。<br>
+エキスパートクラス、一般上級者クラス、及び検定につきましては、初心者のレッスンを優先させていただきますので受講できません。<br>
+大変申し訳ございません。<br>
+<br>
+尚、連休以外でもエキスパート、一般上級者クラスの実施につきましては必ず電話でご確認をお願いいたします。<br>
+ご不便をおかけしますが、御理解と御協力をお願いいたします。<br>
+<br>
+八ケ岳山麓スキースクール  ピラタス校<br>
+<span class="photo"><img src="https://scontent.xx.fbcdn.net/hphotos-xpf1/v/t1.0-0/p180x540/12523066_890522891066615_3311506607671738615_n.jpg?oh=ffc55e8cd30c3fcf7fc4228ef2d3e9cd&oe=5735EEFC" style="margin-top:-26px"></span>
+</div>
+<div class="post singleWide textSS">
+<div class="right clear">2015.12.31 00:03</div>
+連日、沢山のご入校ありがとうございます。<br>
+受付時間についてお知らせします。<br>
+<br>
+受付時間<br>
+AM9:00〜10:15<br>
+PM12:00〜13:15<br>
+レッスン時間<br>
+AM10:30〜12:30<br>
+PM13:30〜15:30<br>
+<br>
+混雑時は、お早目に！！<br>
+レッスン時間ギリギリのお申し込みはご遠慮下さい。<br>
+定員に達し次第、受付終了させていただく事もございます。<br>
+<br>
+ピラタススキースクール<br>
+ピラタススノーボードスクール<br>
+<span class="photo"><img src="https://scontent.xx.fbcdn.net/hphotos-xft1/v/t1.0-0/p180x540/1914510_886856841433220_5527035234792572271_n.jpg?oh=7e87d54a1d923c7f44caf808874883f8&oe=573FC993" style="margin-top:-26px"></span>
+</div>
+<div class="post singleWide textSS">
+<div class="right clear">2015.12.11 22:27</div>
+開校延期のお知らせ。<br>
+<br>
+八ヶ岳山麓スキースクール ピラタス校は、スキー場オープン延期に伴い19日からの開校になりました。<br>
+よろしくお願い申し上げます。<br>
+<span class="photo"><img src="https://scontent.xx.fbcdn.net/hphotos-xap1/v/t1.0-9/s720x720/12360067_876595225792715_7421699034058979163_n.jpg?oh=c0f1a4df5bc4b1e7918bf0bbc0f92e2e&oe=57462447" style="margin-top:-84px"></span>
+</div>
+<div class="post singleWide textSS">
+<div class="right clear">2015.3.18 09:35</div>
+昨日、<br>
+いー感じの検定バーンできましたょー！！<br>
+本日バッチテスト‼️<br>
+受検者の皆様頑張って下さい❗️fightです！！<br>
+<span class="photo"><img src="https://scontent.xx.fbcdn.net/hphotos-xfa1/v/t1.0-0/p180x540/11022530_743228879129351_8790634712750903548_n.jpg?oh=cc359e7709e6584770d4ed9ffb5d3280&oe=573EE913" style="margin-top:-26px"></span>
+</div>
+<div class="post singleWide textSS">
+<div class="right clear">2015.3.15 16:54</div>
+澄み渡る青空のもと、第７回ピラタスジュニアポール大会が行われました！<br>
+今回からは、未就学児のキッズの部が新カテゴリーに加わりました。みんな最後のポールまで元気に頑張って滑りました。(⌒▽⌒)ご参加ありがとうございました！また、来年もみんなの元気な笑顔に会えますようにー(^ ^)<br>
+<span class="photo"><img src="https://scontent.xx.fbcdn.net/hphotos-xaf1/v/t1.0-0/p480x480/11068389_741682529283986_1810235399542580831_n.jpg?oh=b585520fbbc9dd24d0485445f3884919&oe=56FBDAF3" style="margin-top:-18px"></span>
+</div>
+<div class="post singleWide textSS">
+<div class="right clear">2015.3.12 15:56</div>
+受け付け終了のお知らせ<br>
+<br>
+第七回   ピラタスジュニアポール大会への参加申し込みは<br>
+大勢の皆様からのお申込みにより、定員に達しましたので<br>
+エントリーを<br>
+締め切りにさせていただきました。ありがとうございました。当日、お申込み頂いている選手の皆さんのお越しを心よりお待ちしています！<br>
+<br>
+ぜひ、楽しい一日をお過ごし下さい。<br>
+<span class="photo"><img src="https://scontent.xx.fbcdn.net/hphotos-xap1/v/t1.0-9/s720x720/10422022_739828926136013_233708311627777371_n.jpg?oh=18968ed79a41a80efa591dd969c1b588&oe=57397807" style="margin-top:-84px"></span>
+</div>
+<div class="post singleWide textSS">
+<div class="right clear">2015.3.1 23:55</div>
+今日は白樺湖校にて<br>
+ジュニアバッチテストが行われました。<br>
+<br>
+悪天候の中、がんばって滑って<br>
+みんなバッチをもらって<br>
+喜んでました。<br>
+<br>
+これを機に、もっとスキーダイスキになって、来年はひとつ上の級を取りに来てくれたら嬉しいな*\(^o^)/*<br>
+<span class="photo"><img src="https://scontent.xx.fbcdn.net/hphotos-xfa1/v/t1.0-0/p180x540/11029487_733488290103410_8767091947736125832_n.jpg?oh=1e2dec793d66ea96ca458d9e5a26e4b5&oe=57338A35" style="margin-top:-26px"></span>
+</div>
+<div class="post singleWide textSS center bg_blue">
+<a href="https://www.facebook.com/yatsugatake3s" target="_blank">八ヶ岳山麓スキー学校 facebookページ</a>
+<div class="fb-like" data-href="https://www.facebook.com/yatsugatake3s" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
+</div>
+
+</div>
+</div>
+</section>
+
+<div class="container lessonarrow">
+<div class="toLeft"><a href="#" onClick="slide('lesson','1');return false;"><img src="common/img/arrow_lt.png" width="51" height="51" alt=""/></a></div>
+<div class="toRight"><a href="#" onClick="slide('lesson','-1');return false;"><img src="common/img/arrow_rt.png" width="50" height="50" alt=""/></a></div>
+<div id="lesson">
+<div class="lesson lesson-1">
+<article>
+<h1><img src="common/img/lesson_h1.png" width="376" height="100" alt="キッズも、シニアも。ビギナーも、ベテランも。"/></h1>
+<p>スキーヤーの年齢・レベルに応じた多彩なレッスン。<br>
+経験豊富なインストラクターと、コンディション抜群の<br>
+ゲレンデで楽しくレベルアップを実感して下さい。</p>
+<ul>
+<li><a href="#" onClick="slide('lesson','-1');return false;">一般レッスン</a></li>
+<li><a href="#" onClick="slide('lesson','-2');return false;">キッズレッスン</a></li>
+<li><a href="#" onClick="slide('lesson','-3');return false;">ジュニアレッスン</a></li>
+<li><a href="#" onClick="slide('lesson','-4');return false;">エキスパートレッスン</a></li>
+<li><a href="#" onClick="slide('lesson','-5');return false;">プライベートレッスン・グループレッスン</a></li>
+</ul>
+</article>
+</div>
+
+<div class="lesson lesson-2">
+<article>
+<h2><img src="common/img/lesson_regular.png" width="376" height="100" alt="レベルに応じたレッスン　楽しくステップアップ"/></h2>
+<p>初心者の方から上級者まで、スキーヤーのレベルに<br>
+応じてクラス分けし、それぞれのレベルに合わせて<br>
+より楽しくスキーをして頂くためのレッスン。</p>
+<p>レベルアップを実感していただけるよう、親切<br>
+丁寧にインストラクターが指導します。</p>
+</article>
+</div>
+
+<div class="lesson lesson-3">
+<article>
+<h2><img src="common/img/lesson_kids.png" width="376" height="100" alt="きめ細やかな配慮、安心しておまかせ下さい。"/></h2>
+<p>4才から6才までの未就学児を対象とした当校の<br>
+キッズレッスンは、インストラクター1人に対し<br>
+生徒5名までの少数教室とし、生徒全員に配慮が<br>
+行き届くよう心がけております。</p>
+<p>初めての雪、初めてのスキーというお子様でも<br>
+安全に楽しくスキーをしていただけるよう、<br>
+インストラクターが指導しています。</p>
+</article>
+</div>
+
+<div class="lesson lesson-4">
+<article>
+<h2><img src="common/img/lesson_jr.png" width="429" height="100" alt="楽しみながらレベルアップ、スキーが好きになるレッスン"/></h2>
+<p>小学生を対象としたジュニアレッスンは、ゲレンデを<br>
+自由に滑走できるスキーの楽しさと、上達する喜びを<br>
+知っていただけるようにレッスンをしています。</p>
+</article>
+</div>
+
+<div class="lesson lesson-5">
+<article>
+<h2><img src="common/img/lesson_exp.png" width="386" height="100" alt="楽しみながらレベルアップ、スキーが好きになるレッスン"/></h2>
+<p>エキスパートレッスンはSAJ1級、そしてそれ以上を<br>
+目指すためのレッスンです。</p>
+<p>指導に長けたインストラクターがお客様のクセや<br>
+特徴を見抜き、どうすればより上達できるのか、<br>
+合格するためにはどうすればよいのかを指導します。</p>
+</article>
+</div>
+
+<div class="lesson lesson-6">
+<article>
+<h2><img src="common/img/lesson_prv.png" width="386" height="100" alt="お客様の都合に合わせたオーダーメイドのレッスン"/></h2>
+<p>プライベートレッスンは個人またはご家族、グループ<br>
+でのより早い上達を望まれる方への特別レッスン。<br>
+受講して頂いた方だけに集中する充実したレッスンを<br>
+行います。４名様以内でお申し込み下さい。</p>
+<h2 class="floatRt"><img src="common/img/lesson_gr.png" width="386" height="100" alt="仲間や友達同士、団体のスキー教室などに"/></h2>
+<p class="clear floatRt">グループレッスンは12名までの仲間や友達同士、または<br>
+会社やスポーツクラブ等の団体でのスキー教室にご利用<br>
+いただけるレッスンです。<br>
+グループレッスンをご希望の場合はご予約が必要です。</p>
+</article>
+</div>
+
+</div>
+</section>
+
+<div id="lessonPrise">
+<table cellspacing="0" class="floatRt">
+<tr>
+<th colspan="3" class="tableTitle center">講習時間</th>
+</tr>
+<tr>
+<th scope="col">&nbsp;</th>
+<th class="center" scope="col">午前</th>
+<th class="center" scope="col">午後</th>
+</tr>
+<tr class="bg">
+<th scope="row">ピラタス蓼科校</th>
+<td>10:30 ～ 12:30</td>
+<td>13:30 ～ 15:30</td>
+</tr>
+<tr>
+<th scope="row">白樺湖校</th>
+<td>10:00 ～ 12:00</td>
+<td>13:30 ～ 15:30</td>
+</tr>
+<tr class="bg">
+<th scope="row">蓼科東急校</th>
+<td>10:00 ～ 12:00</td>
+<td>13:00 ～ 15:00</td>
+</tr>
+<tr>
+<th colspan="3" class="textS noBoader" scope="row"><p>集合時間：レッスン開始10分前</p>
+<p>※プライベートレッスン・グループレッスン・教師派遣は<br>
+お客様の都合に合わせて時間を調整いたします。<br>
+受付・ご予約の際にお申し付け下さい。</p></th>
+</tr>
+</table>
+<h2>お申込み</h2>
+<p>キッズ・ジュニア・一般・エキスパートレッスンのお申し込みは<br>
+当日講習開始直前まで各スキー学校窓口で受け付けています。<br>
+なお、定員になり次第締め切らせていただく場合があります。</p>
+<p>スノーボードレッスンはピラタス蓼科校でのみ受け付けております。</p>
+<p>エキスパートレッスンは前日までにお電話でお問い合わせをお願いします。</p>
+<p>プライベートレッスンはご予約が可能です。<br>
+<a href="book.php">こちらのページ</a>よりご予約下さい。<br>
+<span class="textSS">※一般・キッズ・ジュニアレッスンは当日受付のみです。<br>
+　ご予約はお受けしておりませんのでご了承下さい。</span></p>
+<p>グループレッスン・教師派遣・団体指導は事前予約が必要です。<br>
+<a href="book.php">こちらのページ</a>よりご予約下さい。</p>
+</div>
+
+<div id="lessonPrise">
+<table cellspacing="0">
+<tr>
+<th colspan="5" class="tableTitle center">スキー教室レッスン料金</th>
+<th rowspan="9" class="noBoader">&nbsp;</th>
+<th colspan="3" class="tableTitle center">スノーボード教室レッスン料金</th>
+</tr>
+<tr>
+<th scope="col">&nbsp;</th>
+<th class="center" scope="col">半日(2時間)</th>
+<th class="center" scope="col">1日(4時間)</th>
+<th class="center" scope="col">延長(1時間)</th>
+<th class="center" scope="col">延長(2時間)</th>
+<th class="center" scope="col">&nbsp;</th>
+<th class="center" scope="col">半日(2時間)</th>
+<th class="center" scope="col">1日(4時間)</th>
+</tr>
+<tr class="bg">
+<th scope="row">一般レッスン</th>
+<td>4,000 円</td>
+<td>5,000 円</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<th scope="row">一般レッスン</th>
+<td>4,000 円</td>
+<td>6,000 円</td>
+</tr>
+<tr>
+<th scope="row">キッズレッスン</th>
+<td>4,500 円</td>
+<td>6,500 円</td>
+<td>1,500 円</td>
+<td>&nbsp;</td>
+<th scope="row">ジュニアレッスン</th>
+<td>4,500 円</td>
+<td>6,500 円</td>
+</tr>
+<tr class="bg">
+<th scope="row">ジュニアレッスン</th>
+<td>4,000 円</td>
+<td>6,000 円</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td colspan="3" rowspan="2" class="noBoader left textSS">スノーボード教室は蓼科校でのみ開催しています。</td>
+</tr>
+<tr>
+<th scope="row">エキスパートレッスン</th>
+<td>4,000 円</td>
+<td>6,000 円</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="bg">
+<th scope="row">プライベートレッスン</th>
+<td>16,000 円</td>
+<td>22,000 円</td>
+<td>5,500 円</td>
+<td>&nbsp;</td>
+<td colspan="3" class="noBoader">&nbsp;</td>
+</tr>
+<tr>
+<th scope="row">グループレッスン</th>
+<td>20,000 円</td>
+<td>28,000 円</td>
+<td>7,000 円</td>
+<td>14,000 円</td>
+<td colspan="3" class="noBoader">&nbsp;</td>
+</tr>
+<tr class="bg">
+<th scope="row">教師派遣</th>
+<td>20,000 円</td>
+<td>28,000 円</td>
+<td>7,000 円</td>
+<td>14,000 円</td>
+<td colspan="3" class="noBoader">&nbsp;</td>
+</tr>
+<tr class="bg">
+<td colspan="5" class="textSS noBoader" scope="row"><p>価格は全て税込みです。</p></td>
+<td class="noBoader">&nbsp;</td>
+<td colspan="3" class="noBoader">&nbsp;</td>
+</tr>
+</table>
+</div>
+
+<div class="container">
+<section id="badge">
+<h2>スキー技能テスト <img src="common/img/h2_badge.png" width="181" height="43" alt="バッジテスト"/> バッジテスト</h2>
+<table cellspacing="0">
+<tr>
+<th colspan="5" class="tableTitle center">バッジテスト・ジュニアバッジテスト開催日程</th>
+</tr>
+<tr class="bg">
+<th colspan="2" class="center" scope="row">バッジテスト</th>
+<th class="noBoader" scope="row">&nbsp;</th>
+<th colspan="2" class="center" scope="row">ジュニアバッジテスト</th>
+</tr>
+<tr>
+<td scope="row">1月17日(日)</td>
+<th>ピラタス蓼科スノーリゾート</th>
+<td class="noBoader">&nbsp;</td>
+<td>1月17日(日)</td>
+<th>ピラタス蓼科スノーリゾート</th>
+</tr>
+<tr class="bg">
+<td scope="row">2月21日(日)</td>
+<th>白樺湖ロイヤルヒル</th>
+<td class="noBoader">&nbsp;</td>
+<td>2月21日(日)</td>
+<th>ピラタス蓼科スノーリゾート</th>
+</tr>
+<tr>
+<td scope="row">3月16日(水)</td>
+<th>ピラタス蓼科スノーリゾート</th>
+<td class="noBoader">&nbsp;</td>
+<td>&nbsp;</td>
+<th>&nbsp;</th>
+</tr>
+<tr>
+<th colspan="5" class="textS noBoader" scope="row">
+<p>※都合により検定を実施出来ない事もございますので、必ず前日までに電話でのご確認をお願いいたします。</p>
+<p>※ジュニアバッジテスト6級～2級は随時受け付けています。（ピラタス蓼科校のみ）</p>
+<p>※一般1・2級、ジュニア1級の検定は定められた日のみの検定となります。</p>
+<p>※受験される方は受験日当日朝9:30までに受付を済ませてください。</p>
+<p>※ジュニア・一般1級受験される方は受付時に2級合格証をお持ち下さい。(コピー可)</p>
+<p><strong>※バッジテスト受験者のための講習も行います。詳しくはスキー学校へ<a href="contact.php" target="_blank">お問い合わせ</a>下さい。</strong></p>
+<p>※今季より一般の2級の講習内検定はなくなりました。</p></th>
+</tr>
+</table>
+<table cellspacing="0">
+<tr>
+<th colspan="11" class="tableTitle center">バッジテスト・ジュニアバッジテスト料金</th>
+</tr>
+<tr class="bg">
+<th colspan="4" class="center" scope="row">バッジテスト</th>
+<th class="noBoader" scope="row">&nbsp;</th>
+<th colspan="6" class="center" scope="row">ジュニアバッジテスト</th>
+</tr>
+<tr>
+<th class="center" scope="row">&nbsp;</th>
+<th class="center">受検料</th>
+<th class="center">事前講習料</th>
+<th class="center">公認料</th>
+<td class="noBoader">&nbsp;</td>
+<th class="center" scope="row">&nbsp;</th>
+<th colspan="2" class="center">キッズ(未就学児)</th>
+<th colspan="2" class="center">ジュニア(小学生)</th>
+<th class="center">&nbsp;</th>
+</tr>
+<tr class="bg">
+<th class="center" scope="row">1級</th>
+<td>4,000円</td>
+<td>4,000円</td>
+<td>2,000円</td>
+<td class="noBoader">&nbsp;</td>
+<th class="center" scope="row">&nbsp;</th>
+<th class="center"><span class="center">半日</span></th>
+<th class="center"><span class="center">1日</span></th>
+<th class="center"><span class="center">半日</span></th>
+<th class="center"><span class="center">1日</span></th>
+<th class="center">公認料</th>
+</tr>
+<tr>
+<th class="center" scope="row">2級</th>
+<td>3,000円</td>
+<td>4,000円</td>
+<td>1,500円</td>
+<td class="noBoader">&nbsp;</td>
+<th class="center" scope="row">Jr1級</th>
+<td>4,500円</td>
+<td>6,500円</td>
+<td>4,000円</td>
+<td>6,000円</td>
+<td>1,000円</td>
+</tr>
+<tr class="bg">
+<th class="center" scope="row">3級</th>
+<td colspan="2"><span class="textS">講習内検定</span> 4,000円</td>
+<td>1.200円</td>
+<td class="noBoader">&nbsp;</td>
+<th class="center" scope="row">Jr2級</th>
+<td><span class="center">4,500円</span></td>
+<td><span class="center">6,500円</span></td>
+<td>4,000円</td>
+<td>6,000円</td>
+<td>900円</td>
+</tr>
+<tr>
+<th class="center" scope="row">4級</th>
+<td colspan="2"><span class="textS">講習内検定</span> 4,000円</td>
+<td>800円</td>
+<th class="noBoader" scope="row">&nbsp;</th>
+<th class="center" scope="row">Jr3級</th>
+<td>4,500円</td>
+<td>6,500円</td>
+<td>4,000円</td>
+<td>6,000円</td>
+<td>800円</td>
+</tr>
+<tr class="bg">
+<th class="center" scope="row">5級</th>
+<td colspan="2"><span class="textS">講習内検定</span> 4,000円</td>
+<td>700円</td>
+<td class="noBoader">&nbsp;</td>
+<th class="center" scope="row">Jr4級</th>
+<td><span class="center">4,500円</span></td>
+<td><span class="center">6,500円</span></td>
+<td>4,000円</td>
+<td>6,000円</td>
+<td>700円</td>
+</tr>
+<tr>
+<th colspan="4" rowspan="3" class="noBoader" scope="row">&nbsp;</th>
+<td class="noBoader">&nbsp;</td>
+<th class="center" scope="row">Jr5級</th>
+<td>4,500円</td>
+<td>6,500円</td>
+<td>4,000円</td>
+<td>6,000円</td>
+<td>600円</td>
+</tr>
+<tr class="bg">
+<td class="noBoader">&nbsp;</td>
+<th class="center" scope="row">Jr6級</th>
+<td>4,500円</td>
+<td>6,500円</td>
+<td>4,000円</td>
+<td>6,000円</td>
+<td>500円</td>
+</tr>
+<tr>
+<th class="noBoader" scope="row">&nbsp;</th>
+<th colspan="6" class="noBoader">※ジュニアバッジテストは講習内検定となります。<br>
+　半日、もしくは1日レッスンをお受け頂き、レッスン内に講師（検定員）<br>
+　が合否を判断します。<br>
+※受験料はレッスン代に含まれます。</th>
+</tr>
+</table>
+</section>
+</div>
+
+<section class="container footer textS">
+<footer class="clearfix">
+<h1><a href="./">八ヶ岳山麓スキー学校</a></h1>
+<article>
+<ul class="linker">
+<li><a href="#">ページトップ</a></li>
+<li><a href="#infomation">インフォメーション</a></li>
+<li><a href="#lesson">レッスンのご案内</a></li>
+<li><a href="#badge">バッジテストのご案内</a></li>
+</ul>
+</article>
+<article>
+<ul>
+<li><a href="contact.php" target="_blank">お問い合わせ</a></li>
+<li><a href="book.php" target="_blank">レッスンのご予約</a></li>
+<li><a href="recruit.htm" target="_blank">インストラクター募集</a></li>
+</ul>
+</article>
+<article>
+<table cellspacing="0">
+<tr>
+<th colspan="3" class="center">八ヶ岳山麓スキー学校 各校連絡先</th>
+</tr>
+<tr>
+<th width="33%">ピラタス蓼科校(本校)</th>
+<th width="33%">白樺湖ロイヤルヒル校</th>
+<th width="33%">蓼科東急校</th>
+</tr>
+<tr>
+<th>茅野市北山蓼科4035<br />
+<a href="http://www.pilatus.jp/">ピラタス蓼科スノーリゾート</a></th>
+<th>茅野市北山白樺湖3419-1<br />
+<a href="http://www.royalhill.co.jp/" target="_blank">白樺湖ロイヤルヒルスキー場</a></th>
+<th>茅野市北山字鹿山4026<br />
+<a href="http://www.tateshina-tokyu.com/outdoor/ski/" target="_blank">蓼科東急スキー場</a></th>
+</tr>
+<tr>
+<th><span class="font_s-n">TEL 0266-67-6266<br />
+FAX 0266-67-6267</span></th>
+<th><span class="font_s-n">TEL 0266-68-2644<br />
+FAX 0266-55-2918</span></th>
+<th> TEL&amp;FAX 0266-55-2731</th>
+</tr>
+<tr>
+<th><a href="contact.php">tateshina<script type="text/javascript">
+document.write('&#');
+document.write('64;');
+</script>y3s.jp</a></th>
+<th><a href="contact.php">shirakabako<script type="text/javascript">
+document.write('&#');
+document.write('64;');
+</script>y3s.jp</a></th>
+<th><a href="contact.php">tokyu<script type="text/javascript">
+document.write('&#');
+document.write('64;');
+</script>y3s.jp</a></th>
+</tr>
+</table>
+</article>
+</footer>
+<div class="textS" id="copyright">
+&copy; 2004-<script type="text/javascript">
+var date = new Date();
+document.write(date.getFullYear());
+</script> 八ヶ岳山麓スキー学校
+</div>
+</section>
+
+
+<script type="text/javascript">
+$(function(){
+	$('#infomation').freetile({
+		selector: '.post'
+	});
+});
+</script>
+</body>
+</html>

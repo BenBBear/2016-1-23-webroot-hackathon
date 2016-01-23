@@ -1,0 +1,1 @@
+<html><title>Error</title></head><body><p>The following directories must be writable by the web server:<br />tmp/cache<br />tmp/templates_c<br /></p><p>Please correct by executing:<br /><em>chmod 777 tmp/cache<br />chmod 777 tmp/templates_c</em><br />or the equivilent for your platform before continuing.</p></body></html>

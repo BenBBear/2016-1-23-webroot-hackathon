@@ -1,0 +1,441 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+
+	<!-- META -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta http-equiv="Imagetoolbar" content="no" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="-1" />
+	
+	<!-- META -->
+
+	<!-- LINK -->
+		
+
+<style type="text/css">
+address, em, cite, dfn, var {
+	font-style: normal;
+}
+input, textarea {
+	font-family: sans-serif;
+	font-weight: normal;
+}
+img,fieldset {
+	border: 0;
+}
+
+body {
+	font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+	font-size:15px;
+	font-weight:normal;
+	font-style:normal;
+	line-height:175%;
+	color: #000;
+	margin:0px;
+	padding:0px;
+}
+
+a:hover {
+	text-decoration: none;
+}
+a:visited {
+	color: #0000ff;
+}
+
+img {
+	border:0;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-weight:normal;
+	font-style:normal;
+	line-height:120%;
+	margin:0px 0px 10px ;
+	padding:0px ;
+}
+p,li {
+	font-size:15px;
+	font-weight:normal;
+	font-style:normal;
+	line-height:200%;
+	margin:0px;
+	padding:0px ;
+}
+
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* デザイン */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+body {
+	text-align:center;
+	background-color: #EEEEEE;
+	margin-top:15px;
+	margin-bottom:15px
+}
+#container {
+	width:668px;
+	margin:0px auto;
+	border-radius: 8px; 
+	-moz-border-radius: 8px; 
+	-webkit-border-radius: 8px;
+			border: 2px #ED6D00 solid;
+		background-color: #FFFFFF;
+	text-align:left;
+	padding:40px 40px 0 40px
+}
+
+
+#container .font1 {
+font-size:30px;
+line-height:150%;
+font-weight:bold}
+
+#container .font2 {
+font-size:20px;
+line-height:150%;
+font-weight:bold;
+color:#333333;
+margin-top:30px}
+
+#container .text { margin-top:30px ;
+margin-top:40px;
+padding-bottom:40px;
+border-bottom:1px solid #CCCCCC}
+
+#container .form { margin-top:30px;
+margin-top:40px;
+padding-bottom:40px;
+border-bottom:1px solid #CCCCCC}
+
+.w300 {width:300px;}
+
+
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* フッター */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+div.footer {
+	color:#666666;
+	font-size:12px;
+	font-weight:normal;
+	line-height:200%;
+	text-align:center;
+	margin:0 auto ;
+	padding:20px 0px 0px ;
+	margin-bottom:20px;
+	margin-top:30px;
+}
+div.footer a {
+	color:#666666;
+	text-decoration:none;
+}
+div.footer a:hover {
+	text-decoration:underline;
+}
+address { 
+	font-style:normal;
+}
+
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* color */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.red {color:#CC0000;}
+.black {}
+
+div.special-a h1 {
+	color:#CC0000;
+	font-size:30px;
+	font-weight:bold;
+	line-height:150%;
+	margin:0 0 0;
+	padding:0 0 30px;
+}
+div.special-a h2 {
+	color:#333333;
+	font-size:20px;
+	font-weight:bold;
+	line-height:150%;
+	margin:0 0 0;
+	padding:0 0 30px;
+}
+div.special-a h3 {
+	color:#ffffff;
+	font-size:20px;
+	font-weight:bold;
+	line-height:170%;
+	text-align:center;
+	margin:40px 0 0;
+	padding:5px 0 40px;
+	background: transparent url(image2/bg-subhead1.jpg)  no-repeat 0 0;
+}
+div.special-a h4 {
+	font-size:16px;
+	font-weight:bold;
+	line-height:150%;
+	margin:0 0 10px;
+	padding:10px 15px 5px;
+	background: #e8e8e8 url(image2/bg-subhead2.jpg)  repeat-x center bottom;
+}
+div.special-a h5 {
+	font-size:16px;
+	font-weight:bold;
+	line-height:150%;
+	border-bottom:#aaaaaa solid 1px;
+	margin:0 0 10px;
+	padding:15px 0 5px;
+}
+div.special-a p {
+	font-size:15px;
+	line-height:175%;
+	padding:0 0 15px;
+}
+div.special-a p small {
+	display:block;
+	color:#333333;
+	font-size:12px;
+	font-weight:normal;
+}
+div.special-a p strong {
+	color:#e60000;
+	font-weight:bold;
+	font-size:17px;
+}
+div.special-a p em {
+	font-weight:bold;
+}
+div.special-a ul {
+	margin:10px 10px 15px 15px;
+	padding:0;
+}
+div.special-a ul li {
+	list-style:none;
+	text-align:left;
+	font-size:15px;
+	font-weight:bold;
+	line-height:170%;
+	padding:0 0 7px 20px;
+	background: transparent url(image/bullet1.gif)  no-repeat 0 0;
+}
+div.special-a blockquote {
+	border:#cccccc solid 1px;
+	background: #f3f3f3;
+	margin:0 0 30px;
+	padding:20px 20px 10px;
+}
+div.special-a blockquote p {
+	font-weight:bold;
+	margin:0 0 0;
+	padding:0 0 10px;
+}
+.img-right {
+	float:right;
+	margin:2px 0 15px 15px;
+}
+
+div.special-a table.table-a {
+	width:658px;
+	border-collapse:collapse;
+	border-spacing:0;
+	margin:0 0 0;
+	border-left:#aaaaaa solid 1px;
+	border-top:#aaaaaa solid 1px;
+}
+div.special-a table.table-a td {
+	text-align:left;
+	font-size:14px;
+	line-height:150%;
+	vertical-align:top;
+	padding:7px 10px;
+	border-right:#aaaaaa solid 1px;
+	border-bottom:#aaaaaa solid 1px;
+}
+div.special-a table.table-a td p {
+	text-align:left;
+	font-size:14px;
+	line-height:150%;
+	margin:0px;
+	padding:0px;
+}
+
+div.special-a table.box-a {
+	width:660px;
+	border-collapse:collapse;
+	border-spacing:0;
+	margin:20px auto 10px;
+}
+div.box-a-top {
+	width:660px;
+	height:20px;
+	font-size:1px; line-height:1px;
+	margin:0px auto;
+	background: #ffffff url(image2/box-a-top.gif)  no-repeat center top;
+}
+div.box-a-bottom {
+	width:660px;
+	height:10px;
+	font-size:1px; line-height:1px;
+	margin:0px auto;
+	background: #ffffff url(image2/box-a-bottom.gif)  no-repeat center bottom;
+}
+div.special-a table.box-a td.box-a-inner {
+	background: #ffffff url(image2/box-a-body.gif)  repeat-y center center;
+	padding:0px 20px;
+}
+div.special-a table.box-a td.box-a-inner p {
+	padding:0px 0px 10px;
+}
+
+div.order-a-top {
+	width:660px;
+	height:20px;
+	font-size:1px; line-height:1px;
+	margin:20px auto 0px;
+	background: transparent url(image2/box-a-top.gif)  no-repeat center top;
+}
+div.order-a-bottom {
+	width:660px;
+	height:10px;
+	font-size:1px; line-height:1px;
+	margin:0px auto 32px;
+	background: transparent url(image2/box-a-bottom.gif)  no-repeat center bottom;
+}
+
+div.special-a table.order-a {
+	width:660px;
+	margin:0px auto;
+	background: transparent url(image2/box-a-body.gif)  repeat-y center center;
+}
+
+div.special-a table.order-a  table {
+	border-collapse:collapse;
+	border-spacing:0;
+	width:620px;
+	margin:0px auto;
+}
+div.special-a table.order-a td {
+	vertical-align:top;
+}
+div.special-a table.order-a h3 {
+	color:#333333;
+	font-size:14px;
+	font-weight:bold;
+	line-height:150%;
+	text-align:left;
+	margin:0px;
+	padding:0px;
+	background: none;
+}
+div.special-a table.order-a h4 {
+	color:#e60000;
+	font-size:25px;
+	font-weight:bold;
+	line-height:150%;
+	text-align:left;
+	margin:0 0 5px;
+	padding:0px 0px 0px;
+	background: none;
+}
+div.special-a table.order-a p {
+	font-size:14px;
+	line-height:150%;
+	text-align:left;
+	margin:0;
+	padding:0 0 5px;
+}
+div.special-a table.order-a p span {
+	color:#999999;
+}
+div.special-a table.order-a p small {
+	display:block;
+	color:#333333;
+	font-size:12px;
+	font-weight:normal;
+}
+div.order-a-button {
+	margin:0px auto 35px;
+	text-align:center;
+}
+
+div.special-a table.qa {
+	width:620px;
+	border-collapse:collapse;
+	border-spacing:0;
+	margin:0;
+	padding:0;
+}
+div.special-a table.qa th {
+	text-align:left;
+	font-size:14px;
+	font-weight:bold;
+	line-height:200%;
+	vertical-align:top;
+	padding:7px 10px 7px 0;
+	border-bottom:#cccccc solid 1px;
+}
+div.special-a table.qa td {
+	text-align:left;
+	font-size:14px;
+	line-height:200%;
+	vertical-align:top;
+	padding:7px 10px 0px 0px;
+}
+div.special-a table.qa h4 {
+	color:#000000;
+	font-size:15px;
+	font-weight:bold;
+	line-height:150%;
+	text-align:left;
+	margin:0px 0px 0px;
+	padding:0px 0px 0px;
+	background: none;
+}
+div.special-a table.qa td p {
+	font-size:15px;
+	line-height:160%;
+	text-align:left;
+	margin:0;
+	padding:0 0 10px;
+}
+font.must{
+	color:red;
+}
+</style>
+	
+	<!-- LINK -->
+
+	<!-- TITLE -->
+	<title></title>
+	<!-- TITLE -->
+
+	</head>
+	<body>
+		<!-- CONTENT -->
+				<div id="container">
+	<div align="center">
+		<img src="/image_top.php" width="300" height="160" alt="メール配信システム" />
+	</div>
+	<div align="center">
+		<div align="left" class="text" style="border-bottom: 0px; width:450px;">
+			<p>本サーバーからお心当たりのないメールが送信されている場合は</p>
+			<p>お手数ですが、下記よりご連絡願います。</p>
+			<p>&nbsp;</p>
+			<p><a href="/index/inquiry/">お問い合わせ</a></p>
+		</div>
+	</div>
+</div>
+				<!-- CONTENT -->
+	</body>
+
+	<!-- Javascript -->
+		<!-- Javascript -->
+</html>

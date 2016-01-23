@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><link rel="icon" type="image/vnd.microsoft.icon" href="favicon.ico">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/style2_p.css"/>
+<link rel="stylesheet" type="text/css" href="/css/superfish.css"/>
+<style>html,body{font-family:'Lucida Grande',Roboto,“Droid Sans”,'Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',Meiryo,メイリオ,sans-serif;}</style>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-151687-9', 'satoshinakamoto.jp');
+  ga('send', 'pageview');
+
+</script> <meta name="description" content="Bitcoin(ビットコイン)やMonacoin(モナコイン、モナーコイン)などの仮想通貨(価値記録)の価格・相場を円・ドル・元・ユーロ・ポンド・カナダドルで確認！指標や主要市場のチャートを公開中！ビットコインの速報やウィジェットの配布も">
+<meta name="keywords" content="Bitcoin,ビットコイン,チャート,仮想通貨,価値記録,相場,為替,価格,市場,ニュース">
+<title>ビットコイン リアルタイムチャート【価格・相場】</title>
+<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/ui-lightness/jquery-ui.css">
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+<!--[if lt IE 9]>
+	<script type="text/javascript" src="js/excanvas.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="/chart/js/jquery.jqplot.min.css"/>
+<script language="javascript" type="text/javascript" src="chart/js/jquery.jqplot.js"></script>
+<script language="javascript" type="text/javascript" src="chart/js/plugins/jqplot.dateAxisRenderer.min.js"></script>
+<script type="text/javascript" src="/chart/js/plugins/jqplot.pointLabels.js"></script>
+<script type="text/javascript" src="/chart/js/plugins/jqplot.highlighter.min.js"></script>
+<script type="text/javascript" src="/chart/js/plugins/jqplot.cursor.min.js"></script>
+<script language="javascript" type="text/javascript" src="chart/js/plugins/jqplot.canvasTextRenderer.min.js"></script>
+<script type="text/javascript" language="javascript" src="./chart/js/plugins/jqplot.logAxisRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/chart/js/plugins/jqplot.canvasOverlay.min.js"></script>
+<script language="javascript" type="text/javascript" src="/chart/js/myfunc_bitcoin.js"></script>
+<style>.change-rate{padding:0 0 .25em 0;}.recent-price{}.chart_max_label,.chart_min_label{text-shadow:1px 1px 0 #FFF,-1px 1px 0 #FFF,1px -1px 0 #FFF,-1px -1px 0 #FFF;}#jqplot_tooltip .tooltip_price{text-align:right;font-weight:bold;font-size:120%;}#jqplot_tooltip .tooltip_percent{text-align:right;font-size:90%;}#jqplot_tooltip .percent_plus{color:#019a2b;}#jqplot_tooltip .percent_minus{color:#ba5615;}</style>
+</head>
+<body>
+<div id="wrapper">
+<div id="header" class="clearfix">
+<div id="lt_select">
+<a href="?lang=en&home=usd"><img src="./class/images/usd.png" width="25" alt="USA" title="USA"/></a>
+<a href="?lang=ja&home=jpy"><img src="./class/images/jpy.png" width="25" alt="日本" title="日本"/></a>
+<a href="?lang=zh&home=cny"><img src="./class/images/cny.png" width="25" alt="中国" title="中国"/></a><br/>
+<a href="?lang=en&home=eur"><img src="./class/images/eur.png" width="25" alt="Euro" title="Euro"/></a>
+<a href="?lang=en&home=gbp"><img src="./class/images/gbp.png" width="25" alt="UK" title="UK"/></a>
+<a href="?lang=en&home=cad"><img src="./class/images/cad.png" width="25" alt="Canada" title="Canada"/></a>
+</div> <div id="logo">
+<a href="/"><img src="/images/satoshinakamoto_logo.png" title="SatoshiNakamoto.jp" alt="SatoshiNakamoto.jp Logo"/></a> </div>
+<h1>ビットコイン リアルタイムチャート</h1>
+<div class="bitcoinnewsticker">
+<a href="/quicknews_hot.php" id="bitcoinnewsticker" type="hot" lang="ja" home="jpy">Bitcoin News Ticker</a>
+<script type="text/javascript" src="/js/bitcoinnewsticker_rustic.js"></script>
+</div>
+<div id="social_button">
+<ul class="social_button">
+<li>
+<a href="//b.hatena.ne.jp/entry/http://satoshinakamoto.jp//" class="hatena-bookmark-button" data-hatena-bookmark-title="Bitcoin リアルタイムチャート" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="//b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;"/></a><script type="text/javascript" src="//b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+</li>
+<li class="facebook">
+<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fsatoshinakamoto.jp%2F%2F&amp;send=false&amp;layout=button_count&amp;width=120&amp;show_faces=true&amp;font&amp;colorscheme=light&amp;action=like&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:120px; height:21px;" allowTransparency="true"></iframe>
+</li>
+<li class="twitter">
+<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+</li>
+<li class="gplus">
+ 
+<div class="g-plusone" data-size="medium"></div>
+ 
+<script type="text/javascript">
+  window.___gcfg = {lang: 'ja'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+</li>
+<li class="cryptad"><a href="https://cryptad.com/">CryptAdでモナーコイン稼ぎませんか?</a></li>
+</ul>
+</div>
+</div> 
+<ul class="sf-menu clearfix" id="main_menu">
+<li class="bitcoin_realtime_charts"><a href="/"><img src="/images/navi_bitcoin_chart.png"/>ビットコイン リアルタイムチャート</a></li>
+<li class="monacoin_realtime_charts"><a href="/monacoin_realtime_charts.php"><img src="/images/navi_monacoin_chart.png"/>モナーコイン リアルタイムチャート</a></li>
+<li><a href="/quicknews_hot.php"><img src="/images/navi_bitcoinquicknews.png"/>ビットコイン速報</a></li>
+<li><a href="/bitcoin-chan-widget.php"><img src="/images/navi_bitcoinwidget.png"/>ウィジェット</a></li>
+</ul>
+<div id="content">
+<div id="main">
+<div class="ads-top">
+スポンサーリンク<br/>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+ 
+<ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-2836653634966106" data-ad-slot="8205875011"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+<div class="clearfix">
+<div id="chart-wrapper">
+<ul>
+<li><a href="#cdbpi">cdbpi</a></li>
+<li><a href="#okcoinFutureUSD">okcoinFutureUSD</a></li>
+<li><a href="#coincheckJPY">coincheckJPY</a></li>
+<li><a href="#btcboxJPY">btcboxJPY</a></li>
+<li><a href="#bitflyerJPY">bitflyerJPY</a></li>
+<li><a href="#bitflyerFXJPY">bitflyerFXJPY</a></li>
+<li><a href="#zaifJPY">zaifJPY</a></li>
+<li><a href="#bitstampUSD">bitstampUSD</a></li>
+<li><a href="#bitfinexUSD">bitfinexUSD</a></li>
+<li><a href="#btceUSD">btceUSD</a></li>
+<li><a href="#coinbaseUSD">coinbaseUSD</a></li>
+<li><a href="#okcoinCNY">okcoinCNY</a></li>
+<li><a href="#huobiCNY">huobiCNY</a></li>
+<li><a href="#btcnCNY">btcnCNY</a></li>
+<li><a href="#krakenEUR">krakenEUR</a></li>
+</ul>
+<div id="cdbpi">
+<h2 class="currency-title"><img src="./class/images/usd.png"/>Bitcoin Price Index<span class="market"><a href="http://www.coindesk.com/" target="_blank">CoinDesk</a></span></h2>
+<div class="recent-price gradient"><span class="recent-price-text"><span id="recent-cdbpi"></span><span class="currency-unit">ドル</span><span class="recent-home">(<span id="recent-cdbpi-home"></span><span class="currency-unit">円</span>)</span></span>
+<span class="change-rate change-rate-cdbpi">前日比<span id="change-rate-cdbpi"></span>%</span></div>
+<div id="jqPlot-cdbpi_1m" style="height: 250px; width: 690px; margin-left: 10px; margin-bottom: 10px;"></div>
+<div id="jqPlot-cdbpi_1h" style="height: 250px; width: 690px;"></div>
+</div>
+<div id="okcoinFutureUSD">
+<h2 class="currency-title"><img src="./class/images/usd.png"/>BTC/米国ドル先物<span class="market"><a href="https://www.okcoin.com/" target="_blank">OKCoin</a></span></h2>
+<div class="recent-price gradient"><span class="recent-price-text"><span id="recent-okcoinFutureUSD"></span><span class="currency-unit">ドル</span><span class="recent-home">(<span id="recent-okcoinFutureUSD-home"></span><span class="currency-unit">円</span>)</span></span>
+<span class="change-rate change-rate-okcoinFutureUSD">前日比<span id="change-rate-okcoinFutureUSD"></span>%</span></div>
+<div id="jqPlot-okcoinFutureUSD_1m" style="height: 250px; width: 690px; margin-left: 10px; margin-bottom: 10px;"></div>
+<div id="jqPlot-okcoinFutureUSD_1h" style="height: 250px; width: 690px;"></div>
+</div>
+<div id="coincheckJPY">
+<h2 class="currency-title"><img src="./class/images/jpy.png"/>BTC/日本円<span class="market"><a href="https://coincheck.jp/exchange" target="_blank">coincheck</a></span></h2>
+<div class="recent-price gradient"><span class="recent-price-text"><span id="recent-coincheckJPY"></span><span class="currency-unit">円</span></span>
+<span class="change-rate change-rate-coincheckJPY">前日比<span id="change-rate-coincheckJPY"></span>%</span></div>
+<div id="jqPlot-coincheckJPY_1m" style="height: 250px; width: 690px; margin-left: 10px; margin-bottom: 10px;"></div>
+<div id="jqPlot-coincheckJPY_1h" style="height: 250px; width: 690px;"></div>
+</div>
+<div id="btcboxJPY">
+<h2 class="currency-title"><img src="./class/images/jpy.png"/>BTC/日本円<span class="market"><a href="https://www.btcbox.co.jp/" target="_blank">BtcBox</a></span></h2>
+<div class="recent-price gradient"><span class="recent-price-text"><span id="recent-btcboxJPY"></span><span class="currency-unit">円</span></span>
+<span class="change-rate change-rate-btcboxJPY">前日比<span id="change-rate-btcboxJPY"></span>%</span></div>
+<div id="jqPlot-btcboxJPY_1m" style="height: 250px; width: 690px; margin-left: 10px; margin-bottom: 10px;"></div>
+<div id="jqPlot-btcboxJPY_1h" style="height: 250px; width: 690px;"></div>
+</div>
+<div id="bitflyerJPY">
+<h2 class="currency-title"><img src="./class/images/jpy.png"/>BTC/日本円<span class="market"><a href="https://lightning.bitflyer.jp/trade/btc" target="_blank">bitFlyer Lightning</a></span></h2>
+<div class="recent-price gradient"><span class="recent-price-text"><span id="recent-bitflyerJPY"></span><span class="currency-unit">円</span></span>
+<span class="change-rate change-rate-bitflyerJPY">前日比<span id="change-rate-bitflyerJPY"></span>%</span></div>
+<div id="jqPlot-bitflyerJPY_1m" style="height: 250px; width: 690px; margin-left: 10px; margin-bottom: 10px;"></div>
+<div id="jqPlot-bitflyerJPY_1h" style="height: 250px; width: 690px;"></div>
+</div>
+<div id="bitflyerFXJPY">
+<h2 class="currency-title"><img src="./class/images/jpy.png"/>BTC/日本円FX<span class="market"><a href="https://lightning.bitflyer.jp/trade/btcfx" target="_blank">bitFlyer Lightning</a></span></h2>
+<div class="recent-price gradient"><span class="recent-price-text"><span id="recent-bitflyerFXJPY"></span><span class="currency-unit">円</span></span>
+<span class="change-rate change-rate-bitflyerFXJPY">前日比<span id="change-rate-bitflyerFXJPY"></span>%</span></div>
+<div id="jqPlot-bitflyerFXJPY_1m" style="height: 250px; width: 690px; margin-left: 10px; margin-bottom: 10px;"></div>
+<div id="jqPlot-bitflyerFXJPY_1h" style="height: 250px; width: 690px;"></div>
+</div>
+<div id="zaifJPY">
+<h2 class="currency-title"><img src="./class/images/jpy.png"/>BTC/日本円<span class="market"><a href="https://zaif.jp/trade_btc_jpy" target="_blank">Zaif Exchange</a></span></h2>
+<div class="recent-price gradient"><span class="recent-price-text"><span id="recent-zaifJPY"></span><span class="currency-unit">円</span></span>
+<span class="change-rate change-rate-zaifJPY">前日比<span id="change-rate-zaifJPY"></span>%</span></div>
+<div id="jqPlot-zaifJPY_1m" style="height: 250px; width: 690px; margin-left: 10px; margin-bottom: 10px;"></div>
+<div id="jqPlot-zaifJPY_1h" style="height: 250px; width: 690px;"></div>
+</div>
+<div id="bitstampUSD">
+<h2 class="currency-title"><img src="./class/images/usd.png"/>BTC/米国ドル<span class="market"><a href="https://www.bitstamp.net/" target="_blank">Bitstamp</a></span></h2>
+<div class="recent-price gradient"><span class="recent-price-text"><span id="recent-bitstampUSD"></span><span class="currency-unit">ドル</span><span class="recent-home">(<span id="recent-bitstampUSD-home"></span><span class="currency-unit">円</span>)</span></span>
+<span class="change-rate change-rate-bitstampUSD">前日比<span id="change-rate-bitstampUSD"></span>%</span></div>
+<div id="jqPlot-bitstampUSD_1m" style="height: 250px; width: 690px; margin-left: 10px; margin-bottom: 10px;"></div>
+<div id="jqPlot-bitstampUSD_1h" style="height: 250px; width: 690px;"></div>
+</div>
+<div id="bitfinexUSD">
+<h2 class="currency-title"><img src="./class/images/usd.png"/>BTC/米国ドル<span class="market"><a href="https://www.bitfinex.com/" target="_blank">Bitfinex</a></span></h2>
+<div class="recent-price gradient"><span class="recent-price-text"><span id="recent-bitfinexUSD"></span><span class="currency-unit">ドル</span><span class="recent-home">(<span id="recent-bitfinexUSD-home"></span><span class="currency-unit">円</span>)</span></span>
+<span class="change-rate change-rate-bitfinexUSD">前日比<span id="change-rate-bitfinexUSD"></span>%</span></div>
+<div id="jqPlot-bitfinexUSD_1m" style="height: 250px; width: 690px; margin-left: 10px; margin-bottom: 10px;"></div>
+<div id="jqPlot-bitfinexUSD_1h" style="height: 250px; width: 690px;"></div>
+</div>
+<div id="btceUSD">
+<h2 class="currency-title"><img src="./class/images/usd.png"/>BTC/米国ドル<span class="market"><a href="https://btc-e.com/" target="_blank">BTC-e</a></span></h2>
+<div class="recent-price gradient"><span class="recent-price-text"><span id="recent-btceUSD"></span><span class="currency-unit">ドル</span><span class="recent-home">(<span id="recent-btceUSD-home"></span><span class="currency-unit">円</span>)</span></span>
+<span class="change-rate change-rate-btceUSD">前日比<span id="change-rate-btceUSD"></span>%</span></div>
+<div id="jqPlot-btceUSD_1m" style="height: 250px; width: 690px; margin-left: 10px; margin-bottom: 10px;"></div>
+<div id="jqPlot-btceUSD_1h" style="height: 250px; width: 690px;"></div>
+</div>
+<div id="coinbaseUSD">
+<h2 class="currency-title"><img src="./class/images/usd.png"/>BTC/米国ドル<span class="market"><a href="https://coinbase.com/" target="_blank">Coinbase</a></span></h2>
+<div class="recent-price gradient"><span class="recent-price-text"><span id="recent-coinbaseUSD"></span><span class="currency-unit">ドル</span><span class="recent-home">(<span id="recent-coinbaseUSD-home"></span><span class="currency-unit">円</span>)</span></span>
+<span class="change-rate change-rate-coinbaseUSD">前日比<span id="change-rate-coinbaseUSD"></span>%</span></div>
+<div id="jqPlot-coinbaseUSD_1m" style="height: 250px; width: 690px; margin-left: 10px; margin-bottom: 10px;"></div>
+<div id="jqPlot-coinbaseUSD_1h" style="height: 250px; width: 690px;"></div>
+</div>
+<div id="okcoinCNY">
+<h2 class="currency-title"><img src="./class/images/cny.png"/>BTC/中国人民元<span class="market"><a href="https://www.okcoin.com/" target="_blank">OKCoin</a></span></h2>
+<div class="recent-price gradient"><span class="recent-price-text"><span id="recent-okcoinCNY"></span><span class="currency-unit">元</span><span class="recent-home">(<span id="recent-okcoinCNY-home"></span><span class="currency-unit">円</span>)</span></span>
+<span class="change-rate change-rate-okcoinCNY">前日比<span id="change-rate-okcoinCNY"></span>%</span></div>
+<div id="jqPlot-okcoinCNY_1m" style="height: 250px; width: 690px; margin-left: 10px; margin-bottom: 10px;"></div>
+<div id="jqPlot-okcoinCNY_1h" style="height: 250px; width: 690px;"></div>
+</div>
+<div id="huobiCNY">
+<h2 class="currency-title"><img src="./class/images/cny.png"/>BTC/中国人民元<span class="market"><a href="https://www.huobi.com/" target="_blank">huobi</a></span></h2>
+<div class="recent-price gradient"><span class="recent-price-text"><span id="recent-huobiCNY"></span><span class="currency-unit">元</span><span class="recent-home">(<span id="recent-huobiCNY-home"></span><span class="currency-unit">円</span>)</span></span>
+<span class="change-rate change-rate-huobiCNY">前日比<span id="change-rate-huobiCNY"></span>%</span></div>
+<div id="jqPlot-huobiCNY_1m" style="height: 250px; width: 690px; margin-left: 10px; margin-bottom: 10px;"></div>
+<div id="jqPlot-huobiCNY_1h" style="height: 250px; width: 690px;"></div>
+</div>
+<div id="btcnCNY">
+<h2 class="currency-title"><img src="./class/images/cny.png"/>BTC/中国人民元<span class="market"><a href="https://btcchina.com/" target="_new">BTC China</a></span></h2>
+<div class="recent-price gradient"><span class="recent-price-text"><span id="recent-btcnCNY"></span><span class="currency-unit">元</span><span class="recent-home">(<span id="recent-btcnCNY-home"></span><span class="currency-unit">円</span>)</span></span>
+<span class="change-rate change-rate-btcnCNY">前日比<span id="change-rate-btcnCNY"></span>%</span></div>
+<div id="jqPlot-btcnCNY_1m" style="height: 250px; width: 690px; margin-left: 10px; margin-bottom: 10px;"></div>
+<div id="jqPlot-btcnCNY_1h" style="height: 250px; width: 690px;"></div>
+</div>
+<div id="krakenEUR">
+<h2 class="currency-title"><img src="./class/images/eur.png"/>BTC/ユーロ<span class="market"><a href="https://www.kraken.com/" target="_blank">KRAKEN</a></span></h2>
+<div class="recent-price gradient"><span class="recent-price-text"><span id="recent-krakenEUR"></span><span class="currency-unit">ユーロ</span><span class="recent-home">(<span id="recent-krakenEUR-home"></span><span class="currency-unit">円</span>)</span></span>
+<span class="change-rate change-rate-krakenEUR">前日比<span id="change-rate-krakenEUR"></span>%</span></div>
+<div id="jqPlot-krakenEUR_1m" style="height: 250px; width: 690px; margin-left: 10px; margin-bottom: 10px;"></div>
+<div id="jqPlot-krakenEUR_1h" style="height: 250px; width: 690px;"></div>
+</div>
+</div> 
+<input type="checkbox" id="y2axis_log"><label for="y2axis_log">対数価格軸</label></input>
+<input type="checkbox" id="y2axis_flip"><label for="y2axis_flip">価格軸反転</label></input>
+<button id="reset_zoom">ズーム解除</button>
+</div>
+<div class="ads-bottom">
+スポンサーリンク<br/>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+ 
+<ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-2836653634966106" data-ad-slot="8205875011"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+<div class="exposition">※ このサイトでは為替相場の取得に5分以内の遅れがあります。<br/>
+※ 本サイトは、ビットコインの仮想発明者「<a href="http://www.bitcoin.co.jp/docs/SatoshiWhitepaper.pdf">中本哲史</a>」本人とは一切関係ありません。<br/>
+※ WinkDex: Data Provided by WINKDEX<sup>SM</sup>. </div>
+<div class="clearfix">
+<div class="bottom_twitter">
+<a class="twitter-timeline" href="https://twitter.com/satonaka_jp" data-widget-id="495194340323389440">@satonaka_jp からのツイート</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
+<div class="bottom_cryptad">
+<div class="cryptad_text_banner">
+<span id="cryptad_text_banner" ad_mail_address_hash="0a5492ec9e1d299c1519118a848bba0a" ad_size="200x200" ad_lang="ja" ad_style='{"#ad_title a":{"color":"red"}}'><a href="https://cryptad.com/">CryptAd ビットコイン・モナーコインの懸賞【無料配布中】</a></span>
+<script type="text/javascript" src="https://cryptad.com/js/round_text_banner.js"></script>
+<br/>
+<span id="cryptad_text_banner" ad_mail_address_hash="0a5492ec9e1d299c1519118a848bba0a" ad_size="200x200" ad_lang="ja" ad_style='{"#ad_title a":{"color":"red"}}'><a href="https://cryptad.com/">CryptAd ビットコイン・モナーコインの懸賞【無料配布中】</a></span>
+<script type="text/javascript" src="https://cryptad.com/js/round_text_banner.js"></script>
+</div>
+</div>
+</div>
+</div> 
+<div id="sidebar">
+ 
+<div class="cryptad_text_banner">
+<span id="cryptad_text_banner" ad_mail_address_hash="0a5492ec9e1d299c1519118a848bba0a" ad_size="300x100" ad_lang="ja" ad_style='{"#ad_title a":{"color":"red"}}'><a href="https://cryptad.com/">CryptAd ビットコイン・モナーコインの懸賞【無料配布中】</a></span>
+<script type="text/javascript" src="https://cryptad.com/js/round_text_banner.js"></script>
+</div>
+<div class="bitcoin-chan-widget">
+<span id="bitcoin-chan-widget_300x100" lang="ja" home="jpy"><a href="http://www.bitcoin-chan.com/">(C)Bitcoin-chan Project</a> <a href="/bitcoin-chan-widget.php">ビットコインちゃんウィジェット</a></span>
+<script type="text/javascript" src="/js/bitcoin-chan-widget_300x100.js"></script>
+<span id="monacoinsdcharawidget_300x100" lang="ja" home="jpy" market="mpiMONAJPY"><a href="https://twitter.com/Pilu_Pilua">@Pilu_Pilua</a> <a href="/monacoinsdcharawidget.php">モナコインSDキャラウィジェット</a></span>
+<script type="text/javascript" src="/js/monacoinsdcharawidget_300x100.js"></script>
+</div>
+<div class="banner">
+<a href="/bitcoin_radar.php"><img src="/images/banner_bitcoin_rader.png" width="300"/></a>
+</div>
+<div class="ads-right">
+スポンサーリンク<br/>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+ 
+<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-2836653634966106" data-ad-slot="7337270611"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+<div class="quicknewswidget">
+<iframe id="quicknewswidget" src='/cache_php/quicknewswidget.php?json={"lang":"ja","home":"jpy"}' frameBorder="0" width="100%" height="300" name="quicknewswidget"></iframe>
+</div>
+<div class="release_information">
+<h4 class="clearfix"><a href="/easy_market_maker.php"><img src="/images/information_easy_market_maker.png"></a><div>[2015/12/21]<br/><a href="/easy_market_maker.php">Easy Market Marker</a>をリリースしました。
+<br/>マーケットメーカーになろう！</div></h4>
+<h4 class="clearfix"><a href="/bitcoin_radar.php"><img src="/images/information_bitcoin_radar.png"></a><div>[2014/07/22]<br/><a href="/bitcoin_radar.php">ビットコインレーダー</a>をリリースしました。<br/>iPhoneやAndroidでビットコインの価格や最新ニュースを素早くチェックしよう。</div></h4>
+<h4 class="clearfix"><a href="/monacoinsdcharawidget.php"><img src="/images/information_monacoinsdchara_widget.jpg"></a><div>[2014/05/23]<br/>We have released the <a href="/monacoinsdcharawidget.php">Monacoin SD Chara Widget</a>.<br/>ブログやホームページでモナーコインの価格を表示しませんか？</div></h4>
+<h4 class="clearfix"><a href="/monacharawidget.php"><img src="/images/information_monacharachanwidget.jpg"></a><div>[2014/04/07]<br/>We have released the <a href="/monacharawidget.php">Mona Chara Widget</a>.<br/>ブログやホームページでモナーコインの価格を表示しませんか？</div></h4>
+<h4 class="clearfix"><a href="/monacoinchanwidget.php"><img src="/images/information_monacoinchanwidget.jpg"></a><div>[2014/04/02]<br/>We have released the <a href="/monacoinchanwidget.php">Monacoin Chan Widget</a>.<br/>ブログやホームページでモナーコインの価格を表示しませんか？</div></h4>
+<h4 class="clearfix"><a href="/monacoinwidget.php"><img src="/images/information_monacoinwidget.jpg"></a><div>[2014/03/26]<br/>We have released the <a href="/monacoinwidget.php">Monacoin Widget</a>.<br/>ブログやホームページでモナーコインの価格を表示しませんか？</div></h4>
+<h4 class="clearfix"><a href="/givemebitcoinwidget.php"><img src="/images/information_givemebitcoinwidget.jpg"></a><div>[2014/03/12]<br/>We have released the <a href="/givemebitcoinwidget.php">Give Me Bitcoin Widget</a>.<br/>ビットコインの寄付ボタンをブログやホームページに作りませんか？</div></h4>
+<h4 class="clearfix"><a href="/bitcoinnewsticker.php"><img src="/images/information_bitcoinnewsticker.png"></a><div>[2014/01/25]<br/>We have released the <a href="/bitcoinnewsticker.php">Bitcoin news ticker</a>.<br/>あなたのサイトやブログでビットコイン関連のニュースや話題をいち早くお知らせします！</div></h4>
+<h4 class="clearfix"><a href="/bitcoin-chan-widget.php"><img src="/images/information_bitcoin-chan-widget.jpg"></a><div>[2014/01/01]<br/>We have released the <a href="/bitcoin-chan-widget.php">Bitcoin-chan Widget</a>.<br/>ビットコインちゃんがあなたのサイトやブログでビットコインの価格をお知らせします。</div></h4>
+<h4 class="clearfix"><a href="/bitcoinwidget.php"><img src="/images/information_bitcoinwidget.jpg"></a><div>[2013/12/24]<br/>We have released the <a href="/bitcoinwidget.php">Bitcoin Widget</a>.<br/>ブログやホームページでビットコインの価格を表示しませんか？</div></h4>
+</div>
+</div> 
+</div> 
+<div id="footer">
+<a href="http://satoshinakamoto.jp/">ビットコイン リアルタイムチャート</a>: Bitcoin(ビットコイン)やMonacoin(モナコイン、モナーコイン)などの仮想通貨(価値記録)の価格・相場を円・ドル・元・ユーロ・ポンド・カナダドルで確認！指標や主要市場のチャートを公開中！ビットコインの速報やウィジェットの配布も<br/>
+Copyright &copy; 2013-15 <a href="http://satoshinakamoto.jp/">satoshinakamoto.jp</a>. All Rights Reserved. <a href="http://satoshinakamoto.jp/privacy_policy.php">プライバシーポリシー</a>
+</div> 
+</div> 
+<input type="hidden" id="home-currency" value="jpy"/>
+<input type="hidden" id="default-title" value=" | ビットコイン リアルタイムチャート"/>
+<input type="hidden" id="markets" value='["cdbpi","okcoinFutureUSD","coincheckJPY","btcboxJPY","bitflyerJPY","bitflyerFXJPY","zaifJPY","bitstampUSD","bitfinexUSD","btceUSD","coinbaseUSD","okcoinCNY","huobiCNY","btcnCNY","krakenEUR"]'/>
+<input type="hidden" id="hash-tag" value="ビットコイン"/>
+<input type="hidden" id="units" value='["$1<span>\u30c9\u30eb<\/span>","$1<span>\u30c9\u30eb<\/span>","$1<span>\u5186<\/span>","$1<span>\u5186<\/span>","$1<span>\u5186<\/span>","$1<span>\u30c9\u30eb<\/span>","$1<span>\u5186<\/span>","$1<span>\u30c9\u30eb<\/span>","$1<span>\u30c9\u30eb<\/span>","$1<span>\u30c9\u30eb<\/span>","$1<span>\u30c9\u30eb<\/span>","$1<span>\u5143<\/span>","$1<span>\u5143<\/span>","$1<span>\u5143<\/span>","$1<span>\u30e6\u30fc\u30ed<\/span>"]'/>
+<input type="hidden" id="time-zone-offset" value="9"/>
+<input type="hidden" id="time-zone" value="Asia%2FTokyo"/>
+<input type="hidden" id="device-type" value="pc"/>
+</body>
+</html>

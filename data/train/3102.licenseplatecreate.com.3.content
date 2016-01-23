@@ -1,0 +1,166 @@
+
+
+<!DOCTYPE html>
+<html>
+<head><title>
+	
+    Create Customzed License Plate  
+
+</title>
+<meta property="og:title" content="Create Your Customized License Plate" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://www.licenseplatecreate.com" />
+<meta property="og:image" content="http://www.licenseplatecreate.com/PlateTemplate/myplate.jpg" />
+<meta property="og:site_name" content="License Plate Create" />
+<meta name="description" content="Create Customized License Plate United States and Canada north america" />
+<meta name="keywords" content="Customized License Plate, U.S. Canada, License Plate Free, Draw own license plate, Write license plate, license plate graphic, " />
+<meta name="author" content="LicensePlateCreate.com" />
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
+<link href="Content/Site.css" rel="stylesheet" type="text/css" />
+    <script src="/Scripts/jquery-1.4.4.min.js" type="text/javascript"></script>
+        
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-250172-11']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();        
+</script>
+<script type="text/javascript" src="/Content/js/custom.js"></script>
+</head>
+
+<body> 
+    <div class="page">
+
+        <div id="header">
+            <div id="title">
+                <h1>Free Customized License Plate Graphic</h1>
+            </div>   
+        </div>
+
+        <div id="main">
+                
+
+<form action="/" method="post" name="main">
+<div style="padding-left:30%;padding-right:10%;clear:both;">
+
+<div style="text-align:left;">
+<div>
+    <ol style="padding:0px;margin:0px;">
+        <li>Select Country & State/Proince</li>
+        <li>Enter Plate Text</li>
+        <li>Click "Create"</li>
+        <li>View/Download/Link image</li>        
+    </ol>
+</div>
+<p><div style="clear:both;color:#CC0000;"> </div></p>
+
+    <div class="inputlabel">Country</div><div><select id="ddlCountry" name="ddlCountry"><option selected="selected">Country</option>
+<option>Canada</option>
+<option>United State</option>
+</select></div>
+    <div class="inputlabel">State </div><div><select id="ddlState" name="ddlState"><option selected="selected">State/Province</option>
+</select></div>
+    <div class="inputlabel">Plate Text </div><div><input id="text" name="text" type="text" value="" /> <input type="submit" id="btnCreate" value="Create" disabled="disabled" /></div>
+    <div class="inputlabel">&nbsp;</div>
+    <div><input type="checkbox" name="Agreement" id="Agreement" onclick="checkAgreement()" /> I agree with the<a href="/Home/TermsOfUse" target="_blank">Terms Of Use</a></div>
+</div>
+
+</div>
+
+
+       
+        
+        
+            <div>
+                <img id="img800" src="/PlateTemplate/myplate.jpg" />
+                <div>                
+                
+                </div>
+            </div>
+        </form><form action="/Home/download" method="post" name="frmdownload">
+       <input type="hidden" name="downloadfile" value="800" />
+       <input type="hidden" name="FileName" value="" />
+    </form>
+
+    <script language="javascript" type="text/javascript">
+        function download(file) {
+            $('[name="downloadfile"]').val(file);
+            $('[name="FileName"').val($('#text').val());
+            $('form[name=frmdownload]').submit();
+        }
+        function checkAgreement() {
+            var v = $('#Agreement').attr('checked');
+            //alert(v);
+            if (v == true) {
+                $('#btnCreate').attr('disabled', '');
+                return true;
+            }
+            else {
+                $('#btnCreate').attr('disabled', 'disabled');
+                alert('You must agree on the "Terms Of use"');
+                return false;
+            }
+        }
+        //inits
+        $(document).ready(function () {
+            $('.elink').click(function () { selectAllText(this); });
+            $('form[name=main]').submit(function () {
+                if (checkAgreement()) {
+                    $('form[name=main]').submit();
+                }
+                return false;
+            });
+            $('#ddlCountry').change(function () {
+                $.ajax({
+                    url: 'Home/GetStates',
+                    cache: false,
+                    type: 'post',
+                    data: { country: $('#ddlCountry').val() },
+                    success: function (r) {
+                        if (r) {
+                            var options; // '<option selected="selected">State/Province</option>';
+                            for (var i = 0; i < r.result.length; i++) {
+                                options += '<option value="' + r.result[i] + '">' + r.result[i] + '</option>';
+                            }
+                            $('#ddlState').html(options);
+                        }
+                    },
+                    error: function (a, b, c) {
+                        alert(a.responseText + '|' + b + '|' + c);
+                    }
+                });
+            });
+            $('#ddlState').change(function () {
+                var s = $('#ddlState').val();
+                if (s == 'State/Province') return;
+
+                $.ajax({
+                    url: 'Home/GetPlateTemplate',
+                    cache: false,
+                    type: 'post',
+                    data: { country: $('#ddlCountry').val(), state: s },
+                    success: function (r) {
+                        if (r) {
+                            $('#img800').attr('src', r.result.FileName);
+                        }
+                    },
+                    error: function (a, b, c) {
+                        alert(a.responseText + '|' + b + '|' + c);
+                    }
+                });
+            });
+        });
+    </script>
+
+
+            <div id="footer">©Copyrighted 2016 | <a href="mailto:site@licenseplatecreate.com">licenseplatecreate.com</a></div>
+        </div>
+    </div>
+</body>
+</html>

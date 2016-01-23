@@ -1,0 +1,885 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>
+	.::Welcome to VETQUEST::.
+</title><link rel="stylesheet" type="text/css" href="Css/style.css" /><link href="Css/slide.css" rel="stylesheet" type="text/css" />
+      <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+      <script src="Javascript/slide/slide.js" type="text/javascript"></script>
+      
+ <script language="JavaScript" type="text/javascript">
+
+     function checkTimeZone() {
+
+         var rightNow = new Date();
+         var caloffset;
+         var date1 = new Date(rightNow.getFullYear(), 0, 1, 0, 0, 0, 0);
+         var date2 = new Date(rightNow.getFullYear(), 6, 1, 0, 0, 0, 0);
+         var temp = date1.toGMTString();
+         var date3 = new Date(temp.substring(0, temp.lastIndexOf(" ")));
+         var temp = date2.toGMTString();
+         var date4 = new Date(temp.substring(0, temp.lastIndexOf(" ")));
+         var hoursDiffStdTime = (date1 - date3) / (1000 * 60 * 60);
+         var hoursDiffDaylightTime = (date2 - date4) / (1000 * 60 * 60);
+         if (hoursDiffDaylightTime == hoursDiffStdTime) {
+             caloffset = hoursDiffStdTime;
+             //alert("Time zone is GMT " + caloffset + ".\nDaylight Saving Time is NOT observed here.");
+         } else {
+             caloffset = hoursDiffDaylightTime;
+             //alert("Time zone is GMT " + caloffset + ".\nDaylight Saving Time is observed here.");
+         }
+
+         document.getElementById("Login1_hidTimeZone").value = caloffset;
+
+     }
+	</script>
+	
+	<script type="text/javascript">
+
+	    var visitorGeolocation;
+	    var UserLat;
+	    var UserLong;
+
+	    function GetIPInfoDBDetails(ip) {
+	        //alert('hie');
+	        if (navigator.appName == 'Microsoft Internet Explorer') {
+	            //alert('ie');
+	            var ua = window.navigator.userAgent;
+	            var msie = ua.indexOf("MSIE ");
+
+	            var test;
+	            test = parseInt(ua.substring(msie + 5, ua.indexOf(".", msie)));
+	            if (test > 8)
+	                document.getElementById("Login1_browserstatus").value = 'Y';
+	            else
+	                document.getElementById("Login1_browserstatus").value = 'N';
+	        }
+	        else
+	            document.getElementById("Login1_browserstatus").value = 'Y';
+
+	        visitorGeolocation = new geolocate(false, true, 'visitorGeolocation', ip);
+	        var callback = function() {
+
+	            // document.getElementById("Login1_hidLat").value = visitorGeolocation.getField('latitude');
+	            // document.getElementById("Login1_hidLon").value = visitorGeolocation.getField('longitude');
+	            document.getElementById("Login1_hidState").value = visitorGeolocation.getField('regionName');
+	        };
+	        visitorGeolocation.checkcookie(callback);
+	    }
+	  
+</script>
+
+	<script type="text/javascript">
+	    function geolocate(timezone, cityPrecision, objectVar, ip) {
+	        var api = (cityPrecision) ? "ip-city" : "ip-country";
+	        var domain = 'api.ipinfodb.com';
+	        var url = "http://" + domain + "/v3/" + api + "/?key=74d6d74432ad1e18122fb2d9d79dfae362336cb9868af46369c9fe12cdca63d5&format=json" + "&callback=" + objectVar + ".setGeoCookie&ip=" + ip;
+	        var geodata;
+	        var callbackFunc;
+	        var JSON = JSON || {};
+
+	        // implement JSON.stringify serialization
+	        JSON.stringify = JSON.stringify || function(obj) {
+	            var t = typeof (obj);
+	            if (t != "object" || obj === null) {
+	                // simple data type
+	                if (t == "string") obj = '"' + obj + '"';
+	                return String(obj);
+	            } else {
+	                // recurse array or object
+	                var n, v, json = [], arr = (obj && obj.constructor == Array);
+	                for (n in obj) {
+	                    v = obj[n]; t = typeof (v);
+	                    if (t == "string") v = '"' + v + '"';
+	                    else if (t == "object" && v !== null) v = JSON.stringify(v);
+	                    json.push((arr ? "" : '"' + n + '":') + String(v));
+	                }
+	                return (arr ? "[" : "{") + String(json) + (arr ? "]" : "}");
+	            }
+	        };
+
+	        // implement JSON.parse de-serialization
+	        JSON.parse = JSON.parse || function(str) {
+	            if (str === "") str = '""';
+	            eval("var p=" + str + ";");
+	            return p;
+	        };
+
+	        //Check if cookie already exist. If not, query IPInfoDB
+	        this.checkcookie = function(callback) {
+	            geolocationCookie = getCookie('geolocation');
+	            callbackFunc = callback;
+	            if (!geolocationCookie) {
+	                getGeolocation();
+	            } else {
+	                geodata = JSON.parse(geolocationCookie);
+	                callbackFunc();
+	            }
+	        }
+
+	        //API callback function that sets the cookie with the serialized JSON answer
+	        this.setGeoCookie = function(answer) {
+	            if (answer['statusCode'] == 'OK') {
+	                JSONString = JSON.stringify(answer);
+	                // document.getElementById("hidIPResponse").value = JSONString;
+	                //  setCookie('geolocation', JSONString, 365);
+	                geodata = answer;
+	                callbackFunc();
+	            }
+	        }
+
+	        //Return a geolocation field
+	        this.getField = function(field) {
+	            try {
+	                return geodata[field];
+	            } catch (err) { }
+	        }
+
+	        //Request to IPInfoDB
+	        function getGeolocation() {
+	            try {
+	                script = document.createElement('script');
+	                script.src = url;
+	                document.body.appendChild(script);
+	            } catch (err) { }
+	        }
+
+	        //Get the cookie content
+	        function getCookie(c_name) {
+	            if (document.cookie.length > 0) {
+	                c_start = document.cookie.indexOf(c_name + "=");
+	                if (c_start != -1) {
+	                    c_start = c_start + c_name.length + 1;
+	                    c_end = document.cookie.indexOf(";", c_start);
+	                    if (c_end == -1) {
+	                        c_end = document.cookie.length;
+	                    }
+
+	                    return unescape(document.cookie.substring(c_start, c_end));
+	                }
+	            }
+	            return '';
+	        }
+	    }
+
+	   
+</script>
+
+    <script type="text/javascript">
+    function slidedown() {
+
+        $("div#panel").slideDown("slow");
+        $("#toggle a").toggle();
+    }
+	</script>
+	
+	 <script language="javascript" src="../Scripts/pwd_meter.js" type="text/javascript"></script>
+
+    <script language="javascript" src="../Scripts/Common.js" type="text/javascript"></script>
+
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+   
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+
+		<script src="../Scripts/jquery.maskedinput-1.3.js" type="text/javascript"></script>	
+		
+    <script>
+		    jQuery(function($) {
+
+		    $("#loginregister_txtCellPhone").mask("(999) 999-9999");
+		        //$("#txtFax").mask("(999) 999-9999");
+		        //$("#ctlCommonAppPersonalInfo_txtPermanentCellPhone").mask("(999) 999-9999");
+
+
+		    });
+		   
+</script>
+
+<script type="text/javascript">
+
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-7082669-7']);
+_gaq.push(['_trackPageview']);
+
+(function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); })();
+
+</script>
+</head>
+
+<body>
+
+    <form name="TopQuestHome" method="post" action="Default.aspx" id="TopQuestHome" onsubmit="if(this.rememberMe.checked) toMem(this)">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTc1MDA0MDI3MmQYAQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgQFE2xvZ2lucmVnaXN0ZXIkb3B0Tm8FFGxvZ2lucmVnaXN0ZXIkb3B0WWVzBRRsb2dpbnJlZ2lzdGVyJG9wdFllcwUabG9naW5yZWdpc3RlciRjaGthZ3JlZW1lbnRnvzZPdXOyNolT9LhTAt4LrKQIwA==" />
+
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWGALYsK3GCgKimcGbDAKswd2hAgKCrZqDBALa+4j5BQKkqZXeCALMjsbJDwLq+5HPBwLnxoWsAgL42K6CBgLuudSLCALP+pKfCwLCgYW7BALG0a71AwLNi+mYAwKJz/3QAgL24qzdDAKY0ee9AwKvsKCrAgLf9r+NDALV9t+EAwL6tuLYCALArbG9BwLO3On/CGV2kcFR/vud2Jlz9mUfTku9Zjiq" />
+    
+    <table width="100%" >
+        <tr>
+            <td height="30%" colspan="2" align ="center">
+                
+	                
+<input type="hidden" id="hidSubmitType" value="" />
+	  <input type ="hidden" id="hidHedaer" value="Registration" />
+	  <input name="loginregister$hidTopJockService" type="hidden" id="loginregister_hidTopJockService" value="Add TOPJOCK to a TOPQUEST account." />
+	  <input name="loginregister$hidTopScholarService" type="hidden" id="loginregister_hidTopScholarService" value="Add TOPSCHOLAR to a TOPQUEST account." />
+	  <input name="loginregister$hidMindSight" type="hidden" id="loginregister_hidMindSight" value="MINDSIGHT" />
+	  <input type ="hidden" id="chkval" value="" />
+	   <input type ="hidden" id="chkvalue" value="" />
+	   
+    <input name="loginregister$hidLat" type="hidden" id="loginregister_hidLat" />
+    <input name="loginregister$hidLon" type="hidden" id="loginregister_hidLon" />
+    <input name="loginregister$hidState" type="hidden" id="loginregister_hidState" />
+    <input name="loginregister$browserstatus" type="hidden" id="loginregister_browserstatus" />
+    <input name="loginregister$hidcookies" type="hidden" id="loginregister_hidcookies" value="ON" />
+    <input name="loginregister$hidTimeZone" type="hidden" id="loginregister_hidTimeZone" />
+    
+    <script type="text/javascript">
+
+        var emptyUserNameMessage = 'Please enter the username';
+
+        var progressUserNameMessage = 'Checking...';
+
+        var availableUserNameMessage = 'Username is available';
+
+        var usedUserNameMessage = 'Username Already exists';
+
+
+        //alert(availableUserNameMessage);
+
+
+        $(function() {
+
+            var userNameAvailabilityLabel = $('#loginregister_UserNameAvailabilityLabel');
+            $("#loginregister_txtName").change(function() {
+
+                var txtName = $('#loginregister_txtName');
+
+                var userName = txtName.val();
+
+
+                if ($.trim(userName) == '') {
+
+                    userNameAvailabilityLabel
+
+                            .removeClass()
+
+                            .addClass('required')
+
+                            .html(emptyUserNameMessage);
+                }
+
+                else {
+
+                    userNameAvailabilityLabel.html('');
+
+                    $('#ProgressDiv').show();
+
+                    //alert('p');
+
+                    $.ajax({
+
+                        type: 'POST',
+
+                        url: '../Services/CheckAvailability.asmx/CheckUserNameAvailability',
+
+                        data: '{userName: \'' + txtName.val() + '\'}',
+
+                        contentType: 'application/json; charset=utf-8',
+
+                        dataType: 'json',
+
+                        success: OnCheckUserNameAvailabilitySuccess,
+
+                        error: OnCheckUserNameAvailabilityError
+
+                    });
+
+                }
+                //alert('hello');
+                return false; //Prevent postback  
+
+            });
+
+            function OnCheckUserNameAvailabilitySuccess(response) {
+
+                $('#ProgressDiv').hide();
+
+                if (response != null && response.d != null) {
+
+                    var data = response.d;
+
+                    switch (data) {
+
+                        case 0:
+
+                            userNameAvailabilityLabel
+
+                            .removeClass()
+
+                            .addClass('available')
+
+                            .html(availableUserNameMessage);
+
+                            document.getElementById('chkval').value = '';
+                            break;
+
+                        case 1:
+
+                            userNameAvailabilityLabel
+
+                            .removeClass()
+
+                            .addClass('used')
+
+                            .html(usedUserNameMessage);
+
+
+                            document.getElementById('chkval').value = 'Username Already exists';
+                            break;
+                        //alert('hi');   
+                    }
+                }
+            }
+
+            function OnCheckUserNameAvailabilityError(xhr, ajaxOptions, thrownError) {
+
+                alert(xhr.statusText);
+            }
+
+        }); 
+    </script>
+    
+    <script language="javascript" type="text/javascript">
+        function showCZidpanel(controlName) {
+            //alert("control=" + controlName);
+       
+            
+            if (controlName == "optYes") {
+                //alert('y');
+
+//                document.getElementById('pnlCZ').style.display = 'block'
+                document.getElementById('loginregister_trCZId').style.display = 'block';
+                //alert('yes');
+            }
+            if (controlName == "optNo") {
+               // alert('n');
+
+                //document.getElementById('pnlCZ').style.display = 'none';
+                document.getElementById('loginregister_trCZId').style.display = 'none';
+                //alert('no');
+            }
+            
+            
+        }
+        function ShowCZPanel(controlName) 
+        {
+         
+            var optCZPanel = document.getElementsByName(controlName);
+            
+            // document.getElementById("txtHighschoolName").value = document.getElementById("hidSchoolName").value;
+            if ((optCZPanel != null) && (optCZPanel != 'undefined'))
+             {
+                 var pnlCZ = document.getElementById('loginregister_trCZId');
+
+                if (optCZPanel[0].checked) {
+                  
+                    if (pnlCZ.style.display != 'none') {
+                        EnableValidator(valxCZ, false);
+                        pnlCZ.style.display = 'none';
+                    }
+
+                    document.getElementById('loginregister_lblCZVal').style.display = 'none';
+
+                }
+                else if (optCZPanel[1].checked) {
+               
+                    if (pnlCZ.style.display == 'none') {
+                        //alert(pnlCZ.style.display);	
+                        pnlCZ.style.display = 'block';
+                        //EnableValidator(valxCZ, true);																
+                    }
+                }
+            }
+        }
+        function SetSubmitType(SubmitType) {
+
+            ////			        alert("sa");
+            ////			        alert(document.getElementById('chkagreement').checked);
+            ////			        if (document.getElementById('chkagreement').checked == false) {
+            ////			            alert("in");
+            ////			            //document.getElementById('chkagreement').style.visibility = 'visible';
+            ////			            document.getElementById('spn').style.visibility = 'visible';
+            ////			            return false;
+            ////			        }
+            ////
+            ////			        document.getElementById("hidSubmitType").value = SubmitType;
+            return true;
+
+        }
+        function ValidateSchool() {
+
+            if (document.getElementById('loginregister_chkagreement').checked == true) {
+                // alert("in");
+                document.getElementById('spn').style.visibility = 'hidden';
+
+                return true;
+            }
+            if (document.getElementById("loginregister_hidSubmitType").value == 'Register') {
+                document.getElementById("loginregister_txtHighschoolName").value = document.getElementById("loginregister_hidSchoolName").value;
+                var varGrade = document.getElementById("ddlGrade").value;
+                var varSchoolName = document.getElementById("loginregister_txtHighschoolName").value;
+
+
+                var chk = document.getElementById("loginregister_optYes");
+
+                var pnlCZ = document.getElementById('loginregister_txtCZId').value;
+
+                if (pnlCZ.substring(9, 11) == '20') {
+                    if (varGrade != 'In College' && varGrade != '- Select -') {
+                        if (varSchoolName == '') {
+                            document.getElementById("lblHs").innerHTML = 'Please Select the School';
+
+                            var progressbarDiv = document.getElementById('loginregister_divProgressBar');
+                            progressbarDiv.style.display = 'none';
+                            return false;
+                        }
+
+                    }
+                    else if (varGrade == 'In College' && chk.checked) {
+                    document.getElementById("loginregister_lblGradeVal").innerHTML = 'Please choose a different grade';
+                    document.getElementById('loginregister_lblGradeVal').style.visibility = 'visible';
+
+                    var progressbarDiv = document.getElementById('loginregister_divProgressBar');
+                        progressbarDiv.style.display = 'none';
+                        return false;
+                    }
+                    //			                else if (varGrade == '- Select -' && chk.checked) {
+                    //			                    document.getElementById("lblGradeVal").innerHTML = 'Please specify the Grade.';
+                    //			                    document.getElementById('lblGradeVal').style.visibility = 'visible';
+                    //			                    return false;
+                    //			                }
+                }
+
+                //			            else if (pnlCZ.substring(9, 11) == '30') {
+                //			                   var progressbarDiv = document.getElementById('divProgressBar');
+                //			                   progressbarDiv.style.display = 'none';
+                //			            }
+
+
+            }
+            //			        else {
+            //			            return true;
+            //			        }
+
+            return true;
+            document.getElementById("loginregister_hidSubmitType").value = '';
+        }
+
+        function ReSetvalues() {
+
+            document.getElementById('loginregister_lblGradeVal').style.visibility = 'hidden';
+            var varGrade = document.getElementById("loginregister_ddlGrade").value;
+            if (varGrade == 'In College') {
+                document.getElementById("loginregister_lblHs").innerHTML = '';
+            }
+
+        }
+        var progressColor = '#3675BB';
+        var loopCounter = 1;
+        var maxLoop = 10;
+        var intervalId;
+        function BeginPageLoad() {
+            var pnlProgress = document.getElementById('loginregister_pnlProgress')
+            var progressbarDiv = document.getElementById('loginregister_divProgressBar');
+
+            progressbarDiv.style.display = 'block';
+
+            //pnlProgress.style.visibility = 'visible';
+            ClearProgress();
+            intervalId = window.setInterval("loopCounter=UpdateProgress(loopCounter, maxLoop)", 500);
+            //pnlProgress.style.visibility = 'false';
+        }
+
+        function EndPageLoad() {
+            window.clearInterval(intervalId);
+            ClearProgress();
+        }
+        function upperCase(x) {
+            var y = document.getElementById(x).value;
+            //document.getElementById(x).value=y.toUpperCase();
+
+            document.getElementById("loginregister_txtPassword").value = y.toUpperCase();
+            document.getElementById("loginregister_txtConfirmPassword").value = y.toUpperCase();
+        }
+
+
+        function ClearProgress() {
+            for (var i = 1; i <= maxLoop; i++) {
+                document.getElementById('progress' + i).style.backgroundColor = 'transparent';
+            }
+            document.getElementById('progress1').style.backgroundColor = progressColor;
+        }
+
+        function UpdateProgress(currentLoopCounter, maximumLoops) {
+            currentLoopCounter += 1;
+
+            if (currentLoopCounter <= maximumLoops) {
+                document.getElementById('progress' + currentLoopCounter).style.backgroundColor = progressColor;
+                return currentLoopCounter;
+            }
+            else {
+                ClearProgress();
+                return 1;
+            }
+        }
+        //			    function ValidateGenderSelection(source, arguments) {
+        //			        var genderList = document.getElementById("ddlGrade");
+        //			       
+        //			        var chk = document.getElementById("optYes");
+        //			        if (chk.checked) {
+        //			            if (null != genderList) {
+
+        //			                //var iValue = new Number(genderList[genderList.selectedIndex].value);
+        //			                var iValue = genderList.selectedIndex;
+        //			                arguments.IsValid = (iValue > 0);
+        //			            }
+        //			            else {
+        //			                arguments.IsValid = false;
+        //			            }
+        //			        }
+        //			    } 
+        // -->
+
+
+        function DeclineClicked1() {
+
+            var div = document.getElementById('showpopup');
+
+            div.style.display = "none";
+
+        }
+
+
+        function OpenSearch() {
+            var div = document.getElementById('showpopup');
+
+            div.style.display = "block";
+            div.style.position = "absolute";
+            div.style.visibility = 'visible';
+
+            div.style.zIndex = 3;
+
+            //var width=1000;
+
+            div.style.top = '400px';
+            // alert(width);
+            //div.style.left = (width / 2) - (400 / 2) + 'px';
+            div.style.backgroundColor = '';
+            div.style.border = '0px solid silver'; div.style.padding = '10px';
+        }
+    </script>
+    
+    <script language="javascript" type="text/javascript">
+        function OpenSearchpop() {
+            var div = document.getElementById('showpopuppop');
+
+            div.style.display = "block";
+            div.style.position = "absolute";
+            // div.style.visibility='visible';
+
+            div.style.zIndex = 3;
+
+            div.style.top = '290px';
+            div.style.left = '350px';
+            div.style.backgroundColor = 'black';
+            div.style.border = '0px solid silver'; div.style.padding = '5px';
+        }
+        function DeclineClicked1pop() {
+
+            document.getElementById('loginregister_chkagreement').checked = false
+            var div = document.getElementById('showpopuppop');
+
+            div.style.display = "none";
+            document.getElementById('spn').style.visibility = 'visible';
+
+        }
+        function AgreementClicked1() {
+
+            document.getElementById('loginregister_chkagreement').checked = true;
+            var div = document.getElementById('showpopuppop');
+
+            div.style.display = "none";
+
+            document.getElementById('spn').style.visibility = 'hidden';
+        }
+
+    </script>
+
+    <script language="javascript" type="text/javascript">
+        function valchkb() {
+            if (document.getElementById('loginregister_chkagreement').checked == true) {
+                document.getElementById('loginregister_spn').style.visibility = 'hidden';
+            }
+            else {
+                document.getElementById('loginregister_spn').style.visibility = 'visible';
+            }
+        }
+        //////			    function ValidateTandCs(source, args) {
+        //////			        alert('AM IN');
+        //////			        args.IsValid = document.getElementById('chkagreement').checked;
+        //////			        
+        //////			    }
+    </script>
+   
+    
+<div id="toppanel"  >
+	                            <div id="panel" >
+		                            <div class="content clearfix">
+			                            <div class="left">
+				                           		
+				                            <p class="grey"></p>
+				                            
+				                            <p class="grey"></p>
+			                            </div>
+                                        
+                                        
+                                      
+                                        
+			                            <div class="left">
+			                            <table><tr><td>
+				                            <div id="loginregister_pnlLogin">
+	
+					                            <h1>Member Login</h1>
+                                        
+					                            <label class="grey" id="ss" for="username">Username:</label>
+					                           <input name="loginregister$TxtUNamelog" type="text" maxlength="40" id="loginregister_TxtUNamelog" class="field" />
+					                            <label class="grey" for="password">Password:</label>
+					                              <input name="loginregister$TxtPassLog" type="password" id="loginregister_TxtPassLog" class="field" />
+					                          
+        			                            <div class="clear"></div>
+				                              <input type="submit" name="loginregister$btnSubmit" value="Login" onclick="javascript:checkTimeZone();WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;loginregister$btnSubmit&quot;, &quot;&quot;, true, &quot;login&quot;, &quot;&quot;, false, false))" id="loginregister_btnSubmit" class="bt_login" />
+                                                               <div class="clear"></div>
+                                               &nbsp;
+	                                                        &nbsp;
+	                                                        
+	                                                         
+	                                                      
+</div>             
+				                           </td></tr>
+				                           <tr>
+				                           <td align="center">
+				                           <span id="loginregister_lblMessage"><b><font color="Red"></font></b></span>  
+				                           </td>
+				                           </tr>
+				                           </table>
+				                           <br />
+				                            
+				                           <br />
+				                           
+				                           
+				                           <br />
+				                           
+				                           <br />
+				                           
+				                           <br />
+				                           
+                                                    <br />
+                                                     
+                                                    <br />
+					                            <span id="loginregister_EmailAvailabilityLabel"></span>
+					                            <br />
+					                           
+					                             
+                                                 <br />
+                                                                                
+                                                   <br />
+					                              
+					                              
+                                                    <br />
+                                                    <br />
+                                                
+                                                <br />
+                                                
+                                                  
+                                                     <br />
+                                                                        
+                                                                            
+                                                                        <br />
+                                                                        
+                                                   <br />
+                                                   <label id="spn" style="visibility: hidden;"><font color="red">Please accept Terms and
+                                                    Conditions</font></label>
+                                                    <br />
+                                                    
+			                            </div>
+			                           
+			                            <div class="left right" >			
+				                          <div id="loginregister_pnlregister">
+	
+					                            <h1>Not a member yet? Sign Up!</h1>		
+                                                
+                                           
+                                                		
+					                            <label class="grey" for="username">Username:</label>
+					                            <input name="loginregister$txtName" type="text" maxlength="40" id="loginregister_txtName" class="field" onblur="ChangeToLowerCase(this)" />
+					                             
+					                            <br />
+					                            <span id="loginregister_UserNameAvailabilityLabel" class="grey" for="email"></span> 
+					                            <br />
+					                           
+					                            
+					                            <label class="grey" for="email">First Name:</label>
+					                            <input name="loginregister$txtFirstName" type="text" maxlength="40" id="loginregister_txtFirstName" class="field" />
+					                             
+					                           <label class="grey" for="email">Last Name:</label>
+					                            <input name="loginregister$txtLastName" type="text" maxlength="40" id="loginregister_txtLastName" class="field" />
+					                             
+					                            <label class="grey" for="email">Email:</label>
+					                            <input name="loginregister$txtEmail" type="text" maxlength="256" id="loginregister_txtEmail" class="field" onblur="ChangeToLowerCase(this)" />
+					                           
+					                            
+                                                 <label class="grey" for="email">Confirm Email:</label> 
+                                                 <input name="loginregister$txtConfirmEmail" type="text" maxlength="256" id="loginregister_txtConfirmEmail" class="field" onblur="ChangeToLowerCase(this)" />
+                                                    
+                                                    
+                                                    
+					                            <label>A password will be e-mailed to you.</label>
+					                            
+					                             <label class="grey" for="email">Cell Phone :</label>
+					                           <input name="loginregister$txtCellPhone" type="text" maxlength="32" id="loginregister_txtCellPhone" class="field" />&nbsp;Ex.
+                                                (713)222-2222
+                                                <br />
+					                             <label class="grey" for="email">Do you have a CZ ID number :</label>
+					                              <table><tr>
+					                              <td>
+					                             
+					                             <span class="field"><b><input id="loginregister_optNo" type="radio" name="loginregister$CZPanel" value="optNo" checked="checked" onclick="showCZidpanel('optNo');" /></b></span>No
+                                                     
+                                                     
+                                                    <span class="field"><b><input id="loginregister_optYes" type="radio" name="loginregister$CZPanel" value="optYes" onclick="showCZidpanel('optYes');" /></b></span>Yes
+                                                    </td>
+                                                    </tr></table>
+                                                    <div id="loginregister_pnlCZ" align="left">
+		
+                                                    <table>
+                                                                <tr id="loginregister_trCZId" style="display: none" align="left">
+			<td valign="top">
+                                                                       
+                                                                        <label class="grey" for="email">If Yes, enter the CZ ID number(11 digits):</label>
+                                                                        <br />
+                                                                        
+                                                                    
+                                                                        <input name="loginregister$txtCZId" type="text" maxlength="128" id="loginregister_txtCZId" align="left" class="field" />
+                                                                        <br />
+                                                                        <span id="loginregister_lblCZVal"></span>
+                                                                        
+                                                                    </td>
+		</tr>
+		
+                                                        </table>       
+                                                            
+	</div>
+                                                  <label>         
+                                                <input id="loginregister_chkagreement" type="checkbox" name="loginregister$chkagreement" checked="checked" onclick="javascript:valchkb();" />
+                                                I agree to the terms and conditions</label>
+                                          
+					                            <input type="submit" name="loginregister$btnRegister" value="Register" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;loginregister$btnRegister&quot;, &quot;&quot;, true, &quot;btnreg&quot;, &quot;&quot;, false, false))" id="loginregister_btnRegister" class="bt_register" />
+                                                
+                                                  <div class="clear"></div>     
+                                                  <div id="divProgressBar" style="display: none">
+                                                    <div id="loginregister_pnlProgress">
+		
+                                                        <table cellspacing="0" cellpadding="0" width="100%" border="0">
+                                                            <tr>
+                                                                <td valign="middle" align="center">
+                                                                    <font class="sidebar" color="dodgerblue" size="2"><span id="message"><strong>Processing
+                                                                        Registration. Please Wait...</strong> </span></font>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="middle" align="center">
+                                                                    <table align="center">
+                                                                        <tr>
+                                                                            <td>
+                                                                                <div class="ProgressBar">
+                                                                                    <span id="progress1">&nbsp; &nbsp;</span> <span id="progress2">&nbsp; &nbsp;</span>
+                                                                                    <span id="progress3">&nbsp; &nbsp;</span> <span id="progress4">&nbsp; &nbsp;</span>
+                                                                                    <span id="progress5">&nbsp; &nbsp;</span> <span id="progress6">&nbsp; &nbsp;</span>
+                                                                                    <span id="progress7">&nbsp; &nbsp;</span> <span id="progress8">&nbsp; &nbsp;</span>
+                                                                                    <span id="progress9">&nbsp; &nbsp;</span> <span id="progress10">&nbsp; &nbsp;</span>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    
+	</div>
+                                                </div>        
+				                           <span id="loginregister_lblRegiterMessage"><b><font color="Red"></font></b></span>               
+			                           
+</div>  
+			                            </div>
+                                   
+                                        
+                                      
+                                        
+                                        <div class="left right">
+                                        </div>
+                                        
+                                     
+		                            </div>
+	                            </div> 
+	                            <div class="tab">
+		                            <ul class="login">
+	    	                            <li class="left">&nbsp;</li>
+	                                    <li>Hello Guest                    <li class="sep">|</li>
+			                            <li id="toggle">
+				                            <a id="open" class="open" href="#">Log In | Register</a>
+				                            <a id="close" style="display: none;" class="close" href="#">Close Panel</a>			
+			                            </li>
+	    	                            <li class="right">&nbsp;</li>
+		                            </ul> 
+	                            </div> 
+                            	
+                            </div>
+	            
+            </td>
+        </tr>
+        <tr>
+            <td height="40"></td>
+        </tr>
+        <tr>
+            <td align="center">
+                <table cellpadding="0px" cellspacing="0px" width="100%" align="center">  <tr>  <td align="center">   <table cellpadding="0px" cellspacing="0px" width="900" height="143" align="center" bgcolor="#0b1123">      <tr><td height="15"></td></tr>    <tr>      <td valign="top" align="left">         <map name="FPMap0">          <area href="http://www.collegiatezone.net/" shape="rect" coords="1,0,351,52" target="_blank">         </map>        <img src="Images/logoband.png" border="0" usemap="#FPMap0" />         </td>        
+     </tr>     
+        <tr>    <td align="center">     <table cellpadding="0px" cellspacing="0px" width="839" align ="center" bgcolor="#0b1123">      <tr>      <td width="605"></td>     <td width="78" valign="top" align="right">     <a href="Default.aspx" >         <font face="Army Wide" id="abcd" color="#FFFFFF" class="Menu">HOME</font>     </a>     </td>     <td width="40"></td>     <td width="90" valign="top" align="right">     <a href="AboutUs.aspx" >     <font face="Army Wide" id="abcd" color="#FFFFFF"  class="Menu">ABOUT</font>     </a>     </td>     <td width="40"></td>     <td width="129" valign="top" align="right">     <a href ="Services.aspx">     <font face="Army Wide" color="#FFFFFF" id="abcd"  class="Menu">SERVICES</font>     </a>     </td>     <td width="40"></td>          <td width="129" valign="top" align="right">     <a href ="Pressroom.aspx">     <font face="Army Wide" color="#FFFFFF" id="abcd"  class="Menu">PRESSROOM</font>     </a>     </td>     <td width="40"></td>     <td width="122" valign="top" align="right">     <a href="ContactForm.aspx">     <font face="Army Wide" color="#FFFFFF" id="abcd" class="Menu">CONTACT</font>     </a>     </td>         </tr>                <tr><td height="25"></td></tr>         </table>    </td>   </tr>            <tr>    <td align="center">     <table cellpadding="0px" cellspacing="0px" background="Images/flagopacity.jpg" style ="background-repeat :no-repeat "  width="850">      <tr><td height="15"></td></tr>              <tr><td valign="top" align="center"><img src="Images/TroopBanner.png" /></td></tr>      <tr><td valign="top" align="center"><img src="Images/StarBanner.png" /></td></tr>            <tr>       <td align="center">        <table cellpadding="0px" cellspacing="0px" width="839">         <tr>          <td valign ="top">           <table cellpadding="0px" cellspacing="0px" background="Images/Box1.png" width="275" height="275">          <tr>           <td align="center" valign="top">            <table cellpadding="0px" cellspacing="0px" >              <tr><td height="10"></td></tr>                <tr>                 <td colspan="3" align="center" valign="top" class="heads"> <!--<img src="Images/Vet_Quest.png" />-->VET*QUEST</td>                </tr>                <tr><td height="7"></td></tr>                <tr><td width="10"></td><td align="left" valign="top" height="166" class="text">VetQuest is a veteran-focused college and workforce planning system built to leverage the insight of our exclusive MindSight veteran evaluation program.  Veterans have access to the best career and higher education identification, research, and connection tools.</td><td width="10"></td></tr>                <tr><td height="10"></td></tr>				<tr><td height="20"></td></tr>
+                <tr>                 <td colspan="3" align="center" valign="top"><a href="AboutUs.aspx"><img  src="Images/RedButtonMouseHover.gif"  onMouseOver="this.src='Images/Red button.gif'" onMouseOut="this.src='Images/RedButtonMouseHover.gif'; " /></a></td>                </tr>                                            </table>           </td>          </tr>                       </table>          </td>                    <td valign ="top">           <table cellpadding="0px" cellspacing="0px" background="Images/Box1.png" width="275" height="275">          <tr>           <td align="center" valign="top">            <table cellpadding="0px" cellspacing="0px" >              <tr><td height="10"></td></tr>                <tr>                 <td colspan="3"  align="center" valign="top" class="heads"> <!--<img src="Images/Features.png" />-->FEATURES</td>                </tr>                <tr><td height="7"></td></tr>                <tr><td width="10"></td><td align="left" valign="top" height="166" class="text">Using the world-renowned Birkman Method™, MindSight connects veterans with the RIGHT career cluster and the RIGHT education to succeed.  Evaluation reports include a personalized workforce or college pathway based on the veteran’s unique behavioral style and interest inventory to help select a successful pathway based on what the veteran REALLY likes to do.</td><td width="10"></td></tr>                <tr><td height="9"></td></tr>                <tr>                 <td colspan="3" align="center" valign="top"><a href="Services.aspx"><img src="Images/RedButtonMouseHover.gif" onMouseOver="this.src='Images/Red button.gif'" onMouseOut="this.src='Images/RedButtonMouseHover.gif'; "/></a></td>                </tr>                                            </table>           </td>          </tr>                       </table>          </td>                    <td valign ="top">           <table cellpadding="0px" cellspacing="0px" background="Images/Box1.png" width="275" height="275">          <tr>           <td align="center" valign="top">            <table cellpadding="0px" cellspacing="0px" >              <tr><td height="10"></td></tr>                <tr>                 <td colspan="3" align="center" valign="top" class="heads">VALUE</td>                </tr>                <tr><td height="6"></td></tr>                <tr><td width="10"></td><td align="left" valign="top" height="166" class="text">Along with MindSight’s recommendations, VetQuest connects veterans with <strong>FREE</strong> information on hundreds of occupations and thousands of colleges, a <strong>FREE</strong> resume builder, <strong>FREE</strong> SAT/ACT practice, <strong>FREE</strong> after-hours college counseling, and so much more! These tools ensure veterans stay engaged and focused on career success for no additional charge. </td><td width="10"></td></tr>                <tr><td height="6"></td></tr>                <tr>                 <td colspan="3" align="center" valign="top"><a href="http://www.collegiatezone.net" target ="_blank" ><img src="Images/RedButtonMouseHover.gif"  onMouseOver="this.src='Images/Red button.gif'" onMouseOut="this.src='Images/RedButtonMouseHover.gif'; "/></a></td>                </tr>                                            </table>           </td>          </tr>                       </table>          </td>                             </tr>         <tr><td height="5"></td></tr>        </table>       </td>      </tr>                  <tr>       <td align="center" valign ="top">        <table cellpadding="0px" cellspacing="10px" width="824" background="Images/BoxBackground.png" style ="background-repeat :no-repeat" height="240">         <tr>          <td valign ="top"  ><img src="images/_thumb_11605.png" width="250" height="210" /></td>          <td valign ="top" ><img src="Images/babysoldier (2).png" width="250" height="210" /></td>          <td valign ="top" ><img src="images/DogTags.png" width="250" height="210" /></td>         </tr>                 </table>       </td>      </tr>                        <tr> 
+       <td align="center" valign ="top">
+        <table cellpadding="0px" cellspacing="0px" background="Images/Footer.png" style ="background-repeat :no-repeat " width="818" height="93">
+         <tr><td width="25"></td>
+          <td width="300" align="left"><a href="http://www.collegiatezone.net" target="blank"><img src="Images/CollegiateZone-2012.png" border="0px" /></a></td>
+          <td width="341"><h2><a href="Terms.aspx" style ="color:White"><u>Terms & Conditions</u></a></h2></td>
+          <td align="right"><a href="http://www.facebook.com/pages/CollegiateZone/187285481310977" target ="_blank" ><img src="Images/Facebook.png" /></a></td>
+          <td width="20"></td>
+          <td align="right"><a href="https://twitter.com/#!/VetQuest1" target ="_blank"><img src="Images/Twitter.png" /></a></td>
+          
+          <td width="20"></td>
+		  <td align="right"><a href="https://plus.google.com/114494253966001736190" target ="_blank"><img src="Images/Google.png" /></a></td>
+		  <td width="20"></td>
+         </tr>        
+        
+        </table>
+       </td>
+      </tr>             <tr><td height="10"></td></tr>           </table>    </td>   </tr>    <tr><td height="22"></td></tr>         </table>   </td>  </tr>  </table>            </td>
+        </tr>
+    </table>
+    
+
+    
+<script>GetIPInfoDBDetails('208.87.139.67')</script></form>
+</body>
+</html>

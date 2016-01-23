@@ -1,0 +1,417 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="Keywords" content="乗馬,乗馬クラブ,乗馬倶楽部,体験乗馬,乗馬体験,乗馬ライセンス,乗馬　5級ライセンス,明石　乗馬,乗馬　明石,神戸　乗馬,乗馬　神戸,姫路　乗馬,乗馬　姫路">
+<meta name="Description" content=">神戸・姫路方面からアクセスしやすい明石乗馬協会は、兵庫県明石市石ヶ谷公園にある明石・神戸の乗馬クラブです。">
+<meta name="GENERATOR" content="JustSystems Homepage Builder Version 17.0.15.0 for Windows">
+<title>乗馬クラブ 明石乗馬協会 ｜兵庫県神戸市内からすぐの乗馬クラブ　体験乗馬募集中！</title>
+<link rel="stylesheet" type="text/css" href="http://black-flag.net/data/css/reset.css" />
+<link rel="stylesheet" href="hpbparts.css" type="text/css" id="hpbparts">
+<link rel="stylesheet" href="container_9Hb_2c_top.css" type="text/css" id="hpbcontainer">
+<link rel="stylesheet" href="main_9Hb_2c.css" type="text/css" id="hpbmain">
+<link rel="stylesheet" href="user.css" type="text/css" id="hpbuser">
+<link rel="stylesheet" type="text/css" href="css/common.css" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+$(function(){
+	var $setElm = $('.wideslider'),
+	baseWidth = 960,
+	baseHeight = 380,
+
+	slideSpeed = 500,
+	delayTime = 5000,
+	easing = 'linear',
+
+	autoPlay = '1', // notAutoPlay = '0'
+
+	btnOpacity = 0.5,
+	pnOpacity = 0.5;
+
+	$setElm.each(function(){
+		var targetObj = $(this);
+		var widesliderWidth = baseWidth;
+		var widesliderHeight = baseHeight;
+		targetObj.children('ul').wrapAll('<div class="wideslider_base"><div class="wideslider_wrap"></div><div class="slider_prev"></div><div class="slider_next"></div></div>');
+
+		var findBase = targetObj.find('.wideslider_base');
+		var findWrap = targetObj.find('.wideslider_wrap');
+		var findPrev = targetObj.find('.slider_prev');
+		var findNext = targetObj.find('.slider_next');
+
+		var baseListWidth = baseWidth;
+		var baseListCount = findWrap.children('ul').children('li').length;
+
+		var baseWrapWidth = (baseListWidth)*(baseListCount);
+
+		var pagination = $('<div class="pagination"></div>');
+		targetObj.append(pagination);
+		var baseList = findWrap.children('ul').children('li');
+		baseList.each(function(i){
+			$(this).css({width:(baseWidth),height:(baseHeight)});
+			pagination.append('<a href="javascript:void(0);" class="pn'+(i+1)+'"></a>');
+		});
+
+		var pnPoint = pagination.children('a');
+		var pnFirst = pagination.children('a:first');
+		var pnLast = pagination.children('a:last');
+		var pnCount = pagination.children('a').length;
+		pnPoint.css({opacity:(pnOpacity)}).hover(function(){
+			$(this).stop().animate({opacity:'1'},300);
+		}, function(){
+			$(this).stop().animate({opacity:(pnOpacity)},300);
+		});
+		pnFirst.addClass('active');
+		pnPoint.click(function(){
+			if(autoPlay == '1'){clearInterval(wsSetTimer);}
+			var setNum = pnPoint.index(this);
+			var moveLeft = ((baseListWidth)*(setNum))+baseWrapWidth;
+			findWrap.stop().animate({left: -(moveLeft)},slideSpeed,easing);
+			pnPoint.removeClass('active');
+			$(this).addClass('active');
+			if(autoPlay == '1'){wsTimer();}
+		});
+
+		var makeClone = findWrap.children('ul');
+		makeClone.clone().prependTo(findWrap);
+		makeClone.clone().appendTo(findWrap);
+
+		var allListWidth = findWrap.children('ul').children('li').width();
+		var allListCount = findWrap.children('ul').children('li').length;
+
+		var allLWrapWidth = (allListWidth)*(allListCount);
+		var windowWidth = $(window).width();
+		var posAdjust = ((windowWidth)-(baseWidth))/2;
+
+		findBase.css({left:(posAdjust),width:(baseWidth),height:(baseHeight)});
+		findPrev.css({left:-(baseWrapWidth),width:(baseWrapWidth),height:(baseHeight),opacity:(btnOpacity)});
+		findNext.css({right:-(baseWrapWidth),width:(baseWrapWidth),height:(baseHeight),opacity:(btnOpacity)});
+		$(window).bind('resize',function(){
+			var windowWidth = $(window).width();
+			var posAdjust = ((windowWidth)-(baseWidth))/2;
+			findBase.css({left:(posAdjust)});
+			findPrev.css({left:-(posAdjust),width:(posAdjust)});
+			findNext.css({right:-(posAdjust),width:(posAdjust)});
+		}).resize();
+
+		findWrap.css({left:-(baseWrapWidth),width:(allLWrapWidth),height:(baseHeight)});
+		findWrap.children('ul').css({width:(baseWrapWidth),height:(baseHeight)});
+
+		var posResetNext = -(baseWrapWidth)*2;
+		var posResetPrev = -(baseWrapWidth)+(baseWidth);
+
+		if(autoPlay == '1'){wsTimer();}
+
+		function wsTimer(){
+			wsSetTimer = setInterval(function(){
+				findNext.click();
+			},delayTime);
+		}
+		findNext.click(function(){
+			findWrap.not(':animated').each(function(){
+				if(autoPlay == '1'){clearInterval(wsSetTimer);}
+				var posLeft = parseInt($(findWrap).css('left'));
+				var moveLeft = ((posLeft)-(baseWidth));
+				findWrap.stop().animate({left:(moveLeft)},slideSpeed,easing,function(){
+					var adjustLeft = parseInt($(findWrap).css('left'));
+					if(adjustLeft == posResetNext){
+						findWrap.css({left: -(baseWrapWidth)});
+					}
+				});
+				var pnPointActive = pagination.children('a.active');
+				pnPointActive.each(function(){
+					var pnIndex = pnPoint.index(this);
+					var listCount = pnIndex+1;
+					if(pnCount == listCount){
+						pnPointActive.removeClass('active');
+						pnFirst.addClass('active');
+					} else {
+						pnPointActive.removeClass('active').next().addClass('active');
+					}
+				});
+				if(autoPlay == '1'){wsTimer();}
+			});
+		}).hover(function(){
+			$(this).stop().animate({opacity:((btnOpacity)+0.1)},100);
+		}, function(){
+			$(this).stop().animate({opacity:(btnOpacity)},100);
+		});
+
+		findPrev.click(function(){
+			findWrap.not(':animated').each(function(){
+				if(autoPlay == '1'){clearInterval(wsSetTimer);}
+				var posLeft = parseInt($(findWrap).css('left'));
+				var moveLeft = ((posLeft)+(baseWidth));
+				findWrap.stop().animate({left:(moveLeft)},slideSpeed,easing,function(){
+					var adjustLeft = parseInt($(findWrap).css('left'));
+					var adjustLeftPrev = (posResetNext)+(baseWidth);
+					if(adjustLeft == posResetPrev){
+						findWrap.css({left: (adjustLeftPrev)});
+					}
+				});
+				var pnPointActive = pagination.children('a.active');
+				pnPointActive.each(function(){
+					var pnIndex = pnPoint.index(this);
+					var listCount = pnIndex+1;
+					if(1 == listCount){
+						pnPointActive.removeClass('active');
+						pnLast.addClass('active');
+					} else {
+						pnPointActive.removeClass('active').prev().addClass('active');
+					}
+				});
+				if(autoPlay == '1'){wsTimer();}
+			});
+		}).hover(function(){
+			$(this).stop().animate({opacity:((btnOpacity)+0.1)},100);
+		}, function(){
+			$(this).stop().animate({opacity:(btnOpacity)},100);
+		});
+	});
+});
+</script>
+</head>
+<body id="hpb-template-09-08b-01" class="hpb-layoutset-01">
+<div id="hpb-skip"><a href="#hpb-title">本文へスキップ</a></div>
+
+<!-- container -->
+<div id="hpb-container">
+  <!-- header -->
+  <div id="hpb-header">
+    <div id="hpb-headerMain">
+      <h1>兵庫県有数の乗馬クラブ明石乗馬協会では明石市はもちろん、神戸姫路方面から多くの体験乗馬をする方が訪れています。</h1>
+    </div>
+    <div id="hpb-headerLogo"><a href="index.html">一般財団法人明石乗馬協会<br></a></div>
+  </div>
+<div id="container">
+
+<div class="wideslider">
+      <!-- page title -->
+      <div id="hpb-title" class="hpb-top-image">
+        <h2>乗馬クラブ　一般財団法人明石乗馬協会</h2>
+      </div>
+
+<ul>
+<li><a href="taiken_sinsyun.html"><img src="img/photo02d.jpg" width="960" height="380" alt="" /></a></li>
+<li><a href="license.html"><img src="img/photo04d.jpg" width="960" height="380" alt="" /></a></li>
+<li><a href="http://www.ara.fm/taiken.html"><img src="img/photo01d.jpg" width="960" height="380" alt="" /></a></li>
+<li><a href="visitor.html"><img src="img/photo03d.jpg" width="960" height="380" alt="" /></a></li>
+<li><a href="pony.html"><img src="img/photo05.jpg" width="960" height="380" alt="" /></a></li>
+
+</ul>
+</div><!--/.wideslider-->
+
+</div><!--/#container-->
+
+  <!-- header end --><!-- inner -->
+  <div id="hpb-inner">
+    <!-- wrapper -->
+    <div id="hpb-wrapper">
+      <!-- page title end --><!-- main -->
+      <div id="hpb-main">
+        <!-- toppage -->
+        <div id="toppage">
+          <div id="toppage-info">
+            <br>
+            <table border="1" width="960" style="margin-left : 10px;border-color : transparent;">
+                <tbody>
+                  <tr>
+                  <td style="padding-right : 8px;border-color : transparent;" valign="top" height="500">
+                  <h3><font size="3">お知らせ</font></h3>
+                  <table border="1" width="675" style="border-left-width : 0px;border-top-style : hidden;border-left-style : hidden;border-right-style : hidden;border-top-color : #cccccc;border-left-color : #cccccc;">
+                    <tbody>
+                      <tr>
+                        <td><font size="3">■あけましておめでとうございます。<br>
+                        　明石乗馬協会は１月4日より営業開始しています。<br>
+                        　今年もよろしくお願い申し上げます。<br>
+                        <br>
+                        ■2015年冬休み子供１日乗馬教室<br>
+                        　12月28日に開催された「冬休み子供１日乗馬」の写真がフォトアルバムに掲載されています。下記URLよりご覧下さい。i <br>
+                        　<a href="https://withphoto.jp/album/araphoto/345396/">https://withphoto.jp/album/araphoto/345396/</a><br>
+                        </font></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <h3><font size="3">おすすめ乗馬コース</font></h3>
+                  <table border="1" width="677">
+                    <tbody>
+                      <tr>
+                        <td width="482" style="border-width : 1px 0px 1px 1px;border-style : solid none solid solid;" valign="middle"><font color="#ff0000" size="4">　体験乗馬１回コース　<a href="taiken.html"><font size="3">詳しくは</font>＞＞</a></font> <br>                  　　<font size="3">通常料金　5,616円</font>　<FONT size="4">⇒</FONT>　　<FONT color="#ff0000" size="5"><B>1,９８０円</B></FONT><FONT color="#000000" size="3">（税込）</FONT><br>
+                  <font size="3">馬に乗ってみたい！　そんなあなたにオススメのコースです。<br>
+                  手ぶらで気軽に乗馬を体験できるコースです。</font></td>
+                        <td width="177" style="border-width : 1px 1px 1px 0px;border-style : solid solid solid hidden;
+	text-align : right;
+" align="right">&nbsp;<img src="img/ssIMGP89206.jpg" width="168" height="126" border="0"></td>
+                      </tr>
+                      <tr>
+                        <td valign="middle" style="vertical-align : middle;border-width : 1px 0px 1px 1px;border-style : solid none solid solid;">&nbsp;<font color="#ff0000" size="4">　乗馬5級ライセンスコース</font>　<a href="license.html"><font size="3">詳しくは</font>＞＞</a><br>
+                        <font size="3">　　通常料金　49,896円</font>　<FONT size="4">⇒</FONT>　<FONT color="#ff0000" size="5"><B>３７,９８０円</B></FONT><FONT color="#000000" size="3">（税込）<br>
+                  </FONT><font size="3">この秋、４日間で乗馬ライセンスをとってみませんか？<br>
+                        マンツーマンなので上達が早く人気のコースです。</font></td>
+                        <td style="border-width : 1px 1px 1px 0px;border-style : solid solid solid hidden;
+	text-align : right;
+" align="right">&nbsp;<img src="img/taiken/IMGP4874s.jpg" width="168" height="172" border="0"></td>
+                      </tr>
+                      <tr>
+                        <td style="border-width : 1px 0px 1px 1px;border-style : solid none solid solid;" valign="middle"><font color="#ff0000" size="4">　女性応援乗馬コース　<a href="joseiouen.html"><font size="3">詳しくは</font>＞＞</a></font> <br>
+                        　　　<font size="3">通常料金　7,776円</font>　<FONT size="4">⇒　</FONT><FONT color="#ff0000" size="5"><B>２,９８０円</B></FONT><FONT color="#000000" size="3">（税込）</FONT><br>
+                  <font size="3">体験乗馬１回コースに比べ、馬に乗っている時間が長く、<br>
+                        乗る以外でも、ブラシがけや厩舎見学など盛りだくさんです。</font></td>
+                        <td style="border-width : 1px 1px 1px 0px;border-style : solid solid solid hidden;
+	text-align : right;
+" align="right">&nbsp;<a href="taiken.html#taiken1kai"><img src="img/taiken/IMGP6407.jpg" width="168" border="0"></a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <h3><a name="photo" id="photo"></a><font size="3">フォトギャラリー</font></h3>
+                  <table border="1" width="675">
+                    <tbody>
+                      <tr>
+                        <td><a href="https://withphoto.jp/album/araphoto/345396/" target="_blank"><img src="https://image2.withphoto.jp/000295749000027200206_square" border="0"></a><br>
+                        <font size="3"><a href="https://withphoto.jp/album/araphoto/345396/" target="_blank">2015冬休み１日乗馬</a></font></td>
+                        <td><a href="https://withphoto.jp/album/araphoto/341798/" target="_blank"><img src="https://image2.withphoto.jp/000/295/749/000/026/799/273/000026799273_square" border="0"></a><br>
+                        <font size="3"><a href="https://withphoto.jp/album/araphoto/341798/" target="_blank">2015クリスマスパーティ</a></font></td>
+                        <td><a href="https://withphoto.jp/album/araphoto/330956/" target="_blank"><img src="https://image.withphoto.jp/000295749000025667846_square" border="0"></a><br>
+                        <font size="3"><a href="https://withphoto.jp/album/araphoto/330956/" target="_blank">2015ホースフェスティバル</a></font></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <hr style="width : 680px;
+	text-align : left;
+" align="left">
+                  <img src="img/facebooktitle.jpg" width="670" height="30" border="0">
+                  <a href="uma.html"><iframe src="http://www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fakashi.riding.association%3Fref%3Dhl&amp;width=500&amp;height=580&amp;colorscheme=light&amp;show_faces=false&amp;header=true&amp;stream=true&amp;show_border=true" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:500px; height:580px;" allowtransparency="true" width="500"></iframe></a></td>
+                  <td valign="top" width="260" height="500" style="border-color : transparent;">
+            <h3><span class="ja"><font size="3">新着情報</font></span><span class="en">news</span></h3>
+                  <font size="2"> ◆2016年1月22日<br>
+                  　<a href="arauma/ringo/ringo.html">林檎</a>、<a href="arauma/huma/huma.html">風麻</a>を更新。 <br>
+                  ◆2016年1月21日<br>
+                  　<a href="arauma/pazu/pazu.html">パズー</a>、<a href="arauma/akashiasakaze/akashiasakaze.html">明石朝風</a>を更新。</font><br>
+                  <font size="2">◆2016年1月19日<br>
+                  　<a href="arauma/kaede/kaede.html">楓</a>、<a href="arauma/hotaru/hotaru.html">螢</a>、<a href="arauma/akari/akari.html">明歌鈴</a>、<a href="arauma/meisyu/meisyu.html">明柊</a>を更新。<br>
+                  ◆2016年1月18日<br>
+                  　<a href="arauma/rikki/rikki.html">リッキー</a>、<a href="arauma/pegasus/pegausu.html">ペガサス</a>、<a href="arauma/meiga/meiga.html">明牙</a>を更新。<br>
+                  ◆2016年1月17日<br>
+                  　<a href="arauma/kagero/kagero.html">陽炎</a>、<a href="arauma/teisyun/teisyun.html">悌駿</a>を更新。<br>
+                  ◆2016年1月14日<br>
+                  　<a href="arauma/gintonic/gintonic.htm">ジントニック</a>、<a href="arauma/fendi/fendi.htm">フェンディ</a>、<a href="arauma/kongo/kongo.html">金剛</a>更新。 <br>
+                  2016年1月13日<br>
+                  　<a href="arauma/akira/akira.html">明騾</a>、<a href="arauma/tora/tora.html">トラ</a>を更新。<br>
+                  ◆2016年1月13日<br>
+                  　<a href="arauma/siranui/siranui.html">不知火</a>、<a href="arauma/binner/binner.html">ビナー</a>、<a href="arauma/yoho3/yoho3.html">陽峰?</a>更新。<br>
+                  ◆2016年1月10日<br>
+                  　<a href="hear.html"> インストラクターに聞きました</a>更新。<br>
+                  ◆2016年1月8日<br>
+                  　<a href="arauma/daiya/daiya.html">悌耶</a>、<a href="arauma/leon/leon.html">レオンZ</a>を更新。<br>
+                  ◆2016年1月7日<br>
+                  　<a href="arauma/aitowa/aitowa.html">アイトワ</a>、<a href="arauma/yoho2/yoho2.html">ショコラ</a>、<a href="arauma/warabi/warabi.html">藁火</a>更新。<br>
+                  ◆2016年1月5日<br>
+                  　<a href="arauma/meisetsu/meisetsu.html">明雪</a>、<a href="arauma/fuga/fuga.html">風雅</a>、<a href="arauma/meito/meito.html">明友</a>更新。<br>
+                  ◆2016年1月2日<br>
+                  　 <a href="member.html#henkono">インストラクター変更のお知らせ</a>更新。 <br>
+                  ◆2016年1月2日<br>
+                  　<a href="hear.html"> インストラクターに聞きました</a>更新。<br>
+                  ◆2015年12月29日<br>
+                  　<a href="https://withphoto.jp/album/araphoto/345396/" target="_blank">冬休み子供１日乗馬の写真</a>を掲載。<br>
+                  ◆2015年12月27日<br>
+                  　<a href="hear.html"> インストラクターに聞きました</a>更新。<br>
+                  ◆2015年12月25日<br>
+                  　<a href="arauma/meizan/meizan.html">明山?</a>、<a href="arauma/satsuki/satsuki.html">さつき</a>を更新。</font><br>
+                  <font size="2">◆2015年12月24日<br>
+                  　<a href="arauma/pochi/pochi.html">歩智</a>、<a href="arauma/reina/reina.html">礼奈</a>、<a href="arauma/nina/nina.html">ニーナ</a>更新。</font><br>
+                  <font size="2"></font><br>
+                  <font size="2"></font><font size="2"></font><font size="2"></font><font size="2"></font><font size="2"></font><font size="2"></font><br>
+                  <a href="http://ameblo.jp/tagakun/"><img src="img/bana/blog_bana.gif" width="260" height="80" border="0"><br>
+                  <br>
+                  </a><a href="hear.html"><img src="img/bana/inst_bana.png" width="260" height="160" border="0"></a><br>
+                  <br>
+                  <a href="koe.html"><img src="img/bana/koe_bana.png" width="260" height="160" border="0"></a><br>
+                  <br>
+                  <a href="bosyu.html"><img src="img/bana/bosyu_bana.png" width="260" height="80" border="0"></a><br>
+                  <br>
+                  <a href="http://www.jrad.jp/index.html" target="_blank"><img src="img/bana/jrad.gif" width="260" height="84" border="0"></a><br>
+                  </td>
+                </tbody>
+              </table>
+            <div id="sub_banner">
+              <table border="1" width="960" style="margin-top : 0px;margin-right : 0px;margin-bottom : 0px;border-right-width : 1px;border-bottom-width : 1px;border-style : hidden;border-color : transparent;">
+                <tbody>
+                  <tr>
+                    <td style="padding-right : 8px;border-right-color : #cccccc;border-bottom-color : #cccccc;
+	text-align : center;
+" width="240" align="center"><a href="gaijo.html"><font size="2">海や山への外乗ツアー情報</font><br>
+                    <img src="img/sample/gaijo.jpg" width="230" height="155" border="0"></a></td>
+                    <td style="border-style : hidden;border-color : transparent;
+	text-align : center;
+" width="240" align="center"><a href="kyogi.html"><font size="2">競技会情報</font><img src="img/sample/turucolors1.jpg" width="230" height="155" border="0"></a></td>
+                    <td style="border-style : hidden;border-color : transparent;
+	text-align : center;
+" align="center" width="240"><a href="event.html"><font size="2">馬を使ったイベント募集</font><br>
+                    <img src="img/sample/P1030248.jpg" width="230" height="155" border="0"></a></td>
+                    <td style="text-align : center;" width="240" align="center"><a href="pony.html"><font size="2">3歳から乗れるポニー引き馬</font><br>
+                    <img src="img/sample/IMGP6634.JPG" width="230" height="155" border="0"></a></td>
+                  </tr>
+                </tbody>
+              </table>
+              　　　　　　
+            </div>
+            <font size="3">一般財団法人明石乗馬協会は、より多くの皆様に乗馬の素晴らしさを知って頂きたいと考えています。<br>
+                  </font><font color="#808080" size="2">JR西明石駅・JR大久保駅から送迎ワゴンで15分！<br>
+                  明石市内だけでなく、神戸・加古川・姫路・三木・小野等、阪神間からも通う事ができます。<br>
+                  初めての方の「体験乗馬」から、全国乗馬倶楽部振興協会（全乗振）の『5級ライセンス取得』、経験者のビジターレッスンなど乗馬の事ならおまかせ下さい！<br>
+                  ウォーキングや水泳と同じ有酸素運動で体を鍛えるだけでなくアンチエイジング効果も期待できるスポーツです！<br>
+                  乗馬や馬の事、明石乗馬協会の事をもっと知りたいと言う方は、ぜひ一度ご来場下さい♪</font>
+          </div>
+          <div id="pagetop"><a href="#hpb-container">このページの先頭へ</a></div>
+        </div>
+        <!-- toppage end -->
+      </div>
+      <!-- main end -->
+    </div>
+    <!-- wrapper end --><!-- navi -->
+    <div id="hpb-nav">
+      <h3 class="hpb-c-index">contents</h3>
+      <ul>
+        <li id="nav-toppage"><a href="index.html">トップ</a> 
+        <li id="nav-profile"><a href="taiken.html">体験乗馬案内</a> 
+        <li id="nav-schedule"><a href="visitor.html">ビジター案内</a> 
+        <li id="nav-schedule"><a href="license.html">乗馬スクール</a> 
+        <li id="nav-reoprt"><a href="club.html">クラブ紹介＆料金</a> 
+        <li id="nav-reoprt"><a href="staff.html">スタッフ紹介</a> 
+        <li id="nav-reoprt"><a href="uma.html">馬紹介</a> 
+        <li id="nav-information"><a href="access.html">交通ご案内</a> 
+      </ul>
+    </div>
+    <!-- navi end --><!-- aside -->
+    <div id="hpb-aside">
+      <div id="banner">
+        <h3 class="hpb-c-index">バナースペース</h3>
+        <ul>
+          <li><a href="hazimete.html" id="banner-schedule"><span class="ja">初めての方は</span><span class="en"></span></a> 
+          <li><a href="member.html" id="banner-admission"><span class="ja">会員の方は</span></a> 
+          <li><a href="event.html" id="banner-event"><span class="ja">馬イベント</span><span class="en"></span></a> 
+          <li><a href="pony.html" id="banner-blog"><span class="ja"></span><span class="en">ポニーg</span></a> 
+        </ul>
+      </div>
+    </div>
+    <!-- aside end -->
+  </div>
+  <!-- inner end --><!-- footer -->
+  <div id="hpb-footer">
+    <div id="hpb-footerMain">
+      <p><font size="2"><a href="taiken.html">体験乗馬案内</a>　<a href="visitor.html">ビジター案内</a>　<a href="license.html">乗馬スクール</a>　　<a href="club.html">クラブ紹介＆料金</a>　　<a href="staff.html">スタッフ紹介</a>　　<a href="uma.html">馬紹介</a>　　<a href="access.html">交通案内</a>　<a href="enkaku.html">事業概要</a>　<a href="privacy.html">個人情報保護方針</a>　<a href="sitemap.html">サイトマップ</a> <br>
+      copyright&copy;2015&nbsp;Akashi Riding Association&nbsp;all&nbsp;rights&nbsp;reserved.</font></p>
+    </div>
+  </div>
+  <!-- footer end -->
+</div>
+<!-- container end -->
+<!-- ACR アクセス解析Ver4.1(明石乗馬協会トップ)タグ開始 -->
+<SCRIPT TYPE="text/javascript" SRC="http://log07.v4.ziyu.net/js1.php?0P9151XE0"></SCRIPT>
+<NOSCRIPT><A HREF="http://www.ziyu.net/" target="_blank"><IMG SRC="http://log07.v4.ziyu.net/js_no1.php?0P9151XE0" alt="アクセス解析" BORDER=0></A></NOSCRIPT>
+<!-- ACR アクセス解析Ver4.1タグ終了 --></body>
+</html>

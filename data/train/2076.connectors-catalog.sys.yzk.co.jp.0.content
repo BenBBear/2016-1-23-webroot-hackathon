@@ -1,0 +1,315 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=shift_jis">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="description" content="矢崎電子カタログは、矢崎コネクタの代表的な製品を収録しました。長年にわたり自動車産業向けに信頼性に優れた製品を開発、製造してきましたので安心して各産業分野にご使用いただけます。">
+<meta name="keywords" content="矢崎,矢崎部品,矢崎コネクタカタログ,端子,ターミナル,ハウジング,カプラ,自動車部品,信頼性">
+<title>矢崎コネクタカタログ</title>
+<link href="css/yazaki.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/change_size.js"></script>
+<script type="text/javascript" src="js/change_list.js"></script>
+<script type="text/javascript" src="js/cookie_setting.js"></script>
+</head>
+<body onLoad="getCookie();fsc('default')">
+<table width="800" border="0" cellspacing="0" cellpadding="0">
+<tr>
+  <td colspan="2">
+    <!-- ヘッダ部分ここから -->
+    <table width="796" border="0" cellpadding="0" cellspacing="0" class="header">
+    <tr>
+      <td valign="top" width="374" rowspan="2"><img src="img/title.gif" width="374" height="54" alt="矢崎コネクタカタログ"></td>
+      <td valign="top" width="422" align="right"><img src="img/yazaki_logo.gif" width="90" height="16" alt="YAZAKI" hspace="10" vspace="5"></td>
+    </tr>
+    <tr>
+      <td align="right">
+        <table border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="25" align="center"><img src="img/arrow_blue.gif" alt="→" width="18" height="18"></td>
+          <td width="85" align="left"><img src="img/txt01.gif" width="76" height="12" alt="文字サイズ変更"></td>
+          <td width="100" align="left">
+            <table bgcolor="#999999" cellpadding="2" cellspacing="1" border="0">
+            <tr bgcolor="#FFFFFF">
+              <td><a href="#" onclick="fsc('smaller');return false;" onkeypress="fsc('smaller');return false;" ><img src="img/a_01.gif" alt="文字サイズ：小" name="img_smaller" width="18" height="18"></a></td>
+              <td><a href="#" onclick="fsc('default');return false;" onkeypress="fsc('default');return false;" ><img src="img/a_02_a.gif" name="img_default" width="18" height="18" alt="文字サイズ：中"></a></td>
+              <td><a href="#" onclick="fsc('larger');return false;" onkeypress="fsc('larger');return false;" ><img src="img/a_03.gif" name="img_larger" width="18" height="18" alt="文字サイズ：大"></a></td>
+            </tr>
+            </table>
+          </td>
+          <td width="25" align="center"><img src="img/arrow_blue.gif" alt="→" width="18" height="18"></td>
+          <td width="55" align="left"><a href="english/index.html"><img src="img/for_english.gif" width="45" height="15" alt="For English Format"></a></td>
+          <td width="25" align="center"><img src="img/arrow_blue.gif" alt="&rarr;" width="18" height="18"></td>
+          <td width="55" align="left"><a href="chinese/index.html"><img src="img/for_chinese.gif" width="50" height="15" alt="For Chinese Format"></a></td>
+        </tr>
+        </table>
+      </td>
+    </tr>
+    </table>
+    <!-- ヘッダ部分ここまで -->
+  </td>
+  <!-- 右側陰の部分 -->
+  <td rowspan="4" width="4" background="img/shadow.gif"></td>
+</tr>
+<!-- パンくずリストここから -->
+<tr>
+  <td colspan="2" class="pan">&lt;&lt; TOP </td>
+</tr>
+<!-- パンくずリストここまで -->
+<tr>
+  <!--  左側メニューここから -->
+  <td width="164" bgcolor="#E5E5E5" valign="top">
+  <div class="menu">
+    <!--  絞り込み検索 -->
+    <img src="img/m_title01.gif" width="150" height="23" class="m_title" alt="絞り込み検索">
+    <form action="/yazaki-web/servlet/MainServlet" name="sibori" id="sibori" method="post">
+    <img src="img/menu01.gif" alt="接続タイプ" width="87" height="18" class="menu_img"><BR>
+      <select name="CONNECT_TYPE" class="size1">
+      <option value="XX"></option>
+      <option value="05">電線対電線</option>
+      <option value="10">電線対基板</option>
+      <option value="15">機器直結</option>
+      <option value="20">光</option>
+      <option value="25">ヒューズ</option>
+      <option value="35">基板対FPC/FFC</option>
+      <option value="30">その他</option>
+      </select><BR>
+    <img src="img/menu02.gif" alt="品種" width="47" height="18" class="menu_img"><BR>
+      <select name="HINSYU" class="size1">
+      <option value="XX"></option>
+      <option value="05">ハウジング</option>
+      <option value="10">ターミナル</option>
+      <option value="15">ゴム栓</option>
+      <option value="20">MOST用光コネクタ</option>
+      <option value="25">ヒューズ</option>
+      <option value="35">FPC/FFC用コネクタ</option>
+      <option value="30">その他</option>
+      </select><BR>
+    <img src="img/menu03.gif" alt="シリーズ名" width="74" height="18" class="menu_img"><BR>
+      <select name="SERIES" class="size1" onChange="setMenuItem(this.selectedIndex)">
+      <option value="XX"></option>
+      <option value="005">0.64(025)コネクタ</option>
+      <option value="010">HSコネクタ</option>
+      <option value="015">RHコネクタ</option>
+      <option value="020">1.0III(040III)コネクタ</option>
+      <!--025 <option value="025">SPコネクタ</option> 025-->
+      <option value="030">SSDコネクタ</option>
+      <option value="035">1.3(050)コネクタ</option>
+      <option value="040">1.5(060)コネクタ</option>
+      <option value="045">SDLコネクタ</option>
+      <option value="050">SDL-IIコネクタ</option>
+      <option value="055">SWPコネクタ</option>
+      <option value="060">2.3(090)コネクタ</option>
+      <option value="065">2.3II(090II)コネクタ</option>
+      <option value="070">4.8(187)コネクタ</option>
+      <option value="075">新250コネクタ</option>
+      <!-- option value="080">CN(A)コネクタ</option -->
+      <!-- option value="085">CN(B)コネクタ</option -->
+      <!--090 <option value="090">WPC250コネクタ</option> 090-->
+      <option value="095">8.0(312)コネクタ</option>
+      <option value="100">9.5(375)コネクタ</option>
+      <option value="105">ハイブリッドコネクタ</option>
+      <option value="110">91コネクタ</option>
+      <option value="115">58コネクタ</option>
+      <option value="120">62コネクタ</option>
+      <option value="125">YES/YESC Kaizenコネクタ</option>
+      <option value="130">丸形端子(LA)</option>
+      <option value="135">特殊クワ形端子(LE)</option>
+      <option value="140">クワ形端子</option>
+      <option value="145">MOST用光コネクタ</option>
+      <option value="160">FPC/FFC用コネクタ</option>
+      <option value="150">ヒューズ</option>
+      <option value="155">FL</option>
+      </select><BR>
+    <img src="img/menu04.gif" alt="タイプ名" width="74" height="18" class="menu_img"><BR>
+      <select name="TYPE" class="size1" onChange="setMenuItem2(this.selectedIndex)">
+      <option value="XX"></option>
+      <option value="005">Sタイプ</option>
+      <option value="010">Mタイプ</option>
+      <option value="015">Lタイプ</option>
+      <option value="020">Tタイプ</option>
+      <option value="025">Wタイプ</option>
+      <option value="030">Xタイプ</option>
+      <option value="035">Yタイプ</option>
+      <option value="040">Vタイプ</option>
+      <option value="045">Cタイプ</option>
+      <option value="050">Zタイプ</option>
+      <option value="055">YVタイプ</option>
+      <option value="060">Aタイプ</option>
+      <option value="065">TKタイプ</option>
+      <option value="070">NSタイプ</option>
+      <option value="075">M-LCタイプ</option>
+      <option value="080">L-MCタイプ</option>
+      <!-- <option value="085">SMJタイプ</option> -->
+      <option value="090">RVタイプ</option>
+      <option value="095">RKタイプ</option>
+      <option value="100">低背ヒューズ</option>
+      <option value="105">A1タイプ</option>
+      <option value="110">A1-Sタイプ</option>
+      <option value="115">A2タイプ</option>
+      <option value="120">A3タイプ</option>
+      <option value="125">B1タイプ</option>
+      <option value="130">B2タイプ</option>
+      <option value="135">C1タイプ</option>
+      <option value="140">Multi. FLタイプ</option>
+      <option value="145">A1S-3Pタイプ</option>
+      <!-- <option value="150">Batt. FL 1Pタイプ</option> -->
+      <!-- <option value="155">Batt. FL 2Pタイプ</option> -->
+      <!-- <option value="160">Batt. FL 3Pタイプ</option> -->
+      <!-- <option value="165">Batt. FL 5Pタイプ</option> -->
+      <!-- <option value="170">Batt. FL 6Pタイプ</option> -->
+      <!-- <option value="175">Block 7Pタイプ</option> -->
+      <!-- <option value="180">MFAV 6Pタイプ</option> -->
+      <!-- <option value="185">SPM Type I</option> -->
+      <!-- <option value="190">SPM Type II</option> -->
+      <!-- <option value="195">SPM Type III</option> -->
+      <option value="200">1.0III+2.3II</option>
+      <option value="215">2.3II+4.8</option>
+      <option value="220">2.3II+8.0</option>
+      <option value="225">4.8+8.0</option>
+      <option value="230">1.0III+2.3II+4.8</option>
+      <option value="245">2.3II+4.8+8.0</option>
+      <option value="255">A+NS</option>
+      <option value="260">SSD+2.3II</option>
+      <option value="265">0.64X0.64</option>
+      <option value="320">0.64X0.8</option>
+      <option value="270">1.5X0.8</option>
+      <option value="275">2.8X0.8</option>
+      <option value="280">6.3X0.8</option>
+      <option value="285">9.5X1.2</option>
+      <option value="290">ハイブリッド</option>
+      <option value="295">ヘッダー</option>
+      <option value="300">スペシャリティ</option>
+      <option value="305">引抜工具</option>
+      <option value="310">スタンダードタイプ</option>
+      <option value="315">WPCタイプ</option>
+      </select><BR>
+    <img src="img/menu05.gif" alt="端子タブ幅" width="90" height="18" class="menu_img"><BR>
+      <select name="TANSI_TAB" class="size1">
+      <option value="XX"></option>
+      <option value="05">0.64(025)</option>
+      <option value="10">0.8(030)</option>
+      <option value="15">1.0(040)</option>
+      <option value="20">1.2(048)</option>
+      <option value="25">1.3(050)</option>
+      <option value="30">1.4(055)</option>
+      <option value="35">1.5(060)</option>
+      <option value="45">1.8(070)</option>
+      <option value="50">2.3(090)</option>
+      <option value="55">2.8(110)</option>
+      <option value="60">4.8(187)</option>
+      <option value="65">6.0(240)</option>
+      <option value="70">6.3(250)</option>
+      <option value="75">8.0(312)</option>
+      <option value="80">9.5(375)</option>
+      </select><BR>
+    <img src="img/menu06.gif" alt="極数" width="50" height="18" class="menu_img"><BR>
+      <input type="text" name="KYOKUSU" size="4" maxlength="3" class="size4"><BR>
+    <img src="img/menu07.gif" alt="防水仕様" width="83" height="17" class="menu_img"><BR>
+      <input type="checkbox" name="BOSUI1" class="checkbox" VALUE="1">非防水
+      <input type="checkbox" name="BOSUI2" VALUE="2">防水<BR>
+    <img src="img/menu08.gif" alt="雌雄" width="47" height="18" class="menu_img"><BR>
+      <input type="checkbox" name="OSUMESU1" VALUE="1" class="checkbox">オス　　
+      <input type="checkbox" name="OSUMESU2" VALUE="2">メス<BR>
+    <div align="center" class="butt"><input type="submit" name="SIBORIKOMIKENSAKU" value="　検　索　"></div>
+    </form>
+    <hr width="90%">
+    <!--  品番検索 -->
+    <form action="/yazaki-web/servlet/MainServlet" name="hinban" id="hinban" method="post">
+    <div align="center"><img src="img/m_title02.gif" alt="品番で検索" width="150" height="23" class="m_title"></div>
+      <input type="text" name="HINBAN1" size="5" maxlength="4" class="size5">-
+      <input type="text" name="HINBAN2" size="5" maxlength="4">-
+      <input type="text" name="HINBAN3" size="3" maxlength="2"><BR>
+    <div class="txt01" align="center">※8桁から10桁を<BR>　入力して下さい。</div>
+    <div align="center" class="butt"><input type="submit" name="HINBANKENSAKU" value="　検　索　"></div>
+    </form>
+    <hr width="90%">
+    <!--  リンクボタン -->
+    <div align="center" class="butt"><a href="careful.html"><img src="img/butt01.gif" width="155" height="19" alt="カタログご使用上の注意"></a></div>
+    <div align="center" class="butt"><a href="point.html"><img src="img/butt04.gif" width="155" height="19" alt="保管及び取扱い上の注意"></a></div>
+    <div align="center" class="butt"><a href="https://connectors-catalog.sys.yzk.co.jp/q.html"><img src="img/butt02.gif" width="155" height="19" alt="製品に関するお問い合せ"></a></div>
+    <div align="center" class="butt"><a href="http://www.yazaki-group.com/" target="_blank"><img src="img/butt03.gif" width="155" height="19" alt="矢崎総業トップへ"></a></div>
+  </div></td>
+  <!-- 左側メニューここまで -->
+
+  <!-- メイン部分ここから -->
+  <td width="632" valign="top">
+  <img src="img_data/top_image.jpg" width="632" height="340" alt="トップイメージ"><br>
+  <h1>この電子カタログは、矢崎コネクタの代表的な製品を収録したものです。<BR>
+  矢崎のコネクタは長年にわたり自動車産業向けに耐振性、耐衝撃性、耐環境性等を考慮し信頼性に優れた製品を開発、製造してきました。<br>
+  本電子カタログは「製品シリーズ」、「品番」、「製品名」から検索が可能で、特定な仕様に合致する製品を短時間で検索できます。<br>
+  当社は常に顧客ニーズに対応した電子、電気部品を先進の技術力を駆使して開発しております。コネクタ選択の際には是非、弊社営業部にご一報ください。</h1>
+  <div align="center">
+  <hr width="567">
+    <table border="0" cellpadding="3" cellspacing="3" width="90%">
+    <tr>
+      <td width="176" align="left"><img src="img/arrow_blue.gif" width="18" height="18" alt="→"><img src="img/select01.gif" alt="電線対電線接続" width="107" height="18"></td>
+      <td width="176" align="left"><img src="img/arrow_blue.gif" width="18" height="18"  alt="→"><img src="img/select02.gif" alt="電線対基板接続" width="107" height="18"></td>
+      <td width="176" align="left"><img src="img/arrow_blue.gif" width="18" height="18" alt="→"><img src="img/select03.gif" alt="電線対電線接続" width="63" height="18"></td>
+    </tr>
+    <tr align="left" valign="top">
+      <td width="176" align="left" valign="top" bgcolor="#FFFFFF">
+      <ul class="toplink">
+        <li><a href="2/01.html">非防水</a></li>
+        <li><a href="2/02.html">防水</a></li>
+      </ul></td>
+      <td width="176" align="left" valign="top" bgcolor="#FFFFFF">
+      <ul class="toplink">
+        <li><a href="2/03.html">非防水</a></li>
+      </ul></td>
+      <td width="176" align="left" valign="top" bgcolor="#FFFFFF">
+      <ul class="toplink">
+        <li><a href="2/05.html">非防水</a></li>
+        <li><a href="2/06.html">防水</a></li>
+      </ul></td>
+    </tr>
+
+    <tr>
+      <td width="176" align="left"><br><img src="img/arrow_blue.gif" width="18" height="18" alt="→"><img src="img/select05.gif" alt="光" width="18" height="18"></td>
+      <td width="176" align="left"><br><img src="img/arrow_blue.gif" width="18" height="18"  alt="→"><img src="img/select11.gif" alt="基板対FPC/FFC接続" width="140" height="18"></td>
+      <td width="176" align="left"><br><img src="img/arrow_blue.gif" width="18" height="18" alt="→"><img src="img/select04.gif" alt="その他" width="48" height="18"></td>
+    </tr>
+    <tr align="left" valign="top">
+      <td width="176" align="left" valign="top" bgcolor="#FFFFFF">
+      <ul class="toplink">
+        <li><a href="2/07.html">MOST用光コネクタ</a></li>
+      </ul></td>
+      <td width="176" align="left" valign="top" bgcolor="#FFFFFF">
+      <ul class="toplink">
+        <li><a href="2/11.html">非防水</a></li>
+      </ul></td>
+      <td width="176" align="left" valign="top" bgcolor="#FFFFFF">
+      <ul class="toplink">
+        <li><a href="2/08.html">LA・LEターミナル</a></li>
+        <li><a href="2/09.html">ヒューズ</a></li>
+      </ul></td>
+    </tr>
+
+    <tr align="left"  valign="top">
+      <td width="176"><br><img src="img/pdf.gif" width="18" height="18" alt="pdf"><img src="img/select06.gif" alt="PDFダウンロード" width="120" height="18"></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr valign="bottom">
+      <td width="176" align="left" valign="top" bgcolor="#FFFFFF">
+      <ul class="pdf">
+        <li class="pdf"><a href="2/pdf.html">コネクタ</a></li>
+        <!--<li class="pdf"><a href="pdf/Cables.pdf">電線,チューブ,<br>テープ</a></li>-->
+        <li class="pdf"><a href="cables/pdf.html">電線,チューブ,<br>テープ</a></li>
+      </ul></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    </table><br>
+  </div>
+  </td>
+  <!-- メイン部分ここまで -->
+</tr>
+<!-- フッター -->
+<tr>
+  <td colspan="2" align="center" class="footer">(C)2006 YAZAKI COPORATION. All Rights Reserved.</td>
+</tr>
+</table>
+
+</body>
+</html>

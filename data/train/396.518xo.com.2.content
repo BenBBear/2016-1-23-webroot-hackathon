@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>网站更新启示</title>
+    <style type="text/css">
+    body{background:  #003c61;}
+    </style>
+    <link rel="shortcut icon" href="/cl/tpl/518/ver2/image/favicon.ico" type="image/x-icon"/>    <link href="//s1.bbimgs.net/cl/tpl/commonFile/css/standard.css?v=" rel="stylesheet"/>
+    <link href="/tpl/template/style/upup.css" rel="stylesheet"/>
+</style>
+</head>
+<!-- is service -->
+<body class="zh-cn">
+    <div id="maintain-box">
+    <div id="maintain" class="pngclass">
+        <div id="maintain-top"><span class="notice">网站系统公告</span><div class="noticeIcon"></div></div>
+                <div id="maintain-logo">
+                        <img src="/cl/tpl/518/ver2/image/upup/160X160.png" class="pngclass"/>
+                    </div>
+                <div id="maintain-content">
+            <p class="text-body">
+                                    目前网站进行系统维护中，如有不便之处，敬请见谅！
+                            </p> 
+            <p class="text-notice">Access to the site is not available due to scheduled maintenance,<br/>
+             we apologize for any inconvenience caused.</p>
+			              <p class="text-date">--   预计于 <span>北京时间 2016-01-23 07:10:00</span> 完成！   --</p>
+			              <p class="text-info">
+                                <span onclick="BBOnlineService();" class="service">☎ 在线客服</span>
+                                                            </p>
+            <p class="text-upup"></p>
+        </div>
+    </div>
+</div>
+<script src="//s1.bbimgs.net/cl/js/jquery-1.7.2.min.js?v="></script>
+<script src="/cl/js/tools/float.js"></script>
+
+
+
+    <ul id="TplFloatPic_0" class="TplFloatSet" style="position:absolute;cursor:pointer;display:none;" picfloat="left" class="png_fix">
+        <li><a  onclick="BBOnlineService();">
+        <img src="http://cdn.518xo.com/tpl/448/239232/images/141699213136.png?241498" align="center" alt="" class="png_fix"/>
+        <img src="http://cdn.518xo.com/tpl/448/239232/images/141699213136.png?241498" align="center" style="display:none;" alt="" class="png_fix"/>
+    </a></li>
+        <li><a  href="tencent://message/?uin=380277771&Site=web&Menu=yes" target="blank">
+        <img src="http://cdn.518xo.com/tpl/448/239232/images/141699213880.png?241498" align="center" alt="" class="png_fix"/>
+        <img src="http://cdn.518xo.com/tpl/448/239232/images/141699213880.png?241498" align="center" style="display:none;" alt="" class="png_fix"/>
+    </a></li>
+        <li><a  onclick="FloatClose(this);">
+        <img src="http://cdn.518xo.com/tpl/448/239232/images/141699217940.png?241498" align="center" alt="" class="png_fix"/>
+        <img src="http://cdn.518xo.com/tpl/448/239232/images/141699217940.png?241498" align="center" style="display:none;" alt="" class="png_fix"/>
+    </a></li>
+    </ul>
+<style>
+    .TplFloatSet a{display:block;margin:0 auto;text-align:center;}
+    .TplFloatSet img{vertical-align:bottom;}
+    .TplFloatSet li{list-style: none;font-size:0px;}
+</style>
+<script>
+    //關閉效果
+    function FloatClose(t){ event.cancelBubble = true;$(t).parents('.TplFloatSet').hide(); }
+    var left_top = 150, right_top = 150, float_list = [], float_side = 5;
+    $(window).load(function() {
+        // 廳主自改 - 浮動圖V2 -2013.7.19
+                    float_list['0'] = $('#TplFloatPic_0');
+                for (var i in float_list) {
+            if (float_list[i].attr == undefined) {
+                continue;
+            }
+            var self = float_list[i], 
+                picfloat = (self.attr('picfloat') == 'right') ? 1 : 0;
+            self.show().Float({'floatRight' : picfloat, 'topSide' : ((picfloat == 1) ? right_top : left_top), side: float_side});
+            var w = 0;        
+            $.each(self.find('img'), function(){
+                var width = $(this).width();
+                w = (width > w) ? width : w;//取圖片最大寬度
+                $(this).attr({
+                    'width' : width,
+                    'height': $(this).height()
+                });
+            });
+            self.css('width', w);
+            if (picfloat) {
+                right_top = right_top + 10 + (self.height() || 250);
+            } else {
+                left_top = left_top + 10 + (self.height() || 250);
+            }
+
+            $('a', self).each(function(){
+                $(this).css({'width' : $(this).find('img:first').width(),'height' : $(this).find('img:first').height()});
+                $(this).hover(function() {
+                	$(this).find('img:first').hide();
+                    $(this).find('img:last').show();
+                }, function() {
+                	$(this).find('img:last').hide();
+                    $(this).find('img:first').show();
+                });
+            });
+        }
+    });
+</script>
+
+<script language="javascript">
+function BBOnlineService() {
+    window.open('https://messenger3.providesupport.com/messenger/0pwxd84075p0h0rc87egbcsdih.html', 'Service' ,"width=1000,height=728,status=no,scrollbars=no");
+}
+</script>
+<!--[if IE 6]>
+<style>
+    html { overflow-x: hidden;}
+</style>
+<script src="/cl/js/pluging/DD_belatedPNG_0.0.9a-min.js"></script>
+<script>
+    $(function(){
+        DD_belatedPNG.fix('.pngclass');
+    });
+    //修正ie6 bug
+    try {
+        document.execCommand("BackgroundImageCache", false, true);
+    } catch(err) {}
+</script>
+<![endif]--></body>
+</html>

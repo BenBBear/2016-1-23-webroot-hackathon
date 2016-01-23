@@ -1,0 +1,1605 @@
+<!doctype html><html class="no-js ie6" lang="en"> <!--[if lt IE 7 ]>  <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+             <title>Online Poker Hand Replayer | BOOM! Hand Replayer</title>
+    <meta http-equiv="content-language" content="en"/>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Script-Type" content="text/javascript"/>
+    <meta http-equiv="Content-Style-Type" content="text/css"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="author" content="www.BoomPlayer.com"/>
+    <meta name="title" content="Online Poker Hand Replayer | BOOM! Hand Replayer"/>
+    <meta name="description" content="Watch and Share Online Poker Hands that make you shout BOOM! Watch the best Poker Hands in our BOOM! Hand Replayer!"/>
+    <meta name="publisher" content="Rational Instruction Services Ltd"/>
+    <meta name="copyright" content="Rational Instruction Services Ltd"/>
+    <meta name="keywords" content="meta_keywords"/>
+    <meta name="robots" content="index, follow"/>
+    <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Place favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <!-- CSS: implied media="all" -->
+                <link rel="stylesheet" href="/code/styles/boom2.css">
+        
+    <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
+    <script src="/code/js/libs/modernizr-1.7.min.js"></script>
+    
+    
+    <!-- COMMON_HEADER_END -->
+</head>
+<body>
+ <div id="container" class="l-page">
+    <div class="l-page-i l-page-en">
+        <header class="b-head">
+            <a href="/" class="logo">
+                <img src="//psimg.rationalcdn.com/boom/images/design/site_logo.png" border="0">
+            </a>
+                        <menu class="b-menu  login">
+                <ul>
+                    <li><a href="/upload">Help</a></li>
+                                         <li class="sep"><a href="javascript:void(0);" id="switchToHtml">Switch to FLASH player</a></li>
+                                             <li class="sep"><a href="/login?return_url=/">Login</a></li>
+                        <li class="sep"><a href="/registration">Sign-Up</a></li>
+                                        <li class="sep">
+                        <form action="/setLang.php" method="POST" name="guiForm">
+                            <select name="gui" onchange="document.forms['guiForm'].submit();" class="b-select">
+                                                                           <option value="en" selected="selected">English</option>
+                                                                                  <option value="fr">Français</option>
+                                                                              <option value="it">Italiano</option>
+                                                                              <option value="de">Deutsch</option>
+                                                                              <option value="es">Español</option>
+                                                                              <option value="ru">Русский</option>
+                                                                 </select>
+                        </form>
+                    </li>
+                </ul>
+            </menu>
+            <div class="b-search">
+                    <script type="text/javascript">
+        function enterSearch(inputBox) {
+            inputBox.onfocus = null;
+            inputBox.value = '';
+        }
+
+        function ensureEnterLine($form) {
+            var searchWords = $form.find(".input[name='search']").val().trim();
+            if(searchWords == "" ){
+                return false;
+            }
+        }
+    </script>
+    
+    <form id='search_box' method="GET" action="/poker-hands" onsubmit="return ensureEnterLine($(this))">
+                    <input type="text" name="search" value="Search" class="input" onfocus="enterSearch(this)"/>
+                <input type="submit" class="submit" value=''/>
+    </form>
+             </div>
+        </header>
+        <div id="main" class="l-layout" role="main">
+                        
+    
+    <section class="b-promote">
+        <article class="box">
+            <nav>
+                <ul>
+                    <li class="watch">
+                        <a href="/poker-hands">
+                            <h2>Watch</h2>
+                            thousands of hands                        </a>
+                    </li>
+                    <li class="upload">
+                        <a href="/upload">
+                            <h2>Upload</h2>
+                            your own hands                        </a>
+                    </li>
+                    <li class="discuss">
+                                                 <a href="/login">
+                            <h2>Discuss</h2>
+                            with your friends                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="text">
+                <h1>Share your biggest poker<br />hands with the world!</h1>
+                Now you can BOOM! your biggest <a href="https://www.pokerstars.com/poker/games/rules/hand-rankings/">poker hands</a> to the world.
+You can share your hands on Twitter, and other
+sites using the BOOM! button.            </div>
+        </article>
+    </section>
+    <article class="l-layout-c">
+        
+                  <section title="Hands of the week" class="b-slide" id='slider'>
+            <span id='slider_left' class='slider-button slider-left' style='display: none'></span>
+                <div class='slider-container'>
+                    <div class='slider-header'>
+                        <div class='slider-switcher'>
+                                                            <span class='slider-switcher-button' action='slider-recent' title='Recently uploaded'></span>
+                                                            <span class='slider-switcher-button switcher-selected' action='slider-best' title='Hands of the week'></span>
+                                                    </div>
+                        <h3 class='slider-switcher-title'>
+                            <i class='slider-main-title'>Hands of the week</i>
+                            <i class='slider-more-link' >
+                                <a href='/hands-of-the-week'>See more hands</a>
+                            </i>
+                        </h3>
+                    </div>
+                        <div class='slider-recent' style='display: none'>
+                                   <div class="b-cards-list">
+            <div class="box">
+            <div class="image">
+                
+<!--rbns_start_include  RBNS:includeVarDef var=handBlock -->
+
+
+            <div class='b-cards'>
+            <a href="/poker-hands/Boom/17553971_3FCF35BA7A" title="Texas Hold'em&nbsp;No Limit">
+                <ul>
+                                                <li><i class="smallcards s-7c" alt="7c"></i></li>
+                                                    <li><i class="smallcards s-6s" alt="6s"></i></li>
+                                        </ul>
+                <div class="effect"></div>
+            </a>
+        </div>
+    
+<!--rbns_finish_include  RBNS:include file= -->
+
+            </div>
+            <div class="desc">
+                <a href='/u/Kaczmarol'>Kaczmarol</a><br />
+                <time datetime="2016-01-23 00:03:33">2 seconds ago</time>
+            </div>
+        </div>
+            <div class="box">
+            <div class="image">
+                
+<!--rbns_start_include  RBNS:includeVarDef var=handBlock -->
+
+
+            <div class='b-cards'>
+            <a href="/poker-hands/Boom/17553970_D31FD270BD" title="Texas Hold'em&nbsp;No Limit">
+                <ul>
+                                                <li><i class="smallcards s-3d" alt="3d"></i></li>
+                                                    <li><i class="smallcards s-3s" alt="3s"></i></li>
+                                        </ul>
+                <div class="effect"></div>
+            </a>
+        </div>
+    
+<!--rbns_finish_include  RBNS:include file= -->
+
+            </div>
+            <div class="desc">
+                <a href='/u/MarioMario10'>MarioMario10</a><br />
+                <time datetime="2016-01-23 00:03:32">3 seconds ago</time>
+            </div>
+        </div>
+            <div class="box">
+            <div class="image">
+                
+<!--rbns_start_include  RBNS:includeVarDef var=handBlock -->
+
+
+            <div class='b-cards'>
+            <a href="/poker-hands/Boom/17553969_6E7A386A95" title="Texas Hold'em&nbsp;No Limit">
+                <ul>
+                                                <li><i class="smallcards Jd" alt="Jd"></i></li>
+                                                    <li><i class="smallcards s-7d" alt="7d"></i></li>
+                                        </ul>
+                <div class="effect"></div>
+            </a>
+        </div>
+    
+<!--rbns_finish_include  RBNS:include file= -->
+
+            </div>
+            <div class="desc">
+                <a href='/u/anakonda1887'>anakonda1887</a><br />
+                <time datetime="2016-01-23 00:03:32">3 seconds ago</time>
+            </div>
+        </div>
+            <div class="box">
+            <div class="image">
+                
+<!--rbns_start_include  RBNS:includeVarDef var=handBlock -->
+
+
+            <div class='b-cards'>
+            <a href="/poker-hands/Boom/17553968_308BE8A56E" title="Texas Hold'em&nbsp;No Limit">
+                <ul>
+                                                <li><i class="smallcards Kd" alt="Kd"></i></li>
+                                                    <li><i class="smallcards Ks" alt="Ks"></i></li>
+                                        </ul>
+                <div class="effect"></div>
+            </a>
+        </div>
+    
+<!--rbns_finish_include  RBNS:include file= -->
+
+            </div>
+            <div class="desc">
+                <a href='/u/ocvirk992'>ocvirk992</a><br />
+                <time datetime="2016-01-23 00:03:30">5 seconds ago</time>
+            </div>
+        </div>
+            <div class="box">
+            <div class="image">
+                
+<!--rbns_start_include  RBNS:includeVarDef var=handBlock -->
+
+
+            <div class='b-cards'>
+            <a href="/poker-hands/Boom/17553967_1DC2FDA787" title="Texas Hold'em&nbsp;No Limit">
+                <ul>
+                                                <li><i class="smallcards Qh" alt="Qh"></i></li>
+                                                    <li><i class="smallcards Qd" alt="Qd"></i></li>
+                                        </ul>
+                <div class="effect"></div>
+            </a>
+        </div>
+    
+<!--rbns_finish_include  RBNS:include file= -->
+
+            </div>
+            <div class="desc">
+                <a href='/u/sleeper+max'>sleeper max</a><br />
+                <time datetime="2016-01-23 00:03:26">9 seconds ago</time>
+            </div>
+        </div>
+            <div class="box">
+            <div class="image">
+                
+<!--rbns_start_include  RBNS:includeVarDef var=handBlock -->
+
+
+            <div class='b-cards'>
+            <a href="/poker-hands/Boom/17553966_EC409286E8" title="Texas Hold'em&nbsp;No Limit">
+                <ul>
+                                                <li><i class="smallcards s-7h" alt="7h"></i></li>
+                                                    <li><i class="smallcards s-6c" alt="6c"></i></li>
+                                        </ul>
+                <div class="effect"></div>
+            </a>
+        </div>
+    
+<!--rbns_finish_include  RBNS:include file= -->
+
+            </div>
+            <div class="desc">
+                <a href='/u/yaniv102'>yaniv102</a><br />
+                <time datetime="2016-01-23 00:03:25">10 seconds ago</time>
+            </div>
+        </div>
+            <div class="box">
+            <div class="image">
+                
+<!--rbns_start_include  RBNS:includeVarDef var=handBlock -->
+
+
+            <div class='b-cards'>
+            <a href="/poker-hands/Boom/17553965_AE451CBF9C" title="Texas Hold'em&nbsp;No Limit">
+                <ul>
+                                                <li><i class="smallcards Kc" alt="Kc"></i></li>
+                                                    <li><i class="smallcards s-5d" alt="5d"></i></li>
+                                        </ul>
+                <div class="effect"></div>
+            </a>
+        </div>
+    
+<!--rbns_finish_include  RBNS:include file= -->
+
+            </div>
+            <div class="desc">
+                <a href='/u/ginolino100'>ginolino100</a><br />
+                <time datetime="2016-01-23 00:03:24">11 seconds ago</time>
+            </div>
+        </div>
+            <div class="box">
+            <div class="image">
+                
+<!--rbns_start_include  RBNS:includeVarDef var=handBlock -->
+
+
+            <div class='b-cards'>
+            <a href="/poker-hands/Boom/17553964_FA981600BB" title="Texas Hold'em&nbsp;No Limit">
+                <ul>
+                                                <li><i class="smallcards Kd" alt="Kd"></i></li>
+                                                    <li><i class="smallcards Ad" alt="Ad"></i></li>
+                                        </ul>
+                <div class="effect"></div>
+            </a>
+        </div>
+    
+<!--rbns_finish_include  RBNS:include file= -->
+
+            </div>
+            <div class="desc">
+                <a href='/u/NaikoN88'>NaikoN88</a><br />
+                <time datetime="2016-01-23 00:03:17">18 seconds ago</time>
+            </div>
+        </div>
+            <div class="box">
+            <div class="image">
+                
+<!--rbns_start_include  RBNS:includeVarDef var=handBlock -->
+
+
+            <div class='b-cards'>
+            <a href="/poker-hands/Boom/17553963_1DC08CF1E5" title="Texas Hold'em&nbsp;No Limit">
+                <ul>
+                                                <li><i class="smallcards s-3c" alt="3c"></i></li>
+                                                    <li><i class="smallcards As" alt="As"></i></li>
+                                        </ul>
+                <div class="effect"></div>
+            </a>
+        </div>
+    
+<!--rbns_finish_include  RBNS:include file= -->
+
+            </div>
+            <div class="desc">
+                <a href='/u/Sany+Boy'>Sany Boy</a><br />
+                <time datetime="2016-01-23 00:03:17">18 seconds ago</time>
+            </div>
+        </div>
+            <div class="box">
+            <div class="image">
+                
+<!--rbns_start_include  RBNS:includeVarDef var=handBlock -->
+
+
+            <div class='b-cards'>
+            <a href="/poker-hands/Boom/17553962_1B6BE279FA" title="Texas Hold'em&nbsp;No Limit">
+                <ul>
+                                                <li><i class="smallcards Jh" alt="Jh"></i></li>
+                                                    <li><i class="smallcards Jc" alt="Jc"></i></li>
+                                        </ul>
+                <div class="effect"></div>
+            </a>
+        </div>
+    
+<!--rbns_finish_include  RBNS:include file= -->
+
+            </div>
+            <div class="desc">
+                <a href='/u/muriloh96'>muriloh96</a><br />
+                <time datetime="2016-01-23 00:03:15">20 seconds ago</time>
+            </div>
+        </div>
+        </div>
+                          </div>
+                        <div class='slider-best'>
+                                    
+    <div class="b-cards-list">
+                    <div class="box">
+                <div class="image">
+                    
+<!--rbns_start_include  RBNS:includeVarDef var=handBlock -->
+
+
+            <div class='b-cards'>
+            <a href="/poker-hands/Boom/8598993_D6EF0E3258" title="Texas Hold'em&nbsp;No Limit">
+                <ul>
+                                                <li><i class="smallcards s-5d" alt="5d"></i></li>
+                                                    <li><i class="smallcards s-6d" alt="6d"></i></li>
+                                        </ul>
+                <div class="effect"></div>
+            </a>
+        </div>
+    
+<!--rbns_finish_include  RBNS:include file= -->
+
+                </div>
+                <div class="desc">
+                    <a href='/u/Actaru5'>Actaru5</a><br />
+                    Play of the week                </div>
+            </div>
+                    <div class="box">
+                <div class="image">
+                    
+<!--rbns_start_include  RBNS:includeVarDef var=handBlock -->
+
+
+            <div class='b-cards'>
+            <a href="/poker-hands/Boom/8672541_8D663AC807" title="Texas Hold'em&nbsp;No Limit">
+                <ul>
+                                                <li><i class="smallcards s-7s" alt="7s"></i></li>
+                                                    <li><i class="smallcards s-2s" alt="2s"></i></li>
+                                        </ul>
+                <div class="effect"></div>
+            </a>
+        </div>
+    
+<!--rbns_finish_include  RBNS:include file= -->
+
+                </div>
+                <div class="desc">
+                    <a href='/u/saletra'>saletra</a><br />
+                    Bluff of the week                </div>
+            </div>
+                    <div class="box">
+                <div class="image">
+                    
+<!--rbns_start_include  RBNS:includeVarDef var=handBlock -->
+
+
+            <div class='b-cards'>
+            <a href="/poker-hands/Boom/8590040_3D1E9C24D7" title="Texas Hold'em&nbsp;No Limit">
+                <ul>
+                                                <li><i class="smallcards s-9h" alt="9h"></i></li>
+                                                    <li><i class="smallcards Th" alt="Th"></i></li>
+                                        </ul>
+                <div class="effect"></div>
+            </a>
+        </div>
+    
+<!--rbns_finish_include  RBNS:include file= -->
+
+                </div>
+                <div class="desc">
+                    <a href='/u/xPastorcitox'>xPastorcitox</a><br />
+                    Pot of the week                </div>
+            </div>
+                    <div class="box">
+                <div class="image">
+                    
+<!--rbns_start_include  RBNS:includeVarDef var=handBlock -->
+
+
+            <div class='b-cards'>
+            <a href="/poker-hands/Boom/14368238_2E09F12DD9" title="Texas Hold'em&nbsp;No Limit">
+                <ul>
+                                                <li><i class="smallcards Jh" alt="Jh"></i></li>
+                                                    <li><i class="smallcards Kh" alt="Kh"></i></li>
+                                        </ul>
+                <div class="effect"></div>
+            </a>
+        </div>
+    
+<!--rbns_finish_include  RBNS:include file= -->
+
+                </div>
+                <div class="desc">
+                    <a href='/u/JasonMercier'>JasonMercier</a><br />
+                    Beat of the week                </div>
+            </div>
+            </div>
+                          </div>
+                </div>
+            <span id='slider_right' class='slider-button slider-right' style='display: none'></span>
+        </section>
+    <section class="popularHands">
+        <h3 class="title">
+            Popular hands            <span></span>
+        </h3>
+        <a href="/poker-hands">Other popular hands</a>
+    </section>
+    <article class="b-home">
+             
+    <section title="Featured Hands">
+        <h3>Featured Hands</h3>
+        <div class="more">
+            <a href="/poker-hands/Featured">See more hands</a>
+        </div>
+                    <div class="box">
+            <div class="image">
+                
+<!--rbns_start_include  RBNS:includeVarDef var=handBlock -->
+
+
+            <div class='b-cards'>
+            <a href="/poker-hands/Boom/1517111_266290EFC5" title="Texas Hold'em&nbsp;No Limit">
+                <ul>
+                                                <li><i class="smallcards s-2c" alt="2c"></i></li>
+                                                    <li><i class="smallcards Ac" alt="Ac"></i></li>
+                                        </ul>
+                <div class="effect"></div>
+            </a>
+        </div>
+    
+<!--rbns_finish_include  RBNS:include file= -->
+
+            </div>
+            <div class="desc">
+                
+<!--rbns_start_include  RBNS:includeVarDef var=handDescription -->
+
+    
+<!--rbns_start_include  RBNS:includeVarDef var=handStakesRow -->
+
+
+    
+
+<!--rbns_finish_include  RBNS:include file= -->
+
+
+    <a href='/u/Baalim'>Baalim</a> - Cuitlahuac III - $5/$10 - No Limit&nbsp;Texas Hold'em        <br />
+        Hand uploaded on&nbsp;<time datetime="2012-12-18 23:46:20">December 18 2012, 23:46 ET</time>
+        <div class="stat">
+            Views: 15353 | Comments: 22 | Likes: 25        </div>
+    
+<!--rbns_finish_include  RBNS:include file= -->
+
+            </div>
+        </div>
+            <div class="box">
+            <div class="image">
+                
+<!--rbns_start_include  RBNS:includeVarDef var=handBlock -->
+
+
+            <div class='b-cards'>
+            <a href="/poker-hands/Boom/1614336_754454A92E" title="Texas Hold'em&nbsp;No Limit">
+                <ul>
+                                                <li><i class="smallcards Qc" alt="Qc"></i></li>
+                                                    <li><i class="smallcards Qd" alt="Qd"></i></li>
+                                        </ul>
+                <div class="effect"></div>
+            </a>
+        </div>
+    
+<!--rbns_finish_include  RBNS:include file= -->
+
+            </div>
+            <div class="desc">
+                
+<!--rbns_start_include  RBNS:includeVarDef var=handDescription -->
+
+    
+<!--rbns_start_include  RBNS:includeVarDef var=handStakesRow -->
+
+
+    
+
+<!--rbns_finish_include  RBNS:include file= -->
+
+
+    <a href='/u/L.+Veldhuis'>L. Veldhuis</a>            -&nbsp;$215 Sunday Warm-Up [$500K Gtd]&nbsp;-&nbsp;Level&nbsp;III        &nbsp;(40/80)
+        <br />
+        Hand uploaded on&nbsp;<time datetime="2012-12-30 11:36:26">December 30 2012, 11:36 ET</time>
+        <br />
+        <div class="stat">
+            Views: 10412 | Comments: 19 | Likes: 3        </div>
+    
+<!--rbns_finish_include  RBNS:include file= -->
+
+            </div>
+        </div>
+         </section>
+    <div class="sep"></div>
+    <section title="Great Play">
+        <h3>Great Play</h3>
+        <div class="more">
+            <a href="/poker-hands/Great-Play">See more hands</a>
+        </div>
+                    <div class="box">
+            <div class="image">
+                
+<!--rbns_start_include  RBNS:includeVarDef var=handBlock -->
+
+
+            <div class='b-cards'>
+            <a href="/poker-hands/Boom/17539211_83190E7495" title="Texas Hold'em&nbsp;No Limit">
+                <ul>
+                                                <li><i class="smallcards Kh" alt="Kh"></i></li>
+                                                    <li><i class="smallcards Kd" alt="Kd"></i></li>
+                                        </ul>
+                <div class="effect"></div>
+            </a>
+        </div>
+    
+<!--rbns_finish_include  RBNS:include file= -->
+
+            </div>
+            <div class="desc">
+                
+<!--rbns_start_include  RBNS:includeVarDef var=handDescription -->
+
+    
+<!--rbns_start_include  RBNS:includeVarDef var=handStakesRow -->
+
+
+    
+
+<!--rbns_finish_include  RBNS:include file= -->
+
+
+    <a href='/u/lbourke1234'>lbourke1234</a> - McNaught - $0.01/$0.02 - No Limit&nbsp;Texas Hold'em        <br />
+        Hand uploaded on&nbsp;<time datetime="2016-01-21 17:22:03">January 21 2016, 17:22 ET</time>
+        <div class="stat">
+            Views: 8 | Comments: 0 | Likes: 0        </div>
+    
+<!--rbns_finish_include  RBNS:include file= -->
+
+            </div>
+        </div>
+            <div class="box">
+            <div class="image">
+                
+<!--rbns_start_include  RBNS:includeVarDef var=handBlock -->
+
+
+            <div class='b-cards'>
+            <a href="/poker-hands/Boom/17546339_29F1D4CD07" title="Texas Hold'em&nbsp;No Limit">
+                <ul>
+                                                <li><i class="smallcards s-6s" alt="6s"></i></li>
+                                                    <li><i class="smallcards s-6c" alt="6c"></i></li>
+                                        </ul>
+                <div class="effect"></div>
+            </a>
+        </div>
+    
+<!--rbns_finish_include  RBNS:include file= -->
+
+            </div>
+            <div class="desc">
+                
+<!--rbns_start_include  RBNS:includeVarDef var=handDescription -->
+
+    
+<!--rbns_start_include  RBNS:includeVarDef var=handStakesRow -->
+
+
+    
+
+<!--rbns_finish_include  RBNS:include file= -->
+
+
+    <a href='/u/fishe7'>fishe7</a>            -&nbsp;$5.50 NL Hold'em [2R1A], $4K Gtd&nbsp;-&nbsp;Level&nbsp;I        &nbsp;(10/20)
+        <br />
+        Hand uploaded on&nbsp;<time datetime="2016-01-22 09:34:10">January 22 2016, 09:34 ET</time>
+        <br />
+        <div class="stat">
+            Views: 6 | Comments: 0 | Likes: 0        </div>
+    
+<!--rbns_finish_include  RBNS:include file= -->
+
+            </div>
+        </div>
+         </section>
+
+    <div class="sep"></div>
+
+    <section title="Nice Bluff">
+        <h3>Nice Bluff</h3>
+        <div class="more">
+            <a href="/poker-hands/Nice-Bluff">See more hands</a>
+        </div>
+                    <div class="box">
+            <div class="image">
+                
+<!--rbns_start_include  RBNS:includeVarDef var=handBlock -->
+
+
+            <div class='b-cards'>
+            <a href="/poker-hands/Boom/17529970_98A6ECBC6D" title="Texas Hold'em&nbsp;No Limit">
+                <ul>
+                                                <li><i class="smallcards s-9h" alt="9h"></i></li>
+                                                    <li><i class="smallcards Jh" alt="Jh"></i></li>
+                                        </ul>
+                <div class="effect"></div>
+            </a>
+        </div>
+    
+<!--rbns_finish_include  RBNS:include file= -->
+
+            </div>
+            <div class="desc">
+                
+<!--rbns_start_include  RBNS:includeVarDef var=handDescription -->
+
+    
+<!--rbns_start_include  RBNS:includeVarDef var=handStakesRow -->
+
+
+    
+
+<!--rbns_finish_include  RBNS:include file= -->
+
+
+    <a href='/u/MadPokerOut'>MadPokerOut</a>            -&nbsp;$0.10 NL Hold'em [360 Players, Turbo]&nbsp;-&nbsp;Level&nbsp;IV        &nbsp;(25/50)
+        <br />
+        Hand uploaded on&nbsp;<time datetime="2016-01-21 09:02:32">January 21 2016, 09:02 ET</time>
+        <br />
+        <div class="stat">
+            Views: 12 | Comments: 0 | Likes: 0        </div>
+    
+<!--rbns_finish_include  RBNS:include file= -->
+
+            </div>
+        </div>
+            <div class="box">
+            <div class="image">
+                
+<!--rbns_start_include  RBNS:includeVarDef var=handBlock -->
+
+
+            <div class='b-cards'>
+            <a href="/poker-hands/Boom/17551602_60FCE32E0E" title="Texas Hold'em&nbsp;No Limit">
+                <ul>
+                                                <li><i class="smallcards Qc" alt="Qc"></i></li>
+                                                    <li><i class="smallcards Jc" alt="Jc"></i></li>
+                                        </ul>
+                <div class="effect"></div>
+            </a>
+        </div>
+    
+<!--rbns_finish_include  RBNS:include file= -->
+
+            </div>
+            <div class="desc">
+                
+<!--rbns_start_include  RBNS:includeVarDef var=handDescription -->
+
+    
+<!--rbns_start_include  RBNS:includeVarDef var=handStakesRow -->
+
+
+    
+
+<!--rbns_finish_include  RBNS:include file= -->
+
+
+    <a href='/u/redwithe'>redwithe</a>            -&nbsp;Satelita School Pass Big Bang, gw. 9 wejściówki do turnieju Big Bang&nbsp;-&nbsp;Level&nbsp;XII        &nbsp;(500/1000)
+        <br />
+        Hand uploaded on&nbsp;<time datetime="2016-01-22 15:42:23">January 22 2016, 15:42 ET</time>
+        <br />
+        <div class="stat">
+            Views: 4 | Comments: 0 | Likes: 0        </div>
+    
+<!--rbns_finish_include  RBNS:include file= -->
+
+            </div>
+        </div>
+         </section>
+
+    <div class="sep"></div>
+
+    <section title="Huge Pot">
+        <h3>Huge Pot</h3>
+        <div class="more">
+            <a href="/poker-hands/Huge-Pot">See more hands</a>
+        </div>
+                    <div class="box">
+            <div class="image">
+                
+<!--rbns_start_include  RBNS:includeVarDef var=handBlock -->
+
+
+            <div class='b-cards'>
+            <a href="/poker-hands/Boom/17536639_43BCE95ED8" title="Texas Hold'em&nbsp;No Limit">
+                <ul>
+                                                <li><i class="smallcards s-7h" alt="7h"></i></li>
+                                                    <li><i class="smallcards s-7c" alt="7c"></i></li>
+                                        </ul>
+                <div class="effect"></div>
+            </a>
+        </div>
+    
+<!--rbns_finish_include  RBNS:include file= -->
+
+            </div>
+            <div class="desc">
+                
+<!--rbns_start_include  RBNS:includeVarDef var=handDescription -->
+
+    
+<!--rbns_start_include  RBNS:includeVarDef var=handStakesRow -->
+
+
+    
+
+<!--rbns_finish_include  RBNS:include file= -->
+
+
+    <a href='/u/Skodjereite'>Skodjereite</a> - Athor IV - $0.02/$0.05 - No Limit&nbsp;Texas Hold'em        <br />
+        Hand uploaded on&nbsp;<time datetime="2016-01-21 15:26:01">January 21 2016, 15:26 ET</time>
+        <div class="stat">
+            Views: 9 | Comments: 0 | Likes: 0        </div>
+    
+<!--rbns_finish_include  RBNS:include file= -->
+
+            </div>
+        </div>
+            <div class="box">
+            <div class="image">
+                
+<!--rbns_start_include  RBNS:includeVarDef var=handBlock -->
+
+
+            <div class='b-cards'>
+            <a href="/poker-hands/Boom/17543773_6D623F9065" title="Texas Hold'em&nbsp;No Limit">
+                <ul>
+                                                <li><i class="smallcards s-8s" alt="8s"></i></li>
+                                                    <li><i class="smallcards s-6c" alt="6c"></i></li>
+                                        </ul>
+                <div class="effect"></div>
+            </a>
+        </div>
+    
+<!--rbns_finish_include  RBNS:include file= -->
+
+            </div>
+            <div class="desc">
+                
+<!--rbns_start_include  RBNS:includeVarDef var=handDescription -->
+
+    
+<!--rbns_start_include  RBNS:includeVarDef var=handStakesRow -->
+
+
+    
+
+<!--rbns_finish_include  RBNS:include file= -->
+
+
+    <a href='/u/Maxwell22B'>Maxwell22B</a>            -&nbsp;PokerSchool Open Skill League&nbsp;-&nbsp;Level&nbsp;XII        &nbsp;(300/600)
+        <br />
+        Hand uploaded on&nbsp;<time datetime="2016-01-22 02:41:34">January 22 2016, 02:41 ET</time>
+        <br />
+        <div class="stat">
+            Views: 4 | Comments: 0 | Likes: 0        </div>
+    
+<!--rbns_finish_include  RBNS:include file= -->
+
+            </div>
+        </div>
+         </section>
+
+    <div class="sep"></div>
+
+    <section title="Bad Beat">
+        <h3>Bad Beat</h3>
+        <div class="more">
+            <a href="/poker-hands/Bad-Beat">See more hands</a>
+        </div>
+                    <div class="box">
+            <div class="image">
+                
+<!--rbns_start_include  RBNS:includeVarDef var=handBlock -->
+
+
+            <div class='b-cards'>
+            <a href="/poker-hands/Boom/17525615_1C8DDB202B" title="Texas Hold'em&nbsp;No Limit">
+                <ul>
+                                                <li><i class="smallcards Ad" alt="Ad"></i></li>
+                                                    <li><i class="smallcards Ks" alt="Ks"></i></li>
+                                        </ul>
+                <div class="effect"></div>
+            </a>
+        </div>
+    
+<!--rbns_finish_include  RBNS:include file= -->
+
+            </div>
+            <div class="desc">
+                
+<!--rbns_start_include  RBNS:includeVarDef var=handDescription -->
+
+    
+<!--rbns_start_include  RBNS:includeVarDef var=handStakesRow -->
+
+
+    
+
+<!--rbns_finish_include  RBNS:include file= -->
+
+
+    <a href='/u/foz1977'>foz1977</a>            -&nbsp;TCOOP-01 [Phase 2 of 3]: $27 NL Hold'em [6-Max, Turbo], $1.5M Gtd&nbsp;-&nbsp;Level&nbsp;IX        &nbsp;(300/600)
+        <br />
+        Hand uploaded on&nbsp;<time datetime="2016-01-20 19:41:53">January 20 2016, 19:41 ET</time>
+        <br />
+        <div class="stat">
+            Views: 17 | Comments: 0 | Likes: 0        </div>
+    
+<!--rbns_finish_include  RBNS:include file= -->
+
+            </div>
+        </div>
+            <div class="box">
+            <div class="image">
+                
+<!--rbns_start_include  RBNS:includeVarDef var=handBlock -->
+
+
+            <div class='b-cards'>
+            <a href="/poker-hands/Boom/17529711_2C2EF6EEA9" title="Texas Hold'em&nbsp;No Limit">
+                <ul>
+                                                <li><i class="smallcards Ah" alt="Ah"></i></li>
+                                                    <li><i class="smallcards Ac" alt="Ac"></i></li>
+                                        </ul>
+                <div class="effect"></div>
+            </a>
+        </div>
+    
+<!--rbns_finish_include  RBNS:include file= -->
+
+            </div>
+            <div class="desc">
+                
+<!--rbns_start_include  RBNS:includeVarDef var=handDescription -->
+
+    
+<!--rbns_start_include  RBNS:includeVarDef var=handStakesRow -->
+
+
+    
+
+<!--rbns_finish_include  RBNS:include file= -->
+
+
+    <a href='/u/notlia.poker'>notlia.poker</a>            -&nbsp;$0.50 NL Hold'em [90 Players, Turbo]&nbsp;-&nbsp;Level&nbsp;IV        &nbsp;(50/100)
+        <br />
+        Hand uploaded on&nbsp;<time datetime="2016-01-21 08:36:38">January 21 2016, 08:36 ET</time>
+        <br />
+        <div class="stat">
+            Views: 6 | Comments: 0 | Likes: 0        </div>
+    
+<!--rbns_finish_include  RBNS:include file= -->
+
+            </div>
+        </div>
+         </section>
+      </article>
+    </article>
+            <aside class="l-layout-r">
+            <br />
+            <h3 class="title">
+                Most Active Players                <span></span>
+            </h3>
+            <div class="clear"></div>
+                        <div class='tag_cloud'>
+                    <a href='/u/AceOfSteel03' style='font-size:15px;text-decoration:none;'>AceOfSteel03</a>
+                    <a href='/u/badcsgg' style='font-size:15px;text-decoration:none;'>badcsgg</a>
+                    <a href='/u/BloodyRace' style='font-size:11px;text-decoration:none;'>BloodyRace</a>
+                    <a href='/u/BSTUSim' style='font-size:12px;text-decoration:none;'>BSTUSim</a>
+                    <a href='/u/caduceo' style='font-size:12px;text-decoration:none;'>caduceo</a>
+                    <a href='/u/Celebes87' style='font-size:14px;text-decoration:none;'>Celebes87</a>
+                    <a href='/u/FloridaKiss' style='font-size:11px;text-decoration:none;'>FloridaKiss</a>
+                    <a href='/u/GHOST859' style='font-size:12px;text-decoration:none;'>GHOST859</a>
+                    <a href='/u/iraiseufold5' style='font-size:11px;text-decoration:none;'>iraiseufold5</a>
+                    <a href='/u/ivan41' style='font-size:20px;text-decoration:none;'>ivan41</a>
+                    <a href='/u/john4kos8' style='font-size:12px;text-decoration:none;'>john4kos8</a>
+                    <a href='/u/KeKe-KrinK' style='font-size:12px;text-decoration:none;'>KeKe-KrinK</a>
+                    <a href='/u/Lobezno90' style='font-size:12px;text-decoration:none;'>Lobezno90</a>
+                    <a href='/u/m.levskiy' style='font-size:13px;text-decoration:none;'>m.levskiy</a>
+                    <a href='/u/matyz2012' style='font-size:11px;text-decoration:none;'>matyz2012</a>
+                    <a href='/u/mcedger' style='font-size:12px;text-decoration:none;'>mcedger</a>
+                    <a href='/u/mnb19al' style='font-size:17px;text-decoration:none;'>mnb19al</a>
+                    <a href='/u/moinha82' style='font-size:12px;text-decoration:none;'>moinha82</a>
+                    <a href='/u/Nikolai0990' style='font-size:12px;text-decoration:none;'>Nikolai0990</a>
+                    <a href='/u/piratP1974' style='font-size:17px;text-decoration:none;'>piratP1974</a>
+                    <a href='/u/Prastarzec' style='font-size:13px;text-decoration:none;'>Prastarzec</a>
+                    <a href='/u/Pygmalion69' style='font-size:11px;text-decoration:none;'>Pygmalion69</a>
+                    <a href='/u/riskysoldier' style='font-size:11px;text-decoration:none;'>riskysoldier</a>
+                    <a href='/u/S70RMBR1NG3R' style='font-size:12px;text-decoration:none;'>S70RMBR1NG3R</a>
+                    <a href='/u/sx84' style='font-size:17px;text-decoration:none;'>sx84</a>
+                    <a href='/u/tennisi58' style='font-size:14px;text-decoration:none;'>tennisi58</a>
+                    <a href='/u/Uselis' style='font-size:11px;text-decoration:none;'>Uselis</a>
+                    <a href='/u/vitalium73' style='font-size:12px;text-decoration:none;'>vitalium73</a>
+                    <a href='/u/xXROMmMEOXx' style='font-size:11px;text-decoration:none;'>xXROMmMEOXx</a>
+            </div>
+   
+   <!-- scrollBox (begin)-->
+    <div class="b-pro-boom">
+        <i class="title"><a href='http://www.pokerstars.com/team-pokerstars/' target='_blank'><img src="//psimg.rationalcdn.com/boom/images/design/team_ps.jpg" /></a></i>
+        <div class="b-pro-boom-i">
+            <div class="header">
+                <i class="pro">PRO</i>
+                <i class="date">LAST BOOM!</i>
+            </div>
+            <div id="b-scroll-panel" class="b-scroll-panel">
+
+                            <div class="user-info">
+                    
+                        <a href='/poker-hands/Boom/17546641_302C56C373' class="list-item trigger">
+                            <i class="name">xflixx</i><i class="date"><time datetime="2016-01-22 10:06:31">8 hours ago</time></i>
+                        </a>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_501.png"></span>
+                        Felix “xflixx” Schneiders                    </div>
+                </div>
+                                <div class="user-info">
+                    
+                        <a href='/poker-hands/Boom/17540747_8DB4B23208' class="list-item trigger">
+                            <i class="name">talonchick</i><i class="date"><time datetime="2016-01-21 18:39:28">23 hours ago</time></i>
+                        </a>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_493.png"></span>
+                        Adrienne “talonchick” Rowsome                    </div>
+                </div>
+                                <div class="user-info">
+                    
+                        <a href='/poker-hands/Boom/17539549_F67F9855D8' class="list-item trigger">
+                            <i class="name">DaWarsaw</i><i class="date"><time datetime="2016-01-21 17:38:14">1 day ago</time></i>
+                        </a>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_328.png"></span>
+                        Gregorz “DaWarsaw” Mikielewicz                    </div>
+                </div>
+                                <div class="user-info">
+                    
+                        <a href='/poker-hands/Boom/17514780_D783634F9F' class="list-item trigger">
+                            <i class="name">acoimbra</i><i class="date"><time datetime="2016-01-20 06:51:18">2 days ago</time></i>
+                        </a>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_302.png"></span>
+                        André “acoimbra” Coimbra                    </div>
+                </div>
+                                <div class="user-info">
+                    
+                        <a href='/poker-hands/Boom/17462453_6370731676' class="list-item trigger">
+                            <i class="name">frosty012</i><i class="date"><time datetime="2016-01-16 15:16:50">6 days ago</time></i>
+                        </a>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_345.png"></span>
+                        Tyler “frosty012” Frost                    </div>
+                </div>
+                                <div class="user-info">
+                    
+                        <a href='/poker-hands/Boom/17413385_09B21A2FCD' class="list-item trigger">
+                            <i class="name">nanonoko</i><i class="date"><time datetime="2016-01-12 22:12:32">1 week ago</time></i>
+                        </a>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_406.png?v=1"></span>
+                        Randy “nanonoko” Lew                    </div>
+                </div>
+                                <div class="user-info">
+                    
+                        <a href='/poker-hands/Boom/17202150_E5D61B3786' class="list-item trigger">
+                            <i class="name">Celina Lin</i><i class="date"><time datetime="2015-12-27 18:29:08">4 weeks ago</time></i>
+                        </a>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_317.png"></span>
+                        Celina “Celina Lin” Lin                    </div>
+                </div>
+                                <div class="user-info">
+                    
+                        <a href='/poker-hands/Boom/17101768_B36154D827' class="list-item trigger">
+                            <i class="name">innerpsy</i><i class="date"><time datetime="2015-12-20 02:15:37">1 month ago</time></i>
+                        </a>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_359.png"></span>
+                        Mikhail “innerpsy” Shalamov                    </div>
+                </div>
+                                <div class="user-info">
+                    
+                        <a href='/poker-hands/Boom/16851838_1A944F7F7A' class="list-item trigger">
+                            <i class="name">Goral</i><i class="date"><time datetime="2015-11-30 02:51:26">2 months ago</time></i>
+                        </a>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_350.png"></span>
+                        Marcin “Goral” Horecki                    </div>
+                </div>
+                                <div class="user-info">
+                    
+                        <a href='/poker-hands/Boom/16776358_BF5AC69C20' class="list-item trigger">
+                            <i class="name">BryanHuang</i><i class="date"><time datetime="2015-11-21 12:28:16">2 months ago</time></i>
+                        </a>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_313.png"></span>
+                        Bryan “BryanHuang” Huang                    </div>
+                </div>
+                                <div class="user-info">
+                    
+                        <a href='/poker-hands/Boom/16743295_56E75DB09B' class="list-item trigger">
+                            <i class="name">P.Fabretti</i><i class="date"><time datetime="2015-11-16 20:16:31">2 months ago</time></i>
+                        </a>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_409.png"></span>
+                        Pier Paolo “P.Fabretti” Fabretti                    </div>
+                </div>
+                                <div class="user-info">
+                    
+                        <a href='/poker-hands/Boom/16619894_7B0D71CA2F' class="list-item trigger">
+                            <i class="name">chrisdm</i><i class="date"><time datetime="2015-11-07 16:23:52">2 months ago</time></i>
+                        </a>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_322.png"></span>
+                        Chistophe “chrisdm” De Meulder                    </div>
+                </div>
+                                <div class="user-info">
+                    
+                        <a href='/poker-hands/Boom/16407867_3525DCCF27' class="list-item trigger">
+                            <i class="name">Baalim</i><i class="date"><time datetime="2015-10-22 05:00:35">3 months ago</time></i>
+                        </a>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_309.png"></span>
+                        Jorge “Baalim” Limon                    </div>
+                </div>
+                                <div class="user-info">
+                    
+                        <a href='/poker-hands/Boom/16082632_A8F2113D4D' class="list-item trigger">
+                            <i class="name">mattidm</i><i class="date"><time datetime="2015-09-27 22:06:34">4 months ago</time></i>
+                        </a>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_397.png"></span>
+                        Matthias “mattidm” De Meulder                    </div>
+                </div>
+                                <div class="user-info">
+                    
+                        <a href='/poker-hands/Boom/15976233_B2396B9756' class="list-item trigger">
+                            <i class="name">ElkY</i><i class="date"><time datetime="2015-09-20 13:34:44">4 months ago</time></i>
+                        </a>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_338.png"></span>
+                        Bertrand “ElkY” Grospellier                    </div>
+                </div>
+                                <div class="user-info">
+                    
+                        <a href='/poker-hands/Boom/15432392_3640E68282' class="list-item trigger">
+                            <i class="name">L. Veldhuis</i><i class="date"><time datetime="2015-08-05 10:58:37">6 months ago</time></i>
+                        </a>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_386.png"></span>
+                        Lex “L. Veldhuis” Veldhuis                    </div>
+                </div>
+                                <div class="user-info">
+                    
+                        <a href='/poker-hands/Boom/15155558_5BE4FA7C8F' class="list-item trigger">
+                            <i class="name">Theo J</i><i class="date"><time datetime="2015-07-15 03:02:43">6 months ago</time></i>
+                        </a>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_440.png"></span>
+                        Theo “Theo J” Jorgenson                    </div>
+                </div>
+                                <div class="user-info">
+                    
+                        <a href='/poker-hands/Boom/14368238_2E09F12DD9' class="list-item trigger">
+                            <i class="name">JasonMercier</i><i class="date"><time datetime="2015-05-11 08:33:23">8 months ago</time></i>
+                        </a>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_367.png"></span>
+                        Jason “JasonMercier” Mercier                    </div>
+                </div>
+                                <div class="user-info">
+                    
+                        <a href='/poker-hands/Boom/14364237_31734F6330' class="list-item trigger">
+                            <i class="name">jakecody</i><i class="date"><time datetime="2015-05-10 20:21:14">8 months ago</time></i>
+                        </a>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_502.png"></span>
+                        Jake “jakecody” Cody                    </div>
+                </div>
+                                <div class="user-info">
+                    
+                        <a href='/poker-hands/Boom/14280667_B5D9123348' class="list-item trigger">
+                            <i class="name">KidPoker</i><i class="date"><time datetime="2015-05-05 14:55:26">9 months ago</time></i>
+                        </a>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_383.png"></span>
+                        Daniel “KidPoker” Negreanu                    </div>
+                </div>
+                                <div class="user-info">
+                    
+                        <a href='/poker-hands/Boom/14247860_BA59EF5121' class="list-item trigger">
+                            <i class="name">GodlikeRoy</i><i class="date"><time datetime="2015-05-03 12:55:49">9 months ago</time></i>
+                        </a>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_498.png"></span>
+                        Roy “GodlikeRoy” Bhasin                    </div>
+                </div>
+                                <div class="user-info">
+                    
+                        <a href='/poker-hands/Boom/13971492_9CDCA51C78' class="list-item trigger">
+                            <i class="name">GeorgeDanzer</i><i class="date"><time datetime="2015-04-14 16:57:32">9 months ago</time></i>
+                        </a>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_349.png"></span>
+                        George “GeorgeDanzer” Danzer                    </div>
+                </div>
+                                <div class="user-info">
+                    
+                        <a href='/poker-hands/Boom/13816715_85919529A7' class="list-item trigger">
+                            <i class="name">ElkY PS.FR</i><i class="date"><time datetime="2015-04-04 16:04:30">10 months ago</time></i>
+                        </a>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_338.png"></span>
+                        Bertrand “ElkY PS.FR” Grospellier                    </div>
+                </div>
+                                <div class="user-info">
+                    
+                        <a href='/poker-hands/Boom/13494212_D7F455AAAB' class="list-item trigger">
+                            <i class="name">mement_mori</i><i class="date"><time datetime="2015-03-16 19:20:40">10 months ago</time></i>
+                        </a>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_491.png"></span>
+                        Mickey “mement_mori” Petersen                    </div>
+                </div>
+                                <div class="user-info">
+                    
+                        <a href='/poker-hands/Boom/11342486_EB22C2C03E' class="list-item trigger">
+                            <i class="name">aakkari</i><i class="date"><time datetime="2014-10-19 18:16:32">1 year ago</time></i>
+                        </a>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_301.png"></span>
+                         Andre “aakkari” Andre                    </div>
+                </div>
+                                <div class="user-info">
+                    
+                        <a href='/poker-hands/Boom/10921186_05161554B4' class="list-item trigger">
+                            <i class="name">johnnylodden</i><i class="date"><time datetime="2014-09-21 18:43:52">1 year ago</time></i>
+                        </a>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_374.png"></span>
+                        Johnny “johnnylodden” Lodden                    </div>
+                </div>
+                                <div class="user-info">
+                    
+                        <a href='/poker-hands/Boom/10899305_48F3147870' class="list-item trigger">
+                            <i class="name">Vivian Im</i><i class="date"><time datetime="2014-09-20 15:33:13">1 year ago</time></i>
+                        </a>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_494.png"></span>
+                        Vivian “Vivian Im” Im                    </div>
+                </div>
+                                <div class="user-info">
+                    
+                        <a href='/poker-hands/Boom/10842171_2E60C51844' class="list-item trigger">
+                            <i class="name">E. Katchalov</i><i class="date"><time datetime="2014-09-16 18:29:43">1 year ago</time></i>
+                        </a>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_333.png"></span>
+                        Eugene “E. Katchalov” Katchalov                    </div>
+                </div>
+                                <div class="user-info">
+                    
+                        <a href='/poker-hands/Boom/8949663_93B8292296' class="list-item trigger">
+                            <i class="name">Ivan Demidov</i><i class="date"><time datetime="2014-05-13 09:44:20">2 years ago</time></i>
+                        </a>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_363.png"></span>
+                        Ivan “Ivan Demidov” Demidov                    </div>
+                </div>
+                                <div class="user-info">
+                    
+                        <a href='/poker-hands/Boom/7643831_C438521F63' class="list-item trigger">
+                            <i class="name">VictorRamdin</i><i class="date"><time datetime="2014-02-23 22:35:58">2 years ago</time></i>
+                        </a>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_451.png"></span>
+                        Victor “VictorRamdin” Ramdin                    </div>
+                </div>
+                                <div class="user-info">
+                    
+                        <a href='/poker-hands/Boom/5063718_913BA32264' class="list-item trigger">
+                            <i class="name">V. Selbst</i><i class="date"><time datetime="2013-09-29 21:57:17">2 years ago</time></i>
+                        </a>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_447.png"></span>
+                        Vanessa “V. Selbst” Selbst                    </div>
+                </div>
+                                <div class="user-info">
+                    
+                        <a href='/poker-hands/Boom/3697810_AEDDA2046F' class="list-item trigger">
+                            <i class="name">jomane</i><i class="date"><time datetime="2013-06-24 23:43:07">3 years ago</time></i>
+                        </a>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_375.png"></span>
+                        Joao “jomane” Nunes                    </div>
+                </div>
+                                <div class="user-info">
+                    
+                        <a href='/poker-hands/Boom/2218769_B239068A2A' class="list-item trigger">
+                            <i class="name">Rafa Nadal</i><i class="date"><time datetime="2013-02-24 14:26:44">3 years ago</time></i>
+                        </a>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_500.png"></span>
+                        Rafal “Rafa Nadal” Nadal                    </div>
+                </div>
+                                <div class="user-info">
+                    
+                        <a href='/poker-hands/Boom/726958_C88C3E734C' class="list-item trigger">
+                            <i class="name">LeoFernandez</i><i class="date"><time datetime="2012-09-23 22:12:45">3 years ago</time></i>
+                        </a>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_390.png"></span>
+                        Leo “LeoFernandez” Fernandez                    </div>
+                </div>
+                                <div class="user-info">
+                    
+                        <a href='/poker-hands/Boom/619929_F265406F0B' class="list-item trigger">
+                            <i class="name">Jorj95</i><i class="date"><time datetime="2012-09-09 11:45:17">3 years ago</time></i>
+                        </a>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_499.png"></span>
+                        George “Jorj95” Lind III                    </div>
+                </div>
+                                <div class="user-info">
+                                            <div class="list-item trigger">AAbenjaminAA<i class="date"> </i></div>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_300.png"></span>
+                        Martin “AAbenjaminAA” Hruby                    </div>
+                </div>
+                                <div class="user-info">
+                                            <div class="list-item trigger">barryg1<i class="date"> </i></div>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_310.png"></span>
+                        Barry “barryg1” Greenstein                    </div>
+                </div>
+                                <div class="user-info">
+                                            <div class="list-item trigger">el grillo<i class="date"> </i></div>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_335.png"></span>
+                        Christian “el grillo” de Leòn Angeles                    </div>
+                </div>
+                                <div class="user-info">
+                                            <div class="list-item trigger">L.Pagano<i class="date"> </i></div>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_478.png"></span>
+                        Luca “L.Pagano” Pagano                    </div>
+                </div>
+                                <div class="user-info">
+                                            <div class="list-item trigger">LadyMaverick<i class="date"> </i></div>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_388.png"></span>
+                        Vanessa “LadyMaverick” Rousso                    </div>
+                </div>
+                                <div class="user-info">
+                                            <div class="list-item trigger">Money800<i class="date"> </i></div>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_403.png"></span>
+                        Chris “Money800” Moneymaker                    </div>
+                </div>
+                                <div class="user-info">
+                                            <div class="list-item trigger last">Vicky Coren<i class="date"> </i></div>
+                                        <div class="user-popup">
+                        <span class="imgSrc" style="display: none;" data-src="//psimg.rationalcdn.com/boom/images/avatars/avatar_450.png"></span>
+                        Victoria “Vicky Coren” Coren                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+              <fieldset class="b-featured-pro">
+            <div class="b-featured-pro-i">
+            <i class="title">Featured <i>Pro</i></i>
+
+                
+                    <i class="pro-name"><a href='/poker-hands/Boom/14368238_2E09F12DD9' class=""><img src="//psimg.rationalcdn.com/boom/images/avatars/avatar_367.png" /></a> <a href='/poker-hands/Boom/14368238_2E09F12DD9' class="">Jason “JasonMercier” Mercier</a></i>
+                    <i class="date"><time datetime="2015-05-11 08:33:23">8 months ago</time></i>
+
+                            </div>
+        </fieldset>
+             <div class="b-news">
+        <h3 class="title">
+            PokerStars Blog News            <span></span>
+        </h3>
+        <div class="clear"></div>
+        <div>
+
+                    <ul class="list">
+                <li class="item">
+                    <div class="text">
+                        <a target="_blank" href="/en/blog/online/sm/2015/two-time-wcoop-champ-scot-155412.shtml" title="Two-time WCOOP champ Scott "Aggro Santos" Margereson conquers the Million, banks $194k">
+                            <div class="title-arrow header">Two-time WCOOP champ Scott "Aggro Santos" Margereson conquers the Million, banks $194k</div>
+                        </a>
+                                                    <div class="content">Last fall, Scott "Aggro Santos" Margereson managed quite a feat in winning two WCOOP bracelets inside of a three-day period. ...</div>
+                                            </div>
+                </li>
+            </ul>
+                    <ul class="list">
+                <li class="item">
+                    <div class="text">
+                        <a target="_blank" href="/en/blog/online/sw/2015/sunday-warm-up-top-cat-tom0202-takes-dow-155411.shtml" title="Sunday Warm-Up: Top cat, tom0202 takes down title after three-way chop">
+                            <div class="title-arrow header">Sunday Warm-Up: Top cat, tom0202 takes down title after three-way chop</div>
+                        </a>
+                                                    <div class="content">Nearly an hour and a half before the final hand of the $500,000 guarantee Sunday Warm-Up one card would have ...</div>
+                                            </div>
+                </li>
+            </ul>
+                    <ul class="list">
+                <li class="item">
+                    <div class="text">
+                        <a target="_blank" href="/en/blog/tournaments/lapt/2015/change-of-venue-for-lapt-panama-155406.shtml" title="Change of venue for LAPT Panama">
+                            <div class="title-arrow header">Change of venue for LAPT Panama</div>
+                        </a>
+                                                    <div class="content">The third stop of LAPT Season 8 will be held at the Sortis Hotel Spa & Casino in Panama City, ...</div>
+                                            </div>
+                </li>
+            </ul>
+                </div>
+    </div>
+             
+        </aside>
+            </div>
+        <footer class="b-foot">
+            <!---->            <div class="b-footer-images">
+                <a href="http://www.pokerstars.com/?source=11065885" title="PokerStars"><img src="//psimg.rationalcdn.com/boom/images/design/footer-pokerstars-logo.jpg" alt=""/></a>
+                                    <a href="https://www.pokerstars.com/casino/" title="PokerStars Casino"><img src="//psimg.rationalcdn.com/boom/images/design/footer-casino-logo.jpg" alt=""/></a>
+                            </div>
+            <i class="copy">© Copyright 2012, <a href="http://www.pokerstars.com?source=11065885">PokerStars</a>. All rights reserved.</i>
+        </footer>
+    </div>
+</div>
+          <div id="needLogin" style="display: none">
+        </div>
+    <!-- JavaScript at the bottom for fast page loading -->
+<!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script>window.jQuery || document.write("<script src='js/libs/jquery-1.5.2.min.js'>\x3C/script>")</script>
+<script>
+    function switchReplayer(value){
+        var params = '';
+        if (value) {
+            params = '?value=' + value;
+        }
+        $.ajax({
+            type: 'GET',
+            cache: false,
+            url: '/switchPlayerVersion.php' + params,
+            success: function(){
+                location.reload(location.href);
+            }
+        });
+    }
+</script>
+    <script>
+        function isCanvasSupported(){
+            var elem = document.createElement('canvas');
+            return !!(elem.getContext && elem.getContext('2d'));
+        }
+        if (!isCanvasSupported()){
+            switchReplayer(2);
+        }
+    </script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js"></script>
+<script>window.jQuery.ui || document.write("<script src='jqueryui/1.8.12/jquery-ui.min.js'>\x3C/script>")</script>
+<script src="/code/js/pso_select.js"></script>
+<script>
+    $().ready(function(){
+        $('.b-select').psoSelect();
+    });
+            $('#switchToHtml').click(function(){switchReplayer()});
+    </script>
+<!-- scripts concatenated and minified via ant build script-->
+<script src="/code/js/plugins.js"></script>
+<script src="/code/js/script.js"></script>
+<!-- end scripts-->
+        
+    <script type="text/javascript" src="/engine/framework/rbns_aux/ajax/JsHttpRequest/JsHttpRequest.js"></script>
+    <script type="text/javascript" src="/engine/framework/rbns_aux/ajax/rbns_ext.js"></script>
+    <script src='/code/js/slider.js'></script>
+    <script type='text/javascript'>
+        $(document).ready(function(){
+            var slider = new Slider($("#slider"),
+                {
+                                            "slider-recent": {'title': "Recently uploaded", 'need_buttons': 1, 'link': "/poker-hands/Most-Recent"},                         "slider-best": {'title': "Hands of the week", 'need_buttons': 0, 'link': "/hands-of-the-week"}                 });
+        });
+    </script>
+        <!-- scrollBox (begin)-->
+<!--        <link rel="stylesheet" href="/code/styles/block/b-scroll-panel/b-scroll-panel.css" media='all' />-->
+<!--        <link rel="stylesheet" href="/code/styles/block/b-pro-boom/b-pro-boom.css" media='all' />-->
+        <script type="text/javascript" src="/code/js/jquery.mousewheel.min.js"></script>
+        <script type="text/javascript" src="/code/js/jScrollPane.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function()
+            {
+                $('#b-scroll-panel').jScrollPane({scrollbarWidth:13, showArrows:true, dragMaxHeight:18});
+            });
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('.user-info').each(function () {
+                    var distance = 30;
+                    var block_height = 160;
+                    var top_position = 0;
+                    var trigger = $('.trigger', this);
+                    var info = $('.user-popup', this);
+                    $([trigger.get(0), info.get(0)]).mouseover(function () {
+                        if(!info.find(".avatarImage").length){
+                            var imgSrc = info.find(".imgSrc").eq(0).attr("data-src");
+                            info.prepend("<img class='avatarImage' src='"+imgSrc+"' />");
+                        }
+                        var row_pos = trigger.position().top;
+                        var cur_pos = trigger.offset().top;
+                        var block_top_pos = $('.jScrollPaneContainer').offset().top;
+                        var block_bottom_pos = block_top_pos + block_height;
+                        if ((block_bottom_pos - cur_pos) < ((block_bottom_pos - block_top_pos) / 2)) {
+                            top_position = row_pos - distance;
+                        } else {
+                            top_position = row_pos + distance;
+                        }
+                        var scroll_position = $('.jScrollPaneDrag').position().top;
+                        info.css({
+                            display: 'block',
+                            top: top_position + 'px'
+                        })
+                    }).mouseout(function () {
+                        info.css({
+                            display: 'none'
+                        });
+                    });
+                });
+            });
+        </script>
+        <!-- scrollBox (end) -->
+    <!--[if lt IE 7 ]>
+    <script src="js/libs/dd_belatedpng.js"></script>
+    <script>DD_belatedPNG.fix("img, .png_bg"); // Fix any <img> or .png_bg bg-images. Also, please read goo.gl/mZiyb </script>
+    <![endif]-->
+    <!--ga-->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-19780011-4', 'auto');
+        ga('send', 'pageview');
+        (function (window) {
+            var originalWindowErrorCallback = window.onerror;
+            window.onerror = function customErrorHandler(errorMessage, url, lineNumber, columnNumber, errorObject) {
+                if (typeof ga === 'function') {
+                    var exceptionDescription = errorMessage;
+                    if (typeof errorObject !== 'undefined' && typeof errorObject.message !== 'undefined') {
+                        exceptionDescription = errorObject.message;
+                    }
+                    exceptionDescription += ' @ ' + url + ':' + lineNumber + ':' + columnNumber;
+                    ga('send', 'exception', {
+                        'exDescription': exceptionDescription,
+                        'exFatal': false,
+                        'appName': 'Boom',
+                        'appVersion': '11'
+                    });
+                }
+                if (typeof originalWindowErrorCallback === 'function') {
+                    return originalWindowErrorCallback(errorMessage, url, lineNumber, columnNumber, errorObject);
+                }
+                return false;
+            };
+        })(window);
+    </script>
+    <!--ga end-->
+    <script type='text/javascript'>
+        $(function(){
+            if ($('#needLogin').length) {
+                $('#needLogin').dialog({
+                    autoOpen: false,
+                    resizable: false,
+                    title: "Please login",
+                    buttons:{
+                        "Join BOOM!": function() {
+                            window.location = '/registration';
+                        },
+                        "Login": function(){
+                            window.location = '/login';
+                        }
+                    }
+                });
+                return false;
+            }
+        });
+        function showNeedlogin(target){
+            var text = '';
+            if (typeof target == 'undefined'){
+                text = "You must login.";
+            } else if (target == 'vote'){
+                text = "You must login to Vote.";
+            } else if (target == 'like'){
+                text = "You must login to Like.";
+            } else if (target == 'vote'){
+                text = "You must login to Comment.";
+            } else if (target == 'report'){
+                text = "You must login to Report.";
+            }
+            text += " Don't have an account?<br/>";
+            text += "<a href='/registration'>Create one.</a>"
+            $('#needLogin').html(text);
+            $('#needLogin').dialog('open');
+        }
+    </script>
+<!-- pd=2#3912*736*177 -->
+<!-- 070707akjd0ead#4aw -->
+</body></html>

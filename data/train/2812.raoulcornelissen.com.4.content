@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="content-language" content="ko" />
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+        <style type="text/css">
+            body{
+
+
+  background: -webkit-linear-gradient(90deg, #2c3e50 10%, #3498db 90%); /* Chrome 10+, Saf5.1+ */
+  background:    -moz-linear-gradient(90deg, #2c3e50 10%, #3498db 90%); /* FF3.6+ */
+  background:     -ms-linear-gradient(90deg, #2c3e50 10%, #3498db 90%); /* IE10 */
+  background:      -o-linear-gradient(90deg, #2c3e50 10%, #3498db 90%); /* Opera 11.10+ */
+  background:         linear-gradient(90deg, #2c3e50 10%, #3498db 90%); /* W3C */
+
+
+            }
+        </style>
+        <script>
+                //Check if username and password is filled
+            function checkdata() {
+                var x = document.forms["loginform"]["username"].value;
+                var y = document.forms["loginform"]["password"].value;
+                if (x==null || x=="" || y==null || y=="") {
+                    //Output the alert
+                    swal({ title: "Watch it!",
+                          text: "You forgot something, please check",
+                          type: "error",
+                          showCancelButton: false,
+                          confirmButtonColor: "#55dd5f",
+                          confirmButtonText: "I read",
+                          closeOnConfirm: false },
+
+                         function(){ swal("Thanks for reading", "Please try again", "success"); });
+                    return false;
+                }
+            }
+        </script>
+        <title>SocialKorean | Feel Korea</title>
+        <meta name="description" content="Lets Connect you with people with the same interest" />
+        <meta name="keywords" content="South, Korea, South Korea, Kpop, Connect, Korean, Chatbox, Info, Culture, Enjoy
+        Zuid, Korea, Zuid-Korea, Kpop, Verbinden, Koreaans, Chat, Informatie, Cultuur, Vermaak" />
+        <meta name="author" content="meta-tags generator">
+        <meta name="robots" content="index, nofollow" />
+        <meta name="revisit-after" content="3 month" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="assets/css/index.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+        <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="assets/js/app.js"></script>
+        <script src="assets/swalert/sweet-alert.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="assets/swalert/sweet-alert.css">
+        <link href="favicon.ico" rel="icon" type="image/x-icon" />
+<!-- South Korea, Connect, Fun -->
+    </head>
+    <body>
+        <nav class="navbar navbar-default" id="navbar">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="index.php" target="_self"><img src="assets/img/Logo_small_web.png" style="width:200px; height:50px;"/></a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="register.php" target="inner_content" id="navbartext">Register<span class="sr-only">(current)</span></a></li>
+                        <li><a href="faq.php" target="inner_content" id="navbartext">FAQ</a></li>
+                        <li><a href="admin" id="navbartext">Admin</a></li>
+                        <li><a href="GpzAcBptmoUQ/index_en.php" id="navbartext">Personal</a></li>
+                        <!--<li><a href="dashboard/index.php" id="navbartext">Dashboard</a></li>-->
+                    </ul>
+                    <div class="container-fluid" id="login">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <form class="form-inline" action="check.php" method="post" name="loginform" onsubmit="return checkdata()">
+                                <div class="form-group">
+                                    <label for="exampleInputName2" id="navbarlogintext">Username:</label>
+                                    <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail2" id="navbarlogintext">Password:</label>
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="********">
+                                </div>
+                                <button type="submit" class="btn btn-success" name="loginbtn">Log In</button>
+                            </form>
+                        </li>
+                    </ul>
+                    </div>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class="content_wrap">
+       <div class="container">
+        <div class="row">
+            <div class="col-lg-3" id="menu">
+                <iframe id="side_content" src="side_menu.php" ></iframe>
+            </div>
+            <div class="col-md-3" id="content">
+                <iframe id="inner_content" name="inner_content" src="home.php">
+
+                </iframe>
+            </div>
+        </div>
+        </div>
+            </div>
+        <div id="footer">&#169;  2016 - SocialKorean.com</div>
+
+
+
+
+
+
+
+
+    </body>
+</html>

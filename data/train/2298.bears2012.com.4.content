@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="css/def.css" media="all">
+<script type="text/javascript" src="js/def.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function() {
+	var topBtn = $('#page-top');	
+	topBtn.hide();
+	$(window).scroll(function () {
+		if ($(this).scrollTop() > 100) {
+			topBtn.fadeIn();
+		} else {
+			topBtn.fadeOut();
+		}
+	});
+	//スクロールしてトップ
+    topBtn.click(function () {
+		$('body,html').animate({
+			scrollTop: 0
+		}, 500);
+		return false;
+    });
+});
+</script>
+<script type="text/javascript">
+$(function(){
+	$('.subMenu').hide();
+	//
+	$('#accordion .ttl').click(function(e){		
+		$('+ul.subMenu',this).slideToggle();
+	});
+});
+</script>
+<script src="js/slides.min.jquery.js"></script>
+<script>
+$(function(){
+	// Set starting slide to 1
+	var startSlide = 1;
+	// Get slide number if it exists
+	if (window.location.hash) {
+		startSlide = window.location.hash.replace('#','');
+	}
+	// Initialize Slides
+	$('#slides').slides({
+		preload: true,
+		preloadImage: 'img/loading.gif',
+		generatePagination: true,
+		play: 5000,
+		pause: 2500,
+		hoverPause: true,
+		// Get the starting slide
+		start: startSlide,
+		animationComplete: function(current){
+			// Set the slide number as a hash
+			window.location.hash = '#' + current;
+		}
+	});
+});
+</script>
+<link rel="shortcut icon" href="images/favicon.ico">
+<meta name="Keywords" content="サッカー,チアダンス,スクール,イベント,指導者派遣">
+<meta name="Description" content="">
+<title>NPO法人ベアーズ</title>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-61160271-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</head>
+<body id="home">
+	<section id="wrap">
+		<nav>
+			<ul>
+				<li><a href="#container">BEARSについて</a></li>
+				<li><a href="#news">おしらせ</a></li>
+				<li><a href="#jigyou">事業</a></li>
+				<li><a href="#about">概要</a></li>
+			</ul>
+		</nav>
+		<section id="container">
+			
+			<header>
+				<img src="images/logo.gif" alt="">
+				<h1>NPO法人ベアーズは2012年4月に下丸子/鵜の木地区を拠点として活動を開始しました。<br>
+				現在、大田区を中心に「スポーツを通じた地域社会の活性化」と「健康で文化的な地域活動の構築」　に寄与することを目的として活動しています。<!--様々なスポーツを総合的に行える地域スポーツクラブとして「もっと地域に近い存在に！」「もっと幅広い世代でスポーツを！」モットーに活動していきます。--></h1>
+			</header>
+			
+			<div id="slides" class="clfix">
+				<div class="slides_container">
+						<div class="slide"> <a href="/soccer/" target="_blank"><img src="images/slide/slide_001.jpg" alt=""></a> </div>
+						<div class="slide"> <a href="/cheer/" target="_blank"><img src="images/slide/slide_002.jpg" alt=""></a> </div>
+						<div class="slide"> <a href="/yoga/" target="_blank"><img src="images/slide/slide_003.jpg" alt=""></a> </div>
+						<div class="slide"> <a href="/soccer/whitebears.html" target="_blank"><img src="images/slide/slide_004.jpg" alt=""></a> </div>
+						<div class="slide"> <a href="http://bears2012.blog.fc2.com/blog-entry-127.html" target="_blank"><img src="images/slide/slide_005.jpg" alt=""></a> </div>
+						<div class="slide"> <a href="http://phoenixs2004.com/" target="_blank"><img src="images/slide/slide_006.jpg" alt=""></a> </div>
+				</div>
+				<a href="#" class="prev"><img src="/soccer/images/slide/arrow-prev.gif" width="11" height="13" alt="Prev" /></a> <a href="#" class="next"><img src="/soccer/images/slide/arrow-next.gif" width="11" height="13" alt="Next" /></a>
+			</div>
+			
+			<section id="main">
+				
+				
+				<ul id="panel" class="clfix">
+					<li id="sc"><a href="/soccer/" target="_blank" title="BEARSサッカースクールへ"><img src="images/sill_sc.jpg" alt=""></a><p>サッカースクール</p></li>
+					<li id="ch"><a href="/cheer/" target="_blank" title="BEARSチアダンススクールへ"><img src="images/sill_ch.jpg" alt=""></a><p>チアダンススクール</p></li>
+					<li id="yg"><a href="/yoga/" target="_blank" title="BEARSヨガスクールへ"><img src="images/sill_yg.jpg" alt=""></a><p>ヨガスクール</p></li>
+					<li id="ws"><a href="/soccer/whitebears.html" target="_blank" title="BEARS女子サッカーへ"><img src="images/sill_ws.jpg" alt=""></a><p>女子サッカー</p></li>
+					<li id="ev"><a href="http://bears2012.blog.fc2.com/blog-entry-127.html" target="_blank" title="スポーツイベント"><img src="images/sill_ev.jpg" alt=""></a><p>スポーツイベント</p></li>
+					<li id="fc"><a href="http://phoenixs2004.com/" target="_blank" title="コンサルタント"><img src="images/sill_fc.jpg" alt=""></a><p>コンサルタント</p></li>
+				</ul>
+				
+				
+				
+				<div class="sp"><a href="#news">おしらせ</a></div>
+				<div id="news"></div>
+				
+				<ul id="news">
+					<script type='text/javascript' src='rss/rss.php'></script>
+				</ul>
+				
+				
+				
+				<div class="sp"><a href="#jigyou">その他の事業</a></div>
+				<div id="jigyou"></div>
+				
+				<dl class="clfix">
+					<dt>イベント事業</dt>
+					<dd>ベアーズは、大田区および地域の方々を対象としたスポーツにまつわるイベントを定期的に開催しています。<br>
+					[ 実績 ] サッカー普及イベント、カケッコ教室、チアダンス普及イベント、基礎運動教室など
+						<ul>
+							<li><a href="http://bears2012.blog.fc2.com/blog-entry-85.html" target="_blank">『春の“体験”サッカー教室』レポート（女の子クラス）</a></li>
+							<li><a href="http://bears2012.blog.fc2.com/blog-entry-83.html" target="_blank">『冬休み“体験”サッカー教室』レポート（経験者クラス）</a></li>
+							<li><a href="http://bearscheer2014.blog.fc2.com/blog-entry-1.html" target="_blank">『キッズチアスクール 無料体験レッスン』レポート</a></li>
+						</ul>
+					</dd>
+				</dl>
+				<dl class="clfix">
+					<dt>指導者派遣事業</dt>
+					<dd>ベアーズは、様々な場所へ指導者を派遣しています。<br>
+					[ 実績 ] 大田区立嶺町小学校、フェニックスズFC（横浜市）、横浜市立東本郷小学校、横浜市はまっ子ふれあいスクール、大田区立東調布第三小学校
+					</dd>
+				</dl>
+				<dl class="clfix">
+					<dt>コンサルタント事業</dt>
+					<dd>サッカースクール、クラブづくりのお手伝いをしています。事業立ち上げから運営、および経営に至るまでサポートします。<br>
+					[ 実績 ] <a href="http://phoenixs2004.com/" target="_blank">フェニックスズFC</a>（横浜市）</dd>
+				</dl>
+				
+				
+				<div class="sp"><a href="#about">BEARS概要</a></div>
+				<div id="about"></div>
+				
+				<table cellspacing="0">
+					<tr><th>名称</th><td>特定非営利活動法人ベアーズ</td></tr>
+					<tr><th>代表</th><td>関口 潔</td></tr>
+					<tr><th>所在地</th><td>〒146-0091　東京都大田区鵜の木2-26-9-201</td></tr>
+					<tr><th>設立日</th><td>2012年10月31日</td></tr>
+					<tr><th>TEL</th><td>070-5572-0195</td></tr>
+					<tr><th>FAX</th><td>なし</td></tr>
+					<tr><th>Mail</th><td><span><a href="mailto:tokyo.bears2012@gmail.com">tokyo.bears2012@gmail.com</a></span></td></tr>
+				</table>
+				
+
+			</section>
+			
+			<footer>
+				<p id="page-top"><a href="../header"></a></p>
+				Copyright © BEARS All rights reserved.
+			</footer>
+		
+		</section>
+	</section>
+	
+<script type="text/javascript">
+  (function($) {
+    $('.autlink').each(function(){
+      $(this).html( $(this).html().replace(/((http|https|ftp):\/\/[\w?=&.\/-;#~%-]+(?![\w\s?&.\/;#~%"=-]*>))/g, '<a href="$1">$1</a> ') );
+    });
+ 
+    $('a[href^=http]').each(function(){
+      $(this).not('[href*="'+location.hostname+'"]').attr('target','_blank').addClass('extlink');
+    });
+  })(jQuery);
+</script>
+</body>
+</html>

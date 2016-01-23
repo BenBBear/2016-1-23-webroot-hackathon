@@ -1,0 +1,283 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<HTML>
+<HEAD>
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=Shift_JIS">
+  <META HTTP-EQUIV="Content-Style-Type" CONTENT="text/html; charset=Shift_JIS">
+  <META HTTP-EQUIV="Content-Script-Type" CONTENT="text/html; charset=Shift_JIS">
+  <META NAME="author" content="まつふ">
+  <META NAME="description" content="星空に浮かぶ惑星チャットで、楽しくお喋りしませんか？簡単なチャット講座もあり、初心者の方でも気軽に遊べます。暇人なひとが暇な時に集う場所です。">
+  <META name="keywords" content="チャット,暇人,ひま,ひまつぶし">
+<TITLE>にせ暇人チャット</TITLE>
+  <STYLE type="text/css">
+  <!--a { text-decoration: none }
+     BODY      { font-size: 10pt; }
+     TD, TH    { font-size: 10pt; }
+     SMALL     { font-size: 10pt; color: #F8F8B0 }
+     a:link    {text-decoration:none; }
+     a:visited {text-decoration:none; }
+     a:active  {text-decoration:none; }
+     a:hover   {text-decoration:none; color:#DD0000; }
+   -->
+  </STYLE>
+  <style type="text/css"><!--
+  .mouse { position:absolute; visibility:visible; top:0; left:0;}//-->
+  </style>
+
+
+<SCRIPT LANGUAGE="javascript" TYPE="text/javascript">
+<!--
+var col=new Array();
+col[1]="#0000ff";	//マウス通過時のフォントカラー
+col[2]="#000000";	//マウス非通過時のフォントカラー
+col[3]="#ffffff";	//マウス通過時の背景色
+col[4]="#000000";	//マウス非通過時の背景色
+
+function Mover(){
+	window.event.srcElement.style.background = col[3];
+}
+
+function Mout(){
+	window.event.srcElement.style.background = col[4];
+}
+
+// -->
+</SCRIPT>
+
+
+<SCRIPT language="JavaScript">
+<!--
+function add_favorite(){
+window.external.addfavorite('http://www.hima-cha.net/', "にせ暇人チャット")
+}
+//--></SCRIPT>
+
+<SCRIPT Language="JavaScript">
+<!--
+isIE4 = (navigator.appVersion.charAt(0)>=4 && (navigator.appVersion).indexOf("MSIE") != -1)
+isNN4 = (navigator.appVersion.charAt(0)>=4 && (navigator.appName).indexOf("Netscape")!=-1);
+
+function link_info(m) {
+  if(m==null)  m = "";
+
+  if(isIE4) {
+    el = document.all("LINKMSG1");
+    el.innerHTML = m;
+   }
+  else if(isNN4) {
+    lay = document.layers["PARENT_LINKMSG"].document.layers["LINKMSG1"];
+    lay.document.open();
+    lay.document.write("<center><font style='font-size:11pt'>"+m+"</font></center>");
+    lay.document.close(); 
+   }
+}
+//-->
+</SCRIPT>
+
+<SCRIPT language="JavaScript">
+<!--
+acDate=new Date();
+myHour=acDate.getHours();
+// -->
+</SCRIPT>
+
+</HEAD>
+
+<BODY background="images/hoshi01.gif" bgcolor="#000000" bgproperties="fixed" text="#f0f0f0" link="#ffff00" vlink="#ffff00" alink="#FFAA00" onLoad="startthedots();">
+
+
+<script LANGUAGE="JavaScript">
+
+/*
+Swirling cursor trail (By Ozone, http://ozone.com)
+Featured on Website Abstraction free JavaScripts with bug fix for IE (http://wsabstract.com)
+For full source code to this script, visit http://wsabstract.com
+*/
+
+window.onerror=null;
+netscape = (document.layers) ? 1:0;
+goodIE = (document.all) ? 1:0;
+document.onmousemove=MoveHandler;
+var gotthere = 0;
+var count = 0;
+var ietopcorner=''
+var ieleftcorner=''
+
+    toplocation = new Array( 0,30,57,80,101,125,80,80,101,125,80,0 );
+temptoplocation = new Array( 50,100,100,150,150,200,200,100,150,150,200,200,0 );
+    leftlocation = new Array( 0,292,318,181,181,217,263,318,181,181,217,263,-96 );
+templeftlocation = new Array( 0,0,260,390,420,550,680,390,420,550,680,0 );
+difftop = new Array( 0,0,0,0,0,0,0,0,0,0,0,0 );
+diffleft = new Array( 0,0,0,0,0,0,0,0,0,0,0,0 );
+questtop = -13;
+questleft2 = -96;
+if (netscape) {
+   document.body=new Object()
+   document.body.scrollTop=''
+   document.body.scrollLeft=''
+   window.captureEvents(Event.MOUSEMOVE);
+   window.onMouseMove = MoveHandler; 
+   var layerstart = "document.";
+   var layerleft = ".left";
+   var layertop = ".top";
+   var layerstyle = "";
+   var windowWidth = window.innerWidth;
+   var windowHeight = window.innerHeight;  }
+else if (goodIE) {
+   ietopcorner=document.body.scrollTop
+   ieleftcorner=document.body.scrollLeft
+   layerstart = "document.all.";
+   layerleft = ".left";
+   layertop = ".top";
+   layerstyle = ".style";
+   windowWidth=600;
+   windowHeight=400; }
+// end error trapping
+   var Ypos2 = 72;
+   var Xpos2 = 72;
+function MoveHandler(e) {
+if (netscape || goodIE) {
+  Xpos2 = (netscape)?e.pageX:event.x
+  Ypos2 = (netscape)?e.pageY:event.y
+Xorigin = Xpos2;
+Yorigin = Ypos2; 
+if (Ypos2 > windowHeight/2) {
+if (Xpos2 > windowWidth/2) { direction = 1;} 
+else { direction = -1;} }
+else {
+if (Xpos2 > windowWidth/2) { direction = -1;} 
+else { direction = 1;} }
+}}
+
+function startthedots() {
+if (goodIE) {
+windowWidth=document.body.clientWidth;
+windowHeight=document.body.clientHeight; }
+Xorigin = 204;
+Yorigin = 147; 
+spin();run(); }
+
+var OrbitSize = 200;
+count=1; delay=100; direction = -1;
+Count = new Array ( 0, .9, 1.8, 2.7, 3.6, 4.5, 5.4, 6.3 );
+Xpoint = new Array ( 0, .9, 1.8, 2.7, 3.6, 4.5, 5.4, 6.3 );
+Ypoint = new Array ( 0, .9, 1.8, 2.7, 3.6, 4.5, 5.4, 6.3 );
+var speed = -0.06;
+var offset = 1;
+
+  function spin() {
+for ( j = 0 ; j <= 6 ; j++ ) {
+Count[j] = Count[j] + (speed*direction);	
+	Xpoint[j] = Xorigin + ((OrbitSize*Math.sin(Count[j])*offset));	
+	Ypoint[j] = Yorigin + (OrbitSize*Math.cos(Count[j])); }
+setTimeout('spin()',3); }
+
+function run() {
+   count++; 
+  for ( j = 0 ; j <= 6 ; j++ ) {
+difftop[j]  = Ypoint[j] -  temptoplocation[j];
+diffleft[j] = Xpoint[j] - templeftlocation[j];
+diff = 30;
+temptoplocation[j] = temptoplocation[j] + difftop[j]/diff;
+templeftlocation[j] = templeftlocation[j] + diffleft[j]/diff;
+  eval(layerstart+"a"+j+layerstyle+layerleft+" = document.body.scrollLeft+templeftlocation["+j+"]");
+  eval(layerstart+"a"+j+layerstyle+layertop+" = document.body.scrollTop+temptoplocation["+j+"]"); }
+setTimeout('run()', 25) }
+
+badIE = 0;
+browserName = navigator.appName.substring(0,8);
+browserVer = parseFloat(navigator.appVersion);
+macintosh = navigator.userAgent.indexOf("Mac");
+if (browserName == "Microsof") { 
+if (macintosh != -1) { badIE = 1; }
+if (browserVer < 4) { badIE = 1; }
+ }
+
+</script>
+
+<style TYPE="text/css">
+<!--
+#a0 {position:absolute; left:-24; top:-24; width:9; height:25;clip:rect(0 9 9 0);z-index:2000;}
+#a1 {position:absolute; left:96; top:-24; width:9; height:25;clip:rect(0 9 9 0);z-index:2000;}
+#a2 {position:absolute; left:216; top:-24; width:9; height:25;clip:rect(0 9 9 0);z-index:2000;}
+#a3 {position:absolute; left:338; top:-24; width:9; height:25;clip:rect(0 9 9 0);z-index:2000;}
+#a4 {position:absolute; left:460; top:-24; width:9; height:25;clip:rect(0 9 9 0);z-index:2000;}
+#a5 {position:absolute; left:640; top:-24; width:9; height:25;clip:rect(0 9 9 0);z-index:2000;}
+#a6 {position:absolute; left:-24; top:-24; width:9; height:25;clip:rect(0 9 9 0);z-index:2000;}
+// -->
+</style>
+
+<div ID="a0" align="center"><img src="images/star1b.gif" height="10" width="10"></div>
+<div ID="a1" align="center"><img src="images/star2b.gif" height="10" width="10"></div>
+<div ID="a2" align="center"><img src="images/star6b.gif" height="10" width="10"></div>
+<div ID="a3" align="center"><img src="images/star1b.gif" height="10" width="10"></div>
+<div ID="a4" align="center"><img src="images/star4b.gif" height="10" width="10"></div>
+<div ID="a5" align="center"><img src="images/star5b.gif" height="10" width="10"></div>
+<div ID="a6" align="center"><img src="images/star3b.gif" height="10" width="10"></div>
+
+<CENTER>
+<br><br><br><br><br>
+
+If you are not doing anything,let's communicate with</br>
+
+<img src="images/hima5.gif" width=400 height=110>
+<br><br>
+
+You are 
+<img src="./cgi-bin/count/daycount.cgi?gif" width="98" height="16">
+ visitor since 1999.10.02<br>
+<br><br>
+
+<!--
+<b>
+<font size=5>
+<font color="#FF0000">T</font><font color="#FF2B00">h</font><font color="#FF5700">a</font><font color="#FF8200">n</font><font color="#FFAE00">k</font> <font color="#A3C000">y</font><font color="#69C000">o</font><font color="#2FC000">u</font> <font color="#00C045">f</font><font color="#00C07F">o</font><font color="#00C0B9">r</font> <font color="#009EFF">7</font> <font color="#0046FF">y</font><font color="#001BFF">e</font><font color="#1700FF">a</font><font color="#5100FF">r</font><font color="#8B00FF">s</font><font color="#C500FF">!</font><font color="#FF00FF">!</font>
+</font>
+</b>
+<br><br><br>
+-->
+
+にせ暇人ちゃっとはしばらくお休み中です。<br>
+<br><br>
+
+<table width="60%">
+<tr>
+<td align="center" width="33%"><img src="star5c.gif" width=13 height=13><a href="./cgi-bin/hbbs1/yybbs.cgi"><font color="#00C0DA"><b>にせ暇落書き帳</b></font></a><img src="star5c.gif" width=13 height=13></td>
+<td align="center" width="33%"><img src="star5c.gif" width=13 height=13><a href="./cgi-bin/hbbs2/yybbs.cgi"><font color="#00C0DA"><b>オフ会落書き帳</b></font></a><img src="star5c.gif" width=13 height=13></td>
+<td align="center" width="34%"><img src="star5c.gif" width=13 height=13><a href="./cgi-bin/prof/profile.cgi"><font color="#00C0DA"><b>プロフィール参照</b></font></a><img src="star5c.gif" width=13 height=13></td>
+</tr>
+</table>
+
+<br><br>
+
+<table width="40%">
+<tr>
+<td align="center" width="50%"><img src="images/pluto1.gif" width=14 height=14><a target="_blank" href="./cgi-bin/chat07/comchatq.cgi"><font color="#00C0DA"><b>冥王星ちゃっと</b></font></a><img src="images/pluto1.gif" width=14 height=14></td>
+<td align="center" width="50%"><img src="images/neptune1.gif" width=14 height=14><a target="_blank" href="./cgi-bin/chat08/comchatq.cgi"><font color="#00C0DA"><b>海王星ちゃっと</b></font></a><img src="images/neptune1.gif" width=14 height=14></td>
+</tr>
+</table>
+
+<SCRIPT language="JavaScript">
+<!--
+if(myHour==0){
+  document.write("<img src='cgi-bin/prof/birthday.cgi' width=1 height=1>");
+}
+// -->
+</SCRIPT>
+
+<SCRIPT Language="JavaScript">
+<!--
+  document.write("<img src='cgi-bin/accs/accesslog.cgi?");
+  document.write(document.referrer+"' width=1 height=1>");
+// -->
+</SCRIPT>
+
+<SCRIPT Language="JavaScript">
+<!--
+  document.write("<img src='cgi-bin/report/report.cgi?");
+  document.write(document.referrer+"' width=1 height=1>");
+// -->
+</SCRIPT>
+
+</CENTER>
+</BODY>
+</HTML>

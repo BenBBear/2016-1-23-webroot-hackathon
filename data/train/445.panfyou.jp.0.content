@@ -1,0 +1,2707 @@
+<!DOCTYPE html><html lang="ja" dir="ltr">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- ?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0,user-scalable=no') ? -->
+
+<title>パンフYOU</title>
+
+<meta name="Keywords" content="電子パンフ,スタジオYOU,パンフYOU,同人誌即売会,オンラインYOU,パンフユー,パンフユウ,パンフyou">
+<meta name="Description" content="スタジオYOUが主催する同人誌即売会の電子パンフレット【パンフYOU】。お目当てのサークルを一発検索。そのままお気に入り登録！あなただけの宝の配置図が作れる機能満載です。">
+<link rel="made" href="mailto:support@panfyou.jp">
+<link rel="canonical" href="http://www.panfyou.jp/">
+
+<!--
+<meta property="og:type" content="article">
+<meta property="og:site_name"  content="パンフYOU">
+<meta property="og:description" content="スタジオYOUが主催する同人誌即売会の電子パンフレット【パンフYOU】。お目当てのサークルを一発検索。そのままお気に入り登録！あなただけの宝の配置図が作れる機能満載です。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@studio_you">
+-->
+
+
+<!--
+// ページによって読み込むcssを判定。31行目～js制御参照
+<link rel="stylesheet" type="text/css" href="/css/import.css?c=2" media="screen,print">
+<link rel="stylesheet" type="text/css" href="/css/import.css?c=2" media="screen and (min-width: 641px),print">
+<link rel="stylesheet" type="text/css" href="/css/sp.css" media="screen and (max-width: 640px)">
+-->
+<link href="https://www.panfyou.jp/image/ico/favicon.png" rel="icon" type="image/png">
+<link href="https://www.panfyou.jp/image/ico/favicon.ico" rel="shortcut icon">
+<!-- Scripts -->
+<!--[if lt IE 9]><script type="text/javascript" src="/js/html5.js"></script><![endif]-->
+<script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/js/page-scroller.js"></script><script type="text/javascript">
+
+  // css読み込み処理 ------- start
+  var url=location.href;
+  if(url.indexOf('earlyentry_m',0) >= 0){
+	jQuery("head").append(jQuery('<link rel="stylesheet" type="text/css" href="/css/mb.css" media="screen,print" />'));	  
+  }else if(url.indexOf('earlyticket',0) >= 0){
+	// アーリーエントリーページ
+	if( (navigator.userAgent.indexOf('iPhone') > 0 && navigator.userAgent.indexOf('iPad') == -1) ||
+		navigator.userAgent.indexOf('iPod') > 0 ||
+		navigator.userAgent.indexOf('Android') > 0) {
+		// スマホ用
+		jQuery("head").append(jQuery('<link rel="stylesheet" type="text/css" href="/css/sp.css" media="screen" />'));
+		jQuery("head").append(jQuery('<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">'));
+	}else{
+		// PCの場合はおとなしくimport.css読み込み
+		jQuery("head").append(jQuery('<link rel="stylesheet" type="text/css" href="/css/import.css?c=2" media="screen,print" />'));
+	}
+  }else{
+	jQuery("head").append(jQuery('<link rel="stylesheet" type="text/css" href="/css/import.css?c=2" media="screen,print" />'));
+  }
+  // css読み込み処理 ------- end
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1934761-12']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+  <body>
+    <!-- container -->
+    <div id="container">
+   	 
+  <!-- ▼▼▼ #header start ▼▼▼ -->
+  <div id="header">
+    <h1 id="logo"><a href="https://www.panfyou.jp/web/index"><img src="https://www.panfyou.jp/image/logo.png" alt="パンフYOU" width="260" height="70"></a></h1>
+
+    <!-- ▽▽▽ #login start ▽▽▽ -->
+    <div id="login">
+      <ul id="support">
+        <li id="faqbtn"><a href="https://www.panfyou.jp/web/help/question">よくある質問</a></li>
+        <li id="helpbtn"><a href="https://www.panfyou.jp/web/help">ヘルプ</a></li>
+      </ul>
+      	      	<ul id="signup">
+        <li id="signupbtn"><a href="https://www.panfyou.jp/web/member">新規会員登録</a></li>
+        <li id="loginbtn">
+		
+	        <a href="javascript:onlogin();">ログイン</a>
+		
+		
+        </li>
+      </ul>
+              <div id="loginarea" style="display:none;z-index:100">
+        <form action="https://www.panfyou.jp/web/dologin" name="loginform"  method="POST" onSubmit="return checksave();">
+          <p>
+            <label for="loginid">アカウント種別
+              <a href="https://www.panfyou.jp/web/help/web#w05" target="_blank" title="Ｑ.アカウント種別について" class="noline">
+                <img width="16" height="16" src="https://www.panfyou.jp/image/icon/question-balloon.png" alt="Ｑ.アカウント種別について">
+              </a>：</label><br>
+			  
+				<input id="panfyou" name="type_acount_mini" type="radio" value="panfyou" checked>
+				<label for="panfyou" >パンフYOU</label>
+			
+							／<input id="onlineyou" name="type_acount_mini" type="radio" value="onlineyou">
+				<label for="onlineyou">オンラインYOU</label>
+			          </p>
+		  
+          <p><label for="loginid">メールアドレス：</label><br>
+            <input type="text" id="members_id" name="members_id" class="wh200">
+          </p>
+		  
+          <p><label for="loginpassword">パスワード：</label><br>
+            <input type="password" id="password" name="password" class="wh200">
+          </p>
+          <p class="right_m">
+            <input type="checkbox" id="MemberRemember" name="memberremember" checked>
+            <label for="MemberRemember">ログインIDの保存</label>
+            <input name="ok" type="submit" value="ログイン" class="btn_pink_m" >
+          </p>
+          <p class="right_m"><a href="https://www.panfyou.jp/web/passwordreminder">※パスワードをお忘れの方</a></p>
+        </form>
+      </div>
+    </div>
+    <!-- △△△ /#login end △△△ -->
+    <!-- ▽▽▽ #menu start ▽▽▽ -->
+    <div id="description">
+      <p class="bottom5">パンフYOUは、<strong>基本料無料</strong>で使える、<br>スタジオYOUイベントの電子パンフレットサービスです。</p>
+      <p><a href="https://www.panfyou.jp/web/help/free_pr">無料のご利用範囲 &gt;&gt;</a> <a href="https://www.panfyou.jp/web/help/premium_pr">プレミアム会員のご利用範囲 &gt;&gt;</a></p>
+    </div>
+    <div id="gmenu" style="display:none">
+      <ul>
+        <li id="gmenu01"><a href="#">イベント検索</a></li>
+      </ul>
+    </div>
+    <!-- △△△ /#menu end  △△△ -->
+  </div>
+  <!-- ▲▲▲ / header end ▲▲▲ -->
+<hr>
+<script type="text/javascript" src="/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="/js/web/login.js"></script>
+<script type="text/javascript">
+  var url=location.href;
+  if(url.indexOf('earlyticket',0) >= 0){
+	// アーリーエントリーページ
+	if( (navigator.userAgent.indexOf('iPhone') > 0 && navigator.userAgent.indexOf('iPad') == -1) ||
+		navigator.userAgent.indexOf('iPod') > 0 ||
+		navigator.userAgent.indexOf('Android') > 0) {
+		// スマホ用
+	    $('#description').hide();
+	}
+  }
+</script>   	 <!-- ▼▼▼ #contents start ▼▼▼ -->
+  	 <div id="contents">
+      <!-- ▽▽▽ #main start ▽▽▽ -->
+   	   <div id="main">
+   	   <link rel="stylesheet" type="text/css" href="/js/fancybox/jquery.fancybox-1.3.4.css" media="screen,print">
+<script type="text/javascript" src="https://www.panfyou.jp/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+  $("a.cirxle_pixiv_sample").fancybox();
+});
+
+function get_server_time() {// sliderimg.js で使う
+
+	return 1453505229000;
+}
+
+</script>
+    <!-- ▽ #slider start ▽ -->
+
+
+<script type="text/javascript" src="https://www.panfyou.jp/js/sliderimg.js?c=1453505229"></script>
+
+
+
+	<script>slidearea("https://www.panfyou.jp/web/news")</script>
+      <!-- △ / slider end △ -->
+      <!--<div id="mainimg"> <img src="image/mainimg/img_20130331.jpg" width="960" height="300"> </div> -->
+      <!-- ▼▼ #main_contents start ▼▼ -->
+      <div id="main_contents">
+
+    <p><a href="https://www.panfyou.jp/web/help/premium_pr" target="_blank"><img src="https://www.panfyou.jp/image/bn/bn_panfuyou_premium690x60.gif" width="690" height="60"></a></p>
+
+<!-- ▽ #history start ▽ -->
+<div id="history" style="">
+          <h3 id="h3_notice">お知らせ</h3>
+<!-- entriesbox -->
+          <div class="entriesbox">
+
+
+
+
+
+
+            <h6 class="attention">重要なお知らせ</h6>
+
+
+            <ul>
+              <!-- <li>現在、重要なお知らせはありません。</li> -->
+
+<!-- アーリー女子更衣室 //-->
+<!--// アーリー女子更衣室 -->
+
+
+
+
+
+<!-- 年末年始のお知らせ// -->
+
+
+<!-- //年末年始のお知らせ -->
+
+<!-- SW期間中の決済方法制限// -->
+
+
+<!-- //SW期間中の決済方法制限 -->
+<!-- ペイジェントメンテナンス// -->
+
+
+
+
+
+<li><a href="https://www.panfyou.jp/web/spage/maintenance">
+<span style="text-decoration:underline; color:red;"><strong>1/25(月)1:00～6:00 決済メンテナンスのお知らせ(カード決済)</strong></span></a></li>
+
+
+<!-- //ペイジェントメンテナンス -->
+
+
+
+
+<!--その他重要なお知らせ-->
+<!--               <li><a href="https://www.panfyou.jp/web/spage/attention" target="_blank">
+              <span style="text-decoration:underline; color:red;"><strong>【重要】</strong>プレミアムチケットの仕様が変わりました。</span></a>
+              </li>
+ -->
+
+
+
+            </ul>
+
+
+<!--
+              <p><span style="color:red;">アーリーエントリーご利用時の<strong> 「整理券」 </strong>の配布が、この度終了となりました。　<a href="https://www.panfyou.jp/web/help/earlyentry#e04" >新しい入場方法の詳細はこちら≫</a></span></a></p>
+-->
+
+          </div>
+<!-- /entriesbox -->
+
+</div>
+<!-- △ /#history end △ -->
+
+
+        <!-- ▽ #weekendevent start ▽ -->
+        <div id="weekendevent">
+          <h3 id="h3_weekend">今週末開催のイベント</h3>
+
+
+
+<!-- ▽▽▽ 今週末イベントパンフレット ▽▽▽ －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－ -->
+
+
+
+<!-- ▲▲▲今週末イベントパンフレット▲▲▲ －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－ --><!-- ▽▽▽ 今週末イベントパンフレット ▽▽▽ －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－ -->
+
+<!-- entriesbox -->
+
+          <div class="entriesbox">
+
+	<h4><a href="https://www.panfyou.jp/web/news?mid=360" target="_blank" class="pamph_name">1/24 大阪（堺市産業振興センター）同時開催イベント</a>
+
+
+
+<span style="display:inline-block;"><!-- event_buttons -->
+
+
+
+
+
+
+
+
+
+
+<!-- event_buttons --></span>
+
+	</h4>
+
+<!-- ▽▽▽ パンフ表紙とテキストリンクリスト ▽▽▽ -->
+
+  <!-- weekend_box -->
+            <div class="weekend_box">
+              <!-- weekend_hyoushi -->
+                <div class="weekend_hyoushi">
+                  <a href="https://www.panfyou.jp/web/news?mid=360" target="_blank">
+          <img src="https://www.panfyou.jp/image/weekend/img_20160124osaka_h.jpg" width="230" height="160"></a>
+                </div>
+              <!-- //weekend_hyoushi -->
+
+              <!-- weekend_events -->
+                <div class="weekend_events">
+          <div class="paddingleft5em">                  <ul class="events_text_list">
+          
+                    <li><span class="icon_map map_kinki">【近畿】</span>          <a href="https://www.panfyou.jp/web/news?mid=360" target="_blank">ORIGIN Live Osaka(オリジナル作品)</a></li>
+
+          
+                    <li><span class="icon_map map_kinki">【近畿】</span>          <a href="https://www.panfyou.jp/web/news?mid=360" target="_blank">ハンドメイド・クリエ Osaka(手作り雑貨・アクセサリー)</a></li>
+
+                            </ul>
+          </div>                </div>
+              <!-- //weekend_events -->
+
+            </div>
+  <!-- //weekend_box -->
+
+<!-- ▲▲▲ パンフ表紙とテキストリンクリスト ▲▲▲ -->
+
+
+
+
+
+
+
+
+
+
+<!-- ▽▽▽ プレミアム/一般公開告知 ▽▽▽ -->
+
+            <div class="attentionarea">
+              <p><strong>プレミアム会員様へ先行公開中！(1/15～)</strong></p>
+              <p><strong>一般会員様へ公開中！(1/18～)</strong></p>
+
+              
+                    </div>
+
+<!-- ▲▲▲ プレミアム/一般公開告知 ▲▲▲ -->
+
+
+            <hr>
+  <!-- weekend_box -->
+              <div class="weekend_box">
+              <!-- weekend_genre -->
+
+                <div class="weekend_genre">
+
+          
+                      <div class="events_genre_list">
+                            <a href="https://www.panfyou.jp/web/news?mid=360" target="_blank">
+              <img src="https://www.panfyou.jp/image/weekend/img_20160124osaka_g01.jpg" width="100" height="100" alt="ORIGIN Live Osaka"></a>
+                            <p><a href="https://www.panfyou.jp/web/news?mid=360" target="_blank">
+              <span class="genre_title">【オリジナル作品】</span><br>ORIGIN Live Osaka</a></p>
+                      </div>
+
+          
+                      <div class="events_genre_list">
+                            <a href="https://www.panfyou.jp/web/news?mid=360" target="_blank">
+              <img src="https://www.panfyou.jp/image/weekend/img_20160124osaka_g02.jpg" width="100" height="100" alt="ハンドメイド・クリエ Osaka"></a>
+                            <p><a href="https://www.panfyou.jp/web/news?mid=360" target="_blank">
+              <span class="genre_title">【手作り雑貨・アクセサリー】</span><br>ハンドメイド・クリエ Osaka</a></p>
+                      </div>
+
+          
+                </div>
+              <!-- //weekend_genre -->
+            </div>
+  <!-- //weekend_box -->
+
+          </div>
+<!-- //entriesbox -->
+
+
+<!-- ▲▲▲今週末イベントパンフレット▲▲▲ －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－ --><!-- ▽▽▽ 今週末イベントパンフレット ▽▽▽ －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－ -->
+
+<!-- entriesbox -->
+
+          <div class="entriesbox">
+
+	<h4><a href="https://www.panfyou.jp/web/news?mid=361" target="_blank" class="pamph_name">1/31 ウインターオンリーフェスタ2016</a>
+
+
+
+<span style="display:inline-block;"><!-- event_buttons -->
+
+
+
+		
+	<a href="https://www.panfyou.jp/support/earlyticket?mid=361#early_cosplay" target="_blank">
+	<img src="https://www.panfyou.jp/image/icon/s_icon_early_cosplay.png" height="20"></a>
+	
+	
+
+<a href="https://www.panfyou.jp/support/earlyticket?mid=361" target="_blank">
+<img src="https://www.panfyou.jp/image/icon/s_icon_early.png" height="20"></a>
+
+
+
+
+	
+	<a href="https://www.panfyou.jp/support/circleconcierge#cir_cosplay" target="_blank">
+	<img src="https://www.panfyou.jp/image/icon/s_icon_cosplay.png" height="20"></a>
+	
+	
+
+		
+	<a href="https://www.panfyou.jp/support/circleconcierge#cir_cosplay" target="_blank">
+	<img src="https://www.panfyou.jp/image/icon/s_icon_cloak.png" height="20"></a>
+	
+	
+
+<a href="https://www.panfyou.jp/support/circleconcierge#cir_yamato" target="_blank">
+<img src="https://www.panfyou.jp/image/icon/s_icon_yamato.png" height="20"></a>
+
+
+
+
+
+
+
+<!-- event_buttons --></span>
+
+	</h4>
+
+<!-- ▽▽▽ パンフ表紙とテキストリンクリスト ▽▽▽ -->
+
+  <!-- weekend_box -->
+            <div class="weekend_box">
+              <!-- weekend_hyoushi -->
+                <div class="weekend_hyoushi">
+                  <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+          <img src="https://www.panfyou.jp/image/weekend/img_20160131bigsite_h.jpg" width="230" height="160"></a>
+                </div>
+              <!-- //weekend_hyoushi -->
+
+              <!-- weekend_events -->
+                <div class="weekend_events">
+          <div class="paddingleft5em">                  <ul class="events_text_list">
+          
+                    <li><span class="icon_map map_kantou">【関東】</span>          <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">ディメンションズ☆バトル(遊戯王ARC‐V)</a></li>
+
+          
+                    <li><span class="icon_map map_kantou">【関東】</span>          <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">Freedom Game(PCフリーゲーム)</a></li>
+
+          
+                    <li><span class="icon_map map_kantou">【関東】</span>          <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">王の器13(Fateシリーズ)</a></li>
+
+          
+                    <li><span class="icon_map map_kantou">【関東】</span>          <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">F～novum～XV(FFシリーズ)</a></li>
+
+          
+                    <li><span class="icon_map map_kantou">【関東】</span>          <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">リズミカル☆ボーイズ(プリティーリズム＆プリパラシリーズ プリズムボーイズ中心)</a></li>
+
+          
+                    <li><span class="icon_map map_kantou">【関東】</span>          <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">流星★ヒーローズ(あんさんぶるスターズ! 流星隊中心)</a></li>
+
+          
+                    <li><span class="icon_map map_kantou">【関東】</span>          <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">Undead・Darkness(あんさんぶるスターズ! UNDEAD中心)</a></li>
+
+          
+                    <li><span class="icon_map map_kantou">【関東】</span>          <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">Knights Theory(あんさんぶるスターズ！ Knights)</a></li>
+
+          
+                    <li><span class="icon_map map_kantou">【関東】</span>          <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">君に与へし恋の燭光(刀剣乱舞 へし切長谷部×燭台切光忠)</a></li>
+
+          
+                    <li><span class="icon_map map_kantou">【関東】</span>          <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">幸運ものよし(刀剣乱舞 物吉貞宗中心)</a></li>
+
+          
+                    <li><span class="icon_map map_kantou">【関東】</span>          <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">Sugar Honey Bee3(黒子のバスケ 黄瀬涼太×黒子テツヤ)</a></li>
+
+          
+                    <li><span class="icon_map map_kantou">【関東】</span>          <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">CLEVER MOON4(ハイキュー!!月島蛍中心)</a></li>
+
+          
+                    <li><span class="icon_map map_kantou">【関東】</span>          <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">京伏珍道中 2 ～ほな行こか～(弱虫ペダル 京都伏見高校)</a></li>
+
+          
+                    <li><span class="icon_map map_kantou">【関東】</span>          <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">おれらは二遊間(ダイヤのA 青道高校 新旧二遊間中心)</a></li>
+
+          
+                    <li><span class="icon_map map_kantou">【関東】</span>          <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">千夜一夜13(マギ)</a></li>
+
+          
+                    <li><span class="icon_map map_kantou">【関東】</span>          <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">コントラクト ヴァンプ(サーヴァンプ)</a></li>
+
+          
+                    <li><span class="icon_map map_kantou">【関東】</span>          <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">Gravity Kiss4(TIGER＆BUNNY ライアン・ゴールドスミス中心)</a></li>
+
+          
+                    <li><span class="icon_map map_kantou">【関東】</span>          <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">幻蒼のシャングリラ#2(蒼穹のファフナーシリーズ)</a></li>
+
+          
+                    <li><span class="icon_map map_kantou">【関東】</span>          <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">恋愛ジョーズ6(Free! 松岡 凛 受)</a></li>
+
+          
+                    <li><span class="icon_map map_kantou">【関東】</span>          <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">その男、最強につき×4(デュラララ!!静雄受)</a></li>
+
+                            </ul>
+          </div>                </div>
+              <!-- //weekend_events -->
+
+            </div>
+  <!-- //weekend_box -->
+
+<!-- ▲▲▲ パンフ表紙とテキストリンクリスト ▲▲▲ -->
+
+
+
+
+            <p class="center marginbtm10 margintop10">
+              <strong>当イベントでアーリーエントリー、アーリー女子更衣室を実施いたします。</strong>
+            </p>
+            <div class="centerarea">
+
+
+      
+              <a href="https://www.panfyou.jp/support/earlyticket?mid=361" class="bigbutton btn_pink_a" target="_blank">アーリーエントリーTICKETの表示はこちら</a>
+
+      
+
+              <p class="margintop10">入力したアドレス宛てにアーリーエントリーページのＵＲＬをメール送信します。<br/>お手持ちの携帯電話に送信しておくと、イベント当日に直ぐにアクセス出来て便利です。</p>
+                <input type="text" name="sendearlymailaddress" id="sendearlymailaddress" class="p_memo wh300" value=""/>
+                <input type="button" onclick="sendearlymail();" class="btn_yellow_m" value="メール送信する"/>
+                <input type="hidden" name="sendmailmid" id="sendmailmid" value="361"/>
+              </p>
+            </div>
+
+
+
+            <p class="center marginbtm10 margintop10">
+              <strong>当イベントでサークル・コンシェルジュ</strong>※<strong>を実施いたします。</strong>
+            </p>
+
+
+      <p class="margintop10">※当イベントでは「
+<strong>プレミアム女子更衣室</strong>、<strong>プレミアムクローク</strong>、<strong>お帰りのクロネコヤマト集荷サービス</strong>」を実施予定です。</p>
+
+      <p>※イベントにより実施できないサービスがございます。あらかじめご了承ください。</p>
+      <p class="marginbtm10">詳細、ご利用方法につきましては、<a href="https://www.panfyou.jp/support/circleconcierge" target="_blank">こちら</a>をご覧ください。</p>
+
+
+
+
+
+<!-- ▽▽▽ プレミアム/一般公開告知 ▽▽▽ -->
+
+            <div class="attentionarea">
+			
+              <p><strong>ただ今、プレミアム会員様へ先行公開中！(1/22～)</strong></p>
+              <p><strong>プレミアム会員様は、「配置図」「検索」「お気に入り」機能をご利用いただけます。</strong></p>
+              <p>一般会員様へは3日後の公開予定です。(1/25～)</p>
+                    </div>
+
+<!-- ▲▲▲ プレミアム/一般公開告知 ▲▲▲ -->
+
+
+            <hr>
+  <!-- weekend_box -->
+              <div class="weekend_box">
+              <!-- weekend_genre -->
+
+                <div class="weekend_genre">
+
+          
+                      <div class="events_genre_list">
+                            <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <img src="https://www.panfyou.jp/image/weekend/img_20160131bigsite_g01.jpg" width="100" height="100" alt="ディメンションズ☆バトル"></a>
+                            <p><a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <span class="genre_title">【遊戯王ARC‐V】</span><br>ディメンションズ☆バトル</a></p>
+                      </div>
+
+          
+                      <div class="events_genre_list">
+                            <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <img src="https://www.panfyou.jp/image/weekend/img_20160131bigsite_g02.jpg" width="100" height="100" alt="Freedom Game"></a>
+                            <p><a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <span class="genre_title">【PCフリーゲーム】</span><br>Freedom Game</a></p>
+                      </div>
+
+          
+                      <div class="events_genre_list">
+                            <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <img src="https://www.panfyou.jp/image/weekend/img_20160131bigsite_g03.jpg" width="100" height="100" alt="王の器13"></a>
+                            <p><a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <span class="genre_title">【Fateシリーズ】</span><br>王の器13</a></p>
+                      </div>
+
+          
+                      <div class="events_genre_list">
+                            <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <img src="https://www.panfyou.jp/image/weekend/img_20160131bigsite_g04.jpg" width="100" height="100" alt="F～novum～XV"></a>
+                            <p><a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <span class="genre_title">【FFシリーズ】</span><br>F～novum～XV</a></p>
+                      </div>
+
+          
+                      <div class="events_genre_list">
+                            <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <img src="https://www.panfyou.jp/image/weekend/img_20160131bigsite_g05.jpg" width="100" height="100" alt="リズミカル☆ボーイズ"></a>
+                            <p><a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <span class="genre_title">【プリティーリズム＆プリパラシリーズ プリズムボーイズ中心】</span><br>リズミカル☆ボーイズ</a></p>
+                      </div>
+
+          
+                      <div class="events_genre_list">
+                            <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <img src="https://www.panfyou.jp/image/weekend/img_20160131bigsite_g06.jpg" width="100" height="100" alt="流星★ヒーローズ"></a>
+                            <p><a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <span class="genre_title">【あんさんぶるスターズ! 流星隊中心】</span><br>流星★ヒーローズ</a></p>
+                      </div>
+
+          
+                      <div class="events_genre_list">
+                            <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <img src="https://www.panfyou.jp/image/weekend/img_20160131bigsite_g07.jpg" width="100" height="100" alt="Undead・Darkness"></a>
+                            <p><a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <span class="genre_title">【あんさんぶるスターズ! UNDEAD中心】</span><br>Undead・Darkness</a></p>
+                      </div>
+
+          
+                      <div class="events_genre_list">
+                            <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <img src="https://www.panfyou.jp/image/weekend/img_20160131bigsite_g08.jpg" width="100" height="100" alt="Knights Theory"></a>
+                            <p><a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <span class="genre_title">【あんさんぶるスターズ！ Knights】</span><br>Knights Theory</a></p>
+                      </div>
+
+          
+                      <div class="events_genre_list">
+                            <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <img src="https://www.panfyou.jp/image/weekend/img_20160131bigsite_g09.jpg" width="100" height="100" alt="君に与へし恋の燭光"></a>
+                            <p><a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <span class="genre_title">【刀剣乱舞 へし切長谷部×燭台切光忠】</span><br>君に与へし恋の燭光</a></p>
+                      </div>
+
+          
+                      <div class="events_genre_list">
+                            <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <img src="https://www.panfyou.jp/image/weekend/img_20160131bigsite_g10.jpg" width="100" height="100" alt="幸運ものよし"></a>
+                            <p><a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <span class="genre_title">【刀剣乱舞 物吉貞宗中心】</span><br>幸運ものよし</a></p>
+                      </div>
+
+          
+                      <div class="events_genre_list">
+                            <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <img src="https://www.panfyou.jp/image/weekend/img_20160131bigsite_g11.jpg" width="100" height="100" alt="Sugar Honey Bee3"></a>
+                            <p><a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <span class="genre_title">【黒子のバスケ 黄瀬涼太×黒子テツヤ】</span><br>Sugar Honey Bee3</a></p>
+                      </div>
+
+          
+                      <div class="events_genre_list">
+                            <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <img src="https://www.panfyou.jp/image/weekend/img_20160131bigsite_g12.jpg" width="100" height="100" alt="CLEVER MOON4"></a>
+                            <p><a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <span class="genre_title">【ハイキュー!!月島蛍中心】</span><br>CLEVER MOON4</a></p>
+                      </div>
+
+          
+                      <div class="events_genre_list">
+                            <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <img src="https://www.panfyou.jp/image/weekend/img_20160131bigsite_g13.jpg" width="100" height="100" alt="京伏珍道中 2 ～ほな行こか～"></a>
+                            <p><a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <span class="genre_title">【弱虫ペダル 京都伏見高校】</span><br>京伏珍道中 2 ～ほな行こか～</a></p>
+                      </div>
+
+          
+                      <div class="events_genre_list">
+                            <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <img src="https://www.panfyou.jp/image/weekend/img_20160131bigsite_g14.jpg" width="100" height="100" alt="おれらは二遊間"></a>
+                            <p><a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <span class="genre_title">【ダイヤのA 青道高校 新旧二遊間中心】</span><br>おれらは二遊間</a></p>
+                      </div>
+
+          
+                      <div class="events_genre_list">
+                            <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <img src="https://www.panfyou.jp/image/weekend/img_20160131bigsite_g15.jpg" width="100" height="100" alt="千夜一夜13"></a>
+                            <p><a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <span class="genre_title">【マギ】</span><br>千夜一夜13</a></p>
+                      </div>
+
+          
+                      <div class="events_genre_list">
+                            <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <img src="https://www.panfyou.jp/image/weekend/img_20160131bigsite_g16.jpg" width="100" height="100" alt="コントラクト ヴァンプ"></a>
+                            <p><a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <span class="genre_title">【サーヴァンプ】</span><br>コントラクト ヴァンプ</a></p>
+                      </div>
+
+          
+                      <div class="events_genre_list">
+                            <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <img src="https://www.panfyou.jp/image/weekend/img_20160131bigsite_g17.jpg" width="100" height="100" alt="Gravity Kiss4"></a>
+                            <p><a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <span class="genre_title">【TIGER＆BUNNY ライアン・ゴールドスミス中心】</span><br>Gravity Kiss4</a></p>
+                      </div>
+
+          
+                      <div class="events_genre_list">
+                            <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <img src="https://www.panfyou.jp/image/weekend/img_20160131bigsite_g18.jpg" width="100" height="100" alt="幻蒼のシャングリラ#2"></a>
+                            <p><a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <span class="genre_title">【蒼穹のファフナーシリーズ】</span><br>幻蒼のシャングリラ#2</a></p>
+                      </div>
+
+          
+                      <div class="events_genre_list">
+                            <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <img src="https://www.panfyou.jp/image/weekend/img_20160131bigsite_g19.jpg" width="100" height="100" alt="恋愛ジョーズ6"></a>
+                            <p><a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <span class="genre_title">【Free! 松岡 凛 受】</span><br>恋愛ジョーズ6</a></p>
+                      </div>
+
+          
+                      <div class="events_genre_list">
+                            <a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <img src="https://www.panfyou.jp/image/weekend/img_20160131bigsite_g20.jpg" width="100" height="100" alt="その男、最強につき×4"></a>
+                            <p><a href="https://www.panfyou.jp/web/news?mid=361" target="_blank">
+              <span class="genre_title">【デュラララ!!静雄受】</span><br>その男、最強につき×4</a></p>
+                      </div>
+
+          
+                </div>
+              <!-- //weekend_genre -->
+            </div>
+  <!-- //weekend_box -->
+
+          </div>
+<!-- //entriesbox -->
+
+
+
+<!-- entriesbox -->
+
+          <div class="entriesbox">
+
+	<h4><a href="https://www.panfyou.jp/web/news?mid=362" target="_blank" class="pamph_name">1/31 おでかけライブin山形121 今年もヨロシク2016</a>
+
+
+
+<span style="display:inline-block;"><!-- event_buttons -->
+
+
+
+
+
+
+
+
+
+
+<!-- event_buttons --></span>
+
+	</h4>
+
+<!-- ▽▽▽ パンフ表紙とテキストリンクリスト ▽▽▽ -->
+
+  <!-- weekend_box -->
+            <div class="weekend_box">
+              <!-- weekend_hyoushi -->
+                <div class="weekend_hyoushi">
+                  <a href="https://www.panfyou.jp/web/news?mid=362" target="_blank">
+          <img src="https://www.panfyou.jp/image/weekend/img_20160131yamagata_h.jpg" width="160" height="230"></a>
+                </div>
+              <!-- //weekend_hyoushi -->
+
+              <!-- weekend_events -->
+                <div class="weekend_events">
+                            <ul class="events_text_list">
+          
+                    <li><span class="icon_map map_tohoku">【東北】</span>          <a href="https://www.panfyou.jp/web/news?mid=362" target="_blank">おでかけライブin山形121 今年もヨロシク2016(オールジャンル)</a></li>
+
+                            </ul>
+                          </div>
+              <!-- //weekend_events -->
+
+            </div>
+  <!-- //weekend_box -->
+
+<!-- ▲▲▲ パンフ表紙とテキストリンクリスト ▲▲▲ -->
+
+
+
+
+
+
+
+
+
+
+<!-- ▽▽▽ プレミアム/一般公開告知 ▽▽▽ -->
+
+            <div class="attentionarea">
+			
+              <p><strong>ただ今、プレミアム会員様へ先行公開中！(1/22～)</strong></p>
+              <p><strong>プレミアム会員様は、「配置図」「検索」「お気に入り」機能をご利用いただけます。</strong></p>
+              <p>一般会員様へは3日後の公開予定です。(1/25～)</p>
+                    </div>
+
+<!-- ▲▲▲ プレミアム/一般公開告知 ▲▲▲ -->
+
+
+            <hr>
+  <!-- weekend_box -->
+              <div class="weekend_box">
+              <!-- weekend_genre -->
+
+                <div class="weekend_genre">
+
+          
+                      <div class="events_genre_list">
+                            <a href="https://www.panfyou.jp/web/news?mid=362" target="_blank">
+              <img src="https://www.panfyou.jp/image/weekend/img_20160131yamagata_g01.jpg" width="100" height="100" alt="おでかけライブin山形121 今年もヨロシク2016"></a>
+                            <p><a href="https://www.panfyou.jp/web/news?mid=362" target="_blank">
+              <span class="genre_title">【オールジャンル】</span><br>おでかけライブin山形121 今年もヨロシク2016</a></p>
+                      </div>
+
+          
+                </div>
+              <!-- //weekend_genre -->
+            </div>
+  <!-- //weekend_box -->
+
+          </div>
+<!-- //entriesbox -->
+
+
+
+<!-- entriesbox -->
+
+          <div class="entriesbox">
+
+	<h4><a href="https://www.panfyou.jp/web/news?mid=363" target="_blank" class="pamph_name">1/31 おでかけライブin浜松179 今年もヨロシク2016</a>
+
+
+
+<span style="display:inline-block;"><!-- event_buttons -->
+
+
+
+
+
+
+
+
+
+
+<!-- event_buttons --></span>
+
+	</h4>
+
+<!-- ▽▽▽ パンフ表紙とテキストリンクリスト ▽▽▽ -->
+
+  <!-- weekend_box -->
+            <div class="weekend_box">
+              <!-- weekend_hyoushi -->
+                <div class="weekend_hyoushi">
+                  <a href="https://www.panfyou.jp/web/news?mid=363" target="_blank">
+          <img src="https://www.panfyou.jp/image/weekend/img_20160131hamamatu_h.jpg" width="160" height="230"></a>
+                </div>
+              <!-- //weekend_hyoushi -->
+
+              <!-- weekend_events -->
+                <div class="weekend_events">
+                            <ul class="events_text_list">
+          
+                    <li><span class="icon_map map_tokai">【中部・東海】</span>          <a href="https://www.panfyou.jp/web/news?mid=363" target="_blank">おでかけライブin浜松179 今年もヨロシク2016(オールジャンル)</a></li>
+
+                            </ul>
+                          </div>
+              <!-- //weekend_events -->
+
+            </div>
+  <!-- //weekend_box -->
+
+<!-- ▲▲▲ パンフ表紙とテキストリンクリスト ▲▲▲ -->
+
+
+
+
+
+
+
+
+
+
+<!-- ▽▽▽ プレミアム/一般公開告知 ▽▽▽ -->
+
+            <div class="attentionarea">
+			
+              <p><strong>ただ今、プレミアム会員様へ先行公開中！(1/22～)</strong></p>
+              <p><strong>プレミアム会員様は、「配置図」「検索」「お気に入り」機能をご利用いただけます。</strong></p>
+              <p>一般会員様へは3日後の公開予定です。(1/25～)</p>
+                    </div>
+
+<!-- ▲▲▲ プレミアム/一般公開告知 ▲▲▲ -->
+
+
+            <hr>
+  <!-- weekend_box -->
+              <div class="weekend_box">
+              <!-- weekend_genre -->
+
+                <div class="weekend_genre">
+
+          
+                      <div class="events_genre_list">
+                            <a href="https://www.panfyou.jp/web/news?mid=363" target="_blank">
+              <img src="https://www.panfyou.jp/image/weekend/img_20160131hamamatu_g01.jpg" width="100" height="100" alt="おでかけライブin浜松179 今年もヨロシク2016"></a>
+                            <p><a href="https://www.panfyou.jp/web/news?mid=363" target="_blank">
+              <span class="genre_title">【オールジャンル】</span><br>おでかけライブin浜松179 今年もヨロシク2016</a></p>
+                      </div>
+
+          
+                </div>
+              <!-- //weekend_genre -->
+            </div>
+  <!-- //weekend_box -->
+
+          </div>
+<!-- //entriesbox -->
+
+
+
+<!-- entriesbox -->
+
+          <div class="entriesbox">
+
+	<h4><a href="https://www.panfyou.jp/web/news?mid=364" target="_blank" class="pamph_name">1/31 おでかけライブin高知80 今年もヨロシク2016</a>
+
+
+
+<span style="display:inline-block;"><!-- event_buttons -->
+
+
+
+
+
+
+
+
+
+
+<!-- event_buttons --></span>
+
+	</h4>
+
+<!-- ▽▽▽ パンフ表紙とテキストリンクリスト ▽▽▽ -->
+
+  <!-- weekend_box -->
+            <div class="weekend_box">
+              <!-- weekend_hyoushi -->
+                <div class="weekend_hyoushi">
+                  <a href="https://www.panfyou.jp/web/news?mid=364" target="_blank">
+          <img src="https://www.panfyou.jp/image/weekend/img_20160131kouti_h.jpg" width="160" height="230"></a>
+                </div>
+              <!-- //weekend_hyoushi -->
+
+              <!-- weekend_events -->
+                <div class="weekend_events">
+                            <ul class="events_text_list">
+          
+                    <li><span class="icon_map map_shikoku">【四国】</span>          <a href="https://www.panfyou.jp/web/news?mid=364" target="_blank">おでかけライブin高知80 今年もヨロシク2016(オールジャンル)</a></li>
+
+                            </ul>
+                          </div>
+              <!-- //weekend_events -->
+
+            </div>
+  <!-- //weekend_box -->
+
+<!-- ▲▲▲ パンフ表紙とテキストリンクリスト ▲▲▲ -->
+
+
+
+
+
+
+
+
+
+
+<!-- ▽▽▽ プレミアム/一般公開告知 ▽▽▽ -->
+
+            <div class="attentionarea">
+			
+              <p><strong>ただ今、プレミアム会員様へ先行公開中！(1/22～)</strong></p>
+              <p><strong>プレミアム会員様は、「配置図」「検索」「お気に入り」機能をご利用いただけます。</strong></p>
+              <p>一般会員様へは3日後の公開予定です。(1/25～)</p>
+                    </div>
+
+<!-- ▲▲▲ プレミアム/一般公開告知 ▲▲▲ -->
+
+
+            <hr>
+  <!-- weekend_box -->
+              <div class="weekend_box">
+              <!-- weekend_genre -->
+
+                <div class="weekend_genre">
+
+          
+                      <div class="events_genre_list">
+                            <a href="https://www.panfyou.jp/web/news?mid=364" target="_blank">
+              <img src="https://www.panfyou.jp/image/weekend/img_20160131kouti_g01.jpg" width="100" height="100" alt="おでかけライブin高知80 今年もヨロシク2016"></a>
+                            <p><a href="https://www.panfyou.jp/web/news?mid=364" target="_blank">
+              <span class="genre_title">【オールジャンル】</span><br>おでかけライブin高知80 今年もヨロシク2016</a></p>
+                      </div>
+
+          
+                </div>
+              <!-- //weekend_genre -->
+            </div>
+  <!-- //weekend_box -->
+
+          </div>
+<!-- //entriesbox -->
+
+
+<!-- ▲▲▲今週末イベントパンフレット▲▲▲ －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－ -->
+
+<!-- 今週公開ここまで －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－ -->
+
+
+<!-- entriesbox -->
+          <div class="entriesbox">
+            <!--
+
+
+アーリーエントリー・サークルコンシェルジュ適用時ｈ4の下に挿入mid変更してね
+
+            <h4>4/6 スプリングオンリーフェスタ2014 PART2<br><a href="https://www.panfyou.jp/support/earlyticket?mid=74" target="_blank"><img src="https://www.panfyou.jp/image/icon/s_icon_early.png" width="123" height="20" style="margin:3px 10px;"></a><a href="https://www.panfyou.jp/support/circleconcierge" target="_blank"><img src="https://www.panfyou.jp/image/icon/s_icon_concie.png" width="150" height="20" style="margin:3px 10px;"></a>
+            </h4>
+
+            <p class="center marginbtm10 margintop10">
+              <strong>当イベントでアーリーエントリーを実施いたします。</strong>
+            </p>
+
+            <div class="centerarea">
+              <a href="https://www.panfyou.jp/support/earlyticket?mid=65" class="bigbutton btn_pink_a" target="_blank">アーリーエントリーチケットボタンの表示はこちら</a>
+
+              <p class="margintop10">入力したアドレス宛てにアーリーエントリーページのＵＲＬをメール送信します。<br/>事前にお手持ちの携帯電話に送信しておくと、イベント当日に直ぐにアクセス出来て便利です。</p>
+                <input type="text" name="sendearlymailaddress" id="sendearlymailaddress" class="p_memo wh300" value=""/>
+                <input type="button" onclick="sendearlymail();" class="btn_yellow_m" value="メール送信する"/>
+                <input type="hidden" name="sendmailmid" id="sendmailmid" value="65"/>
+              </p>
+            </div>
+
+            <p class="center marginbtm10 margintop10">
+              <strong>当イベントでサークル・コンシェルジュ</strong>※<strong>を実施いたします。</strong>
+            </p>
+            <p class="center">※「<strong>お帰りのクロネコヤマト集荷サービス</strong>」を実施予定です。</p>
+            <p class="center marginbtm10">※イベントにより実施できないサービスがございます。あらかじめご了承ください。</p>
+            <p class="center">詳細、ご利用方法につきましては、<a href="https://www.panfyou.jp/support/circleconcierge" target="_blank">こちら</a>をご覧ください。</p>
+
+
+
+    <span class="icon_map map_hokkaido">【北海道】</span>
+    <span class="icon_map map_tohoku">【東北】</span>
+    <span class="icon_map map_hokuriku">【北陸･上信越】</span>
+    <span class="icon_map map_kantou">【関東】</span>
+    <span class="icon_map map_tokai">【中部･東海】</span>
+    <span class="icon_map map_kinki">【近畿】</span>
+    <span class="icon_map map_chugoku">【中国】</span>
+    <span class="icon_map map_shikoku">【四国】</span>
+    <span class="icon_map map_kyushu">【九州】</span>
+    <span class="icon_map map_okinawa">【沖縄】</span>
+     -->
+            <h4>終了した前回イベントの電子パンフレット</h4>
+
+<!-- ▽▽▽ 終了イベントパンフレット ▽▽▽ －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－ -->
+<!-- ▲▲▲今週末イベントパンフレット▲▲▲ －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－ --><!-- ▽▽▽ 終了イベントパンフレット ▽▽▽ －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－ -->
+<!-- ▲▲▲今週末イベントパンフレット▲▲▲ －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－ --><!-- ▽▽▽ 終了イベントパンフレット ▽▽▽ －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－ -->
+
+		<h6>1/17 ニューイヤーオンリーフェスタ2016</h6>
+			
+			<ul>	
+				<li><span class="icon_map map_kantou">【関東】</span>				<a href="https://www.panfyou.jp/web/news?mid=357" target="_blank">Rank-B 2(ワールドトリガーB級隊員)</a></li>
+
+	
+				<li><span class="icon_map map_kantou">【関東】</span>				<a href="https://www.panfyou.jp/web/news?mid=357" target="_blank">ハートミート・サウスポー(ダイヤのA 御幸一也×沢村栄純)</a></li>
+
+	
+				<li><span class="icon_map map_kantou">【関東】</span>				<a href="https://www.panfyou.jp/web/news?mid=357" target="_blank">二人のゴールは山頂で5(弱虫ペダル 東堂尽八×巻島裕介)</a></li>
+
+	
+				<li><span class="icon_map map_kantou">【関東】</span>				<a href="https://www.panfyou.jp/web/news?mid=357" target="_blank">恋然り～こいしかり～弐(刀剣乱舞 石切丸×にっかり青江)</a></li>
+
+	
+				<li><span class="icon_map map_kantou">【関東】</span>				<a href="https://www.panfyou.jp/web/news?mid=357" target="_blank">絡みつく龍炎(刀剣乱舞 燭台切光忠×大倶利伽羅)</a></li>
+
+	
+				<li><span class="icon_map map_kantou">【関東】</span>				<a href="https://www.panfyou.jp/web/news?mid=357" target="_blank">横槍無用 弐(刀剣乱舞 蜻蛉切×御手杵)</a></li>
+
+	
+				<li><span class="icon_map map_kantou">【関東】</span>				<a href="https://www.panfyou.jp/web/news?mid=357" target="_blank">Victory Road IV(カードファイト!!ヴァンガード)</a></li>
+
+	
+				<li><span class="icon_map map_kantou">【関東】</span>				<a href="https://www.panfyou.jp/web/news?mid=357" target="_blank">君にバキューン!3(弱虫ペダル 新開隼人中心)</a></li>
+
+	
+				<li><span class="icon_map map_kantou">【関東】</span>				<a href="https://www.panfyou.jp/web/news?mid=357" target="_blank">俺様の誕生日だゼ!2(ヘタリア プロイセン中心)</a></li>
+
+	
+				<li><span class="icon_map map_kantou">【関東】</span>				<a href="https://www.panfyou.jp/web/news?mid=357" target="_blank">恋愛エンドルフィン4(Free！七瀬 遙受)</a></li>
+
+	
+				<li><span class="icon_map map_kantou">【関東】</span>				<a href="https://www.panfyou.jp/web/news?mid=357" target="_blank">大和恋慕(刀剣乱舞 大和守安定受)</a></li>
+
+</ul>
+
+
+		<h6>1/17 名古屋（ポートメッセ）同時開催イベント</h6>
+			
+			<ul>	
+				<li><span class="icon_map map_tokai">【中部・東海】</span>				<a href="https://www.panfyou.jp/web/news?mid=358" target="_blank">コミックライブin名古屋 今年もヨロシク2016(オールジャンル)</a></li>
+
+	
+				<li><span class="icon_map map_tokai">【中部・東海】</span>				<a href="https://www.panfyou.jp/web/news?mid=358" target="_blank">恐惶謹言 尾張八(戦国無双・戦国BASARA中心 戦国時代物全般)</a></li>
+
+	
+				<li><span class="icon_map map_tokai">【中部・東海】</span>				<a href="https://www.panfyou.jp/web/news?mid=358" target="_blank">十忍十色 尾張の段 其の十一(落乱・忍たま)</a></li>
+
+	
+				<li><span class="icon_map map_tokai">【中部・東海】</span>				<a href="https://www.panfyou.jp/web/news?mid=358" target="_blank">ROCKIN’SHOWER Central(SHOW BY ROCK!!)</a></li>
+
+	
+				<li><span class="icon_map map_tokai">【中部・東海】</span>				<a href="https://www.panfyou.jp/web/news?mid=358" target="_blank">SING A SONG NAGOYA(ボーカロイドシリーズ)</a></li>
+
+</ul>
+
+
+		<h6>1/17 おでかけライブin前橋127 今年もヨロシク2016</h6>
+			
+			<ul>	
+				<li><span class="icon_map map_kantou">【関東】</span>				<a href="https://www.panfyou.jp/web/news?mid=359" target="_blank">おでかけライブin前橋127 今年もヨロシク2016(オールジャンル)</a></li>
+
+</ul>
+
+<!-- ▲▲▲今週末イベントパンフレット▲▲▲ －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－ -->
+<!-- HTMLサンプル　テンプレ使わない場合は以下コピペ＆手更新
+
+            <h6>パンフ名</h6>
+
+                  <ul>
+
+           <li><span class="icon_map map_area">【地区アイコン】</span>
+           <a href="https://www.panfyou.jp/web/news?mid=89" target="_blank">イベント名(ジャンル名)</a></li>
+
+           <li><span class="icon_map map_area">【地区アイコン】</span>
+           <a href="https://www.panfyou.jp/web/news?mid=89" target="_blank">イベント名(ジャンル名)</a></li>
+
+                  </ul>
+
+-->
+
+          </div>
+<!-- //entriesbox -->
+
+
+<!-- to schedule -->
+<!-- entriesbox_s -->
+          <div class="entriesbox_s">
+          <h6 id="toschedule"><a href="https://www.panfyou.jp/web/schedule/index" target="_blank">これから公開予定のイベント&gt;&gt;</a></h6>
+          </div>
+<!--
+          <div class="entriesbox_s">
+          <h6 id="toschedule">
+            <input type="text" name="sendearlymailaddress" id="sendearlymailaddress" value=""/>
+            <input type="button" onclick="sendearlymail();" value="最新アーリーチケットページＵＲＬメール送信"/>
+            <input type="hidden" name="sendmailmid" id="sendmailmid" value="61"/>
+          </h6>
+          </div>
+-->
+<!-- //entriesbox_s -->
+
+
+        </div>
+        <!-- △ /#weekendevent end △ -->
+
+      </div>
+      <!-- ▲▲ /#main_contents end ▲▲ -->
+
+      <div id="sider">
+<!-- キャンペーンバナー -->
+<!-- プレミアム会員登録バナー -->
+              <!-- ログインして決済へ -->
+        <p class="banner"><a href="https://www.panfyou.jp/web/login?rd=topayment"><img src="https://www.panfyou.jp/image/bn/bn_panfyou_premium.gif" alt="【パンフYOUプレミアム】会員プランご購入はこちら" width="240" height="60"></a></p>
+      <!-- チケット登録バナー -->
+              <!-- ログインして決済へ -->
+        <p class="banner"><a href="https://www.panfyou.jp/web/login?rd=topayment"><img src="https://www.panfyou.jp/image/bn/bn_ticket_pay.jpg" alt="プレミアムチケットのご利用はこちら" width="240" height="150"></a></p>
+      
+              <p id="signup"><a href="https://www.panfyou.jp/web/member">新規会員登録</a></p>
+        
+        <p class="banner"><a href="https://www.panfyou.jp/web/spage/pr_plus"><img src="https://www.panfyou.jp/image/bn/bn_panfuyouplus_s.gif" alt="【パンフYOUプラス】がスタートします！" width="240" height="60"></a></p>
+
+        <!-- ▽ #history start ▽ -->
+        <div id="history2">
+          <div class="entriesbox">
+           <h6>パンフYOU公開履歴</h6>
+            <dl class="newslist">
+                                                                                <dt>【2016/01/22】</dt>
+              <dd>【1/31 ウインターオンリーフェスタ2016】をプレミアム先行公開しました。</dd>
+                           <dt>【2016/01/22】</dt>
+              <dd>【1/31 おでかけライブin山形121 今年もヨロシク2016】をプレミアム先行公開しました。</dd>
+                           <dt>【2016/01/22】</dt>
+              <dd>【1/31 おでかけライブin浜松179 今年もヨロシク2016】をプレミアム先行公開しました。</dd>
+                           <dt>【2016/01/22】</dt>
+              <dd>【1/31 おでかけライブin高知80 今年もヨロシク2016】をプレミアム先行公開しました。</dd>
+                           <dt>【2016/01/18】</dt>
+              <dd>【1/24 大阪（堺市産業振興センター）同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2016/01/15】</dt>
+              <dd>【1/24 大阪（堺市産業振興センター）同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2016/01/11】</dt>
+              <dd>【1/17 ニューイヤーオンリーフェスタ2016】を一般公開しました。</dd>
+                           <dt>【2016/01/11】</dt>
+              <dd>【1/17 名古屋（ポートメッセ）同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2016/01/11】</dt>
+              <dd>【1/17 おでかけライブin前橋127 今年もヨロシク2016】を一般公開しました。</dd>
+                           <dt>【2016/01/08】</dt>
+              <dd>【1/17 ニューイヤーオンリーフェスタ2016】をプレミアム先行公開しました。</dd>
+                           <dt>【2016/01/08】</dt>
+              <dd>【1/17 名古屋（ポートメッセ）同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2016/01/08】</dt>
+              <dd>【1/17 おでかけライブin前橋127 今年もヨロシク2016】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/12/28】</dt>
+              <dd>【1/10 仙台（夢メッセみやぎ）同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/12/28】</dt>
+              <dd>【1/10 小倉（AIM 3階）同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/12/28】</dt>
+              <dd>【1/10 おでかけライブin富山132 今年もヨロシク2016】を一般公開しました。</dd>
+                           <dt>【2015/12/28】</dt>
+              <dd>【1/10 おでかけライブin沼津99 今年もヨロシク2016】を一般公開しました。</dd>
+                           <dt>【2015/12/28】</dt>
+              <dd>【1/11 さにわ日和／春の恋歌】を一般公開しました。</dd>
+                           <dt>【2015/12/28】</dt>
+              <dd>【1/11 TRC E・Fホール同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/12/28】</dt>
+              <dd>【1/11 沖縄（コンベンションセンター）同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/12/28】</dt>
+              <dd>【1/11 おでかけライブin青森 今年もヨロシク2016】を一般公開しました。</dd>
+                           <dt>【2015/12/28】</dt>
+              <dd>【1/11 おでかけライブin宇都宮179 今年もヨロシク2016】を一般公開しました。</dd>
+                           <dt>【2015/12/28】</dt>
+              <dd>【1/11 おでかけライブin四国176 今年もヨロシク2016】を一般公開しました。</dd>
+                           <dt>【2015/12/25】</dt>
+              <dd>【1/10 仙台（夢メッセみやぎ）同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/12/25】</dt>
+              <dd>【1/10 小倉（AIM3階）同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/12/25】</dt>
+              <dd>【1/10 おでかけライブin富山132 今年もヨロシク2016】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/12/25】</dt>
+              <dd>【1/10 おでかけライブin沼津99 今年もヨロシク2016】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/12/25】</dt>
+              <dd>【1/11 さにわ日和／春の恋歌】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/12/25】</dt>
+              <dd>【1/11 TRC E・Fホール同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/12/25】</dt>
+              <dd>【1/11 沖縄（コンベンションセンター）同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/12/25】</dt>
+              <dd>【1/11 おでかけライブin青森 今年もヨロシク2016】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/12/25】</dt>
+              <dd>【1/11 おでかけライブin宇都宮179 今年もヨロシク2016】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/12/25】</dt>
+              <dd>【1/11 おでかけライブin四国176 今年もヨロシク2016】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/12/21】</dt>
+              <dd>【12/27 フユイベ2015 PART2】を一般公開しました。</dd>
+                           <dt>【2015/12/18】</dt>
+              <dd>【12/27 フユイベ2015 PART2】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/12/14】</dt>
+              <dd>【12/20 関西オンリーフェスタ2015 12月スペシャル】を一般公開しました。</dd>
+                           <dt>【2015/12/14】</dt>
+              <dd>【12/20 冬コミフェス】を一般公開しました。</dd>
+                           <dt>【2015/12/14】</dt>
+              <dd>【12/20 TRC同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/12/14】</dt>
+              <dd>【12/20 札幌同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/12/14】</dt>
+              <dd>【12/20 おでかけライブin福井53】を一般公開しました。</dd>
+                           <dt>【2015/12/14】</dt>
+              <dd>【12/20 おでかけライブin浜松178】を一般公開しました。</dd>
+                           <dt>【2015/12/14】</dt>
+              <dd>【12/20 おでかけライブin大分 ウィンタースペシャル2015】を一般公開しました。</dd>
+                           <dt>【2015/12/14】</dt>
+              <dd>【12/23 フユイベ2015】を一般公開しました。</dd>
+                           <dt>【2015/12/14】</dt>
+              <dd>【12/23 名古屋同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/12/14】</dt>
+              <dd>【12/23 福岡オンリーライブ2015 クリスマス】を一般公開しました。</dd>
+                           <dt>【2015/12/14】</dt>
+              <dd>【12/23 静岡コミックライブ195】を一般公開しました。</dd>
+                           <dt>【2015/12/11】</dt>
+              <dd>【12/20 関西オンリーフェスタ2015 12月スペシャル】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/12/11】</dt>
+              <dd>【12/20 冬コミフェス】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/12/11】</dt>
+              <dd>【12/20 TRC同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/12/11】</dt>
+              <dd>【12/20 札幌同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/12/11】</dt>
+              <dd>【12/20 おでかけライブin福井53】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/12/11】</dt>
+              <dd>【12/20 おでかけライブin浜松178】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/12/11】</dt>
+              <dd>【12/20 おでかけライブin大分 ウィンタースペシャル2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/12/11】</dt>
+              <dd>【12/23 フユイベ2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/12/11】</dt>
+              <dd>【12/23 名古屋同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/12/11】</dt>
+              <dd>【12/23 福岡オンリーライブ2015 クリスマス】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/12/11】</dt>
+              <dd>【12/23 静岡コミックライブ195】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/12/07】</dt>
+              <dd>【12/13 Decemberオンリーフェスタ2015】を一般公開しました。</dd>
+                           <dt>【2015/12/04】</dt>
+              <dd>【12/13 Decemberオンリーフェスタ2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/11/30】</dt>
+              <dd>【12/6 福岡オンリーライブ2015 12月スペシャル】を一般公開しました。</dd>
+                           <dt>【2015/11/30】</dt>
+              <dd>【12/6 TRC同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/11/30】</dt>
+              <dd>【12/6 鶴一無二】を一般公開しました。</dd>
+                           <dt>【2015/11/30】</dt>
+              <dd>【12/6 おでかけライブin盛岡195】を一般公開しました。</dd>
+                           <dt>【2015/11/30】</dt>
+              <dd>【12/6 おでかけライブin前橋126】を一般公開しました。</dd>
+                           <dt>【2015/11/30】</dt>
+              <dd>【12/6 都内某所同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/11/27】</dt>
+              <dd>【12/6 福岡オンリーライブ2015 12月スペシャル】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/11/27】</dt>
+              <dd>【12/6 TRC同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/11/27】</dt>
+              <dd>【12/6 鶴一無二】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/11/27】</dt>
+              <dd>【12/6 おでかけライブin盛岡195】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/11/27】</dt>
+              <dd>【12/6 おでかけライブin前橋126】をプレミアム先行公開しました。
+</dd>
+                           <dt>【2015/11/27】</dt>
+              <dd>【12/6 都内某所同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/11/23】</dt>
+              <dd>【11/29 オータムオンリーフェスタ2015 PART2】を一般公開しました。</dd>
+                           <dt>【2015/11/23】</dt>
+              <dd>【11/29 おでかけライブin松山166 同人感謝の日2015】を一般公開しました。</dd>
+                           <dt>【2015/11/20】</dt>
+              <dd>【11/29 オータムオンリーフェスタ2015 PART2】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/11/20】</dt>
+              <dd>【11/29 おでかけライブin松山166 同人感謝の日2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/11/16】</dt>
+              <dd>【11/22 仙コミフェス2015】を一般公開しました。</dd>
+                           <dt>【2015/11/16】</dt>
+              <dd>【11/22 TRC同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/11/16】</dt>
+              <dd>【11/22 沼津同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/11/16】</dt>
+              <dd>【11/22 小倉同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/11/16】</dt>
+              <dd>【11/22 おでかけライブin富山131 同人感謝の日2015】を一般公開しました。</dd>
+                           <dt>【2015/11/16】</dt>
+              <dd>【11/23 TRC同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/11/16】</dt>
+              <dd>【11/23 広島同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/11/16】</dt>
+              <dd>【11/23 おでかけライブin宇都宮178 同人感謝の日2015】を一般公開しました。</dd>
+                           <dt>【2015/11/13】</dt>
+              <dd>【11/22 仙コミフェス2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/11/13】</dt>
+              <dd>【11/22 TRC同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/11/13】</dt>
+              <dd>【11/22 沼津同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/11/13】</dt>
+              <dd>【11/22 小倉同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/11/13】</dt>
+              <dd>【11/22 おでかけライブin富山131 同人感謝の日2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/11/13】</dt>
+              <dd>【11/23 TRC同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/11/13】</dt>
+              <dd>【11/23 広島同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/11/13】</dt>
+              <dd>【11/23 おでかけライブin宇都宮178 同人感謝の日2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/11/09】</dt>
+              <dd>【11/15 関西オンリーフェスタ2015 オータムPART3】を一般公開しました。</dd>
+                           <dt>【2015/11/09】</dt>
+              <dd>【11/15 PiO同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/11/06】</dt>
+              <dd>【11/15 関西オンリーフェスタ2015 オータムPART3】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/11/06】</dt>
+              <dd>【11/15 PiO同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/11/02】</dt>
+              <dd>【11/8 名古屋同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/11/02】</dt>
+              <dd>【11/8 福岡オンリーライブ2015 オータム】を一般公開しました。</dd>
+                           <dt>【2015/11/02】</dt>
+              <dd>【11/8 おでかけライブin沖縄138 同人感謝の日2015】を一般公開しました。</dd>
+                           <dt>【2015/10/30】</dt>
+              <dd>【11/8 名古屋同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/10/30】</dt>
+              <dd>【11/8 福岡オンリーライブ2015 オータム】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/10/30】</dt>
+              <dd>【11/8 おでかけライブin沖縄138 同人感謝の日2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/10/26】</dt>
+              <dd>【10/31 TRC同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/10/26】</dt>
+              <dd>【10/31 僕だけのおじさん7】を一般公開しました。</dd>
+                           <dt>【2015/10/26】</dt>
+              <dd>【11/1 おでかけライブin山形120 同人文化の日2015】を一般公開しました。</dd>
+                           <dt>【2015/10/26】</dt>
+              <dd>【11/3 TRC同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/10/26】</dt>
+              <dd>【11/3 おでかけライブin青森 同人文化の日2015】を一般公開しました。</dd>
+                           <dt>【2015/10/26】</dt>
+              <dd>【11/3 静岡コミックライブ194 同人文化の日2015】を一般公開しました。</dd>
+                           <dt>【2015/10/23】</dt>
+              <dd>【10/31 TRC同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/10/23】</dt>
+              <dd>【10/31 僕だけのおじさん7】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/10/23】</dt>
+              <dd>【11/1 おでかけライブin山形120 同人文化の日2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/10/23】</dt>
+              <dd>【11/3 TRC同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/10/23】</dt>
+              <dd>【11/3 おでかけライブin青森 同人文化の日2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/10/23】</dt>
+              <dd>【11/3 静岡コミックライブ194 同人文化の日2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/10/19】</dt>
+              <dd>【10/25 金沢オンリーライブ2015 オータム】を一般公開しました。</dd>
+                           <dt>【2015/10/19】</dt>
+              <dd>【10/25 おでかけライブin盛岡194】を一般公開しました。</dd>
+                           <dt>【2015/10/19】</dt>
+              <dd>【10/25 おでかけライブin浜松177】を一般公開しました。</dd>
+                           <dt>【2015/10/16】</dt>
+              <dd>【10/25 金沢オンリーライブ2015 オータム】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/10/16】</dt>
+              <dd>【10/25 おでかけライブin盛岡194】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/10/16】</dt>
+              <dd>【10/25 おでかけライブin浜松177】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/10/12】</dt>
+              <dd>【10/18 オータムオンリーフェスタ2015】を一般公開しました。</dd>
+                           <dt>【2015/10/12】</dt>
+              <dd>【10/18 香川同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/10/09】</dt>
+              <dd>【10/18 オータムオンリーフェスタ2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/10/09】</dt>
+              <dd>【10/18 香川同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/10/05】</dt>
+              <dd>【10/11 幕張オンリーフェスタ2015 オータム】を一般公開しました。</dd>
+                           <dt>【2015/10/05】</dt>
+              <dd>【10/12 関西オンリーフェスタ2015 オータムPART2】を一般公開しました。</dd>
+                           <dt>【2015/10/05】</dt>
+              <dd>【10/12 TRC同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/10/05】</dt>
+              <dd>【10/12 都立産業貿易センター（台東館）同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/10/05】</dt>
+              <dd>【10/12 名古屋同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/10/02】</dt>
+              <dd>【10/11 幕張オンリーフェスタ2015 オータム】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/10/02】</dt>
+              <dd>【10/12 関西オンリーフェスタ2015 オータムPART2】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/10/02】</dt>
+              <dd>【10/12 TRC同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/10/02】</dt>
+              <dd>【10/12 都立産業貿易センター（台東館）同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/10/02】</dt>
+              <dd>【10/12 名古屋同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/09/28】</dt>
+              <dd>【10/4 PiO同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/09/25】</dt>
+              <dd>【10/4 PiO同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/09/21】</dt>
+              <dd>【9/27 セプテンバーオンリーフェスタ2015】を一般公開しました。</dd>
+                           <dt>【2015/09/21】</dt>
+              <dd>【9/27 沖縄おでライフェス】を一般公開しました。</dd>
+                           <dt>【2015/09/21】</dt>
+              <dd>【9/27 仙台同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/09/21】</dt>
+              <dd>【9/27 おでかけライブin松山165】を一般公開しました。</dd>
+                           <dt>【2015/09/18】</dt>
+              <dd>【9/27 セプテンバーオンリーフェスタ2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/09/18】</dt>
+              <dd>【9/27 沖縄おでライフェス】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/09/18】</dt>
+              <dd>【9/27 仙台同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/09/18】</dt>
+              <dd>【9/27 おでかけライブin松山165】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/09/14】</dt>
+              <dd>【9/20 関西オンリーフェスタ2015 オータムPART1】を一般公開しました。</dd>
+                           <dt>【2015/09/14】</dt>
+              <dd>【9/20 札幌おでライフェス2015】を一般公開しました。</dd>
+                           <dt>【2015/09/14】</dt>
+              <dd>【9/20 おでかけライブin富山130】を一般公開しました。</dd>
+                           <dt>【2015/09/14】</dt>
+              <dd>【9/20 おでかけライブin高知79】を一般公開しました。</dd>
+                           <dt>【2015/09/14】</dt>
+              <dd>【9/21 TRC同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/09/14】</dt>
+              <dd>【9/21 おでかけライブin青森 秋まつり2015】を一般公開しました。</dd>
+                           <dt>【2015/09/14】</dt>
+              <dd>【9/21 おでかけライブin宇都宮177】を一般公開しました。</dd>
+                           <dt>【2015/09/14】</dt>
+              <dd>【9/22 都立産業貿易センター（台東館）同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/09/14】</dt>
+              <dd>【9/22 都内某所同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/09/14】</dt>
+              <dd>【9/22 芸魂 第11幕】を一般公開しました。</dd>
+                           <dt>【2015/09/14】</dt>
+              <dd>【9/23 都立産業貿易センター（台東館）同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/09/11】</dt>
+              <dd>【9/20 関西オンリーフェスタ2015 オータムPART1】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/09/11】</dt>
+              <dd>【9/20 札幌おでライフェス2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/09/11】</dt>
+              <dd>【9/20 おでかけライブin富山130】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/09/11】</dt>
+              <dd>【9/20 おでかけライブin高知79】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/09/11】</dt>
+              <dd>【9/21 TRC同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/09/11】</dt>
+              <dd>【9/21 おでかけライブin青森 秋まつり2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/09/11】</dt>
+              <dd>【9/21 おでかけライブin宇都宮177】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/09/11】</dt>
+              <dd>【9/22 都立産業貿易センター（台東館）同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/09/11】</dt>
+              <dd>【9/22 都内某所同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/09/11】</dt>
+              <dd>【9/22 芸魂 第11幕】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/09/11】</dt>
+              <dd>【9/23 都立産業貿易センター（台東館）同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/09/07】</dt>
+              <dd>【9/13 アーリーオータムオンリーフェスタ2015】を一般公開しました。</dd>
+                           <dt>【2015/09/07】</dt>
+              <dd>【9/13 おでかけライブin大分 秋まつり2015】を一般公開しました。</dd>
+                           <dt>【2015/09/04】</dt>
+              <dd>【9/13 アーリーオータムオンリーフェスタ2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/09/04】</dt>
+              <dd>【9/13 おでかけライブin大分 秋まつり2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/08/31】</dt>
+              <dd>【9/6 TRC同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/08/31】</dt>
+              <dd>【9/6 寿一番!! 再び】を一般公開しました。</dd>
+                           <dt>【2015/08/31】</dt>
+              <dd>【9/6 おでかけライブin前橋125】を一般公開しました。</dd>
+                           <dt>【2015/08/28】</dt>
+              <dd>【9/6 TRC同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/08/28】</dt>
+              <dd>【9/6 寿一番!! 再び】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/08/28】</dt>
+              <dd>【9/6 おでかけライブin前橋125】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/08/24】</dt>
+              <dd>【8/30 広コミフェス2015】を一般公開しました。</dd>
+                           <dt>【2015/08/24】</dt>
+              <dd>【8/30 都立産業貿易センター（台東館）同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/08/24】</dt>
+              <dd>【8/30 PiO同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/08/24】</dt>
+              <dd>【8/30 福岡オンリーライブ2015 SUMMER】を一般公開しました。</dd>
+                           <dt>【2015/08/24】</dt>
+              <dd>【8/30 金沢オンリーライブ2015 サマーPART2】を一般公開しました。</dd>
+                           <dt>【2015/08/24】</dt>
+              <dd>【8/30 静岡コミックライブ193】を一般公開しました。</dd>
+                           <dt>【2015/08/21】</dt>
+              <dd>【8/30 広コミフェス2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/08/21】</dt>
+              <dd>【8/30 都立産業貿易センター（台東館）同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/08/21】</dt>
+              <dd>【8/30 PiO同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/08/21】</dt>
+              <dd>【8/30 福岡オンリーライブ2015 SUMMER】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/08/21】</dt>
+              <dd>【8/30 金沢オンリーライブ2015 サマーPART2】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/08/21】</dt>
+              <dd>【8/30 静岡コミックライブ193】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/08/17】</dt>
+              <dd>【8/23 TRC同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/08/17】</dt>
+              <dd>【8/23 PiO同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/08/17】</dt>
+              <dd>【8/23 名古屋同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/08/17】</dt>
+              <dd>【8/23 おでかけライブin山形119】を一般公開しました。</dd>
+                           <dt>【2015/08/14】</dt>
+              <dd>【8/23 TRC同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/08/14】</dt>
+              <dd>【8/23 PiO同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/08/14】</dt>
+              <dd>【8/23 名古屋同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/08/14】</dt>
+              <dd>【8/23 おでかけライブin山形119】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/08/03】</dt>
+              <dd>【8/9 ナツイベ2015】を一般公開しました。</dd>
+                           <dt>【2015/08/03】</dt>
+              <dd>【8/9 おでかけライブin四国174】を一般公開しました。</dd>
+                           <dt>【2015/07/31】</dt>
+              <dd>【8/9 ナツイベ2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/07/31】</dt>
+              <dd>【8/9 おでかけライブin四国174】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/07/27】</dt>
+              <dd>【8/2 関西オンリーフェスタ2015 SUMMER PART2】を一般公開しました。</dd>
+                           <dt>【2015/07/27】</dt>
+              <dd>【8/2 TRC同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/07/27】</dt>
+              <dd>【8/2 小倉同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/07/27】</dt>
+              <dd>【8/2 おでかけライブin釧路65】を一般公開しました。</dd>
+                           <dt>【2015/07/27】</dt>
+              <dd>【8/2 おでかけライブin浜松176】を一般公開しました。</dd>
+                           <dt>【2015/07/27】</dt>
+              <dd>【8/2 おでかけライブin沼津97】を一般公開しました。</dd>
+                           <dt>【2015/07/24】</dt>
+              <dd>【8/2 関西オンリーフェスタ2015 SUMMER PART2】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/07/24】</dt>
+              <dd>【8/2 TRC同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/07/24】</dt>
+              <dd>【8/2 小倉同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/07/24】</dt>
+              <dd>【8/2 おでかけライブin釧路65】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/07/24】</dt>
+              <dd>【8/2 おでかけライブin浜松176】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/07/24】</dt>
+              <dd>【8/2 おでかけライブin沼津97】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/07/20】</dt>
+              <dd>【7/26 東京ビッグサイト同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/07/20】</dt>
+              <dd>【7/26 ヒロインMIX】を一般公開しました。</dd>
+                           <dt>【2015/07/20】</dt>
+              <dd>【7/26 仙台同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/07/20】</dt>
+              <dd>【7/26 金沢オンリーライブ2015 サマーPART1】を一般公開しました。</dd>
+                           <dt>【2015/07/20】</dt>
+              <dd>【7/26 おでかけライブin盛岡193】を一般公開しました。</dd>
+                           <dt>【2015/07/20】</dt>
+              <dd>【7/26 おでかけライブin宇都宮176】を一般公開しました。</dd>
+                           <dt>【2015/07/20】</dt>
+              <dd>【7/26 おでかけライブin松山164】を一般公開しました。</dd>
+                           <dt>【2015/07/20】</dt>
+              <dd>【7/26 おでかけライブin沖縄137】を一般公開しました。</dd>
+                           <dt>【2015/07/17】</dt>
+              <dd>【7/26 東京ビッグサイト同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/07/17】</dt>
+              <dd>【7/26 ヒロインMIX】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/07/17】</dt>
+              <dd>【7/26 仙台同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/07/17】</dt>
+              <dd>【7/26 金沢オンリーライブ2015 サマーPART1】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/07/17】</dt>
+              <dd>【7/26 おでかけライブin盛岡193】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/07/17】</dt>
+              <dd>【7/26 おでかけライブin宇都宮176】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/07/17】</dt>
+              <dd>【7/26 おでかけライブin松山164】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/07/17】</dt>
+              <dd>【7/26 おでかけライブin沖縄137】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/07/13】</dt>
+              <dd>【7/19 関西オンリーフェスタ2015 SUMMER】を一般公開しました。</dd>
+                           <dt>【2015/07/13】</dt>
+              <dd>【7/19 TRC同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/07/13】</dt>
+              <dd>【7/19 名古屋同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/07/13】</dt>
+              <dd>【7/19 札幌同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/07/13】</dt>
+              <dd>【7/19 おでかけライブin高知78】を一般公開しました。</dd>
+                           <dt>【2015/07/13】</dt>
+              <dd>【7/19～7/20 富山同時開催イベント2days】を一般公開しました。</dd>
+                           <dt>【2015/07/13】</dt>
+              <dd>【7/20 福岡コミフェス 夏場所2015】を一般公開しました。</dd>
+                           <dt>【2015/07/13】</dt>
+              <dd>【7/20 TRC同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/07/13】</dt>
+              <dd>【7/20 おでかけライブin青森 夏まつり2015】を一般公開しました。</dd>
+                           <dt>【2015/07/10】</dt>
+              <dd>【7/19 関西オンリーフェスタ2015 SUMMER】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/07/10】</dt>
+              <dd>【7/19 TRC同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/07/10】</dt>
+              <dd>【7/19 名古屋同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/07/10】</dt>
+              <dd>【7/19 札幌同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/07/10】</dt>
+              <dd>【7/19 おでかけライブin高知78】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/07/10】</dt>
+              <dd>【7/19～7/20 富山同時開催イベント2days】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/07/10】</dt>
+              <dd>【7/20 福岡コミフェス 夏場所2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/07/10】</dt>
+              <dd>【7/20 TRC同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/07/10】</dt>
+              <dd>【7/20 おでかけライブin青森 夏まつり2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/07/06】</dt>
+              <dd>【7/12 サマーオンリーフェスタ2015】を一般公開しました。</dd>
+                           <dt>【2015/07/03】</dt>
+              <dd>【7/12 サマーオンリーフェスタ2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/06/29】</dt>
+              <dd>【7/5 広島同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/06/26】</dt>
+              <dd>【7/5 広島同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/06/22】</dt>
+              <dd>【6/28 TRC同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/06/22】</dt>
+              <dd>【6/28 静岡コミックライブ192】を一般公開しました。</dd>
+                           <dt>【2015/06/22】</dt>
+              <dd>【6/28 おでかけライブin四国173】を一般公開しました。</dd>
+                           <dt>【2015/06/22】</dt>
+              <dd>【6/28 都内某所同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/06/19】</dt>
+              <dd>【6/28 TRC同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/06/19】</dt>
+              <dd>【6/28 静岡コミックライブ192】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/06/19】</dt>
+              <dd>【6/28 おでかけライブin四国173】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/06/19】</dt>
+              <dd>【6/28 都内某所同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/06/15】</dt>
+              <dd>【6/21 福岡オンリーライブ2015 6月スペシャル】を一般公開しました。</dd>
+                           <dt>【2015/06/15】</dt>
+              <dd>【6/21 都立産業貿易センター（台東館）同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/06/15】</dt>
+              <dd>【6/21 おでかけライブin大分 6月スペシャル2015】を一般公開しました。</dd>
+                           <dt>【2015/06/15】</dt>
+              <dd>【6/21 おでかけライブin沖縄136】を一般公開しました。</dd>
+                           <dt>【2015/06/15】</dt>
+              <dd>【6/21 都内某所同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/06/12】</dt>
+              <dd>【6/21 福岡オンリーライブ2015 6月スペシャル】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/06/12】</dt>
+              <dd>【6/21 都立産業貿易センター（台東館）同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/06/12】</dt>
+              <dd>【6/21 おでかけライブin大分 6月スペシャル2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/06/12】</dt>
+              <dd>【6/21 おでかけライブin沖縄136】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/06/12】</dt>
+              <dd>【6/21 都内某所同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/06/08】</dt>
+              <dd>【6/14 アーリーサマーオンリーフェスタ2015】を一般公開しました。</dd>
+                           <dt>【2015/06/08】</dt>
+              <dd>【6/14 名古屋同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/06/08】</dt>
+              <dd>【6/14 仙台同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/06/05】</dt>
+              <dd>【6/14 アーリーサマーオンリーフェスタ2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/06/05】</dt>
+              <dd>【6/14 名古屋同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/06/05】</dt>
+              <dd>【6/14 仙台同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/06/01】</dt>
+              <dd>【6/7 関西オンリーフェスタ2015 6月スペシャル】を一般公開しました。</dd>
+                           <dt>【2015/06/01】</dt>
+              <dd>【6/7 おでかけライブin前橋124】を一般公開しました。</dd>
+                           <dt>【2015/06/01】</dt>
+              <dd>【6/7 おでかけライブin沼津96】を一般公開しました。</dd>
+                           <dt>【2015/05/29】</dt>
+              <dd>【6/7 関西オンリーフェスタ2015 6月スペシャル】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/05/29】</dt>
+              <dd>【6/7 おでかけライブin前橋124】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/05/29】</dt>
+              <dd>【6/7 おでかけライブin沼津96】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/05/25】</dt>
+              <dd>【5/31 アフターGWオンリーフェスタ2015 PART2】を一般公開しました。</dd>
+                           <dt>【2015/05/25】</dt>
+              <dd>【5/31 おでかけライブin盛岡192 アフターGW2015】を一般公開しました。</dd>
+                           <dt>【2015/05/25】</dt>
+              <dd>【5/31 おでかけライブin山形118 アフターGW2015】を一般公開しました。</dd>
+                           <dt>【2015/05/25】</dt>
+              <dd>【5/31 おでかけライブin浜松175 アフターGW2015】を一般公開しました。</dd>
+                           <dt>【2015/05/22】</dt>
+              <dd>【5/31 アフターGWオンリーフェスタ2015 PART2】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/05/22】</dt>
+              <dd>【5/31 おでかけライブin盛岡192 アフターGW2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/05/22】</dt>
+              <dd>【5/31 おでかけライブin山形118 アフターGW2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/05/22】</dt>
+              <dd>【5/31 おでかけライブin浜松175 アフターGW2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/05/18】</dt>
+              <dd>【5/24 おでかけライブin富山128 アフターGW2015】を一般公開しました。</dd>
+                           <dt>【2015/05/18】</dt>
+              <dd>【5/24 TRC同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/05/18】</dt>
+              <dd>【5/24 関西オンリーフェスタ2015アフターGW】を一般公開しました。</dd>
+                           <dt>【2015/05/15】</dt>
+              <dd>【5/24 関西オンリーフェスタ2015アフターGW】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/05/15】</dt>
+              <dd>【5/24 TRC同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/05/15】</dt>
+              <dd>【5/24 おでかけライブin富山128 アフターGW2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/05/11】</dt>
+              <dd>【5/17 アフターGWオンリーフェスタ2015】を一般公開しました。</dd>
+                           <dt>【2015/05/08】</dt>
+              <dd>【5/17 アフターGWオンリーフェスタ2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/05/04】</dt>
+              <dd>【5/10 TRC同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/05/04】</dt>
+              <dd>【5/10 都立産業貿易センター（台東館）同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/05/04】</dt>
+              <dd>【5/10 おでかけライブin青森 アフターGW2015】を一般公開しました。</dd>
+                           <dt>【2015/05/04】</dt>
+              <dd>【5/10 おでかけライブin宇都宮175 アフターGW2015】を一般公開しました。</dd>
+                           <dt>【2015/05/04】</dt>
+              <dd>【5/10 都内某所同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/05/01】</dt>
+              <dd>【5/10 TRC同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/05/01】</dt>
+              <dd>【5/10 都立産業貿易センター（台東館）同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/05/01】</dt>
+              <dd>【5/10 おでかけライブin青森 アフターGW2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/05/01】</dt>
+              <dd>【5/10 おでかけライブin宇都宮175 アフターGW2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/05/01】</dt>
+              <dd>【5/10 都内某所同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/04/27】</dt>
+              <dd>【5/5 百刀繚乱 ～君の心を白刃取り～】を一般公開しました。
+</dd>
+                           <dt>【2015/04/27】</dt>
+              <dd>【5/3 小倉同時開催イベント】を一般公開しました。
+</dd>
+                           <dt>【2015/04/27】</dt>
+              <dd>【5/4～5/5 福岡オンリーライブ2015 GWスペシャル2days】を一般公開しました。
+</dd>
+                           <dt>【2015/04/27】</dt>
+              <dd>【5/5 GWオンリーフェスタ2015】を一般公開しました。
+</dd>
+                           <dt>【2015/04/27】</dt>
+              <dd>【5/5 名古屋同時開催イベント】を一般公開しました。
+</dd>
+                           <dt>【2015/04/27】</dt>
+              <dd>【5/5 札幌同時開催イベント】を一般公開しました。
+</dd>
+                           <dt>【2015/04/27】</dt>
+              <dd>【5/5～5/6 広島同時開催イベント2days】を一般公開しました。
+</dd>
+                           <dt>【2015/04/27】</dt>
+              <dd>【5/5 おでかけライブin松山163 GW新刊2015】を一般公開しました。
+</dd>
+                           <dt>【2015/04/27】</dt>
+              <dd>【5/5 おでかけライブin高知77 GW新刊2015】を一般公開しました。
+</dd>
+                           <dt>【2015/04/27】</dt>
+              <dd>【5/6 ing!】を一般公開しました。</dd>
+                           <dt>【2015/04/27】</dt>
+              <dd>【5/6 アイドルmix】を一般公開しました。
+</dd>
+                           <dt>【2015/04/27】</dt>
+              <dd>【5/6 沖縄コンベンションセンター同時開催イベント】を一般公開しました。
+</dd>
+                           <dt>【2015/04/27】</dt>
+              <dd>【5/6 おでかけライブin四国172 GW新刊2015】を一般公開しました。
+</dd>
+                           <dt>【2015/04/24】</dt>
+              <dd>【5/5 百刀繚乱 ～君の心を白刃取り～】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/04/24】</dt>
+              <dd>【5/5 GWオンリーフェスタ2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/04/24】</dt>
+              <dd>【5/3 小倉同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/04/24】</dt>
+              <dd>【5/4～5/5 福岡オンリーライブ2015 GWスペシャル2days】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/04/24】</dt>
+              <dd>【5/5 名古屋同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/04/24】</dt>
+              <dd>【5/5 札幌同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/04/24】</dt>
+              <dd>【5/5～5/6 広島同時開催イベント2days】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/04/24】</dt>
+              <dd>【5/5 おでかけライブin松山163 GW新刊2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/04/24】</dt>
+              <dd>【5/5 おでかけライブin高知77 GW新刊2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/04/24】</dt>
+              <dd>【5/6 沖縄コンベンションセンター同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/04/24】</dt>
+              <dd>【5/6 ing!】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/04/24】</dt>
+              <dd>【5/6 アイドルmix】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/04/24】</dt>
+              <dd>【5/6 おでかけライブin四国172 GW新刊2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/04/20】</dt>
+              <dd>【4/26 関西オンリーフェスタ2015 スプリングPART3】を一般公開しました。</dd>
+                           <dt>【2015/04/20】</dt>
+              <dd>【4/26 PiO同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/04/20】</dt>
+              <dd>【4/26 静岡コミックライブ191】を一般公開しました。</dd>
+                           <dt>【2015/04/17】</dt>
+              <dd>【4/26 関西オンリーフェスタ2015 スプリングPART3】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/04/17】</dt>
+              <dd>【4/26 PiO同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/04/17】</dt>
+              <dd>【4/26 静岡コミックライブ191】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/04/13】</dt>
+              <dd>【4/19 スプリングオンリーフェスタ2015 PART2】を一般公開しました。</dd>
+                           <dt>【2015/04/13】</dt>
+              <dd>【4/19 金沢オンリーライブ2015スプリング】を一般公開しました。</dd>
+                           <dt>【2015/04/10】</dt>
+              <dd>【4/19 スプリングオンリーフェスタ2015 PART2】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/04/10】</dt>
+              <dd>【4/19 金沢オンリーライブ2015スプリング】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/04/06】</dt>
+              <dd>【4/11 TRC同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/04/06】</dt>
+              <dd>【4/12 TRC同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/04/06】</dt>
+              <dd>【4/12 関西オンリーフェスタ2015 スプリングPART2】を一般公開しました。</dd>
+                           <dt>【2015/04/06】</dt>
+              <dd>【4/12 おでかけライブin宇都宮174】を一般公開しました。</dd>
+                           <dt>【2015/04/06】</dt>
+              <dd>【4/12 おでかけライブin沼津95】を一般公開しました。</dd>
+                           <dt>【2015/04/06】</dt>
+              <dd>【4/12 J・POP STYLE Volume37】を一般公開しました。</dd>
+                           <dt>【2015/04/03】</dt>
+              <dd>【4/11 TRC同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/04/03】</dt>
+              <dd>【4/12 TRC同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/04/03】</dt>
+              <dd>【4/12 関西オンリーフェスタ2015 スプリングPART2】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/04/03】</dt>
+              <dd>【4/12 おでかけライブin宇都宮174】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/04/03】</dt>
+              <dd>【4/12 おでかけライブin沼津95】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/04/03】</dt>
+              <dd>【4/12 J・POP STYLE Volume37】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/03/30】</dt>
+              <dd>【4/5 スプリングオンリーフェスタ2015】を一般公開しました。</dd>
+                           <dt>【2015/03/30】</dt>
+              <dd>【4/5 名古屋同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/03/30】</dt>
+              <dd>【4/5 仙台同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/03/30】</dt>
+              <dd>【4/5 広島同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/03/30】</dt>
+              <dd>【4/5 おでかけライブin福井52】を一般公開しました。</dd>
+                           <dt>【2015/03/27】</dt>
+              <dd>【4/5 スプリングオンリーフェスタ2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/03/27】</dt>
+              <dd>【4/5 名古屋同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/03/27】</dt>
+              <dd>【4/5 仙台同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/03/27】</dt>
+              <dd>【4/5 広島同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/03/27】</dt>
+              <dd>【4/5 おでかけライブin福井52】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/03/23】</dt>
+              <dd>【3/29 おでかけライブin四国171 春まつり2015】を一般公開しました。</dd>
+                           <dt>【2015/03/23】</dt>
+              <dd>【3/29 おでかけライブin松山162 春まつり2015】を一般公開しました。</dd>
+                           <dt>【2015/03/23】</dt>
+              <dd>【3/29 おでかけライブin沖縄135 春まつり2015】を一般公開しました。</dd>
+                           <dt>【2015/03/20】</dt>
+              <dd>【3/29 おでかけライブin四国171 春まつり2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/03/20】</dt>
+              <dd>【3/29 おでかけライブin松山162 春まつり2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/03/20】</dt>
+              <dd>【3/29 おでかけライブin沖縄135 春まつり2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/03/23】</dt>
+              <dd>【3/29 福岡オンリーライブ2015 スプリング】を一般公開しました。</dd>
+                           <dt>【2015/03/23】</dt>
+              <dd>【3/29 おでかけライブin釧路64 春一番2015】を一般公開しました。</dd>
+                           <dt>【2015/03/23】</dt>
+              <dd>【3/29 おでかけライブin青森 春一番2015】を一般公開しました。</dd>
+                           <dt>【2015/03/23】</dt>
+              <dd>【3/29 おでかけライブin大分 春まつり2015】を一般公開しました。</dd>
+                           <dt>【2015/03/20】</dt>
+              <dd>【3/29 福岡オンリーライブ2015 スプリング】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/03/20】</dt>
+              <dd>【3/29 おでかけライブin釧路64 春一番2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/03/20】</dt>
+              <dd>【3/29 おでかけライブin青森 春一番2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/03/20】</dt>
+              <dd>【3/29 おでかけライブin大分 春まつり2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/03/16】</dt>
+              <dd>【3/22 ベルサール渋谷ガーデン同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/03/16】</dt>
+              <dd>【3/22 大田区産業プラザPiO同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/03/16】</dt>
+              <dd>【3/22 札幌同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/03/16】</dt>
+              <dd>【3/22 おでかけライブin前橋123 春まつり2015】を一般公開しました。</dd>
+                           <dt>【2015/03/16】</dt>
+              <dd>【3/21～3/22 おでかけライブin富山127 2DAYS】を一般公開しました。</dd>
+                           <dt>【2015/03/16】</dt>
+              <dd>【3/22 小倉同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/03/13】</dt>
+              <dd>【3/22 ベルサール渋谷ガーデン同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/03/13】</dt>
+              <dd>【3/22 大田区産業プラザPiO同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/03/13】</dt>
+              <dd>【3/22 札幌同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/03/13】</dt>
+              <dd>【3/22 おでかけライブin前橋123 春まつり2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/03/13】</dt>
+              <dd>【3/21～3/22 おでかけライブin富山127 2DAYS】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/03/13】</dt>
+              <dd>【3/22 小倉同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/03/09】</dt>
+              <dd>【3/15 おでかけライブin盛岡191 春一番2015】を一般公開しました。</dd>
+                           <dt>【2015/03/09】</dt>
+              <dd>【3/15 おでかけライブin浜松174 春まつり2015】を一般公開しました。</dd>
+                           <dt>【2015/03/06】</dt>
+              <dd>【3/15 おでかけライブin盛岡191 春一番2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/03/06】</dt>
+              <dd>【3/15 おでかけライブin浜松174 春まつり2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/03/02】</dt>
+              <dd>【3/7 幕張オンリーフェスタ2015スプリングday1】を一般公開しました。</dd>
+                           <dt>【2015/03/02】</dt>
+              <dd>【3/8 幕張オンリーフェスタ2015スプリングday2】を一般公開しました。</dd>
+                           <dt>【2015/02/27】</dt>
+              <dd>【3/7 幕張オンリーフェスタ2015スプリングday1】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/02/27】</dt>
+              <dd>【3/8 幕張オンリーフェスタ2015スプリングday2】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/02/23】</dt>
+              <dd>【2/28 おでかけライブin高知76】を一般公開しました。</dd>
+                           <dt>【2015/02/23】</dt>
+              <dd>【3/1 関西オンリーフェスタ2015 スプリング】を一般公開しました。</dd>
+                           <dt>【2015/02/20】</dt>
+              <dd>【2/28 おでかけライブin高知76】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/02/20】</dt>
+              <dd>【3/1 関西オンリーフェスタ2015 スプリング】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/02/16】</dt>
+              <dd>【2/22 名古屋同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/02/16】</dt>
+              <dd>【2/22 おでかけライブin山形117】を一般公開しました。</dd>
+                           <dt>【2015/02/13】</dt>
+              <dd>【2/22 名古屋同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/02/13】</dt>
+              <dd>【2/22 おでかけライブin山形117】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/02/09】</dt>
+              <dd>【2/14 カプイベ2015 avec festival】を一般公開しました。</dd>
+                           <dt>【2015/02/09】</dt>
+              <dd>【2/15 TRC同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/02/09】</dt>
+              <dd>【2/15 札幌コンベンションセンター同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/02/09】</dt>
+              <dd>【2/15 おでかけライブin宇都宮173】を一般公開しました。</dd>
+                           <dt>【2015/02/06】</dt>
+              <dd>【2/14 カプイベ2015 avec festival】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/02/06】</dt>
+              <dd>【2/15 TRC同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/02/06】</dt>
+              <dd>【2/15 札幌コンベンションセンター同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/02/06】</dt>
+              <dd>【2/15 おでかけライブin宇都宮173】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/02/02】</dt>
+              <dd>【2/8 ベルサール渋谷ガーデン同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/02/02】</dt>
+              <dd>2/8 関西オンリーフェスタ2015 ウィンター】を一般公開しました。</dd>
+                           <dt>【2015/02/02】</dt>
+              <dd>【2/8 金沢オンリーライブ2015 ウィンター】を一般公開しました。</dd>
+                           <dt>【2015/02/02】</dt>
+              <dd>【2/8 静岡コミックライブ190】を一般公開しました。</dd>
+                           <dt>【2015/02/02】</dt>
+              <dd>【2/8 広島コミケ195】を一般公開しました。</dd>
+                           <dt>【2015/02/02】</dt>
+              <dd>【2/11 TRC同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/02/02】</dt>
+              <dd>【2/11 福岡オンリーライブ2015 ウィンター】を一般公開しました。</dd>
+                           <dt>【2015/01/30】</dt>
+              <dd>【2/8 ベルサール渋谷ガーデン同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/01/30】</dt>
+              <dd>【2/8 関西オンリーフェスタ2015 ウィンター】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/01/30】</dt>
+              <dd>【2/8 金沢オンリーライブ2015 ウィンター】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/01/30】</dt>
+              <dd>【2/8 静岡コミックライブ190】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/01/30】</dt>
+              <dd>【2/8 広島コミケ195】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/01/30】</dt>
+              <dd>【2/11 TRC同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/01/30】</dt>
+              <dd>【2/11 福岡オンリーライブ2015 ウィンター】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/01/26】</dt>
+              <dd>【2/1 ウィンターオンリーフェスタ2015】を一般公開しました。</dd>
+                           <dt>【2015/01/23】</dt>
+              <dd>【2/1 ウィンターオンリーフェスタ2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/01/19】</dt>
+              <dd>【1/25 おでかけライブin浜松173　今年もヨロシク2015】を一般公開しました。</dd>
+                           <dt>【2015/01/16】</dt>
+              <dd>【1/25 おでかけライブin浜松173　今年もヨロシク2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/01/12】</dt>
+              <dd>【1/18 TRC同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/01/12】</dt>
+              <dd>【1/18 名古屋同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/01/12】</dt>
+              <dd>【1/18 おでかけライブin盛岡190　今年もヨロシク2015】を一般公開しました。</dd>
+                           <dt>【2015/01/12】</dt>
+              <dd>【1/18 おでかけライブin前橋122 今年もヨロシク2015】を一般公開しました。</dd>
+                           <dt>【2015/01/12】</dt>
+              <dd>【1/18 東京某所同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2015/01/09】</dt>
+              <dd>【1/18 TRC同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/01/09】</dt>
+              <dd>【1/18 名古屋同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/01/09】</dt>
+              <dd>【1/18 おでかけライブin盛岡190　今年もヨロシク2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/01/09】</dt>
+              <dd>【1/18 おでかけライブin前橋122 今年もヨロシク2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2015/01/09】</dt>
+              <dd>【1/18 東京某所同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/12/29】</dt>
+              <dd>【1/12 おでかけライブin四国170 今年もヨロシク2015】を一般公開しました。</dd>
+                           <dt>【2014/12/29】</dt>
+              <dd>【1/12 おでかけライブin青森　今年もヨロシク2015】を一般公開しました。</dd>
+                           <dt>【2014/12/29】</dt>
+              <dd>【1/12 小倉同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2014/12/29】</dt>
+              <dd>【1/12 沖縄同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2014/12/29】</dt>
+              <dd>【1/12 TRC同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2014/12/29】</dt>
+              <dd>【1/11～1/12 おでかけライブin富山126 2DAYS】を一般公開しました。</dd>
+                           <dt>【2014/12/29】</dt>
+              <dd>【1/11 仙台同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2014/12/29】</dt>
+              <dd>【1/11 ニューイヤーオンリーフェスタ2015】を一般公開しました。</dd>
+                           <dt>【2014/12/26】</dt>
+              <dd>【1/12 おでかけライブin四国170 今年もヨロシク2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/12/26】</dt>
+              <dd>【1/12 おでかけライブin青森　今年もヨロシク2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/12/26】</dt>
+              <dd>【1/12 小倉同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/12/26】</dt>
+              <dd>【1/12 沖縄同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/12/26】</dt>
+              <dd>【1/12 TRC同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/12/26】</dt>
+              <dd>【1/11～1/12 おでかけライブin富山126 2DAYS】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/12/26】</dt>
+              <dd>【1/11 仙台同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/12/26】</dt>
+              <dd>【1/11 ニューイヤーオンリーフェスタ2015】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/12/15】</dt>
+              <dd>【12/23 おでかけライブin高知75】を一般公開しました。</dd>
+                           <dt>【2014/12/15】</dt>
+              <dd>【12/23 静岡コミックライブ189】を一般公開しました。</dd>
+                           <dt>【2014/12/15】</dt>
+              <dd>【12/23 フユイベ2014】を一般公開しました。</dd>
+                           <dt>【2014/12/15】</dt>
+              <dd>【12/21 おでかけライブin大分 ウィンタースペシャル2014】を一般公開しました。</dd>
+                           <dt>【2014/12/15】</dt>
+              <dd>【12/21 おでかけライブin松山161】を一般公開しました。</dd>
+                           <dt>【2014/12/15】</dt>
+              <dd>【12/21 広島コミケ194】を一般公開しました。</dd>
+                           <dt>【2014/12/15】</dt>
+              <dd>【12/21 おでかけライブin福井51】を一般公開しました。</dd>
+                           <dt>【2014/12/15】</dt>
+              <dd>【12/21 おでかけライブin前橋121】を一般公開しました。</dd>
+                           <dt>【2014/12/15】</dt>
+              <dd>【12/21 おでかけライブin山形116】を一般公開しました。</dd>
+                           <dt>【2014/12/15】</dt>
+              <dd>【12/21 札幌同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2014/12/15】</dt>
+              <dd>【12/21 福岡オンリーライブ2014 クリスマス】を一般公開しました。</dd>
+                           <dt>【2014/12/15】</dt>
+              <dd>【12/21 TRC同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2014/12/12】</dt>
+              <dd>【12/23 おでかけライブin高知75】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/12/12】</dt>
+              <dd>【12/23 静岡コミックライブ189】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/12/12】</dt>
+              <dd>【12/23 フユイベ2014】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/12/12】</dt>
+              <dd>【12/21 おでかけライブin大分 ウィンタースペシャル2014】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/12/12】</dt>
+              <dd>【12/21 おでかけライブin松山161】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/12/12】</dt>
+              <dd>【12/21 広島コミケ194】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/12/12】</dt>
+              <dd>【12/21 おでかけライブin福井51】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/12/12】</dt>
+              <dd>【12/21 おでかけライブin前橋121】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/12/12】</dt>
+              <dd>【12/21 おでかけライブin山形116】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/12/12】</dt>
+              <dd>【12/21 札幌同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/12/12】</dt>
+              <dd>【12/21 福岡オンリーライブ2014 クリスマス】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/12/12】</dt>
+              <dd>【12/21 TRC同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/12/08】</dt>
+              <dd>【12/14 名古屋同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2014/12/08】</dt>
+              <dd>【12/14 TRC同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2014/12/05】</dt>
+              <dd>【12/14 名古屋同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/12/05】</dt>
+              <dd>【12/14 TRC同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/12/01】</dt>
+              <dd>【12/7 PiO同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2014/12/01】</dt>
+              <dd>【12/7 TRC同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2014/11/28】</dt>
+              <dd>【12/7 PiO同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/11/28】</dt>
+              <dd>【12/7 TRC同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/11/17】</dt>
+              <dd>【11/24 広島コミケ193】を一般公開しました。</dd>
+                           <dt>【2014/11/14】</dt>
+              <dd>【11/24 広島コミケ193】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/11/17】</dt>
+              <dd>【11/24 都内某所同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2014/11/14】</dt>
+              <dd>【11/24 都内某所同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/11/17】</dt>
+              <dd>【11/23 TRC同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2014/11/14】</dt>
+              <dd>【11/23 TRC同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/11/10】</dt>
+              <dd>【11/16 仙コミフェス2014】を一般公開しました。</dd>
+                           <dt>【2014/11/10】</dt>
+              <dd>【11/16 関西オンリーフェスタ2014 11月スペシャル】を一般公開しました。</dd>
+                           <dt>【2014/11/07】</dt>
+              <dd>【11/16 仙コミフェス2014】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/11/07】</dt>
+              <dd>【11/16 関西オンリーフェスタ2014 11月スペシャル】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/11/03】</dt>
+              <dd>【11/9 オータムオンリーフェスタ2014 PART2】を一般公開しました。</dd>
+                           <dt>【2014/10/31】</dt>
+              <dd>【11/9 オータムオンリーフェスタ2014 PART2】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/10/27】</dt>
+              <dd>【11/3 TRC同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2014/10/24】</dt>
+              <dd>【11/3 TRC同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/10/13】</dt>
+              <dd>【10/19 関西オンリーフェスタ2014 オータムPART2】を一般公開しました。</dd>
+                           <dt>【2014/10/10】</dt>
+              <dd>【10/19 関西オンリーフェスタ2014 オータムPART2】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/10/13】</dt>
+              <dd>【10/19 Octoberオンリーフェスタ2014 PART2】を一般公開しました。</dd>
+                           <dt>【2014/10/10】</dt>
+              <dd>【10/19 Octoberオンリーフェスタ2014 PART2】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/10/06】</dt>
+              <dd>【10/13 TRC同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2014/10/03】</dt>
+              <dd>【10/13 TRC同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/10/06】</dt>
+              <dd>【10/13 幕張オンリーフェスタ2014オータム】を一般公開しました。</dd>
+                           <dt>【2014/10/03】</dt>
+              <dd>【10/13 幕張オンリーフェスタ2014オータム】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/10/06】</dt>
+              <dd>【10/12 名古屋同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2014/10/03】</dt>
+              <dd>【10/12 名古屋同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/09/29】</dt>
+              <dd>【10/5 Octoberオンリーフェスタ2014】を一般公開しました。</dd>
+                           <dt>【2014/09/26】</dt>
+              <dd>【10/5 Octoberオンリーフェスタ2014】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/09/22】</dt>
+              <dd>【9/28 仙台同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2014/09/19】</dt>
+              <dd>【9/28 仙台同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/09/22】</dt>
+              <dd>【9/28 TRC同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2014/09/19】</dt>
+              <dd>【9/28 TRC同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/09/15】</dt>
+              <dd>【9/23 広島コミケ192】を一般公開しました。</dd>
+                           <dt>【2014/09/12】</dt>
+              <dd>【9/23 広島コミケ192】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/09/15】</dt>
+              <dd>【9/21 TRC同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2014/09/12】</dt>
+              <dd>【9/21 TRC同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/09/15】</dt>
+              <dd>【9/21 札幌おでライフェス】を一般公開しました。</dd>
+                           <dt>【2014/09/12】</dt>
+              <dd>【9/21 札幌おでライフェス】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/09/15】</dt>
+              <dd>【9/21 関西オンリーフェスタ2014　オータム】を一般公開しました。</dd>
+                           <dt>【2014/09/12】</dt>
+              <dd>【9/21 関西オンリーフェスタ2014　オータム】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/09/08】</dt>
+              <dd>【9/15 J・POP STYLE Volume36】を一般公開しました。</dd>
+                           <dt>【2014/09/05】</dt>
+              <dd>【9/15 J・POP STYLE Volume36】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/09/08】</dt>
+              <dd>【9/14 オータムオンリーフェスタ2014】を一般公開しました。</dd>
+                           <dt>【2014/09/05】</dt>
+              <dd>【9/14 オータムオンリーフェスタ2014】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/09/01】</dt>
+              <dd>【9/7 TRC同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2014/08/29】</dt>
+              <dd>【9/7 TRC同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/08/25】</dt>
+              <dd>【8/31 某所同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2014/08/25】</dt>
+              <dd>【8/31 広コミフェス】を一般公開しました。</dd>
+                           <dt>【2014/08/25】</dt>
+              <dd>【8/31 TRC同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2014/08/22】</dt>
+              <dd>【8/31 某所同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/08/22】</dt>
+              <dd>【8/31 広コミフェス】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/08/22】</dt>
+              <dd>【8/31 TRC同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/08/18】</dt>
+              <dd>【8/24 名古屋同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2014/08/18】</dt>
+              <dd>【8/24 TRC同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2014/08/15】</dt>
+              <dd>【8/24 名古屋同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/08/15】</dt>
+              <dd>【8/24 TRC同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/08/04】</dt>
+              <dd>【8/10 ナツイベ2014】を一般公開しました。</dd>
+                           <dt>【2014/08/01】</dt>
+              <dd>【8/10 ナツイベ2014】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/07/28】</dt>
+              <dd>【8/3 TRC同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2014/07/25】</dt>
+              <dd>【8/3 TRC同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/07/14】</dt>
+              <dd>【7/21 TRC同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2014/07/14】</dt>
+              <dd>【7/20 サマーオンリーフェスタ2014】を一般公開しました。</dd>
+                           <dt>【2014/07/11】</dt>
+              <dd>【7/21 TRC同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/07/11】</dt>
+              <dd>【7/20 サマーオンリーフェスタ2014】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/07/07】</dt>
+              <dd>【7/13 関西オンリーフェスタ2014 SUMMER】を一般公開しました。</dd>
+                           <dt>【2014/07/04】</dt>
+              <dd>【7/13 関西オンリーフェスタ2014 SUMMER】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/06/30】</dt>
+              <dd>【7/6 ベルサール渋谷ガーデン同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2014/06/27】</dt>
+              <dd>【7/6 ベルサール渋谷ガーデン同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/06/23】</dt>
+              <dd>【6/29 TRC同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2014/06/20】</dt>
+              <dd>【6/29 TRC同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/06/09】</dt>
+              <dd>【6/15 アーリーサマーオンリーフェスタ2014】を一般公開しました。</dd>
+                           <dt>【2014/06/06】</dt>
+              <dd>【6/15 アーリーサマーオンリーフェスタ2014】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/05/26】</dt>
+              <dd>【6/1 関西オンリーフェスタ2014　6月スペシャル】を一般公開しました。</dd>
+                           <dt>【2014/05/26】</dt>
+              <dd>【6/1 マヨナカセカイ＃5】を一般公開しました。</dd>
+                           <dt>【2014/05/26】</dt>
+              <dd>【6/1 某所同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2014/05/23】</dt>
+              <dd>【6/1 関西オンリーフェスタ2014　6月スペシャル】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/05/23】</dt>
+              <dd>【6/1 マヨナカセカイ＃5】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/05/23】</dt>
+              <dd>【6/1 某所同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/05/19】</dt>
+              <dd>【5/25 交地ニハ絶ツコトナカレ 二十一】を一般公開しました。</dd>
+                           <dt>【2014/05/19】</dt>
+              <dd>【5/25 某所同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2014/05/16】</dt>
+              <dd>【5/25 某所同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/05/16】</dt>
+              <dd>【5/25 交地ニハ絶ツコトナカレ 二十一】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/05/12】</dt>
+              <dd>【5/18 アフターGWオンリーフェスタ2014 PART2】を一般公開しました。</dd>
+                           <dt>【2014/05/12】</dt>
+              <dd>【5/18 某所同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2014/05/09】</dt>
+              <dd>【5/18 某所同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/05/09】</dt>
+              <dd>【5/18 アフターGWオンリーフェスタ2014 PART2】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/05/05】</dt>
+              <dd>【5/11 アフターGWオンリーフェスタ2014】を一般公開しました。</dd>
+                           <dt>【2014/05/02】</dt>
+              <dd>【5/11 アフターGWオンリーフェスタ2014】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/04/28】</dt>
+              <dd>【5/5 GWオンリーフェスタ2014】を一般公開しました。</dd>
+                           <dt>【2014/04/28】</dt>
+              <dd>【5/6 PiO同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2014/04/25】</dt>
+              <dd>【5/6 PiO同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/04/25】</dt>
+              <dd>【5/5 GWオンリーフェスタ2014】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/04/14】</dt>
+              <dd>【4/20 神戸同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2014/04/11】</dt>
+              <dd>【4/20 神戸同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/04/07】</dt>
+              <dd>【4/13 J・POP STYLE Volume35】を一般公開しました。</dd>
+                           <dt>【2014/04/07】</dt>
+              <dd>【4/13 TRC同時開催イベント】を一般公開しました。</dd>
+                           <dt>【2014/04/07】</dt>
+              <dd>【4/13 関西オンリーフェスタ2014スプリングPART2】を一般公開しました。</dd>
+                           <dt>【2014/04/04】</dt>
+              <dd>【4/13 J・POP STYLE Volume35】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/04/04】</dt>
+              <dd>【4/13 TRC同時開催イベント】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/04/04】</dt>
+              <dd>【4/13 関西オンリーフェスタ2014スプリングPART2】をプレミアム先行公開しました。</dd>
+                           <dt>【2014/03/28】</dt>
+              <dd>【4/6 スプリングオンリーフェスタ2014 PART2】を公開しました。</dd>
+                           <dt>【2014/03/20】</dt>
+              <dd>【3/30 マーチオンリーフェスタ2014】を公開しました。</dd>
+                           <dt>【2014/03/14】</dt>
+              <dd>【3/23 某所同時開催イベント】を公開しました。</dd>
+                           <dt>【2014/03/14】</dt>
+              <dd>【3/23 TRC同時開催イベント】を公開しました。</dd>
+                           <dt>【2014/03/14】</dt>
+              <dd>【3/23 関西オンリーフェスタ2014スプリング】を公開しました。</dd>
+                           <dt>【2014/02/28】</dt>
+              <dd>【3/9 ベルサール渋谷ガーデン同時開催イベント】を公開しました。</dd>
+                           <dt>【2014/02/25】</dt>
+              <dd>【3/2 スプリングオンリーフェスタ2014】を公開しました。</dd>
+                           <dt>【2014/02/17】</dt>
+              <dd>【2/23 名古屋同時開催イベント】を公開しました。</dd>
+                           <dt>【2014/02/17】</dt>
+              <dd>【2/23 関西オンリーフェスタ2014ウィンター】を公開しました。</dd>
+                           <dt>【2014/01/31】</dt>
+              <dd>【2/11 TRC同時開催イベント】を公開しました。</dd>
+                           <dt>【2014/01/31】</dt>
+              <dd>【2/9 福岡オンリーライブ2014ウインター】を公開しました。</dd>
+                           <dt>【2014/01/31】</dt>
+              <dd>【2/9 TRC同時開催イベント】を公開しました。</dd>
+                           <dt>【2014/01/24】</dt>
+              <dd>【2/2 ウィンターオンリーフェスタ2014】を公開しました。</dd>
+                           <dt>【2014/01/10】</dt>
+              <dd>【1/19 TRC同時開催イベント】を公開しました。</dd>
+                           <dt>【2014/01/10】</dt>
+              <dd>【1/19 名古屋同時開催イベント】を公開しました。</dd>
+                           <dt>【2014/01/07】</dt>
+              <dd>【1/13 TRC同時開催イベント】を公開しました。</dd>
+                           <dt>【2013/12/27】</dt>
+              <dd>【1/12 ニューイヤーオンリーフェスタ2014】を公開しました。</dd>
+                           <dt>【2013/12/16】</dt>
+              <dd>【12/23 福岡オンリーライブ2013クリスマス】を公開しました。</dd>
+                           <dt>【2013/12/13】</dt>
+              <dd>【12/23 フユイベC】を公開しました。</dd>
+                           <dt>【2013/12/13】</dt>
+              <dd>【12/22 フユイベB】を公開しました。</dd>
+                           <dt>【2013/12/13】</dt>
+              <dd>【12/22 フユイベA】を公開しました。</dd>
+                           <dt>【2013/12/05】</dt>
+              <dd>【12/15 調査兵団の恋愛事情2 R18】を公開しました。</dd>
+                           <dt>【2013/12/05】</dt>
+              <dd>【12/14 0時に渚でアプローチ】を公開しました。</dd>
+                           <dt>【2013/11/14】</dt>
+              <dd>【11/24 仙コミフェス2013】を公開しました。</dd>
+                           <dt>【2013/11/08】</dt>
+              <dd>【11/17 関西オンリーフェスタ2013 オータム PART2】を公開しました。</dd>
+                           <dt>【2013/10/31】</dt>
+              <dd>【11/10 TRC同時開催イベント】を公開しました。</dd>
+                           <dt>【2013/10/24】</dt>
+              <dd>【11/3 カルテット☆スコア♪2】を公開しました。</dd>
+                           <dt>【2013/10/11】</dt>
+              <dd>【10/20 オータムオンリーフェスタ2013 東1ホール | 東2ホール | 東3ホール】を公開しました。</dd>
+                           <dt>【2013/10/11】</dt>
+              <dd>【10/20 関西オンリーフェスタ2013 10月スペシャル】を公開しました。</dd>
+                           <dt>【2013/10/04】</dt>
+              <dd>【10/14 TRC同時開催イベント】を公開しました。</dd>
+                           <dt>【2013/10/04】</dt>
+              <dd>【10/13 名古屋同時開催イベント】を公開しました。</dd>
+                           <dt>【2013/09/26】</dt>
+              <dd>【10/6 PiO同時開催イベント】を公開しました。</dd>
+                           <dt>【2013/09/13】</dt>
+              <dd>【9/23 TRC同時開催イベント】を公開しました。</dd>
+                           <dt>【2013/09/10】</dt>
+              <dd>【9/16 J・POP STYLE 34】を公開しました。</dd>
+                           <dt>【2013/09/06】</dt>
+              <dd>【9/15 関西オンリーフェスタ2013オータム】を公開しました。</dd>
+                           <dt>【2013/09/06】</dt>
+              <dd>【9/15 TRC同時開催イベント】を公開しました。</dd>
+                           <dt>【2013/08/23】</dt>
+              <dd>【9/1 TRC同時開催イベント】を公開しました。</dd>
+                           <dt>【2013/08/16】</dt>
+              <dd>【8/25 名古屋同時開催イベント】を公開しました。</dd>
+                           <dt>【2013/08/09】</dt>
+              <dd>【8/18 TRC同時開催イベント】を公開しました。</dd>
+                           <dt>【2014/06/06】</dt>
+              <dd>てすとパンフYOU公開予定イベントを更新いたしました。</dd>
+                           <dt>【2013/07/22】</dt>
+              <dd>【7/28 関西オンリーフェスタ2013SUMMER】を公開しました。</dd>
+                           <dt>【2013/07/22】</dt>
+              <dd>【7/28 TRC同時開催イベント】を公開しました。</dd>
+                           <dt>【2013/07/12】</dt>
+              <dd>【7/21 カルテット☆スコア♪】を公開しました。</dd>
+                           <dt>【2013/07/08】</dt>
+              <dd>【7/15 TRC同時開催イベント】を公開しました。</dd>
+                           <dt>【2013/07/04】</dt>
+              <dd>【7/14 サマーオンリーフェスタ2013】を公開しました。</dd>
+                           <dt>【2013/06/27】</dt>
+              <dd>【7/7 カプイベ ➳ avec festival ➳】を公開しました。</dd>
+                           <dt>【2013/06/07】</dt>
+              <dd>【6/16 アーリーサマーオンリーフェスタ2013】を公開しました。</dd>
+                           <dt>【2013/05/24】</dt>
+              <dd>【6/2 関西オンリーフェスタ2013 6月スペシャル】を公開しました。</dd>
+                           <dt>【2013/05/17】</dt>
+              <dd>【5/26 TRC同時開催イベント】を公開しました。</dd>
+                           <dt>【2013/05/07】</dt>
+              <dd>【5/12 アフターGWオンリーフェスタ】を公開しました。</dd>
+                           <dt>【2013/05/01】</dt>
+              <dd>【5/6 Shadow Trickster 広島】を公開しました。</dd>
+                           <dt>【2013/04/30】</dt>
+              <dd>【5/5 GWオンリーフェスタ2013】【5/5 GWオンリーフェスタ2013(Shadow Trickster 5)】を公開しました。</dd>
+                           <dt>【2013/04/26】</dt>
+              <dd>【4/27 Shadow Trickster 豊橋】【4/28 Shadow Trickster 豊橋2】【4/29 Shadow Trickster 豊橋3】を公開しました。</dd>
+                         </dl>
+           </div>
+          <div class="entriesbox">
+           <h6>サイト更新履歴</h6>
+            <dl class="updatelist">
+                            <dt>【2016/01/13】</dt>
+              <dd><a href="https://www.panfyou.jp/web/schedule/index" target="_blank">パンフYOU公開予定イベント</a>を更新いたしました。</dd>
+                           <dt>【2015/12/14】</dt>
+              <dd><a href="https://www.panfyou.jp/web/schedule/index" target="_blank">パンフYOU公開予定イベント</a>を更新いたしました。</dd>
+                           <dt>【2015/11/20】</dt>
+              <dd><a href="https://www.panfyou.jp/web/schedule/index" target="_blank">パンフYOU公開予定イベント</a>を更新いたしました。</dd>
+                           <dt>【2015/10/16】</dt>
+              <dd><a href="https://www.panfyou.jp/web/schedule/index" target="_blank">パンフYOU公開予定イベント</a>を更新いたしました。</dd>
+                           <dt>【2015/06/24】</dt>
+              <dd>ヘルプ「よくある質問」を更新いたしました。(<a href="https://www.panfyou.jp/web/help/earlyentry#e01" target="_blank">アーリーエントリー</a>)</dd>
+                           <dt>【2015/06/19】</dt>
+              <dd><a href="https://www.panfyou.jp/web/schedule/index" target="_blank">パンフYOU公開予定イベント</a>を更新いたしました。</dd>
+                           <dt>【2015/05/22】</dt>
+              <dd><a href="https://www.panfyou.jp/web/schedule/index" target="_blank">パンフYOU公開予定イベント</a>を更新いたしました。</dd>
+                           <dt>【2015/04/17】</dt>
+              <dd><a href="https://www.panfyou.jp/web/schedule/index" target="_blank">パンフYOU公開予定イベント</a>を更新いたしました。</dd>
+                           <dt>【2015/03/20】</dt>
+              <dd><a href="https://www.panfyou.jp/web/schedule/index" target="_blank">パンフYOU公開予定イベント</a>を更新いたしました。</dd>
+                           <dt>【2015/02/13】</dt>
+              <dd><a href="https://www.panfyou.jp/web/schedule/index" target="_blank">パンフYOU公開予定イベント</a>を更新いたしました。</dd>
+                           <dt>【2015/01/16】</dt>
+              <dd><a href="https://www.panfyou.jp/web/schedule/index" target="_blank">パンフYOU公開予定イベント</a>を更新いたしました。</dd>
+                           <dt>【2014/12/12】</dt>
+              <dd><a href="https://www.panfyou.jp/web/schedule/index" target="_blank">パンフYOU公開予定イベント</a>を更新いたしました。</dd>
+                           <dt>【2014/11/14】</dt>
+              <dd><a href="https://www.panfyou.jp/web/schedule/index" target="_blank">パンフYOU公開予定イベント</a>を更新いたしました。</dd>
+                           <dt>【2014/10/31】</dt>
+              <dd><a href="https://www.panfyou.jp/web/schedule/index" target="_blank">パンフYOU公開予定イベント</a>を更新いたしました。</dd>
+                           <dt>【2014/10/09】</dt>
+              <dd><a href="https://www.panfyou.jp/web/schedule/index" target="_blank">パンフYOU公開予定イベント</a>を更新いたしました。</dd>
+                           <dt>【2014/09/05】</dt>
+              <dd><a href="https://www.panfyou.jp/web/help/premium_pr" target="_blank">プレミアムサービス「プレミアム女子更衣室＆クローク」</a>を開始いたします。</dd>
+                           <dt>【2014/08/23】</dt>
+              <dd><a href="https://www.panfyou.jp/web/schedule/index" target="_blank">パンフYOU公開予定イベント</a>を更新いたしました。</dd>
+                           <dt>【2014/07/28】</dt>
+              <dd><a href="https://www.panfyou.jp/web/schedule/index" target="_blank">パンフYOU公開予定イベント</a>を更新いたしました。</dd>
+                           <dt>【2014/07/08】</dt>
+              <dd><a href="https://www.panfyou.jp/web/schedule/index" target="_blank">パンフYOU公開予定イベント</a>を更新いたしました。</dd>
+                           <dt>【2014/06/26】</dt>
+              <dd>マイページ(<a href="https://www.panfyou.jp/member/detail" target="_blank">プレミアム登録</a>)からプレミアム会員プランの追加購入が可能になりました。</dd>
+                           <dt>【2014/06/13】</dt>
+              <dd><a href="https://www.panfyou.jp/web/spage/attention" target="_blank">プレミアムチケット仕様変更のお知らせ</a>を掲載いたしました。</dd>
+                           <dt>【2014/06/06】</dt>
+              <dd><a href="https://www.panfyou.jp/web/schedule/index" target="_blank">パンフYOU公開予定イベント</a>を更新いたしました。</dd>
+                           <dt>【2014/05/29】</dt>
+              <dd>ヘルプ「よくある質問」を更新いたしました。(<a href="https://www.panfyou.jp/web/help/earlyentry" target="_blank">アーリーエントリー</a>/<a href="https://www.panfyou.jp/web/help/register" target="_blank">会員登録</a>/<a href="https://www.panfyou.jp/web/help/web" target="_blank">パンフYOUウェブサイト</a>)</dd>
+                           <dt>【2014/05/02】</dt>
+              <dd>ヘルプ「よくある質問」を更新いたしました。(<a href="https://www.panfyou.jp/web/help/circle" target="_blank">サークル情報</a>)</dd>
+                           <dt>【2014/05/02】</dt>
+              <dd>アーリーエントリー画面がフィーチャーフォン(ガラケー)に対応いたしました。</dd>
+                           <dt>【2014/05/01】</dt>
+              <dd>ヘルプ「よくある質問」を更新いたしました。(<a href="https://www.panfyou.jp/web/help/earlyentry" target="_blank">アーリーエントリー</a>)</dd>
+                           <dt>【2014/04/05】</dt>
+              <dd>アーリーエントリー対象イベントページから、アーリーエントリーページのURL送信ができるようになりました。</dd>
+                           <dt>【2014/04/01】</dt>
+              <dd><a href="https://www.panfyou.jp/web/schedule/index" title="プレミアム" target="_blank">パンフYOU公開予定イベント一覧</a>を公開しました。</dd>
+                           <dt>【2014/04/01】</dt>
+              <dd><a href="https://www.panfyou.jp/web/help/premium_pr" title="プレミアム" target="_blank">パンフYOUプレミアム</a>を公開しました。</dd>
+                           <dt>【2014/03/24】</dt>
+              <dd>イベントパンフレット内の各ページの上部にテキストのパンくずリストが表示されるようになりました。</dd>
+                           <dt>【2014/03/05】</dt>
+              <dd>検索ページの初期表示で、フリーワード検索の全ての項目にチェックが入るようになりました。</dd>
+                           <dt>【2014/03/03】</dt>
+              <dd>フリーワード検索の項目にペンネームを追加しました。</dd>
+                           <dt>【2013/11/27】</dt>
+              <dd>配置図、検索ページのページボタンが見やすく押しやすくなりました。</dd>
+                           <dt>【2013/10/24】</dt>
+              <dd>サークル詳細画面に、<a href="https://www.panfyou.jp/image/primg/pr_circle_pixiv.jpg" class="cirxle_pixiv_sample" title="カット付きサークル詳細画面－サンプル－">pixiv投稿イラスト</a>を表示できるようになりました。( <a href="https://www.panfyou.jp/web/help/pixiv" target="_blank">pixiv画像の掲載方法はこちら</a> )</dd>
+                           <dt>【2013/10/04】</dt>
+              <dd>サークルカット一覧をページング対応し、より速く表示されるようになりました。</dd>
+                           <dt>【2013/10/04】</dt>
+              <dd>配置図（スペースナンバー）にお気に入りの色がつくようになりました。</dd>
+                           <dt>【2013/10/04】</dt>
+              <dd>配置図のミニマップに連動して背面の地図が動くようになりました。</dd>
+                           <dt>【2013/10/04】</dt>
+              <dd>配置図、検索ページのサークルリストの表示方法で「カット付表示」「テキスト表示」を選択できるようになりました。</dd>
+                           <dt>【2013/03/22】</dt>
+              <dd>パンフYOUβ版を公開しました。</dd>
+                         </dl>
+          </div>
+         </div>
+        <!-- △ /#history end △ -->
+
+<a class="twitter-timeline" href="https://twitter.com/studio_you" data-widget-id="350111686637785088">@studio_you からのツイート</a>
+<script>
+$(document).ready(function(){
+      settingslider();
+});
+!function(d,s,id){
+  var js,fjs=d.getElementsByTagName(s)[0],
+  p=/^http:/.test(d.location)?'http':'https';
+  if(!d.getElementById(id)){
+    js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);
+  }
+}
+(document,"script","twitter-wjs");
+var sendmailurl = "https://www.panfyou.jp/web/dosendearlyurl";
+</script>
+
+         <!-- オンラインYOU バナー -->
+         <p class="margintop10"><a href="https://www.onlineyou.jp/" target="_blank"><img src="https://www.youyou.co.jp/images/bn/bn_onlineyou.gif" alt="【オンラインYOU】スタジオYOUのイベントに、オンラインでラクラクお申込みができます！" width="240" height="134"></a></p>
+
+         <!-- スタジオYOU バナー -->
+         <p class="margintop10"><a href="http://www.youyou.co.jp/" target="_blank"><img src="https://www.youyou.co.jp/images/bn/bn_youyou.gif" alt="【スタジオＹＯＵ】同人誌即売会（コミックライブ／おでかけライブ／オンリーイベント）情報" width="200" height="40" /></a></p>
+
+<!--
+旧 TWTR.Widget。バージョンが変わり使えなくなりました。↓
+
+        <script src="http://widgets.twimg.com/j/2/widget.js"></script>
+        <script>
+        $(document).ready(function(){
+
+          settingslider();
+        });
+new TWTR.Widget({
+  version: 2,
+  type: 'profile',
+  rpp: 4,
+  interval: 5000,
+  width: 250,
+  height: 350,
+  theme: {
+    shell: {
+      background: 'transparent',
+      color: '#ffffff'
+    },
+    tweets: {
+      background: 'transparent',
+      color: '#061938',
+      links: '#34a0bb'
+    }
+  },
+  features: {
+    scrollbar: false,
+    loop: true,
+    live: true,
+    hashtags: true,
+    timestamp: true,
+    avatars: false,
+    behavior: 'default'
+  }
+}).render().setUser('studio_you').start();
+</script>
+-->
+
+<!--<p id="bn_onlineyou"><a href="https://www.onlineyou.jp/" target="_blank" title="オンラインYOUにアクセス！" >オンラインYOUにアクセス！</a></p>
+<p id="bn_sururu"><a href="https://www.sururu.net/" target="_blank" title="オンライン入稿するるにアクセス！">オンライン入稿するるにアクセス！</a> </p> -->
+      </div>
+      <div id="gototop">
+        <p><a href="#header">ページTOPへ戻る</a></p>
+      </div>
+
+<link rel="stylesheet" type="text/css" href="/css/slider.css?c=1453505229" media="screen,print">
+<link rel="stylesheet" type="text/css" href="/css/nivo-slider.css?c=1" media="screen,print">
+<script type="text/javascript" src="https://www.panfyou.jp/js/sliderimgsetting.js?c=1453505229"></script>
+<!--
+<script type="text/javascript" src="https://www.panfyou.jp/js/jquery.nivo.slider.js"></script>
+-->
+<script type="text/javascript" src="https://www.panfyou.jp/js/jquery.nivo.slider.pack.js"></script>
+<script type="text/javascript" src="https://www.panfyou.jp/js/web/sendmail.js"></script>
+
+ 	   </div>
+      <!-- △△△ /#main end  △△△ -->
+      </div>
+      <!-- ▲▲▲ /#contents end ▲▲▲ -->
+    </div>
+    <!-- /container -->
+    <hr>
+      <!-- ▼▼▼ #footer start ▼▼▼ -->
+		<div id="footer">
+		  <div id="footer_inner">
+		    <div id="sslarea"></div>
+
+	          <p class="centerarea">
+<!--
+				お気軽に一言どうぞ：
+		        <input type="text" class="p_memo wh300" id="ouenmsg" name="msg" value="">
+		        <input type="button" name="button" onClick="sendouenmsg()" id="button" class="btn_yellow_m" value="送信"></td>
+-->
+		      </p>
+			<script>
+			function sendouenmsg(){
+				var message = $("#ouenmsg").val();
+				$.ajax({
+					url:"https://www.panfyou.jp/web/savecustomermessage",
+					type:"POST",
+					data:{msg:message},
+					success:function(html){
+						$("#ouenmsg").val("");
+						alert('ありがとうございます。メッセージを送信しました。');
+					}
+				});
+			}
+			</script>
+		    <ul>
+		      <li class="noborder"><a href="https://www.panfyou.jp/web/spage/company" target="_blank">会社概要</a></li>
+		      <li><a href="https://www.panfyou.jp/web/spage/rule">利用規約</a></li>
+		      <li><a href="https://www.panfyou.jp/web/spage/privacy">プライバシーポリシー</a></li>
+		      <li><a href="https://www.panfyou.jp/web/spage/legal">特定商取引法に基づく表記</a></li>
+		      <li><a href="https://www.panfyou.jp/web/spage/read" target="_blank">推奨環境・セキュリティ</a></li>
+		      <li><a href="https://www.panfyou.jp/web/contacts" target="_blank">お問い合わせ</a></li>
+		    </ul>
+		    <address>
+		    <a href="https://www.panfyou.jp/web/index">パンフYOU</a>　｜　Copyright &copy; 2014 youmedia Co.,Ltd. All Rights Reserved.
+		    </address>
+		  </div>
+		</div>
+		<!-- ▲▲▲ /#footer end ▲▲▲ -->
+  </body>
+</html>

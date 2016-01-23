@@ -1,0 +1,275 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<base href="http://www.eltercerbanquillo.com/" />
+<head>
+<!-- META -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Description" lang="es" content="" />
+<meta name="Keywords" lang="es" content="" />
+<meta name="Author" content="W&eacute;bico Studio, S.L." />
+<meta name="robots" content="all" />
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="estilos.css" />
+<!-- JS -->
+<!-- JQUERY -->
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<!-- IEPNGFIX -->
+<script type="text/javascript" src="js/iepngfix_tilebg.js"></script>
+<!-- EASYSLIDER -->
+<script type="text/javascript" src="js/easySlider1.7.js"></script>
+<!-- COOKIES -->
+<script>
+function getCookie(c_name){
+    var c_value = document.cookie;
+    var c_start = c_value.indexOf(" " + c_name + "=");
+    if (c_start == -1){
+        c_start = c_value.indexOf(c_name + "=");
+    }
+    if (c_start == -1){
+        c_value = null;
+    }else{
+        c_start = c_value.indexOf("=", c_start) + 1;
+        var c_end = c_value.indexOf(";", c_start);
+        if (c_end == -1){
+            c_end = c_value.length;
+        }
+        c_value = unescape(c_value.substring(c_start,c_end));
+    }
+    return c_value;
+}
+function setCookie(c_name,value,exdays){
+    var exdate=new Date();
+    exdate.setDate(exdate.getDate() + exdays);
+    var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+    document.cookie=c_name + "=" + c_value;
+}
+function ponercookie(){
+    setCookie('cookieok','1',365);
+    document.getElementById("barracookies").style.display="none";
+}
+</script>
+<!-- FUNCIONES -->
+<script>
+function irarriba(){
+    $('html,body').animate({
+        scrollTop:0
+    },1000);
+}
+var temporizador;
+function iniciartemporizador() {
+    temporizador = setInterval(cambioequipo,2000);
+}
+function detenertemporizador() {
+    clearInterval(temporizador);
+}
+function cambioequipo(){
+	//console.log ('ciclo'+numfondo);
+	if(numfondo==1){
+		$('#img11').fadeOut(500);
+		$('#img1').fadeIn(500);
+		$('#tarjeta11').animate({top:'11'},250);
+		$('#tarjeta1').animate({top:'-4'},250);
+		$('#tarjetam11').fadeOut(500);
+		$('#tarjetam1').fadeIn(500);
+	} else {
+		$('#img'+(numfondo-1)).fadeOut(500);
+		$('#img'+numfondo).fadeIn(500);
+		$('#tarjeta'+(numfondo-1)).animate({top:'11'},250);
+		$('#tarjeta'+numfondo).animate({top:'-4'},250);
+		$('#tarjetam'+(numfondo-1)).fadeOut(500);
+		$('#tarjetam'+numfondo).fadeIn(500);
+	}
+	if(numfondo==11){
+		numfondo = 1;
+	} else {
+		numfondo++;
+	}
+}
+</script>
+<!-- DOCUMENT READY -->
+<script type="text/javascript">
+$(document).ready(function(){
+	// CAMBIO IMAGENES -->
+	$('.cont_tarjetas .tarjetas .tarjeta').hover(function(){
+		//console.log ('detener'+numfondo);
+		detenertemporizador();
+		elementohover = $(this).attr("id").substring(7,9);
+		$('#img'+(numfondo-1)).fadeOut(500);
+		$('#img'+elementohover).fadeIn(500);
+		$('#tarjeta'+(numfondo-1)).animate({top:'11'},250);
+		$('#tarjeta'+elementohover).animate({top:'-4'},250);
+		$('#tarjetam'+(numfondo-1)).fadeOut(500);
+		$('#tarjetam'+elementohover).fadeIn(500);
+	},function(){
+		$('#img'+elementohover).fadeOut(500);
+		$('#tarjeta'+elementohover).animate({top:'11'},250);
+		$('#tarjetam'+elementohover).fadeOut(500);
+		if(elementohover==11){
+			numfondo = 1;
+		} else {
+			numfondo = elementohover;
+			numfondo++;
+		}
+		if($('.tarjeta:hover').length == 0){
+			//console.log ('arrancar'+numfondo);
+			iniciartemporizador();
+		}
+	});
+	$('.btsiguiente').click(function(){
+		detenertemporizador();
+		if(numfondo==12){
+			numfondo = 1;
+		}
+		if(numfondo==1){
+			$('#img11').fadeOut(500);
+			$('#img1').fadeIn(500);
+			$('#tarjeta11').animate({top:'11'},250);
+			$('#tarjeta1').animate({top:'-4'},250);
+			$('#tarjetam11').fadeOut(500);
+			$('#tarjetam1').fadeIn(500);
+		} else {
+			$('#img'+(numfondo-1)).fadeOut(500);
+			$('#img'+numfondo).fadeIn(500);
+			$('#tarjeta'+(numfondo-1)).animate({top:'11'},250);
+			$('#tarjeta'+numfondo).animate({top:'-4'},250);
+			$('#tarjetam'+(numfondo-1)).fadeOut(500);
+			$('#tarjetam'+numfondo).fadeIn(500);
+		}
+		if(numfondo==11){
+			numfondo = 1;
+		} else {
+			numfondo++;
+		}
+	});
+	$('.btanterior').click(function(){
+		detenertemporizador();
+		if(numfondo==2){
+			$('#img1').fadeOut(500);
+			$('#img11').fadeIn(500);
+			$('#tarjeta1').animate({top:'11'},250);
+			$('#tarjeta11').animate({top:'-4'},250);
+			$('#tarjetam1').fadeOut(500);
+			$('#tarjetam11').fadeIn(500);
+		} else {
+			$('#img'+(numfondo-1)).fadeOut(500);
+			$('#img'+(numfondo-2)).fadeIn(500);
+			$('#tarjeta'+(numfondo-1)).animate({top:'11'},250);
+			$('#tarjeta'+(numfondo-2)).animate({top:'-4'},250);
+			$('#tarjetam'+(numfondo-1)).fadeOut(500);
+			$('#tarjetam'+(numfondo-2)).fadeIn(500);
+		}
+		if(numfondo==2){
+			numfondo = 12;
+		} else {
+			numfondo--;
+		}
+	});
+	// CONTROL COOKIES -->
+	if(getCookie('cookieok')!="1"){
+	    document.getElementById("barracookies").style.display="block";
+	}
+});
+</script>
+<!-- WINDOW LOAD -->
+<script type="text/javascript">
+$(window).load(function() {
+	numfondo = 1 + Math.floor(Math.random()*11);
+	iniciartemporizador();
+});
+</script><!-- TÍTULO -->
+<title>El Tercer Banquillo</title>
+</head>
+<body>
+<!-- cookies -->
+<div id="barracookies">
+<div class="texto">
+En esta p&aacute;gina utilizamos cookies propias y de terceros para mejorar nuestros servicios. Si contin&uacute;a navegando, consideramos que acepta su uso y nuestra pol&iacute;tica de cookies.
+<a href="javascript:;" class="ok" onclick="ponercookie();">OK</a> |
+<a href="cookies.php" class="info">M&aacute;s informaci&oacute;n</a>
+</div>
+</div><!-- cabecera -->
+<div class="cont_cabecera">
+<div class="cabecera">
+<h1>El Tercer Banquillo</h1>
+<img src="img/logo_caixa.png" class="logo" />
+</div>
+<!-- ojo -->
+<div class="cont_ojo">
+<div class="ojo">
+<img src="img/imagen-almeria.jpg" id="img1" class="imgequipo" />
+<img src="img/imagen-atletico.jpg" id="img2" class="imgequipo" />
+<img src="img/imagen-betis.jpg" id="img3" class="imgequipo" />
+<img src="img/imagen-espanyol.jpg" id="img4" class="imgequipo" />
+<img src="img/imagen-granada.jpg" id="img5" class="imgequipo" />
+<img src="img/imagen-levante.jpg" id="img6" class="imgequipo" />
+<img src="img/imagen-malaga.jpg" id="img7" class="imgequipo" />
+<img src="img/imagen-sevilla.jpg" id="img8" class="imgequipo" />
+<img src="img/imagen-valencia.jpg" id="img9" class="imgequipo" />
+<img src="img/imagen-villarreal.jpg" id="img10" class="imgequipo" />
+<img src="img/imagen-zaragoza.jpg" id="img11" class="imgequipo" />
+</div>
+<div class="texto" id="textoentrada">Verás a tu equipo como nunca lo has visto</div>
+</div>
+<!-- tarjetas -->
+<div class="cont_tarjetas">
+<div class="tarjetas">
+<a href="https://portal4.lacaixa.es/apl/tarjetas/catalogo/catalogo.index_es.html?idImagen=228,660,1126&filtro=CR" target="_blank" id="tarjeta1" class="tarjeta"><img src="img/tarjeta-almeria.png" /></a>
+<a href="https://portal4.lacaixa.es/apl/tarjetas/catalogo/catalogo.index_es.html?idImagen=228,1020&filtro=CR" target="_blank" id="tarjeta2" class="tarjeta"><img src="img/tarjeta-atletico.png" /></a>
+<a href="https://portal4.lacaixa.es/apl/tarjetas/catalogo/catalogo.tabla_es.html?idImagen=228,660,237&filtro=CR" target="_blank" id="tarjeta3" class="tarjeta"><img src="img/tarjeta-betis.png" /></a>
+<a href="https://portal4.lacaixa.es/apl/tarjetas/catalogo/catalogo.index_es.html?idImagen=228,240&filtro=CR" target="_blank" id="tarjeta4" class="tarjeta"><img src="img/tarjeta-espanyol.png" /></a>
+<a href="https://portal4.lacaixa.es/apl/tarjetas/catalogo/catalogo.index_es.html?idImagen=228,660,1125&filtro=CR" target="_blank" id="tarjeta5" class="tarjeta"><img src="img/tarjeta-granada.png" /></a>
+<a href="https://portal4.lacaixa.es/apl/tarjetas/catalogo/catalogo.index_es.html?idImagen=228,660,1144&filtro=CR" target="_blank" id="tarjeta6" class="tarjeta"><img src="img/tarjeta-levante.png" /></a>
+<a href="https://portal4.lacaixa.es/apl/tarjetas/catalogo/catalogo.index_es.html?idImagen=228,660,1123&filtro=CR" target="_blank" id="tarjeta7" class="tarjeta"><img src="img/tarjeta-malaga.png" /></a>
+<a href="https://portal4.lacaixa.es/apl/tarjetas/catalogo/catalogo.index_es.html?idImagen=228,660,1023&filtro=CR" target="_blank" id="tarjeta8" class="tarjeta"><img src="img/tarjeta-sevilla.png" /></a>
+<a href="https://portal4.lacaixa.es/apl/tarjetas/catalogo/catalogo.index_es.html?idImagen=228,660,1137&filtro=CR" target="_blank" id="tarjeta9" class="tarjeta"><img src="img/tarjeta-valencia.png" /></a>
+<a href="https://portal4.lacaixa.es/apl/tarjetas/catalogo/catalogo.index_es.html?idImagen=228,660,1122&filtro=CR" target="_blank" id="tarjeta10" class="tarjeta"><img src="img/tarjeta-villarreal.png" /></a>
+<a href="https://portal4.lacaixa.es/apl/tarjetas/catalogo/catalogo.index_es.html?idImagen=228,660,1142&filtro=CR" target="_blank" id="tarjeta11" class="tarjeta"><img src="img/tarjeta-zaragoza.png" /></a>
+</div>
+</div>
+<!-- tarjetas movil-->
+<div class="cont_tarjetasm">
+<div class="tarjetas">
+<a href="https://portal4.lacaixa.es/apl/tarjetas/catalogo/catalogo.index_es.html?idImagen=228,660,1126&filtro=CR" target="_blank" id="tarjetam1" class="tarjeta"><img src="img/tarjetam-almeria.png" /></a>
+<a href="https://portal4.lacaixa.es/apl/tarjetas/catalogo/catalogo.index_es.html?idImagen=228,1020&filtro=CR" target="_blank" id="tarjetam2" class="tarjeta"><img src="img/tarjetam-atletico.png" /></a>
+<a href="https://portal4.lacaixa.es/apl/tarjetas/catalogo/catalogo.tabla_es.html?idImagen=228,660,237&filtro=CR" target="_blank" id="tarjetam3" class="tarjeta"><img src="img/tarjetam-betis.png" /></a>
+<a href="https://portal4.lacaixa.es/apl/tarjetas/catalogo/catalogo.index_es.html?idImagen=228,240&filtro=CR" target="_blank" id="tarjetam4" class="tarjeta"><img src="img/tarjetam-espanyol.png" /></a>
+<a href="https://portal4.lacaixa.es/apl/tarjetas/catalogo/catalogo.index_es.html?idImagen=228,660,1125&filtro=CR" target="_blank" id="tarjetam5" class="tarjeta"><img src="img/tarjetam-granada.png" /></a>
+<a href="https://portal4.lacaixa.es/apl/tarjetas/catalogo/catalogo.index_es.html?idImagen=228,660,1144&filtro=CR" target="_blank" id="tarjetam6" class="tarjeta"><img src="img/tarjetam-levante.png" /></a>
+<a href="https://portal4.lacaixa.es/apl/tarjetas/catalogo/catalogo.index_es.html?idImagen=228,660,1123&filtro=CR" target="_blank" id="tarjetam7" class="tarjeta"><img src="img/tarjetam-malaga.png" /></a>
+<a href="https://portal4.lacaixa.es/apl/tarjetas/catalogo/catalogo.index_es.html?idImagen=228,660,1023&filtro=CR" target="_blank" id="tarjetam8" class="tarjeta"><img src="img/tarjetam-sevilla.png" /></a>
+<a href="https://portal4.lacaixa.es/apl/tarjetas/catalogo/catalogo.index_es.html?idImagen=228,660,1137&filtro=CR" target="_blank" id="tarjetam9" class="tarjeta"><img src="img/tarjetam-valencia.png" /></a>
+<a href="https://portal4.lacaixa.es/apl/tarjetas/catalogo/catalogo.index_es.html?idImagen=228,660,1122&filtro=CR" target="_blank" id="tarjetam10" class="tarjeta"><img src="img/tarjetam-villarreal.png" /></a>
+<a href="https://portal4.lacaixa.es/apl/tarjetas/catalogo/catalogo.index_es.html?idImagen=228,660,1142&filtro=CR" target="_blank" id="tarjetam11" class="tarjeta"><img src="img/tarjetam-zaragoza.png" /></a>
+<img src="img/bt-anterior.png" class="btanterior" />
+<img src="img/bt-siguiente.png" class="btsiguiente" />
+</div>
+</div>
+<!-- banquillo -->
+<div class="cont_banquillo">
+<div class="banquillo">
+<img src="img/banquillo.jpg" />
+<div class="texto">Vive un partido de tu equipo favorito como un jugador más</div>
+<a href="/atleticodemadrid" class="btenlace"><img src="img/bt-atm.png" /></a>
+</div>
+</div>
+<!-- texto -->
+<div class="cont_texto">
+<div class="texto">
+<p>
+Si eres titular de la Tarjeta de ”la Caixa” de tu equipo, cada partido de liga en casa participarás en el sorteo de dos butacas para vivirlo desde <span class="negrita">El Tercer Banquillo</span>. Junto a un acompañante vivirás el partido a pie de campo, como un jugador más.<br />
+¿A qué esperas? <a href="javascript:irarriba();" class="negrita fcazul">¡Consigue tu tarjeta ya!</a>
+</p>
+</div>
+<div class="logo mt60 mb60">
+<img src="img/logo_caixa.png" />
+</div>
+</div>
+<!-- pie -->
+<div class="pie">
+</div>
+</body>
+</html>

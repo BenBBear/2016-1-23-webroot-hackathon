@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Saraç İnşaat</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Ülker İnternet Hizmetleri(ulker.net.tr)">	
+	
+    <link href="css/bootstrap.min.css" rel="stylesheet">	
+	<link href="css/font-awesome.min.css" rel="stylesheet">			
+	<link href="css/jquery.fancybox.css" rel="stylesheet">			
+	<link href="css/perfect-scrollbar.min.css" rel="stylesheet">			
+    <!--[if lt IE 9]>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->	
+    <link href="css/style.css" rel="stylesheet">
+	<link href="css/ui.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet">	
+    <!--[if gte IE 9]>
+    <style type="text/css">
+        .gradient {
+            filter: none;
+        }
+    </style>
+    <![endif]-->
+</head>
+<body>
+
+<div id="header">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6">
+				<h1><a href="anasayfa"><img src="img/logo.jpg" class="img-responsive" alt="Saraç İnşaat" title="Saraç İnşaat" /></a></h1>
+			</div>
+			<div class="col-lg-10 col-md-10 col-sm-9 col-xs-6">
+				<div class="languageBox"><a href="changeLanguage.php?lang=en" class="language">Click for English</a></div>
+				<div class="mixBox">
+					<a href="bize_ulasin" class="btn btn-mix">Online Yol Tarifi</a>
+					<a href="https://www.facebook.com/saracinsaat" target="_blank" class="btn btn-mix social"><i class="fa fa-facebook"></i></a>					
+				</div>
+				<nav class="navbar hidden-xs" role="navigation">                  
+					<div class="collapse navbar-collapse">
+						<ul class="nav navbar-nav" id="navbar">
+							<li><a class="active" href="anasayfa">Anasayfa</a></li>
+							<li><a href="kurumsal">Kurumsal</a></li>
+							<li><a href="projelerimiz">Projelerimiz</a></li>							
+							<li><a href="insan_kaynaklari">İnsan Kaynakları</a></li>							
+							<li><a href="iletisim">İletişim</a></li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+			<div class="visible-xs col-xs-12">
+				<nav class="navbar visible-xs" role="navigation">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainmenu">							
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>						
+					</div>                                         
+					<div class="collapse navbar-collapse" id="mainmenu">
+						<ul class="nav navbar-nav" id="navbar">
+							<li><a class="active" href="anasayfa">Anasayfa</a></li>
+							<li><a href="kurumsal">Kurumsal</a></li>
+							<li><a href="projelerimiz">Projelerimiz</a></li>							
+							<li><a href="insan_kaynaklari">İnsan Kaynakları</a></li>							
+							<li><a href="iletisim">İletişim</a></li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+</div>
+<!--div class="modal fade" id="mainpageModal" tabindex="-1" role="dialog" aria-labelledby="mainpageModalLabel" aria-hidden="true">	
+	<div class="modal-dialog" style="width:1200px;">		
+		<img src="img/lbox.jpg" class="img-responsive" style="margin:0 auto;"/>
+	</div>	
+</div-->
+<div class="modal fade" id="requestFormModal" tabindex="-1" role="dialog" aria-labelledby="requestFormModalLabel" aria-hidden="true">
+	<div id="modalStripe">
+		<div class="container">
+			<h2>PROJE TALEP FORMU</h2>
+		</div>
+	</div>
+	<div class="modal-dialog">
+		<div class="modal-content" id="requestForm">			
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div class="alert" id="resultField" style="display:none;"></div>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+						<input type="text" class="form-control" id="inputName" placeholder="Adınız Soyadınız">
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+						<input type="email" class="form-control" id="inputEmail" placeholder="E-Posta Adresiniz">
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+						<input type="text" class="form-control" id="inputPhone" placeholder="Telefon Numaranız">
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+						<input type="text" class="form-control" id="inputGSM" placeholder="GSM Numaranız">
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<textarea type="text" class="form-control" id="inputMessage" placeholder="Talebiniz"></textarea>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+						<p>Güvenlik Kodu</p>
+						<div class="input-group">
+							<span class="input-group-addon" id="captcha-addon"><img src="captcha.php" name="captcha" alt="captcha" /></span>					
+							<textarea id="inputCaptcha" name="captcha" rows="3" class="form-control" aria-describedby="message-addon1" required></textarea>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+						<button type="button" class="btn btn-send"><i class="fa fa-refresh"></i> GÖNDER</button>
+					</div>
+				</div>
+			</div>			
+		</div>
+	</div>
+</div>
+				
+<div id="slider" class="carousel slide" data-ride="carousel" data-interval="10000">
+	<div class="container">
+		<div class="carousel-inner" role="listbox">					
+		
+			<div class="item active">
+				<div class="row">
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+						<a href="project.php?id=2">
+							<img src="tim.php?src=images/slider/9115170344_1.png&w=360&h=430&zc=1">
+							<div class="carousel-caption">
+								<h2>Demirezen Projesi</h2>
+							</div>
+						</a>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+						<a href="project.php?id=2">
+							<img src="tim.php?src=images/slider/9115170344_2.png&w=360&h=430&zc=1">
+							<div class="carousel-caption">
+								<h2>Demirezen Projesi</h2>
+							</div>
+						</a>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+						<a href="project.php?id=2">
+							<img src="tim.php?src=images/slider/9115170345_3.png&w=360&h=430&zc=1">
+							<div class="carousel-caption">
+								<h2>Demirezen Projesi</h2>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="item">
+				<div class="row">
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+						<a href="project.php?id=1">
+							<img src="tim.php?src=images/slider/9115165938_1.png&w=360&h=430&zc=1">
+							<div class="carousel-caption">
+								<h2>Prime Park Sitesi </h2>
+							</div>
+						</a>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+						<a href="project.php?id=1">
+							<img src="tim.php?src=images/slider/9115165938_2.png&w=360&h=430&zc=1">
+							<div class="carousel-caption">
+								<h2>Prime Park Sitesi </h2>
+							</div>
+						</a>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+						<a href="project.php?id=1">
+							<img src="tim.php?src=images/slider/9115165938_3.png&w=360&h=430&zc=1">
+							<div class="carousel-caption">
+								<h2>Prime Park Sitesi </h2>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>		</div>
+	</div>
+	<a class="left carousel-control" href="#slider" role="button" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+	<a class="right carousel-control" href="#slider" role="button" data-slide="next"><i class="fa fa-angle-right"></i></a>		
+</div>
+
+<div id="main">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 welcome">
+				
+				<h2>İnternet Sitemize Hoşgeldiniz</h2>
+				<p><p>Sara&ccedil; İnşaat sekt&ouml;r&uuml;ndeki deneyimlerini ve vizyonlarını birleştirerek bir&ccedil;ok projeye imza atmaktadır.</p>
+
+<p>Yapı inşaasında yeniliklere a&ccedil;ık, cesur ve atak bir işleyiş politikası izleyen Sara&ccedil; İnşaat, &uuml;retim kalitesi ve deprem g&uuml;venliğine g&ouml;sterdiği &ouml;zen ile &ccedil;alıştıkları b&ouml;lgelerin daima tercih edilen firmalarından olmuştur.</p>
+</p>			</div>
+			<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 caps">
+				<a href="devam_eden_projeler" class="capsBox">
+					<div class="capsText">Devam Eden<br />Projelerimiz</div>
+					<div class="capsImage"><img src="img/cap1.png" /></div>
+				</a>
+				<a href="tamamlanan_projeler" class="capsBox">
+					<div class="capsText">Tamamlanan<br />Projelerimiz</div>
+					<div class="capsImage"><img src="img/cap2.png" /></div>
+				</a>
+				<a href="projeler_haritasi" class="capsBox">
+					<div class="capsText">Proje<br />Haritası</div>
+					<div class="capsImage"><img src="img/cap3.png" /></div>
+				</a>
+			</div>
+		</div>	
+		<div class="row lastProjects">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<h3>Son Projelerimiz</h3>
+			</div>
+		
+			<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+				<a href="alyans_residence-9">
+					<img src="tim.php?src=images/projectsMainImg/10215181206.jpg&w=345&h=223&crop-to-fit" class="img-responsive" />
+					<p>Alyans Residence</p>
+				</a>
+			</div>
+			<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+				<a href="prime_park_sitesi_-1">
+					<img src="tim.php?src=images/projectsMainImg/10215180339.jpg&w=345&h=223&crop-to-fit" class="img-responsive" />
+					<p>Prime Park Sitesi </p>
+				</a>
+			</div>
+			<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+				<a href="demirezen_projesi-2">
+					<img src="tim.php?src=images/projectsMainImg/9115153139.png&w=345&h=223&crop-to-fit" class="img-responsive" />
+					<p>Demirezen Projesi</p>
+				</a>
+			</div>		</div>
+	</div>
+</div>
+<div id="footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 copyrights">
+				Saraç İnşaat - 2014
+			</div>
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 ulker">
+				<a href="http://ulker.net.tr" target="_blank"><img src="img/ulker.png" title="Ülker İnternet Hizmetleri Ltd. Şti." alt="Ülker İnternet Hizmetleri Ltd. Şti." /></a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="js/jquery-1.11.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/Placeholders.min.js"></script>
+<script src="js/perfect-scrollbar.min.js"></script>
+<script src="js/jquery.fancybox.pack.js"></script>	
+<script type="text/javascript">	
+	$(document).ready(function() {
+		$("#mainpageModal").modal('show');
+		document.title = 'Saraç İnşaat - Anasayfa';
+		
+		$(".fancybox").fancybox({
+			openEffect: 'elastic',
+			closeEffect: 'elastic',
+			nextEffect: 'elastic',
+			prevEffect: 'elastic'
+		});
+		$("body").on("click", ".dropdownButton",function(){			
+			var parent=$(this).parent();			
+			if (parent.hasClass("open")){
+				parent.removeClass("open");
+			}
+			else{
+				parent.addClass("open");			
+				if (parent.find(".dropdownMenu").hasClass("scrollable")){
+					parent.find(".dropdownMenu").scrollTop(0);
+					parent.find(".dropdownMenu").perfectScrollbar('update');			
+				}
+			}
+		});
+		
+		$("body").on("click", ".dropdownMenu li", function(){
+			var label=$(this).text();
+			var value=$(this).attr("data-value");
+			var color=$(this).html();
+			var iscolor=$(this).attr('data-color');
+			var parent=$(this).parent().parent();
+			var inputID=parent.attr("data-input");
+			$(inputID).val(value);
+			
+			if (iscolor){
+				parent.find(".dropdownButton").find(".dropdownLabel").html(color);
+			}
+			else{
+				var buttonText=parent.find(".dropdownButton").find(".dropdownLabel");
+				buttonText.text(label);
+			}
+			parent.removeClass("open");
+		});
+		$(document).mouseup(function (e) {	
+			var elem=$(".dropdownButton");
+			if(e.target!=elem[0]&&!elem.has(e.target).length){ 				
+				$(".dropdownButton").parent().removeClass("open");
+			}			
+		});
+
+
+		$("#requestForm #inputName").keyup(function(){
+			$("#inputName").removeClass("has-error");
+		});
+		$("#requestForm #inputPhone").keyup(function(){
+			$("#inputPhone").removeClass("has-error");
+		});
+		$("#requestForm #inputGSM").keyup(function(){
+			$("#inputGSM").removeClass("has-error");
+		});
+		$("#requestForm #inputEmail").keyup(function(){
+			$("#inputEmail").removeClass("has-error");
+		});
+		$("#requestForm #inputMessage").keyup(function(){
+			$("#inputMessage").removeClass("has-error");
+		});
+		$("#requestForm #inputCaptcha").keyup(function(){
+			$("#inputCaptcha").removeClass("has-error");
+		});
+		$('#requestForm .btn-send').click(function(){
+			$("#requestForm #inputName").removeClass("has-error");
+			$("#requestForm #inputPhone").removeClass("has-error");
+			$("#requestForm #inputGSM").removeClass("has-error");
+			$("#requestForm #inputEmail").removeClass("has-error");
+			$("#requestForm #inputMessage").removeClass("has-error");
+			$("#requestForm #inputCaptcha").removeClass("has-error");
+			var name=$("#requestForm #inputName").val();
+			var phone=$("#requestForm #inputPhone").val();
+			var gsm=$("#requestForm #inputGSM").val();
+			var email=$("#requestForm #inputEmail").val();			
+			var text=$("#requestForm #inputMessage").val();
+			var captcha=$("#requestForm #inputCaptcha").val();			
+			var button=$(this);
+			var error=0;
+			if (name==""){
+				$("#requestForm #inputName").addClass("has-error");
+				error++;
+			}
+			if (phone==""){
+				$("#requestForm #inputPhone").addClass("has-error");
+				error++;
+			}
+			if (gsm==""){
+				$("#requestForm #inputGSM").addClass("has-error");
+				error++;
+			}
+			if (email==""){
+				$("#requestForm #inputEmail").addClass("has-error");
+				error++;
+			}
+			if (text==""){
+				$("#requestForm #inputMessage").addClass("has-error");
+				error++;
+			}
+			if (captcha==""){
+				$("#requestForm #inputCaptcha").addClass("has-error");
+				error++;
+			}
+			if (!error){			
+				button.addClass("animated");
+				$.post("ajax/sendRequest.php", {name:name, phone:phone, email:email, gsm:gsm, message:text, captcha:captcha}, function(data){
+					if(data=="0"){ var result="Mesajınız gönderilmiştir. Teşekkür ederiz."; var resClass="alert-success"; $('#requestForm').trigger("reset");}
+					else if(data=="1"){ var result="Mesajınız gönderilmemiştir. Server hatası. "; var resClass="alert-warning";}
+					else if(data=="2"){ var result="Güvenlik Kodu Hatalı. "; var resClass="alert-warning";}
+					else if(data=="3"){ var result="Lütfen doğru bir E-mail adresi giriniz. "; var resClass="alert-warning";}
+					$("#requestForm #resultField").addClass(resClass);
+					$("#requestForm #resultField").text(result);
+					$("#requestForm #resultField").fadeIn();
+					button.removeClass("animated");
+					setTimeout(function(){						
+						$("#requestForm #resultField").hide();
+						$("#requestForm #resultField").removeClass(resClass);
+						$("#requestFormModal").modal('hide');
+					}, 2500);
+				});
+			}
+		});
+	});
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58507546-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

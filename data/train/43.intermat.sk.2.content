@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='sk' lang='sk'>	
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Language" content="sk" />
+	<meta http-equiv="imagetoolbar" content="no" />
+	<meta http-equiv="Cache-Control" content="no-cache" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="-1" />
+	<meta name="author" content="UGS graphic design studio">
+	<meta name="copyright" content="(C) UGS, www.ugssro.com" />
+	<meta name="robots" content="index,follow" />
+	<meta name="description" content="www.intermat.sk Predaj a prenájom výherných automatov" />
+	<meta name="keywords" content="automaty, hracie, predaj, prenajom, vyhra, vyherne" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta http-equiv="Default-Style" content="styles_portal" />
+	<title>INTERMAT by UGS</title>
+<link href="css/styles.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.3.2.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  var currentPosition = 0;
+  //var newPosition = currentPosition;
+  var slideWidth = 725;
+  var slides = $('.sliderContrent1');
+  var numberOfSlides = slides.length;
+  var beforePosition = 1;
+  var oldPosition = 0;
+
+  // Remove scrollbar in JS
+  $('#sliderContrent').css('overflow', 'hidden');
+  
+  $('.topNumbering a').click(function(){
+		var aleert = this.id;
+		currentPosition = aleert;
+  		//alert(aleert);
+  });
+  
+
+  // Wrap all .slides with #slideInner div
+  slides
+    .wrapAll('<div id="slideInner"></div>')
+    // Float left to display horizontally, readjust .slides width
+	.css({
+      'float' : 'left',
+      'width' : slideWidth
+    });
+
+  // Set #slideInner width equal to total width of all slides
+  $('#slideInner').css('width', slideWidth * numberOfSlides);
+
+  // Insert controls in the DOM
+  $('#nextPrevius')
+    .prepend('<span class="control" id="leftControl">previous</span>')
+    .append('<span class="control" id="rightControl">next</span>');
+
+  // Hide left arrow control on first load
+  manageControls(currentPosition);
+
+  // Create event listeners for .controls clicks
+  $('.control')
+    .bind('click', function(){
+    // Determine new position
+	currentPosition = ($(this).attr('id')=='rightControl') ? currentPosition+1 : currentPosition-1;
+	oldPosition = beforePosition;
+	beforePosition = currentPosition+1;
+    $("#"+beforePosition).css("color","#FFFFFF");
+	$("#"+oldPosition).css("color","#666666");
+	// Hide / show controls
+    manageControls(currentPosition);
+    // Move slideInner using margin-left
+    $('#slideInner').animate({
+      'marginLeft' : slideWidth*(-currentPosition)
+    });
+  });
+
+  // manageControls: Hides and Shows controls depending on currentPosition
+  function manageControls(position){
+    // Hide left arrow if position is first slide
+	if(position==0){ $('#leftControl').hide() } else{ $('#leftControl').show() }
+	// Hide right arrow if position is last slide
+    if(position==numberOfSlides-1){ $('#rightControl').hide() } else{ $('#rightControl').show() }
+  }	
+});
+</script>
+</head>
+
+<body>
+<div id="wrapper">
+  <div id="branding">
+     <h1 id="logo"><a href="index.html" rel="Home" title="INTERMAT">INTERMAT</a></h1>
+     <h2 id="INTERMATTAG"><span>THE GAMES COMPANY</span></h2>
+  </div>
+  <div id="container">
+    <div class="mainContainer">
+     
+    </div>
+    <ul class="bottomNav">
+	<li><a href="onas.html" rel="" title="O NÁS" class="onasBtn">O NÁS</a></li>
+	<li><a href="sluzby.html" rel="" title="SLUŽBY" class="sluzbyBtn">SLUŽBY</a></li>
+	<li><a href="kontakt.html" rel="" title="KONTAKT" class="kontaktBtn">KONTAKT</a></li>
+   </ul>
+    <br class="clear" />
+   </div>
+</div>
+<div id="footer">
+ <div id="footerWrapper">
+    <div id="footerLink">
+   <a href="#" rel="UGS's Web" title="Predaj a prenájom výherných automatov"><img src="images/footerText.png" alt="" width="481" height="26" class="UGSLink"  /></a>
+   </div>
+	<p><a href="http://www.ugssro.com" target="_blank" style="text-decoration:none; color:#2e3f2e;">design and developement by UGS s.r.o.2009 All rights reserved</p>
+
+ </div>
+</div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-11328415-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

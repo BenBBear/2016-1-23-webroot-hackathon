@@ -1,0 +1,188 @@
+
+<HTML>
+	<HEAD>
+		<meta http-equiv="Content-Language" content="en-us">
+		<TITLE>ECU Pirate Tailgating - East Carolina Fan Site</TITLE>
+		<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+		<meta name="description" content="Organize and share your East Carolina University Pirates tailgating experiences."/>
+		<meta name="keywords" content="ECU Pirates, ECU Tailgating, ECU, East Carolina, East Carolina University Pirates, Tailgate, Tailgating, Greenville NC, Greenville, NC, football, basketball, rook software"/>
+		<style>
+		BODY, TD, LI {font-family:Verdana,Arial; font-size: 11px; color: #FFFFFF}
+		A {color:#FFD737}
+		.topMenu {font-weight: bold; font-size:12px;}
+		</style>
+		<script language="javascript">
+			//var varOutputArea;
+			var strData;
+			function getItems(strURL, strQS, strMethod, strOutputArea) {
+				//if(strOutputArea != '') varOutputArea = strOutputArea;
+				if(strURL != 'showAd.asp'){
+					showStatus(strOutputArea);
+				}
+				var url = strURL;
+				var params = strQS;
+				var onComplete = "";
+				if(strURL == "login.asp"){
+					onComplete = "getItems('/topMenu.asp','','get','topMenuArea');"
+				}
+				//alert("getting info");
+				if(document.all && !window.opera){
+					var ajax = new Ajax.Updater({success: strOutputArea, failure: strOutputArea}, url, {method: strMethod, onComplete: onComplete, parameters: params});
+				}
+				else{
+					var ajax = new Ajax.Updater({success: strOutputArea, failure: strOutputArea}, url, {method: strMethod, onComplete: onComplete, parameters: params});
+				}
+			}
+			function showStatus(varOutputArea){
+				document.getElementById(varOutputArea).innerHTML = "<br><span style='background-color:#614FA1;padding:4px;border:1px solid #FFD737;color:#FFFFFF;'>Please Wait..</span>";
+			}
+			function changeAds(){
+				getItems('showAd.asp','adZone=rightBanner1','get','zone_rightBanner1');
+				getItems('showAd.asp','adZone=rightBanner2','get','zone_rightBanner2');
+				getItems('showAd.asp','adZone=rightBanner3','get','zone_rightBanner3');
+				getItems('showAd.asp','adZone=rightBanner4','get','zone_rightBanner4');
+			}
+			function compileForm(objForm){
+				var count = 0;
+				var selInd;
+				var selName;
+				strData = "";
+				for(i = 0; i < document.forms[objForm].length; i++){
+					if(document.forms[objForm][i].type == 'checkbox' || document.forms[objForm][i].type == 'radio'){
+						if(document.forms[objForm][i].checked == true){
+							if(count > 0) strData += "&";
+							strData += escape(document.forms[objForm][i].name) + "=" + escape(document.forms[objForm][i].value);
+							count++;
+						}
+					}	
+					else{
+						if(document.forms[objForm][i].type == 'select'){
+							if(count > 0) strData += "&";
+							selname = document.forms[objForm][i].name;
+							selInd = document.forms[objForm][selName].selectedIndex;
+							strData += escape(document.forms[objForm][selName].name) + "=" + escape(document.forms[objForm][selName][selInd].value);
+							count++;
+						}
+						else{
+							if(document.forms[objForm][i].value != ''){
+								if(count > 0) strData += "&";
+								strData += escape(document.forms[objForm][i].name) + "=" + escape(document.forms[objForm][i].value);
+								count++;
+							}
+						}
+					}
+				}
+				//alert(strData);
+			}
+			function showHide(objId){
+				if(document.getElementById(objId).style.display == "none") document.getElementById(objId).style.display = "block";
+				else document.getElementById(objId).style.display = "none";
+			}
+			function doMusic(){
+			   var so = new SWFObject("/muzik/ep_player.swf", "ep_player", "280", "16", "9", "#614FA1");
+			   so.addVariable("skin","/muzik/skins/micro_pirate/skin.xml")
+			   so.addVariable("autoplay","true")
+			   so.addVariable("volume", 75);
+			   so.addVariable("playlist","/muzik/playlist.xml")
+			   so.write("audioArea");
+			}
+		</script>
+		<script language="JavaScript" type="text/javascript" src="/ajax.js"></script>
+		<script type="text/javascript" src="/muzik/swfobject.js"></script>
+		<script type="text/javascript" src="/muzik/ep_player.js"></script>
+		<link rel="shortcut icon" href="/favicon.ico" type="x-icon/image">
+	</HEAD>
+	<BODY BGCOLOR="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onload="javascript:getItems('home.asp','','get','mainArea');setInterval('changeAds()', 120000);">
+		<div align="center">
+			<table border="0" width="1000" cellspacing="0" cellpadding="0">
+				<tr>
+					<td background="images/header_banner_bg.jpg" valign="top" width="100">
+						<img border="0" src="images/logo_header.jpg">
+					</td>
+					<td background="images/header_banner_bg.jpg" valign="top">
+						<img border="0" src="images/header_text.jpg">
+					</td>
+					<td background="images/header_banner_bg.jpg" valign="top" align="right" width="300">
+						<table cellpadding="0" cellspacing="0"><tr><td align="center"><span id="audioArea">&nbsp;</span><br/><span id="zone_topSong"></span></td></tr></table>
+						<br><a href="mailto:info@piratetailgating.com?SUBJECT=New Team Suggestion">Suggest Another Team!</a>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3" width="1000" id="topMenu" valign="top" bgcolor="#614FA1">
+						<table cellpadding="0" cellspacing="0" border="0" width="100%">
+							<tr>
+								<td width="400" valign="top" id="topMenuArea">
+																		<table width="400" cellpadding="4" cellspacing="0" border="0" bgcolor="#614FA1" onclick="javascript:getItems('/topMenu.asp','','get','topMenuArea');">
+										<tr>
+											<td align="center" nowrap><a href="javascript:getItems('home.asp','','get','mainArea');" class="topMenu">Home</a></td>
+											<td align="center" nowrap><a href="javascript:getItems('myAccount.asp','','get','mainArea');" class="topMenu">My Account</a></td>
+											<td align="center" nowrap><a href="javascript:getItems('search.asp','','get','mainArea');" class="topMenu">Search</a></td>
+											<td align="center" nowrap><a href="javascript:getItems('faq.asp','','get','mainArea');" class="topMenu">FAQ</a></td>
+											<td align="center" nowrap><a href="javascript:getItems('contact.asp','','get','mainArea');" class="topMenu">Contact Us</a></td>
+											
+										</tr>
+									</table>
+
+								</td>
+								<td nowrap="true" align="right" bgcolor="#614FA1">Persons under 21 years of age should not drink.&nbsp; All others, please drink responsibly.</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+					<td colspan="3">
+						<table border="0" cellpadding="0" cellspacing="0">
+							<!--
+							<tr>
+								<td id="zone_topBanner" width="878"></td>
+								<td>&nbsp;</td>
+							</tr>
+							-->
+							<tr>
+								<td width="878" id="mainArea" align="left" valign="top"></td>
+								<td width="122" id="zone_rightBanner" align="right" valign="top">
+									<p>&nbsp;</p>
+									<p id="zone_rightBanner1"><a border="0" href="/externalLink.asp?cId=7&zId=rightBanner1" target="_blank"><img border="0" src="/advertisers/images/GVegasMag.jpg" alt="G-Vegas Magazine" style="border:1px solid white"/></a></p>
+									<p id="zone_rightBanner2"><a border="0" href="/externalLink.asp?cId=5&zId=rightBanner2" target="_blank"><img border="0" src="/advertisers/images/120x120EastCarolina.jpg" alt="Get Official ECU Gear at Football Fanatics" style="border:1px solid white"/></a></p>
+									<p id="zone_rightBanner3"></p>
+									<p id="zone_rightBanner4"></p>
+									<p id="zone_rightBanner5"><a border="0" href="javascript:getItems('/advertisers/default.asp','','get','mainArea');" target=""><img border="0" src="/advertisers/images/adHereRightBannerSm.gif" alt="Advertise Here" style="border:1px solid white"/></a></p>
+									<p>&nbsp;</p>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td style="border:1px solid #FFFFFF" bgcolor="#614FA1" colspan="3" id="footerArea">
+					<table border="0" width="100%" cellspacing="0" cellpadding="4">
+						<tr>
+							<td>
+							PirateTailgating.com is <b>not</b> affiliated with 
+							East Carolina University.</td>
+							<td>
+							<p align="right"><font color="#FFFFFF">Copyright &copy; 2008. Pirate Tailgating is a division of <a href="http://www.rooksoftware.com" target="_blank" style="color:#FFFFFF">Rook Software, LLC</a></font></td>
+						</tr>
+					</table>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3" align="center"><br>
+					<a target="_blank" href="http://www.ecupirateclub.com">
+					<img border="0" src="images/psp_logo_sm.jpg" width="175" height="105"/></a></td>
+				</tr>
+				<tr>
+					<td colspan="3" align="center"><br><a href="/privacy.htm" target="_blank" style="color:#614FA1">Privacy Policy</a> | <a href="/terms.htm" target="_blank" style="color:#614FA1">Terms of Use</a></td>
+				</tr>
+			</table>
+		</div>
+		<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+		<script type="text/javascript">
+		try {
+		var pageTracker = _gat._getTracker("UA-8194878-2");
+		pageTracker._trackPageview();
+		} catch(err) {}</script>
+	</BODY>
+</HTML>

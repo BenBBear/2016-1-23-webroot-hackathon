@@ -1,0 +1,985 @@
+﻿<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7" lang="ja">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8" lang="ja">
+<![endif]-->
+<!--[if IE 9]>
+<html class="ie ie9" lang="ja">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8) | !(IE 9)]><!-->
+<html lang="ja">
+<!--<![endif]-->
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" type="text/css" href="http://www.medwatch.jp/shared/css/mwstyle.css" />
+	<title>メディ・ウォッチ | データが拓く新時代医療 | 病院経営に携わる関係者向けのブログメディアです。急性期病院の経営コンサルティング会社、グローバルヘルスコンサルティング・ジャパンが、病院経営の改善、医療の質向上などに役立つ情報を発信します。</title>
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="http://www.medwatch.jp/xmlrpc.php">
+	<meta name="keywords" content="病院ダッシュボード,ぽんすけ,病院経営,医療制度改革,臨床指標,CCPマトリックス,急性期病院,診療報酬,DPC,地域包括ケア病棟,医療ビッグデータ,看護必要度,病床機能分化,入院サポートセンター,地域連携,後発医薬品指数,手術指数,短期滞在手術等基本料,医療の質,医療の価値" xml:lang="ja" />
+	<meta name="description" content="病院経営に携わる関係者向けのブログメディアです。急性期病院の経営コンサルティング会社、グローバルヘルスコンサルティング・ジャパンが、病院経営の改善、医療の質向上などに役立つ情報を発信します。" xml:lang="ja" />
+	
+	<meta property="og:site_name" content="メディ・ウォッチ | データが拓く新時代医療" />
+	<meta property="og:title" content="メディ・ウォッチ | データが拓く新時代医療 | 病院経営に携わる関係者向けのブログメディアです。急性期病院の経営コンサルティング会社、グローバルヘルスコンサルティング・ジャパンが、病院経営の改善、医療の質向上などに役立つ情報を発信します。" />
+	<meta property="og:url" content="http://www.medwatch.jp" />
+	<meta property="og:type" content="website" />
+	<meta property="og:description" content="病院経営に携わる関係者向けのブログメディアです。急性期病院の経営コンサルティング会社、グローバルヘルスコンサルティング・ジャパンが、病院経営の改善、医療の質向上などに役立つ情報を発信します。" />
+	<meta property="og:locale" content="ja_JP" /> 	
+	<meta property="og:image" content="http://www.medwatch.jp/wp-content/themes/twentyfourteen/images/logo.png" />
+	<meta name="google-site-verification" content="dJpaxZoosyXPViUMrug869twCZZ3QFqZbOP6XtAsJsY" />
+	<script src="http://www.medwatch.jp/shared/js/medw.js" type="text/javascript"></script>
+	<!--[if lt IE 9]>
+	<script src="http://www.medwatch.jp/wp-content/themes/twentyfourteen/js/html5.js"></script>
+	<![endif]-->
+	
+<!--Plugin WP Missed Schedule 2013.1231.2013 Build 2014-09-13 Active - Tag 6707293c0218e2d8b7aa38d418ffa608-->
+
+<!-- This website is patched against a big problem not solved from WordPress 2.5+ to date -->
+
+
+<!-- All in One SEO Pack 2.2.7.2 by Michael Torbert of Semper Fi Web Design[472,599] -->
+<meta name="description" itemprop="description" content="　2016年度の次期診療報酬改定で、7対1入院基本料の平均在院日数を短縮すべきか否か―。22日に開かれた中央社会保険医療協議会の公聴会で、この点が改めて議論になりました。 　中医協支払側の幸野庄司委員（健康保険組合連合会理事）は、「13日に中医協総会でとりまとめられた『現時点の骨子』には平均在院日数について盛り込" />
+<link rel='next' href='http://www.medwatch.jp/?paged=2' />
+
+<link rel="canonical" href="http://www.medwatch.jp/" />
+<!-- /all in one seo pack -->
+<link rel="alternate" type="application/rss+xml" title="メディ・ウォッチ | データが拓く新時代医療 &raquo; フィード" href="http://www.medwatch.jp/?feed=rss2" />
+<link rel="alternate" type="application/rss+xml" title="メディ・ウォッチ | データが拓く新時代医療 &raquo; コメントフィード" href="http://www.medwatch.jp/?feed=comments-rss2" />
+<link rel='stylesheet' id='contact-form-7-css'  href='http://www.medwatch.jp/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=4.2.1' type='text/css' media='all' />
+<link rel='stylesheet' id='twentyfourteen-lato-css'  href='//fonts.googleapis.com/css?family=Lato%3A300%2C400%2C700%2C900%2C300italic%2C400italic%2C700italic' type='text/css' media='all' />
+<link rel='stylesheet' id='genericons-css'  href='http://www.medwatch.jp/wp-content/themes/twentyfourteen/genericons/genericons.css?ver=3.0.2' type='text/css' media='all' />
+<link rel='stylesheet' id='twentyfourteen-style-css'  href='http://www.medwatch.jp/wp-content/themes/twentyfourteen/style.css?ver=3.9.2' type='text/css' media='all' />
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentyfourteen-ie-css'  href='http://www.medwatch.jp/wp-content/themes/twentyfourteen/css/ie.css?ver=20131205' type='text/css' media='all' />
+<![endif]-->
+<link rel='stylesheet' id='jquery-fancybox-css'  href='http://www.medwatch.jp/wp-content/themes/twentyfourteen/fancybox/jquery.fancybox.css?ver=1.2.6' type='text/css' media='all' />
+<link rel='stylesheet' id='wordpress-popular-posts-css'  href='http://www.medwatch.jp/wp-content/plugins/wordpress-popular-posts/style/wpp.css?ver=3.1.1' type='text/css' media='all' />
+<script type='text/javascript' src='http://www.medwatch.jp/wp-includes/js/jquery/jquery.js?ver=1.11.0'></script>
+<script type='text/javascript' src='http://www.medwatch.jp/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+<script type='text/javascript' src='http://www.medwatch.jp/wp-content/themes/twentyfourteen/fancybox/jquery.fancybox.js?ver=1.2.6'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.medwatch.jp/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.medwatch.jp/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 3.9.2" />
+<script>
+	jQuery(document).ready(function($) {
+
+		$("#single_2").fancybox({
+			openEffect	: 'elastic',
+			closeEffect	: 'elastic',
+
+			helpers : {
+				title : {
+					type : 'inside'
+				},
+				overlay : {
+			           locked: false
+			        }
+			}
+		});
+		$(".single-post p a").fancybox({
+			openEffect	: 'elastic',
+			closeEffect	: 'elastic',
+
+			helpers : {
+				title : {
+					type : 'inside'
+				},
+				overlay : {
+			            locked: false
+			        }
+			}
+		});		
+				
+});
+</script>		
+
+	
+	<!--[if IE 8]>
+	<style type="text/css">
+		 .recent_posts_rank{
+		 	z-index: 1; 
+		 }
+	</style>
+	<![endif]-->
+<!-- BEGIN: WP Social Bookmarking Light -->
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>   
+<style type="text/css">
+.wp_social_bookmarking_light{
+    border: 0 !important;
+    padding: 10px 0 20px 0 !important;
+    margin: 0 !important;
+}
+.wp_social_bookmarking_light div{
+    float: left !important;
+    border: 0 !important;
+    padding: 0 !important;
+    margin: 0 5px 0px 0 !important;
+    min-height: 30px !important;
+    line-height: 18px !important;
+    text-indent: 0 !important;
+}
+.wp_social_bookmarking_light img{
+    border: 0 !important;
+    padding: 0;
+    margin: 0;
+    vertical-align: top !important;
+}
+.wp_social_bookmarking_light_clear{
+    clear: both !important;
+}
+#fb-root{
+    display: none;
+}
+.wsbl_twitter{
+    width: 100px;
+}
+.wsbl_facebook_like iframe{
+    max-width: none !important;
+}</style>
+<!-- END: WP Social Bookmarking Light -->
+
+<!-- Add_Share_Button -->
+<link rel="stylesheet"  href="http://www.medwatch.jp/wp-content/plugins/share/css/style.css" type="text/css" media="all" />
+<style type="text/css">
+<!--
+.share_button{
+ bottom:0px;
+}
+-->
+</style>
+<!-- end Add_Share_Button -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54275107-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</head>
+
+<body class="home blog header-image list-view footer-widgets grid">
+<div id="page" class="hfeed site">
+
+
+	<header id="masthead" class="site-header" role="banner">
+		<div class="site-header-container"></div>
+	<div id="site-header">
+		<a href="http://www.medwatch.jp/" rel="home">
+			<image class="site-title" src="http://www.medwatch.jp/wp-content/themes/twentyfourteen/images/logo.png"/>
+		</a>
+		<ul class="headmenu">
+			<div class="headplus" id="bookmark_container"> </div>
+			&nbsp;&nbsp;運営会社：<a href="http://www.ghc-j.com/corporate/about/summary.html" target="_blank" rel="home"><img src="http://www.medwatch.jp/wp-content/themes/twentyfourteen/images/sidebar-logo_simple.png" width="200"/></a>
+		</ul>
+		
+	</div>
+
+			<div class="header-main">			
+			
+		</div>
+
+		<div id="search-container" class="search-box-wrapper hide">
+			<div class="search-box">
+				<form role="search" method="get" class="search-form" action="http://www.medwatch.jp/">
+				<label>
+					<span class="screen-reader-text">検索:</span>
+					<input type="search" class="search-field" placeholder="検索 &hellip;" value="" name="s" title="検索:" />
+				</label>
+				<input type="submit" class="search-submit" value="検索" />
+			</form>			</div>
+		</div>
+	</header><!-- #masthead -->
+
+	<div id="main" class="site-main">
+<script type="text/javascript">
+(function(){
+    var p = (("https:" == document.location.protocol) ? "https://" : "http://"), r=Math.round(Math.random() * 10000000), rf = window.top.location.href, prf = window.top.document.referrer;
+    document.write(unescape('%3C')+'img src="'+ p + 'acq-3pas.admatrix.jp/if/5/01/b510c1565bed03a83e334299f50a384a.fs?cb=' + encodeURIComponent(r) + '&rf=' + encodeURIComponent(rf) +'&prf=' + encodeURIComponent(prf) + '" alt=""  width="1" height="1" '+unescape('%2F%3E'));
+})();
+</script>
+<noscript><img src="//acq-3pas.admatrix.jp/if/6/01/b510c1565bed03a83e334299f50a384a.fs" alt="" width="1" height="1" /></noscript>
+<div id="main-content" class="main-content">
+<p id="addBookmarkContainer"></p>
+	<script type="text/javascript">
+		jQuery(function(){
+			jQuery("#divtop-article").css("background", "#d0d0d0 url('http://www.medwatch.jp/wp-content/uploads/2016/01/IMG_6317.jpg') no-repeat center center").css("background-size","100% auto");
+		});
+	</script>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+	<!--[if lt IE 9 ]> 
+		<script type="text/javascript">
+			jQuery(function(){
+				jQuery("#divtop-article").css("filter","progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://www.medwatch.jp/wp-content/uploads/2016/01/IMG_6317.jpg',sizingMethod='scale')");
+			});
+		</script>
+	<![endif]-->
+	
+	<div id="divtop-article">
+		<div class="topnewarticle">
+			<div id="featured_post_category"><ul class='post-categories'><li><a href='index.php?cat=17' title='2016診療報酬改定ウォッチ'>2016診療報酬改定ウォッチ</a></li>,<li><a href='index.php?cat=10' title='医療・介護行政をウォッチ'>医療・介護行政をウォッチ</a></li></ul></div>
+						<div id="featured_post_title"><a href="http://www.medwatch.jp/?p=7343">2016年度改定に向け、7対1の平均在院日数や看護必要度などで現場から意見を聴取―中医協・公聴会</a></div>
+						
+			<div id="featured_post_content">　2016年度の次期診療報酬改定で、7対1入院基本料の平均在院日数を短縮すべきか否か―。22日に開かれた中央社会保険医療協議会の公聴会...</div>
+		</div>
+		<div class="featured_post_buttons">
+			<div class="sns_buttonss">						
+				<div class="sns_facebook">
+					<div class="fb-like" data-href="http://www.medwatch.jp/?p=7343" onclick="javascript:window.open('http://www.facebook.com/plugins/like.php?href=http://www.medwatch.jp/?p=7343' ,null ,'width=650 ,height=450'); return false;" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+				</div>
+			</div>
+		</div>
+
+	</div><br>
+
+	<div id="primary" class="content-area">
+		<div id="content" class="site-content" role="main">
+		
+	<div class="related-article" style="margin-left: 0px;">
+											<article id="post-7339"
+					class="post-7339 post type-post status-publish format-standard has-post-thumbnail hentry category-10 has-post-thumbnail has-post-thumbnail">
+						<!-- <header class="entry-header">  -->
+
+							<div class="category_blue"><ul class='post-categories'><li><a href='index.php?cat=17' title='2016診療報酬改定ウォッチ'>2016診療報酬改定ウォッチ</a></li>,<li><a href='index.php?cat=10' title='医療・介護行政をウォッチ'>医療・介護行政をウォッチ</a></li></ul></div>
+								<div class="date_pub">2016年1月22日</div>
+																	<div class="entry-meta">
+										<span class="cat-links"><a href="http://www.medwatch.jp/?cat=10" title="医療・介護行政をウォッチ の投稿をすべて表示" rel="category">医療・介護行政をウォッチ</a></span>
+									</div>
+								
+								<h1 class="entry-title"><a href="http://www.medwatch.jp/?p=7339" rel="bookmark">患者と輸血製剤の認証システムの適切な使用などで、誤輸血...</a></h1>
+							<a class="post-thumbnail" href="http://www.medwatch.jp/?p=7339">
+																	<img width="450" height="244" src="http://www.medwatch.jp/wp-content/uploads/2016/01/スライド114.jpg" class="attachment-twentyfourteen-full-width wp-post-image" />	</a>	
+													<!-- </header> -->
+						<!-- .entry-header -->
+													<div class="entry-content">
+								　輸血をする際に、誤った患者に輸血してしまった―。このような事例が、2007年7月から2015年11月にかけて17...							</div>
+							<!-- .entry-content -->
+										<div class="sns_buttons">						
+				<div class="sns_facebook">
+					<div class="fb-like" data-href="http://www.medwatch.jp/?p=7339" onclick="javascript:window.open('http://www.facebook.com/plugins/like.php?href=http://www.medwatch.jp/?p=7339' ,null ,'width=650 ,height=450'); return false;" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+				</div>
+			</div>
+				</article>
+												<article id="post-7337"
+					class="post-7337 post type-post status-publish format-standard has-post-thumbnail hentry category-2016 category-10 has-post-thumbnail has-post-thumbnail">
+						<!-- <header class="entry-header">  -->
+
+							<div class="category_blue"><ul class='post-categories'><li><a href='index.php?cat=17' title='2016診療報酬改定ウォッチ'>2016診療報酬改定ウォッチ</a></li>,<li><a href='index.php?cat=10' title='医療・介護行政をウォッチ'>医療・介護行政をウォッチ</a></li></ul></div>
+								<div class="date_pub">2016年1月21日</div>
+																	<div class="entry-meta">
+										<span class="cat-links"><a href="http://www.medwatch.jp/?cat=17" title="2016診療報酬改定ウォッチ の投稿をすべて表示" rel="category">2016診療報酬改定ウォッチ</a>, <a href="http://www.medwatch.jp/?cat=10" title="医療・介護行政をウォッチ の投稿をすべて表示" rel="category">医療・介護行政をウォッチ</a></span>
+									</div>
+								
+								<h1 class="entry-title"><a href="http://www.medwatch.jp/?p=7337" rel="bookmark">2016年度材料価格制度改革の詳細が決定、医療ニーズの...</a></h1>
+							<a class="post-thumbnail" href="http://www.medwatch.jp/?p=7337">
+																	<img width="450" height="244" src="http://www.medwatch.jp/wp-content/uploads/2016/01/IMG_6290.jpg" class="attachment-twentyfourteen-full-width wp-post-image" />	</a>	
+													<!-- </header> -->
+						<!-- .entry-header -->
+													<div class="entry-content">
+								　医療上のニーズが高いとして、厚生労働省の検討会での公募に応じて開発された医療材料などを機能区分の特例対象とし、価...							</div>
+							<!-- .entry-content -->
+										<div class="sns_buttons">						
+				<div class="sns_facebook">
+					<div class="fb-like" data-href="http://www.medwatch.jp/?p=7337" onclick="javascript:window.open('http://www.facebook.com/plugins/like.php?href=http://www.medwatch.jp/?p=7337' ,null ,'width=650 ,height=450'); return false;" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+				</div>
+			</div>
+				</article>
+												<article id="post-7334"
+					class="post-7334 post type-post status-publish format-standard has-post-thumbnail hentry category-2016 category-10 has-post-thumbnail has-post-thumbnail">
+						<!-- <header class="entry-header">  -->
+
+							<div class="category_blue"><ul class='post-categories'><li><a href='index.php?cat=17' title='2016診療報酬改定ウォッチ'>2016診療報酬改定ウォッチ</a></li>,<li><a href='index.php?cat=10' title='医療・介護行政をウォッチ'>医療・介護行政をウォッチ</a></li></ul></div>
+								<div class="date_pub">2016年1月21日</div>
+																	<div class="entry-meta">
+										<span class="cat-links"><a href="http://www.medwatch.jp/?cat=17" title="2016診療報酬改定ウォッチ の投稿をすべて表示" rel="category">2016診療報酬改定ウォッチ</a>, <a href="http://www.medwatch.jp/?cat=10" title="医療・介護行政をウォッチ の投稿をすべて表示" rel="category">医療・介護行政をウォッチ</a></span>
+									</div>
+								
+								<h1 class="entry-title"><a href="http://www.medwatch.jp/?p=7334" rel="bookmark">2016年度薬価改定の詳細を了承、特例市場拡大再算定の...</a></h1>
+							<a class="post-thumbnail" href="http://www.medwatch.jp/?p=7334">
+																	<img width="450" height="244" src="http://www.medwatch.jp/wp-content/uploads/2015/06/5189fb4b6cb5467119000266b49b2a55_m.jpg" class="attachment-twentyfourteen-full-width wp-post-image" />	</a>	
+													<!-- </header> -->
+						<!-- .entry-header -->
+													<div class="entry-content">
+								　先駆導入加算を見直した「先駆け審査指定制度加算」では、新薬だけでなく効能追加となった既収載品も対象とする―。こう...							</div>
+							<!-- .entry-content -->
+										<div class="sns_buttons">						
+				<div class="sns_facebook">
+					<div class="fb-like" data-href="http://www.medwatch.jp/?p=7334" onclick="javascript:window.open('http://www.facebook.com/plugins/like.php?href=http://www.medwatch.jp/?p=7334' ,null ,'width=650 ,height=450'); return false;" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+				</div>
+			</div>
+				</article>
+												<article id="post-7323"
+					class="post-7323 post type-post status-publish format-standard has-post-thumbnail hentry category-10 has-post-thumbnail has-post-thumbnail">
+						<!-- <header class="entry-header">  -->
+
+							<div class="category_blue"><ul class='post-categories'><li><a href='index.php?cat=17' title='2016診療報酬改定ウォッチ'>2016診療報酬改定ウォッチ</a></li>,<li><a href='index.php?cat=10' title='医療・介護行政をウォッチ'>医療・介護行政をウォッチ</a></li></ul></div>
+								<div class="date_pub">2016年1月21日</div>
+																	<div class="entry-meta">
+										<span class="cat-links"><a href="http://www.medwatch.jp/?cat=10" title="医療・介護行政をウォッチ の投稿をすべて表示" rel="category">医療・介護行政をウォッチ</a></span>
+									</div>
+								
+								<h1 class="entry-title"><a href="http://www.medwatch.jp/?p=7323" rel="bookmark">かかりつけ医以外の外来受診、新たな定額負担の是非につい...</a></h1>
+							<a class="post-thumbnail" href="http://www.medwatch.jp/?p=7323">
+																	<img width="450" height="244" src="http://www.medwatch.jp/wp-content/uploads/2016/01/IMG_6295.jpg" class="attachment-twentyfourteen-full-width wp-post-image" />	</a>	
+													<!-- </header> -->
+						<!-- .entry-header -->
+													<div class="entry-content">
+								　かかりつけ医以外を外来受診した場合に新たな定額負担を導入するのか、25対1医療療養や介護療養の転換を具体的にどう...							</div>
+							<!-- .entry-content -->
+										<div class="sns_buttons">						
+				<div class="sns_facebook">
+					<div class="fb-like" data-href="http://www.medwatch.jp/?p=7323" onclick="javascript:window.open('http://www.facebook.com/plugins/like.php?href=http://www.medwatch.jp/?p=7323' ,null ,'width=650 ,height=450'); return false;" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+				</div>
+			</div>
+				</article>
+												<article id="post-7320"
+					class="post-7320 post type-post status-publish format-standard has-post-thumbnail hentry category-2016 category-10 has-post-thumbnail has-post-thumbnail">
+						<!-- <header class="entry-header">  -->
+
+							<div class="category_blue"><ul class='post-categories'><li><a href='index.php?cat=17' title='2016診療報酬改定ウォッチ'>2016診療報酬改定ウォッチ</a></li>,<li><a href='index.php?cat=10' title='医療・介護行政をウォッチ'>医療・介護行政をウォッチ</a></li></ul></div>
+								<div class="date_pub">2016年1月20日</div>
+																	<div class="entry-meta">
+										<span class="cat-links"><a href="http://www.medwatch.jp/?cat=17" title="2016診療報酬改定ウォッチ の投稿をすべて表示" rel="category">2016診療報酬改定ウォッチ</a>, <a href="http://www.medwatch.jp/?cat=10" title="医療・介護行政をウォッチ の投稿をすべて表示" rel="category">医療・介護行政をウォッチ</a></span>
+									</div>
+								
+								<h1 class="entry-title"><a href="http://www.medwatch.jp/?p=7320" rel="bookmark">2016年4月以降、費用対効果評価の対象として補正加算...</a></h1>
+							<a class="post-thumbnail" href="http://www.medwatch.jp/?p=7320">
+																	<img width="450" height="244" src="http://www.medwatch.jp/wp-content/uploads/2015/11/スライド223.jpg" class="attachment-twentyfourteen-full-width wp-post-image" />	</a>	
+													<!-- </header> -->
+						<!-- .entry-header -->
+													<div class="entry-content">
+								　2016年度の次期診療報酬改定では、費用対効果評価を試行導入されます。当面は、既収載の医薬品・医療機器を対象にデ...							</div>
+							<!-- .entry-content -->
+										<div class="sns_buttons">						
+				<div class="sns_facebook">
+					<div class="fb-like" data-href="http://www.medwatch.jp/?p=7320" onclick="javascript:window.open('http://www.facebook.com/plugins/like.php?href=http://www.medwatch.jp/?p=7320' ,null ,'width=650 ,height=450'); return false;" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+				</div>
+			</div>
+				</article>
+												<article id="post-7314"
+					class="post-7314 post type-post status-publish format-standard has-post-thumbnail hentry category-2016 category-10 has-post-thumbnail has-post-thumbnail">
+						<!-- <header class="entry-header">  -->
+
+							<div class="category_blue"><ul class='post-categories'><li><a href='index.php?cat=17' title='2016診療報酬改定ウォッチ'>2016診療報酬改定ウォッチ</a></li>,<li><a href='index.php?cat=10' title='医療・介護行政をウォッチ'>医療・介護行政をウォッチ</a></li></ul></div>
+								<div class="date_pub">2016年1月20日</div>
+																	<div class="entry-meta">
+										<span class="cat-links"><a href="http://www.medwatch.jp/?cat=17" title="2016診療報酬改定ウォッチ の投稿をすべて表示" rel="category">2016診療報酬改定ウォッチ</a>, <a href="http://www.medwatch.jp/?cat=10" title="医療・介護行政をウォッチ の投稿をすべて表示" rel="category">医療・介護行政をウォッチ</a></span>
+									</div>
+								
+								<h1 class="entry-title"><a href="http://www.medwatch.jp/?p=7314" rel="bookmark">2016年度改定、内視鏡用いる手術の保険適用を拡大し、...</a></h1>
+							<a class="post-thumbnail" href="http://www.medwatch.jp/?p=7314">
+																	<img width="450" height="244" src="http://www.medwatch.jp/wp-content/uploads/2016/01/IMG_6290.jpg" class="attachment-twentyfourteen-full-width wp-post-image" />	</a>	
+													<!-- </header> -->
+						<!-- .entry-header -->
+													<div class="entry-content">
+								　2016年度の次期診療報酬改定においては、内視鏡を用いた手術、例えば内視鏡下鼻中隔手術や関節鏡下股関節唇縫合術、...							</div>
+							<!-- .entry-content -->
+										<div class="sns_buttons">						
+				<div class="sns_facebook">
+					<div class="fb-like" data-href="http://www.medwatch.jp/?p=7314" onclick="javascript:window.open('http://www.facebook.com/plugins/like.php?href=http://www.medwatch.jp/?p=7314' ,null ,'width=650 ,height=450'); return false;" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+				</div>
+			</div>
+				</article>
+												<article id="post-7311"
+					class="post-7311 post type-post status-publish format-standard has-post-thumbnail hentry category-ghc has-post-thumbnail has-post-thumbnail">
+						<!-- <header class="entry-header">  -->
+
+							<div class="category_blue"><ul class='post-categories'><li><a href='index.php?cat=17' title='2016診療報酬改定ウォッチ'>2016診療報酬改定ウォッチ</a></li>,<li><a href='index.php?cat=10' title='医療・介護行政をウォッチ'>医療・介護行政をウォッチ</a></li></ul></div>
+								<div class="date_pub">2016年1月20日</div>
+																	<div class="entry-meta">
+										<span class="cat-links"><a href="http://www.medwatch.jp/?cat=6" title="GHCをウォッチ の投稿をすべて表示" rel="category">GHCをウォッチ</a></span>
+									</div>
+								
+								<h1 class="entry-title"><a href="http://www.medwatch.jp/?p=7311" rel="bookmark">医師を動かし院内を変革させる資料作成、これだけは押さえ...</a></h1>
+							<a class="post-thumbnail" href="http://www.medwatch.jp/?p=7311">
+																	<img width="450" height="244" src="http://www.medwatch.jp/wp-content/uploads/2016/01/160119nsp1.jpg" class="attachment-twentyfourteen-full-width wp-post-image" />	</a>	
+													<!-- </header> -->
+						<!-- .entry-header -->
+													<div class="entry-content">
+								　病院の経営を改善するには、具体的にどういった手順で進めればいいのか――。GHCは19日、病院経営の現場スタッフ向...							</div>
+							<!-- .entry-content -->
+										<div class="sns_buttons">						
+				<div class="sns_facebook">
+					<div class="fb-like" data-href="http://www.medwatch.jp/?p=7311" onclick="javascript:window.open('http://www.facebook.com/plugins/like.php?href=http://www.medwatch.jp/?p=7311' ,null ,'width=650 ,height=450'); return false;" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+				</div>
+			</div>
+				</article>
+												<article id="post-7293"
+					class="post-7293 post type-post status-publish format-standard has-post-thumbnail hentry category-8 has-post-thumbnail has-post-thumbnail">
+						<!-- <header class="entry-header">  -->
+
+							<div class="category_blue"><ul class='post-categories'><li><a href='index.php?cat=17' title='2016診療報酬改定ウォッチ'>2016診療報酬改定ウォッチ</a></li>,<li><a href='index.php?cat=10' title='医療・介護行政をウォッチ'>医療・介護行政をウォッチ</a></li></ul></div>
+								<div class="date_pub">2016年1月20日</div>
+																	<div class="entry-meta">
+										<span class="cat-links"><a href="http://www.medwatch.jp/?cat=8" title="医療ニュースをウォッチ の投稿をすべて表示" rel="category">医療ニュースをウォッチ</a></span>
+									</div>
+								
+								<h1 class="entry-title"><a href="http://www.medwatch.jp/?p=7293" rel="bookmark">乳がん・肺がん・肝臓がん、5年生存率に比べて10年生存...</a></h1>
+							<a class="post-thumbnail" href="http://www.medwatch.jp/?p=7293">
+																	<img width="450" height="244" src="http://www.medwatch.jp/wp-content/uploads/2016/01/スライド81.jpg" class="attachment-twentyfourteen-full-width wp-post-image" />	</a>	
+													<!-- </header> -->
+						<!-- .entry-header -->
+													<div class="entry-content">
+								　大腸がんや胃がんでは5年生存率と10年生存率に大きな差はないが、肝臓がんや乳がんでは5年生存率に比べて10年生存...							</div>
+							<!-- .entry-content -->
+										<div class="sns_buttons">						
+				<div class="sns_facebook">
+					<div class="fb-like" data-href="http://www.medwatch.jp/?p=7293" onclick="javascript:window.open('http://www.facebook.com/plugins/like.php?href=http://www.medwatch.jp/?p=7293' ,null ,'width=650 ,height=450'); return false;" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+				</div>
+			</div>
+				</article>
+												<article id="post-7283"
+					class="post-7283 post type-post status-publish format-standard has-post-thumbnail hentry category-2016 category-10 has-post-thumbnail has-post-thumbnail">
+						<!-- <header class="entry-header">  -->
+
+							<div class="category_blue"><ul class='post-categories'><li><a href='index.php?cat=17' title='2016診療報酬改定ウォッチ'>2016診療報酬改定ウォッチ</a></li>,<li><a href='index.php?cat=10' title='医療・介護行政をウォッチ'>医療・介護行政をウォッチ</a></li></ul></div>
+								<div class="date_pub">2016年1月19日</div>
+																	<div class="entry-meta">
+										<span class="cat-links"><a href="http://www.medwatch.jp/?cat=17" title="2016診療報酬改定ウォッチ の投稿をすべて表示" rel="category">2016診療報酬改定ウォッチ</a>, <a href="http://www.medwatch.jp/?cat=10" title="医療・介護行政をウォッチ の投稿をすべて表示" rel="category">医療・介護行政をウォッチ</a></span>
+									</div>
+								
+								<h1 class="entry-title"><a href="http://www.medwatch.jp/?p=7283" rel="bookmark">「新たな時代の皆保険」と「地域包括ケアシステム」との構...</a></h1>
+							<a class="post-thumbnail" href="http://www.medwatch.jp/?p=7283">
+																	<img width="450" height="244" src="http://www.medwatch.jp/wp-content/uploads/2016/01/IMG_6224.jpg" class="attachment-twentyfourteen-full-width wp-post-image" />	</a>	
+													<!-- </header> -->
+						<!-- .entry-header -->
+													<div class="entry-content">
+								　19日に厚生労働省が開いた全国厚生労働関係部局長会議で、厚労省保険局の唐澤剛局長は「超少子高齢化に対応した医療・...							</div>
+							<!-- .entry-content -->
+										<div class="sns_buttons">						
+				<div class="sns_facebook">
+					<div class="fb-like" data-href="http://www.medwatch.jp/?p=7283" onclick="javascript:window.open('http://www.facebook.com/plugins/like.php?href=http://www.medwatch.jp/?p=7283' ,null ,'width=650 ,height=450'); return false;" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+				</div>
+			</div>
+				</article>
+												<article id="post-7273"
+					class="post-7273 post type-post status-publish format-standard has-post-thumbnail hentry category-10 has-post-thumbnail has-post-thumbnail">
+						<!-- <header class="entry-header">  -->
+
+							<div class="category_blue"><ul class='post-categories'><li><a href='index.php?cat=17' title='2016診療報酬改定ウォッチ'>2016診療報酬改定ウォッチ</a></li>,<li><a href='index.php?cat=10' title='医療・介護行政をウォッチ'>医療・介護行政をウォッチ</a></li></ul></div>
+								<div class="date_pub">2016年1月19日</div>
+																	<div class="entry-meta">
+										<span class="cat-links"><a href="http://www.medwatch.jp/?cat=10" title="医療・介護行政をウォッチ の投稿をすべて表示" rel="category">医療・介護行政をウォッチ</a></span>
+									</div>
+								
+								<h1 class="entry-title"><a href="http://www.medwatch.jp/?p=7273" rel="bookmark">地域医療構想策定に向け、「地域で欠けている医療機能」や...</a></h1>
+							<a class="post-thumbnail" href="http://www.medwatch.jp/?p=7273">
+																	<img width="450" height="244" src="http://www.medwatch.jp/wp-content/uploads/2016/01/スライド110.jpg" class="attachment-twentyfourteen-full-width wp-post-image" />	</a>	
+													<!-- </header> -->
+						<!-- .entry-header -->
+													<div class="entry-content">
+								　厚生労働省が19日、全国厚生労働関係部局長会議を開催しました。これは翌年度における厚生労働行政の重要事項を、都道...							</div>
+							<!-- .entry-content -->
+										<div class="sns_buttons">						
+				<div class="sns_facebook">
+					<div class="fb-like" data-href="http://www.medwatch.jp/?p=7273" onclick="javascript:window.open('http://www.facebook.com/plugins/like.php?href=http://www.medwatch.jp/?p=7273' ,null ,'width=650 ,height=450'); return false;" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+				</div>
+			</div>
+				</article>
+												<article id="post-7268"
+					class="post-7268 post type-post status-publish format-standard has-post-thumbnail hentry category-9 has-post-thumbnail has-post-thumbnail">
+						<!-- <header class="entry-header">  -->
+
+							<div class="category_blue"><ul class='post-categories'><li><a href='index.php?cat=17' title='2016診療報酬改定ウォッチ'>2016診療報酬改定ウォッチ</a></li>,<li><a href='index.php?cat=10' title='医療・介護行政をウォッチ'>医療・介護行政をウォッチ</a></li></ul></div>
+								<div class="date_pub">2016年1月18日</div>
+																	<div class="entry-meta">
+										<span class="cat-links"><a href="http://www.medwatch.jp/?cat=9" title="医療現場をウォッチ の投稿をすべて表示" rel="category">医療現場をウォッチ</a></span>
+									</div>
+								
+								<h1 class="entry-title"><a href="http://www.medwatch.jp/?p=7268" rel="bookmark">「退院後の患者・家族の満足度」で回復期リハのナンバー1...</a></h1>
+							<a class="post-thumbnail" href="http://www.medwatch.jp/?p=7268">
+																	<img width="450" height="244" src="http://www.medwatch.jp/wp-content/uploads/2016/01/院長先生（愛仁会リハ）.jpg" class="attachment-twentyfourteen-full-width wp-post-image" />	</a>	
+													<!-- </header> -->
+						<!-- .entry-header -->
+													<div class="entry-content">
+								　人口構造が変化する中で、医療ニーズもかつての急性期中心から回復期・慢性期へとシフトしていきます。また、急性期病棟...							</div>
+							<!-- .entry-content -->
+										<div class="sns_buttons">						
+				<div class="sns_facebook">
+					<div class="fb-like" data-href="http://www.medwatch.jp/?p=7268" onclick="javascript:window.open('http://www.facebook.com/plugins/like.php?href=http://www.medwatch.jp/?p=7268' ,null ,'width=650 ,height=450'); return false;" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+				</div>
+			</div>
+				</article>
+												<article id="post-7262"
+					class="post-7262 post type-post status-publish format-standard has-post-thumbnail hentry category-10 has-post-thumbnail has-post-thumbnail">
+						<!-- <header class="entry-header">  -->
+
+							<div class="category_blue"><ul class='post-categories'><li><a href='index.php?cat=17' title='2016診療報酬改定ウォッチ'>2016診療報酬改定ウォッチ</a></li>,<li><a href='index.php?cat=10' title='医療・介護行政をウォッチ'>医療・介護行政をウォッチ</a></li></ul></div>
+								<div class="date_pub">2016年1月18日</div>
+																	<div class="entry-meta">
+										<span class="cat-links"><a href="http://www.medwatch.jp/?cat=10" title="医療・介護行政をウォッチ の投稿をすべて表示" rel="category">医療・介護行政をウォッチ</a></span>
+									</div>
+								
+								<h1 class="entry-title"><a href="http://www.medwatch.jp/?p=7262" rel="bookmark">血圧降下剤のアジルサルタン、横紋筋融解症などの重大な副...</a></h1>
+							<a class="post-thumbnail" href="http://www.medwatch.jp/?p=7262">
+																	<img width="450" height="244" src="http://www.medwatch.jp/wp-content/uploads/2015/10/厚生労働省イメージ写真.jpg" class="attachment-twentyfourteen-full-width wp-post-image" />	</a>	
+													<!-- </header> -->
+						<!-- .entry-header -->
+													<div class="entry-content">
+								　厚生労働省は12日、血圧降下剤の「アジルサルタン」などに横紋筋融解症などの重大な副作用があることが判明したとして...							</div>
+							<!-- .entry-content -->
+										<div class="sns_buttons">						
+				<div class="sns_facebook">
+					<div class="fb-like" data-href="http://www.medwatch.jp/?p=7262" onclick="javascript:window.open('http://www.facebook.com/plugins/like.php?href=http://www.medwatch.jp/?p=7262' ,null ,'width=650 ,height=450'); return false;" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+				</div>
+			</div>
+				</article>
+												<article id="post-7254"
+					class="post-7254 post type-post status-publish format-standard has-post-thumbnail hentry category-10 has-post-thumbnail has-post-thumbnail">
+						<!-- <header class="entry-header">  -->
+
+							<div class="category_blue"><ul class='post-categories'><li><a href='index.php?cat=17' title='2016診療報酬改定ウォッチ'>2016診療報酬改定ウォッチ</a></li>,<li><a href='index.php?cat=10' title='医療・介護行政をウォッチ'>医療・介護行政をウォッチ</a></li></ul></div>
+								<div class="date_pub">2016年1月18日</div>
+																	<div class="entry-meta">
+										<span class="cat-links"><a href="http://www.medwatch.jp/?cat=10" title="医療・介護行政をウォッチ の投稿をすべて表示" rel="category">医療・介護行政をウォッチ</a></span>
+									</div>
+								
+								<h1 class="entry-title"><a href="http://www.medwatch.jp/?p=7254" rel="bookmark">25対1医療療養などの新たな移行先として3案を決定、社...</a></h1>
+							<a class="post-thumbnail" href="http://www.medwatch.jp/?p=7254">
+																	<img width="450" height="244" src="http://www.medwatch.jp/wp-content/uploads/2016/01/スライド28.jpg" class="attachment-twentyfourteen-full-width wp-post-image" />	</a>	
+													<!-- </header> -->
+						<!-- .entry-header -->
+													<div class="entry-content">
+								　2017年度末で設置根拠となる経過措置が切れる25対1の医療療養病床と介護療養病床について、厚生労働省の「療養病...							</div>
+							<!-- .entry-content -->
+										<div class="sns_buttons">						
+				<div class="sns_facebook">
+					<div class="fb-like" data-href="http://www.medwatch.jp/?p=7254" onclick="javascript:window.open('http://www.facebook.com/plugins/like.php?href=http://www.medwatch.jp/?p=7254' ,null ,'width=650 ,height=450'); return false;" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+				</div>
+			</div>
+				</article>
+												<article id="post-7246"
+					class="post-7246 post type-post status-publish format-standard has-post-thumbnail hentry category-2016 category-10 has-post-thumbnail has-post-thumbnail">
+						<!-- <header class="entry-header">  -->
+
+							<div class="category_blue"><ul class='post-categories'><li><a href='index.php?cat=17' title='2016診療報酬改定ウォッチ'>2016診療報酬改定ウォッチ</a></li>,<li><a href='index.php?cat=10' title='医療・介護行政をウォッチ'>医療・介護行政をウォッチ</a></li></ul></div>
+								<div class="date_pub">2016年1月15日</div>
+																	<div class="entry-meta">
+										<span class="cat-links"><a href="http://www.medwatch.jp/?cat=17" title="2016診療報酬改定ウォッチ の投稿をすべて表示" rel="category">2016診療報酬改定ウォッチ</a>, <a href="http://www.medwatch.jp/?cat=10" title="医療・介護行政をウォッチ の投稿をすべて表示" rel="category">医療・介護行政をウォッチ</a></span>
+									</div>
+								
+								<h1 class="entry-title"><a href="http://www.medwatch.jp/?p=7246" rel="bookmark">急性期患者の在宅復帰率、加算届出の療養病棟では未届病棟...</a></h1>
+							<a class="post-thumbnail" href="http://www.medwatch.jp/?p=7246">
+																	<img width="450" height="244" src="http://www.medwatch.jp/wp-content/uploads/2016/01/IMG_6149.jpg" class="attachment-twentyfourteen-full-width wp-post-image" />	</a>	
+													<!-- </header> -->
+						<!-- .entry-header -->
+													<div class="entry-content">
+								　在宅復帰機能強化加算を届け出ている療養病棟では、30％が「急性期から受け入れて在宅復帰させた」患者であり、加算を...							</div>
+							<!-- .entry-content -->
+										<div class="sns_buttons">						
+				<div class="sns_facebook">
+					<div class="fb-like" data-href="http://www.medwatch.jp/?p=7246" onclick="javascript:window.open('http://www.facebook.com/plugins/like.php?href=http://www.medwatch.jp/?p=7246' ,null ,'width=650 ,height=450'); return false;" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+				</div>
+			</div>
+				</article>
+												<article id="post-7234"
+					class="post-7234 post type-post status-publish format-standard has-post-thumbnail hentry category-2016 category-10 has-post-thumbnail has-post-thumbnail">
+						<!-- <header class="entry-header">  -->
+
+							<div class="category_blue"><ul class='post-categories'><li><a href='index.php?cat=17' title='2016診療報酬改定ウォッチ'>2016診療報酬改定ウォッチ</a></li>,<li><a href='index.php?cat=10' title='医療・介護行政をウォッチ'>医療・介護行政をウォッチ</a></li></ul></div>
+								<div class="date_pub">2016年1月15日</div>
+																	<div class="entry-meta">
+										<span class="cat-links"><a href="http://www.medwatch.jp/?cat=17" title="2016診療報酬改定ウォッチ の投稿をすべて表示" rel="category">2016診療報酬改定ウォッチ</a>, <a href="http://www.medwatch.jp/?cat=10" title="医療・介護行政をウォッチ の投稿をすべて表示" rel="category">医療・介護行政をウォッチ</a></span>
+									</div>
+								
+								<h1 class="entry-title"><a href="http://www.medwatch.jp/?p=7234" rel="bookmark">7対1の平均在院日数は12日程度にすべき、早期のリハ開...</a></h1>
+							<a class="post-thumbnail" href="http://www.medwatch.jp/?p=7234">
+																	<img width="450" height="244" src="http://www.medwatch.jp/wp-content/uploads/2016/01/スライド18.jpg" class="attachment-twentyfourteen-full-width wp-post-image" />	</a>	
+													<!-- </header> -->
+						<!-- .entry-header -->
+													<div class="entry-content">
+								　急性期病棟での手術や処置が終了した後、ただちにリハビリを提供できる病院・病棟の転院・転棟することで寝たきりを防止...							</div>
+							<!-- .entry-content -->
+										<div class="sns_buttons">						
+				<div class="sns_facebook">
+					<div class="fb-like" data-href="http://www.medwatch.jp/?p=7234" onclick="javascript:window.open('http://www.facebook.com/plugins/like.php?href=http://www.medwatch.jp/?p=7234' ,null ,'width=650 ,height=450'); return false;" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+				</div>
+			</div>
+				</article>
+												<article id="post-7226"
+					class="post-7226 post type-post status-publish format-standard has-post-thumbnail hentry category-10 category-9 has-post-thumbnail has-post-thumbnail">
+						<!-- <header class="entry-header">  -->
+
+							<div class="category_blue"><ul class='post-categories'><li><a href='index.php?cat=17' title='2016診療報酬改定ウォッチ'>2016診療報酬改定ウォッチ</a></li>,<li><a href='index.php?cat=10' title='医療・介護行政をウォッチ'>医療・介護行政をウォッチ</a></li></ul></div>
+								<div class="date_pub">2016年1月14日</div>
+																	<div class="entry-meta">
+										<span class="cat-links"><a href="http://www.medwatch.jp/?cat=10" title="医療・介護行政をウォッチ の投稿をすべて表示" rel="category">医療・介護行政をウォッチ</a>, <a href="http://www.medwatch.jp/?cat=9" title="医療現場をウォッチ の投稿をすべて表示" rel="category">医療現場をウォッチ</a></span>
+									</div>
+								
+								<h1 class="entry-title"><a href="http://www.medwatch.jp/?p=7226" rel="bookmark">一般病床の平均在院日数はわずかに延び、病床利用率は若干...</a></h1>
+							<a class="post-thumbnail" href="http://www.medwatch.jp/?p=7226">
+																	<img width="450" height="244" src="http://www.medwatch.jp/wp-content/uploads/2016/01/160114nsp4.png" class="attachment-twentyfourteen-full-width wp-post-image" />	</a>	
+													<!-- </header> -->
+						<!-- .entry-header -->
+													<div class="entry-content">
+								　2015年9月には、一般病床の平均在院日数が前月に比べてわずかに延び（0.3日増）、病床の利用率は若干増加した（...							</div>
+							<!-- .entry-content -->
+										<div class="sns_buttons">						
+				<div class="sns_facebook">
+					<div class="fb-like" data-href="http://www.medwatch.jp/?p=7226" onclick="javascript:window.open('http://www.facebook.com/plugins/like.php?href=http://www.medwatch.jp/?p=7226' ,null ,'width=650 ,height=450'); return false;" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+				</div>
+			</div>
+				</article>
+												<article id="post-7212"
+					class="post-7212 post type-post status-publish format-standard has-post-thumbnail hentry category-2016 category-10 has-post-thumbnail has-post-thumbnail">
+						<!-- <header class="entry-header">  -->
+
+							<div class="category_blue"><ul class='post-categories'><li><a href='index.php?cat=17' title='2016診療報酬改定ウォッチ'>2016診療報酬改定ウォッチ</a></li>,<li><a href='index.php?cat=10' title='医療・介護行政をウォッチ'>医療・介護行政をウォッチ</a></li></ul></div>
+								<div class="date_pub">2016年1月14日</div>
+																	<div class="entry-meta">
+										<span class="cat-links"><a href="http://www.medwatch.jp/?cat=17" title="2016診療報酬改定ウォッチ の投稿をすべて表示" rel="category">2016診療報酬改定ウォッチ</a>, <a href="http://www.medwatch.jp/?cat=10" title="医療・介護行政をウォッチ の投稿をすべて表示" rel="category">医療・介護行政をウォッチ</a></span>
+									</div>
+								
+								<h1 class="entry-title"><a href="http://www.medwatch.jp/?p=7212" rel="bookmark">中小病院などの主治医機能を推進するとともに、在宅医療の...</a></h1>
+							<a class="post-thumbnail" href="http://www.medwatch.jp/?p=7212">
+																	<img width="450" height="244" src="http://www.medwatch.jp/wp-content/uploads/2015/11/スライド84.jpg" class="attachment-twentyfourteen-full-width wp-post-image" />	</a>	
+													<!-- </header> -->
+						<!-- .entry-header -->
+													<div class="entry-content">
+								　中央社会保険医療協議会総会が13日、2016年度の次期診療報酬改定に向けた骨子を了承しました（関連記事はこちらと...							</div>
+							<!-- .entry-content -->
+										<div class="sns_buttons">						
+				<div class="sns_facebook">
+					<div class="fb-like" data-href="http://www.medwatch.jp/?p=7212" onclick="javascript:window.open('http://www.facebook.com/plugins/like.php?href=http://www.medwatch.jp/?p=7212' ,null ,'width=650 ,height=450'); return false;" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+				</div>
+			</div>
+				</article>
+												<article id="post-7207"
+					class="post-7207 post type-post status-publish format-standard has-post-thumbnail hentry category-2016 category-10 has-post-thumbnail has-post-thumbnail">
+						<!-- <header class="entry-header">  -->
+
+							<div class="category_blue"><ul class='post-categories'><li><a href='index.php?cat=17' title='2016診療報酬改定ウォッチ'>2016診療報酬改定ウォッチ</a></li>,<li><a href='index.php?cat=10' title='医療・介護行政をウォッチ'>医療・介護行政をウォッチ</a></li></ul></div>
+								<div class="date_pub">2016年1月13日</div>
+																	<div class="entry-meta">
+										<span class="cat-links"><a href="http://www.medwatch.jp/?cat=17" title="2016診療報酬改定ウォッチ の投稿をすべて表示" rel="category">2016診療報酬改定ウォッチ</a>, <a href="http://www.medwatch.jp/?cat=10" title="医療・介護行政をウォッチ の投稿をすべて表示" rel="category">医療・介護行政をウォッチ</a></span>
+									</div>
+								
+								<h1 class="entry-title"><a href="http://www.medwatch.jp/?p=7207" rel="bookmark">回復期リハに新たなアウトカム評価を導入、リハ効果が一定...</a></h1>
+							<a class="post-thumbnail" href="http://www.medwatch.jp/?p=7207">
+																	<img width="450" height="244" src="http://www.medwatch.jp/wp-content/uploads/2016/01/IMG_6104.jpg" class="attachment-twentyfourteen-full-width wp-post-image" />	</a>	
+													<!-- </header> -->
+						<!-- .entry-header -->
+													<div class="entry-content">
+								　お伝えしているように、中央社会保険医療協議会総会が13日、2016年度の次期診療報酬改定に向けた骨子を了承しまし...							</div>
+							<!-- .entry-content -->
+										<div class="sns_buttons">						
+				<div class="sns_facebook">
+					<div class="fb-like" data-href="http://www.medwatch.jp/?p=7207" onclick="javascript:window.open('http://www.facebook.com/plugins/like.php?href=http://www.medwatch.jp/?p=7207' ,null ,'width=650 ,height=450'); return false;" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+				</div>
+			</div>
+				</article>
+												<article id="post-7203"
+					class="post-7203 post type-post status-publish format-standard has-post-thumbnail hentry category-2016 category-10 has-post-thumbnail has-post-thumbnail">
+						<!-- <header class="entry-header">  -->
+
+							<div class="category_blue"><ul class='post-categories'><li><a href='index.php?cat=17' title='2016診療報酬改定ウォッチ'>2016診療報酬改定ウォッチ</a></li>,<li><a href='index.php?cat=10' title='医療・介護行政をウォッチ'>医療・介護行政をウォッチ</a></li></ul></div>
+								<div class="date_pub">2016年1月13日</div>
+																	<div class="entry-meta">
+										<span class="cat-links"><a href="http://www.medwatch.jp/?cat=17" title="2016診療報酬改定ウォッチ の投稿をすべて表示" rel="category">2016診療報酬改定ウォッチ</a>, <a href="http://www.medwatch.jp/?cat=10" title="医療・介護行政をウォッチ の投稿をすべて表示" rel="category">医療・介護行政をウォッチ</a></span>
+									</div>
+								
+								<h1 class="entry-title"><a href="http://www.medwatch.jp/?p=7203" rel="bookmark">地域包括ケア病棟、手術・麻酔の包括除外に向け、一歩前進...</a></h1>
+							<a class="post-thumbnail" href="http://www.medwatch.jp/?p=7203">
+																	<img width="450" height="244" src="http://www.medwatch.jp/wp-content/uploads/2016/01/IMG_6113.jpg" class="attachment-twentyfourteen-full-width wp-post-image" />	</a>	
+													<!-- </header> -->
+						<!-- .entry-header -->
+													<div class="entry-content">
+								　2016年度の次期診療報酬に向け、中央社会保険医療協議会・総会は改定論議を整理した骨子を了承しました。ここでは、...							</div>
+							<!-- .entry-content -->
+										<div class="sns_buttons">						
+				<div class="sns_facebook">
+					<div class="fb-like" data-href="http://www.medwatch.jp/?p=7203" onclick="javascript:window.open('http://www.facebook.com/plugins/like.php?href=http://www.medwatch.jp/?p=7203' ,null ,'width=650 ,height=450'); return false;" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+				</div>
+			</div>
+				</article>
+												<article id="post-7196"
+					class="post-7196 post type-post status-publish format-standard has-post-thumbnail hentry category-2016 category-10 has-post-thumbnail has-post-thumbnail">
+						<!-- <header class="entry-header">  -->
+
+							<div class="category_blue"><ul class='post-categories'><li><a href='index.php?cat=17' title='2016診療報酬改定ウォッチ'>2016診療報酬改定ウォッチ</a></li>,<li><a href='index.php?cat=10' title='医療・介護行政をウォッチ'>医療・介護行政をウォッチ</a></li></ul></div>
+								<div class="date_pub">2016年1月13日</div>
+																	<div class="entry-meta">
+										<span class="cat-links"><a href="http://www.medwatch.jp/?cat=17" title="2016診療報酬改定ウォッチ の投稿をすべて表示" rel="category">2016診療報酬改定ウォッチ</a>, <a href="http://www.medwatch.jp/?cat=10" title="医療・介護行政をウォッチ の投稿をすべて表示" rel="category">医療・介護行政をウォッチ</a></span>
+									</div>
+								
+								<h1 class="entry-title"><a href="http://www.medwatch.jp/?p=7196" rel="bookmark">7対1病棟の平均在院日数を短縮すべきかで診療・支払側が...</a></h1>
+							<a class="post-thumbnail" href="http://www.medwatch.jp/?p=7196">
+																	<img width="450" height="244" src="http://www.medwatch.jp/wp-content/uploads/2016/01/IMG_6104.jpg" class="attachment-twentyfourteen-full-width wp-post-image" />	</a>	
+													<!-- </header> -->
+						<!-- .entry-header -->
+													<div class="entry-content">
+								　2016年度の次期診療報酬では、▽一般病棟用の重症度、医療・看護必要度の項目と重症患者割合に関する基準などを見直...							</div>
+							<!-- .entry-content -->
+										<div class="sns_buttons">						
+				<div class="sns_facebook">
+					<div class="fb-like" data-href="http://www.medwatch.jp/?p=7196" onclick="javascript:window.open('http://www.facebook.com/plugins/like.php?href=http://www.medwatch.jp/?p=7196' ,null ,'width=650 ,height=450'); return false;" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+				</div>
+			</div>
+				</article>
+					<nav class="navigation paging-navigation" role="navigation">
+		<div class="nav_item prev_page"><a href="http://www.medwatch.jp?paged=1">&#171;</a></div>	
+							<div class="nav_item item-1 current"><a href="http://www.medwatch.jp?paged=1">1</a></div>		
+							<div class="nav_item item-2"><a href="http://www.medwatch.jp?paged=2">2</a></div>		
+							<div class="nav_item item-3"><a href="http://www.medwatch.jp?paged=3">3</a></div>		
+							<div class="nav_item item-4"><a href="http://www.medwatch.jp?paged=4">4</a></div>		
+							<div class="nav_item item-5"><a href="http://www.medwatch.jp?paged=5">5</a></div>		
+				<div class="nav_item next_page"><a href="http://www.medwatch.jp?paged=2">&#187;</a></div>
+	</nav>
+
+
+	
+				<script type="text/javascript">
+					jQuery(function(){
+
+						setInterval(function(){
+							
+							jQuery(".related-article").find(".post-thumbnail").find("img").each(function(){
+								if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)) || navigator.userAgent.toLowerCase().indexOf("android") > -1) {
+									$(this).height(90);
+									$(this).width(150);
+								}
+							}).end().each(function(){
+								$(this).css("height","90px");
+								var $img = $(this).find("img");
+								if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)) || navigator.userAgent.toLowerCase().indexOf("android") > -1) {
+									$(this).css("width","150px");
+									$(this).css("margin-top","0px");
+									jQuery(".related-article").css("margin-left","-5px");
+									$(".post").css("margin-bottom","2px");
+								} else {
+									$img.css("margin-top",0);
+								}
+
+							});
+
+
+
+
+							
+						},500);
+
+
+						setTimeout(function(){
+								$("#secondary").height($("#secondary").height()-75); 
+						},5000);
+					
+					});
+				</script>
+								
+			</div>
+			
+			
+		</div><!-- #content -->
+	</div><!-- #primary -->
+	</div><!-- #main-content -->
+
+<div id="secondary">
+<div>
+<a class="mwregister" href="https://www.medwatch.jp/?page_id=4160"></a>
+<a class="sbtnfacebooks" href="https://www.facebook.com/medwatch.jp" target="_blank"></a>
+<a class="sbtntwitters" href="https://twitter.com/medwatchjp" target="_blank"></a>
+<a class="sbtngpluss" href="https://plus.google.com/107767244321528099583/posts" target="_blank"></a>
+<a class="sbtnfeedlys" href="http://feedly.com/i/subscription/feed/http://www.medwatch.jp/?feed=rss2" target="_blank"></a>
+<a class="sbtnrsss" href="http://www.medwatch.jp/?feed=rss2" target="_blank"></a>
+<br>
+</div>
+<div>
+<br>
+<a class="medcarebtn" href="http://www.medwatch.jp/?cat=17"></a>
+</div>
+<div><br><a href="http://www.ghc-j.com/event/seminar/15-16tour.html" target="_blank"><img src="http://www.medwatch.jp/wp-content/uploads/2015/10/img_kaiteisem.jpg"></a>
+<br>
+</div>
+<br>
+	
+		<div id="primary-sidebar" class="primary-sidebar widget-area" role="complementary">
+		<aside id="search-2" class="widget widget_search"><form role="search" method="get" class="search-form" action="http://www.medwatch.jp/">
+				<label>
+					<span class="screen-reader-text">検索:</span>
+					<input type="search" class="search-field" placeholder="検索 &hellip;" value="" name="s" title="検索:" />
+				</label>
+				<input type="submit" class="search-submit" value="検索" />
+			</form></aside>			<aside id="categories-3" class="widget widget_categories">
+			<h1 class="widget-title">Category</h1>
+			<select name="cat" id="cat" class="postform" style="margin-left: 1px; opacity: 0;">
+			<option value="-1"></option>
+								<option class="level-0" value="17">2016診療報酬改定ウォッチ</option>
+								<option class="level-0" value="8">医療ニュースをウォッチ</option>
+								<option class="level-0" value="9">医療現場をウォッチ</option>
+								<option class="level-0" value="10">医療・介護行政をウォッチ</option>
+								<option class="level-0" value="11">新時代医療をウォッチ</option>
+								<option class="level-0" value="7">海外の医療情報をウォッチ</option>
+								<option class="level-0" value="6">GHCをウォッチ</option>
+								<option class="level-0" value="1">未分類</option>
+						</select>
+			<script type="text/javascript">
+			/* <![CDATA[ */
+				var dropdown = document.getElementById("cat");
+				function onCatChange() {
+					if ( dropdown.options[dropdown.selectedIndex].value > 0 ) {
+						location.href = "index.php?cat="+dropdown.options[dropdown.selectedIndex].value;
+					}
+				}
+				dropdown.onchange = onCatChange;
+			/* ]]> */
+			</script>
+		</aside>
+		
+		
+<!-- WordPress Popular Posts Plugin v3.1.1 [W] [daily] [views] [regular] -->
+<aside id="wpp-3" class="widget widget_recent_entries">
+                <script type="text/javascript">//<![CDATA[
+                    jQuery(document).ready(function(){
+                        jQuery.get('http://www.medwatch.jp/wp-admin/admin-ajax.php', {
+							action: 'wpp_get_popular',
+							id: '3'
+						}, function(data){
+							jQuery('#wpp-3').append(data);
+						});
+                    });
+                //]]></script>
+                </aside>
+<!-- End WordPress Popular Posts Plugin v3.1.1 -->
+		
+		<script type="text/javascript">
+			(function($){
+				if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))) {
+					setInterval(function(){
+						$(".recent_posts_rank").css("padding","2px 5px");
+					},1000);
+				}
+			})(jQuery);
+		</script>
+		
+		<a class="blogpast" href="http://www.ghc-j.com/ghcblog" target="_blank"><div class="blogpastbtn"></div></a>
+		<div class="fb-like-box" data-href="https://www.facebook.com/medwatch.jp" data-width="284px" data-height="280px" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>
+<div>
+<a class="sbtnfacebook" href="https://www.facebook.com/medwatch.jp" target="_blank"></a>
+<a class="sbtntwitter" href="https://twitter.com/medwatchjp" target="_blank"></a>
+<a class="sbtngplus" href="https://plus.google.com/107767244321528099583/posts" target="_blank"></a>
+<a class="sbtnfeedly" href="http://feedly.com/i/subscription/feed/http://www.medwatch.jp/?feed=rss2" target="_blank"></a>
+<a class="sbtnrss" href="http://www.medwatch.jp/?feed=rss2" target="_blank"></a>
+</div>
+<br>
+<div>
+<a class="mmbtn" href="https://www.medwatch.jp/?page_id=4160"></a>
+</div>
+<div>
+<br>
+</div>
+	</div><!-- #primary-sidebar -->
+	</div><!-- #secondary -->
+﻿
+		</div><!-- #main -->
+
+		<footer id="colophon" class="site-footer" role="contentinfo">
+			<div class="footer-items-container">
+				<div class="gotop"><a  class ="go-top" href="#"><img src="http://www.medwatch.jp/wp-content/themes/twentyfourteen/images/go_top.jpg"/></a></div>
+								<div id="supplementary">
+					<div id="footer-sidebar" class="footer-sidebar widget-area masonry" role="complementary" style="position: relative; height: 34px;">
+						<aside id="pages-3" class="widget widget_pages masonry-brick" style="position: absolute; left: 0px; top: 0px;">
+							<h1 class="widget-title">固定ページ</h1>		
+							<ul>
+								<li class="page_item page-item-215"><a href="https://www.medwatch.jp/?page_id=4160">週刊メディ・ウォッチ登録</a></li>
+								<li class="page_item page-item-216"><a href="https://www.ghc-j.com/corporate/surpport/faq-contact.html" target="_blank">お問合わせ</a></li>
+								<li class="page_item page-item-41"><a href="index.php?page_id=41">サイトマップ</a></li>
+								<li class="page_item page-item-39"><a href="http://www.ghc-j.com/corporate/information/conditions.html" target="_blank">サイト利用規約</a></li>
+								<li class="page_item page-item-43"><a href="http://www.ghc-j.com/corporate/information/privacy-policy.html" target="_blank">プライバシーポリシー</a></li>
+								<li class="page_item page-item-37"><a href="http://www.ghc-j.com/corporate/information/security-policy.html" target="_blank">情報セキュリティ基本方針</a></li>
+								<li class="page_item page-item-35"><a href="http://www.ghc-j.com/corporate/about/summary.html" target="_blank">運用会社</a></li>
+							</ul>
+						</aside>	
+					</div><!-- #footer-sidebar -->
+				</div>
+				<div class="site-info">
+					COPYRIGHT 2014 GLOBAL HEALTH CONSULTING ALL RIGHTS RESERVED. 
+				</div><!-- .site-info -->
+			</div>
+		</footer><!-- #colophon -->
+	</div><!-- #page -->
+
+	
+<!--Plugin WP Missed Schedule 2013.1231.2013 Build 2014-09-13 Active - Tag 6707293c0218e2d8b7aa38d418ffa608-->
+
+<!-- This website is patched against a big problem not solved from WordPress 2.5+ to date -->
+
+<!-- Powered by WPtouch: 3.7.9.1 --><script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script type="text/javascript" language="javascript">
+jQuery(function() {
+	jQuery('.home .entry-content p').dotdotdot();
+	jQuery.template_dir  = "http://www.medwatch.jp/wp-content/themes/twentyfourteen";
+	jQuery('.single-post .nav-links a').dotdotdot();
+	jQuery('.related-article .entry-content p').dotdotdot();
+		
+});
+</script>
+
+<!-- facebook sdk -->
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) return;
+	js = d.createElement(s); js.id = id;
+	js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1";
+	fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+
+
+	</script>
+<!-- facebook sdk -->
+<!-- twitter sdk -->
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<!-- twitter sdk -->
+	
+	
+	
+
+
+	<script>  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-54275107-1', 'auto');  ga('send', 'pageview');
+</script>
+<!-- BEGIN: WP Social Bookmarking Light -->
+<script type="text/javascript">
+  window.___gcfg = {lang: 'ja'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'http://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+<!-- END: WP Social Bookmarking Light -->
+<script type='text/javascript' src='http://www.medwatch.jp/wp-content/plugins/contact-form-7/includes/js/jquery.form.min.js?ver=3.51.0-2014.06.20'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var _wpcf7 = {"loaderUrl":"http:\/\/www.medwatch.jp\/wp-content\/plugins\/contact-form-7\/images\/ajax-loader.gif","sending":"\u9001\u4fe1\u4e2d ..."};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://www.medwatch.jp/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.2.1'></script>
+<script type='text/javascript' src='http://www.medwatch.jp/wp-includes/js/masonry.min.js?ver=3.1.2'></script>
+<script type='text/javascript' src='http://www.medwatch.jp/wp-includes/js/jquery/jquery.masonry.min.js?ver=3.1.2'></script>
+<script type='text/javascript' src='http://www.medwatch.jp/wp-content/themes/twentyfourteen/js/functions.js?ver=20140319'></script>
+<script type='text/javascript' src='http://www.medwatch.jp/wp-content/themes/twentyfourteen/js/jquery.dotdotdot.js?ver=1.0.0'></script>
+<script type='text/javascript' src='http://www.medwatch.jp/wp-content/themes/twentyfourteen/js/add_bookmark.jquery.js?ver=1.0.0'></script>
+<script type='text/javascript' src='http://www.medwatch.jp/wp-content/themes/twentyfourteen/js/pie/PIE.js?ver=1.0.0'></script>
+<!-- filtered by Admin SSL --></body>
+</html>

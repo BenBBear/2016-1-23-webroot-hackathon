@@ -1,0 +1,248 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script language="javascript" type="text/javascript">
+		function gup( name )
+		{
+			var regexS = "[\\?&]"+name+"=([^&#]*)";
+			var regex = new RegExp( regexS );
+			var tmpURL = window.location.href;
+			var results = regex.exec( tmpURL );
+			if( results == null )
+				return "";
+			else
+				return results[1];
+		}
+		$(function() {
+			var content = gup('content')
+			if (content == "") {
+				content = "home";
+			}
+			$.ajax(content + ".html").done(
+				function (data) {
+					$('#bodyPlaceholder').html(data);
+				}
+			);
+		});
+	</script>
+	<script language="javascript" type="text/javascript">
+		var file_array = [
+			'<[gda-r-PeyeROMGM[V]> im the bitch man', 
+			'RCA wins', 
+			'<AoD`Quits> i\'m tired of "being the bitch" and tired of being "setup"', 
+			'<|RCA|-DM`hw> i am actually osama bin ladin', 
+			'<|RCA|-Chef_Spork> i cant spell up', 
+			'<[its]Fate> I\'m summoning an IRC cop as we speak',
+			'<[its]Fate> Plus, I know your name and where you go to school, and through that I can get your address.',
+			'<[its]Fate> Once that\'s taken care if, I\'ll have your ass kicked so hard you\'ll shit blood for a week.',
+			'<|RCA|-GunSlingeR> but i got to go eat MIKE will be back to talk and play',
+			'<Shinigami-packing> my asshole is better than yours',
+			'<infowar> i just telneted into my radeon 7500...and read some goverment secret files',
+			'<[S3]doujah^> she died from a dildo accident',
+			'ok',
+			'<devil^alerx`8D> i didnt know that button with two yellow arrows disconects u]'
+		];
+		$(function() {
+			$('#headerText').text(file_array[Math.floor(Math.random() * file_array.length)]);
+		});
+	</script>
+	<script language="javascript" type="text/javascript">
+		var menuItems = [
+			{"value": "home", "text": "Home" },
+			{"value": "Team_RCA", "text": "IRC Stats"},
+			{"value": "lansignup", "text": "Upcoming LANs"},
+			{"value": "mirc", "text": "mIRC"},
+			{"value": "writing", "text": "Column"},
+			{"value": "lan", "text": "Pictures"},
+			{"value": "chng", "text": "Change Theme"},
+			{"value": "newsarch", "text": "News Archive"},
+			{"value": "login", "text": "Admin Console"}
+		];
+		
+		function hax_da_menu(text, value) {
+			$("<tr><td class=\"menuitem\" onmouseover=\"style.cursor='hand';\" onclick=\"location.href='/?content=" + value + "'\">" + text + "</td></tr>").appendTo('#menuTable');
+		}
+		$(function() {
+			for (var i = 0; i < menuItems.length; i++) {
+				var menu = menuItems[i];
+				hax_da_menu(menu["text"], menu["value"]);
+			}
+		});
+	</script>
+	<style>
+	h1 { font-family: "Verdana"; color: #FFFFFF; font-size: 26px; font-style: italic; font-weight: normal; margin: 4px }
+	h3 { font-family: "Verdana"; color: #FFFFFF; font-size: 20px; font-style: italic; font-weight: normal; margin: 3px }
+	h4 { font-family: "Verdana"; color: #FFFFFF; font-size: 16px; font-style: italic; font-weight: normal; margin: 2px }
+	h5 { font-family: "Verdana"; color: #FFFFFF; font-size: 16px; font-style: italic; font-weight: normal; margin: 2px }
+	.txt1 { font-family: "Verdana"; color: #FFFFFF; font-size: 10px; text-align: left }
+	.txt2 { font-family: "Verdana"; color: #FFFFFF; font-size: 10px; text-align: left }
+	.t1 { font-family: "Verdana"; color: #FFFFFF; font-size: 10px; text-align: left; font-weight: bold; font-style: italic }
+	.t2 { font-family: "Verdana"; color: #FFFFFF; font-size: 10px; text-align: left }
+	.t3 { font-family: "Verdana"; color: #FFFFFF; font-size: 10px; text-align: right }
+	.t4 { font-family: "Verdana"; color: #FFFFFF; font-size: 10px; text-align: center }
+	.t5 { font-family: "Verdana"; color:#FFFFFF; font-size:10px; text-align:left; font-weight:normal; font-style: italic }
+	.t6 { font-family:"Verdana"; color:#FFFFFF; font-size:10px; text-align:right; font-style: normal }
+
+	.s1 { font-family: "Arial"; color: #FFFFFF; font-size: 8px; vertical-align: bottom; text-align: center  }
+	.s2 { font-family: "Arial"; color: #FFFFFF; font-size: 9px; vertical-align: bottom; text-align: center  }
+	.s3 { font-family: "Arial"; color: #FFFFFF; font-size: 9px; vertical-align: bottom; text-align: center; background-color: #900000 }
+	.s4 { background-color: #900000; font-family: "Verdana"; color: #FFFFFF; font-size: 10px; text-align: left }
+	.s5 { font-family: "Verdana"; color: #FFFFFF; font-size: 10px; text-align: left }
+	.toc { font-family: "Verdana"; color: #FFFFFF; font-size: 16px; font-style: italic; font-weight: normal; margin: 2px }
+	.ra { font-family: "Arial"; color: #FFFFFF; font-size: 32px; text-align: center; border-style: outset; border-width: 4px }
+	.rn { font-family:"Verdana"; color:#FFFFFF;font-size:16px; text-align:left;font-weight:bold; font-style:normal }
+	.ad { border-style: outset; border-width: 1px; font-family: "Verdana", Arial, sans-serif; color: #FFFFFF; font-size: 10px; vertical-align: middle; text-align: center }
+	.am { vertical-align: top }
+	.cr { border-style: outset; border-width: 2px; font-family: Arial, sans-serif; color: #FFFFFF; font-size: 12px; vertical-align: middle; text-align: left }
+	.v1 { font-size: 10px; background-color: #900000 }
+	.v2 { background-color: #900000 }
+	.v3 { background-color: #900000 }
+	.v4 { background-color: #900000 }
+	.v5 { background-color: #900000 }
+	.v6 { background-color: #900000 }
+	.v7 { background-color: #900000 }
+	.v8 { background-color: #660000 }
+
+	TR
+	{
+		font-size: 10pt;
+	}
+	TD
+	{
+		font-size: 10pt;
+	}
+	.texttable
+	{
+		font-size: 14;
+		border: 2px solid #B69A1D;
+		border-collapse: collapse;
+	}
+	.texttable > tbody > tr > td 
+	{
+		border: 2px solid #B69A1D;
+	}
+	.texttable > tbody > tr > th 
+	{
+		font-face: Verdana;
+		font-size: 10pt;
+		background-color: #900000;
+		text-align: left;
+	}
+	.texttable > tbody > tr > td 
+	{
+		background-color: #660000;
+	}
+	.topbanner
+	{
+		border-top: #B69A1D 2px solid;
+	}
+	BODY { 
+	   FONT-SIZE: 8pt;
+	   SCROLLBAR-FACE-COLOR: #660000; 
+	   SCROLLBAR-HIGHLIGHT-COLOR: #900000; 
+	   SCROLLBAR-SHADOW-COLOR: #646464; 
+	   SCROLLBAR-3DLIGHT-COLOR: #900000; 
+	   SCROLLBAR-ARROW-COLOR: #FFFFFF; 
+	   SCROLLBAR-TRACK-COLOR: #646464; 
+	   SCROLLBAR-DARKSHADOW-COLOR: #900000 
+	}
+	.menuitem
+	{
+		border: #B69A1D 1px solid;
+		text-align: center;
+	}
+	.menuitem:hover
+	{
+		background-color: #900000;
+	}
+	.tlb
+	{
+	  border-top: #B69A1D 2px solid;
+	  border-left: #B69A1D 2px solid;
+	  border-bottom: #B69A1D 2px solid;
+	}
+	.trb
+	{
+	  border-top: #B69A1D 2px solid;
+	  border-right: #B69A1D 2px solid;
+	  border-bottom: #B69A1D 2px solid;
+	}
+	.footerrow
+	{
+		background-color: #660000;
+		border: #B69A1D 2px solid;
+	}
+	</style>
+</head>
+<body topmargin="0" leftmargin="0" bgcolor="#646464" text="#FFFFFF" link="#FFFFFF" vlink="#FFFFFF" alink="#FFFFFF">
+<div valign="top" align="Center"> 
+	<table border="0" cellpading="0" cellspacing="10">
+		<tr height="123">
+			<td colspan="8" height="123">
+			   <table width="100%" border="0" cellspacing="0" cellpadding="0" height="100%">
+				<tr>
+					<td align="left" width="32" background="images/tlcorner.gif" valign="top"></td>
+					<td class="topbanner" align="center" bgcolor="#660000" ><img src="/images/bannerrc.gif" alt="" border="0"></td>
+					<td align="right" width="32" background="images/trcorner.gif" valign="top"></td>
+				</tr>
+				<tr height="2">
+					<td colspan="8" bgcolor="#B69A1D"></td>
+				</tr>
+			   </table>
+			</td>
+		</tr>
+		<tr height="15">
+			<td align="Center" colspan="8" valign="top" height="15">
+				<table width="100%" class="texttable"><td align="Center"><strong id="headerText"></strong></td></table>
+			</td>
+		</tr>
+		<tr> 
+			<td width="199" valign="top"> 
+				<table width="100%" class="texttable" id="menuTable">
+					<tr>
+						<th>Menu</th>
+					</tr>
+				</table>
+				<br />
+				<table width="199" class="texttable">
+					<tr>
+						<th>Quick Stats</th>
+					</tr>
+					<tr>
+						<td width="195" valign="top">
+							<strong><a class="dropshad" href="irc://irc.gamesnet.net/team-rca">IRC: #Team-RCA (Gamesnet)</a></strong><br><br>
+							<strong><a class="dropshad" href="http://folding.stanford.edu/cgi-bin/teampage.detailed?q=3437">FAH: Team #3437</a></strong><br><br>
+							<strong><a class="dropshad" href="http://www.worldogl.com/view_team_info.php?teamid=79126">OGL Team</a></strong>
+						</td>
+					</tr>
+				</table>
+				<br />
+				<table width="199" class="texttable">
+					<tr>
+						<th>Links</th>
+					</tr>
+					<tr>
+						<td width="195" valign="top" style="text-align: center">
+							<a target="tyan" href="http://www.tyan.com"><img src="images/logo_tyan_blue.gif" width="100" height="33" border="0" alt="Tyan Systemboard manufacturer"></a><br><br>
+							<a target="bawls" href="http://www.bawls.com"><img src="images/bawls.gif" height="31" width="88" border="0" alt="Bawls Guarana Drink"></a><br><br>
+							<a target="penny-arcade" href="http://www.penny-arcade.com"><img src="images/button_pa.gif" border="0" alt="Penny Arcade online comic"></a><br><br>
+							<a target="mame" href="http://www.mame.net/"><img src="images/mame1.gif" width="88" height="31" alt="mame.net Multi Arcade Machine Emulator" border="0"></a><br><br>
+							<a target="dr2" href="http://www.dr2.net/"><img src="images/button.jpg" width="88" height="31" alt="dr2.net Web Hosting" border="0"></a><br><br>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td colspan="7" valign="top">
+				<div id="bodyPlaceholder"></div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="8" class="footerrow">
+				<strong>Copyright 2002-2003 -|RCA|-DEatHrler/Team -|RCA|- All Rights Reserved</strong>
+				<strong style="float: right">Best Viewed With Internet Explorer 6.0 At 800x600 Or Higher</strong>
+			</td>
+		</tr>
+	</table>
+</div>
+</body>

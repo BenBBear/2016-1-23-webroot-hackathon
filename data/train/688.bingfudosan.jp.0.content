@@ -1,0 +1,275 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Bing不動産</title>
+    <meta name="description" content="地図で探す新しいスタイルの不動産検索サービスです。 地図ならではの豊かな視覚的表現と、直感的な操作性で、より快適な物件探索をサポートします。Bing不動産で見つけよう。" />
+    <meta name="keywords" content="Bing不動産,不動産,住宅,住宅情報,不動産情報,不動産購入,物件,マンション,新築マンション,戸建,一戸建て,物件検索,検索,Bing,ビング,マイクロソフト,MS,地図で探す,地図で見つける,overlay,オーバーレイ,スライダー,地図,Bing Maps">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Bing不動産" />
+    <meta property="og:image" content="http://www.bingfudosan.jp/images/og.png" />
+    <meta property="og:url" content="http://www.bingfudosan.jp/" />
+    <meta property="og:description" content="地図で探す新しいスタイル の不動産検索サービスです。 地図ならではの豊かな視覚的表現と、直感的な 操作性で、より快適な物件探索をサポートします。Bing不動産で見つけよう。" />
+    <meta property="og:site_name" content="bingfudosan.jp" />
+</head>
+<body>
+<div id="wrapper">
+
+    <div id="map_area_wrapper">
+        <div id="bing_map"></div>
+        <div id="map_area_optional_info">
+            <div id="map_area_search_result_total" class="clearfix">
+                <div class="background"></div>
+                <div class="text_area clearfix">
+                    <p class="title">検索結果</p><p class="total"><span>0</span> 件</p>
+                </div>
+                <div class="now_loading"><img src="images/ui/now_loading.gif" width="16" height="16" /></div>
+            </div>
+            <div id="map_area_zoom_notice">
+                <h3 class="mb5">現在のズームレベルでは次の項目が表示されません。</h3>
+                <p class="mb5 item_list"></p>
+                <p>もっとズームすると表示されるようになります。</p>
+            </div>
+        </div>
+        <div id="map_area_top_toolbar_bg_extend"></div>
+        <div id="map_area_sharelink">共有</div>
+        <div id="overlay_example_container"></div>
+        <div id="disclaimer_text">ご注意: 地図上に表示される物件アイコンは付近住所に所在することを<br>表すものであり、実際の物件所在地とは異なる場合がございます</div>
+    </div>
+
+    <div id="start_menu_wrapper">
+        <div id="start_menu_cover"></div>
+        <div id="start_menu_content_wrapper">
+            <h1><img src="images/start_menu/bing_fudosan_logo.png" width="251" height="50" title="bing不動産" /></h1>
+            <div class="search_area">
+                <div class="tab_menus clearfix">
+                    <div class="mansion">
+                        <h2><img src="images/start_menu/buy_mansion.gif" width="118" height="14" /></h2>
+                        <ul class="clearfix">
+                            <li id="start_menu_mansion_tab" class="right_margin current">新築</li>
+                            <li id="start_menu_used_mansion_tab">中古</li>
+                        </ul>
+                    </div>
+                    <div class="ikkodate">
+                        <h2><img src="images/start_menu/buy_ikkodate.gif" width="103" height="15" /></h2>
+                        <ul class="clearfix">
+                            <li id="start_menu_ikkodate_tab" class="right_margin">新築</li>
+                            <li id="start_menu_used_ikkodate_tab">中古</li>
+                        </ul>
+                    </div>
+                    <div class="chintai">
+                        <h2><img src="images/start_menu/rent_chintai.gif" width="44" height="15" /></h2>
+                        <ul class="clearfix">
+                            <li id="start_menu_chintai_tab">賃貸</li>
+                        </ul>
+                    </div>
+                </div><!--tab_menus-->
+                <div class="search_input_text_area">
+                    <div class="search_icon"><img src="images/start_menu/search_icon.gif" width="20" height="20" /></div>
+                    <input id="start_menu_search_text_input" tabindex="-1" type="text" placeholder="例）東京都新宿区" />
+                </div>
+                <div id="start_menu_search_button" class="search_button_area">
+                    <p>このエリアの物件を探す</p>
+                </div>
+            </div><!--search_area-->
+            <div class="now_loading"><img src="images/ui/now_loading.gif" width="16" height="16" /></div>
+        </div><!--start_menu_content_area-->
+    </div>
+
+
+    <div id="input_wrapper" class="clearfix">
+        <div id="input_detail">
+            <div id="search_menu">
+                <div id="search_scroll" class="scroll_area">
+                    <div id="search_content">
+                        <div id="search_menu_tabs_container" class="property_type_select_container"></div>
+
+                        <div id="current_search_settings">
+                            <h3>現在の検索条件</h3>
+                            <div class="number_of_result"><p><span class="result_number">0</span><span class="normal"> 件</span></p></div>
+                            <div class="container">
+                                <p class="search_text_container"><input type="text" id="input_current_search_settings_text_field" tabindex="-1" class="search_text" placeholder="地域名、駅名" /></p>
+                                <div class="search_button_container">
+                                    <p class="search_button">検索</p>
+                                    <p class="search_button_help"></p>
+                                </div>
+                                <p class="search_settings_display_text"></p>
+                                <div class="reset_area">
+                                    <p class="reset_search_settings">検索条件をリセット</p>
+                                </div>
+                            </div>
+                        </div><!--current_search_settings-->
+
+                        <div id="search_condition_change">
+                            <h3>検索条件変更</h3>
+                            <!--
+                            <div id="search_condition_train">
+                                <h4>沿線・駅</h4>
+                                <div class="accordion_body"></div>
+                            </div>--><!--search_condition_train-->
+                            <div id="search_condition_filtering">
+                                <h4>絞り込み条件</h4>
+                                <div class="accordion_body">
+                                    <div class="mansion"></div>
+                                    <div class="ikkodate"></div>
+                                    <div class="chintai"></div>
+                                </div>
+                            </div><!--search_condition_filtering-->
+                        </div><!--search_condition_change-->
+                    </div><!--search_content-->
+                </div><!--search_scroll-->
+                <div id="search_condition_search_button_area">
+                    <div id="search_condition_search_button_area_bg"></div>
+                    <p id="search_condition_search_button">この条件で検索する</p>
+                </div><!--search_condition_search_button_area-->
+            </div><!--search_menu-->
+
+            <div id="overlay_menu">
+                <h2 class="section_title">情報を重ねる</h2>
+                <div id="overlay_menu_scroll_container">
+                    <div id="overlay_menu_scroll" class="scroll_area">
+                        <div class="section_container">
+                            <ul id="overlay_menu_list">
+                                <li><input type="radio" name="overlay_menu_radio"
+                                  id="overlay_menu_radio_use_zoning" value="use_zoning">
+                                    <label for="overlay_menu_radio_use_zoning">用途地域</label></li>
+                                <li><input type="radio" name="overlay_menu_radio"
+                                  id="overlay_menu_radio_land_price" value="land_price">
+                                    <label for="overlay_menu_radio_land_price">地価公示</label></li>
+                                <li><input type="radio" name="overlay_menu_radio"
+                                  id="overlay_menu_radio_none" value="none" checked>
+                                    <label for="overlay_menu_radio_none">表示させない</label></li>
+                            </ul>
+                        </div><!--section_container-->
+                    </div><!--overlay_menu_scroll-->
+                </div><!--overlay_menu_scroll_container-->
+                <p class="notes">用途地域 データ作成年度 平成23年<br>
+                    地価公示 データ作成年度 平成26年</p>
+            </div><!--overlay_menu-->
+
+            <div id="facilities_menu">
+                <h2 class="section_title">周辺施設表示</h2>
+                <div id="facilities_menu_scroll_container">
+                    <div id="facilities_menu_scroll" class="scroll_area">
+                        <div class="section_container">
+                            <div id="facilities_menu_content"></div>
+                        </div><!--section_container-->
+                    </div><!--facilities_menu_scroll-->
+                </div><!--facilities_menu_scroll_container-->
+            </div><!--facilities_menu-->
+        </div><!--input_detail-->
+
+        <div id="global_menu_icons_wrapper">
+            <div id="global_menu_icons">
+                <ul>
+                    <li id="global_menu_close"><span class="current_bg"></span><span class="button_label"></span></li>
+                    <li id="global_menu_search"><span class="current_bg"></span><span class="button_label">検索条件・絞込み</span></li>
+                    <li id="global_menu_favorite"><span class="current_bg"></span><span class="button_label">お気に入り</span></li>
+                    <li id="global_menu_history"><span class="current_bg"></span><span class="button_label">閲覧履歴</span></li>
+                    <li class="global_menu_separate_line"><span></span></li>
+                    <li id="global_menu_overlay"><span class="current_bg"></span><span class="button_label">情報を重ねる</span></li>
+                    <li id="global_menu_facilities"><span class="current_bg"></span><span class="button_label">周辺施設</span></li>
+                    <li id="global_menu_return_start_screen"><span class="current_bg"></span><span class="button_label">スタート画面</span></li>
+                </ul>
+            </div><!--global_menu_icons-->
+        </div><!--global_menu_icons_wrapper-->
+
+    </div><!--input_wrapper-->
+
+
+    <div id="output_wrapper" class="clearfix">
+        <div id="output_close_button_area_mask">
+            <div id="output_close_button_area">
+                <p id="output_close_button" class="current"></p>
+                <p id="output_return_button"></p>
+            </div>
+        </div>
+        <div id="output_content_wrapper">
+
+            <div id="property_detail">
+                <div id="property_detail_view_title_container">
+                    <h3>MORE INFO</h3>
+                    <div id="bing_word_search_area" class="clearfix">
+                        <input id="bing_word_search_text_field" type="text" tabindex="-1" />
+                        <div class="search_button"></div>
+                    </div>
+                </div>
+                <div id="property_detail_scrollarea_container">
+                    <div id="property_detail_scrollarea">
+                        <div id="property_detail_content" class="clearfix">
+                        </div><!--property_detail_content-->
+                    </div><!--property_detail_scrollarea-->
+                </div><!--property_detail_scrollarea_container-->
+                <div id="property_detail_bing_word_search_container">
+                    <div id="property_detail_bing_word_search_content_scrollarea">
+                        <div id="property_detail_bing_word_search_content"></div>
+                    </div><!--property_detail_bing_word_search_content_scrollarea-->
+                    <p class="now_loading"><span class="icon"><img src="images/ui/now_loading.gif" width="16" height="16" /></span>検索中...</p>
+                    <div class="close_button"></div>
+                </div>
+            </div><!--property_detail-->
+
+            <div id="property_search_result_list" class="property_list"></div>
+            <div id="favorite_list" class="property_list"></div>
+            <div id="history_list" class="property_list"></div>
+        </div><!--output_content_wrapper-->
+    </div><!--output_wrapper-->
+
+
+
+    <div id="modal_view">
+        <div id="modal_view_bg"></div>
+        <div id="modal_view_content_container">
+            <div class="header">
+                <h3></h3>
+                <p class="close_button"></p>
+            </div>
+            <div id="modal_view_content"></div>
+        </div><!--modal_view_content_container-->
+    </div>
+
+    <!--wrapper--></div>
+
+<noscript>
+    <div class="noscript_message">
+        このサイトではJavaScriptを使用しています。<br />
+        JavaScriptの設定を有効にしてから、ページを読み込み直してください。
+    </div>
+</noscript>
+
+<script charset="UTF-8" type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0&mkt=ja-JP"></script>
+<script type="text/javascript" src="js/libs.js"></script>
+<script type="text/javascript" src="js/templates.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript">
+    $(function(){
+        bing.SearchAPI_URLs.API_DOMAIN = "http://www.bingfudosan.jp/";
+        var main = new bing.BingMapsRealEstateMain();
+        main.loadAppSettings()
+          .done(function(){
+              main.init();
+              main.loadMSMap();
+          });
+    });
+</script>
+<script type="text/javascript">
+    function initAppInsights(){
+        var appInsights=window.appInsights||function(config){
+              function s(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},r=document,f=window,e="script",o=r.createElement(e),i,u;for(o.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js",r.getElementsByTagName(e)[0].parentNode.appendChild(o),t.cookie=r.cookie,t.queue=[],i=["Event","Exception","Metric","PageView","Trace"];i.length;)s("track"+i.pop());return config.disableExceptionTracking||(i="onerror",s("_"+i),u=f[i],f[i]=function(config,r,f,e,o){var s=u&&u(config,r,f,e,o);return s!==!0&&t["_"+i](config,r,f,e,o),s}),t
+          }({
+              instrumentationKey:"79ce9bbf-d818-45a1-ae6c-d2ffe8f115ff"
+          });
+        window.appInsights=appInsights;
+        appInsights.trackPageView(null, null, {urlReferrer: document.referrer});
+    }
+
+    if(document.addEventListener){
+        initAppInsights();
+    }
+</script>
+</body>
+</html>

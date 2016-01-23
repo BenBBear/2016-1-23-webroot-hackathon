@@ -1,0 +1,946 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=EUC-JP">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<META HTTP-EQUIV="Content-Script-Type" CONTENT="text/javascript">
+<link rel="stylesheet" href="/images_vdsv/_style.css" type="text/css">
+<META NAME="DESCRIPTION" CONTENT="VDSV.JPは、安価でドメインの運用に最適な専用サーバーサービスです。">
+<META NAME="KEYWORDS" CONTENT="ドメイン,専用サーバー">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<TITLE>VDSV.JP:バリュードメインサーバー</TITLE>
+<script language="javascript"><!--
+function ConfirmMsg(msg){
+	var flg = confirm(msg);
+    return flg;
+}
+function ChageBgcolor(o,color) {
+	o.style.backgroundColor = color;
+}
+
+function loading() {
+	if(document.all){
+		SUB.style.visibility = "hidden";
+		MAIN.style.visibility = "visible";
+		return 0;
+	}
+}
+
+function OnMENU1() {
+	if(document.all["MENU1"].style.display == 'none') document.all["MENU1"].style.display = "block";
+	else  document.all["MENU1"].style.display = "none";
+}
+function DelayOnMENU1() {
+	setTimeout("OnMENU1()",2000);
+}
+function OffMENU1() {
+	document.all["MENU1"].style.display = "none";
+}
+function DelayOffMENU1() {
+	setTimeout("DelayOffMENU1()",2000);
+}
+
+lt = new Array(2);
+lt[0] = new Date().getTime();
+
+self.name="MAIN";
+//--></script>
+
+		
+<BODY BGCOLOR="#FFFFFF" text="#808080" link="#003399" vlink="#003399" alink="#808080" TOPMARGIN=0 LEFTMARGIN=0 MARGINHEIGHT=0 MARGINWIDTH=0>
+<script type="text/javascript" charset="UTF-8" src="//cache.img.gmo.jp/common_header/script.js" async></script>
+<!-- GMOグループ共通ヘッダー -->
+
+<link href="http://cache.img.gmo.jp/header/2013/pc/headerstyle.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="http://cache.img.gmo.jp/header/2013/pc/script2.js"></script> 
+
+<div id="gmocommonheader">
+	<div id="chder">
+		<div class="chleft">
+			<ul>
+				<li><a href="https://www.click-sec.com/corp/ad/fx/?aid=xx1q240&cid=fxlp" target="_blank"  rel="nofollow"><span>FX取引高 <span class="redcolor">世界第１位</span> GMOクリック証券</span><span class="red">CM 放送中</span></a></li>
+				<li><a href="http://www.onamae.com/newgtld/tokyo/?banner_id=1019_tokyo_ga" target="_blank"  rel="nofollow"><span>「.tokyo」 <span class="redcolor">920円</span>　東京のドメイン誕生。</span><span class="red">CM 放送中</span></a></li>
+
+			</ul>
+		</div>
+		
+		<div class="chright">
+			<div class="opentab" id="opentab"><img src="http://cache.img.gmo.jp/header/2013/pc/images/btn.png"></div>
+			<div class="logo"><a href="https://www.gmo.jp/" target="_blank"  rel="nofollow"><img src="http://cache.img.gmo.jp/header/2013/pc/images/logo.png" alt="GMOインターネットグループ"></a></div>
+		</div>
+		<span class="clear"></span>
+	</div>
+
+	<div id="maintab">
+		<div class="maintabhead"></div>
+		<div class="maintabbody">
+			<div class="netinfo">
+				<div class="title1 hai1">ネットで情報発信する</div>
+				<div class="list">
+					<div class="image"><img src="http://cache.img.gmo.jp/header/2013/pc/images/com.gif"></div>
+					<div class="subtitle fr">ドメイン取得</div>
+					<ul>
+						<li><a href="http://www.onamae.com/" target="_blank"  rel="nofollow">お名前.com <span>CM</span></a></li>
+						<li><a href="http://muumuu-domain.com/" target="_blank"  rel="nofollow">ムームー<br>ドメイン</a></li>
+						<li><a href="http://www.value-domain.com/" target="_blank"  rel="nofollow">VALUE DOMAIN</a></li>
+						<li><a href="http://www.domainking.jp/" target="_blank"  rel="nofollow">ドメインキング</a></li>
+						<li><a href="http://www.rocketnet.jp/" target="_blank"  rel="nofollow">ロケットネット</a></li>
+					</ul>
+				</div>
+				<div class="list">
+					<div class="image"><img src="http://cache.img.gmo.jp/header/2013/pc/images/server.gif"></div>
+					<div class="subtitle">サーバー<br>クラウド</div>
+					<ul>
+						<li><a href="http://www.onamae-server.com/" target="_blank"  rel="nofollow">お名前.com レンタルサーバー</a></li>
+						<li><a href="http://www.conoha.jp/" target="_blank"  rel="nofollow">ConoHa</a></li>
+						<li><a href="http://cloud.gmo.jp/" target="_blank"  rel="nofollow">GMOアプリ<br>クラウド</a></li>
+						<li><a href="http://lolipop.jp/" target="_blank"  rel="nofollow">ロリポップ! レンタルサーバー</a></li>
+						<li><a href="http://www.gmocloud.com/" target="_blank"  rel="nofollow">GMOクラウド Public</a></li>
+					</ul>
+				</div>
+				<div class="list">
+					<div class="image"><img src="http://cache.img.gmo.jp/header/2013/pc/images/website.gif"></div>
+					<div class="subtitle fr">Webサイト制作</div>
+					<ul>
+						<li><a href="http://goope.jp/" target="_blank"  rel="nofollow">グーペ</a></li>
+						<li><a href="http://www.petit.cc/" target="_blank"  rel="nofollow">プチホームページサービス</a></li>
+						<li><a href="http://www.makeshop.jp/main/plan/kodawari/" target="_blank"  rel="nofollow">こだわり<br>デザイン</a></li>
+						<li><a href="http://www.cameramen.jp/" target="_blank"  rel="nofollow">あつまれ!!<br>キャメラメーン </a></li>
+						<li><a href="http://ec.omakaseweb.com/" target="_blank"  rel="nofollow">商品撮影<br>サービス</a></li>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="netshop">
+				<div class="title2 hai2">ネットでショップを開設する</div>
+				<div class="list">
+					<div class="image"><img src="http://cache.img.gmo.jp/header/2013/pc/images/shop.gif"></div>
+					<div class="subtitle">ショッピング<br>カート</div>
+					<ul>
+						<li><a href="http://shop-pro.jp/" target="_blank"  rel="nofollow">カラーミー<br>ショップ</a></li>
+						<li><a href="http://www.makeshop.jp/" target="_blank"  rel="nofollow">Makeshop</a></li>
+						<li><a href="http://custom.makeshop.jp/" target="_blank"  rel="nofollow">カスタムMakeshop</a></li>
+					</ul>
+				</div>
+				<div class="list">
+					<div class="image"><img src="http://cache.img.gmo.jp/header/2013/pc/images/card.gif"></div>
+					<div class="subtitle fr">決済システム</div>
+					<ul>
+						<li><a href="http://www.gmo-pg.com/service" target="_blank"  rel="nofollow">PGマルチペイメントサービス </a></li>
+						<li><a href="http://www.epsilon.jp/" target="_blank"  rel="nofollow">イプシロン</a></li>
+						<li><a href="http://www.saps.jp/mopita/" target="_blank"  rel="nofollow">mopita</a></li>
+					</ul>
+				</div>
+				<div class="list">
+					<div class="image"><img src="http://cache.img.gmo.jp/header/2013/pc/images/secure.gif"></div>
+					<div class="subtitle">セキュリティ<br>強化</div>
+					<ul>
+						<li><a href="https://jp.globalsign.com/" target="_blank"  rel="nofollow">GlobalSign</a></li>
+						<li><a href="http://www.securestar.jp/" target="_blank"  rel="nofollow">SecureStar </a></li>
+					</ul>
+				</div>		
+			</div>
+
+			<div class="netbiz">
+				<div class="title1 hai3">ネットビジネスを支援する</div>
+				<div class="list">
+					<div class="image"><img src="http://cache.img.gmo.jp/header/2013/pc/images/seo.gif"></div>
+					<div class="subtitle fr">広告・SEO</div>
+					<ul>
+						<li><a href="http://www.adresult.jp/" target="_blank"  rel="nofollow">ADResult</a></li>
+						<li><a href="http://gmodsp.jp/" target="_blank"  rel="nofollow">GMODSP</a></li>
+						<li><a href="http://www.koukoku.jp/" target="_blank"  rel="nofollow">プロモーション全般</a></li>
+						<li><a href="http://www.jword.jp/" target="_blank"  rel="nofollow">JWord</a></li>
+						<li><a href="http://merumo.ne.jp/" target="_blank"  rel="nofollow">メルモ</a></li>
+						<li><a href="https://smaad.jp/" target="_blank"  rel="nofollow">GMO SmaAD</a></li>
+						<li><a href="http://seo-airlines.com/" target="_blank"  rel="nofollow">SEO Airlines</a></li>
+						<li><a href="http://seo.gmo.jp/" target="_blank"  rel="nofollow">GMOSEO+</a></li>
+					</ul>
+				</div>
+				<div class="list">
+					<div class="image"><img src="http://cache.img.gmo.jp/header/2013/pc/images/business.gif"></div>
+					<div class="subtitle fr">ビジネス支援</div>
+					<ul>
+						<li><a href="http://www.gmo-research.jp/" target="_blank"  rel="nofollow">GMOリサーチ</a></li>
+						<li><a href="https://infoq.jp/" target="_blank"  rel="nofollow">infoQ</a></li>
+						<li><a href="https://www.quicktranslate.com/" target="_blank"  rel="nofollow">スピード翻訳</a></li>
+						<li><a href="http://pac.omakaseweb.com/" target="_blank"  rel="nofollow">会社パンフレットサイト制作</a></li>
+						<li><a href="http://www.sitema.jp/" target="_blank"  rel="nofollow">サイトM&A</a></li>
+						<li><a href="https://www.gmo-ism.jp/" target="_blank"  rel="nofollow">スポーツマネジメント</a></li>
+						<li><a href="http://www.gmo-c.jp/service/marut_o2o.html?utm_source=gmogroup&utm_medium=header" target="_blank"  rel="nofollow">まるっとサポート! O2O</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<br class="clear">
+
+			<div class="netlike">
+				<div class="title2 hai4">ネットを楽しむ</div>
+				<div class="list3">
+					<div class="image"><img src="http://cache.img.gmo.jp/header/2013/pc/images/mail.gif"></div>
+					<div class="subtitle">メール<br>ブログ</div>
+					<ul>
+						<li><a href="http://jugem.jp/" target="_blank"  rel="nofollow">JUGEM</a></li>
+						<li><a href="http://www.freeml.com/" target="_blank"  rel="nofollow">freeml</a></li>
+						<li><a href="http://www.teacup.com/" target="_blank"  rel="nofollow">teacup. </a></li>
+						<li><a href="http://www.yaplog.jp/" target="_blank"  rel="nofollow">ヤプログ！ </a></li>
+					</ul>
+				</div>
+				<div class="list2">
+					<div class="image"><img src="http://cache.img.gmo.jp/header/2013/pc/images/camera.gif"></div>
+					<div class="subtitle fr">写真・画像</div>
+					<ul>
+						<li><a href="http://30d.jp/" target="_blank"  rel="nofollow">30daysAlbum</a></li>
+						<li><a href="http://www.kabegami.com/shashin-bu/" target="_blank"  rel="nofollow">写真部</a></li>
+						<li><a href="http://www.kabegami.com/" target="_blank"  rel="nofollow">壁紙.com</a></li>
+						<li><a href="http://prcm.jp/" target="_blank"  rel="nofollow">プリ画像</a></li>
+					</ul>
+				</div>
+				<div class="list2">
+					<div class="image"><img src="http://cache.img.gmo.jp/header/2013/pc/images/isp.gif"></div>
+					<div class="subtitle fr">プロバイダー</div>
+					<ul>
+						<li><a href="http://gmobb.jp/" target="_blank"  rel="nofollow">GMOとくとくBB</a></li>
+					</ul>
+					<div class="usubtitle">電子書籍</div>
+					<ul>
+						<li><a href="http://booklog.jp/" target="_blank"  rel="nofollow">ブクログ </a></li>
+						<li><a href="http://p.booklog.jp/" target="_blank"  rel="nofollow">パブー </a></li>
+					</ul>
+				</div>	
+				<div class="list2">
+					<div class="image"><img src="http://cache.img.gmo.jp/header/2013/pc/images/etc.gif"></div>
+					<div class="subtitle fr">その他</div>
+					<ul>
+						<li><a href="http://www.freeml.com/kimetaro/" target="_blank"  rel="nofollow">とっとと<br>決め太郎</a></li>
+					</ul>
+					<div class="usubtitle">女性向け</div>
+					<ul>
+						<li><a href="http://coordisnap.com/" target="_blank"  rel="nofollow">コーデスナップ</a></li>
+						<li><a href="http://www.girlscamera.asia/" target="_blank"  rel="nofollow">Girls Camera</a></li>
+					</ul>
+				</div>	
+			</div>
+
+			<div class="netku">
+				<div class="title1 hai5">ネットで買物する</div>
+				<div class="list">
+					<div class="image2"><img src="http://cache.img.gmo.jp/header/2013/pc/images/bag.gif"></div>
+					<div class="subtitle fr">ショッピング</div>
+					<ul>
+						<li><a href="http://calamel.jp/" target="_blank"  rel="nofollow">カラメル</a></li>
+						<li><a href="http://www.gmo-toku.jp/" target="_blank"  rel="nofollow">GMOとくとく<br>ショップ</a></li>
+						<li><a href="http://www.itempost.jp/" target="_blank"  rel="nofollow">アイテムポスト</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="netku">
+				<div class="title2 hai6">ネットで得する</div>
+				<div class="list">
+					<div class="image2"><img src="http://cache.img.gmo.jp/header/2013/pc/images/point.gif"></div>
+					<div class="subtitle">クーポン<br>ポイント</div>
+					<ul>
+						<li><a href="http://kumapon.jp/" target="_blank"  rel="nofollow">くまポンbyGMO</a></li>
+						<li><a href="http://point.gmo.jp/" target="_blank"  rel="nofollow">GMOとくとく<br>ポイント</a></li>
+						<li><a href="http://pointapp.jp/" target="_blank"  rel="nofollow">ポイントアプリ</a></li>
+						<li><a href="http://www.pointtown.com/" target="_blank"  rel="nofollow">ポイントタウン</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="netfx">
+				<div class="title1 hai7">ネットで投資する</div>
+				<div class="list">
+					<div class="image2"><img src="http://cache.img.gmo.jp/header/2013/pc/images/securities.gif"></div>
+					<div class="subtitle fr">証券・FX・CFD</div>
+					<ul>
+						<li><a href="https://www.click-sec.com/" target="_blank"  rel="nofollow">GMOクリック<br>証券 <span>CM</span></a></li>
+						<li><a href="http://www.fxprime.com/" target="_blank"  rel="nofollow">FXプライム byGMO</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="netgame">
+				<div class="title2 hai8">ネットでゲームする</div>
+				<div class="list">
+					<div class="image2"><img src="http://cache.img.gmo.jp/header/2013/pc/images/game.gif"></div>
+					<div class="subtitle fr">スマホで遊ぶ</div>
+					<ul>
+						<li><a href="http://gmo-game.com/" target="_blank"  rel="nofollow">Gゲー</a></li>
+						<li><a href="http://sumasaka.com/pc/" target="_blank"  rel="nofollow">スマサカ</a></li>
+					</ul>
+					<div class="usubtitle">パソコンで遊ぶ</div>
+					<ul>
+						<li><a href="http://company.gamepot.co.jp/" target="_blank"  rel="nofollow">ゲームポット</a></li>
+					</ul>
+				</div>
+			</div>
+			<br class="clear">
+			<a href="https://www.gmo.jp/service/search/" target="_blank"  rel="nofollow">
+			<div class="ser">
+			<p>すべてのGMOインターネットグループサービス一覧</p>
+			</div>
+			</a>
+
+		</div>
+		<div class="maintabbottom"></div>
+	</div>
+</div>
+
+        
+
+
+
+<TABLE width="734" border="0" align="center" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD><IMG src="/images_vdsv/title.gif" alt border="0" usemap="#Map" width="734" height="94"></TD>
+	</TR>
+</TABLE>
+
+<TABLE width="734" border="0" align="center" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD width="23"><IMG src="/images_vdsv/index03.jpg" alt width="23" height="34"></TD>
+		<TD width="688" background="/images_vdsv/index05.jpg">
+			<TABLE width="100%" border="0" cellspacing="0" cellpadding="0">
+				<TR align="center">
+					<TD><A href="/index.php" class="link01">ホーム</A></TD>
+					<TD><IMG src="/images_vdsv/index06.jpg" alt width="12" height="34"></TD>
+					<TD><A href="/agreement.php" class="link01">規約</A></TD>
+					<TD><IMG src="/images_vdsv/index06.jpg" alt width="12" height="34"></TD>					<TD><A href="/signup.php" class="link01">VDSVサーバー登録</A></TD>
+					<TD><IMG src="/images_vdsv/index06.jpg" alt width="12" height="34"></TD>
+					<TD><A href="https://www.value-domain.com/vdsv.php?action=index" class="link01" onclick="return ConfirmMsg('VALUE-DOMAINへジャンプします。宜しければOKを押してください。')">ログイン</A></TD>
+					<TD><IMG src="/images_vdsv/index06.jpg" alt width="12" height="34"></TD>
+					<TD><A href="https://www.value-domain.com/regdom.php" class="link01" onclick="return ConfirmMsg('VALUE-DOMAINへジャンプします。宜しければOKを押してください。')">ドメイン登録</A></TD>
+					<TD><IMG src="/images_vdsv/index06.jpg" alt width="12" height="34"></TD>
+					<TD><A href="/vdsvhelp/" class="link01">VDSVヘルプ</A></TD>
+					<TD><IMG src="/images_vdsv/index06.jpg" alt width="12" height="34"></TD>
+					<TD><A href="https://www.value-domain.com/support.php?mode=vdsv" class="link01" onclick="return ConfirmMsg('VALUE-DOMAINへジャンプします。宜しければOKを押してください。')">サポート</A></TD>
+				</TR>
+			</TABLE>
+		</TD>
+		<TD width="23"><IMG src="/images_vdsv/index04.jpg" alt width="23" height="34"></TD>
+	</TR>
+</TABLE>
+		
+<TABLE width="734" border="0" align="center" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD width="17" background="/images_vdsv/index07.jpg"><IMG src="/images_vdsv/spacer.gif" alt width="17" height="1"></TD>
+		<TD width="700" bgcolor="#FFFFFF">			
+			<TABLE width="700" border="0" cellpadding="0" cellspacing="0">
+				<TR>
+					<TD width="205" valign="top">
+
+						<TABLE WIDTH="100%" BORDER="0" CELLSPACING="2" CELLPADDING="2">
+							<TR>
+								<TD>
+									<TABLE WIDTH="202" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+										<TR>
+											<TD WIDTH="22"><IMG SRC="/images_vdsv/index10.jpg" ALT WIDTH="22" HEIGHT="37"></TD>
+											<TD BACKGROUND="/images_vdsv/index12.jpg"><SPAN CLASS="text01">お知らせ</SPAN></TD>
+											<TD WIDTH="5"><IMG SRC="/images_vdsv/index11.jpg" ALT WIDTH="5" HEIGHT="37"></TD>
+										</TR>
+									</TABLE>
+								</TD>
+							</TR><TR>
+<TD>ただ今、ございません。</TD>
+</TR>
+<TR>
+<TD>&nbsp;</TD>
+</TR>                           
+<TR>
+								<TD ONMOUSEOVER="ChageBgcolor(this,'#EDAE20');" ONMOUSEOUT="ChageBgcolor(this,'#FFFFFF');"><A HREF="/" CLASS="link_menu">KVMプラン一覧</A></TD>
+							</TR>
+							<TR>
+								<TD ONMOUSEOVER="ChageBgcolor(this,'#EDAE20');" ONMOUSEOUT="ChageBgcolor(this,'#FFFFFF');"><A HREF="/?action=vdsvm" CLASS="link_menu">マネージドプラン一覧</A></TD>
+							</TR>
+
+							<TR>
+								<TD>
+									<TABLE WIDTH="202" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+										<TR>
+											<TD WIDTH="22"><IMG SRC="/images_vdsv/index10.jpg" ALT WIDTH="22" HEIGHT="37"></TD>
+											<TD BACKGROUND="/images_vdsv/index12.jpg"><SPAN CLASS="text01">VDSVのヘルプ</SPAN></TD>
+											<TD WIDTH="5"><IMG SRC="/images_vdsv/index11.jpg" ALT WIDTH="5" HEIGHT="37"></TD>
+										</TR>
+									</TABLE>
+								</TD>
+							</TR>
+							
+							<TR>
+								<TD ONMOUSEOVER="ChageBgcolor(this,'#EDAE20');" ONMOUSEOUT="ChageBgcolor(this,'#FFFFFF');"><A HREF="/vdsvhelp/" CLASS="link_menu">ヘルプページ</A></TD>
+							</TR>
+
+							<TR>
+								<TD>
+									<TABLE WIDTH="202" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+										<TR>
+											<TD WIDTH="22"><IMG SRC="/images_vdsv/index10.jpg" ALT WIDTH="22" HEIGHT="37"></TD>
+											<TD BACKGROUND="/images_vdsv/index12.jpg"><SPAN CLASS="text01">サポート</SPAN></TD>
+											<TD WIDTH="5"><IMG SRC="/images_vdsv/index11.jpg" ALT WIDTH="5" HEIGHT="37"></TD>
+										</TR>
+									</TABLE>
+								</TD>
+							</TR>
+							<TR>
+								<TD ONMOUSEOVER="ChageBgcolor(this,'#EDAE20');" ONMOUSEOUT="ChageBgcolor(this,'#FFFFFF');"><A HREF="/vdsvhelp/" CLASS="link_menu">VDSVヘルプ</A></TD>
+							</TR>
+							<TR>
+								<TD ONMOUSEOVER="ChageBgcolor(this,'#EDAE20');" ONMOUSEOUT="ChageBgcolor(this,'#FFFFFF');"><A HREF="https://www.value-domain.com/support.php?mode=coresv" CLASS="link_menu">お問い合わせフォーム</A></TD>
+							</TR>
+							<TR>
+								<TD ONMOUSEOVER="ChageBgcolor(this,'#EDAE20');" ONMOUSEOUT="ChageBgcolor(this,'#FFFFFF');"><A HREF="http://help.value-domain.com/" CLASS="link_menu">ユーザーフォーラム</A></TD>
+							</TR>
+							<TR>
+								<TD ONMOUSEOVER="ChageBgcolor(this,'#EDAE20');" ONMOUSEOUT="ChageBgcolor(this,'#FFFFFF');"><A HREF="https://www.value-domain.com/aboutus.php" CLASS="link_menu">運営会社について</A></TD>
+							</TR>
+							<TR>
+								<TD>
+									<TABLE WIDTH="202" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+										<TR>
+											<TD WIDTH="22"><IMG SRC="/images_vdsv/index10.jpg" ALT WIDTH="22" HEIGHT="37"></TD>
+											<TD BACKGROUND="/images_vdsv/index12.jpg"><SPAN CLASS="text01">その他</SPAN></TD>
+											<TD WIDTH="5"><IMG SRC="/images_vdsv/index11.jpg" ALT WIDTH="5" HEIGHT="37"></TD>
+										</TR>
+									</TABLE>
+								</TD>
+							</TR>
+							<TR>
+								<TD ONMOUSEOVER="ChageBgcolor(this,'#EDAE20');" ONMOUSEOUT="ChageBgcolor(this,'#FFFFFF');"><A HREF="http://www.value-domain.com/" CLASS="link_menu">ドメイン取得</A></TD>
+							</TR>
+							<TR>
+								<TD ONMOUSEOVER="ChageBgcolor(this,'#EDAE20');" ONMOUSEOUT="ChageBgcolor(this,'#FFFFFF');"><A HREF="http://www.coreserver.jp/" CLASS="link_menu">CORESERVER.JP</A></TD>
+							</TR>
+							<TR>
+								<TD ONMOUSEOVER="ChageBgcolor(this,'#EDAE20');" ONMOUSEOUT="ChageBgcolor(this,'#FFFFFF');"><A HREF="http://www.coreblog.jp/" CLASS="link_menu">COREBLOG.JP</A></TD>
+							</TR>
+							<TR>
+								<TD ONMOUSEOVER="ChageBgcolor(this,'#EDAE20');" ONMOUSEOUT="ChageBgcolor(this,'#FFFFFF');"><A HREF="http://vdsv.jp/" CLASS="link_menu">VDSV.JP</A></TD>
+							</TR>
+							<TR>
+								<TD ONMOUSEOVER="ChageBgcolor(this,'#EDAE20');" ONMOUSEOUT="ChageBgcolor(this,'#FFFFFF');"><A HREF="http://www.xrea.com/" CLASS="link_menu">無料ウェブサービス</A></TD>
+							</TR>
+							<TR>
+								<TD ONMOUSEOVER="ChageBgcolor(this,'#EDAE20');" ONMOUSEOUT="ChageBgcolor(this,'#FFFFFF');"><A HREF="http://ax.xrea.com/" CLASS="link_menu">無料アクセス解析</A></TD>
+							</TR>
+							
+							
+						</TABLE>
+
+					</TD>
+					<TD valign="top">
+					
+<!-- ************************************************ MAIN ************************************************ -->
+					
+<TABLE WIDTH="470" BORDER="0" CELLSPACING="2" CELLPADDING="2" ALIGN="center">
+<TR>
+<TD COLSPAN="2">
+	<TABLE width="100%" border="0" cellspacing="0" cellpadding="0">
+		<TR>
+			<TD width="22"><IMG src="/images_vdsv/index10.jpg" alt width="22" height="37"></TD>
+			<TD background="/images_vdsv/index12.jpg" ALIGN="LEFT" VALIGN="MIDDLE"><SPAN class="table_header1_message">サービス概要・特徴</SPAN></TD>
+			<TD width="5"><IMG src="/images_vdsv/index11.jpg" alt width="5" height="37"></TD>
+		</TR>
+	</TABLE>
+</TD>
+</TR>
+
+<TR><TD COLSPAN="2" VALIGN="middle">
+専用サーバー「VDSV」は、仮想コンソール、仮想電源などが付いた専用サーバーです。ご自身のお好きなOSを遠隔でインストールでき、遠隔で電源を操作、リブートできるなど、柔軟なカスタマイズすることも可能です。ドメイン運用数無制限、リソース制限無しで、サーバー一台をご利用いただけます。  
+	</TD></TR>
+<TR><TD COLSPAN="2" VALIGN="middle">
+ルート権限ありの「<A HREF="/">KVMプラン</A>」と、ルート権限無しの保守管理おまかせ、専用コントロールパネル付の「<A HREF="/?action=vdsvm">マネージドプラン</A>」とがございます。 
+	</TD></TR>
+</TABLE>
+<TABLE WIDTH="470" BORDER="0" CELLSPACING="2" CELLPADDING="2" ALIGN="center">
+<TR><TD COLSPAN="2" VALIGN="middle"><div align="center"><BR><SPAN CLASS="chuui"><B>申し訳ございません。<BR>現在、サービスリニューアルに伴い、新規お申し込みを停止中です。</B></SPAN></div></TD></TR>
+</TABLE>
+
+<TABLE WIDTH="470" BORDER="0" CELLSPACING="2" CELLPADDING="2" ALIGN="center">
+<TR>
+<TD COLSPAN="2">
+	<TABLE width="100%" border="0" cellspacing="0" cellpadding="0">
+		<TR>
+			<TD width="22"><IMG src="/images_vdsv/index10.jpg" alt width="22" height="37"></TD>
+			<TD background="/images_vdsv/index12.jpg" ALIGN="LEFT" VALIGN="MIDDLE"><SPAN class="table_header1_message">KVMプラン</SPAN></TD>
+			<TD width="5"><IMG src="/images_vdsv/index11.jpg" alt width="5" height="37"></TD>
+		</TR>
+	</TABLE>
+</TD>
+</TR>
+
+<TR><TD COLSPAN="2" VALIGN="middle"><div align="center"><A HREF="/?action=vdsvm"><B>マネージドプランはこちらです。</B></A></div></TD></TR>
+<TR><TD COLSPAN="2" VALIGN="middle">
+<div align="center"><font size="3" color="red">初期費用・月額利用料割引中です！</font></div>
+<table width="470" border="0" cellspacing="2" cellpadding="2" align="center">
+	<tbody><tr>
+		<td colspan="2" valign="middle"><table border="1" style="border-collapse: collapse" cellspacing="0" cellpadding="3" align="center" bordercolor="#6E6E8A">
+				<tbody><tr bgcolor="#6699CC">
+					<td bgcolor="#6699CC" nowrap="">　<font color="#FFFFFF"><b>プラン</b></font></td>
+					<td align="center" nowrap="" bgcolor="#6699CC"><font color="#FFFFFF">KVM-A</font></td>
+					<td align="center" nowrap="" bgcolor="#6699CC"><font color="#FFFFFF">KVM-B</font></td>
+					<td align="center" nowrap="" bgcolor="#6699CC"><font color="#FFFFFF">KVM-C</font></td>
+					<td align="center" nowrap="" bgcolor="#6699CC"><font color="#FFFFFF">KVM-D</font></td>
+				</tr>
+				<tr style="border-bottom:dotted 2px #CCCCCC;" BGCOLOR="#F5F5FF">
+					<td NOWRAP BGCOLOR="#FFFFFF"><FONT SIZE="2">初期費用</FONT></td>
+					<td ALIGN="center" NOWRAP BGCOLOR="#FFFFFF"><FONT size="2"><S><STRONG>28,572円<br>(30,857円)</STRONG></S></FONT></td>
+					<td ALIGN="center" NOWRAP BGCOLOR="#FFFFFF"><FONT SIZE="2"><S><STRONG>140,953円<br>(152,229円)</STRONG></S></FONT></td>
+					<td ALIGN="center" NOWRAP BGCOLOR="#FFFFFF"><FONT size="2"><S><STRONG>188,572円<br>(203,657円)</STRONG></S></FONT></td>
+					<td ALIGN="center" NOWRAP BGCOLOR="#FFFFFF"><FONT SIZE="2"><S><STRONG>283,810円<br>(306,514円)</STRONG></S></FONT></td>
+				</tr>
+				<tr BGCOLOR="#F5F5FF">
+					<td NOWRAP BGCOLOR="#FFFFFF"><FONT SIZE="2"><SPAN CLASS="chuui">割引価格</span></FONT></td>
+					<td ALIGN="center" NOWRAP BGCOLOR="#FFFFFF">
+						<FONT size="2"><strong><SPAN CLASS="chuui">0円</SPAN></strong></FONT>
+					</td>
+					<td ALIGN="center" NOWRAP BGCOLOR="#FFFFFF">
+						<FONT SIZE="2"><strong><SPAN CLASS="chuui">131,429円<br>(141,943円)</SPAN></strong></FONT>
+					</td>
+					<td ALIGN="center" NOWRAP BGCOLOR="#FFFFFF">
+						<FONT SIZE="2"><strong><SPAN CLASS="chuui">179,048円<br>(193,371円)</SPAN></strong></FONT>
+					</td>
+					<td ALIGN="center" NOWRAP BGCOLOR="#FFFFFF">
+						<FONT SIZE="2"><strong><SPAN CLASS="chuui">274,286円<br>(296,228円)</SPAN></strong></FONT>
+					</td>
+				</tr>
+				<tr style="border-bottom:dotted 2px #CCCCCC;" BGCOLOR="#F5F5FF">
+					<td NOWRAP BGCOLOR="#FFFFFF"><FONT SIZE="2">月額</FONT></td>
+					<td ALIGN="center" NOWRAP BGCOLOR="#FFFFFF"><FONT size="2"><S><STRONG>7,143円<br>(7,714円)</STRONG></S></FONT></td>
+					<td ALIGN="center" NOWRAP BGCOLOR="#FFFFFF"><FONT SIZE="2"><S><STRONG>14,096円<br>(15,223円)</STRONG></S></FONT></td>
+					<td ALIGN="center" NOWRAP BGCOLOR="#FFFFFF"><FONT size="2"><S><STRONG>18,858円<br>(20,366円)</STRONG></S></FONT></td>
+					<td ALIGN="center" NOWRAP BGCOLOR="#FFFFFF"><FONT SIZE="2"><S><STRONG>28,381円<br>(30,651円)</STRONG></S></FONT></td>
+				</tr>
+				<tr BGCOLOR="#F5F5FF">
+					<td NOWRAP BGCOLOR="#FFFFFF"><FONT SIZE="2"><SPAN CLASS="chuui">割引価格</span></FONT></td>
+					<td ALIGN="center" NOWRAP BGCOLOR="#FFFFFF">
+						<FONT size="2"><strong><SPAN CLASS="chuui">6,477円<br>(6,995円)</SPAN></strong></FONT>
+					</td>
+					<td ALIGN="center" NOWRAP BGCOLOR="#FFFFFF">
+						<FONT SIZE="2"><strong><SPAN CLASS="chuui">13,143円<br>(14,194円)</SPAN></strong></FONT>
+					</td>
+					<td ALIGN="center" NOWRAP BGCOLOR="#FFFFFF">
+						<FONT SIZE="2"><strong><SPAN CLASS="chuui">16,953円<br>(18,309円)</SPAN></strong></FONT>
+					</td>
+					<td ALIGN="center" NOWRAP BGCOLOR="#FFFFFF">
+						<FONT SIZE="2"><strong><SPAN CLASS="chuui">25,524円<br>(27,565円)</SPAN></strong></FONT>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="5" nowrap="" bgcolor="#6699CC"><strong>　<font color="#FFFFFF">ハードウェア仕様</font></strong></td>
+				</tr>
+				<tr bgcolor="#F5F5FF">
+					<td height="24" nowrap="" bgcolor="#FFFFFF"><font size="2">CPU</font></td>
+					<td align="center" nowrap="" bgcolor="#FFFFFF"><font size="2">Atom N450<br>
+							1.66Ghz</font></td>
+					<td align="center" nowrap="" bgcolor="#FFFFFF"><font size="2">Pentium G6950<br>
+							2.80GHz</font></td>
+					<td align="center" nowrap="" bgcolor="#FFFFFF"><font size="2">Xeon X3430<br>
+							2.40GHz</font></td>
+					<td align="center" nowrap="" bgcolor="#FFFFFF"><font size="2">Xeon L5630<br>
+							2.13GHz×2</font></td>
+				</tr>
+				<tr>
+					<td><font size="2">コア数(論理)</font></td>
+					<td align="center"><font size="-1">1(2)</font></td>
+					<td align="center"><font size="-1">2(2)</font></td>
+					<td align="center"><font size="-1">4(4)</font></td>
+					<td align="center"><font size="-1">8(16)</font></td>
+				</tr>
+				<tr>
+					<td><font size="2">メモリー</font></td>
+					<td align="center"><font size="-1">1GB</font></td>
+					<td align="center"><font size="-1">2GB</font></td>
+					<td align="center"><font size="-1">4GB</font></td>
+					<td align="center"><font size="-1">4GB</font></td>
+				</tr>
+				<tr>
+					<td nowrap="" bgcolor="#FFFFFF"><font size="2">HDD/RAID</font></td>
+					<td align="center" nowrap="" bgcolor="#FFFFFF"><font size="2">160GB×1<br>
+							RAIDなし
+					</font></td>
+					<td align="center" nowrap="" bgcolor="#FFFFFF"><font size="2">250GB×2<br>
+							RAID1</font></td>
+					<td align="center" nowrap="" bgcolor="#FFFFFF"><font size="2">250GB×2<br>
+							RAID1</font></td>
+					<td align="center" bgcolor="#FFFFFF"><font size="2">250GB×2<br>
+							RAID1</font></td>
+				</tr>
+				<tr>
+					<td nowrap="" bgcolor="#FFFFFF"><font size="2">ネットワーク・回線</font></td>
+					<td align="center"><font size="2">最大10Mbps<br>
+							共有回線</font></td>
+					<td align="center" colspan="3"><font size="2">最大100Mbps<br>
+							共有回線</font></td>
+				</tr>
+				<tr>
+					<td nowrap="" bgcolor="#FFFFFF"><font size="2">バックボーン</font></td>
+					<td colspan="4" align="center"><font size="2">200Gbps以上</font></td>
+				</tr>
+				<tr>
+					<td nowrap="" bgcolor="#FFFFFF"><font size="2">サーバー保守管理</font></td>
+					<td colspan="4" align="center"><font size="2">お客様での作業</font></td>
+				</tr>
+				<tr>
+					<td nowrap="" bgcolor="#FFFFFF"><font size="2">設置</font></td>
+					<td colspan="4" align="center"><font size="2">国内・東京DC</font></td>
+				</tr>
+				<tr>
+					<td colspan="5" nowrap="" bgcolor="#6699CC"><strong>　<font color="#FFFFFF">基本仕様・機能</font></strong></td>
+				</tr>
+				<tr>
+					<td nowrap=""><font size="2">IPアドレス個数</font></td>
+					<td align="center" nowrap=""><font size="2">1</font></td>
+					<td align="center" nowrap=""><font size="2">1</font></td>
+					<td align="center" nowrap=""><font size="2">1</font></td>
+					<td align="center" nowrap=""><font size="2">1</font></td>
+				</tr>
+				<tr>
+					<td nowrap=""><font size="2">仮想コンソール(CLI)</font></td>
+					<td align="center" nowrap=""><font size="2">○</font></td>
+					<td align="center" nowrap=""><font size="2">○</font></td>
+					<td align="center" nowrap=""><font size="2">○</font></td>
+					<td align="center" nowrap=""><font size="2">○</font></td>
+				</tr>
+				<tr>
+					<td nowrap=""><font size="2">仮想コンソール(GUI)</font></td>
+					<td align="center" nowrap=""><font size="2">有償*1</font></td>
+					<td align="center" nowrap=""><font size="2">○</font></td>
+					<td align="center" nowrap=""><font size="2">○</font></td>
+					<td align="center" nowrap=""><font size="2">○</font></td>
+				</tr>
+				<tr>
+					<td height="31"><font size="2">リモートパワーON/OFF</font></td>
+					<td align="center" nowrap=""><font size="2">有償*1</font></td>
+					<td align="center" nowrap=""><font size="2">○</font></td>
+					<td align="center" nowrap=""><font size="2">○</font></td>
+					<td align="center" nowrap=""><font size="2">○</font></td>
+				</tr>
+				<tr>
+					<td height="17"><font size="2">仮想メディア</font></td>
+					<td height="17" align="center"><font size="2">有償*1</font></td>
+					<td align="center" nowrap=""><font size="2">○</font></td>
+					<td align="center" nowrap=""><font size="2">○</font></td>
+					<td align="center" nowrap=""><font size="2">○</font></td>
+				</tr>
+				<tr>
+					<td><font size="2">root権限</font></td>
+					<td align="center" nowrap=""><font size="2">○</font></td>
+					<td align="center" nowrap=""><font size="2">○</font></td>
+					<td align="center" nowrap=""><font size="2">○</font></td>
+					<td align="center" nowrap=""><font size="2">○</font></td>
+				</tr>
+				<tr>
+					<td colspan="5" nowrap="" bgcolor="#6699CC"><font size="2"><strong>　<font color="#FFFFFF">対応OS</font></strong></font></td>
+				</tr>
+				<tr bgcolor="#F5F5FF">
+					<td nowrap="" bgcolor="#FFFFFF"><font size="2">CentOS</font></td>
+					<td align="center" nowrap="" bgcolor="#FFFFFF" colspan="4"><font size="2">○</font></td>
+				</tr>
+				<tr>
+					<td nowrap="" bgcolor="#FFFFFF"><font size="2">FreeBSD</font></td>
+					<td align="center" nowrap="" bgcolor="#FFFFFF" colspan="4"><font size="2">○</font></td>
+				</tr>
+				<tr>
+					<td nowrap="" bgcolor="#FFFFFF"><font size="2">Red Hat Enterprise Linux</font></td>
+					<td align="center" nowrap="" bgcolor="#FFFFFF" colspan="4"><font size="2">有償（月額）<br> 2,858円<br>(3,086円)
+					</font></td>
+				</tr>
+				<tr>
+					<td nowrap="" bgcolor="#FFFFFF"><font size="2">Windows Server 2008<br>
+							Standard Edition</font></td>
+					<td align="center" nowrap="" bgcolor="#FFFFFF" colspan="3"><font size="2">有償（月額）<br> 2,858円<br>(3,086円)</font></td>
+					<td align="center" nowrap="" bgcolor="#FFFFFF"><font size="2">有償（月額）<br> 5,715円<br>(6,172円)</font></td>
+				</tr>
+				<tr>
+					<td nowrap="" bgcolor="#FFFFFF"><font size="2">Windows Web Server <br>
+							2008</font></td>
+					<td align="center" nowrap="" bgcolor="#FFFFFF" colspan="3"><font size="2">有償（月額）<br> 2,858円<br>(3,086円)</font></td>
+					<td align="center" nowrap="" bgcolor="#FFFFFF"><font size="2">有償（月額）<br> 5,715円<br>(6,172円)</font></td>
+				</tr>
+				<tr bgcolor="#F5F5FF">
+					<td colspan="5" nowrap="" bgcolor="#6699CC"><font size="2"><strong>　<font color="#FFFFFF">運用・保守・サポート</font></strong></font></td>
+				</tr>
+				<tr>
+					<td><font size="2">PING監視</font></td>
+					<td colspan="4" align="center"><font size="2">○</font></td>
+				</tr>
+				<tr>
+					<td nowrap="" bgcolor="#FFFFFF"><font size="2">24時間障害対応</font></td>
+					<td colspan="4" align="center"><font size="2">○</font></td>
+				</tr>
+				<tr>
+					<td nowrap="" bgcolor="#FFFFFF"><font size="2">通常サポート</font></td>
+					<td colspan="4" align="center"><font size="2">○</font></td>
+				</tr>
+				<tr>
+					<td nowrap="" bgcolor="#FFFFFF"><font size="2">技術サポート</font></td>
+					<td colspan="4" align="center"><font size="2">有償*2</font></td>
+				</tr>
+				<tr>
+					<td><font size="2">故障対応</font></td>
+					<td colspan="4" align="center"><font size="2">○</font></td>
+				</tr>
+				<tr bgcolor="#F5F5FF">
+					<td colspan="5" nowrap="" bgcolor="#6699CC"><strong><font color="#FFFFFF">　その他</font></strong></td>
+				</tr>
+				<tr>
+					<td nowrap="" bgcolor="#FFFFFF"><font size="2">アダルトサイト</font></td>
+					<td colspan="4" align="center"><font size="2">○※1</font></td>
+				</tr>
+				<tr>
+					<td nowrap="" bgcolor="#FFFFFF"><font size="2">広告メールの送信</font></td>
+					<td colspan="4" align="center"><font size="2">×※2</font></td>
+				</tr>
+				<tr>
+					<td nowrap="" bgcolor="#FFFFFF"><font size="2">広告メールの宣伝サイト</font></td>
+					<td colspan="4" align="center"><font size="2">×※2</font></td>
+				</tr>
+				<tr>
+					<td nowrap="" bgcolor="#FFFFFF"><font size="2">再販</font></td>
+					<td colspan="4" align="center"><font size="2">○※3</font></td>
+				</tr>
+				<tr bgcolor="#F5F5FF">
+					<td colspan="5" nowrap="" bgcolor="#6699CC"><strong><font color="#FFFFFF">　オプション</font></strong></td>
+				</tr>
+				<tr>
+					<td><font size="2">KVM機能追加<br>
+							（初期費用のみ）</font></td>
+					<td align="center"><font size="2">28,572円(30,857円)</font></td>
+					<td align="center"><font size="2">-</font></td>
+					<td align="center"><font size="2">-</font></td>
+					<td align="center"><font size="2">-</font></td>
+				</tr>
+				<tr>
+					<td><FONT size="2">回線アップグレード<BR>
+						（100Mbps共用）<BR>
+						(初期費用)</FONT></td>
+					<td align="center"><FONT size="2">9,524円<br>(10,285円)</FONT></td>
+					<td align="center"><FONT size="2">-</FONT></td>
+					<td align="center"><FONT size="2">-</FONT></td>
+					<td align="center"><FONT size="2">-</FONT></td>
+				</tr>
+				<tr>
+					<td><FONT size="2">回線アップグレード<BR>
+						（100Mbps共用）<BR>
+						(月額費用)</FONT></td>
+					<td align="center"><FONT size="2">2,858円<br>(3,086円)</FONT></td>
+					<td align="center"><FONT size="2">-</FONT></td>
+					<td align="center"><FONT size="2">-</FONT></td>
+					<td align="center"><FONT size="2">-</FONT></td>
+				</tr>
+				<tr>
+					<td><FONT size="2">回線アップグレード<BR>
+						（100Mbps専用）<BR>
+						(初期費用)</FONT></td>
+					<td colspan="4" align="center"><FONT size="2">9,524円<br>(10,285円)</FONT></td>
+				</tr>
+				<tr>
+					<td><FONT size="2">回線アップグレード<BR>
+						（100Mbps専用）<BR>
+						(月額費用)</FONT></td>
+					<td colspan="4" align="center"><FONT size="2">100,000円<br>(108,000円)</FONT></td>
+				</tr>
+				<tr>
+					<td NOWRAP BGCOLOR="#FFFFFF"><FONT size="2">メモリ追加 合計2GB<BR>
+						（初期費用のみ）</FONT></td>
+				<td align="center" nowrap bgcolor="#FFFFFF"><FONT size="2">19,048円<br>(20,571円)</FONT></td>
+					<td align="center" nowrap bgcolor="#FFFFFF"><FONT size="2">-</FONT></td>
+					<td align="center" nowrap bgcolor="#FFFFFF"><FONT size="2">-</FONT></td>
+					<td align="center" bgcolor="#FFFFFF"><FONT size="2">-</FONT></td>
+				</tr>
+				<tr BGCOLOR="#F5F5FF">
+					<td NOWRAP BGCOLOR="#FFFFFF"><FONT size="2">メモリ追加 合計4GB<BR>
+						（初期費用のみ）</FONT></td>
+					<td align="center" nowrap bgcolor="#FFFFFF"><FONT size="2">-</FONT></td>
+					<td align="center" nowrap bgcolor="#FFFFFF"><FONT size="2">23,810円<br>(25,714円)</FONT></td>
+					<td align="center" nowrap bgcolor="#FFFFFF"><FONT size="2">-</FONT></td>
+					<td align="center" nowrap bgcolor="#FFFFFF"><FONT size="2">-</FONT></td>
+				</tr>
+				<tr>
+					<td NOWRAP BGCOLOR="#FFFFFF"><FONT size="2">メモリ追加 合計8GB<BR>
+						（初期費用のみ）</FONT></td>
+					<td align="center" nowrap bgcolor="#FFFFFF"><FONT size="2">-</FONT></td>
+					<td align="center" nowrap bgcolor="#FFFFFF"><FONT size="2">42,858円<br>(46,286円)</FONT></td>
+					<td align="center" nowrap bgcolor="#FFFFFF"><FONT size="2">42,858円<br>(46,286円)</FONT></td>
+					<td align="center" nowrap bgcolor="#FFFFFF"><FONT size="2">42,858円<br>(46,286円)</FONT></td>
+				</tr>
+				<tr>
+					<td NOWRAP BGCOLOR="#FFFFFF"><FONT size="2">HDD変更&nbsp;500GB×2<BR>
+						（初期費用のみ）</FONT></td>
+					<td align="center" nowrap bgcolor="#FFFFFF"><FONT size="2">-</FONT></td>
+					<td align="center" nowrap bgcolor="#FFFFFF"><FONT size="2">33,334円<br>(36,000円)</FONT></td>
+					<td align="center" nowrap bgcolor="#FFFFFF"><FONT size="2">33,334円<br>(36,000円)</FONT></td>
+					<td align="center" nowrap bgcolor="#FFFFFF"><FONT size="2">33,334円<br>(36,000円)</FONT></td>
+				</tr>
+				<tr BGCOLOR="#F5F5FF">
+					<td NOWRAP BGCOLOR="#FFFFFF"><FONT size="2">HDD変更&nbsp;1TB×2<BR>
+						（初期費用のみ）</FONT></td>
+					<td align="center" nowrap bgcolor="#FFFFFF"><FONT size="2">-</FONT></td>
+					<td align="center" nowrap bgcolor="#FFFFFF"><FONT size="2">61,905円<br>(66,857円)</FONT></td>
+					<td align="center" nowrap bgcolor="#FFFFFF"><FONT size="2">61,905円<br>(66,857円)</FONT></td>
+					<td align="center" nowrap bgcolor="#FFFFFF"><FONT size="2">61,905円<br>(66,857円)</FONT></td>
+				</tr>
+				<tr BGCOLOR="#F5F5FF">
+					<td NOWRAP BGCOLOR="#FFFFFF"><FONT size="2">HDD変更&nbsp;2TB×2<BR>
+						（初期費用のみ）</FONT></td>
+					<td align="center" nowrap bgcolor="#FFFFFF"><FONT size="2">-</FONT></td>
+					<td align="center" nowrap bgcolor="#FFFFFF"><FONT size="2">100,000円<br>(108,000円)</FONT></td>
+					<td align="center" nowrap bgcolor="#FFFFFF"><FONT size="2">100,000円<br>(108,000円)</FONT></td>
+					<td align="center" nowrap bgcolor="#FFFFFF"><FONT size="2">100,000円<br>(108,000円)</FONT></td>
+				</tr>
+				<tr>
+					<td nowrap="" bgcolor="#FFFFFF" rowspan="2"><font size="2">IPアドレス追加(初期)</font></td>
+					<td align="center" rowspan="2"><font size="2">-</font></td>
+					<td align="center"><font size="2">4個まで</font></td>
+					<td align="center"><font size="2">4個まで</font></td>
+					<td align="center"><font size="2">8個まで</font></td>
+				</tr>
+				<tr>
+					<td align="center" colspan="3">
+						<font size="2">
+							1申請あたり&nbsp;4,762円<br>(5,142円)<br>
+						</font>
+					</td>
+				</tr>
+				<tr>
+					<td nowrap="" bgcolor="#FFFFFF"><font size="2">IPアドレス追加(月額)</font></td>
+					<td align="center" ><font size="2">-</font></td>
+					<td align="center" colspan="3">
+						<font size="2">
+							1IPあたり&nbsp;477円<br>(515円)
+						</font>
+					</td>
+				</tr>
+				<tr bgcolor="#F5F5FF">
+					<td colspan="5" bgcolor="#FFFFFF"><font size="2">
+							*1・・・KVM機能追加でお申込みいただけます。<br>
+							*2・・・サーバーのコマンド操作、ソフトウェアインストール、アップデートなどログインして作業・確認する作業は基本サポート対象外となります。<br>
+							※1・・・国内法に準ずる必要があります。違法コンテンツの掲載、および、違法サイトへのリンクは禁止しています。<br>
+							※2・・・合法であっても、未承諾の広告メールを送信する行為、また、広告メールの宣伝サイトとして利用されることはお断りしております。<br>
+							※3・・・アカウント自体、および、一部の領域を特定、不特定多数へ貸し出しすること、無償・有料問わずレンタル形式のウェブサービスの提供を行うことは可能です。ただし、サポート対象は契約者ご本人のみとなります。また、HDDの故障時に停止が発生しにくいRAID1のプランを強く推奨いたします。</font></td>
+				</tr>
+		</tbody></table></td>
+	</tr>
+	</tbody>
+</table>
+</TD></TR>
+<TR><TD COLSPAN="2" VALIGN="middle"><SPAN CLASS="chuui">※現在割引中です!(割引中にお申し込みいただきますと割引期間終了後も割引料金でご利用いただけます)</SPAN></TD></TR>
+<TR><TD COLSPAN="2" VALIGN="middle"><div align="center"><A HREF="/?action=vdsvm"><B>マネージドプランはこちらです。</B></A></div></TD></TR>
+</TABLE>
+<BR>					
+<!-- ************************************************ MAIN ************************************************ -->
+					
+					</TD>
+				</TR>
+			</TABLE>
+			<BR>		
+		</TD>
+		<TD width="17" background="/images_vdsv/index08.jpg"><IMG src="/images_vdsv/spacer.gif" alt width="17" height="1"></TD>
+	</TR>
+</TABLE>
+
+<TABLE width="734" border="0" align="center" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD width="17" background="/images_vdsv/index07.jpg"><IMG src="/images_vdsv/spacer.gif" alt width="17" height="1"></TD>
+		<TD width="700" bgcolor="#FFFFFF">
+			<TABLE width="700" border="0" cellspacing="0" cellpadding="0">
+				<TR>
+					<TD width="22"><IMG src="/images_vdsv/index10.jpg" alt width="22" height="37"></TD>
+					<TD background="/images_vdsv/index12.jpg"><SPAN class="text01">このページについて</SPAN></TD>
+					<TD width="5"><IMG src="/images_vdsv/index11.jpg" alt width="5" height="37"></TD>
+				</TR>
+			</TABLE>
+			<TABLE width="100%" border="0" cellspacing="0" cellpadding="0">
+				<TR>
+					<TD>&nbsp;</TD>
+					<TD>このページは、トップページです。サーバーの価格や仕様一覧をご覧頂けます。					</TD>
+				</TR>
+			</TABLE>
+		</TD>
+		<TD width="17" background="/images_vdsv/index08.jpg"><IMG src="/images_vdsv/spacer.gif" alt width="17" height="1"></TD>
+	</TR>
+</TABLE>
+
+<TABLE width="734" border="0" align="center" cellpadding="0" cellspacing="0">
+	<TR>
+		<TD width="23"><IMG src="/images_vdsv/index23.jpg" alt width="23" height="65"></TD>
+		<TD width="688" align="center" background="/images_vdsv/index25.jpg">
+			<A HREF="https://www.value-domain.com/aboutus.php"><SPAN class="text03">Copyright (c) 2007-2016 GMO DigiRock, Inc. All rights reserved.</SPAN></A><BR>
+		</TD>
+		<TD width="23"><IMG src="/images_vdsv/index24.jpg" alt width="23" height="65"></TD>
+	</TR>
+</TABLE><MAP name="Map">
+<AREA href="/" shape="rect" coords="32, 28, 462, 82">
+<AREA href="https://www.value-domain.com/vdsv.php" shape="rect" coords="494, 49, 547, 65">
+<AREA href="http://sb.xrea.com/" shape="rect" coords="562, 49, 622, 65">
+<AREA href="https://www.value-domain.com/support.php?mode=vdsv" shape="rect" coords="634, 49, 702, 65">
+</MAP>
+<A NAME="BOTTOM"></A>
+<SCRIPT LANGUAGE="JAVASCRIPT"><!--
+lt[1] = new Date().getTime();
+ltime = (lt[1]-lt[0])/1000;
+document.write('<DIV ALIGN=CENTER><FONT COLOR="#CCCCCC" SIZE="1" FACE="Tahoma"  CLASS="pt7">Load Time:' + ltime + ' sec.</FONT></DIV>');
+//-->
+</SCRIPT>		
+<DIV id="MENU1" style="position:absolute;z-index:1;left:2px;top:2px;display:none">
+<TABLE BORDER="1" STYLE="border-collapse: collapse" CELLSPACING="0" CELLPADDING="3" ALIGN="center" BORDERCOLOR="#6699CC">
+	<TR BGCOLOR="#6699CC">
+		<TD BGCOLOR="#6699CC" NOWRAP>
+			<FONT SIZE="-1" COLOR="#FFFFFF">▼簡易メニュー</FONT> - <A HREF='/login.php'><FONT SIZE="-1" COLOR="#FFFFFF">ログイン</FONT></A>
+		</TD>
+		<TD ALIGN="RIGHT">
+			<A HREF="javascript:OffMENU1()"><FONT SIZE="-1" COLOR="#FFFFFF">×</FONT></A>
+		</TD>
+	</TR>
+	<TR BGCOLOR="#FFFFFF">
+		<TD BGCOLOR="#FFFFFF" NOWRAP COLSPAN="2">
+			<FONT SIZE=-1>
+			■<A HREF='/'>新規ドメインの取得</A> <A HREF='?action=regdomlist1'>一括登録</A><BR>
+			■<A HREF='/'>取得ドメイン一覧</A><BR>
+			┣<A HREF='/'>WHOIS登録情報の変更</A><BR>
+			┣<A HREF='/'>DNSレコード/URL転送の変更</A><BR>
+			┣<A HREF='/'>ネームサーバーの変更</A><BR>
+			┣<A HREF='/'>メール転送設定の変更</A><BR>
+			┣<A HREF='/'>有効期限確認/更新・延長</A> <A HREF='/?u=&mode=expire'>日付順</A><BR>
+			┣<A HREF='/'>ダイナミックDNS情報</A><BR>
+			┣<A HREF='/'>ドメインロックの変更</A><BR>
+			┗<A HREF='/'>異なるユーザーへ移動させる</A><BR>
+			■<A HREF='/'>汎用JP専用コントロールパネル</A><BR>
+			■<A HREF=''>オークション</A> <A HREF='?action=buy1'>出品ドメイン一覧</A> <A HREF='?action=add1'>出品する</A><BR>
+			■ドメイン移管<BR>
+			┣<A HREF='/'>新しく移管申請を行う</A><BR>
+			┗<A HREF='/?action=getorder1'>移管中のドメインの状態を確認</A><BR>
+			■支払い操作<BR>
+			┣<A HREF='/?action=modifypay1'>支払い情報の変更・振り込み口座情報</A><BR>
+			┣<A HREF='/'>カード(VISA/MASTER/NICOS/JCB/AMEX)でお支払い </A><BR>
+			┣<A HREF=''>WebMoney(ウェブマネー)でお支払い</A><BR>
+			┣<A HREF='/?action=notify1'>銀行振り込み・郵便振替のご連絡</A><BR>
+			┣<A HREF='/?action=transfer'>残金を他のユーザーに送金する</A><BR>
+			┗<A HREF='/?action=viewpaytransaction'>支払い処理明細</A><BR>
+			■<A HREF='/'>サーバーアカウントの登録・管理・購入</A><BR>
+			┣<A HREF='/?action=addfreeweb1'>取得済み無料ウェブアカウントをデータベースに追加</A><BR>
+			┣<A HREF='/?action=signupfreeweb1'>無料ウェブアカウントを取得・作成</A><BR>
+			┗<A HREF='/?action=webtrans1'>異なるユーザーへ移動させる</A><BR>
+			■無料ネームサーバー管理<BR>
+			┣<A HREF='/'>他社で取得されたドメインの新規管理</A><BR>
+			┗<A HREF='/'>DNS情報の変更</A><BR>
+			■<A HREF='' TARGET="_blank">無料アクセス解析サービス</A><BR>
+			┗<A HREF='/'>管理パネル・有料サービスお申し込み</A><BR>
+			</FONT>
+		</TD>
+	</TR>
+</TABLE>
+</DIV>
+
+<map name="FlowMap1">
+<area shape="rect" coords="1,1,152,43" href="http://www.value-domain.com/howto/index.php?action=signup&noheader=" target="_blank" title="ユーザー登録方法">
+<area shape="rect" coords="1,63,152,108" href="http://www.value-domain.com/howto/index.php?action=signup&noheader=" target="_blank" title="お試し登録方法">
+<area shape="rect" coords="1,128,152,170" href="http://www.value-domain.com/howto/?action=payment" target="_blank" title="ご入金方法">
+<area shape="rect" coords="1,192,1520,231" href="http://www.value-domain.com/howto/index.php?action=signup&noheader=" target="_blank" title="登録方法">
+</map>
+
+</BODY>
+</HTML>

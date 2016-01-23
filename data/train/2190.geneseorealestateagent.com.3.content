@@ -1,0 +1,372 @@
+
+<!-- displaysite.asp -->
+<!DOCTYPE html><html>
+  <head>
+    
+    <title>Mel Foster Co. Inc. of Iowa & Illinois - Diana Franks</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <META HTTP-EQUIV="X-UA-Compatible" CONTENT="IE=edge">
+    <META NAME="keywords" CONTENT="">
+    <META NAME="description" CONTENT="">
+    <META NAME="MSSmartTagsPreventParsing" CONTENT="TRUE">
+    <META NAME="rating" CONTENT="General">
+    <META NAME="MS.LOCALE" CONTENT="EN-US">
+    <META NAME="robots" CONTENT="index, follow">
+    <META NAME="revisit-after" CONTENT="31 days">
+    <META NAME="DC.Coverage.PlaceName" CONTENT="Global">
+    <link rel="stylesheet" href="http://content.mediastg.net/static/RealEstate/Website/Skin/001/Media/CompiledCSS/023363.css">
+    <link rel="stylesheet" href="http://content.mediastg.net/static/realestate/global/css/legacy-font.css">
+    <link rel="stylesheet" href="http://content.mediastg.net/static/RealEstate/Website/Skin/001/Media/CompiledCSS/Wireframe04.css"><script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script><script type="text/javascript" src="/scripts/reliance.jsx?id=328&amp;account=270738"></script><script type="text/javascript" src="http://content.mediastg.net/static/RealEstate/Website/Skin/001/media/collapsible-menu.js"></script><script type="text/javascript" src="http://content.mediastg.net/static/RealEstate/Website/Skin/001/media/modernizr.js"></script><script>
+					$(document).ready(function () {
+            
+
+						if($('input[name=ext-username]').length > 0){
+							$('input[name=ext-username]').val('');
+							$('input[name=ext-password]').val('');
+						}
+					});
+
+					
+
+
+					$(window).bind('contactmeclick', contactMe);
+					$(window).bind('contactformclose', closeContactMe);
+					$(window).bind('forgotpasswordclick', submitlostpasswordrequest);
+					$(window).bind('openpageclick', openPage);
+					$(window).bind('openformclick', openForm);
+
+					
+
+					function openPage(evnt, url, name, newWindow) {
+						var accountID = '270738';
+
+						if(newWindow){
+							window.open('/mfc/' + url + '?AccountID=' + accountID, name, 'width=815px,height=555px,resizable=1,scrollbars=1,');
+						}else{
+							document.location = '/mfc/' + url;
+						}
+					}
+
+					function openForm(evnt, url, name, newWindow) {
+						var accountID = '270738';
+
+						if(newWindow){
+							window.open('/mfc/modules/global/forms/' + url + '?AccountID=' + accountID, name, 'width=450px,height=600px,resizable=1,scrollbars=1,');
+						}else{
+							document.location = '?' + url;
+						}
+					}
+
+					function testForm() {
+					addMask();
+					var account = '270738';
+						$.ajax({url:'http://devweb.summitnetworks.com/mfc/modules/global/forms/sellerrequest.asp?AccountID=' + account + '&acc=' + account, success:testformCallback, dataType:'html'});
+					}
+
+					function testformCallback(response) {
+						//console.log(response)
+						response = response.replace(/<\/?(html|head|body)[^>]*>/g,'');
+						response = response.substring(response.indexOf('/script>')+8).replace(/script/g, '')
+						console.log(response)
+						$('<div></div>').attr('id', 'form').css({position:'absolute', top:'10px', backgroundColor:'#fff', zIndex:1001}).append(response).appendTo($('body'));
+					}
+
+					function forgotPassword() {
+						addMask();
+					}
+
+					function tryLogin(username, rememberMe, password) {
+
+						var usernameField = $('input[name=' + username + ']');
+						var passwordField = $('input[name=' + password + ']');
+						var rememberMeField = $('input[name=' + rememberMe + ']');
+
+						if (rememberMeField.attr('type') == 'radio') {
+							rememberMeField = $('#' + rememberMe + '-yes');
+							if (rememberMeField.length == 0) {
+								throw '\'Remember Me\' field not found';
+							return;$('<div></div>').attr('id', 'form').css({backgroundColor:'#fff'}).append(response).appendTo(body);
+							}
+						}
+
+						var usernameValue = $.trim(usernameField.val());
+						var passwordValue = $.trim(passwordField.val());
+						var rememberMeValue = rememberMeField.attr('checked') == 'checked' ? 'on' : 'off';
+
+						if (usernameValue.length == 0) {
+							alert('Please enter your email address.');
+							usernameField.focus();
+							return false;
+						}
+
+
+						// ensure email format
+
+						
+
+						$('input[name=username]').val(usernameValue);
+						$('input[name=password]').val(passwordValue);
+						$('input[name=remember]').val(rememberMeValue);
+
+					var form = $('form[name=extranet-login]')[0];
+					form.submit();
+
+					return false;
+					}
+
+					function closeContactMe() {
+						$('#contact-mask').remove();
+						$('#contact-form').remove();
+					}
+
+					function addMask() {
+						var body = $('body');
+						$('<div></div>').attr('id', 'contact-mask').css({width:body.outerWidth() + 'px', height:body.outerHeight() + 'px'}).appendTo(body);
+					}
+
+					function contactMe(evnt) {
+						addMask();
+						$.ajax({url:'/mfc/modules/internet/contactMeForm.aspx?webSessionID=109320015210168175&contentID=328&accountid=270738', success:contactMeCallback});
+					}
+
+					function contactMeCallback(response) {
+					var body = $('body');
+					var dummy = $('<div></div>').attr('id', 'contact-form').append(response).appendTo(body);
+					var width = dummy.width();
+					var outerWidth = dummy.outerWidth();
+					var height = dummy.height();
+					var outerHeight = dummy.outerHeight();
+					dummy.remove();
+
+
+					var win = $(window);
+					var left = Math.floor((win.width() - outerWidth) / 2);
+					var top = Math.floor((win.height() - outerHeight) / 2);
+					$('<div></div>').attr('id', 'contact-form').css({width:width + 'px', height:height + 'px', top:top + 'px', left:left+'px'}).append(response).appendTo(body);
+					var infoColumn = $('#-cf-column-info');
+
+					
+
+					var infoColumnWidth = infoColumn.width();
+					var infoObjs = infoColumn.children('div');
+
+					for(var i=0; i < infoObjs.length; i++) {
+						if($(infoObjs[i]).width() > infoColumnWidth)
+							infoColumnWidth = infoObjs[i].width();
+					}
+
+					var defaultInfoColumnWidth = 200;
+					var infoColumnMargin = 2 * parseInt(infoColumn.css("margin-left"), 10);
+					//var infoColumnOverflowWidth = ((infoColumn.width() - defaultInfoColumnWidth)/2) - infoColumnMargin;
+
+					if(infoColumnWidth > defaultInfoColumnWidth) {
+						$('#contact-form').width(width + 5);
+							//console.log('00: ' + $("#contact-form").width());
+						} else {
+							infoColumn.width(200);
+							$('#contact-form').width(width + 45);
+								//console.log('01: ' + $("#contact-form").width());
+						}
+
+					var delta = $('#contact-form').height() - $('#-cf-column-form').height();
+					if (delta > 0) {
+						var message = $('#-cf-form-field-message');
+						message.css('height', (delta + message.height()) + 'px');
+					}
+
+
+					infoColumn.css({backgroundColor:'#023363', backgroundImage:'-moz-radial-gradient(50% 50% 90deg, circle cover, rgba(0, 0, 0, 0), rgba(0, 0, 0, .4))'});
+					// jquery doesn't appear to recognize the -webkit-gradient using rgba, assign the background image the non-jquery way
+					try{
+					infoColumn[0].style.backgroundImage = '-webkit-gradient(radial, 50% 50%, ' + infoColumn.outerHeight() + ', 50% 50%, ' + (infoColumn.outerWidth() / 2) + ', from(rgba(0, 0, 0, .7)), to(rgba(0, 0, 0, 0)))';
+					}catch(err){}
+					}
+
+					
+
+					function submitlostpasswordrequest() {
+					var x;
+					var username = $.trim($('input[name=username]').val());
+					x = window.open('/mfc/modules/internet/search/lostpassword.asp?email=' + username,'lostpassword','width=313,height=245');
+					x.focus();
+					return true;
+					}
+				</script><script type="text/javascript" src="/scripts/site.jsx?id=328&amp;siteDirectory=mfc&amp;account=270738"></script></head>
+  <body style="background-image:; background-repeat:repeat;background-color:#CCCCCC; " id="Theme001">
+				<!--[if lt IE 9]>
+				<div id="IEroot">
+				<![endif]-->
+				<div id="outer-container">
+      <div id="stock-header">
+        <div id="header-image" style="background-image:url(http://content.mediastg.net/static/RealEstate/Website/Header/06-019-full.png) !important; height:105px !important; width:951px !important;"></div>
+      </div>
+      <div id="inner-container">
+        <div id="outer-content">
+          <div id="sidebar">
+            <div id="logo">
+              <h1 id="company-logo"><a href="/" title="link to home page"><img src="http://content.mediastg.net/static/RealEstate/Company/328/001-logo.png" alt="Mel Foster Co. Inc. of Iowa &amp; Illinois"></a></h1>
+            </div>
+            <div itemscope="" itemtype="http://schema.org/RealEstateAgent">
+              <div id="agentdetails">
+                <ul id="agent-info" class="sidebar-info">
+                  <li id="agentphoto" class="sidebarphoto"><span itemprop="photo"><img class="agent-image" src="http://content.mediastg.net/dynamic/RealEstate/Company/328/account/270738/photo.jpg" style="width:110px;height:160px;"></span></li>
+                  <li id="agentname"><span itemprop="name">Diana Franks</span></li>
+                  <li id="agenttitle">REALTOR&reg, Broker, ABR</li>
+                  <li id="agentaddress"></li>
+                  <li id="agentphone1"><span itemprop="telephone">
+                  (309)
+                945 -
+                2999</span></li>
+                </ul>
+              </div>
+            </div>
+            <div id="socialnetworking">
+              <ul>
+                <li id="facebook"><a href="http://www.facebook.com/dianablackertfranks" title="Like me on Facebook" target="_blank" class="rn-icon-facebook"><i>Like me on Facebook</i></a></li>
+                <li id="LinkedIn"><a href="http://www.linkedin.com/in/dianablackertfranks" title="View my LinkedIn Profile" target="_blank" class="rn-icon-linkedin"><i>View my LinkedIn Profile</i></a></li>
+                <li id="emailme"><a href="javascript:void(0);" onclick="$(window).trigger('contactmeclick');" title="Send me an Email" class="rn-icon-envelope"><i>Send me an Email</i></a></li>
+              </ul>
+            </div><br clear="all"><div id="navigation">
+              <ul id="nav" class="example_menu">
+                <div id="agent-info-left">
+                  <li class="dotted-line"><a class="expanded" href="/mfc/">Home</a></li>
+                  <li class="dotted-line"><a class="collapsed">Property Search</a><ul>
+                      <li><a href="/mfc/index.asp?p=featuredproperties.asp">My Featured Properties</a></li>
+                      <li><a href="/mfc/index.asp?p=findahome.asp&amp;mode=N">All Listings</a></li>
+                      <li><a href="/mfc/index.asp?p=openhouses.asp">Open Houses</a></li>
+                      <li><a href="/mfc/index.asp?p=findahome.asp&amp;page=extranet&amp;selected=login">Login to "Property Watch"</a></li>
+                    </ul>
+                  </li>
+                  <li class="dotted-line"><a class="collapsed">Services</a><ul>
+                      <li><a href="/mfc/index.asp?p=pagecontent.asp&amp;pid=8604">Buyers Looking to Buy a House</a></li>
+                      <li><a href="/mfc/index.asp?p=pagecontent.asp&amp;pid=8605">Looking To Sell Your Home</a></li>
+                      <li><a href="/mfc/index.asp?p=pagecontent.asp&amp;pid=8606">Financing</a></li>
+                    </ul>
+                  </li>
+                  <li class="dotted-line"><a class="expanded" href="/mfc/index.asp?p=professionalprofile.asp">Experience</a></li>
+                  <li class="dotted-line"><a class="expanded" href="javascript:void(0)" onclick="$(window).trigger('contactmeclick')">Contact</a></li>
+                </div>
+              </ul>
+            </div>
+          </div>
+          <div id="top-bar">
+            <form method="post" onsubmit="return tryLogin('ext-username', 'ext-remember', 'ext-password')">
+              <div id="loginText">
+												Login to <span class="green bold">Property Watch</span></div>
+              <div id="whatsthis" class="sprite"><a href="/mfc/?p=findahome.asp&amp;page=extranet" title="What's Property Watch?">
+													What's Property Watch?
+												</a></div>
+              <div class="inputBg">
+                <div>Enter Email Address</div><input type="text" value="" name="ext-username" onfocus="focused(this)" onblur="blured(this)"></div>
+              <div class="loginbutton"><input type="submit" name="login" class="sprite" value=""></div>
+              <div id="rememberMe"><input type="checkbox" name="ext-remember" checked id="ext-remember" class="loginRadio"><label for="ext-remember">Remember this Computer</label></div>
+            </form>
+          </div>
+          <div id="main-content" class="home"><div id="-wf-col-1"><script>
+			(function(){
+				reliance.load('utilities');
+				reliance.load('utilities');
+				
+				function parseVal(name) {
+					var val = $('select[name=' + name + ']').val();
+					if (isNaN(val))
+						return '';
+						
+					val = parseInt(val);
+					
+					if (val == 0)
+						return '';
+						
+					return val;
+				}
+				
+				function search() {
+					//if ($('input[name=cityzip]').val() != 'Enter City or Zip') {
+						//$('.rn-qsr').children('form')[0].submit();
+					//} else {
+						var beds = parseVal('bd');
+						var baths = parseVal('bth');
+						var minp = parseVal('minp');
+						var maxp = parseVal('maxp');
+						var mapid = reliance.utilities.getCookie('rnwsid');
+						var rncoid = reliance.utilities.getCookie('rnCoID');
+						var bounds = '41.678409|41.349349|-90.111781|-90.729762';
+						var boundsArray = bounds.split('|');
+						var crit = ['geocoords[gquad]' + (Math.abs(boundsArray[0]) != Math.abs(boundsArray[1]) && Math.abs(boundsArray[2]) != Math.abs(boundsArray[3]) ? bounds : '')];
+						
+
+						if (minp > 0)
+							crit.push('minprice[>=]' + minp + '^Minimum Price^$' + reliance.utilities.formatNumber(minp));
+						
+						if (maxp > 0)
+							crit.push('maxprice[<=]' + maxp + '^Maximum Price^$' + reliance.utilities.formatNumber(maxp));
+
+						if (beds > 0)
+							crit.push('totbed[>=]' + beds + '^Bedrooms^' + beds + '%2B');
+						
+						if (baths > 0)
+							crit.push('totbath[>=]' + baths + '^Bathrooms^' + baths + '%2B');
+					
+						if (crit.length > 0) {
+							reliance.xDomainHttpRequest.create('/proxy/savesearchtocache.aspx?mapid=' + mapid + '&rncoid=' + rncoid + '&isNewSearch=true&criteria=' + crit.join('~'), null, callback);
+						} else {
+							redirect();
+						}
+
+						
+					//}
+					
+					function callback(a) {
+						reliance.utilities.setCookie('rnmid', a);
+						redirect();
+					}
+					
+					function redirect() {
+
+						document.location = '?p=findahome.asp&selected=qck&acc=270738';
+
+					}
+				}
+				
+				window.staticMapClickCallback = search;
+			})()
+		</script><div id="quicksearch-map">
+  <hr id="SpacerDivder"><a href="javascript:staticMapClickCallback()"><img src="http://maps.google.com/maps/api/staticmap?visible=41.349349%2C-90.729762%7C41.678409%2C-90.111781&amp;size=454x299&amp;client=gme-reliance&amp;sensor=false&amp;signature=-zT-6GEEllGe9Z4LvknqfzK7m44="></a><div id="criteria">
+    <h1>Map Search</h1>
+    <p>Explore Our Most<br>Comprehensive &amp; Accurate Interactive Property Search Tool</p>
+    <div id="DropScriptHere"><script type="text/javascript" src="/widgets/?file=quicksearchredirect&amp;token=Rmo1cjVI&amp;fields=mn[Price Range]|mx[]&amp;button=&amp;placeholder=Enter City or Zip">&nbsp;</script></div>
+    <div class="BottomSections">
+      <h3>Featured Properties</h3><a href="?p=featuredproperties.asp">View Our Selected Listings Now</a></div>
+    <div id="footer-bar">&nbsp;</div>
+  </div>
+</div><div class="-wf-text-module -wf-module-1"><p><img src="http://content.mediastg.net/dyna_images/agents/328/270738/20151203123714.jpg" border="0" alt="" width="445" height="344" style="margin-right: auto; margin-left: auto; display: block;" /></p><br clear="all"></div><div class="-wf-text-module -wf-module-2"><br clear="all"></div></div><div id="-wf-col-2"><div id="featured-prop"><div class="wf-fp-bg"><script type="text/javascript" src="/widgets/?file=featuredproperties&amp;token=Rmo1cjVI&amp;carousel=true&amp;qty=1&amp;w=238&amp;h=178&amp;viewall=true&amp;newwindow=false"> </script></div></div><div class="-wf-col-1 -wf-callout-module"><a href="?p=featuredproperties.asp"><img src="http://content.mediastg.net/static/RealEstate/Website/Callout/featured listings - serls/Medium.png" /></a><a href="javascript:void(0)" onclick="$(window).trigger('openformclick', ['relocationrequest.asp', 'MovingAdvice', true])"><img src="http://content.mediastg.net/static/RealEstate/Website/Callout/moving advice/Medium.png" /></a><a href="javascript:void(0)" onclick="$(window).trigger('openformclick', ['preapproval.asp', 'RequestMortgagePreapproval', true])"><img src="http://content.mediastg.net/static/RealEstate/Website/Callout/request mortgage/Medium.png" /></a></div></div></div><br clear="all"></div>
+        <div id="footer">
+          <div id="office-info"></div>
+          <div itemscope="" itemtype="http://schema.org/RealEstateAgent">
+            <div id="office-info">
+              <div><a href="http://www.melfosterco.com" title="Mel Foster Co. Inc. of Iowa &amp; Illinois" target="_blank"><span itemprop="brand">Mel Foster Co. Inc. of Iowa & Illinois</span></a></div>
+              <div><span itemprop="name">Diana Franks</span>,
+                      
+                        (License: IL &amp; IA)
+                      <span itemprop="branchOf"> Mel Foster Co. Geneseo</span></div>
+              <div><span itemprop="address">119 N. State St., Geneseo, IL 61254</span></div>
+              <div>309-944-6414</div>
+              <div><a href="javascript:void(0);" onclick="$(window).trigger('contactmeclick');" rel="nofollow" title="Send me an Email">Send me an Email</a></div><br clear="all"></div>
+          </div><br clear="all"><div id="footer-content">
+            <div id="sitemap"></div>
+            <div id="disclaimer"><p>&copy; 2001-2016 Reliance Network and Mel Foster Co. Inc. of Iowa &amp; Illinois. 
+		All rights reserved. US Reg. Copyright TX-5-910-991, TX-5-910-992, TX-5-910-993, and TX-5-910-994.
+		<span class="EHO sprite"></span> Equal Housing Opportunity.</p></div><br clear="all"></div>
+          <div id="small-logo"><img src="http://content.mediastg.net/static/RealEstate/Company/328/001-footer-logo.png" alt="Mel Foster Co. Inc. of Iowa &amp; Illinois"></div><br clear="all"><div id="reliance"><a href="http://www.reliancenetwork.com" title="link to Reliance Network">Reliance Network</a></div>
+          <div id="agent"><a href="http://intranet.melfosterco.com/mfc/intranet/" title="Agent Access">Agent Access</a></div>
+        </div>
+      </div>
+    </div>
+				<!--[if lt IE 9]>
+				</div>
+				<![endif]-->
+				<form name="extranet-login" action="/mfc/?p=findahome.asp&amp;page=extranet&amp;selected=login&amp;mode=done" method="POST"><input type="hidden" name="username"><input type="hidden" name="password"><input type="hidden" name="remember"></form><script type="text/javascript" src="https://mra-resources.s3.amazonaws.com/recommend/main.min.js" id="recommend" data-customer="45" data-agent-id="Q0343" ></script></body>
+</html><script src="/mfc/modules/internet/logging/logwebhit.js" type="text/javascript"></script>
+<script type="text/javascript">
+logJsRnWebHit('270738', 'sitevisit', '','','','','','');
+</script>

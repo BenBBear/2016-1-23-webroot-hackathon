@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Language" content="ja" />
+
+<title>南大阪・堺市・狭山市の分譲・テナント・貸店舗・居抜き・投資収益物件探しはケイハーツ不動産ナビ【南大阪版】</title>
+<meta name="description" content="南大阪の分譲・売買物件、テナント・居抜き・貸店舗、投資収益物件をご紹介しています。所有物件の有効活用のご提案も行っております" />
+<meta name="keywords" content="不動産ナビ,ケイ・ハーツエステート,不動産,分譲,売買,マンション,一戸建て,土地,新築,中古,テナント,貸店舗,居抜き物件,事務所,投資,収益,賃貸,南大阪" />
+<meta name="copyright" content="Copyright(C) 2014 K-HEARTS ESTATE. All Rights Reserved." />
+<meta name="Author" content="K-HEARTS ESTATE" />
+<link href="common/css/base.css" rel="stylesheet" type="text/css" />
+<link href="common/css/common.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="common/js/jquery-1.9.1.min.js"></script>
+<script type="text/JavaScript" src="common/js/base.js"></script>
+<link rel="start" href="../" title="株式会社ケイ・ハーツエステート" />
+<link rel="index" href="../" title="株式会社ケイ・ハーツエステートトップページ" />
+
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="common/js/css.js"></script>
+<script type="text/javascript" src="js/maplink.js"></script>
+<script type="text/javascript" src="script/conf.js"></script>
+<script type="text/javascript" src="script/login_top.js"></script>
+<script type="text/javascript" src="script/jquery-contained-sticky-scroll-min.js"></script>
+<!--<script type="text/javascript" src="script/jquery.media.js"></script>-->
+<script type="text/javascript">
+$('document').ready(function(){
+	/*-------------
+		初期化
+	--------------------*/
+	//チラシ表示部の初期化
+	var advert_num = 4;
+//	$('#advert_list_inner').width(advert_num*216);
+	
+	//ヘッダー地図、新着、ランクの初期化
+	var house_kind = $('#house_kind').val();
+	if(house_kind==""){
+		house_kind = '3';
+	}
+	change_house_kind(house_kind);
+	
+	
+	
+	$(window).scroll(function(){
+		var top = ($('body').scrollTop()||$('document').scrollTop()||$(window).scrollTop())+200;
+		$('#event_banner').animate({top:top+'px'},
+									{easing:'linear',
+									duration:'fast'});
+	});
+	
+
+	
+	//新着「テナント」ボタンを押した場合
+	$('#btn_new_1').click(function(){
+		change_house_kind('1');
+	});
+							
+	//新着「賃貸」ボタンを押した場合
+	$('#btn_new_2').click(function(){
+		change_house_kind('2');
+	});
+	
+	//新着「分譲」ボタンを押した場合
+	$('#btn_new_3').click(function(){
+		change_house_kind('3');
+	});
+	
+	//新着「投資収益」ボタンを押した場合
+	$('#btn_new_4').click(function(){
+		change_house_kind('4');
+	});
+	
+	//「テナントを探す」を押した場合
+	$('#mtab01').click(function(){
+		change_house_kind('1');
+	});
+	
+	//賃貸物件を探す」を押した場合
+	$('#mtab02').click(function(){
+		change_house_kind('2');
+	});
+	
+	//「分譲・売買物件を探す」を押した場合
+	$('#mtab03').click(function(){
+		change_house_kind('3');
+	});
+		
+	//「投資・収益物件を探す」を押した場合
+	$('#mtab04').click(function(){
+		change_house_kind('4');
+	});
+	
+	//「地域から探す」を押したばあい
+	$('#map_cate01').click(function(){
+		var house_kind = $('#house_kind').val();
+		
+		//地域検索画面へ
+		location.href='search/search03.php?house_kind='+house_kind;
+	});
+
+	//「駅・路線から探す」を押したばあい
+	$('#map_cate02').click(function(){
+		var house_kind = $('#house_kind').val();
+		
+		//路線検索画面へ
+		location.href='search/search01.php?house_kind='+house_kind;
+	});
+
+	//「地図から探す」を押したばあい
+	$('#map_cate03').click(function(){
+		var house_kind = $('#house_kind').val();
+		
+		//地図の検索結果画面へ
+		location.href='search/list.php?flg_map=1&house_kind='+house_kind;
+	});
+	$('#mapku').click(function(){
+		var house_kind = $('#house_kind').val();
+		
+		//地域検索画面へ
+		location.href='search/search03.php?house_kind='+house_kind;
+	});
+	
+	//チラシポップアップの「閉じる」ボタンを押した場合
+	$('#btn_advert_close').click(function(){
+		$('#popup_advert').fadeOut(1000);
+		$('#popup_advert_wrapper').fadeOut(1000);
+	});
+	
+	//イベントバナーの「close」を押した場合
+	$('#btn_event_close').click(function(){
+		$('#event_banner').fadeOut(300);
+	});
+});
+
+//ログイン・ログアウト時に呼ばれる関数
+function update_show(){
+	var house_kind = $('#house_kind').val();
+	show_new_list(house_kind);
+	show_rank_list(house_kind);
+	show_recent();
+}
+	
+	
+//トップページのhouse_kindを変更し、ヘッダー地図、新着、ランクの表示を変更
+function change_house_kind(house_kind){
+	$('#house_kind').val(house_kind);
+	show_header_map(house_kind);
+	show_new_list(house_kind);
+	show_rank_list(house_kind);
+	
+	initOvers();
+	
+	//セッションにhouse_kindを保存
+	$.post('script/post_house_kind.php','house_kind='+house_kind,function(message){
+	});
+}
+
+//ヘッダー地図表示変更
+function show_header_map(house_kind){
+	//タブをリセット
+	$('#mtab01 IMG').attr('src','images/mtab01.jpg').addClass('rollover');
+	$('#mtab02 IMG').attr('src','images/mtab02.jpg').addClass('rollover');
+	$('#mtab03 IMG').attr('src','images/mtab03.jpg').addClass('rollover');
+	$('#mtab04 IMG').attr('src','images/mtab04.jpg').addClass('rollover');
+
+	//該当タブのみ変更
+	$('#mtab0'+house_kind+' IMG').attr('src','images/mtab0'+house_kind+'_over.jpg').removeClass('rollover');
+	
+	//背景を変更
+	for(i=1;i<=4;i++){
+		if(i==house_kind){
+			$('#maparea_bg'+i).css('display','block');
+		}else{
+			$('#maparea_bg'+i).css('display','none');
+		}
+	}
+	//$('#maparea').css('background-image','url(images/maparea_bg0'+house_kind+'.jpg)')
+
+}
+	
+
+//新着表示
+function show_new_list(house_kind){
+	
+	//タブをリセット
+	$('#btn_new_1 IMG').attr('src','images/tenant_tab01.jpg').addClass('rollover');
+	$('#btn_new_2 IMG').attr('src','images/tenant_tab02.jpg').addClass('rollover');
+	$('#btn_new_3 IMG').attr('src','images/tenant_tab03.jpg').addClass('rollover');
+	$('#btn_new_4 IMG').attr('src','images/tenant_tab04.jpg').addClass('rollover');
+	
+	//該当タブのみ変更
+	
+	$('#btn_new_'+house_kind+' IMG').attr('src','images/tenant_tab0'+house_kind+'_over.jpg').removeClass('rollover');
+	
+
+	//新着のタイトル部分
+	for(i=1;i<=4;i++){
+		if(i==house_kind){
+			$('.ttlbox h3 #new_title_img'+i).css('display','block');
+		}else{
+			$('.ttlbox h3 #new_title_img'+i).css('display','none');
+		}
+	}
+	//「全物件一覧」のURL
+	$('#btn_house_all a').attr('href','search/list.php?house_kind='+house_kind);
+
+	
+	var yen_name = get_yen_name_by_house_kind(house_kind);
+	var yen_unit = get_yen_unit(house_kind);
+
+	$.getJSON('script/get_house_list_for_user.php','house_kind='+house_kind+'&flg_new=1',function(json){
+		if(json['data']){
+			var html="";
+			for(i=0;i<json['data'].length;i++){
+				if((i%5===0)){
+					if(i!==0){
+						html += '</div><div class="mar_b25p"></div><div class="house_line clearfix">';
+					}else{
+						html += '<div class="house_line clearfix">';
+					}
+				}
+				var house = json['data'][i];
+
+				//house_type
+				var house_type = house['house_type'];
+				if(house_kind=='4'){
+					house_type = house['house_type_invest'];
+				}
+				if(house['house_user']!='1'){
+					//ログインしておらず、会員物件の場合
+					html += '<div class="inbox1">'+
+							'<p class="cate">'+house_type+'</p>';
+					//新着上部に表示or2週間以内の物件の場合、NEW画像
+					var temp = house['regdate'].match(/([0-9]{4})-([0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2}):([0-9]{2})/)
+					var regdate = new Date(temp[1],temp[2]-1,temp[3],temp[4],temp[5],temp[6]);
+date = new Date();
+var time = date.getTime();
+					if((house['house_newest']=='1')||(regdate.getTime()>(time-14*24*60*60*1000))){
+						html += '<img src="common/images/ico_new.gif" width="33" height="14" alt="NEW" class="ico_new" />';
+					}
+					html +='<br class="clear" />'+
+							'<p class="img">'+
+							'<a href="member/entry.php"><img src="upload/bukken_menber.jpg" width="136" height="176" alt="image" class="rollover" /></a></p></div>';
+				}else{
+					//会員物件でない場合
+					//表示画像ファイル
+					var file_name = get_house_main_image(house);
+					if(file_name!='no_photo'){
+						file_name += '_s.jpg';
+					}else{
+						file_name += '.jpg';
+					}
+					html += '<div class="inbox1">'+
+							'<p class="cate">'+house_type+'</p>';
+					//新着上部に表示or2週間以内の物件の場合、NEW画像
+					var temp = house['regdate'].match(/([0-9]{4})-([0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2}):([0-9]{2})/)
+					var regdate = new Date(temp[1],temp[2]-1,temp[3],temp[4],temp[5],temp[6]);
+date = new Date();
+var time = date.getTime();
+					if((house['house_newest']=='1')||(regdate.getTime()>(time-14*24*60*60*1000))){
+						html += '<img src="common/images/ico_new.gif" width="33" height="14" alt="NEW" class="ico_new" />';
+					}
+					var house_yen = number_format(house['house_yen'])+yen_unit;
+					if(house['date_finish']!="0000-00-00"){
+						if((house['house_kind1']=='1')||(house['house_kind1']=='2')){
+							//テナント、賃貸の場合
+							house_yen = '<strong>'+'現在満室中'+'</strong>';
+						}else{
+							house_yen = '<strong>'+'成約済'+'</strong>';
+						}
+					}
+					if(house['house_kind2']=='shop'){
+						//テナントの場合
+					html +='<br class="clear" />'+
+							'<p class="img"><a href="search/detail.php?house_id='+house['house_id']+'&house_kind='+house_kind+'">'+
+							'<img src="upload/'+file_name+'" height="102" alt="image" /></a></p>'+
+							'<h4 class="tenant"><a href="search/detail.php?house_id='+house['house_id']+'&house_kind='+house_kind+'">'+house['house_comment'].nl2br()+'</a></h4>'+
+							'<p class="price"><span>'+yen_name+'</span>'+house_yen+'</p>'+
+							'<p class="memo">'+house['line_name1']+' '+house['station_name1']+'駅から'+get_time_kind_str(house['house_time_kind1'])+house['house_time1']+'分</p></div>';
+					}else{
+						//テナント以外の場合
+					html +='<br class="clear" />'+
+							'<p class="img"><a href="search/detail.php?house_id='+house['house_id']+'&house_kind='+house_kind+'">'+
+							'<img src="upload/'+file_name+'" height="102" alt="image" /></a></p>'+
+							'<h4><a href="search/detail.php?house_id='+house['house_id']+'&house_kind='+house_kind+'">'+house['house_name']+'</a></h4>'+
+							'<p class="price"><span>'+yen_name+'</span>'+house_yen+'</p>'+
+							'<p class="memo">'+house['house_comment'].nl2br()+'</p></div>';
+					}
+				}
+			}
+			html += '</div>';
+			$('#house_list_new').html(html);
+		}else{
+			$('#house_list_new').html('');
+		}
+	});
+}
+
+
+//チラシの前へボタンを押した場合
+function prev_advert(){
+	var left = $('#advert_list_inner').css('left').replace('px','');
+	if(left<0){
+		//前に表示できるチラシがある場合、右に動かす
+		$('#advert_list_inner').animate({left:parseInt(left)+216+'px'},1000);
+	}
+}
+
+//チラシの次へボタンを押した場合
+function next_advert(){
+	var left = $('#advert_list_inner').css('left').replace('px','');
+	var advert_num = 4;
+	if(-(advert_num-3)*216<left){
+		//次に表示できるチラシがある場合、左に動かす
+		$('#advert_list_inner').animate({left:(left-216)+'px'},1000);
+	}
+}
+
+//地図から地域をクリックした場合
+function set_area(house_area){
+	var house_kind = $('#house_kind').val();
+	location.href='search/list.php?house_kind='+house_kind+'&house_area='+house_area;
+}
+
+//チラシのリンクをクリックした場合
+function show_advert(advert_file){
+	var html = '<embed type="application/pdf" src="upload/'+advert_file+'" width="900" height="480"></embed>'
+	$('#popup_advert_inner').html(html);
+	var scrollY = document.documentElement.scrollTop|| document.body.scrollTop;
+	$('#popup_advert_wrapper').width($(document).width()).height($(document).height());
+	$('#popup_advert').css('top',(scrollY+100)+'px');
+	var winWidth = $(window).width();
+	$('#popup_advert').css('left',(winWidth-900)/2);
+	$('#popup_advert_wrapper').fadeIn(1000);
+	$('#popup_advert').fadeIn(1000);
+
+}
+
+</script>
+
+<!--[if lte IE 6]>   
+<script src="../common/js/DD_belatedPNG.js" type="text/javascript">   
+</script>   
+<script type="text/javascript">
+DD_belatedPNG.fix('.png32,#headerbg,#footerbg,#g_nav');
+</script> 
+<![endif]-->
+<link rel="canonical" href="http://www.k-hearts.com/" />
+</head>
+
+<body>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-2960265-26', 'k-hearts-m.com');
+  ga('send', 'pageview');
+
+</script><div id="wrap">
+<!------------イベントバナー---------------------->
+<div id="event_banner">
+	<a href="event/index.php"><img src="event/images/ban.png" alt="イベントバナー" class="rollover"/></a>
+    <p id="btn_event_close">x close</p>
+</div>
+
+<!--==============ヘッダー検索バー===================--><!-- #BeginLibraryItem "/Library/header_search.lbi" --><div id="header3outer">
+<div id="header3">
+<div class="bl01"><img src="common/images/h_srchfrm_txt.jpg" width="206" height="42" alt="場所や路線、駅名で検索" /></div>
+<form action="search/list.php" method="post" id="srchfrm">
+<ul>
+<li><label><input name="house_kind" type="radio" value="1" />テナント</label></li>
+<li><label><input name="house_kind" type="radio" value="2" />賃貸</label></li>
+<li><label><input name="house_kind" type="radio" value="3" />分譲・売買</label></li>
+<li><label><input name="house_kind" type="radio" value="4" />投資</label></li>
+</ul>
+<input name="search_content" type="text" class="txtbg"  /><input name="btnsearch" type="submit" value="検索" class="btn_search" />
+</form>
+<br class="clear" />
+</div></div><!-- ./head_line3 -->
+<!-- #EndLibraryItem --><!--==============ヘッダー検索バー END===================-->
+
+<div class="mapboxbase">
+  <div class="mapbox">
+  <div id="maptab">
+  <div id="mtab03"><a href="javascript:void(0)"><img src="images/mtab03_over.jpg" width="305" height="71" alt="分譲・売買物件を探す" /></a></div>
+  <div id="mtab01"><a href="javascript:void(0)"><img src="images/mtab01.jpg" width="305" height="71" alt="テナントを探す" class="rollover" /></a></div>
+  <div id="mtab04"><a href="javascript:void(0)"><img src="images/mtab04.jpg" width="305" height="71" alt="投資・収益を探す" class="rollover" /></a></div>
+  <div id="mtab02"><a href="javascript:void(0)"><img src="images/mtab02.jpg" width="305" height="71" alt="賃貸物件を探す" class="rollover" /></a></div>
+  </div><!-- ./maptab -->
+    
+  <div id="maparea">
+  <div id="maparea_bg1" class="maparea_bg"></div>
+  <div id="maparea_bg2" class="maparea_bg"></div>
+  <div id="maparea_bg3" class="maparea_bg"></div>
+  <div id="maparea_bg4" class="maparea_bg"></div>
+  <div id="map_cate01" class="map_cate01"><a href="javascript:void(0)" onClick="return false;"><img src="images/map/map_cate01.jpg" width="159" height="42" alt="地域から探す" class="rollover" /></a></div>
+  <div id="map_cate02"><a href="javascript:void(0)" onClick="return false;"><img src="images/map/map_cate02.jpg" width="159" height="42" alt="駅・路線から探す" class="rollover" /></a></div>
+  <div id="map_cate03"><a href="javascript:void(0)" onClick="return false;"><img src="images/map/map_cate03.jpg" width="159" height="42" alt="地図から探す" class="rollover" /></a></div>
+  <div id="mapku"><a href="javascript:void(0)" onClick="return false;">
+  <img src="images/map/mapku.png" width="415" height="277" border="0" usemap="#c_map" id="cmap" />
+  <map name="c_map" id="c_map">
+  <area shape="poly" coords="6,88,43,172,87,190,81,216,36,229,36,238,130,277,339,275,308,262,313,226,296,210,298,188,293,179,307,136,330,138,379,100,347,87,323,93,306,42,173,18,147,36,109,34,95,50,93,63" href="javascript:void(0)" class="map_cate01">
+  <!--
+  <area shape="poly" coords="6,89,21,124,145,85,93,48,93,64,6,88" href="javascript:set_area('西淀川区')" alt="西淀川区" id="maplink01" />
+  <area shape="poly" coords="97,50,109,34,146,36,168,20,203,24,198,71,189,70,141,85" href="javascript:set_area('淀川区')" alt="淀川区" id="maplink02" />
+  <area shape="poly" coords="203,23,293,36,282,57,243,54,221,75,199,71" href="javascript:set_area('東淀川区')" alt="東淀川区" id="maplink03" />
+  <area shape="poly" coords="42,172,140,134,111,98,22,125" href="javascript:set_area('此花区')" alt="此花区" id="maplink04" />
+  <area shape="poly" coords="140,134,172,123,173,104,145,85,112,97" href="javascript:set_area('福島区')" alt="福島区" id="maplink05" />
+  <area shape="poly" coords="147,84,173,106,172,122,180,118,227,123,220,76,189,71" href="javascript:set_area('北区')" alt="北区" id="maplink06" />
+  <area shape="poly" coords="219,74,226,120,253,124,254,105,269,94,245,53" href="javascript:set_area('都島区')" alt="都島区" id="maplink07" />
+  <area shape="poly" coords="270,95,245,54,280,57,292,36,307,44,321,92,277,90" href="javascript:set_area('旭区')" alt="旭区" id="maplink08" />
+  <area shape="poly" coords="307,137,332,140,382,100,349,85,318,92,298,90,293,124" href="javascript:set_area('鶴見区')" alt="鶴見区" id="maplink09" />
+  <area shape="poly" coords="301,153,253,138,253,106,277,92,297,91,294,126,306,138" href="javascript:set_area('城東区')" alt="城東区" id="maplink10" />
+  <area shape="poly" coords="303,155,292,177,240,165,250,138" href="javascript:set_area('東成区')" alt="東成区" id="maplink11" />
+  <area shape="poly" coords="178,155,201,164,223,152,242,154,252,139,252,125,181,119" href="javascript:set_area('中央区')" alt="中央区" id="maplink12" />
+  <area shape="poly" coords="141,163,160,153,178,155,180,120,119,141" href="javascript:set_area('西区')" alt="西区" id="maplink13" />
+  <area shape="poly" coords="41,171,86,189,140,164,118,143" href="javascript:set_area('港区')" alt="港区" id="maplink14" />
+  <area shape="poly" coords="86,190,79,217,128,218,144,179,145,160" href="javascript:set_area('大正区')" alt="大正区" id="maplink15" />
+  <area shape="poly" coords="146,179,191,190,202,163,162,153,144,162" href="javascript:set_area('浪速区')" alt="浪速区" id="maplink16" />
+  <area shape="poly" coords="190,193,229,199,243,155,221,154,205,161" href="javascript:set_area('天王寺区')" alt="天王寺区" id="maplink17" />
+  <area shape="poly" coords="228,203,270,220,278,207,298,209,298,187,291,178,241,166" href="javascript:set_area('生野区')" alt="生野区" id="maplink18" />
+  <area shape="poly" coords="127,219,156,240,167,241,190,192,143,180" href="javascript:set_area('西成区')" alt="西成区" id="maplink19" />
+  <area shape="poly" coords="193,193,233,203,209,245,167,241" href="javascript:set_area('阿倍野区')" alt="阿倍野区" id="maplink20" />
+  <area shape="poly" coords="35,235,36,230,81,216,127,218,154,240,145,274,127,277" href="javascript:set_area('住之江区')" alt="住之江区" id="maplink21" />
+  <area shape="poly" coords="144,276,155,242,211,245,204,256,220,266,219,277" href="javascript:set_area('住吉区')" alt="住吉区" id="maplink22" />
+  <area shape="poly" coords="235,206,267,221,252,251,253,276,220,275,223,265,205,256" href="javascript:set_area('東住吉区')" alt="東住吉区" id="maplink23" />
+  <area shape="poly" coords="253,247,278,209,298,210,315,227,310,261,335,269,335,278,250,277" href="javascript:set_area('平野区')" alt="平野区" id="maplink24" />
+  -->
+  </map>
+  </a>
+  </div>
+  </div><!-- ./maparea -->
+  <br class="clear" />
+  </div>
+</div>
+
+
+<div id="container">
+<div class="contents">
+
+<!-- =================== SIDE =======================-->
+<div class="side"><!-- #BeginLibraryItem "/Library/side_menu.lbi" -->
+
+<!-- login start ==== -->
+<form action="" method="get" id="memberlogin">
+<div class="memloginbox">
+<p><img src="common/images/memberlogin_top.jpg" width="214" height="35" alt="K-HEARTS MEMBERS" /></p>
+<div id="div_login">
+    <div class="inbox1">
+    <p><img src="common/images/memberloginbox_email_txt.png" width="58" height="18" alt="E-Mail" class="bottom" /></p>
+    <p class="pad_b5p"><input name="" type="text" class="inptxt" id="input_login_user"/></p>
+    <p><img src="common/images/memberloginbox_pass_txt.png" width="70" height="18" alt="パスワード" class="bottom" /></p>
+    <p class="pad_b5p"><input name="" type="text" class="inptxt" id="input_login_pass"/></p>
+    <p class="btn"><input name="" type="button" value="ログイン" id="btn_login"/></p>
+    </div>
+    <ul class="memo">
+    <li><a href="member/entry.php">無料会員登録はこちら</a></li>
+    <li><a href="member/index.php#IDPASS">ID、パスワードを忘れた方はこちら</a></li>
+    </ul>
+</div><!-- end of #div_login-->
+<div id="div_logout">
+    <div class="inbox1">
+        <p><span id="login_user"></span> 様</p>
+        <input type="button" class="btn_logout" value="ログアウト"/>
+     </div>
+    <ul class="memo">
+    <li><a href="search/recent.php">最近見た物件</a></li>
+    <li><a href="search/favorite.php">お気に入り物件</a></li>
+    <li><a href="search/save.php">保存した検索条件</a></li>
+    <li><a href="member/edit.php" id="login_edit">会員情報変更</a></li>
+    </ul>
+</div>
+</div>
+</form>
+<!-- login end ==== -->
+
+<!-- 登録数 start ==== -->
+<p><img src="common/images/nowcount_ttl.jpg" width="214" height="40" alt="現在の登録物件数" /></p>
+<div class="nowcountbox">
+<div class="inbox1">
+<p class="ttl"><img src="common/images/nowcountbox_ttl01.png" width="87" height="15" alt="一般公開物件" class="top" /></p>
+<p class="dt">2,513<img src="common/images/nowcountbox_txt_ken.png" alt="件" width="13" height="15" /></p>
+<br class="clear" />
+<p class="ttl"><img src="common/images/nowcountbox_ttl02.png" width="87" height="15" alt="会員専用物件" class="top" /></p>
+<p class="dt">1,744<img src="common/images/nowcountbox_txt_ken.png" alt="件" width="13" height="15" /></p>
+<br class="clear" />
+</div>
+<ul class="memo">
+<li><a href="member/entry.php">会員専用物件とは？</a></li>
+</ul>
+</div>
+<!-- 登録数 end ==== -->
+
+
+<p><a href="member/entry.php"><img src="common/images/btn_memreqruit.jpg" width="214" height="118" alt="ケイハーツ　メンバーズ 新規会員募集 年会費無料・入会金無料" class="rollover" /></a></p>
+
+
+<div class="gd_line"></div>
+
+
+<!-- 最近見た物件 start ==== -->
+<div class="recentbukkenbox">
+<p><img src="common/images/recent_bukken_ttl.jpg" width="214" height="34" alt="最近見た物件" /></p>
+<div id="list_recent"></div>
+</div>
+<!-- 最近見た物件 start ==== -->
+
+
+
+
+<div class="gd_line" id="gd_line_recent"></div>
+
+
+<p class="pad_b10p"><a href="javascript:void(0)" onClick="MM_openBrWindow('loan/index.html','ローンシュミレーター','scrollbars=yes,width=540,height=700')"><img src="common/images/bn_loansimu.jpg" width="214" height="60" alt="ローンシミュレーター 住宅ローンの計画に" class="rollover" /></a></p>
+<p><a href="blog"><img src="common/images/bn_staffblog.jpg" width="214" height="60" alt="スタッフブログ ケイハーツスタッフの日々" class="rollover" /></a></p>
+
+
+<div class="gd_line"></div>
+
+
+<div class="bn_satei"> <a href="sale"><img src="common/images/bn_satei.jpg" width="214" height="224" alt="webで簡単スピード査定　不動産売却・査定ページ" class="rollover" /></a></div>
+
+<div class="gd_line"></div>
+
+
+<p class="pad_b10p"><a href="nini"><img src="common/images/bn_nini.jpg" width="214" height="60" alt="任意売却について ご相談を受け付けています" class="rollover" /></a></p>
+<p><a href="souzoku"><img src="common/images/bn_souzoku.jpg" width="214" height="60" alt="相続対策について 相続対策についてご提案します" class="rollover" /></a></p>
+
+
+<div class="gd_line"></div>
+
+
+<!-- 人気アクセスランキング start ==== -->
+<div class="accessbukkenbox">
+<input type="hidden" id="rank_house_kind" value="1"/>
+<p><img src="common/images/access_bukken_ttl.jpg" width="214" height="34" alt="人気アクセスランキング" /></p>
+<ul class="catetab">
+<li><a href="javascript:show_rank('3')"><img src="common/images/sidecatetab03.jpg" width="54" height="24" alt="分譲売買" class="rollover" id="img_rank3"/></a></li>
+<li><a href="javascript:show_rank('1')"><img src="common/images/sidecatetab01_over.jpg" width="49" height="24" alt="テナント" id="img_rank1"/></a></li>
+<li><a href="javascript:show_rank('4')"><img src="common/images/sidecatetab04.jpg" width="56" height="24" alt="投資物件" class="rollover" id="img_rank4"/></a></li>
+<li><a href="javascript:show_rank('2')"><img src="common/images/sidecatetab02.jpg" width="55" height="24" alt="賃貸物件" class="rollover" id="img_rank2" /></a></li>
+</ul><div class="clear"></div>
+<div id="list_rank"></div>
+</div>
+<!-- 人気アクセスランキング start ==== -->
+<!-- #EndLibraryItem --></div><!-- end of .side--><!-- =================== SIDE END =======================-->
+
+<!-- =================== MAIN =======================-->
+
+<div class="main">
+  <ul class="tenanttabbox">
+  <li id="btn_new_2"><a href="javascript:void(0)"><img src="images/tenant_tab02.jpg" width="95" height="35" alt="賃貸物件" class="rollover"  /></a></li>
+  <li id="btn_new_4"><a href="javascript:void(0)"><img src="images/tenant_tab04.jpg" width="90" height="35" alt="投資・収益" class="rollover" /></a></li>
+  <li id="btn_new_1"><a href="javascript:void(0)"><img src="images/tenant_tab01.jpg" width="91" height="35" alt="テナント" class="rollover" /></a></li>
+  <li id="btn_new_3"><a href="javascript:void(0)"><img src="images/tenant_tab03_over.jpg" width="87" height="35" alt="分譲・売買"  /></a></li>
+  </ul><br class="clear" />
+  
+  <!-- 新着！テナント物件 -->
+  <div class="ttlbox">
+  	<h3>
+    	<img id="new_title_img1" src="images/newinfo_01.jpg" width="725" height="33" alt="新着！テナント物件"  id="img_header_new"/>
+    	<img id="new_title_img2" src="images/newinfo_02.jpg" width="725" height="33" alt="イチオシ！賃貸物件"  id="img_header_new"/>
+    	<img id="new_title_img3" src="images/newinfo_03.jpg" width="725" height="33" alt="イチオシ！分譲・売買物件"  id="img_header_new"/>
+    	<img id="new_title_img4" src="images/newinfo_04.jpg" width="725" height="33" alt="イチオシ！投資・収益物件"  id="img_header_new"/>
+    </h3>
+  	<div class="infolist" id="btn_house_all"><a href="search/list.php?house_kind=1"><img src="images/infolist.jpg" width="95" height="25" alt="全物件一覧へ" class="rollover" /></a></div>
+  </div>
+  
+	<div id="house_list_new" class="bukkenbox"></div>
+	<br class="clear" />
+    <div class="mar_b25p"></div>
+  
+  
+  <!-- お客様の声 -->
+  
+  <div class="uservoicebox_bg">
+  <p><img src="images/uservoice_ttl.jpg" width="725" height="34" alt="お客様の声" /></p>
+  
+<div class="uservoicebox">
+  <!-- voice -->
+  <div class="inbox1">
+  <p><img src="upload/VIC_20151214200100_1087_s.jpg" width="161" height="122" /></p>
+  <p class="txt">
+    フラワーダイニングフルラージュ<br/><br/> フラワーダイニングフルラージュ　
+オープンしました!(^^)!</p>
+  <p class="btn"><a href="voice/detail.php?voice_id=VIC_566ea170a9411_71764"><img src="images/voice_btn.jpg" width="112" height="26" alt="詳しくはコチラ" class="rollover" /></a></p>
+  </div>
+    <!-- voice -->
+  <div class="inbox1">
+  <p><img src="upload/VIC_20151214194124_8380_s.jpg" width="161" height="122" /></p>
+  <p class="txt">
+    カラオケかえる　オープン<br/><br/> カラオケかえる　オープンしました!(^^)!</p>
+  <p class="btn"><a href="voice/detail.php?voice_id=VIC_566e9cdb20d78_15495"><img src="images/voice_btn.jpg" width="112" height="26" alt="詳しくはコチラ" class="rollover" /></a></p>
+  </div>
+    <!-- voice -->
+  <div class="inbox1">
+  <p><img src="upload/VIC_20150827162020_5653_s.jpg" width="161" height="122" /></p>
+  <p class="txt">
+    はんこ工場移転<br/><br/> はんこ工場移転オープンしました</p>
+  <p class="btn"><a href="voice/detail.php?voice_id=VIC_55deba3830576_45468"><img src="images/voice_btn.jpg" width="112" height="26" alt="詳しくはコチラ" class="rollover" /></a></p>
+  </div>
+    <!-- voice -->
+  <div class="inbox1">
+  <p><img src="upload/VIC_20150827160522_3264_s.jpg" width="161" height="122" /></p>
+  <p class="txt">
+    和食居酒屋オープン<br/><br/> 和食居酒屋「まえ田``」オープン</p>
+  <p class="btn"><a href="voice/detail.php?voice_id=VIC_55deb6b608bf5_61218"><img src="images/voice_btn.jpg" width="112" height="26" alt="詳しくはコチラ" class="rollover" /></a></p>
+  </div>
+    
+  
+<div class="clear"></div>
+  <div class="arrow01"><img src="images/arrow01.jpg" width="11" height="11" class="middle" /><a href="voice/">全てのお客様の声を見る</a></div>
+</div><!-- ./uservoicebox -->
+</div><!-- ./uservoicebox_bg -->
+  
+  
+  <!-- ニュース -->
+  
+  <div class="news_bg">
+  <p><img src="images/news_ttl.jpg" width="725" height="36" alt="新着情報" /></p>
+  <div class="newsbox">
+    
+  <dl>
+    <dt>2015.12.01</dt>
+  <dd>
+  事務所移転のお知らせ「大阪狭山市狭山二丁目951番地」となりました。引続き宜しくお願い申し上げます。  </dd>
+    <dt>2015.09.01</dt>
+  <dd>
+        <a href="http://www.k-hearts.com/search/detail.php?house_id=HUS_55f3eb211ca02_86923&amp;house_kind=3" target="_blank">大野中新築分譲8区画の販売開始しました。今なら建築現場もご覧頂けます♪</a>
+        </dd>
+    <dt>2015.08.07</dt>
+  <dd>
+        <a href="http://www.k-hearts.com/search/detail.php?house_id=HUS_55c49cda88eed_42663&amp;house_kind=3" target="_blank">狭山2丁目新築一戸建竣工しました。いつでもご案内致します。一度、ご覧下さいませ♪</a>
+        </dd>
+    <dt>2015.05.24</dt>
+  <dd>
+  堺市東区草尾土地4号地が大幅価格しました。  </dd>
+    <dt>2015.05.02</dt>
+  <dd>
+  ＧＷ休日のお知らせ『5月3日～6日まで』お休みとさせて頂きます。何卒宜しくお願い申し上げます。  </dd>
+    
+  </dl>
+</div>
+  
+<p class="arrow02"><img src="images/arrow02.jpg" width="13" height="13" class="middle" /><a href="news/index.php">全てのニュースを見る</a></p>
+</div><!-- ./news_bg -->
+  
+  
+  
+  <!-- 最新チラシ -->
+  
+  <div class="chrachi_bg">
+  <p><img src="images/chrachi_ttl.jpg" width="725" height="35" alt="最新チラシ" /></p>
+  <div class="chrachibox">
+  <div class="leftbtn"><a href="javascript:prev_advert()"><img src="images/back_btn.jpg" width="23" height="159" alt="back" /></a></div>
+  <div id="advert_list">
+  	<div id="advert_list_inner">
+  		   
+    <div class="pdf">
+      <p><a href="upload/ADV_20150309104041_6833.pdf" target="_blank"><img src="upload/ADV_20150309104041_6833.jpg" width="192" height="138" alt="" /></a></p>
+      <p>2015年03月06日</p>
+      </div>
+     <div class="pdf">
+      <p><a href="upload/ADV_20150309104044_9279.pdf" target="_blank"><img src="upload/ADV_20150309104044_9279.jpg" width="192" height="138" alt="" /></a></p>
+      <p>2015年03月06日</p>
+      </div>
+		   
+    <div class="pdf">
+      <p><a href="upload/ADV_20150223134131_4875.pdf" target="_blank"><img src="upload/ADV_20150223134131_4875.jpg" width="192" height="138" alt="" /></a></p>
+      <p>2015年02月22日</p>
+      </div>
+     <div class="pdf">
+      <p><a href="upload/ADV_20150223134134_3311.pdf" target="_blank"><img src="upload/ADV_20150223134134_3311.jpg" width="192" height="138" alt="" /></a></p>
+      <p>2015年02月22日</p>
+      </div>
+	</div><!-- end of #advert_list_inner-->
+ 	</div><!-- end of #advert_list-->
+<div class="rightbtn"><a href="javascript:next_advert()"><img src="images/next_btn.jpg" width="23" height="159" alt="next" /></a></div>
+  <br class="clear" />
+  </div><!-- ./chrachibox -->
+
+    
+    
+  </div><!-- ./chrachi_bg -->
+  
+  <div id="mainbncontact">
+<div class="inbox"><p class="main_bn_contact_mail"><a href="contact/index.php"><img src="common/images/main_bn_contact_mail.jpg" width="183" height="43" class="rollover" /></a></p></div></div>
+
+
+</div>
+<!-- ./main -->
+<!-- =================== MAIN END =======================-->
+
+
+
+<br class="clear" />
+</div><!-- ./contents -->
+
+
+</div><!-- ./container -->
+
+<!--=================== FOOTER ============================--><!-- #BeginLibraryItem "/Library/footer_menu.lbi" --><div id="footerbg"><div id="footer">
+<div class="boxleft">
+<p><img src="common/images/f_logo.jpg" width="264" height="44" alt="K-HEARTS 不動産ナビ 南大阪版" class="mar_t3p mar_b20p" /></p>
+<p class="fttl">株式会社ケイ・ハーツエステート</p>
+〒589-0005　大阪府大阪狭山市二丁目951番地<br>
+株式会社ケイ・ハーツエステート<br />
+<strong>売買営業部</strong><br>
+TEL：072-366-7477　FAX：072-368-6906<br>
+<strong>賃貸営業部</strong><br>
+TEL：072-366-6266　FAX：072-368-6906</div><!-- ./left -->
+
+<div class="boxright">
+<p class="pad_b10p">
+南大阪・堺市・狭山市の分譲・売買・テナント・貸店舗・居抜き物件・投資収益・賃貸物件を探すなら、【ケイハーツ不動産ナビ 南大阪版】分譲新築一戸建て、中古住宅・マンションからテナント・貸店舗・居抜き・オフィス・賃貸住宅や倉庫・土地まで、住みたい沿線・駅・地域から探し、間取りや家賃などの希望条件で絞込み出来ます。ご希望の部屋を簡単に探せる不動産物件情報サイトです。</p>
+<div class="fnavi_bg">
+<ul class="fnavi01">
+<li><a href="">トップページ</a></li>
+<li><a href="search/list.php?house_kind=1">テナント・店舗</a></li>
+<li><a href="search/list.php?house_kind=2">賃貸物件</a></li>
+<li><a href="search/list.php?house_kind=3">分譲・売買</a></li>
+<li><a href="search/list.php?house_kind=4">投資・収益</a></li>
+</ul>
+<ul class="fnavi02">
+<li><a href="member">会員マイページ</a></li>
+<li><a href="search/recent.php">最近見た物件</a></li>
+<li><a href="search/favorite.php">お気に入り</a></li>
+<li><a href="search/save.php">検索条件設定</a></li>
+<li><a href="contact">お問い合わせ・ご相談</a></li>
+</ul>
+<ul class="fnavi03">
+<li><a href="voice">お客様の声</a></li>
+<li><a href="recruit">求人情報</a></li>
+<li><a href="blog">スタッフブログ</a></li>
+<li><a href="company">会社概要</a></li>
+<li><a href="company/index.php#MAP">アクセスマップ</a></li>
+</ul>
+<ul class="fnavi04">
+<li><a href="privacy">プライバシーポリシー</a></li>
+<li><a href="sitemap">サイトマップ</a></li>
+<li><a href="sale">不動産売買・査定</a></li>
+<li><a href="nini">任意売却</a></li>
+<li><a href="souzoku">相続対策</a></li>
+</ul>
+<br class="clear" />
+</div>
+</div><!-- ./right -->
+<br class="clear" />
+</div></div><!-- ./footerbg -->
+<div class="copyr">Copyright(C) 2014 K-HEARTS ESTATE. All Rights Reserved.</div>
+<!-- #EndLibraryItem --><!--=================== FOOTER END ============================-->
+
+
+
+
+
+</div><!-- === ./wrap === -->
+
+
+<!-- header START =================== -->
+<div id="header">
+<div id="header1">
+<h1>南大阪・堺市・狭山市の分譲・テナント・貸店舗・居抜き・投資収益物件探しはケイハーツ不動産ナビ</h1>
+<ul id="h_navi">
+<li><a href="search/recent.php"><img src="common/images/btn_recent.jpg" alt="最近見た物件" width="90" height="18" class="rollover" /></a></li>
+<li><a href="search/favorite.php"><img src="common/images/btn_favo.jpg" width="84" height="18" alt="お気に入り" class="rollover" /></a></li>
+<li><a href="search/save.php"><img src="common/images/btn_search.jpg" width="67" height="18" alt="検索条件" class="rollover" /></a></li>
+<li class="bdr" id="header_login"><a href="member/index.php"><img src="common/images/btn_login.jpg" width="70" height="18" alt="ログイン" class="rollover" /></a></li>
+<li class="bdr mar_r5p" id="header_logout"><span id="header_login_user"></span> 様<span id="header_btn_logout">▼</span>　</li>
+<li class="ed"><a href="sp"><img src="common/images/btn_smartp.jpg" width="80" height="18" alt="スマートフォン" class="rollover" /></a></li>
+</ul>
+<br class="clear" />
+</div><!-- ./head_line1 -->
+
+
+<div id="header2">
+<h2><a href=""><img src="common/images/h_logo.jpg" width="300" height="50" alt="K-HEARTS 不動産ナビ 株式会社ケイ・ハーツステート 南大阪版" /></a></h2>
+<div class="h_mailbox"><a href="contact"><img src="common/images/btn_h_mail.jpg" width="54" height="50" alt="メール" class="rollover"  /></a></div>
+<div class="h_telbox"><img src="common/images/h_tel.jpg" width="198" height="58" alt="お電話でのお問い合わせ・ご相談 072-366-7477 受付時間：AM9：30～PM6：30" /></div>
+<div class="h_searchbox">
+<ul id="h_srchnavi">
+<li><a href="search/list.php?house_kind=3"><img src="common/images/btn_h_search01.jpg" width="91" height="42" alt="分譲売買" class="rollover" /></a></li>
+<li><a href="search/list.php?house_kind=1"><img src="common/images/btn_h_search02.jpg" width="91" height="42" alt="テナント" class="rollover" /></a></li>
+<li><a href="search/list.php?house_kind=4"><img src="common/images/btn_h_search03.jpg" width="91" height="42" alt="投資収益" class="rollover" /></a></li>
+<li class="ed"><a href="search/list.php?house_kind=2"><img src="common/images/btn_h_search04.jpg" width="91" height="42" alt="賃貸物件" class="rollover" /></a></li>
+</ul><br class="clear" />
+</div>
+
+<div id="header_logout_select">
+	<p><a href="member/edit.php" id="header_user_edit">会員情報変更</a></p>
+    <p class="btn_logout"><a href="javascript:void(0)">ログアウト</a></p>
+</div><!-- end of #header_logout_select-->
+
+</div><!-- ./head_line2 -->
+<input type="hidden" id="house_kind" value="3"/>
+</div><!-- ./header --><!-- header END =================== -->
+
+<div id="popup_advert_wrapper"></div>
+<div id="popup_advert">
+    <div id="popup_advert_inner"></div>
+    
+    <input type="button" value="閉じる" id="btn_advert_close"/>
+
+</div>
+
+
+<p id="page-top"><a href="#top"><img src="common/images/btn_ptop.png" width="123" height="38" alt="ページトップ" /></a></p>
+</body>
+</html>

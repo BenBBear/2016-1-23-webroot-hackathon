@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GOLDINGS Chartered Building Surveyors & Architectural Consultants">
+    <meta name="author" content="GOLDINGS Chartered Building Surveyors & Architectural Consultants">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="GOLDINGS Chartered Building Surveyors & Architectural Consultants">
+    <meta property="og:description" content="GOLDINGS are an independent practice of Chartered Building Surveyors and Chartered Architectural Technologists based in the heart of the Cotswolds, operating for over 25 years.">
+    <meta property="og:image" content="http://goldingssurveyors.co.uk/img/Arlington_Row_Bibury40.jpg">
+    <meta property="og:url" content="http://www.goldingssurveyors.co.uk/">
+    <title>GOLDINGS Chartered Building Surveyors And Architectural Consultants</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    
+    <!-- Fonts -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    
+    <!-- Custom Goldings CSS -->
+    <link rel="stylesheet" type="text/css" href="css/goldings.css">
+
+    <!-- Fav Icon -->
+    <link rel="shortcut icon" href="#">
+    <link rel="apple-touch-icon" href="#">
+    <link rel="apple-touch-icon" sizes="114x114" href="#">
+    <link rel="apple-touch-icon" sizes="72x72" href="#">
+    <link rel="apple-touch-icon" sizes="144x144" href="#">
+    <!-- End of Fav Icon -->    
+    
+    <!-- Google Analytics Tracking Script -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-39307546-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End of Google Analytics Tracking Script -->
+    
+    <!-- Core JavaScript Files -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/1.5.25/jquery.isotope.min.js"></script>
+
+     <!-- Custom Theme JavaScript -->
+    <script src="js/goldings.js"></script>
+     
+    <script type="text/javascript">
+        
+        $(document).ready(function(){
+            var $container = $('#thumbs-container');
+            var filterType = '*';
+            $container.isotope({
+                filter: filterType,
+                animationOptions: {
+                    duration: 750,
+                    easing: 'linear',
+                    queue: false,
+                }
+            });
+            
+            $container.attr('data-current', filterType);
+            
+            checkActive();
+            
+            function checkActive() {
+                $('#nav1 a').each(function (){
+                    
+                    $(this).css({
+                        color: '#595959'
+                    });
+                    
+                    var filter = $(this).attr('project-filter');
+                    
+                    filter = '.' + filter;
+                    if (filter == '.*') {
+                        filter = '*';
+                    }
+                    
+                    var currentFilter = $container.attr('data-current');
+                    
+                    if (filter == currentFilter) {
+                        $(this).css({
+                            color: '#333333'
+                        });
+                    }
+                });
+            }
+                
+            $('#nav1 a').click(function(){
+                var selector1 = $(this).attr('project-filter');
+                var text = $(this).text();
+                if (text == "All") {
+                    var selector = selector1;
+                }
+                else {
+                    var selector = "." + selector1;
+                }
+                
+                $container.attr('data-current', selector);
+                    
+                $container.isotope({ 
+                    filter: selector,
+                    animationOptions: {
+                        duration: 750,
+                        easing: 'linear',
+                        queue: false, 
+                    }
+                });  
+                checkActive();
+                return false;
+            });
+        });
+    </script> 
+    
+    <script type="text/javascript">
+    $.preloadImages = function() {
+  for (var i = 0; i < arguments.length; i++) {
+    //  window.alert("img/projects/".arguments[i]);
+    $("<img />").attr("src", arguments[i]);
+  }
+}
+    
+   //  $( document ).ready(function() {
+    $(window).load(function() {
+  // Handler for .ready() called.
+  $.preloadImages("img/projects/0354/big/0354-big-01-extension-double-garage.jpg","img/projects/0461/big/0461-big-01-cotswold-stone-new-build.jpg", "img/projects/0572/big/0572-big-01-red-brick-new-build.jpg", "img/projects/0628/big/0628-big-01-barn-conversion.jpg", "img/projects/0638/big/0638-big-01-cotswold-stone-new-build.jpg", "img/projects/0761/big/0761-big-01-bungalow-extension.jpg", "img/projects/0767/big/0767-big-01-new-commercial-bus-depot.jpg", "img/projects/0817/big/0817-big-01-bungalow-extension.jpg" );
+});
+
+</script> 
+        
+    
+   
+    
+</head>
+    
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+    
+    <!-- Nav Bar -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+        
+                <!-- Mobile Menu -->
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="#page-top">
+                    <!--<i class="fa fa-cube"></i>--> Goldings
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#services">services</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#projects">projects</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#contact">contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    
+    <!-- Enf of Nav Bar -->
+
+    
+    <!-- Welcome Section -->
+    
+    <section class="intro">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                   <div class="col-md-8 col-md-offset-2">
+                        <h1 class="brand-heading">Goldings</h1>
+                        <p class="intro-text">Chartered Building Surveyors & Architectural Consultants</p>
+                        <div class="page-scroll">
+                            <a href="#services" class="btn btn-circle">
+                                <i class="fa fa-angle-down animated"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="brand-heading-attribution pull-left">
+                            Photo by Saffron Blaze (Own work) [<a href="http://creativecommons.org/licenses/by-sa/3.0">CC-BY-SA-3.0</a>], <a href="http://commons.wikimedia.org/wiki/File%3AArlington_Row_Bibury.jpg">via Wikimedia Commons</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- End of Welcome Section -->
+    
+    <!-- Services Section --> 
+    
+    <section id="services" class="container content-section text-center">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <h2>How can we help?</h2>
+                <p>GOLDINGS are an independent practice of Chartered Building Surveyors and Chartered Architectural Technologists based in the heart of the Cotswolds, operating for over 25 years.</p>
+                <p>We have a vast range of experience in all aspects of Building Design, Building Conservation, Planning, Building Regulations, Surveys, Remedial Works & Project Management spanning New Builds, Extensions, Renovations and Listed Buildings in both the Residential & Commercial sectors.</p>
+            </div>
+        </div>
+        <div class="services-wrapper">
+        <div class="row">
+            <h3>Our Services</h3>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <p class="services-heading">
+                    Architectural Services
+                </p>
+                <span class="services-heading-synopsis">GOLDINGS have been providing Architectural services, specialising in the Cotswold vernacular, for over 25 years.</span>
+                <p class="sub-service-container">
+                    <span class="sub-service-heading">
+                        Design & Planning
+                    </span>
+                    <span class="sub-service-synopsis">GOLDINGS offer complete end-to-end Design, Specification, Planning & Project Co-ordination, or are equally happy to get involved in specific aspects depending upon your requirements
+                    </span>
+                    <ul class="sub-service-body">
+                        <li>New Builds</li>
+                        <li>Extensions & Alterations</li>
+                        <li>Residential & Commercial</li>
+                        <li>Planning Applications</li>
+                        <li>Building Regulations</li>
+                        <li>Project Management</li>
+                        <li>Detailed Design Specification</li>
+                        <li>Tendering & Contractor Selection</li>
+                        <li>Feasibility Studies</li>
+                        <li>Services tailored to meet your requirements</li>
+                    </ul>
+                </p>
+                <p class="sub-service-container">
+                    <span class="sub-service-heading">
+                        Listed Buildings, Conservation & Restoration
+                    </span>
+                    <span class="sub-service-synopsis">GOLDINGS have many years experience of working on Listed Buildings. Whether you want to undertake minor or more extensive works, we will be able to advise you on achieving the best end result whilst minimising the impact on the building</span>
+                    <ul class="sub-service-body">
+                        <li>Specialist Listed Building Experience</li>
+                        <li>Listed Building Applications</li>
+                        <li>Remedial Works</li>
+                        <li>Extensions & Alterations</li>
+                    </ul>
+             </p>
+                <p class="sub-service-container">
+                    <span class="sub-service-heading">
+                        Project Management
+                    </span>
+                    <span class="sub-service-synopsis">GOLDINGS can provide end-to-end Project Management: appointing contractors, administering contracts & budgets, to help see your project through to fruition</span>
+                    <ul class="sub-service-body">
+                        <li>Contract Administration</li>
+                        <li>Tendering & Contractor Selection</li>
+                        <li>Site Visits & Inspections</li>
+                        <li>Budget Administration</li>
+                        <li>Day-to-day Management</li>
+                        <li>Manage changing requirements</li>
+                    </ul>
+                </p>
+            </div>
+            <div class="col-md-6">
+                <p class="services-heading">
+                    Building Surveying Services
+                </p>
+                <span class="services-heading-synopsis">Our Chartered Building Surveyors have a vast range of experience on all types and ages of structures</span>
+                <p class="sub-service-container">
+                    <span class="sub-service-heading">
+                        Building Surveys
+                    </span>
+                    <span class="sub-service-synopsis">GOLDINGS will undertake Building Surveys on any type and age of property and will additionally be able to assist with improvements from minor repairs to complete renovations</span>
+                    <ul class="sub-service-body">       
+                        <li>Provision of Building Survey reports summarising key issues / defects</li>
+                        <li>Tailored surveys to match specific requirements</li>
+                        <li>Subsequent advice, indication of cost for any remedial works</li>
+                        <li>Additional Architectural assistance with any improvements – repairs, extensions, remodelling or renovations</li>
+                        <li>Annual Maintenance Inspections</li>
+                    </ul>
+                </p>
+                <p class="sub-service-container">
+                    <span class="sub-service-heading">
+                        Problem Advice
+                    </span>
+                    <span class="sub-service-synopsis">GOLDINGS can provide advice on a wide range of building problems and building related aspects</span>
+                    <ul class="sub-service-body">
+                        <li>Building Problems & Defects</li>
+                        <li>Retrospective Planning or Bulding Regulations</li>
+                        <li>General Building Related Advice</li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- End of Services Section --> 
+    
+    
+    <!-- Divider-->
+    
+    <section class="my-fluid-container divider-section">
+    <div class="row">
+            <div class="col-md-12">               
+            </div>
+        </div>
+    </section>
+        
+    <!-- End of Divider -->
+    
+    
+    <!-- Projects Section --> 
+    
+    <section id="projects" class="container content-section text-center">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Our work</h2>
+                <p>A selection of our past projects</p>
+                <div class="row">
+                    <!-- Only display filter on Tablets (768px) and up -->
+                    <div class="col-sm-2 hidden-xs project-list">
+                        <div id="nav1">
+                            <ul class="list-unstyled">
+                                <li><a href="" project-filter="*">All</a></li>
+                                <li><a href="" project-filter="new">New Builds</a></li>
+                                <li><a href="" project-filter="conversion">Conversion & Remodelling</a></li>
+                                <li><a href="" project-filter="historic">Historic</a></li>
+                                <li><a href="" project-filter="commercial">Commercial</a></li>
+                            </ul>
+                        </div> <!-- nav1 -->
+                    </div> <!-- col-sm-4 -->
+                
+                    <div class="col-sm-10 thumbs-container-class">
+                        <div id="thumbs-container" data-current="">
+                            <div class="project-thumbnail new">
+                                <img class="thumbnail img-responsive" src="img/projects/thumbnails/0638.jpg" alt"0638 Cotswold Stone New Build">
+                                <a href="projects/id/0638/index.html">Cotswold Stone New Build<br><span>Project 0638</span></a>
+                            </div>
+                            <div class="project-thumbnail new">
+                                <img class="thumbnail img-responsive" src="img/projects/thumbnails/0572.jpg" alt="0572 Red Brick New Build">
+                                <a href="projects/id/0572/index.html">Red Brick<br>New Build<br><span>Project 0572</span></a>
+                            </div>
+                            <div class="project-thumbnail conversion historic">
+                                <img class="thumbnail img-responsive" src="img/projects/thumbnails/0628.jpg" alt="0628 Barn Conversion">
+                                <a href="projects/id/0628/index.html">Barn Conversion<br><span>Project 0628</span></a>
+                            </div>
+                            <div class="project-thumbnail conversion">
+                                <img class="thumbnail img-responsive" src="img/projects/thumbnails/0761.jpg" alt="0761 Bungalow Extension">
+                                <a href="projects/id/0761/index.html">Bungalow Extension<br><span>Project 0761</span></a>
+                            </div>
+                            <div class="project-thumbnail new commercial">
+                                <img class="thumbnail img-responsive" src="img/projects/thumbnails/0767.jpg" alt="0767 Commercial Bus Depot">
+                                <a href="projects/id/0767/index.html">New<br>Bus Depot<br><span>Project 0767</span></a>
+                            </div>
+                            <div class="project-thumbnail new conversion">
+                                <img class="thumbnail img-responsive" src="img/projects/thumbnails/0354.jpg" alt="0354 Extension & New Double Garage">
+                                <a href="projects/id/0354/index.html">Extension & New Double Garage<br><span>Project 0354</span></a>
+                            </div>
+                            <div class="project-thumbnail new">
+                                <img class="thumbnail img-responsive" src="img/projects/thumbnails/0461.jpg" alt="0461 Cotswold Stone New Build">
+                                <a href="projects/id/0461/index.html">Cotswold Stone New Build<br><span>Project 0461</span></a>
+                            </div>
+                            <div class="project-thumbnail conversion">
+                                <img class="thumbnail img-responsive" src="img/projects/thumbnails/0817.jpg" alt="0871 Bungalow Extension & Alterations">
+                                <a href="projects/id/0817/index.html">Bungalow<br>Extension & <br>Alterations<br><span>Project 0817</span></a>
+                            </div>
+                            </div>
+                        </div> <!-- thumbs-container -->
+                        
+                    </div> <!-- col-sm-8 -->
+
+               </div> <!-- row -->  
+
+            </div> <!-- col-md-8 -->
+            
+        </div> <!-- row -->
+        
+    </section>
+    
+    <!-- End of Projects Section --> 
+       
+    
+    <!-- Divider-->
+    
+    <section class="my-fluid-container divider-section">
+    <div class="row">
+            <div class="col-md-12">               
+            </div>
+        </div>
+    </section>
+        
+    <!-- End of Divider -->
+        
+    <!-- Contact Section -->
+    
+    <section id="contact" class="container content-section text-center">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h2>Contact Us</h2>
+                <p>Please contact GOLDINGS for a friendly chat to discuss how we can best help you.</p> 
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-5 col-sm-offset-1 hidden-xs contact-form-wrapper">
+                <p>Send us a message...</p>
+                <div id="form-messages"></div>
+                <form id="ajax-contact" class="form" role="form" method="post" action="mailer.php">
+                    <div class="input-group input-group-lg">
+                            <span class="input-group-addon"><i class="fa fa-user fa-lg"></i></span>
+                            <input type="text" class="form-control" id="contact-name" name="contact-name" placeholder="Name" required>
+                    </div>
+                    <div class="input-group input-group-lg">
+                            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                            <input type="email" class="form-control" id="contact-email" name="contact-email" placeholder="Email">
+                    </div>   
+                    <div class="input-group input-group-lg">
+                            <span class="input-group-addon"><i class="fa fa-phone fa-lg"></i></span>
+                            <input type="text" class="form-control" id="contact-number" name="contact-number" placeholder="Contact Number">
+                    </div>
+                    <div class="form-group">
+                            <textarea class="form-control" rows="5" id="contact-message" name="contact-message" placeholder="Enter your enquiry here" required></textarea>
+                    </div>
+                    <div class="form-group pull-right">
+                           <button type="submit" class="btn btn-default"><i class="fa fa-send fa-lg"></i>   Send your message</button>
+                    </div>
+                </form>
+            </div> 
+            <div class="col-sm-5 col-sm-offset-1 contact-details-wrapper">
+                <p class="hidden-xs">...or contact us directly</p>
+                <div class="contact-details">
+                    <p><i class="fa fa-phone fa-fw"></i><span class="goldings-contact-details"><a href="tel:01285 654975">01285 654975</a></span></p>
+                    <p><i class="fa fa-fax fa-fw"></i><span class="goldings-contact-details">01285 641400</span></p>
+                    <p><i class="fa fa-envelope fa-fw"></i><span class="goldings-contact-details"><a href="mailto:enquiries@goldingssurveyors.co.uk?subject=Enquiry">enquiries@goldingssurveyors.co.uk</a></span></p>
+                    <p><i class="fa fa-map-marker fa-fw"></i><span class="goldings-contact-details">High Gables</br>Daglingworth</br>Cirencester</br>Gloucestershire</br>GL7 7AE</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    <!-- End of Contact Section -->
+    
+    <!-- Footer -->
+    
+    <section class="my-fluid-container footer-section text-center">
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+            <p>GOLDINGS Chartered Building Surveyors & Architectural Consultants</p>           
+            </div>
+        </div>
+        
+        <div class="row">
+            
+            <div class="col-xs-12 col-md-3">
+                <a href="http://www.rics.org/uk/" target="_blank"><img src="img/RICS-logo.png" alt="RICS Logo" class="img-rics-logo"></a>
+            </div>
+            
+            <div class="col-xs-12 col-md-6">
+               
+                <div class="social-buttons">
+                    
+                    <span id="facebook-button">
+                        <a href="https://www.facebook.com/goldingssurveyors" target="_blank">
+                            <i class="fa fa-facebook fa-2x"></i>      
+                        </a>
+                    </span>
+                    <span id="twitter-button">
+                        <a href="https://twitter.com/GoldingsCBSAC" target="_blank">
+                            <i class="fa fa-twitter fa-2x"></i>      
+                        </a>
+                    </span>
+                    <span id="google-plus-button">
+                        <a href="https://plus.google.com/+GoldingssurveyorsCoUk" rel="publisher" target="_blank">
+                            <i class="fa fa-google-plus fa-2x"></i>      
+                        </a>
+                    </span>
+                    <span id="linkedin-button">
+                        <a href="https://www.linkedin.com/company/goldings-chartered-building-surveyors-and-architectural-consultants" target="_blank">
+                            <i class="fa fa-linkedin fa-2x"></i>      
+                        </a>
+                    </span>
+                    
+                </div>
+            </div>
+             
+            <div class="col-xs-12 col-md-3">
+                <a href="http://www.ciat.org.uk/" target="_blank"><img src="img/ciat-logo.png" alt="CIAT Logo" class="img-ciat-logo"></a>
+            </div>
+              
+        </div>
+        
+        <div class="row">
+            <div class="col-xs-12 col-md-8 col-md-offset-2 copyright">
+            <p>This website and its content is copyright of Goldings Property Consultants Ltd 2016. All rights reserved.</p>           
+            </div>
+        </div>           
+            
+        </div> 
+    
+    
+    </section>
+    
+    <!-- End of Footer -->
+
+    <!--<div id="map"></div>-->
+
+    <!-- DOWNLOAD IMAGERY SECTION LEGACY SECTION 
+        
+    <section id="download" class="content-section text-center">
+        <div class="download-section">
+            <div class="container">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h2>Download Grayscale</h2>
+                    <p>You can download Grayscale for free on the download page at Start Bootstrap. You can also get the source code directly from GitHub if you prefer. Additionally, Grayscale is the first Start Bootstrap theme to come with a LESS file for easy color customization!</p>
+                    <a href="http://startbootstrap.com/grayscale" class="btn btn-default btn-lg">Visit Download Page</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    -->     
+    <!-- Google Maps API Key - You will need to use your own API key to use the map feature 
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script> -->    
+</body>
+</html>

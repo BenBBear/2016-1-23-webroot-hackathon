@@ -1,0 +1,1492 @@
+<script type="text/javascript">
+var dayArrayShort = new Array('อา.', 'จ.', 'อ.', 'พ.', 'พฤ.', 'ศ.', 'ส.');
+var dayArrayMed = new Array('อา.', 'จ.', 'อ.', 'พ.', 'พฤ.', 'ศ.', 'ส.');
+var dayArrayLong = new Array('อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์์', 'เสาร์์');
+var monthArrayShort = new Array('ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.');
+var monthArrayMed = new Array('ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.');
+var monthArrayLong = new Array('มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฏาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม');
+</script>
+
+<link href="css/template_css.css" rel="stylesheet" type="text/css">
+<link href="css/Scroller_Stop.css" rel="stylesheet" type="text/css">
+<link rel="shortcut icon" href="images/favicon.ico">
+<script type="text/javascript" src="highslide/highslide.js"></script>
+<script type="text/javascript" src="highslide/highslide-html.js"></script>
+<script type="text/javascript" src="js/jquery-1.3.1.min.js"></script>
+<script type="text/javascript" src="js/datepicker.js"></script>
+<script type="text/javascript" src="js/java.js"></script>
+<script type="text/javascript" src="js/autocomplete.js"></script>
+<script type="text/javascript" src="js/Style_event.js" ></script>
+<script type="text/javascript" src="js/Style_cookie.js" ></script>
+<script type="text/javascript" src="js/Style_size.js" ></script>
+<script type="text/javascript" src="js/Set_text.js" ></script>
+
+<script type="text/javascript">
+
+function checkAll(field)
+{
+  for(i = 0; i < field.elements.length; i++)
+     field[i].checked = true ;
+}
+
+function uncheckAll(field)
+{
+ for(i = 0; i < field.elements.length; i++)
+    field[i].checked = false ;
+}
+
+function Confirm(link,text) 
+{
+  if (confirm(text))
+     window.location=link
+}
+
+  function delConfirm(obj){
+	var status=false;
+	for(var i=0 ; i < obj.elements.length ; i++ ){
+		if(obj[i].type=='checkbox'){
+			if(obj[i].checked==true){
+				status=true;
+			}
+		}
+	}
+	if(status==false){
+		alert('กรุณาเลือกข้อมูลที่ต้องการลบ.');
+		return false;
+	}else{
+		if(confirm('คุณมั่นใจในการลบข้อมูล?')){
+			return true;
+		}else{
+			return false;
+		}
+	}
+}
+</script>
+<script type="text/javascript">    
+    hs.graphicsDir = 'highslide/graphics/';
+    hs.outlineType = 'rounded-white';
+    hs.outlineWhileAnimating = true;
+    hs.objectLoadTime = 'after';
+</script>
+<div class="highslide-html-content" id="highslide-html" style="width: 500px">
+	<div class="highslide-move" style="border: 0; height: 18px; padding: 2px; cursor: default">
+	    <a href="#" onclick="return hs.close(this)" class="control">[x] ปิดหน้าต่างนี้</a>
+	</div>
+	<div class="highslide-body"></div>
+	<div style="text-align: center; border-top: 1px solid silver; padding: 5px 0">
+		Powered by <A HREF="http://www.nonglek.net" target="_blank">ATOMYMAXSITE 2.5</A>
+	</div>
+</div>
+<script language="JavaScript1.2">
+/*
+Fading Image Script 
+Dynamic Drive (www.dynamicdrive.com)
+*/
+
+function makevisible(cur,which){
+  if (which==0)
+    cur.filters.alpha.opacity=100
+  else
+    cur.filters.alpha.opacity=50
+}
+</script>
+
+<script type="text/JavaScript">
+<!--
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+
+</script>
+<script language="JavaScript">
+<!--
+function MM_displayStatusMsg(msgStr) { //v1.0
+  status=msgStr;
+  document.MM_returnValue = true;
+}
+//-->
+</script>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<HEAD>
+<TITLE>โรงเรียนบ้านหนองเหล็ก</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="keywords" content="โรงเรียนบ้านหนองเหล็ก">
+<meta name="description" content="โรงเรียนบ้านหนองเหล็ก">
+
+<meta name="google-site-verification" content="ivsFd-l28inFeN0lt4bISp98fdzCDXEJb4BcXJGfEog" />
+<link href="templates/sun-nicha/css/sun-nicha.css" rel="stylesheet" type="text/css">
+
+<link href="templates/sun-nicha/templatemo_style.css" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" href="templates/sun-nicha/css/orman.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="templates/sun-nicha/css/nivo-slider.css" type="text/css" media="screen" />	
+
+<link rel="stylesheet" type="text/css" href="templates/sun-nicha/css/ddsmoothmenu.css" />
+
+<script type="text/javascript" src="templates/sun-nicha/js/jquery.min.js"></script>
+<script type="text/javascript" src="templates/sun-nicha/js/ddsmoothmenu.js">
+
+/***********************************************
+* Smooth Navigational Menu- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
+* This notice MUST stay intact for legal use
+* Visit Dynamic Drive at http://www.dynamicdrive.com/ for full source code
+***********************************************/
+
+</script>
+
+<script language="javascript" type="text/javascript">
+
+ddsmoothmenu.init({
+	mainmenuid: "templatemo_menu", //menu DIV id
+	orientation: 'h', //Horizontal or vertical menu: Set to "h" or "v"
+	classname: 'ddsmoothmenu', //class added to menu's outer DIV
+	//customtheme: ["#1c5a80", "#18374a"],
+	contentsource: "markup" //"markup" or ["container_id", "path_to_menu_file"]
+})
+
+function clearText(field)
+{
+    if (field.defaultValue == field.value) field.value = '';
+    else if (field.value == '') field.value = field.defaultValue;
+}
+</script>
+
+<link rel="stylesheet" href="templates/sun-nicha/css/slimbox2.css" type="text/css" media="screen" /> 
+<script type="text/JavaScript" src="templates/sun-nicha/js/slimbox2.js"></script> 
+<!--  t e m p l a t e m o  372  t i t a n i u m  -->
+</head>
+<body>
+
+<div id="templatemo_wrapper">
+	<div id="templatemo_header">
+    	
+		<TABLE width="100%">
+		<TR>
+			<TD align="left"width="480"><TABLE width="450" cellSpacing=0 cellPadding=0 border=0>
+	<TR>
+		<TD valign="top" width="450" background="templates/sun-nicha/images/config/top100.png"  width="450" height="100" border="0" >
+	</td>
+</tr>
+</table>
+
+</TD>
+			<TD width="10"></TD>
+			<TD align="right" width="500"><br><br><font color=#838383><b>ยินดีต้อนรับคุณ </font><font color=#FFFFFF>บุคคลทั่วไป&nbsp;</b></font>&nbsp;&nbsp;&nbsp;<br><font color="#838383"><b>IP ของคุณ คือ</font><font color="#FFFFFF">208.87.139.67 &nbsp;&nbsp;&nbsp;</b></font><br><table  width="500"  border="0" cellpadding="0" cellspacing="0" >
+<tr>
+<td  align="right">
+
+<script type="text/javascript">
+//<![CDATA[
+if(top.location!=self.location)
+	top.location=self.location;
+window['_tipoff']=function(){};
+window['_tipon']=function(a){};
+var urlx='http://www.nonglek.net';
+function doTranslate(lang_pair) {
+	if(lang_pair.value)lang_pair=lang_pair.value;
+	if(location.hostname==urlx && lang_pair=='th|th')return;
+	else if(location.hostname!=urlx && lang_pair=='th|th')location.href=unescape(gfg('u'));
+	else if(location.hostname==urlx && lang_pair!='th|th')location.href='http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+escape(location.href);
+	else location.href='http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+escape(location.href);
+}
+function gfg(name) {
+	name=name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+	var regexS="[\\?&]"+name+"=([^&#]*)";
+	var regex=new RegExp(regexS);
+	var results=regex.exec(location.href);
+	if(results==null)return '';
+	return results[1];
+}
+//]]>
+</script>
+
+<a href="javascript:doTranslate('th|en')" title="English" style="font-size:16px;padding:1px 0;background:url('images/imlang/16.png') no-repeat scroll -0px -0px;"><img src="images/imlang/blank.png" height="16" width="16" style="border:0;vertical-align:top;" alt="English" /></a> <a href="javascript:doTranslate('th|zh-CN')" title="Chinese (Simplified)" style="font-size:16px;padding:1px 0;background:url('images/imlang/16.png') no-repeat scroll -300px -0px;"><img src="images/imlang/blank.png" height="16" width="16" style="border:0;vertical-align:top;" alt="Chinese (Simplified)" /></a> <a href="javascript:doTranslate('th|zh-TW')" title="Chinese (Traditional)" style="font-size:16px;padding:1px 0;background:url('images/imlang/16.png') no-repeat scroll -400px -0px;"><img src="images/imlang/blank.png" height="16" width="16" style="border:0;vertical-align:top;" alt="Chinese (Traditional)" /></a> <a href="javascript:doTranslate('th|fr')" title="French" style="font-size:16px;padding:1px 0;background:url('images/imlang/16.png') no-repeat scroll -200px -100px;"><img src="images/imlang/blank.png" height="16" width="16" style="border:0;vertical-align:top;" alt="French" /></a> <a href="javascript:doTranslate('th|de')" title="German" style="font-size:16px;padding:1px 0;background:url('images/imlang/16.png') no-repeat scroll -300px -100px;"><img src="images/imlang/blank.png" height="16" width="16" style="border:0;vertical-align:top;" alt="German" /></a> <a href="javascript:doTranslate('th|it')" title="Italian" style="font-size:16px;padding:1px 0;background:url('images/imlang/16.png') no-repeat scroll -600px -100px;"><img src="images/imlang/blank.png" height="16" width="16" style="border:0;vertical-align:top;" alt="Italian" /></a> <a href="javascript:doTranslate('th|ja')" title="Japanese" style="font-size:16px;padding:1px 0;background:url('images/imlang/16.png') no-repeat scroll -700px -100px;"><img src="images/imlang/blank.png" height="16" width="16" style="border:0;vertical-align:top;" alt="Japanese" /></a> <a href="javascript:doTranslate('th|ko')" title="Korean" style="font-size:16px;padding:1px 0;background:url('images/imlang/16.png') no-repeat scroll -0px -200px;"><img src="images/imlang/blank.png" height="16" width="16" style="border:0;vertical-align:top;" alt="Korean" /></a> <a href="javascript:doTranslate('th|pt')" title="Portuguese" style="font-size:16px;padding:1px 0;background:url('images/imlang/16.png') no-repeat scroll -300px -200px;"><img src="images/imlang/blank.png" height="16" width="16" style="border:0;vertical-align:top;" alt="Portuguese" /></a> <a href="javascript:doTranslate('th|ru')" title="Russian" style="font-size:16px;padding:1px 0;background:url('images/imlang/16.png') no-repeat scroll -500px -200px;"><img src="images/imlang/blank.png" height="16" width="16" style="border:0;vertical-align:top;" alt="Russian" /></a> <a href="javascript:doTranslate('th|es')" title="Spanish" style="font-size:16px;padding:1px 0;background:url('images/imlang/16.png') no-repeat scroll -600px -200px;"><img src="images/imlang/blank.png" height="16" width="16" style="border:0;vertical-align:top;" alt="Spanish" /></a> <a href="javascript:doTranslate('th|vi')" title="Vietnamese" style="font-size:16px;padding:1px 0;background:url('images/imlang/16.png') no-repeat scroll -200px -400px;"><img src="images/imlang/blank.png" height="16" width="16" style="border:0;vertical-align:top;" alt="Vietnamese" /></a> <a href="javascript:doTranslate('th|th')" title="Thai" style="font-size:16px;padding:1px 0;background:url('images/imlang/16.png') no-repeat scroll -0px -500px;"><img src="images/imlang/blank.png" height="16" width="16" style="border:0;vertical-align:top;" alt="Thai" /></a>&nbsp;
+<select onchange="doTranslate(this);">
+<option value="">Select Language</option>
+<option value="th|en">English</option>
+<option value="th|ar">Arabic</option>
+<option value="th|bg">Bulgarian</option>
+<option value="th|zh-CN">Chinese (Simplified)</option>
+<option value="th|zh-TW">Chinese (Traditional)</option>
+<option value="th|hr">Croatian</option>
+<option value="th|cs">Czech</option>
+<option value="th|da">Danish</option>
+<option value="th|nl">Dutch</option>
+<option value="th|fi">Finnish</option>
+<option value="th|fr">French</option>
+<option value="th|de">German</option>
+<option value="th|el">Greek</option>
+<option value="th|hi">Hindi</option>
+<option value="th|it">Italian</option>
+<option value="th|ja">Japanese</option>
+<option value="th|ko">Korean</option>
+<option value="th|no">Norwegian</option>
+<option value="th|pl">Polish</option>
+<option value="th|pt">Portuguese</option>
+<option value="th|ro">Romanian</option>
+<option value="th|ru">Russian</option>
+<option value="th|es">Spanish</option>
+<option value="th|sv">Swedish</option>
+<option value="th|ca">Catalan</option>
+<option value="th|tl">Filipino</option>
+<option value="th|iw">Hebrew</option>
+<option value="th|id">Indonesian</option>
+<option value="th|lv">Latvian</option>
+<option value="th|lt">Lithuanian</option>
+<option value="th|sr">Serbian</option>
+<option value="th|sk">Slovak</option>
+<option value="th|sl">Slovenian</option>
+<option value="th|uk">Ukrainian</option>
+<option value="th|vi">Vietnamese</option>
+<option value="th|sq">Albanian</option>
+<option value="th|et">Estonian</option>
+<option value="th|gl">Galician</option>
+<option value="th|hu">Hungarian</option>
+<option value="th|mt">Maltese</option>
+<option value="th|th">Thai</option>
+<option value="th|tr">Turkish</option>
+</select>&nbsp;&nbsp;&nbsp;
+</td>
+</tr>
+</table>
+
+
+
+                  &nbsp;&nbsp;</TD>
+		</TR>
+		</TABLE>
+		
+       
+    </div><!-- END of templatemo_header -->
+    <div id="templatemo_menu" class="ddsmoothmenu">
+        <ul>
+            <li><a href="index.php" class="selected">Home</a></li>
+            <li><a href="index.php">ข้อมูลพื้นฐาน</a>
+                    <ul>
+					     <li><a href="index.php?name=page&file=page&op=schooldata">ข้อมูลทั่วไป</a></li>
+                        <li><a href="index.php?name=page&file=page&op=prawat">ประวัติโรงเรียน</a></li>
+                        <li><a href="index.php?name=personnel&file=gdetail&id=1&op=gdetail&gr=ทำเนียบบุคลากร">ข้อมูลครู</a></li>
+                        <li><a href="index.php?name=page&file=page&op=studata">ข้อมูลนักเรียน</a></li>
+                        <li><a href="index.php?name=page&file=page&op=building">ข้อมูลอาคารสถานที่</a></li>
+						<li><a href="index.php?name=page&file=page&op=map">แผนที่</a></li>
+					</ul>
+            </li>
+		    <li><a href="index.php?name=personnel&file=gdetail&id=1&op=gdetail&gr=ทำเนียบบุคลากร"">ทำเนียบบุคลากร</a></li>
+            <li><a href="index.php">แผนพัฒนา</a>
+                    <ul>
+						<li><a href="index.php">วิสัยทัศน์/พันธกิจ</a></li>
+						<li><a href="index.php">กลยุทธ</a></li>
+						<li><a href="index.php">แผนปฏิบัติการ</a></li>
+						<li><a href="index.php">แผนสี่ปี</a></li>
+					</ul>
+            </li>
+		    <li><a href="http://www.nonglek.net/index.php?name=page&file=page&op=Manual">คู่มือประชาชน</a></li>
+			 <li><a href="index.php">Link</a>
+                    <ul>
+						<li><a href='?name=news'>ข่าวประชาสัมพันธ์</a></li>
+						<li><a href='?name=calendar'><span>ปฏิทินกิจกรรม</span></a></li>
+                        <li><a href='?name=gbook'><span>สมุดเยี่ยม</span></a></li>
+		                <li><a href='?name=gallery'><span>คลังรูปภาพ</span></a></li>
+		                <li><a href='?name=download'><span>ดาวน์โหลด</span></a></li>
+		                <li><a href='?name=video'><span>Video</span></a></li>
+		                <li><a href='?name=knowledge'><span>สาระน่ารู้</span></a></li>
+		                <li><a href='?name=webboard'><span>กระดานข่าว</span></a></li>
+						<li><a href='?name=contact'><span>Contact</span></a></li>
+					</ul>
+                </li>
+		    <li><a href="http://media.nonglek.net"  target="_bank">WebMedia</a></li>
+            <li><a href="index.php?name=admin">Admin</a></li>
+        </ul>
+        <br style="clear: left" />
+    </div> <!-- end of templatemo_menu -->
+    <div id="templatemo_slider">
+    	 <div class="slider-wrapper theme-orman">
+            <div class="ribbon"></div>
+            <!-- <div id="slider" class="nivoSlider"> -->
+			<style type="text/css">
+#slider-wrapper {
+    background:url(../../images/slider.png) no-repeat;
+    width:980px;
+    height:320px;
+    margin:0 auto;
+    padding-top:10px;
+    margin-top:10px;
+}
+
+#slider {
+	position:relative;
+    width:980x;
+    height:320px;
+    margin-left:1px;
+	background:url(../../images/loadingx.gif) no-repeat 50% 50%;
+}
+#slider img {
+	position:absolute;
+	top:0px;
+	left:0px;
+	display:none;
+}
+#slider a {
+	border:0;
+	display:block;
+}
+
+.nivo-controlNav {
+	position:absolute;
+	left:440px;
+	bottom:5px;
+}
+.nivo-controlNav a {
+	display:block;
+	width:22px;
+	height:22px;
+	background:url(../../images/slider/bullets.png) no-repeat;
+	text-indent:-9999px;
+	border:0;
+	margin-right:3px;
+	float:left;
+}
+.nivo-controlNav a.active {
+	background-position:0 -22px;
+}
+
+.nivo-directionNav a {
+	display:block;
+	width:30px;
+	height:30px;
+	background:url(../../images/slider/arrows.png) no-repeat;
+	text-indent:-9999px;
+	border:0;
+}
+a.nivo-nextNav {
+	background-position:-30px 0;
+	right:15px;
+}
+a.nivo-prevNav {
+	left:15px;
+}
+
+.nivo-caption {
+    text-shadow:none;
+    font-family: Helvetica, Arial, sans-serif;
+}
+.nivo-caption a { 
+    color:#efe9d1;
+    text-decoration:underline;
+}
+
+/* The Nivo Slider styles */
+.nivoSlider {
+	position:relative;
+}
+.nivoSlider img {
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+/* If an image is wrapped in a link */
+.nivoSlider a.nivo-imageLink {
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	border:0;
+	padding:0;
+	margin:0;
+	z-index:60;
+	display:none;
+}
+/* The slices in the Slider */
+.nivo-slice {
+	display:block;
+	position:absolute;
+	z-index:50;
+	height:100%;
+}
+/* Caption styles */
+.nivo-caption {
+	position:absolute;
+	left:0px;
+	bottom:0px;
+	background:#000;
+	color:#fff;
+	opacity:0.8; /* Overridden by captionOpacity setting */
+	width:100%;
+	z-index:89;
+}
+.nivo-caption p {
+	padding:5px;
+	margin:0;
+}
+.nivo-caption a {
+	display:inline !important;
+}
+.nivo-html-caption {
+    display:none;
+}
+/* Direction nav styles (e.g. Next & Prev) */
+.nivo-directionNav a {
+	position:absolute;
+	top:45%;
+	z-index:99;
+	cursor:pointer;
+}
+.nivo-prevNav {
+	left:0px;
+}
+.nivo-nextNav {
+	right:0px;
+}
+/* Control nav styles (e.g. 1,2,3...) */
+.nivo-controlNav a {
+	position:relative;
+	z-index:99;
+	cursor:pointer;
+}
+.nivo-controlNav a.active {
+	font-weight:bold;
+}
+    </style>
+<table width="" align=center cellSpacing=0 cellPadding=0 height="290">
+<tr>
+<td valign="top">
+<div class="slider-wrapper">
+    <div id="slider" class="nivoSlider">
+            <a href="http://www.nonglek.net/?name=news&file=readnews&id=107"><img src="icon/ran_book011.jpg" alt="โรงเรียนได้รับบริจาคหนังสือจาก \\\&quot;ซีเอ็ด สาขาศรีสะเกษ\\\&quot;" title="โรงเรียนได้รับบริจาคหนังสือจาก \\\&quot;ซีเอ็ด สาขาศรีสะเกษ\\\&quot;"/></a>
+            <a href="http://www.nonglek.net/?name=news&file=readnews&id=106"><img src="icon/ran_nglk012.jpg" alt="เปิดเรียนปีการศึกษา 2557" title="เปิดเรียนปีการศึกษา 2557"/></a>
+            <a href="http://www.nonglek.net/?name=news&file=readnews&id=104"><img src="icon/ran_travel.jpg" alt="ทัศนศึกษาภาคตะวันออก" title="ทัศนศึกษาภาคตะวันออก"/></a>
+            <a href="http://www.nonglek.net/?name=news&file=readnews&id=102"><img src="icon/ran_rorater_ma1.jpg" alt="กิจกรรมวันมาฆบูชา" title="กิจกรรมวันมาฆบูชา"/></a>
+            <a href="http://www.nonglek.net/?name=news&file=readnews&id=98"><img src="icon/ran_teachday57.jpg" alt="วันครูประจำปี 2557" title="วันครูประจำปี 2557"/></a>
+	</div>
+    </div>
+
+<script type="text/javascript" src="js/jquery-1.4.3.min.js"></script>
+<script type='text/javascript'>var $s = jQuery.noConflict(); </script>
+<script type="text/javascript" src="js/jquery.nivo.slider.pack.js"></script>
+<script type="text/javascript">
+$s(window).load(function() {
+    $s('#slider').nivoSlider({
+        effect: 'random', // Specify sets like: 'fold,fade,sliceDown'
+        slices: 15, // For slice animations
+        boxCols: 8, // For box animations
+        boxRows: 4, // For box animations
+        animSpeed: 500, // Slide transition speed
+        pauseTime: 3000, // How long each slide will show
+        startSlide: 0, // Set starting Slide (0 index)
+        directionNav: true, // Next & Prev navigation
+        directionNavHide: true, // Only show on hover
+        controlNav: true, // 1,2,3... navigation
+        controlNavThumbs: false, // Use thumbnails for Control Nav
+        pauseOnHover: true, // Stop animation while hovering
+        manualAdvance: false, // Force manual transitions
+ //       prevText: 'Prev', // Prev directionNav text
+//        nextText: 'Next', // Next directionNav text
+        randomStart: false, // Start on a random slide
+        beforeChange: function(){}, // Triggers before a slide transition
+        afterChange: function(){}, // Triggers after a slide transition
+        slideshowEnd: function(){}, // Triggers after all slides have been shown
+        lastSlide: function(){}, // Triggers when last slide is shown
+        afterLoad: function(){} // Triggers when slider has loaded
+    });
+});
+jQuery.noConflict();
+</script>
+</td>
+</tr>
+</table>
+            <!-- </div> -->
+            <div class="nivo-controlNav-bg"></div>
+        </div> 
+		<script type="text/javascript" src="js/jquery-1.6.1.min.js"></script>
+        <script type="text/javascript" src="js/jquery.nivo.slider.pack.js"></script>
+        <script type="text/javascript">
+        $(window).load(function() {
+            $('#slider').nivoSlider({
+				controlNav:true
+			});
+        });
+        </script>
+    </div><!-- END of templatemo_slider -->
+   <center>    <div id="templatemo_main">
+    	
+		<!-- <TABLE cellSpacing=0 cellPadding=0 width=980 align=center border=0>
+				<TBODY>
+					<TR>
+					<td height="300" width="100%" valign="top"><center>
+	<iframe align="center" frameborder="0" height="300" src="http://www.nonglek.net/countdowntimer/index.html" width="100%"></iframe></center></td>
+
+					</TR>
+				</TABLE> -->
+		
+<table cellSpacing=0 cellPadding=0 width=980 align=center border=0 bgcolor="#FFFFFF">
+<tr>
+<td width=980>
+
+				<TABLE cellSpacing=0 cellPadding=0 width=980 align=center border=0>
+				<TBODY>
+					<TR>
+					<td width="0" valign="top">
+														</td>
+						<!-- <TD vAlign="top" align="center" width="10" ></TD> -->
+<TD vAlign="top" align="center" width="100%" align="center">
+<!-- <TABLE cellSpacing=0 cellPadding=0 width=980 align=center border=0>
+
+				<TBODY>
+					<TR>
+					<td height="300" width="100%" valign="top"><center>
+	<iframe align="center" frameborder="0" height="300" src="http://www.nonglek.net/countdowntimer/index.html" width="100%"></iframe></center></td>
+
+					</TR>
+				</TABLE> -->
+
+									
+										<table width="100%" cellspacing="0" cellpadding="0" >
+											<tr>
+          <!-- <TD width="10" vAlign=top></TD> -->
+         <!--  <TD width="680" vAlign=top align=center>
+             <TR>
+					<td height="250" width="680" valign="top"><center>
+	<iframe align="center" frameborder="0" height="250" scrolling="no" src="http://www.nonglek.net/countdowntimer/index.html" width="680"></iframe></center></td> -->
+
+					</TR>
+
+		  <!-- Admin -->
+		
+								 									
+										<table width="100%" cellspacing="0" cellpadding="0" >
+											<tr>
+												<td >
+                        							<div >
+													﻿<center><table class='iconframe' cellpadding='0' cellspacing='0' width="680" border="0">
+<tbody>
+<tr>
+<td class='iconframe' width="680" bgcolor="#FFFFFF">
+<table  width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+				<tr>
+				<td width="10" height="10"><img src="images/pic/news-tl.gif"></td>
+				<td height="10" background="images/pic/news-tbg.png"></td>
+				<td width="10" height="10"><img src="images/pic/news-tr.gif"></td>
+				</tr>
+                  <tr>
+                    <td width="10" valign="top" height="100%" background="images/pic/news-left.png"></td>
+                    <td width="100%" valign="top"  ><!--<img src="templates/sun-nicha/images/menu/sun-nicha_news1.png" border="0">-->
+<TABLE width="660" cellSpacing=0 cellPadding=0 border=0 bgcolor="#FFFFFF">
+<br>
+  <TR>													<TD  width="605"   valign=top align="center">	
+
+															<TABLE  width=580 border=0 cellSpacing=0 cellPadding=0>
+															<TR>
+													<!--	<TD><font size="4"></b></font></td>-->
+															<!-- <td >ข่าวโดย : <FONT COLOR="#990000">admin</font><br><font color=#C3C3C3> 
+					11/มิ.ย./2557 </font>  <a href="createpdf.php?mo=news&id=107" target="_blank"><img src="images/pdf_button.png" border="0"></a> <a href="print.php?name=news&file=readprint&id=107" title="พิมพ์" onclick="window.open(this.href,'win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=650,height=580,directories=no,location=no'); return false;" rel="nofollow"><img src="images/printButton.png" border="0"></a> <A HREF="popup.php?name=sendmail&mo=news&id=107" onclick="return hs.htmlExpand(this, { contentId: 'highslide-html', objectType: 'iframe', objectWidth: 500, objectHeight: 200} )" class="highslide"><img src="images/emailButton.png" border="0"></a></td>
+					</tr> -->
+					<tr><td colspan="2">															</TD>
+															</TR>
+															<tr>
+															<TD align="center">
+															<A HREF="?name=news&file=readnews&id=107" >
+															<img width=580 height=200  src=icon/news_1402491402.jpg class=mysborder border=0 align=center></a>
+															</td>
+															</tr>
+															<tr>
+															<td colspan=""><img src="images/a.gif"><A HREF="?name=news&file=readnews&id=107" >โรงเรียนได้รับบริจาคหนังสือจาก ซีเอ็ดบุ๊คเซ็นเตอร์ สาขาบิ๊กซี ศรีสะเกษ</b></A>
+					 ( 1440 /  )<br>         ซีเอ็ดบุ๊คเซ็นเตอร์ สาขาบิ๊กซี ศรีสะเกษ  ในนามบริษัท ซีเอ็ดยูเคชั่น จำกัด(มหาชน) ได้บริจาคหนังสือตามโครงการหนังสือเพื่อน้อง ปี 9/2557  ให้โรงเรียนบ้านหนองเหล็ก จำนวน 373 เล่ม <A HREF="?name=news&file=readnews&id=107" ><font color="#0066FF">อ่านต่อ....</font></a>
+															</TD>
+															</TR>
+															<TR><TD height="3" ></TD></TR>
+															</TABLE>
+													</TD>
+</TD>
+			<tr>
+													<td colspan="2" align="right" ><A HREF="index.php?name=news&category=4" ><img src="images/admin/2_15.gif"></a>
+													</td>
+													</tr>
+</table>
+</td>
+                    <td width="10" align="center"  height="100%"  background="images/pic/news-right.png"></td>
+				</tr>
+				<tr>
+				<td width="10" height="10"><img src="images/pic/news-bl.gif"></td>
+				<td height="10" background="images/pic/news-bbg.png"></td>
+				<td width="10" height="10"><img src="images/pic/news-br.gif"></td>
+				</tr>
+            </table></td>
+</tr>
+</table>
+																										</div>
+												</td>
+											</tr>
+										</table>
+										<br>
+									
+																		<table cellspacing="0" cellpadding="0" width="100%">
+										<tr>
+										<td >
+										<div >
+												<center><table id="Table_01" width="680" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td colspan="3" class="titlecenter" background="templates/sun-nicha/images/menu/barcenter_01.png" width="680" height="55" alt="">ข่าวสารทั่วไป</td>
+	</tr>
+	<tr>
+		<td background="templates/sun-nicha/images/menu/barcenter_02.png" width="10" height="100%" alt=""></td>
+		<td width="660">
+											<table class='iconframe' cellpadding='0' cellspacing='0'>
+										<tbody>
+										<tr>
+										<td class='imageframe'>
+  													<TABLE width="660" align=center cellSpacing=0 cellPadding=0 border=0>
+
+  													<tr>
+													<TD width="10%" valign=top align="left" colspan="2">
+													<TABLE width="100%" align=center cellSpacing=0 cellPadding=0 border=0 >
+													<TR><TD colspan=2 height="6"></TD></TR>
+													<tr>
+													<!-- <TD width="10%" valign=top align="left" class="timemini"><font size="4"><b>13</b></font>
+															</td> -->
+															<!-- <td width="90%" align="left">โดย : <FONT COLOR="#990000"><B>admin</font><font color=#C3C3C3> 
+					13/เม.ย./2557 </font>&nbsp;&nbsp;<a href="createpdf.php?mo=news&id=104" target="_blank"><img src="images/pdf_button.png" border="0"></a>&nbsp;<a href="print.php?name=news&file=readprint&id=104" title="พิมพ์" onclick="window.open(this.href,'win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=770,height=580,directories=no,location=no'); return false;" rel="nofollow"><img src="images/printButton.png" border="0"></a>&nbsp;<A HREF="popup.php?name=sendmail&mo=news&id=104" onclick="return hs.htmlExpand(this, { contentId: 'highslide-html', objectType: 'iframe', objectWidth: 500, objectHeight: 200} )" class="highslide"><img src="images/emailButton.png" border="0"></a>&nbsp;&nbsp;<table ><tr><td  align=left><div class="hreview"><span  class="rating"><img src="modules/rater/img/5star.gif?x=21289356a2b16433fa54.30528328" alt="5 stars" />  ( <font color=#CC0000>5</font></span> / <font color=#CC0000><span class="reviewcount">2 </font> )</span></div></td></tr></table>
+															</TD> -->
+															</TR>
+														</table>
+														</td>
+														</tr>
+															<tr>
+															<TD align="center" width="30%">
+															<A HREF="?name=news&file=readnews&id=104" >
+															<img width=180 height=120 src=icon/news_1397393830.jpg class=mysborder border=0 align=center></a>
+															</td>
+															<td width="65%" valign="top">
+															<img src="images/a.gif"><A HREF="?name=news&file=readnews&id=104" ><b>ทัศนศึกษาแหล่งเรียนรู้ภาคตะวันออก</b></A>
+					 ( 1264 /  )<br>11-13 มีนาคม 2557 โรงเรียนนำนักเรียนทัศนศึกษาจังหวัดจันทบุรี, ระยอง,ชลบุรี  มีนักเรียนชั้นประถมศึกษาปีที่ 1-6 คณะครู กรรมการสถานศึกษาฯ ผู้ปกครองนักเรียนร่วมกิจกรรม  นักเรียนศึกษาแหล่งเรียนรู้น้ำตกพลิ้ว วัดเขาสุกิม อนุสาวรีย์ท่านสุนทรภู่ หาดแม่พิมพ์ หาดแม่ <A HREF="?name=news&file=readnews&id=104" ><font color="#0066FF">อ่านต่อ....</font></a>
+															</TD>
+															</TR>
+															</TR><TR><TD colspan=2 height="6"></TD></TR><TR><TD colspan=2 height="1" class="dotline"></TD></TR>
+													<tr>
+													<TD width="10%" valign=top align="left" colspan="2">
+													<TABLE width="100%" align=center cellSpacing=0 cellPadding=0 border=0 >
+													<TR><TD colspan=2 height="6"></TD></TR>
+													<tr>
+													<!-- <TD width="10%" valign=top align="left" class="timemini"><font size="4"><b>24</b></font>
+															</td> -->
+															<!-- <td width="90%" align="left">โดย : <FONT COLOR="#990000"><B>admin</font><font color=#C3C3C3> 
+					24/มี.ค./2557 </font>&nbsp;&nbsp;<a href="createpdf.php?mo=news&id=103" target="_blank"><img src="images/pdf_button.png" border="0"></a>&nbsp;<a href="print.php?name=news&file=readprint&id=103" title="พิมพ์" onclick="window.open(this.href,'win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=770,height=580,directories=no,location=no'); return false;" rel="nofollow"><img src="images/printButton.png" border="0"></a>&nbsp;<A HREF="popup.php?name=sendmail&mo=news&id=103" onclick="return hs.htmlExpand(this, { contentId: 'highslide-html', objectType: 'iframe', objectWidth: 500, objectHeight: 200} )" class="highslide"><img src="images/emailButton.png" border="0"></a>&nbsp;&nbsp;<table ><tr><td  align=left><div class="hreview"><span  class="rating"><img src="modules/rater/img/3star.gif?x=21361856a2b164342771.12526023" alt="3 stars" />  ( <font color=#CC0000>3</font></span> / <font color=#CC0000><span class="reviewcount">1 </font> )</span></div></td></tr></table>
+															</TD> -->
+															</TR>
+														</table>
+														</td>
+														</tr>
+															<tr>
+															<TD align="center" width="30%">
+															<A HREF="?name=news&file=readnews&id=103" >
+															<img width=180 height=120 src=icon/news_1395664815.jpg class=mysborder border=0 align=center></a>
+															</td>
+															<td width="65%" valign="top">
+															<img src="images/a.gif"><A HREF="?name=news&file=readnews&id=103" ><b>กิจกรรมเข้าค่ายลูกเสือสามัญ ประจำปีการศึกษา 2556</b></A>
+					 ( 1082 /  )<br>     กลุ่มเครือข่ายพัฒนาคุณภาพการศึกษาที่ 3  จัดกิจกรรมเข้าค่ายลูกเสือสามัญ ประจำปีการศึกษา 2556  ในระหว่างวันที่ 27-28 กุมภาพันธ์ 2557  โดยโรงเรียนบ้านหนองเหล็ก  นำลูกเสือเข้ากิจกรรมครั้งนี้ จำนวน  26  คน ณ ค่ายลูกเสือชั่วคราว อบต.ปะอาว  ต.ปะอาว  อ.อุทุม <A HREF="?name=news&file=readnews&id=103" ><font color="#0066FF">อ่านต่อ....</font></a>
+															</TD>
+															</TR>
+															</TR><TR><TD colspan=2 height="6"></TD></TR><TR><TD colspan=2 height="1" class="dotline"></TD></TR>
+																								
+																			</tr>
+													<tr>
+													<td align="left"><A HREF="modules/rss/news.xml" ><img src="images/rss.jpg"></a><td  align="right"><A HREF="index.php?name=news&category=2" ><img src="images/admin/2_15.gif"></a></td>
+													</tr>
+													</table>
+											</td>
+											</tr>
+											</table>
+			</td>
+		<td background="templates/sun-nicha/images/menu/barcenter_04.png" width="10" height="100%" alt=""></td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			<img src="templates/sun-nicha/images/menu/barcenter_05.png" width="680" height="25" alt=""></td>
+	</tr>
+</table>
+		<center><table id="Table_01" width="680" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td colspan="3" class="titlecenter" background="templates/sun-nicha/images/menu/barcenter_01.png" width="680" height="55" alt="">การอบรม/ศึกษาดูงาน</td>
+	</tr>
+	<tr>
+		<td background="templates/sun-nicha/images/menu/barcenter_02.png" width="10" height="100%" alt=""></td>
+		<td width="660">
+	﻿<table class='iconframe' cellpadding='0' cellspacing='0'>
+										<tbody>
+										<tr>
+										<td class='imageframe'>
+  													<TABLE width="660" align=center cellSpacing=0 cellPadding=0 border=0>
+ 
+  <TR>													<TD  width="30%"   valign=top align="left">	
+
+															<TABLE  border=0 cellSpacing=0 cellPadding=0>
+															<TR>
+													<!--	<TD><font size="4"></b></font></td>-->
+															<!-- <td >ข่าวโดย : <FONT COLOR="#990000">admin</font><br><font color=#C3C3C3> 
+					25/มิ.ย./2557 </font>  <a href="createpdf.php?mo=news&id=109" target="_blank"><img src="images/pdf_button.png" border="0"></a> <a href="print.php?name=news&file=readprint&id=109" title="พิมพ์" onclick="window.open(this.href,'win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=770,height=580,directories=no,location=no'); return false;" rel="nofollow"><img src="images/printButton.png" border="0"></a> <A HREF="popup.php?name=sendmail&mo=news&id=109" onclick="return hs.htmlExpand(this, { contentId: 'highslide-html', objectType: 'iframe', objectWidth: 500, objectHeight: 200} )" class="highslide"><img src="images/emailButton.png" border="0"></a></td>
+					</tr> -->
+					<tr><td colspan="2">															</TD>
+															</TR>
+															<tr>
+															<TD align="center">
+															<A HREF="?name=news&file=readnews&id=109" >
+															<img width=170 height=120  src=icon/news_1403654952.jpg class=mysborder border=0 align=center></a>
+															</td>
+															</tr>
+															<tr>
+															<td colspan="2" ><img src="images/a.gif"><A HREF="?name=news&file=readnews&id=109" >อบรมเชิงปฏิบัติการเทคนิคการแก้ปัญหาทางคณิตศาสตร์ในชีวิตประจำวันครูผู้สอนคณิตศ่สตร์ชั้นป.6</b></A>
+					 ( 867 /  )<br>    นางพรพิไล  ไชยพรรณา  อบรมเชิงปฏิบัติการเทคนิคการแก้ปัญหาทางคณิตศาสตร์ในชีวิตประจำวันครูผู้สอนคณิตศ่สตร์ชั้นป.6 <A HREF="?name=news&file=readnews&id=109" ><font color="#0066FF">อ่านต่อ....</font></a>
+															</TD>
+															</TR>
+															<TR><TD height="3" ></TD></TR>
+															</TABLE>
+													</TD>
+</TD>													<TD  width="30%"   valign=top align="left">	
+
+															<TABLE  border=0 cellSpacing=0 cellPadding=0>
+															<TR>
+													<!--	<TD><font size="4"></b></font></td>-->
+															<!-- <td >ข่าวโดย : <FONT COLOR="#990000">admin</font><br><font color=#C3C3C3> 
+					25/มิ.ย./2557 </font>  <a href="createpdf.php?mo=news&id=108" target="_blank"><img src="images/pdf_button.png" border="0"></a> <a href="print.php?name=news&file=readprint&id=108" title="พิมพ์" onclick="window.open(this.href,'win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=770,height=580,directories=no,location=no'); return false;" rel="nofollow"><img src="images/printButton.png" border="0"></a> <A HREF="popup.php?name=sendmail&mo=news&id=108" onclick="return hs.htmlExpand(this, { contentId: 'highslide-html', objectType: 'iframe', objectWidth: 500, objectHeight: 200} )" class="highslide"><img src="images/emailButton.png" border="0"></a></td>
+					</tr> -->
+					<tr><td colspan="2">															</TD>
+															</TR>
+															<tr>
+															<TD align="center">
+															<A HREF="?name=news&file=readnews&id=108" >
+															<img width=170 height=120  src=icon/news_1403654741.jpg class=mysborder border=0 align=center></a>
+															</td>
+															</tr>
+															<tr>
+															<td colspan="2" ><img src="images/a.gif"><A HREF="?name=news&file=readnews&id=108" >พัฒนาทักษะภาษาอังกฤษสำหรับครูผู้สอน</b></A>
+					 ( 809 /  )<br>    นางมาลา  แสงสิงห์  เข้ารับการอบรม  พัฒนาทักษะภาษาอังกฤษสำหรับครูผู้สอน   <A HREF="?name=news&file=readnews&id=108" ><font color="#0066FF">อ่านต่อ....</font></a>
+															</TD>
+															</TR>
+															<TR><TD height="3" ></TD></TR>
+															</TABLE>
+													</TD>
+</TD>													<TD  width="30%"   valign=top align="left">	
+
+															<TABLE  border=0 cellSpacing=0 cellPadding=0>
+															<TR>
+													<!--	<TD><font size="4"></b></font></td>-->
+															<!-- <td >ข่าวโดย : <FONT COLOR="#990000">admin</font><br><font color=#C3C3C3> 
+					14/เม.ย./2557 </font>  <a href="createpdf.php?mo=news&id=105" target="_blank"><img src="images/pdf_button.png" border="0"></a> <a href="print.php?name=news&file=readprint&id=105" title="พิมพ์" onclick="window.open(this.href,'win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=770,height=580,directories=no,location=no'); return false;" rel="nofollow"><img src="images/printButton.png" border="0"></a> <A HREF="popup.php?name=sendmail&mo=news&id=105" onclick="return hs.htmlExpand(this, { contentId: 'highslide-html', objectType: 'iframe', objectWidth: 500, objectHeight: 200} )" class="highslide"><img src="images/emailButton.png" border="0"></a></td>
+					</tr> -->
+					<tr><td colspan="2">															</TD>
+															</TR>
+															<tr>
+															<TD align="center">
+															<A HREF="?name=news&file=readnews&id=105" >
+															<img width=170 height=120  src=icon/news_1397448578.jpg class=mysborder border=0 align=center></a>
+															</td>
+															</tr>
+															<tr>
+															<td colspan="2" ><img src="images/a.gif"><A HREF="?name=news&file=readnews&id=105" >อบรมเตรียมความพร้อมรับการประเมินภายนอก</b></A>
+					 ( 1075 /  )<br>        การอบรมเตรียมความพร้อมรับการประเมินภายนอก ณ รร.สุนีย์แกรนด์ จ.อุบลราชธานี <A HREF="?name=news&file=readnews&id=105" ><font color="#0066FF">อ่านต่อ....</font></a>
+															</TD>
+															</TR>
+															<TR><TD height="3" ></TD></TR>
+															</TABLE>
+													</TD>
+</TR><TR><TD colspan=2 height="1" bgcolor="#ffffff"></TD></TR>													</tr>
+													<tr>
+													<td align="left"><A HREF="modules/rss/news.xml" ><img src="images/rss.jpg"></a><td  align="right"><A HREF="index.php?name=news&category=3" ><img src="images/admin/2_15.gif"></a></td>
+													</tr>
+													</table>
+											</td>
+											</tr>
+											</table>
+			</td>
+		<td background="templates/sun-nicha/images/menu/barcenter_04.png" width="10" height="100%" alt=""></td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			<img src="templates/sun-nicha/images/menu/barcenter_05.png" width="680" height="25" alt=""></td>
+	</tr>
+</table>
+		<center><table id="Table_01" width="680" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td colspan="3" class="titlecenter" background="templates/sun-nicha/images/menu/barcenter_01.png" width="680" height="55" alt="">เผยแพร่ download</td>
+	</tr>
+	<tr>
+		<td background="templates/sun-nicha/images/menu/barcenter_02.png" width="10" height="100%" alt=""></td>
+		<td width="660">
+	<TABLE width="660" align=center cellSpacing=0 cellPadding=0 border=0 >
+<tr>
+<td>
+ <table width="100%" cellspacing="0" cellpadding="5" >
+  <tr >
+	<td>
+	 <table width="100%" cellspacing="0" cellpadding="0" class="grids">
+		
+  <TR class="odd">												<TD width="100%"  align="left">	
+															<IMG SRC="images/admin/open.gif" BORDER="0" ALIGN="absmiddle"><A HREF="?name=download&file=readdownload&id=16" ><font color="#990066"><B>[ 28/มี.ค./2557 ] </font><font color="#0066FF">เทมเพลต 2 คอลัมน์ สำหรับ Atomymaxsite2.5_utf8 แบบที่ 9  (มีเมนูดรอปดาวน์)</A></font></B>
+					(อ่าน : 468 / ดาวน์โหลด : 188 ) โดย admin 
+													</TD>
+
+</TR><TR  onmouseover="this.style.backgroundColor='#FFF0DF'" onmouseout="this.style.backgroundColor='#ffffff'"  >												<TD width="100%"  align="left">	
+															<IMG SRC="images/admin/open.gif" BORDER="0" ALIGN="absmiddle"><A HREF="?name=download&file=readdownload&id=15" ><font color="#990066"><B>[ 28/มี.ค./2557 ] </font><font color="#0066FF">เทมเพลต 2 คอลัมน์ สำหรับ Atomymaxsite2.5_utf8 แบบที่ 8</A></font></B>
+					(อ่าน : 336 / ดาวน์โหลด : 139 ) โดย admin 
+													</TD>
+
+</TR><TR class="odd">												<TD width="100%"  align="left">	
+															<IMG SRC="images/admin/open.gif" BORDER="0" ALIGN="absmiddle"><A HREF="?name=download&file=readdownload&id=14" ><font color="#990066"><B>[ 18/มี.ค./2557 ] </font><font color="#0066FF">เทมเพลต  2 คอลัมน์ สำหรับ Atomymaxsite2.5_utf8 แบบที่ 7 (มีเมนูดรอปดาวน์)</A></font></B>
+					(อ่าน : 365 / ดาวน์โหลด : 142 ) โดย admin 
+													</TD>
+
+</TR><TR  onmouseover="this.style.backgroundColor='#FFF0DF'" onmouseout="this.style.backgroundColor='#ffffff'"  >												<TD width="100%"  align="left">	
+															<IMG SRC="images/admin/open.gif" BORDER="0" ALIGN="absmiddle"><A HREF="?name=download&file=readdownload&id=12" ><font color="#990066"><B>[ 23/ม.ค./2557 ] </font><font color="#0066FF">เทมเพลต 2 คอลัมน์ สำหรับ Atomymaxsite2.5_utf8 แบบที่ 6</A></font></B>
+					(อ่าน : 394 / ดาวน์โหลด : 146 ) โดย admin 
+													</TD>
+
+</TR></table>
+													<td>
+													</tr>
+													<tr>
+													<td align="right"><A HREF="index.php?name=download" ><img src="images/admin/2_15.gif"></a></td>
+													</tr>
+													</table>
+													</td>
+													</tr>
+													</table>
+
+
+
+			</td>
+		<td background="templates/sun-nicha/images/menu/barcenter_04.png" width="10" height="100%" alt=""></td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			<img src="templates/sun-nicha/images/menu/barcenter_05.png" width="680" height="25" alt=""></td>
+	</tr>
+</table>
+		<center><table id="Table_01" width="680" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td colspan="3" class="titlecenter" background="templates/sun-nicha/images/menu/barcenter_01.png" width="680" height="55" alt="">ข่าวจัดซื้อจัดจ้าง</td>
+	</tr>
+	<tr>
+		<td background="templates/sun-nicha/images/menu/barcenter_02.png" width="10" height="100%" alt=""></td>
+		<td width="660">
+	<table class='iconframe' cellpadding='0' cellspacing='0'>
+										<tbody>
+										<tr>
+										<td class='imageframe'>
+  													<TABLE width="660" align=center cellSpacing=0 cellPadding=0 border=0>
+
+ 
+
+
+  <TR onmouseover="this.style.backgroundColor='#FFF0DF'" onmouseout="this.style.backgroundColor='#FFFFFF'">
+												<TD valign=top height="20" align="left" >
+												<div class="">
+															<IMG SRC="images/17.png" BORDER="0" ALIGN="absmiddle">
+															<A HREF="index.php?name=news&file=readnews&id=112" target="_blank" name="ประกาศสอบราคาจ้างปรับปรุงระบบไฟฟ้า " ><font color="#990066"><B>[ 23/ม.ค./2558 ] </font>ประกาศสอบราคาจ้างปรับปรุงระบบไฟฟ้า </A></B>
+					( 498 /  ) โดย admin 
+												</div>
+													</TD></tr>
+
+<TR onmouseover="this.style.backgroundColor='#FFF0DF'" onmouseout="this.style.backgroundColor='#FFFFFF'">
+												<TD valign=top height="20" align="left" >
+												<div class="">
+															<IMG SRC="images/17.png" BORDER="0" ALIGN="absmiddle">
+															<A HREF="index.php?name=news&file=readnews&id=111" target="_blank" name="ประกาศสอบราคาจ้างปรับปรุงระบบไฟฟ้า " ><font color="#990066"><B>[ 12/ม.ค./2558 ] </font>ประกาศสอบราคาจ้างปรับปรุงระบบไฟฟ้า </A></B>
+					( 546 /  ) โดย admin 
+												</div>
+													</TD></tr>
+
+<TR onmouseover="this.style.backgroundColor='#FFF0DF'" onmouseout="this.style.backgroundColor='#FFFFFF'">
+												<TD valign=top height="20" align="left" >
+												<div class="">
+															<IMG SRC="images/17.png" BORDER="0" ALIGN="absmiddle">
+															<A HREF="index.php?name=news&file=readnews&id=110" target="_blank" name="ประกาศสอบราคาจ้างปรับปรุงซ่อมแซมอาคารเรียน อาคารประกอบและสิ่งก่อสร้างอื่น" ><font color="#990066"><B>[ 12/ม.ค./2558 ] </font>ประกาศสอบราคาจ้างปรับปรุงซ่อมแซมอาคารเรียน อาคารประกอบและสิ่งก่อสร้างอื่น</A></B>
+					( 556 /  ) โดย admin 
+												</div>
+													</TD></tr>
+
+													<tr>
+													<td colspan="2" align="right" ><A HREF="index.php?name=news&category=5" ><img src="images/admin/2_15.gif"></a>
+													</td>
+													</tr>
+</table>
+</td>
+</tr>
+</table>
+			</td>
+		<td background="templates/sun-nicha/images/menu/barcenter_04.png" width="10" height="100%" alt=""></td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			<img src="templates/sun-nicha/images/menu/barcenter_05.png" width="680" height="25" alt=""></td>
+	</tr>
+</table>
+		<center><table id="Table_01" width="680" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td colspan="3" class="titlecenter" background="templates/sun-nicha/images/menu/barcenter_01.png" width="680" height="55" alt="">กระดานถามตอบ</td>
+	</tr>
+	<tr>
+		<td background="templates/sun-nicha/images/menu/barcenter_02.png" width="10" height="100%" alt=""></td>
+		<td width="660">
+	﻿	
+
+<center><TABLE cellSpacing=0 cellPadding=5 width="660" border=0 bgcolor="#FFFFFF">
+      <TBODY>
+        <TR>
+          <TD width="660" vAlign=top align="center"> 
+<BR>
+<div align="right"><B><IMG SRC="images/icon/icon_folder.gif" WIDTH="16" HEIGHT="16" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=webboard">รายการกระทู้ทั้งหมด</A>     <IMG SRC="images/icon/icon_add.gif" WIDTH="16" HEIGHT="16" BORDER="0" ALIGN="absmiddle"> <A HREF="?name=webboard&file=post_cat">ตั้งกระทู้ใหม่ </A></B>  </div>
+<BR>
+
+
+<table width="100%"  align="center" border="0" cellspacing="0" cellpadding="0" class="grids">
+<tr class="odd">
+	<td  width="60%"><CENTER><B>หัวข้อ (อ่าน/ตอบ)</B></CENTER></td>
+	<td width="15%"><CENTER><B>โดย</B></CENTER></td>
+	<td width="25%"><CENTER><B>วันที่</B></CENTER></td>
+</tr>
+
+<tr  onmouseover="this.style.backgroundColor='#FFF0DF'" onmouseout="this.style.backgroundColor='#ffffff'"  ><td  align=left><IMG SRC="images/icon/dok.gif" BORDER="0"  hspace='5' ALIGN="absmiddle"><B>00150 : </B> <A HREF="?name=webboard&file=read&id=150" target="_blank">ครูครับ อยากได้ ธีมที่เป็นแบบของ รร. nonglek</A>  <FONT FACE="tahoma" COLOR="#808080">(27/1)</FONT></td>
+<td width="120"><CENTER><B><FONT COLOR="#6600FF">ครูเอ็กซ์</FONT></B></CENTER></td>
+<td width="120"><CENTER><FONT COLOR="#339900">15 มิ.ย. 2558 : 11:19</FONT></CENTER></td></tr><tr class="odd"><td  align=left><IMG SRC="images/icon/dok.gif" BORDER="0"  hspace='5' ALIGN="absmiddle"><B>00149 : </B> <A HREF="?name=webboard&file=read&id=149" target="_blank">ขออนุญาติรบกวนสอบถามเกียวกับ modules block &quot;เผยแพร่ download&quot;</A>  <FONT FACE="tahoma" COLOR="#808080">(32/2)</FONT></td>
+<td width="120"><CENTER><B><FONT COLOR="#6600FF"><IMG SRC="images/human.gif" BORDER="0" ALIGN="absmiddle"> <B><FONT COLOR="#FF0066">janngam</FONT></B></CENTER></td>
+<td width="120"><CENTER><FONT COLOR="#339900">4 พ.ค. 2558 : 18:34</FONT></CENTER></td></tr><tr  onmouseover="this.style.backgroundColor='#FFF0DF'" onmouseout="this.style.backgroundColor='#ffffff'"  ><td  align=left><IMG SRC="images/icon/dok.gif" BORDER="0"  hspace='5' ALIGN="absmiddle"><B>00147 : </B> <A HREF="?name=webboard&file=read&id=147" target="_blank">สอบถามหน่อยครับ อาจารย์</A>  <FONT FACE="tahoma" COLOR="#808080">(12/1)</FONT></td>
+<td width="120"><CENTER><B><FONT COLOR="#6600FF"><IMG SRC="images/human.gif" BORDER="0" ALIGN="absmiddle"> <B><FONT COLOR="#FF0066">jacknu</FONT></B></CENTER></td>
+<td width="120"><CENTER><FONT COLOR="#339900">27 ก.พ. 2558 : 11:43</FONT></CENTER></td></tr><tr class="odd"><td  align=left><IMG SRC="images/icon/dok.gif" BORDER="0"  hspace='5' ALIGN="absmiddle"><B>00146 : </B> <A HREF="?name=webboard&file=read&id=146" target="_blank">จะแก้หัว Header ที่มันว่างมากเกินแก้ยังงัยครับท่าน</A>  <FONT FACE="tahoma" COLOR="#808080">(19/2)</FONT></td>
+<td width="120"><CENTER><B><FONT COLOR="#6600FF"><IMG SRC="images/human.gif" BORDER="0" ALIGN="absmiddle"> <B><FONT COLOR="#FF0066">jacknu</FONT></B></CENTER></td>
+<td width="120"><CENTER><FONT COLOR="#339900">13 ม.ค. 2558 : 14:05</FONT></CENTER></td></tr><tr  onmouseover="this.style.backgroundColor='#FFF0DF'" onmouseout="this.style.backgroundColor='#ffffff'"  ><td  align=left><IMG SRC="images/icon/dok.gif" BORDER="0"  hspace='5' ALIGN="absmiddle"><B>00145 : </B> <A HREF="?name=webboard&file=read&id=145" target="_blank">ผมจะกำหนด slide เป็น 960x300 เพื่อให้สามารถอัพโหลดภาพได้</A>  <FONT FACE="tahoma" COLOR="#808080">(20/1)</FONT></td>
+<td width="120"><CENTER><B><FONT COLOR="#6600FF"><IMG SRC="images/human.gif" BORDER="0" ALIGN="absmiddle"> <B><FONT COLOR="#FF0066">jacknu</FONT></B></CENTER></td>
+<td width="120"><CENTER><FONT COLOR="#339900">28 พ.ย. 2557 : 11:14</FONT></CENTER></td></tr><tr class="odd"><td  align=left><IMG SRC="images/icon/dok.gif" BORDER="0"  hspace='5' ALIGN="absmiddle"><B>00144 : </B> <A HREF="?name=webboard&file=read&id=144" target="_blank">Tamplate Sunblack</A>  <FONT FACE="tahoma" COLOR="#808080">(22/0)</FONT></td>
+<td width="120"><CENTER><B><FONT COLOR="#6600FF"><IMG SRC="images/human.gif" BORDER="0" ALIGN="absmiddle"> <B><FONT COLOR="#FF0066">batyoo</FONT></B></CENTER></td>
+<td width="120"><CENTER><FONT COLOR="#339900">22 พ.ย. 2557 : 15:53</FONT></CENTER></td></tr></table>				<BR>
+
+		  </td>
+        </TR>
+      </TBODY>
+    </TABLE>
+
+
+
+			</td>
+		<td background="templates/sun-nicha/images/menu/barcenter_04.png" width="10" height="100%" alt=""></td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			<img src="templates/sun-nicha/images/menu/barcenter_05.png" width="680" height="25" alt=""></td>
+	</tr>
+</table>
+	                         				<div>
+										</td>
+										</tr>
+									</table>
+										<br>
+																		
+									
+				</td>
+
+
+							        <TD width="10" vAlign=top></TD>
+          <TD width="270" vAlign=top align=left>
+									
+							<table cellspacing="0" cellpadding="0" width="270" >
+							<tr>
+								<td width="270" valign="top"  align="center">
+									<center><table id="Table_01" width="280" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td colspan="3" class="titleleft" background="templates/sun-nicha/images/menu/barleft_01.png" width="280" height="52" alt="">ทำเนียบบุคลากร</td>
+	</tr>
+	<tr>
+		<td background="templates/sun-nicha/images/menu/barleft_02.png" width="7" height="100%" alt=""></td>
+		<td >
+	
+<table width="266" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td align="center" bgcolor="#FFFFFF">
+<table class='iconframe' cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+<tr>
+  <td class='imageframe' align="center" bgcolor="#FFFFFF"> <A HREF="images/personnel/1352740195_1341821301_sunthorn.jpg" class="highslide" onclick="return hs.expand(this)">
+	  <img src='images/personnel/thb_1352740195_1341821301_sunthorn.jpg' /></a></td>
+  <td class='shadow_right'><div class='shadow_top_right'></div></td>
+</tr>
+<tr>
+  <td class='shadow_bottom'><div class='shadow_bottom_left'></div></td>
+  <td class='shadow_bottom_right'></td>
+</tr>
+</table>
+</td>
+</tr>
+	 <tr >
+	  <td align="center" bgcolor="#FFFFFF"><A HREF="popup.php?name=personnel&file=popdetail&pid=1" onclick="return hs.htmlExpand(this, { contentId: 'highslide-html', objectType: 'iframe', objectWidth: 500, objectHeight: 250} )" class="highslide">นายสุนทร   ปุณะปรุง<br><b><font color="#CC0000">ผู้อำนวยการโรงเรียน</b><br>บริหารสถานศึกษา</font></a></td>
+
+</tr>
+
+	<tr>
+	<td>
+	<table cellspacing="0" cellpadding="0" width="266" border="0">
+	<tr class=off onmouseover=this.className="on" onmouseout=this.className="off"><td><ul id="menu" style="list-style:none; padding:0;height:24px;"><li><A HREF="?name=personnel&file=gdetail&id=1&op=gdetail&gr=ทำเนียบบุคลากร"><B>ทำเนียบบุคลากร</a></li></ul></td></tr><tr class=off onmouseover=this.className="on" onmouseout=this.className="off"><td><ul id="menu" style="list-style:none; padding:0;height:24px;"><li><A HREF="?name=personnel&file=gdetail&id=7&op=gdetail&gr=กลุ่มบริหารงานวิชาการ"><B>กลุ่มบริหารงานวิชาการ</a></li></ul></td></tr><tr class=off onmouseover=this.className="on" onmouseout=this.className="off"><td><ul id="menu" style="list-style:none; padding:0;height:24px;"><li><A HREF="?name=personnel&file=gdetail&id=8&op=gdetail&gr=กลุ่มบริหารงบประมาณ"><B>กลุ่มบริหารงบประมาณ</a></li></ul></td></tr><tr class=off onmouseover=this.className="on" onmouseout=this.className="off"><td><ul id="menu" style="list-style:none; padding:0;height:24px;"><li><A HREF="?name=personnel&file=gdetail&id=9&op=gdetail&gr=กลุ่มบริหารบุคคล"><B>กลุ่มบริหารบุคคล</a></li></ul></td></tr><tr class=off onmouseover=this.className="on" onmouseout=this.className="off"><td><ul id="menu" style="list-style:none; padding:0;height:24px;"><li><A HREF="?name=personnel&file=gdetail&id=10&op=gdetail&gr=กลุ่มบริหารทั่วไป"><B>กลุ่มบริหารทั่วไป</a></li></ul></td></tr><tr bgcolor="#ffffff">
+<td  align="right" bgcolor="#ffffff"><A HREF="index.php?name=personnel&file=detail" ><img src="images/admin/2_15.gif"></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+			</td>
+		<td background="templates/sun-nicha/images/menu/barleft_04.png" width="7" height="100%" alt=""></td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			<img src="templates/sun-nicha/images/menu/barleft_05.png" width="280" height="20" alt=""></td>
+	</tr>
+</table>
+		<center><table id="Table_01" width="280" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td colspan="3" class="titleleft" background="templates/sun-nicha/images/menu/barleft_01.png" width="280" height="52" alt="">เว็บหน่วยงาน</td>
+	</tr>
+	<tr>
+		<td background="templates/sun-nicha/images/menu/barleft_02.png" width="7" height="100%" alt=""></td>
+		<td >
+	<script language="JavaScript1.2">
+/*
+Fading Image Script 
+Dynamic Drive (www.dynamicdrive.com)
+*/
+
+function makevisible(cur,which){
+  if (which==0)
+    cur.filters.alpha.opacity=100
+  else
+    cur.filters.alpha.opacity=60
+}
+</script>
+
+ <center><table width="266" cellspacing="0" cellpadding="0" border="0" bgcolor="#FFFFFF">
+<tr>
+<td width="259" align="center">
+			<table width="259" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#FFFFFF">
+
+				<tr >
+                    <td height="60"   bgcolor="#FFFFFF" ><div align="center" ><a href="http://www.moe.go.th/moe/th/home/home.php" target="_blank"><img src="images/banner/moe.jpg" alt="" width="259" height="60"  style=filter:alpha(opacity=60) onMouseover=makevisible(this,0) onMouseout=makevisible(this,1)></a></div></td>
+                  </tr>
+				  <tr >
+                    <td height="60"   bgcolor="#FFFFFF" ><div align="center" ><a href="http://www.obec.go.th" target="_blank"><img src="images/banner/obec.jpg" alt="" width="259" height="60"  style=filter:alpha(opacity=60) onMouseover=makevisible(this,0) onMouseout=makevisible(this,1)></a></div></td>
+                  </tr>
+                  <tr >
+                    <td height="60"  bgcolor="#FFFFFF" ><div align="center" ><a href="http://www2.osea2.go.th/index.php" target="_blank"><img src="images/banner/osea2.jpg" alt="" width="259" height="60" style=filter:alpha(opacity=60) onMouseover=makevisible(this,0) onMouseout=makevisible(this,1) ></a></div></td>
+                  </tr>
+				   <tr >
+                    <td height="60"  bgcolor="#FFFFFF" ><div align="center" ><a href="http://eoffice.osea2.go.th/" target="_blank"><img src="images/banner/eoffice.jpg" alt="" width="259" height="60" style=filter:alpha(opacity=60) onMouseover=makevisible(this,0) onMouseout=makevisible(this,1) ></a></div></td>
+                  </tr>
+				   <tr >
+                    <td height="60"  bgcolor="#FFFFFF" ><div align="center" ><a href="http://www.benchapoom.com/" target="_blank"><img src="images/banner/ben.gif" alt="" width="259" height="60" style=filter:alpha(opacity=60) onMouseover=makevisible(this,0) onMouseout=makevisible(this,1) ></a></div></td>
+                  </tr>
+				   <!-- <tr >
+                    <td height="60"  bgcolor="#FFFFFF" ><div align="center" ><a href="http://www.google.com/a/nonglek.org" target="_blank"><img src="images/banner/mail.gif" alt="" width="259" height="60" style=filter:alpha(opacity=60) onMouseover=makevisible(this,0) onMouseout=makevisible(this,1) ></a></div></td>
+                  </tr>
+  	              <tr >
+                    <td height="60"  bgcolor="#FFFFFF" ><div align="center" ><a href="http://www.guruonline.in.th/" target="_blank"><img src="images/banner/guru.gif" alt="" width="259" height="60" style=filter:alpha(opacity=60) onMouseover=makevisible(this,0) onMouseout=makevisible(this,1) ></a></div></td>
+                  </tr>
+<tr >
+                    <td><center>
+	<a href="http://www.utqonline.com" target="_blank"><img height="60" src="http://www.utqonline.com/files/media/uploads/89/utq_banner.gif" width="259" /></a></center></td>	
+                  </tr> -->
+			</table>
+
+</td>
+</tr>
+</table></center>
+
+			</td>
+		<td background="templates/sun-nicha/images/menu/barleft_04.png" width="7" height="100%" alt=""></td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			<img src="templates/sun-nicha/images/menu/barleft_05.png" width="280" height="20" alt=""></td>
+	</tr>
+</table>
+		<center><table id="Table_01" width="280" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td colspan="3" class="titleleft" background="templates/sun-nicha/images/menu/barleft_01.png" width="280" height="52" alt="">สถิติผู้เยี่ยมชม</td>
+	</tr>
+	<tr>
+		<td background="templates/sun-nicha/images/menu/barleft_02.png" width="7" height="100%" alt=""></td>
+		<td >
+				<table width="266" border="0" cellspacing="0" cellpadding="0" height="3" bgcolor="#FFFFFF">
+
+			</table>
+			<table width="266" border="0" cellspacing="0" cellpadding="0" height="3" bgcolor="#FFFFFF">
+			<tr>
+			<td align="center"><img src="images/ip.gif"> <font color="#888888"><b>เริ่มนับ 6/พ.ย./2553</b>
+			</td>
+			</tr>
+
+<script language="javascript"> 
+<!-- 
+var state = 'none'; 
+
+function showhide(layer_ref) { 
+
+if (state == 'block') { 
+state = 'none'; 
+} 
+else { 
+state = 'block'; 
+} 
+if (document.all) { //IS IE 4 or 5 (or 6 beta) 
+eval( "document.all." + layer_ref + ".style.display = state"); 
+} 
+if (document.layers) { //IS NETSCAPE 4 or below 
+document.layers[layer_ref].display = state; 
+} 
+if (document.getElementById &&!document.all) { 
+hza = document.getElementById(layer_ref); 
+hza.style.display = state; 
+} 
+} 
+//--> 
+</script> 
+
+<center><table width="266" align=center border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF">
+   <tr>
+	<td width="266" height="20" colspan=2 align=center bgcolor="#FFFFFF"><b>ผู้ใช้งานขณะนี้ <b><font color="#CC0000">2</font> IP <font color="#0066CC">
+    </td></tr>
+	<tr>
+	<td>
+
+
+  <table width="266" cellpadding="0" cellspacing="0"  bgcolor="#FFFFFF">
+
+<tr>
+  <td>
+  <div align="center">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+  <tr>
+	<td  height="20"><img src="images/human.gif" border="0"> ขณะนี้</td>
+	<td ><div align="right">2 คน</div></td>
+  </tr>
+  <tr>
+	<td height="20"><img src="images/group2.gif" border="0"> สถิติวันนี้</td>
+	<td><div align="right">19 คน</div></td>
+  </tr>
+    <tr>
+	<td height="20"><img src="images/group2.gif" border="0"> สถิติเมื่อวานนี้ี้</td>
+	<td><div align="right">115 คน</div></td>
+  </tr>
+  <tr>
+	<td height="20"><img src="images/see.gif" border="0"> สถิติเดือนนี้</td>
+	<td><div align="right">1457 คน</div></td>
+  </tr>
+  <tr>
+	<td height="20"><img src="images/member2.gif" border="0"> สถิติปีนี้</td>
+	<td><div align="right">1457 คน</div></td>
+  </tr>
+  <tr>
+	<td height="20"><img src="images/group.gif" border="0"> สถิติทั้งหมด</td>
+	<td><div align="right">103284 คน</div></td>
+  </tr>
+    <tr>
+	<td width="266" height="20" colspan=2 align=center colspan="2"><b>IP ของท่านคือ <b><font color="#0066FF">208.87.139.67</font>
+    </td></tr>
+  </table>
+
+  </div>
+  </td>
+ </tr>
+</table>
+
+
+	</td>
+	</tr>
+	<tr>
+	<td width="266" height="20" colspan=2 align=center>
+			<img src="modules/useronline/styles/57chevy/0.gif" border="0"><img src="modules/useronline/styles/57chevy/1.gif" border="0"><img src="modules/useronline/styles/57chevy/0.gif" border="0"><img src="modules/useronline/styles/57chevy/3.gif" border="0"><img src="modules/useronline/styles/57chevy/2.gif" border="0"><img src="modules/useronline/styles/57chevy/8.gif" border="0"><img src="modules/useronline/styles/57chevy/4.gif" border="0"></td>
+</tr>
+	<tr>
+	<td width="266" height="20" colspan=2 align=center>
+	<a href="#div2" onclick="showhide('div2');"><font color="#3366FF">(Show/hide IP)</font></a></td>
+  </tr>
+  </table>
+<div id="div2" style="display: none;">
+<table border="0" cellspacing="0" cellpadding="0" >
+			<tr>
+			<td align="center"><font color="#888888"><b>
+  <table border="0" cellpadding="0" cellspacing="0" width="185">
+  
+<tr>
+	<td width="105" height="20" bgcolor="#FBF7E1">207.46.13<span style="color:red">.xxx</td><td width="95" bgcolor="#FBF7E1"><div align="right">23/ม.ค./2559</div></td>  </tr>
+	<tr>
+	<td width="105" height="20" bgcolor="#FBF7E1">208.87.139<span style="color:red">.xxx</td><td width="95" bgcolor="#FBF7E1"><div align="right">23/ม.ค./2559</div></td>  </tr>
+	
+  </table>
+
+</b>
+			</td>
+			</tr>
+			</table>
+
+</div>
+
+
+
+			</td>
+		<td background="templates/sun-nicha/images/menu/barleft_04.png" width="7" height="100%" alt=""></td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			<img src="templates/sun-nicha/images/menu/barleft_05.png" width="280" height="20" alt=""></td>
+	</tr>
+</table>
+		<center><table id="Table_01" width="280" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td colspan="3" class="titleleft" background="templates/sun-nicha/images/menu/barleft_01.png" width="280" height="52" alt="">ระบบสมาชิก</td>
+	</tr>
+	<tr>
+		<td background="templates/sun-nicha/images/menu/barleft_02.png" width="7" height="100%" alt=""></td>
+		<td >
+					<script language='JavaScript'>
+					function check_Form_login() {
+						if(document.checkForm2.user_login.value=='') {
+						alert('กรุณากรอก username ด้วยครับ') ;
+						document.checkForm2.user_login.focus() ;
+						return false ;
+						} else if(document.checkForm2.pwd_login.value=='') {
+							alert('กรุณากรอกรหัสผ่านที่ต้องการด้วยครับ') ;
+							document.checkForm2.pwd_login.focus() ;
+							return false ;
+						} else {
+						return true ;
+						}
+						}
+                      </script>
+
+		
+			<table width="266" border="0" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+			<tr>
+			<td colspan="3" align="left">
+			<img src="images/menu/graduatelogin.gif" width="150" height="30" />
+			<FORM ACTION='?name=member&file=login_check'  name='checkForm2' id='checkForm2' method='post' onsubmit='return check_Form_login()' ENCTYPE="multipart/form-data">
+				<TABLE width="266">
+				<TR>
+				<TD width='95' align='right' valign='top'>Username : </TD>
+				<TD width='100'><INPUT name='user_login' type='text' id='user_login' size='15'></TD>
+				</TR>
+				<TR>
+				<TD width='87' align='right'  valign='top'>Password : </TD>
+				<TD><input name='pwd_login' type='password' id='pwd_login' size='15'></TD>
+				</TR>
+				                 <tr>
+                 <td width='95' align='right' ><img src="capcha/val_img.php?width=60&height=25&characters=4" width="60" height="25" align="absmiddle" />                    </td>
+                    <td><input name="security_code" type="text" id="security_code" maxlength="6" size='15'/></td>
+                    </tr>
+                    					<TR align='right' valign='top'>
+					<TD colspan='2' align='center' valign='middle'><input name='submit' type='submit' value='เข้าระบบ'></TD>
+					</TR>
+					<TR align='right' valign='top'>
+					<TD colspan='2' align='center' valign='middle'><span class="style1"><a href='?name=member&file=index'> [ สมัครสมาชิก ] </a>  |  <a href='?name=member&file=forget_pwd'>[ ลืมรหัสผ่าน ]</a></span></TD>
+					</TR>
+					</TABLE>
+				</FORM>
+				</td>
+				</tr>
+				</table>
+
+
+
+<table border="0" cellpadding="0" cellspacing="0" width="266" bgcolor="#ffffff" >
+<tr><td width="266" bgcolor="#ffffff" colspan="2"><img src="images/admin/members[1].png" border="0"> สมาชิกทั้งหมด <font color="#FF0033">405 </font>คน</td></tr>
+<tr><td width="266" bgcolor="#ffffff" colspan="2"><img src="images/admin/i_member[1].gif" border="0"> สมาชิกที่กำลังออนไลน์ <font color="#FF0033">0 </font>คน</td></tr>
+
+</table>
+
+
+			</td>
+		<td background="templates/sun-nicha/images/menu/barleft_04.png" width="7" height="100%" alt=""></td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			<img src="templates/sun-nicha/images/menu/barleft_05.png" width="280" height="20" alt=""></td>
+	</tr>
+</table>
+		<center><table id="Table_01" width="280" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td colspan="3" class="titleleft" background="templates/sun-nicha/images/menu/barleft_01.png" width="280" height="52" alt="">คู่มือประชาชน</td>
+	</tr>
+	<tr>
+		<td background="templates/sun-nicha/images/menu/barleft_02.png" width="7" height="100%" alt=""></td>
+		<td >
+				<table cellspacing="0" cellpadding="0" width="266" border="0">
+			<tbody>
+			<tr class="off" onmouseover="this.className='on'" onmouseout="this.className='off'">
+            <!-- <td align="left" ><ul style="list-style:none; padding:0;height:24px;" id="menu" height="24"><li><a href="index.php">หน้าแรก</a></li></ul></td> -->
+			</tr>
+<tr class=off onmouseover=this.className="on" onmouseout=this.className="off"><td><ul id="menu" style="list-style:none; padding:0; height:24px;" ><li><a href=http://www.nonglek.net/UserFiles/files/Manual01.pdf target=_blank >การรับนักเรียน</a></li></ul></td></tr><tr class=off onmouseover=this.className="on" onmouseout=this.className="off"><td><ul id="menu" style="list-style:none; padding:0; height:24px;" ><li><a href=http://www.nonglek.net/UserFiles/files/Manual02.pdf target=_blank >การขอย้ายเข้าเรียน </a></li></ul></td></tr><tr class=off onmouseover=this.className="on" onmouseout=this.className="off"><td><ul id="menu" style="list-style:none; padding:0; height:24px;" ><li><a href=http://www.nonglek.net/UserFiles/files/Manual03.pdf target=_blank >การขอย้ายออกนักเรียน</a></li></ul></td></tr><tr class=off onmouseover=this.className="on" onmouseout=this.className="off"><td><ul id="menu" style="list-style:none; padding:0; height:24px;" ><li><a href=http://www.nonglek.net/UserFiles/files/Manual04.pdf target=_blank >การขอผ่อนผันเด็กเข้าเรียน</a></li></ul></td></tr><tr class=off onmouseover=this.className="on" onmouseout=this.className="off"><td><ul id="menu" style="list-style:none; padding:0; height:24px;" ><li><a href=http://www.nonglek.net/UserFiles/files/Manual05.pdf target=_blank >การขอลาออก</a></li></ul></td></tr><tr class=off onmouseover=this.className="on" onmouseout=this.className="off"><td><ul id="menu" style="list-style:none; padding:0; height:24px;" ><li><a href=http://www.nonglek.net/UserFiles/files/Manual06.pdf target=_blank >การขอเทียบโอนผลการเรียน</a></li></ul></td></tr><tr class=off onmouseover=this.className="on" onmouseout=this.className="off"><td><ul id="menu" style="list-style:none; padding:0; height:24px;" ><li><a href=http://www.nonglek.net/UserFiles/files/Manual07.pdf target=_blank >การขอใบแทนเอกสารทางการศึกษา</a></li></ul></td></tr><tr class=off onmouseover=this.className="on" onmouseout=this.className="off"><td><ul id="menu" style="list-style:none; padding:0; height:24px;" ><li><a href=http://www.nonglek.net/UserFiles/files/Manual08.pdf target=_blank >การขอใช้บริการด้านอาคารสถานที่ </a></li></ul></td></tr>			<tr class="off" onmouseover="this.className='on'" onmouseout="this.className='off'">
+           <!--  <td align="left"><ul style="list-style:none; padding:0;height:24px;" id="menu"><li><a href="index.php?name=admin"  title="Administrator" >Administrator</a></li></ul></td> -->
+			</tr>
+			</table>
+			
+
+
+
+			</td>
+		<td background="templates/sun-nicha/images/menu/barleft_04.png" width="7" height="100%" alt=""></td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			<img src="templates/sun-nicha/images/menu/barleft_05.png" width="280" height="20" alt=""></td>
+	</tr>
+</table>
+							</td>
+						</tr>
+						</table>
+						</td>
+									</td>
+			</tr>
+			</table>
+
+</td>
+						</tr>
+						</table>
+
+
+</td>
+</tr>
+									</table>
+
+</TR>
+</TBODY>
+</TABLE>
+
+        <div class="clear"></div>
+        
+    </div></center>
+<!-- END of templatemo_main -->
+</div><!-- END of templatemo_wrapper -->
+<div id="templatemo_bottom_wrapper">
+	<div id="templatemo_bottom">
+    	<div class="col one_fourth">
+            <h4>Web Links</h4>
+            <ul class="nobullet bottom_list"><h6>
+                <li><a href="http://www.moe.go.th/" target="_bank">กระทรวงศึกษาธิการ</a></li>
+                <li><a href="http://www.obec.go.th/" target="_bank">สพฐ.</a></li>
+                <li><a href="http://www.opdc.go.th/index.php/" target="_bank">กพร.</a></li>
+                <li><a href="http://www.ocsc.go.th/ocsc/th/" target="_bank">สำนักงาน ก.พ.</a></li>
+                <li><a href="http://www.ksp.or.th/ksp2013/" target="_bank">คุรุสภา</a></li>
+                <li><a href="http://www.niets.or.th/" target="_bank">สทศ.</a></li>
+                <li><a href="http://www.otep.go.th/" target="_bank">สกสค.</a></li>
+                <li><a href="http://www.onesqa.or.th/" target="_bank">สมศ.</a></li>
+				<li><a href="http://www.ipst.ac.th/" target="_bank">สสวท.</a></li>
+                <li><a href="http://www.onec.go.th/" target="_bank">สกศ.</a></li>
+                <li><a href="http://www.ssktco-op.com/" target="_bank">สหกรณ์ออมทรัพย์ครูศรีสะเกษ</a></li>
+				<li><a href="http://www.pao-sisaket.go.th/" target="_bank">อบจ.ศรีสะเกษ</a></li>
+                <li><a href="http://www.sisaket.go.th/" target="_bank">ศาลากลางจังหวัดศรีสะเกษ</a></li></h6>
+            </ul>
+        </div>
+    	<div class="col one_fourth">
+            <h4>Photo Gallery</h4>
+            <ul class="footer_gallery">
+            	<li><a href="templates/sun-nicha/images/gallery/templatemo_image_06_l.jpg"  rel="lightbox[portfolio]"><img src="templates/sun-nicha/images/gallery/templatemo_image_06.jpg" alt="image 6" /></a></li>
+                <li><a href="templates/sun-nicha/images/gallery/templatemo_image_07_l.jpg"  rel="lightbox[portfolio]"><img src="templates/sun-nicha/images/gallery/templatemo_image_07.jpg" alt="image 7" /></a></li>
+                <li><a href="templates/sun-nicha/images/gallery/templatemo_image_08_l.jpg"  rel="lightbox[portfolio]"><img src="templates/sun-nicha/images/gallery/templatemo_image_08.jpg" alt="image 8" /></a></li>
+                <li><a href="templates/sun-nicha/images/gallery/templatemo_image_09_l.jpg"  rel="lightbox[portfolio]"><img src="templates/sun-nicha/images/gallery/templatemo_image_09.jpg" alt="image 9" /></a></li>
+                <li><a href="templates/sun-nicha/images/gallery/templatemo_image_10_l.jpg"  rel="lightbox[portfolio]"><img src="templates/sun-nicha/images/gallery/templatemo_image_10.jpg" alt="image 10" /></a></li>
+                <li><a href="templates/sun-nicha/images/gallery/templatemo_image_11_l.jpg"  rel="lightbox[portfolio]"><img src="templates/sun-nicha/images/gallery/templatemo_image_11.jpg" alt="image 11" /></a></li>
+                <li><a href="templates/sun-nicha/images/gallery/templatemo_image_12_l.jpg"  rel="lightbox[portfolio]"><img src="templates/sun-nicha/images/gallery/templatemo_image_12.jpg" alt="image 12" /></a></li>
+                <li><a href="templates/sun-nicha/images/gallery/templatemo_image_13_l.jpg"  rel="lightbox[portfolio]"><img src="templates/sun-nicha/images/gallery/templatemo_image_13.jpg" alt="image 13" /></a></li>
+                <li><a href="templates/sun-nicha/images/gallery/templatemo_image_14_l.jpg"  rel="lightbox[portfolio]"><img src="templates/sun-nicha/images/gallery/templatemo_image_14.jpg" alt="image 14" /></a></li>
+
+              </ul>
+            <div class="clear"></div>
+            <a href="index.php?name=gallery" class="more">more</a>
+        </div>
+    	<div class="col one_fourth">
+    	<h4>โรงเรียน<a href="#" title="Κάντε κλικ στο κουμπί"  class="recent_post" >ในกลุ่มเครือข่าย</a></h4>
+           <ul class="nobullet bottom_list"><h6>
+                <li><a href="http://www.benchapoom.com/" target="_bank">เครือข่ายเบญจภูมิ</a></li>
+                <li><a href="http://www.khayungsin.com/" target="_bank">ร.ร.บ้านขะยูง(ขะยูงศิลป์ศึกษา)</a></li>
+                <li><a href="http://www.bantaeschool.com" target="_bank">ร.ร.บ้านแต้"ประชาบำรุง"</a></li>
+                <li><a href="http://www.banplabschool.com" target="_bank">ร.ร.บ้านพลับ</a></li>
+                <li><a href="http://www.nongyang.net" target="_bank">ร.ร.บ้านหนองยาง</a></li>
+                <li><a href="http://yabo.osea2.go.th/" target="_bank">ร.ร.บ้านยางบอน</a></li>
+                <li><a href="http://www.paaoschool.com" target="_bank">ร.ร.บ้านปะอาว</a></li>
+				<li><a href="http://www.alangschool.com" target="_bank">ร.ร.บ้านอะลาง</a></li>
+				<li><a>ร.ร.บ้านโพนเมือง</a></li>
+				<li><a>ร.ร.บ้านบ้านกลาง</a></li>
+				<li><a>ร.ร.บ้านหนองลุง</a></li>
+				<li><a>ร.ร.บ้านทุ่งสว่าง</a></li>
+				<li><a>ร.ร.บ้านแข้</a></li>
+				<li><a>ร.ร.บ้านโนนกลาง</a></li>
+				<li><a>ร.ร.บ้านปะหละ</a></li>
+                <!-- <li><a href="http://www.onec.go.th/" target="_bank">สกศ.</a></li>
+                <li><a href="http://www.ssktco-op.com/" target="_bank">สหกรณ์ออมทรัพย์ครูศรีสะเกษ</a></li>
+				<li><a href="http://www.pao-sisaket.go.th/" target="_bank">อบจ.ศรีสะเกษ</a></li>
+                <li><a href="http://www.sisaket.go.th/" target="_bank">ศาลากลางจังหวัดศรีสะเกษ</a></li> --></h6>
+            </ul>
+		   		   
+		<!-- <ul class="no_bullet">
+        	<li><a href="#">@templatemo</a> at scelerisque urna in tellus varius ultricies.</li>
+            <li>Suspendisse enean <a href="#">#FREE</a> tincidunt massa in tellus varius ultricies.</li>
+            <li> Aenean tincidunt massa in tellus varius ultricies. <a href="#">http://bit.ly/13IwZO</a></li>
+        </ul> -->
+        </div>
+		<div class="col one_fourth no_margin_right">
+		<h4>Facebook</h4>
+    	    <table width="240" height="250" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td align="center">
+<table class='iconframe' cellpadding="0" cellspacing="0">
+<tr>
+  <td class='imageframe' align="center"> 
+<div style="text-align: center;">
+	<iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FNonglek-school%2F214772745292727&amp;width=250&amp;height=250&amp;colorscheme=light&amp;show_faces=true&amp;header=false&amp;stream=false&amp;show_border=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:250px; height:250px;" allowTransparency="true"></iframe></div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>    </div>
+        <div class="clear"></div>
+    </div><!-- END of templatemo_bottom -->
+    </div><!-- END of templatemo_bottom_wrapper -->    
+<div id="templatemo_footer_wrapper">    
+    <div id="templatemo_footer">
+	<TABLE width="100%">
+	<TR>
+		<TD align="left" valign="top"><div align="left" valign="top"><font color="#ffffff" size="2"><strong><b>โรงเรียนบ้านหนองเหล็ก ตำบลตาเกษ อำเภออุทุมพรพิสัย จังหวัดศรีสะเกษ 33120</b></strong><br>สำนักงานเขตพื้นที่การศึกษาประถมศึกษาศรีสะเกษ เขต 2 : nonglek.sch@gmail.com : 045-660123 </font>
+</div><p><font color="#EFF0F9" size="2">Copyright © 2557 <a href="http://www.nonglek.net">Bannonglek School</a> |
+        	&nbsp; ผู้พัฒนาเว็บไซต์  โดย&nbsp;<a href="http://sun.nonglek.net" target="_bank">Sunthorn Punaprung</a></p>Power&nbsp; by <a href="http://maxtom.sytes.net/" target="_bank">Atomymaxsite2.5</a></font></p></TD>
+		<TD align="left" valign="top"><div align="right" valign="top">
+						<a rel="nofollow" href="https://www.facebook.com/pages/Nonglek-school/214772745292727"><img src="templates/sun-nicha/images/facebook.png" alt="Like us on Facebook"></a>
+						<a href="#"><img src="templates/sun-nicha/images/twitter.png" alt="Follow us on Twitter"></a>
+						<a href="#"><img src="templates/sun-nicha/images/rss.png" alt="RSS feeds"></a>
+					<img src='http://chart.apis.google.com/chart?chs=80x80&cht=qr&chld=L|0&chl=http://www.nonglek.net' border='0'/></div></TD>
+	</TR>
+	</TABLE>
+	
+    	
+    </div><!-- END of templatemo_footer -->
+</div><!-- END of templatemo_footer_wrapper -->
+</body>
+<script type='text/javascript' src='templates/sun-nicha/js/logging.js'></script>
+</html>

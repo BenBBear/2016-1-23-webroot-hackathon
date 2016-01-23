@@ -1,0 +1,577 @@
+<!DOCTYPE HTML>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>
+
+    
+    Casa Verde -  Apartments in Houston, TX
+</title>
+        
+        
+        <meta name="description" content="">
+        <meta name="keywords" content="Houston, TX Apartments, Apartments in Houston, Houston Apartments, Casa Verde">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+
+        
+        <script src="https://static2.apts247.info/cache/js/modernizr.js"></script>
+
+        <!--[if lte IE 8]>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.js"></script>
+        <script>window.jQuery || document.write('<script src="https://static2.apts247.info/cms/js/jquery-1.10.2.min.js">\x3C/script>')</script>
+        <![endif]-->
+        <!--[if gte IE 9]><!-->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
+        <script>window.jQuery || document.write('<script src="https://static2.apts247.info/cms/js/jquery-2.0.3.min.js">\x3C/script>')</script>
+        <!--<![endif]-->
+
+        
+        <script src="https://static2.apts247.info/cache/js/underscore-min.js"></script>
+        
+        <script src="https://static2.apts247.info/cache/js/json2.js"></script>
+        
+        <script src="https://static2.apts247.info/cache/js/backbone-min.js"></script>
+        <script src="https://static2.apts247.info/cache/js/backbone-tastypie.js"></script>
+        
+        
+        <script>
+            var api_key = "9437cd4125a97d614abe3afa5d5c559936d9f4e9";
+        </script>
+        
+        
+        
+        <script src="https://static2.apts247.info/js/communityextrainfo.js"></script>
+        <script src="https://static2.apts247.info/js/tokens.js"></script>
+        
+        
+    <script src="https://static2.apts247.info/cache/js/jquery.mobilemenu.js"></script>
+    <script src="https://static2.apts247.info/cache/js/jquery.marquee.min.js"></script>
+    <script src="/gridmedia/js/jquery-picture-min.js"></script>
+    <script src="/gridmedia/js/__basescripts.js"></script>
+    <script src="https://static2.apts247.info/js/zoomfix.js"></script>
+    <script src="https://static2.apts247.info/cache/js/handlebars-1.0.rc.1.js"></script>
+    <script src="https://static2.apts247.info/js/jquery.marquee2.js"></script>
+    <script src="https://static2.apts247.info/js/marquee.js"></script>
+    <script type='text/javascript' src="https://static2.apts247.info/js/live_chat_check.js"></script>
+    <script>
+        lc_check = new LiveChatCheck();
+        lc_check.start();
+    </script>
+    <!--[if lt IE 9]>
+        <script src="/gridmedia/js/html5shim.js"></script>
+    <![endif]-->
+    
+    
+    
+<script>
+    function parseISO8601(dateStringInRange) {
+        var isoExp = /^\s*(\d{4})-(\d\d)-(\d\d)\s*$/,
+            date = new Date(NaN), month,
+            parts = isoExp.exec(dateStringInRange);
+    
+        if(parts) {
+          month = +parts[2];
+          date.setFullYear(parts[1], month - 1, parts[3]);
+          if(month != date.getMonth() + 1) {
+            date.setTime(NaN);
+          }
+        }
+        return date;
+    }
+</script>
+
+<script type="text/template" id="prepend_promotion_template">
+</script>
+
+
+<script type="text/template" id="promotions_template">
+    <div class="promotions">
+    </div>
+</script>
+
+<script type="text/template" id="promotion_template">
+    <%
+    sd = parseISO8601(start_date);
+    ed = parseISO8601(end_date);
+    start_date = (sd.getMonth()+1)+"-"+sd.getDate()+"-"+sd.getFullYear();
+    end_date = (ed.getMonth()+1)+"-"+ed.getDate()+"-"+ed.getFullYear();
+    %>
+    
+    <div class="promotion twelve" style="background-color: <%= body_background_color %>; color: <%= body_foreground_color %>;">
+        <h4 style="background-color: <%= background_color %>; color: <%= foreground_color %>;">
+            <%= headline %>
+        </h4>
+        <p><%= body %></p>
+        <% if (image) { %>
+            <p><img src="<%= image %>" class="img-responsive"></p>
+        <% } %>
+        <p >Valid <%= start_date %> to <%= end_date %></p><br>
+        <a class="get_coupon_emailed_to_you_link button" id="a_promotion_<%= id %>" href="#">Click here to have a coupon e-mailed to you.</a>
+        <div class="errors" id="div_errors_<%= id %>"></div>
+        <form class="form_promotion" id="form_promotion_<%= id %>">
+            <div id="div_input_name">
+                <label for="id_name_<%= id %>">Name:</label>
+                <input name="name">
+            </div>
+            <div id="div_input_email">
+                <label for="id_email_<%= id %>">Email:</label>
+                <input name="email">
+            </div>
+            <div id="id_ripple">
+                <input name="ripple">
+            </div>
+            <div>
+                <input name="submit" type="submit">
+            </div>
+        </form>
+    </div>
+</script>
+    
+<script src="https://static2.apts247.info/cache/backbone/promotions.app.js"></script>
+<script src="https://static2.apts247.info/js/promotions.js"></script>
+
+<link rel="stylesheet" href="https://static2.apts247.info/jquery_ui/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="https://static2.apts247.info/css/validationEngine.jquery.css">
+<link rel="stylesheet" href="https://static2.apts247.info/css/jquery-ui-datetime-addon.css">
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script type="text/template" id="pep_promotions_template">
+    <div class="promotions">
+    </div>
+</script>
+    
+<script type="text/template" id="pep_promotion_template">
+    <%
+    sd = parseISO8601(start_date);
+    ed = parseISO8601(end_date);
+    start_date = (sd.getMonth()+1)+"-"+sd.getDate()+"-"+sd.getFullYear();
+    end_date = (ed.getMonth()+1)+"-"+ed.getDate()+"-"+ed.getFullYear();
+    %>
+    
+   <div class="promotion twelve" style="background-color: <%= body_background_color %>; color: <%= body_foreground_color %>;">
+        <h4 style="background-color: <%= background_color %>; color: <%= foreground_color %>;">
+            <%= headline %>
+        </h4>
+        <p><%= body %></p>
+        <p>Valid <%= start_date %> to <%= end_date %></p><br>
+        <% if (image) { %>
+            <p><img src="<%= image %>" class="img-responsive"></p>
+        <% } %>
+        <div class="errors" id="div_errors_<%= id %>"></div>
+        <form class="form_pep_promotion" id="form_pep_promotion_<%= id %>" style="display: inline-block;">
+            <div id="div_input_name">
+                <label for="id_name_<%= id %>">Name:</label>
+                <input name="name">
+            </div><br>
+            <div id="div_input_email">
+                <label for="id_email_<%= id %>">Email:</label>
+                <input name="email">
+            </div><br>
+            <div id="div_input_phone">
+                <label for="phone_<%= id %>">Phone:</label>
+                <input name="phone">
+            </div><br>
+            <div id="div_input_move_in_date">
+                <label for="move_in_date_<%= id %>">Move in date:</label>
+                <input name="move_in_date">
+            </div><br>
+            <div id="div_input_preferred_employer">
+                <label for="id_preferred_employer_<%= id %>">Preferred Employer:</label>
+                <select name="preferred_employer">
+                    <% _.each(preferred_employers, function(pe) { %>
+                        <option value="<%= pe.name %>"><%= pe.name %></option>
+                    <% }); %>
+                </select>
+            </div><br>
+            <div id="id_ripple">
+                <input name="ripple">
+            </div>
+            <div>
+                <input name="submit" type="submit">
+            </div>
+        </form>
+    </div>
+</script>
+
+
+ 
+    <script type='text/javascript' src='/gridmedia/js/jquery.plusslider-min.js'></script>
+    <script type='text/javascript' src='/gridmedia/js/__homescripts.js'></script>
+
+
+
+        
+        <link rel="stylesheet" href="https://static2.apts247.info/css/global.css">
+        
+        
+        
+    <link href='http://fonts.googleapis.com/css?family=Syncopate' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="/gridmedia/css/__theme.css">
+
+    <link rel="stylesheet" href="/gridmedia/css/__clmsmain.css">
+
+    
+    <link rel="stylesheet" href="/gridmedia/css/__3d_retina.css">
+    <link rel="stylesheet" href="/gridmedia/css/__print.css" type="text/css" media="print"> 
+
+
+    <script src="/gridmedia/js/selectivizr-min.js"></script>
+    <script src="/gridmedia/js/respond.min.js"></script>
+
+        
+
+        <link rel="canonical" href="http://casaverdehouston.com/">
+
+        
+        
+        <script>
+            var _gaq = _gaq || [];
+            _gaq.push(["_setAccount", "UA-48327502-16"]);
+            _gaq.push(["_trackPageview"]);
+
+            (function() {
+                var ga = document.createElement("script");
+                ga.type = "text/javascript"; ga.async = true;
+                ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+        
+        
+        <meta name="google-site-verification" content="2MXLSrpQWT77bdbVDZlrXmKfbuUPkQGfZPsz7xoFabw">
+        
+        
+
+        
+        
+        
+
+        
+            
+        
+    </head>
+    <body id="body_home">
+        
+        <div class="container">
+            
+
+
+
+
+
+
+ 
+<div class="phone-header">
+    <h4 class="api-phone"><a href="281-999-2683">281-999-2683</a></h4>
+</div>
+
+<header class="topbar" role="banner">
+    <div id="div_logo">
+        <a href="/" class="max"><img src="/gridmedia/img/logo.png" alt="Casa Verde logo"></a>
+    </div>
+    <nav id="nav_main" class="max" role="navigation"> 
+        
+
+
+
+<ul>
+    <li id="home_ni">
+    	<a href="/">Home</a>
+	</li>
+	<li id="gallery_ni">
+		<a href="/gallery/">Photos</a>
+	</li>
+	<li id="availability_ni">
+		<a href="/floorplans/">Floor Plans</a>
+	</li>
+    <li id="amenities_ni">
+		<a href="/amenities/">Amenities</a>
+	</li>
+    <li id="pets_ni">
+    	<a href="/pets/">Pet Friendly</a>
+	</li> 
+	
+	
+	    <li id="application_ni">
+			<a href="/application/">Apply Now</a>
+		</li>
+	
+    <li id="map_ni">
+		<a href="/map/">Map</a>
+	</li>    
+	<li id="residents_ni">
+    	<a href="/residents/">Residents</a>
+	</li>
+    <li id="contact_ni">
+    	<a href="/contact_us/">Contact</a>
+	</li>
+	<li id="ebrochure_ni">
+		<a href="/ebrochure/" target="ebrochure">e-Brochure</a>
+	</li>
+    <li id="blog_ni">
+    	<a href="/blogs/">Blog</a>
+	</li>
+</ul>
+
+    </nav>
+    
+<div id="marquee_container">
+    <marquee id="marquee_yesreally"></marquee>
+</div>
+
+</header>
+
+
+    
+<section class="max content" id="div_home_page_content" role="main">
+    
+    	<div class="ss_container">
+            <img src="/gridmedia/img/scaler.png" alt="scaler" class="scaler">
+    		<div id="slideshow">
+                <figure class="responsive current"
+                        data-media="http://thumbs.apts247.info/resize/?img=http://casaverdehouston.com/gridmedia/img/slide1.jpg&w=320"
+                        data-media320="http://thumbs.apts247.info/resize/?img=http://casaverdehouston.com/gridmedia/img/slide1.jpg&w=768"
+                        data-media768="http://thumbs.apts247.info/resize/?img=http://casaverdehouston.com/gridmedia/img/slide1.jpg&w=1080"
+                        data-media1080="http://thumbs.apts247.info/resize/?img=http://casaverdehouston.com/gridmedia/img/slide1.jpg&w=1200"
+                        data-media1200="http://thumbs.apts247.info/resize/?img=http://casaverdehouston.com/gridmedia/img/slide1.jpg&w=1920">
+                    <noscript>
+                        <img src="http://casaverdehouston.com/gridmedia/img/slide1.jpg" alt="slideshow image">
+                    </noscript>
+                </figure>
+                <figure class="responsive" style="display:none;"
+                        data-media="http://thumbs.apts247.info/resize/?img=http://casaverdehouston.com/gridmedia/img/slide2.jpg&w=320"
+                        data-media320="http://thumbs.apts247.info/resize/?img=http://casaverdehouston.com/gridmedia/img/slide2.jpg&w=768"
+                        data-media768="http://thumbs.apts247.info/resize/?img=http://casaverdehouston.com/gridmedia/img/slide2.jpg&w=1080"
+                        data-media1080="http://thumbs.apts247.info/resize/?img=http://casaverdehouston.com/gridmedia/img/slide2.jpg&w=1200"
+                        data-media1200="http://thumbs.apts247.info/resize/?img=http://casaverdehouston.com/gridmedia/img/slide2.jpg&w=1920">
+                    <noscript>
+                        <img src="http://casaverdehouston.com/gridmedia/img/slide2.jpg" alt="slideshow image">
+                    </noscript>
+                </figure>
+                <figure class="responsive" style="display:none;"
+                        data-media="http://thumbs.apts247.info/resize/?img=http://casaverdehouston.com/gridmedia/img/slide3.jpg&w=320"
+                        data-media320="http://thumbs.apts247.info/resize/?img=http://casaverdehouston.com/gridmedia/img/slide3.jpg&w=768"
+                        data-media768="http://thumbs.apts247.info/resize/?img=http://casaverdehouston.com/gridmedia/img/slide3.jpg&w=1080"
+                        data-media1080="http://thumbs.apts247.info/resize/?img=http://casaverdehouston.com/gridmedia/img/slide3.jpg&w=1200"
+                        data-media1200="http://thumbs.apts247.info/resize/?img=http://casaverdehouston.com/gridmedia/img/slide3.jpg&w=1920">
+                    <noscript>
+                        <img src="http://casaverdehouston.com/gridmedia/img/slide3.jpg" alt="slideshow image">
+                    </noscript>
+                </figure>
+                
+                
+                
+    		</div>
+    	</div>
+    
+    
+	<div class="homepage">
+        <h3>Welcome to Casa Verde Apartments</h3>
+        
+<div class="social-container max">
+        <ul class="social-links">
+                
+            
+                <!--<li><a href="" target="_blank"><img src="/gridmedia/img/gp.png" alt="Google+"></a><a href="" target="_blank" class="social-text">Add Us To Your Circles</a></li>
+                <li><a href="" target="_blank"><img src="/gridmedia/img/pt.png" alt="Pinterest"></a><a href="" target="_blank" class="social-text">Follow Us On Pinterest</a></li>
+                <li><a href="" target="_blank"><img src="/gridmedia/img/bp.png" alt="Blogspot"></a><a href="" target="_blank" class="social-text">Follow Us On Blogspot</a></li>
+                <li><a href="" target="_blank"><img src="/gridmedia/img/pt.png" alt="Pinterest"></a><a href="" target="_blank" class="social-text">See Us On Instagram</a></li>
+                -->
+        </ul>
+    </div>
+
+        <div class="hpt-container">
+    		<p class="api-token-home-page-text-1">Casa Verde is located in the heart of Houston, just a few minutes from the North Freeway. If convenience is an important factor in your lifestyle, you've come to the right place. Our beautiful community is close to shopping, dining, entertainment, and more. Our prime location offers residents a gateway to everything they need.<br><br>
+
+  Come in and make yourself comfortable! You will love our spacious one, two, three and four bedroom floor plans. With so much living space, you'll have the feeling of a house and a location you'll love. Amenities include an all electric kitchen, balcony or patio, dishwasher, hardwood flooring, tile flooring, walk-in closets, central air and heating and more!  <br><br>
+
+Our community also has many great outdoor and community amenities that you will love. Enjoy a dip in our shimmering swimming pool, beautiful landscaping, children's play area, gated access, a convenient laundry facility, on-call maintenance, and a picnic area with barbecue.  Tour our community and see what makes Casa Verde the best community in Houston, TX.</p>
+            
+                
+            
+            
+                
+            
+        </div>
+      <div id="div_promotions"></div>
+<div id="div_pep_promotions"></div>
+
+        
+            <div class="refer-a-friend-wrapper">
+                <h4 class="refer-a-friend-button">Refer a Friend</h4>
+                    <p class="refer-a-friend-incentive api-refer_a_friend_text"></p>
+                    <a href="#" class="refer-a-friend-button button">Click here!</a>
+                    
+<div>
+    
+    <form class="refer-a-friend">
+        <label> Your Name:</label>
+        <input type="text" name="name" placeholder="Your name here">
+
+        <label>Your Email Address:</label>
+        <input type="email" name="sender_email" placeholder="Your email here">
+
+        <label>Subject:</label>
+        <input type="text" name="subject" placeholder="Email Subject">
+
+        <label>Recipient email address:</label>
+        <textarea name="recipients"></textarea>
+        <p>If entering multiple e-mail addresses, please insert a comma between them.</p>
+        <div id="refer-recaptcha"></div>
+        <input type="submit" value="Send">
+    </form>
+</div>
+<script>
+    var api_key = "9437cd4125a97d614abe3afa5d5c559936d9f4e9";
+    $(document).ready(function() {
+        $.getJSON("/api/v4/refer_a_friend/?format=json&api_key="+api_key, function(data) {
+            $("#refer-recaptcha").html(
+                '<div id="recaptcha" class="g-recaptcha" data-sitekey="' + data.sitekey + '" data-stoken="' + data.stoken + '"></div>'
+            );
+            var scriptTag=document.createElement("script");
+            scriptTag.setAttribute("type","text/javascript");
+            scriptTag.setAttribute("src", "https://www.google.com/recaptcha/api.js");
+            document.getElementsByTagName("head")[0].appendChild(scriptTag);
+        });
+        $(".refer-a-friend").on("submit", function(e) {
+            e.preventDefault();
+            var $this = $(this),
+                subject = $this.find("[name=subject]").val();
+
+            if (subject == "") {
+                subject = "You may be interested in Casa Verde";
+            }
+            
+            // Run Google's Conversion Click Handler
+            if (typeof goog_report_conversion !== "undefined") {
+                goog_report_conversion();
+            }
+            $.ajax(
+                "/api/v4/refer_a_friend/?format=json&api_key="+api_key,
+                {
+                    type: "post",
+                    data: JSON.stringify({
+                        "sender": $this.find("[name=name]").val(),
+                        "sender_email": $this.find("[name=sender_email]").val(),
+                        "subject": subject,
+                        "recaptcha": grecaptcha.getResponse(),
+                        "recipients": $this.find("[name=recipients]").val()
+                    }),
+                    contentType: "application/json"
+                }
+            );
+        });
+    });
+</script>
+
+                    <p class="refer-a-friend-thanks">Thank you for sharing our community website!</p>
+            </div>
+        
+        
+            <br>
+            
+
+    <a href="/review/" id="good_review" style="display:none;">
+    	<img class="good-logo" src="/gridmedia/img/__goodapartments.png" alt="GoodApartments.com Reviews">
+    	<span class="good-text">Reviews</span>
+    </a>
+    <script src="https://static2.apts247.info/js/check_for_reviews.js"></script>
+
+
+        
+        
+        
+            <div id="chat-now" style="display:none;"><img src="/gridmedia//img/__chat.png" alt="Chat Now"></div>
+            <div id="chat-form-div" style="display:none;">
+                <form action="" method="GET" id="live_chat_form">
+Enter Your Name: <input type="text" name="user">
+<a href="" id="live_chat_link" target="_blank" style="display:none;">GO</a>
+</form>
+
+            </div>
+        
+        
+        
+    </div>
+    
+</section>
+
+
+
+
+        
+<div class="addressbar max" itemscope itemtype="http://schema.org/ApartmentComplex">
+<span itemprop="name">Casa Verde</span>&nbsp;&bull;&nbsp;
+    <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+      <span itemprop="streetAddress" class="api-address">2 Goodson Drive</span>&nbsp;&bull;&nbsp;
+      
+      <span itemprop="addressLocality">Houston, </span>
+      <span itemprop="addressRegion">TX </span> 
+      <span itemprop="postalCode">77060</span>
+    </span>&nbsp;&bull;&nbsp; 
+    <span itemprop="telephone" class="api-phone">281-999-2683</span>
+    &nbsp;&bull;&nbsp;
+    <span>Fax: <span itemprop="faxNumber" class="api-fax">281-999-7003</span></span>
+    
+        <span itemprop="geo" itemscope itemtype="http://schema.org/GeoCoordinates">
+            <meta itemprop="latitude" content="-95.406843">
+            <meta itemprop="longitude" content="29.9245821">
+        </span>
+</div>
+
+        
+
+
+        <footer class="max" role="contentinfo">
+            <span class="copyright twenty">
+                
+                    <span class="corp-container-top">
+                        
+                        </span>
+                    <br>
+                        
+                            
+                            Professionally Managed by
+                    <a href="http://www.clmsmgt.com/" target="new" title="View Management Site">CLMS Management</a><br>
+                            
+                        
+                    
+                
+                    Copyright &copy; 2000 &ndash; 2016 <a href="http://www.apartments247.com" target="new">Apartments247.com</a> All designs, content and images are subject to Copyright Laws. All rights reserved. <br>(<a href="http://files.apts247.com//files/common/disclaimer/index.html" class="poplink">disclaimers</a>) | <a href="/blogs/">Latest Website Updates</a> |
+                <a href="http://cms.apts247.info/cms/" target="new" class="manage">Manage Site</a><br>
+            </span>
+            <a href="http://files.apts247.com/files/common/eho/index.html" class="eho poplink">
+                <img src="/gridmedia/img/eho.png" alt="Equal Housing Opportunity">
+            </a> 
+        </footer>
+        
+
+        
+ 
+
+
+
+        </div>
+        
+
+        
+        <script>
+            var static_url = "https://static2.apts247.info/";
+            community_extra_info = new CommunityExtraInfo();
+            community_extra_info.start();
+
+            tokens = new Tokens();
+            tokens.start();
+        </script>
+        
+        
+        
+    </body>
+</html>

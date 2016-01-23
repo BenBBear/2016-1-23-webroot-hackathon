@@ -1,0 +1,3255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+
+<head>
+
+
+
+<!--▼▼▼ファビコン変更▼▼▼-->
+<LINK REL="SHORTCUT ICON" HREF="http://blog-imgs-52.fc2.com/w/o/n/wonderfx/aiconwonder1.ico">　　 
+<!--/▲▲▲ファビコン変更  ▲▲▲-->
+
+
+
+<!-- ▼▼▼スクロールすると「トップへ戻るボタン」を表示（スライドアニメーション編）▼▼▼-->
+<script type="text/javascript">
+$(function() {
+	var showFlug = false;
+	var topBtn = $('#page-top');	
+	topBtn.css('bottom', '-100px');
+	var showFlug = false;
+	$(window).scroll(function () {
+		if ($(this).scrollTop() > 100) {
+			if (showFlug == false) {
+				showFlug = true;
+				topBtn.stop().animate({'bottom' : '20px'}, 200); 
+			}
+		} else {
+			if (showFlug) {
+				showFlug = false;
+				topBtn.stop().animate({'bottom' : '-100px'}, 200); 
+			}
+		}
+	});
+	//スクロールしてトップ
+    topBtn.click(function () {
+		$('body,html').animate({
+			scrollTop: 0
+		}, 500);
+		return false;
+    });
+});
+</script>
+<!-- ▲▲▲スクロールすると「トップへ戻るボタン」を表示（スライドアニメーション編）▲▲▲-->
+
+
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="content-style-type" content="text/css" />
+<meta http-equiv="content-language" content="ja" />
+<meta http-equiv="content-script-type" content="text/javascript" />
+<meta name="author" content="若松　浩幸" />
+<meta name="copyright" content="&copy; 2016 wonderfx" />
+
+<title>wonderfx</title>
+
+
+
+
+<meta name="keywords" content="FX,為替,投資,FXアルゴリズム解析,リアルタイムトレード,ドル,ユーロ,ポンド,若松浩幸" />
+
+
+
+
+<meta name="description" content="ディーラー経験からリアルタイムトレードとその解説を公開。アルゴリズム解析でポンド円、ドル円、ユーロ円、ポンドドル、ユーロドルのストラテジーを細部に渡り案内します" />
+
+
+
+
+<link rel="stylesheet" type="text/css" href="http://blog-imgs-90.fc2.com/w/o/n/wonderfx/css/d3eff.css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://wonderfx.jp/?xml" />
+<link rel="alternate" type="application/rss+xml" title="sitemap" href="http://wonderfx.jp/sitemaps.xml" />
+<link rel="start" href="http://wonderfx.jp/" title="start" />
+<link rel="contents" href="http://wonderfx.jp/archives.html" title="contents" />
+<link rel="next" href="http://wonderfx.jp/page-1.html" title="next" /><meta property="og:site_name" content="wonderfx">
+<meta property="og:title" content="wonderfx">
+<meta property="og:type" content="blog">
+<meta property="og:description" content="ディーラー経験からリアルタイムトレードとその解説を公開。アルゴリズム解析でポンド円、ドル円、ユーロ円、ポンドドル、ユーロドルのストラテジーを細部に渡り案内します">
+<meta property="og:image" content="http://blog-imgs-49.fc2.com/w/o/n/wonderfx/hiroavatar3-1_convert_20120304113717.jpg">
+</head>
+<body>
+
+
+
+<!--▼▼▼FC2アクセス解析▼▼▼-->
+<!-- [FC2 Analyzer] http://analyzer.fc2.com/  -->
+<script language="javascript" src="http://analyzer54.fc2.com/ana/processor.php?uid=1665560" type="text/javascript"></script>
+<noscript><div align="right"><img src="http://analyzer54.fc2.com/ana/icon.php?uid=1665560&ref=&href=&wid=0&hei=0&col=0" /></div></noscript>
+<!-- [FC2 Analyzer]  -->
+<!--/▲▲▲FC2アクセス解析  ▲▲▲-->
+
+
+
+<!-- ▼▼▼スクロールすると「トップへ戻るボタン」を表示（スライドアニメーション編）▼▼▼-->
+<div id="wrap">
+
+
+
+<!--▼ヘッダー・開始▼-->
+<div id="header-ue"><div id="header-ue-in">
+<h1>wonderfx</h1>
+</div></div>
+<div id="header"><div id="header-in">
+<p class="blog_title"><a href="http://wonderfx.jp/" title="wonderfx">wonderfx</a></p>
+<p class="blog_introduction">ディーラー経験からリアルタイムトレードとその解説を公開。アルゴリズム解析でポンド円、ドル円、ユーロ円、ポンドドル、ユーロドルのストラテジーを細部に渡り案内します</p>
+</div></div>
+<!--▲ヘッダー・終了▲-->
+
+
+<!--▼グローバルメニュー・開始▼-->
+<div id="global_menu"><div id="global_menu-in"><ul>
+
+
+
+<li><a href="http://wonderfx.jp/">ホーム</a></li>
+<li><a href="http://wonderfx.jp/blog-entry-5618.html">コンテンツ内容</a></li>
+<li><a href="http://wonderfx.jp/blog-entry-5619.html">10倍楽しむ</a></li>
+<li><a href="http://wonderfx.jp/blog-entry-5620.html">会員募集概要</a></li>
+<li><a href="http://wonderfx.jp/blog-entry-5621.html">Q＆A</a></li>
+<li><a href="http://wonderfx.jp/blog-entry-5622.html">お試し10日間</a></li>
+<li><a href="http://wonderfx.jp/blog-entry-5623.html">お問い合わせ</a></li>
+<li><a href="http://wonderfx.jp/blog-entry-5624.html">会社概要</a></li>
+<li><a href="http://wonderfx.jp/archives.html">全記事一覧</a></li>
+
+
+
+</ul></div></div>
+<!--▲グローバルメニュー・終了▲-->
+
+
+<!--▼コンテナ・開始▼-->
+<div id="container">
+
+
+<!--▼ページナビ１・開始▼-->
+<div class="page_navi1">
+
+<ul>
+<li class="home"><a href="http://wonderfx.jp/" title="wonderfxホームへ">ホーム</a></li>
+<li class="nextpage"><a href="http://wonderfx.jp/page-1.html">次のページ</a></li>
+</ul>
+
+
+
+
+
+</div>
+<!--▲ページナビ１・終了▲-->
+
+
+<!--▼コンテンツ・開始▼-->
+<div id="content1">
+
+
+<!--▼トップインフォメーション・開始▼-->
+<div class="topinfo">
+<!-- ↓ここに入力してください -->
+
+
+
+
+
+<font color="#8ｂｂ00000"><b>1.</b></font>リアルタイムトレードはTOKYO-strategy・LONDON-strategy・
+NY-strategyの各記事下コメント欄で見れます<br/>
+<img src="http://blog-imgs-49.fc2.com/w/o/n/wonderfx/arrow42-011.gif" alt="arrow42-011" border="0" width="16" height="16" /><img src="http://blog-imgs-49.fc2.com/w/o/n/wonderfx/arrow42-011.gif" alt="arrow42-011" border="0" width="16" height="16" /><img src="http://blog-imgs-49.fc2.com/w/o/n/wonderfx/arrow42-011.gif" alt="arrow42-011" border="0" width="16" height="16" /><br/>
+
+
+
+<font color="#8ｂｂ00000"><b>2.</b></font>退院をしました。記事更新とリアルタイムトレードは20日LONDON-strategyから再開をしています。暫く記事更新が出来ずにご迷惑をお掛け致しました。若松浩幸<br/>
+<font color="#8ｂｂ00000"><b>3.</b></font>お試し10日間のパスワードは取り急ぎ「メール」で配信をしています。21日に同様の内容郵送物が送付しましたのでお手元に届きましたらご確認をお願いします。<br/>
+<font color="#8ｂｂ00000"><b>4.</b></font>コンテンツ料金の払い戻し案内を送信(メール)していますのでご確認お願いしまます。尚、案内メールが届いていない方はご連絡をお願いいたします。<br/>
+
+
+
+
+
+<!--
+3.お試し会員の受付再開、申し込みは上記バナーからとなります
+ -->
+
+
+<!--
+</font><img src="http://blog-imgs-49.fc2.com/w/o/n/wonderfx/arrow42-011.gif" alt="arrow42-011" border="0" width="16" height="16" /><img src="http://blog-imgs-49.fc2.com/w/o/n/wonderfx/arrow42-011.gif" alt="arrow42-011" border="0" width="16" height="16" /><img src="http://blog-imgs-49.fc2.com/w/o/n/wonderfx/arrow42-011.gif" alt="arrow42-011" border="0" width="16" height="16" /><br/>
+<font color="#8ｂｂ00000"><b>3.</b></font>お試し10日間の受付は9月15日までとなっています。上記メニューナビゲーションバーからお申込み下さい。
+ -->
+
+<!--
+3.現在、継続手続き終了の方に1月更新用パスワードを送付(手続き順にて)致しております。お手元に届いていない方はお手数ですが、コメント(非公開に☑チェック入れ)詳細をお知らせ下さい。折り返しご連絡致します<br/> 
+ -->
+
+<!--
+<FONT color="#ff00000">[まもなく締め切り]</FONT><br/>
+1.お試し10日間の受付は1月15日までとなっています。上記メニューナビゲーションバーからお申込み下さい。<br/> 
+2.11月度「お試し会員」の受付は締切期日前ですが、受付定員を超えましたので締切ます。<br/>
+ -->
+
+<!--
+2.wonderfx「1月会員受付」を開始しています。尚、「12月、月中」からの途中入会も可能です<br/>
+ -->
+
+<!--
+<font color="#8ｂｂ00000"><b>2.</b></font>wonderfx「9月」会員受付を開始しています。尚、「8月」月中からの途中入会も可能です<br/>
+ -->
+
+<!--
+5. クリスマス・年末年始の記事配信時間が変更になます。右側カラムでご確認願います。<br/>
+ -->
+
+
+<!--
+3.(お問合せが多かった)相互リンクの受付を開始します。<a href="https://mailform.mface.jp/frms/0077/ujq1k11oju0d" target="_blank">ここからお申込み下さい。</a>
+
+
+
+
+<!-- ↑ここに入力してください -->
+</div>
+<!--▲トップインフォメーション・終了▼-->
+
+
+<!--▼プラグイン３開始▼-->
+
+<!--▲プラグイン３終了▲-->
+
+
+<!--▼記事一覧・開始▼-->
+
+<!-- 新着記事一覧 -->
+<div id="search">
+<h2>wonderfx&nbsp;最新記事</h2>
+<div id="searchmain"><ul><li class="sub"><a href="http://wonderfx.jp/blog-entry-8354.html" title="algorithm analysis東京戦略(2016.1.22)">algorithm analysis東京戦略(2016.1.22)</a><p class="kiji_introduction">2016.01.22</p></li><li class="sub"><a href="http://wonderfx.jp/blog-entry-8353.html" title="TOKYO-strategy(2016.1.22)">TOKYO-strategy(2016.1.22)</a><p class="kiji_introduction">2016.01.22</p></li><li class="sub"><a href="http://wonderfx.jp/blog-entry-8352.html" title="NY-strategy(2016.1.21)">NY-strategy(2016.1.21)</a><p class="kiji_introduction">2016.01.21</p></li><li class="sub"><a href="http://wonderfx.jp/blog-entry-8351.html" title="algorithm analysis欧州戦略(2016.1.21)">algorithm analysis欧州戦略(2016.1.21)</a><p class="kiji_introduction">2016.01.21</p></li><li class="sub"><a href="http://wonderfx.jp/blog-entry-8350.html" title="LONDON-strategy(2016.1.21)">LONDON-strategy(2016.1.21)</a><p class="kiji_introduction">2016.01.21</p></li></ul></div></div>
+<!-- 新着記事一覧ここまで -->
+
+
+<!-- カテゴリ記事一覧 -->
+<!-- カテゴリ記事一覧ここまで -->
+
+
+<!-- 月別記事一覧 -->
+<!-- 月別記事一覧ここまで -->
+
+
+<!-- タグ記事一覧 -->    
+<!-- タグ記事一覧ここまで -->    
+
+
+<!-- 全記事一覧 -->
+<!-- 全記事一覧ここまで -->     
+
+<!--▲記事一覧・終了▲-->
+
+
+<!--▼ページナビ２・開始▼-->
+<!--▲ページナビ２・終了▲-->
+
+
+<!--▼個別記事・開始▼-->
+<!--not_titlelist-->
+<div class="post">
+
+
+<!--▼記事タイトル・開始▼-->
+<h2><a href="http://wonderfx.jp/blog-entry-8354.html">algorithm analysis東京戦略(2016.1.22)</a></h2>
+<!--▲記事タイトル・終了▲-->
+
+
+<!--▼エントリヘッダー・開始▼-->
+<div class="postinfo">
+<a href="blog-category-16.html" title="このカテゴリ一覧を見る">algorithm analysis</a>
+</div>
+<!--▲エントリヘッダー・終了▲-->
+
+
+<!--▼記事本文・開始▼-->
+<div class="postmain">
+<Div Align="left"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/B40-6-1.jpg" alt="B40-6-1.jpg" border="0" width="320" height="71" /></Div><h3>algorithm analysis東京戦略(2016.1.22)</h3>ドル円・ポンドドル・ユーロ円・ユーロドルの4通貨をアルゴリズム＆クオンツ解析を行い、東京時間(7:00～15:00)の売買ポイント、ターゲット、ストップ設定をご案内します。<br /><br /><h4>ドル円</h4>《買いポイント》117.39-117.49<br />《ストップ》117.05<br />《ターゲット》117.93-118.04<br />《現行水準》　2016.1.22_06:55現在　117.73<br /><br /><h4>ポンドドル</h4>《買いポイント》1.4177-1.4187<br />《ストップ》1.4108<br />《ターゲット》1.4267-1.4285<br />《現行水準》　2016.1.22_06:55現在　1.4218<br /><br /><h4>ユーロ円</h4>《買いポイント》127.48-127.64<br />《ストップ》126.86<br />《ターゲット》128.41-128.59<br />《現行水準》　2016.1.22_06:55現在　128.06<br /><br /><h4>ユーロドル</h4>《買いポイント》1.0851-1.0861<br />《ストップ》1.0814<br />《ターゲット》1.0908-1.0920<br />《現行水準》　2016.1.22_06:55現在　1.0877<br /><br />【data条件とポイント値の利用方法】<br />※この<span style="color:#cc0033">alogorithm analysis 4 currency 1.00版 </span>となります。<br />※strategyの基本対象時間帯は06:55～15:00ですが、主に06:55～10:55をメインに設計をしています。<br />※この解析内容は6時55分現在のデータを基にしています。<br />※《ターゲット》ポイントを捉えた場合ストーリーが完成して終了となります。この場合、ストーリーが再度繰り返されるか(リピート)するか、新ストーリーに移行するかを確認をします。<br />※《ストップ》ポイントを捉えた場合はストーリーの崩壊となります。尚、ストップポイントを完全に抜けない場合は、そのストップラインが抵抗(サポートラインやレジスタンスライン)に寄与しているか見極めます。<br />※<span style="color:#cc0033">掲載は不定期になります。通常のTOKYO-strategy、the指値man（東京版）Update後のリアルタイムトレードに時間的余裕がある場合にアルゴリズム解析データからご案内を致してます。</span><br />※本algorithm analysisはアルゴリズム解析の内容をお伝えするもので、投資判断を促すものでは一切有りません。このalgorithm analysisにより生じる一切の責任に関しては責任を負いません。<br />※この著作権は若松浩幸に帰属しますので、無断転載を禁じます。<br />(2015.11.23規定)<Div Align="right"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/40-6-1.jpg" alt="40-6-1.jpg" border="0" width="309" height="51" /></Div>
+
+<!--▼続きを読む・開始▼-->
+<!--▲続きを読む・終了▲-->
+
+
+<!--▼追記部分・開始▼-->
+<!--▲追記本文・開始▲-->
+<!--▲追記部分・終了▲-->
+
+
+
+
+<!--▼記事内ページナビ・開始▼-->
+<div class="page_navi3">
+<ul>
+<li><a href="blog-category-16.html" title="このカテゴリ一覧を見る">同カテゴリの他エントリーを読む</a></li>
+<li><a href="#header-ue" title="このページのトップへ">ページトップ</a></li>
+<li><a href="http://wonderfx.jp/" title="wonderfxホームへ">ホーム</a></li>
+<li><a href="http://wonderfx.jp/?xml" title="wonderfx のRSSフィード(更新情報)" target="_blank">RSS</a></li>
+</ul>
+</div>
+<!--▲記事内ページナビ・終了▲-->
+
+
+<!--▼タグ・開始▼-->
+<div class="entry-tag">
+<div class="tagtitle">タグキーワード</div>
+<ul>
+<li>No Tag</li>
+ 
+</ul>
+</div>
+<!--▲タグ・終了▲-->
+
+
+<!--▼記事内関連記事・開始▼-->
+<div class="relate">
+ 
+</div>
+<!--▲記事内関連記事・終了▲-->
+
+
+<!--▼コミュニティー＆テーマ・開始▼-->
+<!--▲コミュニティー＆テーマ・終了▲-->
+
+
+</div>
+<!--▲記事本文・終了▲-->
+
+
+
+<!--▼エントリフッター・開始▼-->
+<div class="postinfo-bottom">
+2016.01.22 07:26｜<a href="http://wonderfx.jp/blog-entry-8354.html#tb" title="algorithm analysis東京戦略(2016.1.22)のトラックバックへ">トラックバック(0)</a>｜<a href="http://wonderfx.jp/blog-entry-8354.html#cm" title="algorithm analysis東京戦略(2016.1.22)のコメントへ">コメント(0)</a></div>
+<!--▲エントリフッター・終了▲-->
+
+
+
+<!--▼エントリRSS・開始▼-->
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+rdf:about="http://wonderfx.jp/blog-entry-8354.html"
+trackback:ping="http://wonderfx.jp/tb.php/8354-464150d6"
+dc:title="algorithm analysis東京戦略(2016.1.22)"
+dc:identifier="http://wonderfx.jp/blog-entry-8354.html"
+dc:subject="algorithm analysis"
+dc:description="algorithm analysis東京戦略(2016.1.22)ドル円・ポンドドル・ユーロ円・ユーロドルの4通貨をアルゴリズム＆クオンツ解析を行い、東京時間(7:00～15:00)の売買ポイント、ターゲット、ストップ設定をご案内します。ドル円《買いポイント》117.39&#45;117.49《ストップ》117.05《ターゲット》117.93&#45;118.04《現行水準》　2016.1.22_06:55現在　117.73ポンドドル《買いポイント》1.4177&#45;1.4187《ストップ》1.4108《ターゲット》1.4267&#45;1.42..."
+dc:creator="若松　浩幸"
+</rdf:RDF>
+-->
+<!--▲エントリRSS・終了▲-->
+
+
+</div><div class="post">
+
+
+<!--▼記事タイトル・開始▼-->
+<h2><a href="http://wonderfx.jp/blog-entry-8353.html">TOKYO-strategy(2016.1.22)</a></h2>
+<!--▲記事タイトル・終了▲-->
+
+
+<!--▼エントリヘッダー・開始▼-->
+<div class="postinfo">
+<a href="blog-category-1.html" title="このカテゴリ一覧を見る">東京市場予想</a>
+</div>
+<!--▲エントリヘッダー・終了▲-->
+
+
+<!--▼記事本文・開始▼-->
+<div class="postmain">
+この記事を閲覧するにはパスワードが必要です<br />
+⇒<a href="http://wonderfx.jp/blog-entry-8353.html?entrypass">パスワード入力</a><br />
+
+
+<!--▼続きを読む・開始▼-->
+<!--▲続きを読む・終了▲-->
+
+
+<!--▼追記部分・開始▼-->
+<!--▲追記本文・開始▲-->
+<!--▲追記部分・終了▲-->
+
+
+
+
+<!--▼記事内ページナビ・開始▼-->
+<div class="page_navi3">
+<ul>
+<li><a href="blog-category-1.html" title="このカテゴリ一覧を見る">同カテゴリの他エントリーを読む</a></li>
+<li><a href="#header-ue" title="このページのトップへ">ページトップ</a></li>
+<li><a href="http://wonderfx.jp/" title="wonderfxホームへ">ホーム</a></li>
+<li><a href="http://wonderfx.jp/?xml" title="wonderfx のRSSフィード(更新情報)" target="_blank">RSS</a></li>
+</ul>
+</div>
+<!--▲記事内ページナビ・終了▲-->
+
+
+<!--▼タグ・開始▼-->
+<div class="entry-tag">
+<div class="tagtitle">タグキーワード</div>
+<ul>
+<li>No Tag</li>
+ 
+</ul>
+</div>
+<!--▲タグ・終了▲-->
+
+
+<!--▼記事内関連記事・開始▼-->
+<div class="relate">
+ 
+</div>
+<!--▲記事内関連記事・終了▲-->
+
+
+<!--▼コミュニティー＆テーマ・開始▼-->
+<!--▲コミュニティー＆テーマ・終了▲-->
+
+
+</div>
+<!--▲記事本文・終了▲-->
+
+
+
+<!--▼エントリフッター・開始▼-->
+<div class="postinfo-bottom">
+2016.01.22 07:03｜<span title="トラックバックは受け付けていません">トラックバック(－)</span>｜<span title="コメントは受け付けていません">コメント(－)</span></div>
+<!--▲エントリフッター・終了▲-->
+
+
+
+<!--▼エントリRSS・開始▼-->
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+rdf:about="http://wonderfx.jp/blog-entry-8353.html"
+trackback:ping="http://wonderfx.jp/tb.php/"
+dc:title="TOKYO-strategy(2016.1.22)"
+dc:identifier="http://wonderfx.jp/blog-entry-8353.html"
+dc:subject="東京市場予想"
+dc:description=""
+dc:creator="若松　浩幸"
+</rdf:RDF>
+-->
+<!--▲エントリRSS・終了▲-->
+
+
+</div><div class="post">
+
+
+<!--▼記事タイトル・開始▼-->
+<h2><a href="http://wonderfx.jp/blog-entry-8352.html">NY-strategy(2016.1.21)</a></h2>
+<!--▲記事タイトル・終了▲-->
+
+
+<!--▼エントリヘッダー・開始▼-->
+<div class="postinfo">
+<a href="blog-category-3.html" title="このカテゴリ一覧を見る">NY市場予想（21:30現在）</a>
+</div>
+<!--▲エントリヘッダー・終了▲-->
+
+
+<!--▼記事本文・開始▼-->
+<div class="postmain">
+<img src="http://blog-imgs-55.fc2.com/w/o/n/wonderfx/201208150105032ee.png" alt="tinytags (3)" border="0" width="95" height="173" /><h3>NY-strategy（2016.1.21)</h3>アルゴリズム解析でポンド円のNY時間直前からNY本時間(23:30～06:55)の売買ポイント、利食いポイント、ポイント詳細、そして過去8時間のSummary(LONDON-Summary)をご案内しています。 尚、途中22:30と23:30にアルゴリズムの再解析をして、変更となった場合は加筆を追記します。<br /><br /><span style="color:#CC0000">[21:30現在アルゴリズム解析です]</span><br /><span style="color:#0000FF">◆165.84-163.52【↓】売り</span><br />《売りポイント》[１]165.07 [２]165.17<br />《利食いポイント》164.11-164.29<br /><br />※売りサイン継続です。<br />※トレンド指数は4ブロック時間軸全て売りとなっています。波動はやや右肩上りに変化して売りサインです。<br />※NY時間は売りから参入を致します。<br />※NY時間の指標等<br />21:45　ＥＣＢ金融政策発表<br />22:30　米1月フィラデルフィア連銀景況指数=市場予想前月比横並び<br />22:30　米新規失業保険申請件数=市場予想改善<br />22:30　ドラギＥＣＢ総裁、記者記者会見<br /><br /><h4>2016.1.21ポンド円LONDON-Summary=ECB金融政策発表を控えて調整的なユーロ買いポンド売りが優勢</h4>・ダウ先物150ドル超安や日経ナイトセッション220円安からリスク回避の円買いが進行。ドル円は116.47まで、ポンド円は164.85まで下落(16:50)。その後、日経ナイトセッションが300円超高まで一転上昇すると、円売り戻しが入り、ドル円は117.17まで、ポンド円は166.01まで反転上昇(17:25)。<br />・日経ナイトセッションの上昇が一服すると、ドル円は116.90を挟んで揉み合い。一方でポンド円はECB金融政策発表を控えて調整的なユーロ買いポンド売りが入った事でポンドドル下落に連れて164.71まで失速しています(21:00)。<br /><br />［売買結果］［本日　253P　1月累計　2386P]<br />166.42(S)⇒166.25利確17P<br />166.70(S)⇒166.58利確12P <br />166.68(S)⇒166.58利確10P  <br />166.63(S)⇒165.72利確94P　<br />165.27(S)⇒164.86利確41P <br />165.07(S)⇒164.86利確21P<br />165.44(S)⇒165.33利確11P <br />165.31(S)⇒165.33利確▲2P<br />165.55(S)⇒165.38利確17P <br />165.44(S)⇒165.38利確6P<br />165.83(S)⇒165.83利確0P <br />165.67(S)⇒165.83利確▲16P <br />165.47(S)⇒165.83利確▲36P<br />166.04(S)⇒165.66利確38P <br />165.86(S)⇒165.66利確20P<br />165.87(S)⇒165.67利確20P　　2016-01-21 18:39<br />195.83(S)保有(スイング:リミットを157.36に変更)<br />169.83(L)保有(スイング:リミットを181.92に設定)<br />※尚、169.83(L)は純粋な買いではなく保有売りスイングに対する保険の意味も一部含んでいます。<br /><hr size="1" color="#0033CC"><span style="color:#cd143c"><b>［data条件等］</b></span><br />※このNY-straregyの解析は<span style="color:#FF00FF">　wonderFX alogorithm＆quants 9.10版　</span>になります。<br />※strategyの対象時間帯は23:30～06:55となります。<br />※途中 232:30にアルゴリズムの再解析をして、変更となった場合は加筆を追記します。<br />※基本、対象時間を超えた場合や、ストーリが完成をした段階で、本strategyは終了とします。<br />※本、NY-straregyはアルゴリズム解析の内容と若松浩幸のリアルタイムトレードをお伝えするもので、投資判断を促すものでは一切有りません。このNY-straregy　Part1により生じる一切の責任に関しては責任を負いません。<br />※この著作権は若松浩幸に帰属しますので、無断転載を禁じます。転載を希望される方はお問い合わせ下さい。<br />(2015.3.8規定)  <hr size="1" color="#0033CC"><Div Align="right"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/commentinfo4.jpg" alt="commentinfo4.jpg" border="0" width="225" height="37" /></Div>
+
+<!--▼続きを読む・開始▼-->
+<!--▲続きを読む・終了▲-->
+
+
+<!--▼追記部分・開始▼-->
+<!--▲追記本文・開始▲-->
+<!--▲追記部分・終了▲-->
+
+
+
+
+<!--▼記事内ページナビ・開始▼-->
+<div class="page_navi3">
+<ul>
+<li><a href="blog-category-3.html" title="このカテゴリ一覧を見る">同カテゴリの他エントリーを読む</a></li>
+<li><a href="#header-ue" title="このページのトップへ">ページトップ</a></li>
+<li><a href="http://wonderfx.jp/" title="wonderfxホームへ">ホーム</a></li>
+<li><a href="http://wonderfx.jp/?xml" title="wonderfx のRSSフィード(更新情報)" target="_blank">RSS</a></li>
+</ul>
+</div>
+<!--▲記事内ページナビ・終了▲-->
+
+
+<!--▼タグ・開始▼-->
+<div class="entry-tag">
+<div class="tagtitle">タグキーワード</div>
+<ul>
+<li>No Tag</li>
+ 
+</ul>
+</div>
+<!--▲タグ・終了▲-->
+
+
+<!--▼記事内関連記事・開始▼-->
+<div class="relate">
+ 
+</div>
+<!--▲記事内関連記事・終了▲-->
+
+
+<!--▼コミュニティー＆テーマ・開始▼-->
+<!--▲コミュニティー＆テーマ・終了▲-->
+
+
+</div>
+<!--▲記事本文・終了▲-->
+
+
+
+<!--▼エントリフッター・開始▼-->
+<div class="postinfo-bottom">
+2016.01.21 21:35｜<a href="http://wonderfx.jp/blog-entry-8352.html#tb" title="NY-strategy(2016.1.21)のトラックバックへ">トラックバック(0)</a>｜<a href="http://wonderfx.jp/blog-entry-8352.html#cm" title="NY-strategy(2016.1.21)のコメントへ">コメント(43)</a></div>
+<!--▲エントリフッター・終了▲-->
+
+
+
+<!--▼エントリRSS・開始▼-->
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+rdf:about="http://wonderfx.jp/blog-entry-8352.html"
+trackback:ping="http://wonderfx.jp/tb.php/8352-e3d391f1"
+dc:title="NY-strategy(2016.1.21)"
+dc:identifier="http://wonderfx.jp/blog-entry-8352.html"
+dc:subject="NY市場予想（21:30現在）"
+dc:description="NY&#45;strategy（2016.1.21)アルゴリズム解析でポンド円のNY時間直前からNY本時間(23:30～06:55)の売買ポイント、利食いポイント、ポイント詳細、そして過去8時間のSummary(LONDON&#45;Summary)をご案内しています。 尚、途中22:30と23:30にアルゴリズムの再解析をして、変更となった場合は加筆を追記します。[21:30現在アルゴリズム解析です]◆165.84&#45;163.52【↓】売り《売りポイント》[１]165.07 [２]165.17《利食いポイント》164.11&#45;164...."
+dc:creator="若松　浩幸"
+</rdf:RDF>
+-->
+<!--▲エントリRSS・終了▲-->
+
+
+</div><div class="post">
+
+
+<!--▼記事タイトル・開始▼-->
+<h2><a href="http://wonderfx.jp/blog-entry-8351.html">algorithm analysis欧州戦略(2016.1.21)</a></h2>
+<!--▲記事タイトル・終了▲-->
+
+
+<!--▼エントリヘッダー・開始▼-->
+<div class="postinfo">
+<a href="blog-category-16.html" title="このカテゴリ一覧を見る">algorithm analysis</a>
+</div>
+<!--▲エントリヘッダー・終了▲-->
+
+
+<!--▼記事本文・開始▼-->
+<div class="postmain">
+<Div Align="left"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/B40-6-1.jpg" alt="B40-6-1.jpg" border="0" width="320" height="71" /></Div><h3>algorithm analysis欧州戦略(2016.1.21)</h3>ドル円・ポンドドル・ユーロ円・ユーロドルの4通貨をアルゴリズム＆クオンツ解析を行い、欧州時間(15:00～22:30)の売買ポイント、ターゲット、ストップ設定をご案内します。<br /><br /><h4>ドル円</h4>《売りポイント》117.04-117.19<br />《ストップ》117.40<br />《ターゲット》116.59-116.68<br />《現行水準》　2016.1.21_15:00現在　116.88<br /><br /><h4>ポンドドル</h4><span style="color:#cc0033">※アルゴリズムでシグナルが出ていませんのでポイント値の提示は有りません。</span><br />《現行水準》　2016.1.21_15:00現在　1.4187<br /><br /><h4>ユーロ円</h4>《売りポイント》127.42-127.52<br />《ストップ》127.64<br />《ターゲット》127.15-127.20<br />《現行水準》　2016.1.21_15:00現在　127.28<br /><br /><h4>ユーロドル</h4>《買いポイント》1.0873-1.0888<br />《ストップ》1.0856<br />《ターゲット》1.0904-1.0908<br />《現行水準》　2016.1.21_15:00現在　1.0898<br /><br />【data条件とポイント値の利用方法】<br />※この<span style="color:#cc0033">alogorithm analysis 4 currency 1.00版 </span>となります。<br />※strategyの基本対象時間帯は15:00～23:30ですが、主に15:00～19:00をメインに設計をしています。<br />※この解析内容は15時現在のデータを基にしています。<br />※《ターゲット》ポイントを捉えた場合ストーリーが完成して終了となります。この場合、ストーリーが再度繰り返されるか(リピート)するか、新ストーリーに移行するかを確認をします。<br />※《ストップ》ポイントを捉えた場合はストーリーの崩壊となります。尚、ストップポイントを完全に抜けない場合は、そのストップラインが抵抗(サポートラインやレジスタンスライン)に寄与しているか見極めます。<br />※<span style="color:#cc0033">掲載は不定期になります。通常のLONDON-strategy、the指値man（欧州版）Update後のリアルタイムトレードに時間的余裕がある場合にアルゴリズム解析データからご案内を致してます。</span><br />※本algorithm analysisはアルゴリズム解析の内容をお伝えするもので、投資判断を促すものでは一切有りません。このalgorithm analysisにより生じる一切の責任に関しては責任を負いません。<br />※この著作権は若松浩幸に帰属しますので、無断転載を禁じます。<br />(2015.11.23規定)<Div Align="right"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/40-6-1.jpg" alt="40-6-1.jpg" border="0" width="309" height="51" /></Div>
+
+<!--▼続きを読む・開始▼-->
+<!--▲続きを読む・終了▲-->
+
+
+<!--▼追記部分・開始▼-->
+<!--▲追記本文・開始▲-->
+<!--▲追記部分・終了▲-->
+
+
+
+
+<!--▼記事内ページナビ・開始▼-->
+<div class="page_navi3">
+<ul>
+<li><a href="blog-category-16.html" title="このカテゴリ一覧を見る">同カテゴリの他エントリーを読む</a></li>
+<li><a href="#header-ue" title="このページのトップへ">ページトップ</a></li>
+<li><a href="http://wonderfx.jp/" title="wonderfxホームへ">ホーム</a></li>
+<li><a href="http://wonderfx.jp/?xml" title="wonderfx のRSSフィード(更新情報)" target="_blank">RSS</a></li>
+</ul>
+</div>
+<!--▲記事内ページナビ・終了▲-->
+
+
+<!--▼タグ・開始▼-->
+<div class="entry-tag">
+<div class="tagtitle">タグキーワード</div>
+<ul>
+<li>No Tag</li>
+ 
+</ul>
+</div>
+<!--▲タグ・終了▲-->
+
+
+<!--▼記事内関連記事・開始▼-->
+<div class="relate">
+ 
+</div>
+<!--▲記事内関連記事・終了▲-->
+
+
+<!--▼コミュニティー＆テーマ・開始▼-->
+<!--▲コミュニティー＆テーマ・終了▲-->
+
+
+</div>
+<!--▲記事本文・終了▲-->
+
+
+
+<!--▼エントリフッター・開始▼-->
+<div class="postinfo-bottom">
+2016.01.21 15:25｜<a href="http://wonderfx.jp/blog-entry-8351.html#tb" title="algorithm analysis欧州戦略(2016.1.21)のトラックバックへ">トラックバック(0)</a>｜<a href="http://wonderfx.jp/blog-entry-8351.html#cm" title="algorithm analysis欧州戦略(2016.1.21)のコメントへ">コメント(0)</a></div>
+<!--▲エントリフッター・終了▲-->
+
+
+
+<!--▼エントリRSS・開始▼-->
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+rdf:about="http://wonderfx.jp/blog-entry-8351.html"
+trackback:ping="http://wonderfx.jp/tb.php/8351-44ab9493"
+dc:title="algorithm analysis欧州戦略(2016.1.21)"
+dc:identifier="http://wonderfx.jp/blog-entry-8351.html"
+dc:subject="algorithm analysis"
+dc:description="algorithm analysis欧州戦略(2016.1.21)ドル円・ポンドドル・ユーロ円・ユーロドルの4通貨をアルゴリズム＆クオンツ解析を行い、欧州時間(15:00～22:30)の売買ポイント、ターゲット、ストップ設定をご案内します。ドル円《売りポイント》117.04&#45;117.19《ストップ》117.40《ターゲット》116.59&#45;116.68《現行水準》　2016.1.21_15:00現在　116.88ポンドドル※アルゴリズムでシグナルが出ていませんのでポイント値の提示は有りません。..."
+dc:creator="若松　浩幸"
+</rdf:RDF>
+-->
+<!--▲エントリRSS・終了▲-->
+
+
+</div><div class="post">
+
+
+<!--▼記事タイトル・開始▼-->
+<h2><a href="http://wonderfx.jp/blog-entry-8350.html">LONDON-strategy(2016.1.21)</a></h2>
+<!--▲記事タイトル・終了▲-->
+
+
+<!--▼エントリヘッダー・開始▼-->
+<div class="postinfo">
+<a href="blog-category-2.html" title="このカテゴリ一覧を見る">欧州市場予想</a>
+</div>
+<!--▲エントリヘッダー・終了▲-->
+
+
+<!--▼記事本文・開始▼-->
+<div class="postmain">
+<img src="http://blog-imgs-55.fc2.com/w/o/n/wonderfx/20120815005637932.png" alt="tinytags (1)" border="0" width="96" height="178" /><h3>LONDON-strategy（2016.1.21)</h3>アルゴリズム解析でポンド円の欧州時間(15:00～21:30)の売買ポイント、利食いポイント、ポイント詳細、そして過去8時間のSummary(TOKYO-Summary)をご案内しています。 <br /><br /><span style="color:#0000FF">◆166.77-164.05【↓】売り</span><br />《売りポイント》[１]166.03 [２]166.13<br />《利食いポイント》165.30-165.44<br /><br />※売りサインに転換しています。<br />※トレンド指数は8時間値売り、16時間値微弱の売り、(24h・32h値)買いとなっています。波動は右肩下がりからフラットに。買いサインの終盤から売りへの転換点となっています。<br />※欧州時間は売りから参入を致します。<br />※欧州時間後半にECBの金融政策発表とドラギ総裁の会見が有ります。ユーロ材料となりますのでユーロ主導の欧州時間です。<br /><span style="color:#CC0000">2016.1.21_15:00現在</span><br /><br /><h4>2016.1.21ポンド円TOKYO-Summary=序盤、日銀の追加緩和期待から円売り優勢</h4>・日銀の追加緩和期待からや日経平均上昇に伴い円売りが進行。ドル円は117.47まで、ポンド円は166.76まで上昇(10:00)。<br />・その後、ドル円は前日高値がレジスタンスとなり伸び悩み。ポンド円も連れる。後場から日経平均が下落に転じると円買い戻しが優勢となり、ドル円は116.87まで、ポンド円は165.63まで下落。<br />・一方でポンドドルはポンド円に連れて1.4166まで下落となっています。<br /><br />［売買結果］［本日　133P　1月累計　2266P]<br />166.42(S)⇒166.25利確17P<br />166.70(S)⇒166.58利確12P <br />166.68(S)⇒166.58利確10P  <br />166.63(S)⇒165.72利確94P　　2016-01-21 13:51<br />195.83(S)保有(スイング:リミットを157.36に変更)<br />169.83(L)保有(スイング:リミットを181.92に設定)<br />※尚、169.83(L)は純粋な買いではなく保有売りスイングに対する保険の意味も一部含んでいます。<br /><hr size="1" color="#0033CC"><span style="color:#cd143c"><b>［data条件等］</b></span><br />※このLONDON-strategyの解析は<span style="color:#FF00FF">　wonderFX alogorithm＆quants 9.10版　</span>になります。<br />※strategyの対象時間帯は15:00～21:30となります。<br />※基本、対象時間を超えた場合や、ストーリが完成をした段階で、本strategyは終了とします。<br />※本、LONDON-strategyはアルゴリズム解析の内容と若松浩幸のリアルタイムトレードをお伝えするもので、投資判断を促すものでは一切有りません。このLONDON-strategyにより生じる一切の責任に関しては責任を負いません。<br />※この著作権は若松浩幸に帰属しますので、無断転載を禁じます。転載を希望される方はお問い合わせ下さい。<br />(2015.3.8規定)  <hr size="1" color="#0033CC"><Div Align="right"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/commentinfo4.jpg" alt="commentinfo4.jpg" border="0" width="225" height="37" /></Div>
+
+<!--▼続きを読む・開始▼-->
+<!--▲続きを読む・終了▲-->
+
+
+<!--▼追記部分・開始▼-->
+<!--▲追記本文・開始▲-->
+<!--▲追記部分・終了▲-->
+
+
+
+
+<!--▼記事内ページナビ・開始▼-->
+<div class="page_navi3">
+<ul>
+<li><a href="blog-category-2.html" title="このカテゴリ一覧を見る">同カテゴリの他エントリーを読む</a></li>
+<li><a href="#header-ue" title="このページのトップへ">ページトップ</a></li>
+<li><a href="http://wonderfx.jp/" title="wonderfxホームへ">ホーム</a></li>
+<li><a href="http://wonderfx.jp/?xml" title="wonderfx のRSSフィード(更新情報)" target="_blank">RSS</a></li>
+</ul>
+</div>
+<!--▲記事内ページナビ・終了▲-->
+
+
+<!--▼タグ・開始▼-->
+<div class="entry-tag">
+<div class="tagtitle">タグキーワード</div>
+<ul>
+<li>No Tag</li>
+ 
+</ul>
+</div>
+<!--▲タグ・終了▲-->
+
+
+<!--▼記事内関連記事・開始▼-->
+<div class="relate">
+ 
+</div>
+<!--▲記事内関連記事・終了▲-->
+
+
+<!--▼コミュニティー＆テーマ・開始▼-->
+<!--▲コミュニティー＆テーマ・終了▲-->
+
+
+</div>
+<!--▲記事本文・終了▲-->
+
+
+
+<!--▼エントリフッター・開始▼-->
+<div class="postinfo-bottom">
+2016.01.21 15:08｜<a href="http://wonderfx.jp/blog-entry-8350.html#tb" title="LONDON-strategy(2016.1.21)のトラックバックへ">トラックバック(0)</a>｜<a href="http://wonderfx.jp/blog-entry-8350.html#cm" title="LONDON-strategy(2016.1.21)のコメントへ">コメント(42)</a></div>
+<!--▲エントリフッター・終了▲-->
+
+
+
+<!--▼エントリRSS・開始▼-->
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+rdf:about="http://wonderfx.jp/blog-entry-8350.html"
+trackback:ping="http://wonderfx.jp/tb.php/8350-50662cc0"
+dc:title="LONDON-strategy(2016.1.21)"
+dc:identifier="http://wonderfx.jp/blog-entry-8350.html"
+dc:subject="欧州市場予想"
+dc:description="LONDON&#45;strategy（2016.1.21)アルゴリズム解析でポンド円の欧州時間(15:00～21:30)の売買ポイント、利食いポイント、ポイント詳細、そして過去8時間のSummary(TOKYO&#45;Summary)をご案内しています。 ◆166.77&#45;164.05【↓】売り《売りポイント》[１]166.03 [２]166.13《利食いポイント》165.30&#45;165.44※売りサインに転換しています。※トレンド指数は8時間値売り、16時間値微弱の売り、(24h・32h値)買いとなっています。波動は右肩下がり..."
+dc:creator="若松　浩幸"
+</rdf:RDF>
+-->
+<!--▲エントリRSS・終了▲-->
+
+
+</div><div class="post">
+
+
+<!--▼記事タイトル・開始▼-->
+<h2><a href="http://wonderfx.jp/blog-entry-8349.html">algorithm analysis東京戦略(2016.1.21)</a></h2>
+<!--▲記事タイトル・終了▲-->
+
+
+<!--▼エントリヘッダー・開始▼-->
+<div class="postinfo">
+<a href="blog-category-16.html" title="このカテゴリ一覧を見る">algorithm analysis</a>
+</div>
+<!--▲エントリヘッダー・終了▲-->
+
+
+<!--▼記事本文・開始▼-->
+<div class="postmain">
+<Div Align="left"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/B40-6-1.jpg" alt="B40-6-1.jpg" border="0" width="320" height="71" /></Div><h3>algorithm analysis東京戦略(2016.1.21)</h3>ドル円・ポンドドル・ユーロ円・ユーロドルの4通貨をアルゴリズム＆クオンツ解析を行い、東京時間(7:00～15:00)の売買ポイント、ターゲット、ストップ設定をご案内します。<br /><br /><h4>ドル円</h4>《買いポイント》116.63-116.73<br />《ストップ》116.31<br />《ターゲット》117.16-117.26<br />《現行水準》　2016.1.21_06:55現在　116.95<br /><br /><h4>ポンドドル</h4>《買いポイント》1.4166-1.4176<br />《ストップ》1.4124<br />《ターゲット》1.4223-1.4231<br />《現行水準》　2016.1.21_06:55現在　1.4190<br /><br /><h4>ユーロ円</h4>《買いポイント》127.07-127.17<br />《ストップ》126.74<br />《ターゲット》127.60-127.71<br />《現行水準》　2016.1.21_06:55現在　127.39<br /><br /><h4>ユーロドル</h4>《売りポイント》1.0902-1.0912<br />《ストップ》1.0932<br />《ターゲット》1.0854-1.0872<br />《現行水準》　2016.1.21_06:55現在　1.0892<br /><br />【data条件とポイント値の利用方法】<br />※この<span style="color:#cc0033">alogorithm analysis 4 currency 1.00版 </span>となります。<br />※strategyの基本対象時間帯は06:55～15:00ですが、主に06:55～10:55をメインに設計をしています。<br />※この解析内容は6時55分現在のデータを基にしています。<br />※《ターゲット》ポイントを捉えた場合ストーリーが完成して終了となります。この場合、ストーリーが再度繰り返されるか(リピート)するか、新ストーリーに移行するかを確認をします。<br />※《ストップ》ポイントを捉えた場合はストーリーの崩壊となります。尚、ストップポイントを完全に抜けない場合は、そのストップラインが抵抗(サポートラインやレジスタンスライン)に寄与しているか見極めます。<br />※<span style="color:#cc0033">掲載は不定期になります。通常のTOKYO-strategy、the指値man（東京版）Update後のリアルタイムトレードに時間的余裕がある場合にアルゴリズム解析データからご案内を致してます。</span><br />※本algorithm analysisはアルゴリズム解析の内容をお伝えするもので、投資判断を促すものでは一切有りません。このalgorithm analysisにより生じる一切の責任に関しては責任を負いません。<br />※この著作権は若松浩幸に帰属しますので、無断転載を禁じます。<br />(2015.11.23規定)<Div Align="right"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/40-6-1.jpg" alt="40-6-1.jpg" border="0" width="309" height="51" /></Div>
+
+<!--▼続きを読む・開始▼-->
+<!--▲続きを読む・終了▲-->
+
+
+<!--▼追記部分・開始▼-->
+<!--▲追記本文・開始▲-->
+<!--▲追記部分・終了▲-->
+
+
+
+
+<!--▼記事内ページナビ・開始▼-->
+<div class="page_navi3">
+<ul>
+<li><a href="blog-category-16.html" title="このカテゴリ一覧を見る">同カテゴリの他エントリーを読む</a></li>
+<li><a href="#header-ue" title="このページのトップへ">ページトップ</a></li>
+<li><a href="http://wonderfx.jp/" title="wonderfxホームへ">ホーム</a></li>
+<li><a href="http://wonderfx.jp/?xml" title="wonderfx のRSSフィード(更新情報)" target="_blank">RSS</a></li>
+</ul>
+</div>
+<!--▲記事内ページナビ・終了▲-->
+
+
+<!--▼タグ・開始▼-->
+<div class="entry-tag">
+<div class="tagtitle">タグキーワード</div>
+<ul>
+<li>No Tag</li>
+ 
+</ul>
+</div>
+<!--▲タグ・終了▲-->
+
+
+<!--▼記事内関連記事・開始▼-->
+<div class="relate">
+ 
+</div>
+<!--▲記事内関連記事・終了▲-->
+
+
+<!--▼コミュニティー＆テーマ・開始▼-->
+<!--▲コミュニティー＆テーマ・終了▲-->
+
+
+</div>
+<!--▲記事本文・終了▲-->
+
+
+
+<!--▼エントリフッター・開始▼-->
+<div class="postinfo-bottom">
+2016.01.21 07:21｜<a href="http://wonderfx.jp/blog-entry-8349.html#tb" title="algorithm analysis東京戦略(2016.1.21)のトラックバックへ">トラックバック(0)</a>｜<a href="http://wonderfx.jp/blog-entry-8349.html#cm" title="algorithm analysis東京戦略(2016.1.21)のコメントへ">コメント(0)</a></div>
+<!--▲エントリフッター・終了▲-->
+
+
+
+<!--▼エントリRSS・開始▼-->
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+rdf:about="http://wonderfx.jp/blog-entry-8349.html"
+trackback:ping="http://wonderfx.jp/tb.php/8349-fdf3f723"
+dc:title="algorithm analysis東京戦略(2016.1.21)"
+dc:identifier="http://wonderfx.jp/blog-entry-8349.html"
+dc:subject="algorithm analysis"
+dc:description="algorithm analysis東京戦略(2016.1.21)ドル円・ポンドドル・ユーロ円・ユーロドルの4通貨をアルゴリズム＆クオンツ解析を行い、東京時間(7:00～15:00)の売買ポイント、ターゲット、ストップ設定をご案内します。ドル円《買いポイント》116.63&#45;116.73《ストップ》116.31《ターゲット》117.16&#45;117.26《現行水準》　2016.1.21_06:55現在　116.95ポンドドル《買いポイント》1.4166&#45;1.4176《ストップ》1.4124《ターゲット》1.4223&#45;1.42..."
+dc:creator="若松　浩幸"
+</rdf:RDF>
+-->
+<!--▲エントリRSS・終了▲-->
+
+
+</div><div class="post">
+
+
+<!--▼記事タイトル・開始▼-->
+<h2><a href="http://wonderfx.jp/blog-entry-8348.html">2016年1月21日the指値man(東京版)№1650</a></h2>
+<!--▲記事タイトル・終了▲-->
+
+
+<!--▼エントリヘッダー・開始▼-->
+<div class="postinfo">
+<a href="blog-category-9.html" title="このカテゴリ一覧を見る">the指値man</a>
+</div>
+<!--▲エントリヘッダー・終了▲-->
+
+
+<!--▼記事本文・開始▼-->
+<div class="postmain">
+<img src="http://blog-imgs-42.fc2.com/w/o/n/wonderfx/thesasinemanyoko1.jpg" alt="thesasinemanyoko1.jpg" border="0" width="306" height="42" /><h3>2016年1月21日the指値man(東京版)№1650</h3>指値専門のアルゴリズム解析から東京時間(7:00～15:00)の指値ポイント、利食いポイント、ストップ値をご案内します。<br /><br />《買いポイント》165.59(設定時刻11:30迄)<br />《22Pips利食いポイント》165.81ポジションの50％を利食いします<br />《最終利食いポイント》166.43(設定時刻15:00※残ポジションの50％利食いします)<br />《ストップ》165.12<br /><br />【data条件等】<br />※設定時刻までに指値が入らなければ中止です。<br />※ポジションの50％を《22Pipsポイント》で利確し、残ポジションを《最終利食いポイント》まで引っ張ります。<br />※ストップ値は《22Pips利食いポイント》で利食いが出来た場合は、残り50％のポジションの《ストップ》を建値に変更します。<br />※設定時刻までに《最終利食いポイント》まで到達しない場合は成行決済となります。<br /><br />※Update Schedule<br />◇the指値man(東京版)7:20～8:20<br />◇the指値man(欧州版)15:20～16:20<br />◇the指値man(NY版)22:50～23:50※不定期<br />※アルゴリズム解析で指値サインが出ていない場合は配信を中止します。更に特殊要因のファンダメンタルズに影響される場合も中止となりなます。<br /><br><br /><Center><img src="http://blog-imgs-55.fc2.com/w/o/n/wonderfx/thesasineman3S.gif" alt="thesasineman3S" border="0" width="419" height="108" /></Center><br /><Div Align="right"><img src="http://blog-imgs-42.fc2.com/w/o/n/wonderfx/thesasinemantate1.jpg"alt="thesasinemantate1.jpg" border="0" width="220" height="65" /></a></Div>
+
+<!--▼続きを読む・開始▼-->
+<!--▲続きを読む・終了▲-->
+
+
+<!--▼追記部分・開始▼-->
+<!--▲追記本文・開始▲-->
+<!--▲追記部分・終了▲-->
+
+
+
+
+<!--▼記事内ページナビ・開始▼-->
+<div class="page_navi3">
+<ul>
+<li><a href="blog-category-9.html" title="このカテゴリ一覧を見る">同カテゴリの他エントリーを読む</a></li>
+<li><a href="#header-ue" title="このページのトップへ">ページトップ</a></li>
+<li><a href="http://wonderfx.jp/" title="wonderfxホームへ">ホーム</a></li>
+<li><a href="http://wonderfx.jp/?xml" title="wonderfx のRSSフィード(更新情報)" target="_blank">RSS</a></li>
+</ul>
+</div>
+<!--▲記事内ページナビ・終了▲-->
+
+
+<!--▼タグ・開始▼-->
+<div class="entry-tag">
+<div class="tagtitle">タグキーワード</div>
+<ul>
+<li>No Tag</li>
+ 
+</ul>
+</div>
+<!--▲タグ・終了▲-->
+
+
+<!--▼記事内関連記事・開始▼-->
+<div class="relate">
+ 
+</div>
+<!--▲記事内関連記事・終了▲-->
+
+
+<!--▼コミュニティー＆テーマ・開始▼-->
+<!--▲コミュニティー＆テーマ・終了▲-->
+
+
+</div>
+<!--▲記事本文・終了▲-->
+
+
+
+<!--▼エントリフッター・開始▼-->
+<div class="postinfo-bottom">
+2016.01.21 07:09｜<a href="http://wonderfx.jp/blog-entry-8348.html#tb" title="2016年1月21日the指値man(東京版)№1650のトラックバックへ">トラックバック(0)</a>｜<a href="http://wonderfx.jp/blog-entry-8348.html#cm" title="2016年1月21日the指値man(東京版)№1650のコメントへ">コメント(0)</a></div>
+<!--▲エントリフッター・終了▲-->
+
+
+
+<!--▼エントリRSS・開始▼-->
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+rdf:about="http://wonderfx.jp/blog-entry-8348.html"
+trackback:ping="http://wonderfx.jp/tb.php/8348-86e65b7d"
+dc:title="2016年1月21日the指値man(東京版)№1650"
+dc:identifier="http://wonderfx.jp/blog-entry-8348.html"
+dc:subject="the指値man"
+dc:description="2016年1月21日the指値man(東京版)№1650指値専門のアルゴリズム解析から東京時間(7:00～15:00)の指値ポイント、利食いポイント、ストップ値をご案内します。《買いポイント》165.59(設定時刻11:30迄)《22Pips利食いポイント》165.81ポジションの50％を利食いします《最終利食いポイント》166.43(設定時刻15:00※残ポジションの50％利食いします)《ストップ》165.12【data条件等】※設定時刻までに指値が入らなければ中止です。※ポジシ..."
+dc:creator="若松　浩幸"
+</rdf:RDF>
+-->
+<!--▲エントリRSS・終了▲-->
+
+
+</div><div class="post">
+
+
+<!--▼記事タイトル・開始▼-->
+<h2><a href="http://wonderfx.jp/blog-entry-8347.html">TOKYO-strategy（2016.1.21)</a></h2>
+<!--▲記事タイトル・終了▲-->
+
+
+<!--▼エントリヘッダー・開始▼-->
+<div class="postinfo">
+<a href="blog-category-1.html" title="このカテゴリ一覧を見る">東京市場予想</a>
+</div>
+<!--▲エントリヘッダー・終了▲-->
+
+
+<!--▼記事本文・開始▼-->
+<div class="postmain">
+<img src="http://blog-imgs-55.fc2.com/w/o/n/wonderfx/201208150101377c8.png" alt="tinytags (2)" border="0" width="96" height="182" /><h3>TOKYO-strategy（2016.1.21)</h3>アルゴリズム解析でポンド円の東京時間(7:00～15:00)の売買ポイント、利食いポイント、ポイント詳細、そして過去24時間のSummary(TOKYO-Summary、LONDON-Summary 、NY-Summary)と短期トレンド(60分足と日足)の解説をご案内しています。   <br /><br /><span style="color:#FF00FF">◆166.90-164.94【↑】買い</span><br />《買いポイント》[１]165.59 [２]165.49<br />《利食いポイント》166.24-166.40<br /><br />※買いサイン継続です。<br />※トレンド指数は4ブロック時間軸全て買いとなっています。波動はすり鉢型で買いが継続するか見極めのサインとなっています。<br />※東京時間は買いから参入を致します。波動すり鉢型なので買いの継続を見極めながらとなります。<br />※ダウは249ドル安、日経先物終値(6:15)は16349円でNY23:30から15円高となっています。<br /><span style="color:#CC0000">2016.1.21_07:00現在</span><br /><br /><h4>短期トレンド(60分足)=25時間線を巡る攻防から方向性を模索する展開</h4>短期トレンドは5時間線が上昇し25時間線に接近しています。<br />トレンドラインは5時間が上向き、25時間線、75時間線が下向き、パラボリック(164.77)はロング、MACDはシグナルを上抜け、転換線は基準線を僅かに下抜けしています。<br />東京時間は25時間線を巡る攻防から方向性を模索する展開が想定されます。<br /><br />◇75時間移動平均線（166.75)<br /><span style="color:#FF00FF">◇1/21　06:30（166.03)</span><br />◇25時間移動平均線（165.49）<br />◇5時間移動平均線（165.42)<br />◇基準線（165.39)<br />◇転換線（163.38)<br /><span style="color:#CC0000">2016.1.21_06:30現在</span><br /><br /><h4>短期トレンド(日足)=5日線「下向き」＆「下抜け」継続</h4>二日連続の陰線(下髭小陰線、実体:46Pipｓ、上髭:33ips、下髭:206Pips)です。<br />東京時間から欧州序盤までは日経平均や欧州株の大幅下落からリスク回避で【下攻め↓】。その後、英雇用統計改善から【上攻め↑】。NY時間はダウや米10年債権利回りに連動して前半は下攻め。後半は【上攻め↑】となっています。<br />トレンドラインは5日線、21日線、75日線が揃って下向き。パラボリック(169.67)はショート転換38日目です。<br />5日線「下向き」＆「下抜け」継続です。<br />本日も5日線を上値目処とした戻り売りの展開が想定されます。<br /><br />◇2015年6月24日高値(195.853)※0％<br />◇2015年8月18日高値(195.23)<br />◇2015年11月19日高値(188.77)<br />◇2015年6月24日高値 から2013年11月6日安値 への23.6％下押し(186.59)<br />◇一目均衡表雲の上限①（184.83)<br />◇一目均衡表雲の下限②（184.71)<br />◇75日移動平均線（181.83)<br />◇2015年6月24日高値 から2013年11月6日安値 への38.2％下押し(180.86)<br />◇2015年6月24日高値 から2013年11月6日安値 への50.0％下押し(176.23)<br />◇日足一目均衡表、基準線（174.07)<br />◇21日移動平均線（173.57)<br />◇2015年6月24日高値 から2013年11月6日安値 への61.8％下押し(171.60)<br />◇日足一目均衡表、転換線（168.65)<br />◇5日移動平均線（167.29)<br /><span style="color:#00FFFF">◇1/21　06:30（166.03)</span><br />◇2015年6月24日高値 から2013年11月6日安値 への76.4％下押し(165.87)<br />◇1/20安値(163.95)<br />◇2013年11月6日安値(156.615)※100％<br />◇2015年6月24日高値 から2013年11月6日安値 への138.2％下押し(141.62)<br />※2013年11以降の高値を0％、安値を100％とした下押し率(ポンド円の下落率)の短期フィボナッチです。<br /><span style="color:#CC0000">2016.1.21_06:30現在</span><br /><br /><h4>2016.1.20ポンド円TOKYO-Summary=日経平均お幅安からリスク回避</h4>・日経平均が前場で370円超安、後場から530円超安までも下落幅を拡大。リスク回避の流れで「円買い」が進行、ドル円は116.85まで、ポンド円は165.34まで下落。<br />・一方でポンドドルはユーロポンド買いが再開した事で1.4131まで下落となっています(14:30)。<br /><br /><h4>2016.1.20ポンド円LONDON-Summary=米10年債権利回り低下から円買いが進行</h4>・日経ナイトセッションの大幅下落や米10年債権利回り低下から円買いが進行。ドル円は115.97まで、ポンド円は163.95まで下落(18:05)。一巡後、急落からの反動や政府関係者からの口先で円売り戻しが優勢となり、ドル円は116.96まで、ポンド円は165.63まで上昇。その後はやや上値を削るも戻りスタンスを維持して揉み合いとなっています。<br />・一方でポンドドルは雇用統計発表後からポンド買い戻しが入り1.4189まで上昇。その後は伸び悩みから反落となっています(21:20)。<br /><br /><h4>2016.1.20.ポンド円NY-Summary=株価、債権に連動</h4>・ダウ平均の下落や米10年債権利回り低下が要因で円買いが進行。ドル円は116.20まで、ポンド円は164.75まで下落。その後、ダウ平均が下落幅を縮小し、米10年債権利回りも低下幅を縮小した事で円売り戻しが入り、ドル円は117.05まで、ポンド円は165.82上昇となっています。<br />・一方でポンドドルも米10年債権利回り上昇時にはドル買いが進行して1.4150まで下落。その後、米10年債権利回りが低下幅を縮小するとドル売りで1.4181まで上昇となっています。<br /><br /><h4>2016.1.20英国指標</h4>英12月失業率　2.3％(予想  2.3％) <br />英12月失業者数(失業保険申請件数)  4300人減少(予想  2800人増加)<br /><br />［売買結果］［昨日　337P　1月累計　2133P]<br />165.50(S)⇒165.31利確19P <br />165.46(S)⇒165.31利確15P <br />165.30(S)⇒165.31利確▲1P<br />165.45(S)⇒165.33利確12P <br />165.45(S)⇒165.33利確12P<br />164.88(S)⇒164.43利確45P　　<br />165.56(S)⇒165.31利確25P <br />165.44(S)⇒165.31利確13P<br />165.77(S)⇒165.49利確28P <br />165.41(S)⇒165.49利確▲8P<br />165.80(S)⇒165.52利確28P<br />165.39(S)⇒165.37利確2P<br />165.78(S)⇒165.25利確53P <br />165.64(S)⇒165.25利確39P  <br />165.38(S)⇒164.83利確55P　　2016-01-21 01:00<br />195.83(S)保有(スイング:リミットを157.36に変更)<br />169.83(L)保有(スイング:リミットを181.92に設定)<br />※尚、169.83(L)は純粋な買いではなく保有売りスイングに対する保険の意味も一部含んでいます。<br /><hr size="1" color="#0033CC"><span style="color:#cd143c"><b>[トレードスタイル］</b></span><br />※基本的にトレードはデイトレードとなります。チャートの早い動きの時はそれがスキャに見える事が有るかも知れませんが「デイトレード」です。スキャルピングで臨んでいる事は有りません。要は動きは遅い時は15銭取るのに2時間掛かる事も有ります。反対に動きが早い時はそれが2分と言う事も有ります。考え方は狙っているポイント値に有ります。<br />※トレード中「手仕舞いをして売り直しする」場合が有ります。これは自分の描いているストーリーに不安や誤っているのではないかと感じた時に「一旦手仕舞って」再度、内容を検証。そして「入り直す」。この作業をしているだけです。リスクを最小限に押さえる事を考えて敢えてポジションを整理して「公正な目」で流れを捉える為です。<br />※strategyは8時間単位で構成されています。これは市場が変われば流れも変わる。と言う考えからです。リスクを最小限に押さえる為に出来るだけ市場間を跨がない取引を目指しています。<br />※デイトレード以外にはスイングも構築する事は有ります。スイング構築に関してはその都度コメント欄に方針を掲載しています。<br /><hr size="1" color="#0033CC"><span style="color:#cd143c"><b>[リアルタイムトレード］</b></span><br />リアルタイムトレーはデイトレードに向いている時間帯で行います。向いているとは=時間軸で動く事が多く、更にリスクが比較的低い(方向性が出易い)時間帯で行う事です。但し、注意したいのは各時間帯には経済指標が発表される時が有ります。指標発表時にはポジションを手仕舞ってから入り直しリスクを回避します。<br />基本の時間帯(市場環境によっては変わります)<br />東京時間=8:30-11:30<br />欧州時間=15:45-17:45(夏時間)<br />NY時間=21：00-25:00(夏時間）<br />※米国が3月8日から夏時間となっています。しかし欧州は3月29日から夏時間です。そこを考慮して下さい。<br />◇8時台=東京指標発表が有る時間帯。基本ドル円の円売りが強くなる。<br />◇9:55に向けて仲値で実需の動きが入る<br />◇15時=東京オプションで値が動きは活発化<br />◇16時=欧州勢参入で東京時間からトレンドが転換する事が多い<br />◇21時=NY勢参入でドル・債権メインの動き<br />◇25時=FIXで大口の売買が入り易い<br /><hr size="1" color="#0033CC"><span style="color:#cd143c"><b>［data条件等］</b></span><br />※このTOKYO-strategyの解析は<span style="color:#FF00FF">　wonderFX alogorithm＆quants 9.10版　</span>になります。<br />※strategyの対象時間帯は0700～15:00となります。<br />※基本、対象時間を超えた場合や、ストーリが完成をした段階で、本strategyは終了とします。<br />※本、TOKYO-strategyはアルゴリズム解析の内容と若松浩幸のリアルタイムトレードをお伝えするもので、投資判断を促すものでは一切有りません。このTOKYO-strategyにより生じる一切の責任に関しては責任を負いません。<br />※この著作権は若松浩幸に帰属しますので、無断転載を禁じます。転載を希望される方はお問い合わせ下さい。<br />(2015.3.8規定) <hr size="1" color="#0033CC"><Div Align="right"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/commentinfo4.jpg" alt="commentinfo4.jpg" border="0" width="225" height="37" /></Div>
+
+<!--▼続きを読む・開始▼-->
+<!--▲続きを読む・終了▲-->
+
+
+<!--▼追記部分・開始▼-->
+<!--▲追記本文・開始▲-->
+<!--▲追記部分・終了▲-->
+
+
+
+
+<!--▼記事内ページナビ・開始▼-->
+<div class="page_navi3">
+<ul>
+<li><a href="blog-category-1.html" title="このカテゴリ一覧を見る">同カテゴリの他エントリーを読む</a></li>
+<li><a href="#header-ue" title="このページのトップへ">ページトップ</a></li>
+<li><a href="http://wonderfx.jp/" title="wonderfxホームへ">ホーム</a></li>
+<li><a href="http://wonderfx.jp/?xml" title="wonderfx のRSSフィード(更新情報)" target="_blank">RSS</a></li>
+</ul>
+</div>
+<!--▲記事内ページナビ・終了▲-->
+
+
+<!--▼タグ・開始▼-->
+<div class="entry-tag">
+<div class="tagtitle">タグキーワード</div>
+<ul>
+<li>No Tag</li>
+ 
+</ul>
+</div>
+<!--▲タグ・終了▲-->
+
+
+<!--▼記事内関連記事・開始▼-->
+<div class="relate">
+ 
+</div>
+<!--▲記事内関連記事・終了▲-->
+
+
+<!--▼コミュニティー＆テーマ・開始▼-->
+<!--▲コミュニティー＆テーマ・終了▲-->
+
+
+</div>
+<!--▲記事本文・終了▲-->
+
+
+
+<!--▼エントリフッター・開始▼-->
+<div class="postinfo-bottom">
+2016.01.21 07:04｜<a href="http://wonderfx.jp/blog-entry-8347.html#tb" title="TOKYO-strategy（2016.1.21)のトラックバックへ">トラックバック(0)</a>｜<a href="http://wonderfx.jp/blog-entry-8347.html#cm" title="TOKYO-strategy（2016.1.21)のコメントへ">コメント(25)</a></div>
+<!--▲エントリフッター・終了▲-->
+
+
+
+<!--▼エントリRSS・開始▼-->
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+rdf:about="http://wonderfx.jp/blog-entry-8347.html"
+trackback:ping="http://wonderfx.jp/tb.php/8347-a6668900"
+dc:title="TOKYO-strategy（2016.1.21)"
+dc:identifier="http://wonderfx.jp/blog-entry-8347.html"
+dc:subject="東京市場予想"
+dc:description="TOKYO&#45;strategy（2016.1.21)アルゴリズム解析でポンド円の東京時間(7:00～15:00)の売買ポイント、利食いポイント、ポイント詳細、そして過去24時間のSummary(TOKYO&#45;Summary、LONDON&#45;Summary 、NY&#45;Summary)と短期トレンド(60分足と日足)の解説をご案内しています。   ◆166.90&#45;164.94【↑】買い《買いポイント》[１]165.59 [２]165.49《利食いポイント》166.24&#45;166.40※買いサイン継続です。※トレンド指数は4ブロック時間軸全て買いと..."
+dc:creator="若松　浩幸"
+</rdf:RDF>
+-->
+<!--▲エントリRSS・終了▲-->
+
+
+</div><div class="post">
+
+
+<!--▼記事タイトル・開始▼-->
+<h2><a href="http://wonderfx.jp/blog-entry-8346.html">NY-strategy(2016.1.20)</a></h2>
+<!--▲記事タイトル・終了▲-->
+
+
+<!--▼エントリヘッダー・開始▼-->
+<div class="postinfo">
+<a href="blog-category-3.html" title="このカテゴリ一覧を見る">NY市場予想（21:30現在）</a>
+</div>
+<!--▲エントリヘッダー・終了▲-->
+
+
+<!--▼記事本文・開始▼-->
+<div class="postmain">
+<img src="http://blog-imgs-55.fc2.com/w/o/n/wonderfx/201208150105032ee.png" alt="tinytags (3)" border="0" width="95" height="173" /><h3>NY-strategy（2016.1.20)</h3>アルゴリズム解析でポンド円のNY時間直前からNY本時間(23:30～06:55)の売買ポイント、利食いポイント、ポイント詳細、そして過去8時間のSummary(LONDON-Summary)をご案内しています。 尚、途中22:30と23:30にアルゴリズムの再解析をして、変更となった場合は加筆を追記します。<br /><br /><span style="color:#CC0000">[21:30現在アルゴリズム解析です]</span><br /><span style="color:#FF00FF">◆166.80-163.30【↑】買い</span><br />《買いポイント》[１]164.95 [２]164.85<br />《利食いポイント》165.81-166.01<br /><br />※買いサインに転換しています。<br />※トレンド指数は8時間値買い、(16h・24h・32h値)売りとなっています。波動は右肩上りで売りサインです。<br />※NY時間は買いから参入を致します。同時に波動売りサインですのでレジスタンスからの逆張りも視野に入れます。<br />※NY時間の米国指標は<br />22:30　米12月住宅着工件数=市場予想悪化<br />22:30　米12月建設許可件数=市場予想悪化<br />22:30　米12月消費者物価指数=市場予想前月比横這い<br /><br /><h4>2016.1.20ポンド円LONDON-Summary=米10年債権利回り低下から円買いが進行</h4>・日経ナイトセッションの大幅下落や米10年債権利回り低下から円買いが進行。ドル円は115.97まで、ポンド円は163.95まで下落(18:05)。一巡後、急落からの反動や政府関係者からの口先で円売り戻しが優勢となり、ドル円は116.96まで、ポンド円は165.63まで上昇。その後はやや上値を削るも戻りスタンスを維持して揉み合いとなっています。<br />・一方でポンドドルは雇用統計発表後からポンド買い戻しが入り1.4189まで上昇。その後は伸び悩みから反落となっています(21:20)。<br /><br /><h4>2016.1.20英国指標</h4>英12月失業率　2.3％(予想  2.3％) <br />英12月失業者数(失業保険申請件数)  4300人減少(予想  2800人増加)<br /><br />［売買結果］［本日　102P　1月累計　1898P]<br />165.50(S)⇒165.31利確19P <br />165.46(S)⇒165.31利確15P <br />165.30(S)⇒165.31利確▲1P<br />165.45(S)⇒165.33利確12P <br />165.45(S)⇒165.33利確12P<br />164.88(S)⇒164.43利確45P　　2016-01-20 17:24<br />195.83(S)保有(スイング:リミットを157.36に変更)<br />169.83(L)保有(スイング:リミットを181.92に設定)<br />※尚、169.83(L)は純粋な買いではなく保有売りスイングに対する保険の意味も一部含んでいます。<br /><hr size="1" color="#0033CC"><span style="color:#cd143c"><b>［data条件等］</b></span><br />※このNY-straregyの解析は<span style="color:#FF00FF">　wonderFX alogorithm＆quants 9.10版　</span>になります。<br />※strategyの対象時間帯は23:30～06:55となります。<br />※途中 232:30にアルゴリズムの再解析をして、変更となった場合は加筆を追記します。<br />※基本、対象時間を超えた場合や、ストーリが完成をした段階で、本strategyは終了とします。<br />※本、NY-straregyはアルゴリズム解析の内容と若松浩幸のリアルタイムトレードをお伝えするもので、投資判断を促すものでは一切有りません。このNY-straregy　Part1により生じる一切の責任に関しては責任を負いません。<br />※この著作権は若松浩幸に帰属しますので、無断転載を禁じます。転載を希望される方はお問い合わせ下さい。<br />(2015.3.8規定)  <hr size="1" color="#0033CC"><Div Align="right"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/commentinfo4.jpg" alt="commentinfo4.jpg" border="0" width="225" height="37" /></Div>
+
+<!--▼続きを読む・開始▼-->
+<!--▲続きを読む・終了▲-->
+
+
+<!--▼追記部分・開始▼-->
+<!--▲追記本文・開始▲-->
+<!--▲追記部分・終了▲-->
+
+
+
+
+<!--▼記事内ページナビ・開始▼-->
+<div class="page_navi3">
+<ul>
+<li><a href="blog-category-3.html" title="このカテゴリ一覧を見る">同カテゴリの他エントリーを読む</a></li>
+<li><a href="#header-ue" title="このページのトップへ">ページトップ</a></li>
+<li><a href="http://wonderfx.jp/" title="wonderfxホームへ">ホーム</a></li>
+<li><a href="http://wonderfx.jp/?xml" title="wonderfx のRSSフィード(更新情報)" target="_blank">RSS</a></li>
+</ul>
+</div>
+<!--▲記事内ページナビ・終了▲-->
+
+
+<!--▼タグ・開始▼-->
+<div class="entry-tag">
+<div class="tagtitle">タグキーワード</div>
+<ul>
+<li>No Tag</li>
+ 
+</ul>
+</div>
+<!--▲タグ・終了▲-->
+
+
+<!--▼記事内関連記事・開始▼-->
+<div class="relate">
+ 
+</div>
+<!--▲記事内関連記事・終了▲-->
+
+
+<!--▼コミュニティー＆テーマ・開始▼-->
+<!--▲コミュニティー＆テーマ・終了▲-->
+
+
+</div>
+<!--▲記事本文・終了▲-->
+
+
+
+<!--▼エントリフッター・開始▼-->
+<div class="postinfo-bottom">
+2016.01.20 21:39｜<a href="http://wonderfx.jp/blog-entry-8346.html#tb" title="NY-strategy(2016.1.20)のトラックバックへ">トラックバック(0)</a>｜<a href="http://wonderfx.jp/blog-entry-8346.html#cm" title="NY-strategy(2016.1.20)のコメントへ">コメント(32)</a></div>
+<!--▲エントリフッター・終了▲-->
+
+
+
+<!--▼エントリRSS・開始▼-->
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+rdf:about="http://wonderfx.jp/blog-entry-8346.html"
+trackback:ping="http://wonderfx.jp/tb.php/8346-63a9e5d2"
+dc:title="NY-strategy(2016.1.20)"
+dc:identifier="http://wonderfx.jp/blog-entry-8346.html"
+dc:subject="NY市場予想（21:30現在）"
+dc:description="NY&#45;strategy（2016.1.20)アルゴリズム解析でポンド円のNY時間直前からNY本時間(23:30～06:55)の売買ポイント、利食いポイント、ポイント詳細、そして過去8時間のSummary(LONDON&#45;Summary)をご案内しています。 尚、途中22:30と23:30にアルゴリズムの再解析をして、変更となった場合は加筆を追記します。[21:30現在アルゴリズム解析です]◆166.80&#45;163.30【↑】買い《買いポイント》[１]164.95 [２]164.85《利食いポイント》165.81&#45;166...."
+dc:creator="若松　浩幸"
+</rdf:RDF>
+-->
+<!--▲エントリRSS・終了▲-->
+
+
+</div><div class="post">
+
+
+<!--▼記事タイトル・開始▼-->
+<h2><a href="http://wonderfx.jp/blog-entry-8345.html">algorithm analysis欧州戦略(2016.1.20)</a></h2>
+<!--▲記事タイトル・終了▲-->
+
+
+<!--▼エントリヘッダー・開始▼-->
+<div class="postinfo">
+<a href="blog-category-16.html" title="このカテゴリ一覧を見る">algorithm analysis</a>
+</div>
+<!--▲エントリヘッダー・終了▲-->
+
+
+<!--▼記事本文・開始▼-->
+<div class="postmain">
+<Div Align="left"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/B40-6-1.jpg" alt="B40-6-1.jpg" border="0" width="320" height="71" /></Div><h3>algorithm analysis欧州戦略(2016.1.20)</h3>ドル円・ポンドドル・ユーロ円・ユーロドルの4通貨をアルゴリズム＆クオンツ解析を行い、欧州時間(15:00～22:30)の売買ポイント、ターゲット、ストップ設定をご案内します。<br /><br /><h4>ドル円</h4>《売りポイント》117.12-117.22<br />《ストップ》117.57<br />《ターゲット》116.56-116.67<br />《現行水準》　2016.1.20_15:00現在　116.89<br /><br /><h4>ポンドドル</h4>《売りポイント》1.4154-1.4168<br />《ストップ》1.4204<br />《ターゲット》1.4099-1.4129<br />《現行水準》　2016.1.20_15:00現在　1.4148<br /><br /><h4>ユーロ円</h4>《売りポイント》128.11-128.17<br />《ストップ》128.47<br />《ターゲット》127.81-127.88<br />《現行水準》　2016.1.20_15:00現在　127.98<br /><br /><h4>ユーロドル</h4>《買いポイント》1.0928-1.0938<br />《ストップ》1.0910<br />《ターゲット》1.0966-1.0974<br />《現行水準》　2016.1.20_15:00現在　1.0948<br /><br />【data条件とポイント値の利用方法】<br />※この<span style="color:#cc0033">alogorithm analysis 4 currency 1.00版 </span>となります。<br />※strategyの基本対象時間帯は15:00～23:30ですが、主に15:00～19:00をメインに設計をしています。<br />※この解析内容は15時現在のデータを基にしています。<br />※《ターゲット》ポイントを捉えた場合ストーリーが完成して終了となります。この場合、ストーリーが再度繰り返されるか(リピート)するか、新ストーリーに移行するかを確認をします。<br />※《ストップ》ポイントを捉えた場合はストーリーの崩壊となります。尚、ストップポイントを完全に抜けない場合は、そのストップラインが抵抗(サポートラインやレジスタンスライン)に寄与しているか見極めます。<br />※<span style="color:#cc0033">掲載は不定期になります。通常のLONDON-strategy、the指値man（欧州版）Update後のリアルタイムトレードに時間的余裕がある場合にアルゴリズム解析データからご案内を致してます。</span><br />※本algorithm analysisはアルゴリズム解析の内容をお伝えするもので、投資判断を促すものでは一切有りません。このalgorithm analysisにより生じる一切の責任に関しては責任を負いません。<br />※この著作権は若松浩幸に帰属しますので、無断転載を禁じます。<br />(2015.11.23規定)<Div Align="right"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/40-6-1.jpg" alt="40-6-1.jpg" border="0" width="309" height="51" /></Div>
+
+<!--▼続きを読む・開始▼-->
+<!--▲続きを読む・終了▲-->
+
+
+<!--▼追記部分・開始▼-->
+<!--▲追記本文・開始▲-->
+<!--▲追記部分・終了▲-->
+
+
+
+
+<!--▼記事内ページナビ・開始▼-->
+<div class="page_navi3">
+<ul>
+<li><a href="blog-category-16.html" title="このカテゴリ一覧を見る">同カテゴリの他エントリーを読む</a></li>
+<li><a href="#header-ue" title="このページのトップへ">ページトップ</a></li>
+<li><a href="http://wonderfx.jp/" title="wonderfxホームへ">ホーム</a></li>
+<li><a href="http://wonderfx.jp/?xml" title="wonderfx のRSSフィード(更新情報)" target="_blank">RSS</a></li>
+</ul>
+</div>
+<!--▲記事内ページナビ・終了▲-->
+
+
+<!--▼タグ・開始▼-->
+<div class="entry-tag">
+<div class="tagtitle">タグキーワード</div>
+<ul>
+<li>No Tag</li>
+ 
+</ul>
+</div>
+<!--▲タグ・終了▲-->
+
+
+<!--▼記事内関連記事・開始▼-->
+<div class="relate">
+ 
+</div>
+<!--▲記事内関連記事・終了▲-->
+
+
+<!--▼コミュニティー＆テーマ・開始▼-->
+<!--▲コミュニティー＆テーマ・終了▲-->
+
+
+</div>
+<!--▲記事本文・終了▲-->
+
+
+
+<!--▼エントリフッター・開始▼-->
+<div class="postinfo-bottom">
+2016.01.20 15:21｜<a href="http://wonderfx.jp/blog-entry-8345.html#tb" title="algorithm analysis欧州戦略(2016.1.20)のトラックバックへ">トラックバック(0)</a>｜<a href="http://wonderfx.jp/blog-entry-8345.html#cm" title="algorithm analysis欧州戦略(2016.1.20)のコメントへ">コメント(0)</a></div>
+<!--▲エントリフッター・終了▲-->
+
+
+
+<!--▼エントリRSS・開始▼-->
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+rdf:about="http://wonderfx.jp/blog-entry-8345.html"
+trackback:ping="http://wonderfx.jp/tb.php/8345-01ce7f73"
+dc:title="algorithm analysis欧州戦略(2016.1.20)"
+dc:identifier="http://wonderfx.jp/blog-entry-8345.html"
+dc:subject="algorithm analysis"
+dc:description="algorithm analysis欧州戦略(2016.1.20)ドル円・ポンドドル・ユーロ円・ユーロドルの4通貨をアルゴリズム＆クオンツ解析を行い、欧州時間(15:00～22:30)の売買ポイント、ターゲット、ストップ設定をご案内します。ドル円《売りポイント》117.12&#45;117.22《ストップ》117.57《ターゲット》116.56&#45;116.67《現行水準》　2016.1.20_15:00現在　116.89ポンドドル《売りポイント》1.4154&#45;1.4168《ストップ》1.4204《ターゲット》1.4099&#45;1.4..."
+dc:creator="若松　浩幸"
+</rdf:RDF>
+-->
+<!--▲エントリRSS・終了▲-->
+
+
+</div><div class="post">
+
+
+<!--▼記事タイトル・開始▼-->
+<h2><a href="http://wonderfx.jp/blog-entry-8344.html">LONDON-strategy（2016.1.20)</a></h2>
+<!--▲記事タイトル・終了▲-->
+
+
+<!--▼エントリヘッダー・開始▼-->
+<div class="postinfo">
+<a href="blog-category-2.html" title="このカテゴリ一覧を見る">欧州市場予想</a>
+</div>
+<!--▲エントリヘッダー・終了▲-->
+
+
+<!--▼記事本文・開始▼-->
+<div class="postmain">
+<img src="http://blog-imgs-55.fc2.com/w/o/n/wonderfx/20120815005637932.png" alt="tinytags (1)" border="0" width="96" height="178" /><h3>LONDON-strategy（2016.1.20)</h3>アルゴリズム解析でポンド円の欧州時間(15:00～21:30)の売買ポイント、利食いポイント、ポイント詳細、そして過去8時間のSummary(TOKYO-Summary)をご案内しています。 <br /><br /><span style="color:#0000FF">◆166.64-164.28【↓】売り</span><br />《売りポイント》[１]165.84 [２]165.94<br />《利食いポイント》164.88-165.06<br /><br />※売りサイン継続です。<br />※トレンド指数は4ブロック時間軸全て売りとなっています。波動は右肩上りで売りサインです。<br />※欧州時間は売りから参入を致します。注意したいのは昨日からの売りで短期乖離が発生しています。短時間的に166.59までの修正を警戒して下さい。<br />※欧州時間には英国の雇用統計の発表が有ります。<br />18:30　英12月雇用統計=コンセンサスは失業者数は改善、失業率は前月横這いとなっています。昨日、カーニーBOE総裁の発言から利上げ観測が後退しています。もし、コンセンサスに反して悪化の時はポンド売りが再開しますので注意を払って下さい。<br /><span style="color:#CC0000">2016.1.20_15:00現在</span><br /><br /><h4>2016.1.20ポンド円TOKYO-Summary=日経平均大幅安からリスク回避</h4>・日経平均が前場で370円超安、後場から530円超安までも下落幅を拡大。リスク回避の流れで「円買い」が進行、ドル円は116.85まで、ポンド円は165.34まで下落。<br />・一方でポンドドルはユーロポンド買いが再開した事で1.4131まで下落となっています(14:30)。<br /><br />［売買結果］［本日　0P　1月累計　1796P]<br />195.83(S)保有(スイング:リミットを157.36に変更)<br />169.83(L)保有(スイング:リミットを181.92に設定)<br />※尚、169.83(L)は純粋な買いではなく保有売りスイングに対する保険の意味も一部含んでいます。<br /><hr size="1" color="#0033CC"><span style="color:#cd143c"><b>［data条件等］</b></span><br />※このLONDON-strategyの解析は<span style="color:#FF00FF">　wonderFX alogorithm＆quants 9.10版　</span>になります。<br />※strategyの対象時間帯は15:00～21:30となります。<br />※基本、対象時間を超えた場合や、ストーリが完成をした段階で、本strategyは終了とします。<br />※本、LONDON-strategyはアルゴリズム解析の内容と若松浩幸のリアルタイムトレードをお伝えするもので、投資判断を促すものでは一切有りません。このLONDON-strategyにより生じる一切の責任に関しては責任を負いません。<br />※この著作権は若松浩幸に帰属しますので、無断転載を禁じます。転載を希望される方はお問い合わせ下さい。<br />(2015.3.8規定)  <hr size="1" color="#0033CC"><Div Align="right"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/commentinfo4.jpg" alt="commentinfo4.jpg" border="0" width="225" height="37" /></Div>
+
+<!--▼続きを読む・開始▼-->
+<!--▲続きを読む・終了▲-->
+
+
+<!--▼追記部分・開始▼-->
+<!--▲追記本文・開始▲-->
+<!--▲追記部分・終了▲-->
+
+
+
+
+<!--▼記事内ページナビ・開始▼-->
+<div class="page_navi3">
+<ul>
+<li><a href="blog-category-2.html" title="このカテゴリ一覧を見る">同カテゴリの他エントリーを読む</a></li>
+<li><a href="#header-ue" title="このページのトップへ">ページトップ</a></li>
+<li><a href="http://wonderfx.jp/" title="wonderfxホームへ">ホーム</a></li>
+<li><a href="http://wonderfx.jp/?xml" title="wonderfx のRSSフィード(更新情報)" target="_blank">RSS</a></li>
+</ul>
+</div>
+<!--▲記事内ページナビ・終了▲-->
+
+
+<!--▼タグ・開始▼-->
+<div class="entry-tag">
+<div class="tagtitle">タグキーワード</div>
+<ul>
+<li>No Tag</li>
+ 
+</ul>
+</div>
+<!--▲タグ・終了▲-->
+
+
+<!--▼記事内関連記事・開始▼-->
+<div class="relate">
+ 
+</div>
+<!--▲記事内関連記事・終了▲-->
+
+
+<!--▼コミュニティー＆テーマ・開始▼-->
+<!--▲コミュニティー＆テーマ・終了▲-->
+
+
+</div>
+<!--▲記事本文・終了▲-->
+
+
+
+<!--▼エントリフッター・開始▼-->
+<div class="postinfo-bottom">
+2016.01.20 15:06｜<a href="http://wonderfx.jp/blog-entry-8344.html#tb" title="LONDON-strategy（2016.1.20)のトラックバックへ">トラックバック(0)</a>｜<a href="http://wonderfx.jp/blog-entry-8344.html#cm" title="LONDON-strategy（2016.1.20)のコメントへ">コメント(40)</a></div>
+<!--▲エントリフッター・終了▲-->
+
+
+
+<!--▼エントリRSS・開始▼-->
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+rdf:about="http://wonderfx.jp/blog-entry-8344.html"
+trackback:ping="http://wonderfx.jp/tb.php/8344-b0f197bd"
+dc:title="LONDON-strategy（2016.1.20)"
+dc:identifier="http://wonderfx.jp/blog-entry-8344.html"
+dc:subject="欧州市場予想"
+dc:description="LONDON&#45;strategy（2016.1.20)アルゴリズム解析でポンド円の欧州時間(15:00～21:30)の売買ポイント、利食いポイント、ポイント詳細、そして過去8時間のSummary(TOKYO&#45;Summary)をご案内しています。 ◆166.64&#45;164.28【↓】売り《売りポイント》[１]165.84 [２]165.94《利食いポイント》164.88&#45;165.06※売りサイン継続です。※トレンド指数は4ブロック時間軸全て売りとなっています。波動は右肩上りで売りサインです。※欧州時間は売りから..."
+dc:creator="若松　浩幸"
+</rdf:RDF>
+-->
+<!--▲エントリRSS・終了▲-->
+
+
+</div><div class="post">
+
+
+<!--▼記事タイトル・開始▼-->
+<h2><a href="http://wonderfx.jp/blog-entry-8343.html">ご報告とご案内</a></h2>
+<!--▲記事タイトル・終了▲-->
+
+
+<!--▼エントリヘッダー・開始▼-->
+<div class="postinfo">
+<a href="blog-category-4.html" title="このカテゴリ一覧を見る">お知らせ</a>
+</div>
+<!--▲エントリヘッダー・終了▲-->
+
+
+<!--▼記事本文・開始▼-->
+<div class="postmain">
+皆様、こんにちは。<br />(経過)<br />13日朝、３時急な腹痛。我慢が出来ないのでタクシーを呼んで夜間救急センター(一時救急)に行きました。そこで処置するも改善しなく、二次救急に救急車で転送。更に検査をし緊急手術となりました。<br />手術後、経過も良く、明日(20日)検査でOKが出れば午後から退院となります。<br /><br />皆様には大変ご迷惑をお掛け致しました。会員の皆様には退院後改めてメートでご連絡させて戴きます。<br /><br /><br /><br />(記事とリアルタイムトレードにつきましては)<br />アルゴリズムのデータ整理には約6時間掛かりますので、記事の更新とリアルタイムトレードは早ければ20日(水)NY-strategyから。データ整理に時間が掛かった場合は21(木)TOKYO-strategyからとなりますのでよろしくお願い申し上げます。<br />尚、退院日時が変更になった場合は改めてスケジュールをご案内致します。<br /><br />この度は大変ご迷惑をお掛け致しました。<br />若松浩幸
+
+<!--▼続きを読む・開始▼-->
+<!--▲続きを読む・終了▲-->
+
+
+<!--▼追記部分・開始▼-->
+<!--▲追記本文・開始▲-->
+<!--▲追記部分・終了▲-->
+
+
+
+
+<!--▼記事内ページナビ・開始▼-->
+<div class="page_navi3">
+<ul>
+<li><a href="blog-category-4.html" title="このカテゴリ一覧を見る">同カテゴリの他エントリーを読む</a></li>
+<li><a href="#header-ue" title="このページのトップへ">ページトップ</a></li>
+<li><a href="http://wonderfx.jp/" title="wonderfxホームへ">ホーム</a></li>
+<li><a href="http://wonderfx.jp/?xml" title="wonderfx のRSSフィード(更新情報)" target="_blank">RSS</a></li>
+</ul>
+</div>
+<!--▲記事内ページナビ・終了▲-->
+
+
+<!--▼タグ・開始▼-->
+<div class="entry-tag">
+<div class="tagtitle">タグキーワード</div>
+<ul>
+<li>No Tag</li>
+ 
+</ul>
+</div>
+<!--▲タグ・終了▲-->
+
+
+<!--▼記事内関連記事・開始▼-->
+<div class="relate">
+ 
+</div>
+<!--▲記事内関連記事・終了▲-->
+
+
+<!--▼コミュニティー＆テーマ・開始▼-->
+<!--▲コミュニティー＆テーマ・終了▲-->
+
+
+</div>
+<!--▲記事本文・終了▲-->
+
+
+
+<!--▼エントリフッター・開始▼-->
+<div class="postinfo-bottom">
+2016.01.19 14:11｜<a href="http://wonderfx.jp/blog-entry-8343.html#tb" title="ご報告とご案内のトラックバックへ">トラックバック(0)</a>｜<a href="http://wonderfx.jp/blog-entry-8343.html#cm" title="ご報告とご案内のコメントへ">コメント(9)</a></div>
+<!--▲エントリフッター・終了▲-->
+
+
+
+<!--▼エントリRSS・開始▼-->
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+rdf:about="http://wonderfx.jp/blog-entry-8343.html"
+trackback:ping="http://wonderfx.jp/tb.php/8343-c2a49d4c"
+dc:title="ご報告とご案内"
+dc:identifier="http://wonderfx.jp/blog-entry-8343.html"
+dc:subject="お知らせ"
+dc:description="皆様、こんにちは。(経過)13日朝、３時急な腹痛。我慢が出来ないのでタクシーを呼んで夜間救急センター(一時救急)に行きました。そこで処置するも改善しなく、二次救急に救急車で転送。更に検査をし緊急手術となりました。手術後、経過も良く、明日(20日)検査でOKが出れば午後から退院となります。皆様には大変ご迷惑をお掛け致しました。会員の皆様には退院後改めてメートでご連絡させて戴きます。(記事とリアルタイムトレードに..."
+dc:creator="若松　浩幸"
+</rdf:RDF>
+-->
+<!--▲エントリRSS・終了▲-->
+
+
+</div><div class="post">
+
+
+<!--▼記事タイトル・開始▼-->
+<h2><a href="http://wonderfx.jp/blog-entry-8342.html">ご案内</a></h2>
+<!--▲記事タイトル・終了▲-->
+
+
+<!--▼エントリヘッダー・開始▼-->
+<div class="postinfo">
+<a href="blog-category-4.html" title="このカテゴリ一覧を見る">お知らせ</a>
+</div>
+<!--▲エントリヘッダー・終了▲-->
+
+
+<!--▼記事本文・開始▼-->
+<div class="postmain">
+深夜、急な腹痛で入院となりました。記事の配信は数日お休みさせて戴きます。大変、ご迷惑をお掛けいたします。<br />会員の皆様には改めてご連絡をさせて戴きます。
+
+<!--▼続きを読む・開始▼-->
+<!--▲続きを読む・終了▲-->
+
+
+<!--▼追記部分・開始▼-->
+<!--▲追記本文・開始▲-->
+<!--▲追記部分・終了▲-->
+
+
+
+
+<!--▼記事内ページナビ・開始▼-->
+<div class="page_navi3">
+<ul>
+<li><a href="blog-category-4.html" title="このカテゴリ一覧を見る">同カテゴリの他エントリーを読む</a></li>
+<li><a href="#header-ue" title="このページのトップへ">ページトップ</a></li>
+<li><a href="http://wonderfx.jp/" title="wonderfxホームへ">ホーム</a></li>
+<li><a href="http://wonderfx.jp/?xml" title="wonderfx のRSSフィード(更新情報)" target="_blank">RSS</a></li>
+</ul>
+</div>
+<!--▲記事内ページナビ・終了▲-->
+
+
+<!--▼タグ・開始▼-->
+<div class="entry-tag">
+<div class="tagtitle">タグキーワード</div>
+<ul>
+<li>No Tag</li>
+ 
+</ul>
+</div>
+<!--▲タグ・終了▲-->
+
+
+<!--▼記事内関連記事・開始▼-->
+<div class="relate">
+ 
+</div>
+<!--▲記事内関連記事・終了▲-->
+
+
+<!--▼コミュニティー＆テーマ・開始▼-->
+<!--▲コミュニティー＆テーマ・終了▲-->
+
+
+</div>
+<!--▲記事本文・終了▲-->
+
+
+
+<!--▼エントリフッター・開始▼-->
+<div class="postinfo-bottom">
+2016.01.13 08:38｜<a href="http://wonderfx.jp/blog-entry-8342.html#tb" title="ご案内のトラックバックへ">トラックバック(0)</a>｜<a href="http://wonderfx.jp/blog-entry-8342.html#cm" title="ご案内のコメントへ">コメント(8)</a></div>
+<!--▲エントリフッター・終了▲-->
+
+
+
+<!--▼エントリRSS・開始▼-->
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+rdf:about="http://wonderfx.jp/blog-entry-8342.html"
+trackback:ping="http://wonderfx.jp/tb.php/8342-85a8b2ec"
+dc:title="ご案内"
+dc:identifier="http://wonderfx.jp/blog-entry-8342.html"
+dc:subject="お知らせ"
+dc:description="深夜、急な腹痛で入院となりました。記事の配信は数日お休みさせて戴きます。大変、ご迷惑をお掛けいたします。会員の皆様には改めてご連絡をさせて戴きます。..."
+dc:creator="若松　浩幸"
+</rdf:RDF>
+-->
+<!--▲エントリRSS・終了▲-->
+
+
+</div><div class="post">
+
+
+<!--▼記事タイトル・開始▼-->
+<h2><a href="http://wonderfx.jp/blog-entry-8340.html">NY-strategy(2016.1.12)</a></h2>
+<!--▲記事タイトル・終了▲-->
+
+
+<!--▼エントリヘッダー・開始▼-->
+<div class="postinfo">
+<a href="blog-category-3.html" title="このカテゴリ一覧を見る">NY市場予想（21:30現在）</a>
+</div>
+<!--▲エントリヘッダー・終了▲-->
+
+
+<!--▼記事本文・開始▼-->
+<div class="postmain">
+<img src="http://blog-imgs-55.fc2.com/w/o/n/wonderfx/201208150105032ee.png" alt="tinytags (3)" border="0" width="95" height="173" /><h3>NY-strategy（2016.1.12)</h3>アルゴリズム解析でポンド円のNY時間直前からNY本時間(23:30～06:55)の売買ポイント、利食いポイント、ポイント詳細、そして過去8時間のSummary(LONDON-Summary)をご案内しています。 尚、途中22:30と23:30にアルゴリズムの再解析をして、変更となった場合は加筆を追記します。<br /><br /><span style="color:#CC0000">[21:30現在アルゴリズム解析です]</span><br /><span style="color:#0000FF">◆170.97-168.80【↓】売り</span><br />《売りポイント》[１]170.25 [２]170.44<br />《利食いポイント》169.43-169.53<br /><br />※売りサイン継続です。<br />※トレンド指数は4ブロック時間軸全て売りとなっています。波動は右肩上りで売りサインです。<br />※NY時間は売りから参入を致します。現在、短期乖離が発生しています。短期間的に170.55-170.64までの修正を警戒しての売りとなります。<br /><br /><h4>2016.1.12ポンド円LONDON-Summary=英指標下振れでポンド売り加速</h4>・ドル円は日経ナイトセッション上昇や米10年債権利回り上昇からのドル買いで117.78まで上昇。ポンド円も連れて171.02まで上昇。一方でポンドドルはユーロポンドの下落(ユーロ売りポンド買い)と米10年債権利回り上昇からのドル買いポンド売りが相殺して1.4525を挟んで揉み合い(18:30)。<br />・英鉱工業生産と英製造業生産高が共に市場予想を下回るとポンド売りが加速。ポンドドルは1.4432まで、ポンド円は169.98まで下落。一方でドル円は上値を若干切り上げて117.80を挟んで揉み合いとなっています。<br /><br /><h4>2016.1.12英国指標</h4>英11月鉱工業生産　前月比-0.7％、前年比+0.9％(予想  前月比±0.0％、前年比+1.7％) <br />英11月製造業生産高　前月比-0.4％、前年比-1.2％(予想  前月比+0.1％、前年比-0.8％)<br /><br />［売買結果］［本日　282P　1月累計　1748P]<br />171.00(L)⇒171.15利確15P <br />171.08(L)⇒171.15利確7P<br />170.92(L)⇒171.12利確20P<br />171.29(L)⇒171.66利確37P<br />171.29(L)⇒171.38利確9P <br />171.47(L)⇒171.38利確▲9P<br />171.12(L)⇒171.31利確19P <br />171.33(L)⇒171.31利確▲2P <br />170.92(L)⇒171.19利確27P  <br />170.60(S)⇒170.49利確11P<br />170.60(S)⇒170.24利確36P <br />170.38(S)⇒170.24利確14P <br />170.28(S)⇒170.24利確4P <br />170.44(L)⇒170.22利確▲22P<br />170.76(S)⇒170.64利確12P<br />170.82(S)⇒170.62利確20P <br />170.77(S)⇒170.62利確15P<br />170.99(S)⇒170.67利確32P<br />170.79(S)⇒170.52利確27P<br />170.60(S)⇒170.50利確10P　　2016-01-12 18:43<br />195.83(S)保有(スイング:リミットを157.36に変更)<br />170.24(L)保有(スイング:リミットを181.92に設定)<br />※尚、170.24(L)は純粋な買いではなく保有売りスイングに対する保険の意味も一部含んでいます。<br /><hr size="1" color="#0033CC"><span style="color:#cd143c"><b>［data条件等］</b></span><br />※このNY-straregyの解析は<span style="color:#FF00FF">　wonderFX alogorithm＆quants 9.10版　</span>になります。<br />※strategyの対象時間帯は23:30～06:55となります。<br />※途中 232:30にアルゴリズムの再解析をして、変更となった場合は加筆を追記します。<br />※基本、対象時間を超えた場合や、ストーリが完成をした段階で、本strategyは終了とします。<br />※本、NY-straregyはアルゴリズム解析の内容と若松浩幸のリアルタイムトレードをお伝えするもので、投資判断を促すものでは一切有りません。このNY-straregy　Part1により生じる一切の責任に関しては責任を負いません。<br />※この著作権は若松浩幸に帰属しますので、無断転載を禁じます。転載を希望される方はお問い合わせ下さい。<br />(2015.3.8規定)  <hr size="1" color="#0033CC"><Div Align="right"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/commentinfo4.jpg" alt="commentinfo4.jpg" border="0" width="225" height="37" /></Div>
+
+<!--▼続きを読む・開始▼-->
+<!--▲続きを読む・終了▲-->
+
+
+<!--▼追記部分・開始▼-->
+<!--▲追記本文・開始▲-->
+<!--▲追記部分・終了▲-->
+
+
+
+
+<!--▼記事内ページナビ・開始▼-->
+<div class="page_navi3">
+<ul>
+<li><a href="blog-category-3.html" title="このカテゴリ一覧を見る">同カテゴリの他エントリーを読む</a></li>
+<li><a href="#header-ue" title="このページのトップへ">ページトップ</a></li>
+<li><a href="http://wonderfx.jp/" title="wonderfxホームへ">ホーム</a></li>
+<li><a href="http://wonderfx.jp/?xml" title="wonderfx のRSSフィード(更新情報)" target="_blank">RSS</a></li>
+</ul>
+</div>
+<!--▲記事内ページナビ・終了▲-->
+
+
+<!--▼タグ・開始▼-->
+<div class="entry-tag">
+<div class="tagtitle">タグキーワード</div>
+<ul>
+<li>No Tag</li>
+ 
+</ul>
+</div>
+<!--▲タグ・終了▲-->
+
+
+<!--▼記事内関連記事・開始▼-->
+<div class="relate">
+ 
+</div>
+<!--▲記事内関連記事・終了▲-->
+
+
+<!--▼コミュニティー＆テーマ・開始▼-->
+<!--▲コミュニティー＆テーマ・終了▲-->
+
+
+</div>
+<!--▲記事本文・終了▲-->
+
+
+
+<!--▼エントリフッター・開始▼-->
+<div class="postinfo-bottom">
+2016.01.12 21:34｜<a href="http://wonderfx.jp/blog-entry-8340.html#tb" title="NY-strategy(2016.1.12)のトラックバックへ">トラックバック(0)</a>｜<a href="http://wonderfx.jp/blog-entry-8340.html#cm" title="NY-strategy(2016.1.12)のコメントへ">コメント(28)</a></div>
+<!--▲エントリフッター・終了▲-->
+
+
+
+<!--▼エントリRSS・開始▼-->
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+rdf:about="http://wonderfx.jp/blog-entry-8340.html"
+trackback:ping="http://wonderfx.jp/tb.php/8340-a0f5f587"
+dc:title="NY-strategy(2016.1.12)"
+dc:identifier="http://wonderfx.jp/blog-entry-8340.html"
+dc:subject="NY市場予想（21:30現在）"
+dc:description="NY&#45;strategy（2016.1.12)アルゴリズム解析でポンド円のNY時間直前からNY本時間(23:30～06:55)の売買ポイント、利食いポイント、ポイント詳細、そして過去8時間のSummary(LONDON&#45;Summary)をご案内しています。 尚、途中22:30と23:30にアルゴリズムの再解析をして、変更となった場合は加筆を追記します。[21:30現在アルゴリズム解析です]◆170.97&#45;168.80【↓】売り《売りポイント》[１]170.25 [２]170.44《利食いポイント》169.43&#45;169...."
+dc:creator="若松　浩幸"
+</rdf:RDF>
+-->
+<!--▲エントリRSS・終了▲-->
+
+
+</div><!--/not_titlelist-->
+<!--▲個別記事・終了▲-->
+
+
+<!--▼○記事下フリースペース・開始○▼-->
+<!--▲○記事下フリースペース・終了○▲-->
+
+
+<!--▼コメント・開始▼-->
+
+
+
+<!--▲コメント・終了▲-->
+
+
+
+<!--▼コメント編集・開始▼-->
+<!--▲コメント編集・終了▲-->
+
+
+
+
+
+
+
+<!--▼▼▼NowVisitorsカウンター(2015.12.16変更)▼▼▼-->
+<Div Align="center">
+
+<IFRAME SRC="http://now-visitor5.ziyu.net/c.php?wonderfx/default/10/ffffff/000000/&copy;2012-2042 Hiroyuki.Wakamatsu+1/aa All+Rights+Reserved./" WIDTH=400 HEIGHT=15 SCROLLING=NO FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 BORDER=0 allowtransparency=true><IMG SRC="http://now-visitor5.ziyu.net/nojs_cnt.php?wonderfx/default/" border=0 alt=""></IFRAME>
+
+</Div>
+<!--/▲▲▲NowVisitorsカウンター▲▲▲-->
+
+
+
+
+
+
+<!--▼▼▼NowVisitorsカウンター(原本)▼▼▼-->
+<!--
+<Div Align="center">
+
+<IFRAME SRC="http://now-visitor5.ziyu.net/c.php?wonderfx/default/10/ffffff/000000/Copyright%8F%A2%ED2012-2042Hiroyuki.Wakamatsu+1/aa%A1%A1All+Rights+Reserved./" WIDTH=400 HEIGHT=15 SCROLLING=NO FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 BORDER=0 allowtransparency=true><IMG SRC="http://now-visitor5.ziyu.net/nojs_cnt.php?wonderfx/default/" border=0 alt=""></IFRAME>
+
+</Div>
+ -->
+
+
+
+
+
+
+<!--▼トラックバック・開始▼-->
+<!--▲トラックバック・終了▲-->
+
+
+<!--▼ページナビ２・開始▼-->
+<!--▲ページナビ２・終了▲-->
+
+
+<!--▼○記事一覧ページ広告・開始○▼-->
+<!--▲○記事一覧ページ広告・終了○▲-->
+
+
+<!--▼ページナビ１・開始▼-->
+<div class="page_navi1">
+<ul>
+<li class="home"><a href="http://wonderfx.jp/" title="wonderfxホームへ">ホーム</a></li>
+<li class="nextpage"><a href="http://wonderfx.jp/page-1.html">次のページ</a></li>
+</ul>
+</div>
+<!--▲ページナビ１・終了▲-->
+
+
+</div>
+<!--▲コンテンツ・終了▲-->
+
+
+<!--▼右サイドバー▼-->
+<div id="sidebar_r">
+
+
+<div class="menu">
+<div class="menutitle-l" style="text-align:left">
+プロフィール
+</div>
+<div class="menubody-l" style="text-align:left">
+<div class="plugin-freearea" style="text-align:left">
+  <center><img src="http://blog-imgs-49.fc2.com/w/o/n/wonderfx/hiroavatar3-1_convert_20120304113717.jpg" alt="hiroavatar3-1" border="0" width="100" height="134" /></center>
+Author:若松　浩幸<br>
+Hiroyuki.Wakamatsu<br>
+2002年～プロプライアトリーディーラー<br>
+2009年～ChristmasX'mas代表取締役<br>
+<center><img src="http://blog-imgs-49.fc2.com/w/o/n/wonderfx/hiroavatar3-2_convert_20120304114055.jpg" alt="hiroavatar3-2" border="0" width="100" height="24" /></center><br>
+<center><img src="http://blog-imgs-55.fc2.com/w/o/n/wonderfx/arrow046_03.gif" alt="arrow046_03" border="0" width="11" height="11" /><a href="http://wonderfx.jp/?logout " target="_self"> ログアウト</a></center>
+</div>
+</div>
+</div>
+
+<div class="menu">
+<div class="menutitle-l" style="text-align:left">
+wonderfx入会受付
+</div>
+<div class="menubody-l" style="text-align:left">
+<div class="plugin-freearea" style="text-align:left">
+  <br>
+<Div Align="center">
+<a href="https://mailform.mface.jp/frms/0077/d0fem4kovyty" target="_blank"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/nyukai1.jpg" alt="nyukai1.jpg" border="0" width="240" height="240" /></a></Div>
+</div>
+</div>
+</div>
+
+<div class="menu">
+<div class="menutitle-l" style="text-align:left">
+ランキングに参加=応援お願いします
+</div>
+<div class="menubody-l" style="text-align:left">
+<div class="plugin-freearea" style="text-align:left">
+  <img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/arrow046_03_201407092206402ec.gif" alt="arrow046_03_201407092206402ec.gif" border="0" width="11" height="11" /> <a href="http://blog.with2.net/link.php?1745382">人気ブログランキングへ</a>
+<br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/arrow046_03_201407092206402ec.gif" alt="arrow046_03_201407092206402ec.gif" border="0" width="11" height="11" /> <a href="http://fx.blogmura.com/daytradegroup/ranking.html" target="_blank">にほんブログ村 FX デイトレ派・ポンド円</a>
+<br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/arrow046_03_201407092206402ec.gif" alt="arrow046_03_201407092206402ec.gif" border="0" width="11" height="11" /> <a href="http://blogranking.fc2.com/in.php?id=665096" target="_blank">FC2 Blog Ranking</a>
+
+
+
+</div>
+</div>
+</div>
+
+<div class="menu">
+<div class="menutitle-l" style="text-align:left">
+<center>1月コンテンツ更新時間</center>
+</div>
+<div class="menubody-l" style="text-align:left">
+<div class="plugin-freearea" style="text-align:left">
+  <br>
+■TOKYO-strategy<br>
+7:05～7:25<br>
+■the指値man（東京版）<br>
+7:20～7:40<br>
+<span style="color:#0000ff">■algorithm analysis東京戦略</span><br>
+7:35～7:55<br>
+<br>
+<hr style="border-top: 2px dotted #ff9d9d;width: 95%;">
+<br>
+
+■LONDON-strategy<br>
+15:05～15:25<br>
+■the指値man（欧州版）<br>
+15:20～16:20<br>
+<span style="color:#0000ff">■algorithm analysis欧州戦略</span><br>
+15:40～16:10<br>
+<br>
+<hr style="border-top: 2px dotted #ff9d9d;width: 95%;">
+<br>
+
+
+■NY-strategy<br>
+21:35～21:50<br>
+※22:30と23:30に(再考)し変更が有る場合は加筆します<br>
+<br>
+<hr style="border-top: 2px dotted #ff9d9d;width: 95%;">
+<br>
+
+<span style="color:#0000ff">■Week strategy</span><br>
+土曜日　8:25～9:25<br>
+<span style="color:#0000ff">■TOKYO-strategy(前日戦略版)</span><br>
+日曜日　16:00<br>
+<span style="color:#0000ff">■algorithm analysis東京戦略(前日戦略版)</span><br>
+日曜日　16:00<br>
+<br>
+<hr style="border-top: 2px dotted #ff9d9d;width: 95%;">
+<br>
+
+<span style="color:#ff1493">《info》</span><br>
+(体力休暇)
+身体メンテナンスの為に月2回金曜日のNY時間はお休みとさせて戴きます。
+尚、お休みは相場状況等を判断し事前にご案内をします。
+<br>
+<br>
+
+<span style="color:#ff1493">《season info》</span><br>
+2015年（冬時間）<br>
+欧州は10月25日、米国は11月1日から冬時間に移行しています
+
+</div>
+</div>
+</div>
+
+<div class="menu">
+<div class="menutitle-l" style="text-align:left">
+データメンテナンス
+</div>
+<div class="menubody-l" style="text-align:left">
+<div class="plugin-freearea" style="text-align:left">
+  ■TOKYO-maintenance<br>
+10:35～11:35<br>
+■LONDON-maintenance<br>
+15:30～16:00<br>
+■NY-maintenance<br>
+22:40～22:50<br>
+<br>
+<span style="color:#0000ff">※上記時間帯はデータメンテナンスしていますのでメンテナンス次第ではトレードに入れない場合も有ります。アルゴリズムデータが「命」ですので優先させれ頂きます。</span>
+</div>
+</div>
+</div>
+
+<div class="menu">
+<div class="menutitle-l" style="text-align:left">
+リアルタイムトレード
+</div>
+<div class="menubody-l" style="text-align:left">
+<div class="plugin-freearea" style="text-align:left">
+  若松浩幸のリアルタイムトレードは<br>
+TOKYO-strategy<br>
+LONDON-strategy<br>
+NY-strategy<br>
+の<br>
+記事下コメント欄(CM)で見れます<br>
+<hr style="border-top: 2px dotted #ff9d9d;width: 85%;">
+現在の変動する相場の内容解説やアルゴリズムの変化をリアルタイムでご案内すると共に、若松浩幸のトレード（ポジション）をリアルタイムでご案内しています。
+</div>
+</div>
+</div>
+
+<div class="menu">
+<div class="menutitle-l" style="text-align:left">
+<center>クッキー・キャッシュの削除</center>
+</div>
+<div class="menubody-l" style="text-align:left">
+<div class="plugin-freearea" style="text-align:left">
+  ブラウザー毎のクッキー・キャッシュの削除方法(Windows版)<br><br>
+
+<img src="http://blog-imgs-42.fc2.com/w/o/n/wonderfx/chrome-log22-22.jpg" alt="chrome-log22-22.jpg" border="0" width="22" height="21" /> <font color="#800000">Google　Chrome version 35.0</font><br>
+①ツール(L)<br>
+②閲覧履歴の消去(C)<br>
+③過去1日以上、もしくはそれ以上を選択<br>
+④Cokieと他サイトやプラグインのデータを削除する<br>
+キャッシュ<br>
+の二点に☑を入れる<br>
+⑤閲覧履歴データを消去<br><br>
+
+<img src="http://blog-imgs-42.fc2.com/w/o/n/wonderfx/InternetExplorer-logo22-22.jpg" alt="InternetExplorer-logo22-22.jpg" border="0" width="22" height="19" /> <font color="#800000">Internet Explorer version 11.0.8</font><br>
+①ツール(T)をクリック<br>
+②インターネットオプション(O)をクリック<br>
+③全般をクリック<br>
+④閲覧履歴を選択<br>
+⑤削除をクリック<br>
+⑥インターネット一時ファイル(T)<br>
+Cookie(O)<br>
+履歴(H)<br>
+の三点に☑をいれる<br>
+⑦削除をクリック<br>
+④OKをクリック<br><br>
+
+<img src="http://blog-imgs-42.fc2.com/w/o/n/wonderfx/firefox-logo22-22.jpg" alt="firefox-logo22-22.jpg" border="0" width="22" height="21" />
+<font color="#800000">Firefox version 29.0.1</font><br>
+①ツールをクリック<br>
+②オプションをクリック<br>
+③プライバシーをクリック<br>
+④Cookieの個別削除をクリック<br>
+⑤wonderfx.jpを選択<br>
+⑥Cookieの削除(R)をクリック<br><br>
+
+<img src="http://blog-imgs-42.fc2.com/w/o/n/wonderfx/SAFARI-logo22-22.jpg" alt="SAFARI-logo22-22.jpg" border="0" width="20" height="22" /> <font color="#800000">Safari version 5.17</font><br>
+①編集をクリック<br>
+②設定を選択クリック<br>
+③プライバシーをクリック<br>
+④Cookieとその他のWebサイト（項目の）<br>すべてのWebサイトデータ削除をクリック<br>
+⑤wonderfx.jpを選択し削除をクリック<br><br>
+
+<img src="http://blog-imgs-42.fc2.com/w/o/n/wonderfx/opera-logo22-22.jpg" alt="opera-logo22-22.jpg" border="0" width="22" height="20" />
+<font color="#800000">Opera version 22.0</font><br>
+①ツールをクリック<br>
+②詳細ツールをクリック<br>
+③Cookieマネージャーをクリック<br>
+④wonderfxjpを選択削除<br>
+</div>
+</div>
+</div>
+
+<div class="menu">
+<div class="menutitle-l" style="text-align:left">
+<Div Align="center">人気ブログランキング順位</Div>
+</div>
+<div class="menubody-l" style="text-align:left">
+<div class="plugin-freearea" style="text-align:left">
+  <script type="text/javascript" src="http://parts.blog.with2.net/2.0/?id=1745382:Lg7BlC1FnJE"></script>
+</div>
+</div>
+</div>
+
+<div class="menu">
+<div class="menutitle-l" style="text-align:left">
+最新記事
+</div>
+<div class="menubody-l" style="text-align:left">
+<ul>
+<li style="text-align:left">
+<a href="http://wonderfx.jp/blog-entry-8354.html" title="algorithm analysis東京戦略(2016.1.22)">algorithm analysis東京戦略(2016.1.22) (01/22)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-entry-8353.html" title="TOKYO-strategy(2016.1.22)">TOKYO-strategy(2016.1.22) (01/22)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-entry-8352.html" title="NY-strategy(2016.1.21)">NY-strategy(2016.1.21) (01/21)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-entry-8351.html" title="algorithm analysis欧州戦略(2016.1.21)">algorithm analysis欧州戦略(2016.1.21) (01/21)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-entry-8350.html" title="LONDON-strategy(2016.1.21)">LONDON-strategy(2016.1.21) (01/21)</a>
+</li></ul>
+</div>
+</div>
+
+<div class="menu">
+<div class="menutitle-l" style="text-align:left">
+最新コメント
+</div>
+<div class="menubody-l" style="text-align:left">
+<ul>
+<li style="text-align:left">
+<a href="http://wonderfx.jp/blog-entry-8352.html#comment78119" title="">若松　浩幸:NY-strategy(2016.1.21) (01/22)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-entry-8352.html#comment78118" title="">若松　浩幸:NY-strategy(2016.1.21) (01/22)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-entry-8352.html#comment78117" title="">若松　浩幸:NY-strategy(2016.1.21) (01/22)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-entry-8352.html#comment78116" title="">若松　浩幸:NY-strategy(2016.1.21) (01/22)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-entry-8352.html#comment78115" title="">若松　浩幸:NY-strategy(2016.1.21) (01/22)</a>
+</li></ul>
+</div>
+</div>
+
+<div class="menu">
+<div class="menutitle-l" style="text-align:left">
+カレンダー
+</div>
+<div class="menubody-l" style="text-align:left">
+<script type="text/javascript">
+<!--
+function showhide(id){
+	if(document.getElementById){
+		if(document.getElementById(id).style.display == "block"){
+			document.getElementById(id).style.display = "none";
+		}else{
+		document.getElementById("one").style.display = "none";
+		document.getElementById("two").style.display = "none";
+		document.getElementById("three").style.display = "none";
+		document.getElementById("four").style.display = "none";
+		document.getElementById(id).style.display = "block";
+		}
+	}
+}
+//-->
+</script>
+
+<table style="width:100%;" cellspacing="0" cellpadding="0">
+<tr height="20">
+<td bgcolor="#ffffe0" align="center" style="width:40%;"><a href="JavaScript:showhide('one')">プルダウン</a></td>
+<td bgcolor="#f0ffff" align="center" style="width:20%;"><a href="JavaScript:showhide('two')">降順</a></td>
+<td bgcolor="#ffefd5" align="center" style="width:20%;"><a href="JavaScript:showhide('three')">昇順</a></td>
+<td bgcolor="#f0fff0" align="center" style="width:20%;"><a href="JavaScript:showhide('four')">年別</a></td>
+</tr>
+</table>
+
+<div class="plugin-calender" style="text-align:left">
+<br>
+<center>
+<table summary="カレンダー" class="calender">
+<caption>
+<a href="http://wonderfx.jp/blog-date-201512.html">12</a>
+| 2016/01 | 
+<a href="http://wonderfx.jp/blog-date-201602.html">02</a>
+</caption>
+<tr>
+<th abbr="日曜日" scope="row" id="sun">日</th>
+<th abbr="月曜日" scope="row">月</th>
+<th abbr="火曜日" scope="row">火</th>
+<th abbr="水曜日" scope="row">水</th>
+<th abbr="木曜日" scope="row">木</th>
+<th abbr="金曜日" scope="row">金</th>
+<th abbr="土曜日" scope="row" id="sat">土</th>
+</tr>
+<tr>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>1</td>
+<td><a href="http://wonderfx.jp/blog-date-20160102.html">2</a></td>
+</tr><tr>
+<td><a href="http://wonderfx.jp/blog-date-20160103.html">3</a></td>
+<td><a href="http://wonderfx.jp/blog-date-20160104.html">4</a></td>
+<td><a href="http://wonderfx.jp/blog-date-20160105.html">5</a></td>
+<td><a href="http://wonderfx.jp/blog-date-20160106.html">6</a></td>
+<td><a href="http://wonderfx.jp/blog-date-20160107.html">7</a></td>
+<td><a href="http://wonderfx.jp/blog-date-20160108.html">8</a></td>
+<td><a href="http://wonderfx.jp/blog-date-20160109.html">9</a></td>
+</tr><tr>
+<td><a href="http://wonderfx.jp/blog-date-20160110.html">10</a></td>
+<td><a href="http://wonderfx.jp/blog-date-20160111.html">11</a></td>
+<td><a href="http://wonderfx.jp/blog-date-20160112.html">12</a></td>
+<td><a href="http://wonderfx.jp/blog-date-20160113.html">13</a></td>
+<td>14</td>
+<td>15</td>
+<td>16</td>
+</tr><tr>
+<td>17</td>
+<td>18</td>
+<td><a href="http://wonderfx.jp/blog-date-20160119.html">19</a></td>
+<td><a href="http://wonderfx.jp/blog-date-20160120.html">20</a></td>
+<td><a href="http://wonderfx.jp/blog-date-20160121.html">21</a></td>
+<td><a href="http://wonderfx.jp/blog-date-20160122.html">22</a></td>
+<td>23</td>
+</tr><tr>
+<td>24</td>
+<td>25</td>
+<td>26</td>
+<td>27</td>
+<td>28</td>
+<td>29</td>
+<td>30</td>
+</tr><tr>
+<td>31</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr></table>
+</center>
+</div>
+
+<div id="one" style="display:block;">
+<table width="100%"><tr><td>
+<script type="text/javascript">
+<!--
+function jumpmenu(targ,selObj,restore) {
+  eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
+  if (restore) selObj.selectedIndex=0;
+}
+//-->
+</script>
+<br>
+<center>
+<form id="monthly_archives" name="monthly_archives" action="http://wonderfx.jp/">
+  <select name="menu" onchange="jumpmenu('parent',this,0)" style="width:85%;">
+    <option value="http://wonderfx.jp/" selected="selected"><script type="text/javascript">
+sum=0+208+1323+1104+187+563+501+151+1595+179+1525+553+197+4+4+60+8+8;
+document.write('月別アーカイブ ('+sum+')');
+</script></option>
+    <option value="http://wonderfx.jp/blog-date-201601.html">&nbsp;2016年01月 (58)</option><option value="http://wonderfx.jp/blog-date-201512.html">&nbsp;2015年12月 (116)</option><option value="http://wonderfx.jp/blog-date-201511.html">&nbsp;2015年11月 (138)</option><option value="http://wonderfx.jp/blog-date-201510.html">&nbsp;2015年10月 (140)</option><option value="http://wonderfx.jp/blog-date-201509.html">&nbsp;2015年09月 (140)</option><option value="http://wonderfx.jp/blog-date-201508.html">&nbsp;2015年08月 (130)</option><option value="http://wonderfx.jp/blog-date-201507.html">&nbsp;2015年07月 (144)</option><option value="http://wonderfx.jp/blog-date-201506.html">&nbsp;2015年06月 (139)</option><option value="http://wonderfx.jp/blog-date-201505.html">&nbsp;2015年05月 (135)</option><option value="http://wonderfx.jp/blog-date-201504.html">&nbsp;2015年04月 (145)</option><option value="http://wonderfx.jp/blog-date-201503.html">&nbsp;2015年03月 (140)</option><option value="http://wonderfx.jp/blog-date-201502.html">&nbsp;2015年02月 (129)</option><option value="http://wonderfx.jp/blog-date-201501.html">&nbsp;2015年01月 (127)</option><option value="http://wonderfx.jp/blog-date-201412.html">&nbsp;2014年12月 (129)</option><option value="http://wonderfx.jp/blog-date-201411.html">&nbsp;2014年11月 (135)</option><option value="http://wonderfx.jp/blog-date-201410.html">&nbsp;2014年10月 (151)</option><option value="http://wonderfx.jp/blog-date-201409.html">&nbsp;2014年09月 (167)</option><option value="http://wonderfx.jp/blog-date-201408.html">&nbsp;2014年08月 (162)</option><option value="http://wonderfx.jp/blog-date-201407.html">&nbsp;2014年07月 (177)</option><option value="http://wonderfx.jp/blog-date-201406.html">&nbsp;2014年06月 (166)</option><option value="http://wonderfx.jp/blog-date-201405.html">&nbsp;2014年05月 (172)</option><option value="http://wonderfx.jp/blog-date-201404.html">&nbsp;2014年04月 (170)</option><option value="http://wonderfx.jp/blog-date-201403.html">&nbsp;2014年03月 (170)</option><option value="http://wonderfx.jp/blog-date-201402.html">&nbsp;2014年02月 (176)</option><option value="http://wonderfx.jp/blog-date-201401.html">&nbsp;2014年01月 (196)</option><option value="http://wonderfx.jp/blog-date-201312.html">&nbsp;2013年12月 (188)</option><option value="http://wonderfx.jp/blog-date-201311.html">&nbsp;2013年11月 (191)</option><option value="http://wonderfx.jp/blog-date-201310.html">&nbsp;2013年10月 (189)</option><option value="http://wonderfx.jp/blog-date-201309.html">&nbsp;2013年09月 (179)</option><option value="http://wonderfx.jp/blog-date-201308.html">&nbsp;2013年08月 (185)</option><option value="http://wonderfx.jp/blog-date-201307.html">&nbsp;2013年07月 (195)</option><option value="http://wonderfx.jp/blog-date-201306.html">&nbsp;2013年06月 (168)</option><option value="http://wonderfx.jp/blog-date-201305.html">&nbsp;2013年05月 (205)</option><option value="http://wonderfx.jp/blog-date-201304.html">&nbsp;2013年04月 (194)</option><option value="http://wonderfx.jp/blog-date-201303.html">&nbsp;2013年03月 (179)</option><option value="http://wonderfx.jp/blog-date-201302.html">&nbsp;2013年02月 (192)</option><option value="http://wonderfx.jp/blog-date-201301.html">&nbsp;2013年01月 (204)</option><option value="http://wonderfx.jp/blog-date-201212.html">&nbsp;2012年12月 (194)</option><option value="http://wonderfx.jp/blog-date-201211.html">&nbsp;2012年11月 (215)</option><option value="http://wonderfx.jp/blog-date-201210.html">&nbsp;2012年10月 (192)</option><option value="http://wonderfx.jp/blog-date-201209.html">&nbsp;2012年09月 (173)</option><option value="http://wonderfx.jp/blog-date-201208.html">&nbsp;2012年08月 (191)</option><option value="http://wonderfx.jp/blog-date-201207.html">&nbsp;2012年07月 (188)</option><option value="http://wonderfx.jp/blog-date-201206.html">&nbsp;2012年06月 (178)</option><option value="http://wonderfx.jp/blog-date-201205.html">&nbsp;2012年05月 (171)</option><option value="http://wonderfx.jp/blog-date-201204.html">&nbsp;2012年04月 (147)</option><option value="http://wonderfx.jp/blog-date-201203.html">&nbsp;2012年03月 (113)</option><option value="http://wonderfx.jp/blog-date-201202.html">&nbsp;2012年02月 (138)</option><option value="http://wonderfx.jp/blog-date-201201.html">&nbsp;2012年01月 (137)</option><option value="http://wonderfx.jp/blog-date-201112.html">&nbsp;2011年12月 (88)</option><option value="http://wonderfx.jp/blog-date-201111.html">&nbsp;2011年11月 (90)</option><option value="http://wonderfx.jp/blog-date-201110.html">&nbsp;2011年10月 (33)</option>  </select>
+</form>
+</center>
+<br>
+</td></tr></table>
+</div>
+
+<div id="two" style="display:none;">
+<table width="100%"><tr><td>
+<div style="height:90px; overflow:auto;">
+<ul><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201601.html" title="2016年01月 (58)">2016年01月 (58)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201512.html" title="2015年12月 (116)">2015年12月 (116)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201511.html" title="2015年11月 (138)">2015年11月 (138)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201510.html" title="2015年10月 (140)">2015年10月 (140)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201509.html" title="2015年09月 (140)">2015年09月 (140)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201508.html" title="2015年08月 (130)">2015年08月 (130)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201507.html" title="2015年07月 (144)">2015年07月 (144)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201506.html" title="2015年06月 (139)">2015年06月 (139)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201505.html" title="2015年05月 (135)">2015年05月 (135)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201504.html" title="2015年04月 (145)">2015年04月 (145)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201503.html" title="2015年03月 (140)">2015年03月 (140)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201502.html" title="2015年02月 (129)">2015年02月 (129)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201501.html" title="2015年01月 (127)">2015年01月 (127)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201412.html" title="2014年12月 (129)">2014年12月 (129)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201411.html" title="2014年11月 (135)">2014年11月 (135)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201410.html" title="2014年10月 (151)">2014年10月 (151)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201409.html" title="2014年09月 (167)">2014年09月 (167)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201408.html" title="2014年08月 (162)">2014年08月 (162)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201407.html" title="2014年07月 (177)">2014年07月 (177)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201406.html" title="2014年06月 (166)">2014年06月 (166)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201405.html" title="2014年05月 (172)">2014年05月 (172)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201404.html" title="2014年04月 (170)">2014年04月 (170)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201403.html" title="2014年03月 (170)">2014年03月 (170)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201402.html" title="2014年02月 (176)">2014年02月 (176)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201401.html" title="2014年01月 (196)">2014年01月 (196)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201312.html" title="2013年12月 (188)">2013年12月 (188)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201311.html" title="2013年11月 (191)">2013年11月 (191)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201310.html" title="2013年10月 (189)">2013年10月 (189)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201309.html" title="2013年09月 (179)">2013年09月 (179)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201308.html" title="2013年08月 (185)">2013年08月 (185)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201307.html" title="2013年07月 (195)">2013年07月 (195)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201306.html" title="2013年06月 (168)">2013年06月 (168)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201305.html" title="2013年05月 (205)">2013年05月 (205)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201304.html" title="2013年04月 (194)">2013年04月 (194)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201303.html" title="2013年03月 (179)">2013年03月 (179)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201302.html" title="2013年02月 (192)">2013年02月 (192)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201301.html" title="2013年01月 (204)">2013年01月 (204)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201212.html" title="2012年12月 (194)">2012年12月 (194)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201211.html" title="2012年11月 (215)">2012年11月 (215)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201210.html" title="2012年10月 (192)">2012年10月 (192)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201209.html" title="2012年09月 (173)">2012年09月 (173)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201208.html" title="2012年08月 (191)">2012年08月 (191)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201207.html" title="2012年07月 (188)">2012年07月 (188)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201206.html" title="2012年06月 (178)">2012年06月 (178)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201205.html" title="2012年05月 (171)">2012年05月 (171)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201204.html" title="2012年04月 (147)">2012年04月 (147)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201203.html" title="2012年03月 (113)">2012年03月 (113)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201202.html" title="2012年02月 (138)">2012年02月 (138)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201201.html" title="2012年01月 (137)">2012年01月 (137)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201112.html" title="2011年12月 (88)">2011年12月 (88)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201111.html" title="2011年11月 (90)">2011年11月 (90)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201110.html" title="2011年10月 (33)">2011年10月 (33)</a>
+</li></ul>
+</div>
+</td></tr></table>
+</div>
+
+<div id="three" style="display:none;">
+<table style="width:100%;"><tr><td>
+<div style="height:90px; overflow:auto;">
+<ul id="Ax"><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201601.html" title="2016年01月 (58)">2016年01月 (58)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201512.html" title="2015年12月 (116)">2015年12月 (116)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201511.html" title="2015年11月 (138)">2015年11月 (138)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201510.html" title="2015年10月 (140)">2015年10月 (140)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201509.html" title="2015年09月 (140)">2015年09月 (140)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201508.html" title="2015年08月 (130)">2015年08月 (130)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201507.html" title="2015年07月 (144)">2015年07月 (144)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201506.html" title="2015年06月 (139)">2015年06月 (139)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201505.html" title="2015年05月 (135)">2015年05月 (135)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201504.html" title="2015年04月 (145)">2015年04月 (145)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201503.html" title="2015年03月 (140)">2015年03月 (140)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201502.html" title="2015年02月 (129)">2015年02月 (129)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201501.html" title="2015年01月 (127)">2015年01月 (127)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201412.html" title="2014年12月 (129)">2014年12月 (129)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201411.html" title="2014年11月 (135)">2014年11月 (135)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201410.html" title="2014年10月 (151)">2014年10月 (151)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201409.html" title="2014年09月 (167)">2014年09月 (167)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201408.html" title="2014年08月 (162)">2014年08月 (162)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201407.html" title="2014年07月 (177)">2014年07月 (177)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201406.html" title="2014年06月 (166)">2014年06月 (166)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201405.html" title="2014年05月 (172)">2014年05月 (172)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201404.html" title="2014年04月 (170)">2014年04月 (170)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201403.html" title="2014年03月 (170)">2014年03月 (170)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201402.html" title="2014年02月 (176)">2014年02月 (176)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201401.html" title="2014年01月 (196)">2014年01月 (196)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201312.html" title="2013年12月 (188)">2013年12月 (188)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201311.html" title="2013年11月 (191)">2013年11月 (191)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201310.html" title="2013年10月 (189)">2013年10月 (189)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201309.html" title="2013年09月 (179)">2013年09月 (179)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201308.html" title="2013年08月 (185)">2013年08月 (185)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201307.html" title="2013年07月 (195)">2013年07月 (195)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201306.html" title="2013年06月 (168)">2013年06月 (168)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201305.html" title="2013年05月 (205)">2013年05月 (205)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201304.html" title="2013年04月 (194)">2013年04月 (194)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201303.html" title="2013年03月 (179)">2013年03月 (179)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201302.html" title="2013年02月 (192)">2013年02月 (192)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201301.html" title="2013年01月 (204)">2013年01月 (204)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201212.html" title="2012年12月 (194)">2012年12月 (194)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201211.html" title="2012年11月 (215)">2012年11月 (215)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201210.html" title="2012年10月 (192)">2012年10月 (192)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201209.html" title="2012年09月 (173)">2012年09月 (173)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201208.html" title="2012年08月 (191)">2012年08月 (191)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201207.html" title="2012年07月 (188)">2012年07月 (188)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201206.html" title="2012年06月 (178)">2012年06月 (178)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201205.html" title="2012年05月 (171)">2012年05月 (171)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201204.html" title="2012年04月 (147)">2012年04月 (147)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201203.html" title="2012年03月 (113)">2012年03月 (113)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201202.html" title="2012年02月 (138)">2012年02月 (138)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201201.html" title="2012年01月 (137)">2012年01月 (137)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201112.html" title="2011年12月 (88)">2011年12月 (88)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201111.html" title="2011年11月 (90)">2011年11月 (90)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201110.html" title="2011年10月 (33)">2011年10月 (33)</a>
+</li></ul>
+</div>
+<script type="text/javascript"><!--
+function RvA() {
+var A=document.getElementById('Ax').getElementsByTagName('LI');
+var B=""; var k=A.length; var l=Math.floor(k/2); k--;
+for(i=0;i<l;i++) {
+B=A[i].innerHTML;A[i].innerHTML=A[k-i].innerHTML;A[k-i].innerHTML=B;}
+}
+if (document.getElementById) {RvA()}
+--></script>
+</td></tr></table>
+</div>
+
+<div id="four" style="display:none;">
+<table style="width:100%;"><tr><td>
+<div style="height:90px; overflow:auto;">
+<script type="text/javascript"><!--
+var AcvR = 0;
+var AcvRck = "";
+//--></script><script type="text/javascript"><!--
+if (AcvR != 2016){
+document.write(AcvRck + "<strong>2016<small>年</small></strong><br />");
+AcvR = 2016;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201601.html" title="2016年01月 (58)">&nbsp;&nbsp;01月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2015){
+document.write(AcvRck + "<strong>2015<small>年</small></strong><br />");
+AcvR = 2015;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201512.html" title="2015年12月 (116)">&nbsp;&nbsp;12月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2015){
+document.write(AcvRck + "<strong>2015<small>年</small></strong><br />");
+AcvR = 2015;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201511.html" title="2015年11月 (138)">&nbsp;&nbsp;11月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2015){
+document.write(AcvRck + "<strong>2015<small>年</small></strong><br />");
+AcvR = 2015;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201510.html" title="2015年10月 (140)">&nbsp;&nbsp;10月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2015){
+document.write(AcvRck + "<strong>2015<small>年</small></strong><br />");
+AcvR = 2015;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201509.html" title="2015年09月 (140)">&nbsp;&nbsp;09月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2015){
+document.write(AcvRck + "<strong>2015<small>年</small></strong><br />");
+AcvR = 2015;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201508.html" title="2015年08月 (130)">&nbsp;&nbsp;08月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2015){
+document.write(AcvRck + "<strong>2015<small>年</small></strong><br />");
+AcvR = 2015;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201507.html" title="2015年07月 (144)">&nbsp;&nbsp;07月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2015){
+document.write(AcvRck + "<strong>2015<small>年</small></strong><br />");
+AcvR = 2015;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201506.html" title="2015年06月 (139)">&nbsp;&nbsp;06月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2015){
+document.write(AcvRck + "<strong>2015<small>年</small></strong><br />");
+AcvR = 2015;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201505.html" title="2015年05月 (135)">&nbsp;&nbsp;05月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2015){
+document.write(AcvRck + "<strong>2015<small>年</small></strong><br />");
+AcvR = 2015;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201504.html" title="2015年04月 (145)">&nbsp;&nbsp;04月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2015){
+document.write(AcvRck + "<strong>2015<small>年</small></strong><br />");
+AcvR = 2015;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201503.html" title="2015年03月 (140)">&nbsp;&nbsp;03月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2015){
+document.write(AcvRck + "<strong>2015<small>年</small></strong><br />");
+AcvR = 2015;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201502.html" title="2015年02月 (129)">&nbsp;&nbsp;02月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2015){
+document.write(AcvRck + "<strong>2015<small>年</small></strong><br />");
+AcvR = 2015;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201501.html" title="2015年01月 (127)">&nbsp;&nbsp;01月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2014){
+document.write(AcvRck + "<strong>2014<small>年</small></strong><br />");
+AcvR = 2014;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201412.html" title="2014年12月 (129)">&nbsp;&nbsp;12月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2014){
+document.write(AcvRck + "<strong>2014<small>年</small></strong><br />");
+AcvR = 2014;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201411.html" title="2014年11月 (135)">&nbsp;&nbsp;11月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2014){
+document.write(AcvRck + "<strong>2014<small>年</small></strong><br />");
+AcvR = 2014;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201410.html" title="2014年10月 (151)">&nbsp;&nbsp;10月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2014){
+document.write(AcvRck + "<strong>2014<small>年</small></strong><br />");
+AcvR = 2014;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201409.html" title="2014年09月 (167)">&nbsp;&nbsp;09月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2014){
+document.write(AcvRck + "<strong>2014<small>年</small></strong><br />");
+AcvR = 2014;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201408.html" title="2014年08月 (162)">&nbsp;&nbsp;08月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2014){
+document.write(AcvRck + "<strong>2014<small>年</small></strong><br />");
+AcvR = 2014;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201407.html" title="2014年07月 (177)">&nbsp;&nbsp;07月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2014){
+document.write(AcvRck + "<strong>2014<small>年</small></strong><br />");
+AcvR = 2014;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201406.html" title="2014年06月 (166)">&nbsp;&nbsp;06月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2014){
+document.write(AcvRck + "<strong>2014<small>年</small></strong><br />");
+AcvR = 2014;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201405.html" title="2014年05月 (172)">&nbsp;&nbsp;05月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2014){
+document.write(AcvRck + "<strong>2014<small>年</small></strong><br />");
+AcvR = 2014;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201404.html" title="2014年04月 (170)">&nbsp;&nbsp;04月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2014){
+document.write(AcvRck + "<strong>2014<small>年</small></strong><br />");
+AcvR = 2014;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201403.html" title="2014年03月 (170)">&nbsp;&nbsp;03月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2014){
+document.write(AcvRck + "<strong>2014<small>年</small></strong><br />");
+AcvR = 2014;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201402.html" title="2014年02月 (176)">&nbsp;&nbsp;02月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2014){
+document.write(AcvRck + "<strong>2014<small>年</small></strong><br />");
+AcvR = 2014;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201401.html" title="2014年01月 (196)">&nbsp;&nbsp;01月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2013){
+document.write(AcvRck + "<strong>2013<small>年</small></strong><br />");
+AcvR = 2013;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201312.html" title="2013年12月 (188)">&nbsp;&nbsp;12月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2013){
+document.write(AcvRck + "<strong>2013<small>年</small></strong><br />");
+AcvR = 2013;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201311.html" title="2013年11月 (191)">&nbsp;&nbsp;11月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2013){
+document.write(AcvRck + "<strong>2013<small>年</small></strong><br />");
+AcvR = 2013;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201310.html" title="2013年10月 (189)">&nbsp;&nbsp;10月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2013){
+document.write(AcvRck + "<strong>2013<small>年</small></strong><br />");
+AcvR = 2013;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201309.html" title="2013年09月 (179)">&nbsp;&nbsp;09月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2013){
+document.write(AcvRck + "<strong>2013<small>年</small></strong><br />");
+AcvR = 2013;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201308.html" title="2013年08月 (185)">&nbsp;&nbsp;08月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2013){
+document.write(AcvRck + "<strong>2013<small>年</small></strong><br />");
+AcvR = 2013;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201307.html" title="2013年07月 (195)">&nbsp;&nbsp;07月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2013){
+document.write(AcvRck + "<strong>2013<small>年</small></strong><br />");
+AcvR = 2013;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201306.html" title="2013年06月 (168)">&nbsp;&nbsp;06月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2013){
+document.write(AcvRck + "<strong>2013<small>年</small></strong><br />");
+AcvR = 2013;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201305.html" title="2013年05月 (205)">&nbsp;&nbsp;05月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2013){
+document.write(AcvRck + "<strong>2013<small>年</small></strong><br />");
+AcvR = 2013;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201304.html" title="2013年04月 (194)">&nbsp;&nbsp;04月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2013){
+document.write(AcvRck + "<strong>2013<small>年</small></strong><br />");
+AcvR = 2013;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201303.html" title="2013年03月 (179)">&nbsp;&nbsp;03月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2013){
+document.write(AcvRck + "<strong>2013<small>年</small></strong><br />");
+AcvR = 2013;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201302.html" title="2013年02月 (192)">&nbsp;&nbsp;02月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2013){
+document.write(AcvRck + "<strong>2013<small>年</small></strong><br />");
+AcvR = 2013;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201301.html" title="2013年01月 (204)">&nbsp;&nbsp;01月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2012){
+document.write(AcvRck + "<strong>2012<small>年</small></strong><br />");
+AcvR = 2012;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201212.html" title="2012年12月 (194)">&nbsp;&nbsp;12月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2012){
+document.write(AcvRck + "<strong>2012<small>年</small></strong><br />");
+AcvR = 2012;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201211.html" title="2012年11月 (215)">&nbsp;&nbsp;11月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2012){
+document.write(AcvRck + "<strong>2012<small>年</small></strong><br />");
+AcvR = 2012;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201210.html" title="2012年10月 (192)">&nbsp;&nbsp;10月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2012){
+document.write(AcvRck + "<strong>2012<small>年</small></strong><br />");
+AcvR = 2012;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201209.html" title="2012年09月 (173)">&nbsp;&nbsp;09月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2012){
+document.write(AcvRck + "<strong>2012<small>年</small></strong><br />");
+AcvR = 2012;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201208.html" title="2012年08月 (191)">&nbsp;&nbsp;08月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2012){
+document.write(AcvRck + "<strong>2012<small>年</small></strong><br />");
+AcvR = 2012;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201207.html" title="2012年07月 (188)">&nbsp;&nbsp;07月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2012){
+document.write(AcvRck + "<strong>2012<small>年</small></strong><br />");
+AcvR = 2012;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201206.html" title="2012年06月 (178)">&nbsp;&nbsp;06月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2012){
+document.write(AcvRck + "<strong>2012<small>年</small></strong><br />");
+AcvR = 2012;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201205.html" title="2012年05月 (171)">&nbsp;&nbsp;05月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2012){
+document.write(AcvRck + "<strong>2012<small>年</small></strong><br />");
+AcvR = 2012;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201204.html" title="2012年04月 (147)">&nbsp;&nbsp;04月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2012){
+document.write(AcvRck + "<strong>2012<small>年</small></strong><br />");
+AcvR = 2012;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201203.html" title="2012年03月 (113)">&nbsp;&nbsp;03月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2012){
+document.write(AcvRck + "<strong>2012<small>年</small></strong><br />");
+AcvR = 2012;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201202.html" title="2012年02月 (138)">&nbsp;&nbsp;02月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2012){
+document.write(AcvRck + "<strong>2012<small>年</small></strong><br />");
+AcvR = 2012;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201201.html" title="2012年01月 (137)">&nbsp;&nbsp;01月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2011){
+document.write(AcvRck + "<strong>2011<small>年</small></strong><br />");
+AcvR = 2011;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201112.html" title="2011年12月 (88)">&nbsp;&nbsp;12月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2011){
+document.write(AcvRck + "<strong>2011<small>年</small></strong><br />");
+AcvR = 2011;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201111.html" title="2011年11月 (90)">&nbsp;&nbsp;11月</a><wbr><script type="text/javascript"><!--
+if (AcvR != 2011){
+document.write(AcvRck + "<strong>2011<small>年</small></strong><br />");
+AcvR = 2011;
+AcvRck = '<br />';
+}//--></script>
+<a href="http://wonderfx.jp/blog-date-201110.html" title="2011年10月 (33)">&nbsp;&nbsp;10月</a><wbr><br />
+</div>
+</td></tr></table>
+</div>
+</div>
+</div>
+
+<div class="menu">
+<div class="menutitle-l" style="text-align:left">
+月別アーカイブ
+</div>
+<div class="menubody-l" style="text-align:left">
+<ul>
+<li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201601.html" title="2016/01">2016/01 (58)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201512.html" title="2015/12">2015/12 (116)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201511.html" title="2015/11">2015/11 (138)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201510.html" title="2015/10">2015/10 (140)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201509.html" title="2015/09">2015/09 (140)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201508.html" title="2015/08">2015/08 (130)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201507.html" title="2015/07">2015/07 (144)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201506.html" title="2015/06">2015/06 (139)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201505.html" title="2015/05">2015/05 (135)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201504.html" title="2015/04">2015/04 (145)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201503.html" title="2015/03">2015/03 (140)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201502.html" title="2015/02">2015/02 (129)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201501.html" title="2015/01">2015/01 (127)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201412.html" title="2014/12">2014/12 (129)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201411.html" title="2014/11">2014/11 (135)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201410.html" title="2014/10">2014/10 (151)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201409.html" title="2014/09">2014/09 (167)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201408.html" title="2014/08">2014/08 (162)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201407.html" title="2014/07">2014/07 (177)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201406.html" title="2014/06">2014/06 (166)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201405.html" title="2014/05">2014/05 (172)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201404.html" title="2014/04">2014/04 (170)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201403.html" title="2014/03">2014/03 (170)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201402.html" title="2014/02">2014/02 (176)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201401.html" title="2014/01">2014/01 (196)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201312.html" title="2013/12">2013/12 (188)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201311.html" title="2013/11">2013/11 (191)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201310.html" title="2013/10">2013/10 (189)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201309.html" title="2013/09">2013/09 (179)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201308.html" title="2013/08">2013/08 (185)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201307.html" title="2013/07">2013/07 (195)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201306.html" title="2013/06">2013/06 (168)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201305.html" title="2013/05">2013/05 (205)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201304.html" title="2013/04">2013/04 (194)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201303.html" title="2013/03">2013/03 (179)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201302.html" title="2013/02">2013/02 (192)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201301.html" title="2013/01">2013/01 (204)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201212.html" title="2012/12">2012/12 (194)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201211.html" title="2012/11">2012/11 (215)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201210.html" title="2012/10">2012/10 (192)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201209.html" title="2012/09">2012/09 (173)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201208.html" title="2012/08">2012/08 (191)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201207.html" title="2012/07">2012/07 (188)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201206.html" title="2012/06">2012/06 (178)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201205.html" title="2012/05">2012/05 (171)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201204.html" title="2012/04">2012/04 (147)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201203.html" title="2012/03">2012/03 (113)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201202.html" title="2012/02">2012/02 (138)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201201.html" title="2012/01">2012/01 (137)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201112.html" title="2011/12">2011/12 (88)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201111.html" title="2011/11">2011/11 (90)</a>
+</li><li style="text-align:left">
+<a href="http://wonderfx.jp/blog-date-201110.html" title="2011/10">2011/10 (33)</a>
+</li></ul>
+</div>
+</div>
+
+<div class="menu">
+<div class="menutitle-l" style="text-align:left">
+カテゴリ
+</div>
+<div class="menubody-l" style="text-align:left">
+<div>
+<div style="text-align:left">
+<a href="http://wonderfx.jp/blog-category-12.html" title="Week">Week (208)</a>
+</div><div style="text-align:left">
+<a href="http://wonderfx.jp/blog-category-1.html" title="東京市場予想">東京市場予想 (1323)</a>
+</div><div style="text-align:left">
+<a href="http://wonderfx.jp/blog-category-2.html" title="欧州市場予想">欧州市場予想 (1104)</a>
+</div><div style="text-align:left">
+<a href="http://wonderfx.jp/blog-category-19.html" title="NY市場予想（20:30現在）">NY市場予想（20:30現在） (187)</a>
+</div><div style="text-align:left">
+<a href="http://wonderfx.jp/blog-category-3.html" title="NY市場予想（21:30現在）">NY市場予想（21:30現在） (563)</a>
+</div><div style="text-align:left">
+<a href="http://wonderfx.jp/blog-category-5.html" title="NY市場予想（22:30現在）">NY市場予想（22:30現在） (501)</a>
+</div><div style="text-align:left">
+<a href="http://wonderfx.jp/blog-category-6.html" title="NY市場予想（23:30現在）">NY市場予想（23:30現在） (151)</a>
+</div><div style="text-align:left">
+<a href="http://wonderfx.jp/blog-category-9.html" title="the指値man">the指値man (1595)</a>
+</div><div style="text-align:left">
+<a href="http://wonderfx.jp/blog-category-14.html" title="チャレンジ企画">チャレンジ企画 (179)</a>
+</div><div style="text-align:left">
+<a href="http://wonderfx.jp/blog-category-16.html" title="algorithm analysis">algorithm analysis (1525)</a>
+</div><div style="text-align:left">
+<a href="http://wonderfx.jp/blog-category-15.html" title="再考は最高！">再考は最高！ (553)</a>
+</div><div style="text-align:left">
+<a href="http://wonderfx.jp/blog-category-7.html" title="21:30の逆張り値">21:30の逆張り値 (197)</a>
+</div><div style="text-align:left">
+<a href="http://wonderfx.jp/blog-category-13.html" title="Swing de swing">Swing de swing (4)</a>
+</div><div style="text-align:left">
+<a href="http://wonderfx.jp/blog-category-8.html" title="Trading Results">Trading Results (4)</a>
+</div><div style="text-align:left">
+<a href="http://wonderfx.jp/blog-category-4.html" title="お知らせ">お知らせ (60)</a>
+</div><div style="text-align:left">
+<a href="http://wonderfx.jp/blog-category-0.html" title="未分類">未分類 (8)</a>
+</div><div style="text-align:left">
+<a href="http://wonderfx.jp/blog-category-18.html" title="Global Menu">Global Menu (8)</a>
+</div></div>
+</div>
+</div>
+
+<div class="menu">
+<div class="menutitle-l" style="text-align:left">
+Trading Results 
+</div>
+<div class="menubody-l" style="text-align:left">
+<div class="plugin-freearea" style="text-align:left">
+  <center>【売買結果】</center>
+<center>
+<table border="0" width="210" cellpadding="3" cellspacing="1" bgcolor="#999999"><tr><td bgcolor="#ffffff">　2016年01月</td><td bgcolor="#f6f6f6" align="right ">　----Pips　</td><tr><tr><tr><td bgcolor="#ffffff">　2015年12月</td><td bgcolor="#f6f6f6" align="right ">　8279Pips　</td><tr><td bgcolor="#ffffff">　2015年11月</td><td bgcolor="#f6f6f6" align="right ">　2325Pips　</td><tr><td bgcolor="#ffffff">　2015年10月</td><td bgcolor="#f6f6f6" align="right ">　2970Pips　</td><tr><td bgcolor="#ffffff">　2015年09月</td><td bgcolor="#f6f6f6" align="right ">　7576Pips　</td><tr><td bgcolor="#ffffff">　2015年08月</td><td bgcolor="#f6f6f6" align="right ">　6829Pips　</td><tr><td bgcolor="#ffffff">　2015年07月</td><td bgcolor="#f6f6f6" align="right ">　3546Pips　</td><tr><td bgcolor="#ffffff">　2015年06月</td><td bgcolor="#f6f6f6" align="right ">　1286Pips　</td><tr><td bgcolor="#ffffff">　2015年05月</td><td bgcolor="#f6f6f6" align="right ">　4944Pips　</td><tr><td bgcolor="#ffffff">　2015年04月</td><td bgcolor="#f6f6f6" align="right ">　5343Pips　</td><tr><td bgcolor="#ffffff">　2015年03月</td><td bgcolor="#f6f6f6" align="right ">　7419Pips　</td><tr><td bgcolor="#ffffff">　2015年02月</td><td bgcolor="#f6f6f6" align="right ">　3349Pips　</td><tr><td bgcolor="#ffffff">　2015年01月</td><td bgcolor="#f6f6f6" align="right ">　6849Pips　</td><tr><tr><tr><td bgcolor="#ffffff">　2014年12月</td><td bgcolor="#f6f6f6" align="right ">　6782Pips　</td><tr><td bgcolor="#ffffff">　2014年11月</td><td bgcolor="#f6f6f6" align="right ">　1371Pips　</td><tr><td bgcolor="#ffffff">　2014年10月</td><td bgcolor="#f6f6f6" align="right ">　4134Pips　</td><tr><td bgcolor="#ffffff">　2014年09月</td><td bgcolor="#f6f6f6" align="right ">　3471Pips　</td><tr><td bgcolor="#ffffff">　2014年08月</td><td bgcolor="#f6f6f6" align="right ">　2127Pips　</td><tr><td bgcolor="#ffffff">　2014年07月</td><td bgcolor="#f6f6f6" align="right ">　1475Pips　</td><tr><td bgcolor="#ffffff">　2014年06月</td><td bgcolor="#f6f6f6" align="right ">　1643Pips　</td><tr><td bgcolor="#ffffff">　2014年05月</td><td bgcolor="#f6f6f6" align="right ">　2590Pips　</td><tr><td bgcolor="#ffffff">　2014年04月</td><td bgcolor="#f6f6f6" align="right ">　2481Pips　</td><tr><td bgcolor="#ffffff">　2014年03月</td><td bgcolor="#f6f6f6" align="right ">　3342Pips　</td></tr><td bgcolor="#ffffff">　2014年02月</td><td bgcolor="#f6f6f6" align="right ">　4059Pips　</td></tr><td bgcolor="#ffffff">　2014年01月</td><td bgcolor="#f6f6f6" align="right ">　5442Pips　</td><tr><tr><tr><td bgcolor="#ffffff">　2013年12月</td><td bgcolor="#f6f6f6" align="right ">　 761Pips　</td></tr><td bgcolor="#ffffff">　2013年11月</td><td bgcolor="#f6f6f6" align="right ">　1747Pips　</td></tr><td bgcolor="#ffffff">　2013年10月</td><td bgcolor="#f6f6f6" align="right ">　3129Pips　</td></tr><td bgcolor="#ffffff">　2013年09月</td><td bgcolor="#f6f6f6" align="right ">　2335Pips　</td></tr><tr><td bgcolor="#ffffff">　2013年08月</td><td bgcolor="#f6f6f6" align="right ">　2973Pips　</td></tr><tr><td bgcolor="#ffffff">　2013年07月</td><td bgcolor="#f6f6f6" align="right ">　3579Pips　</td></tr><tr><td bgcolor="#ffffff">　2013年06月</td><td bgcolor="#f6f6f6" align="right ">　5842Pips　</td></tr><tr><td bgcolor="#ffffff">　2013年05月</td><td bgcolor="#f6f6f6" align="right ">　4276Pips　</td></tr><tr><td bgcolor="#ffffff">　2013年04月</td><td bgcolor="#f6f6f6" align="right ">　4560Pips　</td></tr><tr><td bgcolor="#ffffff">　2013年03月</td><td bgcolor="#f6f6f6" align="right ">　2881Pips　</td></tr><tr><td bgcolor="#ffffff">　2013年02月</td><td bgcolor="#f6f6f6" align="right ">　3936Pips　</td></tr><tr><td bgcolor="#ffffff">　2013年01月</td><td bgcolor="#f6f6f6" align="right ">　2452Pips　</td><tr><tr><tr><td bgcolor="#ffffff">　2012年12月</td><td bgcolor="#f6f6f6" align="right ">　-1566Pips　</td></tr><tr><td bgcolor="#ffffff">　2012年11月</td><td bgcolor="#f6f6f6" align="right ">　5189Pips　</td></tr><tr><td bgcolor="#ffffff">　2012年10月</td><td bgcolor="#f6f6f6" align="right ">　33Pips　</td></tr><tr><td bgcolor="#ffffff">　2012年09月</td><td bgcolor="#f6f6f6" align="right ">　3316Pips　</td></tr><td bgcolor="#ffffff">　2012年08月</td><td bgcolor="#f6f6f6" align="right ">　-289Pips　</td></tr><td bgcolor="#ffffff">　2012年07月</td><td bgcolor="#f6f6f6" align="right ">　1144Pips　</td></tr><td bgcolor="#ffffff">　2012年06月</td><td bgcolor="#f6f6f6" align="right ">　1096Pips　</td></tr><td bgcolor="#ffffff">　2012年05月</td><td bgcolor="#f6f6f6" align="right ">　1125Pips　</td></tr><td bgcolor="#ffffff">　2012年04月</td><td bgcolor="#f6f6f6" align="right ">　1171Pips　</td></tr><td bgcolor="#ffffff">　2012年03月</td><td bgcolor="#f6f6f6" align="right ">　1258Pips　</td></tr>
+<td bgcolor="#ffffff">　2012年02月</td><td bgcolor="#f6f6f6" align="right ">　-4274Pips　</td></tr><td bgcolor="#ffffff">　2012年01月</td><td bgcolor="#f6f6f6" align="right ">　-281Pips　</td><tr><tr><tr><td bgcolor="#ffffff">　2011年12月</td><td bgcolor="#f6f6f6" align="right ">　1167Pips　</td></tr><td bgcolor="#ffffff">　2011年11月</td><td bgcolor="#f6f6f6" align="right ">　1104Pips　</td></tr></table>
+</center>
+<br>
+<center>【著者の取引My rule】</center>
+<Div Align="left">◇１ポジションは15万通貨に完全固定</Div>
+<Div Align="left">◇ポジションは最大6ポジション(但しスイングを併用している場合は最大12ポジション)</Div>
+<Div Align="left">◇ストップを取られたら自己ペナルティーボックスに4H。この間は取引をしない(新規建玉禁止・ポジの決済は可）</Div>
+</div>
+</div>
+</div>
+
+<div class="menu">
+<div class="menutitle-l" style="text-align:left">
+<center>リアルタイム訪問者数..</center>
+</div>
+<div class="menubody-l" style="text-align:left">
+<div class="plugin-freearea" style="text-align:left">
+  <!--▼▼▼NowVisitorsカウンター(2015.12.16変更)▼▼▼-->
+<IFRAME SRC="http://now-visitor5.ziyu.net/c.php?wonderfx/default/10/ffffff/000000/　　　　　現在の閲覧者は+1/人です/" WIDTH=400 HEIGHT=15 SCROLLING=NO FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 BORDER=0 allowtransparency=true><IMG SRC="http://now-visitor5.ziyu.net/nojs_cnt.php?wonderfx/default/" border=0 alt=""></IFRAME>
+<!--/▲▲▲NowVisitorsカウンター▲▲▲-->
+
+
+
+
+
+
+<!--▼▼▼NowVisitorsカウンター(原本)▼▼▼-->
+<!--
+<Div Align="center">
+
+<IFRAME SRC="http://now-visitor5.ziyu.net/c.php?wonderfx/default/10/ffffff/000000/Copyright%8F%A2%ED2012-2042Hiroyuki.Wakamatsu+1/aa%A1%A1All+Rights+Reserved./" WIDTH=400 HEIGHT=15 SCROLLING=NO FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 BORDER=0 allowtransparency=true><IMG SRC="http://now-visitor5.ziyu.net/nojs_cnt.php?wonderfx/default/" border=0 alt=""></IFRAME>
+
+</Div>
+ -->
+
+</div>
+</div>
+<div class="menubody-l" style="text-align:left">
+（過去90秒～現時点までにアクセスしている人数をカウントするリアルカウンターです）<br>今、この瞬間サイトを見ている人数です
+</div>
+</div>
+
+<div class="menu">
+<div class="menutitle-l" style="text-align:left">
+ランキング応援お願いします
+</div>
+<div class="menubody-l" style="text-align:left">
+<div class="plugin-freearea" style="text-align:left">
+  記事がお役に立てば、若松浩幸のブログの応援をお願いします！<br>
+(下記のバナーをクリックして頂けると1票が投じられます) 
+
+<Div Align="center">
+<img src="http://blog-imgs-49.fc2.com/w/o/n/wonderfx/arrow42-011.gif" alt="arrow42-011" border="0" width="16" height="16" /><img src="http://blog-imgs-49.fc2.com/w/o/n/wonderfx/arrow42-011.gif" alt="arrow42-011" border="0" width="16" height="16" /><img src="http://blog-imgs-49.fc2.com/w/o/n/wonderfx/arrow42-011.gif" alt="arrow42-011" border="0" width="16" height="16" /></Div>
+
+<center><a href="http://blogranking.fc2.com/in.php?id=665096" target="_blank"><img src="http://blogranking.fc2.com/ranking_banner/d_02.gif" style="border:0px;"></a></center><br>
+<center>
+<a href="http://fx.blogmura.com/pound-yen/ranking.html" target="_blank"><img src="http://fx.blogmura.com/pound-yen/img/pound-yen88_31.gif" width="88" height="31" border="0" alt="にほんブログ村 為替ブログ ポンド円へ" /></a></center><br>
+<center><a href="http://blog.with2.net/link.php?1745382" target="_blank" title="人気ブログランキングへ"><img src="http://blog.with2.net/img/banner/banner_22.gif" width="88" height="31" border="0" /></a></center><br>
+
+<center><img src="http://blog-imgs-52.fc2.com/w/o/n/wonderfx/ojigi064.gif" alt="ojigi064.gif" border="0" width="90" height="50" /></center>
+
+
+1日１回クリックで応援して下さい。皆様の応援が励みになります。<br>よろしくお願いします。
+</div>
+</div>
+</div>
+
+<div class="menu">
+<div class="menutitle-l" style="text-align:left">
+おすすめ　FX会社一覧
+</div>
+<div class="menubody-l" style="text-align:left">
+<div class="plugin-freearea" style="text-align:left">
+  <!--info-->
+今まで2年間広告等は非掲載でしたが、皆様からFX口座紹介のご要望が有りましたので掲載する事としました。<br>
+考えて見るとFX会社を選定するのも重要なトレード戦略です。<br>
+これから順次解り易い様に改定して行きます。
+<hr size="1" color="#2f4f4f"><br>
+
+
+
+<!--A-1株式会社DMM.com証券 -->
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/d1.jpg" alt="d1.jpg" border="0" width="10" height="10" /><a href="http://h.accesstrade.net/sp/cc?rk=01004jr000dq8c" target="_blank">DMM.com証券<img src="http://h.accesstrade.net/sp/rr?rk=01004jr000dq8c" width="1" height="1" border="0" alt="" /></a><br>
+<a href="http://h.accesstrade.net/sp/cc?rk=01004ix100dq8c" target="_blank"><img src="http://h.accesstrade.net/sp/rr?rk=01004ix100dq8c" alt="" border="0" /></a>　<a href="http://h.accesstrade.net/sp/cc?rk=01004jr000dq8c" target="_blank"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/b61.jpg" alt="b61.jpg" border="0" width="50" height="60" /></a><br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />取引高世界第２位、FX口座数国内第1位<br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />業界最狭水準スプレッドを全20ペアで提供 <br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />抜群の操作性！豊富な取引ツール  <br>
+関東財務局長（金商）第1629号
+<hr size="1" color="#2f4f4f"><br>
+
+
+
+<!--①株式会社外為ジャパン-->
+<a href="http://www.tcs-asp.net/alink?AC=C76520&LC=MJ1&SQ=0&isq=1" title="FXなら外為ジャパン" target="_blank"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/d1.jpg" alt="d1.jpg" border="0" width="10" height="10" />外為ジャパン</a><br>
+<a href="http://www.tcs-asp.net/alink?AC=C76520&LC=MJ1&SQ=1&isq=5" target="_blank"><img src="http://img.tcs-asp.net/imagesender?ac=C76520&lc=MJ1&isq=5&psq=1" border="0" alt="外為ジャパン"></a>　<a href=" http://www.tcs-asp.net/alink?AC=C76520&LC=MJ1&SQ=1&isq=5" target="_blank"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/b61.jpg" alt="b61.jpg" border="0" width="50" height="60" /></a><br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />業界最狭水準スプレッド<br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />Mac対応!モバイル取引環境<br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />法人は最大レバレッジ300倍<br>
+関東財務局長（金商）第1629号 
+<hr size="1" color="#2f4f4f"><br>
+
+
+
+<!--②マネックス証券株式会社 -->
+<a href="http://www.tcs-asp.net/alink?AC=C76520&LC=TFX1&SQ=0&isq=1" title="マネックスＦＸ" target="_blank"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/d1.jpg" alt="d1.jpg" border="0" width="10" height="10" />マネックスＦＸ</a><br>
+<a href="http://www.tcs-asp.net/alink?AC=C76520&LC=TFX1&SQ=0&isq=10" target="_blank"><img src="http://img.tcs-asp.net/imagesender?ac=C76520&lc=TFX1&isq=10&psq=0" border="0" alt="FXは安定したシステムのマネックスＦＸで"></a>　<a href=" http://www.tcs-asp.net/alink?AC=C76520&LC=TFX1&SQ=0&isq=10" target="_blank"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/b61.jpg" alt="b61.jpg" border="0" width="50" height="60" /></a><br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />低スプレッドでお取引コスト重視<br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />10万通貨以上1万通貨単位 <br>
+関東財務局長（金商）第165号
+<hr size="1" color="#2f4f4f"><br>
+
+
+
+<!--③JFX株式会社 -->
+<a href="http://www.tcs-asp.net/alink?AC=C76520&LC=JFX1&SQ=0&isq=101" title="JFX株式会社" target="_blank"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/d1.jpg" alt="d1.jpg" border="0" width="10" height="10" />JFX株式会社</a><br>
+<a href="http://www.tcs-asp.net/alink?AC=C76520&LC=JFX1&SQ=0&isq=122" target="_blank"><img src="http://img.tcs-asp.net/imagesender?ac=C76520&lc=JFX1&isq=122&psq=0" border="0" alt=""></a>　<a href=" http://www.tcs-asp.net/alink?AC=C76520&LC=JFX1&SQ=0&isq=122" target="_blank"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/b61.jpg" alt="b61.jpg" border="0" width="50" height="60" /></a><br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />プロ絶賛！強力チャート機能搭載<br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />成行約定能力99.9％<br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />小林芳彦のマーケットナビが無料<br>
+関東財務局長（金商）第238号
+<hr size="1" color="#2f4f4f"><br>
+
+
+
+<!--④インヴァスト証券株式会社 -->
+<a href="http://www.tcs-asp.net/alink?AC=C76520&LC=INV10&SQ=0&isq=1" title="インヴァスト証券" target="_blank"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/d1.jpg" alt="d1.jpg" border="0" width="10" height="10" />インヴァスト証券</a><br>
+<a href="http://www.tcs-asp.net/alink?AC=C76520&LC=INV10&SQ=0&isq=4" target="_blank"><img src="http://img.tcs-asp.net/imagesender?ac=C76520&lc=INV10&isq=4&psq=0" border="0" alt="インヴァスト証券"></a>　<a href=" http://www.tcs-asp.net/alink?AC=C76520&LC=INV10&SQ=0&isq=4" target="_blank"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/b61.jpg" alt="b61.jpg" border="0" width="50" height="60" /></a><br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />最新無料のFX自動売買サービス<br> 
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />プロの投資戦略が５００以上搭載<br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />厳選されたストラテジーを搭載<br>
+関東財務局長（金商）第26号　 
+<hr size="1" color="#2f4f4f"><br>
+
+
+
+<!--⑥GMOクリック証券株式会社 -->
+<a href="http://www.tcs-asp.net/alink?AC=C76520&LC=CLICK1&SQ=0&isq=8" title="" target="_blank"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/d1.jpg" alt="d1.jpg" border="0" width="10" height="10" />GMOクリック証券</a><br>
+<a href="http://www.tcs-asp.net/alink?AC=C76520&LC=CLICK1&SQ=0&isq=21" target="_blank"><img src="http://img.tcs-asp.net/imagesender?ac=C76520&lc=CLICK1&isq=21&psq=0" border="0" alt="GMOクリック証券"></a>　<a href=" http://www.tcs-asp.net/alink?AC=C76520&LC=CLICK1&SQ=0&isq=21" target="_blank"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/b61.jpg" alt="b61.jpg" border="0" width="50" height="60" /></a><br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />業界最安値水準の取引コスト<br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />大人気PhoneアプリiClickFXネオ<br>
+関東財務局長（金商）第77号
+<hr size="1" color="#2f4f4f"><br>
+
+
+
+<!--⑦SBIFXトレード株式会社 -->
+<a href="http://www.tcs-asp.net/alink?AC=C76520&LC=SBI50&SQ=0&isq=101" title="SBIFXトレード" target="_blank"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/d1.jpg" alt="d1.jpg" border="0" width="10" height="10" />SBIFXトレード</a><br>
+<a href="http://www.tcs-asp.net/alink?AC=C76520&LC=SBI50&SQ=0&isq=202" target="_blank"><img src="http://img.tcs-asp.net/imagesender?ac=C76520&lc=SBI50&isq=202&psq=0" border="0" alt="SBIFXトレード"></a>　<a href=" http://www.tcs-asp.net/alink?AC=C76520&LC=SBI50&SQ=0&isq=202" target="_blank"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/b61.jpg" alt="b61.jpg" border="0" width="50" height="60" /></a><br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />2013年ベストスプレッド賞受賞<br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />抜群のスプレッドを誇る取引環境<br>
+関東財務局長（金商）第2635号
+<hr size="1" color="#2f4f4f"><br>
+
+
+
+<!--⑧株式会社外為オンライン -->
+<a href="http://www.tcs-asp.net/alink?AC=C76520&LC=NJT2&SQ=0&isq=30" title="外為オンライン" target="_blank"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/d1.jpg" alt="d1.jpg" border="0" width="10" height="10" />外為オンライン</a><br>
+<a href="http://www.tcs-asp.net/alink?AC=C76520&LC=NJT2&SQ=0&isq=5" target="_blank"><img src="http://img.tcs-asp.net/imagesender?ac=C76520&lc=NJT2&isq=5&psq=0" border="0" alt="外国為替証拠金取引の外為オンライン口座開設申込"></a>　<a href=" http://www.tcs-asp.net/alink?AC=C76520&LC=NJT2&SQ=0&isq=5" target="_blank"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/b61.jpg" alt="b61.jpg" border="0" width="50" height="60" /></a><br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />4年連続FX年間取引高NO.1！<br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />ドル円スプレッドは１銭原則固定<br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />業界最高峰を誇るスワップ金利<br>
+関東財務局長（金商）第276号
+<hr size="1" color="#2f4f4f"><br>
+
+
+
+<!--⑨株式会社ＦＸプライムｂｙＧＭＯ -->
+<a href="http://www.tcs-asp.net/alink?AC=C76520&LC=PRIME2&SQ=0&isq=1" title="ＦＸプライムbyGMO「選べるミラートレーダー」" target="_blank"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/d1.jpg" alt="d1.jpg" border="0" width="10" height="10" />ＦＸプライムbyGMO</a><br>
+<a href="http://www.tcs-asp.net/alink?AC=C76520&LC=PRIME2&SQ=0&isq=101" target="_blank"><img src="http://img.tcs-asp.net/imagesender?ac=C76520&lc=PRIME2&isq=101&psq=0" border="0" alt="ＦＸプライムbyGMO「選べるミラートレーダー」"></a>　<a href=" http://www.tcs-asp.net/alink?AC=C76520&LC=PRIME2&SQ=0&isq=101" target="_blank"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/b61.jpg" alt="b61.jpg" border="0" width="50" height="60" /></a><br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />選択型の自動売買サービス<br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />ストラテジー300種類以上も提供<br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />24時間自動で売買<br>
+関東財務局長（金商）第259号
+<hr size="1" color="#2f4f4f"><br>
+
+
+
+
+<!--⑩フォレックス・ドットコムジャパン株式会社 -->
+<a href="http://www.tcs-asp.net/alink?AC=C76520&LC=FCAP3&SQ=0&isq=3" title="" target="_blank"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/d1.jpg" alt="d1.jpg" border="0" width="10" height="10" />フォレックス・ドットコムMT4</a><br>
+<a href="http://www.tcs-asp.net/alink?AC=C76520&LC=FCAP3&SQ=0&isq=24" target="_blank"><img src="http://img.tcs-asp.net/imagesender?ac=C76520&lc=FCAP3&isq=24&psq=0" border="0" alt="フォレックス・ドットコムMT4"></a>　<a href=" http://www.tcs-asp.net/alink?AC=C76520&LC=FCAP3&SQ=0&isq=24" target="_blank"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/b61.jpg" alt="b61.jpg" border="0" width="50" height="60" /></a><br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />MT4取扱会社で顧客満足度No.1<br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />MT4セミナー充実サポートを提供<br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />シストレ移行にという方から注目<br>
+関東財務局長（金商）第291号
+<hr size="1" color="#2f4f4f"><br>
+
+
+
+<!-- ⑪株式会社ライブスター証券 -->
+<a href="http://www.tcs-asp.net/alink?AC=C76520&LC=IDO1&SQ=0&isq=2" title="株式会社ライブスター証券" target="_blank"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/d1.jpg" alt="d1.jpg" border="0" width="10" height="10" />ライブスターFX</a><br>
+<a href="http://www.tcs-asp.net/alink?AC=C76520&LC=IDO1&SQ=0&isq=24" target="_blank"><img src="http://img.tcs-asp.net/imagesender?ac=C76520&lc=IDO1&isq=24&psq=0" border="0" alt="株式会社ライブスター証券"></a>　<a href=" http://www.tcs-asp.net/alink?AC=C76520&LC=IDO1&SQ=0&isq=24" target="_blank"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/b61.jpg" alt="b61.jpg" border="0" width="50" height="60" /></a><br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />スワップポイント業界No.1水準<br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />高機能チャートの利用料が無料 <br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />取引コストの満足度第１位を獲得<br>
+関東財務局長（金商）第8号
+<hr size="1" color="#2f4f4f"><br>
+
+
+
+<!-- ⑫株式会社FXトレーディングシステムズ -->
+<a href="http://www.tcs-asp.net/alink?AC=C76520&LC=FXTS1&SQ=0&isq=30" title="ＦＸトレーディングシステムズ" target="_blank"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/d1.jpg" alt="d1.jpg" border="0" width="10" height="10" />ＦＸトレーディングシステムズ</a><br>
+<a href="http://www.tcs-asp.net/alink?AC=C76520&LC=FXTS1&SQ=0&isq=3" target="_blank"><img src="http://img.tcs-asp.net/imagesender?ac=C76520&lc=FXTS1&isq=3&psq=0" border="0" alt="初めてのFX取引[FXブロードネット]"></a>　<a href=" http://www.tcs-asp.net/alink?AC=C76520&LC=FXTS1&SQ=0&isq=3" target="_blank"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/b61.jpg" alt="b61.jpg" border="0" width="50" height="60" /></a><br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />業界最高水準のスプレッド<br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />カスタマイズできる取引画面<br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />17種類のテクニカルチャート搭載<br>
+関東財務局長（金商）第224号
+<hr size="1" color="#2f4f4f"><br>
+
+
+
+<!-- ⑬トレイダーズ証券株式会社-->
+<a href="http://www.tcs-asp.net/alink?AC=C76520&LC=PAN1&SQ=0&isq=1" title="トレイダーズ証券" target="_blank"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/d1.jpg" alt="d1.jpg" border="0" width="10" height="10" />トレイダーズ証券</a><br>
+<a href="http://www.tcs-asp.net/alink?AC=C76520&LC=PAN1&SQ=0&isq=9" target="_blank"><img src="http://img.tcs-asp.net/imagesender?ac=C76520&lc=PAN1&isq=9&psq=0" border="0" alt="トレイダーズ証券[みんなのFX]"></a>　<a href=" http://www.tcs-asp.net/alink?AC=C76520&LC=PAN1&SQ=0&isq=9" target="_blank"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/b61.jpg" alt="b61.jpg" border="0" width="50" height="60" /></a><br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />スプレッドが業界最狭水準で提供<br>  
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />手数料無料、口座維持費も無料<br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />モバイル&スマホでお取引も快適<br>
+関東財務局長（金商）第123号
+<hr size="1" color="#2f4f4f"><br>
+
+
+
+<!-- ⑭株式会社アイネット証券-->
+<a href="http://www.tcs-asp.net/alink?AC=C76520&LC=INET1&SQ=0&isq=2" title="アイネット証券[アイネットFX]" target="_blank"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/d1.jpg" alt="d1.jpg" border="0" width="10" height="10" />アイネット証券[アイネットFX]</a><br>
+<a href="http://www.tcs-asp.net/alink?AC=C76520&LC=INET1&SQ=0&isq=16" target="_blank"><img src="http://img.tcs-asp.net/imagesender?ac=C76520&lc=INET1&isq=16&psq=0" border="0" alt="アイネット証券[アイネットFX]"></a>　<a href=" http://www.tcs-asp.net/alink?AC=C76520&LC=INET1&SQ=0&isq=16" target="_blank"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/b61.jpg" alt="b61.jpg" border="0" width="50" height="60" /></a><br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />新世代取引i-NET TRADER<br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />44種チャートからダイレクト発注<br> 
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />上限付き変動スプレッドを採用<br>
+関東財務局長（金商）第11号
+<hr size="1" color="#2f4f4f"><br>
+
+
+
+<!-- ⑮ヒロセ通商株式会社 -->
+<a href="http://www.tcs-asp.net/alink?AC=C76520&LC=HIR99&SQ=0&isq=22" title="ヒロセ通商【LION FX】" target="_blank"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/d1.jpg" alt="d1.jpg" border="0" width="10" height="10" />ヒロセ通商【LION FX】</a><br>
+<a href="http://www.tcs-asp.net/alink?AC=C76520&LC=HIR99&SQ=0&isq=3" target="_blank"><img src="http://img.tcs-asp.net/imagesender?ac=C76520&lc=HIR99&isq=3&psq=0" border="0" alt="FX取引ならヒロセ通商へ"></a>　<a href=" http://www.tcs-asp.net/alink?AC=C76520&LC=HIR99&SQ=0&isq=3" target="_blank"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/b61.jpg" alt="b61.jpg" border="0" width="50" height="60" /></a><br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />50通貨ペア1,000通貨から取引可<br> 
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />快適約定 成行約定能力99.9％<br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />iPhone、Android、i、S!アプリ対応<br> 
+近畿財務局長（金商）第41号
+<hr size="1" color="#2f4f4f"><br>
+
+
+
+<!-- ⑯OANDA Japan 株式会社  -->
+<a href="http://www.tcs-asp.net/alink?AC=C76520&LC=OANDA1&SQ=0&isq=101" title="OANDA Japan" target="_blank"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/d1.jpg" alt="d1.jpg" border="0" width="10" height="10" />OANDA Japan</a><br>
+<a href="http://www.tcs-asp.net/alink?AC=C76520&LC=OANDA1&SQ=0&isq=502" target="_blank"><img src="http://img.tcs-asp.net/imagesender?ac=C76520&lc=OANDA1&isq=502&psq=0" border="0" alt="OANDA Japan MT4"></a>　<a href=" http://www.tcs-asp.net/alink?AC=C76520&LC=OANDA1&SQ=0&isq=502" target="_blank"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/b61.jpg" alt="b61.jpg" border="0" width="50" height="60" /></a><br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />72通貨ペアの豊富なラインアップ <br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />約定拒否なし 、リクオートなし <br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />iPhone, Android, iPadアプリ完備<br>
+関東財務局長（金商）第2137号 
+<hr size="1" color="#2f4f4f">
+
+
+
+<!-- ⑰株式会社マネーパートナーズ -->
+<a href="http://www.tcs-asp.net/alink?AC=C76520&LC=MPA1&SQ=0&isq=30" title="ＦＸのマネーパートナーズ" target="_blank"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/d1.jpg" alt="d1.jpg" border="0" width="10" height="10" />ＦＸのマネーパートナーズ</a><br>
+<a href="http://www.tcs-asp.net/alink?AC=C76520&LC=MPA1&SQ=0&isq=26" target="_blank"><img src="http://img.tcs-asp.net/imagesender?ac=C76520&lc=MPA1&isq=26&psq=0" border="0" alt="外国為替証拠金取引のマネーパートナーズ"></a>　<a href=" http://www.tcs-asp.net/alink?AC=C76520&LC=MPA1&SQ=0&isq=26" target="_blank"><img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/b61.jpg" alt="b61.jpg" border="0" width="50" height="60" /></a><br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />スリッページなし、約定拒否なし<br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />最低証拠金100円で取引可能<br>
+<img src="http://blog-imgs-63.fc2.com/w/o/n/wonderfx/e1.jpg" alt="e1.jpg" border="0" width="10" height="10" />56種類のテクニカル分析を搭載<br>
+関東財務局長（金商）第2028号 
+</div>
+</div>
+</div>
+
+<div class="menu">
+<div class="menutitle-l" style="text-align:left">
+世界時計
+</div>
+<div class="menubody-l" style="text-align:left">
+<div class="plugin-freearea" style="text-align:left">
+  <div style="position:relative; width:160px; padding:0px; text-align:left;"><script language="javascript" type="text/javascript" src="http://www.fx-startup.com/flash/clk.js"></script><script type="text/javascript">clk_blue();</script><noscript><a href="http://www.fx-startup.com/" target="_blank">FX初心者の入門講座</a></noscript><a href="http://www.fx-startup.com/" target="_blank"><img src="http://www.fx-startup.com/flash/img/url_blue.gif" width="121" height="17" style="position:absolute; top:143px; left:0px; border:none;" alt="FX初心者の入門講座"></a></div>
+</div>
+</div>
+</div>
+
+<div class="menu">
+<div class="menutitle-l" style="text-align:left">
+リンク
+</div>
+<div class="menubody-l" style="text-align:left">
+<ul>
+<li style="text-align:left"><a href="http://www.boj.or.jp" title="日本銀行" target="_blank">日本銀行</a></li><li style="text-align:left"><a href="http://www.federalreserve.gov/" title="FRB" target="_blank">FRB</a></li><li style="text-align:left"><a href="http://www.ecb.europa.eu/home/html/index.en.html" title="ECB" target="_blank">ECB</a></li><li style="text-align:left"><a href="http://www.bankofengland.co.uk/" title="BOE" target="_blank">BOE</a></li><li style="text-align:left"><a href="http://www.nikkei.com/" title="日経新聞" target="_blank">日経新聞</a></li><li style="text-align:left"><a href="http://www.bloomberg.co.jp/" title="Bloomberg" target="_blank">Bloomberg</a></li><li style="text-align:left"><a href="http://jp.reuters.com/" title="REUFERS" target="_blank">REUFERS</a></li><li style="text-align:left"><a href="https://www.bankofamerica.com/" title="Bank of America" target="_blank">Bank of America</a></li><li style="text-align:left"><a href="http://wonderfx.517.in/wp/" title="wonderFx" target="_blank">wonderFx</a></li><li style="text-align:left"><a href="http://expertfx.blog.fc2.com/" title="expertFX   the指値man" target="_blank">expertFX   the指値man</a></li><li><a href="./?admin">管理画面</a></li>
+</ul>
+</div>
+</div>
+
+<div class="menu">
+<div class="menutitle-l" style="text-align:left">
+ＱＲコード
+</div>
+<div class="menubody-l" style="text-align:left">
+<div class="plugin-qrcode" style="text-align:left"><img src="http://blog-imgs-49.fc2.com/w/o/n/wonderfx/0bae30222.jpg" alt="QR"></div>
+</div>
+</div>
+
+<div class="menu">
+<div class="menutitle-l" style="text-align:left">
+本の紹介
+</div>
+<div class="menubody-l" style="text-align:left">
+<div class="plugin-freearea" style="text-align:left">
+  <center><img src="http://blog-imgs-49.fc2.com/w/o/n/wonderfx/20120228204131c4f.jpg" alt="定本酒田罫線法" border="0" width="137" height="200" /></center>
+<br>
+◇定本　酒田罫線法<br>
+（林輝太郎：著）定価￥5097<br>
+※酒田罫線法は「相場の見方」ではなく「売買のやり方」を示しているのだ。本間宗久の創始といわれているがそれは誤りで、後世に何人かの手を経てつくられたが、逆張りの売買を基本とし、乗せを排し、実戦的な売買法である。
+<br>
+
+<br>
+<center><img src="http://blog-imgs-49.fc2.com/w/o/n/wonderfx/20120228203910ee2.jpg" alt="酒田五法は風林火山 -相場ケイ線道の極意-" border="0" width="142" height="198" /></center>
+<br>
+◇酒田五法は風林火山－相場ケイ線道の極意<br>
+（日本証券新聞社：著）￥1800<br>
+※昭和44年発売以来、投資家の間で大好評となり、ロングセラーを記録。酒田五法は風林火山」は相場秘伝書の古典「本間宗久翁秘録」をもとに、相場の変化を具体的な罫線論にまとめた「酒田戦法」の明快な解説書。 
+</div>
+</div>
+</div>
+
+<div class="menu">
+<div class="menutitle-l" style="text-align:left">
+私の応援
+</div>
+<div class="menubody-l" style="text-align:left">
+<div class="plugin-freearea" style="text-align:left">
+  著者：若松浩幸は<br>
+あしなが育英会・国境なき医師団<br>
+を応援しています<br>
+<br>
+<strong>◇あしなが育英会とは</strong><br>
+親を亡くしたり何らかの状態で働けない家庭の子どもたちを物心両面で支える民間非営利団体です<br>
+<strong>◇国境なき医師団とは</strong><br>
+貧困や紛争なので命の危険に直面している人びとに医療を届けています<br>
+<br>
+(注)国境なき医師団は寄付金控除を受けれますが、あしなが育英会は民間非営利団体ですので対象外になります<br>
+<A Href="http://www.ashinaga.org/" Target="_blank">あしなが育英会</A><br>
+<A Href="http://www.msf.or.jp/" Target="_blank">国境なき医師団</A>
+</div>
+</div>
+</div>
+
+<div class="menu">
+<div class="menutitle-l" style="text-align:left">
+お問合せ
+</div>
+<div class="menubody-l" style="text-align:left">
+<div class="plugin-freearea" style="text-align:left">
+  ブログについての<br>
+お問い合わせはこちらから<br>
+<font color="#FF3535">▼▼▼</font><br>
+<a href="https://mailform.mface.jp/frms/0077/evylap196we5" target="_blank">ここをクリック</a></noscript><br><br>
+<img src="http://blog-imgs-49.fc2.com/w/o/n/wonderfx/icon06_convert_20120127094506.jpg" alt="icon06_convert_20120127094506.jpg" border="0" width="100" height="50" /><br>
+※セキュアなデータ通信が必要なSSL機能搭載のメールフォームですのでご安心してご利用頂けます。
+<br>
+<center><img src="http://blog-imgs-49.fc2.com/w/o/n/wonderfx/botoiwase2012012621532811083.gif" alt="お問い合わせB" border="0" width="49" height="49" /></center>
+<center>携帯用QRコードです</center>
+</div>
+</div>
+</div>
+
+<div class="menu">
+<div class="menutitle-l" style="text-align:left">
+著作物・大量IDについて
+</div>
+<div class="menubody-l" style="text-align:left">
+<div class="plugin-freearea" style="text-align:left">
+  <Div Align="center"><img src="http://blog-imgs-60.fc2.com/w/o/n/wonderfx/cyosakuid.jpg" alt="cyosakuid.jpg" border="0" width="158" height="48" /></Div><br>
+
+stratgy等の著作物や<br>
+リアルタイムトレードの大量ID<br>
+の発行に関してのお問いわせは<br>
+ここから<br>
+<font color="#FF3535">▼▼▼</font><br>
+<a href="https://mailform.mface.jp/frms/0077/xl57o6lpsl4m" target="_blank">ここをクリック</a></noscript>
+<br><br>
+<img src="http://blog-imgs-49.fc2.com/w/o/n/wonderfx/icon06_convert_20120127094506.jpg" alt="icon06_convert_20120127094506.jpg" border="0" width="100" height="50" /><br>
+※セキュアなデータ通信が必要なSSL機能搭載のメールフォームですのでご安心してご利用頂けます。
+
+
+
+</div>
+</div>
+</div>
+
+<div class="menu">
+<div class="menutitle-l" style="text-align:left">
+注意事項
+</div>
+<div class="menubody-l" style="text-align:left">
+<div class="plugin-freearea" style="text-align:left">
+  <BODY>
+<div style="line-height: 1.5;margin: 0.1em;padding: 1em;border: 3px solid #336699;background-color: #ECF2F9;">
+<span style="font-size:10pt;color:#CC0000;font-family:ＭＳ Ｐゴシック;">
+<center>***注意事項***</center><br>
+◆本ブログは投資顧問業務では有りません。当方が投資判断の助言を提供することは有りません。<br>
+◆本ブログは当方の売買履歴をお知らせするものであり利益を保証するものでは有りません。<br>
+◆本ブログ配信を参考にする場合はご自身の責任と判断で行って下さい。<br>
+◆損失についてはいかなる場合も当方は一切責任を負いません。<br>
+◆著作権は若松浩幸に帰属します。<br><br>
+</span>
+</div>
+</BODY>
+</div>
+</div>
+</div>
+
+<div class="menu">
+<div class="menutitle-l" style="text-align:left">
+<Div Align="center">ブログランキング参加</Div>
+</div>
+<div class="menubody-l" style="text-align:left">
+<div class="plugin-freearea" style="text-align:left">
+  記事がお役に立てば、若松浩幸のブログの応援をお願いします！<br>
+(下記のバナーをクリックして頂けると1票が投じられます) 
+<br><br>
+<center><a href="http://blogranking.fc2.com/in.php?id=665096" target="_blank"><img src="http://blogranking.fc2.com/ranking_banner/d_02.gif" style="border:0px;"></a></center>
+<br>
+<center><a href="http://fx.blogmura.com/pound-yen/ranking.html" target="_blank"><img src="http://fx.blogmura.com/pound-yen/img/pound-yen88_31.gif" width="88" height="31" border="0" alt="にほんブログ村 為替ブログ ポンド円へ" /></a></center><br>
+<center><a href="http://blog.with2.net/link.php?1745382" target="_blank" title="人気ブログランキングへ"><img src="http://blog.with2.net/img/banner/banner_22.gif" width="88" height="31" border="0" /></a></center><br>
+</div>
+</div>
+</div>
+
+<div class="menu">
+<div class="menutitle-l" style="text-align:left">
+<Div Align="center">にほんブログ村ランキング</Div>
+</div>
+<div class="menubody-l" style="text-align:left">
+<div class="plugin-freearea" style="text-align:left">
+  <div id='inner_space'></div><script type='text/javascript' src='http://blogparts.blogmura.com/pts/js/parts_view.js' charset='UTF-8'></script><script type='text/javascript'>parts(1362017,"FFFFFF","250","001eff",600000,"68","1435","rank","http://wonderfx.jp/", 2, 0, "F7F7F7", "001eff");</script>
+</div>
+</div>
+</div>
+
+<div class="menu">
+<div class="menutitle-l" style="text-align:left">
+<center>▼▼▼ログアウト▼▼▼</center>
+</div>
+<div class="menubody-l" style="text-align:left">
+<div class="plugin-freearea" style="text-align:left">
+  <center><img src="http://blog-imgs-55.fc2.com/w/o/n/wonderfx/arrow046_03.gif" alt="arrow046_03" border="0" width="11" height="11" /><a href="http://wonderfx.jp/?logout " target="_self"> ログアウト</a></center>
+<br>
+
+毎月、月初の4時にパスワードが変更になります。<br>
+パスワード変更後は、一度ログアウトしてから、再度、(新)パスワードでログインして下さい。旧クッキーがクリアされないと(新)パスワードではログイン出来ません。<br>
+尚、ログアウトでクッキーがクリアされない場合はブラウザーの操作でクッキーをクリアして下さい。<br>
+※クッキーとキャッシュの削除方法はブラウザーにより異なります。<br>
+</div>
+</div>
+</div>
+
+
+
+
+</div>
+<!--▲右サイドバー▲-->
+
+
+</div>
+<!--▲コンテナ・終了▲-->
+
+
+<!--▼フッター上ナビ・開始▼-->
+<div class="page_navi4"><div class="page_navi4-in">
+<ul>
+<li><a href="http://wonderfx.jp/">ホーム</a></li>
+<li><a href="#header-ue" title="このページのトップへ">ページトップ</a></li>
+<li><a href="http://wonderfx.jp/"  title="お問い合わせ" target="_blank">お問い合わせ</a></li>
+<li><a href="http://wonderfx.jp/" title="メルマガ登録">メルマガ登録</a></li>
+<li><a href="http://wonderfx.jp/?xml" title="wonderfx のRSSフィード" target="_blank">RSS</a></li>
+<li><a href="http://wonderfx.jp/archives.html" title="wonderfx の記事一覧">全記事</a></li>
+</ul>
+</div></div>
+<!--▲フッター上ナビ・終了▲-->
+
+
+<!--▼フッター１・開始▼-->
+<div id="footer1"><div id="footer1-in">
+
+この著作権は若松浩幸に帰属しますので、無断転載を禁じます。
+転載を希望される方はお問い合わせ下さい&nbsp;
+</div></div>
+<!--▲フッター１・終了▲-->
+
+
+<!--▼フッター２・開始▼-->
+<div id="footer2"><div id="footer2-in">
+<address>&copy;2011-2015&nbsp;<a href="http://wonderfx.jp/" title="wonderfx">wonderfx</a>&nbsp;All Rights Reserved.</address>
+<!-- ※著作権＆広告表示のため削除できません※ -->
+<script type="text/javascript" charset="utf-8" src="http://admin.blog.fc2.com/dctanalyzer.php"></script> <!-- ※著作権＆広告表示のため削除できません※ -->
+</div></div>
+<!--▲フッター２・終了▲-->
+
+
+
+<!--▼▼▼NINJAアクセス解析▼▼▼-->
+<!-- NINJA ANALYZE -->
+<script type="text/javascript">
+//<![CDATA[
+(function(d) {
+  var sc=d.createElement("script"),
+      ins=d.getElementsByTagName("script")[0];
+  sc.type="text/javascript";
+  sc.src=("https:"==d.location.protocol?"https://":"http://") + "code.analysis.shinobi.jp" + "/ninja_ar/NewScript?id=00053347&hash=cd0b9db5&zone=36";
+  sc.async=true;
+  ins.parentNode.insertBefore(sc, ins);
+})(document);
+//]]>
+</script>
+<!-- /NINJA ANALYZE -->
+<!--/▲▲▲NINJAアクセス解析   ▲▲▲-->
+
+
+
+<p id="page-top"><a href="#wrap">PAGE TOP</a></p>
+</div>
+<!-- ▲▲▲スクロールすると「トップへ戻るボタン」を表示（スライドアニメーション編）▲▲▲-->
+
+
+
+</body>
+</html>

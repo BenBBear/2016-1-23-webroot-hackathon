@@ -1,0 +1,99 @@
+<!--<?php
+	//共通ファイルの読み込み(相対パス)
+	include_once 'include/commons.php';
+?>-->
+<?php
+  // Copyright 2010 Google Inc. All Rights Reserved.
+
+  $GA_ACCOUNT = "MO-30360592-8";
+  $GA_PIXEL = "/ga.php";
+
+  function googleAnalyticsGetImageUrl() {
+    global $GA_ACCOUNT, $GA_PIXEL;
+    $url = "";
+    $url .= $GA_PIXEL . "?";
+    $url .= "utmac=" . $GA_ACCOUNT;
+    $url .= "&utmn=" . rand(0, 0x7fffffff);
+    $referer = $_SERVER["HTTP_REFERER"];
+    $query = $_SERVER["QUERY_STRING"];
+    $path = $_SERVER["REQUEST_URI"];
+    if (empty($referer)) {
+      $referer = "-";
+    }
+    $url .= "&utmr=" . urlencode($referer);
+    if (!empty($path)) {
+      $url .= "&utmp=" . urlencode($path);
+    }
+    $url .= "&guid=ON";
+    return str_replace("&", "&amp;", $url);
+  }
+?>
+<html>
+<head>
+<meta content="all">
+<meta name="keywords" content="武富士,キャッシング,店舗,ATM">
+<meta name="description" content="武富士・店舗キャッシングATM(住所･最寄り駅など)の情報をご紹介します。">
+<title>武富士≪地名で探す≫店舗キャッシングATMナビ</title>
+</head>
+<body>
+<div align=center><font size=2><marquee bgcolor="#c1ebff" loop=16>武富士は会社更生法適用となりました。新規の貸し出しはしていません。武富士に過払い金がある方はお急ぎください。過払い金が返済される可能性があります！、</marquee></font><hr noshade color="#0058b0">
+<table border=0 width=100% bgcolor="#0058b0">
+<tr>
+<td><div align=center><font color="white">【武富士】ATM<br>
+キャッシング店舗ナビ<br>
+<font color="white" size=2>〜地域別〜</font></div></td>
+</tr>
+</table><hr noshade color="#0058b0">
+</div>
+<font size=2>全国各地にある武富士のキャッシングATM情報(最寄駅･住所など)をご紹介します。</font><br>
+<div align=center><hr noshade color="#0058b0">
+<a href="http://xn--cck8axim68pkdyb.com/" rel="nofollow"><img src="acom.gif" alt="" border="0"></a><br>
+<br>
+<a href="hokkaido/">北海道</a>｜<a href="touhoku/">東北</a>｜<a href="kanto/">関東</a><br>
+<a href="hokuriku/">北陸</a>｜<a href="koushinetsu/">甲信越</a>｜<a href="toukai/">東海</a>｜<a href="kansai/">関西</a><br>
+<a href="chugoku/">中国</a>｜<a href="shikoku/">四国</a>｜<a href="kyushu/">九州</a>｜<a href="okinawa/">沖縄</a><br>
+<br>
+<font color="#ff0080" size=2>今一番</font><font color="#ff972f" size=2>人気</font><font color="#ff0080" size=2>のｷｬｯｼﾝｸﾞはｺﾚ！</font><br>
+
+<font size=2><blink>↓↓↓</blink></font><br>
+<font color="red" size=2>【レイク】 女性にも人気！<br>
+<a href="http://ck.at-m.net/cc?rk=1ni46h0v&guid=ON">☆30日間無利息☆<br>ﾈｯﾄ申込で来店不要<br>[ﾚｲｸ]でｷｬｯｼﾝｸﾞ♪</a></font><br><br></div>
+<hr noshade color="#0058b0">
+<font size=2><marquee bgcolor="#c1ebff" loop=16>武富士店舗キャッシングATMの住所をご紹介します。</marquee></font><br>
+<div align=center>
+<hr noshade color="#0058b0">
+<font size=2>
+他のｷｬｯｼﾝｸﾞ店舗<br>
+を探すならこちら★<br>
+↓　↓　↓<br>
+<a href="http://xn--cck8axim68pkdyb.com/" rel="nofollow">【ｱｺﾑ】ｷｬｯｼﾝｸﾞATM検索</a><br>
+<br>
+<a href="http://genosworld.com/" rel="nofollow">【ﾌﾟﾛﾐｽ】ATMｷｬｯｼﾝｸﾞ店舗</a><br>
+<br>
+<a href="http://loganhouseinn.com/" rel="nofollow">【ﾉｰﾛｰﾝ】ｷｬｯｼﾝｸﾞATM</a><br>
+<br>
+<a href="http://xn--ccke1mndr79y7r3b.com/" rel="nofollow">【ｱｲﾌﾙ】ｷｬｯｼﾝｸﾞATM</a><br>
+<br>
+<a href="http://nsihorrorstories.com/pocketbank/" rel="nofollow">【ﾎﾟｹｯﾄﾊﾞﾝｸ】ATM検索</a><br>
+<br>
+<a href="http://muryo2525.com/" rel="nofollow">【ﾚｲｸ】ｷｬｯｼﾝｸﾞATM</a><br>
+<br>
+</font>
+<hr noshade color="#0058b0">
+<font size=2>お問い合わせ</font><br>
+<hr noshade color="#0058b0">
+<br>
+<font size=2>(c)武富士≪地名で探す≫店舗キャッシングATMナビ</font><br></div>
+<br>
+<br>
+<font size=2>
+<div align="center" nowrap="nowrap" valign="middle">
+</div>
+</font>
+<br>
+<br>
+
+<?php
+  $googleAnalyticsImageUrl = googleAnalyticsGetImageUrl();
+  echo '<img src="' . $googleAnalyticsImageUrl . '" />';?></body>
+</html>

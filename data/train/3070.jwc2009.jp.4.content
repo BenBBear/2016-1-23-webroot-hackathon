@@ -1,0 +1,1378 @@
+
+
+
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>IRB TOSHIBAジュニアワールドチャンピオンシップ2009, 日本大会（U20世界ラグビー選手権）</title>
+<meta name="keywords" content="U20世界ラグビー選手権,世界ラグビー,ユース,U20日本代表,チケット,日本開催,2009年" />
+<meta name="description" content="IRB TOSHIBA JUNIOR WORLD CHAMPIONSHIP 2009, JAPAN（「U20世界ラグビー選手権」）" />
+<meta name="copyright" content="(c)2009 JRFU.All rights reserved." />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="alternate" type="application/rss+xml" title="rss" href="/rss/index.xml" />
+<link rel="stylesheet" type="text/css" href="/common/css/import.css" media="screen,print" />
+<link rel="stylesheet" type="text/css" href="/common/css/print.css" media="print" />
+<link rel="stylesheet" type="text/css" href="/common/css/index_tab.css" media="all" />
+<script type="text/javascript" src="/common/js/include.js"></script>
+<script type="text/javascript" src="/common/js/index_tab.js"></script>
+<script type="text/javascript">
+var xmlDoc;
+var fileName = "/team_ranking.xml?nc=" + (new Date).getTime();
+
+function ViewTitle() {
+	try {
+		xmlDoc = new XMLHttpRequest();
+	} catch(e) {
+		try {
+			xmlDoc = new ActiveXObject("Msxml2.XMLHTTP");
+		} catch(e) {
+			try {
+				xmlDoc = new ActiveXObject("Microsoft.XMLHTTP");
+			} catch(e) {
+				return null;
+			}
+		}
+	}
+	xmlDoc.open("GET", fileName, true);
+	xmlDoc.send(null);
+	xmlDoc.onreadystatechange = function() {
+		if ((xmlDoc.readyState == 4) && (xmlDoc.status == 200)) {
+			readXml();
+		}
+	}
+}
+
+function readXml() {
+	var outString = "<table width='100%' border='0' cellpadding='0' cellspacing='0' id='top_team_rank'>";
+	
+	var subttlItem = xmlDoc.responseXML.getElementsByTagName("sub_title");
+	var subttl = subttlItem[0].childNodes.item(0).nodeValue;
+	outString += "<tr><th colspan='3'>" + subttl + "</th></tr>";
+	
+	var objItems = xmlDoc.responseXML.getElementsByTagName("team");
+	for (i = 0; i < objItems.length; i++) {
+		var valueName = objItems[i].getElementsByTagName("name");
+		var valueSrc = objItems[i].getElementsByTagName("logo_url");
+		var valueLink = objItems[i].getElementsByTagName("team_url");
+		
+		if (subttl == "一覧") {
+			/*outString += "<tr><td>-</td>";*/
+		} else {
+			outString += "<tr><td>" + String(i+1) + "</td>";
+		}
+		outString += "<td><a href='" + valueLink[0].childNodes.item(0).nodeValue + "'><img src='" + valueSrc[0].childNodes.item(0).nodeValue + "' width='20' height='14' class='rank_flags' /></a></td><td>" + valueName[0].childNodes.item(0).nodeValue +  "</td></tr>";
+	}
+	outString += "</table>";
+	document.getElementById("top_team_rank_xml").innerHTML = outString;
+}
+
+</script>
+</head>
+
+<body>
+<a name="pgtop" id="pgtop"></a>
+<table border="0" cellpadding="0" cellspacing="0" id="baseTbl">
+<tr>
+<td id="mainBg">
+<!-- HEADER -->
+<div id="top_hdr">
+<!-- FLASH -->
+<!-- swfobject.embedSWF("表示したいFlashファイル", "表示するid","Flashの幅", "Flashの高さ", "要求するFlashのバージョン");-->
+<div id="jwcflash">flash</div>
+<script type="text/javascript">
+var flashvars = {};
+var params = {
+	wmode: "transparent"
+};
+var attributes = {
+	id: "jwc",
+	name: "jwc"
+};
+
+swfobject.embedSWF("jwc.swf", "jwcflash", "100%", "100%", "8.0.0","", flashvars, params, attributes);
+</script>
+<!-- FLASH// -->
+
+<!-- NAVI -->
+<div id="top_hdr_navi">
+<ul class="fclear"><li>
+<img src="/common/imgs/navi/side_l.gif" /></li><li>
+<img src="/common/imgs/navi/nav_01_ov.gif" alt="ホーム" name="nav01" width="89" height="32" id="nav01" onmouseover="MM_swapImage('nav01','','/common/imgs/navi/nav_01_ov.gif',1)" onmouseout="MM_swapImgRestore()" /></li><li>
+<a href="/outline/"><img src="/common/imgs/navi/nav_02.gif" alt="大会概要" name="nav02" width="100" height="32" id="nav02" onmouseover="MM_swapImage('nav02','','/common/imgs/navi/nav_02_ov.gif',1)" onmouseout="MM_swapImgRestore()" /></a></li><li>
+<a href="/news/"><img src="/common/imgs/navi/nav_03.gif" alt="ニュース" name="nav03" width="100" height="32" id="nav03" onmouseover="MM_swapImage('nav03','','/common/imgs/navi/nav_03_ov.gif',1)" onmouseout="MM_swapImgRestore()" /></a></li><li>
+<a href="/teams/"><img src="/common/imgs/navi/nav_04.gif" alt="チームプロフィール" name="nav04" width="120" height="32" id="nav04" onmouseover="MM_swapImage('nav04','','/common/imgs/navi/nav_04_ov.gif',1)" onmouseout="MM_swapImgRestore()" /></a></li><li>
+<a href="/game/schedule.html"><img src="/common/imgs/navi/nav_05.gif" alt="試合日程・結果" name="nav05" width="100" height="32" id="nav05" onmouseover="MM_swapImage('nav05','','/common/imgs/navi/nav_05_ov.gif',1)" onmouseout="MM_swapImgRestore()" /></a></li><li>
+<a href="/standings/"><img src="/common/imgs/navi/nav_06.gif" alt="順位表" name="nav06" width="90" height="32" id="nav06" onmouseover="MM_swapImage('nav06','','/common/imgs/navi/nav_06_ov.gif',1)" onmouseout="MM_swapImgRestore()" /></a></li><li>
+<a href="/ranking/index.html"><img src="/common/imgs/navi/nav_07.gif" alt="得点ランキング" name="nav07" width="100" height="32" id="nav07" onmouseover="MM_swapImage('nav07','','/common/imgs/navi/nav_07_ov.gif',1)" onmouseout="MM_swapImgRestore()" /></a></li><li>
+<a href="/ticketsinfo.html"><img src="/common/imgs/navi/nav_08.gif" alt="チケット情報" name="nav08" width="100" height="32" id="nav08" onmouseover="MM_swapImage('nav08','','/common/imgs/navi/nav_08_ov.gif',1)" onmouseout="MM_swapImgRestore()" /></a></li><li>
+<a href="/maps/"><img src="/common/imgs/navi/nav_09.gif" alt="会場アクセス" name="nav09" width="100" height="32" id="nav09" onmouseover="MM_swapImage('nav09','','/common/imgs/navi/nav_09_ov.gif',1)" onmouseout="MM_swapImgRestore()" /></a></li><li>
+<img src="/common/imgs/navi/side_r.gif" /></li></ul>
+</div>
+<!-- NAVI// -->
+<div id="top_hdr_navi_shadow"><img src="/common/imgs/navi/nav_shadow.gif" width="920" height="3" /></div>
+</div>
+<!-- HEADER// -->
+
+
+<!-- CONTENTS -->
+<div id="top_cnt">
+
+<!-- 1st CONTENTS -->
+<div id="top_cnt_wide">
+
+
+<div class="top_module">
+<h1><img src="/imgs/final_msg.jpg" alt="ご来場ありがとうございました" width="540" height="390" /></h1>
+</div>
+
+<div class="top_module">
+<h1><img src="/imgs/top_mdl1_ttl.gif" alt="最新試合情報" width="540" height="32" /></h1>
+<p id="top_tab_mdl1"><!--
+--><img src="/imgs/top_mdl1_btn1_ov.gif" alt="試合日程" id="tab_mdl_btn1" /><!--
+--><img src="/imgs/top_mdl1_btn2.gif" alt="試合結果" id="tab_mdl_btn2" /><!--
+--><img src="/imgs/top_mdl1_btn3.gif" alt="試合速報" id="tab_mdl_btn3" /></p>
+<script type="text/javascript">
+<!--
+$(document).ready(function() {
+	$("#top_tab_mdl1 a").click(function() {
+		$($("#top_tab_mdl1 a.tabact").attr("href")).hide();
+		$("#top_tab_mdl1 a.tabact").removeClass("tabact");
+		$(this).addClass("tabact");
+		$($(this).attr("href")).fadeIn("fast");
+	});
+});
+-->
+</script>
+<style type="text/css">
+#top_tab_mdl1_cnt2{display:none;}
+#top_tab_mdl1_cnt3{display:none;}
+</style>
+<div id="top_tab_mdl1_cnt1"></div>
+<div id="top_tab_mdl1_cnt2"></div>
+<div id="top_tab_mdl1_cnt3"><div id="top_tab_mdl1_cnt3_div"><table><tbody></tbody></table></div></div>
+<p class="btn_more"><a href="/game/schedule.html" onmouseover="MM_swapImage('btn_more01','','/common/imgs/btn/more_act.gif',1)" onmouseout="MM_swapImgRestore()"><img src="/common/imgs/btn/more.gif" alt="MORE" name="btn_more01" id="btn_more01" /></a></p>
+</div>
+
+<div class="top_module">
+<h2 style="position:relative;"><img src="/imgs/top_mdl2_ttl.gif" alt="新着情報" width="540" height="32" /><a href="/rss/index.xml"><img src="/imgs/btn_rss.gif" alt="RSS" name="btn_rss" width="39" height="17" id="btn_rss" /></a></h2>
+<div id="top_news">
+
+
+
+<dl><dt>2009/06/25</dt><dd>
+
+<a href="/news/news6483.html">U20日本代表 大会リポート</a>
+
+
+
+</dd></dl>
+
+
+
+<dl><dt>2009/06/24</dt><dd>
+
+<a href="/news/news6623.html">決勝の後、ファイナル・ファンクション｢IRB TOSHIBA JUNIOR WORLD CHAMPIONSHIP 2009,JAPAN FINAL FUNCTION｣が開催されました</a>
+
+
+
+</dd></dl>
+
+
+
+<dl><dt>2009/06/22</dt><dd>
+
+<a href="/news/news6646.html">11位決定戦　マッチ&会見リポート(アルゼンチン 27-10 フィジー)</a>
+
+
+
+</dd></dl>
+
+
+
+<dl><dt>2009/06/22</dt><dd>
+
+<a href="/news/news6643.html">決勝戦　マッチ&会見リポート(ニュージーランド 44-28 イングランド)</a>
+
+
+
+</dd></dl>
+
+
+
+<dl><dt>2009/06/22</dt><dd>
+
+<a href="/news/news6645.html">9位決定戦　マッチ&会見リポート(トンガ 25-28 スコットランド)</a>
+
+
+
+</dd></dl>
+
+
+
+<dl><dt>2009/06/22</dt><dd>
+
+<a href="/news/news6642.html">7位決定戦　マッチ&会見リポート(アイルランド 3-9 サモア)</a>
+
+
+
+</dd></dl>
+
+
+
+<dl><dt>2009/06/22</dt><dd>
+
+<a href="/news/news6599.html">15位決定戦　マッチ&会見リポート(ウルグアイ 17-54 日本)</a>
+
+
+
+</dd></dl>
+
+
+
+<dl><dt>2009/06/22</dt><dd>
+
+<a href="/news/news6641.html">5位決定戦　マッチ&会見リポート(ウェールズ 13-68 フランス)</a>
+
+
+
+</dd></dl>
+
+
+
+<dl><dt>2009/06/22</dt><dd>
+
+<a href="/news/news6644.html">「U20世界ラグビー選手権」総括会見開かれる</a>
+
+
+
+</dd></dl>
+
+
+
+<dl><dt>2009/06/22</dt><dd>
+
+<a href="/news/news6600.html">13位決定戦　マッチ&会見リポート(カナダ 22-32 イタリア)</a>
+
+
+
+</dd></dl>
+
+
+
+<dl><dt>2009/06/22</dt><dd>
+
+<a href="/news/news6598.html">3位決定戦　マッチ&会見リポート(オーストラリア 5-32 南アフリカ)</a>
+
+
+
+</dd></dl>
+
+
+
+<dl><dt>2009/06/21</dt><dd>
+
+<a href="/news/news6596.html">「IRB AWARD ジュニアプレーヤー・オブ・ザ・イヤー」はニュージーランドのクルーデン主将が受賞</a>
+
+
+
+</dd></dl>
+
+
+
+<dl><dt>2009/06/20</dt><dd>
+
+<a href="/news/news6632.html">IRB AWARD ジュニアプレーヤー・オブ・ザ・イヤー開催のお知らせ</a>
+
+
+
+</dd></dl>
+
+
+
+<dl><dt>2009/06/20</dt><dd>
+
+<a href="/news/news6631.html">参加チーム情報（6/20）登録選手入替のお知らせ</a>
+
+
+
+</dd></dl>
+
+
+
+<dl><dt>2009/06/20</dt><dd>
+
+<a href="/news/news6622.html">6月21日・決勝 キャプテンズラン【東京会場】</a>
+
+
+
+</dd></dl>
+
+
+
+</div>
+<p class="btn_more"><a href="/news/" onmouseover="MM_swapImage('btn_more02','','/common/imgs/btn/more_act.gif',1)" onmouseout="MM_swapImgRestore()"><img src="/common/imgs/btn/more.gif" alt="MORE" name="btn_more02" id="btn_more02" /></a></p>
+</div>
+
+<div class="top_module">
+<h3><img src="/imgs/top_mdl3_ttl.gif" alt="試合日程・結果一覧" width="540" height="32" /></h3>
+<p id="top_tab_mdl2"><!--
+--><a href="#top_tab_mdl2_cnt1"><img src="/imgs/top_mdl3_btn1.gif" alt="予選プール" id="tab_mdl_btn4" onclick="MM_swapImage('tab_mdl_btn4','','/imgs/top_mdl3_btn1_ov.gif','tab_mdl_btn5','','/imgs/top_mdl3_btn2.gif',1)" /></a><!--
+--><a href="#top_tab_mdl2_cnt2" class="tabact"><img src="/imgs/top_mdl3_btn2_ov.gif" alt="順位決定戦" id="tab_mdl_btn5" onclick="MM_swapImage('tab_mdl_btn4','','/imgs/top_mdl3_btn1.gif','tab_mdl_btn5','','/imgs/top_mdl3_btn2_ov.gif',1)" /></a></p>
+<script type="text/javascript">
+<!--
+$(document).ready(function() {
+	$("#top_tab_mdl2 a").click(function() {
+		$($("#top_tab_mdl2 a.tabact").attr("href")).hide();
+		$("#top_tab_mdl2 a.tabact").removeClass("tabact");
+		$(this).addClass("tabact");
+		$($(this).attr("href")).fadeIn("fast");
+	});
+});
+-->
+</script>
+<!-- タブの中身１ -->
+<div id="top_tab_mdl2_cnt1">
+ 
+ 
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<th colspan="6">プールA ： 愛知（瑞穂公園ラグビー場）</th>
+</tr>
+<tr>
+<td class="td_clr2">&nbsp;</td>
+<td class="td_clr1">NZL</td>
+<td class="td_clr1">IRE</td>
+<td class="td_clr1">ARG</td>
+<td class="td_clr1">URU</td>
+<td class="td_clr1">勝点</td>
+</tr>
+ 
+ 
+<tr>
+<td class="td_clr3">ニュージーランド(NZL)</td>
+<td>-</td>
+<td>○<br><a href="/score/score3482.html" >17-0</a>
+</td>
+<td>○<br><a href="/score/score3490.html" >48-9</a>
+</td>
+<td>○<br><a href="/score/score3472.html" >75-0</a>
+</td>
+<td>14</td>
+</tr>
+	</TD>
+	</TR>
+<tr>
+<td class="td_clr3">アイルランド(IRE)</td>
+<td>●<br><a href="/score/score3482.html" >0-17</a>
+</td>
+<td>-</td>
+<td>○<br><a href="/score/score3471.html" >16-9</a>
+</td>
+<td>○<br><a href="/score/score3489.html" >45-0</a>
+</td>
+<td>9</td>
+</tr>
+	</TD>
+	</TR>
+<tr>
+<td class="td_clr3">アルゼンチン(ARG)</td>
+<td>●<br><a href="/score/score3490.html" >9-48</a>
+</td>
+<td>●<br><a href="/score/score3471.html" >9-16</a>
+</td>
+<td>-</td>
+<td>○<br><a href="/score/score3481.html" >33-15</a>
+</td>
+<td>6</td>
+</tr>
+	</TD>
+	</TR>
+<tr>
+<td class="td_clr3">ウルグアイ(URU)</td>
+<td>●<br><a href="/score/score3472.html" >0-75</a>
+</td>
+<td>●<br><a href="/score/score3489.html" >0-45</a>
+</td>
+<td>●<br><a href="/score/score3481.html" >15-33</a>
+</td>
+<td>-</td>
+<td>0</td>
+</tr>
+	</TD>
+	</TR>
+</table>
+ 
+ 
+ 
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<th colspan="6">プールB ： 東京（秩父宮ラグビー場）</th>
+</tr>
+<tr>
+<td class="td_clr2">&nbsp;</td>
+<td class="td_clr1">ENG</td>
+<td class="td_clr1">SAM</td>
+<td class="td_clr1">SCO</td>
+<td class="td_clr1">JPN</td>
+<td class="td_clr1">勝点</td>
+</tr>
+
+<tr>
+<td class="td_clr3">イングランド(ENG)</td>
+<td>-</td>
+<td>○<br><a href="/score/score3491.html" >52-7</a>
+</td>
+<td>○<br><a href="/score/score3483.html" >30-7</a>
+</td>
+<td>○<br><a href="/score/score3474.html" >43-0</a>
+</td>
+<td>15</td>
+</tr>
+	</TD>
+	</TR>
+	
+<tr>
+<td class="td_clr3">サモア(SAM)</td>
+<td>●<br><a href="/score/score3491.html" >7-52</a>
+</td>
+<td>-</td>
+<td>○<br><a href="/score/score3473.html" >17-14</a>
+</td>
+<td>○<br><a href="/score/score3484.html" >29-20</a>
+</td>
+<td>9</td>
+</tr>
+	</TD>
+	</TR>
+	
+	
+<tr>
+<td class="td_clr3">スコットランド(SCO)</td>
+<td>●<br>
+<a href="/score/score3483.html" >7-30</a>
+</td>
+<td>●<br><a href="/score/score3473.html" >14-17</a>
+</td>
+<td>-</td>
+<td>○<br><a href="/score/score3492.html" >12-7</a>
+</td>
+<td>5</td>
+</tr>
+	</TD>
+	</TR>
+	
+	
+<tr>
+<td class="td_clr3">日本(JPN)</td>
+ 
+<td>●<br><a href="/score/score3474.html" >0-43</a>
+</td>
+<td>●<br><a href="/score/score3484.html" >20-29</a>
+</td>
+<td>●<br><a href="/score/score3492.html" >7-12</a>
+</td>
+<td>-</td>
+<td>2</td>
+</tr>
+	</TD>
+	</TR>
+	
+	
+</table>
+ 
+ 
+ 
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<th colspan="6">プールC ： 大阪（近鉄花園ラグビー場）</th>
+</tr>
+<tr>
+<td class="td_clr2">&nbsp;</td>
+<td class="td_clr1">RSA</td>
+<td class="td_clr1">FRA</td>
+<td class="td_clr1">FJI</td>
+<td class="td_clr1">ITA</td>
+<td class="td_clr1">勝点</td>
+</tr>
+ 
+<tr>
+<td class="td_clr3">南アフリカ(RSA)</td>
+<td>-</td>
+<td>○<br><a href="/score/score3494.html" >43-27</a>
+</td>
+<td>○<br><a href="/score/score3476.html" >36-10</a>
+</td>
+<td>○<br><a href="/score/score3486.html" >65-3</a>
+</td>
+<td>15</td>
+</tr>
+	</TD>
+	</TR>
+	
+	
+<tr>
+<td class="td_clr3">フランス(FRA)</td>
+<td>●<br><a href="/score/score3494.html" >27-43</a>
+</td>
+<td>-</td>
+<td>○<br><a href="/score/score3485.html" >48-25</a>
+</td>
+<td>○<br><a href="/score/score3475.html" >43-13</a>
+</td>
+<td>7</td>
+</tr>
+	</TD>
+	</TR>
+	
+	
+<tr>
+<td class="td_clr3">フィジー(FJI)</td>
+<td>●<br><a href="/score/score3476.html" >10-36</a>
+</td>
+<td>●<br><a href="/score/score3485.html" >25-48</a>
+</td>
+<td>-</td>
+<td>○<br><a href="/score/score3493.html" >20-14</a>
+</td>
+<td>4</td>
+</tr>
+	</TD>
+	</TR>
+	
+	
+<tr>
+<td class="td_clr3">イタリア(ITA)</td>
+<td>●<br><a href="/score/score3486.html" >3-65</a>
+</td>
+<td>●<br><a href="/score/score3475.html" >13-43</a>
+</td>
+<td>●<br><a href="/score/score3493.html" >14-20</a>
+</td>
+<td>-</td>
+<td>1</td>
+</tr>
+	</TD>
+	</TR>
+</table>
+ 
+ 
+ 
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<th colspan="6">プールD ： 佐賀（ベストアメニティスタジアム）</th>
+</tr>
+<tr>
+<td class="td_clr2">&nbsp;</td>
+<td class="td_clr1">AUS</td>
+<td class="td_clr1">WAL</td>
+<td class="td_clr1">TGA</td>
+<td class="td_clr1">CAN</td>
+<td class="td_clr1">勝点</td>
+</tr>
+ 
+ 
+<tr>
+<td class="td_clr3">オーストラリア(AUS)</td>
+<td>-</td>
+<td>○<br><a href="/score/score3496.html" >38-5</a>
+</td>
+<td>○<br><a href="/score/score3487.html" >40-6</a>
+</td>
+<td>○<br><a href="/score/score3477.html" >86-0</a>
+</td>
+<td>15</td>
+</tr>
+	</TD>
+	</TR>
+	
+	
+<tr>
+<td class="td_clr3">ウェールズ(WAL)</td>
+<td>●<br><a href="/score/score3496.html" >5-38</a>
+</td>
+<td>-</td>
+<td>○<br><a href="/score/score3478.html" >51-5</a>
+</td>
+<td>○<br><a href="/score/score3488.html" >51-15</a>
+</td>
+<td>7</td>
+</tr>
+	</TD>
+	</TR>
+	
+	
+<tr>
+<td class="td_clr3">トンガ(TGA)</td>
+<td>●<br><a href="/score/score3487.html" >6-40</a>
+</td>
+<td>●<br><a href="/score/score3478.html" >5-51</a>
+</td>
+<td>-</td>
+<td>○<br><a href="/score/score3495.html" >36-20</a>
+</td>
+<td>5</td>
+</tr>
+	</TD>
+	</TR>
+	
+<tr>
+<td class="td_clr3">カナダ(CAN)</td>
+<td>●<br><a href="/score/score3477.html" >0-86</a>
+</td>
+<td>●<br><a href="/score/score3488.html" >15-51</a>
+</td>
+<td>●<br><a href="/score/score3495.html" >20-36</a>
+</td>
+<td>-</td>
+<td>0</td>
+</tr>
+	</TD>
+	</TR>
+	
+</table>
+ 
+ 
+<table>
+<tr>
+<td>※フランス、ウェールズは前回大会のペナルティにより勝点-3からのスタートになります。</td>
+</tr>
+</table>
+ 
+</div>
+
+<!-- タブの中身２ -->
+<div id="top_tab_mdl2_cnt2">
+
+
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<th colspan="5">
+
+順位決定戦　1回戦 - 6/17（水）
+
+</th>
+</tr>
+
+<tr>
+<td colspan="5" class="th_clr1">
+
+13-16位決定1回戦 （愛知）
+
+</td>
+</tr>
+<tr>
+<td>(25) 4thG</td>
+<td>17:00</td>
+<td>
+
+ウルグアイ
+
+</td>
+<td>
+	
+	
+
+
+	
+	<a href="/score/score3497.html" >11-29</a>
+	
+	
+	
+</td>
+<td>
+
+カナダ
+
+</td>
+</tr>
+
+<tr>
+<td colspan="5" class="th_clr1">
+
+
+
+</td>
+</tr>
+<tr>
+<td>(26) 4thG</td>
+<td>19:00</td>
+<td>
+
+日本
+
+</td>
+<td>
+	
+	
+
+
+	
+	<a href="/score/score3498.html" >15-21</a>
+	
+	
+	
+</td>
+<td>
+
+イタリア
+
+</td>
+</tr>
+
+<tr>
+<td colspan="5" class="th_clr1">
+
+9-12位決定1回戦 （大阪）
+
+</td>
+</tr>
+<tr>
+<td>(27) 3rdG</td>
+<td>13:00</td>
+<td>
+
+アルゼンチン
+
+</td>
+<td>
+	
+	
+
+
+	
+	<a href="/score/score3499.html" >17-26</a>
+	
+	
+	
+</td>
+<td>
+
+トンガ
+
+</td>
+</tr>
+
+<tr>
+<td colspan="5" class="th_clr1">
+
+
+
+</td>
+</tr>
+<tr>
+<td>(28) 3rdG</td>
+<td>15:00</td>
+<td>
+
+スコットランド
+
+</td>
+<td>
+	
+	
+
+
+	
+	<a href="/score/score3500.html" >39-26</a>
+	
+	
+	
+</td>
+<td>
+
+フィジー
+
+</td>
+</tr>
+
+<tr>
+<td colspan="5" class="th_clr1">
+
+5-8位決定1回戦 （福岡）
+
+</td>
+</tr>
+<tr>
+<td>(29) 2ndG</td>
+<td>17:00</td>
+<td>
+
+アイルランド
+
+</td>
+<td>
+	
+	
+
+
+	
+	<a href="/score/score3501.html" >17-19</a>
+	
+	
+	
+</td>
+<td>
+
+ウェールズ
+
+</td>
+</tr>
+
+<tr>
+<td colspan="5" class="th_clr1">
+
+
+
+</td>
+</tr>
+<tr>
+<td>(30) 2ndG</td>
+<td>19:00</td>
+<td>
+
+サモア
+
+</td>
+<td>
+	
+	
+
+
+	
+	<a href="/score/score3502.html" >6-16</a>
+	
+	
+	
+</td>
+<td>
+
+フランス
+
+</td>
+</tr>
+
+<tr>
+<td colspan="5" class="th_clr1">
+
+準決勝 （東京）
+
+</td>
+</tr>
+<tr>
+<td>(31) 1stG</td>
+<td>17:00</td>
+<td>
+
+ニュージーランド
+
+</td>
+<td>
+	
+	
+
+
+	
+	<a href="/score/score3503.html" >31-17</a>
+	
+	
+	
+</td>
+<td>
+
+オーストラリア
+
+</td>
+</tr>
+
+<tr>
+<td colspan="5" class="th_clr1">
+
+
+
+</td>
+</tr>
+<tr>
+<td>(32) 1stG</td>
+<td>19:00</td>
+<td>
+
+南アフリカ
+
+</td>
+<td>
+	
+	
+
+
+	
+	<a href="/score/score3504.html" >21-40</a>
+	
+	
+	
+</td>
+<td>
+
+イングランド
+
+</td>
+</tr>
+
+</table>
+
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<th colspan="5">
+
+順位決定戦　ファイナル - 6/21（日） 
+
+</th>
+</tr>
+
+<tr>
+<td colspan="5" class="th_clr1">
+
+13位決定戦 （愛知）
+
+</td>
+</tr>
+<tr>
+<td>(33) 13th</td>
+<td>12:00</td>
+<td>
+
+カナダ
+
+</td>
+<td>
+	
+	
+
+
+	
+	<a href="/score/score3505.html" >22-32</a>
+	
+	
+	
+</td>
+<td>
+
+イタリア
+
+</td>
+</tr>
+
+<tr>
+<td colspan="5" class="th_clr1">
+
+15位決定戦 （愛知）
+
+</td>
+</tr>
+<tr>
+<td>(34) 15th</td>
+<td>14:00</td>
+<td>
+
+ウルグアイ
+
+</td>
+<td>
+	
+	
+
+
+	
+	<a href="/score/score3506.html" >17-54</a>
+	
+	
+	
+</td>
+<td>
+
+日本
+
+</td>
+</tr>
+
+<tr>
+<td colspan="5" class="th_clr1">
+
+11位決定戦 （大阪）
+
+</td>
+</tr>
+<tr>
+<td>(35) 11th</td>
+<td>12:00</td>
+<td>
+
+アルゼンチン
+
+</td>
+<td>
+	
+	
+
+
+	
+	<a href="/score/score3507.html" >27-10</a>
+	
+	
+	
+</td>
+<td>
+
+フィジー
+
+</td>
+</tr>
+
+<tr>
+<td colspan="5" class="th_clr1">
+
+9位決定戦 （大阪）
+
+</td>
+</tr>
+<tr>
+<td>(36) 9th</td>
+<td>14:00</td>
+<td>
+
+トンガ
+
+</td>
+<td>
+	
+	
+
+
+	
+	<a href="/score/score3508.html" >25-28</a>
+	
+	
+	
+</td>
+<td>
+
+スコットランド
+
+</td>
+</tr>
+
+<tr>
+<td colspan="5" class="th_clr1">
+
+7位決定戦 （福岡）
+
+</td>
+</tr>
+<tr>
+<td>(37) 7th</td>
+<td>12:00</td>
+<td>
+
+アイルランド
+
+</td>
+<td>
+	
+	
+
+
+	
+	<a href="/score/score3509.html" >3-9</a>
+	
+	
+	
+</td>
+<td>
+
+サモア
+
+</td>
+</tr>
+
+<tr>
+<td colspan="5" class="th_clr1">
+
+5位決定戦 （福岡）
+
+</td>
+</tr>
+<tr>
+<td>(38) 5th</td>
+<td>14:00</td>
+<td>
+
+ウェールズ
+
+</td>
+<td>
+	
+	
+
+
+	
+	<a href="/score/score3510.html" >13-68</a>
+	
+	
+	
+</td>
+<td>
+
+フランス
+
+</td>
+</tr>
+
+<tr>
+<td colspan="5" class="th_clr1">
+
+3位決定戦 （東京）
+
+</td>
+</tr>
+<tr>
+<td>(39) 3rd</td>
+<td>13:00</td>
+<td>
+
+オーストラリア
+
+</td>
+<td>
+	
+	
+
+
+	
+	<a href="/score/score3511.html" >5-32</a>
+	
+	
+	
+</td>
+<td>
+
+南アフリカ
+
+</td>
+</tr>
+
+<tr>
+<td colspan="5" class="th_clr1">
+
+決勝 （東京）
+
+</td>
+</tr>
+<tr>
+<td>(40) Final</td>
+<td>15:00</td>
+<td>
+
+ニュージーランド
+
+</td>
+<td>
+	
+	
+
+
+	
+	<a href="/score/score3512.html" >44-28</a>
+	
+	
+	
+</td>
+<td>
+
+イングランド
+
+</td>
+</tr>
+
+</table>
+
+
+
+
+</div>
+<p class="btn_more"><a href="/game/schedule.html" onmouseover="MM_swapImage('btn_more03','','/common/imgs/btn/more_act.gif',1)" onmouseout="MM_swapImgRestore()"><img src="/common/imgs/btn/more.gif" alt="MORE" name="btn_more03" id="btn_more03" /></a></p>
+</div>
+</div>
+<!-- 1st CONTENTS// -->
+
+<!-- 2nd CONTENTS -->
+<div id="top_cnt_middle">
+<div class="top_module">
+<h4><img src="/imgs/top_mdl4_ttl.gif" alt="U20日本代表情報" width="350" height="32" /></h4>
+<table width="100%" border="0" cellspacing="6" cellpadding="0">
+<div id="top_u20jpn">
+<h5>試合結果</h5>
+<p>
+【予選プール】 プールB ： 東京（秩父宮ラグビー場）<br>
+06/05(金)　●　<a href="/score/score3474.html"> 0 - 43</a>　 vs <a href="/teams/team.jsp?tid=2042">イングランド</a>　　<img src="/imgs/video.gif" width="10" height="11" /><a href="http://www.irb.com/mm/Video/Tournament/0/R1Tokyo-EnglandvJapan_8185.wmv" target="_blank">ハイライト映像</a><br>
+06/09(火)　●　<a href="/score/score3484.html">20 - 29</a>　 vs <a href="/teams/team.jsp?tid=2046">サモア</a><br>
+06/13(土)　●　<a href="/score/score3492.html"> 7 - 12</a>　 vs <a href="/teams/team.jsp?tid=2050">スコットランド</a><br>
+<br>
+【順位決定戦】 4位グループ ： 愛知（瑞穂公園ラグビー場）<br>
+06/17(水)　●　<a href="/score/score3498.html">15 - 21</a>　 vs <a href="/teams/team.jsp?tid=2051">イタリア</a><br>
+06/21(日)　○　<a href="/score/score3506.html">54 - 17</a>　 vs <a href="/teams/team.jsp?tid=2053">ウルグアイ</a><br>
+</p></div>
+<tr>
+<td><a href="/u20japan/coach.html"><img src="/imgs/top_mdl4_sp1.jpg" alt="U20日本代表 薫田監督インタビュー" width="170" height="136" /></a></td>
+<td><a href="/u20japan/profile.html"><img src="/imgs/top_mdl4_sp2.jpg" alt="U20日本代表 プロフィール" width="162" height="42" /></a><br />
+<a href="/u20japan/schedule.html"><img src="/imgs/top_mdl4_sp3.jpg" alt="U20日本代表 スケジュール" width="162" height="42" style="margin-top:5px;" /></a><br />
+<a href="/u20japan/jwc2008.html"><img src="/imgs/top_mdl4_sp4.jpg" alt="WALES 2008 第一大会" width="162" height="42" style="margin-top:5px;" /></a></td>
+</tr>
+</table>
+<h5 id="top_interview_ttl"><img src="/imgs/top_mdl4_ttl_sub.gif" alt="スペシャルインタビュー" width="338" height="26" /></h5>
+<ul id="top_interview_list">
+<li>【第1回】 <a href="/u20japan/interview1.html">NO8 杉本・SO 田村</a></li>
+<li>【第2回】 <a href="/u20japan/interview2.html">PR 田中・PR 稲垣</a></li>
+<li>【第3回】 <a href="/u20japan/interview3.html">SO/CTB 立川・CTB ハベア</a></li>
+<li>【第4回】 <a href="/u20japan/interview4.html">FL/NO8 山下・WTB/FB 正海</a></li>
+<li>【第5回】 <a href="/u20japan/interview5.html">U20ニュージーランド代表、グラント・ハバード</a></li>
+<li>【第6回】 <a href="/u20japan/interview6.html">U20スコットランド代表、ジョン・ジェフリー</a></li>
+</ul>
+</div>
+
+<!-- 8th CONTENTS -->
+<div class="top_module">
+<h4><img src="/imgs/top_mdl8_ttl.gif" alt="注目情報" width="350" height="32" /></h4>
+<div id="top_media">
+<p>◆ <a href="http://www.rugby-japan.jp/japan/youth/u20/2009/id6116.html" target="_blank">パネルレフリー紹介</a></p>
+<p>◆ <a href="/media.html">メディア掲載・放送予定</a> （2009/6/8更新）</p>
+<h5>テレビ</h5>
+<p> ■6月27日(土)<br />
+BS日テレ<br />
+「BSスポーツLIVE&DREAM（22:00～22:54）」ラグビーワールドカップ招致も含めて大会総括<br />
+</p>
+<p>■そのほか、詳しくは<a href="/media.html">こちら</a>をご覧ください。</p>
+<h5>ハイライト映像</h5>
+<p>
+<li style="margin-left:5px;">
+<img src="/imgs/video.gif" width="10" height="11" />
+<a href="http://www.irb.com/mm/Video/Tournament/0/R1Fukuoka-WalesvTonga_8188.wmv" target="_blank">トンガ vs ウェールズ</a>
+</li>
+<li style="margin-left:5px;">
+<img src="/imgs/video.gif" width="10" height="11" />
+<a href="http://www.irb.com/mm/Video/Tournament/0/R1Fukuoya-AustraliavCanada_8198.wmv" target="_blank">オーストラリア vs カナダ</a>
+</li>
+<li style="margin-left:5px;">
+<img src="/imgs/video.gif" width="10" height="11" />
+<a href="http://www.irb.com/mm/Video/Tournament/0/R1Osaka-SouthAfricavFiji_8194.wmv" target="_blank">南アフリカ vs フィジー</a>
+</li>
+<li style="margin-left:5px;">
+<img src="/imgs/video.gif" width="10" height="11" />
+<a href="http://www.irb.com/mm/Video/Tournament/0/R1Osaka-FrancevItaly_8192.wmv" target="_blank">フランス vs イタリア</a>
+</li>
+<li style="margin-left:5px;">
+<img src="/imgs/video.gif" width="10" height="11" />
+<a href="http://www.irb.com/mm/Video/Tournament/0/R1Tokyo-SamoavScotland_8190.wmv" target="_blank">サモア vs スコットランド</a>
+</li>
+<li style="margin-left:5px;">
+<img src="/imgs/video.gif" width="10" height="11" />
+<a href="http://www.irb.com/mm/Video/Tournament/0/R1Tokyo-EnglandvJapan_8185.wmv" target="_blank">イングランド vs 日本</a>
+</li>
+<li style="margin-left:5px;">
+<img src="/imgs/video.gif" width="10" height="11" />
+<a href="http://www.irb.com/mm/Video/Tournament/0/R1Nagoya-NewZealandvUruguay_8184.wmv" target="_blank">ニュージーランド vs ウルグアイ</a>
+</li>
+<li style="margin-left:5px;">
+<img src="/imgs/video.gif" width="10" height="11" />
+<a href="http://www.irb.com/mm/Video/Tournament/0/R1Nagoya-ArgentinavIreland_8182.wmv" target="_blank">アルゼンチン vs アイルランド</a>
+</li>
+</p>
+<h5>&nbsp;</h5>
+			</div>
+</div>
+<!-- 8th CONTENTS// -->
+
+<!-- 3rd CONTENTS -->
+<div id="top_cnt_narrow_left">
+
+<div class="top_module_bnr"><a href="http://www.toshiba.co.jp/" target="_blank"><img src="/common/imgs/banner/bnr_sp1-2.gif" alt="TOSHIBA" width="170" height="85" /></a><br />
+<a href="http://www.yomiuri.co.jp/" target="_blank"><img src="/common/imgs/banner/bnr_sp2.gif" alt="読売新聞" width="170" height="48" class="bnr_margin" /></a><br />
+<a href="http://www.taisho.co.jp/lipovitan/lipod/" target="_blank"><img src="/common/imgs/banner/bnr_sp7.gif" alt="大正製薬" width="170" height="48" class="bnr_margin" /></a><br />
+<a href="http://www.jtbbwt.com/" target="_blank"><img src="/common/imgs/banner/bnr_sp3.gif" alt="JTB法人東京" width="170" height="48" class="bnr_margin" /></a><br />
+<a href="http://www.shimizu-group.co.jp/" target="_blank"><img src="/common/imgs/banner/bnr_sp4.gif" alt="シミズオクト" width="170" height="48" class="bnr_margin" /></a><br />
+<a href="http://www.jal.co.jp/" target="_blank"><img src="/common/imgs/banner/bnr_sp5.gif" alt="JAL" width="170" height="48" class="bnr_margin" /></a><br />
+<a href="http://www.toto-dream.com/?banner_id=sports001" target="_blank"><img src="/common/imgs/banner/bnr_sp6.gif" alt="toto" width="170" height="48" class="bnr_margin" /></a></div>
+
+<div class="top_module">
+<h5><img src="/imgs/top_mdl5_ttl.gif" alt="大会メインビジュアル" width="170" height="32" /></h5>
+<p id="top_visual"><a href="/imgs/jwc2009_f.pdf" target="_blank"><img src="/imgs/top_mdl5_flyer.jpg" width="124" height="176" /></a><br />
+<a href="/imgs/jwc2009_f.pdf" target="_blank">↑このフライヤーをダウンロード</a></p>
+</div>
+
+<div class="top_module">
+<h6><img src="/imgs/top_mdl6_ttl.gif" alt="最新情報を携帯サイトでチェック！" width="170" height="32" /></h6>
+<p id="top_mobile">試合日程、試合結果など最新情報を無料でお楽しみいただけます。</p>
+<p id="top_mobile_qr">QRコードでアクセス<br />
+<img src="/imgs/top_mdl6_qr.gif" alt="QRコード" width="90" height="90" /><br />
+<img src="/imgs/top_mdl6_ico.gif" alt="JWC携帯サイト" width="101" height="16" /><br />
+<a href="http://mobile.jwc2009.jp/" target="_blank">http://mobile.jwc2009.jp/</a></p>
+</div>
+</div>
+<!-- 3rd CONTENTS// -->
+
+<!-- 4th CONTENTS -->
+<div id="top_cnt_narrow_right">
+
+<div class="top_module">
+<h4><a href="/ticketsinfo.html"><img src="/common/imgs/banner/bnr_ticket.gif" alt="JRFU プリント＠チケット - ご自宅のプリンタで発券！" width="170" height="61" /></a></h4>
+</div>
+
+<div class="top_module">
+<h4><img src="/imgs/top_mdl7_ttl.gif" alt="出場チーム" width="170" height="32" /></h4>
+<div id="top_team_rank_xml"></div>
+<!--<table width="100%" border="0" cellpadding="0" cellspacing="0" id="top_team_rank"></table> -->
+<script type="text/javascript">
+ViewTitle();
+</script>
+<p class="btn_more"><a href="/teams/" onmouseover="MM_swapImage('btn_more04','','/common/imgs/btn/more_act.gif',1)" onmouseout="MM_swapImgRestore()"><img src="/common/imgs/btn/more.gif" alt="MORE" name="btn_more04" id="btn_more04" /></a></p>
+</div>
+
+<div class="top_module_bnr"><a href="http://www.rugby-japan.jp/rwc_j/" target="_blank"><img src="/common/imgs/banner/bnr_rwc.gif" alt="RUBGY WORLD CUP 2015/2019 - RWCを日本で開催しよう！" width="170" height="55" /></a><br />
+<a href="http://www.rugby-japan.jp/" target="_blank"><img src="/common/imgs/banner/bnr_jrfu.gif" alt="JRFU - 財団法人日本ラグビーフットボール協会" width="170" height="49" class="bnr_margin" /></a><br />
+<a href="http://www.irb.com/" target="_blank"><img src="/common/imgs/banner/bnr_irb.gif" alt="iRB - INTERNATIONAL RUGBY BOARD" width="170" height="55" class="bnr_margin" /></a><br />
+<a href="https://jrfu-d2.r-cms.jp/login/" target="_blank"><img src="/common/imgs/banner/press.gif" alt="報道関係者様受付" width="165" height="44" class="bnr_margin" /></a></div>
+</div>
+<!-- 4th CONTENTS -->
+</div>
+<!-- 2nd CONTENTS// -->
+
+<br class="both" />
+<div id="ftr_before">&nbsp;</div>
+</div>
+<!-- CONTENTS// --></td>
+</tr>
+
+<!-- FOOTER -->
+<tr>
+<td id="ftr">
+<div id="ftr_area">
+<address title="&copy; 2009 JRFU.All rights reserved.">&copy; 2009 JRFU.All rights reserved.</address>
+<span>| <a href="/info/privacy.html">プライバシーポリシー</a> | <a href="/info/guideline.html">利用規約</a> | <a href="/info/sitemap.html">サイトマップ</a> | <a href="http://www.rugby-japan.jp/inquiry.html" target="_blank">お問い合わせ</a> |</span><br class="both" />
+</div></td>
+</tr>
+<!-- FOOTER// -->
+</table>
+
+</body>
+</html>
+
+

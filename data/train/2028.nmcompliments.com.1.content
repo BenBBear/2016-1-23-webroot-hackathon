@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+<title>Northwestern Mutual</title>
+<script language="JavaScript">
+     function redirect() {
+        if (top.location.hostname.indexOf('aplibrary') >= 0 ) {
+              window.location='https://service.nmfn.com/aplibry/Pictures';
+        }
+        else if (top.location.hostname.indexOf('generationstudies') >= 0 ) {
+              window.location='http://www.nmfn.com/tn/learnctr--studiesreports--MGS';
+        }
+        else if (top.location.hostname.indexOf('generation') >= 0 ) {
+              window.location='http://www.northwesternmutual.com/corporate/newsmedia/gen2001.html';
+        }
+        else if (top.location.hostname.indexOf('compliments') >= 0 ) {
+              window.location='http://www.nmfn.com/tn/aboutnet--nm_others_say';
+        }
+        else if (top.location.hostname.indexOf('nminvestments') >= 0 ) {
+              window.location='http://www.nmfn.com/tn/aboutnet--nmis';
+        }
+        else if (top.location.hostname.indexOf('nmisinvestments.') >= 0 ) {
+			  window.location='http://www.nmfn.com/tn/aboutnet--nmis';
+        }
+        else if (top.location.hostname.indexOf('magazine') >= 0 ) {
+              window.location='http://www.nmfn.com/tn/learnctr--articles--pg_art_lib_list';
+        }
+        else if (top.location.hostname.indexOf('longevitygame') >= 0 ) {
+              window.location='http://www.nmfn.com/tn/learnctr--lifeevents--longevity';
+        }
+        else if (top.location.hostname.indexOf('moneymaladies') >= 0 ) {
+              window.location='http://www.nmfn.com/tn/learnctr--lifeevents--money_maladies';
+        }
+        else if (top.location.hostname.indexOf('putnamplanning') >= 0 ) {
+              window.location='http://www.nmfn.com/johnputnam';
+        }
+        else if (top.location.hostname.indexOf('nmtrust') >= 0 ) {
+              window.location='http://www.nmfn.com/tn/aboutnet--pg_nmt_landing';
+        }
+        else if (top.location.hostname.indexOf('strategicebs') >= 0 ) {
+              window.location='http://www.nmfn.com/tn/aboutnet--pg_strg_ee_benf_intro';
+        }
+        else if (top.location.hostname.indexOf('internship.nmfn.com') >= 0 ) {
+		      		  redirectToCareers('INTERN');
+        }
+        else if (top.location.hostname.indexOf('careers.nmfn.com') >= 0 ) {
+				      redirectToCareers('FR');
+        }
+        else if (top.location.hostname.indexOf('balance.nmfn.com') >= 0 ) {
+				      redirectToCareers('FR');
+        }
+        else if (top.location.hostname.indexOf('empowerment.nmfn.com') >= 0 ) {
+				      redirectToCareers('FR');
+        }
+        else {
+              window.location="http://www.nmfn.com"+location.pathname;
+        }
+     }
+
+
+
+     function redirectToCareers(page){
+		var url;
+		if (page == 'FR'){
+			url = "http://www.nmfn.com/tn/careers--fr0--fr?locSource=";
+		}
+		else{
+			url = "http://www.nmfn.com/tn/careers--intern0--int?locSource=";
+		}
+ 	    var locSource=document.referrer.split('/')[2];
+ 	    if (locSource==undefined){
+ 	    	locSource="";
+     	}
+ 	    window.location = url + locSource;
+     }
+
+</script>
+</head>
+<body onload=redirect();>
+</body>
+</html>

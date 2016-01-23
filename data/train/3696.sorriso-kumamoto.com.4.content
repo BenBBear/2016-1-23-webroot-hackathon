@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="loopslider.css" type="text/css" />
+<script src="http://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+
+<script type="text/javascript">
+<!--ループスライダーのタグ-->
+$(function(){
+	$('#loopslider').each(function(){
+		var loopsliderWidth = $(this).width();
+		var loopsliderHeight = $(this).height();
+		$(this).children('ul').wrapAll('<div id="loopslider_wrap"></div>');
+
+		var listWidth = $('#loopslider_wrap').children('ul').children('li').width();
+		var listCount = $('#loopslider_wrap').children('ul').children('li').length;
+
+		var loopWidth = (listWidth)*(listCount);
+
+		$('#loopslider_wrap').css({
+			top: '0',
+			left: '0',
+			width: ((loopWidth) * 2),
+			height: (loopsliderHeight),
+			overflow: 'hidden',
+			position: 'absolute'
+		});
+
+		$('#loopslider_wrap ul').css({
+			width: (loopWidth)
+		});
+		loopsliderPosition();
+
+		function loopsliderPosition(){
+			$('#loopslider_wrap').css({left:'0'});
+			$('#loopslider_wrap').stop().animate({left:'-' + (loopWidth) + 'px'},60000,'linear');
+			setTimeout(function(){
+				loopsliderPosition();
+			},60000);
+		};
+
+		$('#loopslider_wrap ul').clone().appendTo('#loopslider_wrap');
+	});
+});
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+</script>
+
+
+
+<title>ソレッソ熊本 ｜ 熊本のサッカークラブ</title>
+</head>
+
+<body onload="MM_preloadImages('image/navi1-1.jpg','image/navi2-1.jpg','image/navi3-1.jpg','image/navi4-1.jpg','image/navi5-1.jpg','image/navi6-1.jpg','image/vision-1.jpg','image/teammate-1.jpg','image/staff-1.jpg')">
+
+<div id="header">
+
+<!--看板とメニュー部分-->
+<div id="head_navi">
+<table width="984" border="0" cellspacing="0" cellpadding="0" bgcolor="#2A5BA6" height="70">
+  <tr>
+  
+    <td width="684">
+    <h1>
+<font size="1" color="#FFFFFF">ソレッソ熊本 熊本 サッカークラブ</font></h1>
+
+<h2>
+<font size="1" color="#CCCCCC">ソレッソ(SORRISO)熊本は熊本市のサッカー教室です<br />
+子供たちの本当の良い笑顔がたくさん見れるチームになるよう努力しています。<br /></font></h2>
+  </td>
+  <td width="300"><a href="http://sorriso-kumamoto.com/entry.html#001" target="_blank"><img src="image/head-00.jpg" width="300" height="70" /></a></td>
+  </tr>
+</table>
+
+
+<table width="984" border="0" cellspacing="0" cellpadding="0" bgcolor="#2A5BA6">
+
+  <tr>
+    <td width="342">
+    <ul class="navi_ul">
+    <li class="navi_li"><a href="http://sorriso-kumamoto.com/club.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image33','','image/navi1-1.jpg',1)"><img src="image/navi1.jpg" alt="会社概要" width="113" height="120" id="Image33" /></a></li>
+    <li class="navi_li"><a href="http://sorriso-kumamoto.com/teammate.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image34','','image/navi2-1.jpg',1)"><img src="image/navi2.jpg" alt="schedule" width="113" height="120" id="Image34" /></a></li>
+    <li class="navi_li"><a href="http://sorriso-kumamoto.com/staff.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image35','','image/navi3-1.jpg',1)"><img src="image/navi3.jpg" alt="スタッフ" width="113" height="120" id="Image35" /></a></li>
+    </ul>
+    </td>
+    <td width="300"><a href="http://sorriso-kumamoto.com/index.html"><img src="image/kanban.jpg" width="300" height="120" alt="看板" border="0" /></a></td>
+    <td width="342">
+    <ul class="navi_ul">
+    <li class="navi_li"><a href="http://sorriso-kumamoto.com/entry.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image36','','image/navi4-1.jpg',1)"><img src="image/navi4.jpg" alt="クラブ生募集" width="113" height="120" id="Image36" /></a></li>
+    <li class="navi_li"><a href="http://sorriso-kumamoto.com/price.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image37','','image/navi5-1.jpg',1)"><img src="image/navi5.jpg" alt="料金表" width="113" height="120" id="Image37" /></a></li>
+    <li class="navi_li"><a href="http://sorriso-kumamoto.com/amakusa.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image38','','image/navi6-1.jpg',1)"><img src="image/navi6.jpg" alt="あまくさスクール" width="113" height="120" id="Image38" /></a></li>
+    </ul>
+  </td>
+  </tr>
+</table>
+
+
+
+</div>
+<br />
+<!--/#loopslider　ヘッダーの動く画像-->
+<div id="loopslider">
+				<ul>
+					
+				  <li>
+                    <center>
+                    <table border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td width="180" height="180" valign="bottom"><img src="image/o0480085412664257656.jpg" width="150" height="150" /></td>
+                        <td width="180" valign="bottom"><img src="image/o0800045012535777908.jpg" width="150" height="150" /></td>
+                        <td colspan="2" width="360" valign="bottom"><img src="image/image1.jpg" width="330" height="150" /></td>
+                        
+                        <td width="180" valign="bottom"><img src="image/o0800045012578107438.jpg" width="150" height="150" /></td>
+                      </tr>
+                     <tr>
+                      <td height="20"></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      </tr>
+                        <td><img src="image/o0800045012624242187.jpg" width="150" height="150" /></td>
+                        <td><img src="image/o0800045012649500722.jpg" width="150" height="150" /></td>
+                        <td><img src="image/o0800045012654592235.jpg" width="150" height="150" /></td>
+                        <td><img src="image/o0800045012659374550.jpg" width="150" height="150" /></td><td width="180"><img src="image/o0800045012622151038.jpg" width="150" height="150" /></td>
+                      </tr>
+                    </table>
+					</center>
+                    </li>
+					<li>
+                    <center><table width="900" border="0" cellspacing="0" cellpadding="0" height="380">
+  					<tr>
+   					<td width="700"><img src="image/image2.jpg" width="700" height="320" /></td>
+    				<td width="200" align="center"><img src="image/image3.jpg" width="150" height="320" /></td>
+  					</tr>
+					</table>
+                    </center></li>
+					<li>
+                    <table width="900" border="0" cellspacing="0" cellpadding="0" height="380">
+  <tr>
+    <td width="180" valign="bottom" height="180"><img src="image/image6-1.jpg" /></td>
+    <td width="540" rowspan="3"><img src="image/image5-2.jpg" /></td>
+    <td width="180" rowspan="3" align="right"><img src="image/image4.jpg" width="150" height="320" /></td>
+  </tr>
+  <tr>
+  <td height="20"></td>
+  </tr>
+  <tr>
+    <td valign="top"><img src="image/image7.jpg" width="150" height="150" /></td>
+  </tr>
+</table></li>
+            		
+			  </ul>
+</div><!--/#loopslider-->
+
+
+</div>
+
+
+<!--グレイのところ-->
+<div id="gray">
+<center>
+<table width="600" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="200" align="center"><a href="http://sorriso-kumamoto.com/club.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image100','','image/vision-1.jpg',1)"><img src="image/vision.jpg" alt="ビジョン" width="200" height="120" id="Image100" /></a></td>
+    <td width="200" align="center"><a href="http://sorriso-kumamoto.com/teammate.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image101','','image/teammate-1.jpg',1)"><img src="image/teammate.jpg" alt="クラブ生" width="200" height="120" id="Image101" /></a></td>
+    <td width="200" align="center"><a href="http://sorriso-kumamoto.com/staff.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image102','','image/staff-1.jpg',1)"><img src="image/staff.jpg" alt="スタッフ" width="200" height="120" id="Image102" /></a></td>
+  </tr>
+</table>
+</center>
+
+</div>
+
+
+<!--メインのボックス-->
+
+<div id="box">
+
+<!--レフトナビ-->
+<div id="left">
+<!--看板は画像でリンク作る-->
+<span><img src="image/left2.jpg" width="280" height="320" alt="レフトナビ" usemap="#Map01" /></span>
+
+
+<map name="Map01" id="Map01">
+<area shape="rect" coords="35,248,136,280" href="http://sorriso-kumamoto.com/amakusa.html" />
+<area shape="rect" coords="35,208,136,240" href="http://sorriso-kumamoto.com/price.html" />
+<area shape="rect" coords="35,165,136,197" href="http://sorriso-kumamoto.com/entry.html" />
+<area shape="rect" coords="34,125,135,157" href="http://sorriso-kumamoto.com/staff.html" />
+<area shape="rect" coords="34,84,135,116" href="http://sorriso-kumamoto.com/teammate.html" />
+<area shape="rect" coords="33,42,134,74" href="http://sorriso-kumamoto.com/club.html">
+
+</map>
+
+<!--ビジョン看板-->
+<p><a href="http://sorriso-kumamoto.com/club.html" target="_blank"><img src="image/left1.jpg" width="280" height="200" border="0" /></a></p>
+
+
+<p><a href="http://www.kumamoto-sekapro.com/index.html" target="_blank"><img src="image/pj-kumamoto.jpg" width="280" height="100" border="0" /></a></p>
+
+<p><a href="http://sorriso-club.jugem.jp/" target="_blank"><img src="image/blog.jpg" width="280" height="100" border="0" /></a></p>
+
+
+<!--facebook-->
+<p><a href="https://www.facebook.com/pages/%E3%82%BD%E3%83%AC%E3%83%83%E3%82%BD%E7%86%8A%E6%9C%AC/453410651445474" target="_blank"><img src="image/facebok.jpg" width="280" height="100" border="0" /></a></p>
+
+
+
+<!--体験会-->
+<p><a href="http://sorriso-kumamoto.com/entry.html#001" target="_blank"><img src="image/taiken.jpg" width="280" height="100" border="0" /></a></p>
+
+
+<!--メディア掲載-->
+<p><a href="http://sorriso-kumamoto.com/media.html" target="_blank"><img src="image/media.jpg" width="280" height="100" border="0" /></a></p>
+
+<!--お問いあわせ-->
+<p><a href='mailto:info@sorriso-kumamoto.com'><img src="image/mail-01.jpg" width="280" height="100" border="0" /></a></p>
+
+
+</div>
+
+
+
+<!--右側のメイン部分-->
+<div id="right">
+
+
+<!--ブログインラインフレーム-->
+<img src="image/mainbanar1.jpg" width="680" height="30" />
+<iframe width="680" height="590" scrolling="yes" src="https://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fsorriso.kumamoto&width=680&height=590&colorscheme=light&show_faces=true&header=true&stream=true&show_border=false&appId=1432267713656368" frameborder="0"></iframe><!--
+<iframe width="680" height="200" scrolling="yes" src="blog.html" frameborder="0"></iframe>-->
+<br><Br><br /> 
+<!--ニュース更新インラインフレーム-->
+<img src="image/mainbanar2.jpg" width="680" height="30" /> 
+<iframe width="680" height="200" scrolling="yes" src="news.html" frameborder="0"></iframe>
+<br><br><br />
+<!--ゲーム-->
+<a href="http://sorriso-kumamoto.com/senseki.html" target="_blank"><img src="image/mainbanar3-01.jpg" /></a><Br><Br><br />
+<!--scheduleインラインフレーム--> 
+<img src="image/mainbanar4.jpg" width="680" height="30" />
+<iframe width="680" height="200" scrolling="yes" src="schedule.html" frameborder="0"></iframe>
+<br /><br />
+
+<a href="http://sorriso-kumamoto.com/schedule/ソレッソ熊本スケジュール201601.pdf" target="_blank"><img src="image/pdf-01.jpg" /></a><Br><Br>
+
+</div>
+</div>
+
+
+<!--フッター-->
+<div id="hooter">
+<center>
+<table width="980" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="400"><img src="image/footer.jpg" width="400" height="150" alt="ソリッソ看板" /></td>
+    <td width="580" align="right"><img src="image/footer2.jpg" width="400" height="150" usemap="#Map001" /><map name="Map001" id="Map001"><area shape="rect" coords="258,17,394,63" href='mailto:info@sorriso-kumamoto.com'>
+  </map></td>
+    
+  </tr>
+</table>
+<p>Copyright (C) 2013 sorisso All Rights Reserved.</p>
+
+</center>
+
+
+</div>
+
+</body>
+</html>

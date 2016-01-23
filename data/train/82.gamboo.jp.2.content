@@ -1,0 +1,999 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="copyright" content="" />
+
+<!--<link rev="made" href="mailto:" title="お問い合わせ" />-->
+
+<meta name="robots" content="INDEX,FOLLOW" />
+
+
+<meta http-equiv="content-language" content="ja">
+<meta http-equiv="content-style-type" content="text/css">
+<meta http-equiv="content-script-type" content="text/javascript">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=1024" />
+<link rel="shortcut icon" href="/images/Gamboo_favicon.ico">
+<link rel="apple-touch-icon-precomposed" href="/images/touch_icon.png" />
+
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="copyright" content="NIPPON TOTOR CO.,LTD. All Rights Reserved." />
+
+<link title="ギャンブルエンタメ情報サイト『ギャンブー』" href="http://gamboo.jp/" rel="home" />
+<link title="ギャンブルエンタメ情報サイト『ギャンブー』" href="http://gamboo.jp/" rel="bookmark" />
+
+<meta name="keywords" content="競輪,競輪予想ゲーム,オートレース,ギャンブル,ギャンブー,gamboo,ギャんぶー,ぎゃんぶー,エンタメ,ちゃり党,輪王伝,ケイリンジャー,keirin,ポイント,女子競輪,女子ケイリン,ガールズケイリン">
+<meta name="description" content="競輪・オートレースの予想はGamboo！役立つ情報が満載のギャンブルエンタメサイト！「競輪やオートレースを楽しむこと」を目的に予想情報やエンタメ動画などを発信しております。競輪予想初心者向けのコンテンツもありますので、ぜひ当サイトをお役立て下さい！">
+<meta name="copyright" content="Copyright (C) NIPPON TOTOR CO.,LTD. All Rights Reserved.">
+<meta name="robots" content="INDEX,FOLLOW" />
+<link rel="stylesheet" type="text/css" href="/css/common.css?v=20150525" media="all">
+<link rel="stylesheet" type="text/css" href="/css/common201109.css?v=20150525" media="all">
+<link rel="stylesheet" type="text/css" href="/css/2014/common.css?v=20150525" media="all" />
+<link rel="stylesheet" type="text/css" href="/css/2015/common.css?v=20150525" media="all" />
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="/js/jquery.timers-1.2.js"></script>
+<script type="text/javascript" src="/js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="/js/base.js"></script>
+<script type="text/javascript" src="/js/scrolltopcontrol.js"></script>
+<script type="text/javascript" src="/js/jquery.cookie.js"></script>
+<!-- global-menu -->
+<script type="text/javascript">
+    jQuery(function() {
+        jQuery(".global-menu div").hover(function() {
+        jQuery("div.sub-menu", this).show();
+      },
+      function() {
+        jQuery("div.sub-menu" , this).hide(); 
+      });
+    });
+</script>
+
+
+<title>競輪・オートレースのギャンブル予想ならGamboo(ギャンブー)</title>
+<link rel="stylesheet" type="text/css" href="/css/GalleryView.css" media="all" />
+<script type="text/javascript" src="/js/jquery.galleryview-3.0-dev.js?v=1"></script>
+<script type="text/javascript" src="/js/jquery.slides.min.js"></script>
+<!-- tab -->
+<script type="text/javascript"> 
+//<![CDATA[
+$(function() {
+	$("#keirin_tab2015 li").click(function() {
+		var num = $("#keirin_tab2015 li").index(this);
+		$(".keirin_content2015").addClass('disnon');
+		$(".keirin_content2015").eq(num).removeClass('disnon');
+		$("#keirin_tab2015 li").removeClass('select');
+		$(this).addClass('select')
+	});
+});
+
+
+$(function() {
+	$("#autorace_tab2015 li").click(function() {
+		var num = $("#autorace_tab2015 li").index(this);
+		$(".autorace_content2015").addClass('disnon');
+		$(".autorace_content2015").eq(num).removeClass('disnon');
+		$("#autorace_tab2015 li").removeClass('select');
+		$(this).addClass('select')
+	});
+});
+
+$(function() {
+	$("#notice_tab2015 li").click(function() {
+		var num = $("#notice_tab2015 li").index(this);
+		$(".notice_content2015").addClass('disnon');
+		$(".notice_content2015").eq(num).removeClass('disnon');
+		$("#notice_tab2015 li").removeClass('select');
+		$(this).addClass('select')
+	});
+});
+
+$(function() {
+	$("#column_tab2015 li").click(function() {
+		var num = $("#column_tab2015 li").index(this);
+		$(".column_content2015").addClass('disnon');
+		$(".column_content2015").eq(num).removeClass('disnon');
+		$("#column_tab2015 li").removeClass('select');
+		$(this).addClass('select')
+	});
+});
+//]]>
+</script>
+
+
+
+</head>
+<body id="toppage">
+<!-- header//start -->
+<div id="header2015" class="clearfix">
+
+<div id="header2015_top" class="clearfix">
+<div class="inner">
+<p class="logo2015_txt">競輪・オートレースの予想・投票ならギャンブー</p>
+<div id="logo2015"><a href="/"><img src="/images/2015/logo.png" alt="競輪・オートレースの予想・投票ならギャンブー　Gamboo"></a></div>
+
+<ul id="head_link2015">
+<li><a href="http://gamboo.jp/mypage/">マイページ</a></li>
+</ul>
+
+<div id="head_info2015">
+
+<form action="//www.google.com/cse" id="head_search2015" method="get" target="_brank">
+<input type="text" name="q" id="q" class="search_txt2015" /><input type="image" src="/images/2014/btn/btn_search.gif" />
+<input type="hidden" name="cx" value="008739717529428282639:8yk6ovwqhae">
+</form>
+
+</div><!-- /#head_info2015 end -->
+</div><!-- /.inner end -->
+</div><!-- /#header2015_top end -->
+
+<div id="header2015_nav" class="clearfix">
+<div class="inner">
+
+<!-- global-menu -->
+<div class="global-menu">
+
+<div class="main_menu hover_text01">
+<a href="http://gamboo.jp/topics/?tid=about">初めての方へ</a>
+<div class="sub-menu main" style="display: none;">
+<div class="sub-menu-ikleft">
+<div class="sub-menu-text"><a href="http://gamboo.jp/topics/?tid=about">Gambooとは？</a></div>
+<div class="sub-menu-text"><a href="http://gamboo.jp/topics/?tid=point-about">ポイントとは？</a></div>
+<div class="sub-menu-text"><a href="http://gamboo.jp/topics/?tid=point-about-rank">ランクとは？</a></div>
+</div>
+<div class="sub-menu-ikright">
+<div class="sub-menu-text"><a href="http://gamboo.jp/topics/?tid=about-gamboobet">投票するには？</a></div>
+<div class="sub-menu-text"><a href="http://gamboo.jp/topics/?tid=member">会員登録について</a></div>
+<div class="sub-menu-text"><a href="http://gamboo.jp/topics/?tid=faq">Ｑ＆Ａ</a></div>
+</div>
+</div>
+</div>
+
+<div class="main_menu hover_text02">
+<a href="http://gamboo.jp/keirin/">競　輪</a>
+<div class="sub-menu main" style="display: none;">
+<div class="sub-menu-ikleft">
+<div class="sub-menu-text"><a href="https://gamboo.jp/keirin/">競輪TOP</a></div>
+<div class="sub-menu-text"><a href="http://gamboo.jp/campaign">キャンペーン</a></div>
+<div class="sub-menu-text"><a href="http://gamboo.jp/bet/keirin/ranking/">GambooBET競輪ランキング</a></div>
+<div class="sub-menu-text"><a href="http://gamboo.jp/keirin/topics/?tid=bloglink">競輪選手ブログ</a></div>
+</div>
+<div class="sub-menu-ikright">
+<div class="sub-menu-text"><a href="http://gamboo.jp/waoden/">輪王伝</a></div>
+<div class="sub-menu-text"><a href="https://gamboo.jp/yoso/keirin/">予想情報</a></div>
+<div class="sub-menu-text"><a href="http://gamboo.jp/keirin/topics/?tid=iroha">競輪入門</a></div>
+</div>
+</div>
+</div>
+
+<div class="main_menu hover_text03">
+<a href="http://gamboo.jp/autorace/">オートレース</a>
+<div class="sub-menu main" style="display: none;">
+<div class="sub-menu-ikleft">
+<div class="sub-menu-text"><a href="http://gamboo.jp/autorace/">オートレースTOP</a></div>
+<div class="sub-menu-text"><a href="https://gamboo.jp/yoso/autorace/">予想情報</a></div>
+<div class="sub-menu-text"><a href="http://gamboo.jp/autorace/topics/?tid=autowhat">オートレース入門</a></div>
+</div>
+<div class="sub-menu-ikright">
+<div class="sub-menu-text"><a href="http://gamboo.jp/campaign">キャンペーン</a></div>
+<div class="sub-menu-text"><a href="http://gamboo.jp/autorace/topics/?tid=autorace-tamatebako">オート予想の玉手箱</a></div>
+<div class="sub-menu-text"><a href="http://gamboo.jp/autorace/topics/?tid=bloglinkauto">選手ブログ</a></div>
+</div>
+</div>
+</div>
+
+<div class="main_menu hover_text04">
+<a href="http://gamboo.jp/boatrace/">ボートレース</a>
+<div class="sub-menu main" style="display: none;">
+<div class="sub-menu-text"><a href="http://gamboo.jp/boatrace/topics/?tid=brkiryu-timeinformation">桐生独自予想情報</a></div><div class="sub-menu-text"><a href="http://gamboo.jp/boatrace/expectation/">ボートレーススパコン予想</a></div>
+</div>
+</div>
+
+<div class="main_menu hover_text05">
+<a href="http://gamboo.jp/point/">ポイント</a>
+<div class="sub-menu main" style="display: none;">
+<div class="sub-menu-ikleft">
+<div class="sub-menu-text"><a href="http://gamboo.jp/point/topics/?tid=point-about">Gambooポイントとは？</a></div>
+<div class="sub-menu-text"><a href="http://gamboo.jp/point/topics/?tid=hiroba-game">ゲームで貯める</a></div>
+<div class="sub-menu-text"><a href="http://gamboo.jp/point/topics/?tid=special-game">ゲームでおトク</a></div>
+</div>
+<div class="sub-menu-ikright">
+<div class="sub-menu-text"><a href="http://gamboo.jp/point/topics/?tid=point-use">ポイントを使う</a></div>
+<div class="sub-menu-text"><a href="http://gamboo.jp/enq/list.aspx">アンケートで貯める</a></div>
+</div>
+</div>
+</div>
+
+<div class="main_menu hover_text06">
+<a href="http://gamboo.jp/entertainment/">コミュニティ</a>
+<div class="sub-menu main" style="display: none;">
+<div class="sub-menu-text"><a href="http://gamboo.jp/topics/?tid=gchannel">Gamboo生放送</a></div>
+<div class="sub-menu-text"><a href="http://gamboo.jp/column/">Gambooコラム</a></div>
+<div class="sub-menu-text"><a href="http://gamboo.jp/tbutter/">ツブッター</a></div>
+<div class="sub-menu-text"><a href="http://gamboo.jp/entertainment/topics/?tid=youtube">GambooTV</a></div>
+<div class="sub-menu-text"><a href="http://gamboo.jp/topics/?tid=partnershop">Gamboo協力店紹介</a></div>
+<div class="sub-menu-text"><a href="http://gamboo.jp/blogparts/">ブログパーツ</a></div>
+</div>
+</div>
+
+</div><!-- /global-menu -->
+
+</div><!-- /.inner end -->
+</div><!-- /#header2015_top end -->
+
+</div>
+
+
+
+
+
+<!-- header//end -->
+
+<div id="contents2015" class="clearfix">
+
+<!--
+<p id="maintenance_attention">
+<a href="/topics/?tid=mori_point2015"><font color="red">森且行選手次回出走は浜松！</font></a></p>
+-->
+
+<!--
+<p id="maintenance_attention">
+<a href="/topics/?tid=site_renewal2015"><font color="red"><u>【ポイントレート変更】</u>第1段階、第2段階が完了しました。ポイント履歴をご確認ください。</font></a></p>
+-->
+
+
+<!--
+<p id="maintenance_attention"><font color="red">走路凍結及び強風のため、1月19日(火)の山陽オートは中止となりました。</font></p>
+<p id="maintenance_attention">本日12:00?緊急メンテナンスを行います。</p>
+<p id="maintenance_attention"><font color="red">雪のため、2月5日(木)の取手競輪・大宮競輪は中止順延となりました。<br /></font></p>
+<p id="maintenance_attention"><font color="red">降雪のため、12月18日(木)の名古屋競輪は中止順延となりました。<br /></font></p>
+<p id="maintenance_attention"><font color="red">降雪のため、12月17日(水)の山陽オートは中止順延となりました。</font></p>
+<p id="maintenance_attention"><font color="red">台風のため、10月13日(祝)の高松競輪・熊本競輪は順延となりました。</font></p>
+<p id="maintenance_attention"><a href="/news/_/tid/--info/-/tsid/ーー00660"><font color="red">2月15日(土)の四日市G3は予定通り開催致します。また雪のため川口,西武園,前橋は中止となりました。</font></a></p>
+<p id="maintenance_attention"><font color="red">雪のため、1月18日(月)の大宮競輪は中止順延、川口オートは中止打ち切りとなりました。<br /></font></p>
+-->
+
+
+<!--
+<p id="maintenance_attention"><a href="/topics/_/tid/--201409allstar_mae">
+<font color="red"><u>「G1オールスター競輪」開催中！ポイントが“ザクザク”貯まるキャンペーン実施中！いますぐ、エントリー！</u></font>
+</a></p>
+-->
+
+<!-- スマートフォン版はこちら -->
+<div id="btn_forsp" style="display:none;"><a href="http://gamboo.jp/k/_/dsgn/--sp"><img src="/images/2014/btn/btn_sp.png" alt="スマートフォン版はこちら"></a></div>
+<script language=javascript>
+if (navigator.userAgent.indexOf('iPhone') > 0 || navigator.userAgent.indexOf('iPad') > 0 || navigator.userAgent.indexOf('iPod') > 0 || navigator.userAgent.indexOf('Android') > 0) {
+	//スマホ（iPhone,iPod touch,Android）とタブレット（iPad,Androidタブレット）の場合
+	$('#btn_forsp').show();
+}
+</script>
+<div id="lbox2015" class="clearfix">
+
+	<!--有効期限注意-->
+<img src="/images/spacer.gif" alt="" width="5" height="1" border="0">
+<a href="http://gamboo.jp/topics/?tid=mori_point2015" ><img src="/images/campaign/mori_point2015_nomal_hunabashi_780_200.jpg" alt="森且行選手応援ポイント" width="100%" /></a>
+<img src="/images/spacer.gif" alt="" width="1" height="5" border="0"><br>
+
+
+<!--森毎日バナー(nomal)-->
+<!--
+<img src="/images/spacer.gif" alt="" width="5" height="1" border="0">
+<a href="http://gamboo.jp/topics/?tid=mori_point2015" ><img src="/images/campaign/mori_point2015_nomal_hamamatsu_780_200.jpg" alt="森且行選手応援ポイント" width="100%" /></a>
+<img src="/images/spacer.gif" alt="" width="1" height="5" border="0"><br>
+-->
+<!--ムラサメver.-->
+<!--
+<img src="/images/spacer.gif" alt="" width="5" height="1" border="0">
+<a href="http://gamboo.jp/news/?tid=info&tsid=01266" ><img src="/images/campaign/mori_point2015_race_mura12R_780_200.jpg" alt="森且行選手応援ポイント" width="100%" /></a>
+<img src="/images/spacer.gif" alt="" width="1" height="5" border="0"><br>
+-->
+
+
+
+
+<!--ニコ生バナー-->
+<!--
+<img src="/images/spacer.gif" alt="" width="5" height="1" border="0">
+<a href="http://ch.nicovideo.jp/gamboo/live" target="_blank"><img src="/images/campaign/20150905_aomoriG3_nama_bn_780_200.jpg" alt="ニコ生" width="100%" /></a>
+<a href="http://ch.nicovideo.jp/gamboo/live" target="_blank"><img src="/images/campaign/20150905_kawaguchi_bn_780_200.jpg" alt="ニコ生" width="100%" /></a>
+<img src="/images/spacer.gif" alt="" width="1" height="5" border="0"><br>
+-->
+
+<!-- ニコ生埋め込み(超会議用)(リンク) -->
+<!--
+<iframe width="390px" src="http://live.nicovideo.jp/embed/lv217627848" scrolling="no" style="border:solid 1px #CCC;" frameborder="0"><a href="http://live.nicovideo.jp/watch/lv217627848">超競輪してみた！@ニコニコ超会議2015[DAY1]</a></iframe>
+<iframe width="390px" src="http://live.nicovideo.jp/embed/lv217628260" scrolling="no" style="border:solid 1px #CCC;" frameborder="0"><a href="http://live.nicovideo.jp/watch/lv217628260">超競輪してみた！@ニコニコ超会議2015[DAY2]</a></iframe>
+-->
+
+	
+	<script type="text/javascript"><!--
+　		var $PageCategory = '.top';　
+	//--></script>
+	
+
+<div id="myGalleryItem" style="display:none;">
+<!--1万円分のポイントが5名様に当たりますよキャンペーン！-->
+<li class="top  keirin " style="display:none;"><a href="http://gamboo.jp/topics/?tid=iwakiCP_20160123">
+<img src="/images/campaign/20160122iwakiCP_600_215.jpg" alt="1万円分のポイントが5名様に当たりますよキャンペーン！" /></a></li>
+<!--浅井選手&青山選手サイン入りグッズプレゼント！-->
+<li class="top keirin autorace " style="display:none;"><a href="http://gamboo.jp/topics/?tid=201601present">
+<img src="/images/campaign/20160121signCP_600_215.jpg" alt="浅井選手&青山選手サイン入りグッズプレゼント！" /></a></li>
+<!--
+<li class="top" style="display:none;"><a href="http://gamboo.jp/topics/?tid=about">
+<img src="/images/new201109/top/banner/gamboo_about.jpg" alt="Gambooとは？" /></a></li>
+<li class="top  keirin  autorace" style="display:none;"><a href="http://gamboo.jp/topics/?tid=site_renewal2015">
+<img src="/images/campaign/site_renewal2015_600_215.JPG" alt="7.1リニューアルオープン" /></a></li>
+-->
+
+<!-- 試走速報アプリstart-->
+<li class="top  autorace" style="display:none;"><a href="http://gamboo.jp/news/?tid=info&tsid=01207">
+<img src="/images/campaign/20151116siso_appli_bn_600_215.jpg" alt="試走速報アプリ" /></a></li>
+
+
+<!-- GambooBET競輪＆オートレースキャンペーン　夜トク start-->
+<!--
+<li class="top  keirin  autorace" style="display:none;"><a href="http://gamboo.jp/topics/?tid=20150717_nmt">
+<img src="/images/campaign/20150717_nmt600_215.jpg" alt="GambooBET競輪＆オートレースキャンペーン　夜トク" /></a></li>
+-->
+<li class="top  keirin" style="display:none;"><a href="http://gamboo.jp/topics/?tid=20150717_nmt">
+<img src="/images/campaign/yorutoku_keirinPC600_215.jpg" alt="GambooBET競輪キャンペーン　夜トク" /></a></li>
+<!-- GambooBET競輪＆オートレースキャンペーン　夜トク finish-->
+
+<!--川口オート1特名称決定！ホールショット紹介ページを公開-->
+<!--
+<li class="top  autorace " style="display:none;"><a href="http://kawaguchiauto-holeshot.jp/" _blank>
+<img src="/images/new201109/top/slideBanner/20151204_holeshot_bn.jpg" alt="川口オート1特名称決定！ホールショット紹介ページを公開" /></a></li>
+-->
+
+<!-- 即トク10・即トク3告知！-->
+<li class="top  keirin  autorace" style="display:none;"><a href="http://gamboo.jp/topics/?tid=point-about-rank#20150701">
+<img src="/images/campaign/sokutoku_PC600_215.jpg" alt=" 即トク10・即トク3告知！" /></a></li>
+
+<!--森且行選手 オリジナルグッズ-->
+<li class="top  autorace " style="display:none;"><a href="http://gamboo.jp/topics/?tid=mori-goods">
+<img src="/images/campaign/morigoods_sale_600_215.jpg" alt="森且行選手 オリジナルグッズ" /></a></li>
+
+
+<!-- 森且行選手のGambooコラムがスタート！-->
+<li class="top  autorace " style="display:none;"><a href="http://gamboo.jp/column/view/list/exec/?mid=123875">
+<img src="/images/campaign/mori_column600_215.jpg" alt="森且行選手のGambooコラムがスタート！" /></a></li>
+
+<!-- 森且行選手を応援してポイントをGETしよう!!-->
+<li class="top  autorace " style="display:none;"><a href="http://gamboo.jp/topics/?tid=mori_point2015">
+<img src="/images/campaign/mori_point2015PC600_215.jpg" alt="森且行選手を応援してポイントをGETしよう!!" /></a></li>
+
+<!-- 大宮西武園マンスリーキャンペーン-->
+<li class="top  keirin " style="display:none;"><a href="http://gamboo.jp/topics/?tid=Monthly_omiya_seibuen2">
+<img src="/images/campaign/os_Monthly1309-1403BN_600_215.gif" alt="大宮西武園マンスリーキャンペーン" /></a></li>
+
+<!-- アオケイ予想情報-->
+<li class="top keirin" style="display:none;"><a href="http://gamboo.jp/keirin/topics/?tid=aokei_yosou">
+<img src="/images/new201109/top/slideBanner/aokei_yosousi_bn.jpg" alt="アオケイ予想情報を公開！"/></a></li>
+
+<!-- LINE＠登録紹介 -->
+<li class="top" style="display:none;"><a href="http://gamboo.jp/topics/?tid=gamboo_lineat">
+<img src="/images/lineat/LINEat_banner_slide.gif" alt="LINE@でオトクな情報をGET!"/></a></li>
+
+<!-- GambooコラムMonthly Award(月間賞)　-->
+<li class="top" style="display:none;"><a href="http://gamboo.jp/topics/?tid=column_monthly_award">
+<img src="/images/campaign/column_mcp_bn.jpg" alt="GambooコラムMonthly Award(月間賞)"/></a></li>
+
+<!-- GambooBETお友達紹介キャンペーン-->
+<li class="top" style="display:none;"><a href="http://gamboo.jp/topics/?tid=gamboobet-20131016campaign">
+<img src="/images/campaign/friend_PCslide2.jpg" alt="GambooBETお友達紹介キャンペーン"/></a></li>
+
+<!-- JNBキャッシュバック-->
+<li class="top" style="display:none;"><a href="https://login.japannetbank.co.jp/wctx/AF.do?SikibetuId=2014000058">
+<img src="/images/campaign/JNB600x215.gif" alt="JNBキャッシュバック" /></a></li>
+
+<!-- Wマイル交換-->
+<li class="top  autorace " style="display:none;"><a href="http://gamboo.jp/point/topics/?tid=wmile_ex">
+<img src="/images/new201109/top/slideBanner/wmile-ex_bn.jpg" alt="Wマイル交換" /></a></li>
+
+<!-- Gambooチャンネル-->
+<li class="top" style="display:none;"><a href="http://gamboo.jp/topics/?tid=gchannel">
+<img src="/images/campaign/gchannel_bn_600_215.jpg" alt="Gambooチャンネル"/></a></li>
+
+<!-- GambooTV動画 -->
+<!--
+<li class="top" style="display:none;">
+<a href="http://gamboo.jp/topics/?tid=youtube"><img src="/images/campaign/20151218_1_gambootv_bn600_215.jpg" alt="GambooTV" /></a></li>
+-->
+
+<!--ご存じですか？ﾐｯﾄﾞﾅｲﾄｵｰﾄﾚｰｽはﾈｯﾄ投票のみです-->
+<!--
+<div class="gallery-cell top autorace "><a href="http://gamboo.jp/k/news/?tid=info&tsid=11192">
+<img src="/images/campaign/20151021osirase__320_115.jpg" alt="ご存じですか？ﾐｯﾄﾞﾅｲﾄｵｰﾄﾚｰｽはﾈｯﾄ投票のみです"/></a>
+</div>
+-->
+
+<!-- 森且行選手競走車名決定!!-->
+<!--
+<li class="top  autorace " style="display:none;"><a href="http://gamboo.jp/topics/?tid=mori20150801">
+<img src="/images/campaign/mori_kettei600_215.jpg" alt="森且行選手競走車名決定!!" /></a></li>
+-->
+
+
+
+
+
+
+</div>
+
+<ul id="myGallery">
+
+</ul>
+<script type="text/javascript"><!--
+　	//var $PageCategory = 'top';
+	$('#myGalleryItem').find($PageCategory).appendTo('#myGallery');
+//--></script>
+
+<!-- /#myGallery end -->
+<link rel="stylesheet" type="text/css" href="/css/GalleryView.css" media="all" />
+<style rel="stylesheet" type="text/css">
+/* FILMSTRIP */
+.gv_filmstrip ,
+.gv_navPrev ,
+.gv_navNext {
+left: 610px;  
+}
+</style>
+<script type="text/javascript" src="/js/jquery.galleryview-3.0-dev.js?v=1"></script>
+	<script type="text/javascript">
+	$(function() {
+		var $mygallery = $('#myGallery');
+		var $li_num = $mygallery.find('li').size();
+		function add_list() {
+			$mygallery.find('li').each(function(index, element) {
+				$mygallery.append($(this).clone(true));
+			});
+			$li_num = $mygallery.find('li').size();
+			if ($li_num < 4) {
+				add_list();
+			}
+		}
+		if ($li_num < 4) {
+			add_list();
+		}
+		$('#myGallery').galleryView({
+			'autoplay': true,
+			'panel_width': 605
+		});
+
+		var $img = $('<img />');
+		$img.attr('src', '/images/gamboobetnew/banner/pointer.gif');
+		var $arrow = $('<div />');
+		$arrow.append($img).addClass('arrow');
+		$('.gv_gallery').append($arrow);
+	});
+</script>
+
+
+
+
+
+	<div id="vote2015" class="clearfix">
+<script type="text/javascript">
+	jQuery.event.add(window, "load", function() {
+	});
+	$(document).ready(function() {
+		$.ajax({
+		url: "/ajax/2015/toppage_keirin_kaisai.aspx",
+			cache: false,
+			success: function(html) {
+			$("#vote_keirin2015").replaceWith(html);
+			}
+		});
+
+		$.ajax({
+			url: "/ajax/2015/toppage_auto_kaisai.aspx",
+			cache: false,
+			success: function(html) {
+			$("#vote_autorace2015").replaceWith(html);
+			}
+		});
+	});
+</script>
+<div id="vote_keirin2015" class="clearfix">
+<div><a href="#"><img src="/images/2015/vote_keirinTtl.gif" alt=""></a></div>
+</div>
+
+
+
+<div id="vote_autorace2015" class="clearfix">
+<div><a href="#"><img src="/images/2015/vote_autoraceTtl.gif" alt="オートレース　買う・予想する"></a></div>
+</div><!-- /#vote_autorace2015 end -->
+
+</div>
+
+
+	<!--競輪・オートレースのグレード開催日程start-->
+	<!--競輪・オートレースのグレード開催日程end-->
+	
+
+	
+<div id="notice_box2015" class="clearfix">
+<h2>お知らせ</h2>
+<ul id="notice_tab2015">
+<li class="select">NEWS</li><li class="top">キャンペーン</li>
+</ul>
+
+<div class="notice_content2015 ">
+<ul id="notice_list2015">
+
+<li><span>2016.01.22</span><p><em class='keirin_auto'>競輪＆オート</em><a href='http://gamboo.jp/news/?tid=info&tsid=01274' class='ic_new2015'>【重要】GambooBETの一時発売停止を伴うメンテナンス実施について</a></p></li>
+			<li><span>2016.01.21</span><p><em class='keirin_auto'>競輪＆オート</em><a href='http://gamboo.jp/news/?tid=info&tsid=01273' class=''>【お詫び】キャンペーンエントリーにつきまして</a></p></li>
+			<li><span>2016.01.20</span><p><em class='keirin'>競輪</em><a href='http://gamboo.jp/news/?tid=info&tsid=01272' class=''>「景品に交換」「景品を当てる」に大宮競輪オリジナルグッズが登場！</a></p></li>
+			<li><span>2016.01.18</span><p><em class='auto'>オートレース</em><a href='http://gamboo.jp/news/?tid=info&tsid=01264' class=''>1/15-1/18川口オート「森且行選手応援ポイント」レース情報！</a></p></li>
+			<li><span>2016.01.15</span><p><em class='other'>その他</em><a href='http://gamboo.jp/news/?tid=info&tsid=01268' class=''>Gambooコラムの2015年12月月間賞発表!!</a></p></li>
+			
+
+<li><span>2015.11.30</span><p>
+<em class='auto'>オートレース</em>
+<a href="http://gamboo.jp//news/?tid=info&tsid=01221">
+森且行選手 オリジナルグッズ発売！</a></p></li>
+
+
+
+<li><span>2015.04.06</span><p>
+<em class='auto'>オートレース</em>
+<a href="http://gamboo.jp//news/?tid=info&tsid=01044">
+Wマイルサービスとのポイント交換を開始しました！</a></p></li>
+
+
+<li><span>2013.11.27</span><p>
+<em class='keirin'>競輪</em>
+<a href="http://gamboo.jp//news/?tid=info&tsid=00577">
+GambooBET会員限定！アオケイ予想新聞を無料公開！</a></p></li>
+
+
+<!--
+<em class='auto'>オートレース</em>
+<em class='other'>その他</em>
+<em class='keirin'>競輪</em>
+<em class='keirin_auto'>競輪＆オート</em>
+-->
+<li class="more"><a href="http://gamboo.jp/news/list/exec/">もっとみる</a></li>
+</ul>
+</div>
+<div class="notice_content2015 disnon">
+<ul id="notice_list2015">
+
+
+<li><span>2016.01.22</span>
+<p><em class=""></em><a href="/topics/?tid=iwakiCP_20160123" class="ic_new2015">1万円分のポイントが5名様に当たりますよキャンペーン！</a></p></li>
+				
+<li><span>2016.01.22</span>
+<p><em class=""></em><a href="/topics/_/tid/--201601present" class="ic_new2015">浅井選手&amp;青山選手サイン入りグッズプレゼント！</a></p></li>
+				<li><span>2015.04.01</span><p>
+<em class=""></em>
+<a href="http://gamboo.jp//news/?tid=info&tsid=00517">
+毎月1万円が3名様に当たる！大宮西武園マンスリーキャンペーン</a></p></li>
+
+<li><span>2014.04.29</span><p>
+<em class=""></em>
+<a href="http://gamboo.jp/topics/?tid=column_monthly_award">
+GambooコラムMonthly Award(月間賞)優秀コラムに豪華賞品をプレゼント！</a></p></li>
+
+<li><span>2013.10.16</span><p>
+<em class=""></em>
+<a href="http://gamboo.jp/topics/?tid=gamboobet-20131016campaign">
+お友達紹介キャンペーン実施中！お友達を紹介してGambooポイントをGET！</a></p></li>
+
+<!--
+<em class=""></em>
+<em class="topics">トピックス</em>
+<em class="event">イベント</em>
+<em class='auto'>オートレース</em>
+<em class='other'>その他</em>
+<em class='keirin'>競輪</em>
+<em class='keirin_auto'>競輪＆オート</em>
+-->
+<li class="more"><a href="http://gamboo.jp/campaign/">もっとみる</a></li>
+
+</ul>
+</div>	
+</div>
+
+
+	
+	
+	<div id="column_box2015">
+<h2>コラム</h2>
+<ul id="column_tab2015">
+<li id="tab_latast" class="top select">新着順</li><li id="tab_favorite" class="">特選コラム</li><li id="tab_view" >閲覧数順</li><li id="tab_prize">入賞コラム</li>
+</ul>
+
+<!-- 新着コラム -->
+<div class="column_content2015">
+<ol class="column_list2015" id="list_latast">
+<div></div>
+<li class="more"><a href="http://gamboo.jp/column/latest/">もっとみる</a></li>
+</ol><!-- /.column_list2015 end -->
+</div><!-- /.column_content2015 end -->
+
+<!-- 特選コラム -->
+<div class="column_content2015 disnon">
+<ol class="column_list2015" id="list_favorite">
+<div></div>
+
+<li class="more"><a href="http://gamboo.jp/column/pickup/">もっとみる</a></li>
+</ol><!-- /.column_list2015 end -->
+</div><!-- /.column_content2015 end -->
+<!-- 閲覧数順コラム -->
+<div class="column_content2015 disnon">
+<ol class="column_list2015" id="list_view">
+<div></div>
+<li class="more"><a href="http://gamboo.jp/column/ranking/?od=2">もっとみる</a></li>
+</ol><!-- /.column_list2015 end -->
+</div><!-- /.column_content2015 end -->
+<!-- 入賞コラム -->
+<div class="column_content2015 disnon">
+<ol class="column_list2015" id="list_prize">
+<div></div>
+<li class="more"><a href="http://gamboo.jp/topics/?tid=column_monthly_award">もっとみる</a></li>
+</ol><!-- /.column_list2015 end -->
+</div><!-- /.column_content2015 end -->
+
+
+</div>
+<script type="text/javascript">
+
+	$(document).ready(function() {
+		var category = '';
+		var orderby = '1';
+		var pagetype = 'full';
+		var columntype = '';
+		orderby = '2';
+		columntype = 'LATAST';
+		$.ajax({
+			url: "/column/ajax/latest_list_ForToppage.aspx?od=2&sctg=" + category + "&cltp=" + columntype,
+			cache: false,
+			success: function(html) {
+				$("#list_latast div").html(html);
+			}
+		});
+
+
+		//ranking view count
+		$('#tab_latast').click(function() {
+			orderby = '2';
+			columntype = 'LATAST';
+			$.ajax({
+			url: "/column/ajax/latest_list_ForToppage.aspx?od=2&sctg=" + category + "&cltp=" + columntype,
+				cache: false,
+				success: function(html) {
+				$("#list_latast div").html(html);
+				}
+			});
+			return false;
+		});
+		//ranking view count
+		$('#tab_view').click(function() {
+			orderby = '2';
+			columntype = 'VIEW';
+			$.ajax({
+			url: "/column/ajax/latest_list_ForToppage.aspx?od=2&sctg=" + category + "&cltp=" + columntype,
+			cache: false,
+				success: function(html) {
+				$("#list_view div").html(html);
+			}
+			});
+			return false;
+		});
+		//ranking view count
+		$('#tab_favorite').click(function() {
+			orderby = '2';
+			columntype = 'FAVORITE';
+			$.ajax({
+			url: "/column/ajax/latest_list_ForToppage.aspx?od=2&sctg=" + category + "&cltp=" + columntype,
+			cache: false,
+				success: function(html) {
+				$("#list_favorite div").html(html);
+			}
+			});
+			return false;
+		});
+		//ranking view count
+		$('#tab_prize').click(function() {
+			orderby = '2';
+			columntype = 'PRIZE';
+			$.ajax({
+			url: "/column/ajax/latest_list_ForToppage.aspx?od=2&sctg=" + category + "&cltp=" + columntype,
+			cache: false,
+				success: function(html) {
+				$("#list_prize div").html(html);
+			}
+			});
+			return false;
+		});
+	});
+	
+</script>
+<ul id="banner_wrap2015" class="clearfix">
+<li><a href="http://gamboo.jp/topics/?tid=gamboobet-20131016campaign"><img src="/images/new/bottomBanner/friend_MBbanner2.jpg" alt="GambooBETお友達紹介キャンペーン"></a></li>
+<li><a href="https://login.japannetbank.co.jp/wctx/AF.do?SikibetuId=2014000058" target="_blank"><img src="/images/new/bottomBanner/jnb_sinki201406_2.jpg" alt="ジャパンネット銀行口座開設"></a></li>
+<li><a href="http://ad2.trafficgate.net/t/r/47/5046/239394_293283/" target="_blank"><img src="/images/new/bottomBanner/bn_rakuten_kouei.png" alt="楽天銀行公営競技"></a></li>
+</ul>
+<ul id="banner_wrap2015" class="clearfix">
+<li><a href="http://ad2.trafficgate.net/t/r/103/791/239394_293283/" target="_blank"><img src="/images/new/bottomBanner/bn_rakuten_koza.png" alt="楽天銀行口座開設"></a></li>
+<li><a href="http://keiba.rakuten.co.jp/" target="_blank"><img src="/images/new/banner/gamboo2013_af_200x55.jpg" alt="楽天競馬"></a></li>
+<li><a href="http://gamboo.jp/topics/?tid=mobilesite"><img src="/images/new/bottomBanner/m_gambooTOP.jpg" alt="Gambooモバイルサイト"></a></li>
+</ul>
+</div><!-- /#lbox2015 end -->
+<div id="rbox2015" class="clearfix">
+
+		
+		
+<div id="memberlogin_box">
+<h2><img src="/images/2014/side_nav/member/ttl_member_s.gif" alt=""></h2>
+<div class="inner">
+<form method="post" action="https://gamboo.jp/xt_login/exec/?dq=&RURL=http%3a%2f%2fgamboo.jp%2findex.aspx" id="login_form" class="">
+<label for="login_id">登録メールアドレス（ID）</label>
+<input name="login_id" type="text" id="login_id" />
+<label for="login_pw">パスワード</label>
+<input name="login_pass" type="password" id="login_pw" />
+<input name="auto_login_flag" type="checkbox" id="autologin" value="AUTO" /><label class="autologin" for="autologin">今後自動的にログインする</label>
+<p class="forgot_pw_slim"><a href="https://gamboo.jp/reminder/request/exec/">パスワードを忘れた方はこちら</a></p>
+<input type="image" src="/images/2014/btn/btn_login_s.gif" alt="" id="login_btn">
+</form>
+<div class="sns_btn"><a href="https://gamboo.jp/twitter/oauth/exec/?action=login&rurl=http%3a%2f%2fgamboo.jp%2findex/exec/"><img src="/images/2014/btn/btn_twitter180.gif" alt="twitterでログイン"></a></div>
+<div class="sns_btn"><a href="http://gamboo.jp/facebook/oauth/exec/?action=login&rurl=http%3a%2f%2fgamboo.jp%2findex/exec/"><img src="/images/2014/btn/btn_facebook180.gif" alt="facebookでログイン"></a></div>
+
+</div>
+</div>
+
+<div id="loginboxRight">
+<!--
+<ul id="side_banner_list2015" class="clearfix">
+<li><a href="http://gamboo.jp/topics/?tid=mori-goods">
+<img src="/images/campaign/morigoods_sale_320_115.jpg" alt="森且行選手 オリジナルグッズ発売！" width="100%"/></a></li>
+</ul>
+-->
+
+<ul id="side_banner_list2015" class="clearfix">
+<li><a href="http://gamboo.jp/topics/?tid=member"><img src="/images/2015/btn_newmember.gif" alt="入会費・年会費無料　Gamboo　新規会員登録" /></a></li>
+</ul>
+</div>
+
+
+<ul id="side_banner_list2015" class="clearfix">
+<li>
+<span><a href="http://gamboo.jp/topics/?tid=mori-goods" target="_blank"><img src="/images/campaign/morigoods_sale_320_115.jpg" width="200pix" alt="森選手グッズ" /></a></span>
+</li>
+</ul>
+<br>
+<ul id="side_banner_list2015" class="clearfix">
+<span class="left"><a href="https://twitter.com/Gamboo_jp" target="_blank"><img src="/images/2015/btn_gambootwitter.gif" alt="Gamboo Twitter" /></a></span>
+<span class="right"><a href="https://www.facebook.com/gamboo1?fref=ts" target="_blank"><img src="/images/2015/btn_gamboofacebook.gif" alt="Gamboo Facebook" /></a></span>
+</li>
+</ul>
+
+<div id="side_banner_videos2015" class="clearfix">
+<p class="ttl"><a href="http://gamboo.jp/topics/?tid=youtube">話題の動画</a></p>
+
+<div class="video"><a href="http://www.youtube.com/watch?v=IVOxmop-9oY" target="_blank"><img src="/images/information/gambooCM_new197.JPG" alt="" /><p>Gamboo CM(60秒ver.)</p></a></div>
+<div class="video"><a href="http://www.youtube.com/watch?v=AE79T6HcVes" target="_blank"><img src="/images/information/gambooCM_new197_2.JPG" alt="" /><p>Gamboo CM(30秒ver.)</p></a></div>
+
+<!--
+<div class="video"><a href="http://www.youtube.com/watch?v=MM00ddHIcLk" target="_blank"><img src="/images/information/20151209_gambootv_197.jpg" alt="" /><p>川口オートレース場「ホールショット」紹介動画(5分ロングver)</p></a></div>
+-->
+</div><!-- /#side_banner_videos2015 end -->
+
+</div><!-- /#rbox2015 end -->
+
+<script type="text/javascript" charset="UTF-8">document.write(unescape("%3Cscript src='//img.ak.impact-ad.jp/ut/mone.9831ae4eaa1_2000.js' type='text/javascript' charset='UTF-8' %3E%3C/script%3E"));</script>
+</div><!-- /#contents2015 end -->
+
+<div id="footer">
+<div class="serviceList">
+<dl>
+<dt><a href="http://gamboo.jp/topics/?tid=about">初めての方へ</a></dt>
+<dd><ul>
+<li><a href="http://gamboo.jp/topics/?tid=about">Gambooとは？</a></li>
+<li><a href="http://gamboo.jp/topics/?tid=about-gamboobet">投票するには？</a></li>
+<li><a href="http://gamboo.jp/topics/?tid=point-about">ポイントとは？</a></li>
+<li><a href="http://gamboo.jp/topics/?tid=member">会員登録について </a></li>
+<li><a href="http://gamboo.jp/topics/?tid=point-about-rank"></a></li>
+<li><a href="http://gamboo.jp/topics/?tid=faq">Q&A</a></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt><a href="http://gamboo.jp/keirin/">競輪</a></dt>
+<dd><ul>
+<li><a href="http://gamboo.jp/keirin/">競輪投票</a></li>
+<li><a href="http://gamboo.jp/campaign">キャンペーン</a></li>
+<li><a href="http://gamboo.jp/yoso/keirin/">競輪予想情報</a></li>
+<li><a href="http://gamboo.jp/bet/keirin/ranking/">GambooBET競輪ランキング</a></li>
+<li><a href="http://gamboo.jp/waoden/">輪王伝</a></li>
+<li><a href="http://gamboo.jp/keirin/topics/?tid=iroha">競輪入門</a></li>
+<li><a href="http://gamboo.jp/keirin/topics/?tid=bloglink">競輪選手ブログ</a></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt><a href="http://gamboo.jp/autorace/">オートレース</a></dt>
+<dd><ul>
+<li><a href="http://gamboo.jp/autorace/">オートレース投票</a></li>
+<li><a href="http://gamboo.jp/campaign">キャンペーン</a></li>
+<li><a href="http://gamboo.jp/yoso/autorace/">予想情報</a></li>
+<li><a href="http://gamboo.jp/autorace/topics/?tid=autorace-tamatebako">オート予想の玉手箱</a></li>
+<li><a href="http://gamboo.jp/autorace/topics/?tid=autowhat">オートレース入門</a></li>
+<li><a href="http://gamboo.jp/autorace/topics/?tid=bloglinkauto">選手ブログ</a></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt><a href="http://gamboo.jp/boatrace/">ボートレース</a></dt>
+<dd><ul>
+<li><a href="http://gamboo.jp/boatrace/topics/?tid=brkiryu-timeinformation">桐生独自予想情報</a></li>
+<li><a href="http://gamboo.jp/boatrace/expectation/">ボートレーススパコン予想</a></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt><a href="http://gamboo.jp/point/">Gambooポイント</a></dt>
+<dd><ul>
+<li><a href="http://gamboo.jp/point/topics/?tid=point-use">ポイントを使う</a></li>
+<li><a href="http://gamboo.jp/point/topics/?tid=hiroba-game">ゲームで貯める</a></li>
+<li><a href="http://gamboo.jp/enq/list.aspx">アンケートで貯める</a></li>
+<li><a href="http://gamboo.jp/point/topics/?tid=special-game">ゲームでおトク</a></li>
+</ul>
+</dd>
+</dl>
+
+<dl>
+<dt><a href="http://gamboo.jp/entertainment/">コミュニティ</a></dt>
+<dd><ul>
+<li><a href="http://gamboo.jp/column/">Gambooコラム</a></li>
+<li><a href="http://gamboo.jp/tbutter/">ツブッター</a></li>
+<li><a href="http://gamboo.jp/entertainment/topics/?tid=youtube">GambooTV</a></li>
+<li><a href="http://gamboo.jp/topics/?tid=partnershop">Gamboo協力店紹介</a></li>
+<li><a href="http://gamboo.jp/blogparts/">ブログパーツ</a></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>Gambooについて</dt>
+<dd><ul>
+<li><a href="http://gamboo.jp/topics/?tid=corporate">運営会社</a></li>
+<li><a href="http://gamboo.jp/topics/?tid=sitepolicy">サイトポリシー</a></li>
+<li><a href="http://gamboo.jp/topics/?tid=privacy">プライバシーポリシー</a></li>
+<li><a href="http://gamboo.jp/topics/?tid=community-guidelines">コミュニティのご利用ガイドライン</a></li>
+<li><a href="http://gamboo.jp/topics/?tid=kiyaku">Gamboo会員規約</a></li>
+<li><a href="https://my.auto.gamboo.jp/St/Info/Rule">GambooBET利用規約及び「デルカシステム」利用会員規約</a></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>レース場リンク</dt>
+<dd><ul>
+<li>【競輪場】</li>
+<li><a href="http://keirin.hakodate.jp/" rel="nofollow" target="_blank">函館競輪</a></li>
+<li><a href="http://www.aomorikeirin.com/" rel="nofollow" target="_blank">青森競輪</a></li>
+<li><a href="http://www.keirin-saitama.jp/omiya/" rel="nofollow" target="_blank">大宮競輪</a></li>
+<li><a href="http://www.keirin-saitama.jp/seibuen/" rel="nofollow" target="_blank">西武園競輪</a></li>
+<li><a href="http://www.shizuoka38.jp/" rel="nofollow" target="_blank">静岡競輪</a></li>
+<li><a href="http://www.keirin.toyohashi.aichi.jp/" rel="nofollow" target="_blank">豊橋競輪</a></li>
+<li><a href="http://www.yokkaichikeirin.com/" rel="nofollow" target="_blank">四日市競輪</a></li>
+<li><a href="http://www.narakeirin.jp/" rel="nofollow" target="_blank">奈良競輪</a></li>
+<li><a href="http://www.kochi-keirin.jp/" rel="nofollow" target="_blank">高知競輪</a></li>
+<li><a href="http://www.keirin.city.sasebo.nagasaki.jp/" rel="nofollow" target="_blank">佐世保競輪</a></li>
+<li>【オートレース場】</li>
+<li><a href="http://www.funabashi-auto.jp/" rel="nofollow" target="_blank">船橋オート</a></li>
+<li><a href="http://www.kawaguchiauto.jp/" rel="nofollow" target="_blank">川口オート</a></li>
+<li><a href="http://isesaki-auto.jp/" rel="nofollow" target="_blank">伊勢崎オート</a></li>
+<li><a href="http://www.hamamatsu-auto.jp/" rel="nofollow" target="_blank">浜松オート</a></li>
+<li><a href="http://www.iizuka-auto.jp/" rel="nofollow" target="_blank">飯塚オート</a></li>
+<li><a href="http://www.sanyoauto.jp/" rel="nofollow" target="_blank">山陽オート</a></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>総合</dt>
+<dd><ul>
+<li><a href="http://gamboo.jp/news/list.aspx">お知らせ</a></li>
+<li><a href="https://gamboo.jp/inquiry/">お問い合わせ</a></li>
+<li><a href="http://gamboo.jp/topics/?tid=sitemap">サイトマップ</a></li>
+</ul>
+</dd>
+
+</dl>
+<script language="javascript1.1" type="text/javascript" src="https://gamboo.jp/js/Certification.js"></script> 
+<!--Javascriptファイルのパス名を指定します。-->
+<noscript>
+  <form action="https://www.login.secomtrust.net/customer/customer/pfw/CertificationPage.do" name="CertificationPageForm" method="post" target="_blank" style="margin: 0px;">
+  <input type="image" src="B04095.GIF" width="44" height="70" name="Sticker" alt="クリックして証明書の内容をご確認ください。" oncontextmenu="return false;" />
+  <input type="hidden" name="Req_ID" value="6350559132" />
+</form>
+</noscript>
+</div><!-- /div#serviceList -->
+
+<p id="copyright">Copyright (C) NIPPON TOTOR CO.,LTD. All Rights Reserved.</p>
+</div><!-- /#footer end -->
+
+<div style="display:none">
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-17348338-1']);
+  _gaq.push(['_setDomainName', '.gamboo.jp']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<!-- 20130613 add -->
+<!?Google Code for &#12522;&#12510;&#12540;&#12465;&#12486;&#12451;&#12531;&#12464; &#12479;&#12464; -->
+<!-- Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. For instructions on adding this tag and more information on the above requirements, read the setup guide: google.com/ads/remarketingsetup -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 987186443;
+var google_conversion_label = "LnQcCM3_lQUQi4rd1gM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/987186443/?value=0&amp;label=LnQcCM3_lQUQi4rd1gM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+
+
+<!-- 20130613 add -->
+<script type="text/javascript" class="microad_blade_track">
+<!--
+var microad_blade_jp = microad_blade_jp || { 'params' : new Array(), 'complete_map' : new Object() };
+(function() {
+var param = {'co_account_id' : '5273', 'group_id' : '', 'country_id' : '1', 'ver' : '2.1.0'};
+microad_blade_jp.params.push(param);
+
+var src = (location.protocol == 'https:')
+? 'https://d-track.send.microad.jp/js/blade_track_jp.js' : 'http://d-cache.microad.jp/js/blade_track_jp.js';
+
+var bs = document.createElement('script');
+bs.type = 'text/javascript'; bs.async = true;
+bs.charset = 'utf-8'; bs.src = src;
+
+var s = document.getElementsByTagName('script')[0];
+s.parentNode.insertBefore(bs, s);
+})();
+-->
+</script>
+
+<!-- 20130618 add -->
+<script type="text/javascript" language="javascript">
+var yahoo_retargeting_id = 'TQN6PST47S';
+var yahoo_retargeting_label = '';
+</script>
+<script type="text/javascript" language="javascript" src="//b92.yahoo.co.jp/js/s_retargeting.js"></script>
+</div>
+
+
+
+</body>
+</html>
+
+
+
+

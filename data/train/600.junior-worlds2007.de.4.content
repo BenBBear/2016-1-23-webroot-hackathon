@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title> - Deutsche Eislauf-Union e.V.</title>
+	<link rel="stylesheet" type="text/css" media="screen, handheld, tv, projection, print" href="dateien/layout_main.css" />
+	<link rel="stylesheet" type="text/css" media="print" href="dateien/layout_druck.css" />
+	<link rel="stylesheet" type="text/css" media="screen, handheld, tv, projection, print" href="dateien/layout_common.css" />
+
+	<script type="text/javascript" src="dateien/prog_allg.inc.js" language="JavaScript"></script>
+<link rel="stylesheet" type="text/css" href="dateien/gallerie/jquery.ad-gallery.css">
+<script type="text/javascript" src="dateien/jquery-1.6.2.min.js"></script>
+  <script type="text/javascript" src="dateien/gallerie/jquery.ad-gallery.js"></script>
+    <script type="text/javascript">
+    var indize = 18;
+  $(function() {
+    var galleries = $('.ad-gallery').adGallery();
+    $('#switch-effect').change(
+      function() {
+        galleries[0].settings.effect = $(this).val();
+        return false;}
+    );
+  });
+
+
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+   $(".grossbilder").hide();
+   $("#alles").hide()
+   var temp;
+
+      function selctgross(t) {
+       var temper = "#gross" + t;
+       $(temper).fadeIn(2000);
+       $("#alles").fadeIn(300);
+      }
+
+   
+      function hidegross(s) {
+        var tempe = "#gross" + s;
+          $(tempe).fadeOut(1000);
+          $("#alles").fadeOut(500);
+}
+$(".ad-image-wrapper").click(function() {selctgross(indize)});
+$(".grossbilder").click(function() {hidegross(indize)});     
+
+})
+</script>
+<script type="text/javascript">
+
+function getElementsByClassName(classname, node) {
+  if(!node) node = document.getElementsByTagName("body")[0];
+  var a = [];
+  var re = new RegExp('\\b' + classname + '\\b');
+  var els = node.getElementsByTagName("*");
+  for(var i=0,j=els.length; i<j; i++)
+    if(re.test(els[i].className))a.push(els[i]);
+  return a;
+}
+
+function Fensterweite () {
+  if (window.innerWidth) {
+    return window.innerWidth;
+  } else if (document.body && document.body.offsetWidth) {
+    return document.body.offsetWidth;
+  } else {
+    return 0;
+  }
+}
+
+function Fensterhoehe () {
+  if (window.innerHeight) {
+    return window.innerHeight;
+  } else if (document.body && document.body.offsetHeight) {
+    return document.body.offsetHeight;
+  } else {
+    return 0;
+  }
+}
+
+function neuAufbau () {
+  var breite=(window.innerWidth-800)/2;
+  var hoehe=(window.innerHeight-600)/2;
+  document.getElementById('alles').style.height = document.getElementById("container").offsetHeight + 'px';
+  var bildergross = getElementsByClassName('grossbilder', document.getElementById('gallery'));
+  if (breite<0) breite=0;
+  if (hoehe<0) hoehe=0;
+  for (var i=0, j=bildergross.length; i<j; i++){
+      bildergross[i].style.top = hoehe + "px";
+      bildergross[i].style.left = breite + "px";
+  }
+}
+
+var menu_id = 'menu_id_';
+/* ﾜberwachung von Netscape initialisieren */
+if (!window.Weite && window.innerWidth) {
+window.onresize = neuAufbau;
+  
+  Weite = Fensterweite();
+  Hoehe = Fensterhoehe();
+}
+</script>
+</head>
+<body>
+<script type="text/javascript">
+/* ﾜberwachung von Internet Explorer initialisieren */
+if (!window.Weite && document.body && document.body.offsetWidth) {
+  window.onresize = neuAufbau;
+  Weite = Fensterweite();
+  Hoehe = Fensterhoehe();
+}
+</script>
+<div class="logo_print"><img src="dateien/layout/logo_print.jpg" alt=""/></div>
+<!-- Headder -->	
+	<div class="header" id="container" style="background-image:url(bilder/header-bild.jpg);">	
+		<div class="linker_headerteil">
+			<div class="logo">&nbsp;</div>
+			<div class="header_quicklinks"><a href="anti-doping.html"><img src="dateien/layout/anti-doping.jpg" border="0" alt="" class="quicklinks" style="padding-top: 7px;" /></a><a href="http://sportdeutschland.tv/eiskunstlauf"><img src="dateien/layout/spdtv.jpg" border="0" alt="" class="quicklinks" /></a><a href="sportler-werden.html"><img src="dateien/layout/wie-und-wo.jpg" border="0" alt="" class="quicklinks" /></a></div>
+		</div>
+		<div class="rechter_headerteil">
+			<div class="header_spacer">&nbsp;</div>
+			<div class="loginbox">
+				<div class="loginbox_linke_ecke">&nbsp;</div>
+				<div class="loginbox_content">
+					
+					<div style="float:left;margin-top:4px;width:100px;"><a href="http://twitter.com/Eislauf_Union" target="_blank">&raquo; FOLLOW US</a></div>
+					<div style="float:left;margin-top:4px;width:40px;"><a href="http://twitter.com/Eislauf_Union" target="_blank"><img src="dateien/layout/twitter.png" alt="Twitter" border="0" /></a></div>
+					<div style="float:left;margin-top:4px;width:40px;"><a href="http://facebook.com/eislaufunion" target="_blank"><img src="dateien/layout/facebook.png" alt="Facebook" border="0" /></a></div><form action="Volltextsuche.html" method="get" class="suchenform" style="display:inline;" 
+id="suchbegriff" onsubmit="if(this.view_volltextsuche_vt.value=='SUCHBEGRIFF') this.view_volltextsuche_vt.value='';">
+<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td valign="top" align="left">
+			<input id="suchfeld" type="text" size="15" name="view_volltextsuche_vt" value="SUCHBEGRIFF" onfocus="if(this.value=='SUCHBEGRIFF')this.value='';" />
+		</td>
+		<td valign="top" align="left" style="padding-top:4px;">
+			<input type="image" src="dateien/layout/los.gif" alt="Suche!" align="left" />
+		</td>
+	</tr>
+</table>
+</form>
+					</div>
+				<div class="loginbox_rechte_ecke">&nbsp;</div>
+			</div>
+			
+			
+		</div>
+		<div class="menu_top"><img src="dateien/layout/menu_left.jpg" height="38" alt="" /><img width="35" src="dateien/layout/spacer.jpg" height="38" alt="" /><a href="Startseite.html" onmouseover="swap('menu1', nav1_1mo)" onmouseout="swap('menu1', nav1_1)"><img src="dateien/layout/menu_top_1_0.jpg" alt="" border="0" id="menu1" height="38" /></a><a href="Veranstaltungen.html" onmouseover="swap('menu2', nav1_2mo)" onmouseout="swap('menu2', nav1_2)"><img src="dateien/layout/menu_top_2_0.jpg" alt="" border="0" id="menu2" height="38" /></a><a href="Eiskunstlauf.html" onmouseover="swap('menu3', nav1_3mo)" onmouseout="swap('menu3', nav1_3)"><img src="dateien/layout/menu_top_3_0.jpg" alt="" border="0" id="menu3" height="38" /></a><a href="Sportler.html" onmouseover="swap('menu4', nav1_4mo)" onmouseout="swap('menu4', nav1_4)"><img src="dateien/layout/menu_top_4_0.jpg" alt="" border="0" id="menu4" height="38" /></a><a href="Presse.html" onmouseover="swap('menu5', nav1_5mo)" onmouseout="swap('menu5', nav1_5)"><img src="dateien/layout/menu_top_5_0.jpg" alt="" border="0" id="menu5" height="38" /></a><a href="deu_intern.html" onmouseover="swap('menu6', nav1_6mo)" onmouseout="swap('menu6', nav1_6)"><img src="dateien/layout/menu_top_6_0.jpg" alt="" border="0" id="menu6" height="38" /></a><a onmouseover="swap('menu7', nav1_7mo)" onmouseout="swap('menu7', nav1_7)" href="Sponsoren.html"><img src="dateien/layout/menu_top_7_0.jpg" alt="" border="0" id="menu7" height="38" /></a><a href="Kontakt.html" onmouseover="swap('menu8', nav1_8mo)" onmouseout="swap('menu8', nav1_8)"><img src="dateien/layout/menu_top_8_0.jpg" alt="" border="0" id="menu8" height="38" /></a><img src="dateien/layout/spacer.jpg" height="38" alt="" /><img src="dateien/layout/menu_right.jpg" height="38" alt="" /></div>
+		<div id="shadow">
+			<div id="shadow-left"><img src="dateien/layout/shaddow_left.jpg" alt="" /></div>
+			<div id="contentbox">
+				<div id="content"><h1></h1>Die Seite "index.html" ist nicht vorhanden.
+
+
+	<!-- keine Downloads auf dieser Seite -->
+</div>
+			</div>
+			<div id="shadow-right"><img src="dateien/layout/shaddow_right.jpg" alt="" /></div>
+			<div class="clear">&nbsp;</div>
+			<div class="spacer"><img src="dateien/layout/trenner.jpg" alt="" /></div><div class="spacer"><img src="dateien/layout/trenner.jpg" alt="" /></div>			<div class="sponsoren2">Partner:<br />
+
+	<div style="padding-left:6px;padding-right:6px;height:130px;text-align:center;float:left">
+	<a href="http://www.bundeswehr.de/" target="_blank"><img  src="bilder/logo-bundeswehr_130x130.jpg" alt="" border="0" /></a>
+	</div>
+	<div style="padding-left:6px;padding-right:6px;height:130px;text-align:center;float:left">
+	<a href="http://www.dosb.de/" target="_blank"><img  src="bilder/DOSB_Ringe_Logo_Farbe_rgb_300dpi_sz-200px_130x130.jpg" alt="" border="0" /></a>
+	</div>
+	<div style="padding-left:6px;padding-right:6px;height:130px;text-align:center;float:left">
+	<a href="http://www.bmi.bund.de" target="_blank"><img  src="bilder/logo-BMI_Web_de_WBZ_130x130.jpg" alt="" border="0" /></a>
+	</div>
+	<div style="padding-left:6px;padding-right:6px;height:130px;text-align:center;float:left">
+	<a href="http://www.sporthilfe.de" target="_blank"><img  src="bilder/Logo_Sporthilfe_Neu_0_130x130.jpg" alt="" border="0" /></a>
+	</div>
+	<div style="padding-left:6px;padding-right:6px;height:130px;text-align:center;float:left">
+	<a href="http://www.sport-iat.de/" target="_blank"><img  src="bilder/iatlogo_130x130.jpg" alt="" border="0" /></a>
+	</div>
+	<div style="padding-left:6px;padding-right:6px;height:130px;text-align:center;float:left">
+	<a href="http://www.erima.de" target="_blank"><img  src="bilder/logo_erima_130x130.jpg" alt="" border="0" /></a>
+	</div>
+
+
+</div>			<div class="spacer"><img src="dateien/layout/footer.jpg" alt="" /></div>		</div>		<div id="footer">			<div style="float:left;width:400px;">Deutsche Eislauf-Union e.V.  |  Menzinger Strasse 68  |  80992 M?chen<br />E-Mail: <a href="mailto:info@eislauf-union.de">info@eislauf-union.de</a>  |  Tel: +49 89 89120314  |  Fax: +49 89 89120320</div><div style="float:right;width:350px;text-align:right;">Realisierung: <a href="http://www.kk-software.de">www.kk-software.de</a> &nbsp; <a href="Impressum.html">&raquo; Impressum</a> &nbsp; <a href="Startseite.html">&raquo; Startseite</a></div>		</div>	</div><div id="alles">&nbsp;</div><script type="text/javascript">neuAufbau();</script></body></html>
+
+<!--
+
+Debug-Information:
+
+Aufruf:             /index.html
+Seite generiert in: 14 ms
+Speicherverbrauch: 4096 kBytes (Spitze: 4096 kBytes)
+Client-IP:          208.87.139.67
+Client-Browser:     
+
+
+Content-Management-System:
+
+Entwicklung: K&K Software AG:
+Email:       info@kk-software.de
+Web:         http://www.kk-software.de
+CS: iso-8859-15
+PCS:iso-8859-15
+
+-->
+

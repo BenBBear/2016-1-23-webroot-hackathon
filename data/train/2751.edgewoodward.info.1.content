@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>People</title>
+    
+   	<head>
+    <script type="text/javascript">
+	function getComboA(sel) {
+		var value = sel.options[sel.selectedIndex].value;  
+		if (value=="Prayers")
+		{
+			document.main.MinAge.value = 20;
+			document.main.MaxAge.value = "";
+			document.main.HaveNotSpoken.checked=true;
+			document.main.OnlyLastEvent.checked=true;
+			document.main.Order[1].selected=true;
+			document.main.TalkType[2].selected=true;
+			document.main.Gender[0].selected=true;
+		}
+		else if (value=="Youth")
+		{
+			document.main.MinAge.value = 12;
+			document.main.MaxAge.value = 18;
+			document.main.HaveNotSpoken.checked=true;
+			document.main.OnlyLastEvent.checked=true;
+			document.main.Order[1].selected=true;
+			document.main.TalkType[0].selected=true;
+			document.main.Gender[0].selected=true;
+		}
+		else if (value=="YM")
+		{
+			document.main.MinAge.value = 12;
+			document.main.MaxAge.value = 18;
+			document.main.HaveNotSpoken.checked=true;
+			document.main.OnlyLastEvent.checked=true;
+			document.main.Order[1].selected=true;
+			document.main.TalkType[0].selected=true;
+			document.main.Gender[1].selected=true;
+		}
+		else if (value=="YW")
+		{
+			document.main.MinAge.value = 12;
+			document.main.MaxAge.value = 18;
+			document.main.HaveNotSpoken.checked=true;
+			document.main.OnlyLastEvent.checked=true;
+			document.main.Order[1].selected=true;
+			document.main.TalkType[0].selected=true;
+			document.main.Gender[2].selected=true;
+		}
+		else if (value=="blank")
+		{
+			document.main.MinAge.value = "";
+			document.main.MaxAge.value = "";
+			document.main.HaveNotSpoken.checked=false;
+			document.main.OnlyLastEvent.checked=false;
+			document.main.Order[0].selected=true;
+			document.main.TalkType[0].selected=true;
+			document.main.Gender[0].selected=true;
+		}
+}
+
+	</script>
+</head>
+
+
+
+    
+    <link rel="stylesheet" href="/Edgewood/People_Styles.css" type="text/css" />
+    <meta name="viewport" content="width=device-width"/>
+
+	<script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-46261306-1', 'edgewoodward.info');
+      ga('send', 'pageview');
+    
+    </script>
+</head>
+
+<body>
+
+
+<form action="/Edgewood/People.php" name="main" method="post">
+<table  id="parameters">
+  <tr height="3px">
+  </tr>
+  <tr>
+  <tr height="25px">
+  	<td>&nbsp;</td> 
+  	<td>&nbsp;</td>
+  </tr>
+    <tr>
+      <td width="40px">&nbsp;</td>
+      <td width="85px">Name: </td>
+    <td width="170px"><input type="text" id="Name" name="Name" value="" style="width:170px"/></td>
+    <td width="14px"></td>	
+    <td width="80px">Talk Type: </td>
+    <td width="224px">
+    	<select id="TalkType" name="TalkType">
+        <option value="All" >All</option>
+        <option value="Talk" >Talk</option>
+        <option value="Prayer" >Prayer</option>
+        </select></td>
+  </tr>
+  <tr height="25px">
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td colspan="2"><input type="checkbox" id = "HaveNotSpoken" name="HaveNotSpoken" ""/>Include those who have not talked</td>
+  </tr>
+  <tr height="25px">
+    <td>&nbsp;</td>
+    <td>Min Age: </td>
+    <td><input type="text" id="MinAge" name="MinAge" style="width:170px" value=""/></td>
+    <td></td>
+    <td colspan ="2"><input type="checkbox" id="OnlyLastEvent" name="OnlyLastEvent" ""/>Only include most recent talk/prayer</td>
+  </tr>
+  <tr height="25px" id="maxAgeRow">
+    <td>&nbsp;</td>
+    <td> Max Age:</td>
+    <td><input type="text" id="MaxAge" name="MaxAge" style="width:170px" value=""/></td>
+    <!-- <td></td>
+    <td>last Assign</td>
+    <td><input type="text" id="LastAssignment" /></td> -->
+  </tr>
+  <tr height="25px">
+    <td>&nbsp;</td>
+    <td>Gender: </td>
+    <td><select id="Gender" name="Gender" style="width:175px">
+      <option value="All" >All</option>
+      <option value="Male" >Male</option>
+      <option value="Female" >Female</option>
+    </select></td>
+  </tr>
+  <tr height="25px">
+    <td>&nbsp;</td>
+  	<td>Married:</td>
+    <td>
+    	<select id="IsMarried" name="IsMarried" style="width:175px">
+        <option value="All" >All</option>
+        <option value="N" >Single</option>
+        <option value="Y" >Married</option>
+        </select></td>
+	<td></td>	
+    <td>Order By: </td>
+    <td width="224px">
+    	<select id="OrderBy" name="OrderBy">
+        <option value="Date" >Date</option>
+        <option value="PreferredName" >Name</option>
+        <option value="TalkType" >Talk Type</option>
+        <option value="BirthDate" >Birthday</option>
+        <option value="Sex" >Gender</option>
+        <option value="IsMarried" >Married</option>
+        </select>
+    	<select id="Order" name="Order">
+        <option value="Desc" >Descending</option>
+        <option value="ASC" >Ascending</option>
+        </select>        
+        </td>
+  </tr>
+  <tr height="25px">
+    <td></td>
+  <td>Tenure:</td>
+  <td>
+  		<select id="MovedIn" name="MovedIn" style="width:175px">
+        <option value="All" > All</option>
+        <option value="0Months" > 0 to 6 Months</option>
+        <option value="7Months" >7 to 12 Months</option>
+        <option value="1Year" >1 to 2 Years</option>
+        <option value="3Years" >3+ Years</option>
+        </select>
+  </td>
+  <td></td><td>Then By:</td>
+  <td width="224px">
+    	<select id="ThenBy" name="ThenBy">
+        <option value="Date" >Date</option>
+        <option value="PreferredName" >Name</option>
+        <option value="TalkType" >Talk Type</option>
+        <option value="BirthDate" >Birthday</option>
+        <option value="Sex" >Gender</option>
+        <option value="IsMarried" >Married</option>
+        </select>
+    	<select id="ThenByOrder" name="ThenByOrder">
+        <option value="Desc" >Descending</option>
+        <option value="ASC" >Ascending</option>
+        </select>        
+        </td>
+	</tr>
+    <tr height="5px"></tr>
+</table>
+
+<table width="700" id="Results">
+<tr>
+	<td width ="130">Quick Search</td>
+    <td><select id="quickSearch" name="quickSearch" onchange="getComboA(this)">
+    	<option value="blank" ></option>
+    	<option value="Prayers" >Prayers</option>
+        <option value="Youth" >Youth</option>
+        <option value="YM" >Yound Men</option>
+        <option value="YW" >Young Women</option>
+        </select>
+    </td>
+</tr>
+<tr height="5px"></tr>
+</table>
+
+<table width="700" id="Results">
+<tr>
+	<td width ="650">*Prior to Bishop Clouse only each members last talk or prayer was tracked.</td>
+    <td><input type="submit" name="submitForm" value="Submit" /></td>
+</tr>
+</table>
+&nbsp;
+</form>
+
+ 
+ <img id="ResultsBackground" src="Background_files/Results.png" style="display: none">
+<table id="Results" style="display: none">
+</table>
+
+</body>
+</html>

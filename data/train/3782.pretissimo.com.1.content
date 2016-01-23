@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>CADI :: identification</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+	
+	<link type="text/css" rel="stylesheet" href="javascript/jquery-1.7.2/css/cupertino/jquery-ui-1.8.20.custom.css" />
+	<link type="text/css" rel="stylesheet" href="javascript/jquery-1.7.2/css/cid/jquery-ui.css" />
+	<link type="text/css" rel="stylesheet" href="css/screen/defaut.css" media="screen" />
+	<link type="text/css" rel="stylesheet" href="css/screen/index.css" media="screen" />
+	
+	<script type="text/javascript" src="javascript/jquery-1.7.2/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="javascript/jquery-1.7.2/js/jquery-ui-1.8.20.custom.min.js"></script>
+
+<script type="text/javascript">
+
+
+$(document).ready(function() {
+	$("#valider").click(function(){
+		$('#fm_log').submit();
+	});
+});
+
+$(function(){
+	$("button").button();
+});
+
+
+
+    
+    function valide(e) {
+        if (!e)
+            e = window.event;
+
+        if (e.type == "keypress")
+            if (e.keyCode == 13) // par sur même ligne sinon pas valide W3C
+                document.getElementById('fm_log').submit();
+
+        return true;
+    }
+    document.onkeypress = valide;
+</script>
+</head>
+
+<body>
+	    <div id="fermeture"><div></div><p>Ce CADI est fermé !</p></div>
+    </body>
+</html>

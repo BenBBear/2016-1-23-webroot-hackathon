@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+
+<title>Fersal Hotel Group</title>
+<meta name="description" content="" />
+<meta name="keywords" content="" >
+
+<link rel="shortcut icon" href="images/favicon.png" />
+<!--meta name="viewport" content="width=device-width" /-->
+<meta charset="utf-8" />
+
+<!-- Included CSS Files -->
+<link rel="stylesheet" href="css/foundation.css" />
+<link rel="stylesheet" href="css/style.css"/>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="javascripts/foundation/modernizr.foundation.js"></script>
+
+<!-- tab -->
+<link rel="stylesheet" href="script-tab/tab.css">
+<script src="script-tab/tab.js"></script>
+
+<!-- booking tab -->
+<link rel="stylesheet" href="script-checkavalability/development-bundle/themes/base/jquery-ui.css" />
+<script src="script-checkavalability/js/jquery-ui-1.10.1.custom.js"></script>
+<script type="text/javascript">
+	$(function(){
+		 var dates = $( "#check_in, #check_out" ).datepicker({
+			showOn: "both",
+			buttonImage: "images/cal.png",
+			buttonImageOnly: true,
+			buttonText: "Choose Date",
+			dateFormat: 'dd M y',
+			defaultDate: "+1w",
+			changeMonth: true,
+			changeYear: true,
+			numberOfMonths: 1,
+			minDate : "0d",
+			showAnim: 'slideDown' ,
+			onSelect: function( selectedDate ) {
+				if (this.id == "check_in")
+				{
+					instance = $( this ).data( "datepicker" );
+					var date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings );
+
+					var year = date.getFullYear();
+					var month = date.getMonth();
+					var day = date.getDate();
+
+					dates.not( this ).datepicker( "option", "minDate", new Date(year, month, day+1));
+				}
+			}
+
+
+			});
+			$("#check_in").datepicker( "setDate", new Date());
+			$("#check_out").datepicker( "setDate", 1);
+	});
+</script>
+
+<!-- flexslider -->
+<link rel="stylesheet" href="script-flexslider/flexslider.css">
+<script src="script-flexslider/jquery.flexslider.js"></script>
+<script type="text/javascript">
+		$(window).load(function() {
+			$('.flexslider').flexslider();
+		});
+</script>
+
+<!-- image roll over -->
+<link href="script-image-rollover/styles.css" rel="stylesheet"  />
+<script type="text/javascript" src="script-image-rollover/custom.js"></script>
+</head>
+
+  
+<body>
+<div class="wrap">
+<header>
+<a href="http://www.fersalhotelgroup.com" title="Fersal Hotel Group"><img src="images/logo.png" alt="Fersal Hotel Group" class="logo"></a>
+
+<a href="http://www.hotelelizabeth.com.ph" title="Hotel Elizabeth"><img src="images/HE-icon.png" alt="Hotel Elizabeth" class="h-logo-he"></a>
+<a href="http://www.fersalhotel.com" title="Fersal Hotel"><img src="images/FH-icon.png" alt="Fersal Hotel" class="h-logo-fe"></a>
+
+<!-- Google Search bar -->
+<script>
+  (function() {
+    var cx = '011158545145071081645:tkljkcd4bdy';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<div style="position:absolute; right:0; bottom:0; width:300px;"><gcse:search></gcse:search></div>
+
+
+        <link rel="stylesheet" type="text/css" href="script-Parallax-Slider/css/style2.css" />
+		<script type="text/javascript" src="script-Parallax-Slider/js/modernizr.custom.28468.js"></script>
+		<noscript>
+			<link rel="stylesheet" type="text/css" href="script-Parallax-Slider/css/nojs.css" />
+		</noscript>
+</header>
+
+<!-- Top Slide -->
+<!--div class="topbanner">
+<div class="flexslider">
+<ul class="slides">
+<li><a href="http://www.fersal.com.ph/manila"><h2 class="label-slide">Andalucia-Sta Cruz, Manila<br><span>View More &raquo;</span></h2><img src="images/slide01.jpg" alt=""></a></li>
+<li><a href="http://www.fersal.com.ph/annapolis"><h2 class="label-slide">Annapolis-Cubao, Quezon City<br><span>View More &raquo;</span></h2><img src="images/slide02.jpg" alt=""></a></li>
+<li><a href="http://www.fersal.com.ph/kalayaan"><h2 class="label-slide">Kalayaan-Diliman, Quezon City<br><span>View More &raquo;</span></h2><img src="images/slide03.jpg" alt=""></a></li>
+<li><a href="http://www.fersal.com.ph/malakas"><h2 class="label-slide">Malakas-Diliman, Quezon City<br><span>View More &raquo;</span></h2><img src="images/slide04.jpg" alt=""></a></li>
+<li><a href="http://www.fersal.com.ph/makati"><h2 class="label-slide">Neptune-Bel-Air, Makati City<br><span>View More &raquo;</span></h2><img src="images/slide05.jpg" alt=""></a></li>
+<li><a href="http://www.fersal.com.ph/tuazon"><h2 class="label-slide">P. Tuazon-Cubao, Quezon City<br><span>View More &raquo;</span></h2><img src="images/slide06.jpg" alt=""></a></li>
+<li><a href="http://www.fersal.com.ph/palawan"><h2 class="label-slide">Puerto Princesa, Palawan<br><span>View More &raquo;</span></h2><img src="images/slide07.jpg" alt=""></a></li>
+
+</ul>
+</div>
+</div-->
+
+
+
+<div id="da-slider" class="da-slider">
+				<div class="da-slide">
+					<h2>Andalucia-Sta Cruz, Manila</h2>
+					<a href="http://www.fersal.com.ph/manila" class="da-link">View More &raquo;</a>
+					<div class="da-img"><img src="images/slide01.jpg" alt="image01" /></div>
+				</div>
+				<div class="da-slide">
+					<h2>Annapolis-Cubao, Quezon City</h2>
+					<a href="http://www.fersal.com.ph/annapolis" class="da-link">View More &raquo;</a>
+					<div class="da-img"><img src="images/slide02.jpg" alt="image01" /></div>
+				</div>
+				<div class="da-slide">
+					<h2>Kalayaan-Diliman, Quezon City</h2>
+					<a href="http://www.fersal.com.ph/kalayaan" class="da-link">View More &raquo;</a>
+					<div class="da-img"><img src="images/slide03.jpg" alt="image01" /></div>
+				</div>
+                <div class="da-slide">
+					<h2>Malakas-Diliman, Quezon City</h2>
+					<a href="http://www.fersal.com.ph/malakas" class="da-link">View More &raquo;</a>
+					<div class="da-img"><img src="images/slide04.jpg" alt="image01" /></div>
+				</div>
+				<div class="da-slide">
+					<h2>Neptune-Bel-Air, Makati City</h2>
+					<a href="http://www.fersal.com.ph/makati" class="da-link">View More &raquo;</a>
+					<div class="da-img"><img src="images/slide05.jpg" alt="image01" /></div>
+				</div>
+				<div class="da-slide">
+					<h2>P. Tuazon-Cubao, Quezon City</h2>
+					<a href="http://www.fersal.com.ph/tuazon" class="da-link">View More &raquo;</a>
+					<div class="da-img"><img src="images/slide06.jpg" alt="image01" /></div>
+				</div>
+                <div class="da-slide">
+					<h2>Puerto Princesa, Palawan</h2>
+					<a href="http://www.fersal.com.ph/palawan" class="da-link">View More &raquo;</a>
+					<div class="da-img"><img src="images/slide07.jpg" alt="image01" /></div>
+				</div>
+
+				
+				<nav class="da-arrows">
+					<span class="da-arrows-prev"></span>
+					<span class="da-arrows-next"></span>
+				</nav>
+			</div>
+            
+            
+
+
+
+<nav class="top-bar" style="background:#008cba !important" data-topbar>
+<ul class="title-area">
+<li class="name"></li>
+<li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+</ul> 
+<section class="top-bar-section">
+<ul class="left">
+<li><a href="#" title=“” >About Us</a></li>
+<li><a href="#" title=“” >Events</a></li>
+<li><a href="#" title=“” >Partnership</a></li>
+<li><a href="#" title=“” >Jef Foundation</a></li>
+<li><a href="#" title=“” >Careers</a></li>
+<li><a href="#" title=“” >Contact Us</a></li>
+</ul>
+</section>
+</nav>
+
+
+<div class="row">
+<div class="large-7 columns">
+
+
+<div class="row" style="margin-top: 27px;">
+  <div class="large-6 columns">
+  <div class="thumb">
+<a href="http://www.fersalhotel.com" title="Fersal Hotel | Budget Hotel Chain In the Philippines Offers Discounted Rooms" class="image">
+<span class="roll" >
+<img src="images/more.png" alt="more"><br>Read More
+</span>
+<img src="images/FH-logo.png" alt="Fersal Hotel" class="thumb">
+</a>
+</div></div>
+
+
+<div class="large-6 columns">
+<div class="thumb">
+<a href="http://www.hotelelizabeth.com.ph" title="Hotel Elizabeth | The trusted name for superior accommodations in Baguio and Cebu City, Philippines. | Reserve online now for instant confirmation." class="image">
+<span class="roll roll2" >
+<img src="images/more.png" alt="more"><br>Read More
+</span>
+<img src="images/Hotel-Elizabeth-logo.png" alt="Hotel Elizabeth" class="thumb">
+</a>
+</div></div>
+</div>
+
+
+</div>
+
+<div class="large-5 columns">
+<div class="aside-section">
+<h2>Promos</h2>
+<a href="#"><img src="images/banner-promos.jpg" alt=" "></a>
+</div>
+<div class="aside-section">
+<h2>Careers</h2>
+<a href="#"><img src="images/banner-careers.jpg" alt=" "></a>
+</div>
+<div class="aside-section">
+<h2>Corporate Social Responsibility</h2>
+<a href="#"><img src="images/banner-jesus.jpg" alt=" "></a>
+</div>
+</div>
+
+<footer>
+<div class="row">
+  <div class="address">
+  <h2>Main Office:</h2>
+Contact No.: (632) 912-8000 / Facsimile: (632) 913-6092<br>
+Address: #245 P. Tuazon Boulevard, Cubao, Quezon City<br>
+Email: reservations@fersalinn.com.ph
+  </div>
+  <div class="pba">
+  <h2>official Hotel Partner</h2>
+  <img src="images/banner-pba.png" alt="PBA" class="thumb">
+  <h3>Season 2014</h3>
+  </div>
+  <div class="social">
+  <h2>Social Links:</h2>
+  <p>Fersal Hotel (@fersalhotel)</p>
+  <ul>
+  <li><a href="http://www.facebook.com/fersalhotel" target="_blank"><img src="images/icon-facebook.png" alt="facebook"></a></li>
+  <li><a href="http://www.twitter.com/fersalhotel" target="_blank"><img src="images/icon-twitter.png" alt="twitter"></a></li>
+  <li><a href="http://www.instagram.com/fersalhotel" target="_blank"><img src="images/icon-instagram.png" alt="instagram"></a></li>
+  <li><a href="http://www.pinterest.com/fersalhotel" target="_blank"><img src="images/icon-pinterest.png" alt="pinterest"></a></li>
+  </ul>
+  <p>Hotel Elizabeth (@hotelelizabeth)</p>
+  <ul>
+  <li><a href="http://www.facebook.com/hotelelizabeth" target="_blank"><img src="images/icon-facebook.png" alt="facebook"></a></li>
+  <li><a href="http://www.twitter.com/hotelelizabeth" target="_blank"><img src="images/icon-twitter.png" alt="twitter"></a></li>
+  <li><a href="http://www.instagram.com/hotelelizabeth" target="_blank"><img src="images/icon-instagram.png" alt="instagram"></a></li>
+  <li><a href="http://www.pinterest.com/hotelelizabeth" target="_blank"><img src="images/icon-pinterest.png" alt="pinterest"></a></li>
+  </ul>
+  </div>
+</div>
+<p class="footer-address">© Copyrights 2014. FERSAL Hotel - P. Tuazon Boulevard, Cubao, Quezon City, Phillippines. All Rights Reserved | Powered by <a href="https://www.myxcaliber.com" target="_blank">Xcaliber</a></p>
+</footer>
+</div><!-- wrap -->
+<script src="javascripts/foundation.min.js"></script>
+<script src="javascripts/foundation/jquery.foundation.topbar.js"></script>
+
+  <script>
+    $(document).foundation();
+  </script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-43761170-48', 'fersal.com.ph');
+  ga('send', 'pageview');
+
+</script>
+
+		<script type="text/javascript" src="script-Parallax-Slider/js/jquery.cslider.js"></script>
+		<script type="text/javascript">
+			$(function() {
+			
+				$('#da-slider').cslider({
+					autoplay	: true,
+					bgincrement	: 700
+				});
+			
+			});
+		</script>
+  </body>
+</html>

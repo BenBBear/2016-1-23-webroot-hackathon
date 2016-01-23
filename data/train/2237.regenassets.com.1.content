@@ -1,0 +1,438 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title> 上海锐集投资 上海锐集投资有限公司</title>
+<meta name="description" content="上海锐集投资" />
+<meta name="keywords" content="上海锐集投资" />
+<meta name="tel" content="(8621)  3471-8381" />
+<script type="text/javascript" language="javascript" src="/template/js/jquery.js"></script>
+<link href="/template/css/style.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript">
+function Show(count,index,name,cname){
+    for(var i=1;i<=count;i++){
+        $("#" + name + i).removeClass();
+        $("#" + name + i).addClass("zhis");
+        $("#" + cname + i).hide();
+    }
+    $("#"+ name + index).removeClass();
+    $("#"+ name + index).addClass("zhisa");
+    $("#" + cname + index).show();
+}
+//美元指数
+$(function(){
+	var dini_chart=Array();
+	dini_chart[0]="http://image.sinajs.cn/newchart/v5/forex/min/DINIW.gif";
+	dini_chart[1]="http://image.sinajs.cn/newchart/v5/forex/min5/DINIW.gif";
+	dini_chart[2]="http://image.sinajs.cn/newchart/v5/forex/min30/DINIW.gif";
+	dini_chart[3]="http://image.sinajs.cn/newchart/v5/forex/k/min30/DINIW.gif";
+	dini_chart[4]="http://image.sinajs.cn/newchart/v5/forex/k/day/DINIW.gif";
+	dini_chart[5]="http://image.sinajs.cn/newchart/v5/forex/k/week/DINIW.gif";
+	dini_chart[6]="http://image.sinajs.cn/newchart/v5/forex/k/month/DINIW.gif";
+	var imagedefault = $('<img>').attr('src',dini_chart[0]+'?'+Math.random());
+		$('#dini_chart_detail').html(imagedefault);
+	$('#diniChart li').click(function(){
+		var index_num=$(this).parents().find('li').index($(this));
+		var image = $('<img>').attr('src',dini_chart[index_num]+'?'+Math.random());
+		$('#dini_chart_detail').html(image);
+	});
+});
+
+//黄金指数
+$(function(){
+	var golden_chart=Array();
+	golden_chart[0]="http://www.kitco.cn/cn/live_charts/goldcn.gif";
+	golden_chart[1]="http://www.kitco.cn/cn/past_charts/au0030ldb_cn.gif";
+	golden_chart[2]="http://www.kitco.cn/cn/past_charts/au0365ldb_cn.gif";
+	var imagedefault = $('<img width=535>').attr('src',golden_chart[0]+'?'+Math.random());
+		$('#golden_chart_detail').html(imagedefault);
+	$('#golden li').click(function(){
+		var index_num=$(this).parents().find('li').index($(this));
+		var image = $('<img width=535>').attr('src',golden_chart[index_num]+'?'+Math.random());
+		$('#golden_chart_detail').html(image);
+	});
+});
+
+	
+	
+//股指期货,根据月份的不同，调用不同的url
+$(function(){
+	var date = new Date;
+	var month=2
+	var year=16
+	if(month<10)
+	{
+		month="0"+month
+	}
+	var nc_chart=Array();
+	nc_chart[0]="http://image.sinajs.cn/newchart/cffex/real/min/IF"+year+""+month+".gif";//分时图
+	nc_chart[1]="http://image.sinajs.cn/newchart/cffex/real/kmin30/IF"+year+""+month+".gif";//30分钟k线
+	nc_chart[2]="http://image.sinajs.cn/newchart/cffex/real/kmin60/IF"+year+""+month+".gif";//60分钟k线
+	nc_chart[3]="http://image.sinajs.cn/newchart/cffex/real/kday/IF"+year+""+month+".gif";//日k线
+	nc_chart[4]="http://image.sinajs.cn/newchart/cffex/real/kweek/IF"+year+""+month+".gif";//周k线
+	nc_chart[5]="http://image.sinajs.cn/newchart/cffex/real/kmonth/IF"+year+""+month+".gif";//月k线
+	var imagedefault = $('<img>').attr('src',nc_chart[0]+'?'+Math.random());
+		$('#nc_chart_detail').html(imagedefault);
+	$('#ncChart li').click(function(){
+		var index_num=$(this).parents().find('li').index($(this));
+		var image = $('<img>').attr('src',nc_chart[index_num]+'?'+Math.random());
+		$('#nc_chart_detail').html(image);
+	});
+});
+
+//上证指数
+$(function(){
+	var ncp_chart=Array();
+	ncp_chart[0]="http://image2.sinajs.cn/newchart/min/n/sh000001.gif";//分时图
+	ncp_chart[1]="http://image2.sinajs.cn/newchart/daily/n/sh000001.gif";//日k线
+	ncp_chart[2]="http://image2.sinajs.cn/newchart/weekly/n/sh000001.gif";//周k线
+	ncp_chart[3]="http://image2.sinajs.cn/newchart/monthly/n/sh000001.gif";//月k线
+	var imagedefault = $('<img>').attr('src',ncp_chart[0]+'?'+Math.random());
+		$('#ncp_chart_detail').html(imagedefault);
+	$('#ncpChart li').click(function(){
+		var index_num=$(this).parents().find('li').index($(this));
+		var image = $('<img>').attr('src',ncp_chart[index_num]+'?'+Math.random());
+		$('#ncp_chart_detail').html(image);
+	});
+});
+var yes;
+function getZhou()
+{
+	var date = new Date;
+	var w = date.getDay(), d = date.getDate();
+	var zhou = Math.ceil(
+    (d + 6 - w) / 7
+		/*
+		(d - w) % 7 当前日期，减去当前星期 在mod 7 就等于这个月的第一天和周日的差距。
+		然后在用当前日期+这个差距 / 7 取ceil 就是这个当前周是这个月的第几天
+		*/
+	);
+	alert(zhou+'fff'+w);
+	if (zhou==3&&w==5)//判断是第三个礼拜五
+	{
+		yes="true";
+	}else
+	{
+		yes="false";
+	}
+	return yes;
+}
+
+</script>
+
+<script type="text/javascript">
+var date = new Date;
+var w = date.getDay(), d = date.getDate();
+var zhou = Math.ceil(
+    (d + 6 - w) / 7
+    /*
+    a = d = 当前日期
+    b = 6 - w = 当前周的还有几天过完（不算今天）
+    a + b 的和在除以7 就是当天是当前月份的第几周
+    */
+);
+//alert(zhou);
+</script>
+</head>
+
+<body>
+	<div class="bg">
+    	<div class="header">
+        	<div class="logo"><img src="/template/images/logo.jpg" /></div>
+            <div class="top">
+            	<ul>
+                	<li class="tp1"><a href="javascript:void(0)" onclick="window.external.AddFavorite(document.location.href,'上海锐集投资 上海锐集投资有限公司')" >加入收藏</a></li>
+                    <li class="tp2"><a  href="#" onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.regenassets.com');" >设为首页</a></li>
+                    <li class="tp4"><a href="http://mail.regenassets.com/" target="_blank">锐集邮箱</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="naw">
+        	<div class="nawlf"><img src="/template/images/mlf.jpg" /></div>
+            <div class="nawmid">
+                <div class="menu">
+                    <ul>
+                        <li><a href="/"><img src="/template/images/menu1.jpg" /></a></li>
+                        <li><img src="/template/images/menu_line.jpg" /></li>
+                        <li><a href="/aboutus.asp"><img src="/template/images/menu2.jpg" /></a></li>
+                        <li><img src="/template/images/menu_line.jpg" /></li>
+                        <li><a href="/nav.asp"><img src="/template/images/menu4.jpg" /></a></li>
+                        <li><img src="/template/images/menu_line.jpg" /></li>
+                        <li><a href="/market.asp"><img src="/template/images/menu5.jpg" /></a></li>
+                        <li><img src="/template/images/menu_line.jpg" /></li>
+                        <li><a href="/join.asp"><img src="/template/images/menu6.jpg" /></a></li>
+                        <li><img src="/template/images/menu_line.jpg" /></li>
+                        <li><a href="/contactus.asp"><img src="/template/images/menu7.jpg" /></a></li>
+                    </ul>
+                </div>
+                <div class="en"><a href="/en/"><img src="/template/images/en.jpg" /></a></div>
+            </div>
+            <div class="nawrt"><img src="/template/images/mrt.jpg" /></div>
+        </div>
+
+        <div class="banner">
+		<OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" 
+		codebase=" http://download.macromedia.com/pub/shockwave/cabs/flash 
+		/swflash.cab#version=5,0,0,0" 
+		WIDTH=940 HEIGHT=277> 
+		<PARAM NAME=movie value="banner.swf"> 
+		<PARAM NAME=quality value=high> 
+		<PARAM NAME=wmode value=transparent> 
+		<EMBED src="/banner.swf" quality=high wmode=transparent bgcolor=#FFFFFF WIDTH=940 HEIGHT=277 TYPE="application/x-shockwave-flash" PLUGINSPAGE=" http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version 
+		=ShockwaveFlash"></EMBED></OBJECT>
+		</div>
+        <div class="content">
+        	<div class="ctleft">
+            	<div class="iabout">
+                	<div class="iabtit">
+                    	<div class="abtlf"><img src="/template/images/tilf.jpg" /></div>
+                        <div class="abtmid">
+                        	<div class="abouti"><img src="/template/images/iabout.jpg" /></div>
+                            <div class="gengd"><a href="/aboutus.asp">详细</a></div>
+                        </div>
+                        <div class="abtrt"><img src="/template/images/tirt.jpg" /></div>
+                    </div>
+                    <div class="iabbt">
+                    	<div class="abtfont">&nbsp;&nbsp;&nbsp;&nbsp;上海锐集投资有限公司由一支来自于世界财富500强公司，富有国际及本土资深专业经验的决策层高级管理团队组成。 致力于为高端个人及 机构提供高质量的投资理财产品与服务同时为成长型企业私募股权融资需求提供一流的增值服务。目前专注于A股证券市场的投资和研究...</div>
+                        <div class="abtimg"><img src="/template/images/aboutimg.jpg" /></div>
+                    </div>
+                </div>
+                <div class="inew">
+                	<div class="iabtit">
+                    	<div class="abtlf"><img src="/template/images/tilf.jpg" /></div>
+                        <div class="abtmid">
+                        	<div class="abouti"><img src="/template/images/inew.jpg" /></div>
+                            <div class="gengd"><a href="/market.asp?classid=1">更多</a></div>
+                        </div>
+                        <div class="abtrt"><img src="/template/images/tirt.jpg" /></div>
+                    </div>
+                    <div class="newbt">
+					
+                    	<div class="inews">
+                        	<div class="infont"><a href="/market_detail.asp?id=353">摸底期货公司违规账户 证监会重点关注五方面</a> </div>
+                            <div class="time">2015/10/19</div>
+                        </div>
+					
+                    	<div class="inews">
+                        	<div class="infont"><a href="/market_detail.asp?id=352">国家统计局解读2015年9月份CPI和PPI数据</a> </div>
+                            <div class="time">2015/10/14</div>
+                        </div>
+					
+                    	<div class="inews">
+                        	<div class="infont"><a href="/market_detail.asp?id=345">再见六年高点 这波行情是反转</a> </div>
+                            <div class="time">2015/03/18</div>
+                        </div>
+					
+                    	<div class="inews">
+                        	<div class="infont"><a href="/market_detail.asp?id=344">央行再注流动性 引降准降息猜想</a> </div>
+                            <div class="time">2015/03/18</div>
+                        </div>
+					
+                    	<div class="inews">
+                        	<div class="infont"><a href="/market_detail.asp?id=347">中国经济正经历百年大变局 专家：三四线城市赶紧卖房</a> </div>
+                            <div class="time">2015/03/17</div>
+                        </div>
+					
+                    	<div class="inews">
+                        	<div class="infont"><a href="/market_detail.asp?id=346">传证监会本周查200家机构 或引爆反腐炸弹</a> </div>
+                            <div class="time">2015/03/16</div>
+                        </div>
+					
+                    	<div class="inews">
+                        	<div class="infont"><a href="/market_detail.asp?id=348">股市再传重磅利好 万亿资金入市在即</a> </div>
+                            <div class="time">2015/03/11</div>
+                        </div>
+					
+                      
+                    </div> 
+                </div>
+            </div>
+            <div class="ctright">
+            	<div class="zstit">
+                	<div class="abtlf"><img src="/template/images/tilf.jpg" /></div>
+                    <div class="zstmid"><img src="/template/images/izst.jpg" /></div>
+                    <div class="abtrt"><img src="/template/images/tirt.jpg" /></div>
+                </div>
+                <div class="zstbt">
+                	<div class="zstu">
+                        <div class="zstu_lfbg"><img src="/template/images/zslfbg.jpg" /></div>
+                        <div class="zstu_midbg">
+                        	<ul>
+                            	<li class="zhisa"  onclick="Show(4,1,'fw_title_item_3_','fw_title_neirong_3_');" id="fw_title_item_3_1">美元指数</li>
+                                <li class="zsline"><img src="/template/images/zsline.jpg" /></li>
+                                <li class="zhis"  onclick="Show(4,2,'fw_title_item_3_','fw_title_neirong_3_');" id="fw_title_item_3_2">上证指数</li>
+                                <li class="zsline"><img src="/template/images/zsline.jpg" /></li>
+                                <li class="zhis"  onclick="Show(4,3,'fw_title_item_3_','fw_title_neirong_3_');" id="fw_title_item_3_3">黄金指数</li>
+                                <li class="zsline"><img src="/template/images/zsline.jpg" /></li>
+                                <li class="zhis"  onclick="Show(4,4,'fw_title_item_3_','fw_title_neirong_3_');" id="fw_title_item_3_4">股指期货</li>
+                            </ul>
+                        </div>
+                        <div class="zstu_rtbg"><img src="/template/images/zsrtbg.gif" /></div>
+                    </div>
+                    <div class="zstimg">
+                    	<div class="zsrimg1" id="fw_title_neirong_3_1" >
+                        
+                        	<div class="dini_title">
+                            	<span class="dini_active">99.5348</span>
+                                <span class="dini_rate">.4231(.4269%)
+                                </span>
+                            </div>
+                        	<div class="dini_data">
+                            	<span>昨收盘:99.1117</span>
+                                <span>今开盘:99.1135</span>
+                                <span>最高价:99.5977</span>
+                                <span>最低价:99.0833</span>
+                            </div>
+                            <div class="dini_data">
+                            	<span>买入价:99.5348</span><span>卖出价:99.5348</span>
+                            </div>
+                            <div class="dini_chart">
+                            	<ul id="diniChart">
+                                	<li style="cursor:pointer;">分时图</li>
+                                    <li style="cursor:pointer;">5分钟分时</li>
+                                    <li style="cursor:pointer;">30分钟分时</li>
+                                    <li style="cursor:pointer;">30分钟K线</li>
+                                    <li style="cursor:pointer;">日K线</li>
+                                    <li style="cursor:pointer;">周K线</li>
+                                    <li style="cursor:pointer;">月K线</li>
+                                </ul>
+                                <div id="dini_chart_detail">
+								
+                                </div>
+                            </div>
+                        </div>
+                        <div class="zsrimg1" id="fw_title_neirong_3_2"  style="display:none;"/>
+						
+							<div class="dini_title">
+                            	<span class="dini_active">2916.5624</span>
+                                <span class="dini_rate">36.0808(1.2526%)
+                                </span>
+                            </div>
+                        	<div class="dini_data">
+                            	<span>昨收盘:2880.4816</span>
+                                <span>今开盘:2911.1123</span>
+                                <span>最高价:2931.3587</span>
+                                <span>最低价:2851.7325</span>
+                            </div>
+						   <div class="dini_data">
+                            	<span>成交量:159810734</span><span style="width:140px;">成交额:170062245380</span>
+                            </div>
+							<div class="dini_chart">
+								<ul id="ncpChart">
+								<li style="cursor:pointer;">分时图</li>
+								<li style="cursor:pointer;">日k线</li>
+								<li style="cursor:pointer;">周k线</li>
+								<li style="cursor:pointer;">月k线</li>
+								</ul>
+								<div id="ncp_chart_detail"></div>
+							</div>
+						</div>
+                        <div class="zsrimg1" id="fw_title_neirong_3_3"  style="display:none;"/>
+						
+						<div class="huanjzs">
+							<ul id="golden">
+							<li style="cursor:pointer;">24小时黄金现货买入价格</li>
+							<li style="cursor:pointer;">30天黄金价格</li>
+							<li style="cursor:pointer;">一年黄金价格</li>
+							</ul>
+							<div id="golden_chart_detail"></div>
+						</div>
+						
+						</div>
+                        <div class="zsrimg1" id="fw_title_neirong_3_4" style="display:none;"/>
+						<div class="dini_title">
+                            	<span class="dini_active"></span>
+                                <span class="dini_rate">()
+                                </span>
+                            </div>
+                        	<div class="dini_data">
+                            	<span>昨收盘:</span>
+                                <span>开盘价:</span>
+                                <span>最高价:</span>
+                                <span>最低价:</span>
+                            </div>
+						   <div class="dini_data">
+                            	<span>结算价:</span><span>昨结算:</span><span>持仓量:</span><span>成交额:</span>
+                            </div>
+						<div class="dini_chart">
+							<ul id="ncChart">
+							<li style="cursor:pointer;">分时图</li>
+							<li style="cursor:pointer;">30分钟k线</li>
+							<li style="cursor:pointer;">60分钟k线</li>
+							<li style="cursor:pointer;">日k线</li>
+							<li style="cursor:pointer;">周k线</li>
+							<li style="cursor:pointer;">月k线</li>
+							</ul>
+							<div id="nc_chart_detail"></div>
+						</div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btline"></div>
+      	<div class="footer">
+        	<div class="link">
+        	  <select name="select" onchange= "if(this.options[this.selectedIndex].value!= '')window.open(this.options[this.selectedIndex].value)">
+        	    <option>--友情链接--</option>
+				
+				<option value="http://www.cbrc.gov.cn/chinese/home/jsp/index.jsp">中国银行业监督管理委员会</option>
+				
+				<option value="http://www.csrc.gov.cn/pub/newsite/">中国证劵监督管理委员会</option>
+				
+				<option value="http://www.sse.com.cn/sseportal/ps/zhs/home.html">上海证劵交易所</option>
+				
+				<option value="http://www.eastmoney.com/">东方财富网</option>
+				
+      	      </select>
+       	    </div>
+        	<div class="ftright" style="position:relative;">
+            	<div class="btmenu">
+                	<ul>
+						<li><a href="/join.asp">合作伙伴</a></li>
+                      	<li class="bmline">|</li>
+					    <li><a href="/nav.asp">净值公布</a></li>
+                      	<li class="bmline">|</li>                    	
+                        <li><a href="/market.asp">市场研究</a></li>
+                      	<li class="bmline">|</li>
+                        <li><a href="/contactus.asp">联系我们</a></li>
+                      	<li class="bmline">|</li>
+                        <li><a href="/aboutus.asp">关于我们</a></li>
+                    </ul>
+                </div>
+                <div class="copy">版权所有：锐集投资   沪ICP备60987600号 <script language="javascript" type="text/javascript" src="http://js.users.51.la/4141862.js"></script>
+<noscript><a href="http://www.51.la/?4141862" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/4141862.asp" style="border:none" /></a></noscript> 技术支持：<a href="http://www.shbewell.com" target="_blank">SHBEWELL</a>
+</div>
+<div style="position:absolute; top:4px; right:440px;"><SCRIPT LANGUAGE="JavaScript">
+document.writeln("<a href='http://www.sgs.gov.cn/lz/licenseLink.do?method=licenceView&entyId=20120510161018522'><img src='/template/images/foot_icon.gif' border=0></a>")</SCRIPT></div>
+            </div>
+      	</div>
+    </div>
+</body>
+</html>
+
+<script language="javascript" type="text/javascript">
+　　document.write("<div style=display:none;>");
+　　</script><div><p>
+<p>友情链接：
+<a href="http://www.fzfs315.com/bet365/">bet365</a> http://www.fzfs315.com/bet365/
+<a href="http://www.hhagri.gov.cn/a/bjlkh/">百家乐开户</a> http://www.hhagri.gov.cn/a/bjlkh/
+<a href="http://www.gydt.net/a/cqssc/">重庆时时彩</a> http://www.gydt.net/a/cqssc/
+<a href="http://www.nmgsj.gov.cn/a/bjl/">百家乐</a> http://www.nmgsj.gov.cn/a/bjl/
+<a href="http://www.szldbz.gov.cn/xpjdc/">澳门新葡京赌场</a> http://www.szldbz.gov.cn/xpjdc/
+<a href="http://www.jjwgj.gov.cn/bcgspj/"> 澳门博彩公司</a> http://www.jjwgj.gov.cn/bcgspj/
+<a href="http://www.szldbz.gov.cn/bet365ty/">365体育在线</a> http://www.szldbz.gov.cn/bet365ty/
+<a href="http://www.hfsf.gov.cn/bjlzc/">澳门百家乐</a> http://www.hfsf.gov.cn/bjlzc/
+<a href="http://www.sdnf.gov.cn/baocai/">澳门百家乐</a> http://www.sdnf.gov.cn/baocai/
+<a href="http://www.hllinkou.gov.cn/baijile/" >威尼斯人赌场</a>hllinkou.gov.cn/baijile
+<a href="http://www.snjw.gov.cn/bjsc/" >北京赛车pk10直播</a>www.snjw.gov.cn/bjsc/
+<a href="http://www.sdnf.gov.cn/gdkl/" >广东快乐十分开奖</a>http://www.sdnf.gov.cn/gdkl/
+<a href="http://www.hg8800.co/">皇冠hg0088 </a> hg0088.com.hg8800.co
+<a href="http://www.szldbz.gov.cn/bjlpj/">澳门百家乐</a>www.szldbz.gov.cn/bjlpj
+<a href="http://www.jjwgj.gov.cn/bjlgw/">澳门百家乐官网</a>www.jjwgj.gov.cn/bjlgw
+<a href="http://www.eqqh.gov.cn/aomen/">澳门赌场</a>http://www.eqqh.gov.cn/aomen/
+<a href="http://www.szxx.gov.cn/bet365/">365体育在线</a> http://www.szxx.gov.cn/bet365/
+<a href="http://www.lagm.gov.cn/lswjs/">澳门拉斯维加斯赌场</a> http://www.lagm.gov.cn/lswjs/
+<a href="http://www.gydt.net/a/bodog/">博狗娱乐场</a> http://www.gydt.net/a/bodog/
+　　<script language="javascript" type="text/javascript">

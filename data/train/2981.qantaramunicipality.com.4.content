@@ -1,0 +1,571 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link type="text/css" rel="stylesheet" href="http://www.qantaramunicipality.com/assets/css/front.css" />
+        <script type="text/javascript" src="http://www.qantaramunicipality.com/assets/jquery/jquery-1.4.2.min.js"></script>
+        <script type="text/javascript" src="http://www.qantaramunicipality.com/assets/gradient/jquery.gradient.js"></script>
+        <script type="text/javascript" src="http://www.qantaramunicipality.com/assets/corners/jquery.curvycorners.min.js"></script>
+        <link type="text/css" rel="stylesheet" href="http://www.qantaramunicipality.com/assets/slider/screen.css" />
+        <script type="text/javascript" src="http://www.qantaramunicipality.com/assets/slider/easySlider1.7.js" ></script>
+         <link type="text/css" rel="stylesheet" href="http://www.qantaramunicipality.com/assets/liscroller/liscroller.css" />
+        <script type="text/javascript" src="http://www.qantaramunicipality.com/assets/liscroller/jquery.liScroller.js"></script>
+        <script type="text/javascript" src="http://www.qantaramunicipality.com/assets/loader/jquery.swfobject.1-1-1.min.js"></script>
+        <script type="text/javascript" src="http://www.qantaramunicipality.com/assets/jcarousel/jcarousellite_1.0.1.min.js"></script>
+        <script type="text/javascript" src="http://www.qantaramunicipality.com/assets/jquery/jquery.cycle.all.js" ></script>
+
+        <title>بلدية القنطرة</title>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                
+                $('#insideevents').cycle( {fx:'scrollLeft', speed:1000,fit:1,width:265,height:80,timeout:5000,next:'',pause:1 });
+                $('#pRight').click(function(){ $('#insideevents').cycle('prev'); });
+                $('#pLeft').click(function(){ $('#insideevents').cycle('next'); });
+      
+                
+                $('div#invitation').corner({
+                  tl: { radius: 5 },
+                  tr: { radius: 5 },
+                  bl: { radius: 5 },
+                  br: { radius: 5 }});
+                
+                $('div#menu').corner({
+                  tl: { radius: 10 },
+                  tr: { radius: 10 },
+                  bl: { radius: 0 },
+                  br: { radius: 0 }});
+
+                 $('div#president-bottom').corner({
+                  tl: { radius: 0 },
+                  tr: { radius: 0 },
+                  bl: { radius: 10 },
+                  br: { radius: 10 }});
+
+                 $('div#menu ul li img[class!=active]').hover(function(){
+                     var img = $(this).attr('src');
+                      this.src = img.replace('-off.png','-on.png');
+
+                 },function(){
+                       var img = $(this).attr('src');
+                      this.src = img.replace('-on.png','-off.png');
+                 });
+
+
+                 $('ul.newsticker').liScroll();
+                 $('ul.invitationticker').liScroll({travelocity: 0.07});
+                 
+                 var height = $(document).height()-230;
+                 $('div#pilar').css({'min-height':height+'px'});
+
+                 $('div#latest-news-block ul li:last-child,div.latest-block-content ul li:last-child,div#latest-comment-content ul li:last-child').css('border','none');
+                 $('div.latest-block-content ul li:nth-child(odd)').css('background-color','#e6e6e6');
+                 $("#gallery-show").easySlider({
+                     numeric:true,
+                     auto:true,
+                     continuous:true
+                 });
+                 
+                      
+                $('ul.act li').click(function(){
+                            var id=$(this).attr('id');
+                            $.post(
+                                'http://www.qantaramunicipality.com/home/img',
+                                {id:id},
+                                function(data){
+                                    $('div#act_pic').html(data);
+                                                    }, 
+                                'html');
+                        });
+                        
+                      
+                $('ul.proj li'). hover(function(){
+                    $('div#proj').html('<div class="loading"></div>');
+                            var id=$(this).attr('id');
+                            $('ul.proj li').removeClass('selected');
+                            $(this).addClass('selected');
+                            $.post(
+                                'http://www.qantaramunicipality.com/home/projDetails',
+                                {id:id},
+                                function(data){
+                                    $('div#proj').html(data);
+                                                    }, 
+                                'html');
+                        }); 
+                        
+                      
+                $('ul.activities li'). hover(function(){
+                    $('div#activitiespic').html('<div class="loading"></div>');
+                            var id=$(this).attr('id');
+                            $('ul.activities li').removeClass('selected');
+                            $(this).addClass('selected');
+                            $.post(
+                                'http://www.qantaramunicipality.com/home/evntDetails',
+                                {id:id},
+                                function(data){
+                                    $('div#activitiespic').html(data);
+                                                    }, 
+                                'html');
+                        });
+                      
+                $('ul.event li'). hover(function(){
+                    $('div#event').html('<div class="loading"></div>');
+                            var id=$(this).attr('id');
+                            $('ul.event li').removeClass('selected');
+                            $(this).addClass('selected');
+                            $.post(
+                                'http://www.qantaramunicipality.com/home/evntDetails',
+                                {id:id},
+                                function(data){
+                                    $('div#event').html(data);
+                                                    }, 
+                                'html');
+                        });
+                        
+                        $('a.thmb').click(function(){
+                                var id=$(this).attr('id');
+                                var link="http://www.qantaramunicipality.com/home/imgthmb";
+                                    $.post(
+                                        link,
+                                        {id:id},
+                                        function(data){                    
+                                            $('div#imgGal').fadeOut(600,function(){
+                                                    $(this).fadeIn(500);
+                                                    $(this).html(data);
+                                                    });
+                                        }, 
+                                        'html');
+                                });
+            });
+        </script>
+    </head>
+    <body>
+<!--        <a target="_blank" href="http://www.facebook.com/qantaramunicipality">
+            <div style="width:122px;height: 59px; position: fixed;top: 163px;float: left;margin-right: 1125px;background: url('http://www.qantaramunicipality.com/assets/images/fb.png');"></div>
+        </a>-->
+        <div id="main">
+            <div id="main-center">
+
+          <div id="main-search">
+                                <form method="post" action="http://www.qantaramunicipality.com/home/search">
+                                    <input type="text" name="search" class="search-input w200" />
+                                    <input type="hidden" name="newsearch" value="1" />
+                                    <input type="submit" class="search-submit" value="ابحث" />
+                                </form>
+                            </div>
+                <div id="header">
+                    <div id="logo"></div>
+                    <div id="flash-banner">
+                         <script type="text/javascript">
+                        $(document).ready(function(){
+                               $('div#flash-banner').flash({
+                                        swf:'http://www.qantaramunicipality.com/assets/swf/header.swf',
+                                        width:806,
+                                        height:180,
+                                        expressInstall: true,
+                                        wmode:'transparent'
+                                    });
+                            });
+                        </script>
+                    </div>
+                </div>
+<!--menu-->
+                <div id="menu-wrapper">
+                    <div id="menu">
+                        <ul>
+                            <li><a class="active" href="http://www.qantaramunicipality.com/home">
+                                    الرئيسية
+                                </a></li>
+                            <li class="msep">|</li>
+                            <li><a href="http://www.qantaramunicipality.com/home/about">
+نبذة
+                                </a></li>
+                            <li class="msep">|</li>
+                            <li><a href="http://www.qantaramunicipality.com/home/pages/Mg==">
+المشاريع
+                                </a></li>
+                            <li class="msep">|</li>
+                            <li><a href="http://www.qantaramunicipality.com/home/pages/Mw==">
+آخر النشاطات
+                                </a></li>
+                            <li class="msep">|</li>                            
+                            <li><a href="http://www.qantaramunicipality.com/home/pages/NA==">
+مناسبات
+                                </a></li>
+                            <li class="msep">|</li>
+                            <li><a href="http://www.qantaramunicipality.com/home/gallery">
+ألبوم الصور
+                                </a></li>
+                            <li class="msep">|</li>
+                            <li><a href="http://www.qantaramunicipality.com/home/martyrs">
+شهداء البلدة
+                                    </a></li>
+                                    <li class="msep">|</li>
+                            <li><a href="http://www.qantaramunicipality.com/home/members">
+الأعضاء
+                                   </a></li>
+                                   <li class="msep">|</li>
+                            <li><a href="http://www.qantaramunicipality.com/home/videos">
+فيديو
+                                    </a></li>
+                                    <li class="msep">|</li>
+                            <li><a href="http://www.qantaramunicipality.com/home/deaths">
+الوفيات
+                                   </a></li>
+                                   <li class="msep">|</li>
+                            <li><a href="http://www.qantaramunicipality.com/home/community">
+المجلس البلدي
+                                   </a></li>
+                                   <li class="msep">|</li>
+                            <li><a href="http://www.qantaramunicipality.com/home/pages/NQ==">
+المعالم الأثرية
+                                  </a></li>
+                                  <li class="msep">|</li>
+                            <li><a href="http://www.qantaramunicipality.com/home/president">
+رئيس البلدية
+                                  </a></li>
+                                  <li class="msep">|</li>
+                            <li><a href="http://www.qantaramunicipality.com/home/comments">
+أرسل مقالك
+                                    </a></li></ul>
+                    </div>
+                </div>
+
+                <div id="ticker-wrapper">
+                    <ul class="newsticker">
+                                                    <li><a href="javascript:;" >لا يوجد معلومات</a></li>
+                                            </ul>
+                </div>
+                <div id="content">
+<!--                    manar-->
+                     <div id="manar-wrapper">
+                        <ul class="newsticker">
+                                                            <li><a target="_blank" href="http://www.almanar.com.lb/adetails.php?eid=1403334">قتيلان في اطلاق نار في ثانوية في كندا</a></li>
+                                <li><img style="margin:5px;" src="http://www.qantaramunicipality.com/assets/images/manar-sep.png" /></li>
+                                                            <li><a target="_blank" href="http://www.almanar.com.lb/adetails.php?eid=1403323">حملة بقيادة محافظين اميركيين لمنع ترامب من كسب ترشيح الحزب الجمهوري</a></li>
+                                <li><img style="margin:5px;" src="http://www.qantaramunicipality.com/assets/images/manar-sep.png" /></li>
+                                                            <li><a target="_blank" href="http://www.almanar.com.lb/adetails.php?eid=1403312">برلين تطلب من كردستان منع تسرب الاسلحة الالمانية الى غير الاكراد</a></li>
+                                <li><img style="margin:5px;" src="http://www.qantaramunicipality.com/assets/images/manar-sep.png" /></li>
+                                                            <li><a target="_blank" href="http://www.almanar.com.lb/adetails.php?eid=1403301">واشنطن تقر بمقتل مدنيين اثنين جديدين في قصف لقوات التحالف في سوريا</a></li>
+                                <li><img style="margin:5px;" src="http://www.qantaramunicipality.com/assets/images/manar-sep.png" /></li>
+                                                            <li><a target="_blank" href="http://www.almanar.com.lb/adetails.php?eid=1403290">الرئيس التونسي يحذر من ركوب موجة الاحتجاجات</a></li>
+                                <li><img style="margin:5px;" src="http://www.qantaramunicipality.com/assets/images/manar-sep.png" /></li>
+                                                            <li><a target="_blank" href="http://www.almanar.com.lb/adetails.php?eid=1403279">حسين الموسوي دعا إلى التنبه من عملية غسل دماغ تقوم بها الأجهزة الإسرائيلية</a></li>
+                                <li><img style="margin:5px;" src="http://www.qantaramunicipality.com/assets/images/manar-sep.png" /></li>
+                                                            <li><a target="_blank" href="http://www.almanar.com.lb/adetails.php?eid=1403268">الاحتلال الاسرائيلي يصادر اراضٍ زراعية شاسعة للفلسطينيين في منطقة الاغوار قرب اريحا</a></li>
+                                <li><img style="margin:5px;" src="http://www.qantaramunicipality.com/assets/images/manar-sep.png" /></li>
+                                                            <li><a target="_blank" href="http://www.almanar.com.lb/adetails.php?eid=1403257">اصحاب المطاحن يخفضون سعر الطحين للافران من اجل زيادة وزن الربطة ما يعادل ثلث رغيف</a></li>
+                                <li><img style="margin:5px;" src="http://www.qantaramunicipality.com/assets/images/manar-sep.png" /></li>
+                                                            <li><a target="_blank" href="http://www.almanar.com.lb/adetails.php?eid=1403246">وصول الرئيس الصيني الى ايران</a></li>
+                                <li><img style="margin:5px;" src="http://www.qantaramunicipality.com/assets/images/manar-sep.png" /></li>
+                                                            <li><a target="_blank" href="http://www.almanar.com.lb/adetails.php?eid=1403235">نشرة الأخبار الرئيسية ليوم 22 كانون الثاني 2016</a></li>
+                                <li><img style="margin:5px;" src="http://www.qantaramunicipality.com/assets/images/manar-sep.png" /></li>
+                                                            <li><a target="_blank" href="http://www.almanar.com.lb/adetails.php?eid=1403224">كمال الخير طالب الدولة بقبول الهدية التسليحية الايرانية</a></li>
+                                <li><img style="margin:5px;" src="http://www.qantaramunicipality.com/assets/images/manar-sep.png" /></li>
+                                                            <li><a target="_blank" href="http://www.almanar.com.lb/adetails.php?eid=1403213">ترقب العاصفة: جهوزيةَ رسمية تسابق البرودة القياسية</a></li>
+                                <li><img style="margin:5px;" src="http://www.qantaramunicipality.com/assets/images/manar-sep.png" /></li>
+                                                            <li><a target="_blank" href="http://www.almanar.com.lb/adetails.php?eid=1403202">ايران تنتقد دعم منظمة التعاون الاسلامي للسعودية</a></li>
+                                <li><img style="margin:5px;" src="http://www.qantaramunicipality.com/assets/images/manar-sep.png" /></li>
+                                                            <li><a target="_blank" href="http://www.almanar.com.lb/adetails.php?eid=1403191">اهالي كفريا والفوعة مازالوا ينتظرون</a></li>
+                                <li><img style="margin:5px;" src="http://www.qantaramunicipality.com/assets/images/manar-sep.png" /></li>
+                                                            <li><a target="_blank" href="http://www.almanar.com.lb/adetails.php?eid=1403180">هبة المليار السعودية في خبر كان
+</a></li>
+                                <li><img style="margin:5px;" src="http://www.qantaramunicipality.com/assets/images/manar-sep.png" /></li>
+                                                            <li><a target="_blank" href="http://www.almanar.com.lb/adetails.php?eid=1403169">مقدمة نشرة أخبار المنار المسائية 22-1-2016</a></li>
+                                <li><img style="margin:5px;" src="http://www.qantaramunicipality.com/assets/images/manar-sep.png" /></li>
+                                                            <li><a target="_blank" href="http://www.almanar.com.lb/adetails.php?eid=1403158">رئيس الكتائب: لم نقتنع بأي شيء مطروح ولديهم حتى 8 شباط لاقناعنا</a></li>
+                                <li><img style="margin:5px;" src="http://www.qantaramunicipality.com/assets/images/manar-sep.png" /></li>
+                                                            <li><a target="_blank" href="http://www.almanar.com.lb/adetails.php?eid=1403147">واشنطن تسحب اوارق اعتماد خمسة قناصل فخريين روس</a></li>
+                                <li><img style="margin:5px;" src="http://www.qantaramunicipality.com/assets/images/manar-sep.png" /></li>
+                                                            <li><a target="_blank" href="http://www.almanar.com.lb/adetails.php?eid=1403136">خمسة ضحايا في غارات للقوى العدوان السعودي شمال اليمن</a></li>
+                                <li><img style="margin:5px;" src="http://www.qantaramunicipality.com/assets/images/manar-sep.png" /></li>
+                                                            <li><a target="_blank" href="http://www.almanar.com.lb/adetails.php?eid=1403125">هولاند يريد تمديد حالة الطوارئ ثلاثة اشهر</a></li>
+                                <li><img style="margin:5px;" src="http://www.qantaramunicipality.com/assets/images/manar-sep.png" /></li>
+                                                            <li><a target="_blank" href="http://www.almanar.com.lb/adetails.php?eid=1403114">نشرة أخبار الساعة 3:30 بتوقيت القدس المحتلة ليوم 22 كانون الثاني 2016</a></li>
+                                <li><img style="margin:5px;" src="http://www.qantaramunicipality.com/assets/images/manar-sep.png" /></li>
+                                                            <li><a target="_blank" href="http://www.almanar.com.lb/adetails.php?eid=1403103">ميركل تعلن ان تركيا التزمت "القيام بكل ما هو ممكن" للحد من تدفق اللاجئين
+</a></li>
+                                <li><img style="margin:5px;" src="http://www.qantaramunicipality.com/assets/images/manar-sep.png" /></li>
+                                                            <li><a target="_blank" href="http://www.almanar.com.lb/adetails.php?eid=1403092">الحرائق لا تزال مشتعلة في خزانات نفط راس لانوف شمال ليبيا</a></li>
+                                <li><img style="margin:5px;" src="http://www.qantaramunicipality.com/assets/images/manar-sep.png" /></li>
+                                                            <li><a target="_blank" href="http://www.almanar.com.lb/adetails.php?eid=1403081">تجمع العلماء:  لانتهاز الفرصة والتعجيل في انتخاب رئيس</a></li>
+                                <li><img style="margin:5px;" src="http://www.qantaramunicipality.com/assets/images/manar-sep.png" /></li>
+                                                            <li><a target="_blank" href="http://www.almanar.com.lb/adetails.php?eid=1403070">إقامة صلاة موحدة في المقدادية  بديالى العراقية</a></li>
+                                <li><img style="margin:5px;" src="http://www.qantaramunicipality.com/assets/images/manar-sep.png" /></li>
+                                                    </ul>
+                     </div>
+
+
+                    <div id="pilar"><div id="pilar-bottom"></div></div>
+                    <div id="sub-content">
+                         
+<!--                     president-->
+                        <div style="float: right;width: 190px" >
+                        <div id="title-dome">رئيس البلدية</div>
+                        <div id="upper-row" style="width: 190px">
+                            <div id="president">
+                                                                        لا يوجد معلومات
+                                                                    <div id="president-bottom"></div>
+                            </div>
+                          
+                    </div>
+                        </div>
+                        
+<!--                        activity-->
+                        <div id="activity">
+                            <div style="width:100%;margin-top: 7px;">
+      
+</div>
+                        </div>
+
+<!--                        more reading-->
+                        <div id="more">
+                            
+                            <div id="title-dome" style="height: 25px; ">
+                             الأكثر قراءة
+                        </div>
+                        <div style="border: 1px solid #980221;border-top: none  ">
+                             <ul>
+                                                                                    <li><div class="title">لا يوجد معلومات</div></li>
+                                                                            </ul>
+                        </div>
+                        </div>
+                    
+                    <a href="http://www.facebook.com/qantaramunicipality" target="_blank"><div id="fb" ></div></a>
+                        
+<!--middle-->
+                        <div id="middle">
+                            <div style="width: 180px;margin-right: 0px;float: right">
+                            <!--poll-->
+                                <div id="poll">
+                                                                        <div id="polls-container">
+                                      <span class="title1" id="polls-q">ما رأيك بموقع بلدية القنطرة؟</span><br>
+                                     <form method="" action="" onsubmit="javascript:return false;" id="formPolls">
+                                     <table width="100%" cellpadding="2" cellspacing="5" >
+                                                                                   <tr>
+                                              <td style="width: 15%"><input type="radio" name="option" value="1"  /></td>
+                                             <td class="tag">جيد</td>
+                                         </tr>
+                                                                                   <tr>
+                                              <td style="width: 15%"><input type="radio" name="option" value="2"  /></td>
+                                             <td class="tag">جيد جداً</td>
+                                         </tr>
+                                                                                   <tr>
+                                              <td style="width: 15%"><input type="radio" name="option" value="3"  /></td>
+                                             <td class="tag">ممتاز</td>
+                                         </tr>
+                                                                              </table>
+                                         <div style="margin-right:40px;" id="vote-btn">
+                                             <input type="hidden" name="poll" value="1" />
+                                             <input type="image" id="sbmt-poll" src="http://www.qantaramunicipality.com/assets/images/vote-btn.png" />
+                                         </div>
+                                     </form>
+                                      </div>
+                                                                       
+                                </div>
+
+                            <!--weather-->
+                                <div id="weather">
+                                     <div class="weather-item">
+                                        <img width="50" src="http://l.yimg.com/a/i/us/nws/weather/gr/11d.png" class="weather-img" />
+                                        <div class="weather-value"> 14<sup>o</sup></div>
+                                        <div class="weather-country">بيروت</div>
+                                    </div>
+                                    
+                                     <div class="weather-item">
+                                        <img width="50" src="http://l.yimg.com/a/i/us/nws/weather/gr/29d.png" class="weather-img" />
+                                        <div class="weather-value"> 11<sup>o</sup></div>
+                                        <div class="weather-country">طهران</div>
+                                    </div>
+                                     <div class="weather-item">
+                                        <img width="50" src="http://l.yimg.com/a/i/us/nws/weather/gr/29d.png" class="weather-img" />
+                                        <div class="weather-value"> 26<sup>o</sup></div>
+                                        <div class="weather-country">مكة</div>
+                                    </div>
+                                </div>                                
+                            </div>
+                               <!--activities-->
+                            <div id="activities">
+                                
+                        <div id="title-dome1">
+    آخر النشاطات 
+                        </div>
+                                <div style="border: 1px solid #980221; " > 
+                                    <div id="activitiespic" style="margin-top: 5px;">                                    
+                                                                        </div>
+                                 <ul class="activities">
+                                                                                    <li><div class="title">لا يوجد معلومات</div></li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                               
+                            <!--events-->
+                            <div id="events">
+                                <div id="event">                                    
+                                                                        </div>
+                                 <ul class="event">
+                                                                                    <li><div class="title">لا يوجد معلومات</div></li>
+                                                                            </ul>
+                            </div> 
+                            
+                            <!--projects-->
+                            <div id="project">
+                                <div id="proj">                                    
+                                                                        </div>
+                                 <ul class="proj">
+                                                                                    <li><div class="title">لا يوجد معلومات</div></li>
+                                                                            </ul>
+                                
+                            </div> 
+                          
+                            
+
+                        </div>
+                        
+<!--bottom-->
+<div id="bottom">
+                            
+                    <!--gallery-->
+                        <div id="gallery-block">
+                                                                    لا يوجد معلومات
+                                                                <div id="theControls"></div>
+                            </div>
+                    <!--video-->
+                            <div id="video">
+                                
+
+                            <div id="video-block">
+                                                                    لا يوجد معلومات
+                                                                <div id="video-arc"></div>
+                            </div>
+                            </div>
+                    
+                    <!--banner-->
+
+                    <div id="bottom-banner-block">
+                                    <style type="text/css">
+                                          img.stack{
+                                              position:absolute;
+                                              top:0;
+                                              right:0px;
+                                              z-index:8;
+                                          }
+                                          img.activex{
+                                            position:absolute;
+                                            top:0;
+                                            right:0px;
+                                            z-index:9;
+                                          }
+                                      </style>
+                                    <div id="invites" style="width:356px;height:119px;margin:6px auto;position:relative;" >
+                                    <div style="border:1px solid #990000;padding-left:20px;margin:0 0 10px 0;">
+
+<h4>A PHP Error was encountered</h4>
+
+<p>Severity: Notice</p>
+<p>Message:  Undefined variable: adds</p>
+<p>Filename: views/main1.php</p>
+<p>Line Number: 566</p>
+
+</div>                                    </div>
+                                    <script type="text/javascript">
+                                            $(document).ready(function(){
+                                                var child = $('div#invites img').length;
+                                                if(child > 1){
+                                                    var i=0;
+                                                var inter = window.setInterval(function(){
+                                                     var current = i%(child);
+                                                     $('div#invites img').removeClass('activex').fadeOut();
+                                                     $('div#invites img').eq(current).addClass('activex').fadeIn();
+                                                     i++;
+                                                  },7000);
+                                                }
+                                             });
+                                    </script>
+                                   
+                                    <div id="flash" class="bbimg">
+                                         <script type="text/javascript">
+                                            $(document).ready(function(){
+                                               $('div#flash').flash({
+                                                        swf:'http://www.qantaramunicipality.com/assets/swf/banner.swf',
+                                                        width:360,
+                                                        height:121,
+                                                        expressInstall: true,
+                                                        wmode:'transparent'
+                                                    });
+                                            });
+                                        </script>
+                                    </div>
+                            </div>
+
+                            
+                            </div>
+                        
+                </div>                     
+
+                </div>
+                <div id="footer">
+                    <p style="float: left;margin-left: 5px;">عدد الزوار: <span>198020</span> </p>
+                    Developed by <a href="http://www.anzimagroup.com" target="_blank" >Anzima Group</a> &copy;
+                </div>
+
+            </div>
+        </div>
+   <script type="text/javascript" >
+    $(document).ready(function(){
+        $('form#formPolls').submit(function(){
+            return false;
+        });
+        
+             $('ul.act li').click(function(){
+            var id=$(this).attr('id');
+            $('div.slide').removeClass('current');
+            $('div#s'+id).addClass('current').css({'opacity':'0.3'}).animate({'opacity':'1'},500);
+
+            $('ul.act li').removeClass('selected');
+            $('ul.act li#'+id).addClass('selected');
+        });
+        var i = 0;
+        var id=0;
+        var t = 4;
+        window.setInterval(function(){
+            $('ul.act li').eq(i%t).trigger('click');
+            i++;
+            if(i==4)
+                {
+                    i=0;
+                    id=(id+1)%3;
+                    $.post(
+                                'http://www.qantaramunicipality.com/home/actlist',
+                               {id:id},
+                                function (data){
+                                    $('#activity').html(data).css({'opacity':'0.3'}).animate({'opacity':'1'},500);
+                                },
+                                'html'
+                        );
+                }
+                
+        },4000);
+
+        $('input#sbmt-poll').click(function(e){
+            e.preventDefault();
+             var radioOptions = $("input[name='option']:checked");
+                if(radioOptions.length > 0){
+                        var datax = $('form#formPolls').serialize();
+                        $('div#polls-container').html('<div align="center"><img src="http://www.qantaramunicipality.com/assets/images/loader.gif" alt="" /></div>');
+                        $.post(
+                                'http://www.qantaramunicipality.com/home/submitVote',
+                               datax,
+                                function (data){
+                                    $('div#polls-container').html(data);
+                                },
+                                'html'
+                        );
+                }else{
+                    alert('Please, select an option');
+                }
+            return false;
+        });
+    });
+  </script>
+    </body>
+</html>

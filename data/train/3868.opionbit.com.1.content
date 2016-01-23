@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='EN'>
+<head>
+<meta charset='UTF-8'>
+<meta content='en' http-equiv='Content-Language'>
+<meta content='IE=Edge,chrome=1' http-equiv='X-UA-Compatible'>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"659c74ca0e","applicationID":"4265075","transactionName":"dg0PQEtXWggARUtdDlgHTl1XXFMc","queueTime":0,"applicationTime":46,"agent":"js-agent.newrelic.com/nr-768.min.js"}</script>
+<script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VQcHUF9SGwcCUlRSAAQ="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=s(e),f=c.length,u=i(a,o,r),d=0;f>d;d++)c[d].apply(u,n);return u}function a(t,e){f[t]=s(t).concat(e)}function s(t){return f[t]||[]}function c(){return n(e)}var f={};return{on:a,emit:e,create:c,listeners:s,_events:f}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],3:[function(t){function e(t){try{i.console&&console.log(t)}catch(e){}}var n,r=t("ee"),o=t(1),i={};try{n=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(i.console=!0,-1!==n.indexOf("dev")&&(i.dev=!0),-1!==n.indexOf("nr_dev")&&(i.nrDev=!0))}catch(a){}i.nrDev&&r.on("internal-error",function(t){e(t.stack)}),i.dev&&r.on("fn-err",function(t,n,r){e(r.stack)}),i.dev&&(e("NR AGENT IN DEVELOPMENT MODE"),e("flags: "+o(i,function(t){return t}).join(", ")))},{1:24,ee:"QJf3ax"}],4:[function(t){function e(t,e,n,i,s){try{c?c-=1:r("err",[s||new UncaughtException(t,e,n)])}catch(f){try{r("ierr",[f,(new Date).getTime(),!0])}catch(u){}}return"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(6),i=t("ee"),a=window.onerror,s=!1,c=0;t("loader").features.err=!0,t(5),window.onerror=e;try{throw new Error}catch(f){"stack"in f&&(t(1),t(2),"addEventListener"in window&&t(3),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)&&t(4),s=!0)}i.on("fn-start",function(){s&&(c+=1)}),i.on("fn-err",function(t,e,r){s&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&&!this.thrown&&c>0&&(c-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:11,2:10,3:8,4:12,5:3,6:25,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],5:[function(t){if(window.addEventListener){var e=t("handle"),n=t("ee");t(1),window.addEventListener("click",function(){e("inc",["ck"])},!1),window.addEventListener("hashchange",function(){e("inc",["hc"])},!1),n.on("pushState-start",function(){e("inc",["ps"])})}},{1:9,ee:"QJf3ax",handle:"D5DuLP"}],6:[function(t){t("loader").features.ins=!0},{loader:"G9z0Bl"}],7:[function(t){function e(){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var n=t("ee"),r=t("handle"),o=t(1),i=t(2);t("loader").features.stn=!0,t(3);var a=Event;n.on("fn-start",function(t){var e=t[0];e instanceof a&&(this.bstStart=Date.now())}),n.on("fn-end",function(t,e){var n=t[0];n instanceof a&&r("bst",[n,e,this.bstStart,Date.now()])}),o.on("fn-start",function(t,e,n){this.bstStart=Date.now(),this.bstType=n}),o.on("fn-end",function(t,e){r("bstTimer",[e,this.bstStart,Date.now(),this.bstType])}),i.on("fn-start",function(){this.bstStart=Date.now()}),i.on("fn-end",function(t,e){r("bstTimer",[e,this.bstStart,Date.now(),"requestAnimationFrame"])}),n.on("pushState-start",function(){this.time=Date.now(),this.startPath=location.pathname+location.hash}),n.on("pushState-end",function(){r("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),"addEventListener"in window.performance&&(window.performance.addEventListener("webkitresourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.webkitClearResourceTimings()},!1),window.performance.addEventListener("resourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.clearResourceTimings()},!1)),document.addEventListener("scroll",e,!1),document.addEventListener("keypress",e,!1),document.addEventListener("click",e,!1)}},{1:11,2:10,3:9,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],8:[function(t,e){function n(t){i.inPlace(t,["addEventListener","removeEventListener"],"-",r)}function r(t){return t[1]}var o=t("ee").create(),i=t(1)(o),a=t("gos");if(e.exports=o,n(window),"getPrototypeOf"in Object){for(var s=document;s&&!s.hasOwnProperty("addEventListener");)s=Object.getPrototypeOf(s);s&&n(s);for(var c=XMLHttpRequest.prototype;c&&!c.hasOwnProperty("addEventListener");)c=Object.getPrototypeOf(c);c&&n(c)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&n(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t,e){function n(){return s}if(t[1]){var r=t[1];if("function"==typeof r){var s=a(r,"nr@wrapped",function(){return i(r,"fn-",n,r.name||"anonymous")});this.wrapped=t[1]=s,o.emit("initEventContext",[t,e],this.wrapped)}else"function"==typeof r.handleEvent&&i.inPlace(r,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:26,ee:"QJf3ax",gos:"7eSDFh"}],9:[function(t,e){var n=t("ee").create(),r=t(1)(n);e.exports=n,r.inPlace(window.history,["pushState","replaceState"],"-")},{1:26,ee:"QJf3ax"}],10:[function(t,e){var n=t("ee").create(),r=t(1)(n);e.exports=n,r.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=r(t[0],"fn-")})},{1:26,ee:"QJf3ax"}],11:[function(t,e){function n(t,e,n){t[0]=i(t[0],"fn-",null,n)}function r(t,e,n){function r(){return a}this.ctx={};var a={"nr@context":this.ctx};o.emit("initTimerContext",[t,n],a),t[0]=i(t[0],"fn-",r,n)}var o=t("ee").create(),i=t(1)(o);e.exports=o,i.inPlace(window,["setTimeout","setImmediate"],"setTimer-"),i.inPlace(window,["setInterval"],"setInterval-"),i.inPlace(window,["clearTimeout","clearImmediate"],"clearTimeout-"),o.on("setInterval-start",n),o.on("setTimer-start",r)},{1:26,ee:"QJf3ax"}],12:[function(t,e){function n(){f.inPlace(this,p,"fn-",o)}function r(t,e){f.inPlace(e,["onreadystatechange"],"fn-")}function o(t,e){return e}function i(t,e){for(var n in t)e[n]=t[n];return e}var a=t("ee").create(),s=t(1),c=t(2),f=c(a),u=c(s),d=window.XMLHttpRequest,p=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];e.exports=a,window.XMLHttpRequest=function(t){var e=new d(t);try{a.emit("new-xhr",[],e),e.hasOwnProperty("addEventListener")&&u.inPlace(e,["addEventListener","removeEventListener"],"-",o),e.addEventListener("readystatechange",n,!1)}catch(r){try{a.emit("internal-error",[r])}catch(i){}}return e},i(d,XMLHttpRequest),XMLHttpRequest.prototype=d.prototype,f.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",o),a.on("send-xhr-start",r),a.on("open-xhr-start",r)},{1:8,2:26,ee:"QJf3ax"}],13:[function(t){function e(t){var e=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;c>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!e.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){e.status=t.status;var a=t.responseType,f="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,u=n(f);if(u&&(r.rxSize=u),this.sameOrigin){var d=t.getResponseHeader("X-NewRelic-App-Data");d&&(e.cat=d.split(", ").pop())}}else e.status=0;r.cbTime=this.cbTime,o("xhr",[e,r,this.startTime])}}}function n(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}if(window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)){t("loader").features.xhr=!0;var o=t("handle"),i=t(2),a=t("ee"),s=["load","error","abort","timeout"],c=s.length,f=t(1),u=window.XMLHttpRequest;t(4),t(3),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=e,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,e){var r=this.metrics,o=t[0],i=this;if(r&&o){var f=n(o);f&&(r.txSize=f)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof e.onload))&&i.end(e)}catch(n){try{a.emit("internal-error",[n])}catch(r){}}};for(var u=0;c>u;u++)e.addEventListener(s[u],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof u&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof u&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof u&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{1:"XL7HBI",2:14,3:12,4:8,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],14:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],15:[function(t,e){function n(t){return function(){r(t,[(new Date).getTime()].concat(i(arguments)))}}var r=t("handle"),o=t(1),i=t(2);"undefined"==typeof window.newrelic&&(newrelic=window.NREUM);var a=["setPageViewName","addPageAction","setCustomAttribute","finished","addToTrace","inlineHit","noticeError"];o(a,function(t,e){window.NREUM[e]=n("api-"+e)}),e.exports=window.NREUM},{1:24,2:25,handle:"D5DuLP"}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):void(r.q&&(r.q[t]||(r.q[t]=[]),r.q[t].push(e)))}var r=t("ee").create();e.exports=n,n.ee=r,r.q={}},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],G9z0Bl:[function(t,e){function n(){var t=p.info=NREUM.info,e=f.getElementsByTagName("script")[0];if(t&&t.licenseKey&&t.applicationID&&e){s(d,function(e,n){e in t||(t[e]=n)});var n="https"===u.split(":")[0]||t.sslForHttp;p.proto=n?"https://":"http://",a("mark",["onload",i()]);var r=f.createElement("script");r.src=p.proto+t.agent,e.parentNode.insertBefore(r,e)}}function r(){"complete"===f.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=t(1),c=window,f=c.document;t(2);var u=(""+location).split("?")[0],d={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-768.min.js"},p=e.exports={offset:i(),origin:u,features:{}};f.addEventListener?(f.addEventListener("DOMContentLoaded",o,!1),c.addEventListener("load",n,!1)):(f.attachEvent("onreadystatechange",r),c.attachEvent("onload",n)),a("mark",["firstbyte",i()])},{1:24,2:15,handle:"D5DuLP"}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],24:[function(t,e){function n(t,e){var n=[],o="",i=0;for(o in t)r.call(t,o)&&(n[i]=e(o,t[o]),i+=1);return n}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],25:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],26:[function(t,e){function n(t){return!(t&&"function"==typeof t&&t.apply&&!t[i])}var r=t("ee"),o=t(1),i="nr@original",a=Object.prototype.hasOwnProperty;e.exports=function(t){function e(t,e,r,a){function nrWrapper(){var n,i,s,f;try{i=this,n=o(arguments),s=r&&r(n,i)||{}}catch(d){u([d,"",[n,i,a],s])}c(e+"start",[n,i,a],s);try{return f=t.apply(i,n)}catch(p){throw c(e+"err",[n,i,p],s),p}finally{c(e+"end",[n,i,f],s)}}return n(t)?t:(e||(e=""),nrWrapper[i]=t,f(t,nrWrapper),nrWrapper)}function s(t,r,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<r.length;c++)s=r[c],a=t[s],n(a)||(t[s]=e(a,f?s+o:o,i,s))}function c(e,n,r){try{t.emit(e,n,r)}catch(o){u([o,e,n,r])}}function f(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){u([r])}for(var o in t)a.call(t,o)&&(e[o]=t[o]);return e}function u(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=r),e.inPlace=s,e.flag=i,e}},{1:25,ee:"QJf3ax"}]},{},["G9z0Bl",4,13,7,6,5]);</script>
+<meta content='width=device-width, initial-scale=1, maximum-scale=1' name='viewport'>
+<meta content="PpcLkmCoOdffuBGV1aQYNBZ+VFmCgQ6eFcuMJWdaKEo=" name="csrf-token" />
+<title>Forex & Binary Options Trading | Trade at MarketsWorld | MarketsWorld</title>
+<meta content='MarketsWorld is a Regulated Binary Options Platform with deposit bonuses and a fast pay out service. Online trading has never been this safe and easy.' name='description'>
+<meta content='binary options cash match deposit bonus, binary options free trade bonus, binary options refer a friend bonus, binary option bonus, binary options demo, free binary options bonus, binary options free bonus, free binary options, free binary options no deposit, binary options practice account, binary options platforms, binary options free, best binary option broker, binary trade, trade binary, commodities trading, trading software, binary options, option binaire, opzioni binarie, binaries options, future trading, trading in futures, binary option brokers, binary options brokerages, option brokerage, options trades, binary option review, binaries options, binary options demo account, market world, world market, world markets, binary markets, binary options, binary options trading platform, online trade world markets, binary options trading, binary trading demo account, free binary options demo account, binary trading, binary options free demo account, regulated binary options brokers, regulated binary options, opciones binarias' name='keywords'>
+<!-- Social Networking meta tags -->
+<meta content='Forex &amp; Binary Options Trading | Trade at MarketsWorld | MarketsWorld' property='og:title'>
+<meta content='MarketsWorld is a Regulated Binary Options Platform with deposit bonuses and a fast pay out service. Online trading has never been this safe and easy.' property='og:description'>
+<meta content='MarketsWorld' property='og:site_name'>
+<meta content='website' property='og:type'>
+<meta content='en_US' property='og:locale'>
+<meta content='https://marketsworld.com/?utm_source=OPIONBIT.COM&amp;utm_medium=redirect&amp;utm_content=Sep2014&amp;utm_campaign=AtoB' property='og:url'>
+<meta content='https://MarketsWorld.com/og-img.jpg' property='og:image'>
+<link href='https://plus.google.com/u/0/b/110034407937326304416/110034407937326304416/posts/p/pub' rel='publisher'>
+<meta content='Licensed Binary Options Trading - earn more profit on indices, forex and commodities today!' name='twitter:card'>
+<meta content='@MarketsWorld1' name='twitter:site'>
+<meta content='MarketsWorld is a Regulated Binary Options Platform with deposit bonuses and a fast pay out service. Online trading has never been this safe and easy.' name='twitter:description'>
+<meta content='555205987839736' property='fb:app_id'>
+<!-- End Social Networking meta tags -->
+<meta content='D7B4CFA96EFEB1A7B8B3180A4C4C590C' name='msvalidate.01'>
+
+
+
+<link href="/assets/shared.css?1453456315" media="all" rel="stylesheet" type="text/css" />
+<link href="/assets/public.css?1453456382" media="all" rel="stylesheet" type="text/css" />
+
+
+<link href='/favicon.ico' rel='shortcut icon' type='image/x-icon'>
+<!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+<link href='/apple-touch-icon-precomposed.png' rel='apple-touch-icon-precomposed'>
+<!-- For first- and second-generation iPad: -->
+<link href='/apple-touch-icon-72x72-precomposed.png' rel='apple-touch-icon-precomposed' sizes='72x72'>
+<!-- For iPhone with high-resolution Retina display: -->
+<link href='/apple-touch-icon-114x114-precomposed.png' rel='apple-touch-icon-precomposed' sizes='114x114'>
+<!-- For third-generation iPad with high-resolution Retina display: -->
+<link href='/apple-touch-icon-144x144-precomposed.png' rel='apple-touch-icon-precomposed' sizes='144x144'>
+
+
+<link href='//fonts.googleapis.com/css?family=Arimo:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+<!--[if lte IE 9]>
+<script src='http://html5shiv.googlecode.com/svn/trunk/html5.js'></script>
+<![endif]-->
+<script>
+  //<![CDATA[
+    if (window !== "undefined") {
+      window.FLASH_JGROWL_OPTIONS = {"life":8000,"openDuration":"normal","closeDuration":"fast","animateOpen":{"height":"show"},"animateClose":{"height":"hide"},"closerTemplate":"<div>close all</div>","corners":""};
+      window.AUTH_TOKEN = "PpcLkmCoOdffuBGV1aQYNBZ+VFmCgQ6eFcuMJWdaKEo=";
+      window.LIVE_CHAT_ENABLED = true;
+      window.RAILS_ENV = "production";
+      if (typeof window.APP_TEXTS === "undefined") { window.APP_TEXTS = {}; }
+      window.MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+      window.APP_TEXTS['transaction_status_APPROVED'] = "Approved";
+      window.APP_TEXTS['transaction_status_REVERSED'] = "Reversed";
+      window.APP_TEXTS['transaction_status_PENDING'] = "Pending";
+      window.APP_TEXTS['transaction_status_DECLINED'] = "Declined";
+      window.APP_TEXTS['transaction_status_PROCESSED'] = "Processed";
+      window.APP_TEXTS['transaction_status_PROCESSING'] = "Processing";
+      window.APP_TEXTS['transaction_status_WON'] = "Won: In-the-Money";
+      window.APP_TEXTS['transaction_status_LOST'] = "Lost: Out-of-the-Money";
+      window.APP_TEXTS['transaction_status_PUSH'] = "Draw: At-the-Money";
+      window.APP_TEXTS['transaction_status_VOID'] = "Void";
+      window.APP_TEXTS['transaction_status_UNRESOLVED'] = "Unresolved";
+      window.APP_TEXTS['transaction_type_WITHDRAWAL'] = "Withdrawal";
+      window.APP_TEXTS['transaction_type_MANUAL_CREDIT'] = "Manual credit";
+      window.APP_TEXTS['transaction_type_DEPOSIT'] = "Deposit";
+      window.APP_TEXTS['transaction_type_MANUAL_DEBIT'] = "Manual debit";
+      window.APP_TEXTS['transaction_type_COMPLIMENTARY'] = "Complimentary";
+      window.APP_TEXTS['transaction_type_POSITION'] = "Position";
+      window.APP_TEXTS['transaction_type_PAYOUT'] = "Payout";
+      window.APP_TEXTS['chart-info-type-higher'] = "Higher/Call";
+      window.APP_TEXTS['chart-info-type-lower'] = "Lower/Put";
+      window.APP_TEXTS['table-empty-table'] = "No data available in table";
+      window.APP_TEXTS['table-length-of-entries'] = "Display _MENU_ records";
+      window.APP_TEXTS['table-show-zero-records'] = "No records to display";
+      window.APP_TEXTS['show-start-end-of-entries'] = "Showing _START_ to _END_ of _TOTAL_ entries";
+      window.APP_TEXTS['table-show-0-from-0-entries'] = "No entries to show";
+      window.APP_TEXTS['search-from-table-entries'] = "Search:";
+      window.APP_TEXTS['table-first-entry'] = "First";
+      window.APP_TEXTS['table-previous-entry'] = "Previous";
+      window.APP_TEXTS['table-next-entry'] = "Next";
+      window.APP_TEXTS['table-last-entry'] = "Last";
+    }
+    // Versatag (see below for where script is loaded)
+    var versaTag = {};
+    versaTag.id = "2740";
+    versaTag.sync = 0;
+    versaTag.dispType = "js";
+    versaTag.ptcl = "HTTPS";
+    versaTag.bsUrl = "bs.serving-sys.com/BurstingPipe";
+    versaTag.activityParams = {
+    "OrderID":"","Session":"","Value":"","productid":"","productinfo":"","Quantity":"",
+    "user_ID":"","user_type":""};
+    versaTag.retargetParams = {};
+    versaTag.dynamicRetargetParams = {};
+    versaTag.conditionalParams = {"user_ID":"guest",
+                                  "user_type": "demo"};
+  //]]>
+</script>
+
+<script>
+  //<![CDATA[
+    var mwdcomm_data = {
+      dispatcher_address: "marketsworld.com:443",
+      dispatcher_protocol: "https",
+      user: "guest",
+      public_id: "XNF8JG",
+      role: "guest",
+      haproxy: true
+    };
+  //]]>
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js" type="text/javascript"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js" type="text/javascript"></script>
+<script>
+  //<![CDATA[
+    if (typeof jQuery === 'undefined') { document.write(unescape('%3Cscript src="/assets/jquery.js?1453456315" type="text/javascript"%3E%3C/script%3E')); }
+  //]]>
+</script>
+
+<script src="/assets/mwdcomm.js?1453456315" type="text/javascript"></script>
+
+<script id='ebOneTagUrlId' src='https://secure-ds.serving-sys.com/SemiCachedScripts/ebOneTag.js'></script>
+<script>
+  //<![CDATA[
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+    ga('create', 'UA-23732520-4', 'auto');
+    ga('send', 'pageview');
+  //]]>
+</script>
+
+
+
+</head>
+<body>
+
+
+
+<div class='public en home index' id='main'>
+<div id='header'>
+<div class='block_header'>
+<noscript>
+<span>
+For full functionality of this site it is necessary to enable JavaScript.
+Here are the
+<a href='http://www.enable-javascript.com/' target='_blank'>instructions how to enable JavaScript in your web browser.</a>
+</span>
+</noscript>
+<div class='clear'></div>
+<div class='logo'>
+<a href='/' title='MarketsWorld'>
+<img alt='MarketsWorld' src='/images/v2/logo-nq8.png'>
+</a>
+</div>
+<div class='right_block'>
+<div class='user_info'>
+<div class='lang-container'>
+<a class='current-lang' href='?locale=EN' title='English'>
+<span class='flag'>
+<img alt="Globe" border="0" height="13" src="/images/flags/globe.png?1453456314" width="13" />
+</span>
+<span class='lang'>
+English
+</span>
+</a>
+<ul class='lang'>
+<li>
+<a href='?locale=RO' title='Română'>
+<span class='flag'>
+<img alt="Flag" border="0" height="12" src="/images/flags/flag.ro.png?1453456314" width="18" />
+</span>
+<span class='lang'>
+Română
+</span>
+</a>
+</li>
+<li>
+<a href='?locale=RU' title='Русский'>
+<span class='flag'>
+<img alt="Flag" border="0" height="12" src="/images/flags/flag.ru.png?1453456314" width="18" />
+</span>
+<span class='lang'>
+Русский
+</span>
+</a>
+</li>
+<li>
+<a href='?locale=IT' title='Italiano'>
+<span class='flag'>
+<img alt="Flag" border="0" height="12" src="/images/flags/flag.it.png?1453456314" width="18" />
+</span>
+<span class='lang'>
+Italiano
+</span>
+</a>
+</li>
+<li>
+<a href='?locale=ES' title='Español'>
+<span class='flag'>
+<img alt="Flag" border="0" height="12" src="/images/flags/flag.es.png?1453456314" width="18" />
+</span>
+<span class='lang'>
+Español
+</span>
+</a>
+</li>
+<li>
+<a href='?locale=DE' title='Deutsch'>
+<span class='flag'>
+<img alt="Flag" border="0" height="12" src="/images/flags/flag.de.png?1453456314" width="18" />
+</span>
+<span class='lang'>
+Deutsch
+</span>
+</a>
+</li>
+<li>
+<a href='?locale=PO' title='Português'>
+<span class='flag'>
+<img alt="Flag" border="0" height="12" src="/images/flags/flag.po.png?1453456314" width="18" />
+</span>
+<span class='lang'>
+Português
+</span>
+</a>
+</li>
+<li>
+<a href='?locale=FR' title='Français'>
+<span class='flag'>
+<img alt="Flag" border="0" height="12" src="/images/flags/flag.fr.png?1453456314" width="18" />
+</span>
+<span class='lang'>
+Français
+</span>
+</a>
+</li>
+<li>
+<a href='?locale=CN' title='简体中文 '>
+<span class='flag'>
+<img alt="Flag" border="0" height="12" src="/images/flags/flag.cn.png?1453456314" width="18" />
+</span>
+<span class='lang'>
+简体中文 
+</span>
+</a>
+</li>
+<li>
+<a href='?locale=AR' title='العربية'>
+<span class='flag'>
+<img alt="Flag" border="0" height="12" src="/images/flags/flag.ar.png?1453456314" width="18" />
+</span>
+<span class='lang'>
+العربية
+</span>
+</a>
+</li>
+</ul>
+</div>
+
+<div id='login'>
+<form action="/users/sign_in" class="login_form" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="PpcLkmCoOdffuBGV1aQYNBZ+VFmCgQ6eFcuMJWdaKEo=" /></div>
+<div class='fields'>
+<input class='input' id='user_login_email' name='user[email]' placeholder='E-MAIL' size='' type='email' value=''>
+<input autocomplete="off" class="input" id="user_login_password" name="user[password]" placeholder="PASSWORD" size="" type="password" />
+</div>
+<input class='submit' name='submit' type='submit' value='sign in'>
+</form>
+</div>
+<div class='links'>
+<a class='button login'>sign in</a>
+<div class='forgot'>
+<a href="/users/password/new" class="popup_button">Forgot password?</a>
+</div>
+<div class='signup'>
+<span>New User?</span>
+<a href="/users/sign_up" class="popup_button">Sign-up!</a>
+</div>
+</div>
+</div>
+<div class='nav'>
+<ul class='flex'>
+<li>
+<a href="/">HOME</a>
+</li>
+<li>
+<a href="/binary-options-trading">TRADE</a>
+</li>
+<li>
+<a href="/bonuses">BONUSES</a>
+</li>
+<li>
+<a href="/contact-marketsworld-support">CONTACT</a>
+</li>
+<li>
+<a href="/about-marketsworld-trading">ABOUT</a>
+</li>
+<li>
+<a href="/option-trading-faq">FAQ</a>
+</li>
+<li>
+<a href="https://server.iad.liveperson.net/hc/28302544/?cmd=file&amp;file=visitorWantsToChat&amp;site=28302544&amp;byhref=1" onclick="window.open(this.href,'LIVE_CHAT_URL','width=950,scrollbars=1');woopra_chat_request();return false;" title="Need help? Talk to customer service right now!">Live Chat</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class='clear'></div>
+</div>
+<div id='flash_wrapper'>
+<div id='flash'>
+
+</div>
+</div>
+
+
+
+<div id='content'>
+<div class='body home'>
+<div class='body_resize'>
+<div dir='ltr' id='slider'>
+<ul class='bxslider'>
+<li>
+<a href="https://itunes.apple.com/app/id982467362" target="_blank"><img alt="Trade_on_the_go" src="/images/v2/slides/trade_on_the_go.jpg?1453456315" /></a>
+</li>
+<li>
+<a href="/users/sign_up" class="popup_button"><img alt="Demo" src="/images/v2/slides/demo.jpg?1453456315" /></a>
+</li>
+<li>
+<a href="/users/sign_up" class="popup_button"><img alt="Trade_with_the_best" src="/images/v2/slides/trade_with_the_best.jpg?1453456315" /></a>
+</li>
+<li>
+<a href="/users/sign_up" class="popup_button"><img alt="Newmatchbearbull" src="/images/v2/slides/newmatchbearbull.jpg?1453456315" /></a>
+</li>
+<li>
+<a href="/users/sign_up" class="popup_button"><img alt="Freetrade" src="/images/v2/slides/freetrade.jpg?1453456315" /></a>
+</li>
+<li>
+<a href="/users/sign_up" class="popup_button"><img alt="Refer" src="/images/v2/slides/refer.jpg?1453456315" /></a>
+</li>
+<li>
+<a href="/users/sign_up" class="popup_button"><img alt="World_is_yours" src="/images/v2/slides/world_is_yours.jpg?1453456315" /></a>
+</li>
+</ul>
+<div class='shadow'></div>
+</div>
+<div class='clear'></div>
+<div class='box' id='asset_types'>
+<div class='indices-link link'>
+<a href="/trade/indexes" class="panel button subtitle">Indices</a>
+</div>
+<div class='forex-link link'>
+<a href="/trade/forex" class="panel button subtitle">Forex</a>
+</div>
+<div class='commodities-link link'>
+<a href="/trade/commodity" class="panel button subtitle">Commodities</a>
+</div>
+</div>
+<div class='asset_types'>
+<div class='box link'>
+<a href="/trade/indexes" class="panel button subtitle"><img src='/images/v2/banners/stocks_banner.jpg' alt='Indices'></a>
+</div>
+<div class='box link'>
+<a href="/trade/forex" class="panel button subtitle"><img src='/images/v2/banners/currency_banner.jpg' alt='Forex'></a>
+</div>
+<div class='box link'>
+<a href="/trade/commodity" class="panel button subtitle"><img src='/images/v2/banners/gold_banner.jpg' alt='Commodities'></a>
+</div>
+</div>
+<div id='features'>
+<div class='box' id='steps'>
+<h1>3 Easy Steps to Get Started</h1>
+<ol>
+<li>Choose Direction</li>
+<li>Enter Stakes</li>
+<li>Click "Buy"</li>
+</ol>
+</div>
+<div class='box background' id='bonuses'>
+<h1>
+<a href="/bonuses" title="Bonuses &amp; Benefits">Bonuses & Benefits</a>
+</h1>
+<aside>
+<a href="/bonuses/binary-options-high-profits" title="Earn up to 100% Profit per Trade">Earn up to 100% Profit per Trade</a>
+<a href="/bonuses/free-binary-options-trade" title="$50 Risk Free Trade">$50 Risk Free Trade</a>
+<a href="/bonuses/cash-match-binary-options" title="100% Cash Match up to  $1000  ">100% Cash Match up to  $1000  </a>
+<a href="/bonuses/referral-program-binary-options" title=" $500 refer a friend"> $500 refer a friend</a>
+<a href="/bonuses/monthly-loyalty-bonus" title="Monthly Loyalty Reward">Monthly Loyalty Reward</a>
+</aside>
+</div>
+</div>
+<div class='flex-wrapper'>
+<div class='box' id='news'>
+<h1 class='editable-page-section'>
+Recent News
+</h1>
+<div class='news-wrapper'>
+<div class='post'>
+<h2>
+Equity markets rally as the oil price settles higher – Binary Options Daily Review
+</h2>
+<p class='post-details'>
+<span class='author'>
+By Barry Jenkins
+,
+2016-01-22
+</span>
+</p>
+<div class='excerpt'>
+<p>
+Retail sales in the UK surprised to the upside in November rebounding with a strong gain of 1.7%, well above the forecasts for a gain of 0.6%. The reading for December is forecast to show a fall with a reading of -0.1% forecast. Monitor the Pound on the back of this for Binary Options trading.
+<a href="https://marketsworld.com/news/equity-markets-rally-as-the-oil-price-settles-higher-binary-options-daily-review.html" class="view-article" target="_blank">Read more</a>
+</p>
+</div>
+</div>
+<div class='post'>
+<h2>
+Equity markets suffer steep falls – Binary Options Daily Review
+</h2>
+<p class='post-details'>
+<span class='author'>
+By Barry Jenkins
+,
+2016-01-21
+</span>
+</p>
+<div class='excerpt'>
+<p>
+Manufacturing activity in the Philadelphia area dropped to -5.9 in December recording its third negative reading in four months. This unexpected decline followed a 1.9 points reading in the previous month. Forecasts were for the index to show 2.1 points. The new orders section remained negative falling 6 points to -9.5. However, companies reported higher shipments, as the current shipments index increased 6 points to a reading of 3.7. The 6-month outlook plunged more than 20 points to 23.0. Overall, the report suggests weak global demand. Manufacturing activity in the Philadelphia area is expected to reach -5.0 in January. Monitor the Dollar for any effects of a drop.
+<a href="https://marketsworld.com/news/equity-markets-suffer-steep-falls-binary-options-daily-review.html" class="view-article" target="_blank">Read more</a>
+</p>
+</div>
+</div>
+<div class='clear'></div>
+</div>
+</div>
+<div class='box' id='welcome'>
+<h1 class='editable-page-section' data-section='home-box3-title'>
+Welcome to <span class="title notranslate">MarketsWorld</span> - Licensed and Regulated Binary Options Trading
+</h1>
+<div class='editable-page-section' data-section='home-box3-content'><p><span class="title notranslate"></span>MarketsWorld is your online binary options trading destination. Licensed and regulated in the Isle of Man, Great Britain, assures the safety of your account so that you know your deposits and any winnings are guaranteed. Offering forex, indices and commodities trading with the highest payouts in the binary options industry of up to 100% per trade and the undisputed best bonuses and incentives program there is in online binary options and financial betting. MarketsWorld has the lowest minimum deposit of just $10. We also provide all customers access to unlimited demo accounts totally free of charge. See why MarketsWorld British licensed and regulated binary options platform is the brand you can trust. The World is Yours!<br></p><p><span><a data-fancybox-type="ajax" data-cke-saved-href="/users/sign_up" href="/users/sign_up" class="popup_button button nopopup">Try our Free Binary Options Demo Account now, no deposit required!</a></span></p></div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div id='footer'>
+<div class='footer_resize'>
+<div class='block'>
+<h3>About</h3>
+<ul>
+<li><a href="/about-marketsworld-trading" title="About MarketsWorld">About MarketsWorld</a></li>
+<li><a href="/binary-options-history" title="Binary Options History">Binary Options History</a></li>
+<li><a href="/binary-options-regulation" title="Binary Options Regulation">Binary Options Regulation</a></li>
+<li><a href="/contact-marketsworld-support" title="Contact Us">Contact Us</a></li>
+<li><a href="https://server.iad.liveperson.net/hc/28302544/?cmd=file&amp;file=visitorWantsToChat&amp;site=28302544&amp;byhref=1" onclick="window.open(this.href,'LIVE_CHAT_URL','width=950,scrollbars=1');woopra_chat_request();return false;" title="Need help? Talk to customer service right now!">Live Chat</a></li>
+</ul>
+</div>
+<div class='block'>
+<h3>Getting Started</h3>
+<ul>
+<li><a href="/bonuses" title="Bonuses &amp; Promotions">Bonuses & Promotions</a></li>
+<li><a href="/binary-options-trading-demo" title="Free Demo Account">Free Demo Account</a></li>
+<li><a href="/why-trade-binary-options" title="Why trade with MarketsWorld?">Why trade with MarketsWorld?</a></li>
+<li><a href="/how-to-trade-binary-options" title="How to Trade">How to Trade</a></li>
+</ul>
+</div>
+<div class='block'>
+<h3>Information</h3>
+<ul>
+<li><a href="/option-trading-faq" title="FAQ">FAQ</a></li>
+<li><a href="/binary-options-vs-spread-betting" title="Binary Options v. Spread Betting">Binary Options v. Spread Betting</a></li>
+<li><a href="/binary-options-vs-traditional-trading" title="Binary Options v. Exchange Trading">Binary Options v. Exchange Trading</a></li>
+<li>
+<a href='http://marketsworld.com/news' title='Blog'>Blog</a>
+</li>
+<li><a href="/binary-options-glossary" title="Glossary">Glossary</a></li>
+<li><a href="http://www.credorax.com/" target="_blank" title="Credorax">Credorax</a></li>
+</ul>
+</div>
+<div class='block last'>
+<h3>Legal</h3>
+<ul>
+<li><a href="/trading-assets" title="Asset List">Asset List</a></li>
+<li><a href="/help/terms-and-conditions" id="terms_and_conditions" onclick="window.open(this.href,'legal','width=1025,scrollbars=1');return false;" title="Terms and Conditions">Terms and Conditions</a></li>
+<li><a href="/help/privacy-policy" id="privacy_policy" onclick="window.open(this.href,'legal','width=1025,scrollbars=1');return false;" title="Privacy Policy">Privacy Policy</a></li>
+<li><a href="/help/responsible-betting-policy" id="betting_responsibly" onclick="window.open(this.href,'legal','width=1025,scrollbars=1');return false;" title="Betting Responsibly">Betting Responsibly</a></li>
+<li><a href="http://marketsworldpartners.com/" target="_blank" title="Affiliates">Affiliates</a></li>
+<li><a href="/payment-options" title="Payment Options">Payment Options</a></li>
+</ul>
+</div>
+<div class='clear'></div>
+</div>
+</div>
+<div id='sub-footer'>
+<div class='footer_resize'>
+<p id='old-browser' style='display: none;'>
+Your browser is out-of-date.
+<a href='#old-browser'>Click here to upgrade.</a>
+By upgrading you'll improve your <span class='title'>MarketsWorld</span> experience considerably.
+</p>
+<div class='gsc box'>
+<p class='office'>
+<a href="http://www.gov.im/gambling/" target="_blank" title="Isle of Man government website"><img alt="GSC Isle of Man Government Logo" height="54" src="/images/v2/logos/isle_of_man.png?1453456315" width="60" /></a>
+<span class='text'>
+Copyright © 2011-2016, <span class='title'>MarketsWorld<span class='smaller'>.com</span></span>. All rights reserved. <span class='title'>MarketsTheWorld Limited</span>, Grosvenor House, 66-67 Athol Street, Douglas, Isle of Man, IM1 1JE, Great Britain. Licensed and regulated by the the Isle of Man GSC. Current license issued 6 April 2011.
+</span>
+
+</p>
+</div>
+<div class='follow box'>
+<!-- / AddThis Follow BEGIN -->
+<div class='addthis_toolbox addthis_32x32_style addthis_default_style'>
+<a addthis:userid='MarketsWorld' class='addthis_button_facebook_follow'></a>
+<a addthis:userid='MarketsWorld1' class='addthis_button_twitter_follow'></a>
+<a addthis:userid='+Marketsworld' class='addthis_button_google_follow'></a>
+</div>
+<!-- / AddThis Follow END -->
+
+<a class='appbtn' href='https://itunes.apple.com/app/id982467362' target='_blank'>
+<img src='/images/v2/app.png'>
+</a>
+</div>
+</div>
+<div class='clear'></div>
+<div class='underline-dark'></div>
+<div class='footer_resize'>
+<div class='logos_container'>
+<img alt="Deposit Methods MarketsWorld" border="0" src="/images/v2/logos/logos-optimized.png?1453456315" usemap="#logos_map" />
+<map id='logos_map' name='#logos_map'>
+<area alt='Best Payouts Broker Award' class='popup_button inline' coords='21,5,21,24,18,25,17,28,18,33,21,34,21,71,23,71,26,67,34,61,47,71,49,35,51,34,50,29,51,25,49,21,48,5,23,5' data-fancybox-type='inline' href='#award' shape='poly'>
+<area alt='Best Broker Award' coords='60,24,60,53,62,56,70,56,76,57,78,58,82,66,105,67,110,66,113,59,118,58,123,57,128,55,131,52,132,22,128,20,126,17,115,16,111,14,108,12,103,14,99,12,98,11,94,12,91,15,85,15,81,15,75,17,65,18,63,23' href='http://www.binaryoptions.net/blog/binaryoptions-net-awards-2014/' shape='poly' target='_blank'>
+<area alt='NETTELER' coords='141,27,242,50' href=' https://member.neteller.com/member/signUp?step=twostep&amp;lang=en&amp;btag=a_11848b_1c_&amp;program=NTAFFILIATE' shape='rect' target='_blank'>
+</map>
+</div>
+<div style='display:none'>
+<div class='popup award' id='award'>
+<div class='img fl'>
+<img alt="2012 Best Payouts Broker" src="/images/v2/logos/best-payouts-broker-nq8.png?1453456315" />
+</div>
+<div class='text fl'>
+<p></p>
+<p></p>
+<p></p>
+<h2>Best Payouts Broker</h2>
+<h3>Winner - <span class='title'>MarketsWorld</span></h3>
+<p>This is awarded to the broker with highest payout percentage on classic call/put trades</p>
+<p class='bold'>Call/Put Payouts</p>
+<ul>
+<li>Up to 100%</li>
+</ul>
+</div>
+</div>
+<div class='popup award' id='award2'>
+<div class='img fl'>
+<img alt="Best Broker 2014" src="/images/v2/logos/binaryoptions_best_broker-nq8.png?1453456315" />
+</div>
+<div class='text fl'>
+<p></p>
+<p></p>
+<p></p>
+<h2>Best Broker 2014</h2>
+<h3>Winner - <span class='title'>MarketsWorld</span></h3>
+<p>
+<span class='newline'>This was awarded to the Best Binary Options Broker in 2014 based on best</span>
+<span class='newline'>payouts of up to 100%, best cashouts, best customer service and best overall binary options experience.</span>
+</p>
+</div>
+</div>
+</div>
+
+<p class='copyright'>
+&copy; <span class='title'>MarketsWorld</span> 2011-2016.
+<span>All rights reserved.</span>
+</p>
+</div>
+</div>
+
+</div>
+
+<script src="/assets/shared.js?1453456315" type="text/javascript"></script>
+<script src="/assets/public.js?1453456315" type="text/javascript"></script>
+
+
+
+<script>
+  //<![CDATA[
+    $(function() {
+      // init slider
+      $('.bxslider').bxSlider({
+        auto: true,
+        infiniteLoop: true,
+        randomStart: true,
+        pager: false,
+        pause: 6000
+      });
+    
+      // fade in and out the controls
+      $('.bx-wrapper').hover(
+        function() { $(this).find('.bx-controls').fadeIn(100); },
+        function() { $(this).find('.bx-controls').fadeOut(100); } );
+    
+      // handle mobile app alert
+      $("#mobile_app_alert, #mobile_app_alert a.close").click(function(){
+        $("#mobile_app_alert").hide();
+      });
+    });
+    
+    $('.news-wrapper .post').eq(0).addClass("left");
+    $('.news-wrapper .post').eq(1).addClass("right");
+    
+    document.write(unescape("%3Cscript id='pap_x2s6df8d' src='"+(("https:"==document.location.protocol)?"https://":"http://") + "marketsworld.postaffiliatepro.com/scripts/trackjs.js' type='text/javascript'%3E%3C/script%3E"));
+    $(function(){
+      function setCookie(name,value,exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+        var expires = "expires=" + d.toUTCString();
+        document.cookie = name+ "=" + value + ";" + expires;
+      }
+      try {
+        PostAffTracker.setAccountId('default1');
+        PostAffTracker.track();
+        var results = new RegExp('[#]*a_aid=([^&#]*)').exec(parent.location.href);
+        if(results.length>0)
+        {
+          setCookie("PAPAffiliateId",results[1],1);
+        }
+        //setCookie("PAPAffiliateId",results[1],1);
+      } catch (err) { }
+    });
+  //]]>
+</script>
+<script>
+  //<![CDATA[
+    $(function() {
+      $(".links .button.login").on("click", function() {
+        // expand the form
+    
+        $(".signup, .forgot a", ".user_info").toggle();
+        $(".login_form", "#login").slideToggle();
+        //$("#login .login_form").show();
+      });
+    });
+  //]]>
+</script>
+<script src='//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-51e8080f1194cc26' type='text/javascript'></script>
+<script>
+  //<![CDATA[
+    if (typeof window.APP_TEXTS === 'undefined') window.APP_TEXTS = {};
+    window.APP_TEXTS['lost_your_connection'] = "You have lost your connection to the server, please wait to reconnect automatically.";
+    window.APP_TEXTS['flash_67'] = "Your connection to the server has been re-established.";
+  //]]>
+</script>
+
+
+</body>
+</html>
+

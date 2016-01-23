@@ -1,0 +1,534 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="ja" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ja" > <!--<![endif]-->
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="viewport" content="width=device-width" />
+<link rel="shortcut icon" href="/common/img/favicon.ico"><title>草野球オンライン</title>
+<meta name="Keywords" content="草野球,くさやきゅう,草オン,baseball,野球,マイロッカー,成績管理,チームホームページ作成,球友,グラウンド,試合,私設リーグ,"> 
+<meta name="Description" content="草野球メンバー必携！草野球オンラインはチームや自分の成績・試合管理、私設リーグの開催、チームホームページの作成など、充実した機能が満載の草野球人コミュニティーサイトです。あなたの野球生活に「マイロッカー」を取り入れましょう！">
+<link rel="shortcut icon" href="/common/img/favicon.ico">
+<meta property="og:title" content="草野球を楽しむなら草野球オンライン"/>
+<meta property="og:description" content="草野球プレーヤー必携！草野球オンラインはチームや自分の成績・試合管理、私設リーグの開催、チームホームページの作成など、充実した機能が満載の草野球人コミュニティーサイト。"/>
+<meta property="og:image" content="http://www.kusaon.jp/shared/img/kusaon_fb_logo.jpg"/>
+<meta property="og:url" content="http://www.kusaon.jp/"/>
+<meta property="og:type" content="company"/>
+<meta property="og:site_name" content="草野球オンライン"/><meta name="google-site-verification" content="OiZXz4OOyDYB7tVCjIWrxAuiGSFoyzv0srqiD-KhnNI" />
+
+<!-- ここから共通読み込みcss -->
+<link rel='stylesheet' href='/common/css/style.css' type='text/css' media='all' />
+<link rel="stylesheet" href="/common/css/foundation.css" />
+
+<!-- ここから共通読み込みcss -->
+<!--<link href="/shared/css/layout.css" rel="stylesheet" type="text/css" />-->
+<link href="/common/css/re/top.css" rel="stylesheet" type="text/css" />
+<!-- 機能用 -->
+<link href="/shared/leagues/css/simpleslider.css" rel="stylesheet" type="text/css" />
+<!--<link href="/shared/leagues/css/dnews.css" rel="stylesheet" type="text/css" />-->
+
+<!-- ココから共通読み込みjs -->
+
+<script src="/common/js/jquery1.7.2.js"></script>
+<script type="text/JavaScript" src="/common/js/mjl.js"></script>
+<script type="text/JavaScript" src="/common/js/jquery.plugins.js"></script>
+<script type="text/JavaScript" src="/common/js/share.js"></script>
+<script type="text/javascript" src="/common/js/logic/logic.js"></script>
+<script type="text/javascript" src="/common/js/logic/logic_colorbox.js"></script>
+<script type="text/javascript" src="/common/js/logic/share.js"></script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+<script type="text/javascript" src="/common/js/logic/re/login_status.js"></script>
+<!--[if lte IE 6]>  
+<script type="text/javascript" src="/common/js/DD_belatedPNG_0.0.8a-min.js"></script>  
+<script type="text/javascript">
+	DD_belatedPNG.fix('img,.pngbg,.pdfLink,.outLink,.title,.back,.left,.subTopicsNewsNew,.subTopicsKyuyuNew,.subTopicsTeamNew');
+</script>  
+<![endif]-->
+<script language="javascript">AC_FL_RunContent = 0;</script>
+<script src="/common/js/AC_RunActiveContent.js" type="text/javascript"></script>
+<!--Foundation-->
+<script src="/common/js/foundation/foundation.js"></script>
+<script src="/common/js/foundation/foundation.topbar.js"></script>
+<!--
+<script src="/common/js/foundation/foundation.orbit.js"></script>
+<script src="/common/js/foundation/foundation.offcanvas.js"></script>
+-->
+</head>
+
+<body id="siteHome" class="topHome">
+	<div id="headerWrap">
+<!-- HEADER AREA -->
+	    	<header id="header" class="full-width large-12 columns">
+			<div class="row">
+                    <div class="small-8 large-4 columns">
+                        <h1><a href="/"><img src="/common/img/img_logo_pc.png" alt="草野球オンライン｜草野球をはじめるなら草野球オンライン" class="imgChange"></a></h1>
+                        					</ul>                    </div>
+                    <div class="small-4 large-8 columns">
+                    <ul id="subGNav" class="button-group right">
+                        <li class="navHelp hide-for-small small-2">
+                            <a href="/s/site/faq/index.php"><img class="roll" width="83" height="30" alt="ヘルプ" src="/common/img/btn_gnav_help.png"></a>
+                        </li>
+                        <li class="navBiginner hide-for-small small-2">
+                            <a href="/s/site/howto/index.php"><img class="roll" width="105" height="30" alt="はじめての方" src="/common/img/btn_gnav_biginner.png"></a>
+                        </li>
+                        <li class="navLoginout pngbg"><span id="_MyidBtn_PC" class="hide-for-small"></span>
+                        <span id="_MyidBtn_SP" class="show-for-small"></span></li>
+                        <li class="navLoginout pngbg"><span id="_loginStatusLink"></span></li>
+						                        
+                    </ul>
+                    </div>
+			</div>
+		</header><!--#header//END-->
+<!-- NAVIGATION AREA --> 
+    		<div id="gNav" class="full-width navigation-area">
+        	<div class="row">
+            	<div class="large-12 columns">
+                	<nav class="top-bar" data-topbar role="navigation">
+                    	<!-- SMP//Menu -->
+                        <ul class="title-area columns">
+                            <li class="toggle-topbar menu-icon"><a href="#"><span><img src="/common/img/re/menu_btn_sp.png" alt="Menu" /></span></a></li>
+                                                        						</ul>
+
+                        <!-- The Section wrap -->
+                        <section class="top-bar-section">
+                        <!-- Left Nav Section -->
+                        	<ul class="left">
+                            	<!-- バナーエリア/// -->
+                            	<li class="has-form show-for-small">
+                                	<span class="mgnB10"><a href="http://www.mizuno-swingtracer.com/?cid=kusaon201504" onClick="_gaq.push(['_trackEvent', 'mizuno', 'SwingTracer150409']);" target="_blank"><img src="/shared/img/banner/mizunoswing300.jpg" alt="MIZUNO SwingTracer（ミズノスイングトレーサー）" width="100%"/></a></span>
+                                    								</li>
+                        		<li id="first"><a href="/"><label>トップ</label></a></li>
+                                <li><a href="/grounds/index"><label>グラウンド</label></a></li>
+                                <li class="subTeamstop"><a href="/teams/index" class="item" role="button" tabindex="0" aria-label="home"><label>チーム</label></a></li>
+								                                <li class="has-dropdown"><a href="/leagues/index" class="item" role="button" tabindex="0" aria-label="home"><label>リーグ・大会</label></a>
+                                    <!--SUBMenu -->
+                                    <ul class="dropdown">
+                                        <li><a href="/leagues/">リーグ・大会TOP</a></li>
+                                        <li><a href="/s/leagues/asakatsu/">朝活CUP 2015</a></li>
+                                        <li><a href="/s/leagues/asakatsu2014/">朝活CUP 2014</a></li>
+                                        <li><a href="/s/leagues/asakatsu2013/">朝活CUP 2013</a></li>
+									</ul>
+                                </li>
+								                                <li class="has-dropdown"><a href="/events/index" class="item" role="button" tabindex="0" aria-label="home"><label>イベント</label></a>
+                                    <!--SUBMenu -->
+                                    <ul class="dropdown">
+                                        <li><a href="/events/index">イベントTOP</a></li>
+                                        <li><a href="http://www.kusaon.jp/s/megaking/ganbaro2015.php">メガキングⅡ×ガンバロウ野球大会「ホームランコンテスト」</a></li>
+                                        <li><a href="/s/leagues/asakatsu/mbp/index.php">朝活CUP特設イベント「モーニングボールパーク」</a></li>
+                                        <li><a href="/s/magazines/voice/index.php">夏のプレゼントキャンペーン！</a></li>
+                                        <li><a href="http://www.kusaon.jp/s/megaking/">ビヨンドマックスメガキング 試打キャンペーン！</a></li>
+                                        <li><a href="http://www.kusaon.jp/s/tours/miyakojima/">草野球キャンプIn宮古島2014</a></li>
+                                        <li><a href="http://www.kusaon.jp/s/tours/miyakojima2013/taguchicamp.php">草野球キャンプIn宮古島2013</a></li>
+                                        <li><a href="http://www.kusaon.jp/s/events/okinawacamp2013.php">2013 沖縄草野球キャンプ</a></li>
+                                        <li><a href="http://www.kusaon.jp/s/vx4/">VX4 試打キャンペーン！</a></li>
+                                        <li><a href="http://www.kusaon.jp/s/events/20110718.php">大人のための野球教室-栗山英樹氏-</a></li>
+                                        <li><a href="http://www.kusaon.jp/s/events/20101215.php">ジャパニーズ草野球No.1スラッガーはコイツだ！</a></li>
+                                        <li><a href="http://www.kusaon.jp/s/magazines/article/hitandrun/20100928.php">草野球のエースを狙え！』～槙原寛巳の変化球講座～</a></li>
+									</ul>
+                                </li>
+								<li class="has-dropdown"><a href="/shops/index" class="item" role="button" tabindex="0" aria-label="home"><label>ショップ</label></a>
+                                    <!--SUBMenu -->
+                                    <ul class="dropdown">
+                                    	<li class="subShoptop"><a href="/shops/">ショップTOP</a></li>
+                                        <!-- <li class="subItem"><a href="/s/shop/yakyuban/">オリジナル野球盤</a></li> -->
+									</ul>
+                                </li>
+                                <li class="has-dropdown"><a href="/offers/index" class="item" role="button" tabindex="0" aria-label="home"><label>募集情報</label></a>
+                                    <!--SUBMenu -->
+                                    <ul class="dropdown">
+                                    	 <li class="subOffer"><a href="http://www.kusaon.jp/offers/index">募集情報TOP</a></li>
+                                         <li class="subOfferOpposingTeam"><a href="/offer_opponent/index">対戦チーム募集</a></li>
+                                         <li class="subOfferMember"><a href="/offer_member/index">メンバー募集</a></li>
+                                         <li class="subOfferHelp"><a href="/offer_helper/index">助っ人募集</a></li>
+                                         <li class="subTryout"><a href="/offer_tryout/index">トライアウト</a></li>
+									</ul>
+                                </li>
+                                                                <li class="has-dropdown"><a href="/magazines/index" class="item" role="button" tabindex="0" aria-label="home"><label>マガジン</label></a>
+                                    <!--SUBMenu -->
+                                    <ul class="dropdown">
+                                        <li class="subMagazinetop"><a href="/magazines/index">マガジンTOP</a></li>
+                                        <li class="subInterview"><a href="/s/magazines/interview/">野球対談</a></li>
+                                        <li class="subArticle"><a href="/s/magazines/article/">コラム</a></li>
+                                        <li class="subMizuno"><a href="/s/magazines/mizuno/">ミズノボールパークin草オン</a></li>
+									</ul>
+                                </li>
+                                <li class="has-dropdown"><a href="/s/site/howto/what.php" class="item" role="button" tabindex="0" aria-label="home"><label>草野球オンラインとは</label></a>
+                                    <!--SUBMenu -->
+                                    <ul class="dropdown">
+                                    	<li class="aboutKusaon"><a href="/s/site/howto/what.php">草野球オンラインとはTOP</a></li>
+                                        <li class="biginner"><a href="/s/site/howto/index.php">はじめての方</a></li>
+                                        <li class="userRegist"><a href="/signup">ユーザー登録</a></li>
+                                        <li class="aboutMylocker"><a href="/s/site/howto/mylocker_what.php">マイロッカーとは</a></li>
+                                        <li class="aboutTeam"><a href="/s/site/howto/team_what.php">チームHPとは</a></li>
+                                        <li class="subTeamsmake"><a href="/my/team/register/index">チームを作る</a></li>
+                                        <li class="help"><a href="/s/site/faq/index.php">ヘルプ</a></li>
+									</ul>
+                                </li>
+							</ul>
+                            <!-- Right Nav Section -->
+                            						</section>
+					</nav><!--nav//top-bar//END-->
+				</div>
+			</div>
+		</div>
+<!-- SUBMENU -->
+	<!-- SUBMENU -->
+<div class="full-width hide-for-small navigation-area">
+<div class="row">
+	<div class="large-12 columns">
+	<ul class="subNav">
+		<li class="home"><a href="http://www.kusaon.jp/">トップ</a></li>
+		<li class="aboutKusaon"><a href="http://www.kusaon.jp/s/site/howto/what.php">草野球オンラインとは</a></li>
+		<li class="aboutMylocker"><a href="http://www.kusaon.jp/s/site/howto/mylocker_what.php">マイロッカーとは</a></li>
+		<li class="aboutTeam"><a href="http://www.kusaon.jp/s/site/howto/team_what.php">チームとは</a></li>
+		<li class="biginner"><a href="http://www.kusaon.jp/s/site/howto/index.php">はじめての方</a></li>
+		<li class="userRegist"><a href="http://www.kusaon.jp/signup">ユーザー登録</a></li>
+		<li class="help"><a href="http://www.kusaon.jp/s/site/faq/index.php">ヘルプ</a></li>
+        
+		<!--facebook-->
+        <li class="topSNS">
+        	<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.kusaon.jp&amp;send=false&amp;layout=button_count&amp;width=110&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:110px; height:21px;" allowTransparency="true"></iframe>
+		</li>
+        <!--twitter-->                
+	</ul>
+    <div class="topSNS">
+    	<a href="https://twitter.com/share" class="twitter-share-button" data-text="草野球メンバー必携！チームホームページの作成など、充実した機能が満載の草野球人コミュニティーサイト！" data-lang="ja"><img src="/common/img/re/sub_twitterBtn.png" alt="Twitter@kusa_on" style="margin-top:-2px;" /></a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.charset="UTF-8";js.id=id;js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	</div>               
+
+	</div><!--.div columns//END-->
+</div><!--.div row//END-->
+</div><!--#topicPath//END-->
+
+    <div class="hide-for-medium-up">
+        <dl class="small-block-grid-2 large-block-grid-3 subMenu">
+			<!--<li id="1" class="Menu home"><a class="subBtn" href="http://www.kusaon.jp/">トップ</a></li>-->
+			<li id="2" class="Menu aboutKusaon"><a class="subBtn" href="http://www.kusaon.jp/s/site/howto/what.php">草野球オンラインとは</a></li>
+			<li id="3" class="Menu aboutMylocker"><a class="subBtn" href="http://www.kusaon.jp/s/site/howto/mylocker_what.php">マイロッカーとは</a></li>
+			<li id="4" class="Menu aboutTeam"><a class="subBtn" href="http://www.kusaon.jp/s/site/howto/team_what.php">チームとは</a></li>
+			<li id="5" class="Menu biginner"><a class="subBtn" href="http://www.kusaon.jp/s/site/howto/index.php">はじめての方</a></li>
+			<li id="6" class="Menu userRegist"><a class="subBtn" href="http://www.kusaon.jp/signup">ユーザー登録</a></li>
+			<li id="7" class="Menu help"><a class="subBtn" href="http://www.kusaon.jp/s/site/faq/index.php">ヘルプ</a></li>
+        </dl>
+    </div>		</div><!--#headerWrap//END-->
+
+<!-- CONTENT AREA -->
+	<div id="container" class="full-width content-area">
+ <!--//LFFT//MAIN------------------------------------------------------------------------------------------------------------>
+		<div id="main" class="row">
+        
+		<!--左カラム//ココから-------------------------------------------------------------------------------------------->
+        <div id="sub" class="hide-for-small large-3 columns">
+        	            <div id="beginning">
+				                <div class="mgnB10"><a href="/my/team/register/edit"><img src="/common/img/re/btn_myteamLink.png" alt="チームHPを作る" class="roll" width="100%" /></a></div>
+                	<ul id="mylockerNav">
+                    	<li><a href="https://kusaon.jp/signup"><img src="/common/img/re/btn_mylocker_register.png" alt="マイロッカーを作る（無料でカンタン登録）" class="roll" width="100%" /></a></li>
+                        <li><a href="http://www.kusaon.jp/s/site/howto/mylocker_what.php"><img src="/common/img/re/btn_mylocker_about.png" alt="マイロッカーとは？" class="roll" width="100%" /></a></li>
+                        <li><a href="https://kusaon.jp/login"><img src="/common/img/re/btn_mylocker_login.png" alt="マイロッカーログイン" class="roll" width="100%" /></a></li>
+                        <li><a href="/forgot_password/index"><img src="/common/img/re/btn_mylocker_pwreminder.png" alt="パスワードをお忘れの方はコチラ" class="roll" width="100%" /></a></li>
+					</ul>
+				                
+                			</div><!--END//#beginning-->
+                
+            <div id="teamNav">
+                <div id="teamNavBody" style="background-image:none;">
+                    <p style="margin-bottom:10px;"><a href="/teams/?utm_source=kusatop&utm_medium=banner2&utm_campaign=team"><img src="/common/img/re/top_left_team_kensaku.png" alt="チームHP検索"></a></p>
+                        <h3><img src="/common/img/re//st_team_search.png" alt="知り合いチームややライバルチームを探そう！" /></h3>
+                            <script type="text/javascript">
+                                (function($){
+                                $(function(){
+                                $("input.teamKeyword").val("キーワードを入力").css("color","#969696");
+                                $("input.teamKeyword").focus(function(){
+                                    if(this.value == "キーワードを入力"){
+                                    $(this).val("").css("color","#000");
+                                    }
+                                });
+                                $("input.teamKeyword").blur(function(){
+                                    if(this.value == ""){
+                                    $(this).val("キーワードを入力").css("color","#969696");
+                                    }
+                                    if(this.value != "キーワードを入力"){
+                                    $(this).css("color","#000");}
+                                });
+                                });
+                                })(jQuery);
+                            </script>
+                            <form id="teamSearchForm" method="get" action="/teams/index">
+                                <table style="margin-bottom:10px;">
+                                    <input type="hidden" name="cmd_submit" value="1" />
+                                    <tr>
+                                        <td class="teamSearchFormInput"><input name="keyword" type="text" class="inputText teamKeyword" value="" id="FormKeyword" /></td>
+                                        <td class="teamSearchFormBtn"><input type="image" value="検索" src="/common/img/btn_search_s.gif" class="pdg05"></td>
+                                    <tr>
+                                </table>
+                            </form>
+                            <ul id="teamReg">
+                                <li><a href="/s/site/howto/team_what.php"><img src="/common/img/re/btn_team_about.gif" alt="チームHPとは"></a></li>
+                                <li><a href="/s/site/howto/team_making.php"><img src="/common/img/re/btn_team_howto.gif" alt="チーム登録、チームHPの作り方"></a></li>
+                            </ul>
+                </div><!-- End//#teamNavBody -->
+            </div><!-- End//#teamNav -->
+            
+            
+			                            
+            <div id="helpInduce">
+                <h2 class="hd">はじめての方へ</h2>
+                <ul class="infoList">
+                    <li><a href="http://www.kusaon.jp/s/site/howto/what.php">草野球オンラインとは</a></li>
+                    <li><a href="http://www.kusaon.jp/s/site/howto/mylocker_what.php">マイロッカーとは</a></li>
+                    <li><a href="http://www.kusaon.jp/s/site/howto/mylocker_use.php">マイロッカーを作ろう</a></li>
+                    <li><a href="http://www.kusaon.jp/s/site/howto/team_what.php">チームHPとは</a></li>
+                    <li><a href="http://www.kusaon.jp/s/site/howto/team_making.php">チームHPを作ろう</a></li>
+                    <li><a href="http://www.kusaon.jp/s/site/howto/mylocker_what.php">成績を管理しよう</a></li>
+                    <li><a href="http://www.kusaon.jp/s/site/faq/index.php">ヘルプ</a></li>
+                </ul>
+            </div>
+            <div id="helpInduce">
+                <h2 class="hd">よくある質問</h2>
+                <ul class="infoList">
+                    <li><a href="http://www.kusaon.jp/s/site/howto/mylocker_what.php">マイロッカーとは？</a></li>
+                    <!--<li><a href="#">全て無料って本当ですか？</a></li>-->
+                    <li><a href="http://www.kusaon.jp/s/site/faq/about_friend.php#q01">球友ってなんですか？</a></li>
+                    <li><a href="http://www.kusaon.jp/s/site/howto/team_admin.php">チーム管理人とは？</a></li>
+                    <li><a href="http://www.kusaon.jp/s/site/howto/mylocker_what.php#mylocker_03">成績管理とは？</a></li>
+                    <li><a href="http://www.kusaon.jp/s/site/howto/mylocker_what.php#mylocker_04">掲示板ってなんですか？</a></li>
+                </ul>
+            </div>
+            <ul>
+                <li><a href="/s/contact/"><img src="/shared/img/bn/bn_04.jpg" alt="ご意見ご要望は草オン事務局まで" width="170" height="50"></a></li>
+            </ul>
+            <div align="center" style="margin-top:20px;">
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <ins class="adsbygoogle"
+                    style="display:inline-block;width:160px;height:600px"
+                    data-ad-client="ca-pub-4255615997825291"
+                    data-ad-slot="9288059769"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+		</div><!--END//large-3-->
+
+<!--中カラム//ココから------------------------------------------------------------------------------------------->
+        	<div id="pickupInfo" class="small-12 large-6 columns">
+            <!--メンテナンス-->
+				                                    <!--年賀-->
+                        <!--FLASH//END-->
+                <!--トップスライダー//*smpバナー共通*-->
+                <ul class="bxslider">
+			    <li><a href="/s/2015ranking/team_ranking.php" onClick="_gaq.push(['_trackEvent', '15ranking', 'TOPMAIN']);" target="_self"><img src="/shared/img/banner/500top_bnr.jpg" alt="2015年草野球オンライン年間ランキング発表！" width="100%"/></a></li>
+
+    <!--<li><a href="/s/megaking/ganbaro2015.php" onClick="_gaq.push(['_trackEvent', 'mega2', 'TOPMAIN']);" target="_self"><img src="/shared/img/banner/derby_title.jpg" alt="メガキングⅡ×ガンバロウ野球大会「ホームランコンテスト」" width="100%"/></a></li>-->
+        
+	            	</ul>
+            <!--アクセスランキング-->
+            <div id="teamRanking">
+            	<h2 class="hd">チーム週間アクセスランキング</h2>
+                <p class="rankingSchedule mgnB10"> [ 2016.01.11～2016.01.17 ]</p>
+					<script type="text/javascript">
+						$(document).ready(function(){$("table#teamRankingTbl tr:even").css("background-color", "#FFF7DD");});
+					</script>
+				<table id="teamRankingTbl">
+					                    <tr>
+                    	<td class="rankingNo"><img src="/shared/img/img_no_01.gif" /></td>
+                        <td class="teamLogo"><a href="/team/narashinomsc" target="_blank"><img src="/d/teams/5000/4921/logo_1_m.jpg" width="50" height="50" /></a></td>
+                        <td class="teamName"><strong><a href="/team/narashinomsc" target="_blank">習志野ブレイブス</a></strong></td>
+                        <td class="teamArea"><a href="/teams/index?base=千葉県&name=&keyword=&cmd_submit=1&x=62&y=10">千葉県</a></td>
+					</tr>
+					                    <tr>
+                    	<td class="rankingNo"><img src="/shared/img/img_no_02.gif" /></td>
+                        <td class="teamLogo"><a href="/team/burning_slime" target="_blank"><img src="/d/teams/9000/8364/logo_1_m.jpg" width="50" height="50" /></a></td>
+                        <td class="teamName"><strong><a href="/team/burning_slime" target="_blank">バーニングスライム</a></strong></td>
+                        <td class="teamArea"><a href="/teams/index?base=大阪府&name=&keyword=&cmd_submit=1&x=62&y=10">大阪府</a></td>
+					</tr>
+					                    <tr>
+                    	<td class="rankingNo"><img src="/shared/img/img_no_03.gif" /></td>
+                        <td class="teamLogo"><a href="/team/t_jyouhokumets" target="_blank"><img src="/d/teams/6000/5468/logo_1_m.jpg" width="50" height="50" /></a></td>
+                        <td class="teamName"><strong><a href="/team/t_jyouhokumets" target="_blank">城北メッツ （低学年）</a></strong></td>
+                        <td class="teamArea"><a href="/teams/index?base=東京都&name=&keyword=&cmd_submit=1&x=62&y=10">東京都</a></td>
+					</tr>
+					                    <tr>
+                    	<td class="rankingNo"><img src="/shared/img/img_no_04.gif" /></td>
+                        <td class="teamLogo"><a href="/team/mukoujimabeavers" target="_blank"><img src="/d/teams/8000/7574/logo_1_m.png" width="50" height="50" /></a></td>
+                        <td class="teamName"><strong><a href="/team/mukoujimabeavers" target="_blank">向島ビーバーズ</a></strong></td>
+                        <td class="teamArea"><a href="/teams/index?base=東京都&name=&keyword=&cmd_submit=1&x=62&y=10">東京都</a></td>
+					</tr>
+					                    <tr>
+                    	<td class="rankingNo"><img src="/shared/img/img_no_05.gif" /></td>
+                        <td class="teamLogo"><a href="/team/mosaiq2011" target="_blank"><img src="/d/teams/3000/2271/logo_1_m.jpg" width="50" height="50" /></a></td>
+                        <td class="teamName"><strong><a href="/team/mosaiq2011" target="_blank">MOSAIQ</a></strong></td>
+                        <td class="teamArea"><a href="/teams/index?base=兵庫県&name=&keyword=&cmd_submit=1&x=62&y=10">兵庫県</a></td>
+					</tr>
+									</table>
+                	<p class="teamRankingMore"><a href="/teams/index">ランキング10位までを見る</a></p>
+			</div><!--#teamRanking//END-->
+            
+            <!--募集情報-->
+            <div id="ctsOffers">
+            	<h2 class="hd Offers">募集情報</h2>
+                <ul class="offersBox infoMenu small-12 columns">
+                	<li class="small-6 large-12">
+                        <li class="roll02 small-6 large-6"><a href="/offer_opponent/index"><img src="/shared/img/re/bosshu_vs_off.png" alt="対戦チーム募集"></a></li>
+                        <li class="roll03 small-6 large-6"><a href="/offer_member/index"><img src="/shared/img/re/bosshu_member_off.png" alt="メンバー募集"></a></li>
+                    </li>
+                	<li class="small-6 large-12">
+                    	<li class="roll04 small-6 large-6"><a href="/offer_helper/index"><img src="/shared/img/re/bosshu_help_off.png" alt="助っ人募集"></a></li>
+                        <li class="roll05 small-6 large-6"><a href="/offer_tryout/index"><img src="/shared/img/re/bosshu_try_off.png" alt="トライアウト募集"></a></li>
+                    </li>
+                	<li class="small-12 large-12">
+                    	<li class="roll01 small-12 large-12"><a href="/offers/index"><img src="/shared/img/re/bosshu_all_off.png" alt="一覧"></a></li>
+                    </li>
+				</ul>
+			</div>
+			<!--草OnNews-->
+				<div id="onNews" class="section">
+    <h2 class="hd">草OnNews<!--<img src="/shared/img/st_kusa_onnews.png" alt="草OnNews" />--></h2>
+    <dl>
+                <dt><span>2016.01.08</span></dt><dd class="news"><b>【システムメンテナンス終了のお知らせ】</b><br>本日1月8日16時より実施しておりましたメンテナンスですが、16時40分頃終了いたしました。上記時間帯、お客さまには大変ご迷惑をおかけいたしました。今後とも草野球オンラインを、宜しくお願い申し上げます。</dd>
+        <dt><span>2016.01.07</span></dt><dd class="news"><b>【システムメンテナンスのお知らせ】</b><br>2016年1月8日16時〜16時30分にシステムメンテナンスを実施いたします。上記時間帯はサイトに繋がりにくい状態となります。お客さまには大変ご迷惑をおかけいたしますが、何卒ご了承いただけますよう、よろしくお願い申し上げます。</dd>
+        <dt><span>2016.01.06</span></dt><dd class="news"><a href="/s/2015ranking/team_ranking.php" target="_blank">2015年の年間ランキング発表！ チームHP・打撃成績・投手成績の3部門で発表！</a></dd>
+        <dt><span>2015.10.19</span></dt><dd class="news"><a href="https://groundnavi.kusaon.jp/?kusaon_info" target="_blank">東京23区のグラウンド空き情報検索サイト「グラナビ東京」誕生！</a></dd>
+        <dt><span>2015.07.22</span></dt><dd class="news"><a href="/s/magazines/voice/index.php" target="_self">草オンの夏のプレゼントキャンペーン！アンケートに答えてキャンペーンに応募しよう!</a></dd>
+        <dt><span>2015.06.22</span></dt><dd class="news"><a href="/s/leagues/asakatsu/2015/schedule.php" target="_self">トーナメント発表！今年の朝活CUPは参加32チーム！</a></dd>
+        <dt><span>2015.06.19</span></dt><dd class="news"><a href="/s/leagues/asakatsu/" target="_self">『朝活CUP2015』参加申込締切迫る 6/21まで！</a></dd>
+        <dt><span>2015.04.17</span></dt><dd class="news"><a href="/s/leagues/asakatsu/" target="_self">朝野球大会『朝活CUP2015』只今参加チーム募集中！</a></dd>
+            </dl>
+</div>
+            <!--//バナーエリア///-->
+                        <!--マガジン-->
+            <div id="ctsMagazines">
+        	<h2 class="hd">マガジン</h2>
+            	<div id="kusaonTopics">
+                	<ul class="kusaonTopicsList">
+                    	<li class="kusaonTopicsColumn">
+                        	<span class="photo hide-for-small"><a href="/s/magazines/article/temomin/"><img src="/shared/magazines/article/img/temomin/img_magazines_temomin_08b_01.jpg" width="60" height="60"></a></span>
+                            <h3><a href="/s/magazines/article/temomin/">職場で出来る簡単トレーニング（2）</a></h3><br>
+                            <span class="read">全日本女子ソフトボールチームのトレーナーも経験もされたグローバル治療院、鈴木さんによる書き下ろしコラム。セルフマッサージ編。</span>
+						</li>
+					</ul>
+				</div>
+			</div><!--#ctsMagazines//END-->
+			<!--SMP//FootBanner-->
+            	<div class="show-for-small">
+					<div class="pcLink">ー PR ー</div>
+		<p class="mgnB10"><a href="http://www.kusaon.jp/s/leagues/cup/strongleague/"><img src="/shared/img/banner/strong_bnr_300_90.jpg" alt="ストロングカップ" width="100%"/></a></p>
+    	<div class="mgnB10"><script type="text/javascript" language="javascript" src="http://obtv.sporture.tv/KusaOn/kusaonBannerSMP.js"></script></div>
+        <p class="mgnB10"><a href="https://groundnavi.kusaon.jp/?kusaon_sp_top" target="_blank"><img src="/shared/img/banner/groundnavi_banner_270x80.jpg" alt="グラナビ東京" width="100%"/></a></p>
+        <p class="mgnB10"><a href="http://ganbaroweb.net/" onClick="_gaq.push(['_trackEvent', 'team', 'ganbaro-15spring']);" target="_blank"><img src="/shared/img/banner/ganbaro0406.png" width="100%" alt="ガンバロウ野球大会"/></a></p>
+		<p class="mgnB10"><a href="/s/2015ranking/team_ranking.php"><img src="/shared/img/banner/300side_bnr.jpg" alt="2015年草野球オンライン年間ランキング発表！" width="100%"/></a></p>
+        
+	                </div>
+
+            <!--GoogleAD-->
+            <div align="center">
+			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            	<ins class="adsbygoogle" style="display:inline-block;width:468px;height:60px" data-ad-client="ca-pub-4255615997825291" data-ad-slot="9281386569"></ins>
+			<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+			</div>
+		</div><!--END//large-6-->
+
+
+<!--右カラム//ココから------------------------------------------------------->
+        <div id="extra" class="hide-for-small large-3 columns">
+        	
+<p class="mgnB10"><a href="http://www.mizuno-swingtracer.com/?cid=kusaon201504" onClick="_gaq.push(['_trackEvent', 'mizuno', 'SwingTracer150409']);" target="_blank"><img src="/shared/img/banner/mizunoswing300.jpg" alt="MIZUNO SwingTracer（ミズノスイングトレーサー）" width="100%"/></a></p>
+<p class="mgnB10"><a href="http://www.kusaon.jp/s/leagues/cup/strongleague/"><img src="/shared/img/banner/strong_bnr_300_90.jpg" alt="ストロングカップ" width="100%"/></a></p>
+<p class="mgnB10"><script type="text/javascript" language="javascript" src="http://obtv.sporture.tv/KusaOn/kusaonBannerPC.js"></script></p>
+<p class="mgnB10"><a href="https://groundnavi.kusaon.jp/?kusaon_top" target="_blank"><img src="/shared/img/banner/groundnavi_banner_270x80.jpg" alt="グラナビ東京" width="100%"/></a></p>
+<p class="mgnB10"><a href="/s/2015ranking/team_ranking.php"><img src="/shared/img/banner/300side_bnr.jpg" alt="2015年草野球オンライン年間ランキング発表！" width="100%"/></a></p>
+
+			            		
+            	    	    	                                                    	            							            	            	            				            	                            				            					                	                    <h2 class="hd">野球大会</h2>
+                    <p class="mgnB10"><a href="/s/leagues/asakatsu/" onClick="_gaq.push(['_trackEvent', 'asa2015', 'side-bnr']);" target="_self"><img src="/shared/img/banner/bnr300_asa_ss.jpg" alt="朝活CUP2015" width="100%"/></a></p>
+                    <p class="mgnB10"><a href="http://www.baseball.gr.jp/16sc/" onClick="_gaq.push(['_trackEvent', 'strong-16scspring', 'side']);" target="_blank"><img src="/shared/img/banner/str1512.png" width="100%" alt="プロスタダブルチャレンジ！SC16春"/></a></p>
+                    <p class="mgnB10"><a href="http://ganbaroweb.net/" onClick="_gaq.push(['_trackEvent', 'ganbaro-15spring', 'side']);" target="_blank"><img src="/shared/img/banner/ganbaro0406.png" width="100%" alt="ガンバロウ野球大会"/></a></p>
+                	                                                                                                                                            					                                	<h2 class="hd">草オンパートナー</h2>
+                <ul class="contentsBn">
+                	<li class="mgnT15"><a href="/s/banner/mizuno_top_right_partner.html" onClick="_gaq.push(['_trackEvent', 'mizuno', 'banner', 'top-right-partner']);" target="_blank"><img src="/common/img/sponsor/bn_mizuno.png" alt="MIZUNO" width="270" height="50"></a></li>
+					<li>
+                    	<span class="mgnT15 bn_left"><a href="http://www.majesticjapan.com/" target="_blank"><img src="/common/img/bn_majestic.png" alt="majestic" width="132" height="50"></a></span>
+                    	<span class="mgnT15 bn_right"><a href="http://www.neweracap.jp/" target="_blank"><img src="/common/img/bn_newera.png" alt="NEWERA" width="132" height="50"></a></span>
+											</li>
+				</ul>
+            	<span class="mgnB10"><img src="/shared/img/banner/hr_black.png" width="270" height="9"></span>
+                	<img src="/common/img/fb_270_head.png" /><!-- FACEBOOK//L_270px -->
+            	<div class="facebook_box mgnB10">
+                	<div id="fb-root"></div>
+						<script src="http://connect.facebook.net/ja_JP/all.js#xfbml=1"></script>
+                        <fb:like-box data-href="http://www.facebook.com/kusaon" data-width="270" data-height="222" data-border-color="#3A5998" data-header="false" data-stream="false" data-show-faces="true"></fb:like-box>
+				</div><!-- End//#facebook_box -->
+                    <ul class="contentsBnUnder">
+                    	<li><a href="http://twitter.com/kusa_on" target="_blank"><img src="/common/img/twitter_270_bnr.png" alt="草野球オンライン　公式ツイッター" width="270" height="54"></a></li>
+					</ul>
+                	<h2 class="hd">チームを運営する</h2>
+                    <ul class="contentsInduce">
+                    	<li class="photo"><img src="/shared/img/img_rightBox_02.jpg" alt="草野球チームを運営"></li>
+                        <li>チームホームページの作成からメンバー管理、成績管理、連絡網機能等もチーム運営機能やコンテンツも充実！</li>
+					</ul>
+                    <ul class="rightBox">
+                    	<li><a href="/s/site/howto/team_what.php">チームホームページを作る（無料）</a></li>
+                        <li><a href="/s/offers/about/">対戦相手を探す/募集する</a></li>
+                        <li><a href="/shops/index">ユニフォームをつくる</a></li>
+                        <li><a href="/s/site/howto/team_what.php#team_01">チーム機能紹介</a></li>
+					</ul>
+					<h2 class="hd">グラウンドを探す</h2>
+                    <ul class="contentsInduce">
+                    	<li class="photo"><img src="/shared/img/img_rightBox_03.jpg" alt="草野球グラウンドを探す"></li>
+                        <li>草野球ライフをもっと便利にする！全国約8,300箇所のグラウンドデータベースから憧れの球場や近隣のグラウンドが探せる！</li>
+					</ul>
+				<ul class="areaBox">
+					<li><a href="/grounds/index?area=01">北海道</a></li>
+					<li><a href="/grounds/index?area=02">東北</a></li>
+					<li><a href="/grounds/index?area=03">北関東</a></li>
+					<li><a href="/grounds/index?area=04">関東</a></li>
+					<li><a href="/grounds/index?area=05">甲信越</a></li>
+					<li><a href="/grounds/index?area=06">北陸</a></li>
+					<li><a href="/grounds/index?area=07">東海</a></li>
+					<li><a href="/grounds/index?area=08">近畿</a></li>
+					<li><a href="/grounds/index?area=09">中国</a></li>
+					<li><a href="/grounds/index?area=10">四国</a></li>
+					<li><a href="/grounds/index?area=11">九州・沖縄</a></li>
+				</ul>
+		</div><!-- END//#extra --><!-- ここまで右メニュー -->
+ <!--//RIGHT//SIDE------------------------------------------------------------------------------------------------------------>
+	</div><!--#large-9//END//-->
+</div><!--#main//END//-->
+ <!--//CONTENT//END------------------------------------------------------------------------------------------------------------>
+			<div class="pagetop"><a href="#"><img src="/common/img/img_team_pagetop.png" /></a></div>
+	</div><!--#container//END//-->
+<!-- FOOTER AREA -->
+	<div id="footer" class="full-width footer-area">
+    <div class="row">
+    <ul class="footerNav large-12">
+        <li class="large-1 columns"><a href="/s/company/index.php" aria-label="home">運営会社</a></li>
+        <li class="large-1 columns"><a href="/s/site/site_rule.php" aria-label="home">利用規約</a></li>
+        <li class="large-1 columns"><a href="/s/site/site_condition.php" aria-label="home">サイト利用条件</a></li>            
+        <li class="large-1 columns"><a href="/s/site/privacy.php" aria-label="home">プライバシーポリシー</a></li>
+        <li class="large-1 columns"><a href="/s/site/deals.php" aria-label="home">特定商取引に基づく表記</a></li>
+        <li class="large-1 columns"><a href="/s/site/offer.php" aria-label="home">採用情報</a></li>
+        <li class="large-1 columns"><a href="/s/contact/" aria-label="home">お問い合わせ</a></li>
+    </ul>
+    <p id="copyAndLink">Copyright © 2015 SPORTS MARKETING LABORATORY Inc, All rights reserved.</p>
+    </div>
+</div><!--#footer//END//-->
+
+<!--google analytics-->
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-17294666-1']);
+	_gaq.push(['_trackPageview']);
+(function() {
+ 	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+<script>$(document).foundation();</script>
+</body></html>

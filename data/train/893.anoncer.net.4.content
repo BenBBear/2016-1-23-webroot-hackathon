@@ -1,0 +1,528 @@
+<!DOCTYPE>
+<html>
+<head>
+<base href="http://anoncer.net">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+<META NAME = "AUTHOR" CONTENT = "Ярослав Цыганенко, студия GLORANCE">
+<META NAME = "COPYRIGHT" CONTENT = "Ярослав Цыганенко">
+<META NAME = "DESCRIPTION" CONTENT = "Анонсер - афиша Чернигова. Кино, спектакли, концерты, вечеринки. Рестораны, кафе и бары Чернигова">
+<META NAME = "KEYWORDS" CONTENT = "anoncer, анонсер нет, анонсер Чернигов, места отдыха, афиша Чернигова, кино, спектакли, концерты, вечеринки, ночноые клубы, театр, кафе, бары, рестораны">
+<META NAME="robots" CONTENT="index, follow">
+
+<link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+<link rel="stylesheet" href="src/css/style.css"  type="text/css"/>
+<link rel="stylesheet" href="src/css/dropdown.css"  type="text/css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="src/css/mts-start.css"/>
+<link rel="stylesheet" href="src/css/qTip.css"  type="text/css" />
+
+<script type="text/javascript" src="src/js/scripts.js"></script>
+<script type="text/javascript" src="src/js/mootools.js"></script>
+<script type="text/javascript" src="src/js/dropdown.js"></script>
+<script type="text/javascript" src="src/js/mts-start.js"></script>
+<script type="text/javascript" src="src/js/qTip.js"></script>
+
+<link rel="stylesheet" href="formcheck/form.css" type="text/css" media="screen" />
+
+<!----------------- Javascript ------------------------------------------------------------->
+ <script type="text/javascript">
+ 
+// ==================== ПЕРЕМЕННЫЕ ==========================================================
+var old_obj=0;
+
+//=========================================================================================== 
+ var cat=99;
+ var cat1=99;
+ 
+ var lim=0;
+ var lim1=0;
+ var typeofac=1;
+ 
+ hiddenImg= new Image();  hiddenImg.src= "images/nodata.png";
+ hiddenImg= new Image();  hiddenImg.src= "images/loading.gif";
+ 
+//-------------------------------------------------------------------------------------------
+
+window.addEvent('domready', function() {
+  
+ // запуск функций
+  Clock();
+  //doLightOut('lga');
+  doLightOut('lgb2');
+  doLightOut('lgb3');
+  
+  var ac1=true;
+
+  var dpx=screen.availWidth;
+  if (dpx>1050)
+  {
+  var accordion = new Accordion('h3.atStart', 'div.atStart', {
+	opacity: false,
+	display:10,
+	onActive: function(toggler, element){
+	toggler.setStyle('color', 'white'); toggler.setStyle('backgroundColor', '#F50A0A');
+		},
+	onBackground: function(toggler, element){
+	toggler.setStyle('color', 'white'); toggler.setStyle('backgroundColor', '#404040');
+		},
+	onComplete: function(){
+        if (ac1) { msfShow('accordion'); accordion.display(0); ac1=false; }
+        }
+
+	}, $('accordion'));
+
+  }	
+
+});
+
+//---------------------------------------------------------------------------------------
+ </script>
+
+
+<title>Анонсер Чернигов - афиша города. Кино, вечеринки, спектакли, концерты, выставки, театры, рестораны, кафе, ночные клубы</title>
+</head>
+
+<body>
+
+<!--[if lt IE 7]>
+<![if gte IE 5.5]>
+<script type="text/javascript" src="./src/js/fixpng.js"></script>
+<style type="text/css"> 
+.iePNG, .iep, .checktab_clock, .nulltab_glogrey, img, div, td { filter:expression(fixPNG(this)); } 
+.iePNG .iep .checktab_clock .nulltab_glogrey a img div td{ position: relative; }/* стиль для нормальной работы ссылок в элементах с PNG-фоном */
+</style>
+<![endif]>
+<![endif]-->
+
+
+
+
+    <div id='accordion' style='display:none'>
+    
+	<div class=pultnaz>
+	        
+			<table class=checktab_tab_clock2 align=left border=0 cellpadding=0 cellspacing=0><tr>
+			<td><div class=inclo><img id=ha1 src='images/timeline.png' width=125px height=35px></div></td>
+			<td><div class=inclo><img id=ha2 src='images/timeline.png' width=125px height=35px></div></td>
+			<td><img  src='images/d.png' width=4px height=35px></td>
+			<td><div class=inclo><img id='m1' src='images/timeline.png' width=125px height=35px></div></td>
+			<td><div class=inclo><img id='m2' src='images/timeline.png' width=125px height=35px></div></td>
+			<td><img  src='images/d.png' width=4px height=35px></td>
+			<td><div class=inclo><img id=s1 src='images/timeline.png' width=125px height=35px></div></td>
+			<td><div class=inclo><img id=s2 src=images/timeline.png width=125px height=35px></div></td></tr>
+		    </table>
+    
+	<font onclick="msfHide('accordion');" class=loger onmouseout="this.className='loger'" onmouseover="this.className='logerh'" id=closepult>Выкл</font></div>
+	<h3 class='toggler atStart' style='clear:both;'>Афиша Чернигова</h3>
+	<div class='element atStart'><a href='./cn/today' class=bo>На сегодня</a><font id='Gr8'> 30</font><br><a href='./cn/week' class=bo>На неделю</a><font id='Gr8'> 51</font><br><a href='./cn/all' class=bo>На месяц</a><font id='Gr8'> 77</font><br><div class=borderok></div><a href='../events/cn/cinema' class=bo>Кино</a><font id='Gr8'> 20</font><br><a href='../events/cn/concert' class=bo>Концерты и шоу</a><font id='Gr8'> 7</font><br><a href='../events/cn/theatre' class=bo>Спектакли</a><font id='Gr8'> 30</font><br><a href='../events/cn/club' class=bo>Вечеринки</a><font id='Gr8'> 11</font><br><a href='../events/cn/train' class=bo>Обучение</a><font id='Gr8'> 1</font><br><a href='../events/cn/child' class=bo>Детям</a><font id='Gr8'> 8</font><br><div class=char_3px></div></div>
+	<h3 class='toggler atStart'>Места отдыха</h3>
+	<div class='element atStart'><a href='../places/cn' class=bo>Все места</a><font id='Gr8'> 171</font><br>
+	<!--a href='../map/cn' class=bo>На карте</a><font id='Gr8'> 171</font-->
+	<div class=borderok></div>
+	<a href='../places/cn/cafe' class=bo>Кафе</a><font id='Gr8'> 76</font><br>
+	<a href='../places/cn/pub' class=bo>Бары и пабы</a><font id='Gr8'> 18</font><br>
+	<a href='../places/cn/restaurant' class=bo>Рестораны</a><font id='Gr8'> 40</font><br>
+	<a href='../places/cn/party' class=bo>Клубы</a><font id='Gr8'> 13</font><br><font class=loger onmouseout="this.className='loger'" onmouseover="this.className='logerh'" onclick="doLightIn('lgb2');">Выбиралка мест</font><img class=img_option src='images/option_bot.png' width=11 height=10>
+	<div class=char_3px></div>		
+	</div>
+	<h3 class='toggler atStart' style='clear:both;'>Арт-ленты</h3>
+	<div class='element atStart'><a href='../journal/cn' class=bo>Все публикации</a><font id='Gr8'> 245</font><div class=borderok></div><a href='../journal/cn/music' class=bo>Музыка</a><font id='Gr8'> 16</font><br><a href='../journal/cn/show' class=bo>Шоу</a><font id='Gr8'> 15</font><br><a href='../journal/cn/night' class=bo>Клубы</a><font id='Gr8'> 6</font><br><a href='../journal/cn/theatre' class=bo>Театр</a><font id='Gr8'> 20</font><br><a href='../journal/cn/paint' class=bo>Изо</a><font id='Gr8'> 5</font><br><a href='../journal/cn/fashion' class=bo>Мода</a><font id='Gr8'> 13</font><br><a href='../journal/cn/sport' class=bo>Спорт</a><font id='Gr8'> 4</font><br><a href='../journal/cn/people' class=bo>Люди</a><font id='Gr8'> 5</font><br><a href='../journal/cn/place' class=bo>Места</a><font id='Gr8'> 8</font><br><a href='../journal/cn/photo' class=bo>Фотография</a><font id='Gr8'> 1</font><br><a href='../journal/cn/other' class=bo>Разное</a><font id='Gr8'> 8</font><br><div class=char_3px></div></div>
+</div>
+<!--div id=printeros style='display:none'><div id=karman>Карманная версия<br><font onclick="window.open(ssilker,'',param);" class=logerw onmouseout="this.className='logerw'" onmouseover="this.className='logerhw'">распечатайте это !</font></div></div--><!--div style="width:140px; right:0px; top:360px; z-index:990; position: fixed;"><div id="lx_331329"></div></div-->
+<!-- LE-options -->
+<div id="le" style="display:none"></div>
+<table  style="display:none" id="lg" border="0" cellpadding="10" cellspacing="0">
+<tr><td class="lgpanel">  <center>
+
+ <!-- LE-ANONCER ------------->
+ <div id="lga">
+ </div>
+  <!-------------------------->
+  
+   <!-- LE-CATEGOR MAP-->
+ <div id="lgb2">
+   <table  border="0" cellpadding="10" cellspacing="0">
+     <tr>
+        <td colspan=6 valign=center align=center><div style='margin-left:20px; margin-top:10px;'><font id=RX>выбор мест отдыха</font>&nbsp;<font class=bigR>какие опции Вам интересны?</font></div>
+	<font style="float:right; clear:both;" class="loger2" onMouseOut="this.className='loger2'" onMouseOver="this.className='logerh2'"><a class=bo href='../places/cn'>Поиск по названию</a><font id='Gr8'> 171</font></font>
+		</td>
+     </tr>
+     <tr>
+        <td valign=top class="tab_lgb_left" style="width:160px"><font class="bigW">Едим</font><br><div class="loger2" onmouseout="this.className='loger2'" onmouseover="this.className='logerh2'"><a href='../places/cn/cafe'>Кафе</a><font id='Gr8'> 76</font></div><div class="loger2" onmouseout="this.className='loger2'" onmouseover="this.className='logerh2'"><a href='../places/cn/pub'>Пабы и бары</a><font id='Gr8'> 18</font></div><div class="loger2" onmouseout="this.className='loger2'" onmouseover="this.className='logerh2'"><a href='../places/cn/restaurant'>Рестораны</a><font id='Gr8'> 40</font></div><div class="loger2" onmouseout="this.className='loger2'" onmouseover="this.className='logerh2'"><a href='../places/cn/pizza'>Пицца</a><font id='Gr8'> 17</font></div><div class="loger2" onmouseout="this.className='loger2'" onmouseover="this.className='logerh2'"><a href='../places/cn/sushi'>Cуши</a><font id='Gr8'> 13</font></div></td>
+		<td valign=top class="tab_lgb_right" style="border-width:0px;"><font class="bigW">Встречаемся</font><br><div class="loger2" onmouseout="this.className='loger2'" onmouseover="this.className='logerh2'"><a href='../places/cn/friends'>В кругу друзей</a><font id='Gr8'> 79</font></div><div class="loger2" onmouseout="this.className='loger2'" onmouseover="this.className='logerh2'"><a href='../places/cn/romance'>Романтические встречи</a><font id='Gr8'> 39</font></div><div class="loger2" onmouseout="this.className='loger2'" onmouseover="this.className='logerh2'"><a href='../places/cn/business'>Деловые встречи</a><font id='Gr8'> 37</font></div><div class="loger2" onmouseout="this.className='loger2'" onmouseover="this.className='logerh2'"><a href='../places/cn/banquet'>Банкеты</a><font id='Gr8'> 72</font></div></td>
+		<td valign=top class="tab_lgb_left"><font class="bigW">Смотрим</font><br><div class="loger2" onmouseout="this.className='loger2'" onmouseover="this.className='logerh2'"><a href='../places/cn/cinema'>Кино</a><font id='Gr8'> 7</font></div><div class="loger2" onmouseout="this.className='loger2'" onmouseover="this.className='logerh2'"><a href='../places/cn/theatre'>Спектакли</a><font id='Gr8'> 3</font></div><div class="loger2" onmouseout="this.className='loger2'" onmouseover="this.className='logerh2'"><a href='../places/cn/gallery'>Выставки</a><font id='Gr8'> 9</font></div><div class="loger2" onmouseout="this.className='loger2'" onmouseover="this.className='logerh2'"><a href='../places/cn/tv'>Спортивные трансляции</a><font id='Gr8'> 30</font></div></td>
+	    <td valign=top class="tab_lgb_right" style="border-width:0px;"><font class="bigW">Слушаем</font><br><div class="loger2" onmouseout="this.className='loger2'" onmouseover="this.className='logerh2'"><a href='../places/cn/livemusic'>Живая музыка</a><font id='Gr8'> 23</font></div><div class="loger2" onmouseout="this.className='loger2'" onmouseover="this.className='logerh2'"><a href='../places/cn/classic'>Классические концерты</a><font id='Gr8'> 3</font></div><div class="loger2" onmouseout="this.className='loger2'" onmouseover="this.className='logerh2'"><a href='../places/cn/modern'>Современные концерты</a><font id='Gr8'> 12</font></div><div class="loger2" onmouseout="this.className='loger2'" onmouseover="this.className='logerh2'"><a href='../places/cn/karaoke'>Караоке</a><font id='Gr8'> 10</font></div></td>
+		<td valign=top class="tab_lgb_left"><font class="bigW">Развлекаемся</font><br><div class="loger2" onmouseout="this.className='loger2'" onmouseover="this.className='logerh2'"><a href='../places/cn/party'>Вечеринки</a><font id='Gr8'> 13</font></div><div class="loger2" onmouseout="this.className='loger2'" onmouseover="this.className='logerh2'"><a href='../places/cn/billiards'>Бильярд</a><font id='Gr8'> 12</font></div><div class="loger2" onmouseout="this.className='loger2'" onmouseover="this.className='logerh2'"><a href='../places/cn/bowling'>Боулинг</a><font id='Gr8'> 3</font></div><div class="loger2" onmouseout="this.className='loger2'" onmouseover="this.className='logerh2'"><a href='../places/cn/bath'>Баня</a><font id='Gr8'> 9</font></div><div class="loger2" onmouseout="this.className='loger2'" onmouseover="this.className='logerh2'"><a href='../places/cn/active'>Активный досуг</a><font id='Gr8'> 20</font></div><div class="loger2" onmouseout="this.className='loger2'" onmouseover="this.className='logerh2'"><a href='../places/cn/children'>Дети</a><font id='Gr8'> 22</font></div><div class="loger2" onmouseout="this.className='loger2'" onmouseover="this.className='logerh2'"><a href='../places/cn/walk'>Прогулки</a><font id='Gr8'> 5</font></div></td>
+		<td valign=top class="tab_lgb_right" style="border-width:0px;"><font class="bigW">Ценим</font><br><div class="loger2" onmouseout="this.className='loger2'" onmouseover="this.className='logerh2'"><a href='../places/cn/wifi'>Бесплатный Wi-Fi</a><font id='Gr8'> 57</font></div><div class="loger2" onmouseout="this.className='loger2'" onmouseover="this.className='logerh2'"><a href='../places/cn/parking'>Бесплатный паркинг</a><font id='Gr8'> 77</font></div><div class="loger2" onmouseout="this.className='loger2'" onmouseover="this.className='logerh2'"><a href='../places/cn/terrace'>Летние площадки</a><font id='Gr8'> 58</font></div></td>
+      </tr>
+      <tr>
+      
+	  <td colspan=6 valign=center align=center>
+      <font onclick="doLightOut('lgb2');" class="loger2" onmouseout="this.className='loger2'" onmouseover="this.className='logerh2'"><font size="+3"> &#215 </font>Отменить</font></td>
+      </tr>
+   </table>
+  </div>
+  
+ <!-- AUTH-->
+ <div id="lgb3">
+   <table  border="0" cellpadding="10" cellspacing="0" class=lga_tab>
+     <tr>
+        <td valign=center align=center><div style='margin-left:20px;'><font class=bigR>Вход на сайт</font> <font style='float:right' onclick="doLightOut('lgb3');" class="loger2" onmouseout="this.className='loger2'" onmouseover="this.className='logerh2'"><font size="+5"> &#215 </font></font></div></td>
+     </tr>
+     <tr>
+        <td valign=top>
+<center>		
+<form class="formular" id="formular2" method="post" action="login.php">
+<table border="0" cellpadding="2" cellspacing="0" class='formtab'>
+<tr><td colspan="2">email</td></tr>
+<tr><td colspan="2"><input class="validate['required','email'] text-input" name="login" type="text" value=""></td></tr>
+<tr><td colspan="2">пароль</td></tr>
+<tr><td colspan="2"><input value="" class="validate['required','length[4,-1]'] text-input" text-input" name="password" type="password" value=""></td></tr>
+<tr><td colspan="2"><input type="checkbox" id="rem" name="remember" value="yes"><font style='font-size:10pt; cursor:pointer;' onClick="if (document.getElementById('rem').checked) document.getElementById('rem').checked = false; else document.getElementById('rem').checked = true;"> запомнить меня на этом компьютере</td></tr>
+<tr><td colspan="2"><br><input value="Войти!" class="submit" type="submit"></td></tr>
+</table>
+</form>
+<a class=boss href='../reg/register'>регистрация</a> &nbsp;<a class=boss href='../reminder'>не помню пароль</a>
+</center>				
+		</td>
+      </tr>
+      <tr>
+        <td colspan=6 valign=center align=center></td>
+      </tr>
+   </table>
+  </div>
+  
+</center>
+   </td></tr>
+</table>
+
+<div style='height:100px; width:100%; position:absolute; top:0px; text-align:center; background-color:#00737b; margin:0px;'><center><iframe style='margin0px; width:960px; height:100px; border:0px; overflow:hidden' src='./src/php/msf-topbox.php'></iframe></center></div>
+<!-- Нулевая разметка -->
+<table class="nulltab" style='top:100px' border="0px" cellpadding="0px" cellspacing="0px">
+  <tr>
+    <td class="nulltab_grad">&nbsp;</td>
+	<td class="nulltab_bottab">  
+				<!-- Нижняя разметка -->
+				<table align="center" class="bottab" border="0px" cellpadding="0px" cellspacing="0px">
+				  <!-- Линия меню -->
+				  <tr>
+						<td  colspan="2" class="bottab_menu">
+						
+						<table class="bottab_menu_left" align="left"  border="0px" cellpadding="0px" cellspacing="0px">
+						<tr>
+						<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td class="bottab_menu_static"><a href='../cn' class='rh'>Главная</a></td><td>&nbsp;&nbsp;</td>
+						<td class="bottab_menu_dinamic"><div class=ddheader3 id='afish-ddheader' onMouseOver="ddMenu('afish',1)" onMouseOut="ddMenu('afish',-1)"><font class=loger>Афиша Чернигова</font><img src="images/option.png" width=16 height=10></div><div class='ddcontent3'  id='afish-ddcontent' onMouseOver="cancelHide('afish')" onMouseOut="ddMenu('afish',-1)"><div class="ddinner"><ul><li class=underline3><a class=no href='../cn/today'>&nbsp;На сегодня</a><font id='Gr8'> 30</font></li><li class=underline3><a class=no href='../cn/week'>&nbsp;На неделю</a><font id='Gr8'> 51</font></li><li class=underline3><a class=no href='../cn/all'>&nbsp;На месяц</a><font id='Gr8'> 77</font></li><li class=underline><a class=no href='../events/cn/cinema'>&nbsp;Кино</a>&nbsp;<font id='Gr8'>20</font></li><li class=underline><a class=no href='../events/cn/concert'>&nbsp;Концерты и шоу</a>&nbsp;<font id='Gr8'>7</font></li><li class=underline><a class=no href='../events/cn/theatre'>&nbsp;Спектакли</a>&nbsp;<font id='Gr8'>30</font></li><li class=underline><a class=no href='../events/cn/club'>&nbsp;Вечеринки</a>&nbsp;<font id='Gr8'>11</font></li><li class=underline><a class=no href='../events/cn/train'>&nbsp;Обучение</a>&nbsp;<font id='Gr8'>1</font></li><li class=underline><a class=no href='../events/cn/child'>&nbsp;Детям</a>&nbsp;<font id='Gr8'>8</font></li></ul></div></div></td><td>&nbsp;</td>
+						<td class="bottab_menu_dinamic"><div class=ddheader3 id='places-ddheader' onMouseOver="ddMenu('places',1)" onMouseOut="ddMenu('places',-1)"><font class=loger>Места отдыха</font><img src="images/option.png" width=16 height=10></div><div class='ddcontent3'  id='places-ddcontent' onMouseOver="cancelHide('places')" onMouseOut="ddMenu('places',-1)"><div class="ddinner"><ul><li class=underline3><a class=no href='../places/cn'>&nbsp;Все места</a><font id='Gr8'> 171</font></li><li class=underline><a href='../places/cn/cafe' class=no>&nbsp;Кафе</a><font id='Gr8'> 76</font></li><li class=underline><a href='../places/cn/pub' class=no>&nbsp;Бары и пабы</a><font id='Gr8'> 18</font></li><li class=underline><a href='../places/cn/restaurant' class=no>&nbsp;Рестораны</a><font id='Gr8'> 40</font></li><li class=underline><a href='../places/cn/party' class=no>&nbsp;Клубы</a><font id='Gr8'> 13</font></li></ul></div></div></td><td>&nbsp;</td>
+						<!--td class="bottab_menu_dinamic"><a href="../journal/cn" class='bo'>Арт-ленты</a></td><td>&nbsp;&nbsp;</td-->
+						<td class="bottab_menu_dinamic"><a href="http://mister.am/chernigov?utm_source=anoncer.net&utm_medium=top-link&utm_campaign=chernigov" class='bo'>Доставка еды</a></td>
+						<td>&nbsp;&nbsp;</td>
+						<td class=bottab_menu_dinamic><a href='../fishki' class='bo'>Фишки</a></td><td>&nbsp;&nbsp;</td>						<td class="bottab_menu_dinamic"><a href="../goodlike" class='bo'>Гудлайк</a>
+						</td><td>&nbsp;&nbsp;</td>
+						<td class="bottab_menu_dinamic"><a href="../banket" class='bo'>Банкет</a>
+						</td><td>&nbsp;&nbsp;</td>
+						<td class="bottab_menu_dinamic"><a href="../add" class='bo'>Реклама</a></td><td>&nbsp;&nbsp;</td>
+    					</tr>
+						</table>
+		
+						<table class="bottab_menu_right" align="right"  border="0px" cellpadding="0px" cellspacing="0px">
+						<tr><td class="bottab_menu_dinamic">
+						<font onclick="doLightIn('lgb3');" class=loger onmouseout="this.className='loger'" onmouseover="this.className='logerh'">Войти</font> <a href='./reg/register' class=bo>Регистрация</a>						</td></tr></table>
+            			
+						</td>
+				  </tr>				
+
+				  <tr>	
+						<!--Анонсер -->
+						<!--Перечень мест -->
+						<td class="bottab_anoncer" align="right">
+						<div class='alogo'><a href='../'><div class='alogo2'>&nbsp;</div></a></div>
+					    <br><br><table class='adv_tab' border='0x' cellpadding='0px' cellspacing='0px'>
+<!--tr><td colspan=2 class='char_bot'></td></tr--> 
+<tr><td colspan=2><div style='float:left; width:125px;'>&nbsp;</div>
+<noindex>
+<a href='http://facebook.com/anoncer' target=_blank><img width=30px height=30px src='http://anoncer.net/images/ss_f2.png' style='float:left; margin-left:0px;'></a>
+<a href='http://vkontakte.ru/anoncerclub' target=_blank><img width=30px height=30px src='http://anoncer.net/images/ss_v2.png' style='float:left; margin-left:2px;'></a>
+<a href='http://twitter.com/#!/Anoncer' target=_blank><img width=30px height=30px src='http://anoncer.net/images/ss_t2.png' style='float:left; margin-left:2px;'></a>
+</noindex>
+</td></tr>
+<!--tr><td colspan=2 class='char_bot'></td></tr-->
+<tr><td colspan=2 class='char_nopx3'><br><br></td></tr>
+<tr><td colspan=2><div class=acrx>Акценты</div></td></tr>
+<tr><td colspan=2 class='char_nopx'></td>
+<tr><td colspan=2 class='char_bot'></td></tr><tr><td colspan=2 class='char_nopx3'><br></td></tr><tr><td colspan=2><div style='background-image: url(http://anoncer.net/pic/small/05-11-2015-232623.gif);' class='adv_tab_photo' onclick="location.href='https://goo.gl/WnD0cQ'"></div></td></tr><tr><td colspan=2><div class='adv_tab_link2'><a class='bo' href='https://goo.gl/WnD0cQ' target='_blank' rel='nofollow'>Приложение Anoncer для Android - афиша Чернигова у Вас в кармане :)</a></div></td></tr><tr><td colspan=2 class='char_nopx3'><br></td></tr><tr><td colspan=2 class='char_nopx3'><br></td></tr><tr><td colspan=2><div style='background-image: url(http://anoncer.net/pic/small/05-11-2015-232154.gif);' class='adv_tab_photo' onclick="location.href='https://goo.gl/IQvbYX'"></div></td></tr><tr><td colspan=2><div class='adv_tab_link2'><a class='bo' href='https://goo.gl/IQvbYX' target='_blank' rel='nofollow'>Приложение Mister.Am - заказ и доставка еды в Чернигове</a></div></td></tr><tr><td colspan=2 class='char_nopx3'><br></td></tr><tr><td colspan=2><br></td></tr><tr><td colspan=2><div class=acrx>Кафе, рестораны и клубы</div></td></tr>
+<tr><td colspan=2 class='char_nopx'></td>
+<tr><td colspan=2 class='char_bot'></td></tr><tr><td colspan=2 class='char_nopx3'><br></td></tr><tr><td colspan=2><div style='background-image: url(http://anoncer.net/pic/small/02-12-2014-000552.gif);' class='adv_tab_photo' onclick="location.href='http://anoncer.net/cn/avenue33'"></div></td></tr><tr><td colspan=2><div class='adv_tab_link2'><a class='bo' href='http://anoncer.net/cn/avenue33' target='_blank' rel='nofollow'>Узнайте о всех акциях и скидках в Avenue 33!</a></div></td></tr><tr><td colspan=2 class='char_nopx3'><br></td></tr><tr><td colspan=2 class='char_nopx3'><br></td></tr><tr><td colspan=2><div style='background-image: url(http://anoncer.net/pic/small/13-01-2015-220821.jpg);' class='adv_tab_photo' onclick="location.href='http://anoncer.net/cn/armenia'"></div></td></tr><tr><td colspan=2><div class='adv_tab_link2'><a class='bo' href='http://anoncer.net/cn/armenia' target='_blank' rel='nofollow'>Ресторан &quot;Армения&quot; - банкеты на любой вкус!</a></div></td></tr><tr><td colspan=2 class='char_nopx3'><br></td></tr><tr><td colspan=2 class='char_nopx3'><br></td></tr><tr><td colspan=2><div style='background-image: url(http://anoncer.net/pic/small/07-01-2016-195716.jpg);' class='adv_tab_photo' onclick="location.href='http://anoncer.net/cn/marzipan'"></div></td></tr><tr><td colspan=2><div class='adv_tab_link2'><a class='bo' href='http://anoncer.net/cn/marzipan' target='_blank' rel='nofollow'>Кафе Марципан - отличный выбор для проведения вашего праздника!</a></div></td></tr><tr><td colspan=2 class='char_nopx3'><br></td></tr><tr><td colspan=2 class='char_nopx3'><br></td></tr><tr><td colspan=2><div style='background-image: url(http://anoncer.net/pic/small/24-07-2015-152007.jpg);' class='adv_tab_photo' onclick="location.href='http://anoncer.net/cn/sushimi'"></div></td></tr><tr><td colspan=2><div class='adv_tab_link2'><a class='bo' href='http://anoncer.net/cn/sushimi' target='_blank' rel='nofollow'>Акции в ресторане "Сушими" </a></div></td></tr><tr><td colspan=2 class='char_nopx3'><br></td></tr><tr><td colspan=2 class='char_nopx3'><br></td></tr><tr><td colspan=2><div style='background-image: url(http://anoncer.net/pic/small/04-06-2015-020642.jpg);' class='adv_tab_photo' onclick="location.href='http://anoncer.net/cn/pasta-basta'"></div></td></tr><tr><td colspan=2><div class='adv_tab_link2'><a class='bo' href='http://anoncer.net/cn/pasta-basta' target='_blank' rel='nofollow'>Обеды в Pasta Basta: заказывайте пасту для - получайте бульон в подарок!</a></div></td></tr><tr><td colspan=2 class='char_nopx3'><br></td></tr><tr><td colspan=2 class='char_nopx3'><br></td></tr><tr><td colspan=2><div style='background-image: url(http://anoncer.net/pic/small/03-01-2016-113525.jpg);' class='adv_tab_photo' onclick="location.href='http://anoncer.net/cn/riverside'"></div></td></tr><tr><td colspan=2><div class='adv_tab_link2'><a class='bo' href='http://anoncer.net/cn/riverside' target='_blank' rel='nofollow'>Ресторанный комплекс Риверсайд - единство комфорта и природы</a></div></td></tr><tr><td colspan=2 class='char_nopx3'><br></td></tr><tr><td colspan=2 class='char_nopx3'><br></td></tr><tr><td colspan=2><div style='background-image: url(http://anoncer.net/pic/small/07-09-2015-124310.jpg);' class='adv_tab_photo' onclick="location.href='http://anoncer.net/cn/cheburechnaya'"></div></td></tr><tr><td colspan=2><div class='adv_tab_link2'><a class='bo' href='http://anoncer.net/cn/cheburechnaya' target='_blank' rel='nofollow'>Чебуречная Джентльмены удачи - первое стилизированное кафе Чернигова</a></div></td></tr><tr><td colspan=2 class='char_nopx3'><br></td></tr><tr><td colspan=2 class='char_nopx3'><br></td></tr><tr><td colspan=2><div style='background-image: url(http://anoncer.net/pic/small/04-06-2015-021225.jpg);' class='adv_tab_photo' onclick="location.href='http://sushi.cn.ua/'"></div></td></tr><tr><td colspan=2><div class='adv_tab_link2'><a class='bo' href='http://sushi.cn.ua/' target='_blank' rel='nofollow'>Суши-студия приглашает окунуться в мир японской культуры!</a></div></td></tr><tr><td colspan=2 class='char_nopx3'><br></td></tr><tr><td colspan=2 class='char_nopx3'><br></td></tr><tr><td colspan=2><div style='background-image: url(http://anoncer.net/pic/small/08-12-2015-163505.gif);' class='adv_tab_photo' onclick="location.href='http://anoncer.net/cn/bbq'"></div></td></tr><tr><td colspan=2><div class='adv_tab_link2'><a class='bo' href='http://anoncer.net/cn/bbq' target='_blank' rel='nofollow'>Мастерская BBQ приглашает!</a></div></td></tr><tr><td colspan=2 class='char_nopx3'><br></td></tr><tr><td colspan=2 class='char_nopx3'><br></td></tr><tr><td colspan=2><div style='background-image: url(http://anoncer.net/pic/small/03-01-2016-113437.jpg);' class='adv_tab_photo' onclick="location.href='http://anoncer.net/cn/oldcher'"></div></td></tr><tr><td colspan=2><div class='adv_tab_link2'><a class='bo' href='http://anoncer.net/cn/oldcher' target='_blank' rel='nofollow'>Ресторан Старый Чернигов приглашает отпраздновать банкет!</a></div></td></tr><tr><td colspan=2 class='char_nopx3'><br></td></tr><tr><td colspan=2 class='char_nopx3'><br></td></tr>
+<tr><td colspan=2><div 0 class='adv_tab_photo' style='background-image: url(./images/add-cafe.gif);' onclick="location.href='./partners'"></div></td></tr><tr><td colspan=2><div class='adv_tab_link2'><a class='bo' target=_blank href='./partners'>Узнайте об эффективных инструментах для продвижения Вашего заведения!</a></div></td></tr><tr><td colspan=2 class='char_nopx3'><br></td></tr><tr><td colspan=2><br></td></tr><tr><td colspan=2><div class=acrx>Как потратить фишки?</div> &nbsp;&nbsp;<a href='./fishki' class=bo>Узнать о фишках больше</a></td></tr>
+<tr><td colspan=2 class='char_nopx'></td>
+<tr><td colspan=2 class='char_bot'></td></tr><tr><td colspan=2 class='char_nopx32'></td></tr><tr><td valign=top><div id=GR_2>9 <img src='../../images/a2.png' height=11pt></div></td><td><div class='adv_tab_link2'><a class='bo' href='../fishki'>Батутный комплекс или детская площадка в &quot;Кин...</a></div></td></tr><tr><td colspan=2 class='char_nopx32'></td></tr><tr><td valign=top><div id=GR_2>9 <img src='../../images/a2.png' height=11pt></div></td><td><div class='adv_tab_link2'><a class='bo' href='../fishki'>Билет в кинотеатр им. Щорса</a></div></td></tr><tr><td colspan=2 class='char_nopx32'></td></tr><tr><td valign=top><div id=GR_2>12 <img src='../../images/a2.png' height=11pt></div></td><td><div class='adv_tab_link2'><a class='bo' href='../fishki'>Билет на двоих в Молодежный театр</a></div></td></tr><tr><td colspan=2 class='char_nopx32'></td></tr><tr><td valign=top><div id=GR_2>8 <img src='../../images/a2.png' height=11pt></div></td><td><div class='adv_tab_link2'><a class='bo' href='../fishki'>Катание на роллердроме в комплексе &quot;Фристайле...</a></div></td></tr><tr><td colspan=2 class='char_nopx32'></td></tr><tr><td valign=top><div id=GR_2>8 <img src='../../images/a2.png' height=11pt></div></td><td><div class='adv_tab_link2'><a class='bo' href='../fishki'>Настольный теннис в комплексе &quot;Фристайлер&quo...</a></div></td></tr><tr><td colspan=2 class='char_nopx3'></td></tr>
+<tr><td colspan=2 class='char_nopx3'><br><br></td></tr>
+<tr><td colspan=2><a target=_blank href='http://chernigov.concert.ua/?utm_source=anoncer&utm_medium=banner&utm_campaign=main'><div style='width:344px; height:80px; background-image: url(../../data/concert.gif);'></div></a></td></tr>
+<tr><td colspan=2 class='char_nopx3'><br><br><br><br></td></tr><tr><td colspan=2><script type="text/javascript" src="http://userapi.com/js/api/openapi.js?48"></script>
+<div id="vk_groups" style='border:7px solid #555;'></div>
+<script type="text/javascript">
+VK.Widgets.Group("vk_groups", {mode: 0, width: "330", height: "290"}, 16635808);
+</script></td></tr></table>						  <br>						 
+						 <div id=G_ style='text-align:justify; float:left; width:337px; margin-left:40px;'><a class=bo href='http://anoncer.net/cn'>Анонсер Чернигов</a> - ваш личный гид по развлечениям! Каждый день мы собираем самые свежие и сочные анонсы, чтобы Вы всегда могли наслаждаться неповторимым ароматом культурной жизни города :) Анонсер - афиша Чернигова! Кино, театры, концерты, ночные клубы, лучшие кафе и рестораны ждут Вас.<br><br></div>
+						 
+						 <br>
+					 
+					 	<div style="margin-left:30px; width:300px;">
+						 <style type="text/css">
+div.c4e745-block {                              
+	   
+	                           
+	padding: 5px !important;                    
+	font-size: 10px !important;                 
+	   
+	line-height: normal !important;             
+}
+div.c4e745-l {                                  
+	text-align: left !important;                
+	font-size:inherit !important;               
+}
+div.c4e745-l .block-c4e745-l {                  
+	padding: 5px !important;                    
+	text-align: inherit !important;             
+	font-size: inherit !important;              
+	line-height: inherit !important;            
+	display: block;                             
+}
+div.c4e745-l a {                                
+	color: #0000cc !important;                  
+	font-weight: normal;                        
+	font-size: inherit !important;              
+	line-height: inherit !important;            
+}
+div.c4e745-l .text-c4e745-l {                   
+	color: #000000 !important;                  
+	padding: 3px 0 !important;                  
+	font-weight: normal;                        
+	font-size: inherit !important;              
+	line-height: inherit !important;            
+}
+div.c4e745-l .host-c4e745-l {                   
+	color: #006600;                             
+	font-weight: normal;                        
+	font-size: inherit !important;              
+	line-height: inherit !important;            
+}
+div.c4e745-block .clear-c4e745-l {              
+	clear:both;                                 
+}</style>
+<script type="text/javascript">//<![CDATA[
+function chameleon(){var blockClass="c4e745-line";var delimeter="|";var tmp=document.getElementsByTagName("div");var l=tmp.length;var divs=[];var countBlock=0;for(var i=0;i<l;i++){if(tmp[i].className=="c4e745-line"){with(tmp[i]){id="c4e745-l-"+countBlock}countBlock++}if(tmp[i].className=="c4e745-l"){with(tmp[i]){id="c4e745-l-to-"+(countBlock-1)}}}for(var i=0;i<countBlock;i++){var o=document.getElementById("c4e745-l-"+i);if(!o||o==undefined){continue}var to=document.getElementById("c4e745-l-to-"+i);if(!to||to==undefined){continue}var text=this.trim(o.innerHTML);if(text==""){continue}var tmp=text.split(delimeter);var links=[];for(var j=0;j<tmp.length;j++){var l=this.GetContext(tmp[j]);if(l!==null){links[j]=l}}this.ShowBlock(links,o,to)}}chameleon.prototype.ShowBlock=function(links,o,to){var a,hBlock;for(var i=0;i<links.length;i++){hBlock=this.ce("DIV");with(hBlock){className="block-c4e745-l"}tDiv=this.ce("DIV");a=this.ce("A");a.target='_blank';a.href=links[i].url;a.appendChild(this.ctn(links[i].title));tDiv.appendChild(a);hBlock.appendChild(tDiv);tDiv=this.ce("DIV");with(tDiv){className="text-c4e745-l"}tDiv.appendChild(this.ctn(links[i].text));hBlock.appendChild(tDiv);tDiv=this.ce("DIV");with(tDiv){className="host-c4e745-l"}tDiv.appendChild(this.ctn(links[i].site));hBlock.appendChild(tDiv);to.appendChild(hBlock)}o.innerHTML="";o.parentNode.removeChild(o);to.removeAttribute("id")};chameleon.prototype.GetContext=function(a){a=this.trim(a.replace(/\s+/," "));if(a.match(/(.*)<a [^>]*href=["]([^"]+)"[^>]*>([^<]*)<\/a>(.*)/i)===null){return null}var e=RegExp.$1==""?RegExp.$4:RegExp.$1+RegExp.$3+RegExp.$4;var c=RegExp.$2;var d=RegExp.$3;if(e==""){e=""}var b=c.replace(/^http:\/\//i,"");b=b.replace(/\/.*$/i,"");b=b.replace(/^www\./i,"");e=e.replace(/<span.*>.*<\/span>/i,"");e=e.replace(/<b.*>(.*)<\/b>/i,"$1");e=e.replace(/<!--<[\/]?megaindex_noindex>-->/ig,"");e=e.replace(/<[\/]?megaindex_noindex>/ig,"");c=c.replace(/&amp;/g, '&');return{url:c,title:d,text:e,site:b}};chameleon.prototype.trim=function(a){return a.length>0?a.replace(/(^\s+|\s+$)/,""):""};chameleon.prototype.ce=function(a){return document.createElement(a)};chameleon.prototype.ctn=function(a){return document.createTextNode(a)};function myInitLinks(){new chameleon()}if(typeof window.addEventListener!="undefined"){window.addEventListener("load",myInitLinks,false)}else{if(typeof window.attachEvent!="undefined"){window.attachEvent("onload",myInitLinks)}};//]]</script>
+<!--lm_php_ver=1.1--><!-- <ml_code></ml_code> --><!--<ml_code_response><ml_getver>6.3.3</ml_getver></ml_code_response>--><!-- <ml_code></ml_code> --><!--<ml_code_response><ml_getver>6.3.3</ml_getver></ml_code_response>--><!--1520515837400--><!--d27195b8--><!--cc37fa20--><!--9c7ec26b--><!--da5bb5de--><!--<ingots><ingots><ingots_version>2.2</ingots_version></ingots></ingots>--><!--<ingots><ingots><ingots_fversion>2.2f</ingots_fversion></ingots></ingots>--><!--<kappusto><kappusto><kappusto_version>1.3.3</kappusto_version></kappusto></kappusto>--><!--<megaindex_noindex></megaindex_noindex>--><!--35aab--><!--de53c6d06d599519d7addb9a72f3db90--><!-- links will appear here --><div class="c4e745-block"><div class="c4e745-l"><script async="async" src="https://w.uptolike.com/widgets/v1/zp.js?pid=1292711" type="text/javascript"></script><script type="text/javascript">var _acic={dataProvider:10};(function(){var e=document.createElement("script");e.type="text/javascript";e.async=true;e.src="//www2.acint.net/aci.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})()</script></div><div class="clear-c4e745-l"></div></div>					    </div>
+						  						  
+						</td>		
+						<!-- WorkSpace -->
+						<td align="left" class="bottab_eventpanel">
+
+				<table  class="seartab" style='margin-top:36px;' border="0" cellpadding="0" cellspacing="0"><tr>
+<td><table class=W10 border="0" cellpadding="0" cellspacing="0"><tr><td><font id=RX>Чернигов</font><font id=RG6><font id=search3>Идеи для отдыха</font></font></td></tr></table></td><td><div style='float:right;'><font id='RG6'>Списком</font> <a href='../slider/cn' class='bo'>в слайдах</a></div></td></tr></table><div style='height:5px;'></div><br><table  class="tab_announce_cont" border="0" cellpadding="0" cellspacing="0"><tr>
+	 <td valign=center colspan=6 class="W10"><center><br><table border="0" align=center class=W10 cellpadding="0" cellspacing="0"><tr><td>
+	  <font id=RX>Развлечься с детьми</font><font id=RG7>Лучшие предложения</font> <a class=bo href='./events/cn/child'>все детские анонсы</a><font id='Gr8'> 8</font>  <a class=bo href='./events/cn/child/today'> сегодня</a><font id='Gr8'> 3</font></td><td style='vertical-align:top;' valign=top><div class=ddheader2 id='10-ddheader' onMouseOver="ddMenu('10',1)" onMouseOut="ddMenu('10',-1)"><font class=loger>выбрать место</font><img src="images/option.png"width=16 height=10></div><div class='ddcontent2'  id='10-ddcontent' onMouseOver="cancelHide('10')" onMouseOut="ddMenu('10',-1)"><div  class="ddinner"><ul><li class="underline"><a class="no" href="../cn/all/kukolny">&nbsp;Кукольный театр</a></li><li class="underline"><a class="no" href="../cn/all/dram">&nbsp;Облдрамтеатр</a></li><li class="underline"><a class="no" href="../cn/all/kindercity">&nbsp;комплекс Киндер Сити</a></li><li class="underline"><a class="no" href="../cn/all/bazis">&nbsp;комплекс "Базис" (Мадагаскар)</a></li></ul></div></div></td></tr></table></center><br><br></td></tr><tr class="tab_announce_tr" onclick="location.href='./event/8894';"  
+		       onmouseover="this.className='tab_announce_tr_hover'" onmouseout="this.className='tab_announce_tr'">
+			   <td class="tab_announce_status" title='Сегодня'><img src="images/statusgreen.png" width="21px" height="9px" border="0" alt=''></td>
+<td class="tab_announce_type21"><a class="wh" href=./event/8894>Детский комплекс Мадагаскар</a></td><td class="tab_announce_type22">комплекс "Базис" (Мадагаскар)<br></td><td class="tab_announce_type23">  до 29 февраля, пн<br></td><td class="tab_announce_redprice">от 10 грн<br></td><td class="tab_announce_rt">&nbsp;</td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class=""><td valign=top class="tab_announce_pic_off"></td><td class="tab_announce_pic" colspan=4 valign=top><a href='./event/8894'><center><img class=tab_announce_pic_out alt='' border=0 align=top src=http://anoncer.net/pic/08-09-2015-084902.jpg></center></a></td><td valign=top class="tab_announce_pic_off"></td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class="tab_announce_tr" onclick="location.href='./event/3394';"  
+		       onmouseover="this.className='tab_announce_tr_hover'" onmouseout="this.className='tab_announce_tr'">
+			   <td class="tab_announce_status" title='Сегодня'><img src="images/statusgreen.png" width="21px" height="9px" border="0" alt=''></td>
+<td class="tab_announce_type21"><a class="wh" href=./event/3394>Отдых в детском комплексе Киндер Сити</a></td><td class="tab_announce_type22">комплекс Киндер Сити<br></td><td class="tab_announce_type23"> каждый день</td><td class="tab_announce_redprice">от 6 грн*<br></td><td class="tab_announce_rt2" title='Получай билет<br>в обмен на фишки!'>9<img src='../../images/a2.png' height=10px><br></td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class=""><td valign=top class="tab_announce_pic_off"></td><td class="tab_announce_pic" colspan=4 valign=top><a href='./event/3394'><center><img class=tab_announce_pic_out alt='' border=0 align=top src=http://anoncer.net/pic/17-12-2015-121018.jpg></center></a></td><td valign=top class="tab_announce_pic_off"></td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr></table><br><table  class="tab_announce_cont" border="0" cellpadding="0" cellspacing="0"><tr>
+	 <td valign=center colspan=6 class="W10"><center><br><table border="0" align=center class=W10 cellpadding="0" cellspacing="0"><tr><td>
+	  <font id=RX>Посетить театр</font><font id=RG7>Лучшее предложение</font>  <a class=bo href='./events/cn/theatre/today'> сегодня</a><font id='Gr8'> 2</font></td></tr></table></center><br><br></td></tr><tr class="tab_announce_tr" onclick="location.href='./event/9170';"  
+		       onmouseover="this.className='tab_announce_tr_hover'" onmouseout="this.className='tab_announce_tr'">
+			   <td class="tab_announce_status" title=''><img src="images/statusno.png" width="21px" height="9px" border="0" alt=''></td>
+<td class="tab_announce_type21"><a class="wh" href=./event/9170>Три сестры</a></td><td class="tab_announce_type22">Облдрамтеатр<br></td><td class="tab_announce_type23">  12 февраля, пт<br></td><td class="tab_announce_redprice">130-200 грн<br></td><td class="tab_announce_rt">&nbsp;</td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class=""><td valign=top class="tab_announce_pic_off"></td><td class="tab_announce_pic" colspan=4 valign=top><a href='./event/9170'><center><img class=tab_announce_pic_out alt='' border=0 align=top src=http://anoncer.net/pic/22-01-2016-194553.gif></center></a></td><td valign=top class="tab_announce_pic_off"></td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr></table><br><table  class="tab_announce_cont" border="0" cellpadding="0" cellspacing="0"><tr>
+	 <td valign=center colspan=6 class="W10"><center><br><table border="0" align=center class=W10 cellpadding="0" cellspacing="0"><tr><td>
+	  <font id=RX>Побывать на концерте / шоу</font><font id=RG7>Лучшее предложение</font>  <a class=bo href='./events/cn/concert/today'> сегодня</a><font id='Gr8'> 1</font></td></tr></table></center><br><br></td></tr><tr class="tab_announce_tr" onclick="location.href='./event/9145';"  
+		       onmouseover="this.className='tab_announce_tr_hover'" onmouseout="this.className='tab_announce_tr'">
+			   <td class="tab_announce_status" title=''><img src="images/statusno.png" width="21px" height="9px" border="0" alt=''></td>
+<td class="tab_announce_type21"><a class="wh" href=./event/9145>Территория Танго</a></td><td class="tab_announce_type22">Облдрамтеатр<br></td><td class="tab_announce_type23">  9 февраля, вт<br></td><td class="tab_announce_redprice">80-200 грн<br></td><td class="tab_announce_rt">&nbsp;</td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class=""><td valign=top class="tab_announce_pic_off"></td><td class="tab_announce_pic" colspan=4 valign=top><a href='./event/9145'><center><img class=tab_announce_pic_out alt='' border=0 align=top src=http://anoncer.net/pic/24-12-2015-215849.jpg></center></a></td><td valign=top class="tab_announce_pic_off"></td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr></table><br><table  class="tab_announce_cont" border="0" cellpadding="0" cellspacing="0"><tr>
+	 <td valign=center colspan=6 class="W10"><center><br><table border="0" align=center class=W10 cellpadding="0" cellspacing="0"><tr><td>
+	  <font id=RX>Сходить в кино</font><font id=RG7>Ближайшие анонсы</font> <a class=bo href='./events/cn/cinema'>все фильмы</a><font id='Gr8'> 20</font>  <a class=bo href='./events/cn/cinema/today'>сеансы сегодня</a><font id='Gr8'> 20</font></td><td style='vertical-align:top;' valign=top><div class=ddheader2 id='0-ddheader' onMouseOver="ddMenu('0',1)" onMouseOut="ddMenu('0',-1)"><font class=loger>выбрать место</font><img src="images/option.png"width=16 height=10></div><div class='ddcontent2'  id='0-ddcontent' onMouseOver="cancelHide('0')" onMouseOut="ddMenu('0',-1)"><div  class="ddinner"><ul><li class="underline"><a class="no" href="../cn/all/druzhba">&nbsp;кинотеатр "Дружба"</a></li><li class="underline"><a class="no" href="../cn/all/schors">&nbsp;кинотеатр им. Щорса</a></li><li class="underline"><a class="no" href="../cn/all/multiplax">&nbsp;кинотеатр Мультиплекс</a></li></ul></div></div></td></tr></table></center><br><br></td></tr><tr class="tab_announce_tr" onclick="location.href='./event/9167';"  
+		       onmouseover="this.className='tab_announce_tr_hover'" onmouseout="this.className='tab_announce_tr'">
+			   <td class="tab_announce_status" title='Сейчас идет'><img src="images/statusred.png" width="21px" height="9px" border="0" alt=''></td>
+<td class="tab_announce_type21"><a class="wh" href=./event/9167>Омерзительная восьмерка</a></td><td class="tab_announce_type22">кинотеатр "Дружба"<br>кинотеатр Мультиплекс<br></td><td class="tab_announce_type23">  до 27 января, ср<br>  до 27 января, ср<br></td><td class="tab_announce_redprice">40 грн<br>30-100 грн<br></td><td class="tab_announce_rt">&nbsp;</td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class=""><td valign=top class="tab_announce_pic_off"></td><td class="tab_announce_pic" colspan=4 valign=top><a href='./event/9167'><center><img class=tab_announce_pic_out alt='' border=0 align=top src=http://anoncer.net/pic/14-01-2016-212943.jpg></center></a></td><td valign=top class="tab_announce_pic_off"></td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class="tab_announce_tr" onclick="location.href='./event/9195';"  
+		       onmouseover="this.className='tab_announce_tr_hover'" onmouseout="this.className='tab_announce_tr'">
+			   <td class="tab_announce_status" title='Сегодня'><img src="images/statusgreen.png" width="21px" height="9px" border="0" alt=''></td>
+<td class="tab_announce_type21"><a class="wh" href=./event/9195>5-я волна</a></td><td class="tab_announce_type22">кинотеатр "Дружба"<br>кинотеатр им. Щорса<br>кинотеатр Мультиплекс<br></td><td class="tab_announce_type23">  до 27 января, ср<br>  до 27 января, ср<br>  до 27 января, ср<br></td><td class="tab_announce_redprice">30-45 грн<br>35 грн<br>30-100 грн<br></td><td class="tab_announce_rt2" title='Получай билет<br>в обмен на фишки!'>-<br>9<img src='../../images/a2.png' height=10px><br>-<br></td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class=""><td valign=top class="tab_announce_pic_off"></td><td class="tab_announce_pic" colspan=4 valign=top><a href='./event/9195'><center><img class=tab_announce_pic_out alt='' border=0 align=top src=http://anoncer.net/pic/20-01-2016-215753.jpg></center></a></td><td valign=top class="tab_announce_pic_off"></td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class="tab_announce_tr" onclick="location.href='./event/9160';"  
+		       onmouseover="this.className='tab_announce_tr_hover'" onmouseout="this.className='tab_announce_tr'">
+			   <td class="tab_announce_status" title='Сегодня'><img src="images/statusgreen.png" width="21px" height="9px" border="0" alt=''></td>
+<td class="tab_announce_type21"><a class="wh" href=./event/9160>Здравствуй, папа, Новый год (Кто в доме папа)</a></td><td class="tab_announce_type22">кинотеатр им. Щорса<br>кинотеатр Мультиплекс<br></td><td class="tab_announce_type23">  до 27 января, ср<br>  до 27 января, ср<br></td><td class="tab_announce_redprice">30-35 грн<br>30-100 грн<br></td><td class="tab_announce_rt">&nbsp;</td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class=""><td valign=top class="tab_announce_pic_off"></td><td class="tab_announce_pic" colspan=4 valign=top><a href='./event/9160'><center><img class=tab_announce_pic_out alt='' border=0 align=top src=http://anoncer.net/pic/06-01-2016-230732.jpg></center></a></td><td valign=top class="tab_announce_pic_off"></td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class="tab_announce_tr" onclick="location.href='./event/9196';"  
+		       onmouseover="this.className='tab_announce_tr_hover'" onmouseout="this.className='tab_announce_tr'">
+			   <td class="tab_announce_status" title='Сегодня'><img src="images/statusgreen.png" width="21px" height="9px" border="0" alt=''></td>
+<td class="tab_announce_type21"><a class="wh" href=./event/9196>Статус: свободен</a></td><td class="tab_announce_type22">кинотеатр им. Щорса<br>кинотеатр Мультиплекс<br></td><td class="tab_announce_type23">  до 27 января, ср<br>  до 27 января, ср<br></td><td class="tab_announce_redprice">25 грн<br>30-100 грн<br></td><td class="tab_announce_rt2" title='Получай билет<br>в обмен на фишки!'>9<img src='../../images/a2.png' height=10px><br>-<br></td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class=""><td valign=top class="tab_announce_pic_off"></td><td class="tab_announce_pic" colspan=4 valign=top><a href='./event/9196'><center><img class=tab_announce_pic_out alt='' border=0 align=top src=http://anoncer.net/pic/20-01-2016-222121.jpg></center></a></td><td valign=top class="tab_announce_pic_off"></td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class="tab_announce_tr" onclick="location.href='./event/9138';"  
+		       onmouseover="this.className='tab_announce_tr_hover'" onmouseout="this.className='tab_announce_tr'">
+			   <td class="tab_announce_status" title='Сегодня'><img src="images/statusgreen.png" width="21px" height="9px" border="0" alt=''></td>
+<td class="tab_announce_type21"><a class="wh" href=./event/9138>Иван Царевич и Серый Волк 3</a></td><td class="tab_announce_type22">кинотеатр Мультиплекс<br></td><td class="tab_announce_type23">    до 27 января, ср<br></td><td class="tab_announce_redprice">30-100 грн<br></td><td class="tab_announce_rt">&nbsp;</td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class=""><td valign=top class="tab_announce_pic_off"></td><td class="tab_announce_pic" colspan=4 valign=top><a href='./event/9138'><center><img class=tab_announce_pic_out alt='' border=0 align=top src=http://anoncer.net/pic/22-12-2015-214241.jpg></center></a></td><td valign=top class="tab_announce_pic_off"></td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class="tab_announce_tr" onclick="location.href='./event/9168';"  
+		       onmouseover="this.className='tab_announce_tr_hover'" onmouseout="this.className='tab_announce_tr'">
+			   <td class="tab_announce_status" title='Сегодня'><img src="images/statusgreen.png" width="21px" height="9px" border="0" alt=''></td>
+<td class="tab_announce_type21"><a class="wh" href=./event/9168>Мистер Холмс</a></td><td class="tab_announce_type22">кинотеатр Мультиплекс<br></td><td class="tab_announce_type23">  до 27 января, ср<br></td><td class="tab_announce_redprice">30-100 грн<br></td><td class="tab_announce_rt">&nbsp;</td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class=""><td valign=top class="tab_announce_pic_off"></td><td class="tab_announce_pic" colspan=4 valign=top><a href='./event/9168'><center><img class=tab_announce_pic_out alt='' border=0 align=top src=http://anoncer.net/pic/14-01-2016-223851.jpg></center></a></td><td valign=top class="tab_announce_pic_off"></td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class="tab_announce_tr" onclick="location.href='./event/9158';"  
+		       onmouseover="this.className='tab_announce_tr_hover'" onmouseout="this.className='tab_announce_tr'">
+			   <td class="tab_announce_status" title='Сегодня'><img src="images/statusgreen.png" width="21px" height="9px" border="0" alt=''></td>
+<td class="tab_announce_type21"><a class="wh" href=./event/9158>Элвин и бурундуки: Грандиозное бурундуключение</a></td><td class="tab_announce_type22">кинотеатр "Дружба"<br>кинотеатр Мультиплекс<br></td><td class="tab_announce_type23">  до 27 января, ср<br>  до 27 января, ср<br></td><td class="tab_announce_redprice">40 грн<br>30-100 грн<br></td><td class="tab_announce_rt">&nbsp;</td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class=""><td valign=top class="tab_announce_pic_off"></td><td class="tab_announce_pic" colspan=4 valign=top><a href='./event/9158'><center><img class=tab_announce_pic_out alt='' border=0 align=top src=http://anoncer.net/pic/06-01-2016-225409.jpg></center></a></td><td valign=top class="tab_announce_pic_off"></td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class="tab_announce_tr" onclick="location.href='./event/8736';"  
+		       onmouseover="this.className='tab_announce_tr_hover'" onmouseout="this.className='tab_announce_tr'">
+			   <td class="tab_announce_status" title='Сегодня'><img src="images/statusgreen.png" width="21px" height="9px" border="0" alt=''></td>
+<td class="tab_announce_type21"><a class="wh" href=./event/8736>Звездные войны: эпизод 7 - Пробуждение силы. 3D*</a></td><td class="tab_announce_type22">кинотеатр Мультиплекс<br></td><td class="tab_announce_type23">  до 27 января, ср<br></td><td class="tab_announce_redprice">30-100 грн<br></td><td class="tab_announce_rt">&nbsp;</td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class=""><td valign=top class="tab_announce_pic_off"></td><td class="tab_announce_pic" colspan=4 valign=top><a href='./event/8736'><center><img class=tab_announce_pic_out alt='' border=0 align=top src=http://anoncer.net/pic/15-12-2015-220835.jpg></center></a></td><td valign=top class="tab_announce_pic_off"></td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class="tab_announce_tr" onclick="location.href='./event/9157';"  
+		       onmouseover="this.className='tab_announce_tr_hover'" onmouseout="this.className='tab_announce_tr'">
+			   <td class="tab_announce_status" title='Сегодня'><img src="images/statusgreen.png" width="21px" height="9px" border="0" alt=''></td>
+<td class="tab_announce_type21"><a class="wh" href=./event/9157>Волшебное королевство Щелкунчика</a></td><td class="tab_announce_type22">кинотеатр им. Щорса<br></td><td class="tab_announce_type23">  до 27 января, ср<br></td><td class="tab_announce_redprice">20-25 грн<br></td><td class="tab_announce_rt2" title='Получай билет<br>в обмен на фишки!'>9<img src='../../images/a2.png' height=10px><br></td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class="tab_announce_tr" onclick="location.href='./event/9199';"  
+		       onmouseover="this.className='tab_announce_tr_hover'" onmouseout="this.className='tab_announce_tr'">
+			   <td class="tab_announce_status" title='Сегодня'><img src="images/statusgreen.png" width="21px" height="9px" border="0" alt=''></td>
+<td class="tab_announce_type21"><a class="wh" href=./event/9199>Девушка из Дании</a></td><td class="tab_announce_type22">кинотеатр Мультиплекс<br></td><td class="tab_announce_type23">  до 27 января, ср<br></td><td class="tab_announce_redprice">30-100 грн<br></td><td class="tab_announce_rt">&nbsp;</td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class=""><td valign=top class="tab_announce_pic_off"></td><td class="tab_announce_pic" colspan=4 valign=top><a href='./event/9199'><center><img class=tab_announce_pic_out alt='' border=0 align=top src=http://anoncer.net/pic/20-01-2016-224636.jpg></center></a></td><td valign=top class="tab_announce_pic_off"></td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class="tab_announce_tr" onclick="location.href='./event/9161';"  
+		       onmouseover="this.className='tab_announce_tr_hover'" onmouseout="this.className='tab_announce_tr'">
+			   <td class="tab_announce_status" title='Сегодня'><img src="images/statusgreen.png" width="21px" height="9px" border="0" alt=''></td>
+<td class="tab_announce_type21"><a class="wh" href=./event/9161>Выживший (Легенда Хью Гласса)</a></td><td class="tab_announce_type22">кинотеатр Мультиплекс<br></td><td class="tab_announce_type23">    до 27 января, ср<br></td><td class="tab_announce_redprice">30-100 грн<br></td><td class="tab_announce_rt">&nbsp;</td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class=""><td valign=top class="tab_announce_pic_off"></td><td class="tab_announce_pic" colspan=4 valign=top><a href='./event/9161'><center><img class=tab_announce_pic_out alt='' border=0 align=top src=http://anoncer.net/pic/06-01-2016-231659.jpg></center></a></td><td valign=top class="tab_announce_pic_off"></td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class="tab_announce_tr" onclick="location.href='./event/9159';"  
+		       onmouseover="this.className='tab_announce_tr_hover'" onmouseout="this.className='tab_announce_tr'">
+			   <td class="tab_announce_status" title='Сегодня'><img src="images/statusgreen.png" width="21px" height="9px" border="0" alt=''></td>
+<td class="tab_announce_type21"><a class="wh" href=./event/9159>Сестры</a></td><td class="tab_announce_type22">кинотеатр Мультиплекс<br></td><td class="tab_announce_type23">  до 27 января, ср<br></td><td class="tab_announce_redprice">30-100 грн<br></td><td class="tab_announce_rt">&nbsp;</td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class=""><td valign=top class="tab_announce_pic_off"></td><td class="tab_announce_pic" colspan=4 valign=top><a href='./event/9159'><center><img class=tab_announce_pic_out alt='' border=0 align=top src=http://anoncer.net/pic/06-01-2016-225906.jpg></center></a></td><td valign=top class="tab_announce_pic_off"></td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class="tab_announce_tr" onclick="location.href='./event/9139';"  
+		       onmouseover="this.className='tab_announce_tr_hover'" onmouseout="this.className='tab_announce_tr'">
+			   <td class="tab_announce_status" title='Сегодня'><img src="images/statusgreen.png" width="21px" height="9px" border="0" alt=''></td>
+<td class="tab_announce_type21"><a class="wh" href=./event/9139>На гребне волны</a></td><td class="tab_announce_type22">кинотеатр им. Щорса<br>кинотеатр Мультиплекс<br></td><td class="tab_announce_type23">  до 27 января, ср<br>  до 27 января, ср<br></td><td class="tab_announce_redprice">30 грн<br>30-100 грн<br></td><td class="tab_announce_rt">&nbsp;</td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class="tab_announce_tr" onclick="location.href='./event/9200';"  
+		       onmouseover="this.className='tab_announce_tr_hover'" onmouseout="this.className='tab_announce_tr'">
+			   <td class="tab_announce_status" title='Сегодня'><img src="images/statusgreen.png" width="21px" height="9px" border="0" alt=''></td>
+<td class="tab_announce_type21"><a class="wh" href=./event/9200>Джой</a></td><td class="tab_announce_type22">кинотеатр Мультиплекс<br></td><td class="tab_announce_type23">  до 27 января, ср<br></td><td class="tab_announce_redprice">30-100 грн<br></td><td class="tab_announce_rt">&nbsp;</td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class="tab_announce_tr" onclick="location.href='./event/9166';"  
+		       onmouseover="this.className='tab_announce_tr_hover'" onmouseout="this.className='tab_announce_tr'">
+			   <td class="tab_announce_status" title='Сегодня'><img src="images/statusgreen.png" width="21px" height="9px" border="0" alt=''></td>
+<td class="tab_announce_type21"><a class="wh" href=./event/9166>Лес привидений</a></td><td class="tab_announce_type22">кинотеатр им. Щорса<br>кинотеатр Мультиплекс<br></td><td class="tab_announce_type23">  до 27 января, ср<br>  до 27 января, ср<br></td><td class="tab_announce_redprice">25 грн<br>30-100 грн<br></td><td class="tab_announce_rt">&nbsp;</td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class=""><td valign=top class="tab_announce_pic_off"></td><td class="tab_announce_pic" colspan=4 valign=top><a href='./event/9166'><center><img class=tab_announce_pic_out alt='' border=0 align=top src=http://anoncer.net/pic/14-01-2016-211925.jpg></center></a></td><td valign=top class="tab_announce_pic_off"></td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class="tab_announce_tr" onclick="location.href='./event/9197';"  
+		       onmouseover="this.className='tab_announce_tr_hover'" onmouseout="this.className='tab_announce_tr'">
+			   <td class="tab_announce_status" title='Сегодня'><img src="images/statusgreen.png" width="21px" height="9px" border="0" alt=''></td>
+<td class="tab_announce_type21"><a class="wh" href=./event/9197>Железная стычка</a></td><td class="tab_announce_type22">кинотеатр им. Щорса<br></td><td class="tab_announce_type23">  до 27 января, ср<br></td><td class="tab_announce_redprice">25 грн<br></td><td class="tab_announce_rt2" title='Получай билет<br>в обмен на фишки!'>9<img src='../../images/a2.png' height=10px><br></td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class="tab_announce_tr" onclick="location.href='./event/9001';"  
+		       onmouseover="this.className='tab_announce_tr_hover'" onmouseout="this.className='tab_announce_tr'">
+			   <td class="tab_announce_status" title='Сегодня'><img src="images/statusgreen.png" width="21px" height="9px" border="0" alt=''></td>
+<td class="tab_announce_type21"><a class="wh" href=./event/9001>Хороший динозавр. 3D*</a></td><td class="tab_announce_type22">кинотеатр Мультиплекс<br></td><td class="tab_announce_type23">      до 27 января, ср<br></td><td class="tab_announce_redprice">30-100 грн<br></td><td class="tab_announce_rt">&nbsp;</td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class="tab_announce_tr" onclick="location.href='./event/9169';"  
+		       onmouseover="this.className='tab_announce_tr_hover'" onmouseout="this.className='tab_announce_tr'">
+			   <td class="tab_announce_status" title='Сегодня'><img src="images/statusgreen.png" width="21px" height="9px" border="0" alt=''></td>
+<td class="tab_announce_type21"><a class="wh" href=./event/9169>Крид: Наследие Рокки</a></td><td class="tab_announce_type22">кинотеатр Мультиплекс<br></td><td class="tab_announce_type23">  до 27 января, ср<br></td><td class="tab_announce_redprice">30-100 грн<br></td><td class="tab_announce_rt">&nbsp;</td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class=""><td valign=top class="tab_announce_pic_off"></td><td class="tab_announce_pic" colspan=4 valign=top><a href='./event/9169'><center><img class=tab_announce_pic_out alt='' border=0 align=top src=http://anoncer.net/pic/14-01-2016-224438.jpg></center></a></td><td valign=top class="tab_announce_pic_off"></td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class="tab_announce_tr" onclick="location.href='./event/9201';"  
+		       onmouseover="this.className='tab_announce_tr_hover'" onmouseout="this.className='tab_announce_tr'">
+			   <td class="tab_announce_status" title='Сегодня'><img src="images/statusgreen.png" width="21px" height="9px" border="0" alt=''></td>
+<td class="tab_announce_type21"><a class="wh" href=./event/9201>Последний обряд</a></td><td class="tab_announce_type22">кинотеатр им. Щорса<br></td><td class="tab_announce_type23">  до 27 января, ср<br></td><td class="tab_announce_redprice">25 грн<br></td><td class="tab_announce_rt2" title='Получай билет<br>в обмен на фишки!'>9<img src='../../images/a2.png' height=10px><br></td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class="tab_announce_tr" onclick="location.href='./event/9198';"  
+		       onmouseover="this.className='tab_announce_tr_hover'" onmouseout="this.className='tab_announce_tr'">
+			   <td class="tab_announce_status" title='Сегодня'><img src="images/statusgreen.png" width="21px" height="9px" border="0" alt=''></td>
+<td class="tab_announce_type21"><a class="wh" href=./event/9198>Дедушка легкого поведения (Похотливый дедушка) </a></td><td class="tab_announce_type22">кинотеатр Мультиплекс<br></td><td class="tab_announce_type23">  до 27 января, ср<br></td><td class="tab_announce_redprice">30-100 грн<br></td><td class="tab_announce_rt">&nbsp;</td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class=""><td valign=top class="tab_announce_pic_off"></td><td class="tab_announce_pic" colspan=4 valign=top><a href='./event/9198'><center><img class=tab_announce_pic_out alt='' border=0 align=top src=http://anoncer.net/pic/20-01-2016-223810.jpg></center></a></td><td valign=top class="tab_announce_pic_off"></td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr></table><br><table  class="tab_announce_cont" border="0" cellpadding="0" cellspacing="0"><tr>
+	 <td valign=center colspan=6 class="W10"><center><br><table border="0" align=center class=W10 cellpadding="0" cellspacing="0"><tr><td>
+	  <font id=RX>Погулять на вечеринке</font><font id=RG7>Сегодня</font> <a class=bo href='./events/cn/club'>все клубные афиши</a><font id='Gr8'> 11</font> </td><td style='vertical-align:top;' valign=top><div class=ddheader2 id='3-ddheader' onMouseOver="ddMenu('3',1)" onMouseOut="ddMenu('3',-1)"><font class=loger>выбрать место</font><img src="images/option.png"width=16 height=10></div><div class='ddcontent2'  id='3-ddcontent' onMouseOver="cancelHide('3')" onMouseOut="ddMenu('3',-1)"><div  class="ddinner"><ul><li class="underline"><a class="no" href="../cn/all/777">&nbsp;клуб "777"</a></li><li class="underline"><a class="no" href="../cn/all/angkor">&nbsp;клуб "Ангкор"</a></li><li class="underline"><a class="no" href="../cn/all/diamond">&nbsp;клуб "Даймонд"</a></li><li class="underline"><a class="no" href="../cn/all/cash">&nbsp;паб "Кэш"</a></li></ul></div></div></td></tr></table></center><br><br></td></tr><tr class="tab_announce_tr" onclick="location.href='./event/4192';"  
+		       onmouseover="this.className='tab_announce_tr_hover'" onmouseout="this.className='tab_announce_tr'">
+			   <td class="tab_announce_status" title='Сейчас идет'><img src="images/statusred.png" width="21px" height="9px" border="0" alt=''></td>
+<td class="tab_announce_type21"><a class="wh" href=./event/4192>Шоу-вечеринка в 777</a></td><td class="tab_announce_type22">клуб "777"<br></td><td class="tab_announce_type23"> каждый пт-сб</td><td class="tab_announce_redprice">30(+50) грн*<br></td><td class="tab_announce_rt">&nbsp;</td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class="tab_announce_tr" onclick="location.href='./event/2225';"  
+		       onmouseover="this.className='tab_announce_tr_hover'" onmouseout="this.className='tab_announce_tr'">
+			   <td class="tab_announce_status" title='Сейчас идет'><img src="images/statusred.png" width="21px" height="9px" border="0" alt=''></td>
+<td class="tab_announce_type21"><a class="wh" href=./event/2225>Шоу-вечеринка в Ангкоре</a></td><td class="tab_announce_type22">клуб "Ангкор"<br></td><td class="tab_announce_type23"> каждый пт-сб</td><td class="tab_announce_redprice">32-37 грн*<br></td><td class="tab_announce_rt">&nbsp;</td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class="tab_announce_tr" onclick="location.href='./event/9091';"  
+		       onmouseover="this.className='tab_announce_tr_hover'" onmouseout="this.className='tab_announce_tr'">
+			   <td class="tab_announce_status" title='Сейчас идет'><img src="images/statusred.png" width="21px" height="9px" border="0" alt=''></td>
+<td class="tab_announce_type21"><a class="wh" href=./event/9091>Караоке Night в клубе Diamond</a></td><td class="tab_announce_type22">клуб "Даймонд"<br></td><td class="tab_announce_type23">  до 30 января, сб<br></td><td class="tab_announce_redprice">уточняется<br></td><td class="tab_announce_rt">&nbsp;</td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class="tab_announce_tr" onclick="location.href='./event/9192';"  
+		       onmouseover="this.className='tab_announce_tr_hover'" onmouseout="this.className='tab_announce_tr'">
+			   <td class="tab_announce_status" title='Сегодня'><img src="images/statusgreen.png" width="21px" height="9px" border="0" alt=''></td>
+<td class="tab_announce_type21"><a class="wh" href=./event/9192>Lick My Icecream Party</a></td><td class="tab_announce_type22">паб "Кэш"<br></td><td class="tab_announce_type23">  23 января, сб<br></td><td class="tab_announce_redprice">0-20 грн*<br></td><td class="tab_announce_rt">&nbsp;</td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr></table><br><table  class="tab_announce_cont" border="0" cellpadding="0" cellspacing="0"><tr>
+	 <td valign=center colspan=6 class="W10"><center><br><table border="0" align=center class=W10 cellpadding="0" cellspacing="0"><tr><td>
+	  <font id=RX>Отдохнуть с друзьями</font><font id=RG7>Лучшие предложения</font> <a class=bo href='./places/cn/friends'>все места для дружеских встреч</a>&nbsp;<font id='Gr8'>79</font> </td></tr></table></center><br><br></td></tr><tr class="tab_announce_tr" onclick="location.href='./cn/chicken-hut-2';" onmouseover="this.className='tab_announce_tr_hover'" onmouseout="this.className='tab_announce_tr'"><td class="tab_announce_status" title='Сегодня'><img src="images/statusno.png" width="21px" height="9px" border="0" alt=''></td>
+<td class="tab_announce_type4_1"><a class="wh" href="./cn/chicken-hut-2">ресторан &quot;Chicken Hut&quot; (Дружба)</a></td><td class="tab_announce_type4_2">проспект Мира, 51</td><td class="tab_announce_type4_3">8:00-05:00</td><td class="tab_announce_type4_4">тел. 611-555</td><td class="tab_announce_rt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px_1"></td><td class="tab_announce_1px_1"></td></tr><tr class=""><td valign=top class="tab_announce_pic_off"></td><td class="tab_announce_pic" colspan=4 valign=top><a href='./cn/chicken-hut-2'><center><div class=stamp style=''><img class=imborder src=http://anoncer.net/pic/13-10-2014-220842.gif><div class=stavka style='background-image:url(../images/stavka30.png);'>&nbsp;</div></div></center></a></td><td valign=top class="tab_announce_pic_off"></td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr><tr class="tab_announce_tr" onclick="location.href='./cn/avatar';" onmouseover="this.className='tab_announce_tr_hover'" onmouseout="this.className='tab_announce_tr'"><td class="tab_announce_status" title='Сегодня'><img src="images/statusno.png" width="21px" height="9px" border="0" alt=''></td>
+<td class="tab_announce_type4_1"><a class="wh" href="./cn/avatar">боулинг-клуб &quot;Аватар&quot;</a></td><td class="tab_announce_type4_2">ул. Боженко, 106</td><td class="tab_announce_type4_3">график*</td><td class="tab_announce_type4_4">тел. 727-005, *</td><td class="tab_announce_rt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px_1"></td><td class="tab_announce_1px_1"></td></tr><tr class=""><td valign=top class="tab_announce_pic_off"></td><td class="tab_announce_pic" colspan=4 valign=top><a href='./cn/avatar'><center><img class=tab_announce_pic_out alt='' border=0 align=top src=http://anoncer.net/pic/15-05-2012-112713.gif></center></a></td><td valign=top class="tab_announce_pic_off"></td></tr><tr><td class="tab_announce_1px_1"></td><td colspan=4 class="tab_announce_1px"></td><td class="tab_announce_1px_1"></td></tr></table><img onclick="location.href='./add'" class=tab_announce_pic_out style='margin-left:62px; margin-top:10px;' alt='' border=7 align=top src='./images/add-all.gif'><br><table  class="seartab" border="0" cellpadding="0" cellspacing="0"><tr><td><!--font onclick="doLightIn('lga');" class=loger onmouseout="this.className='loger'" onmouseover="this.className='logerh'">Что может anoncer?</font--> <a class='bo' href="../add">Как добавить анонс?</a>&nbsp;<a class='bo' href="../add">Как добавить место?</a></td><td><div style='float:right;'><font class="loger"  onmouseout="this.className='loger'" onmouseover="this.className='logerh'" onclick="msfTop();">вверх</font><img class=img_option src='images/totop.png' width=14 height=17></div></td></tr></table><br> 			      </td>
+				  </tr>
+				</table>
+    </td>
+	 <td class="nulltab_grad">&nbsp;</td>
+  </tr>
+   <tr class="nulltab_glogrey">
+	   <td>&nbsp;</td>
+	   <td align="left">
+	   
+<center>
+<table class='nulltab_glotab' border='0' cellpadding='0px' cellspacing='0px'>
+				<tr>
+				<td class='nulltab_glotab_txt_1' id='Gr'>Разработано студией <a class='sm' href='http://glorance.com' rel='nofollow'>GLORANCE</a>&nbsp;</td>
+				<td class='nulltab_glotab_glo'><a rel='nofollow' class='no' href='http://glorance.com'><img border='0' src='../images/glogo.png' style='margin-top:5px;' width='60px' height='21'></a></td>
+				<td class='nulltab_glotab_txt_2' id='Gr'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Информационное издание "Anoncer" &copy; Ярослав Цыганенко, 2009-2013. <a class='sm' href='../contacts'>Контакты</a> <a class='sm' href='../license'>Условия использования ресурса</a> <a class='sm' href='../sitemap'>Карта сайта</a>&nbsp;&nbsp;</td>
+				<td>
+<!--<script type="text/javascript"><!--
+document.write("<a href='http://www.liveinternet.ru/click' "+
+"target=_blank><img src='//counter.yadro.ru/hit?t45.4;r"+
+escape(document.referrer)+((typeof(screen)=="undefined")?"":
+";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+";"+Math.random()+
+"' alt='' title='LiveInternet' "+
+"border='0' width='31' height='31'><\/a>")
+//--></script><!--/LiveInternet-->
+
+<div title="Показано число просмотров за 24 часа, посетителей за 24 часа и за сегодня">
+<!--LiveInternet counter--><script type="text/javascript"><!--
+document.write("<a href='http://www.liveinternet.ru/click' "+
+"target=_blank><img src='//counter.yadro.ru/hit?t18.2;r"+
+escape(document.referrer)+((typeof(screen)=="undefined")?"":
+";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+";"+Math.random()+
+"' alt=''"+
+"border='0' width='88' height='31'><\/a>")
+//--></script><!--/LiveInternet-->
+</div>
+<!--bigmir)net TOP 100--
+<script type="text/javascript" language="javascript"><!--
+function BM_Draw(oBM_STAT){
+document.write('<table cellpadding="0" cellspacing="0" border="0" style="display:inline; margin-right:4px; border: solid #555555 1px; padding:2px;"><tr><td><div style="font-family:Tahoma;font-size:10px; padding:0px 4px 0px 4px; margin:0px 0px 0px 0px;"><div style="float:left;text-align:left; padding-top:2px;"><a href="http://www.bigmir.net/" target="_blank" style="color:#777777;text-decoration:none; font-size:8pt;">bigmir<span style="color:#777777;">)</span>net</a>&nbsp;&nbsp;<span style="color:#ff0000;font:10px Tahoma;">'+oBM_STAT.hits+'</span></div></div></td></tr></table>');
+}
+
+</script>
+<script type="text/javascript" language="javascript"><!--
+bmN=navigator,bmD=document,bmD.cookie='b=b',i=0,bs=[],bm={o:1,v:16854135,s:16854135,t:0,c:bmD.cookie?1:0,n:Math.round((Math.random()* 1000000)),w:0};
+for(var f=self;f!=f.parent;f=f.parent)bm.w++;
+try{if(bmN.plugins&&bmN.mimeTypes.length&&(x=bmN.plugins['Shockwave Flash']))bm.m=parseInt(x.description.replace(/([a-zA-Z]|\s)+/,''));
+else for(var f=3;f<20;f++)if(eval('new ActiveXObject("ShockwaveFlash.ShockwaveFlash.'+f+'")'))bm.m=f}catch(e){;}
+try{bm.y=bmN.javaEnabled()?1:0}catch(e){;}
+try{bmS=screen;bm.v^=bm.d=bmS.colorDepth||bmS.pixelDepth;bm.v^=bm.r=bmS.width}catch(e){;}
+r=bmD.referrer.slice(7);if(r&&r.split('/')[0]!=window.location.host){bm.f=escape(r);bm.v^=r.length}
+bm.v^=window.location.href.length;for(var x in bm) if(/^[ovstcnwmydrf]$/.test(x)) bs[i++]=x+bm[x];
+bmD.write('<sc'+'ript type="text/javascript" language="javascript" src="http://c.bigmir.net/?'+bs.join('&')+'"></sc'+'ript>');
+
+</script>
+<noscript>
+<a href="http://www.bigmir.net/" target="_blank"><img src="http://c.bigmir.net/?v16854135&s16854135&t2" width="88" height="31" alt="bigmir)net TOP 100" title="bigmir)net TOP 100" border="0" /></a>
+</noscript>
+<!--bigmir)net TOP 100-->
+</td>
+	 </tr>
+	 </table></center>
+  
+	   </td>
+	   <td>&nbsp;</td>
+ </tr>	
+
+  <tr>
+	   <td colspan="3" class="nulltab_botline"></td>
+ </tr>	
+  
+</table>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-9585897-1']);
+  _gaq.push(['_setDomainName', 'anoncer.net']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+var yaParams = {};
+</script>
+
+<script src="//mc.yandex.ru/metrika/watch.js" type="text/javascript"></script>
+<script type="text/javascript">
+try { var yaCounter193561 = new Ya.Metrika({id:193561,
+          webvisor:true,
+          clickmap:true,
+          trackLinks:true,
+          accurateTrackBounce:true,params:window.yaParams||{ }});
+} catch(e) { }
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/193561" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</body>
+</html>

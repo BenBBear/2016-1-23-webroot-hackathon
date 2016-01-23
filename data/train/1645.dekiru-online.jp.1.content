@@ -1,0 +1,467 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=shift-jis" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta name="description" content="イータックス（e-Tax）を利用して電子確定申告を行うやり方を、住基カードの取得からソフトのインストール、e-Taxによる確定申告までわかりやすく解説したサイトです。手順シートにそって解説どうりにやればだれにでもできるe-Tax！" />
+<meta name="keywords" content="e-tax,イータックス,確定申告,電子証明書,やり方,ICカード,方法,できる,住基カード,所得税,税金,公的個人認証,JPKI" />
+<title>できるe-Tax確定申告-イータックス電子申告のやり方がわかる解説サイト</title>
+
+<link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+<!--[if IE 6]><link rel="stylesheet" href="style.ie6.css" type="text/css" media="screen" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" href="style.ie7.css" type="text/css" media="screen" /><![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="common/css/jquery.tabs.css" media="screen,tv,print" />
+    <!--[if lte IE 7]><link rel="stylesheet" href="../common/css/jquery.tabs-ie.css" type="text/css" media="projection, screen" /><![endif]-->
+     <link rel="stylesheet" type="text/css" href="common/css/editorial/layout.css" media="screen,tv,print" />
+     <link rel="stylesheet" type="text/css" href="common/css/editorial/tm.css" media="screen,tv,print" />
+     <link rel="stylesheet" type="text/css" href="common/css/editorial/home.css" media="screen,tv,print" />
+     <link rel="stylesheet" type="text/css" href="common/css/tooltipper.css" media="screen,tv" />
+
+    
+	<script type="text/javascript" src="script.js"></script>   
+    <script type="text/javascript" src="common/js/jquery.js"></script>
+    <script type="text/javascript" src="common/js/jquery_auto.js"></script>
+<!--RSS XML-->
+<link href="rss/rss20.xml" rel="alternate" title="RSS" type="application/rss+xml" charset="UTF-8" /> 
+<!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about="http://www.dekiru-online.jp/index.cfm"
+    trackback:ping="http://www.dekiru-online.jp/trackback/index.cfm"
+    dc:title="できるオンライン申請"
+    dc:identifier="http://www.dekiru-online.jp/index.cfm"
+    dc:subject="できるオンライン申請"
+    dc:description="できるオンライン申請　e-tax"
+    dc:creator="mogaweb"
+    dc:date="{ts '2016-01-23 08:04:38'}" />
+</rdf:RDF>
+-->
+</head>
+<body class="home"><a name="top"></a>
+<a name="top"></a>
+<div id="art-page-background-simple-gradient">    </div>
+<div id="art-main"><!--Main 外枠-->
+<div class="art-Sheet"><!--シート全体枠-->
+            <div class="art-Sheet-tl"></div>
+            <div class="art-Sheet-tr"></div>
+            <div class="art-Sheet-bl"></div>
+            <div class="art-Sheet-br"></div>
+            <div class="art-Sheet-tc"></div>
+            <div class="art-Sheet-bc"></div>
+            <div class="art-Sheet-cl"></div>
+            <div class="art-Sheet-cr"></div>
+            <div class="art-Sheet-cc"></div>
+            <div class="art-Sheet-body">
+            <div class="art-Header"><!--ヘッダー-->
+                    <div class="art-Header-png"></div>
+                    <div class="art-Header-jpeg"></div>
+                    <div class="art-Logo">
+                        <h1 id="name-text" class="art-Logo-name">
+                        <a href="http://localhost/dekiru-online/index.cfm"><img src="./common/img/icon/spacer.gif" width="700" height="100"  style="z-index:0;"/></a>
+                        
+
+        <div align="right" id="fontscale">
+        <a href="/index.cfm?&fontscale=S"><img src="http://www.dekiru-online.jp/common/img/icon/fontsizeminus.gif" alt="文字を縮小する" width="120" height="25" /></a>
+                                                
+        </div>
+
+
+                        </h1>
+                        <div id="slogan-text" class="art-Logo-text"></div>
+                    </div>
+</div><!--//art-Headeヘッダー-->
+ <!--○ナビメニュー--> 			<div class="art-nav"><!--上部ナビタブメニュー-->
+					<div class="l"></div>
+                	<div class="r"></div>
+                	<ul class="art-menu">
+                		<li><a href="http://www.dekiru-online.jp/" class=" active" ><span class="l"></span><span class="r"></span><span class="t">Top</span></a></li>
+                   		
+                        <li><a href="http://www.dekiru-online.jp/basic/index.cfm" ><span class="l"></span><span class="r"></span><span class="t">e-tax申告の仕組み</span></a>
+                            <ul>
+       			<li ><a href="http://www.dekiru-online.jp/basic/index.cfm" style="font-weight:lighter">e-Tax確定申告の仕組み（概要編）</a></li><li ><a href="http://www.dekiru-online.jp/basic/online-flow.cfm" style="font-weight:lighter">e-Tax確定申告の流れ</a></li><li ><a href="http://www.dekiru-online.jp/basic/what-difficult.cfm" style="font-weight:lighter">どこがややこしい？</a></li>
+                			</ul>
+                		</li>	
+                        <li><a href="http://www.dekiru-online.jp/need/index.cfm" ><span class="l"></span><span class="r"></span><span class="t">e-Taxに必要なもの</span></a>
+                            <ul>
+       			<li ><a href="http://www.dekiru-online.jp/need/index.cfm" style="font-weight:lighter">e-Tax確定申告に必要なものを確認しよう</a></li><li ><a href="http://www.dekiru-online.jp/need/checklist-eTax.cfm" style="font-weight:lighter">必要なものチェックリスト</a></li>
+                			</ul>
+                		</li>	
+                        <li><a href="http://www.dekiru-online.jp/howto/index.cfm" ><span class="l"></span><span class="r"></span><span class="t">e-Tax申告の手順</span></a>
+                            <ul>
+       			<li ><a href="http://www.dekiru-online.jp/howto/index.cfm" style="font-weight:lighter">e-Tax確定申告の流れ</a></li><li ><a href="http://www.dekiru-online.jp/howto/jyuuki-card.cfm" style="font-weight:lighter">住基カードを取得する</a></li><li ><a href="http://www.dekiru-online.jp/howto/ic-reader.cfm" style="font-weight:lighter">ICカードリーダの購入</a></li><li ><a href="http://www.dekiru-online.jp/howto/install.cfm" style="font-weight:lighter">インストールの順番</a></li><li ><a href="http://www.dekiru-online.jp/howto/ic-reader-setup.cfm" style="font-weight:lighter">ICカードリーダのセットアップ</a></li><li ><a href="http://www.dekiru-online.jp/howto/jpki-install.cfm" style="font-weight:lighter">Windowsの場合：事前準備セットアップツールを使う</a></li><li ><a href="http://www.dekiru-online.jp/howto/mac-install.cfm" style="font-weight:lighter">Macの場合：インストールの方法</a></li><li ><a href="http://www.dekiru-online.jp/howto/browser-setup.cfm" style="font-weight:lighter">Windowsの場合：ポップアップブロックとActiveXの設定</a></li><li ><a href="http://www.dekiru-online.jp/howto/etax-install.cfm" style="font-weight:lighter">e-Taxソフトのインストール</a></li><li ><a href="http://www.dekiru-online.jp/howto/jpiki-get.cfm" style="font-weight:lighter">電子証明書の確認</a></li><li ><a href="http://www.dekiru-online.jp/howto/startup.cfm" style="font-weight:lighter">電子申告の開始にあたって行うこと</a></li><li ><a href="http://www.dekiru-online.jp/howto/sinkoku-corner-1.cfm" style="font-weight:lighter">A：［作成コーナ］電子申告開始届出と電子証明書登録</a></li><li ><a href="http://www.dekiru-online.jp/howto/e-tax-apply.cfm" style="font-weight:lighter">B:e-Taxホームページより利用者開始届出／電子証明書登録</a></li><li ><a href="http://www.dekiru-online.jp/howto/what-etax.cfm" style="font-weight:lighter">申告書の作成と提出方法</a></li><li ><a href="http://www.dekiru-online.jp/howto/sinkoku-corner.cfm" style="font-weight:lighter">「確定申告書等作成コーナー」を利用する</a></li><li ><a href="http://www.dekiru-online.jp/howto/sinkoku-corner-direct.cfm" style="font-weight:lighter">［作成コーナー］で申告書を作成して送信する</a></li>
+                			</ul>
+                		</li>	
+                        <li><a href="http://www.dekiru-online.jp/dekiru/index.cfm" ><span class="l"></span><span class="r"></span><span class="t">e-Tax手順書・体験記</span></a>
+                            <ul>
+       			<li ><a href="http://www.dekiru-online.jp/dekiru/dekiru-sheet4you.cfm" style="font-weight:lighter">自分専用の手順書ーできるシート</a></li><li ><a href="http://www.dekiru-online.jp/dekiru/dekiru-kojin-webtax.cfm" style="font-weight:lighter">［できるシート-1］e-Tax確定申告の手順書</a></li><li ><a href="http://www.dekiru-online.jp/dekiru/kaeru-story-1.cfm" style="font-weight:lighter">体験記-1：e-Tax(イータックス）確定申告に挑戦！</a></li><li ><a href="http://www.dekiru-online.jp/dekiru/kaeru-story-2.cfm" style="font-weight:lighter">体験記-2：e-Taxに必要なものはこれかー！</a></li><li ><a href="http://www.dekiru-online.jp/dekiru/kaeru-story-3.cfm" style="font-weight:lighter">体験記-3：住基カードを作る</a></li><li ><a href="http://www.dekiru-online.jp/dekiru/kaeru-story-4.cfm" style="font-weight:lighter">体験記-４:必要なソフトウェアを整理してみた</a></li><li ><a href="http://www.dekiru-online.jp/dekiru/kaeru-story-5.cfm" style="font-weight:lighter">体験記-5:ソフトのインストール</a></li><li ><a href="http://www.dekiru-online.jp/dekiru/kaeru-story-6.cfm" style="font-weight:lighter">体験記-6:電子申告利用開始届出</a></li><li ><a href="http://www.dekiru-online.jp/dekiru/success-comment.cfm" style="font-weight:lighter">e-Tax成功！コメント集</a></li><li ><a href="http://www.dekiru-online.jp/dekiru/houjin-story1.cfm" style="font-weight:lighter">法人申告体験記-1：e-Taxで法人申告に挑戦！</a></li><li ><a href="http://www.dekiru-online.jp/dekiru/houjin-story2.cfm" style="font-weight:lighter">法人申告体験記2：e-Tax環境の準備(インストール）</a></li>
+                			</ul>
+                		</li>	
+                        <li><a href="http://www.dekiru-online.jp/infolib/index.cfm" ><span class="l"></span><span class="r"></span><span class="t">まとめ集</span></a>
+                            <ul>
+       			<li ><a href="http://www.dekiru-online.jp/infolib/index.cfm" style="font-weight:lighter">関連リンク集1−e-Tax公式サイト</a></li><li ><a href="http://www.dekiru-online.jp/source/jpki-links.cfm" style="font-weight:lighter">関連リンク集2−公的個人認証／住基カード</a></li><li ><a href="http://www.dekiru-online.jp/infolib/disclaimer.cfm" style="font-weight:lighter">免責事項</a></li>
+                			</ul>
+                		</li>	
+                        <li><a href="http://www.dekiru-online.jp/recommend/index.cfm" ><span class="l"></span><span class="r"></span><span class="t">おすすめのICカードリーダ／会計ソフト／参考書籍</span></a>
+                            <ul>
+       			<li ><a href="http://www.dekiru-online.jp/recommend/index.cfm" style="font-weight:lighter">ICカードリーダライタのリスト</a></li><li ><a href="http://www.dekiru-online.jp/recommend/books-list.cfm" style="font-weight:lighter">おススメの書籍リスト</a></li><li ><a href="http://www.dekiru-online.jp/recommend/software-list.cfm" style="font-weight:lighter">おススメの会計ソフト！</a></li>
+                			</ul>
+                		</li>	
+                	</ul>
+                  
+</div><!--// art-nav 上部ナビタブメニュー-->
+<div class="art-contentLayout"><!--□□コンテント部分□□-->                             
+ <!--■L：左サイドバーart-content--> <div class="art-sidebar1" ><!--■左サイド部分-->
+<div class="art-Block">                         
+                             <div class="art-Block-tr"></div>
+                            <div class="art-Block-bl"></div>
+                            <div class="art-Block-br"></div>
+                            <div class="art-Block-tc"></div>
+                            <div class="art-Block-bc"></div>
+                            <div class="art-Block-cl"></div>
+                            <div class="art-Block-cr"></div>
+                            <div class="art-Block-cc"></div>        
+                            <div class="art-Block-body">                      
+                                        <div class="art-BlockHeader">
+                                            <div class="l"></div>
+                                            <div class="r"></div>
+                                            <div class="art-header-tag-icon">
+                                                <div class="t">基本編</div>
+                                            </div>
+                                        </div>
+                                        <div class="art-BlockContent">                                                 
+                                            <div class="art-BlockContent-body">
+                                                <div  id="corner">           
+                                                                                                      
+                                                  <ul> 
+                                                      <li><a href="./basic/index.cfm">e-Taxの仕組み</a> </li>
+                                                      <li><a href="./need/index.cfm">e-taxに必要なもの</a></li>
+                                                  </ul>                                      
+                                               </div>
+                                        		<div class="cleared"></div>
+                                            </div>
+                                        </div>
+                        		<div class="cleared"></div>
+                            </div>
+                        </div>
+ <div class="art-Block">                         
+                             <div class="art-Block-tr"></div>
+                            <div class="art-Block-bl"></div>
+                            <div class="art-Block-br"></div>
+                            <div class="art-Block-tc"></div>
+                            <div class="art-Block-bc"></div>
+                            <div class="art-Block-cl"></div>
+                            <div class="art-Block-cr"></div>
+                            <div class="art-Block-cc"></div>        
+                            <div class="art-Block-body">
+                            
+                                        <div class="art-BlockHeader">
+                                            <div class="l"></div>
+                                            <div class="r"></div>
+                                            <div class="art-header-tag-icon">
+                                                <div class="t"> <a href="./basic/index.cfm">e-Tax申告の手順</a></div>
+                                            </div>
+                                        </div>
+                                        <div class="art-BlockContent">                                                 
+                                            <div class="art-BlockContent-body">
+                                                <div  id="corner">                                                                  
+                                                  <ul> 
+                                                      <li><a href="./howto/index.cfm">e-Tax申告の流れ</a> </li>
+                                                      <li><a href="./howto/jyuuki-card.cfm">住基カードの取得</a></li>
+                                                      <li><a href="./howto/ic-reader.cfm">ICカードリーダの購入</a></li>
+                                                      <li><a href="./howto/install.cfm">ソフトのインストール</a></li>
+                                                      <li><a href="./howto/startup.cfm">電子申告開始届出</a></li>
+                                                      <li><a href="./howto/what-etax.cfm">申告書作成</a></li>
+                                                  </ul>                                      
+                                               </div>
+                                        		<div class="cleared"></div>
+                                            </div>
+                                        </div>
+                        		<div class="cleared"></div>
+                            </div>
+                        </div>  
+<div class="art-Block">                         
+                             <div class="art-Block-tr"></div>
+                            <div class="art-Block-bl"></div>
+                            <div class="art-Block-br"></div>
+                            <div class="art-Block-tc"></div>
+                            <div class="art-Block-bc"></div>
+                            <div class="art-Block-cl"></div>
+                            <div class="art-Block-cr"></div>
+                            <div class="art-Block-cc"></div>        
+                            <div class="art-Block-body">  
+                                        <div class="art-BlockHeader">
+                                            <div class="l"></div>
+                                            <div class="r"></div>
+                                            <div class="art-header-tag-icon">
+                                                <div class="t"> <a href="./basic/index.cfm">体験記</a></div>
+                                            </div>
+                                        </div>
+                                        <div class="art-BlockContent">                                                 
+                                            <div class="art-BlockContent-body">
+                                                <div  id="corner">                                                                  
+                                                      <b>カエル君のe-Tax体験記</b>
+                                                      <ul>
+                                                      <li><a href="./dekiru/kaeru-story-1.cfm">e-tax確定申告に挑戦！</a></li>
+                                                      <li><a href="/dekiru/kaeru-story-2.cfm">e-taxに必要なものはこれかー！</a></li>
+                                                      <li><a href="./dekiru/kaeru-story-3.cfm">住基カードを作る</a></li>
+                                                      <li><a href="./dekiru/kaeru-story-4.cfm">必要なソフトウェアを整理してみた</a></li>
+                                                      <li><a href="./dekiru/kaeru-story-5.cfm">ソフトウェアのインストール</a></li>
+                                                      <li><a href="./dekiru/kaeru-story-6.cfm">電子申告利用開始届出</a></li>
+                                                 　　 </ul>                                      
+                                               </div>
+                                        		<div class="cleared"></div>
+                                            </div>
+                                        </div>
+                        		<div class="cleared"></div>
+                            </div>
+                        </div>  
+<div class="art-Block">                         
+                             <div class="art-Block-tr"></div>
+                            <div class="art-Block-bl"></div>
+                            <div class="art-Block-br"></div>
+                            <div class="art-Block-tc"></div>
+                            <div class="art-Block-bc"></div>
+                            <div class="art-Block-cl"></div>
+                            <div class="art-Block-cr"></div>
+                            <div class="art-Block-cc"></div>        
+                            <div class="art-Block-body">  
+                                        <div class="art-BlockHeader">
+                                            <div class="l"></div>
+                                            <div class="r"></div>
+                                            <div class="art-header-tag-icon">
+                                                <div class="t"> <a href="./basic/index.cfm">便利なツール集</a></div>
+                                            </div>
+                                        </div>
+                                        <div class="art-BlockContent">                                                 
+                                            <div class="art-BlockContent-body">
+                                                <div  id="corner">                              
+                                                      <b>できるシート</b>
+                                                      <ul>
+                                                      <li><a href="./dekiru/index.cfm">できるシート</a></li>
+                                                      <li><a href="./img/usr/passwordnotes.pdf">パスワード管理シート</a></li>
+                                                      <li><a href="./need/checklist-eTax.cfm">準備チェックリスト</a></li>
+                                                 　　 </ul>  
+                                               </div>
+                                        		<div class="cleared"></div>
+                                            </div>
+                                        </div>
+                        		<div class="cleared"></div>
+                            </div>
+                        </div>  
+ <div class="banner">
+ <table bgcolor="ffffff" align="center" width="160">
+<tr><td style="background-color:#FFFFFF" >
+<h2><img src="./common/img/aboutus.jpg" alt="このサイトについて" width="160"  /></h2>
+<p style="font-size:12px">このサイトは、今年こそ自分でe-Tax確定申告してみたい！という個人事業主（ニックネーム：カエル君）が、苦手なお役所手続き知識と格闘しながら、やり方を整理中のサイトです。</p>
+<a href="http://www.dekiru-online.jp/infolib/disclaimer.cfm" style="font-size:6pt;text-decoration:none">当サイトご利用の注意(免責事項）</a>
+</td></tr></table>
+</div> <!--/div banner-  ---> 
+
+<div class="banner">
+<table bgcolor="ffffff" align="center" width="120">
+<tr><td style="background-color:#FFFFFF" >
+<!-- SiteSearch Google -->
+<center>
+<form method=get action="http://www.google.co.jp/search">
+<table bgcolor="#FFFFFF">
+<tr valign=top><td>
+<a href="http://www.google.co.jp/">
+<img src="http://www.google.com/logos/Logo_40wht.gif" 
+border="0" alt="Google" align="absmiddle"></a>
+</td></tr>
+<tr><td>
+<input type=text name=q size=15 maxlength=255 value="">
+<input type=hidden name=ie value=Shift_JIS>
+<input type=hidden name=oe value=Shift_JIS>
+<input type=hidden name=hl value="ja">
+<input type=submit name=btnG value="Google 検索">
+
+<input type=hidden name=domains value="dekiru-online.jp"><br>
+<input type=radio name=sitesearch value=""> WWW を検索 <br>
+<input type=radio name=sitesearch value="dekiru-online.jp" checked> サイト内を検索
+
+</td></tr></table>
+</form>
+</center>
+<!-- SiteSearch Google -->
+</td></tr>
+</table>
+</div> <!--/div banner-  --->                   
+</div> <!--//■左サイド部分 art-sidebar1-->
+
+
+<div class="art-content" ><!--■M：真ん中コンテンツ部分art-content-->
+<div class="art-Post" ><!--記事コンテナ-->
+<div class="art-Post-tl"></div>
+<div class="art-Post-tr"></div>
+<div class="art-Post-bl"></div>
+<div class="art-Post-br"></div>
+<div class="art-Post-tc"></div>
+<div class="art-Post-bc"></div>
+<div class="art-Post-cl"></div>
+<div class="art-Post-cr"></div>
+<div class="art-Post-cc"></div>
+<div class="art-Post-body" ><!--記事コンテナ BODY-->
+<div class="art-Post-inner"><!--記事コンテナ inner-->  
+<div align="center"><img src="common/img/home/visual_01.jpg" alt="日本一やさしいe-Tax(イータックス）確定申告のやり方" width="560" height="138" />
+<p style="font-size:12pt;color:#666666" align="center">今年こそe-Taxで確定申告をしてみたいけど、やり方がよくわからない(>_<)！<br />
+
+そんなあなたのためのお助け解説サイトです。</p>
+<table style="background-color:#000000;padding:0px 20px 0px 20px;" >
+<tr>
+<td style="color:#FFFFFF" colspan="3" align="center">
+2010年e-Taxに初挑戦するには、まず次の2つを準備しましょう！</td>
+</tr>
+<tr><td valign="bottom" style="background-image:url(common/img/home/prepare-1.gif);background-repeat: no-repeat;"
+ height="120" align="right" width="250"><a href="./howto/jyuuki-card.cfm" style="color:#990000;text-decoration:underline"><strong>作り方解説を読む</strong></a>&nbsp;</td><td><img src="common/img/home/black-kaeru.gif" width="25" height="24" /></td>
+ <td valign="bottom" style="background-image:url(common/img/home/prepare-2.gif);background-repeat: no-repeat;"
+ height="120" align="right" width="250"><a href="./howto/ic-reader.cfm" style="color:#990000;text-decoration:underline"><strong>購入方法はコチラ</strong></a>&nbsp;</td></tr>
+ <tr>
+<td style="color:#FFFFFF" colspan="3" align="center">&nbsp;</td>
+</tr>
+</table>
+<hr  color="#FFFFFF" />
+<img src="common/img/icon/ico_shelpa.gif" /><img src="common/img/icon/ico_shelpa.gif" /><img src="common/img/home/banner_starthere.gif" /><img src="common/img/icon/ico_shelpa.gif" /><img src="common/img/icon/ico_shelpa.gif" />
+<table style="background-color:#e5e5e5;padding:10px 0px 10px 0px;" >
+<tr><td  bgcolor="#ffffff" style="border:solid 1px #000000">
+<img src="common/img/tab/bg_h3_step01.gif" width="80" height="35" align="absmiddle" /><strong>まず全体の流れをつかむ</strong>
+<table border="0" cellspacing="5" cellpadding="5">
+  <tr align="center">
+    <td colspan="2"><a href="dekiru/dekiru-sheet4you.cfm" title="できるe-Taxシート"><img src="common/img/home/comic_07.jpg" alt="自分用のできるシートを作成" width="560" height="80" vspace="4" class="Hover" /></a><br />下のカエル君マークをクリックして自分の条件にそったできるシート（手順書）を用意します。<br />
+<img src="common/img/home/tool_kaeru.gif" />
+</td>
+  </tr>
+</table>
+</td></tr>
+<tr><td align="center"><img src="common/img/home/downallow.gif" /></td></tr>
+<tr>
+<td bgcolor="#ffffff" style="border:solid 1px #000000">
+<img src="common/img/tab/bg_h3_step02.gif"  align="absmiddle" /><strong>e-Taxを行うための環境を準備する</strong>
+  <table  border="0" cellspacing="5" cellpadding="5">
+<tr  valign="top">
+<td align="right"  width="25%"><a href="howto/jyuuki-card.cfm" title="住基カードを作る"><img src="common/img/home/comic_02.gif" alt="住基カードを作る" width="142" height="160"   class="Hover"/></a>
+<p ><a href="howto/jyuuki-card.cfm" title="住基カードを作る">作成方法を読む</a></p></td>
+<td valign="top" style="border:dotted 1px #ffffff"  width="25%">e-Tax申告時には本人確認用の<b>住民基本台帳カード（住基カード）</b>が必要です。<br />
+<p class="S">住んでいる土地の市区町村役場で住基カードを発行してもらいましょう。</p></td>
+<td align="right"  width="25%"><a href="howto/ic-reader.cfm" title="ICカードリーダライタを買う"><img src="common/img/home/comic_03.gif" alt="ICカードリーダライタを買う" width="142" height="160" class="Hover" /></a><p align="right"><a href="howto/ic-reader.cfm" title="ICカードリーダライタを買う">購入方法を読む</a></p></td>
+<td valign="top" style="border:dotted 1px #cccccc"  width="25%"><b>パソコンに接続して住基カード内の証明書を読み取る機械</b>です。<br />
+<p class="S">市販の製品で1500円〜5000円程度。amazonなどで簡単に手に入ります。</p></td>
+</tr>
+<td align="right"><a href="howto/install.cfm" title="インストール"><img src="common/img/home/comic_04.gif" alt="パソコンのインストール" width="142" height="160"  class="Hover" /></a>
+<p align="right"><a href="howto/install.cfm" title="インストール">準備方法を読む</a></p></td>
+<td valign="middle" style="border:dotted 1px #ffffff">e-Taxで確定申告を行うための<b>ソフトウェアをインストールします。</b><br />
+<p class="S">お役所のHPを読むとなんだか難しそうですが、このサイトの手順にそってやれば意外と簡単デス！</p>
+</td>
+<td align="right"><a href="howto/sinkoku-corner-1.cfm" title="電子申告開始届出"><img src="common/img/home/comic_05.gif" alt="電子申告利用開始届出" width="134" height="160"  class="Hover"/></a>
+<p align="right"><a href="howto/sinkoku-corner-1.cfm" title="電子申告開始届出">届出方法を読む</a></p></td>
+<td valign="top" style="border:dotted 1px #ffffff"><p><b>e-Taxで確定申告を開始する届出</b>を行います</p>
+<p class="S">インターネット上からその場で届出を実行できます。<br />
+<img src="common/img/home/ready.gif" width="79" height="34" hspace="20" vspace="5" /></p>
+</td>
+</table>  
+</td></tr>
+<tr><td align="center"><img src="common/img/home/downallow.gif" /></td></tr>
+  <tr align="center">
+    <td colspan="4"><a href="howto/what-etax.cfm" title="確定申告書の作成"><img src="common/img/home/comic_06.gif" alt="e-Tax準備の完了" width="560" height="80" vspace="4"  class="Hover" /></a></td>
+  </tr></table>
+  
+<p style="font-size:12px;color:#666666" align="center">e-taxの準備方法についてざっとあらすじをつかみたい方は、まず体験記をどうぞ！</p>
+	<div class="container top">        
+        <p><a href="dekiru/kaeru-story-1.cfm"><img src="common/img/home/visual_04.jpg" alt="確定申告体験記でまずあらすじを読めます" width="527" height="96" class="Hover" /></a><br />		
+</div><!-- /divcontainer -->
+<table width="560" border="0" cellspacing="5" cellpadding="5" style="border:solid 1px #333333">
+  <tr>
+    <td colspan="2">
+     <p style="border:solid 1px #cccccc;background-color:#e4e4e4;" align="center">「e-Taxをするために必要なこと」を整理するシートを用意しました。<br /></p><a href="dekiru/dekiru-sheet4you.cfm" title="できるシートの作成"><img src="common/img/home/tool_01.jpg" alt="できるシートの作成" width="559" height="120" vspace="3"  class="Hover" /></a></td>
+  </tr>
+  <tr>
+    <td><a href="need/checklist-eTax.cfm" title="必要なものチェックリスト"><img src="common/img/home/tool_02.jpg" alt="チェックリスト" width="275" height="150" hspace="2" class="Hover" /></a></td>
+    <td><a href="/img/usr/passwordnotes.pdf" title="パスワード管理シート"><img src="common/img/home/tool_03.jpg" alt="パスワード管理シート" width="275" height="150" hspace="2"  class="Hover" /></a></td>
+  </tr>
+</table>
+</div>
+</div><!--//記事コンテナ art-Post-inner-->              
+</div><!--//記事コンテナ art-Post-body-->
+</div><!--//記事コンテナart-Post-->
+<div class="cleared"></div> 
+    </div><!--//■M：真ん中コンテンツ部分art-content-->   
+    <div class="art-sidebar2" style="padding:0px"><!--右サイドバー-->
+
+
+<div class="banner" style="font-size:11px;color:#990000" align="center">   
+<a href="./dekiru/success-comment.cfm"><img src="./common/img/home/banner_finished.jpg" alt="e-Taxで申告成功" width="120" height="59"   vspace="5"/></a>
+<br />完了者は足跡記帳ください♪
+</div>   
+  <table align="center"  style="border:solid 1px #666666"><tr><td>
+    		<div class="banner" align="center">
+    		<div class="banner-inner" align="center">
+      		<iframe src="http://rcm-jp.amazon.co.jp/e/cm?t=ashwada-22&o=9&p=8&l=as1&asins=B001KZ4QZ4&md=1X69VDGQCMF7Z30FM082&fc1=000000&IS1=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=FFFFFF&bg1=FFFFFF&f=ifr&nou=1" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+            </div>
+  			</div> <!--/div banner-  --->
+      
+    		<div class="banner" align="center">
+    		<div class="banner-inner" align="center">
+
+      		<iframe src="http://rcm-jp.amazon.co.jp/e/cm?t=ashwada-22&o=9&p=8&l=as1&asins=B001LGCCR6&md=1X69VDGQCMF7Z30FM082&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=FFFFFF&bg1=FFFFFF&f=ifr&nou=1" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+            </div>
+  			</div> <!--/div banner-  --->
+      
+    		<div class="banner" align="center">
+    		<div class="banner-inner" align="center">
+      		<iframe src="http://rcm-jp.amazon.co.jp/e/cm?t=ashwada-22&o=9&p=8&l=as1&asins=B00117VJ7O&md=1X69VDGQCMF7Z30FM082&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=FFFFFF&bg1=FFFFFF&f=ifr&nou=1" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+            </div>
+  			</div> <!--/div banner-  --->
+</td></tr></table>
+<div class="banner"> <!-- Google Adsense -->
+<div class="banner-inner" align="center">
+<script type="text/javascript"><!--
+google_ad_client = "pub-7991081395272723";
+/* 120x240, 作成済み 09/06/30　iPhone */
+google_ad_slot = "5606504164";
+google_ad_width = 120;
+google_ad_height = 600;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+</div><!-- Google Adsense -->
+</div>            <!--art-sidebar2-->    
+  <div class="cleared"></div>
+   <div class="art-Footer"><!--//■フッター art-Footer-->
+                    <div class="art-Footer-inner"><!--フッターinner -->
+                        
+                        <div class="art-Footer-text"><!--フッター文 -->
+                            <p><a href="http://www.dekiru-online.jp/infolib/sitemap.cfm">サイトマップ</a>
+                                                
+                                <br />
+                                Copyright &copy; 2009 wmasumi. All Rights Reserved.</p>
+                        </div><!--//art-Footer-text-->
+                    </div><!--//art-Footer-inner-->
+                    <div class="art-Footer-background"></div>
+                </div><!--//■フッター art-Footer--> <!--○フッター-->            
+    </div><!--//art-contentLayout-->
+    </div><!--シート全体枠　art-Sheet-body-->
+    </div><!--art-main-->
+    <p class="art-page-footer"><a href="http://www.artisteer.com/">Web Template</a> created with Artisteer by Technomuse.</p>
+    <!--google Analytics Tracking-code -->
+    
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+    var pageTracker = _gat._getTracker("UA-7149725-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+    
+    </body>
+    </html>

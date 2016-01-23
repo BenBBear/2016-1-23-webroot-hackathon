@@ -1,0 +1,386 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="keywords" content="錦糸町,美容室,美容院,ヘアサロン,ミコル">
+<meta name="description" content="錦糸町の美容室（美容院）、ヘアサロンMiCOLのオフィシャルサイトです。都内トップサロン店長とカラーディレクターが独立して設立したヘアサロンです。錦糸 町で美容院をお探しなら是非ご来店ください。">
+
+<title>錦糸町の美容室（美容院）【Hair Salon MICOL】</title>
+<link rel="shortcut icon" href="images/favicon.ico" />
+<link rel="stylesheet" href="css/style.css" />
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<!-- page-fade-->
+<script src="js/jquery.fademover.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('body').fadeMover({
+		'effectType': 2,
+		'inSpeed': 2000,
+		'outSpeed': 0,
+		'inDelay' : 500,
+		'outDelay' :500,
+		'nofadeOut' : 'nonmover'
+	});
+});
+</script> 
+
+<!-- slider -->
+<link href="js/jquery.bxslider.css" rel="stylesheet" />
+<script src="js/jquery.bxslider.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('.bxslider').bxSlider({
+		auto:true,
+		speed:1000,
+		mode: 'fade',
+		captions: false
+	});
+});
+</script>
+
+<!-- scrollbar -->
+<link href="js/perfect-scrollbar-0.4.8.min.css" rel="stylesheet">
+<script src="js/perfect-scrollbar-0.4.8.with-mousewheel.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function ($) {
+    $('.scroll_area').perfectScrollbar({
+		wheelPropagation: true,
+		wheelSpeed: 100,
+	});
+});
+</script>
+
+<!-- pop-up -->
+<link rel="stylesheet" type="text/css" href="js/jquery.fancybox-1.3.4.css" media="screen" />
+<script type="text/javascript" src="js/jquery.fancybox-1.3.4.pack.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".fancybox1").fancybox();
+    });
+</script>
+
+<!-- effect -->
+<script type="text/javascript" src="js/smart-crossfade.js"></script>
+
+<!-- rss -->
+<script src="https://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+//APIを読み込む
+google.load("feeds", "1");
+  
+//初期関数
+function initialize(){
+  
+//読み込むフィードを設定する
+var feed = new google.feeds.Feed("http://blog.livedoor.jp/micol-micol/index.rdf");
+  
+//読み込む件数を設定する
+feed.setNumEntries(5);
+feed.load(dispfeed);
+//フィードを読み込む
+function dispfeed(result){
+  
+//エラーチェック
+if(!result.error){
+  
+//表示するエレメントを設定する
+var container = document.getElementById("feed_blog");
+var htmlstr = "";
+htmlstr += '<div id="feed-rapper">';
+for (var i = 0; i < result.feed.entries.length; i++) {
+ 
+var entry = result.feed.entries[i];
+var eimg = "";
+var imgCheck = entry.content.match(/(src="http:){1}[\S_-]+((\.jpg)|(\.JPG))/);
+if(imgCheck){
+         eimg += '<img ' + imgCheck[0] + '" width="225" >';
+      }
+ 
+htmlstr += '<div class="feed-Control">';
+htmlstr +=  eimg + '<h4 class="title"><a href="' + entry.link + '">' + entry.title + '</a></h4>';
+ 
+htmlstr += '<div class="entry-contents">' + entry.contentSnippet.substring(0,14)+' ...<a href="' + entry.link + '">続きを読む</a>' +'</div></div><br class="clear">';
+ 
+}
+htmlstr += '</div">';
+ 
+container.innerHTML = htmlstr;
+var elems = container.getElementsByTagName('a'); // containerに含まれるa要素
+for (var j = 0, l = elems.length; j < l; j++) {
+elems[j].target = '_blank'; // targetに'_blank'を設定
+}
+}
+}
+}
+google.setOnLoadCallback(initialize);
+</script>
+
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+</head>
+
+<body>
+<div class="wrap">
+
+<header>
+    <section class="wrapper">
+        <h1 id="logo"><a href="index.php"><img src="images/logo01.png" alt="ロゴ01"></a></h1>
+        <div id="subnav">
+            <ul>
+                <li><address>tel：03-3625-1112</address></li>
+                <li><span>&#9658;</span><a href="http://b.hpr.jp/sd/H000221483/" target="_blank">reserve</a></li>
+                <li><span>&#9658;</span><a href="https://www.facebook.com/MICOL.hairsalon" target="_blank">facebook</a></li>
+                <li><span>&#9658;</span><a href="https://twitter.com/micol_2011" target="_blank">twitter</a></li>
+                <li class="last"><span>&#9658;</span><a href="http://blog.livedoor.jp/micol-micol/" target="_blank">blog</a></li>
+            </ul>
+        </div>
+        
+        <nav class="fade">
+            <ul>
+                <li style="border-left:1px solid;"><a href="salon.php">salon</a></li>
+                <li><a href="promise.php">promise</a></li>
+                <li><a href="staff.php">staff</a></li>
+                <li><a href="style.php">style</a></li>
+                <li><a href="item.php">item</a></li>
+                <li><a href="price.php">price</a></li>
+                <li><a href="r&s.php">recruit&nbsp;＆&nbsp;seminar</a></li>
+            </ul>
+        </nav>
+    </section>
+</header>
+
+<div class="content wrapper">
+
+	<!-- eyecatch -->
+    <div class="main">
+    	<img src="images/top/main01.jpg"  alt="メイン画像">
+    	<!--
+    	<ul class="bxslider">
+            <li><img src="images/top/main01.jpg"  alt="メイン画像"></li>
+        </ul>
+        -->
+    </div>
+    
+        <!-- 左カラム -->
+<div class="left">
+    
+    <!-- info -->
+    <section class="info">
+        <h2 class="ti_s">info</h2>
+        <div class="scroll_area">
+        <dl>
+
+        	<dt>年末年始営業のお知らせ</dt>
+            <dd>スタッフ出勤日もあわせてこちらでご確認ください。<br>
+            <a href="http://blog.livedoor.jp/micol-micol/archives/47008261.html" target="_blank">詳しくはコチラ >></a></dd>
+        	<dt>2015.11.26</dt>
+            <dd>新しいスタイルが加わりました。<br>
+            <a href="style.php">詳しくはコチラ >></a></dd>
+        	<dt>2015.10.08</dt>
+            <dd>新しいスタイルが加わりました。<br>
+            <a href="style.php">詳しくはコチラ >></a></dd>
+        	<dt>2015.09.28</dt>
+            <dd>新しいスタイルが加わりました。<br>
+            <a href="style.php">詳しくはコチラ >></a></dd>
+        	<dt>2015.07.21</dt>
+            <dd>新しいスタイルが加わりました。<br>
+            <a href="style.php">詳しくはコチラ >></a></dd>
+        	<dt>2015.05.14</dt>
+            <dd>6/21～6/26の期間、長期休暇を頂きます。ご迷惑をおかけしますが宜しくお願い致します。</dd>
+        	<dt>2015.03.11</dt>
+            <dd>革新的ドライヤー＆ヘアアイロン入荷<br>
+            <a href="item.php">詳しくはコチラ >></a></dd>
+       		<dt>2015.02.02</dt>
+            <dd>新商品続々入荷<br>
+            <a href="item.php">詳しくはコチラ >></a></dd>
+            <dt>2015.01.29</dt>
+            <dd>新しいスタイルが加わりました。<br>
+            <a href="style.php">詳しくはコチラ >></a></dd>
+            <dt>2014.11.14</dt>
+            <dd>11/17～11 /19の期間、社員研修の為休暇を頂きます。</dd>
+            <dt>2014.11.04</dt>
+            <dd>新しいスタイルが加わりました。<br>
+            <a href="style.php">詳しくはコチラ >></a></dd>
+            <dt>2014.08.26</dt>
+            <dd>新商品続々入荷<br>
+            <a href="item.php">詳しくはコチラ >></a></dd>
+            <dt>2014.07.02</dt>
+            <dd>新しいスタイルが加わりました。<br>
+            <a href="style.php">詳しくはコチラ >></a></dd>
+            <dt>2014.06.05</dt>
+            <dd>新しいスタイルが加わりました。<br>
+            <a href="style.php">詳しくはコチラ >></a></dd>
+            <dt>2014.04.28</dt>
+            <dd>新しいスタイルが加わりました。<br>
+            <a href="style.php">詳しくはコチラ >></a></dd>
+            <dt>2014.04.01</dt>
+            <dd>MiCOLのホームページがリニューアルしました。ホームページから予約できるようになりましたので、是非ご活用ください。</dd>
+            <dt>2014.04.01</dt>
+            <dd>定休日が火曜日のみとなりました。今後は月曜日もすべて営業致します。</dd>
+            <dt>2014.04.01</dt>
+            <dd>新しい仲間が加わりました。詳しくはスタッフ欄をご覧ください。</dd>
+        </dl>  
+        </div>
+    </section>
+    
+    <!-- salon -->
+    <section class="salon">
+        <h2 class="ti_s">salon</h2>
+        <img src="images/img-shop.jpg" alt="外観写真">
+        <span class="opacity"><a href="salon.php?id=anchor01"><img src="images/img-map.jpg" alt="地図"></a></span>
+        <dl>
+            <dt><img src="images/logo02.png" alt="ロゴ02"></dt>
+            <dd><address>東京都墨田区錦糸2-14-4 Tビル.1 1F<br>
+            TEL ：03-3625-1112 <br>
+            FAX： 03-3625-1113</address><br>
+            営業時間：10:00 - 20:00<br>
+            定休日：火曜日<br>
+            <br>
+            お問い合わせはこちら<br>
+            <span>&#9658;</span><a href="r&s.php?id=anchor01"><strong>contact&nbsp;us</strong></a></dd>
+        </dl>
+    </section>
+</div>
+        
+        <!-- 右カラム -->
+        <div class="right">
+            <article>
+                <!-- blog -->
+                <section class="blog">
+                    <h2 class="ti_s">blog</h2>
+
+                    <div class="scroll_area">
+                        <div id="feed_blog"></div>
+                    </div>
+                    
+                </section>
+    
+                <!-- media -->
+                <section class="media opacity">
+                    <h2 class="ti_s">media</h2>
+                    <dl class="scroll_area">
+                        <dt><a href="images/top/img-m03_l.jpg" class=" fancybox1"><img src="images/top/img-m03.jpg" alt="錦糸町Walker"></a></dt>
+                        <dd>「錦糸町Walker」に掲載されました。</dd>
+                        <dt><a href="images/top/img-m01_l.jpg" class=" fancybox1"><img src="images/top/img-m01.jpg" alt="ナチュラルヘアBOOK1"></a><br>
+                        <br>
+                        <a href="images/top/img-m02_l.jpg" class=" fancybox1"><img src="images/top/img-m02.jpg" alt="ナチュラルヘアBOOK2"></a></dt>
+                        <dd>「ナチュラルヘアBOOK」にMiCOLのスタイルが掲載されました。</dd>
+                    </dl>
+                </section>
+    
+                <!-- item -->
+                <section class="item opacity">
+                    <h2 class="ti_s">item</h2>
+                    <dl class="scroll_area">
+                    	
+                        <dt><a href="item.php"><img src="images/top/img-i19.jpg" alt="LUMIELINA　ヘアアイロン"></a></dt>
+                        <dd>「革命的ヘアアイロン」入荷</dd>
+                        <dt><a href="item.php"><img src="images/top/img-i18.jpg" alt="LUMIELINA　ヘアドライヤー"></a></dt>
+                        <dd>「革新的ドライヤー」入荷</dd>
+                    	<dt><a href="item.php"><img src="images/top/img-i17.jpg" alt="モロッカンオイル　ヘアマスク"></a></dt>
+                        <dd>new arrival</dd>
+                    	<dt><a href="item.php"><img src="images/top/img-i16.jpg" alt="モロッカンオイル　エクストラボリュマイズ"></a></dt>
+                        <dd>new arrival</dd>
+                    	<dt><a href="item.php"><img src="images/top/img-i15.jpg" alt="モロッカンオイル　モイスチャーリペラシオン"></a></dt>
+                        <dd>new arrival</dd>
+                    	<dt><a href="item.php"><img src="images/top/img-i14.jpg" alt="モロッカンオイル　モルディングクリーム"></a></dt>
+                        <dd>new arrival</dd>
+                    	<dt><a href="item.php"><img src="images/top/img-i13.jpg" alt="モロッカンオイル　ボリュマイジングムース"></a></dt>
+                        <dd>new arrival</dd>
+                    	<dt><a href="item.php"><img src="images/top/img-i12.jpg" alt="モロッカンオイル　カールディファイニングクリーム"></a></dt>
+                        <dd>new arrival</dd>
+                        <dt><a href="item.php"><img src="images/top/img-i11.jpg" alt="リファ アクティブ"></a></dt>
+                        <dd>超話題のリファ　ついに入荷</dd>
+                        <dt><a href="item.php"><img src="images/top/img-i10.jpg" alt="リファ　Scarat"></a></dt>
+                        <dd>只今大人気商品</dd>
+                        <dt><a href="item.php"><img src="images/top/img-i09.jpg" alt="リファ　Ostyle"></a></dt>
+                        <dd>リファの進化を肌で感じて欲しい</dd>
+                        <dt><a href="item.php"><img src="images/top/img-i08.jpg" alt="ジョンマスターオーガニック  ローズ&アプリコットヘアミルク"></a></dt>
+                        <dd>使い心地良し、香り良しの万能クリーム</dd>
+                        <dt><a href="item.php"><img src="images/top/img-i07.jpg" alt="モロッカンオイル  ハイドレーティングスタイリングクリーム"></a></dt>
+                        <dd>潤いのほしいすべての髪へ</dd>
+                        <dt><a href="item.php"><img src="images/top/img-i06.jpg" alt="モロッカンオイル　グリマーシャイン"></a></dt>
+                        <dd>すべての髪質でよりツヤの欲しい方へ</dd>
+                        <dt><a href="item.php"><img src="images/top/img-i05.jpg" alt="モロッカンオイル　ルミノーサ　ヘアスプレー"></a></dt>
+                        <dd>モロッカンオイルからヘアスプレーが発売されました。</dd>
+                        <dt><a href="item.php"><img src="images/top/img-i04.jpg" alt="モロッカンオイル　ウェザープルーフ"></a></dt>
+                        <dd>湿気対策はこれ1本でOK!<br>話題の新商品入荷しました。</dd>
+                        <dt><a href="item.php"><img src="images/top/img-i03.jpg" alt="資生堂　アデノバイタル"></a></dt>
+                        <dd>まつ毛女子必見。<br>話題の新商品入荷しました。</dd>
+                        <dt><a href="item.php"><img src="images/top/img-i02.jpg" alt="オーブルス　キンフィットシリーズ"></a></dt>
+                        <dd>入荷即完売のオーブル　スキンフィットシリーズ入荷しました。</dd>
+                        <dt><a href="item.php"><img src="images/top/img-i01.jpg" alt="ジョンマスターオーガニック　スキャルプシリーズ"></a></dt>
+                        <dd>ジョンマスターオーガニック　スキャルプシリーズ登場。</dd>
+                    </dl>
+                </section>
+    
+                <!-- facebook -->
+                <section class="img-fb opacity">
+                    <a href="https://www.facebook.com/MICOL.hairsalon" target="_blank"><img src="images/top/img-fb.jpg" alt="facebook"></a>
+                </section>
+    
+                <!-- twitter -->
+                <section class="img-tw opacity">
+                    <a href="https://twitter.com/micol_2011" target="_blank"><img src="images/top/img-tw.jpg" alt="twitter"></a>
+                </section>
+    
+                <!-- reserve -->
+                <section class="img-web opacity">
+                    <a href="http://b.hpr.jp/sd/H000221483/" target="_blank"><img src="images/top/img-web.jpg" alt="reserve"></a>
+                </section>
+    
+                <!-- img -->
+                <section class="img01">
+                    <a href="images/top/img01_l.jpg" class="fancybox1"><img src="images/top/img01_off.jpg" alt="entrance"></a>
+                </section>
+                <section class="img02 fade">
+                    <a href="promise.php?id=anchor01"><!--<a href="images/top/img02_l.jpg" class="fancybox1">--><img src="images/top/img02_off.jpg" alt="entrance"></a>
+                </section>
+                <section class="img03 fade">
+                    <a href="salon.php?id=anchor02"><!--<a href="images/top/img03_l.jpg" class="fancybox1">--><img src="images/top/img03_off.jpg" alt="entrance"></a>
+                </section>
+                <section class="img04">
+                    <a href="images/top/img04_l.jpg" class="fancybox1"><img src="images/top/img04_off.jpg" alt="entrance"></a>
+                </section>
+                <section class="img05">
+                    <a href="images/top/img05_l.jpg" class="fancybox1"><img src="images/top/img05_off.jpg" alt="entrance"></a>
+                </section>
+                <section class="img06">
+                    <a href="images/top/img06_l.jpg" class="fancybox1"><img src="images/top/img06_off.jpg" alt="entrance"></a>
+                </section>
+                <section class="img07">
+                    <a href="images/top/img07_l.jpg" class="fancybox1"><img src="images/top/img07_off.jpg" alt="entrance"></a>
+                </section>
+            </article>
+        </div>
+    
+</div>
+
+<footer>
+    <section class="wrapper fade">
+        <nav>
+            <ul>
+                <li style="border-left:1px solid;"><a href="salon.php">salon</a></li>
+                <li><a href="promise.php">promise</a></li>
+                <li><a href="staff.php">staff</a></li>
+                <li><a href="style.php">style</a></li>
+                <li><a href="item.php">item</a></li>
+                <li><a href="price.php">price</a></li>
+                <li><a href="r&s.php">recruit&nbsp;＆&nbsp;seminar</a></li>
+            </ul>
+        </nav>
+        <div id="f-logo">
+        	<a href="index.php"><img src="images/logo03.png" alt="ロゴ03"></a>
+        </div>
+        <p class="copyright">Copyright(C)MiCOL. All Rights Reserved.</p>
+    </section>
+</footer>
+
+</div>
+</body>
+</html>

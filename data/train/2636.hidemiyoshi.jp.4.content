@@ -1,0 +1,272 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<script language="JavaScript" type="text/javascript">
+<!--
+// -----------------------------------------------------------------------------
+// グローバル
+// Flash のメジャーバージョンが必要です
+var requiredMajorVersion = 8;
+// Flash のマイナーバージョンが必要です
+var requiredMinorVersion = 0;
+// 必要な Flash のバージョン
+var requiredRevision = 0;
+// サポートされている JavaScript のバージョン
+var jsVersion = 1.0;
+// -----------------------------------------------------------------------------
+// -->
+</script>
+<script language="VBScript" type="text/vbscript">
+<!-- // Flash Player ActiveX コントロールのバージョン情報を検出するには、Visual Basic ヘルパーが必要です
+Function VBGetSwfVer(i)
+  on error resume next
+  Dim swControl, swVersion
+  swVersion = 0
+  
+  set swControl = CreateObject("ShockwaveFlash.ShockwaveFlash." + CStr(i))
+  if (IsObject(swControl)) then
+    swVersion = swControl.GetVariable("$version")
+  end if
+  VBGetSwfVer = swVersion
+End Function
+// -->
+</script>
+<script language="JavaScript1.1" type="text/javascript">
+<!-- // クライアントのブラウザのタイプを検出
+var isIE  = (navigator.appVersion.indexOf("MSIE") != -1) ? true : false;
+var isWin = (navigator.appVersion.toLowerCase().indexOf("win") != -1) ? true : false;
+var isOpera = (navigator.userAgent.indexOf("Opera") != -1) ? true : false;
+jsVersion = 1.1;
+// Flash Player プラグインのバージョン情報を検出するには、JavaScript ヘルパーが必要です
+function JSGetSwfVer(i){
+	// プラグイン配列内の Flash プラグインについて NS/Opera バージョンが 3 以上かどうかを確認します
+	if (navigator.plugins != null && navigator.plugins.length > 0) {
+		if (navigator.plugins["Shockwave Flash 2.0"] || navigator.plugins["Shockwave Flash"]) {
+			var swVer2 = navigator.plugins["Shockwave Flash 2.0"] ? " 2.0" : "";
+      		var flashDescription = navigator.plugins["Shockwave Flash" + swVer2].description;
+			descArray = flashDescription.split(" ");
+			tempArrayMajor = descArray[2].split(".");
+			versionMajor = tempArrayMajor[0];
+			versionMinor = tempArrayMajor[1];
+			if ( descArray[3] != "" ) {
+				tempArrayMinor = descArray[3].split("r");
+			} else {
+				tempArrayMinor = descArray[4].split("r");
+			}
+      		versionRevision = tempArrayMinor[1] > 0 ? tempArrayMinor[1] : 0;
+            flashVer = versionMajor + "." + versionMinor + "." + versionRevision;
+      	} else {
+			flashVer = -1;
+		}
+	}
+	// MSN/WebTV 2.6 は Flash 4 をサポートしています
+	else if (navigator.userAgent.toLowerCase().indexOf("webtv/2.6") != -1) flashVer = 4;
+	// WebTV 2.5 は Flash 3 をサポートしています
+	else if (navigator.userAgent.toLowerCase().indexOf("webtv/2.5") != -1) flashVer = 3;
+	// それ以前のバージョンの WebTV は Flash 2 をサポートしています
+	else if (navigator.userAgent.toLowerCase().indexOf("webtv") != -1) flashVer = 2;
+	// 他のすべての状況では検出できません
+	else {
+		
+		flashVer = -1;
+	}
+	return flashVer;
+} 
+// パラメータを指定せずに呼び出した場合、この関数は浮動小数値を返します。
+// これは、Flash Player のバージョンまたは 0.0 になります。
+// 例 : Flash Player 7r14 の場合は 7.14 を返します
+// reqMajorVer を指定して呼び出した場合、reqMinorVer、reqRevision は、それ以上のバージョンが使用可能なときには true を返します
+function DetectFlashVer(reqMajorVer, reqMinorVer, reqRevision) 
+{
+ 	reqVer = parseFloat(reqMajorVer + "." + reqRevision);
+   	// 最新のバージョンを見つけるまで、バージョンを遡ってループします	
+	for (i=25;i>0;i--) {	
+		if (isIE && isWin && !isOpera) {
+			versionStr = VBGetSwfVer(i);
+		} else {
+			versionStr = JSGetSwfVer(i);		
+		}
+		if (versionStr == -1 ) { 
+			return false;
+		} else if (versionStr != 0) {
+			if(isIE && isWin && !isOpera) {
+				tempArray         = versionStr.split(" ");
+				tempString        = tempArray[1];
+				versionArray      = tempString .split(",");				
+			} else {
+				versionArray      = versionStr.split(".");
+			}
+			versionMajor      = versionArray[0];
+			versionMinor      = versionArray[1];
+			versionRevision   = versionArray[2];
+			
+			versionString     = versionMajor + "." + versionRevision;   // 7.0r24 == 7.24
+			versionNum        = parseFloat(versionString);
+        	// メジャーバージョンは要求されたメジャーバージョン以上であり、かつマイナーバージョンは要求されたマイナーバージョン以上の場合
+			if ( (versionMajor > reqMajorVer) && (versionNum >= reqVer) ) {
+				return true;
+			} else {
+				return ((versionNum >= reqVer && versionMinor >= reqMinorVer) ? true : false );	
+			}
+		}
+	}	
+	return (reqVer ? false : 0.0);
+}
+// -->
+</script>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS" />
+<title>HIDE'S KICK（ヒデ'ズキック）ヒデ三好：キックボクシング ダイエットキック 柔術 MMA：西新宿</title>
+<meta name="keywords" content="キックボクシング,ダイエット,ダイエットキック,三好秀憲,痩せる">
+<meta name="description" content="プロ格闘家を指導しているヒデ三好による、ダイエットを目的としたキックボクシングのレッスンのご案内。">
+<link rel="SHORTCUT ICON" href="http://www.hidemiyoshi.jp/image/icon_logo.ico">
+<link href="style2.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+<!--
+if((navigator.userAgent.indexOf('iPhone') > 0 && navigator.userAgent.indexOf('iPad') == -1)
+  || navigator.userAgent.indexOf('iPod') > 0 || navigator.userAgent.indexOf('Android') > 0) {
+    window.location.href = "m/";
+}
+-->
+</script>
+</head>
+
+<body bgcolor="#E6E6E6" topmargin="0" marginheight="0">
+
+<div id="mainbody">
+
+<div id="header">
+
+<object type="application/x-shockwave-flash" data="player.swf" id="audioplayer1" height="24" width="290" style="float:left;">
+<param name="movie" value="http://〜/player.swf" />
+<param name="FlashVars" value="playerID=1&amp;soundFile=tsudzumi-japan3.mp3&amp;autostart=yes&amp;loop=no" />
+<param name="quality" value="high" />
+<param name="menu" value="false" />
+<param name="wmode" value="transparent" />
+</object>
+
+  <h1 align="right"><a href="http://www.hidemiyoshi.jp/contact/" style="color:#FF0000;">[ 内弟子・スタッフ募集 ]</a>　 -プロ格闘家を指導するヒデ三好のキックボクシングを使ったダイエットエクササイズ-</h1>
+</div>
+
+<div class="movie">
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="900" height="500" title="ヒデ三好キックスクール">
+  <param name="movie" value="flash_movie.swf" />
+  <param name="quality" value="high" />
+  <embed src="flash_movie.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="900" height="500"></embed>
+</object>
+</div>
+ <div><img src="image/sp.gif" alt="sp" width="100" height="20" /></div>
+<div>      
+<!--
+　　　　<a href="http://www.hidemiyoshi.blogspot.jp/2014/07/king-of-2014.html"><img src="http://1.bp.blogspot.com/-ibUwR24-WjI/U8oSC6qtCNI/AAAAAAAAPJw/ptmvpR_o04Q/s1600/blog_banner_takumi.jpg"></a><br />
+　　　　-->
+<br />
+<table width="840" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="540">
+		  <a href="http://hidemiyoshi.blogspot.jp/"><img src="image/blog1.jpg" border="0" alt="ヒデ三好と生徒のニッチなブログ〜雲のごとく〜" width="220" align="left"></a>
+		  <a href="http://blog.hidemiyoshi.jp/"><img src="image/blog2.jpg" border="0" alt="ヒデ三好ブログ" width="220"></a><br />
+
+
+		  <img src="image/info_icon.gif" alt="お知らせ" width="125" height="35" /></td>
+          <td rowspan="3" valign="top"><img src="image/sp.gif" alt="sp" width="50" height="20" /></td>
+          <td rowspan="3" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          
+          <a href="nishi/"><img src="image/nishi.jpg" alt="西島洋介　マスターにし"></a><br />
+          <br />
+          
+          <!--
+          <img src="image/gaibu.jpg"><br />
+          -->
+            <tr>
+              <td align="center" valign="top"><img src="image/kick_logo.gif" alt="ヒデズキック" width="142" height="179" /><br />
+              <span class="logo">K-1ファイターや総合格闘家のトレーナーを務めるヒデ三好が指導します。</span></td>
+              <td align="center" valign="top"><img src="image/sp.gif" alt="sp" width="40" height="20" /></td>
+              <td align="center" valign="top" width="150"><a href="en/"><img src="image/english_page.jpg" border="0"></a><br />
+HIDE'S KICK is the total workout gym owned by HIDE MIYOSHI.</td>
+            </tr>
+            <tr>
+              <td align="center" valign="top"><a href="kr"><img src="image/korean_page.jpg" alt="ヒデズキック" width="142" height="179" /></a></td>
+              <td align="center" valign="top"><img src="image/sp.gif" alt="sp" width="40" height="20" /></td>
+              <td class="logo"><img src="image/tri-force_logo.gif" alt="トライフォース新宿" width="90" height="102" /><br />
+柔術クラスは、柔術アカデミー「<a href="http://www.triforce-bjj.com/" target="_blank">トライフォース</a>」と提携しております。</td>
+            </tr>
+            <tr> 
+              <td class="logo" colspan="3"><a href="join#private"><a href="join#private"><img src="image/private.jpg" width="140" height="77" border="0" align="left" /></a>
+              　ヒデ三好・プロ選手が<br />　個別にトレーニングします。</td>
+            </tr>
+            <tr> 
+              <td colspan="3"><br />
+			  	<a href="http://www.ones-tokyo.com"><img src="image/ones_banner.jpg" width="220" border="0" vspace="5" alt="新宿　西新宿　加圧　トレーニング"></a><br />
+
+</td>
+            </tr>
+            <!--
+            <tr>
+              <td class="mobile_box"><img src="image/qr-code.png" alt="携帯サイト" width="65" height="65" hspace="3" align="left" />携帯サイトオープンしました。</td>
+            </tr>
+            -->
+          </table></td>
+        </tr>
+        <tr>
+          <td width="470" valign="top">
+          <br />
+          
+          <table>
+          <tr>
+          <td width="70"><img src="http://blog-imgs-75.fc2.com/h/i/d/hidemiyoshi/cover201503.jpg" width="50"></td>
+          <td>「ゴング格闘技3月号」に石渡伸太郎氏とHIDE三好の対談が掲載されています。ぜひ紙面をご覧ください。<br />
+          <a href="http://www.eastpress.co.jp/gonkaku/" target="_blank">http://www.eastpress.co.jp/gonkaku/</a></td>
+          </tr>
+          </table>
+          <br />
+          
+		  <!--
+		  <img src="image/event201210.jpg"><br />
+		  -->
+		  <!--
+		  <iframe src="http://www.hidemiyoshi.jp/sunbbs/index.html" name="inline" width="470" height="600" scrolling="Auto" frameborder="0" id="inline"> IE4以上、もしくはNN4以上でご覧下さい。 </iframe>
+		  -->
+			<a class="twitter-timeline" width="450" height="480" data-chrome="noheader nofooter" href="https://twitter.com/HIDESKICK"  data-widget-id="405202559972831232">@HIDESKICK からのツイート</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		  </td>
+        </tr>
+      </table></div>
+  <div align="center"></div>
+  <div><img src="image/sp.gif" alt="sp" width="100" height="10" /></div><br />
+<!--
+<div align="center"><img src="image/sp.gif" alt="sp" width="5" height="20" /><a href="http://www.paraestraosaka.com/" target="_blank"><img src="image/pare_banner.gif" alt="パラエストラ大阪" width="210" height="70" border="0" /></a><img src="image/sp.gif" alt="sp" width="5" height="20" /><a href="http://www.93ko.com/index.html" target="_blank"><img src="image/kumiko_banner.gif" alt="心はジプシー" width="210" height="70" border="0" /></a></div>
+-->
+<div><img src="image/sp.gif" alt="sp" width="100" height="10" /></div>
+<div id="flash">
+<a href="http://www.adobe.com/shockwave/download/?P1_Prod_Version=ShockwaveFlash&amp;Lang=Japanese" target="_blank"><img src="image/flash_player.gif" alt="flash" hspace="5" vspace="5" border="0" align="left" /></a>当サイトを正常にご覧いただくには、Flash Player8以上を推奨しています。
+</div>
+ <div><img src="image/sp.gif" alt="sp" width="100" height="10" /></div>
+ <!--
+<div id="count">
+  <div align="center"><a href="http://candybox.to" target="_blank"><img src="http://citrus.candybox.to/dnah/dayx/dayx.cgi?gif" vspace="10" border="0"></a></div>
+</div>
+-->
+
+<center>
+<table width="300">
+<tr>
+<!--
+<td align="left">
+<a href="http://www.estate9696.com/" target="_blank"><img src="image/estate.jpg" border="0" width="150" align="left">
+HIDE'S KICK!提携店<br />
+新宿　２４時間営業の日焼けサロン</a></td>
+-->
+<td align="left"><a href="http://www.kanji-hanko.com/" target="_blank"><img src="image/banner_kanjihanko.jpg" alt="Japan Gift Hanko Stamp" border="0" width="150" align="left">
+Unique GIft.Kanji Hanko.<br />
+外国の方へのプレゼントに。</a><br />
+</td>
+</tr>
+</table>
+</center>
+
+<div class="back"></div>
+</div>
+
+
+</body>
+</html>

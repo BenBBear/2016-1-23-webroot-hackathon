@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> Her Keseye Kredi</title>
+	<meta name="description" content="Her keseye kredi" />
+	<meta name="keywords" content="Her keseye kredi, Sağlık,Sağlık Kredisi,Sağlık Kredileri,Eşya,Eşya Kredisi,Eşya Kredileri,İpotekli İhtiyaç Kredisi,İpotekli İhtiyaç Kredileri,Mesleki İhtiyaç Kredisi,Mesleki İhtiyaç Kredileri,Konut Geliştirme Kredisi,Konut Geliştirme Kredileri,Ofis Kredisi,Ofis Kredileri,İşyeri Kredisi,İşyeri Kredileri,Krediler,Kredisi,Kredileri,Faiz,Faizler,Faizleri,Banka Kredi Faiz Oranları,Banka Faizleri,Faiz Oranları,Oranlar,Oran,Kredi Oranları,Banka Kredisi,Banka Kredileri,Tüm Bankalar,Tüm Krediler,Tüm Banka Kredileri, Faiz oranları, mortgage faiz oranları" />
+	<meta name="robots" content="index, follow" />
+	<meta name="generator" content="Cagatay Oncul - Tasarimda.Net" />
+	<meta name="google-site-verification" content="nubaJnXGkzYSFLU0yDlLdmQ1eIak26F4934QiE4aPaE" />
+
+	<!-- Bootstrap -->
+	<link href="http://herkeseyekredi.com.tr/css/bootstrap.css" rel="stylesheet">
+
+	<!-- Jquery -->
+	<script type="text/javascript" src="http://herkeseyekredi.com.tr/js/jquery-1.9.1.min.js"></script>
+	
+	<!-- Jquery UI -->
+	<script type="text/javascript" src="http://herkeseyekredi.com.tr/js/jquery-ui-1.9.2.custom.min.js"></script>
+
+	<!-- Autonumeric -->
+	<script type="text/javascript" src="http://herkeseyekredi.com.tr/js/autonumeric.js"></script>
+	
+	<!-- Google font -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Abel">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300">
+	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700|Cabin:400,600' rel='stylesheet' type='text/css'>
+
+	
+	<link rel="stylesheet" href="http://herkeseyekredi.com.tr/js/select/select2.css" type="text/css">
+
+	<!-- Select JS -->
+	<script type="text/javascript" src="http://herkeseyekredi.com.tr/js/select/select2.js"></script>
+	<script type="text/javascript" src="http://herkeseyekredi.com.tr/js/select/select2_locale_tr.js"></script>
+	<link rel="stylesheet" href="http://herkeseyekredi.com.tr/css/custom-theme/jquery-ui-1.9.2.custom.css" type="text/css">
+	
+	<!-- JQuery Number Formater -->	
+	<script type="text/javascript" src="http://herkeseyekredi.com.tr/js/jquery.number.min.js"></script>
+	
+	<!-- Slider -->
+	<link rel="stylesheet" type="text/css" href="http://herkeseyekredi.com.tr/js/slider/layerslider.css">
+
+	<!-- Base CSS -->
+    <link rel="stylesheet" type="text/css" href="http://herkeseyekredi.com.tr/css/herkeseye.css">
+		
+	
+	<!-- Kredim Var JS Functions -->	
+	<script type="text/javascript" src="http://herkeseyekredi.com.tr/js/kredimvar.js"></script>
+
+	<script type="text/javascript">
+
+		$(function(){
+
+			//yasal takip modal
+			//
+			$('#takip_bilgi').on('change', function(){
+				if($(this).val() == 1)
+				{
+					$('#takip_bilgi_modal').modal('show');
+				}
+			});
+
+			//apply form validator
+			$("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
+
+			$('.autoNumeric').autoNumeric('init'); 
+
+			//select2
+			$('.select2').select2();
+
+			var maximumVade = 240;
+			var $vadeSlider = $('.vade_slider').slider({
+					range: 'min',
+					orientation: 'horizontal',
+					animate: true,
+					min: 0,
+					max: 240,
+					step: 6,
+					value: $('.kredi-hesaplama .vade').val(),
+					slide: function(event, ui)
+					{
+						if (ui.value < 1)
+							ui.value = 1;
+						
+						$('.kredi-hesaplama .vade').val(ui.value);
+					}
+				});
+
+			$('.kredi-hesaplama .kredi_tipi').change(function(){
+				var current = $(this).val();
+
+				if(current == 1)
+					maximumVade = 240;
+
+				if(current == 2)
+					maximumVade = 36;
+
+				if(current == 3)
+					maximumVade = 48;
+
+				$vadeSlider.slider('option','max',maximumVade);
+			});
+
+			//Kredi vitrin slider
+			
+			$('.kslider').each(function(){
+				var sl = $(this);
+				var min = parseFloat(sl.attr('min'));
+				var max =  parseFloat(sl.attr('max'));
+				var step = parseFloat(sl.attr('step'));
+				var value = parseFloat(sl.attr('value'));
+				var appendValue = sl.attr('appendValue');
+				var data_name = sl.attr('data-name');
+
+				//form degerini ata
+				sl.parent().parent().find('input[name="'+data_name+'"]').val(value);
+				//display value
+			    sl.parent().find('i').html($.number(value,0) + ' '+ appendValue);
+
+			    //ilk hesaplamalari yap
+			    vitrinKrediHesapla(sl);
+
+				$(this).slider({
+					range: 'min',
+					orientation: 'horizontal',
+					animate: true,
+					min: min,
+					max: max,
+					step: step,
+					value: value,
+					slide: function(event, ui){
+						//display value
+					    sl.parent().find('i').html($.number(ui.value,0) + ' '+ appendValue);
+
+					    //form degerini ata
+					    sl.parent().parent().find('input[name="'+data_name+'"]').val(ui.value);
+
+						vitrinKrediHesapla(sl);
+					}
+				});
+			});
+
+			//vitrin kredibox details btn hover
+			$('.vitrin-kredi-box .detaylar-btn').each(function(){
+				$(this).hover(
+					function(){
+						$(this).parent().parent().parent().parent().find('.details ul').removeClass('hide').addClass('hovered');
+					}, 
+					function(){
+						$(this).parent().parent().parent().parent().find('.details ul').removeClass('hovered');
+					}
+					);
+			});
+
+			$('.kredi-hesaplama .vade').keyup(function(){
+				if($(this).val() > maximumVade)
+				{
+					$(this).val(maximumVade);
+				}
+
+				if($(this).val() <= 0)
+				{
+					$(this).val(1);	
+				}
+				$('.vade_slider').slider({value: $(this).val()});
+			});
+
+			//topnavbar hover
+			$('.nav li.dropdown').each(function(){
+				$(this).hover(
+					function(){
+						$(this).find('.list').removeClass('list-fasthide').addClass('list-hovered').addClass('list-visible');
+
+					},
+					function(){
+						var list = $(this).find('.list');
+						if (!$(this).hasClass('open')) {
+							list.addClass('list-fasthide').removeClass('list-hovered').removeClass('list-visible');
+						}
+						else
+						{
+							list.removeClass('list-visible').removeClass('list-hovered');
+						}
+						
+					}
+					);
+			});
+		});
+
+	</script>
+
+	<!--[if lt IE 10]>
+		<script src="http://herkeseyekredi.com.tr/js/html5shiv.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="http://herkeseyekredi.com.tr/css/iefix.css">
+	<![endif]-->
+</head>
+<body>
+	
+			<div class="wrapper noise-area">
+				<header>
+	<div class="container">
+		<div class="navbar-header logo">
+			<a href="http://herkeseyekredi.com.tr"><img src="/img/logo.jpg" alt=""></a>
+		</div>
+		<div class="btn-group navbar-right header-nav">
+	          <a href="http://herkeseyekredi.com.tr" class="btn btn-primary"><i class="glyphicon glyphicon-home"></i> Anasayfa</a>
+	          <a href="http://herkeseyekredi.com.tr/sikca-sorulan-sorular" class="btn btn-primary">Sık Sorulan Sorular</a>
+	          <a href="http://herkeseyekredi.com.tr/kadromuz" class="btn btn-primary">Kadromuz</a>
+	          <a href="http://herkeseyekredi.com.tr/hizmetlerimiz" class="btn btn-primary">Hizmetlerimiz</a>
+				<a href="http://herkeseyekredi.com.tr/iletisim" class="btn btn-primary">İletişim/Başvuru</a>
+      	</div>
+	</div>
+</header>				<div class="seperator-top">
+					<img src="/css/images/shadow-separator-wide-bottom.png" alt="">
+				</div>
+				<div class="container">
+					
+					<div class="homepage-welcome">
+						<p>
+							<img src="img/welcome.png" class="welcome-img" alt="">
+						</p>
+
+						<h3>
+							BANA KREDİ ÇIKMAZ DEME! <br>
+							KREDİM ÇIKMADI DİYE ÜZÜLME!
+						</h3>
+						<h4>
+							Uzmanlarımıza Danışmadan Umutlarınızı Sonlandırmayın
+						</h4>
+						<p>
+							<a href="http://herkeseyekredi.com.tr/kredile-basvurulari-hakkinda-bilinmesi-gerekenler" class="btn btn-primary">Detaylar İçin Tıklayınız</a>
+						</p>
+					</div>
+
+				</div>
+				<div class="seperator-bottom">
+					<img src="/css/images/shadow-separator-wide-top.png" alt="">
+				</div>
+			</div>
+
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4">
+						<h3 class="col-header">Kredi hesaplama</h3>
+						
+						<h3 class="col-header">Makaleler<i class="glyphicon glyphicon-bullhorn pull-right"></i></h3>
+						<ul class="makaleler">
+		<li>
+		<a href="http://herkeseyekredi.com.tr/hangi-kredi-en-uygun-kredi">
+			<div class="row">
+								<div class="col-md-8">
+					<h4>Hangi Kredi? En Uygun Kredi?</h4>
+				</div>
+			</div>
+		</a>
+	</li>
+		<li>
+		<a href="http://herkeseyekredi.com.tr/tuketici-kredisi-urunleri-arasinda-kaybolmayin">
+			<div class="row">
+								<div class="col-md-8">
+					<h4>Tüketici Kredisi Ürünleri Arasında Kaybolmayın</h4>
+				</div>
+			</div>
+		</a>
+	</li>
+		<li>
+		<a href="http://herkeseyekredi.com.tr/kredi-basvurularinda-dikkat-edilmesi-gerekenler">
+			<div class="row">
+								<div class="col-md-8">
+					<h4>Kredi Başvurularında Dikkat Edilmesi Gerekenler</h4>
+				</div>
+			</div>
+		</a>
+	</li>
+		<li>
+		<a href="http://herkeseyekredi.com.tr/devlet-memuru-kamu">
+			<div class="row">
+								<div class="col-md-8">
+					<h4>Devlet Memuru - KAMU</h4>
+				</div>
+			</div>
+		</a>
+	</li>
+		<li>
+		<a href="http://herkeseyekredi.com.tr/ipotekli-nakit-kredilerde-vade-kargasasi">
+			<div class="row">
+								<div class="col-md-8">
+					<h4>İpotekli Nakit Kredilerde Vade Kargaşası</h4>
+				</div>
+			</div>
+		</a>
+	</li>
+		<li>
+		<a href="http://herkeseyekredi.com.tr/makaleler" class="btn btn-default btn-xs pull-right" style="margin-right: 10px; ">Tümünü Göster</a>
+	</li>
+</ul>
+						<h3 class="col-header">Sıkça Sorulan Sorular <i class="glyphicon glyphicon-question-sign pull-right"></i> </h3>
+						<!-- Sıkca Sorulan Sorular -->
+<ul class="sss">
+		<li>
+		<a href="http://herkeseyekredi.com.tr/bana-neden-kredi-cikmiyor" class="roll-link"><span data-title="Bana neden kredi çıkmıyor ?"> Bana neden kredi çıkmıyor ?</span></a>
+	</li>
+		<li>
+		<a href="http://herkeseyekredi.com.tr/kkb-kredi-notu-nedir" class="roll-link"><span data-title="KKB Kredi notu nedir ?"> KKB Kredi notu nedir ?</span></a>
+	</li>
+		<li>
+		<a href="http://herkeseyekredi.com.tr/gerekli-belgeler" class="roll-link"><span data-title="Gerekli Belgeler"> Gerekli Belgeler</span></a>
+	</li>
+		<li>
+		<a href="http://herkeseyekredi.com.tr/krediler-hakkinda-bilmeniz-gerekenler" class="roll-link"><span data-title="Krediler hakkında bilmeniz gerekenler"> Krediler hakkında bilmeniz gerekenler</span></a>
+	</li>
+		<li>
+		<a href="http://herkeseyekredi.com.tr/konut-finansmani-mortgage-kanunu-ve-detaylari" class="roll-link"><span data-title="Konut Finansmanı (Mortgage) Kanunu ve Detayları"> Konut Finansmanı (Mortgage) Kanunu ve Detayları</span></a>
+	</li>
+		<li>
+		<a href="http://herkeseyekredi.com.tr/cikmayan-krediler-araci-firmalar-vasitasi-ile-cikartilabilir-mi" class="roll-link"><span data-title="Çıkmayan Krediler Aracı Firmalar vasıtası ile Çıkartılabilir mi?"> Çıkmayan Krediler Aracı Firmalar vasıtası ile Çıkartılabilir mi?</span></a>
+	</li>
+		<li>
+		<a href="http://herkeseyekredi.com.tr/kredi-basvurusu-puan-dusurur-mu" class="roll-link"><span data-title="Kredi Başvurusu Puan Düşürür mü?"> Kredi Başvurusu Puan Düşürür mü?</span></a>
+	</li>
+		<li>
+		<a href="http://herkeseyekredi.com.tr/ssk-sgk-si-olmayan-yatmayan-kisiler-kredi-kullanabilir-mi" class="roll-link"><span data-title="SSK - SGK sı olmayan - yatmayan kişiler KREDİ kullanabilir mi?"> SSK - SGK sı olmayan - yatmayan kişiler KREDİ kullanabilir mi?</span></a>
+	</li>
+		<li>
+		<a href="http://herkeseyekredi.com.tr/ev-alirken-dolandirilmayin" class="roll-link"><span data-title="Ev Alırken DOLANDIRILMAYIN !"> Ev Alırken DOLANDIRILMAYIN !</span></a>
+	</li>
+		<li>
+		<a href="http://herkeseyekredi.com.tr/kredile-basvurulari-hakkinda-bilinmesi-gerekenler" class="roll-link"><span data-title="Kredile Başvuruları Hakkında Bilinmesi Gerekenler"> Kredile Başvuruları Hakkında Bilinmesi Gerekenler</span></a>
+	</li>
+		<li><a href="http://herkeseyekredi.com.tr/sikca-sorulan-sorular" class="btn btn-default btn-xs pull-right" style="margin-right: 10px; ">Tümünü Göster</a></li>
+</ul>
+
+
+					</div>
+					<div class="col-md-8">
+						<h3 class="col-header text-right">Banka kredileri</h3>
+
+						<!-- Sectiklerimiz -->
+
+<div class="vitrin-kredi-row">
+	<div class="row">
+		<!-- Vitrin Kredi Box -->
+		<div class="col-md-9">
+			<h4> 5.000 TL ye Kadar Denizbank'ta ÖZEL FAİZLER </h4>
+		</div>
+		<div class="bank-logo-container col-md-3">
+			<a href="http://herkeseyekredi.com.tr/5000-tl-ye-kadar-denizbankta-ozel-faizler/detay">
+				<img class="img-rounded bank-logo" src="http://www.subeler.com/images/logo/denizbank.png" alt="Denizbank konut kredisi">
+			</a>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="kredi-tutari  col-md-4">
+			<b>Kredi Tutarı</b>
+			<i class="pull-right">-</i>
+			<div max="5000" step="1000" min="0" value="5000" data-name="kredi_tutari" appendValue="TL" class="kredi-slider kslider"></div>
+		</div>
+		<div class="vade  col-md-4">
+			<b>Vade</b>
+			<i class="pull-right">-</i>
+			<div max="36" step="6" min="2" value="12" appendValue="Ay" data-name="vade" class="vade-slider kslider"></div>
+		</div>
+		<div class="sonuc  col-md-2">
+			<b>Aylık Taksit</b>
+			<i class="pull-right"></i>
+		</div>
+		
+		<div class="actions col-md-2 text-right">
+			<form action="#">
+				<input type="hidden" name="vade" value ="">
+				<input type="hidden" name="faiz_orani" value ="1.29">
+				<input type="hidden" name="kredi_tutari" value ="">
+				<input type="hidden" name="komisyon" value="0">
+				<input type="hidden" name="dosya_masrafi" value ="25">
+				<a class="btn btn3d btn-info btn-sm" target="_blank" href="http://kredidenizi.com.tr/5000-tl-ye-kadar-denizbankta-ozel-faizler/detay">Detaylar
+				</a>
+			</form>
+		</div>
+	</div>
+
+	<!-- /Vitrin Kredi Box -->
+</div>
+
+<div class="vitrin-kredi-row">
+	<div class="row">
+		<!-- Vitrin Kredi Box -->
+		<div class="col-md-9">
+			<h4> Denizbank İhtiyaç Kredisi // 55.000 TL ye Kadar WEB de Hızlı Kredi </h4>
+		</div>
+		<div class="bank-logo-container col-md-3">
+			<a href="http://herkeseyekredi.com.tr/denizbank-ihtiyac-kredisi-55000-tl-ye-kadar-web-de-hizli-kredi/detay">
+				<img class="img-rounded bank-logo" src="http://www.subeler.com/images/logo/denizbank.png" alt="Denizbank konut kredisi">
+			</a>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="kredi-tutari  col-md-4">
+			<b>Kredi Tutarı</b>
+			<i class="pull-right">-</i>
+			<div max="55000" step="1000" min="0" value="10000" data-name="kredi_tutari" appendValue="TL" class="kredi-slider kslider"></div>
+		</div>
+		<div class="vade  col-md-4">
+			<b>Vade</b>
+			<i class="pull-right">-</i>
+			<div max="36" step="6" min="1" value="36" appendValue="Ay" data-name="vade" class="vade-slider kslider"></div>
+		</div>
+		<div class="sonuc  col-md-2">
+			<b>Aylık Taksit</b>
+			<i class="pull-right"></i>
+		</div>
+		
+		<div class="actions col-md-2 text-right">
+			<form action="#">
+				<input type="hidden" name="vade" value ="">
+				<input type="hidden" name="faiz_orani" value ="1.44">
+				<input type="hidden" name="kredi_tutari" value ="">
+				<input type="hidden" name="komisyon" value="0">
+				<input type="hidden" name="dosya_masrafi" value ="50">
+				<a class="btn btn3d btn-info btn-sm" target="_blank" href="http://kredidenizi.com.tr/denizbank-ihtiyac-kredisi-55000-tl-ye-kadar-web-de-hizli-kredi/detay">Detaylar
+				</a>
+			</form>
+		</div>
+	</div>
+
+	<!-- /Vitrin Kredi Box -->
+</div>
+
+<div class="vitrin-kredi-row">
+	<div class="row">
+		<!-- Vitrin Kredi Box -->
+		<div class="col-md-9">
+			<h4> YAPIKREDİ Ticari Firmalar ve VERGİ LEVHALILAR için Kolay Başvuru </h4>
+		</div>
+		<div class="bank-logo-container col-md-3">
+			<a href="http://herkeseyekredi.com.tr/yapikredi-ticari-firmalar-ve-vergi-levhalilar-icin-kolay-basvuru/detay">
+				<img class="img-rounded bank-logo" src="http://www.kredipazari.com/common/images/lenders/lender-yapi-kredi-bankasi-logo.png" alt="Denizbank konut kredisi">
+			</a>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="kredi-tutari  col-md-4">
+			<b>Kredi Tutarı</b>
+			<i class="pull-right">-</i>
+			<div max="10000000" step="1000" min="0" value="50000" data-name="kredi_tutari" appendValue="TL" class="kredi-slider kslider"></div>
+		</div>
+		<div class="vade  col-md-4">
+			<b>Vade</b>
+			<i class="pull-right">-</i>
+			<div max="24" step="6" min="1" value="24" appendValue="Ay" data-name="vade" class="vade-slider kslider"></div>
+		</div>
+		<div class="sonuc  col-md-2">
+			<b>Aylık Taksit</b>
+			<i class="pull-right"></i>
+		</div>
+		
+		<div class="actions col-md-2 text-right">
+			<form action="#">
+				<input type="hidden" name="vade" value ="">
+				<input type="hidden" name="faiz_orani" value ="1.27">
+				<input type="hidden" name="kredi_tutari" value ="">
+				<input type="hidden" name="komisyon" value="0">
+				<input type="hidden" name="dosya_masrafi" value ="0">
+				<a class="btn btn3d btn-info btn-sm" target="_blank" href="http://kredidenizi.com.tr/yapikredi-ticari-firmalar-ve-vergi-levhalilar-icin-kolay-basvuru/detay">Detaylar
+				</a>
+			</form>
+		</div>
+	</div>
+
+	<!-- /Vitrin Kredi Box -->
+</div>
+
+<div class="vitrin-kredi-row">
+	<div class="row">
+		<!-- Vitrin Kredi Box -->
+		<div class="col-md-9">
+			<h4> 1,17 Faiz ile Adrese Teslim Masrafsız Kredi. Kefil Yok, Gelir Belgesi Yok! </h4>
+		</div>
+		<div class="bank-logo-container col-md-3">
+			<a href="http://herkeseyekredi.com.tr/117-faiz-ile-adrese-teslim-masrafsiz-kredi-kefil-yok-gelir-belgesi-yok/detay">
+				<img class="img-rounded bank-logo" src="https://static.bankpozitif.com.tr/Content/Images/BankPozitifLogo.png" alt="Denizbank konut kredisi">
+			</a>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="kredi-tutari  col-md-4">
+			<b>Kredi Tutarı</b>
+			<i class="pull-right">-</i>
+			<div max="50000" step="1000" min="0" value="10000" data-name="kredi_tutari" appendValue="TL" class="kredi-slider kslider"></div>
+		</div>
+		<div class="vade  col-md-4">
+			<b>Vade</b>
+			<i class="pull-right">-</i>
+			<div max="36" step="6" min="1" value="36" appendValue="Ay" data-name="vade" class="vade-slider kslider"></div>
+		</div>
+		<div class="sonuc  col-md-2">
+			<b>Aylık Taksit</b>
+			<i class="pull-right"></i>
+		</div>
+		
+		<div class="actions col-md-2 text-right">
+			<form action="#">
+				<input type="hidden" name="vade" value ="">
+				<input type="hidden" name="faiz_orani" value ="1.45">
+				<input type="hidden" name="kredi_tutari" value ="">
+				<input type="hidden" name="komisyon" value="0">
+				<input type="hidden" name="dosya_masrafi" value ="0">
+				<a class="btn btn3d btn-info btn-sm" target="_blank" href="http://kredidenizi.com.tr/117-faiz-ile-adrese-teslim-masrafsiz-kredi-kefil-yok-gelir-belgesi-yok/detay">Detaylar
+				</a>
+			</form>
+		</div>
+	</div>
+
+	<!-- /Vitrin Kredi Box -->
+</div>
+
+<!-- /Sectiklerimiz -->
+						<h3 class="col-header text-right">
+							<img src="/img/assets/ilkadim.jpg" alt="">
+							Kredi başvurularınızda ilk adımı beraber atalım!
+						</h3>
+						<p>
+							"Kredi Danışmanlığı Hizmetleri" çerçevesinde Bireysel ve Ticari Kredi talepleri doğrultusunda; <br>
+							* Maliyet yönünden en uygun kredi kaynaklarının saptanması, <br>
+
+							* Gerekli bilgi ve belgelerin temini, <br>
+
+							* Gerekli fiziki ve mali projelendirmelerin yapılması, <br>
+
+							* BaŞvuru dosyalarının hazırlanması, takibi ve sonuçlandırılması, <br>
+
+							* Genel, bölgesel, sektörel ve ekonomik krizler veya yanlıŞ borçlanma politikaları nedeniyle oluŞan nakit sıkışıklığının giderilmesi konusunda, Şahısların ve firmaların mevcut mali durumları dikkate alınarak, mevcut borcun daha uzun vadeye yayİlmasİ ve düŞük maliyetli kredilerle yeniden yapılandırılması konularında hizmet sunmaktadİr.
+						</p>
+					</div>
+				</div>
+
+			</div>
+	
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="links">
+						<a href="http://herkeseyekredi.com.tr/gerekli-belgeler">Kredi Icin Gerekli Evraklar</a>
+						<a href="http://herkeseyekredi.com.tr/sikca-sorulan-sorular">Sıkça Sorulan Sorular</a>
+						<a href="http://herkeseyekredi.com.tr/iletisim">İletişim</a>
+					</div>
+					<p class="tasarimda">
+						Bu site <a href="http://tasarimda.net">TasarimDa</a> tarafindan yapilmistir.
+					</p>
+				</div>
+				<div class="col-md-6"></div>
+			</div>
+		</div>
+	</footer>
+
+	<!-- Modal -->
+	<div class="modal fade" id="takip_bilgi_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">UYARI!</h4>
+	      </div>
+	      <div class="modal-body">
+	        <b>Bankalar da, henüz kapatılmamış açık takibi bulunan kişilere; Başvuru Formu üzerinden KREDİ danışmanlığı yapılamamaktadır! BAŞVURU FORMUNU DOLDURUP GÖNDERMEMELERİNİ RİCA EDERİZ. <br>
+Açık takibi olan ve kredi talebi 1.500- 2.000 TL arası olan müşterilerimiz; 6 aydır faturalı hat kullanıyorlarsa TELEFON NUMARALARIMIZDAN ulaşmanızı rica ederiz.
+0312 228 27 28 // 0850 840 35 70</b>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<script src="http://herkeseyekredi.com.tr/js/bootstrap.js"></script>
+	<script src="http://herkeseyekredi.com.tr/js/slider/jquery-easing-1.3.js"></script>
+	<script src="http://herkeseyekredi.com.tr/js/slider/jquery-transit-modified.js"></script>
+	<script src="http://herkeseyekredi.com.tr/js/slider/layerslider.transitions.js"></script>
+	<script src="http://herkeseyekredi.com.tr/js/slider/layerslider.kreaturamedia.jquery.js"></script>
+	
+	<!-- Flot Charts -->
+	<script src="http://herkeseyekredi.com.tr/js/flot/jquery.flot.min.js"></script>
+	<script src="http://herkeseyekredi.com.tr/js/flot/jquery.flot.resize.min.js"></script>
+	<script src="http://herkeseyekredi.com.tr/js/flot/jquery.flot.pie.js"></script>
+	<script src="http://herkeseyekredi.com.tr/js/flot/jquery.flot.tooltip.source.js"></script>
+	<script src="http://herkeseyekredi.com.tr/js/flot/jquery.graphTable-0.3.js"></script>
+	<script src="http://herkeseyekredi.com.tr/js/jqBootstrapValidation.js"></script>
+	<script src="http://herkeseyekredi.com.tr/js/jquery.scrollTo.min.js"></script>
+
+
+	<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="http://herkeseyekredi.com.tr/js/flot/excanvas.min.js"></script><![endif]-->
+
+	<script type="text/javascript">
+		$(function(){
+			$('.slidercontainer').layerSlider({
+				skinsPath: 'js/slider/skins/',
+				skin: 'borderlesslight3d',
+				hoverPrevNext : true,
+				responsive : false,
+				responsiveUnder : 250,
+				sublayerContainer : 960
+			});
+
+
+			var pieChartOptions = {
+					series: {
+						pie: {
+							show: true
+						}
+					},
+
+					grid: {
+						clickable: true,
+						hoverable: true,
+						margin: {
+							right:10
+						}
+					},
+
+					tooltip: true,
+					tooltipOpts: {
+						content: '%s : <b>%v TL</b>'
+					},
+					colors: ['#b4d46e', '#FF837E', '#349fd6', '#BF1616']
+
+			};
+
+			$('#kredi-grafik-pie').graphTable({
+						series: 'rows',
+						width: '100%',
+						height: 250,
+						firstSeries: 0,
+						position: 'replace'
+					}, pieChartOptions);
+
+			//Odeme plani grafik chart options
+			
+			var odemPlaniChartOptions = {
+				legend: {
+					position: 'ne',
+					margin: [5,90]
+				},
+				series: {
+					lines: {
+						show: true,
+						fill: true
+					},
+					points: { show: true },
+				},
+				grid: {
+						clickable: true,
+						hoverable: true,
+						margin: {
+							right:10
+						},
+						borderColor: '#ccc'
+					},
+				tooltip: true,
+				tooltipOpts: {
+					content: '%s : %y TL'
+				},
+				borderColor: '#fdfdfd',
+				colors: ['#BF1616', '#b4d46e']
+			};
+
+			$('#odemeplani-grafik').graphTable({
+				series: 'columns',
+				labels: 0,
+				firstSeries: 1,
+				xaxis: 0,
+				width: '100%',
+				height: '100px',
+				position: 'replace',
+			}, odemPlaniChartOptions);
+
+
+			//Scroll Top Navbar Position
+			$(window).scroll(function(event) {
+		        var y = $(this).scrollTop();
+
+		        if(y > 100)
+		        {
+		        	$('.navbar').stop().animate({top: 0}, 300);
+		        }
+		        else
+		        {
+		        	$('.navbar').stop().animate({top: '-50px'}, 300);	
+		        }
+		        /*if (y >= top && (y+_height) < z) {
+		            $('.menu').addClass('fixed');
+		        } else {
+		            $('.menu').removeClass('fixed');
+		        }*/
+
+		    });
+
+
+		    //Odeme plani genislet
+		    //
+		    $('#odemePlaniGenisletBtn').click(function(){
+		    	if ($(this).find('span').hasClass('splashy-arrow_state_grey_collapsed')) {
+
+		    		$(this).find('span').addClass('splashy-arrow_state_grey_expanded').removeClass('splashy-arrow_state_grey_collapsed');
+		    		$('.odemeplani-scroller').css('max-height', '100%');
+
+
+		    	}else{
+
+		    		$(this).find('span').addClass('splashy-arrow_state_grey_collapsed').removeClass('splashy-arrow_state_grey_expanded');
+		    		$('.odemeplani-scroller').css('max-height', '150px');
+
+		    	}
+		    });
+
+		    $('.odemePlaniGosterbtn').click(function(){
+	    		$('#odemePlaniGenisletBtn').find('span').addClass('splashy-arrow_state_grey_expanded').removeClass('splashy-arrow_state_grey_collapsed');
+	    		$('.odemeplani-scroller').css('max-height', '100%');
+		    	$('body').scrollTo('#odemePlaniGenisletBtn', 300);
+		    	return false;
+		    });
+
+		    //Kredi hesaplama tutari replace string
+		    $('form.kredi-hesaplama').submit(function(){
+		    	var tutar = $(this).find('.kredi_tutari').val();
+		    	tutar = tutar.replace(',','');
+		    	$(this).find('.kredi_tutari').val(tutar);
+		    });
+
+		    //kredi tipi radio buttons
+		    $('form.kredi-hesaplama .btn-group button').click(function(){
+		    	var _val = $(this).attr('data');
+		    	var _id = $(this).parent().attr('data');
+		    	$(this).parent().parent().find('#'+_id).val(_val);
+
+		    });
+
+		    var basvuru = false;
+		    $('#basvuru-form').on('submit', function(e){
+		    	if(basvuru)
+		    		e.preventDefault();
+
+		    	$(this).find('button').attr('disabled', 'disabled');
+		    	$(this).find('button').text('Lutfen bekleyiniz ...');
+		    	basvuru = true;
+		    });
+
+		});
+	</script>
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-3766002-41']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+	<script>(function() {
+	  var _fbq = window._fbq || (window._fbq = []);
+	  if (!_fbq.loaded) {
+	    var fbds = document.createElement('script');
+	    fbds.async = true;
+	    fbds.src = '//connect.facebook.net/en_US/fbds.js';
+	    var s = document.getElementsByTagName('script')[0];
+	    s.parentNode.insertBefore(fbds, s);
+	    _fbq.loaded = true;
+	  }
+	  _fbq.push(['addPixelId', '660835850712940']);
+	})();
+	window._fbq = window._fbq || [];
+	window._fbq.push(['track', 'PixelInitialized', {}]);
+	</script>
+	<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=660835850712940&amp;ev=PixelInitialized" /></noscript>
+</body>
+</html>

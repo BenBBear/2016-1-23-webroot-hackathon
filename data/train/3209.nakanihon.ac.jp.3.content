@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1, user-scalable=no">
+<meta name="keywords" content="中日本自動車短期大学,自動車整備士,自動車,NAC,大学,学校,メカニック,モータースポーツ,専門学校,短期大学" />
+<meta name="description" content="国土交通省認定の自動車整備士養成大学「中日本自動車短期大学（NAC）」。独自の教育カリキュラムでハイレベルな自動車整備技術を身につけ、1・2級自動車整備士の資格、プロのメカニックを目指します。" />
+<title>中日本自動車短期大学（NAC）丨自動車整備、モータースポーツのプロになる！</title>
+<link rel="stylesheet" href="/nacinfo/commons/css/import.css" media="all">
+<link rel="stylesheet" href="/nacinfo/commons/css/print.css" type="text/css" media="print">
+<link rel="stylesheet" href="/nacinfo/commons/css/top.css" type="text/css" media="all">
+<link rel="stylesheet" href="/nacinfo/commons/css/style3.css" type="text/css" media="all">
+<link rel="stylesheet" href="/nacinfo/commons/lib/jquery.bxslider/jquery.bxslider.css" media="all">
+<link rel="stylesheet" href="/nacinfo/commons/css/multi-screen.css" media="all">
+<script src="/nacinfo/commons/js/jquery.js" type="text/javascript"></script>
+<script src="/nacinfo/commons/js/jquery.rollover.js" type="text/javascript"></script>
+<script src="/nacinfo/commons/js/jquery.cookie.js" type="text/javascript"></script>
+<script src="/nacinfo/commons/js/jquery.smoothScroll.js" type="text/javascript"></script>
+<script src="/nacinfo/commons/js/custum.js" type="text/javascript"></script>
+<script src="/nacinfo/commons/js/sp.js" type="text/javascript"></script>
+<script src="/nacinfo/commons/js/ez-pinned-footer.js" type="text/javascript"></script>
+<script src="/nacinfo/commons/js/jquery.easing.js" type="text/javascript"></script>
+<script src="/nacinfo/commons/js/script.js" type="text/javascript"></script>
+<link rel="stylesheet" href="http://www.nakanihon.ac.jp/wp/wp-content/themes/nac/style.css" type="text/css">
+<script type="text/javascript">
+ $(document).ready( function(){	
+		var buttons = { previous:$('#jslidernews3 .button-previous') ,
+						next:$('#jslidernews3 .button-next') };
+		$('#jslidernews3').lofJSidernews( { interval:8000,
+											 	easing:'easeInOutQuad',
+												direction:'opacity',
+												duration:1800,
+												auto:true,
+												mainWidth:960,
+												mainHeight:433,
+												/*navPosition     : 'horizontal', // horizontal*/
+												navigatorHeight		: 73,
+												navigatorWidth		: 190,
+												maxItemDisplay:4,
+												buttons:buttons} );						
+
+	$(".lof-slidecontent").css("background", "none");
+	$(".main-slider-content").hide();
+});
+</script>
+<style>
+	ul.lof-main-wapper li {
+		position:relative;	
+	}
+</style>
+
+<!-- feed -->
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+google.load("feeds", "1");
+
+var FA = new Array( 
+ "http://rssadelete.dokoda.jp/d/http/feedblog.ameba.jp/rss/ameblo/nac-news01"
+);
+
+function createDateString(publishedDate){
+var pdate = new Date(publishedDate);
+var pday = pdate.getDate();
+if(pday<10){pday="0"+pday;}
+var pmonth = pdate.getMonth() + 1;
+if(pmonth<10){pmonth="0"+pmonth;}
+var pyear = pdate.getFullYear();
+var phour = pdate.getHours();
+var pminute = pdate.getMinutes();
+var psecond = pdate.getSeconds();
+var strdate = pyear + "." + pmonth + "." + pday ;
+return strdate;
+}
+
+
+
+function initialize() {
+ var feedsArr = new Array();
+ var numEntr = 5; 
+ var container = document.getElementById("feed");
+	var html = "";
+	html += '<ul>';
+ var cnt = FA.length;
+ for (var k=0; k<FA.length; k++) {
+  var feed = new google.feeds.Feed(FA[k]);
+  feed.setNumEntries(numEntr);
+  feed.setResultFormat(google.feeds.Feed.JSON_FORMAT); //JSONフォーマットに整形
+  feed.load(function(result) {
+  if (!result.error) {
+   for (var i = 0; i < result.feed.entries.length; i++) {
+    var entry = result.feed.entries[i];
+    var eimg = "";
+    var imgCheck = entry.content.match(/(http:){1}[\S_-]+((\.png)|(\.jpg)|(\.JPG)|(\.gif))/); //データを取得する拡張子を指定
+    if(imgCheck){
+     eimg += imgCheck[0]; 
+    } else {
+     eimg += ''; 
+ }
+ 
+var attributes = ["title", "link", "publishedDate", "contentSnippet"];
+ var ind = feedsArr.length;
+ feedsArr[ind] = new Array();
+ feedsArr[ind][0] = Date.parse(entry[attributes[2]]); // 日付でソート（並び替え）
+ feedsArr[ind][1] = entry[attributes[1]]; // link
+ feedsArr[ind][2] = entry[attributes[2]]; // publishedDate
+ feedsArr[ind][3] = entry[attributes[3]]; // contentSnippet
+ feedsArr[ind][4] = entry[attributes[0]]; // title
+ feedsArr[ind][5] = result.feed.title; // site title
+ feedsArr[ind][6] = eimg; // thumbnail
+ }
+ }
+ 
+ cnt--;
+ if (cnt == 0) {
+ feedsArr.sort();
+ feedsArr.reverse();
+	
+ for (var j = 0; j < 5; j++) {
+		var strdate = createDateString(feedsArr[j][2]);
+html += '<li>';
+html += '<dl>';
+html += '<dt>'+ strdate +'<span class="blog">Blog</span></dt>';
+html += '<dd><a href="' + feedsArr[j][1] + '">' + feedsArr[j][4] +'</a></dd>';
+html += '</dl>';
+html += '</li>';
+ }
+html += '</ul>';
+ }
+
+	container.innerHTML = html;
+	var elems = container.getElementsByTagName('a');
+	
+for (var j = 0, l = elems.length; j < l; j++) {
+elems[j].target = '_blank'; 
+}
+
+ });
+ }
+}
+
+google.setOnLoadCallback(initialize);
+
+</script>
+
+<script type="text/javascript" src="/nacinfo/commons/lib/jquery.bxslider/jquery.bxslider.js"></script>
+<script>
+/* bottombnr */
+$(function(){
+	$('.btbxslider').bxSlider({
+			pager: false,
+			auto: true,
+			minSlides: 3,
+			maxSlides: 3,
+			moveSlides: 1,
+			slideWidth: 180,
+			slideMargin: 10
+			
+		});
+});	
+
+/* bottombnr */
+$(function(){
+  $('.sp-btbxslider').bxSlider({
+	pager: true,
+	auto: true,
+	minSlides: 2,
+	maxSlides: 2,
+	moveSlides: 1,
+	slideWidth: 140,
+	slideMargin: 10,
+	touchEnabled: true
+  });
+});
+</script>
+<!--[if lt IE 9]>
+<script src="/nacinfo/commons/js/html5.js"></script>
+<![endif]-->
+<!--[if lte IE 6]>
+<script type="text/javascript" src="http://www.dillerdesign.com/experiment/DD_belatedPNG/DD_belatedPNG_0.0.8a-min.js"></script>
+<script type="text/javascript">  /* EXAMPLE */  DD_belatedPNG.fix('img, .png');</script>
+<![endif]-->
+</head>
+<body id="top" class="home blog">
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-T826TR"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T826TR');</script>
+<!-- End Google Tag Manager -->
+<div id="wrap">	<div id="header">
+    <header>
+        <div class="siteId"> 
+            <p>イタリア国立フェラーリ工業専門学校提携校│文部科学省 国土交通省認定大学</p>
+            <a href="http://www.nakanihon.ac.jp/"><img src="/nacinfo/commons/images/ui/h_id.png" alt="中日本自動車短期大学"></a>
+        </div>
+        
+        <div class="funcNav01 pc clearfix">
+            <div id="countryBox">
+                <ul id="selectCountry">
+                    <li class="dropdown"><a href="#"><img src="/nacinfo/commons/images/ui/h_btn_country.png" alt="Choose your country"></a>
+                        <ul>
+                            <li class="fChild">
+                            <a href="http://www.nakanihon.ac.jp/nacinfo/visitor_international/nac_english/" target="_blank"><span><img src="/nacinfo/commons/images/ui/fl_us.gif" alt="United Stats America"></span>English</a>
+                            </li>
+                            <li>
+                            <a href="http://www.nakanihon-china.com/" target="_blank"><span><img src="/nacinfo/commons/images/ui/fl_cn.gif" alt="Chinese"></span>Chinese</a>
+                            </li>
+                            <li>
+                            <a href="http://www.jinno.ac.jp/korean/index.html" target="_blank"><span><img src="/nacinfo/commons/images/ui/fl_kr.gif" alt="Kora"></span>Korea</a>
+                            </li>
+                            <li>
+                            <a href="http://www.nac-thai.com/" target="_blank"><span><img src="/nacinfo/commons/images/ui/fl_th.gif" alt="Thai"></span>Thai</a>
+                            </li>
+                            <li class="last">
+                            <a href="http://www.nakanihon.edu.vn/vn/Default.aspx" target="_blank"><span><img src="/nacinfo/commons/images/ui/fl_vn.gif" alt="Vietnam"></span>Vietnam</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div id="search-box">
+                <form action="http://www.google.com/cse" id="cse-search-box">
+                    <div>
+                        <input type="hidden" name="cx" value="009441995270272734483:wkq-auyo0ks" />
+                        <input type="hidden" name="ie" value="UTF-8" />
+                        <input type="text" name="q" />
+                        <input type="image" src="/nacinfo/commons/images/ui/icon_search.png" width="28" height="29" alt="Search" title="Search" />        
+                    </div>
+                </form>
+            </div>
+            <script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=ja"></script>
+        </div><!-- /funcNav01 -->
+        
+        <div class="funcNav02 pc">
+            <ul class="clearfix changeArea">
+                <li><a href="/nacinfo/visitor_international/">留学生の方へ</a></li>
+                <li><a href="/nacinfo/visitor_society/">社会人・再進学の方へ</a></li>
+                <li><a href="/nacinfo/visitor_parent/">保護者の方へ</a></li>
+                <li><a href="/nacinfo/visitor_company/">企業の方へ</a></li>
+                <li class="last"><a href="/nacinfo/visitor_student/">在学生・卒業生の方へ</a></li>
+            </ul>
+        </div><!-- /.funcNav02 -->
+        
+        <div class="funcNav03 pc clearfix">
+            <p><a class="ov" href="https://s360.jp/form/31173-1012" target="_blank"><img src="/nacinfo/commons/images/ui/h_btn_apply.png" alt="資料請求"></a></p>
+            <p><a class="ov" href="/nacinfo/opencampus/"><img src="/nacinfo/commons/images/ui/h_btn_op.png" alt="オープンキャンパス"></a></p>
+            <p class="last pc">文字サイズ</p>
+            <div id="font" class="pc">
+                <ul class="clearfix">
+                    <li><img class="changeBtn" src="/nacinfo/commons/images/ui/btnS.png" alt="小"></li>
+                    <li><img class="changeBtn" src="/nacinfo/commons/images/ui/btnM.png" alt="中"></li>
+                    <li class="last"><img class="changeBtn" src="/nacinfo/commons/images/ui/btnL.png" alt="大"></li>
+                </ul>
+            </div><!-- /#font -->
+        </div><!-- /.funcNav03 -->
+    
+        <div id="gNav">
+            <nav>
+                <ul class="clearfix">        <li onMouseover="openMenu(1)" onMouseout="closeMenu()"><a href="/nacinfo/college/">
+        <img src="/nacinfo/commons/images/ui/gnav01.png" alt="大学案内"></a></li>
+        <li onMouseover="openMenu(2)" onMouseout="closeMenu()"><a href="/nacinfo/course/">
+        <img src="/nacinfo/commons/images/ui/gnav02.png" alt="学科紹介"></a></li>
+        <li onMouseover="openMenu(3)" onMouseout="closeMenu()"><a href="/nacinfo/qualification_employment/">
+        <img src="/nacinfo/commons/images/ui/gnav03.png" alt="資格・就職"></a></li>
+        <li onMouseover="openMenu(4)" onMouseout="closeMenu()"><a href="/nacinfo/campuslife/">
+        <img src="/nacinfo/commons/images/ui/gnav04.png" alt="学生生活"></a></li>
+        <li onMouseover="openMenu(5)" onMouseout="closeMenu()"><a href="/nacinfo/admission/">
+        <img src="/nacinfo/commons/images/ui/gnav05.png" alt="入学案内"></a></li>
+        <li onMouseover="openMenu(6)" onMouseout="closeMenu()"><a href="/nacinfo/opencampus/">
+        <img src="/nacinfo/commons/images/ui/gnav06.png" alt="オープンキャンパス"></a></li>
+	                </ul>
+                <div id="subNav">
+                    <div id="li1" onMouseOver="openMenu(1)" onMouseOut="closeMenu()">
+                        <p class="tl"><a href="/nacinfo/college/"><img src="/nacinfo/commons/images/ui/gnav01.png" alt="大学案内"></a></p>
+                        <div class="navTopArrow"></div>
+                        <div class="navBoxWrap">
+                            <div class="navBoxIn clearfix">
+                                <div class="colum w01">
+                                    <div class="pickup"><img src="/nacinfo/commons/images/global/pick.png" alt="Pickup!"></div>
+                                    <dl>
+                                        <dt><a href="/nacinfo/college/feature/">NACの特徴</a></dt>
+                                        <dd>充実した学習環境と独自の教育プログラム、圧倒的な就職実績など「NACの魅力」がココに！</dd>
+                                    </dl>
+                                    <p class="tCenter"><img src="/nacinfo/commons/images/global/ph_college.png" alt=""></p>
+                                </div><!-- /.colum w01 -->
+                                <div class="colum w02">
+                                    <div class="more"><img src="/nacinfo/commons/images/global/more_college.png" alt="and more"></div>
+                                    <div class="clearfix">
+                                        <div class="colum w02a">
+                                            <ul>
+                                                <li><a href="/nacinfo/college/about/">中日本自動車短期大学について</a></li>
+                                                <li><a href="/nacinfo/college/feature/">NACの特徴</a></li>
+                                                <li><a href="/nacinfo/college/greeting/">学長の挨拶</a></li>
+                                                <li><a href="/nacinfo/college/s-takuma_message/">佐藤&#64074;磨氏からのメッセージ</a></li>
+                                                <li><a href="/nacinfo/college/idea/">教育理念</a></li>
+                                                <li><a href="/nacinfo/college/department-policy/">学科ポリシー</a></li>
+                                                <li class="last"><a href="/nacinfo/college/teacher/">教員紹介</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="colum w02a last">
+                                            <ul>
+                                                <li><a href="/nacinfo/college/questionnaire/">授業アンケート</a></li>
+                                                <li><a href="/nacinfo/college/college_song/">中日本自動車短期大学校歌</a></li>
+                                                <li><a href="/nacinfo/college/assessment/">第三者評価</a></li>
+                                                <li><a href="/nacinfo/college/information-disclosure/">情報公開</a></li>
+                                                <li><a href="/nacinfo/college/faq/">よくある質問</a></li>
+                                                <li class="last"><a href="/nacinfo/college/access/">地図・アクセス</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div><!-- /.colum w02 -->
+                            </div>
+                        </div><!-- /.navBoxWrap -->
+                    </div><!-- /.li1 -->
+                    
+                    <div id="li2" onMouseOver="openMenu(2)" onMouseOut="closeMenu()">
+                        <p class="tl"><a href="/nacinfo/course/"><img src="/nacinfo/commons/images/ui/gnav02.png" alt="学科紹介"></a></p>
+                        <div class="navTopArrow"></div>
+                        <div class="navBoxWrap">
+                            <div class="navBoxIn">
+                                <div class="pickup"><img src="/nacinfo/commons/images/global/ttl_course.png" alt="学科・コース一覧"></div>
+                                <div class="clearfix">
+                                    <div class="colum w01">
+                                        <ul class="blue">
+                                            <li><a href="/nacinfo/course/ae/">自動車工学科</a></li>
+                                        </ul>
+                                        <p><img src="/nacinfo/commons/images/global/ph01_course.png" alt=""></p>
+                                        <ul class="sub mt20">
+                                            <li><a href="/nacinfo/course/ae/2-automechanics/">2級自動車整備士コース</a></li>
+                                            <li><a href="/nacinfo/course/ae/1-automechanics/">1級自動車整備士コース</a></li>
+                                            <li><a href="/nacinfo/course/ae/bodymechanics/">車体整備士コース</a></li>
+                                        </ul>
+                                    </div><!-- /.colum w01 -->
+                                    <div class="colum w01 last">
+                                        <ul class="red">
+                                            <li><a href="/nacinfo/course/mse/">モータースポーツ<br>エンジニアリング学科</a></li>
+                                        </ul>
+                                        <p><img src="/nacinfo/commons/images/global/ph02_course.png" alt=""></p>
+                                    </div>
+                                    <!-- /.colum w01 -->
+                                </div>
+                                <div class="more"><img src="/nacinfo/commons/images/global/more_course.png" alt="And more"></div>
+                                <div class="clearfix">
+                                    <div class="colum w01">
+                                        <ul>
+                                            <li><a href="/nacinfo/course/about-practice/">実習授業について</a></li>
+                                        </ul>
+                                    </div><!-- /.colum w01 -->
+                                </div>
+                            </div>
+                        </div><!-- /.navBoxWrap -->
+                    </div><!-- /.li2 -->
+                    
+                    <div id="li3" onMouseOver="openMenu(3)" onMouseOut="closeMenu()">
+                        <p class="tl"><a href="/nacinfo/qualification_employment/"><img src="/nacinfo/commons/images/ui/gnav03.png" alt="資格・就職"></a></p>
+                        <div class="navTopArrow"></div>
+                        <div class="navBoxWrap">
+                            <div class="navBoxIn clearfix">
+                                <div class="colum w01">
+                                    <div class="pickup"><img src="/nacinfo/commons/images/global/pick.png" alt="Pickup!"></div>
+                                    <dl>
+                                        <dt><a href="/nacinfo/qualification_employment/job-support/">就職・進学サポート</a></dt>
+                                        <dd>業界とのパイプを活かした万全のサポート体制で、一人ひとりをバックアップします。</dd>
+                                    </dl>
+                                    <p><img src="/nacinfo/commons/images/global/ph02_eq.png" alt=""></p>
+                                </div><!-- /.colum w01 -->
+                                
+                                <div class="colum w02">
+                                    <p class="more"><img src="/nacinfo/commons/images/global/more_add.png" alt="more"></p>
+                                    <div class="clearfix">
+                                        <div class="colum w02a">
+                                            <ul>
+                                                <li><a href="/nacinfo/qualification_employment/license-list/">取得できる資格一覧</a></li>
+                                                <li><a href="/nacinfo/qualification_employment/job-support/">就職・進学サポート</a></li>
+                                                <li><a href="/nacinfo/qualification_employment/results/">就職実績</a></li>
+                                            </ul>
+                                        </div><!-- /.colum w02a -->
+                                        <div class="colum w02a last">
+                                            <ul>
+                                                <li><a href="/nacinfo/qualification_employment/graduate/">卒業生のご紹介</a></li>
+                                            </ul>
+                                            <ul class="sub">
+                                                <li><a href="/nacinfo/qualification_employment/graduate/manufacturer/">自動車メーカー系で活躍する卒業生</a></li>
+                                                <li><a href="/nacinfo/qualification_employment/graduate/development/">設計・開発系で活躍する卒業生</a></li>
+                                                <li><a href="/nacinfo/qualification_employment/graduate/dealer/">自動車ディーラー系で活躍する卒業生</a></li>
+                                                <li><a href="/nacinfo/qualification_employment/graduate/other/">その他で活躍する卒業生</a></li>
+                                            </ul>
+                                        </div>
+                                    <!-- /.colum w02a -->
+                                    </div>
+                                </div><!-- /.colum w02 -->
+                            </div>
+                        </div><!-- /.navBoxWrap -->
+                    </div> <!-- /.li3 -->
+                   
+                    <div id="li4" onMouseOver="openMenu(4)" onMouseOut="closeMenu()">
+                        <p class="tl"><a href="/nacinfo/campuslife/"><img src="/nacinfo/commons/images/ui/gnav04.png" alt="学生生活"></a></p>
+                        <div class="navTopArrow"></div>
+                        <div class="navBoxWrap">
+                            <div class="navBoxIn clearfix">
+                                <div class="colum w01">
+                                    <div class="pickup"><img src="/nacinfo/commons/images/global/pick.png" alt="Pickup!"></div>
+                                    <dl>
+                                        <dt><a href="/nacinfo/campuslife/study-abroad/">海外研修旅行・短期留学</a></dt>
+                                        <dd>イタリアの「フェラーリ社」など、ホンモノを知る海外研修＆留学プログラム。</dd>
+                                    </dl>
+                                    <p><img src="/nacinfo/commons/images/global/ph02_campus.png" alt=""></p>
+                                </div><!-- /.colum w01 -->
+                                <div class="colum w02">
+                                    <p class="more"><img src="/nacinfo/commons/images/global/more_add.png" alt="more"></p>
+                                    <div class="clearfix">
+                                        <div class="colum w02a">
+                                            <ul>
+                                                <li><a href="/nacinfo/campuslife/schedule/">年間行事</a></li>
+                                                <li><a href="/nacinfo/campuslife/study-abroad/">海外研修旅行・短期留学</a></li>
+                                                <li><a href="/nacinfo/campuslife/campus/">キャンパス紹介</a></li>
+                                                <li><a href="/nacinfo/campuslife/club/">クラブ・サークル活動</a></li>
+                                                <li><a href="/nacinfo/campuslife/student-dorm/">学生寮・下宿先について</a></li>
+                                                <li class="last"><a href="/nacinfo/campuslife/school-bus/">スクールバス・駐車場</a></li>
+                                            </ul>
+                                        </div><!-- /.colum w02a -->
+                                        <div class="colum w02a last">
+                                            <ul>
+                                                <li><a href="/nacinfo/campuslife/student-voice/">在学生の声</a></li>
+                                            </ul>
+                                            <ul class="sub">
+                                                <li><a href="/nacinfo/campuslife/student-voice/voice03/">自動車工学科 2年　後藤 優奈さん</a></li>
+                                                <li><a href="/nacinfo/campuslife/student-voice/voice01/">モータースポーツエンジニアリング<br>学科 3年　各務 昴久さん</a></li>
+                                                <li><a href="/nacinfo/campuslife/student-voice/voice02/">モータースポーツエンジニアリング<br>学科 3年　木屋川内 勇人さん</a></li>
+                                            </ul>
+                                        </div><!-- /.colum w02a -->
+                                    </div>
+                                </div><!-- /.colum w02 -->
+                            </div>
+                        </div><!-- /.navBoxWrap -->
+                    </div><!-- /.li4 -->
+                    
+                    <div id="li5" onMouseOver="openMenu(5)" onMouseOut="closeMenu()">
+                        <p class="tl"><a href="/nacinfo/admission/"><img src="/nacinfo/commons/images/ui/gnav05.png" alt="入学案内"></a></p>
+                        <div class="navTopArrow"></div>
+                        <div class="navBoxWrap">
+                            <div class="navBoxIn clearfix">
+                                <div class="colum w01">
+                                    <div class="pickup"><img src="/nacinfo/commons/images/global/pick.png" alt="Pickup!"></div>
+                                    <dl>
+                                        <dt><a href="/nacinfo/admission/exam-schedule/">入試日程・試験会場</a></dt>
+                                        <dd>2014年度生の入試スケジュール。東京、名古屋、大阪など地方会場もご用意しています。</dd>
+                                    </dl>
+                                    <p><img src="/nacinfo/commons/images/global/ph_add.png" alt=""></p>
+                                </div><!-- /.colum w01 -->
+                                <div class="colum w02">
+                                    <div class="more"><img src="/nacinfo/commons/images/global/more_add.png" alt="and more"></div>
+                                    <div class="clearfix">
+                                        <div class="colum w02a">
+                                            <ul>
+                                                <li><a href="/nacinfo/admission/outline/">募集要項</a></li>
+                                                <li><a href="/nacinfo/admission/application/">出願方法</a></li>
+                                            </ul>
+                                            <ul class="sub">
+                                                <li><a href="/nacinfo/admission/application/recommendation01/">一般推薦入試</a></li>
+                                                <li><a href="/nacinfo/admission/application/recommendation02/">自己推薦入試</a></li>
+                                                <li><a href="/nacinfo/admission/application/general/">一般入試</a></li>
+                                                <li><a href="/nacinfo/admission/application/society/">社会人入試</a></li>
+                                                <li><a href="/nacinfo/admission/application/scholarship/">奨学生入試</a></li>
+                                                <li><a href="/nacinfo/admission/application/ao/">AO方式での受験について</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="colum w02a last">
+                                            <ul>
+                                                <li><a href="/nacinfo/admission/exam-schedule/">入試日程・試験会場</a></li>
+                                                <li><a href="/nacinfo/admission/tuition/">学費について</a></li>
+                                                <li class="last"><a href="/nacinfo/admission/tuition-support/">奨学生・学費サポート</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div><!-- /.colum w02 -->
+                            </div>
+                        </div><!-- /.navBoxWrap -->
+                    </div> <!-- /.li5 -->
+                   
+                    <div id="li6" onMouseOver="openMenu(6)" onMouseOut="closeMenu()">
+                        <p class="tl"><a href="/nacinfo/opencampus/"><img src="/nacinfo/commons/images/ui/gnav06.png" alt="オープンキャンパス"></a></p>
+                        <div class="navTopArrow"></div>
+                        <div class="navBoxWrap">
+                            <div class="navBoxIn clearfix">
+                                <div class="colum w01">
+                                    <div class="pickup"><img src="/nacinfo/commons/images/global/pick.png" alt="Pickup!"></div>
+                                    <dl>
+                                        <dt><a href="/nacinfo/opencampus/observation/">キャンパス見学会</a></dt>
+                                        <dd>「フェラーリ同乗体験」もできるキャンパス見学会。日本最大級のキャンパスを体感！</dd>
+                                    </dl>
+                                    <p><img src="/nacinfo/commons/images/global/ph_op.png" alt=""></p>
+                                </div><!-- /.colum w01 -->
+                                <div class="colum w01 last">
+                                    <p class="more"><img src="/nacinfo/commons/images/global/more_op.png" alt="more"></p>
+                                    <ul>
+                                        <li><a href="/nacinfo/opencampus/trial-classes/">体験入学</a></li>
+                                        <li><a href="/nacinfo/opencampus/observation/">キャンパス見学会</a></li>
+										<!--<li><a href="/nacinfo/opencampus/oc-spring/">春のオープンキャンパス</a></li>-->
+                                        <li><a href="/nacinfo/opencampus/oc-suzuka/">オープンキャンパスin鈴鹿</a></li>
+                                        <li><a href="/nacinfo/opencampus/college-conference/">全国進学相談会</a></li>
+                                    </ul>
+                                </div> <!-- /.colum w01 -->
+                            </div>
+                        </div><!-- /.navBoxWrap -->
+                    </div><!-- /.li6 -->
+                </div><!-- /#subNav -->
+            </nav>
+        </div><!-- /.gNav -->
+    </header>
+</div><!-- /#header-->
+<div id="sp_header" class="sp">
+    <header id="hd_inner">
+        <p id="hd_logo"><a href="http://www.nakanihon.ac.jp/"><img src="/nacinfo/commons/images/sp/ui/h_id.png" alt="中日本自動車短期大学" width="194" height="22"></a></p>
+        <div id="hd_links">
+            <ul class="clearfix">
+                <li class="sitemap"><a id="show-sitemap" href="javascript:void(0)"><img src="/nacinfo/commons/images/sp/ui/icon_sitemap.png" alt="サイトマップ" width="35" height="33"></a></li>
+                <li class="search"><a id="show-search" href="javascript:void(0)"><img src="/nacinfo/commons/images/sp/ui/icon_search.png" alt="検索" width="34" height="33"></a></li>
+            </ul>
+        </div>
+    </header>
+</div><!--/#sp_header -->
+
+<div id="contentWrap">
+    <div id="content" class="clearfix">
+    
+    <div class="sp_main clearfix sp">
+		<script type="text/javascript" src="/nacinfo/commons/js/responsiveslides.js"></script>
+        <script type="text/javascript">
+			jQuery(function() {
+			$(".rslides").responsiveSlides();
+			});
+        </script>
+        
+          <style>
+		  .rslides li {
+			  position: relative:
+		  }
+		   .rslides .spBnrLink01 {
+			   position: absolute;
+			   top: 23%;
+			   left: 0;
+			   width: 50%;
+			   display: block;
+		   }
+		   .rslides .spBnrLink02 {
+			   position: absolute;
+			   top: 23%;
+			   left: 50%;
+			   width: 50%;
+			   display: block;
+		   }
+          </style>
+
+        <ul class="rslides">
+              <!--<li>
+                  <img src="/nacinfo/commons/images/index/main_bnr_oc_bg.jpg" alt="OPEN CAMPUS 2014開催中！" class="zoom">
+                  <a href="/nacinfo/opencampus/oc-suzuka" class="ov spBnrLink01">
+                      <img src="/nacinfo/commons/images/index/main_bnr_oc_suzuka.jpg" alt="オープンキャンパスin鈴鹿" class="zoom">
+                  </a>
+                  <a href="/nacinfo/opencampus/college-conference" class="ov spBnrLink02">
+                      <img src="nacinfo/commons/images/index/main_bnr_oc_guidance.jpg" alt="全国進学相談会" class="zoom">
+                  </a>
+              </li>-->
+              <!--<li>
+                  <img src="/nacinfo/commons/images/index/main_bnr_oc_bg.jpg" alt="OPEN CAMPUS 2014開催中！" class="zoom">
+                  <a href="/nacinfo/opencampus/observation" class="ov spBnrLink01">
+                      <img src="/nacinfo/commons/images/index/main_bnr_observation.jpg" alt="キャンパス見学会" class="zoom">
+                  </a>
+                  <a href="/nacinfo/opencampus/trial-classes" class="ov spBnrLink02">
+                      <img src="/nacinfo/commons/images/index/main_bnr_trial.jpg" alt="体験入学" class="zoom">
+                  </a>
+              </li>-->
+            
+            <!--<li><a href="/nacinfo/opencampus/observation/" class="ov">
+            <img src="/nacinfo/commons/images/index/main_bnr_observation2.jpg" alt="日本最大級のキャンパスを体感！「フェラーリ試乗体験」や「個別面談」もできる！「キャンパス見学会」を開催中!" class="zoom"></a></li>-->
+            <!--<li><a href="/nacinfo/opencampus/oc-spring/" class="ov"><img src="/nacinfo/commons/images/index/main_bnr_spring2015.jpg" alt="春のオープンキャンパス開催決定！" class="zoom"></a></li>-->
+			<!--<li><a href="/nacinfo/opencampus/" class="ov"><img src="nacinfo/commons/images/index/main_bnr_op2015.jpg" alt="オープンキャンパス2015開催中！" class="zoom"></a></li>-->
+      <!--<li class="clearfix">
+      <div style="float:left;width:50%;"><a href="/nacinfo/opencampus/trial-classes/" class="ov"><img src="nacinfo/commons/images/index/main_bnr_op2015_l.jpg" alt="オープンキャンパス2015開催中！" style="width:100%;height:auto;"></a></div>
+      <div style="float:left;width:50%;"><a href="/nacinfo/opencampus/observation/" class="ov"><img src="nacinfo/commons/images/index/main_bnr_op2015_r.jpg" alt="オープンキャンパス2015開催中！" style="width:100%;height:auto;"></a></div>
+      </li>-->
+      <li><a href="/nacinfo/opencampus/observation/" class="ov"><img src="/nacinfo/commons/images/index/main_bnr_120150824.jpg" alt="キャンパス見学会" class="zoom"></a></li>
+      <li><a href="http://www.nakanihon.ac.jp/nacinfo/lp/html/" target="_blank" class="ov"><img src="/nacinfo/commons/images/index/main_bnr_parent.jpg" alt="親孝行割" class="zoom"></a></li>
+					<!--<li><a href="/nacinfo/opencampus/college-conference/" class="ov"><img src="nacinfo/commons/images/index/main_bnr_college-conference.jpg" alt="「全国進学説明会」開催！" class="zoom"></a></li>-->
+			<li><a href="/nacinfo/qualification_employment/results/" class="ov"><img src="/nacinfo/commons/images/index/main_bnr_jres.jpg" alt="NACだから就職先も自由自在！「独立系」だからできる幅広い就職先！" class="zoom"></a></li>
+            <li><a href="/nacinfo/course/mse/#tab-box"><img src="/nacinfo/commons/images/index/main_bnr06.jpg" width="320" height="110" alt="NACだからできる！ホンモノを学ぶ現場体験！プロの現場に「同時参戦」" class="zoom"></a></li>
+        </ul>
+    </div><!-- .sp_main end -->
+    
+    <div class="topMainBnr">
+        <!-- THE CONTENT -->
+        <div id="jslidernews3" class="lof-slidecontent" style="width:960px; height:443px;">
+            <div class="preload"><div></div></div>
+            <div  class="button-previous">Previous</div>
+            <!-- MAIN CONTENT --> 
+            <div class="main-slider-content dn" style="width:960px; height:336px;">
+                <ul class="sliders-wrap-inner">
+                    <!--<li><a href="/nacinfo/opencampus/" class="ov"><img src="nacinfo/commons/images/index/main_bnr_op2015.jpg" alt="オープンキャンパス2015開催中！"></a></li>-->
+                    <!--<li style="width:936px;" class="clearfix">
+                    <div style="float:left;"><a href="/nacinfo/opencampus/trial-classes/" class="ov" style="width:428px; height:auto;"><img src="nacinfo/commons/images/index/main_bnr_op2015_l_pc.jpg" alt="体験入学"></a></div>
+                    <div><a href="/nacinfo/opencampus/observation/" class="ov" style="width:508px; height:auto;"><img src="nacinfo/commons/images/index/main_bnr_op2015_r_pc.jpg" alt="キャンパス見学会"></a></div>
+                    </li>-->
+                    <li><a href="/nacinfo/opencampus/observation/" class="ov"><img src="/nacinfo/commons/images/index/main_bnr_120150824.jpg" alt="キャンパス見学会"></a></li>
+                    <li><a href="http://www.nakanihon.ac.jp/nacinfo/lp/html/" target="_blank" class="ov"><img src="/nacinfo/commons/images/index/main_bnr_parent.jpg" alt="親孝行割"></a></li>
+					<!--<li><a href="/nacinfo/opencampus/college-conference/" class="ov"><img src="nacinfo/commons/images/index/main_bnr_college-conference.jpg" alt="「全国進学説明会」開催！"></a></li>-->
+					<li><a href="/nacinfo/qualification_employment/results/" class="ov"><img src="nacinfo/commons/images/index/main_bnr_jres.jpg" alt="NACだから就職先も自由自在！「独立系」だからできる幅広い就職先！"></a></li>
+					<li><a class="ov" href="/nacinfo/course/mse/#tab-box"><img src="/nacinfo/commons/images/index/main_bnr06.jpg" alt="NACだからできる！ホンモノを学ぶ現場体験！プロの現場に「同時参戦」"></a></li>
+					<!--<li>
+                       <img src="nacinfo/commons/images/index/main_bnr_oc_bg.jpg" alt="OPEN CAMPUS 20	14開催中">
+                       <a href="/nacinfo/opencampus/oc-suzuka" class="bnrLink01 ov"><img src="nacinfo/commons/images/index/main_bnr_oc_suzuka.jpg" alt="オープンキャンパスin鈴鹿"></a>
+                       <a href="/nacinfo/opencampus/college-conference" class="bnrLink02 ov"><img src="nacinfo/commons/images/index/main_bnr_oc_guidance.jpg" alt="全国進学相談会"></a>
+                    </li>-->
+                    <!--<li>
+                       <img src="nacinfo/commons/images/index/main_bnr_oc_bg.jpg" alt="OPEN CAMPUS 20	14開催中">
+                       <a href="/nacinfo/opencampus/observation" class="bnrLink01 ov"><img src="nacinfo/commons/images/index/main_bnr_observation.jpg" alt="キャンパス見学会"></a>
+                       <a href="/nacinfo/opencampus/trial-classes" class="bnrLink02 ov"><img src="nacinfo/commons/images/index/main_bnr_trial.jpg" alt="体験入学"></a>
+                    </li>-->
+                    <!--<li><a href="/nacinfo/opencampus/observation/" class="ov">
+                    <img src="/nacinfo/commons/images/index/main_bnr_observation2.jpg" alt="日本最大級のキャンパスを体感！「フェラーリ試乗体験」や「個別面談」もできる！「キャンパス見学会」を開催中!" class="zoom"></a></li>-->
+                    <!--<li><a href="/nacinfo/opencampus/oc-spring/" class="ov"><img src="nacinfo/commons/images/index//main_bnr_spring2015.jpg" alt="春のオープンキャンパス開催決定！"></a></li>-->
+                    <!-- <li><a class="ov" href="http://www.nakanihon-mse.jp/" target="_blank"><img src="/nacinfo/commons/images/index/main_bnr03.png" alt="モータースポーツエンジニアリング学科　攻殻整備隊始動！"></a></li> -->
+                </ul>  	
+            </div>
+            <!-- END MAIN CONTENT --> 
+            <!-- NAVIGATOR -->
+            <div class="navigator-content">
+                <div class="navigator-wrapper">
+                <ul class="navigator-wrap-inner">
+				<!--<li><div><a href="#"><img src="/nacinfo/commons/images/index/thumb_op2015.jpg" alt="オープンキャンパス2015開催中！" class="btn"></a></div></li>-->
+        <li><div><a href="#"><img src="/nacinfo/commons/images/index/thumb_observation2.jpg" alt="キャンパス見学会" class="btn"></a></div></li>
+        <li><div><a href="#"><img src="/nacinfo/commons/images/index/thumb09.png" alt="「親孝行割" class="btn"></a></div></li>
+					<!--<li><div><a href="#"><img src="/nacinfo/commons/images/index/thumb04.png" alt="「全国進学説明会」開催！" class="btn"></a></div></li>-->
+					<li><div><a href="#"><img src="/nacinfo/commons/images/index/thumb08.png" alt="NACだから就職先も自由自在！" class="btn"></a></div></li>
+                    <li><div><a href="#"><img src="/nacinfo/commons/images/index/thumb07.png" alt="プロの現場に同時参戦" class="btn"></a></div></li>
+                    <!--<li><div><a href="#"><img src="/nacinfo/commons/images/index/thumb_oc.jpg" alt="OPEN CAMPUS 2014開催中！" class="btn"></a></div></li>-->
+                    <!--<li><div><a href="#"><img src="/nacinfo/commons/images/index/thumb_observation2.jpg" alt="キャンパス見学会開催中！" class="btn"></a></div></li>-->
+                    <!--<li><div><a href="#"><img src="/nacinfo/commons/images/index/thumb02.jpg" alt="OPEN CAMPUS 2014開催中！" class="btn"></a></div></li>-->
+                    <!--<li><div><a href="#"><img src="/nacinfo/commons/images/index/thumb06.png" alt="春のオープンキャンパス開催決定！" class="btn"></a></div></li>-->
+					
+                </ul>
+                </div>
+            </div> 
+            <!-- END OF NAVIGATOR -->
+            <div class="button-next">Next</div>
+        </div> 
+        <!-- END OF THE CONTENT -->
+    </div> <!-- /topMainBnr -->
+    
+    <div class="top">
+    
+        <div id="main">
+            
+            <div id="linkCourseBox" class="pos">
+                <img src="/nacinfo/commons/images/index/bg_course.png" alt="" class="bg zoom">
+                <section class="inner">
+                    <header>
+                        <h1><img src="/nacinfo/commons/images/index/ttl_course.png" alt="設置学科" class="zoom"></h1>
+                    </header>
+                    <ul class="clearfix">
+                        <li><a href="/nacinfo/course/ae/index.html" class="ov"><img src="/nacinfo/commons/images/index/img_course01.png" alt="自動車工学科" class="zoom"></a></li>
+                        <li><a href="/nacinfo/course/mse/index.html" class="ov"><img src="/nacinfo/commons/images/index/img_course02.png" alt="モータースポーツエンジニアリング学科" class="zoom"></a></li>
+                        <!--<li class="last"><a href="/nacinfo/course/international-ae/index.html" class="ov"><img src="/nacinfo/commons/images/index/img_course03.png" alt="国際自動車学科" class="zoom"></a></li>-->
+                    </ul>
+                </section>
+            </div><!-- #linkCourseBox end -->
+        
+            <div id="news" class="changeArea">
+                <section>
+                <header>
+                    <h1><img src="/nacinfo/commons/images/index/ttl_news.png" alt="News | 新着情報" class="zoom"></h1>
+                </header>
+                
+                <div class="news-tab clearfix">
+                    <ul id="tab" class="clearfix">
+                        <li class="t01"><a href="#news-1"><img src="/nacinfo/commons/images/index/tab01.png" alt="最新のニュース"></a></li>
+                        <li class="t02"><a href="#news-2"><img src="/nacinfo/commons/images/index/tab02.png" alt="イベント情報"></a></li>
+                        <li class="t03"><a href="#news-3"><img src="/nacinfo/commons/images/index/tab03.png" alt="入試情報"></a></li>
+                        <li class="t04"><a href="#news-4"><img  src="/nacinfo/commons/images/index/tab04.png" alt="NACブログ"></a></li>
+                    </ul>
+                </div><!-- /.news-tab -->
+                
+                <div id="tab-box">
+                    <div id="news-1" class="news-list">
+                        <section>
+                    
+                        <ul>
+
+<li>
+	<dl>
+		<dt>
+			2016.01.21			<span class="other">お知らせ</span>        </dt>
+        <dd>
+			            <a href="http://www.nakanihon.ac.jp/news/2016/01/21_832.html">
+                        １月９日（土）カートライセンス講習を行いました</a>
+        </dd>
+	</dl>
+</li>
+<li>
+	<dl>
+		<dt>
+			2016.01.09			<span class="event">イベント</span>        </dt>
+        <dd>
+			            <a href="http://www.nakanihon.ac.jp/news/2016/01/09_819.html">
+                        1月24日（日）はキャンパス見学会！</a>
+        </dd>
+	</dl>
+</li>
+<li>
+	<dl>
+		<dt>
+			2016.01.07			<span class="exam">入試情報</span>        </dt>
+        <dd>
+			            <a href="http://www.nakanihon.ac.jp/news/2016/01/07_818.html">
+                        1月期の出願受付を開始します</a>
+        </dd>
+	</dl>
+</li>
+<li>
+	<dl>
+		<dt>
+			2015.12.28			<span class="other">お知らせ</span>        </dt>
+        <dd>
+			            <a href="http://www.nakanihon.ac.jp/news/2015/12/28_816.html">
+                        年末年始休業のお知らせ</a>
+        </dd>
+	</dl>
+</li>
+<li>
+	<dl>
+		<dt>
+			2015.12.14			<span class="event">イベント</span>        </dt>
+        <dd>
+			            <a href="http://www.nakanihon.ac.jp/news/2015/12/14_820.html">
+                        12月13日キャンパス見学会を開催しました。</a>
+        </dd>
+	</dl>
+</li>                 
+                        </ul>
+ 
+                 
+                        <p class="tRight listAll"><a href="/news/">一覧を見る</a></p>
+                        </section>
+                    </div><!-- #news-1 -->
+                
+                    <div id="news-2" class="news-list">
+                        <section>
+                    
+                            <ul>
+
+<li>
+	<dl>
+		<dt>
+			2016.01.09			<span class="event">イベント</span>        </dt>
+        <dd>
+			            <a href="http://www.nakanihon.ac.jp/news/2016/01/09_819.html">
+                        1月24日（日）はキャンパス見学会！</a>
+        </dd>
+	</dl>
+</li>
+<li>
+	<dl>
+		<dt>
+			2015.12.14			<span class="event">イベント</span>        </dt>
+        <dd>
+			            <a href="http://www.nakanihon.ac.jp/news/2015/12/14_820.html">
+                        12月13日キャンパス見学会を開催しました。</a>
+        </dd>
+	</dl>
+</li>
+<li>
+	<dl>
+		<dt>
+			2015.11.24			<span class="event">イベント</span>        </dt>
+        <dd>
+			            <a href="http://www.nakanihon.ac.jp/news/2015/11/24_805.html">
+                        １２月１３日（日）はキャンパス見学会（終了しました）</a>
+        </dd>
+	</dl>
+</li>
+<li>
+	<dl>
+		<dt>
+			2015.11.16			<span class="event">イベント</span>        </dt>
+        <dd>
+			            <a href="http://www.nakanihon.ac.jp/news/2015/11/16_806.html">
+                        11月16日キャンパス見学会を開催しました。</a>
+        </dd>
+	</dl>
+</li>
+<li>
+	<dl>
+		<dt>
+			2015.11.04			<span class="event">イベント</span>        </dt>
+        <dd>
+			            <a href="http://www.nakanihon.ac.jp/news/2015/11/04_780.html">
+                        エコノパワーin岐阜を実施しました</a>
+        </dd>
+	</dl>
+</li>                            </ul>
+                            <p class="tRight listAll"><a href="/news/event/">一覧を見る</a></p>
+                        </section>
+                    </div><!-- #news-2 -->
+                
+                    <div id="news-3" class="news-list">
+                        <section>
+                            <ul>
+
+<li>
+	<dl>
+		<dt>
+			2016.01.07			<span class="exam">入試情報</span>        </dt>
+        <dd>
+			            <a href="http://www.nakanihon.ac.jp/news/2016/01/07_818.html">
+                        1月期の出願受付を開始します</a>
+        </dd>
+	</dl>
+</li>
+<li>
+	<dl>
+		<dt>
+			2015.11.23			<span class="exam">入試情報</span>        </dt>
+        <dd>
+			            <a href="http://www.nakanihon.ac.jp/news/2015/11/23_804.html">
+                        １２月期入試の出願を開始します（締め切りました）</a>
+        </dd>
+	</dl>
+</li>
+<li>
+	<dl>
+		<dt>
+			2015.10.26			<span class="exam">入試情報</span>        </dt>
+        <dd>
+			            <a href="http://www.nakanihon.ac.jp/news/2015/10/26_767.html">
+                        11月期入学試験の出願がスタートします（締め切りました）</a>
+        </dd>
+	</dl>
+</li>
+<li>
+	<dl>
+		<dt>
+			2015.09.28			<span class="exam">入試情報</span>        </dt>
+        <dd>
+			            <a href="http://www.nakanihon.ac.jp/news/2015/09/28_754.html">
+                        10月1日（木）から10月期の出願がスタートします（締め切りました）</a>
+        </dd>
+	</dl>
+</li>
+<li>
+	<dl>
+		<dt>
+			2015.02.27			<span class="exam">入試情報</span>        </dt>
+        <dd>
+			            <a href="http://www.nakanihon.ac.jp/news/2015/02/27_524.html">
+                        追加入試のお知らせ！</a>
+        </dd>
+	</dl>
+</li>
+<li>
+	<dl>
+		<dt>
+			2014.10.28			<span class="exam">入試情報</span><span class="check">Check</span>        </dt>
+        <dd>
+			            <a href="http://www.nakanihon.ac.jp/news/2014/10/28_403.html">
+                        11月期の出願受付がスタートします（終了しました）</a>
+        </dd>
+	</dl>
+</li>
+<li>
+	<dl>
+		<dt>
+			2014.10.01			<span class="exam">入試情報</span>        </dt>
+        <dd>
+			            <a href="http://www.nakanihon.ac.jp/news/2014/10/01_388.html">
+                        10月期　入学試験願書受付中です！（締め切りました）</a>
+        </dd>
+	</dl>
+</li>
+<li>
+	<dl>
+		<dt>
+			2013.10.10			<span class="exam">入試情報</span>        </dt>
+        <dd>
+			            <a href="/nacinfo/admission/exam-schedule/" >
+            
+                        2013年10月1日より「一般推薦入学試験」「社会人入学試験」「奨学生入学試験」の願書受付がスタート！</a>
+        </dd>
+	</dl>
+</li>                           
+                            </ul>
+                            <p class="tRight listAll"><a href="/news/exam/">一覧を見る</a></p>
+                        </section>
+                    </div><!-- #news-3 -->
+                    
+                    <div id="news-4" class="news-list">
+                        <section>
+                            <div id="feed"></div>
+                            <p class="tRight listAll"><a href="http://ameblo.jp/nac-news01/entrylist.html" target="_blank">一覧を見る</a></p>
+                        </section>
+                    </div><!-- #news-4 -->
+                
+                </div>
+                </section>
+            
+            </div><!-- /#news -->
+			
+			<div class="groupSchool pc" style="margin-top:30px;">
+			<p style="font-size:125%; margin-bottom:20px; color:#fff; font-weight:bold; background:#c00; height:32px; line-height:32px; padding-left:15px;">グループ校</p>
+				<ul class="btbxslider cf">
+					<li><a href="http://www.jinno.ac.jp/" target="_blank"><img src="nacinfo//commons/images/index/bnr/bnr_jinno.png" alt="" width="180" height="63"></a></li>
+					<li><a href="http://www.kohnan-dvs.co.jp/group/special.html" target="_blank"><img src="nacinfo//commons/images/index/bnr/bnr_kohnan.png" alt="" width="180" height="63"></a></li>
+					<li><a href="http://www.cna.ac.jp/" target="_blank"><img src="nacinfo//commons/images/index/bnr/bnr_cna.png" alt="" width="180" height="63"></a></li>
+					<li><a href="http://www.u-gifu-ms.ac.jp/" target="_blank"><img src="nacinfo//commons/images/index/bnr/bnr_gifu.png" alt="" width="180" height="63"></a></li>
+				</ul>
+			</div>
+	
+		<!-- /.group-school -->
+        
+        </div><!-- main -->
+    
+        <div id="side">
+            <div id="pick">
+                <section>
+                    <header>
+                    <h1><img src="nacinfo/commons/images/index/ttl_pick.png" alt="ピックアップ" class="zoom"></h1>
+                    </header>
+                    <ul class="clearfix">
+                    <li><a href="http://ameblo.jp/nac-news01/" target="_blank" class="ov"><img src="/nacinfo/commons/images/index/img_pick01.png" alt="NACのリアルなキャンパスライフが分かる！ NACブログ" width="141" height="154" class="zoom"></a></li>
+                    <li class="last"><a href="/c/sp-2013/" target="_blank" class="ov"><img src="/nacinfo/commons/images/index/img_pick07.jpg" alt="再進学、キャリアチェンジを応援！NAC10の魅力!　社会人・既卒の方へ" width="141" height="154" class="zoom" ></a></li>
+                    
+                    <li><a href="/nacinfo//admission/tuition-support/" class="ov"><img src="/nacinfo/commons/images/index/img_pick06.jpg" alt="学費の負担を軽減する様々なサポートが充実！奨学金・学費サポート" width="141" height="154" class="zoom"></a></li>
+                    <!--<li><a href="/news/2014/06/06_239.html" class="ov"><img src="/nacinfo/commons/images/index/img_pick08.jpg" alt="緊急企画！6/22(日)「モータースポーツスペシャルオープンキャンパス」開催決定！" width="141" height="154" class="zoom"></a></li>-->
+                    <!-- <li class="last"><a href="http://www.nakanihon-mse.jp/" target="_blank" class="ov"><img src="/nacinfo/commons/images/index/img_pick04.png" alt="鈴鹿サーキットなど国内外のレースにも参戦中！ モータースポーツ活動" width="141" height="154" class="zoom"></a></li> -->
+                    <!--<li class="last"><a href="http://www.nakanihon.ac.jp/mse/" target="_blank" class="ov"><img src="/nacinfo/commons/images/index/img_pick04.png" alt="鈴鹿サーキットなど国内外のレースにも参戦中！ モータースポーツ活動" width="141" height="154" class="zoom"></a></li>-->
+					<li class="last"><a href="http://www.nakanihon.ac.jp/nacinfo/lp/html/"  class="ov" target="_blank"><img src="/nacinfo/commons/images/index/img_pick04.png" alt="オープンキャンパス参加で入学金半額免除「親孝行割」" width="141" height="154" class="zoom"></a></li>
+                    </ul>
+                </section>
+            </div><!-- /#pick -->
+
+            <div class="line"><a href="http://accountpage.line.me/nac1967" class="ov" target="_blank"><img src="/nacinfo/commons/images/index/bnr_line.png" alt="最新のお得な情報をお届け！ NACのLINE＠nac1967" class="pc"><img src="/nacinfo/commons/images/index/sp_bnr_line.png" alt="最新のお得な情報をお届け！ NACのLINE＠nac1967" class="sp zoom"></a></div>
+
+        
+            <div id="nacTv" class="pos">
+                <img src="/nacinfo//commons/images/index/bg_tv.png" alt="" class="zoom">
+                <section class="inner">
+                    <header>
+                        <h1><img src="/nacinfo//commons/images/index/ttl_tv.png" alt="NACTV"></h1>
+                    </header>
+                    <p><img src="/nacinfo//commons/images/index/img_tv.png" alt="涙も笑いも感動も、すべてが財産になる！　NACのキャンパスライフ、授業の様子を公開中！"></p>
+                    <div class="tCenter movie"><iframe width="235" height="220" src="http://www.youtube.com/embed/5Ulf0vNu_aE" frameborder="0" allowfullscreen></iframe></div>
+                </section>
+            </div><!-- /#nacTv -->
+        
+        </div><!-- /.side-->
+    
+    </div><!-- .top end -->
+    </div><!-- #content -->
+</div> <!-- #contentWrap -->
+<section class="sp menu">
+    <nav class="gNav">
+        <ul>
+            <li><a href="/nacinfo/college/"><img src="/nacinfo/commons/images/sp/ui/gnav01.png" alt="大学案内" width="158" height="25"></a></li>
+            <li><a href="/nacinfo/course/"><img src="/nacinfo/commons/images/sp/ui/gnav02.png" alt="学科紹介" width="158" height="25"></a></li>
+            <li><a href="/nacinfo/qualification_employment/"><img src="/nacinfo/commons/images/sp/ui/gnav03.png" alt="資格・就職" width="158" height="25"></a></li>
+            <li><a href="/nacinfo/campuslife/"><img src="/nacinfo/commons/images/sp/ui/gnav04.png" alt="学生生活" width="158" height="25"></a></li>
+            <li><a href="/nacinfo/admission/"><img src="/nacinfo/commons/images/sp/ui/gnav05.png" alt="入試情報" width="158" height="25"></a></li>
+            <li><a href="/nacinfo/opencampus/"><img src="/nacinfo/commons/images/sp/ui/gnav06.png" alt="オープンキャンパス" width="158" height="25"></a></li>
+        </ul>
+    </nav>
+</section><!-- /.menu -->
+
+<div id="foot">
+    
+    <div id="footerSiteMap" class="pc">
+        <div class="centering">
+            <div class="sitemap clearfix">
+                
+                <div class="colum w01">
+                    <p class="f_icon01"><a href="/nacinfo/college/">大学案内</a></p>
+                    <ul class="changeArea">
+                        <li><a href="/nacinfo/college/about/">中日本自動車短期大学について</a></li>
+                        <li><a href="/nacinfo/college/feature/">NACの特徴</a></li>
+                        <li><a href="/nacinfo/college/greeting/">学長の挨拶</a></li> 
+                        <li><a href="/nacinfo/college/s-takuma_message/">佐藤&#64074;磨氏からのメッセージ</a></li> 
+                        <li><a href="/nacinfo/college/idea/">教育理念</a></li> 
+                        <li><a href="/nacinfo/college/department-policy/">学科ポリシー</a></li> 
+                        <li><a href="/nacinfo/college/teacher/">教員紹介</a></li> 
+                        <li><a href="/nacinfo/college/questionnaire/">授業アンケート</a></li> 
+                        <li><a href="/nacinfo/college/college_song/">中日本自動車短期大学校歌</a></li> 
+                        <li><a href="/nacinfo/college/assessment/">第三者評価</a></li> 
+                        <li><a href="/nacinfo/college/information-disclosure/">情報公開</a></li> 
+                        <li><a href="/nacinfo/college/faq/">よくある質問</a></li> 
+                        <li><a href="/nacinfo/college/access/">地図・アクセス</a></li> 
+                    </ul>
+                </div><!-- /.colum -->
+                
+                <div class="colum w02">
+                    <p class="f_icon02"><a href="/nacinfo/course/">学科紹介</a></p>
+                    <ul class="changeArea">
+                        <li class="subBottom"><a href="/nacinfo/course/ae/">自動車工学科</a></li>
+                        <li class="sub"><a href="/nacinfo/course/ae/2-automechanics/">2級自動車整備士コース</a></li>
+                        <li class="sub"><a href="/nacinfo/course/ae/1-automechanics/">1級自動車整備士コース</a></li>
+                        <li class="sub last"><a href="/nacinfo/course/ae/bodymechanics/">車体整備士コース</a></li>
+                        <li><a href="/nacinfo/course/mse/">モータースポーツエンジニアリング学科</a></li>
+                        <li><a href="/nacinfo/course/about-practice/">実習授業について</a></li>
+                    </ul>
+                    <p class="f_icon04 mt20"><a href="/nacinfo/campuslife/">学生生活</a></p>
+                    <ul class="changeArea">
+                        <li><a href="/nacinfo/campuslife/schedule/">年間行事</a></li>
+                        <li><a href="/nacinfo/campuslife/study-abroad/">海外研修旅行・短期留学</a></li>
+                        <li><a href="/nacinfo/campuslife/campus/">キャンパス紹介</a></li>
+                        <li class="subBottom"><a href="/nacinfo/campuslife/student-voice/">在学生の声</a></li>
+                        <li class="sub"><a href="/nacinfo/campuslife/student-voice/voice03/">自動車工学科 2年　後藤 優奈さん</a></li>
+                        <li class="sub"><a href="/nacinfo/campuslife/student-voice/voice01/">モータースポーツエンジニアリング<br>学科 3年　各務 昴久さん</a></li>
+                        <li class="sub last"><a href="/nacinfo/campuslife/student-voice/voice02/">モータースポーツエンジニアリング<br>学科 3年　木屋川内 勇人さん</a></li>
+                        <li><a href="/nacinfo/campuslife/club/">クラブ・サークル活動</a></li>
+                        <li><a href="/nacinfo/campuslife/student-dorm/">学生寮・下宿先について</a></li>
+                        <li><a href="/nacinfo/campuslife/school-bus/">スクールバス・駐車場</a></li>
+                    </ul>
+                </div><!-- /.colum -->
+                
+                <div class="colum w03">
+                    <p class="f_icon03"><a href="/nacinfo/qualification_employment/">資格・就職</a></p>
+                    <ul class="changeArea">
+                        <li><a href="/nacinfo/qualification_employment/license-list/">取得できる資格一覧</a></li>
+                        <li><a href="/nacinfo/qualification_employment/job-support/">就職・進学サポート</a></li>
+                        <li><a href="/nacinfo/qualification_employment/results/">就職実績</a></li>
+                        <li class="subBottom"><a href="/nacinfo/qualification_employment/graduate/">卒業生のご紹介</a></li>
+                        <li class="sub"><a href="/nacinfo/qualification_employment/graduate/manufacturer/">自動車メーカー系で活躍する卒業生</a></li>
+                        <li class="sub"><a href="/nacinfo/qualification_employment/graduate/development/">設計・開発系で活躍する卒業生</a></li>
+                        <li class="sub"><a href="/nacinfo/qualification_employment/graduate/dealer/">自動車ディーラー系で活躍する卒業生</a></li>
+                        <li class="sub last"><a href="/nacinfo/qualification_employment/graduate/other/">その他（アジャスター、救護、二輪自動車など）で活躍する卒業生</a></li>
+                    </ul>
+                    <p class="f_icon05 mt20"><a href="/nacinfo/admission/">入試情報</a></p>
+                    <ul class="changeArea">
+                        <li><a href="/nacinfo/admission/outline/">募集要項</a></li>
+                        <li class="subBottom"><a href="/nacinfo/admission/application/">出願方法</a></li>
+                        <li class="sub"><a href="/nacinfo/admission/application/recommendation01/">一般推薦入試</a></li>
+                        <li class="sub"><a href="/nacinfo/admission/application/recommendation02/">自己推薦入試</a></li>
+                        <li class="sub"><a href="/nacinfo/admission/application/general/">一般入試</a></li>
+                        <li class="sub"><a href="/nacinfo/admission/application/society/">社会人入試</a></li>
+                        <li class="sub"><a href="/nacinfo/admission/application/scholarship/">奨学生入試</a></li>
+                        <li class="sub last"><a href="/nacinfo/admission/application/ao/">AO方式での受験について</a></li>
+                        <li><a href="/nacinfo/admission/exam-schedule/">入試日程・試験会場</a></li>
+                        <li><a href="/nacinfo/admission/tuition/">学費について</a></li>
+                        <li><a href="/nacinfo/admission/tuition-support/">奨学生・学費サポート</a></li>
+                    </ul>
+                </div><!-- /.colum -->
+                
+                <div class="colum w04">
+                    <p class="f_icon06"><a href="/nacinfo/opencampus/">オープンキャンパス</a></p>
+                    <ul class="changeArea">
+                        <li><a href="/nacinfo/opencampus/trial-classes/">体験入学</a></li>
+                        <li><a href="/nacinfo/opencampus/observation/">キャンパス見学会</a></li>
+						<!--<li><a href="/nacinfo/opencampus/oc-spring/">春のオープンキャンパス</a></li>-->
+                        <li><a href="/nacinfo/opencampus/oc-suzuka/">オープンキャンパスin鈴鹿</a></li>
+                        <li><a href="/nacinfo/opencampus/college-conference/">全国進学相談会</a></li>
+                    </ul>
+                    <p class="f_icon07 mt20"><a href="/nacinfo/opencampus/">関連サイト</a></p>
+                    <ul class="changeArea">
+                        <li><a href="http://www.nakanihon.ac.jp/library/" target="_blank">附属図書館</a></li>
+                        <li><a href="http://nes.nakanihon.ac.jp/ses/" target="_blank">自学自習システム</a></li>
+                        <li><a href="http://www.nakanihon.ac.jp/econo/" target="_blank">Econo Power in GIFU</a></li>
+                        <li><a href="http://www.nakanihon.ac.jp/bekka/" target="_blank">留学生別科オリジナルサイト</a></li>
+                        <li><a href="http://www.nakanihon.ac.jp/bekka/academy/nihongoT.htm" target="_blank">にほんご・あかでみぃ</a></li>
+                        <li><a href="http://www.nakanihon.ac.jp/gakuyu/" target="_blank">学友会</a></li>
+                    </ul>
+                </div><!-- /.colum -->
+                
+            </div><!-- /.sitemap -->
+        </div><!-- /centering -->
+    </div><!-- /#footerSiteMap -->
+    
+    <div class="footerImageArea pc"></div>
+    
+    <div class="bottom clearfix pc">
+        <div class="centering">
+            <div class="bottomIn clearfix">
+                <h2 class="f_id"><a href="http://www.nakanihon.ac.jp/"><img src="/nacinfo/commons/images/ui/f_id.png" alt="学校法人　神野学園　中日本自動車短期大学 イタリア国立フェラーリ工業専門学校提携校 文部科学省 国土交通省認定大学"></a></h2>
+                <p class="fTel"><img src="/nacinfo/commons/images/ui/f_tel.png" alt="0120-500-885(受験生専用ダイヤル)"></p>
+                <p class="add changeArea">TEL：0574-26-7121（代表）　Mail：<a href="&#109;ailto&#58;inf&#111;&#64;&#110;akani&#104;on&#46;&#97;&#99;&#46;jp">info@nakanihon.ac.jp</a><br>〒 505-0077 岐阜県加茂郡坂祝町深萱1301</p>
+                <ul class="fNav01 clearfix changeArea">
+                    <li><a class="map" href="/nacinfo/college/access/">地図・アクセス</a></li>
+                    <li><a class="mail" href="/nacinfo/inquiry/">お問い合わせ</a></li>
+                    <li class="last"><a class="faq" href="/nacinfo/college/faq/">中日本自動車短期大学Q&amp;A </a></li>
+                </ul>
+                <ul class="fNav02 clearfix changeArea">
+                    <li><a href="/nacinfo/sitemap/">サイトマップ</a></li>
+                    <li><a href="/nacinfo/privacy/">プライバシーポリシー</a></li>
+                    <li class="last"><a href="/nacinfo/accessibility/">サイトポリシー</a></li>
+                </ul>
+                <p class="copyright">Copyright © 2013 Nakanihon Automotive College All Rights Reserved.</p>
+            </div><!-- /bottomIn -->
+        </div>
+        <p id="pageTop"><a href="#top" class="ov"><img src="/nacinfo/commons/images/ui/f_bar_pagetop.png" alt="Page top"></a></p>
+    </div><!-- /.bottom -->
+    
+    <div class="sp">
+        <div>
+            <ul class="funcNav01 clearfix">
+            <li><a href="http://www.nakanihon.ac.jp/nacinfo/visitor_international/nac_english/" target="_blank"><img src="/nacinfo/commons/images/sp/ui/fl_us.png" alt="English" width="46" height="31"></a></li>
+            <li><a href="http://www.nakanihon-china.com/" target="_blank"><img src="/nacinfo/commons/images/sp/ui/fl_ch.png" alt="Chinese" width="46" height="31"></a></li>
+            <li><a href="http://www.jinno.ac.jp/korean/" target="_blank"><img src="/nacinfo/commons/images/sp/ui/fl_kr.png" alt="Korea" width="47" height="31"></a></li>
+            <li><a href="http://www.nac-thai.com/" target="_blank"><img src="/nacinfo/commons/images/sp/ui/fl_th.png" alt="Thai" width="46" height="31"></a></li>
+            <li class="last"><a href="http://www.nakanihon.edu.vn/vn/Default.aspx" target="_blank"><img src="/nacinfo/commons/images/sp/ui/fl_vn.png" alt="Vietnam" width="46" height="31"></a></li>
+            </ul><!-- /.funcNav01 -->
+        </div>
+        
+        <section class="visit">
+            <div class="acordion">
+                <h1 class="trigger">対象者別メニュー</h1>
+                <ul class="funcNav02 clearfix dn">
+                    <li><a href="/nacinfo/visitor_international/">留学生の方へ</a></li>
+                    <li class="sub"><a href="/nacinfo/visitor_international/application-ae/">留学生入試　募集要項<br>（自動車工学科）</a></li>
+                    <li class="sub"><a href="/nacinfo/visitor_international/application-mse/">留学生入試　募集要項<br>（モータースポーツエンジニアリング学科）</a></li>
+                    <li><a href="/nacinfo/visitor_society/">社会人・再進学の方へ</a></li>
+                    <li><a href="/nacinfo/visitor_parent/">保護者の方へ</a></li>
+                    <li><a href="/nacinfo/visitor_company/">企業の方へ</a></li>
+                    <li><a href="/nacinfo/visitor_student/current-student/">在学生の方へ</a></li>
+                    <li class="last"><a href="/nacinfo/visitor_student/graduate/">卒業生の方へ</a></li>
+                </ul>
+                <!-- /.funcNav02 -->
+            </div>
+        </section><!-- /.visit -->
+		
+		
+		<!--<div class="groupSchool sp" style="margin-top:30px;">
+			<p style="font-size:134%; margin-bottom:10px; color:#c00; font-weight:bold; margin-left:20px;">■ グループ校</p>
+				<ul class="sp-btbxslider cf">
+					<li><a href="http://www.jinno.ac.jp/" target="_blank"><img src="/nacinfo/commons/images/index/bnr/bnr_jinno.png" alt="" width="180" height="63"></a></li>
+					<li><a href="http://www.kohnan-dvs.co.jp/group/special.html" target="_blank"><img src="/nacinfo//commons/images/index/bnr/bnr_kohnan.png" alt="" width="180" height="63"></a></li>
+					<li><a href="http://www.cna.ac.jp/" target="_blank"><img src="/nacinfo/commons/images/index/nr/bnr_cna.png" alt="" width="180" height="63"></a></li>
+					<li><a href="http://www.u-gifu-ms.ac.jp/" target="_blank"><img src="/nacinfo/commons/images/index/bnr/bnr_gifu.png" alt="" width="180" height="63"></a></li>
+				</ul>
+			</div>-->
+		
+        
+        <div id="sp_bottom">
+            <h2 class="sp_f_id"><img src="/nacinfo/commons/images/sp/ui/f_id.png" alt="学校法人　神野学園　中日本自動車短期大学"></h2>
+            <p class="sp_add">〒 505-0077 岐阜県加茂郡坂祝町深萱1301</p>
+            <p class="sp_tel1">TEL：<a href="tel:0120-500-885">0120-500-885</a>（受験生専用ダイヤル）</p>
+            <p class="sp_tel2">TEL：0574-26-7121（代表）　Mail：<a href="&#109;ailto&#58;inf&#111;&#64;&#110;akani&#104;on&#46;&#97;&#99;&#46;jp">info@nakanihon.ac.jp</a></p>
+            <p class="sp_copyright">Copyright © 2013 Nakanihon Automotive College All Rights Reserved.</p>
+        </div><!-- /#sp_bottom -->
+    </div><!-- / sp -->
+</div><!-- /#foot -->
+
+<div id="footer" class="pos">
+    <div class="footer_centering pos pc">
+        <ul>
+            <li class="tel"><img src="/nacinfo/commons/images/ui/f_bar_tel.png" alt="今すぐアクセス！ 0120-500-885(受験生専用ダイヤル)"></li>
+            <li class="op"><a href="/nacinfo/opencampus/" class="ov"><img src="/nacinfo/commons/images/ui/f_bar_op.png" alt="オープンキャンパス情報"></a></li>
+            <li class="apply"><a href="https://s360.jp/form/31173-1012" target="_blank" class="ov"><img src="/nacinfo/commons/images/ui/f_bar_apply.png" alt="資料請求"></a></li>
+            <li class="access"><a href="/nacinfo/college/access/" class="ov"><img src="/nacinfo/commons/images/ui/f_bar_access.png" alt="地図・アクセス"></a></li>
+        </ul>
+    </div>
+</div><!-- / #footer -->
+  
+<footer class="sp">
+    <ul class="clearfix">
+        <li><a href="https://s360.jp/form/31173-1012" target="_blank"><img src="/nacinfo/commons/images/sp/ui/f_app.png" alt="資料請求"></a></li>
+        <li><a href="/nacinfo/college/access/"><img src="/nacinfo/commons/images/sp/ui/f_access.png" alt="地図・アクセス"></a></li>
+        <li><a href="/nacinfo/opencampus/"><img src="/nacinfo/commons/images/sp/ui/f_op.png" alt="オープンキャンパス情報"></a></li>
+        <li class="last"><a href="/nacinfo/inquiry/"><img src="/nacinfo/commons/images/sp/ui/f_inquery.png" alt="お問い合わせ"></a></li>
+    </ul>
+</footer><!-- / sp footer -->
+    
+<div id="modal-search" class="sp">
+    <div class="container">
+        
+        <div class="slide-close">
+            <p><a href="javascript:void(0)" id="hide-search"><img src="/nacinfo/commons/images/sp/ui/btn_close.png" alt="close"></a></p>
+        </div><!-- /.slide-close -->
+        
+        <div class="search-form">
+            <form action="http://www.google.com/cse" id="sp-cse-search-box">
+                <div>
+                <input type="hidden" name="cx" value="009441995270272734483:wkq-auyo0ks" />
+                <input type="hidden" name="ie" value="UTF-8" />
+                <input type="text" name="q" />
+                <input type="image" src="/nacinfo/commons/images/ui/icon_search.png" width="28" height="29" alt="Search" title="Search" />        
+                </div>
+            </form>
+        </div>
+    
+    </div>
+</div><!-- /#modal-search -->
+    
+<div id="modal" class="sp">
+    <section>
+        <div class="ttl clearfix">
+            <h1>メニュー</h1>
+            <p><a href="javascript:void(0)" id="hide-sitemap"><img src="/nacinfo/commons/images/sp/ui/btn_close.png" alt="Close"></a></p>
+        </div>
+        
+        <div class="sitemap mt30">
+            
+            <h2><a href="/nacinfo/college/">大学案内</a></h2>
+            <div class="box02 clearfix">
+                <ul class="colum04">
+                    <li><a href="/nacinfo/college/about/">中日本自動車短期大学について</a></li>
+                    <li><a href="/nacinfo/college/feature/">NACの特徴</a></li>
+                    <li><a href="/nacinfo/college/greeting/">学長の挨拶</a></li> 
+                    <li><a href="/nacinfo/college/s-takuma_message/">佐藤&#64074;磨氏からのメッセージ</a></li> 
+                    <li><a href="/nacinfo/college/idea/">教育理念</a></li> 
+                </ul>
+                <ul class="colum04 last">
+                    <li><a href="/nacinfo/college/department-policy/">学科ポリシー</a></li> 
+                    <li><a href="/nacinfo/college/teacher/">教員紹介</a></li> 
+                    <li><a href="/nacinfo/college/assessment/">第三者評価</a></li> 
+                    <li><a href="/nacinfo/college/faq/">よくある質問</a></li>
+                    <li><a href="/nacinfo/college/access/">地図・アクセス</a></li>
+                </ul>
+            </div>
+            
+            <h2><a href="/nacinfo/course/">学科紹介</a></h2>
+            <div class="box02 clearfix">
+                <ul class="colum04">
+                    <li class="subBottom"><a href="/nacinfo/course/ae/">自動車工学科</a></li>
+                    <li class="sub"><a href="/nacinfo/course/ae/2-automechanics/">2級自動車整備士コース</a></li>
+                    <li class="sub"><a href="/nacinfo/course/ae/1-automechanics/">1級自動車整備士コース</a></li>
+                    <li class="sub last"><a href="/nacinfo/course/ae/bodymechanics/">車体整備士コース</a></li>
+                </ul>
+                <ul class="colum04 last">
+                    <li><a href="/nacinfo/course/mse/">モータースポーツエンジニアリング学科</a></li>
+                    <li><a href="/nacinfo/course/about-practice/">実習授業について</a></li>
+                </ul>
+            </div>
+            
+            <h2><a href="/nacinfo/qualification_employment/">資格・就職</a></h2>
+            <div class="box02 clearfix">
+                <ul class="colum04">
+                    <li><a href="/nacinfo/qualification_employment/license-list/">取得できる資格一覧</a></li>
+                    <li><a href="/nacinfo/qualification_employment/job-support/">就職・進学サポート</a></li>
+                    <li><a href="/nacinfo/qualification_employment/results/">就職実績</a></li>
+                </ul>
+                <ul class="colum04 last">
+                    <li><a href="/nacinfo/qualification_employment/graduate/">卒業生のご紹介</a></li>
+                    <li class="sub"><a href="/nacinfo/qualification_employment/graduate/manufacturer/">自動車メーカー系で活躍する卒業生</a></li>
+                    <li class="sub"><a href="/nacinfo/qualification_employment/graduate/development/">設計・開発系で活躍する卒業生</a></li>
+                    <li class="sub"><a href="/nacinfo/qualification_employment/graduate/dealer/">自動車ディーラー系で活躍する卒業生</a></li>
+                    <li class="sub"><a href="/nacinfo/qualification_employment/graduate/other/">その他（アジャスター、救護、二輪自動車など）で活躍する卒業生</a></li>
+                </ul>
+            </div>
+            
+            <h2><a href="/nacinfo/campuslife/">学生生活</a></h2>
+            <div class="box02 clearfix">
+                <ul class="colum04">
+                    <li><a href="/nacinfo/campuslife/schedule/">年間行事</a></li>
+                    <li><a href="/nacinfo/campuslife/study-abroad/">海外研修旅行・短期留学</a></li>
+                    <li><a href="/nacinfo/campuslife/campus/">キャンパス紹介</a></li>
+                    <li><a href="/nacinfo/campuslife/club/">クラブ・サークル活動</a></li>
+                    <li><a href="/nacinfo/campuslife/student-dorm/">学生寮・下宿先について</a></li>
+                    <li><a href="/nacinfo/campuslife/school-bus/">スクールバス・駐車場</a></li>
+                </ul>
+                <ul class="colum04 last">
+                    <li><a href="/nacinfo/campuslife/student-voice/">在学生の声</a></li>
+                    <li class="sub"><a href="/nacinfo/campuslife/student-voice/voice03/">自動車工学科 2年　後藤 優奈さん</a></li>
+                    <li class="sub"><a href="/nacinfo/campuslife/student-voice/voice01/">モータースポーツエンジニアリング<br>学科 3年　各務 昴久さん</a></li>
+                    <li class="sub"><a href="/nacinfo/campuslife/student-voice/voice02/">モータースポーツエンジニアリング<br>学科 3年　木屋川内 勇人さん</a></li>
+                </ul>
+            </div>
+            
+            <h2><a href="/nacinfo/admission/">入試情報</a></h2>
+            <div class="box02 clearfix">
+                <ul class="colum04">
+                    <li><a href="/nacinfo/admission/outline/">募集要項</a></li>
+                    <li class="subBottom"><a href="/nacinfo/admission/application/">出願方法</a></li>
+                    <li class="sub"><a href="/nacinfo/admission/application/recommendation01/">一般推薦入試</a></li>
+                    <li class="sub"><a href="/nacinfo/admission/application/recommendation02/">自己推薦入試</a></li>
+                    <li class="sub"><a href="/nacinfo/admission/application/general/">一般入試</a></li>
+                    <li class="sub"><a href="/nacinfo/admission/application/society/">社会人入試</a></li>
+                    <li class="sub"><a href="/nacinfo/admission/application/scholarship/">奨学生入試</a></li>
+                    <li class="sub last"><a href="/nacinfo/admission/application/ao/">AO方式での受験について</a></li>
+                </ul>
+                <ul class="colum04 last">
+                    <li><a href="/nacinfo/admission/exam-schedule/">入試日程・試験会場</a></li>
+                    <li><a href="/nacinfo/admission/tuition/">学費について</a></li>
+                    <li><a href="/nacinfo/admission/tuition-support/">奨学生・学費サポート</a></li>
+                </ul>
+            </div>
+            
+            <h2><a href="/nacinfo/opencampus/">オープンキャンパス</a></h2>
+            <div class="box02 clearfix">
+                <ul class="colum04">
+                    <li><a href="/nacinfo/opencampus/trial-classes/">体験入学</a></li>
+                    <li><a href="/nacinfo/opencampus/observation/">キャンパス見学会</a></li>
+                </ul>
+                <ul class="colum04 last">
+				<!--<li><a href="/nacinfo/opencampus/oc-spring/">春のオープンキャンパス</a></li>-->
+                    <li><a href="/nacinfo/opencampus/oc-suzuka/">オープンキャンパスin鈴鹿</a></li>
+                    <li><a href="/nacinfo/opencampus/college-conference/">全国進学相談会</a></li>
+                </ul>
+            </div>
+            
+            <h2>関連サイト</h2>
+            <div class="box02 clearfix">
+                <ul class="colum04">
+                    <li><a href="http://www.nakanihon.ac.jp/library/" target="_blank">附属図書館</a></li>
+                    <li><a href="http://nes.nakanihon.ac.jp/ses/" target="_blank">自学自習システム</a></li>
+                    <li><a href="http://www.nakanihon.ac.jp/econo/" target="_blank">Econo Power in GIFU</a></li>
+                </ul>
+                <ul class="colum04 last">
+                    <li><a href="http://www.nakanihon.ac.jp/bekka/" target="_blank">留学生別科オリジナルサイト</a></li>
+                    <li><a href="http://www.nakanihon.ac.jp/bekka/academy/nihongoT.htm" target="_blank">にほんご・あかでみぃ</a></li>
+                    <li><a href="http://www.nakanihon.ac.jp/gakuyu/" target="_blank">学友会</a></li>
+                </ul>
+            </div>
+        </div><!-- /.sitemap -->
+    </section>
+</div><!-- /#modal --></div><!-- #wrap  -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-23796132-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- Google Code for &#12522;&#12510;&#12540;&#12465;&#12486;&#12451;&#12531;&#12464; &#12479;&#12464; -->
+<!-- Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. For instructions on adding this tag and more information on the above requirements, read the setup guide: google.com/ads/remarketingsetup -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 997844258;
+var google_conversion_label = "fSE3CL6jkgQQosrn2wM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/997844258/?value=0&amp;label=fSE3CL6jkgQQosrn2wM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+
+<script type="text/javascript" language="javascript">
+/* <![CDATA[ */
+var yahoo_retargeting_id = 'ANN79JJB97';
+var yahoo_retargeting_label = '';
+/* ]]> */
+</script>
+<script type="text/javascript" language="javascript" src="//b92.yahoo.co.jp/js/s_retargeting.js"></script>
+</body></html>

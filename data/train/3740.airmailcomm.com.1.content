@@ -1,0 +1,336 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><!-- #BeginTemplate "http://www.airmailcomm.com/Templates/ExemplarHome.dwt" --><head><script type="text/javascript" src="http://www.airmailcomm.com/static/js/analytics.js"></script><script type="text/javascript">archive_analytics.values.server_name="wwwb-app11.us.archive.org";archive_analytics.values.server_ms=1157;</script><link type="text/css" rel="stylesheet" href="http://www.airmailcomm.com/static/css/banner_styles.css"><!-- #BeginEditable "doctitle" --><title>Exemplar Development - Distributed Software Solutions for the Enterprise</title><meta name="Keywords" content="Exemplar Development, NetEvents, training, consulting, enterprise, enterprise development, software development, Oregon"><meta name="Description" content="Exemplar Development is dedicated to providing software products and expertise to help you deliver distributing computing solutions on time and within budget"><!-- #EndEditable --><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"><script language="JavaScript">
+<!--
+
+function GrpRestore(grp) { //v2.0
+	var docGroup = eval("document.FWG_"+grp);if (!docGroup) return;
+	var oldSwap = docGroup.oldSwap;
+	var newSwap = docGroup.curSwap;
+	if (newSwap) {docGroup.oldSwap = newSwap;	docGroup.curSwap = null;}
+	if (oldSwap) {
+		for (i=0; i<oldSwap.length; i++) {
+			var curImg = oldSwap[i];
+			var restore = true;
+			if (newSwap) for (j=0; j<newSwap.length; j++) {
+				if (curImg == newSwap[j]) {
+					restore = false;
+				}
+			}
+			if (restore) {
+				if (curImg.atRestSrc) {
+					curImg.src = curImg.atRestSrc;
+				} else if (curImg.origSrc) {		   
+					curImg.src = curImg.origSrc;			
+				}
+			}
+		}
+	}
+	theImages = docGroup.theImages;
+	if (theImages) {
+		for (i=0; i<theImages.length; i++) {
+			var curImg = theImages[i];
+			var restore = true;
+			if (newSwap) for (j=0; j<newSwap.length; j++) {
+				if (curImg == newSwap[j]) {
+					restore = false;
+				}
+			}
+			if (restore) {
+				if (curImg.atRestSrc) {
+					curImg.src = curImg.atRestSrc;
+				} 
+			}
+		}
+	}
+}
+
+function FindGroup(grp, imageName) {
+	var img = FWFindImage(document, imageName, 0);
+	if (!img) return(false);
+	var docGroup = eval("document.FWG_"+grp);
+	if (!docGroup) {
+		docGroup = new Object;
+		eval("document.FWG_"+grp+" = docGroup");
+		docGroup.theImages = new Array;
+	}
+	if (img) {
+		var i;
+		for (i=0; i<docGroup.theImages.length; i++) {
+			if (docGroup.theImages[i] == img) break;
+		}
+		docGroup.theImages[i] = img; 
+		if (!img.atRestSrc) {
+			img.atRestSrc = img.src;
+			img.initialSrc = img.src;
+		}
+	}
+	return(docGroup);
+}
+
+function FWFindImage(doc, name, j)
+{
+	var theImage=false;
+	if (doc.images) {
+		theImage = doc.images[name];
+	}
+	if (theImage) return theImage;
+	if (doc.layers) {
+		for (j=0; j<doc.layers.length; j++) {
+			theImage = FWFindImage(doc.layers[j].document, name, 0);
+			if (theImage) return(theImage);
+		}
+	}
+	return(false);
+}
+
+function GrpSwap(grp){
+	var i,j=0,newSrc,objName;
+	var docGroup = false;
+	for (i=1; i < (GrpSwap.arguments.length-1); i+=2) {
+		objName = GrpSwap.arguments[i];
+		newSrc = GrpSwap.arguments[i+1];
+		docGroup = FindGroup(grp, objName);
+		if (!docGroup) continue;
+		obj = FWFindImage(document,objName,0);
+		if (!obj) continue;
+		if (obj.isDown) {
+			if (obj.downOver) { 
+				obj.src = obj.downOver;
+			}
+		} else {
+			obj.src = newSrc;
+			obj.atRestSrc = obj.initialSrc;
+		}
+		obj.skipMe = true;
+		j++;
+	}
+	if (!docGroup) return;
+	theImages = docGroup.theImages;
+	if (theImages) {
+		for (i=0; i<theImages.length; i++) {
+			var curImg = theImages[i];
+			if (curImg.atRestSrc && !curImg.skipMe) {
+				curImg.src = curImg.atRestSrc;
+			}
+			curImg.skipMe = false;
+		}
+	}
+}
+
+function InitGrp(grp) {
+	var cmd = false; if (getCookie) cmd = getCookie(grp);
+	if (cmd) {
+		eval("GrpDown("+cmd+")");
+		eval("GrpRestore("+cmd+")");
+	}
+}
+
+function getCookie(Name) {
+   var search = Name + "="
+   var retVal = "";
+   if (document.cookie.length > 0) { // if there are any cookies
+     offset = document.cookie.indexOf(search);
+     if (offset != -1) { // if cookie exists 
+         // set index of beginning of value
+         end = document.cookie.indexOf(";", offset) 
+         // set index of end of cookie value
+         offset += search.length 
+         if (end == -1) 
+            end = document.cookie.length;
+         retVal = unescape(document.cookie.substring(offset, end)) ;
+     } 
+   }
+   return(retVal);
+}
+
+function setCookie(name, value) {
+   document.cookie = name + "=" + escape(value)
+}
+
+function GrpDown(grp){
+
+ if( navigator.appVersion.indexOf( "MSIE" ) <= 0 && 
+      parseInt( navigator.appVersion ) < 4 )
+	return;
+
+	var i,j=0,downSrc,downOver,objName;
+	var cmd = "'" + grp + "'";
+	var docGroup=false;
+	for (i=1; i < (GrpDown.arguments.length-2); i+=3) {
+		objName = GrpDown.arguments[i];
+		downSrc = GrpDown.arguments[i+1];
+		downOver = GrpDown.arguments[i+2];
+		if(!downOver) downOver = downSrc;
+		var docGroup = FindGroup(grp, objName);
+		if (!docGroup || !downSrc) continue;
+		obj = FWFindImage(document,objName,0);
+		if (!obj) continue;
+		obj.atRestSrc = downSrc; obj.downOver = downOver;
+		obj.src = downOver; obj.isDown = true;
+		obj.skipMe = true;
+		cmd += ",'" + objName + "','" + downSrc + "','" + downOver + "'";
+		j++;
+	}
+	setCookie(grp, cmd);
+	if (!docGroup) return;
+	var theImages = docGroup.theImages;
+	if (theImages) {
+		for (i=0; i<theImages.length; i++) {
+			var curImg = theImages[i];
+			if (curImg && !curImg.skipMe) {
+				curImg.atRestSrc = curImg.initialSrc;
+				curImg.isDown = false; curImg.downOver = false;
+				curImg.src = curImg.initialSrc;
+			}
+			curImg.skipMe = false;
+		}
+	}
+}
+
+function MM_swapImgRestore() { //v2.0
+
+ if( navigator.appVersion.indexOf( "MSIE" ) <= 0 && 
+      parseInt( navigator.appVersion ) < 4 )
+	return;
+
+  if (document.MM_swapImgData != null)
+    for (var i=0; i<(document.MM_swapImgData.length-1); i+=2)
+      document.MM_swapImgData[i].src = document.MM_swapImgData[i+1];
+}
+
+function MM_preloadImages() { //v2.0
+
+ if( navigator.appVersion.indexOf( "MSIE" ) <= 0 && 
+      parseInt( navigator.appVersion ) < 4 )
+	return;
+
+  if (document.images) {
+    var imgFiles = MM_preloadImages.arguments;
+    if (document.preloadArray==null) document.preloadArray = new Array();
+    var i = document.preloadArray.length;
+    with (document) for (var j=0; j<imgFiles.length; j++) if (imgFiles[j].charAt(0)!="#"){
+      preloadArray[i] = new Image;
+      preloadArray[i++].src = imgFiles[j];
+  } }
+}
+
+function MM_swapImage() { //v2.0
+
+ if( navigator.appVersion.indexOf( "MSIE" ) <= 0 && 
+      parseInt( navigator.appVersion ) < 4 )
+	return;
+
+  var i,j=0,objStr,obj,swapArray=new Array,oldArray=document.MM_swapImgData;
+  for (i=0; i < (MM_swapImage.arguments.length-2); i+=3) {
+    objStr = MM_swapImage.arguments[(navigator.appName == 'Netscape')?i:i+1];
+    if ((objStr.indexOf('document.layers[')==0 && document.layers==null) ||
+        (objStr.indexOf('document.all[')   ==0 && document.all   ==null))
+      objStr = 'document'+objStr.substring(objStr.lastIndexOf('.'),objStr.length);
+    obj = eval(objStr);
+    if (obj != null) {
+      swapArray[j++] = obj;
+      swapArray[j++] = (oldArray==null || oldArray[j-1]!=obj)?obj.src:oldArray[j];
+      obj.src = MM_swapImage.arguments[i+2];
+  } }
+  document.MM_swapImgData = swapArray; //used for restore
+}
+//-->
+</script><link rel="stylesheet" href="http://www.airmailcomm.com/ed.css"></head><body bgcolor="#FFFFFF" onload="ED_preloadFrame2Images()">
+
+
+
+
+<!-- #BeginLibraryItem "/Library/exem.lbi" --><!-- Fireworks 2.0  Dreamweaver.lbi  2.0 target.  
+    Created Mon Mar 15 23:38:43 GMT-0800 (Pacific Standard Time) 1999 -->
+
+<script language="JavaScript">
+<!--
+function ED_preloadFrame2Images()
+{
+  if( document.images )
+  { 
+    if( document.preloadArray == null ) document.preloadArray = new Array();
+    var i = document.preloadArray.length;
+    with ( document ) for ( var j = 0; j < document.images.length; j++ )
+    {
+      if( document.images[j].name.indexOf( "nav", 0 ) == 0 )
+      {
+	var curImageSrc = document.images[j].src;
+	var curImageRevSrc = null;
+
+	// Find the extension, insert the _F2 for the frame 2 image
+	if( curImageSrc.lastIndexOf( "." ) != -1 )
+	{
+		var extLoc = curImageSrc.lastIndexOf( "." );
+		curImageRevSrc = curImageSrc.substr( 0, extLoc ) + "_F2" + 
+			curImageSrc.substr( extLoc );
+		
+       		preloadArray[i]= new Image;
+        	preloadArray[i].src = curImageRevSrc;
+        	i++;
+	}
+      }
+    }
+  }
+}
+//-->
+</script><table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="736" align="center"><tr><!-- row 1 --><td colspan="8"><a href="http://www.airmailcomm.com/index.php" rel="nofollow"><img src="http://www.airmailcomm.com/Library/navTopLogo.gif" name="navTopLogo" width="720" height="64" border="0"></a></td>
+   <td rowspan="2"><img src="http://www.airmailcomm.com/Library/navTopRightDropShadow.gif" name="navTopRightDropShadow" width="16" height="88" border="0"></td>
+  </tr><tr><!-- row 2 --><td><a href="http://www.airmailcomm.com/news/index.php" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('document.navTopNews','document.navTopNews','http://www.airmailcomm.com/Library/navTopNews_F2.gif','#921569923491')" rel="nofollow"><img src="http://www.airmailcomm.com/Library/navTopNews.gif" name="navTopNews" width="59" height="24" border="0"></a></td>
+   <td><a href="http://www.airmailcomm.com/company/index.php" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('document.navTopCompany','document.navTopCompany','http://www.airmailcomm.com/Library/navTopCompany_F2.gif','#921569923492')" rel="nofollow"><img src="http://www.airmailcomm.com/Library/navTopCompany.gif" name="navTopCompany" width="93" height="24" border="0"></a></td>
+    <td><a href="http://www.airmailcomm.com/products/index.php" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('document.navTopProducts','document.navTopProducts','http://www.airmailcomm.com/Library/navTopProducts_F2.gif','#921569923493')" rel="nofollow"><img src="http://www.airmailcomm.com/Library/navTopProducts.gif" name="navTopProducts" width="104" height="24" border="0"></a></td>
+   <td><a href="http://www.airmailcomm.com/support/index.php" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('document.navTopSupport','document.navTopSupport','http://www.airmailcomm.com/Library/navTopSupport_F2.gif','#921569923494')" rel="nofollow"><img src="http://www.airmailcomm.com/Library/navTopSupport.gif" name="navTopSupport" width="94" height="24" border="0"></a></td>
+   <td><a href="http://www.airmailcomm.com/order/index.php" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('document.navTopOrder','document.navTopOrder','http://www.airmailcomm.com/Library/navTopOrder_F2.gif','#921569923495')" rel="nofollow"><img src="http://www.airmailcomm.com/Library/navTopOrder.gif" name="navTopOrder" width="77" height="24" border="0"></a></td>
+   <td><a href="http://www.airmailcomm.com/resources/articles/index.php" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('document.navTopArticles','document.navTopArticles','http://www.airmailcomm.com/Library/navTopArticles_F2.gif','#921569923496')" rel="nofollow"><img src="http://www.airmailcomm.com/Library/navTopArticles.gif" name="navTopArticles" width="106" height="24" border="0"></a></td>
+   <td><a href="http://www.airmailcomm.com/search/index.php" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('document.navTopSearch','document.navTopSearch','http://www.airmailcomm.com/Library/navTopSearch_F2.gif','#921569923497')" rel="nofollow"><img src="http://www.airmailcomm.com/Library/navTopSearch.gif" name="navTopSearch" width="85" height="24" border="0"></a></td>
+   <td><a href="http://www.airmailcomm.com/sitemap.htm" onmouseout="MM_swapImgRestore();" onmouseover="MM_swapImage('document.navTopSite','document.navTopSite','http://www.airmailcomm.com/Library/navTopSite_F2.gif','#921569923498')" rel="nofollow"><img src="http://www.airmailcomm.com/Library/navTopSite.gif" name="navTopSite" width="102" height="24" border="0"></a></td>
+</tr></table><!--   This table was automatically created with Macromedia Fireworks 2.0   --><!--   http://www.macromedia.com   --><!-- #EndLibraryItem --><table width="736" border="0" cellspacing="0" cellpadding="0" align="center"><tr><td width="170" valign="top" colspan="2" bgcolor="#CCCCB3" background="Library/images/navLbkg.gif"><!-- #BeginLibraryItem "/Library/scrollerborder.lbi" --><!-- Fireworks 2.0  Dreamweaver.lbi  2.0 target.  
+    Created Wed Mar 31 04:23:38 GMT-0800 (Pacific Standard Time) 1999 -->
+
+<table bgcolor="#CCCCB3" border="0" cellpadding="0" cellspacing="0" width="170" background="Library/images/navLbkg.gif"><tr><!-- row 1 --><td colspan="3"><img src="http://www.airmailcomm.com/Library/images/scrollerborder_r1_c1.gif" name="scrollerborder_r1_c1" width="170" height="16" border="0" vspace="0" hspace="0"></td>
+  </tr><tr><!-- row 2 --><td width="16"><img src="http://www.airmailcomm.com/Library/images/scrollerborder_r2_c1.gif" name="scrollerborder_r2_c1" width="16" height="200" border="0" vspace="0" hspace="0"></td>
+    <td width="140" align="center" valign="baseline" bgcolor="#000000">
+<applet code="OCVscroll" codebase="Library/." align="baseline" height="196" width="140" vspace="0" hspace="0">
+        <!--TAG GENERATOR: OpenCube - Applet Composer, (www.opencube.com)-->
+
+<!--OpenCube Copyright Notice Parameter-->
+        <param name="Notice" value="Smooth Scroll Up II, Copyright (c) 1999, OpenCube Inc."><!--General / Default Settings--><param name="bgcolor" value="0,0,0"><param name="textcolor" value="220,220,220"><param name="font" value="Helvetica, plain, 12"><param name="lrmargin" value="5"><param name="hlcolor" value="255,204,102"><param name="scrolldelay" value="15"><!--Specific Settings--><param name="desc0" value=" "><param name="sizepause0" value="Start"><param name="delay0" value="7000"><param name="desc1" value="Home Automation"><param name="textcolor1" value="123,158,180"><param name="font1" value="Helvetica,Bold,14"><param name="desc2" value="Free X10 FireCracker/CM17 Java API now available as open source.  Control your lights, appliances, and other devices from Java.  Use a servlet and control them remotely via the web."><param name="desturl2" value="http://www.airmailcomm.com/resources/opensource/default.htm"><param name="desc3" value=" "><param name="sizepause3" value="Start"><param name="delay3" value="7000"><param name="desc4" value="NetEvents 1.0"><param name="textcolor4" value="123,158,180"><param name="font4" value="Helvetica,Bold,14"><param name="desc5" value="Exemplar Development's CORBA compliant, highly scalable and robust publish/subscribe middleware solution is available."><param name="desturl5" value="http://www.airmailcomm.com/products/netevents/index.php"><param name="desc6" value=" "><param name="desc6" value=" "><param name="desc7" value="Trial Download"><param name="desturl7" value="http://www.airmailcomm.com/products/netevents/download_product_NetEvents.php"><param name="desc8" value=" "><param name="desc9" value="Exemplar Consulting"><param name="textcolor9" value="123,158,180"><param name="font9" value="Helvetica,Bold,14"><param name="sizepause9" value="Start"><param name="delay9" value="7000"><param name="desc10" value="Is it critical that your next project be on time and within budget? With expertise in all levels of software development, the Exemplar Development team  is ready to help."><param name="desturl10" value="http://www.airmailcomm.com/products/consulting.htm"><param name="desc11" value=" "><param name="desc12" value=" "><param name="sizepause12" value="Start"><param name="delay12" value="7000"><param name="desc13" value="Site Links"><param name="textcolor13" value="123,158,180"><param name="font13" value="Helvetica,Bold,14"><param name="desc14" value="Technical and Product Support"><param name="desturl14" value="http://www.airmailcomm.com/support/index.php"><param name="desc15" value=" "><param name="desc16" value="Sales and Product Pricing"><param name="desturl16" value="http://www.airmailcomm.com/order/index.php"><param name="desc17" value=" "><param name="desc18" value="Exemplar Development Articles"><param name="desturl18" value="http://www.airmailcomm.com/resources/articles/index.php"><param name="desc19" value=" "><param name="desc20" value=" "><param name="desc21" value=" "><param name="desc22" value=" "><param name="sizepause22" value="Start"><param name="delay22" value="7000"><param name="desc23" value="Enterprise Development"><param name="textcolor23" value="123,158,180"><param name="font23" value="Helvetica,Bold,14"><param name="desc24" value="Both the April and May issues of Enterprise Development magazine contain articles authored by Exemplar Development engineers."><param name="desturl24" value="http://www.enterprisedev.com"></applet>
+
+
+</td>
+    <td width="14"><img src="http://www.airmailcomm.com/Library/images/scrollerborder_r2_c3.gif" name="scrollerborder_r2_c3" width="14" height="200" border="0" vspace="0" hspace="0"></td>
+  </tr><tr><!-- row 3 --><td colspan="3"><img src="http://www.airmailcomm.com/Library/images/scrollerborder_r3_c1.gif" name="scrollerborder_r3_c1" width="170" height="16" border="0" vspace="0" hspace="0"></td>
+  </tr><tr><td colspan="3">
+<center>
+     <form name="QForm" action="http://www.airmailcomm.com/search/default.php" method="POST"> 
+        <p><font face="Arial, Helvetica, sans-serif" size="1"><br><br>
+          Search Exemplar</font><br><input type="HIDDEN" name="SortBy" value="rank[d]"><input type="HIDDEN" name="ColChoice" value="1"><input type="HIDDEN" name="Scope" value="/"><input type="TEXT" name="SearchString" size="16" maxlength="50"><br><a href="http://www.airmailcomm.com/search/searchtips.htm" rel="nofollow"><img border="0" src="http://www.airmailcomm.com/Library/images/searchtips.gif" width="72" height="29"></a>
+            <input type="image" border="0" name="imageField2" src="Library/images/search.gif" width="72" height="29" value="SUBMIT" alt="Search"></p>
+      </form>
+</center>
+    </td>
+  </tr></table><!--   This table was automatically created with Macromedia Fireworks 2.0   --><!--   http://www.macromedia.com   --><!-- #EndLibraryItem --></td>
+    <td width="32"></td>
+    <td width="502" valign="top"> 
+      <table width="502" border="0" cellspacing="0" cellpadding="0" height="24" vspace="0" hspace="0"><tr><td></td>
+        </tr></table><!-- #BeginEditable "body" --><a href="http://www.airmailcomm.com/products/netevents/default.htm" rel="nofollow"><img src="http://www.airmailcomm.com/images/NetEvents10.gif" width="314" height="26" border="0"></a><br><br><a href="http://www.airmailcomm.com/products/netevents/default.htm" rel="nofollow"><img src="http://www.airmailcomm.com/images/NetEvents1_0.gif" width="476" height="209" border="0"></a>
+<br><p>Exemplar Development announces the availability of <a href="http://www.airmailcomm.com/products/netevents/default.htm" rel="nofollow">NetEvents</a>, a highly scalable and robust publish/subscribe middleware solution that allows software developers to focus on solving real business problems, without regard to the system's underlying communication aspects. NetEvents differentiates itself from other middleware solutions by employing advanced features such as typed events, thread pools, event queues, distributed garbage collection, and remote logging capabilities. Written in Java and completely compatible with Java IDL, NetEvents is the perfect addition to the Java 2 platform.</p>
+      <hr><table border="0" cellspacing="0" cellpadding="6"><tr><td valign="top" width="478" colspan="2">
+            <p><b><font size="2"><a href="#topofpage" rel="nofollow">Publish/subscribe article appears in Enterprise Development magazine</a></font></b></p>
+          </td>
+        </tr><tr><td valign="top" width="70">
+            <p><a href="#topofpage" rel="nofollow"><img src="http://www.airmailcomm.com/resources/articles/images/ed0599.gif" width="60" height="80" border="0"></a></p>
+          </td>
+          <td valign="middle" width="408">
+            <p align="left"><font size="2">
+		An article focusing on distributed asynchronous processing (publish/subscribe middleware) written by two Exemplar Development engineers appears in the May issue of Enterprise Development magazine. The article discusses the different forms of publish/subscribe middleware products that are available and their relative strengths and weaknesses.</font></p>
+          </td>
+        </tr></table><br><center>
+	<hr width="250"><font face="Arial, Helvetica, sans-serif" size="1">Copyright  1999, Exemplar Development, Inc. All Rights Reserved.</font>
+        </center>
+        <br><!-- #EndEditable --></td>
+    <td width="16" valign="top"></td>
+    <td width="16" background="http://www.airmailcomm.com/Library/bodyDropShadow.gif"></td>
+  </tr></table><table width="736" border="0" cellspacing="0" cellpadding="0" align="center"><tr valign="top"><td><img src="http://www.airmailcomm.com/Library/bodyEndDropShadow.gif" width="736" height="16"></td>
+  </tr></table><br><br><center>
+<u>Temecula CA portable toilets</u><br/><a href="http://www.portabletoiletstemeculaca.com">http://www.portabletoiletstemeculaca.com</a><br/><br/><u>Springfield OR porta potty</u><br/><a href="http://www.portabletoiletsspringfieldor.com">http://www.portabletoiletsspringfieldor.com</a><br/><br/><u>Champion Portable Toilets Owensboro KY</u><br/><a href="http://www.portabletoiletsowensboroky.com">http://www.portabletoiletsowensboroky.com</a><br/><br/><u>portabletoiletshamptonva.com</u><br/><a href="http://www.portabletoiletshamptonva.com">http://www.portabletoiletshamptonva.com</a><br/><br/><u>portable toilets in Colorado Springs CO</u><br/><a href="http://www.portabletoiletscoloradospringsco.com">http://www.portabletoiletscoloradospringsco.com</a><br/><br/><u>Hamilton porta potty</u><br/><a href="http://www.portabletoiletshamiltonoh.com">http://www.portabletoiletshamiltonoh.com</a><br/><br/><u>portable toilets in Simi Valley</u><br/><a href="http://www.portabletoiletssimivalleyca.com">http://www.portabletoiletssimivalleyca.com</a><br/><br/><u>www.portabletoiletskalamazoomi.com</u><br/><a href="http://www.portabletoiletskalamazoomi.com">http://www.portabletoiletskalamazoomi.com</a><br/><br/><u>Champion Portable Toilets Layton UT</u><br/><a href="http://www.portabletoiletslaytonut.com">http://www.portabletoiletslaytonut.com</a><br/><br/><u>Paterson porta potty</u><br/><a href="http://www.portabletoiletspatersonnj.com">http://www.portabletoiletspatersonnj.com</a><br/><br/><u>portable toilets Bridgeport</u><br/><a href="http://www.portabletoiletsbridgeportct.com">http://www.portabletoiletsbridgeportct.com</a><br/><br/><u>portable toilets Encinitas</u><br/><a href="http://www.portabletoiletsencinitasca.com">http://www.portabletoiletsencinitasca.com</a><br/><br/><u>www.portabletoiletsannarbormi.com</u><br/><a href="http://www.portabletoiletsannarbormi.com">http://www.portabletoiletsannarbormi.com</a><br/><br/><u>rent a porta potty Rialto CA</u><br/><a href="http://www.portabletoiletsrialtoca.com">http://www.portabletoiletsrialtoca.com</a><br/><br/><u>Champion Portable Toilets Suffolk VA</u><br/><a href="http://www.portabletoiletssuffolkva.com">http://www.portabletoiletssuffolkva.com</a><br/><br/></center><br><br></body><!-- #EndTemplate --></html>

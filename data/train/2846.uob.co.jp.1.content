@@ -1,0 +1,473 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Welcome to UOB Tokyo</title>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+		<meta name="keywords" content="Welcome to UOB Tokyo, "/>
+		<meta name="description" content="Welcome to UOB Tokyo. "/>
+
+		
+		<link href="/jp/assets/css/reset.css" rel="stylesheet" type="text/css" />
+		<link href="/jp/assets/css/global.css" rel="stylesheet" type="text/css" />
+		<link href="/jp/assets/css/custom.css" rel="stylesheet" type="text/css" />
+		<link href="/jp/assets/css/content.css" rel="stylesheet" type="text/css" />
+		<link href="/jp/assets/css/thickbox.css" rel="stylesheet" type="text/css" />
+		<link href="/jp/assets/css/style_font1.css" rel="alternate stylesheet" type="text/css" title="font1" />
+		<link href="/jp/assets/css/style_font2.css" rel="alternate stylesheet" type="text/css" title="font2" />
+		<link href="/jp/assets/css/style_font3.css" rel="alternate stylesheet" type="text/css" title="font3" />
+		<link href="/jp/assets/css/print.css" rel="stylesheet" type="text/css" media="print" />
+
+		<style type="text/css">
+		table{padding:3px};
+		</style>
+		<!--[if IE]>
+		<link href="/jp/assets/css/ie.css" rel="stylesheet" type="text/css" />
+		<![endif]-->
+		<!--[if IE 6]>
+		<link href="/jp/assets/css/ie6.css" rel="stylesheet" type="text/css" />
+		<![endif]-->
+
+		
+		<script type="text/javascript" src="/jp/assets/js/jquery-1.2.6.js"></script>
+		<script type="text/javascript" src="/jp/assets/js/jquery.flash.js"></script>
+		<script type="text/javascript" src="/jp/assets/js/general.js"></script>
+		<script type="text/javascript" src="/jp/assets/js/dropdown_global.js"></script>
+		<script type="text/javascript" src="/jp/assets/js/tools_applications.js"></script>
+		<script type="text/javascript" src="/jp/assets/js/thickbox-compressed.js"></script>
+		<script type="text/javascript" src="/jp/assets/js/tabs.js"></script>
+		<script type="text/javascript" src="/jp/assets/js/list-menu.js"></script>
+		<script type="text/javascript">
+			var init_tab = 0;
+			var init_bullet = 0;
+
+			// List of functions to call on page load
+			var functions = [
+
+				// Parse URL for initial tab and/or bullet
+				function () { if (location.hash) {
+					var match = false;
+					if (match = location.hash.match(/tab(\d+)/)) { init_tab = match[1]; }
+					if (match = location.hash.match(/bullet(\d+)/)) { init_bullet = match[1]; }
+				}},
+
+				// Left navigation
+				function () { window.JSListMenu && JSListMenu.init ('.sidebar-panel > ul > li', 'ul>li', ':first'); },
+
+				// Tabs
+				function () { window.JSTab && JSTab.init ('#js-tabs', '#js-tabs-control', init_tab); },
+
+				// Expandable bullets within tabs
+				function () {
+					window.JSListMenu &&
+					$('.tab-content').each (function (index) {
+						var curGroup = JSListMenu.group.length;
+						var selectedEl = (index==init_tab-1 && init_bullet)? ':nth-child('+init_bullet+')': ':first';
+						JSListMenu.init ($('.expandable', $(this)), false, selectedEl);
+						// Insert expand-collapse all if expandable content exists
+						if (JSListMenu.group.length > curGroup) $(this).children('ul').before(JSListMenu.expandCollapse(curGroup));
+					});
+				},
+
+				// Expandable sections in info paragraphs
+				function () {
+					window.JSListMenu &&
+					$('.info').filter('.expandable').each (function () {
+						JSListMenu.init ($(this));
+					});
+				},
+
+				// Move language selector to header if more than 1 lang, else hide
+				function () {
+					if ($('#lang-panel').children().length <= 2) $('#lang-panel').hide();
+					$('#lang-panel-container').append($('#lang-panel'));
+				},
+
+				// Handles day / night / holiday assignment
+				function () { window.DayNightHols && DayNightHols.init(); },
+
+				// Select appropriate Flash animation for site header, based on section / holiday
+				function () { window.FlashHeader && FlashHeader.init(); },
+
+				// Swaps Internet Banking img for privilege / private sections
+				function () {
+					if ($('#page').hasClass('privilege') || $('#page').hasClass('private'))
+						$('#header-right .button-alignR img')
+							.attr({src:'/assets/images/privilegeHome/btn_Login.gif', height:17, width:155});
+				},
+
+				// Fixes flickering background images for IE6
+				function () {
+					if (jQuery.browser.msie && jQuery.browser.version == '6.0')
+						try { document.execCommand("BackgroundImageCache", false, true); } catch (e) {}
+				},
+
+				// Fixes Flash for IE
+				FlashFix.init,
+
+				// Initialises intra-page links (cross-tab and/or targeting specific bullets)
+				function () { TabContent.initLinks('a.internal-link'); },
+
+				// Sets initial position if tab or bullet specified
+				function () { if (init_tab || init_bullet) TabContent.focus (); },
+
+			];
+			$(function () {	for (i in functions) { functions[i](); } } );
+		</script>
+
+		<script type="text/javascript">
+			functions.push (function () {
+				if (window.JSListMenu) JSListMenu.select('');
+			});
+			var $category = '';
+			var $subcategory = '';
+			var aURLreference = '/jp//jp/assets/assist/';
+			var aXMLfileName = 'jp/index.xml';
+		</script>
+	</head>
+
+	<body>
+		<!-- /jp/index.html -->
+		<div id="page" class="wrapper    ">
+
+			<!-- BEGIN Header -->
+					<div id="inner-page"><!-- closed in footer -->
+
+			<div id="header">
+				<div id="header-left">
+					<div id="site-logo-container">
+						<div id="site-logo">
+							<a href="/jp/index.html" style="display: block;">
+								<img src="/jp/assets/images/common/UOB-logo.jpg" />
+							</a>
+						</div>
+						<!-- <div id="site-logo">
+							<h1 id="uob-logo"><a href="#">United Overseas Bank</a></h1>
+						</div> -->
+						<div id="site-welcome">
+							<a href="#" onClick="return clickreturnvalue()" onMouseOver="dropdownmenu(this, event, menu1, '130px')" onMouseOut="delayhidemenu()">
+							<!--h3 id="welcome-text">Welcome to UOB</h3 -->
+							<img id="site-welcome-text" src="/jp/assets/images/common/Text_Welcome-to-UOB-Singapore.gif" />
+							<img class="drop-arrow" src="/jp/assets/images/common/icon/icon_globe.gif" />
+							</a>
+						</div>
+						<div id="lang-panel-container"></div>
+					</div>
+					<div id="site-animation">
+						<div id="site-flash"> 
+							<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="https://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="300" height="59">
+								<param name="movie" value="/jp/assets/flash/birds.swf">
+								<param name="quality" value="high">
+								<param name="wmode" value="transparent">
+								<embed src="/jp/assets/flash/birds.swf" width="300" height="59" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" wmode="transparent"></embed>
+							</object>
+						</div> 
+					</div>
+				</div>
+				<!-- <div id="header-right">
+					<div class="button-alignR">
+						<a href="#" onClick="return clickreturnvalue()" onMouseover="dropdownmenu(this, event, menu2, '180px')" onMouseout="delayhidemenu()"><img src="/jp/assets/images/common/btn_internetBanking.gif" width="200" height="20" border="0"></a>
+					</div>-->
+					
+					<!-- PIB SERVICE MAINTENANCE MESSAGE BEGINS -->
+					<!-- To take out comment brackets when notice is needed. -->
+					<!-- "Service Maintenance Notice" text and link can be changed when needed. The overlay is in /online_services/maintenance/ folder. -->
+					<!--
+					<div align="center" style="padding-top:2px">
+					<img src="/jp/assets/images/common/list-items/bullet_2.gif" border="0"> <a href="/online_services/maintenance/maintenance_notice.html?keepThis=true&TB_iframe=true&width=550&height=400" class="thickbox" title="Scheduled Maintenance Notice"><span class="style1">Scheduled Maintenance Notice</span></a>
+					</div>
+					-->
+					<!-- PIB SERVICE MAINTENANCE MESSAGE ENDS-->
+					
+					
+				<!-- </div>-->
+				<div style="clear:both;"></div>
+			</div>
+
+			<!-- END Header -->
+
+			<div id="top-bar">
+			<!-- BEGIN Menu -->
+			
+			<div id="menu">
+				<div id="main-menu">
+					<ul id="banking-section">
+						<li id="products-services"><a href="/jp/products_services/index.html">Products &amp; Services</a></li>
+						<li id="about-us"><a href="/jp/about_us/index.html">About UOB</a></li>
+						<li id="contact-us"><a href="/jp/contact_us/index.html">Contact Us</a></li>
+					</ul>
+					<!--<ul id="banking-type">
+						<li id="privilege-banking"><a href="/privilege/index.html">Privilege Banking</a></li>
+						<li id="private-banking"><a href="/private/index.html">Private Banking</a></li>
+					</ul>
+					-->
+				</div>
+				<div style="clear:both;"></div>
+				<div id="sub-menu">
+					<ul>
+						<li>&nbsp;</li>
+					</ul>
+				</div>
+			</div>
+
+			<!-- END Menu -->
+			</div>
+
+			<!-- BEGIN Content -->
+			<div id="content" class="layout-1-column">
+
+				<!-- BEGIN Left Menu -->
+				
+				<!-- END Left Menu -->
+
+
+				
+
+				<div id="main">
+					<div id="main-content">
+
+						<div class="published-content" style="">
+							<div id="masthead" class="masthead">
+								
+								
+							</div>
+
+							
+
+							
+							<div style="clear:both"></div>
+
+							<div class="content-data">
+								<div id="intro-block" class="resizeable">
+									
+									
+									<div><p><div>
+  <table border="0" cellspacing="0" cellpadding="0" width="746" height="100%">
+    <tbody>
+      <tr>
+        <td bgcolor="#ffffff" valign="top" align="middle"><table border="0" cellspacing="0" cellpadding="0" width="750">
+            <tbody>
+              <tr>
+                <td><!-- main banner -->
+                  <table border="0" cellspacing="0" width="745">
+                    <tbody>
+                      <tr>
+                        <td height="165" valign="center" width="745" align="right"><img src="/jp/assets/images/banner_jp.jpg" width="731" height="165">
+                          <!--object height="165" width"730" codebase="https://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"><param value="file:///G|/JP/banner_jp.jpg" name="movie"><param value="high" name="quality"><param value="transparent" name="wmode"><param value="Showall" name="scale"></object--></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <!-- main banner --></td>
+              </tr>
+              <tr>
+                <td><!-- content here -->
+                  <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                    <tbody>
+                      <tr>
+                        <td><span class="Hdr_Blue10"><br>
+                          </span>
+                          <table border="0" cellspacing="5" cellpadding="5" width="100%">
+                            <tbody>
+                              <tr>
+                                <td><span class="Hdr_Blue10">About UOB</span><br>
+                                  United Overseas Bank (&ldquo;UOB&rdquo;) was incorporated on 6 August 1935 as the United Chinese Bank. Founded by Datuk Wee Kheng Chiang, the Bank catered mainly to the Fujian community in its early years. The change of name was effected in 1965. Over the past 78 years, UOB has grown from strength to strength. Through a series of acquisitions, it is now a leading bank in Asia.<br>
+                                  <br>
+                                  Besides Far Eastern Bank in Singapore, UOB&rsquo;s major banking subsidiaries in the region are United Overseas Bank (Malaysia), United Overseas Bank (Thai), PT Bank UOB Indonesia and United Overseas Bank (China).<br>
+                                  <br>
+                                  Today, the UOB Group has a network of over 500 offices in 19 countries and territories in Asia Pacific, Western Europe and North America. For more information about UOB, visit <a class="morelink" href="http://www.uobgroup.com/" target="_blank">uobgroup.com.</a><br>
+                                  <br></td>
+                              </tr>
+                              <tr>
+                                <td><span class="Hdr_Blue10">About UOB Tokyo</span></td>
+                              </tr>
+                              <tr>
+                                <td><div>UOB Tokyo branch (UOB Tokyo) was established in December 1972 under a banking licence granted by the Ministry of Finance. When UOB merged with Overseas Union Bank in January 2002, the Tokyo operations of the combined bank were integrated the same year. In April 2009, UOB Tokyo acquired the Japan Offshore Market (JOM) licence which enables it to collect deposits as well as conduct offshore business activities.<br>
+                                    <br>
+                                    UOB Tokyo offers wholesale services which include corporate banking, debt securities investments, treasury, trade finance,  current accounts and banknotes trading. The branch is backed by the global resources, product expertise and international network of the UOB Group.</div></td>
+                              </tr>
+                            </tbody>
+                          </table></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <!-- content here --></td>
+              </tr>
+            </tbody>
+          </table></td>
+        <td style="PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" width="10"><img src="assets/images/common/spacer.gif" width="10" height="5"></td>
+        <td valign="top" width="180"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+            <tbody>
+              <tr>
+                <td style="PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px" valign="top"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+                    <tbody>
+                      <tr>
+                        <td><!-- Right Navigation -->
+                          <!-- BEGIN UOB Assist -->
+                          <div id="UOB-assist" class="right-panel">
+  <table width="175" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td colspan="2"><img src="/jp/assets/images/personalHome/uob-assist.gif" width="135" height="60"></td>
+    </tr>
+    <!--tr>
+      <td colspan="2"><img src="/jp/assets/images/spacer.gif" width="1" height="5"></td>
+    </tr-->
+    <tr>
+      <td colspan="2" class="uob_assist_form_labels"><div>
+          <p>Welcome! We are here to help ensure you have a smooth journey through our site.</p>
+        </div></td>
+    </tr>
+    <tr>
+      <td colspan="2"><table width="100%" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td colspan="3">&nbsp;</td>
+          </tr>
+          <form action=/jp/resources/search.html method=get>
+            <tr>
+              <td colspan="3"><input type="text" name="terms" class="form_selector" style="width:160px;"></td>
+            </tr>
+            <tr>
+              <td colspan="3"><img src="/jp/assets/images/common/spacer.gif" width="5" height="5"></td>
+            </tr>
+            <tr>
+              <td colspan="3" align="right"><div align="right">
+                  <input type=image src=/jp/assets/images/common/buttons/btn_go.gif>
+                </div></td>
+            </tr>
+          </form>
+        </table></td>
+    </tr>
+  </table>
+</div>
+
+                          <!-- END UOB Assist -->
+                          <!-- Right Navigation --></td>
+                      </tr>
+                    </tbody>
+                  </table></td>
+              </tr>
+            </tbody>
+          </table></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</p></div>
+									
+									
+								</div>
+
+								
+
+								
+
+								
+
+								
+
+								<div id="freeform-content" class="resizeable separator">
+									
+
+									<div></div>
+								</div>
+
+								<div id="paragraph-block" class="resizeable">
+
+									<div class="para-img">
+										
+										
+										
+									</div>
+
+									<div class="para-bullet">
+										
+
+										
+
+										
+
+										<ul>
+											
+											
+											
+										</ul>
+
+										
+									</div>
+
+									<div class="para-simple">
+										
+
+										
+
+										
+
+										
+									</div>
+
+								</div>
+
+								<div id="freeform-media" class="media">
+
+									
+
+									
+
+									
+
+									
+
+								</div>
+
+								<div id="footnote" class="resizeable">
+
+									
+
+									
+
+								</div>
+							</div>
+
+						</div>
+
+						<div style="clear: both"></div>
+
+					</div>
+				</div>
+
+				
+			</div>
+
+
+			<div style="clear:both;"></div>
+
+			<!-- BEGIN Footer -->
+			
+			<div id="footer" class="wrapper">
+				<div id="footer-links">
+					<ul id="footer-about">
+						<li><a href="/jp/other_uob_sites/index.html">Other UOB Sites</a></li>
+					</ul>
+					<ul id="footer-privacy">
+						<li><a href="/jp/important/index.html">Important Information</a> |</li>
+						<li><a href="/jp/privacy/index.html">Privacy &amp; Security</a></li>
+					</ul>
+				</div>
+				<div id="footer-copyright">
+					Copyright &copy; 2013 United Overseas Bank Limited Co. Reg. No. 193500026Z. All Rights Reserved.
+				</div>
+			</div>
+			
+		</div><!-- div#inner-page, from header -->
+
+ <script type="text/javascript" src="/assets/js/analytics.js"></script> 
+
+
+			<!-- END Footer -->
+
+		</div>
+	</body>
+</html>

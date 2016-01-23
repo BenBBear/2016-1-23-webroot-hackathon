@@ -1,0 +1,85 @@
+	<script>
+		function show_it_fatal_error_message() {
+			if('block' === document.getElementById('it-fatal-error-message').style.display) {
+				document.getElementById('it-fatal-error-message').style.display = 'none';
+				document.getElementById('it-fatal-error-message-link').innerHTML = 'show';
+			}
+			else {
+				document.getElementById('it-fatal-error-message').style.display = 'block';
+				document.getElementById('it-fatal-error-message-link').innerHTML = 'hide';
+			}
+		}
+	</script>
+	<div style="background:white;color:black;border:3px double red;padding:10px;margin:10px;font-size:12px;position:absolute;top:0;left:0;z-index:100000;">
+		<div><span style="color:red;font-weight:bold;font-size:20px;margin-right:10px;">Fatal Error</span> (<a id="it-fatal-error-message-link" style="color:blue;text-decoration:underline;" href="javascript:show_it_fatal_error_message()">show</a>)</div>
+		
+		<div id="it-fatal-error-message" style="display:none;">
+			<br />
+			
+			<div>The theme has encountered a problem that it cannot recover from. Please use the following information to try to resolve the problem.</div>
+			<br />
+			
+			<table style="font-size:12px;padding:0;margin:0;">
+				<tr><td style="font-weight:bold;">Error Code:</td>
+					<td>php_code_error:64:/home1/webguy/public_html/barrettpi/wp-content/themes/Builder/lib/layout-engine/modules/class.module.php:153:Call-time pass-by-reference has been removed</td>
+				</tr>
+				<tr><td style="font-weight:bold;">Message:</td>
+					<td>A fatal code error occurred.</td>
+				</tr>
+			</table>
+			<br />
+			
+			<div>If you are unable to fix this problem, please copy all the text on this screen and send it to <a href="mailto:support@ithemes.com">support@ithemes.com</a>.</div>
+			
+							<br />
+				
+				<div><strong>Debug Data:</strong></div>
+				<table style="font-size:10px;padding:0;margin:0;">
+					<tr><td><pre style="margin:0;padding:0;">Array
+(
+    [0] => Array
+        (
+            [file] => /home1/webguy/public_html/barrettpi/wp-content/themes/Builder/lib/classes/it-error.php
+            [line] => 123
+            [function] => fatal
+            [class] => ITError
+            [type] => ::
+            [args] => Array
+                (
+                    [0] => php_code_error:64:/home1/webguy/public_html/barrettpi/wp-content/themes/Builder/lib/layout-engine/modules/class.module.php:153:Call-time pass-by-reference has been removed
+                    [1] => A fatal code error occurred.
+                )
+
+        )
+
+    [1] => Array
+        (
+            [file] => /home1/webguy/public_html/barrettpi/wp-content/themes/Builder/lib/classes/it-error.php
+            [line] => 150
+            [function] => handle_error
+            [class] => ITError
+            [type] => ::
+            [args] => Array
+                (
+                    [0] => 64
+                    [1] => Call-time pass-by-reference has been removed
+                    [2] => /home1/webguy/public_html/barrettpi/wp-content/themes/Builder/lib/layout-engine/modules/class.module.php
+                    [3] => 153
+                )
+
+        )
+
+    [2] => Array
+        (
+            [function] => it_error_shutdown
+            [args] => Array
+                (
+                )
+
+        )
+
+)
+</pre></td></tr>
+				</table>
+					</div>
+	</div>

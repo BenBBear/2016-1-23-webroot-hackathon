@@ -1,0 +1,250 @@
+
+<html lang="fr">
+
+	<head>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		
+		<title>Casino en ligne 777.be 1er Casino autorisé par la commission des jeux Belge</title>
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:700,400,100' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="css/reset.css">
+		<link rel="stylesheet" type="text/css" href="css/menu.css">
+		<link rel="stylesheet" type="text/css" href="css/content.css">
+		
+	</head>
+	
+	<body>
+
+		<div id="tab">
+
+			<div id="tabTopLeft">
+			
+				<div id="lang">
+				
+					<div id="languageBox">
+					
+						<span class="fr">
+
+							Français
+						</span>
+						
+						<div id="langs">
+									<span class="nl"><a href="http://www.777.be/?lang_select=nl">Nederlands</a></span>
+									<span class="en"><a href="http://www.777.be/?lang_select=en">English</a></span>
+						</div>
+						
+					</div>
+				
+				</div>
+				
+				<div id="socials">
+					
+					<div class="social_network_icons" id="facebook_link">
+						<a onclick = "javascript:_gaq.push(['_trackEvent','home', 'click', 'fr/facebook', 1]);javascript:_gaq.push(['t2._trackEvent','home', 'click', 'fr/facebook', 1]);" id="facebook_icon" target="_blank" href="https://www.casino777.be/redirection.php?url=http://www.facebook.com/Casino777.be"></a>
+					</div>
+					
+					<div class="social_network_icons" id="twitter_link">
+						<a onclick = "javascript:_gaq.push(['_trackEvent','home', 'click', 'fr/twitter', 1]);javascript:_gaq.push(['t2._trackEvent','home', 'click', 'fr/twitter', 1]);" href="https://www.casino777.be/redirection.php?url=https://twitter.com/Casino777_be" target="_blank"></a>
+					</div>
+					
+				</div>
+				
+				<img id="spa_logo" src="https://css.casino777.be/desktop/Themes/casino777v3/images/header/casinodespa.png">
+				
+				<div id="btnVerions">
+				
+					<a href="#" class="navBtn selectedNavBtn" id="leftBtn">
+						CASINO
+					</a>
+					
+					<a href="#" class="navBtn" id="rightBtn">
+						SPORT
+					</a>
+				
+				</div>
+			
+			</div>
+			
+		</div>
+
+		<div id="body">
+		
+			<div id="carousel_container">
+		
+				<div id="carousel_sport" class="carousel_slide fr">
+					<a href='https://www.bet777.be/?langid=475&idaffiliation=#sinscrire' style="display:block;width:100%;height:450px;" onclick="setCookie('destination777', 'sport')">
+					</a>
+				</div>
+				<div id="carousel_casino" class="carousel_slide fr" onclick="setCookie('destination777', 'casino')">
+					<a href='https://www.casino777.be/?idaffiliation=#sinscrire' style="display:block;width:100%;height:450px;">
+					</a>
+				</div>
+			
+			</div>
+			
+			<div id="carousel_text">
+			
+				<div id="carousel_text_body">
+				
+					<a href='https://www.casino777.be/?idaffiliation=#sinscrire' onclick="setCookie('destination777', 'casino')">
+						<img src='css/images/fr/casino-games-FR.png' />
+					</a>
+					<a href='https://www.casino777.be/?idaffiliation=#sinscrire' onclick="setCookie('destination777', 'casino')">
+						<img src='css/images/fr/dealers-FR.png' />
+					</a>
+					<a href='https://www.casino777.be/?idaffiliation=#sinscrire' onclick="setCookie('destination777', 'casino')">
+						<img src='css/images/fr/dices-FR.png' />
+					</a>
+					<a href='https://www.bet777.be/?langid=475&idaffiliation=#sinscrire' onclick="setCookie('destination777', 'sport')">
+						<img src='css/images/fr/sport-FR.png' />
+					</a>
+					
+				</div>
+
+			</div>
+			
+		</div>
+		
+		<div id="footer">
+		
+			<div id="footer_content">
+			
+				<div id="left_foot">
+					<div style="font-size:10px;">Les Conditions générales s'appliquent à nos offres de bienvenue. Veuillez consulter les pages Promotions de Casino777 et Bet777 pour plus de détails.</div>
+					&copy; 2016, 777.be <img id="age-notice" src="css/images/footer/18-21.png" alt="18-21" />
+				</div>
+				
+				<div id="right_foot">
+					<img id="bel_com" src='https://css.casino777.be/desktop/Themes/casino777v3/images/777_footer_fr.png' alt="Belgium commission" />
+				</div>
+			
+			</div>
+
+		</div>
+
+	</body>
+
+</html>
+
+<script type="text/javascript" src="https://js.casino777.be/desktop/Themes/casino777v3/jQuery/jquery-1.11.3.min.js"></script>
+
+<script>
+	
+	$(document).ready(function(){ 
+	
+		var justChanged = false;
+	
+		$('#languageBox').click(function(e){
+			$('#langs').slideToggle('fast');
+		});
+		
+		$('.navBtn').click(function(e){
+		
+			e.preventDefault();
+			
+			var cur_view = '';
+			var new_view = '';
+			
+			switch($(this).attr('id')) {
+			
+				case 'leftBtn':
+					new_btn	 = 'rightBtn';
+					cur_view = 'sport';
+					new_view = 'casino'
+				break;
+				
+				default:
+					new_btn	 = 'leftBtn';
+					cur_view = 'casino';
+					new_view = 'sport'
+			}
+			
+			$('#' + new_btn).removeClass('selectedNavBtn');
+			$(this).addClass('selectedNavBtn');
+			
+			
+			changeBackground(cur_view, new_view);
+		});
+		
+		setInterval(function(){ 
+		
+			if(justChanged) {
+			
+				justChanged = false;
+				
+			} else {
+			
+				if($("#carousel_casino").hasClass("hidden")) {
+				
+					changeBackground('sport', 'casino');
+					
+					$('#leftBtn').addClass('selectedNavBtn');
+					$('#rightBtn').removeClass('selectedNavBtn');
+					
+				} else {
+				
+					changeBackground('casino', 'sport');
+					
+					$('#leftBtn').removeClass('selectedNavBtn');
+					$('#rightBtn').addClass('selectedNavBtn');
+				}
+			
+			}			
+		
+		}, 3000);
+		
+		function changeBackground(fade_from, fade_to) {
+			
+			justChanged = true;
+		
+			$('#carousel_' + fade_from).fadeOut('slow', function() {
+			
+				$('#carousel_' + fade_from).addClass('hidden');
+				$('#carousel_' + fade_to).removeClass('hidden');
+			
+				$('#carousel_' + fade_to).fadeIn('slow', function() {
+				
+					$('#carousel_' + fade_from).insertBefore('#carousel_' + fade_to);
+					$('#carousel_' + fade_from).show();
+				});
+			});
+		}
+		
+	});
+	
+	/**
+	 * Set a cookie on both BetFirst domains
+	 * @param {string} name Name of cookie to set
+	 * @param {string} value Value of the cookie being set
+	 * @param {int} days Number of days for the cookie to be active until it expires; if left out set to 365 days (1 year)
+	 */
+	var setCookie = function(name, value, days) {
+		if (typeof (days) == "undefined") {
+			days = 365;
+		}
+		var date = new Date();
+		date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+		var expires = "; expires=" + date.toGMTString();
+			document.cookie = name + "=" + value + expires + "; domain=.777.be; path=/";
+	};
+
+	/**
+	 * Read a cookie's value
+	 * @param {string} name Name of cookie to grab
+	 * @return {string} Value of cookie, null if not set
+	 */
+	var readCookie = function(name) {
+		var nameEQ = name + "=";
+		var ca = document.cookie.split(';');
+		for (var i = 0; i < ca.length; i++) {
+			var c = ca[i];
+			while (c.charAt(0) == ' ') {
+				c = c.substring(1, c.length);
+			}
+			if (c.indexOf(nameEQ) == 0) {
+				return c.substring(nameEQ.length, c.length);
+			}
+		}
+		return null;
+	};
+</script>

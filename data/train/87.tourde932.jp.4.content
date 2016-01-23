@@ -1,0 +1,287 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=shift_jis" />
+<title>ツール．ド．草津</title>
+<link href="style/style.css" rel="stylesheet" type="text/css" />
+<link href="style/top.css" rel="stylesheet" type="text/css" />
+<!-- jQuery library (served from Google) -->
+<script src="script/jquery-1.10.2.min.js"></script>
+<!-- bxSlider Javascript file -->
+<script src="script/jquery.bxslider.min.js"></script>
+<!-- bxSlider CSS file -->
+<link href="style/jquery.bxslider.css" rel="stylesheet" />
+<script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAAAUGhKcy8d-BaUlHV00-w3xSWyYydh4MwXR0V3O8fbo-VAVMM4hRD-dSOPPq712pzoKUIgCiivHoQXw"></script>
+<script type="text/javascript">
+var limit = 14 * 24 * 60 * 60 * 1000; //7日
+google.load("feeds", "1");
+function initialize() {
+var now = (new Date()).getTime();
+var container = document.getElementById("feed");
+container.innerHTML = '';
+var feedurl = new Array("http://blog.goo.ne.jp/tourde932/index.rdf"); //RSSのURL
+  for (n = 0; n < feedurl.length;n++ ) {
+    var feed = new google.feeds.Feed(feedurl[n]);
+    feed.setNumEntries(2); //記事を3件表示
+    feed.load(function(result) {
+      if (!result.error) {
+           html ="<ul id=info>"; //タイトル
+           for (i = 0; i < result.feed.entries.length; i++) {
+  var entry = result.feed.entries[i];
+  var entdate = new Date(entry.publishedDate).getTime();
+  var newmark = '';
+
+if (now >= entdate && now <= (entdate + limit)) {
+	newmark = '<span class="info_new">New!<\/span>';
+//「NEWマーク」のタグ
+}
+ html += "<li>"+newmark+"　<a href='"+entry.link+"' target='_blank'>"+entry.title+"<\/a> ["+changeDate(entry.publishedDate)+"]<\/li>";
+//記事タイトル [日付] 7日以内の記事ならNEWマーク
+             }
+ html += "<\/ul>";
+container.innerHTML += html;
+      }
+    });
+  }
+}
+//日付表示変更
+function changeDate(publishedDate){
+  var pdate = new Date(publishedDate);
+
+  var pday = pdate.getDate();
+  var pmonth = pdate.getMonth() + 1;
+  var pyear = pdate.getFullYear();
+  var phour = pdate.getHours();
+  var pminute = pdate.getMinutes();
+  var psecond = pdate.getSeconds();
+  var strdate = pyear + "年" + pmonth + "月" + pday + "日";
+
+  return strdate;
+ }
+ 
+google.setOnLoadCallback(initialize);
+</script>
+<script src="script/mm.js" type="text/javascript"></script>
+
+</head>
+
+<body onload="MM_preloadImages('images/menu01_s.gif','images/menu02_s.gif','images/menu03_s.gif','images/menu04_s.gif','images/menu05_s.gif','images/menu06_s.gif','images/menu07_s.gif','images/menu08_s.gif','images/top_sub02s.gif','images/top_sub03s.gif','images/top_sub01s.gif')">
+
+<script type="text/javascript">
+$(document).ready(function(){
+$('.bxslider').bxSlider({
+auto:true ,
+mode: 'fade',
+pager:false,
+controls: false
+
+});
+});
+</script>
+
+
+<div id="header"><img src="images/title.gif" alt="ツール．ド．草津" width="496" height="91" /></div>
+
+<div id="gnavi">
+  <div class="fixer"><a href="http://blog.goo.ne.jp/tourde932" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image3','','images/menu01_s.gif',1)"><img src="images/menu01.gif" alt="お知らせ" name="Image3" width="111" height="48" border="0" id="Image3" /></a><a href="gaiyou/index.htm" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image4','','images/menu02_s.gif',1)"><img src="images/menu02.gif" alt="大会概要" name="Image4" width="112" height="48" border="0" id="Image4" /></a><a href="youkou/index.htm" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image5','','images/menu03_s.gif',1)"><img src="images/menu03.gif" alt="募集要項" name="Image5" width="112" height="48" border="0" id="Image5" /></a><a href="entry/index.htm" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image6','','images/menu04_s.gif',1)"><img src="images/menu04.gif" alt="お申し込み" name="Image6" width="112" height="48" border="0" id="Image6" /></a><a href="course/index.htm" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image7','','images/menu05_s.gif',1)"><img src="images/menu05.gif" alt="コース" name="Image7" width="112" height="48" border="0" id="Image7" /></a><a href="access/index.htm" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image8','','images/menu06_s.gif',1)"><img src="images/menu06.gif" alt="アクセス" name="Image8" width="112" height="48" border="0" id="Image8" /></a><a href="result/index.htm" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image9','','images/menu07_s.gif',1)"><img src="images/menu07.gif" alt="大会結果" name="Image9" width="112" height="48" border="0" id="Image9" /></a><a href="contact/index.htm" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image10','','images/menu08_s.gif',1)"><img src="images/menu08.gif" alt="お問い合わせ" name="Image10" width="117" height="48" border="0" id="Image10" /></a></div></div>
+  
+  <div id="page">
+  <div id="left_c"> 
+    <div align="center"><img src="images/t_funride02.png" alt="雪の回廊ファンライド開催のお知らせ" /></div>
+    <div id="comment02">
+      <p>今年度のツールド草津の発表が遅くなりまして、申し訳ございません。大変ながらくお待たせいたしました。未だ白根火山の噴火警戒レベルは引き下がらないため昨年同様、残念ながら今年も競技という形では開催ができません。 </p>
+      <p> しかし！！！！！ </p>
+      <p> 志賀草津高原ルート除雪開通前に、車の通らない道路で雪の回廊や雄大な景色を楽しめるフリーライドとしてツールド草津は形を変えて復活いたします。 </p>
+      <p>名付けて <span style="font-size:200%; font-weight:bold;">雪の回廊ファンライド ツールド草津</span></p>
+      <p><strong>※この大会はタイムを競う大会（レース）ではありません。</strong>    <br /></p>
+      <p align="center"><a href="pdf/youkou_h28.pdf"><img src="images/youkou_pdf.png" width="330" height="60" alt="大会要綱(PDF)" /></a></p>
+    </div>
+
+<!--
+<div id="comment">
+  <p><a href="result/index.htm">第19回大会結果</a>を掲載しました。 <br />
+    前回大会の情報が表示されてしまう方は、大会結果ページにてブラウザの『更新』ボタンをクリックするか、キーボードのF５キーを押してください。</p>
+</div>
+-->
+
+<!--
+<div class="box02">  
+  コメント欄
+</div>
+-->
+
+<!--
+<div><img src="images/pdf_dl_title.gif" width="195" height="36" alt="PDFダイレクトリンク" /><br />
+  <a href="pdf/19annai.pdf" target="_blank" onmouseover="MM_swapImage('Image40','','images/top_sub01s.gif',1)" onmouseout="MM_swapImgRestore()"><img src="images/top_sub01.gif" alt="参加者案内" width="161" height="70" id="Image40" /></a><a href="pdf/course.pdf" target="_blank" onmouseover="MM_swapImage('Image35','','images/top_sub02s.gif',1)" onmouseout="MM_swapImgRestore()"><img src="images/top_sub02.gif" alt="コース図" width="161" height="70" id="Image35" style="margin-left:2px;" /></a><a href="pdf/youkou.pdf" target="_blank" onmouseover="MM_swapImage('Image36','','images/top_sub03s.gif',1)" onmouseout="MM_swapImgRestore()"><img src="images/top_sub03.gif" alt="大会要項" width="161" height="70" id="Image36" style="margin-left:2px;" /></a><a href="pdf/syutten.pdf" target="_blank" onmouseover="MM_swapImage('Image37','','images/top_sub04s.gif',1)" onmouseout="MM_swapImgRestore()"><img src="images/top_sub04.gif" alt="出店関係" width="161" height="70" id="Image37" style="margin-left:2px;" /></a>
+</div>
+<a href="pdf/t-shirts.pdf" target="_blank"><img src="images/bn_tshirts.gif" alt="第19回ツールド草津 記念Tシャツ申込書PDF" width="650" height="100" class="ban_single" /></a>
+<a href="pdf/amino.pdf" target="_blank"><img src="images/bn_amino.gif" alt="「アミノバイタル」シリーズ特別価格にて販売" width="650" height="100" class="ban_single" /></a>
+-->
+
+<div id="t_info"><img src="images/t_info.gif" alt="インフォメーション" width="185" height="25" /></div>
+<div id="feed"></div>
+<div id="listlink"><a href="http://blog.goo.ne.jp/tourde932">&raquo; お知らせ一覧</a></div>
+
+
+<div class="t_banner"><img src="images/t_banner.gif" width="111" height="19" /></div>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="ban_table">
+  <tr>
+    <td width="25%"><div align="center"><a href="http://www.kusatsu-onsen.ne.jp/" target="_blank"><img src="images/bn_10426_01.gif" alt="湯LOVE草津" width="120" height="42" /></a></div></td>
+    <td width="25%"><div align="center"><a href="http://www.town.kusatsu.gunma.jp/www/toppage/0000000000000/APM03000.html" target="_blank"><img src="images/bn_10426_02.gif" alt="草津町役場" width="140" height="42" /></a></div></td>
+    <td width="25%"><div align="center"><a href="http://www.kusatsu-kokusai.com/winter/index.html" target="_blank"><img src="images/bn_kusatsu_ski.gif" alt="草津国際スキー場" width="120" height="60" /></a></div></td>
+    <td><div align="center"><a href="http://www.yumomi.net/" target="_blank"><img src="images/bn_onsenkyokai.gif" alt="草津温泉旅館協同組合" width="120" height="60" /></a></div></td>
+    </tr>
+  <tr>
+    <td><div align="center"><a href="http://www9.wind.ne.jp/kusatsu/" target="_blank"><img src="images/bn_syoukoukai.gif" alt="草津町商工会" width="120" height="60" /></a></div></td>
+    <td><div align="center"><a href="http://www.jomo-news.co.jp/" target="_blank"><img src="images/bn_jomo.gif" alt="上毛新聞社" width="150" height="30" /></a></div></td>
+    <td><div align="center"><a href="http://www.town.kusatsu.gunma.jp/www/contents/1407295034091/index.html" target="_blank"><img src="images/bn_furusato.jpg" alt="草津よいとこ元気基金" width="88" height="31" /></a></div></td>
+    <td>&nbsp;</td>
+    </tr>
+</table>
+
+<div class="t_banner"><img src="images/t_link.gif" alt="friendly support" width="117" height="19" /></div>
+<table width="100%" border="0" cellspacing="0" cellpadding="5" class="ban_table">
+  <tr>
+    <td><div align="center"><a href="http://allsports.jp/event/00154425.html" target="_blank"><img src="images/asc_120x60.gif" alt="イベントのお写真はこちら" width="120" height="60" /></a></div>      <div align="center"></div></td>
+    <td><div align="center"><a href="http://www.gunmanissan.co.jp/" target="_blank"><img src="images/gn_s_w.jpg" alt="GN群馬日産" width="151" height="50" /></a></div></td>
+    <td><div align="center"><a href="http://www.mizuno.co.jp/s-port/" target="_blank"><img src="images/mrb_banner.gif" alt="ミズノ" width="121" height="61" /></a></div></td>
+    <td width="140"><div align="center"><a href="http://www.haruna-hc.jp/index.shtml" target="_blank"><img src="images/haruna_hc.jpg" alt="榛名山ヒルクライム" width="120" height="60" /></a></div></td>
+  </tr>
+  <tr>
+    <td><div align="center"><a href="http://www.akg-hc.jp/" target="_blank"><img src="images/ahc_ban.gif" alt="まえばし赤城山ヒルクライム大会" width="120" height="60" /></a></div>      <div align="center"></div></td>
+    <td><div align="center"></div></td>
+    <td width="140"><div align="center"></div></td>
+    <td><div align="center"></div></td>
+  </tr>
+</table>
+<p><br />
+</p>
+<p></p>
+<p>&nbsp; </p>
+  </div>
+  <div id="right_c">
+  <p><a href="http://www.sportsentry.ne.jp/event/t/63973" target="_blank"><img src="images/ban_entry.gif" width="220" height="160" alt="参加者募集中" /><br />
+    <br />
+  </a></p>
+
+    <!--草津のお宿検索-->
+<div class="search-area">
+	<img src="images/bar_search.jpg" alt="草津のお宿検索" width="220" height="30">
+	<div class="inner-wrap">
+		<form id="frmplanseek" name="frmplanseek" onSubmit="return false;">
+			<div id="booking_inner">
+				<table>
+					<tr><th><img src="images/bar_search_sub1.gif" alt="ご宿泊日(年/月/日)"></th></tr>
+					<tr><td>
+						<!-- hidSELECTARRYMD / 日付データ -->
+						<div id="calid"></div>
+						<input type="text" name="cmbARRY" size="5" maxlength="4" onClick="cal.write();" onChange="cal.getFormValue(); cal.hide();"><span>/</span>
+						<input type="text" name="cmbARRM" size="3" maxlength="2" onClick="cal.write();" onChange="cal.getFormValue(); cal.hide();"><span>/</span>
+						<input type="text" name="cmbARRD" size="3" maxlength="2" onClick="cal.write();" onChange="cal.getFormValue(); cal.hide();">
+					</td></tr>
+					<tr><th><img src="images/bar_search_sub2.gif" alt="泊数/部屋数"></th></tr>
+					<tr><td>
+						<!-- hidSELECTHAKSU / 泊数データ -->
+						<!-- Direct Inの設定に合わせて option を増減してください -->
+						<select name="hidSELECTHAKSU">
+						<option value="1" selected>1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						</select><span>泊</span>
+						<!-- hidROOM / 室数データ -->
+						<!-- Direct Inの設定に合わせて option を増減してください -->
+						<select name="hidROOM">
+						<option value="1" selected>1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						</select><span>室</span>
+						<!-- 日程未定画面表示部分 -->
+						&nbsp;&nbsp;
+						<input type="checkbox" name="chkymd" id="chkymd" value="1" onclick="cngchkymd();">
+						<label for="chkymd"><span>日程未定</span></label>
+					</td></tr>
+					<tr><th><img src="images/bar_search_sub3.gif" alt="ご宿泊人数"></th></tr>
+					<tr><td class="reset">
+						<span>大人:</span>
+						<!-- cmbADULT / 大人の人数データ -->
+						<select name="cmbADULT">
+						<option value="1">1</option>
+						<option value="2" selected >2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						</select><span>名/1部屋あたり</span>
+					</td></tr>
+				</table>
+				<div class="booking_btn">
+					<input type="button" name="seek" class="button02" value="お宿検索" onClick="btnSeekSubmit()">
+					<!--input type="button" name="seek" class="button" value="ご予約の確認・キャンセル" onClick="btnSeekSubmitCancel()"-->
+				</div>
+				<input type="hidden" name="hidSELECTARRYMD" value="">
+				<input type="hidden" name="hidchkymd" value="">
+			</div><!-- END booking_inner //-->
+		</form>
+        <br />
+<center>
+<span style="font-size:90%; line-height:150%;">※検索で見つからない場合は、<br />
+下記までお問い合わせください</span><br />
+TEL：0279-88-3722<br />
+（受付時間9：00〜18：00）
+</center>
+	</div><!--/inner-wrap-->
+</div>
+<!-- Java Script プログラム --->
+<!-- 別ファイルとして呼び出す場合は、必ず form より下で呼び出すようにしてください --->
+<script type="text/javascript" src="script/jkl-calendar.js"></script>
+<script type="text/javascript" src="script/directin-search.js"></script>
+<script>
+<!--
+	// 日付を自動設定
+	// 初期値は、翌日宿泊日になっています
+	// 当日の場合は、today.setDate(today.getDate() + 1)　を　today.setDate(today.getDate())　にしてください
+		var objfrm =  document.frmplanseek
+		today = new Date();
+		today.setDate(today.getDate() + 1);
+		objfrm.cmbARRY.value = today.getFullYear();
+		objfrm.cmbARRM.value = today.getMonth() + 1;
+		objfrm.cmbARRD.value = today.getDate();
+//-->
+</script>
+<!--/草津のお宿検索-->
+
+    
+    <div align="center">
+      <!--ウェザーニュースブログパーツ-->
+      <div id="weathernews_blog_parts"></div>
+      <script type="text/javascript">document.write('<scr' + 'ipt type="text/javascript" src="http://weathernews.jp/blog/js/blog.js?' + (new Date().valueOf()) + '"></scr' + 'ipt>');</script>
+      <script type="text/javascript">// <![CDATA[
+wni_blog('blog/forecast:centeredOn=33',200,33,false);// ]]></script>
+    </div>
+    <br />
+    <div><a href="http://www.kusatsu-onsen.ne.jp/live/" target="_blank"><img src="images/livecam.gif" width="220" height="80" alt="ライブカメラ　草津LIVE放送中" /></a></div><br />
+<a class="twitter-timeline" height="300" href="https://twitter.com/tourde932" data-widget-id="397918454679736320">@tourde932 からのツイート</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+
+    <br /><br />
+
+    <iframe src="http://www.facebook.com/plugins/likebox.php?href=http://www.facebook.com/tourde932&amp;width=220&amp;colorscheme=light&amp;show_faces=true&amp;border_color&amp;stream=false&amp;header=true&amp;" scrolling="no" frameborder="0"style="border:none; overflow:hidden; width:220px; height:300px; allowTransparency="true="true"" ></iframe>
+  </div>
+  <div class="cb"></div>
+  </div>
+  
+  <div id="footer">
+  <div class="fixer">
+    <p>当ホームページの記事、画像などの無断転載を禁じます。すべての著作権はツール・ド・草津実行委員会に帰属します。<br />
+      Copyright(C) 2011 TOUR DE Kusatsu All rights reserved.
+    </p>
+  </div>
+  </div>
+
+</body>
+</html>
